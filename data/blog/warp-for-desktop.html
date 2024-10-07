@@ -11,11 +11,25 @@
 	<p>While making the Internet faster for users, we also focused on making it more private. We built 1.1.1.1 to accelerate the last mile of connections, from user to our edge or other destinations on the Internet. Unlike other providers, we did not build it to sell ads.</p>
 	<p>Last year we went one step further to make the entire connection from a device both faster and safer when we launched Cloudflare WARP. With the push of a button, users could connect their mobile device to the entire Internet using a WireGuard tunnel through a Cloudflare data center near to them. Traffic to sites behind Cloudflare became even faster and a user’s experience with the rest of the Internet became more secure and private.</p>
 	<p>We brought that experience to desktops in beta earlier this year, and are excited to announce the general availability of Cloudflare WARP for desktop users today. The entire Internet can now be more secure and private regardless of how you connect.</p>
-	<h3>Bringing the power of WARP to security teams everywhere</h3>
+	<div class="flex anchor relative">
+		<h3 id="bringing-the-power-of-warp-to-security-teams-everywhere">Bringing the power of WARP to security teams everywhere</h3>
+		<a href="https://blog.cloudflare.com/#bringing-the-power-of-warp-to-security-teams-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WARP made the Internet faster and more private for individual users everywhere. But as businesses embraced remote work models at scale, security teams struggled to extend the security controls they had enabled in the office to their remote workers. Today, we’re bringing everything our users have come to expect from WARP to security teams. The release also enables new functionality in our <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare Gateway product</a>.</p>
 	<p>Customers can use the Cloudflare WARP application to connect corporate desktops to Cloudflare Gateway for advanced <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering">web filtering</a>. The Gateway features rely on the same performance and security benefits of the underlying WARP technology, now with security filtering available to the connection.</p>
 	<p>The result is a simple way for enterprises to protect their users wherever they are without requiring the backhaul of network traffic to a centralized security boundary. Instead, organizations can configure the WARP client application to securely and privately send remote users’ traffic through a Cloudflare data center near them. Gateway administrators apply policies to outbound Internet traffic proxied through the client, allowing organizations to protect users from threats on the Internet, and stop corporate data from leaving their organization.</p>
-	<h3>Privacy, Security and Speed for Everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="privacy-security-and-speed-for-everyone">Privacy, Security and Speed for Everyone</h3>
+		<a href="https://blog.cloudflare.com/#privacy-security-and-speed-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WARP was built on the philosophy that even people who don’t know what “VPN” <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn">stands for</a> should be able to still easily get the protection a VPN offers. For those of us unfortunately very familiar with traditional corporate VPNs, something better was needed. Enter our own WireGuard implementation called <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust">BoringTun</a>.</p>
 	<p>The WARP application uses BoringTun to encrypt all the traffic from your device and send it directly to Cloudflare’s edge, ensuring that no one in between is snooping on what you're doing. If the site you are visiting is already a Cloudflare customer, the content is immediately sent down to your device. With WARP+ we use Argo Smart Routing to devise the shortest path through our global network of data centers to reach whomever you are talking to.</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,7 +40,14 @@
 	<p>Combined with the power of <a href="http://one.one.one.one">1.1.1.1</a> (the <a href="https://www.dnsperf.com/#!dns-resolvers">world's fastest</a> public DNS resolver), WARP keeps your traffic secure, private and fast. Since nearly everything you do on the Internet starts with a DNS request, choosing the fastest DNS server across all your devices will accelerate almost everything you do online. Speed isn’t everything though, and while the connection between your application and a website may be encrypted, DNS lookups for that website were not. This allowed anyone, even your Internet Service Provider, to potentially snoop (and sell) on where you are going on the Internet.</p>
 	<p>Cloudflare will never snoop or sell your personal data. And if you use DNS-over-HTTPS or DNS-over-TLS to our 1.1.1.1 resolver, your DNS request will be sent over a secure channel. This means that if you use the 1.1.1.1 resolver then in addition to our privacy guarantees an eavesdropper can’t see your DNS requests. Don’t take our word for it though, earlier this year we published the results of a <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">third-party privacy examination</a>, something we’ll keep doing and wish others would do as well.</p>
 	<p>For Gateway customers, we are committed to privacy and trust and will never sell your personal data to third parties. While your administrator will have the ability to audit your organization's traffic, create rules around how long data is retained, or create specific policies about where they can go, Cloudflare will never sell your personal data or use your personal data to retarget you with advertisements. Privacy and control of your organization's data is in your hands.</p>
-	<h3>Now integrated with Cloudflare Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="now-integrated-with-cloudflare-gateway">Now integrated with Cloudflare Gateway</h3>
+		<a href="https://blog.cloudflare.com/#now-integrated-with-cloudflare-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally, companies have used VPN solutions to gate access to corporate resources and keep devices secure with their filtering rules. These connections quickly became a point of failure (and intrusion vector) as organizations needed to manage and scale up VPN servers as traffic through their on premise servers grew. End users didn't like it either. VPN servers were usually overwhelmed at peak times, the client was bulky and they were rarely made with performance in mind. And once a bad actor got in, they had access to everything.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -58,7 +79,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1n6ktVdf9yYbKrxQhWOIpN/af2e5533bf088587d1a14f5520963c82/image5-10.png" alt="" class="kg-image" width="354" height="456" loading="lazy">
 
 	</figure>
-	<h3>Enroll your organization to use the WARP client with Cloudflare for Teams</h3>
+	<div class="flex anchor relative">
+		<h3 id="enroll-your-organization-to-use-the-warp-client-with-cloudflare-for-teams">Enroll your organization to use the WARP client with Cloudflare for Teams</h3>
+		<a href="https://blog.cloudflare.com/#enroll-your-organization-to-use-the-warp-client-with-cloudflare-for-teams" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We know how hard it can be to deploy another piece of software in your organization, so we’ve worked hard to make deployment easy. To get started, just navigate to our <a href="https://dash.cloudflare.com/sign-up/teams">sign-up page</a> and create an account. If you already have an active account, you can bypass this step and head straight to the <a href="https://dash.teams.cloudflare.com/onboarding">Cloudflare for Teams dashboard</a> where you’ll be dropped directly into our onboarding flow. After you have signed up and configured your team, <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway">setup a Gateway policy</a> and then choose one of the three ways to install the clients to enforce that policy from below:</p>
 	<h4>Self Install‌‌</h4>
 	<p>If you are a small organization without an IT department, asking your users to download the client themselves and type in the required settings is the fastest way to get going.</p>
@@ -80,7 +108,14 @@
 	</figure>
 	<p>Microsoft Intune Configurationa</p>
 	<p>For a complete list of the installation options, required fields and step by step instructions for all platforms see the <a href="https://developers.cloudflare.com/warpclient">WARP Client documentation</a>.</p>
-	<h3>What's coming next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-coming-next">What's coming next</h3>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is still more we want to build for both our consumer users of WARP and our Cloudflare for Teams customers. Here’s a sneak peek at some of the ones we are most excited about (and allowed to share):</p>
 	<ul>
 		<li>
@@ -90,7 +125,14 @@
 			<p>Split Tunnel support will allow you or your organization to specify applications, sites or IP addresses that should be excluded from WARP. This will allow content like games, streaming services, or any application you choose to work outside the connection.</p>
 		</li>
 	</ul>
-	<h3>Download now</h3>
+	<div class="flex anchor relative">
+		<h3 id="download-now">Download now</h3>
+		<a href="https://blog.cloudflare.com/#download-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are excited to finally share these applications with our customers. We'd especially like to thank our Cloudflare MVP’s, the 100,000+ beta users on desktop, and the millions of existing users on mobile who have helped grow WARP into what it is today.</p>
 	<p>You can download the applications right now from <a href="https://one.one.one.one">https://one.one.one.one</a>‌‌.</p>
 </div>

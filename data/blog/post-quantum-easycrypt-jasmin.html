@@ -10,7 +10,14 @@
 	<p>This blog post will discuss <a href="https://eprint.iacr.org/2019/1393.pdf">formal verification</a>. Formal verification is a technique we can use to prove that a piece of code correctly implements a specification. Formal verification, and <a href="https://en.wikipedia.org/wiki/Formal_methods">formal methods</a> in general, have been around for a long time, appearing as early as the 1950s. Today, they are being applied in a variety of ways: from <a href="https://csrc.nist.gov/CSRC/media/Events/third-pqc-standardization-conference/documents/accepted-papers/meijers-formal-verification-pqc2021.pdf">automating the checking of security proofs</a> to automating checks for functional correctness and the absence of side-channels attacks. Code verified using such formal verification has been deployed in popular products like <a href="https://blog.mozilla.org/security/2020/07/06/performance-improvements-via-formally-verified-cryptography-in-firefox">Mozilla Firefox</a> and <a href="https://boringssl.googlesource.com/boringssl/+/refs/heads/master/third_party/fiat">Google Chrome</a>.</p>
 	<p><i>Formal verification</i>, as opposed to <i>formal analysis</i>, the topic of <a href="https://blog.cloudflare.com/post-quantum-formal-analysis">other blog posts</a>, deals with verifying code and checking that it correctly implements a specification. <i>Formal analysis</i>, on the other hand, deals with establishing that a specification has the desired properties, for example, having a specific security guarantee.</p>
 	<p>Let’s explore what it means for an algorithm to have a proof that it achieves a certain security goal and what it means to have an implementation we can prove correctly implements that algorithm.</p>
-	<h3>Goals of a formal analysis and verification process</h3>
+	<div class="flex anchor relative">
+		<h3 id="goals-of-a-formal-analysis-and-verification-process">Goals of a formal analysis and verification process</h3>
+		<a href="https://blog.cloudflare.com/#goals-of-a-formal-analysis-and-verification-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our goal, given a description of an algorithm in a natural language, is to produce two proofs: first, one that shows that the algorithm has the security properties we want and, second, that we have a correct implementation of it. We can go about this in four steps:</p>
 	<ol>
 		<li>
@@ -30,7 +37,14 @@
 	<p>Suppose, more concretely, we’re looking at an implementation and specification of a Key Encapsulation Mechanism (a KEM, such as <a href="https://frodokem.org/files/FrodoKEM-specification-20210604.pdf"><i>FrodoKEM</i></a>). FrodoKEM is designed to achieve <a href="https://en.wikipedia.org/wiki/Ciphertext_indistinguishability">IND-CCA security</a>, so we want to prove that it does, and that we have an efficient, side-channel resistant and correct implementation of it.</p>
 	<p>As you might imagine, achieving even one of these goals is no small feat. Achieving all, especially given the way they conflict (efficiency clashes with side-channel resistance, for example), is a Herculean task. <a href="https://eprint.iacr.org/2019/1393.pdf">Decades of research have gone into this space</a>, and it is huge; so let’s carve out and examine a small subsection to look at: we’ll look at two tools, <a href="https://github.com/EasyCrypt/easycrypt">EasyCrypt</a> and <a href="https://acmccs.github.io/papers/p1807-almeidaA.pdf">Jasmin</a>.</p>
 	<p>Before we jump into the tools, let’s take a brief aside to discuss why we’re not using Tamarin, which we’ve talked about in our <a href="https://blog.cloudflare.com/post-quantum-formal-analysis">other blog posts</a>. Like EasyCrypt, <a href="https://tamarin-prover.github.io">Tamarin</a> is also a tool used for formal analysis, but beyond that, the two tools are quite different. Formal analysis broadly splits into two camps, symbolic analysis and computational analysis. Tamarin, as <a href="https://blog.cloudflare.com/post-quantum-formal-analysis">we saw</a>, uses symbolic analysis, which treats all functions effectively as black boxes, whereas EasyCrypt uses computational analysis. Computational analysis is much closer to how we program, and functions are given specific implementations. This gives computational analysis a much higher “resolution”: we can study properties in much greater detail and, perhaps, with greater ease. This detail, of course, comes at a cost. As functions grow into full protocols, with multiple modes, branching paths, and in the case of the Transport Layer Security (TLS), sometimes even resumption, computational models become unwieldy and difficult to work with, even with computer-assisted tooling. We therefore have to pick the correct tool for the job. When we need maximum assurance, sometimes both computational and symbolic proofs are constructed, with each playing to its strengths and compensating for the other’s drawbacks.</p>
-	<h3>EasyCrypt</h3>
+	<div class="flex anchor relative">
+		<h3 id="easycrypt">EasyCrypt</h3>
+		<a href="https://blog.cloudflare.com/#easycrypt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>EasyCrypt is a <i>proof assistant</i> for cryptographic algorithms and <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative programs</a>. A proof is basically a formal demonstration that some statement is true. EasyCrypt is called a proof assistant because it “assists” you with creating a proof; it does not create a proof for you, but rather, helps you come to it and gives you the power to have a machine check that each step logically follows from the last. It provides a language to write definitions, programs, and theorems along with an environment to develop machine-checked proofs.</p>
 	<p>A proof starts from a set of assumptions, and by taking a series of logical steps demonstrates that some statement is true. Let’s imagine for a moment that we are <a href="https://en.wikipedia.org/wiki/Perseus">the hero Perseus</a> on a quest to kill a mythological being, the terrifying <a href="https://en.wikipedia.org/wiki/Medusa">Medusa</a>. How can we prove to everyone that we’ve succeeded? No one is going to want to enter Medusa's cave to check that she is dead because they’ll be turned to stone. And we cannot just state, “I killed the Medusa.” Who will believe us without proof? After all, is this not a <a href="https://en.wikipedia.org/wiki/Leap_of_faith">leap of faith</a>?</p>
 	<p>What we can do is bring the head of the Medusa as proof. Providing the head as a demonstration is our proof because no mortal <a href="https://en.wikipedia.org/wiki/Gorgon">Gorgon</a> can live without a head. Legend has it that Perseus completed the proof by demonstrating that the head was indeed that of the Medusa: Perseus used the head’s powers to turn <a href="https://en.wikipedia.org/wiki/Polydectes">Polydectes</a> to stone (the latter was about to force Perseus’ mother to marry him, so let’s just say it wasn’t totally unprovoked). One can say that this proof was done “by hand” in that it was done without any mechanical help. For computer security proofs, sometimes the statements we want to prove are so cumberstone to prove and are so big that having a machine to help us is needed.</p>
@@ -117,7 +131,14 @@ qed.</code></pre>
 	</figure>
 	<p>Our lemma and proof in Coq.</p>
 	<p>EasyCrypt allows us to prove statements in a faster and more assured manner than if we do proofs by hand. Proving the truthness of the statement we just showed would be easy with the usage of truth tables, for example. But, it is only easy to find these truth tables or proofs when the statement is small. If one is given a complex cryptography algorithm or protocol, the situation is much harder.</p>
-	<h3>Jasmin</h3>
+	<div class="flex anchor relative">
+		<h3 id="jasmin">Jasmin</h3>
+		<a href="https://blog.cloudflare.com/#jasmin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://acmccs.github.io/papers/p1807-almeidaA.pdf">Jasmin</a> is an assembly-like programming language with some high-level syntactic conveniences such as loops and procedure calls while using assembly-level instructions. It does support function calls and functional arrays, as well. The Jasmin compiler predictably transforms source code into assembly code for a chosen platform (currently only <a href="https://www.intel.com/content/dam/develop/external/us/en/documents/introduction-to-x64-assembly-181178.pdf">x64</a> is supported). This transformation is verified: the correctness of some compiler passes (like function inlining or loop unrolling) are proven and verified in the Coq proof assistant. Other passes are programmed in a conventional programming language and the results are validated in Coq. The compiler also comes with a built-in checker for memory safety and constant-time safety.</p>
 	<p>This assembly-like syntax, combined with the stated assurances of the compiler, means that we have deep control over the output, and we can optimize it however we like without compromising safety. Because low-level cryptographic code tends to be concise and non-branching, Jasmin doesn’t need full support for general purpose language features or to provide lots of libraries. It only needs to support a set of basic features to give us everything we need.</p>
 	<p>One reason Jasmin is so powerful is that it provides a way to formally verify low-level code. The other reason is that Jasmin code can be automatically converted by the compiler into equivalent EasyCrypt code, which lets us reason about its security. In general terms, whatever guarantees apply to the EasyCrypt code also flow into the Jasmin code, and subsequently into the assembly code.</p>
@@ -181,7 +202,14 @@ qed.</code></pre>
 
 	</figure>
 	<p>The proof of the addition function as extracted to EasyCrypt.</p>
-	<h3>Why formal verification for post-quantum cryptography?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-formal-verification-for-post-quantum-cryptography">Why formal verification for post-quantum cryptography?</h3>
+		<a href="https://blog.cloudflare.com/#why-formal-verification-for-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we have previously stated, cryptographic implementations are very hard to get right, and even if they are right, the security properties they claim to provide are sometimes wrong for their intended application. The reason why this matters so much is that post-quantum cryptography is the cryptography we will be using in the future due to the arrival of quantum computers. Deploying post-quantum cryptographic algorithms with bugs or flaws in their security properties would be a disaster because connections and data that travels through it can be decrypted or attacked. We are trying to prevent that.</p>
 	<p>Cryptography is difficult to get right, and it is not only difficult to get right by people new to it, but it is also difficult for anyone, even for the experts. The designs and code we write are error-prone as we all are, as humans, prone to errors. Some examples of when some designs got it wrong are as follows (luckily, these example &nbsp;were not deployed, and they did not have the usual disastrous consequences):</p>
 	<ul>
@@ -194,7 +222,14 @@ qed.</code></pre>
 	</ul>
 	<p>Perhaps these two examples might convince the reader that formal analysis and formal verification of implementations are needed. While they help us avoid some human errors, they are not perfect. As for us, we are convinced of these methods. We are working towards a <a href="https://github.com/xvzcf/VeriFrodo">formally verified implementation of FrodoKEM</a> (we have a first implementation of it in our <a href="https://github.com/cloudflare/circl/pull/311">cryptographic library, CIRCL</a>), and we are collaborating to create a <a href="https://github.com/jasmin-lang/cryptolib">formally verified and implemented library</a> we can run in real-world connections. If you are interested in learning more about EasyCrypt and Jasmin, visit the <a href="https://github.com/claucece/formal-tutorials">resources we have put together</a>, try to <a href="https://github.com/xvzcf/VeriFrodo/blob/main/install.md">install it following our guidelines</a>, or follow <a href="https://cryptojedi.org/programming/jasmin.shtml">some tutorials</a>.</p>
 	<p>See you on other adventures in post-quantum (and some <a href="https://www.youtube.com/c/utahactor">cat videos for you</a>)!</p>
-	<h3>References:</h3>
+	<div class="flex anchor relative">
+		<h3 id="references">References:</h3>
+		<a href="https://blog.cloudflare.com/#references" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>“SoK: Computer-Aided Cryptography” by Manuel Barbosa, Gilles Barthe, Karthik Bhargavan, Bruno Blanchet, Cas Cremers, Kevin Liao and Bryan Parno: <a href="https://eprint.iacr.org/2019/1393.pdf">https://eprint.iacr.org/2019/1393.pdf</a></p>

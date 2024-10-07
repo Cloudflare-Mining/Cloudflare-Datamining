@@ -24,22 +24,65 @@
 
 	</figure>
 	<p>The platform also makes applications faster for your end users. Cloudflare’s network accelerates connections from your services to your team in any region. Existing team members can migrate to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a> without any client-side configuration. New hires can find every resource they need, not just web applications, in a single location and launch them with a single click.</p>
-	<h2>Challenges with non-web applications</h2>
-	<h3>Zero Trust controls</h3>
+	<div class="flex anchor relative">
+		<h2 id="challenges-with-non-web-applications">Challenges with non-web applications</h2>
+		<a href="https://blog.cloudflare.com/#challenges-with-non-web-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-controls">Zero Trust controls</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-controls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The work for an IT department to add Zero Trust controls to a web application is made easier thanks to web browsers, reverse proxies, and browser cookies. Web applications that used to live on a private network can be deployed behind a reverse proxy, like Cloudflare, and users can visit a public DNS address in any web browser while the reverse proxy checks for identity. Cloudflare Access builds on these tools to give your team the ability to add Zero Trust rules to any web application in less than 10 minutes.</p>
 	<p>Non-web applications introduce challenges. Most traditional applications that require a thick client rely on private networks. The client software expects to reach a private IP, over a specific protocol, and making that IP public is a non-starter for almost all organizations because of the risk of data loss. Even if it were public, end users would still need to run client software on their device.</p>
 	<p>Authentication to those applications also relies on legacy approaches. Developers hold long-lived SSH keys to reach machines and business users keep usernames and passwords on sticky notes for RDP sessions. These types of resources make it difficult or impossible to integrate with your SSO provider and other controls like device posture.</p>
-	<h3>Data security and logging</h3>
+	<div class="flex anchor relative">
+		<h3 id="data-security-and-logging">Data security and logging</h3>
+		<a href="https://blog.cloudflare.com/#data-security-and-logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can also use Cloudflare to log every authentication event and HTTP request and response without any server-side code changes. Teams can deploy a comprehensive logging layer for any web application alongside Zero Trust controls without any server-side code changes.</p>
 	<p>We’ve heard from our customers that a data control and logging gap remains in “every other application” outside of the browser. While teams invest in significant improvements in web applications, anything outside of the browser becomes a blind spot.</p>
-	<h3>User experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="user-experience">User experience</h3>
+		<a href="https://blog.cloudflare.com/#user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Web browsers make almost any SaaS application accessible to any user on any device. A user can pick up any laptop from any manufacturer and edit an Excel spreadsheet in Microsoft 365 or update a customer record in Salesforce.</p>
 	<p>That ease-of-use begins to break down for any other combination that includes a mobile device or an application that does not run in the browser. Some organizations ship dedicated hardware with a specific OS to certain team members that need it. More teams rely on expensive virtualization platforms that slow down user workflows.</p>
 	<p>Regardless of client-side approach, the connectivity between the user and the resource also suffers from the same problems of any traditional private network. Traffic is backhauled through centralized appliances and users suffer through slow performance to complete mission-critical workflows like managing production machines or enterprise resource planning.</p>
-	<h3>Client-side configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="client-side-configuration">Client-side configuration</h3>
+		<a href="https://blog.cloudflare.com/#client-side-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Migrating to a Zero Trust model can become a chore when end users have to change their local configuration for non-web applications. When our own team first deleted our VPN, the most popular chat room became a thread where engineers would share SSH configuration files and answer questions about which environment variables to set to reach Kubernetes workloads.</p>
 	<p>Application discovery also becomes a problem. Organizations have to update wiki pages with inventories of IP addresses and ports for commonly used services. End users have to ask other team members for help connecting to a specific resource.</p>
-	<h2>Launching the auditable, browser-based, terminal</h2>
+	<div class="flex anchor relative">
+		<h2 id="launching-the-auditable-browser-based-terminal">Launching the auditable, browser-based, terminal</h2>
+		<a href="https://blog.cloudflare.com/#launching-the-auditable-browser-based-terminal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to help your team address all four of these challenges with today’s announcement. Like web application flows, the solution takes minutes to deploy, requires no end-user configuration, and consists of just three components:</p>
 	<ol>
 		<li>
@@ -57,7 +100,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6114sGfD6LMu0IxDSzVkDF/b3ec20a1cfa4d6cf0014fb81de54cf43/Tunnel-Diagram-with-the-Partners.png" alt="" class="kg-image" width="1567" height="1156" loading="lazy">
 
 	</figure>
-	<h3>Apply Zero Trust controls to any resource</h3>
+	<div class="flex anchor relative">
+		<h3 id="apply-zero-trust-controls-to-any-resource">Apply Zero Trust controls to any resource</h3>
+		<a href="https://blog.cloudflare.com/#apply-zero-trust-controls-to-any-resource" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve talked to enterprises who have compliance requirements to add second factor authentication to all of their self-hosted applications, but they estimated that doing so would take months of development time. With Cloudflare Access, your team can use the second factor authentication of your identity provider as a requirement to reach applications of any type in a matter of minutes.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -66,22 +116,50 @@
 	</figure>
 	<p>You can layer these types of identity-based rules with other signals, like the country where the user sits or the <a href="https://blog.cloudflare.com/endpoint-partnerships">health of the device</a> using integrations with Tanium, Carbon Black, Crowdstrike, and other providers. Organizations can require that users only <a href="https://blog.cloudflare.com/zero-trust-with-managed-devices">connect from corporate devices</a> or build login flows that support enterprise providers like Okta and Azure AD alongside public authentication options like GitHub and Google.</p>
 	<p>Cloudflare’s Zero Trust platform also helps your team get rid of outdated authentication processes like long-lived SSH security keys. The solution takes the JSON Web Token issued during the login and converts it to short-lived certificates that authorize the user’s session on a machine.</p>
-	<h3>Audit sessions and secure data in every application</h3>
+	<div class="flex anchor relative">
+		<h3 id="audit-sessions-and-secure-data-in-every-application">Audit sessions and secure data in every application</h3>
+		<a href="https://blog.cloudflare.com/#audit-sessions-and-secure-data-in-every-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Zero Trust Apps platform gives your team the same level of control over files, data, and even commands that you have today in Cloudflare Gateway and applies it to any supported application type in your enterprise.</p>
 	<p>First, your team can now build rules that control who in your organization can transfer data to or away from a machine over an SSH connection or to a remote desktop over RDP. Build rules by machine, user and group identity, or country and device. Keep data on the machines or desktops in your environments and off of the roaming devices outside of your organization.</p>
 	<p>Coming soon, deploy a high visibility solution with low effort by enabling session recording for any connection type. Cloudflare Zero Trust Apps will record the screen of any session, batch the recordings in intervals, and send them to a storage location you have configured. We’ll be adding structured command logging and keyboard input to this flow as well.</p>
-	<h3>Launch any app with a single click</h3>
+	<div class="flex anchor relative">
+		<h3 id="launch-any-app-with-a-single-click">Launch any app with a single click</h3>
+		<a href="https://blog.cloudflare.com/#launch-any-app-with-a-single-click" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today’s launch not only <a href="https://www.cloudflare.com/application-services/solutions">improves security for any application</a> in your organization, it also makes life easier for all of your users.</p>
 	<p>The browser-based interface of Cloudflare Zero Trust Apps can be launched from a single dashboard that is tailored to the permissions of each end user. Users login to a home page that your organization controls and Cloudflare displays each application they can reach — web, SSH, RDP, and others.</p>
 	<p>Users can click on any tile in their view to launch the interface for a given application without leaving their browser. Cloudflare’s Zero Trust login flow authorizes them to the session and they can begin doing their work without modifying SSH configuration files or editing RDP clients locally.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>Mobile also just works. Cloudflare can render the session in any common browser on tablets and phones, making it possible for technicians on a job site or users away from their desk to reach any service as seamlessly as they can connect to a web application.</p>
-	<h3>Accelerate user experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="accelerate-user-experience">Accelerate user experience</h3>
+		<a href="https://blog.cloudflare.com/#accelerate-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like any product in Cloudflare One, this solution does not force your team to pick between security and performance. Cloudflare Zero Trust Apps makes the applications that your team needs faster.</p>
 	<p>The approach starts by building on the <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser isolation technology</a> that powers Cloudflare Browser. Cloudflare Zero Trust Apps renders the application in the browser as if it were a native application. Users can highlight, copy-and-paste, and use shortcuts.</p>
 	<p>Next, the solution uses Cloudflare’s network to accelerate traffic from the server to your end user. Cloudflare determines the fastest path across our global backbone and delivers the experience to your team from a data center nearby in more than 200 cities in over 100 countries.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today’s launch begins with support for SSH. We plan to continue to add support for additional application types over the next few months, in addition to structured command logging and filtering for SSH. Does your team have a resource that has been painful to use? <a href="https://forms.gle/a9EhhCj9dm2jY8EE8">Let us know</a> as we prioritize the expansion.</p>
 	<p>If your team uses Cloudflare Access for SSH flows, you can begin using Zero Trust Apps immediately with a single configuration change. To get started, <a href="https://community.cloudflare.com/t/feedback-for-cloudflares-zero-trust-browser-based-ssh-client/260745">follow the instructions here</a>.</p>
 	<p>As part of Cloudflare for Teams, your organization can start using Cloudflare Zero Trust Apps at no cost for up to 50 users as part of the <a href="https://dash.cloudflare.com/signup/teams">Cloudflare for Teams free plan</a>. Advanced security features, like session recording, will be available on the Cloudflare for Teams Standard plan.</p>

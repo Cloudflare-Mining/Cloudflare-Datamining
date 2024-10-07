@@ -22,12 +22,26 @@
 	<p>An overview of Cache Analytics</p>
 	<p><b>Cache Analytics is available today for all customers on our Pro, Business, and Enterprise plans.</b></p>
 	<p>In this blog post, I’ll explain why we built Cache Analytics and how you can get the most out of it.</p>
-	<h2>Why do we need analytics focused on caching?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-do-we-need-analytics-focused-on-caching">Why do we need analytics focused on caching?</h2>
+		<a href="https://blog.cloudflare.com/#why-do-we-need-analytics-focused-on-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to scale the delivery of a <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">fast, high-performance website</a>, then caching is critical. Caching has two main goals:</p>
 	<p>First, caching improves <b>performance</b>. Cloudflare data centers are within 100ms of 90% of the planet; putting your content in Cloudflare’s cache gets it <i>physically</i> closer to your customers and visitors, meaning that visitors will see your website <i>faster</i> when they request it! (Plus, reading assets on our edge SSDs is really fast, rather than waiting for origins to generate a response.)</p>
 	<p>Second, caching helps <b>reduce bandwidth costs</b> associated with operating a presence on the Internet**.** Origin data transfer is one of the biggest expenses of running a web service, so serving content out of Cloudflare’s cache can significantly reduce costs incurred by origin infrastructure.</p>
 	<p>Because it’s not safe to cache all content (we wouldn’t want to cache your bank balance by default), Cloudflare relies on customers to tell us what’s safe to cache with <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control">HTTP Cache-Control headers</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360021023712-Best-Practices-Speed-up-your-Site-with-Custom-Caching-via-Cloudflare-Page-Rules">page rules</a>. But even with page rules, it can be hard to understand what’s actually getting cached — or more importantly, what’s <i>not</i> getting cached, and why. Is a resource expired? Or was it even eligible for cache in the first place?</p>
-	<h2>Faster or cheaper? Why not both!</h2>
+	<div class="flex anchor relative">
+		<h2 id="faster-or-cheaper-why-not-both">Faster or cheaper? Why not both!</h2>
+		<a href="https://blog.cloudflare.com/#faster-or-cheaper-why-not-both" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cache Analytics was designed to help users understand how Cloudflare’s cache is performing, but it can also be used as a general-purpose analytics tool. Here I’ll give a quick walkthrough of the interface.</p>
 	<p>First, at the top-left, you should decide if you want to focus on <i>requests</i> or <i>data transfer.</i></p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -38,7 +52,14 @@
 	<p>Cache Analytics enables you to toggle between views of requests and data transfer.</p>
 	<p>As a general rule, <i>requests</i> (the default view) is more useful for understanding <i>performance</i>, because every request that misses cache results in a performance hit. Data transfer is useful for understanding <i>cost</i>, because most hosts charge for every byte that leaves their network — every gigabyte served by Cloudflare translates into money saved at the origin.</p>
 	<p>You can always toggle between these two views while keeping filters enabled.</p>
-	<h2>A filter for every occasion</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-filter-for-every-occasion">A filter for every occasion</h2>
+		<a href="https://blog.cloudflare.com/#a-filter-for-every-occasion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you’re focused on improving the performance of a specific subdomain on your zone. Cache Analytics allows flexible <i>filtering</i> of the data that’s important to you:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -47,7 +68,14 @@
 	</figure>
 	<p>Cache Analytics enables flexible filtering of data.</p>
 	<p>Filtering is essential for zooming in on the chunk of traffic that you’re most interested in. You can filter by cache status, hostname, path, content type, and more. This is helpful, for example, if you’re trying to reduce data transfer for a specific subdomain, or are trying to tune the performance of your HTML pages.</p>
-	<h2>Seeing the big picture</h2>
+	<div class="flex anchor relative">
+		<h2 id="seeing-the-big-picture">Seeing the big picture</h2>
+		<a href="https://blog.cloudflare.com/#seeing-the-big-picture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When analyzing traffic patterns, it’s essential to understand how things change over time. Perhaps you just applied a configuration change and want to see the impact, or just launched a big sale on your <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +84,14 @@
 	</figure>
 	<p>“Served by Cloudflare” indicates traffic that we were able to serve from our edge without reaching your origin server. “Served by Origin” indicates traffic that was proxied back to origin servers. (It can be really satisfying to add a page rule and see the amount of traffic “Served by Cloudflare” go up!)</p>
 	<p>Note that this graph will change significantly when you switch between “Requests” and “Data Transfer.” <i>Revalidated</i> requests are particularly interesting; because Cloudflare checks with the origin before returning a result from cache, these count as “Served by Cloudflare” for the purposes of data transfer, but “Served by Origin” for the purposes of “requests.”</p>
-	<h2>Slicing the pie</h2>
+	<div class="flex anchor relative">
+		<h2 id="slicing-the-pie">Slicing the pie</h2>
+		<a href="https://blog.cloudflare.com/#slicing-the-pie" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After the high-level summary, we show an overview of cache status, which explains <i>why</i> traffic might be served from Cloudflare or from origin. We also show a breakdown of cache status by <i>Content-Type</i> to give an overview on how different components of your website perform:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -79,7 +114,14 @@
 		</li>
 	</ul>
 	<p>For a full explanation of each cache status, see our <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN">help center</a>.</p>
-	<h2>To the Nth dimension</h2>
+	<div class="flex anchor relative">
+		<h2 id="to-the-nth-dimension">To the Nth dimension</h2>
+		<a href="https://blog.cloudflare.com/#to-the-nth-dimension" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, Cache Analytics shows a number of what we call “Top Ns” — various ways to slice and dice the above data on useful dimensions.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -87,7 +129,14 @@
 
 	</figure>
 	<p>It’s often helpful to apply filters (for example, to a specific cache status) before looking at these lists. For example, when trying to tune performance, I often filter to just “expired” or “revalidated,” then see if there are a few URLs that dominate these stats.</p>
-	<h2>But wait, there’s more</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-wait-theres-more">But wait, there’s more</h2>
+		<a href="https://blog.cloudflare.com/#but-wait-theres-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cache Analytics is available now for customers on our Pro, Business, and Enterprise plans. Pro customers have access to up to 3 days of analytics history. Business and Enterprise customers have access to up to 21 days, with more coming soon.</p>
 	<p>This is just the first step for Cache Analytics. We’re planning to add more dimensions to drill into the data. And we’re planning to add even more essential statistics — for example, about how cache keys are being used.</p>
 	<p>Finally, I’m really excited about Cache Analytics because it shows what we have in store for Cloudflare Analytics more broadly. We know that you’ve asked for many features— like per-hostname analytics, or the ability to see top URLs — for a long time, and we’re hard at work on bringing these to Zone Analytics. Stay tuned!</p>

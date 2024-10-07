@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p><i>The following was originally written as a guest post by </i><a href="https://ashcon.app"><i>Ashcon Partovi</i></a><i>, while a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, </i><a href="https://stratus.network/forums"><i>stratus.network</i></a><i>, that provides competitive, team-based gameplay to thousands of players every week. He also now works at Cloudflare.</i></p>
 	<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft"><i>Minecraft</i>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <i>Minecraft</i> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <i>Minecraft</i> websites.</p>
-	<h3>Introducing the Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-the-problem">Introducing the Problem</h3>
+		<a href="https://blog.cloudflare.com/#introducing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is an example of my <i>Minecraft</i> <a href="https://stratus.network/ElectroidFilms">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
 	<p>Here is the current workflow to render a player profile on a website given their username:</p>
 	<ol>
@@ -61,7 +68,14 @@
       { skin_png: new BinData(0, "GWA3u4F42GIH318sAlN2wfDAWTQ...") })</code></pre>
 	<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
 	<p>And that's just <i>fetching</i> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
-	<h3>Prototyping with Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="prototyping-with-workers">Prototyping with Workers</h3>
+		<a href="https://blog.cloudflare.com/#prototyping-with-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(renderPlayerBitmap(event.request))
@@ -98,7 +112,14 @@ async function renderPlayerBitmap(request) {
 </code></pre>
 	<p>Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
 	<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <i>Minecraft</i> that runs exclusively on Workers?</p>
-	<h3>Designing an API</h3>
+	<div class="flex anchor relative">
+		<h3 id="designing-an-api">Designing an API</h3>
+		<a href="https://blog.cloudflare.com/#designing-an-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I wanted to address an essential problem for <i>Minecraft</i> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <b>1 HTTP request with no rate limiting and no client-side caching.</b> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
 	<pre class="language-bash"><code class="language-bash">GET: api.ashcon.app/mojang/v1/user/&lt;username|uuid&gt;</code></pre>
 
@@ -126,7 +147,14 @@ async function renderPlayerBitmap(request) {
   "cached_at": "&lt;date&gt;"
 }</code></pre>
 	<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For this project, I decided to use <a href="https://coffeescript.org">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
 	<pre class="language-coffeescript"><code class="language-coffeescript"># Welcome to CoffeeScript!
 
@@ -193,7 +221,14 @@ route = (request) -&gt;
 	<pre class="language-bash"><code class="language-bash">npm run build
 npm run preview</code></pre>
 	<p>Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
-	<h3>Writing Production Code for Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="writing-production-code-for-workers">Writing Production Code for Workers</h3>
+		<a href="https://blog.cloudflare.com/#writing-production-code-for-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
 	<pre class="language-bash"><code class="language-bash">src/
   index.coffee  # routing and serving requests
@@ -484,11 +519,26 @@ Number::asDate = -&gt;
 # @returns {boolean} - Whether the object is empty.
 Object::isEmpty = -&gt;
   Object.keys(this).length == 0</code></pre>
-	<h3>Analyzing a Workers Deployment</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="analyzing-a-workers-deployment">Analyzing a Workers Deployment</h3>
+		<a href="https://blog.cloudflare.com/#analyzing-a-workers-deployment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I've had this code deployed and tested by real <i>Minecraft</i> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
 	<p>As of today, the API is processing over <b>400k requests per day</b> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
 	<p>Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <b>1.8 million fetches per day</b> with a 88% cache hit rate.</p>
-	<h3>Wrapping Up</h3>
+	<div class="flex anchor relative">
+		<h3 id="wrapping-up">Wrapping Up</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <b>50 cents for every 1 million requests</b>, it's incomparable to the other serverless solutions on the market.</p>
 	<p>If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <b>0 to 5 million requests</b> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
 	<p>If you're interested in looking at all of the code used in the post, you can find it here:<a href="https://github.com/Electroid/mojang-api">https://github.com/Electroid/mojang-api</a></p>

@@ -23,17 +23,38 @@ CloudflareWARP: tun multi_queue</code></pre>
 
 	</figure>
 	<p>Source: DALL-E</p>
-	<h2>To tun or to tap?</h2>
+	<div class="flex anchor relative">
+		<h2 id="to-tun-or-to-tap">To tun or to tap?</h2>
+		<a href="https://blog.cloudflare.com/#to-tun-or-to-tap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The interface is <a href="https://docs.kernel.org/networking/tuntap.html">called "the universal tun/tap"</a> in the kernel. The "tun" variant, accessible via the IFF_TUN flag, looks like a point-to-point link. There are no L2 Ethernet headers. Since most modern networks are Ethernet, this is a bit less intuitive to set up for a novice user. Most importantly, projects like Firecracker and gVisor do expect L2 headers.</p>
 	<p>"Tap", with the IFF_TAP flag, is the one which has Ethernet headers, and has been getting all the attention lately. If you are like me and always forget which one is which, you can use this &nbsp;AI-generated rhyme (check out <a href="https://blog.cloudflare.com/writing-poems-using-llama-2-on-workers-ai">WorkersAI/LLama</a>) to help to remember:</p>
 	<p><i>Tap is like a switch,</i><i>Ethernet headers it'll hitch.</i><i>Tun is like a tunnel,</i><i>VPN connections it'll funnel.</i><i>Ethernet headers it won't hold,</i><i>Tap uses, tun does not, we're told.</i></p>
-	<h2>Listing devices</h2>
+	<div class="flex anchor relative">
+		<h2 id="listing-devices">Listing devices</h2>
+		<a href="https://blog.cloudflare.com/#listing-devices" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tun/tap devices are natively supported by iproute2 tooling. Typically, one creates a device with <b>ip tuntap add</b> and lists it with <b>ip tuntap list</b>:</p>
 	<pre class="language-bash"><code class="language-bash">$ sudo ip tuntap add mode tap user marek group marek name tap0
 $ ip tuntap list
 tap0: tap persist user 1000 group 1000</code></pre>
 	<p>Alternatively, it's possible to look for the <code>/sys/devices/virtual/net/&lt;ifr_name&gt;/tun_flags</code> files.</p>
-	<h2>Tap device setup</h2>
+	<div class="flex anchor relative">
+		<h2 id="tap-device-setup">Tap device setup</h2>
+		<a href="https://blog.cloudflare.com/#tap-device-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To open or create a new device, you first need to open <code>/dev/net/tun</code> which is called a "clone device":</p>
 	<pre class="language-c++"><code class="language-c++">    /* First, whatever you do, the device /dev/net/tun must be
      * opened read/write. That device is also called the clone
@@ -119,9 +140,23 @@ tap0: tap persist user 1000 group 1000</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>You almost always want IFF_TAP, IFF_NO_PI, IFF_VNET_HDR flags and perhaps sometimes IFF_MULTI_QUEUE.</p>
-	<h2>The curious IFF_NAPI</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-curious-iff_napi">The curious IFF_NAPI</h2>
+		<a href="https://blog.cloudflare.com/#the-curious-iff_napi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Judging by the <a href="https://www.mail-archive.com/netdev@vger.kernel.org/msg189704.html">original patchset introducing IFF_NAPI and IFF_NAPI_FRAGS</a>, these flags were introduced to increase code coverage of syzkaller. However, later work indicates there were <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fb3f903769e805221eb19209b3d9128d398038a1">performance benefits when doing XDP on tap</a>. IFF_NAPI enables a dedicated NAPI instance for packets written from an application into a tap. Besides allowing XDP, it also allows packets to be batched and GRO-ed. Otherwise, a backlog NAPI is used.</p>
-	<h2>A note on buffer sizes</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-note-on-buffer-sizes">A note on buffer sizes</h2>
+		<a href="https://blog.cloudflare.com/#a-note-on-buffer-sizes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internally, a tap device is just a pair of packet queues. It's exposed as a network interface towards the host, and a file descriptor, a character device, towards the application. The queue in the direction of application (tap TX queue) is of size <b>txqueuelen</b> packets, controlled by an interface parameter:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip link set dev tap0 txqueuelen 1000
 $ ip -s link show dev tap0
@@ -132,7 +167,14 @@ $ ip -s link show dev tap0
        	266   	3  	0  	66   	0   	0</code></pre>
 	<p>In "ip link" statistics the column "<b>TX dropped</b>" indicates the tap application was too slow and the queue space exhausted.</p>
 	<p>In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861">discussion for details</a>.</p>
-	<h2>vnethdr size</h2>
+	<div class="flex anchor relative">
+		<h2 id="vnethdr-size">vnethdr size</h2>
+		<a href="https://blog.cloudflare.com/#vnethdr-size" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After the device is opened, a typical scenario is to set up VNET_HDR size and offloads. Typically the VNETHDRSZ should be set to 12:</p>
 	<pre class="language-c++"><code class="language-c++">    len = 12;
     r = ioctl(tap_fd, TUNSETVNETHDRSZ, &amp;(int){len});
@@ -157,7 +199,15 @@ $ ip -s link show dev tap0
     u16 csum_offset;
     u16 num_buffers;
 };</code></pre>
-	<h2>offloads</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="offloads">offloads</h2>
+		<a href="https://blog.cloudflare.com/#offloads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To enable offloads use the ioctl:</p>
 	<pre class="language-c++"><code class="language-c++">    unsigned off_flags = TUN_F_CSUM | TUN_F_TSO4 | TUN_F_TSO6;
     int r = ioctl(tap_fd, TUNSETOFFLOAD, off_flags);
@@ -230,7 +280,15 @@ $ ip -s link show dev tap0
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Generally, offloads are extra packet features the tap application can deal with. Details of the offloads used by the sender are set on each packet in the vnethdr prefix.</p>
-	<h2>Checksum offload TUN_F_CSUM</h2>
+	<div class="flex anchor relative">
+		<h2 id="checksum-offload-tun_f_csum">Checksum offload TUN_F_CSUM</h2>
+		<a href="https://blog.cloudflare.com/#checksum-offload-tun_f_csum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QEojUsAvj7VueXmGRSexc/99417d2a51f92193352bfa76705ab6b0/image4.jpg" alt="" class="kg-image" width="1167" height="1019" loading="lazy">
@@ -254,13 +312,27 @@ $ ip -s link show dev tap0
 	</ul>
 	<p>This is illustrated above.</p>
 	<p>Supporting checksum offload is needed for further offloads.</p>
-	<h2>TUN_F_CSUM is a must</h2>
+	<div class="flex anchor relative">
+		<h2 id="tun_f_csum-is-a-must">TUN_F_CSUM is a must</h2>
+		<a href="https://blog.cloudflare.com/#tun_f_csum-is-a-must" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Consider this code:</p>
 	<pre class="language-python"><code class="language-python">s = socket(AF_INET, SOCK_DGRAM)
 s.setsockopt(SOL_UDP, UDP_SEGMENT, 1400)
 s.sendto(b"x", ("10.0.0.2", 5201))     # Would you expect EIO ?</code></pre>
 	<p>This simple code produces a packet. When directed at a tap device, this code will surprisingly yield an EIO "Input/output error". This weird behavior happens if the tap is opened without TUN_F_CSUM and the application is sending GSO / UDP_SEGMENT frames. Tough luck. It might be considered a kernel bug, and we're thinking about fixing that. However, in the meantime everyone using tap should just set the TUN_F_CSUM bit.</p>
-	<h2>Segmentation offloads</h2>
+	<div class="flex anchor relative">
+		<h2 id="segmentation-offloads">Segmentation offloads</h2>
+		<a href="https://blog.cloudflare.com/#segmentation-offloads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We wrote about <a href="https://blog.cloudflare.com/accelerating-udp-packet-transmission-for-quic">UDP_SEGMENT</a> in the past. In short: on Linux an application can handle many packets with a single send/recv, as long as they have identical length.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -272,7 +344,14 @@ s.sendto(b"x", ("10.0.0.2", 5201))     # Would you expect EIO ?</code></pre>
 	<p>TSO4/TSO6 flags are enabling long packet trains for <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP</a> and have been supported for a long time. More recently TUN_F_USO4 and TUN_F_USO6 bits were introduced for <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a>. When any of these offloads are used, the <b>gso_type</b> contains the relevant offload type and <b>gso_size</b> holds a segment size within the GRO packet train.</p>
 	<p>TUN_F_UFO is a UDP fragmentation offload which is deprecated.</p>
 	<p>By setting TUNSETOFFLOAD, the application is telling the kernel which offloads it's able to handle on the read() side of a tap device. If the ioctl(TUNSETOFFLOAD) succeeds, the application can assume the kernel supports the same offloads for packets in the other direction.</p>
-	<h2>Bug in rx-udp-gro-forwarding - TUN_F_USO4</h2>
+	<div class="flex anchor relative">
+		<h2 id="bug-in-rx-udp-gro-forwarding-tun_f_uso4">Bug in rx-udp-gro-forwarding - TUN_F_USO4</h2>
+		<a href="https://blog.cloudflare.com/#bug-in-rx-udp-gro-forwarding-tun_f_uso4" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When working with tap and offloads it's useful to inspect <b>ethtool</b>:</p>
 	<pre class="language-bash"><code class="language-bash">$ ethtool -k tap0 | egrep -v fixed
 tx-checksumming: on
@@ -289,7 +368,14 @@ rx-gro-list: off
 rx-udp-gro-forwarding: off</code></pre>
 	<p>With ethtool we can see the enabled offloads and disable them as needed.</p>
 	<p>While toying with UDP Segmentation Offload (USO) I've noticed that when packet trains from tap are forwarded to a real network interface, sometimes they seem badly packetized. See the <a href="https://lore.kernel.org/all/CAJPywTKDdjtwkLVUW6LRA2FU912qcDmQOQGt2WaDo28KzYDg+A@mail.gmail.com">netdev discussion</a>, and the <a href="https://lore.kernel.org/netdev/ZK9ZiNMsJX8+1F3N@debian.debian/T/#m9f532bb5463b89d997c5d16c78490ceeccb4497f">proposed fix</a>. In any case - beware of this bug, and maybe consider doing "ethtool -K tap0 rx-udp-gro-forwarding off".</p>
-	<h2>Miscellaneous setsockopts</h2>
+	<div class="flex anchor relative">
+		<h2 id="miscellaneous-setsockopts">Miscellaneous setsockopts</h2>
+		<a href="https://blog.cloudflare.com/#miscellaneous-setsockopts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Setup related socket options</h4><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;">
 		<colgroup>
@@ -453,7 +539,14 @@ rx-udp-gro-forwarding: off</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h2>Single queue speed</h2>
+	<div class="flex anchor relative">
+		<h2 id="single-queue-speed">Single queue speed</h2>
+		<a href="https://blog.cloudflare.com/#single-queue-speed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tap devices are quite weird — they aren't network sockets, nor true files. Their semantics are closest to pipes, and unfortunately the API reflects that. To receive or send a packet from a tap device, the application must do a read() or write() syscall, one packet at a time.</p>
 	<p>One might think that some sort of syscall batching would help. Sockets have sendmmsg()/recvmmsg(), but that doesn't work on tap file descriptors. The typical alternatives enabling batching are: an old <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit AIO interface</a>, or modern io_uring. Io_uring added tap support quite recently. However, it turns out syscall batching doesn't really offer that much of an improvement. Maybe in the range of 10%.</p>
 	<p>The Linux kernel is just not capable of forwarding millions of packets per second for a single flow or on a single CPU. The best possible solution is to scale vertically for elephant flows with TSO/USO (packet trains) offloads, and scale horizontally for multiple concurrent flows with multi queue.</p>
@@ -463,7 +556,14 @@ rx-udp-gro-forwarding: off</code></pre>
 
 	</figure>
 	<p>In this chart you can see how dramatic the performance gain of offloads is. Without them, a sample "echo" tap application can process between 320 and 500 thousand packets per second on a single core. MTU being 1500. When the offloads are enabled it jumps to 2.7Mpps, while keeping the number of received "packet trains" to just 56 thousand per second. Of course not every traffic pattern can fully utilize GRO/GSO. However, to get decent performance from tap, and from Linux in general, offloads are absolutely critical.</p>
-	<h2>Multi queue considerations</h2>
+	<div class="flex anchor relative">
+		<h2 id="multi-queue-considerations">Multi queue considerations</h2>
+		<a href="https://blog.cloudflare.com/#multi-queue-considerations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Multi queue is useful when the tap application is handling multiple concurrent flows and needs to utilize more than one CPU.</p>
 	<p>To get a file descriptor of a tap queue, just add the IFF_MULTI_QUEUE flag when opening the tap. It's possible to detach/reattach a queue with TUNSETQUEUE and IFF_DETACH_QUEUE/IFF_ATTACH_QUEUE, but I'm unsure when this is useful.</p>
 	<p>When a multi queue tap is created, it spreads the load across multiple tap queues, each one having a unique file descriptor. Beware of the algorithm selecting the queue though: it might bite you back.</p>
@@ -474,7 +574,14 @@ tc filter add dev tap0 parent 1: protocol ip prio 1 u32 \
         match ip dst 192.168.0.3 \
         action skbedit queue_mapping 0</code></pre>
 	<p><b>tc</b> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU — useful for best performance.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now you know everything I wish I had known when I was setting out on this journey!</p>
 	<p>To get the best performance, I recommend:</p>
 	<ul>

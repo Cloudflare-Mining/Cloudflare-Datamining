@@ -4,7 +4,14 @@
 	<p>No longer a beta product, Rocket Loader controls the load and execution of your page JavaScript, ensuring useful and meaningful page content is unblocked and displayed sooner.</p>
 	<p>For a high-level discussion of Rocket Loader aims, please refer to our sister post, <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">We have lift off - Rocket Loader GA is mobile!</a></p>
 	<p>Below, we offer a lower-level outline of how Rocket Loader actually achieves its goals.</p>
-	<h3>Prehistory</h3>
+	<div class="flex anchor relative">
+		<h3 id="prehistory">Prehistory</h3>
+		<a href="https://blog.cloudflare.com/#prehistory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early humans looked upon Netscape 2.0, with its new ability to script HTML using LiveScript, and <code>&lt;BLINK&gt;</code>ed to ensure themselves they weren’t dreaming. They decided to use this technology, soon to be re-christened JavaScript (a story told often and elsewhere), for everything they didn’t know they needed: form input validation, image substitution, frameset manipulation, popup windows, and more. The sole requirement was a few interpreted commands enclosed in a <code>&lt;script&gt;</code> tag. The possibilities were endless.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -18,7 +25,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kYBa0v72xkrGHmbZlVApH/229cf833455d5c3b4a0fd82d7a50e0c8/blockage_4x.png" alt="blockage@4x" class="kg-image" width="3109" height="2485" loading="lazy">
 
 	</figure>
-	<h3>Blockage</h3>
+	<div class="flex anchor relative">
+		<h3 id="blockage">Blockage</h3>
+		<a href="https://blog.cloudflare.com/#blockage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Those early JS adopters deduced that when the HTML parser encountered an external script, it suspended visual rendering of the page while it went off to retrieve and execute it. Simple. The more numerous and larger the scripts, the longer the wait for the page to paint. JavaScript, therefore, was very soon, most often unnecessarily, blocking page rendering.</p>
 	<p>The solutions poured in, both from the developer community and browser vendors:</p>
 	<ul>
@@ -47,7 +61,14 @@
 			<p><i>Vendor</i>: Use <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code>.Important resources like scripts, in our case, can be specified for <i>preload</i>. The browser will load scripts in parallel and not block render-parsing.</p>
 		</li>
 	</ul>
-	<h3>Rocket Loader, The Early Years</h3>
+	<div class="flex anchor relative">
+		<h3 id="rocket-loader-the-early-years">Rocket Loader, The Early Years</h3>
+		<a href="https://blog.cloudflare.com/#rocket-loader-the-early-years" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Much has been written in this blog space about <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>, from its <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">initial launch</a>, to the <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">current one</a>.</p>
 	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<a href="https://vimeo.com/24900882">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a></p>
 	<p>Rocket Loader improved page load times by:</p>
@@ -88,7 +109,14 @@
 			</ul>
 		</li>
 	</ul>
-	<h3>New and Improved Rocket Loader</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-and-improved-rocket-loader">New and Improved Rocket Loader</h3>
+		<a href="https://blog.cloudflare.com/#new-and-improved-rocket-loader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We recently rebuilt Rocket Loader from the ground up.</p>
 	<p>Although our aim remains the same, to improve customer page performance, we incorporated lessons learned. Most importantly, we learned not to aim too high. In order to satisfy all permutations of page layout, the old Rocket Loader created a virtual DOM, a decision that ultimately led to fragility. We've gone the simple, elegant route, knowing full well that there will be a minority of websites that will not benefit.</p>
 	<figure class="kg-card kg-image-card ">
@@ -98,7 +126,14 @@
 	</figure>
 	<p>The main concept behind Rocket Loader is quite straightforward: execute blocking scripts after all other page assets have loaded.</p>
 	<p>The scripts need to be loaded and executed in the originally intended order. Only external blocking scripts curtail page resources, but any script may rely on another one. We must simulate the <i>loading process of scripts</i>, mimicing how the browser would handle them during page load, but do it <i>after the page is actually fully loaded</i>.</p>
-	<h3>On the Server</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-the-server">On the Server</h3>
+		<a href="https://blog.cloudflare.com/#on-the-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rocket Loader has both a server-side and a client-side component. The goal of the former is to</p>
 	<ol>
 		<li>
@@ -324,7 +359,14 @@ document.write('"&gt;some content&lt;/div&gt;');</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vV1rYeaoGyrndNCqb0qyq/52b4d33fe815cc81c0948c7d61e07909/rock-house-_4x.png" alt="rock-house-@4x" class="kg-image" width="2977" height="2485" loading="lazy">
 
 	</figure>
-	<h3>What's Next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's Next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Rocket Loader matures, and inevitably is affected by changes in Web technologies, it may be expanded and improved. For now, we're monitoring its use, identifying issues, and ensuring that it's worthy of its predecessor, which lasted through so many advances and changes in Web technology.</p>
 	<hr>
 	<ol>

@@ -12,7 +12,14 @@
 	<p>Cloudflare provides a Logs API, but the amount of logs we’d need to analyze is so vast, it would be simply inefficient and too pricey to do so. Luckily, Cloudflare already does the hard work of aggregating our thousands of events per second and exposes them in an <a href="https://developers.cloudflare.com/analytics/graphql-api">easy-to-use API</a>.</p>
 	<p>Having Cloudflare’s data from our zones integrated with other systems’ metrics would give us a better understanding of our systems and the ability to correlate metrics and create more useful alerts, making our Day-2 operations (e.g. debugging incidents or analyzing the usage of our systems) more efficient.</p>
 	<p>Since our monitoring stack is primarily based on Prometheus and Grafana, we decided to implement our own Prometheus exporter that pulls data from Cloudflare’s GraphQL Analytics API.</p>
-	<h3>Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="design">Design</h3>
+		<a href="https://blog.cloudflare.com/#design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Based on current cloud trends and our intention to use the exporter in Kubernetes, writing the code in Go was the obvious choice. Cloudflare provides an <a href="https://github.com/cloudflare/cloudflare-go">API SDK for Golang</a>, so the common API tasks were made easy to start with.</p>
 	<p>We take advantage of Cloudflare’s GraphQL API to obtain analytics data about each of our zones and transform them into Prometheus metrics that are then exposed on a metrics endpoint.</p>
 	<p>We are able to obtain data about the total number and rate of requests, bandwidth, cache utilization, threats, SSL usage, and HTTP response codes. In addition, we are also able to monitor what type of content is being transmitted and what countries and locations the requests originate from.</p>
@@ -24,7 +31,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d6eIT9Tv7F4p5iLP4bYQR/ce92621a12264d3349210352adc2f3fe/image4-9.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">
 
 	</figure>
-	<h3>Deployment</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployment">Deployment</h3>
+		<a href="https://blog.cloudflare.com/#deployment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our primary intention was to use the exporter in Kubernetes. Therefore, it comes with a <a href="https://hub.docker.com/repository/docker/lablabs/cloudflare_exporter">Docker image</a> and <a href="https://github.com/lablabs/cloudflare-exporter/tree/master/charts/cloudflare-exporter">Helm chart</a> to make deployments easier. You might need to adjust the Service annotations to match your Prometheus configuration.</p>
 	<p>The exporter itself exposes the gathered metrics on the /metrics endpoint. Therefore setting the Prometheus annotations either on the pod or a Kubernetes service will do the job.</p>
 	<pre class="language-yaml"><code class="language-yaml">apiVersion: v1
@@ -52,7 +66,14 @@ helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter
 --set env[0].CF_API_EMAIL=&lt;API_EMAIL&gt; \
 --set env[1].CF_API_KEY=&lt;API_KEY&gt;</code></pre>
 	<p>We also provide a <a href="https://github.com/lablabs/cloudflare-exporter/blob/master/examples/helmfile/cloudflare-exporter.yaml">Helmfile</a> in our repo to make deployments easier, you just need to add your credentials to make it work.</p>
-	<h3>Visualizing the data</h3>
+	<div class="flex anchor relative">
+		<h3 id="visualizing-the-data">Visualizing the data</h3>
+		<a href="https://blog.cloudflare.com/#visualizing-the-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I’ve already explained how the exporter works and how you can get it running. As I mentioned before, we use Grafana to visualize our metrics from Prometheus. We’ve created a <a href="https://grafana.com/grafana/dashboards/13133">dashboard</a> that takes the data from Prometheus and puts it into use.</p>
 	<p>The dashboard is divided into several rows, which group individual panels for easier navigation. It allows you to target individual zones for metrics visualization.</p>
 	<figure class="kg-card kg-image-card ">
@@ -67,9 +88,23 @@ helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter
 	</figure>
 	<p>To make things even more beneficial for the operations team, you can use the gathered metrics to create alerts. These can be created either in Grafana directly or using Prometheus alert rules.</p>
 	<p>Furthermore, if you integrate <a href="https://github.com/thanos-io/thanos">Thanos</a> or <a href="https://grafana.com/oss/cortex">Cortex</a> into your monitoring setup, you can store these metrics indefinitely.</p>
-	<h3>Future work</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-work">Future work</h3>
+		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’d like to integrate even more analytics data into our exporters, eventually reaching every metric that Cloudflare’s GraphQL can provide. We plan on creating new metrics for firewall analytics, DoS analytics, and Network analytics soon.</p>
 	<p>Feel free to create a GitHub issue if you have any questions, problems, or suggestions. Any pull request is greatly appreciated.</p>
-	<h3>About us</h3>
+	<div class="flex anchor relative">
+		<h3 id="about-us">About us</h3>
+		<a href="https://blog.cloudflare.com/#about-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://lablabs.io">Labyrinth Labs</a> helps companies build, run, deploy and scale software and infrastructure by embracing the right technologies and principles.</p>
 </div>

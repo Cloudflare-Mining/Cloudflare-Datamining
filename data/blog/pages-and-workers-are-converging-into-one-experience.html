@@ -12,13 +12,34 @@
 	<p><i>Cloudflare Workers or Pages?</i></p>
 	<p>Both seem so similar at a glance but also different in the details, so which one is going to make your idea become a reality? What if you choose the wrong one? What are the tradeoffs between the two? These are questions our users should never have to think about, but the reality is, they often do. Speaking with our wide community of users and customers, we hear it ourselves! Decision paralysis hits hard when choosing between Pages and Workers with both products made to build out serverless applications.</p>
 	<p>In short, we don’t want this for our users — especially when you’re on the verge of a great idea – no, a big idea. That’s why we’re excited to show off the first milestone towards bringing together the best of both beloved products — Workers and Pages into <b>one powerful development platform!</b> This is the beginning of the journey towards a shared fate between the two products, so we wanted to take the opportunity to tell you why we were doing this, what you can use today, and what’s next.</p>
-	<h2>More on the “why”</h2>
+	<div class="flex anchor relative">
+		<h2 id="more-on-the-why">More on the “why”</h2>
+		<a href="https://blog.cloudflare.com/#more-on-the-why" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The relationship between Pages and Workers has always been intertwined. Up until today, we always looked at the two as siblings — each having their own distinct characteristics but both allowing their respective users to build rich and powerful applications. Each product targeted its own set of use cases.</p>
 	<p>Workers first started as a way to extend our <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and then expanded into a highly configurable general purpose compute platform. Pages first started as a static web hosting that expanded into <a href="https://www.cloudflare.com/learning/performance/what-is-jamstack">Jamstack</a> territory. Over time, Pages began acquiring more of Workers' powerful compute features, while Workers began adopting the rich developer features introduced by Pages. The lines between these two products blurred, making it difficult for our users to understand the differences and pick the right product for their application needs.</p>
 	<p>We know we can do better to help alleviate this decision paralysis and help you move fast throughout your development experience.</p>
-	<h2>Cool, but what do you mean?</h2>
+	<div class="flex anchor relative">
+		<h2 id="cool-but-what-do-you-mean">Cool, but what do you mean?</h2>
+		<a href="https://blog.cloudflare.com/#cool-but-what-do-you-mean" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of being forced to make tradeoffs between these two products, we want to bring you the best of the both worlds: a single development platform that has both powerful compute and superfast static asset hosting – that seamlessly integrates with our portfolio of storage products like <a href="https://www.cloudflare.com/developer-platform/r2">R2</a>, Queues, D1, and others, and provides you with rich tooling like CI/CD, git-ops workflows, live previews, and flexible environment configurations.</p>
-	<h3>All the details in one place</h3>
+	<div class="flex anchor relative">
+		<h3 id="all-the-details-in-one-place">All the details in one place</h3>
+		<a href="https://blog.cloudflare.com/#all-the-details-in-one-place" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, a lot of our developers use both Pages and Workers to build pieces of their applications. However, they still live in separate parts of the Cloudflare dashboard and don’t always translate from one to the other, making it difficult to combine and keep track of your app’s stack. While we’re still vision-boarding the look and feel, we’re planning a world where users have the ability to manage all of their applications in one central place.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +47,14 @@
 
 	</figure>
 	<p>No more scrambling all over the dashboard to find the pieces of your application – you’ll have all the information you need about a project right at your fingertips.</p>
-	<h3>Primitives</h3>
+	<div class="flex anchor relative">
+		<h3 id="primitives">Primitives</h3>
+		<a href="https://blog.cloudflare.com/#primitives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Pages and Workers converging, we’ll also be redefining the concept of a “project” , introducing a new blank canvas of possibilities to plug and play. Within a project, you will be able to add (1) static assets, (2) serverless functions (Workers), (3) resources or (4) any combination of each.</p>
 	<p>To unlock the full potential of your application, we’re exploring project capabilities that allow you to auto-provision and directly integrate with resources like KV, Durable Objects, R2 and D1. With the possibility of all of these primitives on a project, more importantly, you'll be able to safely perform rollbacks and previews, as we'll keep the versions of your assets, functions and resources in sync with every deployment. No need to worry about any of them becoming stale on your next deployment.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,12 +62,33 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/74kTM29cuEOsePnmglreAA/e069b802c080b8704648a5a77e8c91fa/image5-8.png" alt="" class="kg-image" width="1208" height="592" loading="lazy">
 
 	</figure>
-	<h3>Deployments</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployments">Deployments</h3>
+		<a href="https://blog.cloudflare.com/#deployments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of Pages’ most notable qualities is its git-ops centered deployments. In our converged world, you’ll be able to optionally connect, build and deploy git repos that contain any combination of static assets, serverless functions and bindings to resources, as well as take advantage of the same high-performance CI system that exists in Pages today.</p>
 	<p>Like Pages, you will be able to preview deployments of your project with unique URLs protected by Cloudflare Access, available in your PRs or via Wrangler command. Because we know that great ideas take lots of vetting before the big release, we’ll also have a first-class concept of environments to enable testing in different setups.</p>
-	<h3>Local development</h3>
+	<div class="flex anchor relative">
+		<h3 id="local-development">Local development</h3>
+		<a href="https://blog.cloudflare.com/#local-development" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Arguably one of the most important parts to consider is our local development story in a post-converged world. This developer experience should be no different from how we’re converging the products. In the future, as you work with our Wrangler CLI, you can expect a unified and predictable set of commands to use on your project – e.g. a simple <code>wrangler dev</code> and <code>wrangler deploy</code>. Using a configuration file that applies to your entire project along with all of its components, you can have the confidence that your command will act on the entire project – not just pieces of it!</p>
-	<h2>What are the benefits?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-are-the-benefits">What are the benefits?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-the-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Workers and Pages converging, we’re not just unlocking all the golden developer features of each product into one development platform. We’re bringing all the performance, cost and load benefits too. This includes:</p>
 	<ul>
 		<li>
@@ -52,41 +101,97 @@
 			<p><b>Standards-based JavaScript runtime</b> with seamless compatibility across the packages and libraries you're already familiar with.</p>
 		</li>
 	</ul>
-	<h2>Seamless migrations for all</h2>
+	<div class="flex anchor relative">
+		<h2 id="seamless-migrations-for-all">Seamless migrations for all</h2>
+		<a href="https://blog.cloudflare.com/#seamless-migrations-for-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re already a Pages or Workers user and are starting to get nervous about what this means for your existing projects – never fear. As we build out this merged architecture, seamless migration is our top priority and the North Star for every step on the way to a unified development platform. Existing projects on both Pages and Workers will continue to work without users needing to lift a finger. Instead, you'll see more and more features become available to enrich your existing projects and workflows, regardless of the product you started with.</p>
-	<h2>What’s new today?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-new-today">What’s new today?</h2>
+		<a href="https://blog.cloudflare.com/#whats-new-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll be working over the next year to converge Pages and Workers into one singular experience, blending not only the products themselves but also our product, engineering and design teams behind the scenes.</p>
 	<p>While we can’t wait to welcome you to the new converged world, this change unfortunately won’t happen overnight. We’re planning to hit some big but incremental milestones over the next few quarters to ensure a smooth transition into convergence, and this Developer Week, we’re excited to take our first step toward convergence. In the dashboard, things might feel a bit different!</p>
-	<h3>Get started together</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-together">Get started together</h3>
+		<a href="https://blog.cloudflare.com/#get-started-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Combining the onboarding experience for Pages and Workers into one flow, you’ll notice some changes on our dashboard when you’re creating a project. We’re slowly bringing the two products closer together by unifying the creation flow giving you access to create either a Pages project or Worker from one screen.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1puZCEGhC57tvtVrZelPxQ/99c72cea1aea23afe3e77ddd6b59415d/image2-25.png" alt="" class="kg-image" width="1208" height="582" loading="lazy">
 
 	</figure>
-	<h3>Go faster with templates</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-faster-with-templates">Go faster with templates</h3>
+		<a href="https://blog.cloudflare.com/#go-faster-with-templates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We understand the classic developer urge to immediately get hands dirty and hit the ground running on their big vision. We’re making it easier than ever to go from an idea to an application that’s live on the Cloudflare network. In a couple of clicks, you can deploy a starter template, ranging from a simple Hello World Worker to a ChatGPT plugin. In the future, we’re working on Pages templates in our dashboard, allowing you to automatically create a new repo and deploy starter full-stack apps with a couple of buttons.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rE4bQXXGIVLL1GJHRwp7K/c9366d21b17c23cb04b6171c69ab3045/image6-8.png" alt="" class="kg-image" width="1208" height="304" loading="lazy">
 
 	</figure>
-	<h3>Your favorite full stack frameworks at your fingertips</h3>
+	<div class="flex anchor relative">
+		<h3 id="your-favorite-full-stack-frameworks-at-your-fingertips">Your favorite full stack frameworks at your fingertips</h3>
+		<a href="https://blog.cloudflare.com/#your-favorite-full-stack-frameworks-at-your-fingertips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're not stopping with static templates or our dashboard either. Bringing the framework of your choice doesn't mean you have to leave behind the tools you already know and love. If you’re itching to see just what we mean when we say “deploy with your favorite full-stack framework” or “check out the power of Workers”, simply execute:</p>
 	<pre class="language-bash"><code class="language-bash">npm create cloudflare@latest</code></pre>
 	<p>from your terminal and enjoy the ride! This <a href="https://blog.cloudflare.com/making-cloudflare-for-web">new CLI experience integrates</a> with CLIs from some of our first class and solidly supported full-stack frameworks like Angular, Next, Qwik and Remix giving you full control of how you create new projects. From this tool you can also deploy a variety of Workers using our powerful starter templates, with a wizard-like experience.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/729d2f3c66c717696b784e01b30d6e64/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F729d2f3c66c717696b784e01b30d6e64%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h3>One singular place to find all of your applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-singular-place-to-find-all-of-your-applications">One singular place to find all of your applications</h3>
+		<a href="https://blog.cloudflare.com/#one-singular-place-to-find-all-of-your-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re taking one step closer to a unified experience by merging the Pages and Workers project list dashboards together. Once you’ve deployed your application, you’ll notice all of your Pages and Workers on one page, so you don’t have to navigate to different parts of your dashboard. Track your usage analytics for Workers / Pages Functions in one spot. In the future, these cards won’t be identifiable as Pages and Workers – just “projects” with a combination of assets, functions and resources!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ecIiaeqYcjq16PZ0zuHu8/301ff4bfdbad63064bf89d0007375f05/image3-14.png" alt="" class="kg-image" width="1554" height="824" loading="lazy">
 
 	</figure>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we begin executing, you’ll notice that each product will slowly become more and more similar as we unlock features for each platform until they’re ready to be one such as git integration for your Workers and a config file for your Pages projects!</p>
 	<p>Keep an eye out on <a href="https://twitter.com/CloudflareDev">Twitter</a> to hear about the newest capabilities and more on what’s to come in every milestone.</p>
-	<h2>Have thoughts?</h2>
+	<div class="flex anchor relative">
+		<h2 id="have-thoughts">Have thoughts?</h2>
+		<a href="https://blog.cloudflare.com/#have-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, we wouldn’t be able to build an amazing platform without first listening to the voice of our community. In fact, <a href="https://docs.google.com/forms/d/1I48UoUpCH6GS1pkZJ_B0W-lTXqn1LeoHp8ILJlRo5dY/viewform?edit_requested=true">we’ve put together a survey</a> to collect more information about our users and receive input on what you’d like to see. If you have a few minutes, you can fill it out or reach out to us on the <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developers Discord</a> or <a href="https://twitter.com/cloudflaredev">Twitter @CloudflareDev</a>.</p>
 </div>

@@ -9,7 +9,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/23qnFNyui1KHob8huAzcyz/94ff886b8d61976459a77e9269a1cb17/image1-1.jpg" alt="" class="kg-image" width="941" height="108" loading="lazy">
 
 	</figure>
-	<h3>Capacity planning</h3>
+	<div class="flex anchor relative">
+		<h3 id="capacity-planning">Capacity planning</h3>
+		<a href="https://blog.cloudflare.com/#capacity-planning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As engineers, we periodically face the question of how many additional nodes we have to order to support the growing demand for the next X months, with disk space as our prime concern.</p>
 	<p>ClickHouse stores extensive information in system tables about the operating processes, which is helpful. From the early days of using ClickHouse we added <a href="https://github.com/f1yegor/clickhouse_exporter">clickhouse_exporter</a> as part of our monitoring stack. One of the metrics we are interested in is exposed from the <a href="https://clickhouse.tech/docs/en/operations/system-tables/parts">system.parts</a> table. Roughly speaking, clickhouse_exporter runs <a href="https://github.com/f1yegor/clickhouse_exporter/blob/master/exporter/exporter.go#L53">SQL queries</a> asking how many bytes are used by each table. After that, these metrics are sent from Prometheus to <a href="https://thanos.io">Thanos</a> and stored for at least a year.</p>
 	<p>Every time we wanted to make a forecast of disk usage we queried Thanos for historical data using this expression:</p>
@@ -17,7 +24,14 @@
 	<p>After that, we uploaded data in <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">dataframes</a> to a <a href="https://jupyter.org">Jupyter notebook</a>.</p>
 	<p>There were a few problems with this approach. Only a few people knew where the notebooks were and how to get them running. It wasn't trivial to download historical data. And most importantly, it was hard to look at past predictions and assess whether or not they were correct since results were not stored anywhere except internal blog posts. Also, as the number and size of clusters and products grew it became impossible for a single team to work on capacity planning and we needed to get engineers building products involved as they have the most context on how the growth will change in the future.</p>
 	<p>We wanted to automate this process and made calculations more transparent for our colleagues, including those who use ClickHouse for their services. Honestly, at the beginning we weren’t sure if it was even possible and what we would get out of it.</p>
-	<h3>Finding the right metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="finding-the-right-metrics">Finding the right metrics</h3>
+		<a href="https://blog.cloudflare.com/#finding-the-right-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The crucial moment of adding new nodes for us is a disk space, so this was a place to start. We decided to use <i>system.parts,</i> as we used it before with the manual approach.</p>
 	<p>Luckily, we started doing it for the cluster that had recently changed its topology. That cluster had <i>two shards with four and five nodes in every shard</i>. After the topology change, it was replaced <i>with three shards and three nodes in every shard</i>, but the number of machines and unreplicated data on the disks remained the same. However, it had an impact on our metrics: we previously had four replicated nodes in one shard and five replicated in another, we took one node off from the first shard and two nodes from the second and created a new one based on these three nodes. The new shard was empty, so we just added it, but the total amount of data in the first and the second shards was less as the count of the remaining nodes.</p>
 	<p>You can see on the graph below in April we had this sharp decrease caused by topology changes. We got ~550T instead of ~850T among all shards and replicas.</p>
@@ -41,15 +55,43 @@ on (instance) group_right (cluster, shardgroup) sum(table_parts_bytes{cluster="%
 
 	</figure>
 	<p>Another problem we faced was that we migrated some tables from one cluster to another because we were running out of space and it required immediate action. However, our model didn’t know that part of the tables didn’t live there anymore, and we didn’t want them to be a part of the prediction. To solve this problem we queried Prometheus to get the list of the tables that existed at the prediction time, then filtered historical data to include only these tables and used them as the input for training a model.</p>
-	<h3>Load of metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="load-of-metrics">Load of metrics</h3>
+		<a href="https://blog.cloudflare.com/#load-of-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After determining the correct metrics, we needed to obtain them for our forecasting procedure. Our long-term metrics solution, Thanos, stores billions of data points. Querying it for a cluster with over one hundred nodes even for one day takes a huge amount of time, and we needed these data points for a year.</p>
 	<p>As we planned to use Python we wrote a small client using <a href="https://docs.aiohttp.org">aiohttp</a> that concurrently sends HTTP requests to Thanos. The requests are sent in chunks, and every request has start/end dates with a difference of one hour. We needed to get the data for the whole year once and then append new ones day by day. We got csv files: one file for one cluster. The client became a part of the project, and it runs once a day, queries Thanos for new metrics (previous day) and appends data to the files.</p>
-	<h3>Forecasting procedure</h3>
+	<div class="flex anchor relative">
+		<h3 id="forecasting-procedure">Forecasting procedure</h3>
+		<a href="https://blog.cloudflare.com/#forecasting-procedure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, we have collected metrics in files, now it’s time to make a forecast. We needed something for time-series metrics, so we chose <a href="https://facebook.github.io/prophet">Prophet</a> from Facebook. It’s very simple to use, you can follow the documentation and get good results even with the default parameters.</p>
 	<p>One challenge we faced using Prophet was the need to feed it one data point for a day. In the metric files we have thousands of those for every day. It looks logical to take the point at the end of every day, but it’s not really true. All tables have a retention period, the time for how long we store data in ClickHouse. We don’t know when the data is cleared, it happens gradually throughout the day. So, we decided to take the maximum number for a day.</p>
-	<h3>Drawing Graphs</h3>
+	<div class="flex anchor relative">
+		<h3 id="drawing-graphs">Drawing Graphs</h3>
+		<a href="https://blog.cloudflare.com/#drawing-graphs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We chose <a href="https://grafana.com">Grafana</a> to present results, though we needed to store predicted data points somewhere. The first thought was to use Prometheus, but because of high cardinality, we had about 300,000 points in summary for clusters and tables, so we passed. We decided to use ClickHouse itself. We wanted to have both graphs, real and predicted, on the same dashboard. We had real data points in Prometheus and with <a href="https://grafana.com/docs/grafana/latest/features/datasources">mixed data source</a> could do this. However, the problem was the same as the loading of metrics into files, for some clusters it’s impossible to obtain metrics for a long period of time. We added functionality to upload real metrics in ClickHouse as well, now both real and predicted metrics are displayed in Grafana, taken from ClickHouse.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is what we have in Grafana:</p>
 	<ul>
 		<li>

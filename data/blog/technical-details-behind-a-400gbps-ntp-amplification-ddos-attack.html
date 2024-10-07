@@ -6,14 +6,35 @@
 
 	</figure>
 	<p>On Monday we mitigated a large DDoS that targeted one of our customers. The attack peaked just shy of 400Gbps. We've seen a handful of other attacks at this scale, but this is the largest attack we've seen that uses NTP amplification. This style of attacks has grown dramatically over the last six months and poses a significant new threat to the web. Monday's attack serves as a good case study to examine how these attacks work.</p>
-	<h3>NTP Amplification 101</h3>
+	<div class="flex anchor relative">
+		<h3 id="ntp-amplification-101">NTP Amplification 101</h3>
+		<a href="https://blog.cloudflare.com/#ntp-amplification-101" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before diving into the particular details of this attack, it's important to understand the basic mechanics of how NTP amplification attacks work. This is a quick overview of how these attacks occur. John Graham-Cumming on our team previously wrote a <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">detailed primer on NTP amplification attacks</a> if you're interested in further technical details. If you're interested in amplification attacks, you may also find interesting <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">our posts about DNS Amplification attacks</a>. These attacks use a similar method but target open DNS resolvers rather than NTP servers.</p>
 	<p>An NTP amplification attack begins with a server controlled by an attacker on a network that allows source IP address spoofing (e.g., it does not follow <a href="http://tools.ietf.org/html/bcp38">BCP38</a>). The attacker generates a large number of UDP packets spoofing the source IP address to make it appear the packets are coming from the intended target. These UDP packets are sent to Network Time Protocol servers (port 123) that support the MONLIST command.</p>
 	<p>I'd personally be curious to talk with whoever added MONLIST as a command to NTP servers. The command seems of such little practical use -- it returns a list of up to the last 600 IP addresses that last accessed the NTP server -- and yet it can do so much harm. If an NTP server has its list fully populated, the response to a MONLIST request will be 206-times larger than the request. In the attack, since the source IP address is spoofed and UDP does not require a handshake, the amplified response is sent to the intended target. An attacker with a 1Gbps connection can theoretically generate more than 200Gbps of DDoS traffic.</p>
-	<h3>Not Just Theoretical</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-just-theoretical">Not Just Theoretical</h3>
+		<a href="https://blog.cloudflare.com/#not-just-theoretical" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Monday's DDoS proved these attacks aren't just theoretical. To generate approximately 400Gbps of traffic, the attacker used 4,529 NTP servers running on 1,298 different networks. On average, each of these servers sent 87Mbps of traffic to the intended victim on CloudFlare's network. Remarkably, it is possible that the attacker used only a single server running on a network that allowed source IP address spoofing to initiate the requests.</p>
 	<p>While NTP servers that support MONLIST are less common than open DNS resolvers, they tend to run on beefier servers with fatter connections to the network. Combined with the high amplification factor, this allows a much smaller number of NTP servers to generate very large attacks. For comparison, the attack that targeted Spamhaus used 30,956 open DNS resolvers to <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">generate a 300Gbps DDoS</a>. On Monday, with 1/7th the number of vulnerable servers, the attacker was able to generate an attack that was 33% larger than the Spamhaus attack.</p>
-	<h3>Globally Distributed Threat</h3>
+	<div class="flex anchor relative">
+		<h3 id="globally-distributed-threat">Globally Distributed Threat</h3>
+		<a href="https://blog.cloudflare.com/#globally-distributed-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p></p>
 	<p><a href="http://www.tableausoftware.com/public/about-tableau-products">Learn About Tableau</a></p>
 	<p>We saw attack traffic hitting every one of CloudFlare's data centers. While we were generally able to mitigate the attack, it was large enough that it caused network congestion in parts of Europe. The map above shows the global distribution of the 4,529 NTP servers used in the attack. The chart below lists the AS Numbers and names of the top 24 networks we saw traffic from in the attack, as well as the number of exploited NTP servers running on each.</p>
@@ -47,7 +68,14 @@
 	<blockquote>
 		<p>We see today lot of new DDoS attacks from Internet to our network. Type: NTP AMP Size: &gt;350Gbps. No issue. VAC is great :) — Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">February 12, 2014</a></p>
 	</blockquote>
-	<h3>Time to Clean Up the Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-to-clean-up-the-problem">Time to Clean Up the Problem</h3>
+		<a href="https://blog.cloudflare.com/#time-to-clean-up-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're a network administrator and on Monday you saw network graphs like the one in the Tweet below then you are running a vulnerable NTP server.</p>
 	<blockquote>
 		<p>and here's what it looks like when a device participates in the NTP DDOS against <a href="https://twitter.com/CloudFlare">@CloudFlare</a> <a href="http://t.co/QcrPGxbcUz">pic.twitter.com/QcrPGxbcUz</a></p>

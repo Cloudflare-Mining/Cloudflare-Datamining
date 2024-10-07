@@ -13,14 +13,28 @@ addEventListener('fetch', event =&gt; {
 })</code></pre>
 	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <i>absolutely no need</i> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
 	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org">Webpack</a>.</p>
-	<h3>Webpack</h3>
+	<div class="flex anchor relative">
+		<h3 id="webpack">Webpack</h3>
+		<a href="https://blog.cloudflare.com/#webpack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
 	<h4>app.js</h4>
 	<pre class="language-javascript"><code class="language-javascript">// Import the CoolSocks class from dresser.js
 import { CoolSocks } from './dresser'
 import { FancyShoes } from './closet'</code></pre>
 	<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
-	<h3>Show me the code</h3>
+	<div class="flex anchor relative">
+		<h3 id="show-me-the-code">Show me the code</h3>
+		<a href="https://blog.cloudflare.com/#show-me-the-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
 	<p>Make sure to have <a href="https://nodejs.org">NodeJS</a> installed.</p>
 	<pre class="language-bash"><code class="language-bash"># Make a new project directory
@@ -167,7 +181,14 @@ export async function fetchWeather(location: string, unit = 'f') {
 GET /weather/austin
 GET /weather/toronto</code></pre>
 	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
-	<h3>Loading node modules</h3>
+	<div class="flex anchor relative">
+		<h3 id="loading-node-modules">Loading node modules</h3>
+		<a href="https://blog.cloudflare.com/#loading-node-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> module.</p>
 	<p>Install and save the module:</p>
 	<pre class="language-bash"><code class="language-bash">npm install -S path-to-regexp</code></pre>
@@ -218,7 +239,14 @@ async function handleWeatherRequest(params: TWeatherRequestParams) {
 	<pre class="language-bash"><code class="language-bash">npm run build &amp;&amp; npm run preview -- \
   --preview-url https://foo.bar.com/weather/austin</code></pre>
 	<p>You should see the weather for Austin, TX displayed. Congrats!</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
 	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers">github.com/jrf0110/weather-workers</a></p>
 	<hr>

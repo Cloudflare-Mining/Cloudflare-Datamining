@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Last year, we launched <a href="https://blog.cloudflare.com/introducing-htmlrewriter">HTMLRewriter</a> for Cloudflare Workers, which enables developers to make streaming changes to HTML on the edge. Unlike a traditional DOM parser that loads the entire HTML document into memory, we developed a <a href="https://github.com/cloudflare/lol-html">streaming parser</a> written in Rust. Today, we’re announcing support for asynchronous handlers in HTMLRewriter. Now you can perform asynchronous tasks based on the content of the HTML document: from prefetching fonts and image assets to fetching user-specific content from a CMS.</p>
-	<h3>How can I use HTMLRewriter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-use-htmlrewriter">How can I use HTMLRewriter?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We designed HTMLRewriter to have a jQuery-like experience. First, you define a handler, then you assign it to a CSS selector; Workers does the rest for you. You can look at our new and improved <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter#selectors">documentation</a> to see our supported list of selectors, which now include <code>nth-child</code> selectors. The example below changes the alternative text for every second image in a document.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function editHtml(request) {
   return new HTMLRewriter()
@@ -20,7 +27,14 @@ class ElementHandler {
    }
 }</code></pre>
 	<p>Since these changes are applied using streams, we maintain a low TTFB (time to first byte) and users never know the HTML was transformed. If you’re interested in how we’re able to accomplish this technically, you can read our blog post about <a href="https://blog.cloudflare.com/html-parsing-2">HTML parsing.</a></p>
-	<h3>What’s new with HTMLRewriter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-new-with-htmlrewriter">What’s new with HTMLRewriter?</h3>
+		<a href="https://blog.cloudflare.com/#whats-new-with-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now you can define an <code>async</code> handler which allows any code that uses <code>await</code>. This means you can make dynamic HTML injection, based on the contents of the document, without having prior knowledge of what it contains. This allows you to customize HTML based on a particular user, feature flag, or even an integration with a CMS.</p>
 	<pre class="language-javascript"><code class="language-javascript">class UserCustomizer {
    // Remember to add the `async` keyword to the handler method
@@ -36,7 +50,15 @@ class ElementHandler {
    }
 }
 </code></pre>
-	<h3>What can I build with HTMLRewriter?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="what-can-i-build-with-htmlrewriter">What can I build with HTMLRewriter?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-i-build-with-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To illustrate the flexibility of HTMLRewriter, I wrote an example that you can deploy on your own website. If you manage a website, you know that old links and images can expire with time. Here’s an excerpt from a years’ old post I wrote on the Cloudflare Blog:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -77,7 +99,14 @@ class ImageFixer {
 			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5emZJNvGrSvi1OJFweWSka/40ba08edfb038870f2c72c79c80f4a09/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
 		</a>
 	</figure>
-	<h3>What else can I build with HTMLRewriter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-else-can-i-build-with-htmlrewriter">What else can I build with HTMLRewriter?</h3>
+		<a href="https://blog.cloudflare.com/#what-else-can-i-build-with-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve been blown away by developer projects using HTMLRewriter. Here are a few projects that caught our eye and are great examples of the power of Cloudflare Workers and HTMLRewriter:</p>
 	<ul>
 		<li>

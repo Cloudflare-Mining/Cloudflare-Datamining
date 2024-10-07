@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by</i> <a href="https://www.linkedin.com/in/jezowicz"><i>Janusz Jezowicz</i></a><i>, CEO of</i> <a href="http://www.speedchecker.xyz"><i>Speedchecker</i></a><i>. The Speedchecker team runs a global distributed measurement network and offer speed test solutions using the Cloudflare platform.</i></p>
 	<p>Software companies contemplating offering a public API to 3rd party developers have many options to choose from for how to offer their API securely with high reliability and with fast performance. When it comes to cost though, commercial solutions are expensive and open-source solutions require a lot of time managing servers and the synchronization between them. This blog post describes how we successfully moved our API gateway to <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> and slashed our costs by a factor of 10.</p>
-	<h3>Our original solution based on the Kong open-source API gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-original-solution-based-on-the-kong-open-source-api-gateway">Our original solution based on the Kong open-source API gateway</h3>
+		<a href="https://blog.cloudflare.com/#our-original-solution-based-on-the-kong-open-source-api-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we built our <a href="http://probeapi.speedchecker.xyz">measurement network API</a> &nbsp;for cost reasons we opted for open-source solution <a href="https://konghq.com">Kong</a>. Kong is a great solution which has a vibrant community of users and plug-in developers who extend and maintain the platform. Kong is a good alternative to commercial solutions from companies such as Apigee or Mulesoft whose solutions are really catering for larger businesses who can afford them. Kong is free and it works. On the other hand, if your business has complex needs for <a href="https://www.cloudflare.com/application-services/products/api-gateway">API management</a> - e.g. powerful analytics, access control, user-friendly administration then you will need plug-ins. Kong Plug-ins are often not free and you end up with costs approaching commercial solutions.</p>
 	<p>At Speedchecker we already have a lot of metrics and access control logic within the API itself so the basic functionality of Kong suited us. Here you can see a simplified architecture diagram of our API gateway:</p>
 	<p>Two Kong instances are, of course, a must if we want to provide a reliable service to our customers. Kong offers flexibility in what database it uses for its API management engine. We have been experimenting with MySQL and moved to PostgreSQL for its better support of replication using Bucardo.</p>
@@ -24,7 +31,14 @@
 			<p>While we saved money on a commercial licence for API gateway, we were spending more man hours on server administration and the monitoring of our system</p>
 		</li>
 	</ul>
-	<h3>New API solution using Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-api-solution-using-cloudflare-workers">New API solution using Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#new-api-solution-using-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After Cloudflare announced the Workers feature we have been following it closely and started experimenting with its functionality.</p>
 	<p>A few of the things that originally stood out for us were:</p>
 	<ul>
@@ -64,7 +78,14 @@
 			<p>If apikey is valid, Worker forwards API user request to our Origin and responds back to the API user when it gets a response. In this step we also include any custom redirection logic as some API calls have different Origin endpoints. Using Workers we can easily specify custom logic in which API calls use different endpoints.</p>
 		</li>
 	</ol>
-	<h3>Migration process</h3>
+	<div class="flex anchor relative">
+		<h3 id="migration-process">Migration process</h3>
+		<a href="https://blog.cloudflare.com/#migration-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As described above, we wanted the change of the architecture to be done seamlessly without requiring users to update any of their API code. For that reason, we devised the following approach to migrate to Cloudflare workers.</p>
 	<ol>
 		<li>
@@ -81,6 +102,13 @@
 		</li>
 	</ol>
 	<p>During our live migration process everything went smoothly until we started seeing some errors with some of our customers. We had not realized that the Cloudflare firewall has some rate limiting in place and was preventing our API users who queried more than 2000 requests per minute from the same IP. After raising the ticket with Cloudflare Support we got the limit lifted and errors stopped happening.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We believe Cloudflare Workers are a good alternative to existing API gateway solutions. For companies who already have an existing codebase for authentication and analytics there is not a compelling reason to use commercial API gateway package when Cloudflare Workers can add a protection layer to your API at the fraction of the cost of alternatives. While Workers are a relatively new product from Cloudflare, we already feel comfortable using it in production. We encourage you to explore Workers for your new projects. Also, if you are wanting to save costs or to make your self-hosted solution more robust, Workers are a good alternative which can be deployed with no impact on your API users or business.</p>
 </div>

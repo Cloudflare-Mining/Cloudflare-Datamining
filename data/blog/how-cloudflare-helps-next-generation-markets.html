@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>One of the many magical things about the Internet is that it doesn’t have a country. The Internet doesn’t go through customs, it doesn’t need a visa, and it doesn’t speak any one language. To reach the world’s greatest information innovation, a user – no matter what country they’re in – only needs a device with a connection. The Internet will take care of the rest. At Cloudflare, part of our role is to make sure every person on the planet with an Internet connection has a good experience, whether they’re in a next-generation market or a current-gen market. In this blog we’re going to talk about how we define next-generation markets, how we help people in these markets get faster access to the websites and applications they use on a daily basis, and how we make it easy for developers to deploy services geographically close to users in next-generation markets.</p>
-	<h2>What are next-generation markets?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-are-next-generation-markets">What are next-generation markets?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next-generation markets are the future of the Internet. Not only are there billions of people who will use the Internet more, as affordable access increases, but the trends in application development already point towards the mobile-first, sometimes mobile-only, way of providing content and services. The Internet may look different (more desktop-centric) in the so-called Global North or countries the <a href="https://www.imf.org/external/datamapper/FMEconGroup.xlsx">IMF defines as Advanced Economies</a>, but those differences will shrink as application developers build products for all markets, not just current-generation markets. We call these markets next-generation markets as opposed to using the IMF or World Bank definitions because we want to classify markets by how users interact with the Internet as opposed to how their governments interact with the global economy. Compared to North America and Europe, where users access the Internet through a combination of desktop computers and mobile devices, users in next-generation markets access the Internet via <a href="https://blog.cloudflare.com/where-mobile-traffic-more-and-less-popular">mobile devices</a> 50% of the time or more, sometimes even as high as 80%. Some examples of these markets are China, India, Indonesia, Thailand, and countries in Africa and the Middle East.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +71,14 @@
 	</table><!--kg-card-end: html-->
 	<p>The prevalence of mobile Internet connections is also represented by the types of applications developers are building in these regions: local models of popular applications designed specifically for local users in mind. For example, <a href="https://www.cloudflare.com/case-studies/carousell">ecommerce companies like Carousell</a> and <a href="https://www.cloudflare.com/case-studies/how-bookmyshow-uses-cloudflare-to-mitigate-massive-ddos-attacks">ticketing companies like BookMyShow</a> rely on mobile and app-based users for most of their business that is unique to the region they’re based in. Getting more broad, apps like Instagram and TikTok famously do not have web or desktop-based applications, and they encourage users to be mobile-only. These markets are next-generation because most of their users are using mobile devices and applications like Carousell, which are designed for a mobile, performant Internet.</p>
 	<p>In these markets there are two groups who have similar concerns but are different enough that we need to address them separately: users, and the application developers who build the apps for users. They both want one thing: to be fast. But being fast manifests itself in slightly different ways for users versus application developers. Let’s talk about each group and how Cloudflare helps solve their problems.</p>
-	<h2>Next-generation users</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-generation-users">Next-generation users</h2>
+		<a href="https://blog.cloudflare.com/#next-generation-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Users in these markets care about observed experience: they want real-time interaction with their applications. This is no different from what users in other markets expect from the Internet, but achieving this is much harder over mobile networks, which tend to have higher latency, loss, and lower bandwidth.</p>
 	<p>Another challenge in next-generation markets is, roughly speaking, how geographically dispersed Internet connectivity is. Imagine you are sending a message to someone on the other side of a park, but you have to play telephone: the only way you can send the message is by telling someone next to you, and they tell it to the person next to them, and so on and so forth until the message reaches the other side of the park. That may look a little something like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -80,7 +94,14 @@
 	</figure>
 	<p>In this case, the receiver of the message didn’t hear the message properly the first time, and asked for the sender to yell it again. This process, called retransmission, reduces the amount of data that can be sent at once over the Internet. Retransmission rates depend on the cellular density of wireless networks, the light signal of fiber optic cables, and on the broader Internet, the number of hops between the end user and the website or receiver of the connection.</p>
 	<p>Retransmission rates are impacted by something called packet loss, when some packets don’t make it to the receiver end due to things like poor signal transmission, or errors on devices in the path between sender and receiver. When packet loss occurs, protocols on the Internet like the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">Transmission Control Protocol (TCP)</a> will reduce the amount of data that can be transmitted over the connection. The amount of data that can be sent at one time is called the congestion window, and the protocol will shrink the congestion window to help preserve the connection until TCP is sure that the connection won’t drop packets again. This process of shrinking the congestion window is called backoff, and the congestion window will shrink exponentially when packet loss is first detected, and then will increase linearly over time. This means that connections and networks with high retransmission rates can seriously impact how users interact with websites and applications on the Internet.</p>
-	<h2>The Edge Partner Program gets us closer to users</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-edge-partner-program-gets-us-closer-to-users">The Edge Partner Program gets us closer to users</h2>
+		<a href="https://blog.cloudflare.com/#the-edge-partner-program-gets-us-closer-to-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since most users in next-generation markets are mobile, getting closer to users is paramount for a fast experience. Mobile devices tend to be slower because interference with the radio waves can often add additional instability to the Internet connection, which can lead to poor performance. In next generation markets, there could be added challenges from issues like power consumption: if a power grid can’t support large radio towers, smaller ones with a smaller range are required, which can further add instability, increase retransmission, and add latency.</p>
 	<p>However, in addition to challenges in the local network, there’s another challenge with interconnecting these networks to the rest of the Internet. Networks in next-generation markets may not be able to reach as many peering points as larger networks and may need to optimize their peering by going into Internet Exchanges that have denser connectivity with more networks, even if they’re farther away. For example, places like Frankfurt, London, and Singapore are especially useful for interconnecting a large amount of networks in a few Internet Exchanges in regions like the Middle East, Africa, and Asia respectively.</p>
 	<p>The downside for end-users is that in order to connect to the Internet and the sites they care about, networks in these markets have to go a long way to get to the rest of the Internet. For content that is cacheable, meaning it doesn’t change often, sending requests for data (and the response) across oceans and continents is a poor use of Internet capacity. Worse, it leads to problems like congestion, retransmission, and packet loss, which in turn cause poor performance.</p>
@@ -98,7 +119,14 @@
 
 	</figure>
 	<p>Now that we’ve talked about why the Edge Partner Program is important and how it can theoretically help users, let’s talk about one set of those deployments in Saudi Arabia to show you how it actually helps users.</p>
-	<h3>Edge Partner Program in Saudi Arabia</h3>
+	<div class="flex anchor relative">
+		<h3 id="edge-partner-program-in-saudi-arabia">Edge Partner Program in Saudi Arabia</h3>
+		<a href="https://blog.cloudflare.com/#edge-partner-program-in-saudi-arabia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A great example of a place that can benefit greatly from the Edge Partner Program is Saudi Arabia, a country whose closest peering to Cloudflare was previously in Frankfurt. As we mentioned above, for many countries in the Middle East, Frankfurt is where these networks choose to peer with other networks despite Frankfurt being over 5,300 km away from Riyadh.</p>
 	<p>But by landing Cloudflare network hardware in the mobile network Mobily, we were able to improve median <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> by over 50% for their users. Before our deployment, end users on Mobily had a median RTT of 131ms via Frankfurt. Once we added three sites in Dammam, Riyadh, and Jeddah on this network, Mobily users saw a huge decrease in latency, to the point where the <i>median</i> RTT (131ms) before these deployments now became around the 85th percentile afterwards. Before, one out of every two requests took longer than 131ms, while afterward almost every request (85% of them) took less than that time. So users in Saudi Arabia get a faster path to the sites and services they care about through their ISP and Cloudflare. Everyone wins.</p>
 	<figure class="kg-card kg-image-card ">
@@ -119,7 +147,14 @@
 
 	</figure>
 	<p>Users in Jeddah have a much lower, more constant retransmission rate because users on Mobily are terminating their connections closer to their devices. By being embedded in Mobily’s network, we decrease the number of hops that are needed and also make the hops that travel over less reliable paths shorter. Initial requests are more likely to succeed the first time and don’t need multiple tries to succeed.</p>
-	<h2>WARP in next-generation markets</h2>
+	<div class="flex anchor relative">
+		<h2 id="warp-in-next-generation-markets">WARP in next-generation markets</h2>
+		<a href="https://blog.cloudflare.com/#warp-in-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare WARP is a great privacy-preserving tool for users in any market to help ensure a privacy-first, performant path to the Internet. While users around the world can use WARP, users in next-generation markets are ahead of the curve when it comes to WARP adoption. Here are the total year-to-date WARP downloads from the Apple App Store:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -128,12 +163,26 @@
 	</figure>
 	<p>We’ve recently made changes to <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">add WARP support to more Edge Partner locations</a>, which provides a faster, more private experience to these locations. Now even more WARP users can see better performance in more locations.</p>
 	<p>WARP pairs well with the Cloudflare network to ensure a fast, private Internet experience. In a growing number of networks in next-generation markets, WARP users will connect to Cloudflare in the same location as their ISP before going out to the rest of the Internet. If the websites they are trying to connect to are protected by Cloudflare, then they get a fast path to the websites they care about through Cloudflare. If not, then the users can still get sent out through Cloudflare to the websites they need while preserving their privacy throughout the connection.</p>
-	<h2>Next-generation developers</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-generation-developers">Next-generation developers</h2>
+		<a href="https://blog.cloudflare.com/#next-generation-developers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you’re an app developer in Muscat, Oman, trying to make a new shopping app specific to your market. To compete with other existing apps, you not only need a differentiator, but you need an in-app performance experience that is on par with your competitors while also being able to deliver your service and make money. Global shopping apps offer a real-time browsing experience that your regional app also needs to meet, or beat. If outside competitors have a faster shopping app than you, it doesn’t really matter if your app is “the Amazon of Oman” if actual Amazon is faster in the country.</p>
 	<p>But in next-generation markets, performance is often a differentiator between their applications and incumbent applications -- often because incumbent apps tend to not perform as well in these markets. This is often because incumbent applications will host using cloud providers that may not offer services in-region. For example, users in the APJC region may often see their traffic get sent to Hong Kong, Singapore, or even Los Angeles because that is the closest cloud datacenter to them. So when you’re making “the Amazon of Indonesia” and you need your app to be faster than Amazon’s in Indonesia, having your application be as local as possible to your users will help realize your app’s appeal: a specialized, high-performance experience for Indonesian users.</p>
 	<p>It’s worth noting that many cloud locations do offer local options for developers: if you’re in Oman, there is a local cloud datacenter to you where you can host your service. But most startup and smaller businesses built in next-generation markets will opt to host their app in larger, farther away locations to optimize for cost.</p>
 	<p>For example, localizing in the Middle East can be very costly compared to farther away options. Developers in the Middle East may be able to save 30% or more on their monthly data transfer costs simply by moving to Frankfurt; a region that is farther away from their users but is cheaper for them to serve out of. Application developers are constantly trying to balance cost with user experience, and may make some tradeoffs for user experience that allow them to optimize costs in the short term. So even though Cloudflare-protected developers are taking advantage of the local peering from the Edge Partner Program, developers in Oman may end up sending their users to Frankfurt anyways because that’s where they chose to host their services to save costs. In many cases, this is a tradeoff developers in these markets have to make: making your service slightly less performant to enable it to run more cheaply.</p>
-	<h2>Cloudflare Workers in country</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-workers-in-country">Cloudflare Workers in country</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-workers-in-country" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Luckily for these developers, Cloudflare’s developer platform allows application developers to build a distributed application that runs right where their users are, so they don’t have to choose between performance and cost savings. Taking the Saudi Arabia case, users on Mobily now get their traffic terminated locally in Jeddah. This is okay from an end-to-end perspective because it means that Cloudflare gets to find the fastest path through the Internet using technologies like Argo Smart Routing which will help them save 30% on their Time to First Byte if their users have to go out of the country. But what if users didn’t ever have to leave Jeddah at all?</p>
 	<p>By moving applications to Cloudflare, you can push more and more of your applications to these data centers in next-generation markets, ensuring that users get a better experience in-country. For example, let’s consider the <a href="https://blog.cloudflare.com/network-performance-update-developer-week">same comparison data</a> we used to evaluate ourselves versus Lambda@Edge during our Developer Week performance tests. The purpose of this comparison is to show how far your users have to travel if you’re hosting application compute on Cloudflare versus on AWS. When you compare us versus Lambda@Edge, we have a significant advantage for P95 TCP Connection time in next-generation markets. &nbsp;This chart and table below show that in Africa and Asia Cloudflare Workers is about 3x as fast as Lambda@Edge from AWS:</p>
 	<figure class="kg-card kg-image-card ">
@@ -165,7 +214,14 @@
 	<center><small>95th percentile TCP connect time (ms)</small></center>
 	<br><!--kg-card-end: html-->
 	<p>This means that operations and functions that get built into Cloudflare get executed closer to the user, ensuring better end-to-end performance. The Lambda@Edge scenarios are bad enough on their own, but &nbsp;consider that not everything can be done in Lambda@Edge and may need to reach AWS instances that may sit even farther away than the AWS edge. Cloudflare’s supercloud looks especially attractive because we allow you to build everything you need in an application entirely local to end-users. This helps ensure next-generation markets see the same performance as the rest of the world for the applications they care about.</p>
-	<h2>Making everyone faster everywhere</h2>
+	<div class="flex anchor relative">
+		<h2 id="making-everyone-faster-everywhere">Making everyone faster everywhere</h2>
+		<a href="https://blog.cloudflare.com/#making-everyone-faster-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare helps users in next-generation markets get connected to the Internet faster, get connected to the Internet more privately, and helps their applications get closer to where they are. Through initiatives like our Edge Partner Program, we can help bring applications closer to users in next-generation markets, and through our powerful developer platform, we can ensure that applications built for these markets have world-class performance.</p>
 	<p>If you’re an application developer, and you haven’t yet tried out our powerful developer platform and all it can do, <a href="https://workers.cloudflare.com">try it</a> today!</p>
 	<p>If you’re a network operator, and you want to have Cloudflare in your network to help bring a next-level experience to your users, check out our <a href="https://www.cloudflare.com/partners/peering-portal">Edge Partner Program</a> and let’s get connected.</p>

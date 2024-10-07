@@ -1,7 +1,14 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7iL8eNmFMwRDLAKYK3AMiv/325041776d894b25fcb237de2a2c86c4/power-outage-taiwan.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At approximately 4:50pm local time (8:50am UTC) August 15, a major unexpected power outage hit the island of Taiwan with a significant amount of its power generation facilities going down.</p>
-	<h3>Blackout!</h3>
+	<div class="flex anchor relative">
+		<h3 id="blackout">Blackout!</h3>
+		<a href="https://blog.cloudflare.com/#blackout" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the island was hit with power outages, shortages and rolling blackouts, with street lights not functioning, nor power in many of Taipei’s shopping malls, and much other infrastructure.</p>
 	<p>Blackouts of this scale are very rare. Usually, during an outage of this scale, it would be expected that Internet traffic would greatly drop, as houses and businesses lose power and are unable to connect to the Internet. I’ve experienced this in the past, working at consumer ISPs. As households and businesses lose power, so do their modems or routers which connect them to the Internet.</p>
 	<p>However, during yesterday's outage, something different happened. I'd like to share some insights from yesterday's outage.</p>
@@ -11,7 +18,14 @@
 
 	</figure>
 	<p>Photo: Taipei 101 Dark during the Blackout -Source: <a href="https://www.upi.com/Top_News/World-News/2017/08/15/Taiwans-economic-minister-resigns-amid-nationwide-blackout/9031502816439">David Chang/EPA</a></p>
-	<h3>Even when the power is out, the Internet still operates</h3>
+	<div class="flex anchor relative">
+		<h3 id="even-when-the-power-is-out-the-internet-still-operates">Even when the power is out, the Internet still operates</h3>
+		<a href="https://blog.cloudflare.com/#even-when-the-power-is-out-the-internet-still-operates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most Telecom and Data Center facilities are built with redundancy in mind and have backup power generation. Our Data Center partner, <a href="http://www.chief.com.tw">Chief</a>, was able to switch to backup power generation without any service interruption, allowing our service to operate without interruption.</p>
 	<p>The lack of interruption was also reflected by many users still accessing the Internet. From our statistics, the number of requests didn’t drop, as illustrated by the graph following. At the beginning of the power outage, there was actually a spike in requests, as more people likely look on the Internet as to more details of what's happening. The graph below shows a timeline of requests per second, seen in our Taipei data center, with a red line marking the beginning of the power outage.</p>
 	<figure class="kg-card kg-image-card ">

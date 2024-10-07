@@ -8,7 +8,14 @@
 	<p>When Tim Berners-Lee announced HTML in 1991 there was no method of styling pages. How a given HTML tag was rendered was determined by the browser, often with significant input from the user’s preferences. To many, it seemed like a good idea to create a standard way for pages to ‘suggest’ how they might prefer to be rendered stylistically.</p>
 	<p>But CSS wouldn’t be introduced for five years, and wouldn’t be fully implemented for ten. This was a period of intense work and innovation which resulted in more than a few competing styling methods that just as easily could have become the standard.</p>
 	<p>While these languages are obviously not in common use today, we find it fascinating to think about the world that might have been. Even more surprisingly, it happens that many of these other options include features which developers would love to see appear in CSS even today.</p>
-	<h3>The First Proposal</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-first-proposal">The First Proposal</h3>
+		<a href="https://blog.cloudflare.com/#the-first-proposal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In early 1993 the Mosaic browser had not yet reached 1.0. Those browsers that did exist dealt solely with HTML. There was no method of specifying the style of HTML whatsoever, meaning whatever the browser decided an <code>&lt;h1&gt;</code> should look like, that’s what you got.</p>
 	<p>In June of that year, Robert Raisch made <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0445.html">a proposal</a> to the www-talk mailing list to create a “an easily parsable format to deliver stylistic information along with Web documents” which would be called RRP.</p>
 	<pre class="language-undefined"><code class="language-undefined">@BODY fo(fa=he,si=18)</code></pre>
@@ -22,7 +29,14 @@
 	<p>It’s a little hard to parse, but not much worse than <code>white-space: nowrap</code> perhaps.</p>
 	<p>It’s worth noting that RRP did not support any of the ‘cascading’ we associate with stylesheets today. A given document could only have one active stylesheet at a time, which is a logical way to think about styling a document, even if it’s foreign to us today.</p>
 	<p>Marc Andreessen (the creator of Mosaic, which would become the most popular browser) was <a href="http://www.webhistory.org/www.lists/www-talk.1993q4/0266.html">aware</a> of the RRP proposal, but it was never implemented by Mosaic. Instead, Mosaic quickly moved (somewhat tragically) down the path of using HTML tags to define style, introducing tags like <code>&lt;FONT&gt;</code> and <code>&lt;CENTER&gt;</code>.</p>
-	<h3>Viola and the Proto-Browser Wars</h3>
+	<div class="flex anchor relative">
+		<h3 id="viola-and-the-proto-browser-wars">Viola and the Proto-Browser Wars</h3>
+		<a href="https://blog.cloudflare.com/#viola-and-the-proto-browser-wars" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>Then why don't you just implement one of the many style sheet
 				proposals that are on the table. This would pretty much solve the
@@ -47,7 +61,14 @@
 	<p>PWP is also notable for introducing the method of referring to external stylesheets we still use today:</p>
 	<pre class="language-undefined"><code class="language-undefined">&lt;LINK REL="STYLE" HREF="URL_to_a_stylesheet"&gt;</code></pre>
 	<p>ViolaWWW was unfortunately written to work chiefly with the <a href="https://en.wikipedia.org/wiki/X_Window_System">X Windowing System</a> which was only popular on Unix systems. When Mosaic was ported to Windows it quickly left Viola in the dust.</p>
-	<h3>Stylesheets Before the Web</h3>
+	<div class="flex anchor relative">
+		<h3 id="stylesheets-before-the-web">Stylesheets Before the Web</h3>
+		<a href="https://blog.cloudflare.com/#stylesheets-before-the-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>HTML is the kind of thing that can
 				only be loved by a computer scientist. Yes, it expresses the underlying
@@ -75,7 +96,14 @@
 	<p>If you’re a bit confused what a <code>docdesc</code> or <code>charlist</code> are, so were the
 		members of <code>www-talk</code>. The only contextual information given was that <code>e-i-c</code> means ‘element in context’. FOSI is notable however for introducing the <code>em</code> unit which has now become the preferred method for people who know more about CSS than you to style things.</p>
 	<p>The language conflict which was playing out was actually as old as programming itself. It was the battle of functional ‘lisp-style’ syntax vs the syntax of more declarative languages. Pei-Yuan himself <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0297.html">described</a> his syntax as “LISP’ish,” but it was only a matter of time until a true LISP variant entered the stage.</p>
-	<h3>The Turing-Complete Stylesheet</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-turing-complete-stylesheet">The Turing-Complete Stylesheet</h3>
+		<a href="https://blog.cloudflare.com/#the-turing-complete-stylesheet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For all its complexity, FOSI was actually perceived to be an <a href="http://xml.coverpages.org/kennDSSSLInt.html">interim solution</a> to the problem of formatting documents. The long-term plan was to create a language based on the functional programming language Scheme which could enable the most powerful document transformations you could imagine. This language was called DSSSL.</p>
 	<p>In the words of contributor Jon Bosak:</p>
 	<blockquote>
@@ -110,7 +138,14 @@
 	<p>DSSSL did, unfortunately, have the fatal flaw which would plague all
 		Scheme-like languages: too many parenthesis. Additionally, it was arguably <i>too complete</i> of a spec when it was finally published which made it intimidating to browser developers. The DSSSL spec included over 210 separate styleable properties.</p>
 	<p>The team did go on to create <a href="https://en.wikipedia.org/wiki/XSL">XSL</a>, a language for document transformation which is no less confusing, but which would be decidedly more popular.</p>
-	<h3>Why Did The Stylesheet Cross The Wire</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-did-the-stylesheet-cross-the-wire">Why Did The Stylesheet Cross The Wire</h3>
+		<a href="https://blog.cloudflare.com/#why-did-the-stylesheet-cross-the-wire" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CSS does not include parent selectors (a method of styling a parent based on what children it contains). This fact has been <a href="http://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector">long</a> <a href="http://stackoverflow.com/questions/45004/complex-css-selector-for-parent-of-active-child?lq=1">bemoaned</a> <a href="http://stackoverflow.com/questions/2000582/css-selector-for-foo-that-contains-bar?lq=1">by</a> <a href="http://stackoverflow.com/questions/4220327/css-selector-element-with-a-given-child?lq=1">Stack</a> <a href="http://stackoverflow.com/questions/21252551/apply-style-to-parent-if-it-has-child-with-css?lq=1">Overflow</a> posters, but it turns out there is a very good reason for its absence. Particularly in the early days of the Internet, it was considered critically important that the page be renderable before the document has been fully loaded. In other words, we want to be able to render the beginning of the HTML to the page before the HTML which will form the bottom of the page has been fully downloaded.</p>
 	<p>A parent selector would mean that styles would have to be updated as the HTML document loads. Languages like DSSSL were completely out, as they could perform operations on the document itself, which would not be entirely available when the rendering is to begin.</p>
 	<p>The first contributor to bring up this issue and <a href="http://people.opera.com/howcome/2006/phd/archive/odur.let.rug.nl/~bert/stylesheets.html">propose</a> a workable language was Bert Bos in March of 1995. His proposal also contains an early edition of the ‘smiley’ emoticon :-).</p>
@@ -129,7 +164,14 @@
   (color blue)   ; in blue if you’ve got it
   (click (follow (attval 'href)))  ; and on click, follow url</code></pre>
 	<p>His language also introduced the <code>content</code> keyword as a way of controlling the content of an HTML element from the stylesheet, a concept which was later introduced into CSS 2.1.</p>
-	<h3>What Might Have Been</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-might-have-been">What Might Have Been</h3>
+		<a href="https://blog.cloudflare.com/#what-might-have-been" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before I talk about the language which actually became CSS, it’s worth mentioning one other language proposal if only because it is in some ways the thing of an early web developer’s dreams.</p>
 	<p>PSL96 was, in the naming convention of the time, the 1996 edition of the “Presentation Specification Language.” At its core, PSL looks like CSS:</p>
 	<pre class="language-undefined"><code class="language-undefined">H1 {
@@ -160,7 +202,14 @@
   endif
 }</code></pre>
 	<p>Support for functionality like this could have perhaps truly enabled the dream of separating content from style. Unfortunately this language was plagued by being a bit too extensible, meaning it would have been very possible for its implementation to vary considerably from browser to browser. Additionally, it was published in a series of papers in the academic world, rather than on the www-talk mailing list where most of the functional work was being done. It was never integrated into a mainstream browser.</p>
-	<h3>The Ghost of CSS Past</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-ghost-of-css-past">The Ghost of CSS Past</h3>
+		<a href="https://blog.cloudflare.com/#the-ghost-of-css-past" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The language which, at least in name, would directly lead to CSS was called CHSS (Cascading HTML Style Sheets), <a href="http://people.opera.com/howcome/2006/phd/archive/www.w3.org/People/howcome/p/cascade.html">proposed</a> in 1994 by Håkon W Lie.</p>
 	<p>Like most good ideas, the original proposal was pretty nutty.</p>
 	<pre class="language-undefined"><code class="language-undefined">h1.font.size = 24pt 100%
@@ -179,7 +228,15 @@ Volume o---------x----------o 50%</code></pre>
 DISPLAY_HEIGHT &gt; 30cm ? http://NYT.com/style : http://LeMonde.fr/style</code></pre>
 	<p>In a somewhat optimistic sci-fi vision of the future, it was believed your browser would know how relevant a given piece of content was to you, allowing it to show it to you at a larger size:</p>
 	<pre class="language-undefined"><code class="language-undefined">RELEVANCE &gt; 80 ? h1.font.size *= 1.5</code></pre>
-	<h3>You Know What Happened Next</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="you-know-what-happened-next">You Know What Happened Next</h3>
+		<a href="https://blog.cloudflare.com/#you-know-what-happened-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>Microsoft is absolutely committed to open standards, especially on the Internet.</i></p>
 		<p><i>— John Ludeman </i><a href="http://1997.webhistory.org/www.lists/www-talk.1994q4/0003.html"><i><code><u>1994</u></code></i></a></p>
@@ -188,7 +245,14 @@ DISPLAY_HEIGHT &gt; 30cm ? http://NYT.com/style : http://LeMonde.fr/style</code>
 	<p>Compared to many of the other proposals, one notable fact of CSS is its simplicity. It can be easily parsed, easily written, and easily read. As with many other examples over the history of the Internet, it was the technology which was easiest for a beginner to pick up which won, rather than those which were most powerful for an expert.</p>
 	<p>It is itself a reminder of how incidental much of this innovation can be. For example, support for contextual selectors (<code>body ol li</code>) was only added because Netscape already had a method for removing borders from images that were hyperlinks, and it seemed necessary to implement everything the popular browser could do. The functionality itself added a significant delay to the implementation of CSS, as at the time most browsers didn’t keep a ‘stack’ of tags as they parsed HTML. This meant the parsers had to be redesigned to support CSS fully.</p>
 	<p>Challenges like this (and the widespread use of non-standard HTML tags to define style) meant CSS was not usable until 1997, and was not fully supported by any single browser until March of 2000. As any developer can tell you, browser support wasn’t anywhere close to standards compliant until just a few years ago, more than fifteen years after CSS’ release.</p>
-	<h3>The Final Boss</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-final-boss">The Final Boss</h3>
+		<a href="https://blog.cloudflare.com/#the-final-boss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>If Netscape 4 ignored CSS rules applied to the </i><i><code>&lt;body&gt;</code></i><i> element and added random amounts of whitespace to every structural element on your page, and if IE4 got </i><i><code>&lt;body&gt;</code></i><i> right but bungled padding, what kind of CSS was safe to write? Some developers chose not to write CSS at all. Others wrote one style sheet to compensate for IE4’s flaws and a different style sheet to compensate for the blunders of Netscape 4.</i></p>
 		<p><i>— Jeffrey Zeldman</i></p>
@@ -215,7 +279,14 @@ ids.z098y.letterSpacing = "0.3em"</code></pre>
 tag.UL.apply = evaluate_style();</code></pre>
 	<p>The idea that we should simplify the dividing line between styles and scripts is certainly reasonable, and is now even experiencing a resurgence of sorts in the <a href="https://facebook.github.io/react/tips/inline-styles.html">React community</a>.</p>
 	<p>JavaScript was itself a very new language at this time, but via some reverse engineering Internet Explorer had already added support for it into IE3 (as “JScript”). The bigger issue was the community had already rallied around CSS, and Netscape was, at this time, viewed as <a href="https://lists.w3.org/Archives/Public/www-style/1996Jun/0068.html">bullies</a> by much of the standards community. When Netscape did <a href="https://www.w3.org/Submission/1996/1/WD-jsss-960822">submit</a> JSSS to the standards committee, it fell on deaf ears. Three years later, Netscape 6 dropped support for JSSS and it died a (mostly) quiet death.</p>
-	<h3>What Might Have Been</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-might-have-been">What Might Have Been</h3>
+		<a href="https://blog.cloudflare.com/#what-might-have-been" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thanks to some <a href="https://www.w3.org/Style/CSS/Test/CSS1/current">public shaming</a> by the W3C, Internet Explorer 5.5 launched with nearly complete CSS1 support in the year 2000. Of course, as we now know, browser CSS implementations were heroically buggy and difficult to work with for at least another decade.</p>
 	<p>Today the situation has fortunately improved dramatically, allowing developers to finally realize the dream of writing code once and trusting it will function (almost) the same from browser to browser.</p>
 	<p>Our conclusion from all of this is the realization of just how arbitrary and contextual many of the decisions which govern our current tools were. If CSS was designed the way it is just to satisfy the constraints of 1996, then maybe that gives us permission 20 years later to do things a little differently.</p>

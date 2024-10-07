@@ -2,7 +2,15 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloud-computing-without-containers">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloud-computing-without-containers">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloud-computing-without-containers">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HhFV0o3X8HeitagVRwg0W/1852b8327d0d1258b1f122043e2f8357/cloud-computing-without-containers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare has a cloud computing platform called <a href="https://www.cloudflare.com/developer-platform/workers">Workers</a>. <b>Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines.</b> We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why.</p>
-	<h3>Isolates</h3>
+	<div class="flex anchor relative">
+		<h3 id="isolates">Isolates</h3>
+		<a href="https://blog.cloudflare.com/#isolates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JzV7eItWZDcmNaG7YVIMp/c4daeb8715d990fbdc6f2444f86ba52f/Artboard-42_3x.png" alt="" class="kg-image" width="2000" height="729" loading="lazy">
@@ -21,7 +29,15 @@
 
 	</figure>
 	<p>This data reflects actual requests (including network latency) made from a data center near where all the functions were deployed, performing a CPU intensive workload. <a href="https://blog.cloudflare.com/serverless-performance-with-cpu-bound-tasks">Source</a></p>
-	<h3>Cold Starts</h3>
+	<div class="flex anchor relative">
+		<h3 id="cold-starts">Cold Starts</h3>
+		<a href="https://blog.cloudflare.com/#cold-starts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Jjvoxu3PZsYBkVwjGRUmr/4bf8cdedf3fdebbdf811f54db3c58e2b/Cold-start_3x.png" alt="" class="kg-image" width="1970" height="881" loading="lazy">
@@ -30,7 +46,15 @@
 	<p>Not everyone fully understands how a traditional Serverless platform like Lambda works. It spins up a containerized process for your code. It isn’t running your code in any environment more lightweight than running Node on your own machines. What it does do is auto-scale those processes (somewhat clumsily). That auto-scaling creates cold-starts.</p>
 	<p>A cold-start is what happens when a new copy of your code has to be started on a machine. In the Lambda world this amounts to spinning up a new containerized process which can take between 500 milliseconds and 10 seconds. Any requests you get will be left hanging for as much as ten seconds, a terrible user experience. As a Lambda can only process a single request at a time, a new Lambda must be cold-started every time you get an additional concurrent request. This means that laggy request can happen over and over. If your Lambda doesn’t get a request soon enough, it will be shut down and it all starts again. Whenever you deploy new code it all happens again as every Lambda has to be redeployed. This has been correctly cited as a reason Serverless is not all it’s cracked up to be.</p>
 	<p>Because Workers don’t have to start a process, Isolates start in 5 milliseconds, a duration which is imperceptible. Isolates similarly scale and deploy just as quickly, entirely eliminating this issue with existing Serverless technologies.</p>
-	<h3>Context Switching</h3>
+	<div class="flex anchor relative">
+		<h3 id="context-switching">Context Switching</h3>
+		<a href="https://blog.cloudflare.com/#context-switching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oMVH0pmrZXsiW5fPPnmvm/0303ccadee2bc06f79ec2de6a6cb8026/multitasking-bars_3x.png" alt="" class="kg-image" width="2000" height="987" loading="lazy">
@@ -39,25 +63,68 @@
 	<p>One key feature of an operating system is it gives you the ability to run many processes at once. It transparently switches between the various processes which would like to run code at any given time. To accomplish that it does what’s called a ‘context switch’: moving all of the memory required for one process out, and the memory required for the next in.</p>
 	<p>That context switch can take as much as 100 microseconds. When multiplied by all the Node, Python or Go processes running on your average Lambda server this creates a heavy overhead which means not all of the CPUs power can actually be devoted to running the customer’s code; it’s spent switching between them.</p>
 	<p>An Isolate-based system runs all of the code in a single process and uses its own mechanisms to ensure safe memory access. This means there are no expensive context switches, the machine spends virtually all of its time running your code.</p>
-	<h3>Memory</h3>
+	<div class="flex anchor relative">
+		<h3 id="memory">Memory</h3>
+		<a href="https://blog.cloudflare.com/#memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>The Node or Python runtimes were meant to be run by individual people on their own servers. They were never intended to be run in a multi-tenant environment with thousands of other people’s code and strict memory requirements.</b> A basic Node Lambda running no real code consumes 35 MB of memory. When you can share the runtime between all of the Isolates as we do, that drops to around 3 MB.</p>
 	<p>Memory is often the highest cost of running a customer’s code (even higher than the CPU), lowering it by an order of magnitude dramatically changes the economics.</p>
 	<p>Fundamentally V8 was designed to be multi-tenant. It was designed to run the code from the many tabs in your browser in isolated environments within a single process. Node and similar runtimes were not, and it shows in the multi-tenant systems which are built atop it.</p>
-	<h3>Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="security">Security</h3>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Running multiple customers' code within the same process obviously requires paying careful attention to security. It wouldn’t have been productive or efficient for Cloudflare to build that isolation layer ourselves. It takes an astronomical amount of testing, fuzzing, penetration testing, and bounties required to build a truly secure system of that complexity.</p>
 	<p>The only reason this was possible at all is the open-source nature of V8, and its standing as perhaps the most well security tested piece of software on earth. We also have a few layers of security built on our end, including various protections against timing attacks, but V8 is the real wonder that makes this compute model possible.</p>
-	<h3>Billing</h3>
+	<div class="flex anchor relative">
+		<h3 id="billing">Billing</h3>
+		<a href="https://blog.cloudflare.com/#billing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is not meant to be a referendum on AWS billing, but it’s worth a quick mention as the economics are interesting. Lambdas are billed based on how long they run for. That billing is rounded up to the nearest 100 milliseconds, meaning people are overpaying for an average of 50 milliseconds every execution. Worse, they bill you for the entire time the Lambda is running, even if it’s just waiting for an external request to complete. As external requests can take hundreds or thousands of ms, you can end up paying ridiculous amounts at scale.</p>
 	<p>Isolates have such a small memory footprint that we, at least, can afford to only bill you while your code is actually executing.</p>
 	<p>In our case, due to the lower overhead, Workers end up being around 3x cheaper per CPU-cycle. A Worker offering 50 milliseconds of CPU is \$0.50 per million requests, the equivalent Lambda is $1.84 per million. I believe lowering costs by 3x is a strong enough motivator that it alone will motivate companies to make the switch to Isolate-based providers.</p>
-	<h3>The Network is the Computer</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-network-is-the-computer">The Network is the Computer</h3>
+		<a href="https://blog.cloudflare.com/#the-network-is-the-computer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Amazon has a product called Lambda@Edge which is deployed to their CDN data centers. Unfortunately, it’s three times more expensive than traditional Lambda, and it takes 30 minutes to deploy initially. It also doesn't allow arbitrary requests, limiting its usefulness to CDN-like-purposes.</p>
 	<p>Conversely, as I mentioned, with Isolates we are able to deploy every source file to 155 data centers at better economics than Amazon can do it to one. It might actually be cheaper to run 155 Isolates than a single container, or perhaps Amazon is charging what the market will bear and it’s much higher than their costs. I don’t know Amazon’s economics, I do know we’re very comfortable with ours.</p>
 	<p>Long-ago it became clear that to have a truly reliable system it must be deployed to more than one place on earth. A Lambda runs in a single availability zone, in a single region, in a single data center.</p>
-	<h3>Disadvantages</h3>
+	<div class="flex anchor relative">
+		<h3 id="disadvantages">Disadvantages</h3>
+		<a href="https://blog.cloudflare.com/#disadvantages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>No technology is magical, every transition comes with disadvantages. An Isolate-based system can’t run arbitrary compiled code. Process-level isolation allows your Lambda to spin up any binary it might need. In an Isolate universe you have to either write your code in Javascript (we use a lot of TypeScript), or a language which targets WebAssembly like Go or Rust.</p>
 	<p>If you can’t recompile your processes, you can’t run them in an Isolate. This might mean Isolate-based Serverless is only for newer, more modern, applications in the immediate future. It also might mean legacy applications get only their most latency-sensitive components moved into an Isolate initially. The community may also find new and better ways to transpile existing applications into WebAssembly, rendering the issue moot.</p>
-	<h3>Your Help</h3>
+	<div class="flex anchor relative">
+		<h3 id="your-help">Your Help</h3>
+		<a href="https://blog.cloudflare.com/#your-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QHHWB6zgfeaEgDDvg84na/e7734845b46cc46490095e343a3031c9/no-VM-_3x-3.png" alt="" class="kg-image" width="2000" height="792" loading="lazy">

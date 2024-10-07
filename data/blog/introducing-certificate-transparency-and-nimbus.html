@@ -15,7 +15,14 @@
 		</li>
 	</ul>
 	<p>In this blog post we’ll explain what Certificate Transparency is and how it will become a critical tool for ensuring user safety online. It’s important for website operators and certificate authorities to learn about CT as soon as possible, because participating in CT becomes mandatory in Chrome for all certificates issued after April 2018. We’ll also explain how Nimbus works and how CT uses a structure called a Merkle tree to scale to the point of supporting all trusted certificates on the Internet. For more about Merkle Town, read the <a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard">follow up post</a> by my colleague Patrick Donahue.</p>
-	<h3>Trust and Accountability</h3>
+	<div class="flex anchor relative">
+		<h3 id="trust-and-accountability">Trust and Accountability</h3>
+		<a href="https://blog.cloudflare.com/#trust-and-accountability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Everything we do online requires a baseline level of trust. When you use a browser to visit your bank’s website or your favorite social media site, you expect that the server on the other side of the connection is operated by the organization indicated in the address bar. This expectation is based on trust, and this trust is supported by a system called the web <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">Public Key Infrastructure</a> (web PKI).</p>
 	<p>From a high level, a PKI is similar to a system of notaries who can grant servers the authority to serve websites by giving them a signed object called a digital certificate. This certificate contains the name of the website, the name of the organization that requested the certificate, how long it’s valid for, and a public key. For each public key, there is an associated private key. In order to serve an HTTPS site with a given certificate, the server needs to prove ownership of the associated private key.</p>
 	<figure class="kg-card kg-image-card ">
@@ -36,7 +43,15 @@
 	<p>This is not a theoretical situation. In 2011, DigiNotar, a Dutch CA, <a href="https://threatpost.com/final-report-diginotar-hack-shows-total-compromise-ca-servers-103112/77170">was hacked</a>. The hacker used their access to the CA to issue a certificate for *.google.com. They then attempted to use this certificate to impersonate Gmail and targeted users in Iran in an attempt to compromise their personal information.</p>
 	<p>The attack was detected by Google using a technique called public key pinning. Key pinning is a <a href="https://blog.qualys.com/ssllabs/2016/09/06/is-http-public-key-pinning-dead">risky technique</a> and only viable for very technically savvy organizations. The value provided by key pinning is usually overshadowed by the operational risk it introduces. It’s often considered the canonical example of a “foot gun” mechanism. Key pinning is being <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">deprecated by browsers</a>.</p>
 	<p>If key pinning is not the solution, what can be done to detect CA malfeasance? This is where Certificate Transparency comes in. The goal of CT is to make all certificates public so that mis-issued certificates can be detected and appropriate action taken. This helps bring accountability to balance the trust we collectively place in the fragile web PKI.</p>
-	<h3>Shining a light</h3>
+	<div class="flex anchor relative">
+		<h3 id="shining-a-light">Shining a light</h3>
+		<a href="https://blog.cloudflare.com/#shining-a-light" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MQoZ8uEfBJZJbMWHSii9u/d64506f325d5cd6df67e6f20210ee98f/image12.jpg" alt="image12" class="kg-image" width="940" height="628" loading="lazy">
@@ -117,7 +132,14 @@
 		</li>
 	</ul>
 	<p>If you’re a CA operator and are struggling to implement this or worried about the additional delay caused by submitting pre-certificates to logs, Cloudflare can help. We’re offering an experimental API for CAs that takes pre-certificates and returns a valid set of SCTs for a given certificate. This API handles sorting out the browser policies and leverages <a href="https://www.cloudflare.com/argo">Argo Smart Routing</a> to return SCTs with as little delay as possible. Please contact our CT team at <a href="mailto:ct-logs@cloudflare.com">ct-logs@cloudflare.com</a> if you have any interest in this offering.</p>
-	<h3>Building a verifiable globally consistent log</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-verifiable-globally-consistent-log">Building a verifiable globally consistent log</h3>
+		<a href="https://blog.cloudflare.com/#building-a-verifiable-globally-consistent-log" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The PKI is huge. The <a href="https://blog.cloudflare.com/https-or-bust-chromes-plan-to-label-sites-as-not-secure">industry-wide push for HTTPS</a> has introduced millions of new certificates into the web PKI. There are over a quarter-billion(!) certificates logged in CT, and this number is growing by almost a million per day. This number is sure to grow as we approach Chrome’s April deadline. Managing a high availability database of this size that you can only add to (a property called append-only) is a substantial engineering challenge.</p>
 	<p>The naïve data structure to use for an append-only database is a hash chain. In a hash chain, elements are aligned in order and combined using a <a href="https://simple.wikipedia.org/wiki/Cryptographic_hash_function">one-way hash function</a> like SHA-256. The diagram below describes how a hash chain is created from a list of values d1 to d8. Start with the first element, d1, which is hashed to a value a, which then becomes the head of the chain. Every time an element is added to the chain, a hash function is computed over two inputs: the current chain head and the new element. This hash value become the new chain head. Because one-way hash functions can’t be reversed, it’s computationally infeasible to change a value without it changing the entire chain that has been computed from it. This makes a hash chain’s history very difficult to modify maliciously.</p>
 	<figure class="kg-card kg-image-card ">
@@ -153,7 +175,14 @@
 
 	</figure>
 	<p>A certificate transparency log is a Merkle tree where the leaf elements are certificates. Each log has a private key that it uses to sign the current tree head at regular intervals. Some CT logs are huge with over a hundred million entries, but because of the efficiency of Merkle trees, inclusion proofs only require around 30 hashes. This structure provides a good balance between the cost to the log operator of adding certificates and the cost to the auditor of validating its consistency.</p>
-	<h3>Nimbus</h3>
+	<div class="flex anchor relative">
+		<h3 id="nimbus">Nimbus</h3>
+		<a href="https://blog.cloudflare.com/#nimbus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our own addition to the log ecosystem is Nimbus. Nimbus is a family of Certificate Transparency logs with an open acceptance policy. Nimbus accepts any certificate that is signed by a CA from our <a href="https://github.com/cloudflare/cfssl_trust">cfssl_trust</a> root store. The logs are organized by year, e.g. Nimbus 2018, Nimbus 2019, etc. with each log only accepting certificates that expire in that year.</p>
 	<figure class="kg-card kg-image-card ">
 

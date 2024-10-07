@@ -11,12 +11,33 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/i7vy9tF8vCaeOru3zTeqq/a1fd36f25ba88357cff5ab32ba851ed2/Screenshot-2023-07-11-at-10.09.10-PM.png" alt="" class="kg-image" width="1600" height="1410" loading="lazy">
 
 	</figure>
-	<h3>A quick recap about Zone Versioning</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-quick-recap-about-zone-versioning">A quick recap about Zone Versioning</h3>
+		<a href="https://blog.cloudflare.com/#a-quick-recap-about-zone-versioning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/version-management">Zone Versioning</a> was launched at the start of 2023 to all <a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers and allows you to create and manage independent versions of your zone configuration. This enables you to safely configure a set of configuration changes and progressively roll out those changes together to predefined environments of traffic. Having the ability to carefully test changes in a test or staging environment before deploying them to production, can help catch configuration issues before they can have a large impact on your zone’s traffic. See the <a href="https://blog.cloudflare.com/zone-versioning-ga">general availability announcement blog</a> for a deeper dive on the overall capability.</p>
-	<h3>Why we built Version Comparisons</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-we-built-version-comparisons">Why we built Version Comparisons</h3>
+		<a href="https://blog.cloudflare.com/#why-we-built-version-comparisons" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Diff">Diff</a> is a well known and often used tool by many software developers to quickly understand the difference between two files. While originally just a command line utility it is now ubiquitous across the software world. Most commonly used in code reviews, software developers use ‘diffs’ to ensure they can validate the set of changes they intend to make to a codebase and to allow others to easily review their code by focusing on what changed. One of the drawbacks of graphical user interfaces (GUIs) for managing configurations is since they aren’t ‘files’, tools like diff don’t work for them. This was true with Zone Versioning, as to try and understand what had changed between two versions you would need to manually inspect each version and the various sections of the dashboard across both versions. This is quite tedious and error-prone, so it can reduce the safety that versioning can provide.</p>
 	<p>With Version Comparisons, we are bringing the same capabilities of diff but without the need for using a command line to allow customers to compare two versions side by side. This makes the process of understanding which configurations of your zone changed between two versions easy, quick and painless. By pointing out which config has changed, you can have greater confidence that deploying a new version of your configuration will not create any surprises. Let’s now look at how to use Version Comparisons in the Cloudflare Dashboard.</p>
-	<h3>Using Version Comparisons</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-version-comparisons">Using Version Comparisons</h3>
+		<a href="https://blog.cloudflare.com/#using-version-comparisons" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After navigating to a zone that has Zone Versioning enabled, select ‘Version Management’ in the left-hand navigation. For help getting started with Zone Versioning, see our <a href="https://developers.cloudflare.com/version-management">dev docs</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,6 +58,13 @@
 
 	</figure>
 	<p>Changes will be highlighted for new additions and removals for that service. Based on the comparison, you can then decide if more changes are necessary or if that new version is ready to be rolled out.</p>
-	<h3>Try out Version Comparisons today</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-out-version-comparisons-today">Try out Version Comparisons today</h3>
+		<a href="https://blog.cloudflare.com/#try-out-version-comparisons-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Versions comparisons are available to all customers using Zone Versioning! If you are a Cloudflare Enterprise customer, to get started using Zone Versioning and Version Comparisons, check out our <a href="https://developers.cloudflare.com/version-management">dev docs</a>.</p>
 </div>

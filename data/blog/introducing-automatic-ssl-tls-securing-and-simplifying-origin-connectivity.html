@@ -11,7 +11,14 @@
 	<p>We first talked about this process in <a href="https://blog.cloudflare.com/introducing-universal-ssl"><u>2014</u></a>: at that time, securing connections was hard to configure, prohibitively expensive, and required specialized knowledge to set up correctly. To help alleviate these pains, Cloudflare introduced Universal SSL, which allowed web properties to obtain a <a href="https://www.cloudflare.com/application-services/products/ssl"><u>free SSL/TLS certificate</u></a> to enhance the security of connections between browsers and Cloudflare.&nbsp;</p>
 	<p>This worked well and was easy because Cloudflare could manage the certificates and connection security from incoming browsers. As a result of that work, the number of encrypted HTTPS connections on the entire Internet <a href="https://blog.cloudflare.com/introducing-universal-ssl#:~:text=we%27ll%20have%20doubled%20that"><u>doubled</u></a> at that time. However, the connections made from Cloudflare to origin servers still required <i>manual</i> configuration of the encryption <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes"><u>modes</u></a> to let Cloudflare know the capabilities of the origin.&nbsp;</p>
 	<p>Today we’re excited to begin the sequel to Universal SSL and make security between Cloudflare and origins automatic and easy for everyone.</p>
-	<h2>History of securing origin-facing connections</h2>
+	<div class="flex anchor relative">
+		<h2 id="history-of-securing-origin-facing-connections">History of securing origin-facing connections</h2>
+		<a href="https://blog.cloudflare.com/#history-of-securing-origin-facing-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ensuring that more bytes flowing across the Internet are automatically encrypted strengthens the barrier against interception, throttling, and censorship of Internet traffic by third parties.&nbsp;</p>
 	<p>Generally, two communicating parties (often a client and server) establish a secure connection using the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>TLS</u></a> protocol. For a simplified breakdown:&nbsp;</p>
 	<ul>
@@ -42,7 +49,14 @@
 	<p>Ensuring certificates are configured appropriately on origin servers and informing Cloudflare about how we should communicate with origins can be anxiety-inducing because misconfiguration can lead to downtime if something isn’t deployed or configured correctly.&nbsp;</p>
 	<p>To simplify this process and help identify the most secure options that customers could be using without any misconfiguration risk, <b>Cloudflare introduced the </b><a href="https://blog.cloudflare.com/ssl-tls-recommender"><b><u>SSL/TLS Recommender</u></b></a><b> in 2021.</b> The Recommender works by probing customer origins with different SSL/TLS settings to provide a recommendation whether the SSL/TLS <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes"><u>encryption mode</u></a> for the web property can be improved. The Recommender has been in production for three years and has consistently managed to provide high quality origin-security recommendations for Cloudflare’s customers.&nbsp;</p>
 	<p>The SSL/TLS Recommender system serves as the brain of the automatic origin connection service that we are announcing today.&nbsp;</p>
-	<h2>How does SSL/TLS Recommendation work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-ssl-tls-recommendation-work">How does SSL/TLS Recommendation work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-ssl-tls-recommendation-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Recommender works by actively comparing content on web pages that have been downloaded using different SSL/TLS modes to see if it is safe and risk-free to update the <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes"><u>mode</u></a> Cloudflare uses to connect to origin servers.</p>
 	<p>Cloudflare currently offers five SSL/TLS modes:</p>
 	<ol>
@@ -139,7 +153,14 @@
 	<p>When the Recommender is making security recommendations, it errs on the side of maintaining current site functionality to avoid breakage and usability issues. If a website is non-functional, blocks all bots, or has SSL/TLS-specific Page Rules or Configuration Rules, the Recommender may not complete its scans and provide a recommendation. It was designed to maximize domain security, but will not help resolve website or domain functionality issues.</p>
 	<p>The crawler uses the user agent "<code>Cloudflare-SSLDetector</code>" and is included in Cloudflare’s list of known <a href="https://bots-directory.cfdata.org/bot/cloudflare-ssl-detector"><u>good bots</u></a>. It ignores <code>robots.txt</code> (except for rules specifically targeting its user agent) to ensure accurate recommendations.</p>
 	<p>When downloading content from your origin server over both HTTP and HTTPS and comparing the content, the Recommender understands the current SSL/TLS encryption mode that your website uses and what risk there might be to the site functionality if the recommendation is followed.</p>
-	<h2>Using SSL/TLS Recommender to automatically manage SSL/TLS settings&nbsp;</h2>
+	<div class="flex anchor relative">
+		<h2 id="using-ssl-tls-recommender-to-automatically-manage-ssl-tls-settings">Using SSL/TLS Recommender to automatically manage SSL/TLS settings&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#using-ssl-tls-recommender-to-automatically-manage-ssl-tls-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Previously, signing up for the SSL/TLS Recommender provided a good experience for customers, but only resulted in an email recommendation in the event that a zone’s current SSL/TLS modes could be updated. To Cloudflare, this was a positive signal that customers wanted their websites to have more secure connections to their origin servers – over 2 million domains have enabled the SSL/TLS Recommender. However, we found that a significant number of users would not complete the next step of pushing the button to inform Cloudflare that we could communicate over the upgraded settings. <b>Only 30% of the recommendations that the system provided were followed.&nbsp;</b></p>
 	<p>With the system designed to increase security while avoiding any breaking changes, we wanted to provide an option for customers to allow the Recommender to help upgrade their site security, without requiring further manual action from the customer. <b>Therefore, we are introducing a new option for managing SSL/TLS configuration on Cloudflare: Automatic SSL/TLS.&nbsp;</b></p>
 	<figure class="kg-card kg-image-card">
@@ -158,7 +179,14 @@
 	</figure>
 	<p></p>
 	<p>The goal of Automatic SSL/TLS<b> </b>is to simplify and maximize the origin-facing security for customers on Cloudflare. We want this to be the new default for all websites on Cloudflare, but we understand that not everyone wants this new default, and we will respect your decision for how Cloudflare should communicate with your origin server. If you block the Recommender from completing its crawls, the origin server is non-functional or can’t be crawled, or if you want to opt out of this default and just continue using the same encryption mode you are using today, we will make it easy for you to tell us what you prefer.&nbsp;</p>
-	<h2>How to onboard to Automatic SSL/TLS</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-onboard-to-automatic-ssl-tls">How to onboard to Automatic SSL/TLS</h2>
+		<a href="https://blog.cloudflare.com/#how-to-onboard-to-automatic-ssl-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To improve the security settings for everyone by default, we are making the following default changes to how Cloudflare configures the SSL/TLS level for all zones:&nbsp;</p>
 	<p>Starting on <b>August 8, 2024</b> websites with the <b>SSL/TLS Recommender currently enabled</b> will have the Automatic SSL/TLS setting enabled by default. Enabling does not mean that the Recommender will begin scanning and applying new settings immediately though. There will be a <b><u>one-month grace period</u></b> before the first scans begin and the recommended settings are applied. Enterprise (ENT) customers will get a <b><u>six-week grace period</u></b>. Origin scans will start getting scheduled by <b>September 9, 2024, for non-Enterprise </b>customers<b> </b>and<b> September 23rd for ENT customers with the SSL Recommender enabled</b>. This will give customers the ability to opt out by removing Automatic SSL/TLS and selecting the Custom mode that they want to use instead.</p>
 	<p>Further, during the second week of September <b>all new zones signing up for Cloudflare</b> will start seeing the Automatic SSL/TLS setting enabled by default.</p>
@@ -166,7 +194,14 @@
 	<p>Customers in the cohort having the new Automatic SSL/TLS setting applied will receive an email communication regarding the date that they are slated for this migration as well as a banner on the dashboard that mentions this transition as well. If they do not wish for Cloudflare to change anything in their configurations, the process for opt-out of this migration is outlined below.&nbsp;</p>
 	<p>Following the successful migration of Free and Pro customers, we will proceed to Business and Enterprise customers with a similar cadence. These customers will get email notifications and information in the dashboard when they are in the migration cohort.</p>
 	<p>The Automatic SSL/TLS setting will not impact users that are already in Strict or Full (strict) mode nor will it impact websites that have opted-out.&nbsp;</p>
-	<h2>Opting out</h2>
+	<div class="flex anchor relative">
+		<h2 id="opting-out">Opting out</h2>
+		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a number of reasons why someone might want to configure a lower-than-optimal security setting for their website. Some may want to set a lower security setting for testing purposes or to debug some behavior. Whatever the reason, the options to opt-out of the Automatic SSL/TLS setting during the migration process are available in the dashboard and API.</p>
 	<p>To opt-out, simply select <b>Custom SSL/TLS</b> in the dashboard (instead of the enabled Automatic SSL/TLS) and we will continue to use the previously set encryption mode that you were using prior to the migration. Automatic and Custom SSL/TLS modes can be found in the <b>Overview</b> tab of the SSL/TLS section of the dashboard. To enable your preferred mode, select <b>configure</b>.&nbsp;&nbsp;</p>
 	<figure class="kg-card kg-image-card">
@@ -183,7 +218,14 @@
 	<p></p>
 	<p>If an opt-out is triggered, there will not be a change to the currently configured SSL/TLS setting. You are also able to change the security level at any time by going to the SSL/TLS section of the dashboard and choosing the Custom setting you want (similar to how this is accomplished today).&nbsp;</p>
 	<p>If at a later point you’d like to opt-in to Automatic SSL/TLS, that option is available by changing your setting from Custom to Automatic.</p>
-	<h2>What if I want to be more secure now?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-if-i-want-to-be-more-secure-now">What if I want to be more secure now?</h2>
+		<a href="https://blog.cloudflare.com/#what-if-i-want-to-be-more-secure-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will begin to roll out this change to customers with the SSL/TLS Recommender enabled on <b>August 8, 2024</b>. If you want to enroll in that group, we recommend enabling the Recommender as soon as possible.&nbsp;</p>
 	<p>If you read this and want to make sure you’re at the highest level of backend security already, we recommend <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict"><u>Full (strict)</u></a> or <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull"><u>Strict mode</u></a>. Directions on how to make sure you’re correctly configured in either of those settings are available <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/#required-setup"><u>here</u></a> and <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/#required-setup"><u>here</u></a>.&nbsp;</p>
 	<p>If you prefer to wait for us to automatically upgrade your connection to the maximum encryption mode your origin supports, please watch your inbox for the date we will begin rolling out this change for you.</p>

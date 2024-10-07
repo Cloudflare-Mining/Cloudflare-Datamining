@@ -10,12 +10,26 @@
 	<p>On the client side, <a href="https://www.cloudflare.com/products/mobile-sdk">Cloudflare’s Mobile SDK</a> extends control directly into your mobile apps, providing visibility into application performance and load times across any global carrier network.</p>
 	<p>On the host side, <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> lets companies move workloads from their host to the Cloudflare Network, reducing infrastructure costs and speeding up the user experience. <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> lets you securely connect your host directly to a Cloudflare data center. If your host infrastructure is running other TCP services besides HTTP(S), you can now protect it with Cloudflare’s DDoS protection using <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>.</p>
 	<p>So for end-to-end control that is easy and fast to deploy, these recent products are all incredible “workers” across the “spectrum” of your needs.</p>
-	<h3>But there’s more to the story</h3>
+	<div class="flex anchor relative">
+		<h3 id="but-theres-more-to-the-story">But there’s more to the story</h3>
+		<a href="https://blog.cloudflare.com/#but-theres-more-to-the-story" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>End users want richer experiences, such as more video, interactivity, and images. Meeting those needs can incur real costs in bandwidth, hardware, and time. Cloudflare addresses these with three products that improve video delivery, reduce paint times, and shrink the round-trip times.</p>
 	<p>Cloudflare now simplifies and reduces delivery cost of video with <a href="https://www.cloudflare.com/products/stream-delivery">Stream Delivery</a>. Pages using plenty of Javascript now have faster paint times and wider mobile-device support with <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Rocket Loader</a>. If you’re managing multiple origins and want to ensure fastest delivery based on the shortest round-trip time, Cloudflare Load Balancer now supports <a href="https://blog.cloudflare.com/i-wanna-go-fast-load-balancing-dynamic-steering">Dynamic Steering</a>.</p>
 	<p>Attackers are shifting their focus to the application layer. Some security features, like CAPTCHA and Javascript Challenge, give you more control and reduce false-positives when blocking rate-based threats at the edge, such as layer 7 DDoS or brute-force attacks.</p>
 	<p>Finally, Cloudflare extended privacy to consumers through the launch of our DNS resolver <a href="https://1.1.1.1">1.1.1.1</a> on 4/1/2018! Now users who set their DNS resolvers to 1.1.1.1 can browse faster while protecting browser data with Cloudflare’s privacy-first consumer DNS service.</p>
-	<h3>Here is a recap from April to June of the features we released in Q2</h3>
+	<div class="flex anchor relative">
+		<h3 id="here-is-a-recap-from-april-to-june-of-the-features-we-released-in-q2">Here is a recap from April to June of the features we released in Q2</h3>
+		<a href="https://blog.cloudflare.com/#here-is-a-recap-from-april-to-june-of-the-features-we-released-in-q2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Dynamic Steering</h4>
 	<p><i>Tue, July 10, 2018</i>Dynamic steering is a load balancing feature that automates traffic steering across origins in multiple geographic regions. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round-trip time (RTT)</a> for health checks is calculated across multiple pools of load balanced servers and origins to determine the fastest server pools. This RTT data enables the load balancers to identify the fastest pools, and to direct user requests to the most responsive origins.</p>
 	<ul>

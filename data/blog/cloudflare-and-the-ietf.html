@@ -17,7 +17,14 @@
 	<p>Even an explanation this dense is laughably oversimplified. For example, the four protocols listed are just the start, and ignore many others with acronyms of their own. The truth is that things are complicated. And because things are complicated, how these protocols and systems interact and influence the user experience on the Internet is complicated. Extra round trips to establish a secure connection increase the amount of time before useful work is done, harming user performance. The use of unauthenticated or unencrypted protocols reveals potentially sensitive information to the network or, worse, to malicious entities, which harms user security and privacy. And finally, consolidation and centralization — seemingly a prerequisite for reducing costs and protecting against attacks — makes it challenging to provide high availability even for essential services. (What happens when that one system goes down or is otherwise unavailable, or to extend our earlier metaphor, when a trapeze isn’t there to catch?)</p>
 	<p>These four properties — performance, security, privacy, and availability — are crucial to the Internet. At Cloudflare, and especially in the Cloudflare Research team, where we use all these various protocols, we're committed to improving them at every layer in the stack. We work on problems as diverse as <a href="https://www.cloudflare.com/network-security">helping network security</a> and privacy with <a href="https://datatracker.ietf.org/doc/html/rfc8446">TLS 1.3</a> and <a href="https://datatracker.ietf.org/doc/html/rfc9000">QUIC,</a> improving DNS privacy via <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>, reducing end-user CAPTCHA annoyances with Privacy Pass and <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">Cryptographic Attestation of Personhood (CAP)</a>, performing Internet-wide measurements to understand how things work in the real world, and much, much more.</p>
 	<p>Above all else, these projects are meant to do one thing: focus beyond the horizon to help build a better Internet. We do that by developing, advocating, and advancing open standards for the many protocols in use on the Internet, all backed by implementation, experimentation, and analysis.</p>
-	<h3>Standards</h3>
+	<div class="flex anchor relative">
+		<h3 id="standards">Standards</h3>
+		<a href="https://blog.cloudflare.com/#standards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is a network of interconnected autonomous networks. Computers attached to these networks have to be able to route messages to each other. However, even if we can send messages back and forth across the Internet, much like the storied Tower of Babel, to achieve anything those computers have to use a common language, a lingua franca, so to speak. And for the Internet, standards are that common language.</p>
 	<p>Many of the parts of the Internet that Cloudflare is interested in are standardized by the IETF, which is a standards development organization responsible for producing technical specifications for the Internet's most important protocols, including IP, BGP, DNS, TCP, TLS, QUIC, HTTP, and so on. The <a href="https://www.ietf.org/about/mission">IETF's mission</a> is:</p>
 	<p>&gt; to make the Internet work better by producing high-quality, relevant technical documents that influence the way people design, use, and manage the Internet.</p>
@@ -26,7 +33,14 @@
 	<p>2. Provide holistic solutions to long-standing architectural problems and enable new use cases; and</p>
 	<p>3. Identify key problems and help specify reusable, extensible, easy-to-implement abstractions for solving them.</p>
 	<p>Below, we’ll give an example of how we helped achieve each goal, touching on a number of important technical specifications produced in recent years, including DNS-over-HTTPS, QUIC, and (the still work-in-progress) TLS Encrypted Client Hello.</p>
-	<h3>Incremental innovation: metadata privacy with DoH and ECH</h3>
+	<div class="flex anchor relative">
+		<h3 id="incremental-innovation-metadata-privacy-with-doh-and-ech">Incremental innovation: metadata privacy with DoH and ECH</h3>
+		<a href="https://blog.cloudflare.com/#incremental-innovation-metadata-privacy-with-doh-and-ech" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is not only complicated — it is leaky. Metadata seeps like toxic waste from nearly every protocol in use, from DNS to TLS, and even to HTTP at the application layer.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -53,7 +67,14 @@
 		</li>
 	</ul>
 	<p>While each of these protocols may seem only an incremental improvement over what we have today, together, they raise many possibilities for the future of the Internet. Are DoH and ECH sufficient for end-user privacy, or are technologies like ODoH and MASQUE necessary? How do proxy technologies like MASQUE complement or even subsume protocols like ODoH and ECH? These are questions the Cloudflare Research team strives to answer through experimentation, analysis, and deployment together with other stakeholders on the Internet through the IETF. And we could not ask the questions without first laying the groundwork.</p>
-	<h3>Architectural advancement: QUIC and HTTP/3</h3>
+	<div class="flex anchor relative">
+		<h3 id="architectural-advancement-quic-and-http-3">Architectural advancement: QUIC and HTTP/3</h3>
+		<a href="https://blog.cloudflare.com/#architectural-advancement-quic-and-http-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://quicwg.org">QUIC</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-34">HTTP/3</a> are transformative technologies. Whilst the TLS handshake forms the heart of QUIC’s security model, QUIC is an improvement beyond TLS over TCP, in many respects, including more encryption (privacy), better protection against active attacks and ossification at the network layer, fewer round trips to establish a secure connection, and generally better security properties. QUIC and HTTP/3 give us a clean slate for future innovation.</p>
 	<p>Perhaps one of QUIC’s most important contributions is that it challenges and even breaks many established conventions and norms used on the Internet. For example, the antiquated socket API for networking, which treats the network connection as an in-order bit pipe is no longer appropriate for modern applications and developers. Modern networking APIs such as Apple’s <a href="https://developer.apple.com/documentation/network">Network.framework</a> provide high-level interfaces that take advantage of the new transport features provided by QUIC. Applications using this or even higher-level HTTP abstractions can take advantage of the many security, privacy, and performance improvements of QUIC and HTTP/3 today with minimal code changes, and without being constrained by sockets and their inherent limitations.</p>
 	<p>Another salient feature of QUIC is its wire format. Nearly every bit of every QUIC packet is encrypted and authenticated between sender and receiver. And within a QUIC packet, individual frames can be rearranged, repackaged, and otherwise transformed by the sender.</p>
@@ -67,7 +88,14 @@
 	<p>In fact, we've already seen a flurry of new work based on QUIC: extensions to enable multipath QUIC, different congestion control approaches, and ways to carry data unreliably in the DATAGRAM frame.</p>
 	<p>Beyond functional extensions, we’ve also seen a number of new use cases emerge as a result of QUIC. DNS-over-QUIC is an upcoming proposal that complements DNS-over-TLS for recursive to authoritative DNS query protection. As mentioned above, MASQUE is a working group focused on standardizing methods for proxying arbitrary UDP and IP protocols over QUIC connections, enabling a number of fascinating solutions and unlocking the future of proxy and VPN technologies. In the context of the web, the WebTransport working group is standardizing methods to use QUIC as a “supercharged WebSocket” for transporting data efficiently between client and server while also depending on the WebPKI for security.</p>
 	<p>By definition, these extensions are nowhere near complete. The future of the Internet with QUIC is sure to be a fascinating adventure.</p>
-	<h3>Specifying abstractions: Cryptographic algorithms and protocol design</h3>
+	<div class="flex anchor relative">
+		<h3 id="specifying-abstractions-cryptographic-algorithms-and-protocol-design">Specifying abstractions: Cryptographic algorithms and protocol design</h3>
+		<a href="https://blog.cloudflare.com/#specifying-abstractions-cryptographic-algorithms-and-protocol-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Standards allow us to build abstractions. An ideal standard is one that is usable in many contexts and contains all the information a sufficiently skilled engineer needs to build a compliant implementation that successfully interoperates with other independent implementations. Writing a new standard is sort of like creating a new Lego brick. Creating a new Lego brick allows us to build things that we couldn’t have built before. For example, one new “brick” that’s nearly finished (as of this writing) is <a href="https://www.ietf.org/archive/id/draft-irtf-cfrg-hpke-12.html">Hybrid Public Key Encryption (HPKE)</a>. HPKE allows us to efficiently encrypt arbitrary plaintexts under the recipient’s public key.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -75,7 +103,14 @@
 
 	</figure>
 	<p>Mixing asymmetric and symmetric cryptography for efficiency is a common technique that has been used for many years in all sorts of protocols, from TLS to <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a>. However, each of these applications has come up with their own design, each with its own security properties. HPKE is intended to be a single, standard, interoperable version of this technique that turns this complex and technical corner of protocol design into an easy-to-use black box. The standard has undergone extensive analysis by cryptographers throughout its development and has numerous implementations available. The end result is a simple abstraction that protocol designers can include without having to consider how it works under-the-hood. In fact, HPKE is already a dependency for a number of other draft protocols in the IETF, such as <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-13">TLS Encrypted Client Hello</a>, <a href="https://datatracker.ietf.org/doc/html/draft-pauly-dprive-oblivious-doh-07">Oblivious DNS-over-HTTPS</a>, and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-architecture-07.html">Message Layer Security</a>.</p>
-	<h3>Modes of Interaction</h3>
+	<div class="flex anchor relative">
+		<h3 id="modes-of-interaction">Modes of Interaction</h3>
+		<a href="https://blog.cloudflare.com/#modes-of-interaction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We engage with the IETF in the specification, implementation, experimentation, and analysis phases of a standard to help achieve our three goals of incremental innovation, architectural advancement, and production of simple abstractions.</p>
 	<figure class="kg-card kg-image-card ">
 

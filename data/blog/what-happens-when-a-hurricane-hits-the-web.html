@@ -7,7 +7,14 @@
 	</figure>
 	<p>Photo credit: <a href="http://hypervocal.com/news/2012/rainbow-sandy-nyc">Hy Chalmé/Instagram</a></p>
 	<p>Now that Hurricane Sandy has passed and the flood waters have begun to recede, we wanted to recap what we saw over the last 24 hours across the CloudFlare network.</p>
-	<h3>CloudFlare's Infrastructure</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-infrastructure">CloudFlare's Infrastructure</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our network is designed to survive hurricanes and other natural disasters, so we were confident even if some of our data centers that were in the hurricane's path failed, traffic would immediately be transferred to the next closest facility. That said, our preference is always that all <a href="https://www.cloudflare.com/network-map">our data centers</a> remain <a href="https://www.cloudflare.com/system-status">online</a> and able to continue to serve traffic.</p>
 	<p>Yesterday morning our ops team met to plan for the potential loss of our facilities in Newark, NJ, which we refer to by the airport code EWR, and potentially Ashburn, VA, which we refer to by the airport code IAD. Our equipment is located in an Equinix facility in both locations and we confirmed that they had taken steps to ensure their systems were tested and as hurricane-ready as they could be.</p>
 	<p>Data centers are setup so that, if power from the grid is disrupted, they switch to stored backup power until generators can kick in. In EWR, power is stored in what are, effectively, a series of car batteries. Enough power is stored in the batteries that the data center can continue to run without a new source of power for several minutes. The diesel generators are setup to kick in within that time period, usually less than a minute after a power failure is detected. The generators are intended to be able to power the facilities indefinitely so long as there is sufficient fuel. Most of the data centers from which we operate worldwide are considered "critical infrastructure" and, during an emergency, they are second in line, behind only hospitals, for delivery of diesel fuel.</p>
@@ -19,7 +26,14 @@ Web" class="kg-image" width="417" height="275" loading="lazy">
 	</figure>
 	<p>The generators at our EWR facility would get a test as the storm passed overhead. At 01:31 EDT, several hours after the storm had made landfall, we received notice EWR had lost grid power. As designed, power was immediately transferred to the batteries and then to the generators. The incident description read: "Equinix IBX reported a utility power disturbance and transferred customer loads to generator power. No customers have been impacted and Site Staff reports that sufficient fuel supplies are available. Next update will be when a significant change to the situation occurs." Our systems continued to run and we did not detect any power surge or interruption.</p>
 	<p>At 08:32 EDT, we received notice that one of the EWR generators had failed: "Equinix IBX reports customer loads are on generator power, however they have a loss of redundancy do to the failure of generator 4. Engineers are investigating the issue. Next update will be when a significant change to the situation occurs." Data centers are designed for redundancy, so losing a single generator would not cause a power loss. Our systems continued to function as normal and the functional generators continued to power our equipment throughout the day. At 19:09 EDT, 11 and a half hours after the generator originally kicked in, we received notice that grid power had been restored: "Equinix IBX AMFO reports that utility power has been restored."</p>
-	<h3>Elsewhere on the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="elsewhere-on-the-internet">Elsewhere on the Internet</h3>
+		<a href="https://blog.cloudflare.com/#elsewhere-on-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we were fortunate that all of CloudFlare's facilities stayed online, other data centers and networks experienced issues. Around 02:10 EDT, our network ops team noticed a change in routing from traffic that usually transited via Level(3)'s Yellow/Atlantic Crossing-2 (AC-2) undersea cable. The cable runs from Bude, United Kingdom to Bellport, New York. While routing changed, it did not impact our customers and our network routed around the problem. We later confirmed with other network operators that AC-2 had experienced a failure.</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -10,7 +10,15 @@
 	<p>A lot of Cloudflare's technology is well documented. For example, how we handle traffic between the eyeballs (clients) and our servers has been discussed many times on this blog: “<a href="https://blog.cloudflare.com/a-brief-anycast-primer">A brief primer on anycast (2011)</a>”, "<a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">Load Balancing without Load Balancers (2013)</a>", "<a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU discovery in practice (2015)</a>", &nbsp;"<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Cloudflare's edge load balancer (2020)</a>", "<a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">How we fixed the BSD socket API (2022)</a>".</p>
 	<p>However, we have rarely talked about the second part of our networking setup — how our servers fetch the content from the Internet. In this blog we’re going to cover this gap. We'll discuss how we manage Cloudflare IP addresses used to retrieve the data from the Internet, how our egress network design has evolved and how we optimized it for best use of available IP space.</p>
 	<p>Brace yourself. We have a lot to cover.</p>
-	<h3>Terminology first!</h3>
+	<div class="flex anchor relative">
+		<h3 id="terminology-first">Terminology first!</h3>
+		<a href="https://blog.cloudflare.com/#terminology-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/01iopATg1CQGchxawLCk1U/f4ef9239d87d3de68eff087c8bb075c2/image8-4.png" alt="" class="kg-image" width="2000" height="600" loading="lazy">
@@ -41,7 +49,15 @@
 		</li>
 	</ul>
 	<p>And so on.</p>
-	<h3>Anycast on ingress, unicast on egress</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-on-ingress-unicast-on-egress">Anycast on ingress, unicast on egress</h3>
+		<a href="https://blog.cloudflare.com/#anycast-on-ingress-unicast-on-egress" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WOoxT0QUqaGhBwa0lSgRu/a15d784065d56c77400b9576439c1a5f/image9-3.png" alt="" class="kg-image" width="1999" height="940" loading="lazy">
@@ -60,7 +76,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GWAHkJLOKz7tR9rIgwfgG/3d7ae19fb7ace8fabf7aaf8f6b817cfb/image5-16.png" alt="" class="kg-image" width="1360" height="600" loading="lazy">
 
 	</figure>
-	<h3>Segmenting traffic based on egress IP</h3>
+	<div class="flex anchor relative">
+		<h3 id="segmenting-traffic-based-on-egress-ip">Segmenting traffic based on egress IP</h3>
+		<a href="https://blog.cloudflare.com/#segmenting-traffic-based-on-egress-ip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Originally connections sourced by Cloudflare were mostly HTTP fetches going to origin servers on the Internet. As our product line grew, so did the variety of traffic. The most notable example is <a href="https://blog.cloudflare.com/1111-warp-better-vpn">our WARP app</a>. For WARP, our servers operate a forward proxy, and handle the traffic sourced by end-user devices. It's done without the same degree of intermediation as in our <a href="https://www.cloudflare.com/application-services/products/cdn">CDN product</a>. This creates a problem. Third party servers on the Internet — like the origin servers — must be able to distinguish between connections coming from Cloudflare services and our WARP users. Such traffic segmentation is traditionally done by using different IP ranges for different traffic types (although recently we introduced more robust techniques like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull">Authenticated Origin Pulls</a>).</p>
 	<p>To work around the trusted vs untrusted traffic pool differentiation problem, we added an untrusted WARP IP address to each of our servers:</p>
 	<figure class="kg-card kg-image-card ">
@@ -68,7 +91,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hudtFCXBWUe1aRFIfcH7s/0782748cad45cf5d59369cee4ed09db4/image4-30.png" alt="" class="kg-image" width="1560" height="600" loading="lazy">
 
 	</figure>
-	<h3>Country tagged egress IP addresses</h3>
+	<div class="flex anchor relative">
+		<h3 id="country-tagged-egress-ip-addresses">Country tagged egress IP addresses</h3>
+		<a href="https://blog.cloudflare.com/#country-tagged-egress-ip-addresses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It quickly became apparent that trusted vs untrusted weren't the only tags needed. For WARP service we also need country tags. For example, United Kingdom based WARP users expect the bbc.com website to just work. However, the BBC restricts many of its services to people just in the UK.</p>
 	<p>It does this by <i>geofencing</i> — using a database mapping public IP addresses to countries, and allowing only the UK ones. Geofencing is widespread on today's Internet. To avoid geofencing issues, we need to choose specific egress addresses tagged with an appropriate country, depending on WARP user location. Like many other parties on the Internet, we tag our egress IP space with country codes and publish it as a geofeed (like <a href="https://mask-api.icloud.com/egress-ip-ranges.csv">this one</a>). Notice, the published geofeed is just data. The fact that an IP is tagged as say UK does not mean it is served from the UK, it just means the operator wants it to be geolocated to the UK. Like many things on the Internet, it is based on trust.</p>
 	<p>Notice, at this point we have three independent geographical tags:</p>
@@ -90,7 +120,14 @@
 
 	</figure>
 	<p>Can you see where this is going? The problem space just explodes! Instead of having one or two egress IP addresses for each server, now we require dozens, and <a href="https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying">IPv4 addresses aren't cheap</a>. With this design, we need many addresses per server, and we operate thousands of servers. This architecture becomes very expensive.</p>
-	<h3>Is anycast a problem?</h3>
+	<div class="flex anchor relative">
+		<h3 id="is-anycast-a-problem">Is anycast a problem?</h3>
+		<a href="https://blog.cloudflare.com/#is-anycast-a-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let me recap: with anycast ingress we don't control which data center the user is routed to. Therefore, each of our data centers must be able to egress from an address with any conceivable tag. Inside the data center we also don't control which server the connection is routed to. There are potentially many tags, many data centers, and many servers inside a data center.</p>
 	<p>Maybe the problem is the ingress architecture? Perhaps it's better to use a traditional networking design where a specific eyeball is routed with <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> to a specific data center, or even a server?</p>
 	<p>That's one way of thinking, but we decided against it. We like our anycast on ingress. It brings us many advantages:</p>
@@ -109,7 +146,14 @@
 		</li>
 	</ul>
 	<p>For these reasons we'd like to keep the anycast on ingress. We decided to solve the issue of egress address cardinality in some other way.</p>
-	<h3>Solving a million dollar problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="solving-a-million-dollar-problem">Solving a million dollar problem</h3>
+		<a href="https://blog.cloudflare.com/#solving-a-million-dollar-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Out of the thousands of servers we operate, every single one should be able to use an egress IP with any of the possible tags. It's easiest to explain our solution by first showing two extreme designs.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -146,7 +190,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>There's a third way</h3>
+	<div class="flex anchor relative">
+		<h3 id="theres-a-third-way">There's a third way</h3>
+		<a href="https://blog.cloudflare.com/#theres-a-third-way" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've been thinking hard about this problem. Frankly, the first extreme option of having every needed IP available locally on every Cloudflare server is not totally unworkable. This is, roughly, what we were able to pull off for IPv6. With IPv6, access to the large needed IP space is not a problem.</p>
 	<p>However, in IPv4 neither option is acceptable. The first offers fast and reliable egress, but requires great cost — the IPv4 addresses needed are expensive. The second option uses the smallest possible IP space, so it's cheap, but compromises on performance and reliability.</p>
 	<p>The solution we devised is a compromise between the extremes. The rough idea is to change the assignment unit. Instead of assigning one /32 IPv4 address for each server, we devised a method of assigning a /32 IP per data center, and then sharing it among physical servers.</p><!--kg-card-begin: html-->
@@ -176,7 +227,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Sharing an IP inside data center</h3>
+	<div class="flex anchor relative">
+		<h3 id="sharing-an-ip-inside-data-center">Sharing an IP inside data center</h3>
+		<a href="https://blog.cloudflare.com/#sharing-an-ip-inside-data-center" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The idea of sharing an IP among servers is not new. Traditionally this can be achieved by Source-NAT on a router. Sadly, the sheer number of egress IP's we need and the size of our operation, prevents us from relying on stateful firewall / NAT at the router level. We also dislike shared state, so we're not fans of distributed NAT installations.</p>
 	<p>What we chose instead, is splitting an egress IP across servers by <b>a port range</b>. For a given egress IP, each server owns a small portion of available source ports - a port slice.</p>
 	<figure class="kg-card kg-image-card ">
@@ -187,7 +245,14 @@
 	<p>When return packets arrive from the Internet, we have to route them back to the correct machine. For this task we've customized "Unimog" - our L4 XDP-based load balancer - ("<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog, Cloudflare's load balancer (2020)</a>") and it's working flawlessly.</p>
 	<p>With a port slice of say 2,048 ports, we can share one IP among 31 servers. However, there is always a possibility of running out of ports. To address this, we've worked hard to be able to reuse the egress ports efficiently. See the "<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">How to stop running out of ports (2022)</a>", "<a href="https://lpc.events/event/16/contributions/1349">How to share IPv4 addresses (2022)</a>" and our <a href="https://cloudflare.tv/event/oZKxMJg4">Cloudflare.TV segment</a>.</p>
 	<p>This is pretty much it. Each server is aware which IP addresses and port slices it owns. For inbound routing Unimog inspects the ports and dispatches the packets to appropriate machines.</p>
-	<h3>Sharing a subnet between data centers</h3>
+	<div class="flex anchor relative">
+		<h3 id="sharing-a-subnet-between-data-centers">Sharing a subnet between data centers</h3>
+		<a href="https://blog.cloudflare.com/#sharing-a-subnet-between-data-centers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is not the end of the story though, we haven't discussed how we can route a single /32 address into a datacenter. Traditionally, in the public Internet, it's only possible to route subnets with granularity of /24 or 256 IP addresses. In our case this would lead to great waste of IP space.</p>
 	<p>To solve this problem and improve the utilization of our IP space, we deployed our egress ranges as... <b>anycast</b>! With that in place, we customized Unimog and taught it to forward the packets over our <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">backbone network</a> to the right data center. Unimog maintains a database like this:</p>
 	<pre class="language-bash"><code class="language-bash">198.51.100.1 - forward to LHR
@@ -201,7 +266,14 @@
 
 	</figure>
 	<p>We call this technology stack "<b>soft-unicast</b>" and it feels magical. It's like we did unicast in software over anycast in the BGP layer.</p>
-	<h3>Soft-unicast is indistinguishable from magic</h3>
+	<div class="flex anchor relative">
+		<h3 id="soft-unicast-is-indistinguishable-from-magic">Soft-unicast is indistinguishable from magic</h3>
+		<a href="https://blog.cloudflare.com/#soft-unicast-is-indistinguishable-from-magic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With this setup we can achieve significant benefits:</p>
 	<ul>
 		<li>
@@ -229,9 +301,24 @@
 			<p>Since we operate multiple egress IP addresses in different locations, the <b>reliability is not compromised</b>.</p>
 		</li>
 	</ul>
-	<h3>The true location of our IP addresses is: “the cloud”</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-true-location-of-our-ip-addresses-is-the-cloud">The true location of our IP addresses is: “the cloud”</h3>
+		<a href="https://blog.cloudflare.com/#the-true-location-of-our-ip-addresses-is-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While soft-unicast allows us to gain great efficiency, we've hit some issues. Sometimes we get a question "Where does this IP physically exist?". But it doesn't have an answer! Our egress IPs don't exist physically anywhere. From a BGP standpoint our egress ranges are anycast, so they live everywhere. Logically each address is used in one data center at a time, but we can move it around on demand.</p>
-	<h3>Content Delivery Networks misdirect users</h3>
+	<div class="flex anchor relative">
+		<h3 id="content-delivery-networks-misdirect-users">Content Delivery Networks misdirect users</h3>
+		<a href="https://blog.cloudflare.com/#content-delivery-networks-misdirect-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sCk5BkrFFweDjmy5zQnHs/bc00b56c1c47425b9c70c268f4f04bce/image3-43.png" alt="" class="kg-image" width="1680" height="900" loading="lazy">
@@ -251,7 +338,14 @@
 	</ul>
 	<p>The fact that our egress address is tagged as "UK" doesn't always mean it actually is being used in the UK. We’ve had cases when a UK-tagged WARP user, due to the maintenance of our LHR data center, was routed to Paris. A popular <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> performed a reverse-lookup of our egress IP, found it tagged as "UK", and directed the user to a London CDN server. This is generally OK... but we actually egressed from Paris at the time. This user ended up routing packets from their home in the UK, to Paris, and back to the UK. This is bad for performance.</p>
 	<p>We address this issue by performing DNS requests in the egressing data center. For DNS we use IP addresses tagged with the location of the <b>data center</b>, not the intended geolocation for the user. This generally fixes the problem, but sadly, there are still some exceptions.</p>
-	<h3>The future is here</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future-is-here">The future is here</h3>
+		<a href="https://blog.cloudflare.com/#the-future-is-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our 2021 experiments with <a href="https://blog.cloudflare.com/addressing-agility">Addressing Agility</a> proved we have plenty of opportunity to innovate with the addressing of the ingress. Soft-unicast shows us we can achieve great flexibility and density on the egress side.</p>
 	<p>With each new product, the number of tags we need on the egress grows - from traffic trustworthiness, product category to geolocation. As the pool of usable IPv4 addresses shrinks, we can be sure there will be more innovation in the space. Soft-unicast is our solution, but for sure it's not our last development.</p>
 	<p>For now though, it seems like we're moving away from traditional unicast. Our egress IP's really don't exist in a fixed place anymore, and some of our servers don't even own a true unicast IP nowadays.</p>

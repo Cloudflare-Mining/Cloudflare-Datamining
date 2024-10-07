@@ -18,7 +18,14 @@
 	<p>Not supporting SVG files, though, did bring a set of challenges to an increasing number of our customers. <a href="https://w3techs.com/technologies/details/im-svg">Some stats already show that around 50% of websites serve SVG files</a>, which matches the pulse we got from talking with many of you, customers and community.</p>
 	<p>If you relied on SVGs, you had to select a second storage location or a second image platform elsewhere. That commonly resulted in an egress fee when serving an uncached file from that source, and it goes against what we want for our product: one image pipeline to cover all your needs.</p>
 	<p>We heard loud and clear, and starting from today, you can store and serve SVG files, safely, with Cloudflare Images.</p>
-	<h3>SVG, what is so special about them?</h3>
+	<div class="flex anchor relative">
+		<h3 id="svg-what-is-so-special-about-them">SVG, what is so special about them?</h3>
+		<a href="https://blog.cloudflare.com/#svg-what-is-so-special-about-them" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Scalable Vector Graphics file type is great for serving all kinds of illustrations, charts, logos, and icons.</p>
 	<p>SVG files don't represent images as pixels, but as geometric shapes (lines, arcs, polygons) that can be drawn with perfect sharpness at any resolution.</p>
 	<p>Let’s use now a complex image as an example, filled with more than four hundred paths and ten thousand nodes:</p>
@@ -53,14 +60,28 @@
 	<p></p><!--kg-card-end: html-->
 	<p>Let’s do a quick summary of what we covered so far: SVG files are wonderful for vector images like illustrations, charts, logos, and are infinitely scalable with no need to resize on the server side;</p>
 	<p>the same generated image, but on a bitmap is either heavier than the SVG when used in high resolutions, or with very noticeable loss of visual quality when scaled up from a lower resolution.</p>
-	<h3>So, what are the downsides of using SVG files?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-what-are-the-downsides-of-using-svg-files">So, what are the downsides of using SVG files?</h3>
+		<a href="https://blog.cloudflare.com/#so-what-are-the-downsides-of-using-svg-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SVG files aren't just images. They are XML-based documents that are as powerful as HTML pages. They can contain arbitrary JavaScript, fetch external content from other URLs or embed HTML elements. This gives SVG files much more power than expected from a simple image.</p>
 	<p>Throughout the years, numerous exploits have been known, identified and corrected.</p>
 	<p>Some old attacks were very rudimentary, yet effective. The famous <a href="https://en.wikipedia.org/wiki/Billion_laughs_attack">Billion Laughs</a> exploited how <a href="https://www.w3resource.com/xml/entities.php">XML uses Entities and declares them in the Document Type Definition</a>, and how it handles recursion.</p>
 	<p>Entities can be something as simple as a declaration of a text string, or a nested reference to other previous entities.</p>
 	<p>If you defined a first entity with a simple string, and then created a second entity calling 10 times the first one, and then a third entity calling 10 times the second one up until a 10th one of the same kind, you were requiring a parser to generate an output of a billion strings as defined on the very simple first entity. This would most commonly exhaust resources on the server parsing the XML, and form a <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack">DoS</a>. While that particular limitation from the XML parsing got widely addressed through XML parser memory caps and lazy loading of entities, more complex attacks became a regular thing in recent years.</p>
 	<p>The common themes in these more recent attacks have been <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS (cross-site-scripting)</a> and foreign objects referenced in the XML content. In both cases, using SVG inside tags in your HTML is an invitation for any ill-intended file to reach your end-users. So, what exactly can we do about it and make you trust any SVG file you serve?</p>
-	<h3>The SVG filter</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-svg-filter">The SVG filter</h3>
+		<a href="https://blog.cloudflare.com/#the-svg-filter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've developed a filter that simplifies SVG files to only features used for images, so that serving SVG images from any source is just as safe as serving a JPEG or PNG, while preserving SVG's vector graphics capabilities.</p>
 	<ul>
 		<li>
@@ -86,7 +107,14 @@
 
 	</figure>
 	<p>Removed are the external references, foreignObjects and any other potential threats.</p>
-	<h3>How you can use SVG files in Cloudflare Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-you-can-use-svg-files-in-cloudflare-images">How you can use SVG files in Cloudflare Images</h3>
+		<a href="https://blog.cloudflare.com/#how-you-can-use-svg-files-in-cloudflare-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting now you can upload SVG files to Cloudflare Images and serve them at will. Uploading the images can be done like for any other supported format, <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload">via UI</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url">API</a>.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 50%%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4df9e5608e70f983c65703e3f7d98cfc/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4df9e5608e70f983c65703e3f7d98cfc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Variants, <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/resize-images">named</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/flexible-variants">flexible</a>, are intended to transform bitmap (raster) images into whatever size you want to serve them.</p>
@@ -104,7 +132,14 @@
 	<p><a href="https://imagedelivery.net">https://imagedelivery.net/</a>&lt;your_account_hash&gt;/&lt;your_SVG_ID&gt;/public</p>
 	<p>And, as shown from above, you can use any of your variant names to serve the image, as it won’t affect the output at all.</p>
 	<p>If you’re an Image Resizing customer, you can also benefit from serving your files with our tool. Make sure you head to the <a href="https://developers.cloudflare.com/images/image-resizing">Developer Documentation</a> pages to see how.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can subscribe to Cloudflare Images <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages">directly in the dashboard</a>, and starting from today you can use the product to store and serve SVG files.</p>
 	<p>If you want to contribute to further developments of the filtering too and help expand its abilities, check out our <a href="https://github.com/cloudflare/svg-hush">SVG-Hush Tool repo</a>.</p>
 	<p>You can also connect directly with the team in our <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developers Discord Server</a>.</p>

@@ -16,7 +16,14 @@
 	</figure>
 	<p>Our tree commitment began far from the Canadian woodlands. In 2019, we launched an ambitious tool called <a href="https://blog.cloudflare.com/cleaning-up-bad-bots">Bot Fight Mode</a>, which for the first time <i>fought back</i> against bots, targeting <a href="https://www.cloudflare.com/learning/bots/what-is-content-scraping">scrapers</a> and other automated actors.</p>
 	<p>Our idea was simple: preoccupy bad bots with nonsense tasks, so they cannot attack real sites. Even better, make these tasks <i>computationally expensive</i> to engage with. This approach is effective, but it forces bad actors to consume more energy and likely emit more greenhouse gasses (GHG). So in addition to launching Bot Fight Mode, we also committed to supporting tree planting projects to account for any potential environmental impact.</p>
-	<h3>What is Bot Fight Mode?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-bot-fight-mode">What is Bot Fight Mode?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-bot-fight-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As soon as Bot Fight Mode is enabled, it immediately starts challenging <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot">bots</a> that visit your site. It is available to all Cloudflare customers for free, regardless of <a href="https://www.cloudflare.com/plans">plan</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +33,14 @@
 	<p>When Bot Fight Mode identifies a bot, it issues a <i>computationally expensive</i> challenge to exhaust it (also called “tarpitting"). Our aim is to disincentivize attackers, so they have to find a new hobby altogether. When we tarpit a bot, we require a significant amount of compute time that will stall its progress and result in a hefty server bill. Sorry not sorry.</p>
 	<p>We do this because bots are leeches. They draw resources, slow down sites, and abuse online platforms. They also <a href="https://www.cloudflare.com/learning/bots/what-is-credential-stuffing">hack into accounts</a> and steal personal data. Of course, we allowlist a small number of <a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots">bots that are well-behaved</a>, like Slack and Google. And Bot Fight Mode only acts on traffic from cloud and hosting providers (because that is where bots usually originate from).</p>
 	<p><b>Over 550,000 sites use Bot Fight Mode today!</b> We believe this makes it the most widely deployed <a href="https://www.cloudflare.com/products/bot-management">bot management solution</a> in the world (though this is impossible to validate). Free customers can enable the tool <a href="https://dash.cloudflare.com/?zone=security%2Fbots">from the dashboard</a> and paid customers can use a special version, known as <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode</a>.</p>
-	<h3>How many trees? Let's do the math ?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-many-trees-lets-do-the-math">How many trees? Let's do the math ?</h3>
+		<a href="https://blog.cloudflare.com/#how-many-trees-lets-do-the-math" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, the hard part: how can we translate bot challenges into a specific number of trees that should be planted? Fortunately, we can use a series of unit conversions, similar to those we use to calculate Cloudflare’s total GHG emissions.</p>
 	<p>We started with the following assumptions.</p>
 	<p>Table 1.</p>
@@ -55,7 +69,14 @@
 	<p>The last conversion we needed was from emissions to trees. Our partners at OTP found that a mature tree absorbs roughly 21 kgCO2e per year. Based on our total emissions that translates to roughly 47,000 trees per server, or 840 trees per CPU core. However, in our original post, we also noted that given the time it takes for a newly planted tree to reach maturity, we would multiply our donation by a factor of 25.</p>
 	<p>In the end, over the first two years of the program, we calculated that we would need approximately 42,000 trees to account for all the individual CPU cores engaged in Bot Fight Mode. For good measure, we rounded up to an even 50,000.</p>
 	<p>We are proud that most of these trees are already in the ground, and we look forward to providing an update when the final 25,000 are planted.</p>
-	<h3>A piece of the puzzle</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-piece-of-the-puzzle">A piece of the puzzle</h3>
+		<a href="https://blog.cloudflare.com/#a-piece-of-the-puzzle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>"Planting trees will benefit species diversity of the existing forest, animal habitat, greening of reclamation areas as well as community recreation areas, and visual benefits along popular hiking/biking trail networks." &nbsp;- <b>Stephanie Clement, One Tree Planted, Project Manager North America</b></p>
 	</blockquote>

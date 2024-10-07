@@ -7,14 +7,28 @@
 	</figure>
 	<p>Cloudflare’s Workers platform is a powerful tool; a single compute platform for tasks as simple as manipulating requests or complex as bringing application logic to the network edge. Today I want to show you how to do server-side rendering at the network edge using Workers Sites, Wrangler, HTMLRewriter, and tools from the broader Workers platform.</p>
 	<p>Each page returned to the user will be static HTML, with dynamic content being rendered on our serverless stack upon user request. Cloudflare’s ability to run this across the global network allows pages to be rendered in a distributed fashion, close to the user, with miniscule cold start times for the application logic. Because this is all built into Cloudflare’s edge, we can implement caching logic to significantly reduce load times, support link previews, and maximize SEO rankings, all while allowing the site to feel like a dynamic application.</p>
-	<h3>A Brief History of Web Pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-brief-history-of-web-pages">A Brief History of Web Pages</h3>
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-web-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the early days of the web pages were almost entirely static - think raw HTML. As Internet connections, browsers, and hardware matured, so did the content on the web. The world went from static sites to more dynamic content, powered by technologies like CGI, PHP, Flash, CSS, JavaScript, and many more.</p>
 	<p>A common paradigm in those maturing days was Server Side Rendering of web pages. To accomplish this, a user would request a page with some supplied parameters, a server would generate a static web page using those incoming parameters, and return that static HTML back to the user. These web pages were easily cacheable by proxies and other downstream services, an important benefit in the world of slower Internet connection speeds. Time to Interactive (TTI) in this model is usually faster than other rendering methods, as render-blocking JavaScripts are avoided.</p>
 	<p>This paradigm fell out of style as the web standardized and powerful hardware became easier to access. Time To First Byte (TTFB) is a concern with Server Side Rendering as this model incurs latency across the Internet and the latency of rendering pages on the server itself. Client side rendering allowed for a more seamless user experience for dynamic content. As a result of this shift, client applications became larger and larger, and SEO crawlers quickly had to adopt frameworks to be able to emulate the browser logic that is able to run and render these client applications. Tied into this is the idea of AJAX requests, allowing content on the single page application to change without the need for a full page reload. Application state is changed by requesting asynchronous updates from the server and allowing the client side application to update state based on the data returned by the server. This was great, it gave us amazingly interactive applications like Google Mail.</p>
 	<p>While this is a great structure for dynamic applications, rendering on the client side has a side effect of reducing shareability of content via link previews, increases time to interactive (TTI), and reduces SEO rankings on many search engines.</p>
 	<p>With Cloudflare’s Workers platform, you can get the benefits of server side rendering with greatly reduced latency concerns. The dynamic web pages in this example are delivered from any one of Cloudflare’s edge nodes, with application logic running upon request from the user. Server side rendering often leads to content that is more easily cacheable by downstream appliances; delivering better SEO rankings and obfuscating application logic from savvy users.</p>
 	<p>You get all the benefits of the old way things were done, with all the speed of the modern web.</p>
-	<h3>Peer With Cloudflare, a Dynamic Web App</h3>
+	<div class="flex anchor relative">
+		<h3 id="peer-with-cloudflare-a-dynamic-web-app">Peer With Cloudflare, a Dynamic Web App</h3>
+		<a href="https://blog.cloudflare.com/#peer-with-cloudflare-a-dynamic-web-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Without further ado, let’s dive into building a dynamic web page using the Cloudflare Workers platform! This example leverages <a href="https://workers.cloudflare.com/sites">Workers Sites</a>, which allows you to serve static web pages from <a href="https://blog.cloudflare.com/workers-kv-is-ga">Cloudflare’s Key Value store</a>. From there, Workers application logic (using <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter</a>) transforms that static response based on user input to deliver modified responses with the requested data embedded in the returned web page.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -23,7 +37,14 @@
 	</figure>
 	<p>The Peer With Cloudflare application, hosted on <a href="https://peering.rad.workers.dev">peering.rad.workers.dev</a></p>
 	<p><a href="https://www.peeringdb.com">PeeringDB</a> is a user-maintained public database of networks, exchanges, facilities, and interconnection on the Internet. The <a href="https://peering.rad.workers.dev">Peer With Cloudflare</a> (PWC) application leverages the <a href="https://www.peeringdb.com">PeeringDB</a> API to query live information on facilities and exchange points from multiple ASNs, compares the resulting networks, and lists to the user shared exchanges and facilities. In this example, we’ll also explore using templating languages in conjunction with Cloudflare’s HTMLRewriter.</p>
-	<h3>Generate a Workers Site</h3>
+	<div class="flex anchor relative">
+		<h3 id="generate-a-workers-site">Generate a Workers Site</h3>
+		<a href="https://blog.cloudflare.com/#generate-a-workers-site" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll start by <a href="https://developers.cloudflare.com/workers/sites/start-from-scratch">generating a workers site</a> using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/install">wrangler</a>.</p>
 	<pre class="language-javascript"><code class="language-javascript">&gt; wrangler generate --site peering</code></pre>
 	<p>PWC will be entirely served from <code>index.html</code>, which will be generated in the <code>/public</code> directory. Next, ensure that we only serve <code>index.html</code>, regardless of the path supplied by the user. Modify <code>index.js</code> to serve a single page application, using the <a href="https://github.com/cloudflare/kv-asset-handler#servesinglepageapp">serveSinglePageApp</a> method.</p>
@@ -58,7 +79,15 @@ async function handleEvent(event) {
 	<pre class="language-javascript"><code class="language-javascript">[site]
 bucket="./public"
 entry-point="./"</code></pre>
-	<h3>Use URL Parameters to Control Application State</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="use-url-parameters-to-control-application-state">Use URL Parameters to Control Application State</h3>
+		<a href="https://blog.cloudflare.com/#use-url-parameters-to-control-application-state" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The application itself needs a way to store state between requests. There are multiple methods to do so, but in this case URL query parameters are used for two primary reasons:</p>
 	<ul>
 		<li>
@@ -129,7 +158,15 @@ entry-point="./"</code></pre>
         &lt;/div&gt;
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-	<h3>Modelling Data from a Third Party API</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="modelling-data-from-a-third-party-api">Modelling Data from a Third Party API</h3>
+		<a href="https://blog.cloudflare.com/#modelling-data-from-a-third-party-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://peeringdb.com/apidocs/#operation/list%20net">PeeringDB API</a> defines networks primarily with metadata outlining key information about the network and owners, as well as two lists of public peering exchange points and private peering facilities. The PWC application will list any peering points (exchanges and facilities) shared between the user-provided network and Cloudflare’s network in a single table. PWC uses a model-view paradigm to retrieve, store, and display these data from the PeeringDB API. Defined below are the three data models representing a Network, Facility, and Exchange.</p>
 	<p>To define a network, first inspect a sample response from the PeeringDB API (use <a href="https://peeringdb.com/api/net?asn__in=13335&amp;depth=2">https://peeringdb.com/api/net?asn__in=13335&amp;depth=2</a> for a sample from Cloudflare’s network). Some key pieces of information displayed in PWC are the network name, website, notes, exchanges, and facilities.</p>
 	<figure class="kg-card kg-image-card ">
@@ -242,7 +279,15 @@ async function findAsn(asn) {
 }
 
 export {findAsn, fetchAdditionalDetails}</code></pre>
-	<h3>Presenting Results using HTMLRewriter</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="presenting-results-using-htmlrewriter">Presenting Results using HTMLRewriter</h3>
+		<a href="https://blog.cloudflare.com/#presenting-results-using-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In building a single page application with workers, the PWC application needs the ability to modify HTML responses returned to the user. To accomplish this, PWC uses Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter interface</a>. HTMLRewriter streams any supplied response through a transformer, applying any supplied transformations to the raw response object. This returns a modified response object that can then be returned to the user.</p>
 	<p>In the case of PWC, three cases need to be handled, and two of them require some form of transformation before returning <code>index.html</code> to the user. Define a generic <code>AsnHandler</code> to provide to the user their supplied ASN. The <code>element()</code> method in this handler will simply set a value attribute on the target element.</p>
 	<pre class="language-javascript"><code class="language-javascript">class AsnHandler {
@@ -365,7 +410,14 @@ webpack_config = "webpack.config.js"</code></pre>
 
 	</figure>
 	<p>The NetworkComparisonHandler and associated Handlebars template allows PWC to present PeeringDB information in a user-friendly format.</p>
-	<h3>Publish to Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="publish-to-cloudflare">Publish to Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#publish-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can view the final code <a href="https://github.com/kabirsikand/peering">on Github</a>, or navigate to <a href="https://peering.rad.workers.dev">peering.rad.workers.dev</a> to see a working example. The final <code>wrangler.toml</code> includes instructions to publish the code up to a workers.dev site, allowing you to easily build, deploy, and test without a domain - simply by setting <code>workers_dev</code> to “true”.</p>
 	<pre class="language-javascript"><code class="language-javascript">name = "peering"
 type = "webpack"
@@ -380,7 +432,15 @@ bucket="./public"
 entry-point="./"</code></pre>
 	<p>Finally, publish your code using wrangler.</p>
 	<pre class="language-javascript"><code class="language-javascript">&gt; wrangler publish</code></pre>
-	<h3>Cache At The Edge</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="cache-at-the-edge">Cache At The Edge</h3>
+		<a href="https://blog.cloudflare.com/#cache-at-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Taking advantage of our server-rendered content is as simple as matching the request against any previously cached assets. To accomplish this, add a few simple lines to the top of our <code>handleEvent</code> function using Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/cache">Cache API</a>. If an asset is found, return the response without going into the application logic.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleEvent(event) {
   let cache = caches.default
@@ -389,7 +449,15 @@ entry-point="./"</code></pre>
     return response
   }
   response = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp })</code></pre>
-	<h3>What’s Next?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s Next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using the Workers platform to deploy applications allow users to load lightweight and static html, with all application logic residing on the network edge. While there are certainly a host of improvements which can be made to the Peer With Cloudflare application (use of Workers KV, more input validation, or mixing in other APIs to present more interesting information); it should present a compelling introduction to the possibilities of Workers!</p>
 	<p>Check out <a href="https://workers.cloudflare.com/built-with">Built With Workers</a> for more examples of applications built on the Workers platform, or build your own projects at <a href="https://workers.cloudflare.com">workers.cloudflare.com</a>! For more information on peering with Cloudflare, please visit our <a href="https://www.cloudflare.com/partners/peering-portal">Peering Portal</a>.</p>
 </div>

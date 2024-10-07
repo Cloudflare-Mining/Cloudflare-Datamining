@@ -8,7 +8,14 @@
 	<p><a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">News coverage</a> of a recent paper caused a bit of a stir with this headline: “<a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">AI Helps Crack NIST-Recommended Post-Quantum Encryption Algorithm</a>”. The news article claimed that <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a>, the encryption algorithm in question, <a href="https://blog.cloudflare.com/post-quantum-for-all">which we have deployed world-wide</a>, had been “broken.” Even more dramatically, the news article claimed that “the revolutionary aspect of the research was to apply deep learning analysis to side-channel differential analysis”, which seems aimed to scare the reader into wondering what will <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">Artificial Intelligence (AI)</a> break next?</p>
 	<p>Reporting on the paper has been wildly inaccurate: <b>Kyber is not broken</b> and AI has been used for more than a decade now to aid side-channel attacks. To be crystal clear: our concern is with the news reporting around the paper, not the quality of the paper itself. In this blog post, we will explain how AI is actually helpful in cryptanalysis and dive into the <a href="https://eprint.iacr.org/2022/1713">paper</a> by Dubrova, Ngo, and Gärtner (DNG), that has been misrepresented by the news coverage. We’re honored to have Prof. Dr. <a href="https://www.cs.ru.nl/~lejla">Lejla Batina</a> and Dr. <a href="https://www.ru.nl/en/people/picek-s">Stjepan Picek</a>, world-renowned experts in the field of applying AI to side-channel attacks, join us on this blog.</p>
 	<p>We start with some background, first on side-channel attacks and then on Kyber, before we dive into the paper.</p>
-	<h2>Breaking cryptography</h2>
+	<div class="flex anchor relative">
+		<h2 id="breaking-cryptography">Breaking cryptography</h2>
+		<a href="https://blog.cloudflare.com/#breaking-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When one thinks of breaking cryptography, one imagines a room full of mathematicians puzzling over minute patterns in intercepted messages, aided by giant computers, until they figure out the key. Famously in World War II, the Nazis’ Enigma cipher machine code was completely broken in this way, allowing the Allied forces to read along with their communications.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -17,7 +24,14 @@
 	</figure>
 	<p>It’s exceedingly rare for modern established cryptography to get broken head-on in this way. The last catastrophically broken cipher was RC4, designed in 1987, while AES, designed in 1998, stands proud with barely a scratch. The last big break of a cryptographic hash was on SHA-1, designed in 1995, while SHA-2, published in 2001, remains untouched in practice.</p>
 	<p>So what to do if you can’t break the cryptography head-on? Well, you get clever.</p>
-	<h2>Side-channel attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="side-channel-attacks">Side-channel attacks</h2>
+		<a href="https://blog.cloudflare.com/#side-channel-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Can you guess the pin code for this gate?</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +40,14 @@
 	</figure>
 	<p>You can clearly see that some of the keys are more worn than the others, suggesting heavy use. This observation gives us some insight into the correct pin, namely the digits. But the correct order is not immediately clear. It might be 1580, 8510, or even 115085, but it’s a lot easier than trying every possible pin code. This is an example of a <i>side-channel attack</i>. Using the security feature (entering the PIN) had some unintended consequences (abrading the paint), which leaks information.</p>
 	<p>There are many different types of side channels, and which one you should worry about depends on the context. For instance, the sounds your keyboard makes as you type <a href="https://dl.acm.org/doi/abs/10.1145/1609956.1609959">leaks what you write</a>, but you should not worry about that if no one is listening in.</p>
-	<h3>Remote timing side channel</h3>
+	<div class="flex anchor relative">
+		<h3 id="remote-timing-side-channel">Remote timing side channel</h3>
+		<a href="https://blog.cloudflare.com/#remote-timing-side-channel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When writing cryptography in software, one of the best known side channels is the time it takes for an algorithm to run. For example, let’s take the classic example of creating an RSA signature. Grossly simplified, to sign a message <i>m</i> with private key <i>d</i>, we compute the signature <i>s</i> as m<sup>d</sup> (mod n). Computing the exponent of a big number is hard, but luckily, because we’re doing modular arithmetic, there is the <a href="https://youtu.be/cbGB__V8MNk">square-and-multiply</a> trick. Here is a naive implementation in pseudocode:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +58,14 @@
 	<p>Because of this, the mantra is: cryptography should run in “constant time”. This means that the runtime does not depend on any secret information. In our example, to remove the first timing issue, one would replace the if-statement with something equivalent to:</p>
 	<pre class="language-bash"><code class="language-bash">	s = ((s * powerOfM) mod n) * bit(s, i) + s * (1 - bit(s, i))</code></pre>
 	<p>This ensures that the multiplication is always done. Similar countermeasures prevent practically all remote timing attacks.</p>
-	<h3>Power side-channel</h3>
+	<div class="flex anchor relative">
+		<h3 id="power-side-channel">Power side-channel</h3>
+		<a href="https://blog.cloudflare.com/#power-side-channel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The story is quite different for power side-channel attacks. Again, the classic example is RSA signatures. If we hook up an oscilloscope to a smartcard that uses the naive algorithm from before, and measure the power usage while it signs, we can read off the private key by eye:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -55,7 +83,14 @@
 	<p>In the case of RSA, before creating a new signature, one can generate a random <i>r</i> and compute m<sup>d+r</sup> (mod n) and m<sup>r</sup> (mod n) separately. From these, the final signature m<sup>d</sup> (mod n) can be computed with some extra care.</p>
 	<p>Masking is not a perfect defense. The parts where shares are created or recombined into the final value are especially vulnerable. It does make it harder for the attacker: they will need to collect more power traces to cut through the noise. In our example we used two shares, but we could bump that up even higher. There is a trade-off between power side-channel resistance and implementation cost.</p>
 	<p>One of the challenging parts in the field is to estimate how much secret information is actually leaked through the traces, and how to extract it. Here machine learning enters the picture.</p>
-	<h3>Machine learning: extracting the key from the traces</h3>
+	<div class="flex anchor relative">
+		<h3 id="machine-learning-extracting-the-key-from-the-traces">Machine learning: extracting the key from the traces</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning-extracting-the-key-from-the-traces" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">Machine learning</a>, of which deep learning is a part, represents the capability of a system to acquire its knowledge by extracting patterns from data — &nbsp;in this case, the secrets from the power traces. Machine learning algorithms can be divided into several categories based on their learning style. The most popular machine learning algorithms in side-channel attacks follow the supervised learning approach. In supervised learning, there are two phases: 1) training, where a machine learning model is trained based on known labeled examples (e.g., side-channel measurements where we know the key) and 2) testing, where, based on the trained model and additional side-channel measurements (now, with an unknown key), the attacker guesses the secret key. A common depiction of such attacks is given in the figure below.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -67,7 +102,14 @@
 	<p>Profiling attacks are not new. The first such attack, called the <a href="https://link.springer.com/chapter/10.1007/3-540-36400-5_3">template attack</a>, appeared in 2002. Diverse <a href="https://link.springer.com/article/10.1007/s13389-011-0023-x">machine learning techniques</a> have been used since around 2010, all reporting good results and the ability to break various targets. The big breakthrough came in 2016, when the side-channel community started using <a href="https://www.cloudflare.com/learning/ai/what-is-deep-learning">deep learning</a>. It greatly increased the effectiveness of power side-channel attacks both against symmetric-key and public-key cryptography, even if the targets were protected with, for instance, masking or some other countermeasures. To be clear: it doesn’t magically figure out the key, but it gets much better at extracting the leaked bits from a smaller number of power traces.</p>
 	<p>While machine learning-based side-channel attacks are powerful, they have limitations. Carefully implemented countermeasures make the attacks more difficult to conduct. Finding a good machine learning model that can break a target can be far from trivial: this phase, commonly called tuning, can last weeks on powerful clusters.</p>
 	<p>What will the future bring for machine learning/AI in side-channel analysis? Counter intuitively, we would like to see more powerful and easy to use attacks. You’d think that would make us worse off, but to the contrary it will allow us to better estimate how much actual information is leaked by a device. We also hope that we will be able to better understand why certain attacks work (or not), so that more cost-effective countermeasures can be developed. As such, the future for AI in side-channel analysis is bright especially for security evaluators, but we are still far from being able to break most of the targets in real-world applications.</p>
-	<h2>Kyber</h2>
+	<div class="flex anchor relative">
+		<h2 id="kyber">Kyber</h2>
+		<a href="https://blog.cloudflare.com/#kyber" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kyber is a <a href="https://blog.cloudflare.com/the-quantum-menace">post-quantum</a> (PQ) key encapsulation method (KEM). After a six-year worldwide competition, the <a href="https://www.nist.gov">National Institute of Standards and Technology</a> (NIST) <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">selected</a> Kyber as the post-quantum key agreement they will standardize. The goal of a key agreement is for two parties that haven’t talked to each other before to agree securely on a <i>shared key</i> they can use for symmetric encryption (such as <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">Chacha20Poly1305</a>). As a KEM, it works slightly different with different terminology than a traditional <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake">Diffie–Hellman</a> key agreement (such as X25519):</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -76,9 +118,23 @@
 	</figure>
 	<p>When connecting to a website the client first generates a new <i>ephemeral</i> keypair that consists of a <i>private</i> and <i>public key</i>. It sends the public key to the server. The server then <i>encapsulates</i> &nbsp;a shared key with that public key, which gives it a random <i>shared key</i>, which it keeps, and a ciphertext (in which the shared key is hidden), which the server returns to the client. The client can then use its private key to <i>decapsulate</i> the shared key from the ciphertext. Now the server and client can communicate with each other using the shared key.</p>
 	<p>Key agreement is particularly important to make secure against attacks of quantum computers. The reason is that an attacker can store traffic today, and crack the key agreement in the future, revealing the shared key and all communication encrypted with it afterwards. That is why we have already <a href="https://blog.cloudflare.com/post-quantum-for-all">deployed support</a> for Kyber across our network.</p>
-	<h2>The DNG paper</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-dng-paper">The DNG paper</h2>
+		<a href="https://blog.cloudflare.com/#the-dng-paper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With all the background under our belt, we’re ready to take a look at the <a href="https://eprint.iacr.org/2022/1713.pdf">DNG paper</a>. The authors perform a power side-channel attack on their own masked implementation of Kyber with six shares.</p>
-	<h3>Point of attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="point-of-attack">Point of attack</h3>
+		<a href="https://blog.cloudflare.com/#point-of-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>They attack the <i>decapsulation</i> step. In the decapsulation step, after the shared key is extracted, it’s encapsulated again, and compared against the original ciphertext to detect tampering. For this <i>re-encryption</i> step, the precursor of the shared key—let’s call it the secret—is encoded bit-by-bit into a polynomial. To be precise, the 256-bit <i>secret</i> needs to be converted to a polynomial with 256 coefficients <i>modulo</i> q=3329, where the i<sup>th</sup> coefficient is (q+1)/2 if the ith b<sup>th</sup> is 1 and zero otherwise.</p>
 	<p>This function sounds simple enough, but creating a masked version is tricky. The rub is that the natural way to create shares of the <i>secret</i> is to have shares that <i>xor</i> together to be the secret, and that the natural way to share polynomials is to have shares that <i>add</i> together to get to the intended polynomial.</p>
 	<p>This is the two-shares implementation of the conversion that the DNG paper attacks:</p>
@@ -89,7 +145,15 @@
 	</figure>
 	<p>The code loops over the bits of the two shares. For each bit, it creates a mask, that’s <code>0xffff</code> if the bit was 1 and 0 otherwise. Then this mask is used to add (q+1)/2 to the polynomial share if appropriate. Processing a 1 will use a bit more power. It doesn’t take an AI to figure out that this will be a leaky function. In fact, this pattern was pointed out to be weak <a href="https://eprint.iacr.org/2016/923">back in 2016</a>, and explicitly mentioned to be a risk for masked Kyber <a href="https://eprint.iacr.org/2016/923">in 2020</a>. Apropos, one way to mitigate this, is to process multiple bits at once — for the state of the art, tune into <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/workshops-and-timeline/pqc-seminars">April 2023’s NIST PQC seminar</a>. For the moment, let’s allow the paper its weak target.</p>
 	<p>The authors do not claim any fundamentally new attack here. Instead, they improve the effectiveness of the attack in two ways: the way they train the <a href="https://www.cloudflare.com/learning/ai/what-is-neural-network">neural network</a>, and how to use multiple traces more effectively by changing the ciphertext sent. So, what did they achieve?</p>
-	<h3>Effectiveness</h3>
+	<div class="flex anchor relative">
+		<h3 id="effectiveness">Effectiveness</h3>
+		<a href="https://blog.cloudflare.com/#effectiveness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nVauArEr9f940eJstkDu5/2ead2c1f0b38be838ef8dacda69a7936/image6-7.png" alt="Board on which the attack was tested. Source: NewAE Technology Inc." class="kg-image" width="1668" height="838" loading="lazy">
@@ -101,10 +165,24 @@
 	<p>The main contribution highlighted by the authors is that they train their neural networks to attack an implementation with 6 shares, by starting with a neural network trained to attack an implementation with 5 shares. That one can be trained from a model to attack 4 shares, and so on. Thus to apply their method, of these 150,000 power traces, one-fifth must be from an implementation with 6 shares, another one-fifth from one with 5 shares, et cetera. It seems unlikely that anyone will deploy a device where an attacker can switch between the number of shares used in the masking on demand.</p>
 	<p>Given these affordances, the attack proper can commence. The authors report that, from a single power trace of a two-share decapsulation, they could recover the shared key under these ideal circumstances with probability… 0.12%. They do not report the numbers for single trace attacks on more than two shares.</p>
 	<p>When we’re allowed multiple traces of the same decapsulation, side-channel attacks become much more effective. The second trick is a clever twist on this: instead of creating a trace of decapsulation of exactly the same message, the authors <i>rotate</i> the ciphertext to move bits of the shared key in more favorable positions. With 4 traces that are rotations of the same message, the success probability against the two-shares implementation goes up to 78%. The six-share implementation stands firm at 0.5%. When allowing 20 traces from the six-share implementation, the shared key can be recovered with an 87% chance.</p>
-	<h3>In practice</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-practice">In practice</h3>
+		<a href="https://blog.cloudflare.com/#in-practice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The hardware used in the demonstration might be somewhat comparable to a smart card, but it is very different from high-end devices such as smartphones, desktop computers and servers. Simple power analysis side-channel attacks on even just embedded 1GHz processors are much more challenging, requiring <a href="https://eprint.iacr.org/2015/727.pdf">tens of thousands of traces</a> using a high-end oscilloscope connected close to the processor. There are much better avenues for attack with this kind of physical access to a server: just connect the oscilloscope to the memory bus.</p>
 	<p>Except for especially vulnerable applications, such as smart cards and HSMs, power-side channel attacks are widely considered infeasible. Although sometimes, when the planets align, &nbsp;an especially potent power side-channel attack can be turned into a remote timing attack due to throttling, as demonstrated by <a href="https://blog.cloudflare.com/hertzbleed-explained">Hertzbleed</a>. To be clear: the present attack does not even come close.</p>
 	<p>And even for these vulnerable applications, such as smart cards, this attack is not particularly potent or surprising. In the field, it is not a question of whether a masked implementation leaks its secrets, because it always does. It’s a question of how hard it is to actually pull off. Papers such as the DNG paper contribute by helping manufacturers estimate how many countermeasures to put in place, to make attacks too costly. It is not the first paper studying power side-channel attacks on Kyber and it will not be the last.</p>
-	<h2>Wrapping up</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrapping-up">Wrapping up</h2>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AI did not completely undermine a new wave of cryptography, but instead is a helpful tool to deal with noisy data and discover the vulnerabilities within it. There is a big difference between a direct break of cryptography and a power side-channel attack. Kyber is not broken, and the presented power side-channel attack is not cause for alarm.</p>
 </div>

@@ -9,7 +9,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://c1.staticflickr.com/7/6004/5934405346_edd94956e8_b.jpg">image</a> by <a href="https://www.flickr.com/photos/39483037@N00">Christian Ortiz</a></p>
-	<h3>Playing Hide and Seek with Bots and Hackers</h3>
+	<div class="flex anchor relative">
+		<h3 id="playing-hide-and-seek-with-bots-and-hackers">Playing Hide and Seek with Bots and Hackers</h3>
+		<a href="https://blog.cloudflare.com/#playing-hide-and-seek-with-bots-and-hackers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare internally runs about 4,000 containers that make up about 1.5K services and applications. Some of these containers need to network with other local containers, and others need to accept connections over the wire.</p>
 	<p>Every devops engineer knows that bad things happen to good machines, and so our platform operations team tries to hide servers altogether from the internet. There are several ways to do this:</p>
 	<ul>
@@ -40,7 +47,14 @@
 	</ul>
 	<p>These can be complicated or time consuming, yet none of them are guarantees.</p>
 	<p>We knew we could make it easier. We started building an internal tool for ourselves - a safer way to expose services running on our own infrastructure (with some service discovery and automation benefits as well...more on that later) and after talking to developers and security engineers that use Cloudflare, we realized there was benefit in opening it up to everyone.</p>
-	<h3>Cloudflare Warp</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-warp">Cloudflare Warp</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Warp is a security-conscious tool for exposing web applications without needing to expose the server they run on. With Cloudflare Warp, traffic to your application is run over a private, encrypted, virtual tunnel from the Cloudflare edge and traffic is only able to find and access your server if it routes through Cloudflare.</p>
 	<p>Only Cloudflare knows how to dial back to the application through the virtual tunnel created between the application and Cloudflare. Traffic can never hit your origin directly because it can never find it, your origin isn’t on the internet, it’s only there if you go through Cloudflare, via Warp. Instead, the client connects to the nearest Cloudflare data center, never directly to the application itself.</p>
 	<p>To start up Cloudflare Warp, it’s just one command. For example, if I want to run Cloudflare Warp to expose an application running locally on port 4000, I run:</p>
@@ -51,11 +65,32 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RDYfy14A0lBORLEnBLr3t/158abd2ea84b2fa9eb8c0eb9a9b4127c/Screen-Shot-2017-09-27-at-7.54.05-PM.png" alt="" class="kg-image" width="1234" height="595" loading="lazy">
 
 	</figure>
-	<h3>One Secure Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-secure-gateway">One Secure Gateway</h3>
+		<a href="https://blog.cloudflare.com/#one-secure-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With this setup, Cloudflare’s edge acts as a network shield in front of your infrastructure. At Cloudflare’s edge you can describe policies (allow 50 connections per second, only to these routes, only from these IP’s and only if they are authenticated) and because traffic through Warp can only reach your servers after it’s traveled through Cloudflare, you can drop unexpected traffic at the edge, only receive clean traffic on your server, and know that it’s been validated by Cloudflare. As you continue to set up applications connected to Cloudflare using Warp, you only have to configure this once with Cloudflare and it can apply holistically across all of your applications, protecting your entire infrastructure.</p>
-	<h3>Did we say service discovery?</h3>
+	<div class="flex anchor relative">
+		<h3 id="did-we-say-service-discovery">Did we say service discovery?</h3>
+		<a href="https://blog.cloudflare.com/#did-we-say-service-discovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the side benefits of Cloudflare Warp is that immediately when you spin up the Cloudflare Warp agent, it registers DNS records for your application, making it an effective tool for service discovery.</p>
 	<p>We also allow you to tag tunnels the way you would label your kubernetes pods with key-value pairs like <code>release:stable</code> and <code>release:canary</code>. Soon you’ll also be able to configure routing based on these labels (send 90% of my traffic to the stable release and 10% to the canary release).</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare Warp beta is available today and we’re gradually adding people every day. Ready to get started? You can <a href="https://warp.cloudflare.com">jump in and read the docs</a> or <a href="https://cloudflare.com/products/cloudflare-warp">sign up for access to the beta</a>.</p>
 </div>

@@ -17,12 +17,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/693UrRZZSZJo8omR5ex2Vk/db9d3332098c17aca74bcdef00af55fd/image1.png" alt="" class="kg-image" width="1999" height="988" loading="lazy">
 
 	</figure>
-	<h3>Bringing you the best of open source</h3>
+	<div class="flex anchor relative">
+		<h3 id="bringing-you-the-best-of-open-source">Bringing you the best of open source</h3>
+		<a href="https://blog.cloudflare.com/#bringing-you-the-best-of-open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our mission is to support a wide array of open source models and tasks. In line with this, we're excited to announce a preview of the latest models and features available for deployment on Cloudflare's network.</p>
 	<p>One of the standout models is <code>deep-seek-coder-6.7b</code>, which notably scores <a href="https://github.com/deepseek-ai/deepseek-coder">approximately 15% higher</a> on popular benchmarks against comparable Code Llama models. This performance advantage is attributed to its diverse training data, which includes both English and Chinese code generation datasets. In addition, the <code>openhermes-2.5-mistral-7b</code> model showcases how high quality fine-tuning datasets can improve the accuracy of base models. This Mistral 7b fine-tune outperforms the base model by <a href="https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B#benchmark-results">approximately 10% on many LLM benchmarks</a>.</p>
 	<p>We're also introducing innovative models that incorporate Activation-aware Weight Quantization (AWQ), such as the <code>llama-2-13b-awq</code>. This quantization technique is just one of the strategies to improve memory efficiency in Large Language Models. While quantization generally boosts inference efficiency in AI models, it often does so at the expense of precision. AWQ strikes a balance to mitigate this tradeoff.</p>
 	<p>The pace of progress in AI can be overwhelming, but Cloudflare's Workers AI simplifies getting started with the latest models. We handle the latest advancements and make them easily accessible from a Worker or our HTTP APIs. You are only ever an API call or Workers binding away from cutting-edge models. Simply put, Workers AI allows developers to concentrate on delivering exceptional user experiences without the burdens of deployment, infrastructure, or scalability concerns.</p>
-	<h3>Using AI to safeguard your applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-ai-to-safeguard-your-applications">Using AI to safeguard your applications</h3>
+		<a href="https://blog.cloudflare.com/#using-ai-to-safeguard-your-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A newer use case we support with this model catalog update is the ability to classify and check prompts and responses with <code>llamaguard-7b-awq</code>. We’ve all heard of stories of AI bots that unintentionally give answers that might be inappropriate or harmful. This <a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations">new LlamaGuard mode</a>l allows developers to detect and categorize when a prompt or a response is potentially unsafe, allowing them to control the inputs and outputs of their applications with developer-defined categories.</p>
 	<p>Here’s an example of an application that takes a user input and compares that to an example set of defined unsafe categories to determine if the input is safe or not. You can customize the content categories depending on your use case. <i>The below example categories are provided for informational purposes only, and Cloudflare does not make any guarantees regarding the performance of Llama Guard or any outcomes or results.</i></p>
 	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
@@ -98,7 +112,15 @@ Should
 		return Response.json(response);
 	},
 };</code></pre>
-	<h3>How do I get started?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-get-started">How do I get started?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Try out our new models within the AI section of the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai">Cloudflare dashboard</a> or take a look at our <a href="https://developers.cloudflare.com/workers-ai/models">Developer Docs</a> to get started. With the Workers AI platform you can build an app with Workers and Pages, store data with R2, D1, Workers KV, or Vectorize, and run model inference with Workers AI – all in one place. Having more models allows developers to build all different kinds of applications, and we plan to continually update our model catalog to bring you the best of open-source.</p>
 	<p>We’re excited to see what you build! If you’re looking for inspiration, take a look at our <a href="https://workers.cloudflare.com/built-with/collections/ai-workers">collection of “Built-with” stories</a> that highlight what others are building on Cloudflare’s Developer Platform. Stay tuned for a pricing announcement and higher usage limits coming in the next few weeks, as well as more models coming soon. <a href="https://discord.cloudflare.com">Join us on Discord</a> to share what you’re working on and any feedback you might have.</p>
 </div>

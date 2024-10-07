@@ -2,7 +2,14 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/a-recent-spate-of-internet-disruptions-july-2024">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/a-recent-spate-of-internet-disruptions-july-2024">Français</a>, <a href="https://blog.cloudflare.com/de-de/a-recent-spate-of-internet-disruptions-july-2024">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/a-recent-spate-of-internet-disruptions-july-2024">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/a-recent-spate-of-internet-disruptions-july-2024">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/a-recent-spate-of-internet-disruptions-july-2024">Português</a>, <a href="https://blog.cloudflare.com/es-es/a-recent-spate-of-internet-disruptions-july-2024">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/a-recent-spate-of-internet-disruptions-july-2024">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xdwlnhDhydbJal5EyABTh/15e0c07bd6d4be1dbe10f066327f89d0/image25.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Radar is constantly monitoring the Internet for widespread disruptions. In mid-July, we published our <a href="https://blog.cloudflare.com/q2-2024-internet-disruption-summary"><i>Q2 2024 Internet Disruption Summary</i></a>, and here we examine several recent noteworthy disruptions detected in the first month of Q3, including traffic anomalies observed in Bangladesh, Syria, Pakistan, and Venezuela.</p>
-	<h3>Bangladesh</h3>
+	<div class="flex anchor relative">
+		<h3 id="bangladesh">Bangladesh</h3>
+		<a href="https://blog.cloudflare.com/#bangladesh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://timesofindia.indiatimes.com/world/south-asia/internet-shut-nationwide-bandh-announced-why-is-bangladesh-experiencing-deadly-protests/articleshow/111829956.cms">Violent student protests</a> in Bangladesh against quotas in government jobs and rising unemployment rates led the government to order the nationwide shutdown of mobile Internet connectivity on July 18, <a href="https://therecord.media/bangladesh-mobile-internet-social-media-outages-student-protests">reportedly</a> to “ensure the security of citizens.” This government-directed shutdown ultimately became a near-complete Internet outage for the country, as broadband networks were taken offline as well. At a country level, <a href="https://radar.cloudflare.com/traffic/bd?dateStart=2024-07-14&amp;dateEnd=2024-07-20">Internet traffic in Bangladesh dropped to near zero</a> just before 21:00 local time (15:00 UTC). <a href="https://radar.cloudflare.com/routing/bd?dateStart=2024-07-14&amp;dateEnd=2024-07-20">Announced IP address space from the country dropped to near zero</a> at that time as well, meaning that nearly every network in the country was disconnected from the Internet.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HVxLTcXlB5mWm28ZSthZX/9d75dd05b12ee6db6be385bff7fbcc4a/1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
@@ -52,7 +59,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MUTWbGAsgSEIVUZWjfeSJ/588b43e42aed687698fd037a1047fe26/13.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 	</figure>
 	<p>Looking at the network providers discussed above, traffic on <a href="https://radar.cloudflare.com/traffic/as63526?dateStart=2024-07-26&amp;dateEnd=2024-07-27">AS63526 (Carnival Internet)</a> and <a href="https://radar.cloudflare.com/traffic/as58715?dateStart=2024-07-26&amp;dateEnd=2024-07-27">AS58715 (Earth Telecommunication)</a> began to increase around 06:00 local time (00:00 UTC) on July 27, with these providers apparently included in a later phase of broadband restoration. However, traffic on mobile providers did not begin to recover until <a href="https://www.tbsnews.net/bangladesh/mobile-data-be-restored-3pm-today-palak-904901">around 15:00 local time</a> (09:00 UTC) on July 28, with <a href="https://radar.cloudflare.com/traffic/as24389?dateStart=2024-07-26&amp;dateEnd=2024-07-28">AS24389 (Grameenphone)</a>, <a href="https://radar.cloudflare.com/traffic/as45245?dateStart=2024-07-26&amp;dateEnd=2024-07-28">AS45245 (Banglalink)</a>, and <a href="https://radar.cloudflare.com/traffic/as24432?dateStart=2024-07-26&amp;dateEnd=2024-07-28">AS24432 (Robi Axiata)</a>, all seeing traffic starting to grow significantly at or slightly after that time.</p>
-	<h3>Syria</h3>
+	<div class="flex anchor relative">
+		<h3 id="syria">Syria</h3>
+		<a href="https://blog.cloudflare.com/#syria" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, Syria is no stranger to Internet shutdowns, as they occur yearly during nationwide exams, implemented with the intent of preventing cheating on those exams. Our recent blog post titled <a href="https://blog.cloudflare.com/syria-iraq-algeria-exam-internet-shutdown"><i>Exam-ining recent Internet shutdowns in Syria, Iraq, and Algeria</i></a> examined the first round of 2024 exams, which took place between May 26 and June 13. A second round of exams, and with them, multi-hour Internet shutdowns, began on July 25, and seen in the schedules below, <a href="https://www.facebook.com/photo/?fbid=862569062570288&amp;set=a.449047400589125">published by Syrian Telecom on its Facebook page</a> (English translation via Google Lens). </p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RQy6gdlWDOWyylCczdt3v/d51d28606b064e1db17f26f31f1ad692/14.png" alt="" class="kg-image" width="2116" height="956" loading="lazy">
@@ -71,7 +85,14 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j5b6kzwlPDAMs54GEQkqa/aa1fc69cffb37ca8ea692af8edd7e73a/18.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
 	</figure>
-	<h3>Pakistan</h3>
+	<div class="flex anchor relative">
+		<h3 id="pakistan">Pakistan</h3>
+		<a href="https://blog.cloudflare.com/#pakistan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Closing out the month, on July 31, Pakistan experienced a wide-scale Internet disruption that lasted approximately two hours, between 13:30 - 15:30 local time (08:30 - 10:30 UTC). Traffic only dropped ~45% at a country level, but <a href="https://radar.cloudflare.com/as17557">AS17557 (PTCL)</a> experienced a near complete loss of traffic, while traffic at <a href="https://radar.cloudflare.com/as24499">AS24499 (Telenor Pakistan)</a> dropped nearly 90%. Together, the two network providers serve an estimated nine million users, and are among the top five Internet service providers in the country.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BndoxddFfzJYBXPn0VigV/42b7aae405071e7a701ef05db653f624/19.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
@@ -90,12 +111,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1byG7WW6C8hihGsVI4A99X/15e369126a9ac734bf051137c1b46a18/23.png" alt="" class="kg-image" width="1600" height="811" loading="lazy">
 	</figure>
 	<p>Regardless of the actual cause, the disruption had a clear impact on the country’s financial markets, with a <a href="https://www.thenews.com.pk/print/1215321-kse-100-loses-740-points-amid-nationwide-internet-outage">published report</a> stating “<i>The KSE-100 index suffered a sharp decline on Wednesday, plummeting over 740 points in the final hour of trading amid a nationwide internet outage. Analysts attributed the sudden drop to panic selling as investors struggled with limited market data."</i></p>
-	<h3>Venezuela</h3>
+	<div class="flex anchor relative">
+		<h3 id="venezuela">Venezuela</h3>
+		<a href="https://blog.cloudflare.com/#venezuela" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the past, some countries have implemented government-directed Internet shutdowns as a means of limiting communication about or organizing of protests and demonstrations associated with contested elections. Although such protests and demonstrations sprang up in the wake of a <a href="https://apnews.com/article/venezuela-presidential-election-maduro-machado-edmundo-results-acee6c8cd3a8fc88086c2dd71963b759">contested presidential election in Venezuela</a> that took place on July 28, Internet shutdowns did not follow. However, in monitoring Internet traffic in Venezuela during the days around the election, the Cloudflare Radar team did observe several notable drops in traffic, as compared to the same times the week prior. After <a href="https://x.com/CloudflareRadar/status/1817968310191038670">surging 35%</a> at 05:00 local time (09:00 UTC) on Sunday, July 28 (election day), traffic dropped after the polls opened, down by as much as 23% at 09:00 local time (13:00 UTC). <a href="https://x.com/CloudflareRadar/status/1818218146903236799">On July 29</a>, the day following the election, traffic was as much as 28% lower than the same time the previous week at 06:15 local time (10:15 UTC) and 18:45 local time (22:45 UTC).</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/OiQJTVdPCUpORBVXlj2AW/18c379484593ee620cbaf2c7f82d0296/24.png" alt="" class="kg-image" width="1600" height="515" loading="lazy">
 	</figure>
 	<p>And while the observed drops in traffic appeared to be organic, and not caused by an Internet shutdown, it is worth noting that multiple websites are being blocked in Venezuela. An <a href="https://pulse.internetsociety.org/blog/internet-censorship-verging-on-service-blocking-ahead-of-venezuela-elections">Internet Society Pulse blog post</a>, published two days ahead of the election, reports that “<i>Around 60 websites are currently blocked in Venezuela, including eight media sites and three that fact-check news and misinformation.</i>”, citing data from the <a href="https://explorer.ooni.org/chart/mat?test_name=web_connectivity&amp;axis_x=measurement_start_day&amp;since=2024-07-01&amp;until=2024-07-26&amp;time_grain=day&amp;probe_cc=VE&amp;axis_y=domain">Open Observatory of Network Interference (OONI)</a>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for additional insights around Internet disruptions, routing issues, Internet traffic trends, security and attacks, and Internet quality. Follow us on social media at <a href="https://x.com/CloudflareRadar">@CloudflareRadar</a> (X), <a href="https://noc.social/@cloudflareradar">noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky), or contact us <a href="mailto:radar@cloudflare.com">via email</a>.</p>
 </div>

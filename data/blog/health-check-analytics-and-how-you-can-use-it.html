@@ -13,7 +13,14 @@
 
 	</figure>
 	<p>Once you set up a notification, you will be alerted when there is a change in the health of your origin server. In the example above, if your staging environment starts responding with anything other than a 200 OK response code, we will send you an email within seconds so you can take the necessary action before customers are impacted.</p>
-	<h3>Introducing Standalone Health Check Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-standalone-health-check-analytics">Introducing Standalone Health Check Analytics</h3>
+		<a href="https://blog.cloudflare.com/#introducing-standalone-health-check-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you get the notification email, we provide tools that help to quickly debug the possible cause of the issue with detailed logs as well as data visualizations enabling you to better understand the context around the issue. Let’s walk through a real-world scenario and see how Health Check Analytics helps decrease our time to resolution.</p>
 	<p>A notification email has been sent to you letting you know that Staging is unhealthy. You log into your dashboard and go into Health Check Analytics for this particular Health Check. In the screenshot below, you can see that Staging is up 76% of the time vs 100% of the time for Production. Now that we see the graph validating the email notification that there is indeed a problem, we need to dig in further. &nbsp;Below the graph you can see a breakdown of the type of errors that have taken place in both the Staging and Production addresses over the specified time period. We see there is only one error taking place, but very frequently, in the staging environment - a TCP Connection Failed error, leading to the lower availability.</p>
 	<p>This starts to narrow the funnel for what the issue could be. We know that there is something wrong with either the Staging server's ability to receive connections, maybe an issue during the SYN-ACK handshake, or possibly an issue with the router being used and not an issue with the origin server at all but instead receiving a down-stream consequence. With this information, you can quickly make the necessary checks to validate your hypothesis and minimize your time to resolution. Instead of having to dig through endless logs, or try to make educated guesses at where the issue could stem from, Health Check Analytics allows you to quickly hone in on detailed areas that could be the root cause. This in turn maximizes your application reliability but more importantly, keeps trust and brand expectation with your customers.</p>
@@ -58,7 +65,14 @@
 	</figure>
 	<p>Waterfall from Western North America‌‌</p>
 	<p>Based on the new information provided from Health Check Analytics, users can definitively validate that the address performs better from Western North America compared to India due to the page load time and overall RTT.</p>
-	<h3>How do health checks run?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-health-checks-run">How do health checks run?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-health-checks-run" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand and decipher the logs that are found in the analytics dashboard, it is important to understand how Cloudflare runs the Health Checks. Cloudflare has data centers in more than 200 cities across 90+ countries throughout the world [<a href="https://blog.cloudflare.com/cloudflare-expanded-to-200-cities-in-2019">more</a>]. We don’t run health checks from every single of these data centers (that would be a lot of requests to your servers!). Instead, we let you pick between one and thirteen regions from which to run health checks [<a href="https://api.cloudflare.com/#health-checks-create-health-check">Regions</a>].</p>
 	<p>The Internet is not the same everywhere around the world. So your users may not have the same experience on your application according to where they are. Running Health Checks from different regions lets you know the health of your application from the point of view of the Cloudflare network in each of these regions.</p>
 	<p>Imagine you configure a Health Check from two regions, Western North America and South East Asia, at an interval of 10 seconds. You may have been expecting to get two requests to your origin server every 10 seconds, but if you look at your server’s logs you will see that you are actually getting six. That is because we send Health Checks not just from one location in each region but three.</p>
@@ -69,6 +83,13 @@
 	</figure>
 	<p>For a health check configured from All Regions (thirteen regions) there will be 39 requests to your server per configured interval.</p>
 	<p>You may wonder: ‘Why do you probe from multiple locations within a region?’ We do this to make sure the health we report represents the overall performance of your service as seen from that region. Before we report a change, we check that at least two locations agree on the status. We added a third one to make sure that the system keeps running even if there is an issue at one of our locations.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Health Check Analytics is now live and available to all Pro, Business and Enterprise customers! &nbsp;We are very excited to help decrease your time to resolution and ensure your application reliability is maximised.</p>
 </div>

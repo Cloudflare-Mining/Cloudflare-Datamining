@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>It’s December 25th, which means most of you are probably at home visiting with family. I asked a few of the security engineers here at CloudFlare how they explain their jobs when they’re home for the holidays, and most of them responded with something along the lines of, "Oh, I stopped trying to do that a long time ago." Apparently, working in the cryptography field doesn’t exactly make it easy to talk about work with your parents.</p>
 	<p>After chatting with our crypto experts some more, we figured out a decent way to explain the general idea of encryption and why it’s a critical part of the Internet. While this post may not explain exactly what security engineers do on a day-to-day basis, hopefully it will help you at least tell your parents why you have a job in the first place.</p>
-	<h3>Banks and Their Big Fancy Buildings</h3>
+	<div class="flex anchor relative">
+		<h3 id="banks-and-their-big-fancy-buildings">Banks and Their Big Fancy Buildings</h3>
+		<a href="https://blog.cloudflare.com/#banks-and-their-big-fancy-buildings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To explain encryption to your parents, I’d start by asking them why they trust their bank. Let’s say they have some cash to deposit. They drive to their bank’s local branch, walk through a big fancy lobby, wait in line for a teller, and hand them their money. It may seem like a silly question, but how do they know they’re actually giving that cash to their bank and not some stranger off the street (or a very sophisticated con artist)?</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -12,16 +19,44 @@
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC By-SA 3.0</a> by <a href="https://en.wikipedia.org/wiki/User:Rdavout">Rdavout</a></p>
 	<p>Put another way, how would they feel if they walked into their bank and it looked like a run-down bail bonds office? Even if they saw their bank’s logo hanging on the wall, they’d still probably be a little hesitant about handing over their money.</p>
 	<p>Traditional banks are in big fancy buildings for a reason. Big fancy buildings convey an innate sense of trust. You might think that it’s to invoke a reaction like, "Oh my gosh, this bank has so much money they wouldn’t ever need to steal mine," but that’s not quite it. Big fancy buildings are trustworthy because they took a lot of time, money, and effort to construct, which means it would also take a lot of time, money, and effort for a con artist to build their own big fancy building and masquerade as your bank.</p>
-	<h3>Encryption Is the Internet’s Big Fancy Building</h3>
+	<div class="flex anchor relative">
+		<h3 id="encryption-is-the-internets-big-fancy-building">Encryption Is the Internet’s Big Fancy Building</h3>
+		<a href="https://blog.cloudflare.com/#encryption-is-the-internets-big-fancy-building" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I use an online bank with no physical branches, so instead of walking into a lobby, I visit a website. The problem with (and beauty of) the Internet is that anybody can publish a website that looks just like my bank’s site for only a few bucks a month. How do I know that the website I’m visiting isn’t the digital equivalent of a run-down bail bonds office? Where’s my big fancy building?</p>
 	<p>Instead of gaining trust with a big fancy building, my online bank adds a TLS certificate to their website. TLS certificates use encryption to ensure that I’m actually visiting the domain name I see in my browser and not a phishing website trying to steal my credentials.</p>
 	<p>That TLS certificate has the same key property as my parent’s physical bank building: it would take a lot of time and money for somebody to forge a certificate and impersonate my online bank. Even if a bad guy put up a website that looked exactly like my bank’s, they wouldn’t have a TLS certificate that matched, and my browser would warn me that something very bad is happening as soon as I visit the forged website.</p>
-	<h3>The Internet Is More Complicated</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-internet-is-more-complicated">The Internet Is More Complicated</h3>
+		<a href="https://blog.cloudflare.com/#the-internet-is-more-complicated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, online financial transactions are a little different than at your local branch. When I make a deposit with my online bank, I don’t just hand some cash to a teller, I ask my neighbor to drop it off at the post office for me, where it gets picked up by a mailman, who’s kind of busy that day, so he asks his wife to swing by the bank, but all the bank tellers are out to lunch, so she leaves it with the doorman, who says he’ll pass it along when they get back. Oh, and my cash isn’t even in an envelope; it’s just a naked $100 bill.</p>
 	<p>That’s what happens every time you do <i>anything</i> on the Internet. That should scare your parents.</p>
-	<h3>Encryption for Privacy</h3>
+	<div class="flex anchor relative">
+		<h3 id="encryption-for-privacy">Encryption for Privacy</h3>
+		<a href="https://blog.cloudflare.com/#encryption-for-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Encryption serves a dual purpose on the web. It not only ensures I’m talking to my actual online bank, it also protects my information from all those third-party intermediaries. Visiting my online bank’s website with an encrypted connection is like sticking my $100 bill in a lock box before dropping it off at my neighbor’s place. Neither he, his mailman, his wife, nor the doorman can steal it because they don’t even know what’s inside. My bank’s TLS certificate is the key to that lock box, which makes sure that only the bank tellers are allowed to access my funds.</p>
-	<h3>Best Practices for Internet Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="best-practices-for-internet-security">Best Practices for Internet Security</h3>
+		<a href="https://blog.cloudflare.com/#best-practices-for-internet-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, your parents think that working in the crypto field is the coolest, and, let’s face it, mission accomplished. Now that they’re hooked, here are some tips you can feed them about how to stay safe online:</p>
 	<ul>
 		<li>

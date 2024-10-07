@@ -9,11 +9,25 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/intelfreepress/11359813146">image</a> by <a href="https://www.flickr.com/photos/intelfreepress">Intel Free Press</a></p>
 	<p>PCMPESTRI is a versatile instruction that allows scanning of up to 16 bytes at once for occurrences of up to 16 distinct characters (bytes), or up to 8 ranges of characters (bytes). It can also be used for string and substring comparison. However, there are a few drawbacks: the instruction has a high latency of 11 cycles, and is limited to 16 bytes per instruction. It's also under utilized for range comparison in PicoHTTPParser, because it only tests two or three ranges per invocation (out of eight it is capable of). Furthermore, some simple math (16 bytes / 11 cycles) shows that using this instruction limits the parser to 1.45 bytes/cycle throughput.</p>
-	<h3>Is this really as fast as this parser can go?</h3>
+	<div class="flex anchor relative">
+		<h3 id="is-this-really-as-fast-as-this-parser-can-go">Is this really as fast as this parser can go?</h3>
+		<a href="https://blog.cloudflare.com/#is-this-really-as-fast-as-this-parser-can-go" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today on the latest Haswell processors, we have the potent <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX2</a> instructions. The AVX2 instructions operate on 32 bytes, and most of the boolean/logic instructions perform at a throughput of 0.5 cycles per instruction. This means that we can execute roughly 22 AVX2 instructions in the same amount of time it takes to execute a single PCMPESTRI. Why not give it a shot?</p>
 	<p>Let's look at the logic first. If, for example, we search for bytes in the ranges 0-8, 10-31, and 127, we see that to convert the PCMPESTRI logic to AVX2 logic we first need to check for each byte X: <code>((-1 &lt; X &lt; 32) AND !(X = 9)) OR (X = 127)</code>. Luckily, we can treat the bytes as signed because the AVX2 instruction set does not provide a single instruction for unsigned 'greater equal' operations. This logic, when implemented with AVX2 instructions, would mark all the qualifying bytes. Second, to get the position of the first qualifying byte, as PCMPESTRI does, we should use the <a href="http://www.felixcloutier.com/x86/PMOVMSKB.html">PMOVMSKB</a> instructions to get the byte mask of the AVX2 register, and then apply the new <a href="http://www.felixcloutier.com/x86/TZCNT.html">TZCNT</a> instruction (to get the position of the first set bit in the register). The latter two instructions have a latency of 3 cycles each, and the logic itself has a latency of around 4-5 cycles.</p>
 	<p>In theory, we traded a single instruction that has latency of 11 cycles for a complex flow with a theoretical latency of 10 cycles. But we would make it up in throughput, right? Apparently not. This is because the fields in the HTTP request are usually short so we don't gain from the increased throughput.</p>
-	<h3>So what can we do?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-what-can-we-do">So what can we do?</h3>
+		<a href="https://blog.cloudflare.com/#so-what-can-we-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The solution is to change the logical flow of the program from latency bound to throughput oriented. Instead of searching for the next occurrence of a token, we create a bitmap of all the occurrences in a long string. We did this when we used the PMOVMSKB instruction before; however, instead of discarding all but the first bit, we use all the bits! Moreover, to gain more from the high throughput of the AVX2 instructions, we created a bitmask for 128 bytes of the request at a time, and in addition, we create bitmasks for two types of token together—both the name/value delimiter and the new line delimiter.</p>
 	<p>To parse the resulting bit string, we use the TZCNT instruction repeatedly resulting in improved performance. This was done by compiling with gcc 4.9.2, with <code>-mavx2 -mbmi2 -O3</code> for both versions. Here are the results from Haswell i5-4278U, with turbo disabled for consistency:</p>
 	<pre class="language-bash"><code class="language-bash">             PCMPESTRI   AVX2       Improvement

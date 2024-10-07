@@ -15,7 +15,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4O7ZL4hRXnDPWWIqrP68Jr/91d2eaa7e98d8d775e07d66377bdf53b/pasted-image-0--5-.png" alt="" class="kg-image" width="1600" height="705" loading="lazy">
 
 	</figure>
-	<h3>Our own measurements</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-own-measurements">Our own measurements</h3>
+		<a href="https://blog.cloudflare.com/#our-own-measurements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that Signed Exchanges have been available on Chromium for Android for several months we dove into the change in performance our customers have experienced in the real world.</p>
 	<p>We picked the 500 most visited sites that have Automatic Signed Exchanges enabled and saw that 425 of them (85%) saw an improvement in <a href="https://web.dev/lcp">LCP</a>, which is widely considered as the Core Web Vital with the most impact on SEO and where SXG should make the biggest difference.</p>
 	<p>Out of those same 500 Cloudflare sites 389 (78%) saw an improvement in <a href="https://web.dev/fcp">First Contentful Paint (FCP)</a> and a whopping 489 (98%) saw an improvement in <a href="https://web.dev/ttfb">Time to First Byte (TTFB)</a>. The TTFB improvement measured here is an interesting case since if the exchange has already been prefetched, when the user clicks on the link the resource is already in the client browser cache and the TTFB measurement becomes close to zero.</p>
@@ -24,7 +31,14 @@
 	<p>One of the main reasons for this is that SXG wasn’t compatible with server-side personalization (e.g., serving different HTML for logged-in users) until today. To solve that, today Google added ‘Dynamic SXG’, that selectively enables SXG for visits from cookieless users only (more details on the Google blog post <a href="https://developer.chrome.com/blog/sxg-desktop">here</a>). Dynamic SXG are supported today - all you need to do is add a `Vary: Cookie’ annotation to the HTTP header of pages that contain server-side personalization.</p>
 	<p><i>Note: Signed Exchanges are compatible with client-side personalization (lazy-loading).</i></p>
 	<p>To see what the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals">Core Web Vitals</a> look like for your own users across the world we recommend a RUM solution such as our free and privacy-first <a href="https://www.cloudflare.com/web-analytics">Web Analytics</a>.</p>
-	<h3>Now available for Desktop and Android</h3>
+	<div class="flex anchor relative">
+		<h3 id="now-available-for-desktop-and-android">Now available for Desktop and Android</h3>
+		<a href="https://blog.cloudflare.com/#now-available-for-desktop-and-android" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Starting today, Signed Exchanges is also supported by Chromium-based desktop browsers, including Chrome, Edge and Opera.</b></p>
 	<p>If you enabled Automatic Signed Exchanges on your Cloudflare dashboard, no further action is needed - the supported desktop browsers will automatically start being served the SXG version of your site’s content. Google estimates that this release will, on average, double SXG’s coverage of your site’s visits, enabling improved loading and performance for more users.</p>
 	<p>And if you haven’t yet enabled it but are curious about the impact SXG will have on your site, Automatic Signed Exchanges is available through the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization">Speed &gt; Optimization link</a> on your Cloudflare dashboard (more details <a href="https://support.cloudflare.com/hc/en-us/articles/4411075595661-Automatic-Signed-Exchanges-SXGs-">here</a>).</p>

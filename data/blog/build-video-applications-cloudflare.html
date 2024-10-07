@@ -9,7 +9,14 @@
 	<p>Historically, building video applications has been very difficult. There's a lot of complicated tech behind recording, encoding, and playing videos. Luckily, <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a> abstracts all the difficult parts away, so you can build custom video and streaming applications easily. Let's look at how we can combine Cloudflare Stream, Access, Pages, and Workers to create a high-performance video application with very little code.</p>
 	<p>Today, we’re going to build a video application inspired by <a href="https://cloudflare.tv/live">Cloudflare TV</a>. We’ll have user authentication and the ability for administrators to upload recorded videos or livestream new content. Think about being able to build your own YouTube or Twitch using Cloudflare services!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 36.09550561797753%;"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<h3>Fetching a list of videos</h3>
+	<div class="flex anchor relative">
+		<h3 id="fetching-a-list-of-videos">Fetching a list of videos</h3>
+		<a href="https://blog.cloudflare.com/#fetching-a-list-of-videos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the main page of our application, we want to display a list of all videos. The videos are uploaded and stored with Cloudflare Stream, but more on that later! This code could be changed to display only the "trending" videos or a selection of videos chosen for each user. For now, we'll use the search API and pass in an empty string to return all.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { getSignedStreamId } from "../../src/cfStream"
 
@@ -72,10 +79,24 @@ export async function onRequestGet(context) {
     }
 }</code></pre>
 	<p>We'll go through each video, filter out any private videos, and pull out the metadata we need, such as the thumbnail URL, ID, and created date.</p>
-	<h3>Playing the videos</h3>
+	<div class="flex anchor relative">
+		<h3 id="playing-the-videos">Playing the videos</h3>
+		<a href="https://blog.cloudflare.com/#playing-the-videos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To allow users to play videos from your application, they need to be public, or you'll have to sign each request. Marking your videos as public makes this process easier. However, there are many reasons you might want to control access to your videos. If you want users to log in before they play them or the ability to limit access in any way, mark them as private and use signed URLs to control access. You can find more information about securing your videos <a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream">here</a>.</p>
 	<p>If you are testing your application locally or expect to have fewer than 10,000 requests per day, you can call the /token endpoint to generate a signed token. If you expect more than 10,000 requests per day, sign your own tokens as we do here using <a href="https://jwt.io">JSON Web Tokens</a>.</p>
-	<h3>Allowing users to upload videos</h3>
+	<div class="flex anchor relative">
+		<h3 id="allowing-users-to-upload-videos">Allowing users to upload videos</h3>
+		<a href="https://blog.cloudflare.com/#allowing-users-to-upload-videos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next step is to build out an admin page where users can upload their videos. You can find documentation on allowing user uploads <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads">here</a>.</p>
 	<p>This process is made easy with the Cloudflare Stream API. You use your <a href="https://developers.cloudflare.com/api/tokens/create">API token</a> and account ID to generate a unique, one-time upload URL. Just make sure your token has the Stream:Edit permission. We hook into all POST requests from our application and return the generated upload URL.</p>
 	<pre class="language-javascript"><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
@@ -120,9 +141,24 @@ async function uploadVideo() {
         body: formData,
     })
 }</code></pre>
-	<h3>Adding real time video with Stream Live</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="adding-real-time-video-with-stream-live">Adding real time video with Stream Live</h3>
+		<a href="https://blog.cloudflare.com/#adding-real-time-video-with-stream-live" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can add a <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">livestreaming</a> section to your application as well, using <a href="https://blog.cloudflare.com/stream-live">Stream Live</a> in conjunction with the techniques we've already covered. &nbsp;You could allow logged-in users to start a broadcast and then allow other logged-in users, or even the public, to watch it in real-time! The streams will automatically save to your account, so they can be viewed immediately after the broadcast finishes in the main section of your application.</p>
-	<h3>Securing our app with middleware</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-our-app-with-middleware">Securing our app with middleware</h3>
+		<a href="https://blog.cloudflare.com/#securing-our-app-with-middleware" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We put all authenticated pages behind this middleware function. It checks the request headers to make sure the user is sending a valid authenticated user email.</p>
 	<pre class="language-javascript"><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
     try {
@@ -146,10 +182,25 @@ async function uploadVideo() {
 export const onRequest = [
     cfTeamsAccessAuthMiddleware
 ]</code></pre>
-	<h3>Putting it all together with Pages</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together-with-pages">Putting it all together with Pages</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together-with-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have Cloudflare Access controlling our log-in flow. We use the Stream APIs to manage uploading, displaying, and watching videos. We use <a href="https://workers.cloudflare.com">Workers</a> for managing fetch requests and handling API calls. Now it’s time to tie it all together using <a href="https://pages.cloudflare.com">Cloudflare Pages</a>!</p>
 	<p>Pages provides an easy way to deploy and host static websites. But now, Pages seamlessly integrates with the Workers platform (link to announcement post). With this new integration, we can deploy this entire application with a single, readable repository.</p>
-	<h3>Controlling access</h3>
+	<div class="flex anchor relative">
+		<h3 id="controlling-access">Controlling access</h3>
+		<a href="https://blog.cloudflare.com/#controlling-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some applications are better public; others contain sensitive data and should be restricted to specific users. The main page is public for this application, and we've used <a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> to limit the admin page to employees. You could just as easily use Access to protect the entire application if you’re building an internal learning service or even if you want to beta launch a new site!</p>
 	<p>When a user clicks the admin link on our <a href="https://cf-pages-stream.pages.dev">demo site</a>, they will be prompted for an email address. If they enter a valid Cloudflare email, the application will send them an access code. Otherwise, they won't be able to access that page.</p>
 	<p>Check out the <a href="https://github.com/cloudflare/pages-stream-demo">source code</a> and get started building your own video application today!</p>

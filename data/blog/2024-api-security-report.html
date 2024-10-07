@@ -10,7 +10,14 @@
 	<p>You may know Cloudflare as the company powering nearly 20% of the web. But powering and protecting websites and static content is only a fraction of what we do. In fact, well over half of the dynamic traffic on our network consists not of web pages, but of Application Programming Interface (API) traffic — the plumbing that makes technology work. This blog introduces and is a supplement to the <a href="https://www.cloudflare.com/lp/api-security-report">API Security Report for 2024</a> where we detail exactly how we’re protecting our customers, and what it means for the future of API security. Unlike other industry API reports, our report isn’t based on user surveys — but instead, based on real traffic data.</p>
 	<p>If there’s only one thing you take away from our report this year, it’s this: many organizations lack accurate API inventories, <i>even when they believe they can correctly identify API traffic</i>. Cloudflare helps organizations discover all of their public-facing APIs using <a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">two approaches</a>. First, customers configure our API discovery tool to monitor for identifying tokens present in their known API traffic. We then use a machine learning model that scans not just these known API calls, but <i>all</i> HTTP requests, identifying API traffic that may be going unaccounted for. The difference between these approaches is striking: <b>we found 30.7% more API endpoints through machine learning-based discovery</b> than the self-reported approach, suggesting that nearly a third of APIs are “<a href="https://www.cloudflare.com/learning/security/api/what-is-shadow-api">Shadow APIs</a>” — and may not be properly inventoried and secured.</p>
 	<p>Read on for extras and highlights from our inaugural API security report. In the <a href="https://www.cloudflare.com/2024-api-security-management-report">full report</a>, you’ll find updated statistics about the threats we see and prevent, along with our predictions for 2024. We predict that a lack of API security focus at organizations will lead to increased complexity and loss of control, and increased access to generative AI will lead to more API risk. We also anticipate an increase in API business logic attacks in 2024. Lastly, all of the above risks will necessitate growing governance around API security.</p>
-	<h3>Hidden attack surfaces</h3>
+	<div class="flex anchor relative">
+		<h3 id="hidden-attack-surfaces">Hidden attack surfaces</h3>
+		<a href="https://blog.cloudflare.com/#hidden-attack-surfaces" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How are web pages and APIs different? APIs are a quick and easy way for applications to retrieve data in the background, or ask that work be done from other applications. For example, anyone can write a weather app without being a meteorologist: a developer can write the structure of the page or mobile application and ask a weather API for the forecast using the user’s location. Critically, most end users don’t know that the data was provided by the weather API and not the app’s owner.</p>
 	<p>While APIs are the critical plumbing of the Internet, they're also ripe for abuse. For example, flaws in API authentication and authorization at Optus <a href="https://www.bleepingcomputer.com/news/security/optus-hacker-apologizes-and-allegedly-deletes-all-stolen-data">led to a threat actor offering</a> 10 million user records for sale, and government agencies have <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-208a">warned about</a> these exact API attacks. Developers in an organization will often create Internet-facing APIs, used by their own applications to function more efficiently, but it's on the security team to protect these new public interfaces. If the process of documenting APIs and bringing them to the attention of the security team isn't clear, they become Shadow APIs — operating in production but without the organization's knowledge. This is where the <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">security challenge</a> begins to emerge.</p>
 	<p>To help customers solve this problem, we shipped <a href="https://developers.cloudflare.com/api-shield/security/api-discovery">API Discovery</a>. When we <a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">introduced</a> our latest release, we mentioned how few organizations have accurate API inventories. Security teams sometimes are forced to adopt an “email and ask” approach to build an inventory, and in doing so responses are immediately stale upon the next application release when APIs change. Better is to track API changes by code base changes, keeping up with new releases. However, this still has a drawback of only inventorying actively maintained code. Legacy applications may not see new releases, despite receiving production traffic.</p>
@@ -44,7 +51,14 @@ for server in servers:
 csv_output = output.getvalue().strip()
 print(csv_output)</code></pre>
 	<p>Unless you have been generating OpenAPI schemas and tracking API inventory from the beginning of your application’s development process, you’re probably missing some endpoints across your production application API inventory.</p>
-	<h3>Precise rate limits minimize attack potential</h3>
+	<div class="flex anchor relative">
+		<h3 id="precise-rate-limits-minimize-attack-potential">Precise rate limits minimize attack potential</h3>
+		<a href="https://blog.cloudflare.com/#precise-rate-limits-minimize-attack-potential" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When it comes to stopping abuse, most practitioners’ thoughts first come to <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">rate limiting</a>. <b>Implementing limits on your API is a valuable tool to keep abuse in check and prevent accidental overload of the origin.</b> But how do you know if you’ve chosen the correct rate limiting approach? Approaches can vary, but they generally come down to the error code chosen, and the basis for the limit value itself.</p>
 	<p>For some APIs, practitioners configure rate limiting errors to respond with an HTTP 403 (forbidden), while others will respond with HTTP 429 (too many requests). Using HTTP 403 sounds innocent enough until you realize that other security tools are also responding with 403 codes. When you’re under attack, it can be hard to decipher which tools are responsible for which errors / blocking.</p>
 	<p>Alternatively, if you utilize HTTP 429 for your rate limits, attackers will instantly know that they’ve been rate limited and can “surf” right under the limit without being detected. This can be OK if you’re only limiting requests to ensure your back-end stays alive, but it can tip your cards to attackers. In addition, attackers can “scale out” to more API clients to effectively request above the rate limit.</p>
@@ -62,7 +76,14 @@ print(csv_output)</code></pre>
 
 	</figure>
 	<p>Activating a rate limit is as easy as clicking the ‘create rule’ link, and API Gateway will automatically bring your session identifier over to the advanced rate limit rule creation page, ensuring your rules have pinpoint accuracy to defend against attacks and minimize false positives compared to traditional, overly broad limits.</p>
-	<h3>APIs are also victim to web application attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="apis-are-also-victim-to-web-application-attacks">APIs are also victim to web application attacks</h3>
+		<a href="https://blog.cloudflare.com/#apis-are-also-victim-to-web-application-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>APIs aren’t immune from normal OWASP Top 10 style attacks like <a href="https://www.cloudflare.com/learning/security/threats/sql-injection">SQL injection</a>. The body of API requests can also find its way as a database input just like a web page form input or URL argument. It’s important to ensure that you have a <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">web application firewall (WAF)</a> also protecting your API traffic to defend against these styles of attacks.</p>
 	<p>In fact, when we looked at Cloudflare’s WAF managed rules, injection attacks were the second most common threat vector Cloudflare saw carried out on APIs. The most common threat was HTTP Anomaly. Examples of HTTP anomalies include malformed method names, null byte characters in headers, non-standard ports or content length of zero with a POST request. Here are the stats on the other top threats we saw against APIs:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -87,7 +108,14 @@ print(csv_output)</code></pre>
 			<p>Block attackers from skipping legitimate sequences of API requests.</p>
 		</li>
 	</ol>
-	<h3>APIs are surprisingly human driven, not machine driven anymore</h3>
+	<div class="flex anchor relative">
+		<h3 id="apis-are-surprisingly-human-driven-not-machine-driven-anymore">APIs are surprisingly human driven, not machine driven anymore</h3>
+		<a href="https://blog.cloudflare.com/#apis-are-surprisingly-human-driven-not-machine-driven-anymore" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’ve been around technology since the pre-smartphone days when fewer people were habitually online, it can be tempting to think of APIs as only used for machine-to-machine communication in something like an overnight batch job process. However, the truth couldn’t be more different. As we’ve discussed, many web and mobile applications are powered by APIs, which facilitate everything from authentication to transactions to serving media files. As people use these applications, there is a corresponding increase in API traffic volume.</p>
 	<p>We can illustrate this by looking at the API traffic patterns observed during holidays, when people gather around friends and family and spend more time socializing in person and less time online. We’ve annotated the following Worldwide API traffic graph with common holidays and promotions. Notice how traffic peaks around Black Friday and Cyber Monday around the +10% level when people shop online, but then traffic drops off for the festivities of Christmas and New Years days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -96,7 +124,14 @@ print(csv_output)</code></pre>
 
 	</figure>
 	<p>This pattern <a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">closely resembles</a> what we observe in regular HTTP traffic. It’s clear that APIs are no longer just the realm of automated processes but are intricately linked with human behaviors and social trends.</p>
-	<h3>Recommendations</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is no silver bullet for holistic API security. For the best effect, Cloudflare recommends four strategies for increasing API security posture:</p>
 	<ol>
 		<li>
@@ -114,7 +149,14 @@ print(csv_output)</code></pre>
 	</ol>
 	<p>What do we mean by a ‘positive’ or ‘negative’ security model? In a negative model, security tools look for known signs of attack and take action to stop those attacks. In a positive model, security tools look for known good requests and only let those through, blocking all else. APIs are often so structured that positive security models make sense for the highest levels of security. You can also combine security models, such as using a WAF in a negative model sense, and using API Schema Validation in a positive model sense.</p>
 	<p>Here’s a quick way to gauge your organization’s API security maturity level over time: Novice organizations will get started by assembling their first API inventory, no matter how incomplete. More mature organizations will strive for API inventory accuracy and automatic updates. The most mature organizations will actively enforce security checks in a positive security model on their APIs, enforcing API schema, valid authentication, and checking behavior for signs of abuse.</p>
-	<h3>Predictions</h3>
+	<div class="flex anchor relative">
+		<h3 id="predictions">Predictions</h3>
+		<a href="https://blog.cloudflare.com/#predictions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In closing, our top four predictions for 2024 and beyond:</p>
 	<p><b>Increased loss of control and complexity:</b> we surveyed practitioners in the API Security and Management field and 73% responded that security requirements interfere with their productivity and innovation. Coupled with increasingly sprawling applications and inaccurate inventories, API risks and complexity will rise.</p>
 	<p><b>Easier access to AI leading to more API risks:</b> the rise in generative AI brings potential risks, including AI models’ APIs being vulnerable to attack, but also developers shipping buggy, AI-written code. Forrester predicts that, in 2024, without proper guardrails, “at least three data breaches will be publicly blamed on insecure AI-generated code – either due to security flaws in the generated code itself or vulnerabilities in AI-suggested dependencies.”</p>

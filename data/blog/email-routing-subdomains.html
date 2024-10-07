@@ -8,9 +8,23 @@
 	<p>It's been two years since we announced Email Routing, our solution to create custom email addresses for your domains and route incoming emails to your preferred mailbox. Since then, the team has worked hard to evolve the product and add more powerful features to meet our users' expectations. Examples include <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a>, which allows you to <a href="https://developers.cloudflare.com/email-routing/email-workers">process your Emails programmatically</a> using Workers scripts, <a href="https://blog.cloudflare.com/email-routing-leaves-beta">Public APIs</a>, Audit Logs, or <a href="https://blog.cloudflare.com/dmarc-management">DMARC Management</a>.</p>
 	<p>We also made significant progress in supporting more email security extensions and protocols, protecting our customers from unwanted traffic, and keeping our IP space reputation for email egress impeccable to maximize our deliverability rates to whatever inbox upstream provider you chose.</p>
 	<p>Since <a href="https://blog.cloudflare.com/email-routing-leaves-beta">leaving beta</a>, Email Routing has grown into one of our most popular products; it’s used by more than one million different customer zones globally, and we forward around 20 million messages daily to every major email platform out there. Our product is mature, robust enough for general usage, and suitable for any production environment. And it keeps evolving: today, we announce three new features that will help make Email Routing more secure, flexible, and powerful than ever.</p>
-	<h2>New security protocols</h2>
+	<div class="flex anchor relative">
+		<h2 id="new-security-protocols">New security protocols</h2>
+		<a href="https://blog.cloudflare.com/#new-security-protocols" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The SMTP email protocol has been around since the early 80s. Naturally, it wasn't designed with the best security practices and requirements in mind, at least not the ones that the Internet expects today. For that reason, several protocol revisions and extensions have been standardized and adopted by the community over the years. Cloudflare is known for being an early adopter of promising emerging technologies; Email Routing already <a href="https://developers.cloudflare.com/email-routing/postmaster">supports</a> things like SPF, DKIM signatures, DMARC policy enforcement, TLS transport, STARTTLS, and IPv6 egress, to name a few. Today, we are introducing support for two new standards to help <a href="https://www.cloudflare.com/zero-trust/products/email-security">increase email security</a> and improve deliverability to third-party upstream email providers.</p>
-	<h3>ARC</h3>
+	<div class="flex anchor relative">
+		<h3 id="arc">ARC</h3>
+		<a href="https://blog.cloudflare.com/#arc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://arc-spec.org">Authenticated Received Chain</a> (ARC) is an email authentication system designed to allow an intermediate email server (such as Email Routing) to preserve email authentication results. In other words, with ARC, we can securely preserve the results of validating sender authentication mechanisms like SPF and DKIM, which we support when the email is received, and transport that information to the upstream provider when we forward the message. ARC establishes a chain of trust with all the hops the message has passed through. So, if it was tampered with or changed in one of the hops, it is possible to see where by following that chain.</p>
 	<p>We began rolling out ARC support to Email Routing a few weeks ago. Here’s how it works:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -27,7 +41,14 @@
 	<pre class="language-bash"><code class="language-bash">ARC-Seal: i=1; a=rsa-sha256; s=2022; d=email.cloudflare.net; cv=none; b=Lx35lY6..t4g==;</code></pre>
 	<p>When Gmail receives the message from Email Routing, it not only normally authenticates the last hop domain.example domain (Email Routing uses <a href="https://developers.cloudflare.com/email-routing/postmaster/#sender-rewriting">SRS</a>), but it also checks the ARC seal header, which provides the authentication results of the original sender.</p>
 	<p>ARC increases the traceability of the message path through email intermediaries, allowing for more informed delivery decisions by those who receive emails as well as higher deliverability rates for those who transport them, like Email Routing. It has been adopted by all the major email providers like <a href="https://support.google.com/a/answer/175365?hl=en">Gmail</a> and Microsoft. You can read more about the ARC protocol in the <a href="https://datatracker.ietf.org/doc/html/rfc8617">RFC8617</a>.</p>
-	<h3>MTA-STS</h3>
+	<div class="flex anchor relative">
+		<h3 id="mta-sts">MTA-STS</h3>
+		<a href="https://blog.cloudflare.com/#mta-sts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we said earlier, SMTP is an old protocol. Initially Email communications were done in the clear, in plain-text and unencrypted. At some point in time in the late 90s, the email providers community standardized STARTTLS, also known as Opportunistic TLS. The <a href="https://datatracker.ietf.org/doc/html/rfc3207">STARTTLS extension</a> allowed a client in a SMTP session to upgrade to TLS encrypted communications.</p>
 	<p>While at the time this seemed like a step forward in the right direction, we later found out that because STARTTLS can start with an unencrypted plain-text connection, and that can be hijacked, the protocol is <a href="https://lwn.net/Articles/866481">susceptible to man-in-the-middle attacks</a>.</p>
 	<p>A few years ago MTA Strict Transport Security (<a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.</p>
@@ -65,11 +86,25 @@ max_age: 86400</code></pre>
 	<p>This says that we enforce MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered.</p>
 	<p>Email Routing also supports MTA-STS upstream, which greatly improves security when forwarding your Emails to service providers like <a href="https://support.google.com/a/answer/9261504?hl=en">Gmail</a> or <a href="https://learn.microsoft.com/en-us/purview/enhancing-mail-flow-with-mta-sts">Microsoft</a>, and others.</p>
 	<p>While enabling MTA-STS involves a few steps today, we plan to simplify things for you and automatically configure MTA-STS for your domains from the Email Routing dashboard as a future improvement.</p>
-	<h2>Sending emails and replies from Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="sending-emails-and-replies-from-workers">Sending emails and replies from Workers</h2>
+		<a href="https://blog.cloudflare.com/#sending-emails-and-replies-from-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last year we announced <a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a>, allowing anyone using Email Routing to associate a Worker script to an Email address rule, and programmatically process their incoming emails in any way they want. <a href="https://developers.cloudflare.com/workers">Workers</a> is our serverless compute platform, it provides hundreds of features and APIs, like <a href="https://developers.cloudflare.com/workers/databases">databases</a> and <a href="https://developers.cloudflare.com/r2/api/workers/workers-api-reference">storage</a>. Email Workers opened doors to a flood of use-cases and applications that weren’t possible before like implementing allow/block lists, advanced rules, notifications to messaging applications, honeypot aggregators and more.</p>
 	<p>Still, you could only act on the incoming email event. You could read and process the email message, you could even manipulate and create some headers, but you couldn’t rewrite the body of the message or create new emails from scratch.</p>
 	<p>Today we’re announcing two new powerful Email Workers APIs that will further enhance what you can do with Email Routing and Workers.</p>
-	<h3>Send emails from Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="send-emails-from-workers">Send emails from Workers</h3>
+		<a href="https://blog.cloudflare.com/#send-emails-from-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now you can send an email from any Worker, from scratch, whenever you want, not just when you receive incoming messages, to any email address verified on Email Routing under your account. Here are a few practical examples where sending email from Workers to your verified addresses can be helpful:</p>
 	<ul>
 		<li>
@@ -121,7 +156,14 @@ export default {
 	<p>This example makes use of <a href="https://muratgozel.github.io/MIMEText">mimetext</a>, an open-source raw email message generator.</p>
 	<p>Again, for security reasons, you can only send emails to the addresses for which you confirmed ownership in Email Routing under your Cloudflare account. If you’re looking for sending email campaigns or newsletters to destination addresses that you do not control or larger subscription groups, you should consider other options like our <a href="https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels">MailChannels integration</a>.</p>
 	<p>Since sending Emails from Workers is not tied to the EmailEvent, you can send them from any type of Worker, including <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers">Cron Triggers</a> and <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>, whenever you want, you control all the logic.</p>
-	<h3>Reply to emails</h3>
+	<div class="flex anchor relative">
+		<h3 id="reply-to-emails">Reply to emails</h3>
+		<a href="https://blog.cloudflare.com/#reply-to-emails" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of our most-requested features has been to provide a way to programmatically respond to incoming emails. It has been possible to do this with Email Workers in a very limited capacity by returning a permanent SMTP error message — but this may or may not be visible to the end user depending on the client implementation.</p>
 	<pre class="language-javascript"><code class="language-javascript">export default {
   async email(message, env, ctx) {
@@ -155,7 +197,14 @@ export default {
 	</ul>
 	<p>If these and other internal conditions are not met, then <code>reply()</code> will fail with an exception, otherwise you can freely compose your reply message and send it back to the original sender.</p>
 	<p>For more information the documentation to these APIs is available in our <a href="https://developers.cloudflare.com/email-routing/email-workers/runtime-api">Developer Docs</a>.</p>
-	<h2>Subdomains support</h2>
+	<div class="flex anchor relative">
+		<h2 id="subdomains-support">Subdomains support</h2>
+		<a href="https://blog.cloudflare.com/#subdomains-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a big one.</p>
 	<p>Email Routing is a <a href="https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones">zone-level</a> feature. A zone has a top-level domain (the same as the zone name) and it can have subdomains (managed under the DNS feature.) As an example, I can have the <code>example.com</code> &nbsp;zone, and then the <code>mail.example.com</code> and <code>corp.example.com</code> subdomains under it. However, we can only use Email Routing with the top-level domain of the zone, <code>example.com</code> in this example. While this is fine for the vast majority of use cases, some customers — particularly bigger organizations with complex email requirements — have asked for more flexibility.</p>
 	<p>This changes today. Now you can use Email Routing with any subdomain of any zone in your account. To make this possible we redesigned the dashboard UI experience to make it easier to get you started and manage all your Email Routing domains and subdomains, rules and destination addresses in one single place. Let’s see how it works.</p>
@@ -184,7 +233,14 @@ export default {
 
 	</figure>
 	<p>It’s this easy.</p>
-	<h2>Final words</h2>
+	<div class="flex anchor relative">
+		<h2 id="final-words">Final words</h2>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We hope you enjoy the new features that we are announcing today. Still, we want to be clear: there are no changes in pricing, and Email Routing is still free for Cloudflare customers.</p>
 	<p>Ever since Email Routing was launched, we’ve been listening to customers’ feedback and trying to adjust our roadmap to both our requirements and their own ideas and requests. Email shouldn't be difficult; our goal is to listen, learn and keep improving the <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">email security service</a> with better, more powerful features.</p>
 	<p>You can find detailed information about the new features and more in our Email Routing <a href="https://developers.cloudflare.com/email-routing">Developer Docs</a>.</p>

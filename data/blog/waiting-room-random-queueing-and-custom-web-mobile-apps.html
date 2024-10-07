@@ -6,7 +6,15 @@
 
 	</figure>
 	<p>Today, we are announcing the general availability of <a href="https://blog.cloudflare.com/cloudflare-waiting-room">Cloudflare Waiting Room</a> to customers on our <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plans</a>, making it easier than ever to protect your website against traffic spikes. We are also excited to present several new features that have user experience in mind — an alternative queueing method and support for custom web/mobile applications.</p>
-	<h3>First-In-First-Out (FIFO) Queueing</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-in-first-out-fifo-queueing">First-In-First-Out (FIFO) Queueing</h3>
+		<a href="https://blog.cloudflare.com/#first-in-first-out-fifo-queueing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HimJUBjwlefUf3zFKz1kV/5d9398daf66301567af943a80620d7e0/image3-11.png" alt="" class="kg-image" width="845" height="271" loading="lazy">
@@ -15,7 +23,15 @@
 	<p>Whether you’ve waited to check out at a supermarket or stood in line at a bank, you’ve undoubtedly experienced FIFO queueing. FIFO stands for First-In-First-Out, which simply means that people are seen in the order they arrive — i.e., those who arrive first are processed before those who arrive later.</p>
 	<p>When Waiting Room was introduced earlier this year, it was first deployed to protect COVID-19 vaccine distributors from overwhelming demand — a service we offer free of charge under <a href="https://blog.cloudflare.com/project-fair-shot">Project Fair Shot</a>. At the time, FIFO queueing was the natural option due to its wide acceptance in day-to-day life and accurate estimated wait times. One problem with FIFO is that users who arrive later could see long estimated wait times and decide to abandon the website.</p>
 	<p>We take customer feedback seriously and improve products based on it. A frequent request was to handle users irrespective of the time they arrive in the Waiting Room. In response, we developed an additional approach: random queueing.</p>
-	<h3>A New Approach to Fairness: Random Queueing</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-approach-to-fairness-random-queueing">A New Approach to Fairness: Random Queueing</h3>
+		<a href="https://blog.cloudflare.com/#a-new-approach-to-fairness-random-queueing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Y5uqRgnOlkffp4VrgWNyA/ff1bc684f1fb0c059eecd850ea012530/image8-9.png" alt="" class="kg-image" width="1648" height="814" loading="lazy">
@@ -26,7 +42,15 @@
 	<p>Random queueing is designed to give everyone a fair chance. Imagine waking up excited to purchase new limited-edition sneakers only to find that the FIFO queue is five hours long and full of users that either woke up in the middle of the night to get in line or joined from earlier time zones. Even if you waited five hours, those sneakers would likely be sold out by the time you reach the website. In this case, you’d probably abandon the Waiting Room completely and do something else. On the other hand, if you were aware that the queue was random, you’d likely stick around. After all, you have a chance to be accepted and make a purchase!</p>
 	<p>As a result, random queueing is perfect for short-lived scenarios with lots of hype, such as product launches, holiday traffic, special events, and limited-time sales.</p>
 	<p>By contrast, when the event ends and traffic returns to normal, a FIFO queue is likely more suitable, since its widely accepted structure and accurate estimated wait times provide a consistent user experience.</p>
-	<h3>How Does Random Queueing Work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-random-queueing-work">How Does Random Queueing Work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-random-queueing-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DMz1FTEC6lJp9AV5Mdb1e/d825a915ae6716388678c3d8249d2bd2/image9-5.png" alt="" class="kg-image" width="1892" height="1226" loading="lazy">
@@ -106,7 +130,14 @@
 	<p>Let’s modify this case and assume we only have 200 queued users, all of which are in the 15:54 bucket. First, we reserve 200 slots for these queued users, leaving us 2,000 - 200 = 1,800 remaining slots. Since we have reserved slots for all queued users, we can use the remaining 1,800 slots on <i>new users</i> — people who have just made their first request to the Waiting Room and don’t have a cookie or bucketId yet. Similar to how we handle buckets with fewer slots than queued users, we will distribute these 1,800 slots to each data center, allocating 1,800 * .6 = 1,080 to Nairobi and 1,800 * .4 = 720 to Dublin. In Nairobi, we will split these equally across the 3 workers, giving them 1,080 / 3 = 360 slots each. If you are a new user making a request to a worker in Nairobi, you will be accepted and take a slot if the worker has at least one of its 360 slots available, otherwise you will be marked as a queued user and enter the Waiting Room.</p>
 	<p>Now that we have outlined the concepts for FIFO, we can understand how random queueing operates. Simply put, random queueing functions the same way as FIFO, except we <i>pretend</i> that every user is new. In other words, we will not look at reserved slots when making the decision if the user should be let in. Let’s revisit the last case with 200 queued users in the 15:54 bucket and 2,000 available slots. When random queueing, we allocate the full 2,000 slots to new users, meaning Nairobi gets 2,000 * .6 = 1,200 slots and each of its 3 workers gets 1,200 / 3 = 400 slots. No matter how many users are queued or freshly joining the Waiting Room, all of them will have a chance at taking these slots.</p>
 	<p>Finally, let’s reiterate that we are only <i>pretending</i> that all users are new — we still assign them to bucketIds and reserve slots as if we were FIFO queueing, but simply don’t make any use of this logic while random queueing is active. That way, we can maintain the same FIFO structure while we are random queueing so that if necessary, we can smoothly transition back to FIFO queueing and respect initial user arrival times.</p>
-	<h3>How “Random” is Random Queueing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-random-is-random-queueing">How “Random” is Random Queueing?</h3>
+		<a href="https://blog.cloudflare.com/#how-random-is-random-queueing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since random queueing is basically a race for available slots, we were concerned that it could be exploited if the available user slots and the queued user check-ins did not occur randomly.</p>
 	<p>To ensure all queued users can attempt to get into the website at the same rate, we store (in the encrypted cookie) the last time each user checked into the Waiting Room (lastCheckInTime) to prevent them from attempting to gain access to the website until a number of seconds have passed (refreshIntervalSeconds). This means that spamming the page refresh button will not give you an advantage over other queued users! Be patient — the browser will refresh automatically the moment you are eligible for another chance.</p>
 	<p>Next, let’s imagine five queued users checking into the Waiting Room every refreshIntervalSeconds=30 at approximately the :00 and :30 minute marks. A new queued user joins the Waiting Room and checks in at approximately :15 and :45. If new slots are randomly released, this new user will have about a 50% chance of being selected next, since it monopolizes over the :00-15 and :30-45 ranges. On the other hand, the other five queued users share the :15-30 and :45-00 ranges, giving them about a 50% / 5 = 10% chance each. Let's consider that new slots are not randomly released and assume they are always released at :59. In this case, the new queued user will have virtually no chance to be selected before the other five queued users because these users will always check in one second later at :00, immediately consuming any newly released slots.</p>
@@ -159,7 +190,15 @@ with open(filename) as file:
 	</figure>
 	<p>By inspecting the generated heatmaps, we can conclude that FIFO and random queueing are working properly. For FIFO queueing, users are being accepted in the order they arrive. For random queueing, we can see that users are accepted to the origin regardless of arrival time. Overall, we can see the heatmap for random queueing is well distributed, indicating it is sufficiently random!</p>
 	<p>If you are curious why random queueing has very hot colors along the lowest wait times followed by very dark colors afterward, it is actually because of how we are simulating the queue. For the simulation, we spoofed the bucketIds of the users and let them all join the Waiting Room at once to see who would be let in first. In the random queueing heatmap, the bright colors along the lowest wait time buckets indicate that many users were accepted quickly after joining the queue across all bucketIds. This is expected, demonstrating that random queueing does not give an edge to users who join earlier, giving each user a fair chance regardless of its bucketId. The reason why these users were almost immediately accepted in WaitTime Bucket 0 is because this simulation started with no users on the origin, meaning new users would be accepted until the Waiting Room limits were reached. Since this first wave of accepted users “browsed” on the origin for a minute before leaving, no additional users during this time were let in. Thus, the colors are very dark for WaitTime Buckets 1 and 2. Similarly, the second wave of users is randomly selected afterward, followed by another period of time when no users were accepted in WaitTime Bucket 5. As the wait time increases, the more attempts a particular user will have to be let in, meaning it is unlikely for users to have extreme wait times. We can see this by observing the colors grow darker as the WaitTime Bucket approaches 29.</p>
-	<h3>How Is Estimated Time Calculated for Random Queueing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-is-estimated-time-calculated-for-random-queueing">How Is Estimated Time Calculated for Random Queueing?</h3>
+		<a href="https://blog.cloudflare.com/#how-is-estimated-time-calculated-for-random-queueing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/24BHsyypybgrHaVUFhdypo/7e80290cc231282cd010a62c3c284a6b/image4-12.png" alt="" class="kg-image" width="1051" height="574" loading="lazy">
@@ -186,7 +225,15 @@ with open(filename) as file:
 	<p>n = log(1 - .5) / log(1 - .1) ≈ 6.58 minutes or 6 minutes and 35 seconds</p>
 	<p>In this case, we estimate that 50% of users will wait less than 6 minutes and 35 seconds and the remaining 50% of users will wait longer than this.</p>
 	<p>So, which estimated wait times are displayed to the user? It is up to you! If you create a <a href="https://mustache.github.io">Mustache</a> HTML template for a Waiting Room, you will now be able to use the variables waitTime25Percentile, waitTime50Percentile, and waitTime75Percentile to display the estimated wait times in minutes when p = .25, p = .5, and p = .75, respectively. There are also new variables that are used to display and determine the queueing method, such as queueingMethod, isFIFOQueue, and isRandomQueue. If you want to display something more dynamic like a custom view in a mobile app, keep reading to learn about our <a href="https://developers.cloudflare.com/waiting-room/how-to/mobile-traffic">new JSON response</a>, which provides a REST API for the same set of variables.</p>
-	<h3>Supporting Dynamic Applications with a JSON Response</h3>
+	<div class="flex anchor relative">
+		<h3 id="supporting-dynamic-applications-with-a-json-response">Supporting Dynamic Applications with a JSON Response</h3>
+		<a href="https://blog.cloudflare.com/#supporting-dynamic-applications-with-a-json-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pkXTi5JsH7w7tvLlUePDA/a703cc67be839d78f687d19513106408/image5-11.png" alt="" class="kg-image" width="1052" height="826" loading="lazy">
@@ -255,7 +302,15 @@ with open(filename) as file:
 	},
 	"authToken": "abcd"
 }</code></pre>
-	<h3>Embedding a Waiting Room in a Webpage: SameSite Cookies and IFrames</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="embedding-a-waiting-room-in-a-webpage-samesite-cookies-and-iframes">Embedding a Waiting Room in a Webpage: SameSite Cookies and IFrames</h3>
+		<a href="https://blog.cloudflare.com/#embedding-a-waiting-room-in-a-webpage-samesite-cookies-and-iframes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What are <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">SameSite</a> cookies and I<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">Frames</a>?</p>
 	<p>SameSite and Secure are attributes in the HTTP response Set-Cookie header. SameSite is used to determine when cookies are sent to a website while Secure indicates if there must be a secure context (HTTPS).</p>
 	<p>There are three different values of SameSite:</p>
@@ -304,7 +359,14 @@ async function handleRequest(request) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6y2H55tauwVyQMONGeLoxW/0e080f13a069d73eceee07ab78f94094/image6-10.png" alt="" class="kg-image" width="1216" height="777" loading="lazy">
 
 	</figure>
-	<h3>Looking Forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="looking-forward">Looking Forward</h3>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Waiting Room still has plenty of room to grow! Every day, we are seeing more Waiting Rooms deployed to protect websites from traffic spikes. As Waiting Room continues to be used for new purposes, we will keep adding features to make it as customizable and user-friendly as possible.</p>
 	<p>Stay tuned — what we have announced today is just the tip of the iceberg of what we have planned for Waiting Room!</p>
 </div>

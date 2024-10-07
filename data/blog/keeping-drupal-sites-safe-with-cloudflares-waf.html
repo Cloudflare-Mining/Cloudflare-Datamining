@@ -2,10 +2,24 @@
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare’s team of security analysts monitor for upcoming threats and vulnerabilities and where possible put protection in place for upcoming threats before they compromise our customers. This post examines how we protected people against a new major vulnerability in the Drupal CMS, nicknamed Drupalgeddon 2.</p>
 	<p>Two weeks after adding <a href="https://blog.cloudflare.com/drupal-waf-rule-mitigate-critical-exploit">protection with WAF rule ID D0003</a> which mitigates the critical remote code execution Drupal exploit (<a href="https://www.drupal.org/sa-core-2018-002">SA-CORE-2018-002/CVE-2018-7600</a>), we have seen significant spikes of attack attempts. Since the 13th of April the Drupal security team has been aware of automated attack attempts and it significantly increased the security risk score of the vulnerability. It makes sense to go back and analyse what happened in the last seven days in Cloudflare’s WAF environment.</p>
-	<h3>What is Drupalgeddon 2</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-drupalgeddon-2">What is Drupalgeddon 2</h3>
+		<a href="https://blog.cloudflare.com/#what-is-drupalgeddon-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The vulnerability potentially allows attackers to exploit multiple attack vectors on a Drupal site, which could make a site completely compromised.</p>
 	<p>Drupal introduced renderable arrays, which are a key-value structure, with keys starting with a ‘#’ symbol, that allows you to alter data during form rendering. These arrays however, did not have enough input validation. This means that an attacker could inject a custom renderable array on one of these keys in the form structure.</p>
-	<h3>The WAF to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-waf-to-the-rescue">The WAF to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#the-waf-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare implemented a WAF rule that would identify malicious requests and block them. We block malicious payloads in GET requests, POST requests and Cookies, which matches the patch made to drupal itself.</p>
 	<p>Just during last week, after removing false positives, the rule has blocked more than 500,000 potential attacks, especially at the start of the sample date, when the vulnerability was more recent.</p>
 	<figure class="kg-card kg-image-card ">

@@ -15,7 +15,14 @@
 	</ul>
 	<p>This is a simple yet effective protection against brute force attacks on login pages and other sorts of abusive traffic like <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack">L7 DoS attacks</a>.</p>
 	<p>Doing this with possibly millions of domains and even more millions of rules immediately becomes a bit more complicated. This article is a look at how we implemented a rate limiter able to run quickly and accurately at the edge of the network which is able to cope with the colossal volume of traffic we see at Cloudflare.</p>
-	<h3>Let’s just do this locally!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-just-do-this-locally">Let’s just do this locally!</h3>
+		<a href="https://blog.cloudflare.com/#lets-just-do-this-locally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As the Cloudflare edge servers are running NGINX, let’s first see how the stock <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html">rate limiting</a> module works:</p>
 	<pre class="language-bash"><code class="language-bash">http {
     limit_req_zone $binary_remote_addr zone=ratelimitzone:10m rate=15r/m;
@@ -29,7 +36,14 @@
 }</code></pre>
 	<p>This module works great: it is reasonably simple to use (but requires a config reload for each change), and very efficient. The only problem is that if the incoming requests are spread across a large number of servers, this doesn’t work any more. The obvious alternative is to use some kind of centralized data store. Thanks to NGINX’s Lua scripting module, that we already use extensively, we could easily implement similar logic using any kind of central data backend.</p>
 	<p>But then another problem arises: how to make this fast and efficient?</p>
-	<h3>All roads lead to Rome? Not with anycast!</h3>
+	<div class="flex anchor relative">
+		<h3 id="all-roads-lead-to-rome-not-with-anycast">All roads lead to Rome? Not with anycast!</h3>
+		<a href="https://blog.cloudflare.com/#all-roads-lead-to-rome-not-with-anycast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since Cloudflare has a vast and diverse network, reporting all counters to a single central point is not a realistic solution as the latency is far too high and guaranteeing the availability of the central service causes more challenges.</p>
 	<p>First let’s take a look at how the traffic is routed in the Cloudflare network. All the traffic going to our edge servers is <a href="https://en.wikipedia.org/wiki/Anycast">anycast</a> traffic. This means that we announce the same IP address for a given web application, site or API worldwide, and traffic will be automatically and consistently routed to the closest live data center.</p>
 	<figure class="kg-card kg-image-card ">
@@ -38,11 +52,25 @@
 
 	</figure>
 	<p>This property is extremely valuable: we are sure that, under normal conditions<a href="https://blog.cloudflare.com/#fn1">[1]</a>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
-	<h3>Storing counters</h3>
+	<div class="flex anchor relative">
+		<h3 id="storing-counters">Storing counters</h3>
+		<a href="https://blog.cloudflare.com/#storing-counters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, each server in our edge network is as independent as possible to make their administration simple. Unfortunately for rate limiting, we saw that we do need to share data across many different servers.</p>
 	<p>We actually had a similar problem in the past with <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Session_IDs">SSL session IDs</a>: each server needed to fetch TLS connection data about past connections. To solve that problem we created a <a href="https://github.com/twitter/twemproxy">Twemproxy</a> cluster inside each of our PoPs: this allows us to split a memcache<a href="https://blog.cloudflare.com/#fn2">[2]</a> database across many servers. A <a href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a> algorithm ensures that when the cluster is resized, only a few number of keys are hashed differently.</p>
 	<p>In our architecture, each server hosts a shard of the database. As we already had experience with this system, we wanted to leverage it for the rate limit as well.</p>
-	<h3>Algorithms</h3>
+	<div class="flex anchor relative">
+		<h3 id="algorithms">Algorithms</h3>
+		<a href="https://blog.cloudflare.com/#algorithms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now let’s take a deeper look at how the different rate limit algorithms work. What we call the <i>sampling period</i> in the next paragraph is the reference unit of time for the counter (1 second for a 10 req/sec rule, 1 minute for a 600 req/min rule, ...).</p>
 	<p>The most naive implementation is to simply increment a counter that we reset at the start of each sampling period. This works but is not terribly accurate as the counter will be arbitrarily reset at regular intervals, allowing regular traffic spikes to go through the rate limiter. This can be a problem for resource intensive endpoints.</p>
 	<p>Another solution is to store the timestamp of every request and count how many were received during the last sampling period. This is more accurate, but has huge processing and memory requirements as checking the state of the counter require reading and processing a lot of data, especially if you want to rate limit over long period of time (for instance 5,000 req per hour).</p>
@@ -62,7 +90,15 @@
 		</li>
 	</ul>
 	<p>So the situation was that the only operations available were <code>GET</code>, <code>SET</code> and <code>INCR</code> (atomic increment).</p>
-	<h3>Sliding windows to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="sliding-windows-to-the-rescue">Sliding windows to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#sliding-windows-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gvU2RabELQEWsauNMm8cu/3044cd0c46716748d56e61482f55ce78/14247536929_1a6315311d_z.jpg" alt="" class="kg-image" width="640" height="431" loading="lazy">
@@ -128,7 +164,14 @@
 	</figure>
 	<p>Even more interesting: once a mitigation has started, we know exactly when it will end. This means that we can cache that information in the server memory itself. Once a server starts to mitigate a client, it will not even run another query for the subsequent requests it might see from that source!</p>
 	<p>This last tweak allowed us to efficiently mitigate large L7 attacks without noticeably penalizing legitimate requests.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite being a young product, the rate limiter is already being used by many customers to control the rate of requests that their origin servers receive. The rate limiter already handles several billion requests per day and we recently mitigated attacks with as many as 400,000 requests per second to a single domain without degrading service for legitimate users.</p>
 	<p>We just started to explore how we can efficiently protect our customers with this new tool. We are looking into more advanced optimizations and create new features on the top of the existing work.</p>
 	<p>Interested in working on high-performance code running on thousands of servers at the edge of the network? Consider <a href="https://www.cloudflare.com/careers">applying</a> to one of our open positions!</p>

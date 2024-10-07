@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1CcjlkQH8yX4sw9YAqmaax/c054db3c6fea3bae9ae23f8cff9e0e50/a-post-mortem-on-this-mornings-incident.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We would like to share more details with our customers and readers on the internet outages that occurred this morning and earlier in the week, and what we are doing to prevent these from happening again.</p>
-	<h3>June 17 incident</h3>
+	<div class="flex anchor relative">
+		<h3 id="june-17-incident">June 17 incident</h3>
+		<a href="https://blog.cloudflare.com/#june-17-incident" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On June 17, at 08:32 UTC, our systems detected a significant packet loss between multiple destinations on one of our major transit provider backbone networks, <a href="http://www.teliacarrier.com">Telia Carrier</a>.In the timeframe where the incident was being analysed by our engineers, the loss became intermittent and finally disappeared.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -9,7 +16,14 @@
 
 	</figure>
 	<p><i>Packet loss on Telia Carrier (AS1299)</i></p>
-	<h3>Today’s incident</h3>
+	<div class="flex anchor relative">
+		<h3 id="todays-incident">Today’s incident</h3>
+		<a href="https://blog.cloudflare.com/#todays-incident" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Jun 20, at 12:10 UTC, our systems again detected massive packet loss on one of our major transit provider backbone networks: Telia Carrier.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -27,7 +41,14 @@
 	</figure>
 	<p><i>CloudFlare detects packet loss (denoted by thickness)</i></p>
 	<p>Because transit providers are usually reliable, they tend to fix their problems rather quickly. In this case, that did not happen and we had to take our ports down with Telia at 12:30 UTC. Because we are interconnected with most Tier 1 providers, we are able to shift traffic away from one problematic provider and let others, who are performing better, take care of transporting our packets.</p>
-	<h3>Impact on our customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="impact-on-our-customers">Impact on our customers</h3>
+		<a href="https://blog.cloudflare.com/#impact-on-our-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We saw a big increase in our 522s errors. A 522 HTTP error indicates that our servers are unable to reach the origin servers of our customers. You can see the spike and the breakdown here:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -35,11 +56,25 @@
 
 	</figure>
 	<p><i>Spike in 522 errors across PoPs (in reaching origin servers)</i></p>
-	<h3>On our communication</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-our-communication">On our communication</h3>
+		<a href="https://blog.cloudflare.com/#on-our-communication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Communicating in this kind of incident is crucial and difficult at the same time. Our customers understandably expect prompt, accurate information and want the impact to stop as soon as possible. In today’s incident, we identified weaknesses in our communication: the scope of the incident was incorrectly identified in Europe only, and our response time was not adequate. We want to reassure you that we are taking all the steps to improve our communication, including implementation of automated detection and mitigation systems that can react much more quickly than any human operator. We already have such systems in place for our smaller data centers and are actively testing their accuracy and efficacy before turning them on for larger PoPs.</p>
 	<p>Taking down an important transit provider globally is not an easy decision, and many cautious steps are to be taken before doing it. The Internet and its associated protocols are a community based on mutual trust. Any weak link in the chain will cause the entire chain to fail and requires collaboration and cooperation from all parties to make it successful.</p>
 	<p>We know how important it is to communicate on our status page. We heard from our customers and took the necessary steps to improve on our communication. Our support team is working on improvements in how we update our status page and reviewing the content for accuracy as well as transparency.</p>
-	<h3>Building a resilient network</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-resilient-network">Building a resilient network</h3>
+		<a href="https://blog.cloudflare.com/#building-a-resilient-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even as CloudFlare has grown to become critical Internet infrastructure sitting in front of four million Internet-facing applications, investing in greater resiliency continues to be a work-in-progress. This is achieved through a combination of greater interconnection, automated mitigation, and increased failover capacity.</p>
 	<p>We fill our cache from the public Internet using multiple transit providers (such as Telia), and deliver traffic to local eyeball networks using transit providers and multiple peering relationships. To the extent possible, we maintain buffer capacity with our providers to allow them to bear the impact of potential failures on multiple other networks. Spreading out traffic across providers allows for diversity and reduces the impact of potential outages from our upstream providers. Even so, today’s incident impacted a significant fraction of traffic that relied on the Telia backbone.</p>
 	<figure class="kg-card kg-image-card ">
@@ -63,6 +98,13 @@
 
 	</figure>
 	<p><i>Johannesburg PoP gracefully fails over to nearest PoP</i></p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We understand how critical our infrastructure is for our customers’ businesses, and so we will continue to move towards completely automated systems to deal with this type of incident. Our goal is to minimize disruptions and outages for our customers regardless of the origin of the issue.</p>
 </div>

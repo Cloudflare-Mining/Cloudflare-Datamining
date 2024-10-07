@@ -7,7 +7,14 @@
 	</figure>
 	<p>A few months ago we launched Custom Domains into an <a href="https://blog.cloudflare.com/custom-domains-for-workers">open beta</a>. Custom Domains allow you to hook up your Workers to the Internet, without having to deal with DNS records or certificates – just enter a valid hostname and Cloudflare will do the rest! The beta’s over, and Custom Domains are now GA.</p>
 	<p>Custom Domains aren’t just about a seamless developer experience; they also allow you to build a globally distributed instantly scalable application on Cloudflare’s Developer Platform. That’s because Workers leveraging Custom Domains have no concept of an ‘Origin Server’. There’s no ‘home’ to phone to - and that also means your application can use the power of Cloudflare’s global network to run your application, well, everywhere. It’s truly serverless.</p>
-	<h3>Let’s build “Todo”, but without the servers</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-build-todo-but-without-the-servers">Let’s build “Todo”, but without the servers</h3>
+		<a href="https://blog.cloudflare.com/#lets-build-todo-but-without-the-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we’ll start a series of posts outlining a simple todo list application. We’ll start with an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> and hook it up to the Internet using Custom Domains.</p>
 	<p>With Custom Domains, you’re treating the whole network as the application server. Any time a request comes into a Cloudflare data center, Workers are triggered in that data center and connect to resources across the network as needed. Our developers don’t need to think about regions, or replication, or spinning up the right number of instances to handle unforeseen load. Instead, just deploy your Workers and Cloudflare will handle the rest.</p>
 	<p>For our todo application, we begin by building an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API Gateway</a> to perform routing, any authorization checks, and drop invalid requests. We then fan out to each individual use case in a separate Worker, so our teams can independently make updates or add features to each endpoint without a full redeploy of the whole application. Finally, each Worker has a D1 binding to be able to create, read, update, and delete records from the database. All of this happens on Cloudflare’s global network, so your API is truly available everywhere. The architecture will look something like this:</p>
@@ -16,7 +23,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qm175kv1nM4LmxTUhY48p/53410fe7db3088432a28778a03aa00d2/image2-24.png" alt="This application consists of a Custom Domain on our gateway Worker, a series of endpoint Workers, and a D1 database powering it all." class="kg-image" width="1732" height="579" loading="lazy">
 
 	</figure>
-	<h3>Bootstrap the D1 Database</h3>
+	<div class="flex anchor relative">
+		<h3 id="bootstrap-the-d1-database">Bootstrap the D1 Database</h3>
+		<a href="https://blog.cloudflare.com/#bootstrap-the-d1-database" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s Cloudflare’s serverless database offering - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
 	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create &lt;todo | custom-database-name&gt;</code></pre>
 	<p>After executing this command, you will be asked to add a snippet of code to your <code><b>wrangler.toml</b></code> file that looks something like this:</p>
@@ -34,7 +48,14 @@ INSERT INTO todos (todo, todoStatus) VALUES ("Fold my laundry", 0),("Get flowers
 	<p>Then validate your new data by running a query through Wrangler using the following command:</p>
 	<pre class="language-bash"><code class="language-bash">npx wrangler d1 execute &lt;todo | custom-database-name&gt; --command='SELECT * FROM todos';</code></pre>
 	<p>Great! We’ve now got a database running entirely on Cloudflare’s global network.</p>
-	<h3>Build the endpoint Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="build-the-endpoint-workers">Build the endpoint Workers</h3>
+		<a href="https://blog.cloudflare.com/#build-the-endpoint-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To talk to your database, we’ll spin up a series of private microservices for each endpoint in our application. We want to be able to create, read, update, delete, and list our todos. The full source code for each is available <a href="https://github.com/kabirsikand/worker-todos-api">here</a>. Below is code from a Worker that lists all our todos from D1.</p>
 	<p><b><i>list/src/list.js</i></b></p>
 	<pre class="language-js"><code class="language-js">export default {
@@ -71,7 +92,14 @@ Uploaded todo-list (0.96 sec)
 No publish targets for todo-list (0.00 sec)</code></pre>
 	<p>Notice that wrangler mentions there are no ‘publish targets’ for todo-list. That’s because we haven’t hooked todo-list up to any HTTP endpoints. That’s fine! We’re going to use Service Bindings to route requests through a gateway worker, as described in the architecture diagram above.</p>
 	<p>Next, reuse these steps to create similar microservices for each of our create, read, update, and delete endpoints. The source code is available to <a href="https://github.com/kabirsikand/worker-todos-api">follow along</a>.</p>
-	<h3>Tying it all together with an API Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="tying-it-all-together-with-an-api-gateway">Tying it all together with an API Gateway</h3>
+		<a href="https://blog.cloudflare.com/#tying-it-all-together-with-an-api-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each of our Workers are able to talk to the D1 database, but how can our application talk to our API? We’ll build out a simple API gateway to route incoming requests to the appropriate microservice. For the purposes of our application, we’re using a combination of URL pathname and request method to detect which endpoint is appropriate.</p>
 	<p><b><i>gateway/src/gateway.js</i></b></p>
 	<pre class="language-js"><code class="language-js">export default {
@@ -141,7 +169,15 @@ Total Upload: 1.21 KiB / gzip: 0.42 KiB
 Uploaded todo-gateway (0.62 sec)
 Published todo-gateway (0.51 sec)
   todos.radiobox.tv (custom domain - zone name: radiobox.tv)</code></pre>
-	<h3>Natively Global</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="natively-global">Natively Global</h3>
+		<a href="https://blog.cloudflare.com/#natively-global" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent SQL Injection attacks</a> for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -150,6 +186,14 @@ Published todo-gateway (0.51 sec)
 	</figure>
 	<p>With Custom Domains on Workers, you’re able to easily create applications that are native to Cloudflare’s global network, instantly. Best of all, your developers don’t need to worry about maintaining DNS records or certificate renewal - Cloudflare handles it all on their behalf. We’d like to give a huge shout out to the 5,000+ developers who used Custom Domains during the open beta period, and those that gave feedback along the way to make this possible. Can’t wait to see what you build next! As always, if you have any questions or would like to get involved, please join us on <a href="https://discord.gg/cloudflaredev">Discord</a>.</p>
 	<p>Tune in next time to see how we can build a frontend for our application. In the meantime, you can play around with the todos API we built today at <a href="https://todos.radiobox.tv"><code>todos.radiobox.tv</code></a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/c35956709f26ab593a8b5446cb452804/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fc35956709f26ab593a8b5446cb452804%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

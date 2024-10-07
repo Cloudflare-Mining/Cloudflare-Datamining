@@ -8,10 +8,24 @@
 	<p>Realizing the goals of Zero Trust is a journey: moving from a world of static networking and hardware concepts to organization-based access and continuous validation is not a one-step process. This challenge is never more real than when dealing with IP addresses. For years, companies on the Internet have built hardened systems based on the idea that only users with certain IP addresses can access certain resources. This implies that IP addresses are tied with identity, which is a kluge and can actually open websites up to attack in some cases. For large companies with many origins and applications that need to be protected in a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a>, it’s important to be able to support their transition to Zero Trust using mTLS, Access, or Tunnel. To make the transition some organizations may need dedicated IP addresses.</p>
 	<p>Today we’re introducing Cloudflare Aegis: dedicated IPs that we use to send you traffic. This allows you to lock down your services and applications at an IP level and build a protected environment that is application aware, protocol aware, and even IP-aware. Aegis is available today through Early Access for Enterprise customers, and you can talk to your account team if you want to learn more about it.</p>
 	<p>We’re going to talk about what Aegis is, give an example of how customers are using it today to secure their networks and services, and talk about how it can integrate with existing products and services to help protect you on your Zero Trust journey. But before we get into what Aegis is, let’s talk about why we built it.</p>
-	<h2>Protecting your services at scale</h2>
+	<div class="flex anchor relative">
+		<h2 id="protecting-your-services-at-scale">Protecting your services at scale</h2>
+		<a href="https://blog.cloudflare.com/#protecting-your-services-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare protects your networks and services from attackers and improves your application performance, but protecting your origin on its own is still an important challenge that must be tackled. To help, Cloudflare built <a href="https://developers.cloudflare.com/ssl/client-certificates/enable-mtls">mTLS support and enforcement</a> in conjunction with <a href="https://developers.cloudflare.com/api-shield">API Shield</a>, Cloudflare Access, and Cloudflare Tunnel to help enforce a zero trust approach to security: the only entities who can access your origins are ones with the proper certificates, which are configured in Cloudflare and revalidated on a regular basis. Bad traffic is explicitly blocked because the networks and services are set up to only receive encrypted, authenticated traffic.</p>
 	<p>While mTLS and Access are great for protecting networks and applications regardless of what IP addresses are being used, it isn't always feasible to deploy at large scale in a short amount of time, especially if you haven’t already configured it for every application or service you build. For some customers who have hundreds, maybe even thousands of applications or services protected behind Cloudflare, adding mTLS or Access for every single origin is a significant task. Some customers might have an additional problem: they can't keep track of every service so they don't know where to put mTLS configurations. Enforcing good security behavior can take years in this case, and may have a long tail of unprotected origins that can leave customers vulnerable to potential attacks through spoofing Cloudflare IPs and gaining access to customer networks and user data.</p>
-	<h2>How does Cloudflare Aegis protect you?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-aegis-protect-you">How does Cloudflare Aegis protect you?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-aegis-protect-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What our customers want to be able to do is lock down their entire network by getting dedicated egress IPs from Cloudflare: a small list of IP addresses that Cloudflare uses to send traffic which are reserved only for them which they can configure in their L3 firewalls and block everything else. By ensuring that only a single customer's traffic will use those dedicated IP addresses, customers have essentially bought blanket protection for their network and give them an additional layer of security for their networks and applications once mTLS is set up. To outline how Cloudflare Aegis might help protect a customer, let’s consider Blank Bank, a fictional customer.</p>
 	<p>Blank Bank has about 900 applications and services scattered across different instances using a mix of on-premise equipment and cloud services. Blank Bank relies on Cloudflare for L7 services like CDN, DDoS, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>, and Bot Management, but does not implement mTLS to any of their origins today. During a recent security audit, Blank Bank was told that all new feature development would stop until they were able to secure all of their applications and services to prevent outside traffic from reaching any of the services behind Cloudflare. The audit found that existing services did not implement sufficient security measure at the application, and allowlisting Cloudflare IPs was not enough to secure the services because potential attackers could use Workers to access Blank Bank services outside the prescribed APIs and data flows. Blank Bank was told to apply security precautions as soon as possible. But adding mTLS to each of their 900 applications and services could take years as each service must be configured individually, and they want to keep improving their service now.</p>
 	<p>Cloudflare Aegis helps solve this problem by scoping the number of IPs we use to talk to Blank Bank from millions down to one: the private egress IP we allocated for them and only them. This IP address ensures that the only traffic that should be reaching Blank Bank servers comes from an IP meant for only Blank Bank traffic: no other Cloudflare customer attempting to reach Blank Bank will have this IP address. Furthermore, this IP is not publicly listed making it harder for an attacker to figure out what IP Cloudflare is using to speak to Blank Bank. With this, Blank Bank can restrict their network Access Control Lists (ACLs) to only allow traffic coming from this IP into their network. Here’s how their network firewall looks before Aegis:</p>
@@ -27,14 +41,42 @@
 
 	</figure>
 	<p>Simply by making a change of egress IP, we've been able to better protect Blank Bank’s entire network, ensuring they can keep developing new features and improving their already stellar customer experience, while keeping their endpoints safe until they are able to deploy mTLS to every single origin they need to.</p>
-	<h2>Every sword needs a shield</h2>
+	<div class="flex anchor relative">
+		<h2 id="every-sword-needs-a-shield">Every sword needs a shield</h2>
+		<a href="https://blog.cloudflare.com/#every-sword-needs-a-shield" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Aegis pairs really well with any of our products to provide heightened application security and protection while allowing you to get things done. Let’s talk about how it can work with some of our products to improve security posture, such as Cloudflare Access, Cloudflare Network Interconnect, and Cloudflare Workers.</p>
-	<h3>Cloudflare Access + CNI</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-access-cni">Cloudflare Access + CNI</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-cni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Aegis works really well with Access and CNI to provide a completely secure application access framework that doesn’t even use the public Internet. Access provides the authorization security and caching to ensure that your policies are always being enforced from beyond the application’s server. Aegis ensures that all requests for your application come through a dedicated IP that we assign you. And finally, Cloudflare Network Interconnect provides the private path from Cloudflare over to your application, where you can apply L3 firewall policies to completely protect your network and applications.</p>
 	<p>This set up of protecting the path to your services sounds a lot like another product we offer: <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a>. Cloudflare Tunnel encrypts and protects traffic from Cloudflare to an origin network by installing a daemon on the server-side machines. In terms of goals of protecting the origin network by creating private network concepts, Tunnel and this set up are very much comparable. However, some customers might not necessarily want to expose the public endpoints that Tunnel requires. This setup can protect your origin servers without needing to expose anything to the public Internet. This setup is also easier to configure from an application point of view: you don’t need to configure JWT or install Tunnel on your origin: you can configure a firewall policy instead. This makes setting up Access across an organization very easy.</p>
-	<h3>Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="workers">Workers</h3>
+		<a href="https://blog.cloudflare.com/#workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Aegis and Workers (and the rest of our developer platform) pair incredibly well together. Whenever our developer platform needs to access your services, when paired with Aegis, they’ll use dedicated IPs. This allows your network to be extra protected and ensure that only the Workers you assign will access your endpoints.</p>
-	<h2>Shields up</h2>
+	<div class="flex anchor relative">
+		<h2 id="shields-up">Shields up</h2>
+		<a href="https://blog.cloudflare.com/#shields-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many people view the Internet like the wild west, where anything can happen. Attackers can DDoS origins, and they can spoof IP addresses and pretend to be someone else. But with Cloudflare Aegis, you get an extra shield to protect your origin network so that attackers can’t get in. The IPs that you receive traffic from are reserved only for you and no one else, ensuring that the only users that access your network are the ones that you want to access it, and come through those IP addresses.</p>
 	<p>If you’re interested in better locking down your networks and applications with Cloudflare Aegis, reach out to your account team today to get started and give yourself a shield you can use to defend yourself.</p>
 </div>

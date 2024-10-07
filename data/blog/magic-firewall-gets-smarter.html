@@ -8,9 +8,23 @@
 	</figure>
 	<p>Today, we're very excited to announce a set of updates to Magic Firewall, adding security and visibility features that are key in modern <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">cloud firewalls</a>. To improve security, we’re adding threat intel integration and geo-blocking. For visibility, we’re adding packet captures at the edge, a way to see packets arrive at the edge in near real-time.</p>
 	<p>Magic Firewall is our network-level firewall which is delivered through Cloudflare to secure your enterprise. Magic Firewall covers your remote users, branch offices, data centers and cloud infrastructure. Best of all, it’s deeply integrated with Cloudflare, giving you a one-stop overview of everything that’s happening on your network.</p>
-	<h2>A brief history of firewalls</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-brief-history-of-firewalls">A brief history of firewalls</h2>
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-firewalls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We talked a lot about firewalls on <a href="https://blog.cloudflare.com/welcome-to-cio-week">Monday</a>, including how our firewall-as-a-service solution is very different from traditional firewalls and helps security teams that want sophisticated inspections at the <i>Application Layer.</i> When we talk about the Application Layer, we’re referring to OSI Layer 7. This means we’re applying security features using semantics of the protocol. The most common example is HTTP, the protocol you’re using to visit this website. We have Gateway and our WAF to protect inbound and outbound HTTP requests, but what about Layer 3 and Layer 4 capabilities? Layer 3 and 4 refer to the <i>packet</i> and <i>connection</i> levels. These security features aren’t applied to HTTP requests, but instead to IP packets and (for example) TCP connections. A lot of folks in the CIO organization want to add extra layers of security and visibility without resorting to decryption at Layer 7. We’re excited to talk to you about two sets of new features that will make your lives easier: geo-blocking and threat intel integration to improve security posture, and packet captures to get you better visibility.</p>
-	<h2>Threat Intel and IP Lists</h2>
+	<div class="flex anchor relative">
+		<h2 id="threat-intel-and-ip-lists">Threat Intel and IP Lists</h2>
+		<a href="https://blog.cloudflare.com/#threat-intel-and-ip-lists" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Magic Firewall is great if you know exactly what you want to allow and block. You can put in rules that match exactly on IP source and destination, as well as bitslicing to verify the contents of various packets. However, there are many situations in which you don’t exactly know who the bad and good actors are: is this IP address that’s trying to access my network a perfectly fine consumer, or is it part of a botnet that’s trying to attack my network?</p>
 	<p>The same goes the other way: whenever someone inside your network is trying to create a connection to the Internet, how do you know whether it’s an obscure blog or a malware website? Clearly, you don’t want to play whack-a-mole and try to keep track of every malicious actor on the Internet by yourself. For most security teams, it’s nothing more than a waste of time! You’d much rather rely on a company that makes it their business to focus on this.</p>
 	<p>Today, we're announcing Magic Firewall support for our in-house Threat Intelligence feed. Cloudflare sees approximately 28 million HTTP requests each second and blocks 76 billion cyber threats each day. With almost 20% of the top 10 million Alexa websites on Cloudflare, we see a lot of novel threats pop up every day. We use that data to detect malicious actors on the Internet and turn it into a list of known malicious IPs. And we don’t stop there: we also integrate with a number of third party vendors to augment our coverage.</p>
@@ -29,7 +43,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oAiULyz8nJlqTbBBlElWT/7a211ce91305dd542f9606c9e3d9a75e/pasted-image-0-2.png" alt="Rule matching on country" class="kg-image" width="1358" height="520" loading="lazy">
 
 	</figure>
-	<h2>Packet captures at the edge</h2>
+	<div class="flex anchor relative">
+		<h2 id="packet-captures-at-the-edge">Packet captures at the edge</h2>
+		<a href="https://blog.cloudflare.com/#packet-captures-at-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we’re releasing a very powerful feature: packet captures at the edge. A packet capture is a <a href="https://tools.ietf.org/id/draft-gharris-opsawg-pcap-00.html">pcap file</a> that contains all packets that were seen by a particular network box (usually a firewall or router) during a specific time frame. Packet captures are useful if you want to debug your network: why can’t my users connect to a particular website? Or you may want to get better visibility into a DDoS attack, so you can put up better firewall rules.</p>
 	<p>Traditionally, you’d log into your router or firewall and start up something like <a href="https://www.tcpdump.org">tcpdump</a>. You’d set up a filter to only match on certain packets (packet capture files can quickly get very big) and grab the file. But what happens if you want coverage across your entire network: on-premises, offices and all your cloud environments? You’ll likely have different vendors for each of those locations and have to figure out how to get packet captures from all of them. Even worse, some of them might not even support grabbing packet captures.</p>
 	<p>With Magic Firewall, grabbing packet captures across your entire network becomes simple: because you run a single network-firewall-as-a-service, you can grab packets across your entire network in one go. This gets you instant visibility into exactly where that particular IP is interacting with your network, regardless of physical or virtual location. You have the option of grabbing all network traffic (warning, it might be a lot!) or set a filter to only grab a subset. Filters follow the same Wireshark syntax that Magic Firewall rules use:</p>

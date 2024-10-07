@@ -19,7 +19,14 @@
 		</li>
 	</ul>
 	<p><i>View more Meris attack insights and trends in the interactive </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet"><i>Radar dashboard</i></a><i>.</i></p>
-	<h3>So what is Meris?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-what-is-meris">So what is Meris?</h3>
+		<a href="https://blog.cloudflare.com/#so-what-is-meris" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Meris (Latvian for plague) is the name of an active botnet behind a series of recent DDoS attacks that have targeted thousands of websites around the world. It was originally detected in late June 2021 by <a href="https://blog.qrator.net/en/meris-botnet-climbing-to-the-record_142">QRator</a> in joint research they conducted with Yandex. Their initial research identified 30,000 to 56,000 bots, but they estimated that the numbers are actually much higher, in the ballpark of 250,000 bots.</p>
 	<p>The Meris botnet is formed of infected routers and networking hardware manufactured by the Latvian company MikroTik. <a href="https://blog.mikrotik.com/security/meris-botnet.html">According to MikroTik’s</a> blog, the attackers exploited a vulnerability in the router’s operating system (RouterOS) which enabled attackers to gain unauthenticated remote access to read and write arbitrary files (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14847">CVE-2018-14847</a>).</p>
 	<p><a href="https://wiki.mikrotik.com/wiki/Manual:RouterOS_FAQ#What_is_MikroTik_RouterOS.E2.84.A2.3F">RouterOS</a> is the router operating system that’s used by MikroTik’s routers and the RouterBOARD hardware product family, which can also be used to turn any PC into a router. Administration of RouterOS can be done either via direct <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH connection</a> or by using a configuration utility called <a href="https://wiki.mikrotik.com/wiki/Manual:Winbox#Summary">WinBox</a>. The vulnerability itself was possible due to a <a href="https://en.wikipedia.org/wiki/Directory_traversal_attack">directory traversal</a> vulnerability in the WinBox interface with RouterOS.</p>
@@ -27,11 +34,25 @@
 	<p>While the vulnerability was patched after its detection back in 2018, it’s still being exploited in compromised devices that do not use the patched RouterOS versions, or that use the default usernames and passwords. MicroTik has advised its customers to upgrade their devices’ OS version, to only allow access to the devices via secure IPsec, and to inspect for any abnormalities such as unknown SOCKS proxy settings and scripts.</p>
 	<p>To launch volumetric attacks, the botnet uses HTTP pipelining which allows it to send multiple requests over a single connection, thus increasing its total attack throughput. Furthermore, in an attempt to obfuscate the attack source, the botnet uses open SOCKS proxies to proxy their attack traffic to the target.</p>
 	<p>Cloudflare’s DDoS protection systems automatically detect and mitigate Meris attacks. One of the mitigation actions that the system can choose to use is the ‘Connection Close’ action which eliminates the risk of HTTP pipelining and helps slow down attackers. Additionally, as part of Cloudflare’s threat intelligence suite, we provide a Managed IP List of Open SOCKS Proxies that customers can use as part of their firewall rules — to block, challenge or rate-limit traffic that arrives via SOCKS proxies.</p>
-	<h3>How does Meris compare to Mirai?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-meris-compare-to-mirai">How does Meris compare to Mirai?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-meris-compare-to-mirai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>About five years ago, <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai</a> (Japanese for future) — the infamous botnet that infected hundreds of thousands of IoT devices — &nbsp;<a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis">launched record-breaking DDoS attacks</a> against websites.</p>
 	<p>There have been many variants of the Mirai botnet since its source code was leaked. One version of Mirai, called <a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps">Moobot</a>, was detected last year when it attacked a Cloudflare customer with a 654 Gbps DDoS attack. Another variant <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported/#:~:text=Two%20weeks%20before%2C%20a%20Mirai-variant%20botnet%20launched%20over%20a%20dozen%20UDP%20and%20TCP%20based%20DDoS%20attacks%20that%20peaked%20multiple%20times%20above%201%20Tbps%2C%20with%20a%20max%20peak%20of%20approximately%201.2%20Tbps.">recently made a resurgence</a> when it targeted Cloudflare customers with over a dozen UDP and TCP based DDoS attacks that peaked multiple times above 1 Tbps, with a max peak of approximately 1.2 Tbps.</p>
 	<p>While Mirai infected IoT devices with low computational power, Meris is a swarm of routers that have significantly higher processing power and data transfer capabilities than IoT devices, making them much more potent in causing harm at a larger scale to web properties that are not protected by sophisticated cloud-based DDoS mitigation.</p>
-	<h2>Tracking the Meris botnet attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="tracking-the-meris-botnet-attacks">Tracking the Meris botnet attacks</h2>
+		<a href="https://blog.cloudflare.com/#tracking-the-meris-botnet-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the appearance of Meris, Cloudflare’s systems automatically detected and mitigated Meris attacks using the existing mitigation rules. During our analysis of the Meris botnet attacks, our security experts noticed the attack vectors adapt to try and bypass Cloudflare’s defenses. Needless to say, they were not successful. But we wanted to stay many steps ahead of attackers — and so our engineers deployed additional rules that mitigate Meris attacks even more comprehensively. A side effect of these mitigation rules is that it also provides us with more granular threat intelligence on the Meris attacks.</p>
 	<p>Since we deployed the new rules in early August, we’ve seen Meris launch an average of 104 DDoS attacks on Cloudflare customers every day. The highest figure we’ve seen was on September 6, when Meris was used to launch 261 unique attacks against Cloudflare customers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -53,7 +74,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yGWKQcIfIFhUsuJShFunZ/daa16215f6989274e6a80e38f35184e8/unnamed--9-.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h2>Meris used to target Banks, Financial Services, and Insurance companies</h2>
+	<div class="flex anchor relative">
+		<h2 id="meris-used-to-target-banks-financial-services-and-insurance-companies">Meris used to target Banks, Financial Services, and Insurance companies</h2>
+		<a href="https://blog.cloudflare.com/#meris-used-to-target-banks-financial-services-and-insurance-companies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the past few months, the industry that received the most attack traffic from the Meris botnet was the Banking, Financial Services, and Insurance (BFSI) industry</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -69,7 +97,14 @@
 
 	</figure>
 	<p><i>View the interactive graph on </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet#top10_industries_by_internet_properties"><i>Cloudflare Radar</i></a><i>.</i></p>
-	<h3>Attacks on industries over time</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacks-on-industries-over-time">Attacks on industries over time</h3>
+		<a href="https://blog.cloudflare.com/#attacks-on-industries-over-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Besides the total breakdowns shown above, we can also view the top industries the botnet attacked over time to understand the changing trends. These trends may be tied to political events, new video game releases, sporting events, or any other global or local public interest events.</p>
 	<p>Off the top, we can already see the two largest peaks on August 9 and August 29 — mainly on the Computer Software, Gaming/Gambling, and IT industries. Another interesting peak occurred on August 14 against Cryptocurrency providers.</p>
 	<p>In late August, the botnet was pointed against gambling and casino websites, generating attacks at rates of hundreds of thousands to millions of requests per second. A second significant wave against the same industry was launched in early September.</p>
@@ -79,7 +114,14 @@
 
 	</figure>
 	<p><i>View the interactive graph on </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet#top10_industries_attacked_by_meris"><i>Cloudflare Radar</i></a><i>.</i></p>
-	<h2>Meris targets websites in China, Australia, and US</h2>
+	<div class="flex anchor relative">
+		<h2 id="meris-targets-websites-in-china-australia-and-us">Meris targets websites in China, Australia, and US</h2>
+		<a href="https://blog.cloudflare.com/#meris-targets-websites-in-china-australia-and-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Similarly to the analysis of the top industries, we can calculate the Meris DDoS activity rate per target country to identify which countries came under the most attacks. In total, China-based companies saw the largest amount of DDoS attacks. More than 33% of all requests generated by Meris were destined for China-based companies that are protected by Cloudflare. Australia came in second place, and the US in third.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -94,7 +136,14 @@
 
 	</figure>
 	<p><i>View the interactive graph on </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet#top10_countries_by_internet_properties"><i>Cloudflare Radar</i></a><i>.</i></p>
-	<h3>Attacks on countries over time</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacks-on-countries-over-time">Attacks on countries over time</h3>
+		<a href="https://blog.cloudflare.com/#attacks-on-countries-over-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over time, we can see how the attacks on the top countries change. Similarly to the per-industry breakdown, we can also see two large peaks. The first one occurred on the same spike as the per-industry breakdown on August 9. However, the second one here occurred on September 1.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -102,12 +151,26 @@
 
 	</figure>
 	<p><i>View the interactive graph on </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet#top10_countries_attacked_by_meris"><i>Cloudflare Radar</i></a><i>.</i></p>
-	<h2>Location of the Meris bots</h2>
+	<div class="flex anchor relative">
+		<h2 id="location-of-the-meris-bots">Location of the Meris bots</h2>
+		<a href="https://blog.cloudflare.com/#location-of-the-meris-bots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although only tens of thousands of bots have been detected per attack, it is estimated that there are roughly 250,000 bots worldwide. As indicated above, the botnet is formed of MikroTik routers. Using the source IP address of the routers, we’re able to identify the origin country of the bots to paint a geographical representation of the bots' presence and growth over time.</p>
 	<p>The change in the location of the bots doesn’t necessarily indicate that the botnet is growing or shrinking. It could also be that different bot groups are activated from time to time to spread the load of the attacks while attempting not to get caught.</p>
 	<p>At the beginning of August, the majority of the bots were located in Brazil. But by the end of August, that number plummeted to a single digit percentage close to zero. Meanwhile, the number of infected devices grew in the United States. From the beginning of September, the number of bots was significantly higher in the US, Russia, India, Indonesia, and China.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 41.01307189542484%;"><iframe src="https://iframe.videodelivery.net/81294bbc95ddd686f2df58e564297031?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p><i>View the interactive graph on </i><a href="https://radar.cloudflare.com/notebooks/meris-botnet#location-of-the-meris-bots"><i>Cloudflare Radar</i></a><i>.</i></p>
-	<h2>Cloudflare protects against Meris attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-protects-against-meris-attacks">Cloudflare protects against Meris attacks</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-protects-against-meris-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare operates autonomous DDoS protection systems that automatically detect and mitigate DDoS attacks of all types, including attacks launched by Meris and Mirai. These systems are also customizable, and Cloudflare customers can tweak and tune their DDoS protection settings as needed with the <a href="https://blog.cloudflare.com/http-ddos-managed-rules">HTTP DDoS Managed Ruleset</a> and the <a href="https://developers.cloudflare.com/waf/ddos-l34-mitigation">L3/4 DDoS Managed Ruleset</a>.</p>
 </div>

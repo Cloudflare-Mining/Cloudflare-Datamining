@@ -8,11 +8,25 @@
 	</figure>
 	<p><sub></sub><a href="https://creativecommons.org/licenses/by-nd/2.0"><sub>CC BY-ND 2.0</sub></a><sub> </sub><a href="https://www.flickr.com/photos/aigle_dore/16040166131"><sub>image</sub></a><sub> by </sub><a href="https://www.flickr.com/photos/aigle_dore"><sub>Moyan Brenn</sub></a></p>
 	<p>CloudFlare uses Kyoto Tycoon to replicate data from a <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">Postgres Database</a> to our 30 data centers around the world. In practice, it takes around 3 seconds for full propagation in normal conditions. This is our pipeline for distributing sensitive data like our <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">session ticket keys</a> and DNS data to the CloudFlare edge.</p>
-	<h3>Protecting data in transit</h3>
+	<div class="flex anchor relative">
+		<h3 id="protecting-data-in-transit">Protecting data in transit</h3>
+		<a href="https://blog.cloudflare.com/#protecting-data-in-transit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If the Internet is not a dangerous place, it at least has dangerous neighborhoods. To move from one datacenter to another, data has to pass through the public Internet. Data could end up going though some network with a <a href="https://www.theguardian.com/uk/2013/jun/21/gchq-cables-secret-world-communications-nsa">wire-tap in place</a>, or through a network with an unscrupulous network operator.</p>
 	<p>Datacenter-to-datacenter encryption has been brought into the international spotlight since the surveillance revelations. One of the leaked slides contained the expression “SSL added and removed here”, and described how data could be read while in transit between Google’s data centers. As a reaction, Google and other Internet giants have started <a href="http://techcrunch.com/2014/03/20/gmail-traffic-between-google-servers-now-encrypted-to-thwart-nsa-snooping">using strong cryptography for communication between datacenters</a>. CloudFlare also encrypts cross-datacenter traffic, with Kyoto Tycoon playing a big part.</p>
 	<p>With Kyoto Tycoon’s original design, data was replicated across the Internet in plaintext. Now, data replication happens over a mutually-authenticated encryption tunnel. Any parties with the ability to read or modify network traffic will not be able to read or modify the data. We thought this change would be useful for others using Kyoto Tycoon, so <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">as promised</a> we’re releasing the source code for our changes back to the community.</p>
-	<h3>TLS Mutual Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-mutual-authentication">TLS Mutual Authentication</h3>
+		<a href="https://blog.cloudflare.com/#tls-mutual-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the standard HTTPS used by browsers, authentication is one-way: browsers validate the identity of the server but servers don’t validate the identity of the browser. The mechanism for this is an algorithm we’ve talked a lot about on this blog called Transport Layer Security (TLS). A website can be accessed securely using TLS and a certificate signed by a trusted Certificate Authority. When a browser loads a site, it checks to see if the certificate is valid and was issued to the proper domain name. If everything is valid, a lock icon is show to indicate encryption. Any failure to validate the certificate in the browser shows a warning that the site is not trusted.</p>
 	<p>The following diagram shows how a TLS connection is established.</p>
 	<figure class="kg-card kg-image-card ">

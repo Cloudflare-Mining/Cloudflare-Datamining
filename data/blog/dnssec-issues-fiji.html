@@ -45,7 +45,14 @@
 	</blockquote>
 	<p>Ultimately, it appears that around midnight UTC, the .fj zone started to be signed with a key that was not in the root zone DS, possibly as the result of a scheduled rollover that happened without checking that the root zone was updated first by IANA, which updates the root zone. (IANA owns contact with the TLD operators, and instructs the Root Zone Publisher on the changes to make in the next version of the root zone.)</p>
 	<p>DNSSEC problems as the root cause of the observed issue align with the observation in the Hacker News comments that some were able to access .fj websites, while others were not. Users behind resolvers doing strict DNSSEC validation would have seen an error in their browser, while users behind less strict resolvers would have been able to access the sites without a problem.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Further analysis of Cloudflare resolver metrics indicates that the problem was resolved around 1400 UTC, when the DS was updated. When DNSSEC is improperly configured for a single domain name, it can cause problems accessing websites or applications in that zone. However, when the misconfiguration occurs at a ccTLD level, the impact is much more significant. Unfortunately, this seems to <a href="https://ianix.com/pub/dnssec-outages.html">occur</a> all too often.</p>
 	<p>(Thank you to Ólafur Guðmundsson for his DNSSEC expertise.)</p>
 </div>

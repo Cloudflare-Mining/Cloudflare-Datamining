@@ -7,7 +7,14 @@
 	</figure>
 	<p>We’re excited to announce that, starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click. Signed Exchanges is an open <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">web platform specification</a> Google developed as a way of verifying a cached version of a website — enabling massively <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">faster delivery of a website from a third party</a>, such as Google itself from its search results page, or from a news aggregator that is linking out to other sites.</p>
 	<p>The advantage to you as a website owner? Not only will your site load faster when linked to from a site supporting SXG, but because many search engines use page load times in order to determine search results, you should see a very nice <a href="https://www.cloudflare.com/learning/performance/how-website-speed-boosts-seo">boost in SEO</a>.</p>
-	<h3>What are signed exchanges, and how do they work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-signed-exchanges-and-how-do-they-work">What are signed exchanges, and how do they work?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-signed-exchanges-and-how-do-they-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://web.dev/signed-exchanges">Introduced by Google</a>, a Signed Exchange (SXG) is an open standard delivery mechanism that makes it possible to authenticate the origin of a resource, independent of how it was delivered. This decoupling advances a variety of use cases, such as prefetching, offline Internet experiences, and serving from third-party caches. It does so in a secure and privacy-preserving manner.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -68,11 +75,25 @@
 	<blockquote>
 		<p><i>“Signed Exchanges make the web faster and a better user experience for users, by enabling cross-site prefetching. Site owners have seen clear improvement to Largest Contentful Paint, one of the Core Web Vitals, as well as increased user stickiness. Cloudflare now makes it simple for sites to implement Signed Exchanges and derive these benefits.” —</i> Jeff Jose, Product Manager, Google</p>
 	</blockquote>
-	<h3>Bigger than search alone</h3>
+	<div class="flex anchor relative">
+		<h3 id="bigger-than-search-alone">Bigger than search alone</h3>
+		<a href="https://blog.cloudflare.com/#bigger-than-search-alone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The broader implication of SXGs is that they make content portable: content delivered via an SXG can be easily distributed by third parties while maintaining full assurance and attribution of its origin. Historically, the only way for a site to use a third party to distribute its content while maintaining attribution has been for the site to share its <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificates</a> with the distributor. This has security drawbacks. Moreover, it is a far stretch from making content truly portable.</p>
 	<p>In the long-term, truly portable content can be used to achieve use cases like fully offline experiences. In the immediate term, the primary use case of SXGs is the delivery of faster user experiences by providing content in an easily cacheable format. Specifically, <a href="https://web.dev/signed-exchanges/#google-search">Google Search</a> will cache and sometimes prefetch SXGs. For sites that receive a large portion of their traffic from Google Search, SXGs can be an important tool for delivering faster page loads to users.</p>
 	<p>It’s also possible that all sites could eventually support this standard. Every time a site is loaded, all the linked articles could be pre-loaded. Web speeds across the board would be dramatically increased. <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare">Matthew’s blog post</a> talks more about this possibility.</p>
-	<h3>Sign up today</h3>
+	<div class="flex anchor relative">
+		<h3 id="sign-up-today">Sign up today</h3>
+		<a href="https://blog.cloudflare.com/#sign-up-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Automatic Signed Exchanges will be free for all Cloudflare Pro, Business and Enterprise customers as well as for customers using our <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress">Advanced Platform Optimization</a> product.</p>
 	<p>Sign up for the Automatic Signed Exchange beta waitlist today and after being approved, activating is only one flip of a switch.</p>
 	<p>To sign up for the waitlist go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card">Speed page</a> on the Cloudflare dashboard and click on “Join Waitlist” on the Automatic Signed Exchanges (SXGs) card.</p>
@@ -82,6 +103,14 @@
 
 	</figure>
 	<p>We’ll take care of the rest.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b1eb4d946d6caf511e983395b27f2bbc?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

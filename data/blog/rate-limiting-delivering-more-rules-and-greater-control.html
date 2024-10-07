@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>A year ago, Cloudflare released <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> and it is proving to be a hugely effective tool for customers to protect their web applications and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> from all sorts of attacks, from “low and slow” DDoS attacks, through to bot-based attacks, such as credential stuffing and content scraping. We’re pleased about the success our customers are seeing with Rate Limiting and are excited to announce additional capabilities to give our customers further control.</p>
-	<h3>So what’s changing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-whats-changing">So what’s changing?</h3>
+		<a href="https://blog.cloudflare.com/#so-whats-changing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are times when you clearly know that traffic is malicious. In cases like this, our existing Block action is proving effective for our customers. But there are times when it is not the best option, and causes a negative user experience. Rather than risk a false negative, customers often want to challenge a client to ensure they are who they represent themselves to be, which is in most situations, human not a bot.</p>
 	<p><b>Firstly</b>, to help customers more accurately identify the traffic, we are adding Cloudflare JavaScript Challenge, and Google reCaptcha (Challenge) mitigation actions to the UI and API for Pro and Business plans. The existing Block and Simulate actions still exist. As a reminder, to test any rule, deploying in Simulate means that you will not be charged for any requests. This is a great way to test your new rules to make sure they have been configured correctly.</p>
 	<figure class="kg-card kg-image-card ">
@@ -16,7 +23,14 @@
 
 	</figure>
 	<p><b>Secondly</b>, we’re making Rate Limiting more dynamically scalable. A new feature has been added which allows Rate Limiting to count on Origin Response Headers for Business and Enterprise customers. The way this feature works is by matching attributes which are returned by the Origin to Cloudflare.</p>
-	<h3>The new capabilities - in action!</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-new-capabilities-in-action">The new capabilities - in action!</h3>
+		<a href="https://blog.cloudflare.com/#the-new-capabilities-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the things that really drives our innovation is solving the real problems we hear from customers every day. With that, we wanted to provide some real world examples of these new capabilities in action.</p>
 	<p>Each of the use cases have Basic and Advanced implementation options. After some testing, we found that tiering rate limits is an extremely effective solution against repeat offenders.</p>
 	<p><b>Credential Stuffing Protection</b> for Login Pages and APIs. The best way to build applications is to utilise the standardized Status Codes. For example, if I fail to authenticate against an endpoint or a website, I should receive a “401” or “403”. Generally speaking a user to a website will often get their password wrong three times before selecting the “I forgot my password” option. Most Credential Stuff bots will try thousands of times cycling through many usernames and password combinations to see what works.</p>
@@ -183,7 +197,14 @@
 	<p>Method: GETStatus Code: 403, 404</p>
 	<p>Challenge</p>
 	<p>As we can see here, rules 1 and 2 are counting based on the number of requests to each endpoint. Rule 3 is counting based on all hits to the image store, and if it gets above 75 requests, the user will be blocked for 4 hours. Finally, to avoid any enumeration or bots guessing image names and numbers, we are counting on 404 and 403s and challenging if we see an unusual spikes.</p>
-	<h3>One more thing ... more rules, <i>totally rules!</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing-more-rules">One more thing ... more rules, </h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing-more-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want to ensure you have the rules you need to secure your app. To do that, we are increasing the number of available rules for Pro and Business, for no additional charge.</p>
 	<ul>
 		<li>

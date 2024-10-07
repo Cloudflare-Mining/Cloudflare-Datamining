@@ -2,13 +2,34 @@
 <div class="post-content lh-copy gray1">
 	<p><i>This is a guest post by Cristhian Motoche of </i><a href="https://www.stackbuilders.com"><i>Stack Builders</i></a><i>.</i></p>
 	<p>At <a href="https://www.stackbuilders.com">Stack Builders</a>, we believe that Haskell’s system of expressive static types offers many benefits to the software industry and the world-wide community that depends on our services. In order to fully realize these benefits, it is necessary to have proper training and access to an ecosystem that allows for reliable deployment of services. In exploring the tools that help us run our systems based on Haskell, our developer Cristhian Motoche has created a tutorial that shows how to compile Haskell to WebAssembly using Asterius for deployment on Cloudflare.</p>
-	<h3></h3>
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What is a Cloudflare Worker?</p>
 	<p><a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> is a serverless platform that allows us to run our code on the edge of the Cloudflare infrastructure. It's built on Google V8, so it’s possible to write functionalities in JavaScript or any other language that targets WebAssembly.</p>
 	<p><a href="https://webassembly.org">WebAssembly</a> is a portable binary instruction format that can be executed fast in a memory-safe sandboxed environment. For this reason, it’s especially useful for tasks that need to perform resource-demanding and self-contained operations.</p>
-	<h3>Why use Haskell to target WebAssembly?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-use-haskell-to-target-webassembly">Why use Haskell to target WebAssembly?</h3>
+		<a href="https://blog.cloudflare.com/#why-use-haskell-to-target-webassembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Haskell is a pure functional <a href="https://github.com/appcypher/awesome-wasm-langs">language</a> that can target WebAssembly. As such, It helps developers break down complex tasks into small functions that can later be composed to do complex tasks. Additionally, it’s statically typed and has type inference, so it will complain if there are type errors at compile time. Because of that and <a href="https://wiki.haskell.org/Why_Haskell_matters">much more</a>, Haskell is a good source language for targeting WebAssembly.</p>
-	<h3>From Haskell to WebAssembly</h3>
+	<div class="flex anchor relative">
+		<h3 id="from-haskell-to-webassembly">From Haskell to WebAssembly</h3>
+		<a href="https://blog.cloudflare.com/#from-haskell-to-webassembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll use <a href="https://asterius.netlify.app">Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
 	<p>First, as suggested in the <a href="https://asterius.netlify.app/images.html#using-prebuilt-container-images">documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version <a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore">200617</a>, which works with GHC 8.8.</p>
 	<pre class="language-bash"><code class="language-bash">podman run -it --rm -v $(pwd):/workspace -w /workspace terrorjack/asterius:200617</code></pre>
@@ -52,7 +73,14 @@ module.then(handleModule);</code></pre>
 [INFO] Running node/fact.mjs
 120</code></pre>
 	<p>As you can see, the result is executed in <code>node</code> and it prints out the result of <code>fact</code> in the console.</p>
-	<h3>Push your code to Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="push-your-code-to-cloudflare-workers">Push your code to Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#push-your-code-to-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we’ll set everything up for deploying our code to Cloudflare Workers.</p>
 	<p>First, let’s add a <code>metadata.json</code> file with the following content:</p>
 	<pre class="language-json"><code class="language-json">{
@@ -131,7 +159,15 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 	<pre class="language-sh"><code class="language-sh">curl -X POST $CFW_SUBDOMAIN \
        -H 'Content-Type: application/x-www-form-urlencoded' \
        --data 'param=5'</code></pre>
-	<h3>Beyond a simple Haskell file</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="beyond-a-simple-haskell-file">Beyond a simple Haskell file</h3>
+		<a href="https://blog.cloudflare.com/#beyond-a-simple-haskell-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far, we’ve created a WebAssembly module that exports a pure Haskell function we ran in Workers. However, we can also create and build a Cabal project using Asterius <code>ahc-cabal</code> CLI, and then use <code>ahc-dist</code> to compile it to WebAssembly.</p>
 	<p>First, let’s create the project:</p>
 	<pre class="language-sh"><code class="language-sh">ahc-cabal init -m -p cabal-cfw-example</code></pre>
@@ -212,9 +248,23 @@ addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request))
 });</code></pre>
 	<p>Finally, we can deploy our code to Workers by defining a <code>metadata.json</code> file and uploading the script and the WebAssembly module using Workers API as we did before.</p>
-	<h3>Caveats</h3>
+	<div class="flex anchor relative">
+		<h3 id="caveats">Caveats</h3>
+		<a href="https://blog.cloudflare.com/#caveats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers <a href="https://developers.cloudflare.com/workers/about/limits/#script-size">limits</a> your JavaScript and WebAssembly in file size. Therefore, you need to be careful with any dependencies you add.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Stack Builders builds better software for better living through technologies like expressive static types. We used Asterius to compile Haskell to WebAssembly and deployed it to Cloudflare Workers using the Workers API. Asterius supports a lot of Haskell features (e.g. Template Haskell) and it provides an easy-to-use JavaScript FFI to interact with JavaScript. Additionally, it provides prebuilt containers that contain a lot of Haskell packages, so you can start writing a script right away.</p>
 	<p>Following this approach, we can write functional type-safe code in Haskell, target it to WebAssembly, and publish it to Workers, which runs on the edge of the Cloudflare infrastructure.</p>
 	<p>For more content check our <a href="https://www.stackbuilders.com/news/page/1">blogs</a> and <a href="https://www.stackbuilders.com/tutorials">tutorials</a>!</p>

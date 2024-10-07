@@ -8,7 +8,14 @@
 	<p>If you’ve tuned into this blog for long enough, you’ll notice that we’re pretty big on using and stress-testing our own products (“dogfooding”) at Cloudflare.</p>
 	<p>That applies to our <a href="https://blog.cloudflare.com/securing-cloudflare-using-cloudflare">security team</a>, <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects">product teams</a>, and – as my colleague Kristian just <a href="https://blog.cloudflare.com/new-dev-docs">blogged about</a> – even our documentation team. We’re incredibly excited to be on the Pages platform, both because of the performance and workflow improvements and the opportunity to help the platform develop.</p>
 	<p>What you probably haven’t heard about is how our docs team uses dogfooding – and data – to improve our documentation.</p>
-	<h3>Dogfooding for docs</h3>
+	<div class="flex anchor relative">
+		<h3 id="dogfooding-for-docs">Dogfooding for docs</h3>
+		<a href="https://blog.cloudflare.com/#dogfooding-for-docs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a technical writer, it’s pretty common to <i>do</i> the thing you’re documenting. After all, it’s really hard to write step-by-step instructions if you haven’t been through those steps. It’s also a great opportunity to <a href="https://blog.cloudflare.com/content-design-at-cloudflare">provide feedback</a> to our product teams.</p>
 	<p>What’s not as common for a writer, however, is actually <i>using</i> the thing you’re documenting. And it’s totally understandable why. You’re already accountable to your deadlines and product managers, so you might not have the time. You might not have the technical background. And then there’s the whole problem of a real-world use case. If you’re really dedicated, you can set up a personal project… but it's hard to replicate real-world situations and even harder to simulate real-world motivation.</p>
 	<p>And that brings me to one of the coolest parts of our docs team. We actually manage the Cloudflare settings for our docs website, <a href="https://developers.cloudflare.com">developers.cloudflare.com</a>. There’s technical oversight from other teams as needed, but that means we’ve directly been involved in:</p>
@@ -33,7 +40,14 @@
 
 	</figure>
 	<p>Using our own products gives us a chance to dogfood our docs as well. We realized that we needed to add a page to the 1.1.1.1 docs because several of us set it up on our home devices and didn’t know whether <a href="https://developers.cloudflare.com/1.1.1.1/setup/check-1.1.1.1">it was working or not</a>. Same thing with the <a href="https://blog.cloudflare.com/cloudflare-tunnel-for-content-teams">Cloudflare Tunnel docs</a>. When we use the thing, it’s easier for us to help others use it too.</p>
-	<h3>Data for docs</h3>
+	<div class="flex anchor relative">
+		<h3 id="data-for-docs">Data for docs</h3>
+		<a href="https://blog.cloudflare.com/#data-for-docs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Beyond our own experience – and even beyond the feedback we get through our open-source content strategy – we also look at quantitative data to identify gaps and potential improvements in our docs.</p>
 	<p>One of the easiest ways to identify gaps is to look at internal search data. When folks are searching from within our docs, are they leaving to view pages within other Cloudflare content sources (Community, Learning Center, etc.)? And does that page conceptually <i>belong</i> in our docs? We’ve used those two questions to identify and correct several gaps in our documentation, such as new pages on <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain">creating subdomain records</a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/cloudflare-ray-id">Cloudflare Ray IDs</a>, and more.</p>
 	<p>External search data also informs our content strategy. When folks are coming into Cloudflare content domains, where are they going? And what keywords are they using? Using that data, we noticed some confusion between our newer <a href="https://developers.cloudflare.com/rules/bulk-redirects">Bulk Redirects</a> feature and <a href="https://support.cloudflare.com/hc/articles/4729826525965">Forwarding Page Rules</a>. Even though both features let you forward URLs – and Bulk Redirects is easier and more flexible – very few searches using “url forwarding” reached the Bulk Redirects page. To address that, we tweaked our keywords and added a section to our Forwarding Page Rules article breaking down the differences between the features.</p>
@@ -44,7 +58,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SAkdoVxAVNoet6u0ljT4D/073d50bf373f51ad9330669f5cdefad5/image3-30.png" alt="" class="kg-image" width="1284" height="820" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we take all these inputs together – the qualitative experience of dogfooding our documentation and our products, the broad outlines of our user-focused content journey, the community feedback from our open-source ecosystem, and the quantitative data points from our analytics – they help us treat our <a href="https://blog.cloudflare.com/content-as-a-product">content as a product</a>.</p>
 	<p>It’s part of what makes this team so fun to be a part of! Speaking of, <a href="https://www.cloudflare.com/careers/jobs/?department=Product+Management&amp;location=default">we’re hiring</a>!</p>
 	<p>...<i>We protect </i><a href="https://www.cloudflare.com/network-services"><i>entire corporate networks</i></a><i>, help customers build </i><a href="https://workers.cloudflare.com"><i>Internet-scale applications efficiently</i></a><i>, accelerate any </i><a href="https://www.cloudflare.com/performance/accelerate-internet-applications"><i>website or Internet application</i></a><i>, ward off </i><a href="https://www.cloudflare.com/ddos"><i>DDoS attacks</i></a><i>, keep </i><a href="https://www.cloudflare.com/application-security"><i>hackers at bay</i></a><i>, and can help you on </i><a href="https://www.cloudflare.com/products/zero-trust"><i>your journey to Zero Trust</i></a><i>.</i></p>

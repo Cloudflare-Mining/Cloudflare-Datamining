@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2m7ailpiw5PzvdgNs7u8jX/08baf322f92292d47712ed6761fec400/cloudflare-apps-platform-update-november-edition.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that weren’t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, we’ve spent this month meticulously converting our supply of Halloween candy into those ideas. Let’s dive in and see what’s new!</p>
-	<h3>? Paid App Product Enhancements</h3>
+	<div class="flex anchor relative">
+		<h3 id="paid-app-product-enhancements">? Paid App Product Enhancements</h3>
+		<a href="https://blog.cloudflare.com/#paid-app-product-enhancements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Here’s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products">product specific radio buttons</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,7 +47,15 @@ window.INSTALL_SCOPE = {
     renderApp()
   }
 }</code></pre>
-	<h3>? Comments &amp; Ratings</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="comments-ratings">? Comments &amp; Ratings</h3>
+		<a href="https://blog.cloudflare.com/#comments-ratings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our previous newsletter included two of our most requested features: customer feedback, and install metrics. Together these features have helped developers reach out to their customers and track down issues. Customers can now share their feedback publically with comments and ratings:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -49,7 +64,14 @@ window.INSTALL_SCOPE = {
 	</figure>
 	<p>Revealing older comments.</p>
 	<p>Comments for previous releases are initially hidden to emphasize the most recent feedback. As customers send in new feedback, previous ratings will have less of an impact on your app’s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
-	<h3>? Mananging DNS via Apps</h3>
+	<div class="flex anchor relative">
+		<h3 id="mananging-dns-via-apps">? Mananging DNS via Apps</h3>
+		<a href="https://blog.cloudflare.com/#mananging-dns-via-apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve saved the best for last! App developers can now manage a customer’s DNS records. The simplest way to define a DNS record is directly in your app’s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
 	<pre class="language-javascript"><code class="language-javascript">{
   "resources": [/*...*/],
@@ -99,7 +121,14 @@ window.INSTALL_SCOPE = {
 			<p>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit">with units</a>!</p>
 		</li>
 	</ul>
-	<h2>Thank you ?</h2>
+	<div class="flex anchor relative">
+		<h2 id="thank-you">Thank you ?</h2>
+		<a href="https://blog.cloudflare.com/#thank-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <b>thank you!</b></p>
 	<p>Reach out at <a href="https://twitter.com/CloudflareApps">@CloudflareApps</a> and let us know what you’d like to see next!!!</p>
 	<p>Until next time! ⛄️️</p>

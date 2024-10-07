@@ -10,13 +10,34 @@
 	<p>By now, the news about what happened at Silicon Valley Bank (SVB) leading up to its <a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html">collapse</a> and takeover by the US Federal Government is well known. The rapid speed with which the collapse took place was surprising to many and the impact on organizations, both large and small, is expected to last a while.</p>
 	<p>Unfortunately, where everyone sees a tragic situation, threat actors see opportunity. We have seen this time and again - in order to breach trust and trick unsuspecting victims, threat actors overwhelmingly use topical events as lures. These follow the news cycle or known high profile events (The Super Bowl, March Madness, Tax Day, Black Friday sales, COVID-19, and on and on), since there is a greater likelihood of users falling for messages referencing what’s top of mind at any given moment.</p>
 	<p>The SVB news cycle makes for a similarly compelling topical event that threat actors can take advantage of; and it's crucial that organizations bolster their awareness campaigns and technical controls to help counter the eventual use of these tactics in upcoming attacks. It’s tragic that even as the FDIC is guaranteeing that SVB customers’ money is safe, bad actors are attempting to steal that very money!</p>
-	<h3>Preemptive action</h3>
+	<div class="flex anchor relative">
+		<h3 id="preemptive-action">Preemptive action</h3>
+		<a href="https://blog.cloudflare.com/#preemptive-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In anticipation of future phishing attacks taking advantage of the SVB brand, <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> (Cloudflare’s threat operations and research team) significantly increased our brand monitoring focused on SVB’s digital presence starting March 10, 2023 and launched several additional detection modules to spot SVB-themed phishing campaigns. All of our customers taking advantage of our various <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">phishing protection services</a> automatically get the benefit of these new models.</p>
 	<p>Here’s an actual example of a real campaign involving SVB that’s happening since the bank was taken over by the FDIC.</p>
-	<h3>KYC phish - DocuSign-themed SVB campaign</h3>
+	<div class="flex anchor relative">
+		<h3 id="kyc-phish-docusign-themed-svb-campaign">KYC phish - DocuSign-themed SVB campaign</h3>
+		<a href="https://blog.cloudflare.com/#kyc-phish-docusign-themed-svb-campaign" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A frequent tactic used by threat actors is to mimic ongoing KYC (Know Your Customer) efforts that banks routinely perform to validate details about their clients. This is intended to protect financial institutions against fraud, money laundering and financial crime, amongst other things.</p>
 	<p>On March 14, 2023, Cloudflare detected a large KYC phishing campaign leveraging the SVB brand in a DocuSign themed template. This campaign targeted Cloudflare and almost all industry verticals. Within the first few hours of the campaign, we detected 79 examples targeting different individuals in multiple organizations. Cloudflare is publishing one specific example of this campaign along with the tactics and observables seen to help customers be aware and vigilant of this activity.</p>
-	<h3>Campaign Details</h3>
+	<div class="flex anchor relative">
+		<h3 id="campaign-details">Campaign Details</h3>
+		<a href="https://blog.cloudflare.com/#campaign-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The phishing attack shown below targeted Matthew Prince, Founder &amp; CEO of Cloudflare on March 14, 2023. It included HTML code that contains an initial link and a complex redirect chain that is four-deep. The chain begins when the user clicks the ‘<i>Review Documents’</i> link. It takes the user to a trackable analytic link run by Sizmek by Amazon Advertising Server bs[.]serving-sys[.]com. The link then further redirects the user to a Google Firebase Application hosted on the domain na2signing[.]web[.]app. The na2signing[.]web[.]app HTML subsequently redirects the user to a WordPress site which is running yet another redirector at eaglelodgealaska[.]com. After this final redirect, the user is sent to an attacker-controlled docusigning[.]kirklandellis[.]net website.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +47,15 @@
 	<p>Campaign Timeline</p>
 	<pre class="language-bash"><code class="language-bash">2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
 2023-03-14T15:25:26Z		Last Observed SVB DocuSign Campaign Launched</code></pre>
-	<h3>A look at the HTML file Google Firebase application (na2signing[.]web[.]app)</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="a-look-at-the-html-file-google-firebase-application-na2signing-web-app">A look at the HTML file Google Firebase application (na2signing[.]web[.]app)</h3>
+		<a href="https://blog.cloudflare.com/#a-look-at-the-html-file-google-firebase-application-na2signing-web-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The included HTML file in the attack sends the user to a WordPress instance that has recursive redirection capability. As of this writing, we are not sure if this specific WordPress installation has been compromised or a plugin was installed to open this redirect location.</p>
 	<pre class="language-bash"><code class="language-bash">&lt;html dir="ltr" class="" lang="en"&gt;&lt;head&gt;
     &lt;title&gt;Sign in to your account&lt;/title&gt;
@@ -44,12 +73,29 @@
     }
 &lt;/script&gt;
 </code></pre>
-	<h3>Indicators of Compromise</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">na2signing[.]web[.]app	Malicious Google Cloudbase Application.
 eaglelodgealaska[.]com	Possibly compromised Wordpress website or an open redirect.
 
 *[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.</code></pre>
-	<h3>Recommendations</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Cloudflare Email Security customers can determine if they have received this campaign in their dashboard with the following search terms:</p>
@@ -76,7 +122,14 @@ eaglelodgealaska[.]com	Possibly compromised Wordpress website or an open redirec
 			<p>Ensure any public facing web applications are always patched to the latest versions and run a modern Web Application Firewall service in front of your applications. The campaign mentioned above took advantage of WordPress, which is frequently used by threat actors for their phishing sites. If you’re using the Cloudflare WAF, you can be automatically protected from third party CVEs before you even know about them. Having an effective <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> is critical to preventing threat actors from taking over your public Web presence and using it as part of a phishing campaign, SVB-themed or otherwise.</p>
 		</li>
 	</ol>
-	<h3>Staying ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="staying-ahead">Staying ahead</h3>
+		<a href="https://blog.cloudflare.com/#staying-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudforce One (Cloudflare’s threat operations team) proactively monitors emerging campaigns in their formative stages and publishes advisories and detection model updates to ensure our customers are protected. While this specific campaign is focused on SVB, the tactics seen are no different to other similar campaigns that our global network sees every day and automatically stops them before it impacts our customers.</p>
 	<p>Having a blend of strong technical controls across multiple communication channels along with a trained and vigilant workforce that is aware of the dangers posed by digital communications is crucial to stopping these attacks from going through.</p>
 	<p>Learn more about how Cloudflare can help in your own journey towards comprehensive phishing protection by using our <a href="https://www.cloudflare.com/zero-trust-hub">Zero Trust services</a> and reach out for a <a href="https://www.cloudflare.com/lp/emailsecurity">complimentary assessment today</a>.</p>

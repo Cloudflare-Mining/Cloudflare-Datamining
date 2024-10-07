@@ -6,11 +6,25 @@
 
 	</figure>
 	<p>We've written about the challenge of classifying what is a "page view" a couple times before (see <a href="https://blog.cloudflare.com/understanding-analytics-when-is-a-page-view-n">Understanding Analytics: When Is a Page View Not a Page View?</a> and <a href="https://blog.cloudflare.com/a-quick-update-on-page-views">A Quick Update on Page Views</a>). CloudFlare sees all web traffic so we're able to more accurately report on numbers like Unique IPs and Hits than other analytics systems like Google Analytics that use beacon-based tracking.</p>
-	<h3>Beacon-Based vs. Hits Tracking</h3>
+	<div class="flex anchor relative">
+		<h3 id="beacon-based-vs-hits-tracking">Beacon-Based vs. Hits Tracking</h3>
+		<a href="https://blog.cloudflare.com/#beacon-based-vs-hits-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Google Analytics will only see the visitors that trigger their Javascript beacon, so they can't report on crawlers and bots that don't fire the request. Google Analytics also only sees the views of the pages where the beacon is fired, which means if you're trying to get an operations number like the number of requests per second your server is handling you have to estimate it rather than knowing it precisely.</p>
 	<p>CloudFlare has the opposite challenge. We see every request from every visitor to your site. As a result, our hits number is not an estimation but an exact count. Similarly, our Uniques number is precise, deduped count of the number of unique IP addresses that visited your site. With CloudFlare, you don't need to trigger Javascript to be counted, so we end up counting a lot of traffic beacon-based analytics systems miss.</p>
 	<p>That's not to say Google Analytics and other beacon-based tracking is bad. There's a place for both. If you're trying to see how many ads you serve, which is Google's primary interest, then it's good to use a tracking method that is the same as how ad tags are triggered. Therefore, beacon-based tracking makes sense. If you're trying to understand the total load on your server and other operations issues, which is CloudFlare's primary interest, then it make sense to count total requests.</p>
-	<h3>What Hits Are Page Views?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-hits-are-page-views">What Hits Are Page Views?</h3>
+		<a href="https://blog.cloudflare.com/#what-hits-are-page-views" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our challenge is that we then have to look at all the "hits" we see and classify which one of those actually counts as a page view. We're constantly making refinements to the algorithm that make it more accurate. We just pushed out a change to this algorithm late last week. It fixes some cases where objects were reporting their content type as text/html when they were actually images or non-HTML that shouldn't be counted as page views. It also fixes instances where we were counting some 300 redirects as page views, which effectively caused double counting of page views in some cases.</p>
 	<p>The net impact on overall page view stats for most sites is very small (less than 1%). However, for some sites they'll see a more significant drop (as much as 20%). The change will impact analytics data going forward beginning last Thursday. Unfortunately, we don't store the raw historical data so it's not possible for us to update past analytics reports.</p>
 	<p>The cases where there is a larger drop align with sites that previously reported a high deviation between our page view numbers and those numbers reported from Google Analytics. Now the two page view stats should be closer in line with one another, although CloudFlare still should report a higher number because we're picking up page views from crawlers and other visitors that don't trigger Javascript. As you'd expect, there's no change to the uniques or hits numbers since those are much more straight forward for us to count and report. We'll continue to refine all our analytics systems to report data about your as accurately as possible.</p>

@@ -8,11 +8,25 @@
 	</figure>
 	<p>One hundred percent. 100%. One-zero-zero. That’s the cache ratio we’re all chasing. Having a high cache ratio means that more of a website’s content is served from a Cloudflare data center close to where a visitor is requesting the website. Serving content from Cloudflare’s cache means it loads faster for visitors, saves website operators money on <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> from origins, and provides multiple layers of resiliency and protection to make sure that content is reliably available to be served.</p>
 	<p>Today, I’m delighted to announce a massive extension of the benefits of caching with Cache Reserve: a new way to <i>persistently</i> serve all static content from Cloudflare’s global cache. By using Cache Reserve, customers can see higher cache hit ratios and lower egress bills.</p>
-	<h3>Why is getting a 100% cache ratio difficult?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-getting-a-100-cache-ratio-difficult">Why is getting a 100% cache ratio difficult?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-getting-a-100-cache-ratio-difficult" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every second, Cloudflare serves tens-of-millions of requests from our cache which equates to multiple terabytes-per-second of cached data being delivered to website visitors around the world. With this massive scale, we must ensure that the most requested content is cached in the areas where it is most popular. Otherwise, visitors might wait too long for content to be delivered from farther away and our network would be running inefficiently. If cache storage in a certain region is full, our network avoids imposing these inefficiencies on our customers by evicting less-popular content from the data center and replacing it with more-requested content.</p>
 	<p>This works well for the majority of use cases, but all customers have long tail content that is rarely requested and may be evicted from cache. This can be a cause of concern for customers, as this unpopular content can be a major cost driver if it is evicted repeatedly and needs to be served from an origin. This concern can be especially significant for customers with massive content libraries. So how can we make sure to keep this less popular content in cache to shield the customer from origin egress?</p>
 	<p>Cache Reserve removes customer content from this popularity contest and ensures that even if the specific content hasn’t been requested in months, it can still be served from Cloudflare’s cache - avoiding the need to pull it from the origin and saving the customer money on egress. <b>Cache Reserve helps get customers closer to that 100% cache ratio and helps serve all of their content from our global CDN, forever.</b> &nbsp;</p>
-	<h3>Why is cache eviction needed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-cache-eviction-needed">Why is cache eviction needed?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-cache-eviction-needed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most content served from our cache starts its journey from an origin server - where content is hosted. In order to be <a href="https://developers.cloudflare.com/cache">admitted</a> to Cloudflare’s cache the content sent from the origin must meet certain eligibility criteria that ensures it can be reused to respond to other requests for a website (content that doesn’t change based on who is visiting the site).</p>
 	<p>After content is admitted to cache, the next question to consider is how long it should remain in cache. Since cache ratios are calculated by taking the number of requests for content and identifying the portion that are answered from a cache server instead of an origin server, ensuring content remains cached in an area it is highly requested is paramount to achieving a high cache ratio.</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,9 +40,24 @@
 	<p>This caching strategy requires keeping track of a lot of information about when requests come in and constantly updating the cache to make sure that the hottest content is kept in cache and the least popular content is evicted. This works well and is fair for the wide-array of customers our CDN supports.</p>
 	<p>However, if a customer has a large library of content that might go through cycles of popularity and which they’d like to serve from cache regardless, then LRU might mean additional origin egress as assets that are requested sparingly over a long time frame are pulled more from the origin. &nbsp; &nbsp;</p>
 	<p>That’s where Cache Reserve comes in. Cache Reserve is not an alternative to our popularity-based cache but a complement to it. By backstopping all cacheable content in Cache Reserve customers don't have to worry about unwanted cache eviction any longer. &nbsp; &nbsp;</p>
-	<h3>Cache Reserve</h3>
+	<div class="flex anchor relative">
+		<h3 id="cache-reserve">Cache Reserve</h3>
+		<a href="https://blog.cloudflare.com/#cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cache Reserve is a large, persistent data store that is <a href="https://blog.cloudflare.com/r2-open-beta">implemented on top of R2</a>. By pushing a single button in the dashboard, all of your website’s cacheable content will be written to Cache Reserve. In the same way that <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a> builds a hierarchy of caches between your visitors and your origin, Cache Reserve serves as the ultimate <a href="https://developers.cloudflare.com/cache/about/tiered-cache">upper-tier cache</a> that will reserve storage space for your assets for as long as you want. This ensures that your content is always served from cache, shielding your origin from unneeded egress fees, and improving response performance.</p>
-	<h3>How Does Cache Reserve Work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-cache-reserve-work">How Does Cache Reserve Work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-cache-reserve-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tDsXZxGWLk21f6LBKlE1J/a4d528914da186d0ec4da97ef63a6907/How-does-Cache-Reserve-work.png" alt="content served from origin and getting cached in Cache Reserve, and Edge Cache Data Centers (T1=upper-tier, T2=lower-tier) on its way back to the client" class="kg-image" width="1600" height="382" loading="lazy">
@@ -39,7 +68,14 @@
 	<p>Cache Reserve voids the request-based eviction that’s implemented in LRU and ensures that assets will remain in cache as long as they are needed. Cache Reserve extends the benefits of Tiered Cache by reducing the number of times Cloudflare’s network needs to ask an origin for content we should have in cache, while simultaneously limiting the number of connections and requests that our data centers need to open to your origin to ask for missing content. Using Cache Reserve with tiered cache helps collapse the number of requests that result from multiple concurrent cache misses from lower-tiers for the same content.</p>
 	<p>As an example, let’s assume a cold request for example.com, something our network has never seen before. If a client request comes into the closest lower-tier data center and it is a miss, that lower-tier is mapped to an upper-tier data center. When the lower-tier asks the upper-tier for the content and it is also a miss, the upper-tier will ask Cache Reserve for the content. Now, being the ultimate upper-tier, it will be the only data center that can ask the origin for content if it is not stored on our network. This will help limit the origin resources you need to devote to serving this content as once it’s written to Cache Reserve, your origin doesn’t need to fan out the content to any other part of Cloudflare’s network.</p>
 	<p>When your content does need updating, Cache Reserve will respect cache-control headers and purge requests. This means that if you want to control how long something remains fresh in Cache Reserve, before Cloudflare goes back to your origin to revalidate the content, set it as a cache-control header and it will be respected without risk of early eviction. Or if you want to update content on the fly, you can send a purge request which will be respected in both Cloudflare’s cache and in Cache Reserve.</p>
-	<h3>How do you use Cache Reserve?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-you-use-cache-reserve">How do you use Cache Reserve?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-you-use-cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Currently, Cache Reserve is in <b>closed beta</b>, meaning that it’s available to anyone who wants to sign up but we will be slowly rolling it out to customers over the coming weeks to make sure that we are quickly triaging edge cases and making fundamental improvements before we make it generally available to everyone.</p>
 	<p>To sign up for the Cache Reserve beta:</p>
 	<ul>
@@ -56,6 +92,13 @@
 
 	</figure>
 	<p>The Cache Reserve Plan will mimic the low cost of R2. Storage will be \$0.015 per GB per month and operations will be \$0.36 per million reads, and \$4.50 per million writes. For more information about pricing, please refer to the R2 <a href="https://developers.cloudflare.com/r2/platform/pricing">page</a> to get a general idea (Cache Reserve pricing page will be out soon). &nbsp;</p>
-	<h3>Try it out!</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">Try it out!</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cache Reserve holds tremendous promise to increase cache hit ratios — which will improve the economics of running any website while speeding up visitors' experiences. We’re excited to begin letting people use Cache Reserve soon. Be sure to <a href="https://dash.cloudflare.com/caching/cache-reserve">check out the beta</a> and let us know what you think.</p>
 </div>

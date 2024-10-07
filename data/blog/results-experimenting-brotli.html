@@ -3,7 +3,14 @@
 	<p>Compression is one of the most important tools CloudFlare has to accelerate website performance. Compressed content takes less time to transfer, and consequently reduces load times. On expensive mobile data plans, compression even saves money for consumers. However, compression is not free—it comes at a price. It is one of the most compute expensive operations our servers perform, and the better the compression rate we want, the more effort we have to spend.</p>
 	<p>The most popular compression format on the web is gzip. We put a great deal of effort into improving the performance of the gzip compression, so we can perform compression on the fly with fewer CPU cycles. Recently a potential replacement for gzip, called Brotli, was announced by Google. Being early adopters for many technologies, we at CloudFlare want to see for ourselves if it is as good as claimed.</p>
 	<p>This post takes a look at a bit of history behind gzip and Brotli, followed by a performance comparison.</p>
-	<h3>Compression 101</h3>
+	<div class="flex anchor relative">
+		<h3 id="compression-101">Compression 101</h3>
+		<a href="https://blog.cloudflare.com/#compression-101" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many popular lossless compression algorithms rely on LZ77 and Huffman coding, so it’s important to have a basic understanding of these two techniques before getting into gzip or Brotli.</p>
 	<h4>LZ77</h4>
 	<p>LZ77 is a simple technique developed by Abraham Lempel and Jacob Ziv in 1977 (hence the original name). Let's call the input to the algorithm a string (a sequence of bytes, not necessarily letters) and each consecutive sequence of bytes in the input a substring. LZ77 compresses the input string by replacing some of its substrings by pointers (or backreferences) to an identical substring previously encountered in the input.</p>
@@ -392,14 +399,28 @@
 	<p>There are three alphabets here. One is for <code>&lt;lit&gt;</code>s and it simply covers all the possible byte values from 0 to 255. The other one is for <code>&lt;distance&gt;</code>s, and its size depends on the size of the sliding window and other parameters. The third alphabet is for the <code>&lt;insert,copy&gt;</code> length pairs, with 704 letters. Here <code>&lt;insert, copy&gt;</code> indicates a single letter in the alphabet, as opposed to <code>&lt;length,distance&gt;</code> pairs in deflate where length and distance are letters in distinct alphabets.</p>
 	<p>So why do we care about context modeling? It means that for any of the alphabets—up to 256 different Huffman trees—can be used in the same block. The switch between different trees is determined by "context". This can be useful when the compressed file consists of different types of characters. For example binary data interleaved with UTF-8 strings, or a multilingual dictionary.</p>
 	<p>Whereas the basic idea behind Brotli remains identical to that of deflate, the way the data is encoded is very different. Those improvements allow for significantly better compression, but they also require a significant amount of processing. To alleviate the performance cost somewhat, Brotli drops the error detection CRC check present in gzip.</p>
-	<h3>Benchmarking</h3>
+	<div class="flex anchor relative">
+		<h3 id="benchmarking">Benchmarking</h3>
+		<a href="https://blog.cloudflare.com/#benchmarking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The heaviest operation in both deflate and Brotli is the search for backward references. A higher level in zlib generally means that the backward reference search will attempt to find a better match for longer, but not necessarily succeed. This leads to significant increase in processing time. In contrast, Brotli trades longer searches for lighter operations that give better ROI, such as context modeling, dictionary references and more efficient data encoding in general. For that reason Brotli is, in theory, capable of outperforming zlib at some stage for similar compression rates, as well as giving better compression at its maximal levels.</p>
 	<p>We decided to put those theories to the test. At CloudFlare, one of the primary use cases for Brotli/gzip is on-the-fly compression of textual web assets like HTML, CSS, and JavaScript, so that’s what we’ll be testing.</p>
 	<p>There is a tradeoff between compression speed and transfer speed. It is only beneficial to increase your compression ratio if you can reduce the number of bytes you have to transfer faster than you would actually transfer them. Slower compression will actually slow the connection down. CloudFlare currently uses our own zlib implementation with quality set to 8, and that is our benchmarking baseline.</p>
 	<p>The benchmark set consists of 10,655 HTML, CSS, and JavaScript files. The benchmarks were performed on an Intel 3.5GHz, E3-1241 v3 CPU.</p>
 	<p>The files were grouped into several size groups, since different websites have different size characteristics, and we must optimize for them all.</p>
 	<p>Although the quality setting in the Brotli implementation states the possible values are 0 to 11, we didn't see any differences between 0 and 1, or between 10 and 11, therefore only quality settings 1 to 10 are reported.</p>
-	<h3>Compression quality</h3>
+	<div class="flex anchor relative">
+		<h3 id="compression-quality">Compression quality</h3>
+		<a href="https://blog.cloudflare.com/#compression-quality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Compression quality is measured as (total size of all files after compression)/(total size of all files before compression)*100%. The columns represent the size distribution of the HTML, CSS, and JavaScript files used in the test in bytes (the file size ranges are shown using the [x,y) notation).</p>
 	<p>[20,1024)</p>
 	<p>[1024,2048)</p>
@@ -621,7 +642,14 @@
 	<p>23.0%</p>
 	<p>23.3%</p>
 	<p>Clearly, the compression possible by Brotli is significant. On average, Brotli at the maximal quality setting produces 1.19X smaller results than zlib at the maximal quality. For files smaller than 1KB the result is 1.38X smaller on average, a very impressive improvement, that can probably be attributed to the use of static dictionary.</p>
-	<h3>Compression speed</h3>
+	<div class="flex anchor relative">
+		<h3 id="compression-speed">Compression speed</h3>
+		<a href="https://blog.cloudflare.com/#compression-speed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Compression speed is measured as (total size of files before compression)/(total time to compress all files) and is reported in MB/s.</p>
 	<p>[20,1024)</p>
 	<p>[1024,2048)</p>
@@ -843,7 +871,14 @@
 	<p>0.5</p>
 	<p>0.5</p>
 	<p>On average for all files, we can see that Brotli at quality level 4 is slightly faster than zlib at quality level 8 (and 9) while having comparable compression ratio. However that is misleading. Most files are smaller than 64KB, and if we look only at those files then Brotli 4 is actually 1.48X slower than zlib level 8!</p>
-	<h3>Connection speedup</h3>
+	<div class="flex anchor relative">
+		<h3 id="connection-speedup">Connection speedup</h3>
+		<a href="https://blog.cloudflare.com/#connection-speedup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For on-the-fly compression, the most important question is how much time to invest in compression to make data transfer faster. Because increasing compression quality only gives incremental improvement over a given level, we need the added compressed bytes to outweigh the additional time spent compressing those bytes.</p>
 	<p>Again, CloudFlare uses compression quality 8 with zlib, so that’s our baseline. For each quality setting of Brotli starting at 4 (which is somewhat comparable to zlib 8 in terms of both time and compression ratio), we compute the added compression speed as: ((total size for zlib 8) - (total size after compression with Brotli))/((total time for Brotli)-(total time for zlib 8)).</p>
 	<p>The results are reported in MB/s. Negative numbers indicate lower compression ratio.</p>
@@ -936,7 +971,14 @@
 	<p>0.02</p>
 	<p>Those numbers are quite low, due to the slow speed of Brotli. To get any speedup we really want to see those numbers being greater than the connection speed. It seems that for files greater than 64KB, Brotli at quality setting 5 can speed up slow connections.</p>
 	<p>Keep in mind, that on a real server, compression is only one of many tasks that share the CPU, and compression speeds would be slower there.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The current state of Brotli gives us some mixed impressions. There is no yes/no answer to the question "Is Brotli better than gzip?". It definitely looks like a big win for static content compression, but on the web where the content is dynamic we also need to consider on-the-fly compression.</p>
 	<p>The way I see it, Brotli already has an advantage over zlib for large files (larger than 64KB) on slow connections. However, those constitute only 20% of our sampled dataset (and 80% of the total size).</p>
 	<p>Our Brotli module has a minimal size setting for Brotli compression that allows us to use gzip for smaller files and Brotli only for large ones.</p>

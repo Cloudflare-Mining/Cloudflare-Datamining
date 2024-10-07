@@ -11,7 +11,14 @@ Running fannkuch_redux: ..............................
   Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</code></pre>
 	<p>Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <i>in-process iterations</i>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
 	<p>The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
-	<h2>Results for luaJIT</h2>
+	<div class="flex anchor relative">
+		<h2 id="results-for-luajit">Results for luaJIT</h2>
+		<a href="https://blog.cloudflare.com/#results-for-luajit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
 	<table>
 		<tbody>
@@ -905,7 +912,14 @@ Running fannkuch_redux: ..............................
 	<p><sub>Results for luaJIT</sub></p>
 	<p>There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
 	<p>Here are the benchmark results for for RaptorJIT:</p>
-	<h2>Results for RaptorJIT</h2>
+	<div class="flex anchor relative">
+		<h2 id="results-for-raptorjit">Results for RaptorJIT</h2>
+		<a href="https://blog.cloudflare.com/#results-for-raptorjit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
 	<table>
 		<tbody>
@@ -1758,7 +1772,14 @@ Running fannkuch_redux: ..............................
 	</table>
 	<p><sub>Results for RaptorJIT</sub></p>
 	<p>We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
-	<h2>Results for Normal vs. RaptorJIT</h2>
+	<div class="flex anchor relative">
+		<h2 id="results-for-normal-vs-raptorjit">Results for Normal vs. RaptorJIT</h2>
+		<a href="https://blog.cloudflare.com/#results-for-normal-vs-raptorjit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.
 		<b>Diff against previous results:</b> improved worsened different unchanged.
 	</p>
@@ -2947,7 +2968,14 @@ Running fannkuch_redux: ..............................
 	<p>One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
 	<p>The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
 	<p>We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows:</p>
-	<h2>Results for Normal vs. Counters</h2>
+	<div class="flex anchor relative">
+		<h2 id="results-for-normal-vs-counters">Results for Normal vs. Counters</h2>
+		<a href="https://blog.cloudflare.com/#results-for-normal-vs-counters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.
 		<b>Diff against previous results:</b> improved worsened different unchanged.
 	</p>

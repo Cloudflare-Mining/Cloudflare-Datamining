@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NDEf7FkrvdEvYwcaz3lF0/e4af280d2cc04e09599c14605779fefa/Family_Double_Dare_spaghetti_challenge-1.jpg" alt="" class="kg-image" width="600" height="399" loading="lazy">
 
 	</figure>
-	<h3>Challenges</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges">Challenges</h3>
+		<a href="https://blog.cloudflare.com/#challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Password Hashing</h4>
 	<p>The first one is simple enough to explain; here are 5 hashes (from user passwords), crack them:</p>
 	<pre class="language-txt"><code class="language-txt">$2y$10$TYau45etgP4173/zx1usm.uO34TXAld/8e0/jKC5b0jHCqs/MZGBi
@@ -52,7 +59,14 @@ Strict-Transport-Security: max-age=31536000
 		<img src="https://assets.ctfassets.net/slt3lc6tev37/7MR7bRAZ9SyFRYmnaB40ym/778c85079725ef0c7cb8dcc62f7d11c7/2_enc.bmp.bmp" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
 
 	</figure>
-	<h3>Hints</h3>
+	<div class="flex anchor relative">
+		<h3 id="hints">Hints</h3>
+		<a href="https://blog.cloudflare.com/#hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Password Hashing</h4>
 	<p>What kind of hash algorithm has been used here? Given the input is from humans, how would you go about cracking it efficiently?</p>
 	<h4>HTTP Strict Transport Security</h4>
@@ -61,7 +75,14 @@ Strict-Transport-Security: max-age=31536000
 	<p>From the original images; <code>1.bmp</code> and <code>2.bmp</code>, were encrypted using a command similar to the one below - the only thing which changed each time the command was run was the file names used:</p>
 	<pre class="language-sh"><code class="language-sh">openssl enc -aes-256-ctr -e -in 1.bmp -out 1_enc.bmp -k SomePassword -iv 0010011 -nosalt</code></pre>
 	<p>Another hint; both images are from the same source image, each just has different layers of the same original image.</p>
-	<h3>Solutions (Spoiler Alert!)</h3>
+	<div class="flex anchor relative">
+		<h3 id="solutions-spoiler-alert">Solutions (Spoiler Alert!)</h3>
+		<a href="https://blog.cloudflare.com/#solutions-spoiler-alert" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Password Hashing</h4>
 	<p>The hashes start with a <code>$2y$</code> identifier, this indicates the hash has been created using BCrypt (<code>$2*$</code> usually indicates BCrypt). The hashes also indicate they were generated using a somewhat decent work factor of 10.</p>
 	<p>Despite the recent implementations of the Argon2 key derivation function, BCrypt is still generally considered secure. Although it's unfeasible to crack BCrypt itself, users have likely not been as security conscious when setting passwords.</p>
@@ -135,7 +156,14 @@ $ ./xor-files /some/place/1_enc.bmp /some/place/2_enc.bmp &gt; /some/place/xor.b
 		<img src="https://assets.ctfassets.net/slt3lc6tev37/5penOP4SB5bhOcCEvbrGib/86a7cf12a1d7370f8205507a2be74ab8/xor_invert.bmp.bmp" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're interested in debugging cybersecurity challenges on a network that sees ~10% of global internet traffic, we're hiring for <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">security &amp; cryptography engineers</a> and <a href="https://www.cloudflare.com/careers/departments/customer-support">Support Engineers</a> globally.</p>
 	<p>We hope you've had a relaxing holiday season, and wish you a very happy new year!</p>
 </div>

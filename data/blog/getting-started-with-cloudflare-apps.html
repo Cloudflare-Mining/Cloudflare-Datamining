@@ -1,7 +1,14 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ikAz5ADVxqp2kAuU4cfpk/7454710044f814d6ac29631ba86e5407/getting-started-with-cloudflare-apps.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We recently launched our <a href="https://www.cloudflare.com/apps?utm_campaign=Apps_Launch&amp;utm_medium=post&amp;utm_source=blog&amp;utm_content=tutorial">new Cloudflare Apps platform</a>, and love to see the community it is building. In an effort to help people who run web services such as websites, APIs and more, we would like to help make your web services faster, safer and more reliable using our new Apps Platform by leveraging more than 115 data centers around the world. (Skip ahead to the fun part if you already know how Cloudflare Apps works)</p>
-	<h3>How Cloudflare apps work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-apps-work">How Cloudflare apps work</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-apps-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is a quick diagram of how Cloudflare apps work:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -10,7 +17,14 @@
 	</figure>
 	<p>The “Origin” is the server that is providing your services, such as your website or API. The “Edge” represents a data center that is closest to your visitors. Cloudflare uses a routing method known as Anycast to ensure the end user, pictured on the far right, is routed through the best network path to our data center closest to them around the world.</p>
 	<p>Historically, to make changes or additions to your site at the edge, you needed to be a Cloudflare employee. Now with apps, anyone can quickly make changes to the pages rendered to their users via Javascript and CSS. Today, you can do amazing things like add a donation button using PayPal, or inject a video intelligently using JavaScript or CSS to position the objects wherever you like.</p>
-	<h3>Awesome apps that you can already turn on today</h3>
+	<div class="flex anchor relative">
+		<h3 id="awesome-apps-that-you-can-already-turn-on-today">Awesome apps that you can already turn on today</h3>
+		<a href="https://blog.cloudflare.com/#awesome-apps-that-you-can-already-turn-on-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A great way to explore our existing Apps would be to explore our Apps store. You can access it by visiting <a href="https://www.cloudflare.com/apps?utm_campaign=Apps_Launch&amp;utm_medium=post&amp;utm_source=blog&amp;utm_content=tutorial">our App store</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -18,7 +32,14 @@
 
 	</figure>
 	<p>You can review all of them by visiting your Cloudflare dashboard and accessing the apps section, which is a button on the far right hand corner of the dashboard.</p>
-	<h3>Creating an app (AKA the fun part)</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-an-app-aka-the-fun-part">Creating an app (AKA the fun part)</h3>
+		<a href="https://blog.cloudflare.com/#creating-an-app-aka-the-fun-part" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has a simple example app that is easy to use. Feel free to fork our app to have fun with it. <a href="https://github.com/CloudflareApps/ExampleApp">You can find it on GitHub here</a>.</p>
 	<figure class="kg-card kg-image-card ">
 

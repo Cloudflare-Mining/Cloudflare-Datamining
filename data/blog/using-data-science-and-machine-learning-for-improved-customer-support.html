@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>In this blog post we’ll explore three tricks that can be used for data science that helped us solve real problems for our customer support group and our customers. Two for natural language processing in a customer support context and one for identifying attack Internet attack traffic.</p>
 	<p>Through these examples, we hope to demonstrate how invaluable data processing tricks, visualisations and tools can be before putting data into a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning algorithm</a>. By refining data prior to processing, we are able to achieve dramatically improved results without needing to change the underlying machine learning strategies which are used.</p>
-	<h3>Know the Limits (Language Classification)</h3>
+	<div class="flex anchor relative">
+		<h3 id="know-the-limits-language-classification">Know the Limits (Language Classification)</h3>
+		<a href="https://blog.cloudflare.com/#know-the-limits-language-classification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When browsing a social media site, you may find the site prompts you to translate a post even though it is in your language.</p>
 	<p>We recently came across a similar problem at Cloudflare when we were looking into language classification for chat support messages. Using an off-the-shelf classification algorithm, users with short messages often had their chats classified incorrectly and our analysis found there’s a correlation between the length of a message and the accuracy of the classification (based on the browser <i>Accept-Language</i> header and the languages of the country where the request was submitted):</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,7 +26,14 @@
 	</figure>
 	<p>We decided the ideal approach was to train a machine learning model that would take all three signals (plus the confidence rate from the language classification algorithm) and use that to make a prediction. By knowing the limits of a given classification algorithm, we were able to develop an approach that helped compliment it.</p>
 	<p>A naive approach to do the same may not even need a trained model to do so, simply requiring agreement between two of three properties (classified language, <i>Accept-Language</i> header and country header) helps make a decision about the right language to use.</p>
-	<h3>Hold Your Fire (Fuzzy String Matching)</h3>
+	<div class="flex anchor relative">
+		<h3 id="hold-your-fire-fuzzy-string-matching">Hold Your Fire (Fuzzy String Matching)</h3>
+		<a href="https://blog.cloudflare.com/#hold-your-fire-fuzzy-string-matching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fuzzy String Matching is often used in natural language processing when trying to extract information from human text. For example, this can be used for extracting error messages from customer support tickets to do automatic classification. At Cloudflare, we use this as one signal in our natural language processing pipeline for support tickets.</p>
 	<p>Engineers often use the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> algorithm for string matching; for example, this algorithm is implemented in the Python <a href="https://github.com/seatgeek/fuzzywuzzy">fuzzywuzzy</a> library. This approach has a high computational overhead (for two strings of length <i>k</i> and <i>l</i>, the algorithm runs in <i>O(k * l)</i> time).</p>
 	<p>To understand the performance of different string matching algorithms in a customer support context, we compared multiple algorithms (<a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine</a>, Dice, <a href="https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Damerau</a>, <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">LCS</a> and Levenshtein) and measured the true positive rate (TP), false positive rate (FP) and the ratio of false positives to true positives (FP/TP).</p>
@@ -36,7 +50,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ooy4FyAn96ohSAClqKA1G/0ef8a8f0ed76d20f2e1a99723dda9356/image1-6.png" alt="" class="kg-image" width="1028" height="548" loading="lazy">
 
 	</figure>
-	<h3>“Beyond it is Another Dimension” (Threat Identification)</h3>
+	<div class="flex anchor relative">
+		<h3 id="beyond-it-is-another-dimension-threat-identification">“Beyond it is Another Dimension” (Threat Identification)</h3>
+		<a href="https://blog.cloudflare.com/#beyond-it-is-another-dimension-threat-identification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attack alerting is particularly important at Cloudflare - this is useful for both monitoring the overall status of our network and providing proactive support to particular at-risk customers.</p>
 	<p>DDoS attacks can be represented in granularity by a few different features; including differences in request or error rates over a temporal baseline, the relationship between errors and request volumes and other metrics that indicate attack behaviour. One example of a metric we use to differentiate between whether a customer is under a low volume attack or they are experiencing another issue is the relationship between 499 error codes vs 5xx HTTP status codes. Cloudflare’s network edge returns a <a href="https://support.cloudflare.com/hc/en-us/articles/115003014512-4xx-Client-Error">499 status code</a> when the client disconnects before the origin web server has an opportunity to respond, whilst <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431">5xx status codes</a> indicate an error handling the request. In the chart below; the x-axis measures the differential increase in 5xx errors over a baseline, whilst the y-axis represents the rate of 499 responses (each scatter represents a 15 minute interval). During a DDoS attack we notice a linear correlation between these criteria, whilst origin issues typically have an increase in one metric instead of another:</p>
 	<figure class="kg-card kg-image-card ">
@@ -59,7 +80,14 @@
 	</figure>
 	<p>Cluster 1 has 99.45% of requests from the same country and 99.45% from the same User-Agent. This tactic, however, has advantages when looking at other clusters - for example, Cluster 0 had 89% of requests coming from three User-Agents (75%, 12.3% and 1.7%, respectively). By using this approach we are able to correlate such attacks together even when they would be hard to identify on a request-to-request basis (as they are being made from different IPs and with different request headers). Such strategies allow us to fingerprint attacks regardless of whether attackers are continuously changing how they make these requests to us.</p>
 	<p>By aggregating data together then representing the data in multiple dimensions, we are able to gain visibility into the data that would ordinarily not be possible on a request-to-request basis. In product level functionality, it is often important to make decisions on a signal-to-signal basis (“should this request be challenged whilst this one is allowed?”) but by looking at the data in aggregate we are able to focus &nbsp;on the interesting clusters and provide alerting systems which identify anomalies. Performing this in multiple dimensions provides the tools to reduce false positives dramatically.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From natural language processing to intelligent threat fingerprinting, using data science techniques has improved our ability to build new functionality. Recently, new machine learning approaches and strategies have been designed to process this data more efficiently and effectively; however, preprocessing of data remains a vital tool for doing this. When seeking to optimise data processing pipelines, it often helps to look not just at the tools being used, but also the input and structure of the data you seek to process.</p>
 	<p>If you're interested in using data science techniques to identify threats on a large scale network, we're hiring for <a href="https://www.cloudflare.com/careers/jobs">Support Engineers</a> (including Security Operations, Technical Support and Support Operations Engineering) in San Francisco, Austin, Champaign, London, Lisbon, Munich and Singapore.</p>
 </div>

@@ -12,13 +12,27 @@
 	<p>But it’s vital that we also measure the performance of our network and benchmark ourselves against industry players large and small to make sure we are providing the best, fastest service.</p>
 	<p>We recently ran a measurement experiment where we used Real User Measurement (RUM) data from the standard browser API to test the performance of Cloudflare and others in real-world conditions across the globe. We wanted to use third-party tests for this, but they didn’t have the granularity we wanted. We want to drill down to every single ISP in the world to make sure we optimize everywhere. We knew that in some places the answers we got wouldn’t be good, and we’d need to do work to improve our performance. But without detailed analysis across the entire globe we couldn’t know we were really the fastest or where we needed to improve.</p>
 	<p>In this blog post I’ll describe how that measurement worked and what the results are. But the short version is: Cloudflare is #1 in almost all cases whether you look at all the networks on the globe, or the top 1,000 largest, or the top 1,000 most active, and whether you look at mean timings or 95th percentile, and you measure how quickly a connection can be established, how long it takes for the first byte to arrive in a user’s web browser, or how long the complete download takes. And we’re not resting here, we’re committed to working network by network globally to ensure that we are always #1.</p>
-	<h3>Why we measured</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-we-measured">Why we measured</h3>
+		<a href="https://blog.cloudflare.com/#why-we-measured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Commercial Internet measurement services (such as Cedexis, Catchpoint, Pingdom, ThousandEyes) already exist and perform the sorts of RUM measurements that Cloudflare used for this test. And we wanted to ensure that our test was as fair as possible and allowed each network to put its best foot forward.</p>
 	<p>We subscribe to the third party monitoring services already. And, when we looked at their data we weren’t satisfied.</p>
 	<p>First, we worried that the way they sampled wasn’t globally representative and was often skewed by measuring from the server, rather than the eyeball, side of the network. Or, even if operating from the eyeball side, could be skewed as artificial or tainted by bots and other automated traffic.</p>
 	<p>Second, it wasn’t granular enough. It showed our performance by country or region, but didn’t dive into individual networks and therefore obscured the details and outliers behind averages. While we looked good in third party tests, we didn’t trust them to be as thorough and accurate as we wanted. The goal isn’t to pick a test where we looked good. The goal was to be accurate and see where we weren’t good enough yet, so we could focus on those areas and improve. That’s why we had to build this ourselves.</p>
 	<p>We benchmark against others because it’s useful to know what’s possible. If someone else is faster than we are somewhere then it proves it’s possible. We won’t be satisfied until we’re at least as good as everyone else everywhere. Now we have the granular data to ensure that’ll happen. We plan our next update during Birthday Week when our target is to take 10% of networks where we’re not the fastest and become the fastest.</p>
-	<h3>How we measured</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-measured">How we measured</h3>
+		<a href="https://blog.cloudflare.com/#how-we-measured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To measure performance we did two things. We created a small internal team to do the measurements separate from the team that manages and optimizes our network. The goal was to show the team where we need to improve.</p>
 	<p>And to ensure that the other <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> were tested using their most representative assets we used the very same endpoints that commercial measurement services use on the assumption that our competitors will have already ensured that those endpoints are optimized to show their networks’ best performance.</p>
 	<p>The measurements in this blog post are based on four days just before Speed Week began (2021-09-10 12:25:02 UTC to 2021-09-13 16:21:10 UTC). We took measurements of downloading exactly the same 100KB PNG file. We categorized them by the network the measurement was taken from. It’s identified by its ASN and a name. We’re not done with these measurements and will continue measuring and optimizing.</p>
@@ -27,7 +41,14 @@
 	<p>In a way the Internet is these ASNs and because the Internet is made of them we want to measure our performance for each ASN. Why? Because one part of improving performance is improving our connectivity to each ASN and knowing how we’re doing on a per-network basis helps enormously.</p>
 	<p>There are roughly 70,000 ASNs in the global Internet and during the measurement period we saw traffic from about 21,000 (exact number: 20,728) of them. This makes sense since not all networks are “external” (as in the source of traffic to websites); many ASNs are intermediaries moving traffic around the Internet.</p>
 	<p>For the rest of this blog we simply say “network” instead of “ASN”.</p>
-	<h3>What we measured</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-measured">What we measured</h3>
+		<a href="https://blog.cloudflare.com/#what-we-measured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Getting real user measurement data used to be hard but has been made easy for HTTP endpoints thanks to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API">Resource Timing API</a>, supported by most modern browsers. This API allows a page to measure network timing data of fetched resources using high-resolution timestamps, accurate to 5 µs (microseconds).</p>
 	<p>The point of this API is to get timing information that shows how a real end-user experiences the Internet (and not a synthetic test that might measure a single component of all the things that happen when a user browses the web).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -71,14 +92,28 @@ performance.getEntriesByType("resource");
    workerStart: 0
 }</code></pre>
 	<p>To measure the performance of each CDN we downloaded an image from each, when a browser visited one of our special pages. Once every image is downloaded we record the measurements using a <a href="https://workers.cloudflare.com">Cloudflare Workers</a> based API.</p>
-	<h3>The three measurements: TCP connection time, TTFB and TTLB</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-three-measurements-tcp-connection-time-ttfb-and-ttlb">The three measurements: TCP connection time, TTFB and TTLB</h3>
+		<a href="https://blog.cloudflare.com/#the-three-measurements-tcp-connection-time-ttfb-and-ttlb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We focused on three measurements to illustrate how fast our network is: TCP connection time, TTFB and TTLB. Here’s why those three values matter.</p>
 	<p>TCP connection time is used to show how well-connected we are to the global Internet as it counts only the time taken for a machine to establish a connection to the remote host (before any higher level protocols are used). The TCP connection time is calculated as connectEnd - connectStart (see the diagram above).</p>
 	<p>TTFB (or time to first byte) is the time taken once an HTTP request has been sent for the first byte of data to be returned by the server. This is a common measurement used to show how responsive a server is. We calculate TTFB as responseStart - connectStart - (requestStart - connectEnd).</p>
 	<p>TTLB (or time to last byte) is the time taken to send the entire response to the web browser. It’s a good measure of how long a complete download takes and helps measure how good the server (or CDN) is at sending data. We calculate TTLB as responseEnd - connectStart - (requestStart - connectEnd).</p>
 	<p>We then produced two sets of data: mean and p95. The mean is a very well understood number for laypeople and gives the average user experience, but it doesn’t capture the breadth of different speeds people experience very well. Because it averages everything together it can miss skewed distributions of data (where lots of people get good performance and lots bad performance, for example).</p>
 	<p>To address the mean’s problems we also used p95, the 95th percentile. This number tells us what performance 95% of measurements fall below. That can be a hard number to understand, but you can think of it as the “reasonable worst case” performance for a user. Only 5% of measurements were worse than this number.</p>
-	<h3>An example chart</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-example-chart">An example chart</h3>
+		<a href="https://blog.cloudflare.com/#an-example-chart" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As this blog contains a lot of data, let’s start with a detailed look at a chart of results. We compared ourselves against industry giants Google and <a href="https://www.cloudflare.com/cloudflare-vs-cloudfront">Amazon CloudFront</a>, industry pioneer <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a> and up and comer Fastly.</p>
 	<p>For each network (represented by an ASN) and for each CDN we calculated which CDN had the best performance. Here, for example, is a count of the number of networks on which each CDN had the best performance for TTFB. This particular chart shows p95 and includes data from the top 1,000 networks (by number of IPv4 addresses advertised).</p>
 	<p>In these charts, longer bars are better; the bars indicate the number of networks for which that CDN had the lowest TTFB at p95.</p>
@@ -93,14 +128,28 @@ performance.getEntriesByType("resource");
 	<p>Cox Communications has ASN 22773 and our data shows that the p95 TTFB for the five CDNs was as follows: Cloudflare 332.6ms, Fastly 357.6ms, Google 380.3ms, Amazon CloudFront 404.4ms and Akamai 441.5ms. In this case Cloudflare was the fastest and about 7% faster than the next CDN (Fastly) which was faster than Google and so on.</p>
 	<p>Looking at Comcast (with ASN 7922) we see p95 TTFB was 323.7ms (Fastly), 324.2ms (Cloudflare), 353.7ms (Google), 384.6ms (Akamai) and 418.8ms (Amazon CloudFront). Here Fastly (323.7ms) edged out Cloudflare (324.2ms) by 0.2%.</p>
 	<p>Figures like these go into determining which CDN is the fastest for each network for this analysis and the charts presented. At a granular level they matter to Cloudflare as we can then target networks and connectivity for optimization.</p>
-	<h3>The results</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-results">The results</h3>
+		<a href="https://blog.cloudflare.com/#the-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Shown below are the results for three different measurement types (TCP connection time, TTFB and TTLB) with two different aggregations (mean and p95) and for three different groupings of networks.</p>
 	<p>The first grouping is the simplest: it’s all the networks we have data for. The second grouping is the one used above, the top 1,000 networks by number of IP addresses. But we also show a third grouping, top 1,000 networks by number of observations. That last group is important.</p>
 	<p>Top 1,000 networks by number of IP addresses is interesting (it includes the major ISPs) but it also includes some networks that have huge numbers of IP addresses available that aren’t necessarily used. These come about because of historical allocations of IP addresses organisations like the US Department of Defense.</p>
 	<p>Cloudflare's testing reveals which networks are most used, and so we also report results for the top 1,000 networks by number of observations to get an idea of how we’re performing on networks with heavy usage.</p>
 	<p>Hence, we have 18 charts showing all combinations of (TCP connection time, TTFB, TTLB), (mean, p95) and (all networks, top 1,000 networks by IP count, top 1,000 networks by observations).</p>
 	<p>You’ll see that in two of the charts Cloudflare is not #1 of 18 (we’re #2). We’ll be working to make sure we’re #1 for every measurement over the next few weeks. Both of those are average times. We’re most interested in the p95 measurements because they show the “reasonable worst case” scenario for someone using the Internet. But as we go about optimizing performance we want to be #1 on every chart so that we’re top no matter how performance is measured.</p>
-	<h3>TCP Connection Time</h3>
+	<div class="flex anchor relative">
+		<h3 id="tcp-connection-time">TCP Connection Time</h3>
+		<a href="https://blog.cloudflare.com/#tcp-connection-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s start with TCP connection time to get a sense of how well-connected the five companies we’ve measured. Recall that longer bars are better here, they indicate that the particular CDN was the highest performance for that many networks: more networks is better.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -132,7 +181,14 @@ performance.getEntriesByType("resource");
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kSILNzTnA9SuJdNcQSjRT/8c5843ec5e9bc89f119f8562e1c4ba34/image4-20.png" alt="image21" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
-	<h3>Time To First Byte (TTFB)</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-to-first-byte-ttfb">Time To First Byte (TTFB)</h3>
+		<a href="https://blog.cloudflare.com/#time-to-first-byte-ttfb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next up is TTFB for the five companies. Once again, longer bars is better means more networks where that CDN had the lowest TTFB.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -164,7 +220,14 @@ performance.getEntriesByType("resource");
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3vxM6xlmF1WUiyoqYX6tSu/8367c39f08a72d472f161c8c35ae6899/image12-4.png" alt="image10" class="kg-image" width="1042" height="836" loading="lazy">
 
 	</figure>
-	<h3>Time To Last Byte (TTLB)</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-to-last-byte-ttlb">Time To Last Byte (TTLB)</h3>
+		<a href="https://blog.cloudflare.com/#time-to-last-byte-ttlb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And finally the TTLB measurements. Once again, longer bars is better means more networks where that CDN had the lowest TTLB.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -196,11 +259,25 @@ performance.getEntriesByType("resource");
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3kNrXkn4FsOhKOyh2X7ZoQ/b4a90a0261f9122e36f0b538a5925dd9/image13-3.png" alt="image9" class="kg-image" width="1042" height="802" loading="lazy">
 
 	</figure>
-	<h3>Optimization Targets</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimization-targets">Optimization Targets</h3>
+		<a href="https://blog.cloudflare.com/#optimization-targets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking not just at where we are #1 but where we are #1 or #2 helps us see how quickly we can optimize our network to be #1 in more places. Examining the top 1,000 networks by observations we see that we’re currently #1 or #2 for TTFB in 69.9% of networks, for TTLB in 65.0% of networks and for TCP connection time in 70.5%.</p>
 	<p>To see how much optimization we need to do to go from #2 to #1 we looked at the three measures and see that median TTFB of the #1 network is 92.3%, median TTLB is 94.0% and TCP connection time is 91.5%.</p>
 	<p>The latter figure is very interesting because it shows that we can make big gains by optimizing network level routing.</p>
-	<h3>Where’s the world map?</h3>
+	<div class="flex anchor relative">
+		<h3 id="wheres-the-world-map">Where’s the world map?</h3>
+		<a href="https://blog.cloudflare.com/#wheres-the-world-map" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s very common to present data about Internet performance on maps. World maps look good but they obscure information. The reason is very simple: world maps show geography (and, depending on the projection, a very skewed version of the world’s actual countries and land masses).</p>
 	<p>Here’s an example world map with countries colored by who had the lowest TTLB at p95. Cloudflare is in orange, Amazon CloudFront in yellow, Google in purple, Akamai in red and Fastly in blue.</p>
 	<figure class="kg-card kg-image-card ">
@@ -210,7 +287,14 @@ performance.getEntriesByType("resource");
 	</figure>
 	<p>What that doesn’t show is population. And Cloudflare is interested in how well we perform for people. Consider Russia and Indonesia. Indonesia has double the population of Russia and about 1/10th of the land.</p>
 	<p>By focusing on networks we can optimize for the people who use the Internet. For example, Biznet is a major ISP in Indonesia with ASN 17451. Looking at TTFB at p95 (the same statistics we discussed earlier for US ISPs Cox and Comcast) we see that for Biznet users Cloudflare has the fastest p95 TTFB at 677.7ms, Fastly 744.0ms, Google 872.8ms, Amazon CloudFront 1,239.9 and Akamai 1,248.9ms.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The data we’ve gathered gives us a granular view of every network that connects to Cloudflare. This allows us to optimize routes and over the coming days and weeks we’ll be using the data to further increase Cloudflare’s performance.</p>
 	<p>In just over a week it’s Cloudflare’s Birthday Week, and we are aiming to improve our performance in 10% of the networks where we are not #1 today. Stay tuned.</p>
 </div>

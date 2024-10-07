@@ -9,7 +9,14 @@
 	<p>You hear about data breaches almost every day in the news these days. New regulations, such as GDPR, require companies to disclose data breaches within 72 hours of becoming aware. Becoming aware of and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses well-before they get picked up by the media.</p>
 	<p>One symptom of a data breach is data (such as passwords or PII) that should never leave internal systems making its way through an HTTP response into the public Internet. Since Cloudflare Workers sits between your infrastructure and the public for any endpoints exposed to the Internet, Workers can be used as a way of alerting you of canary data leaving.</p>
 	<p>In the following example, we will be inspecting the content of each response, checking to see if our canary data has leaked out, and if so, returning a static response and calling the PagerDuty API to notify of a potential breach.</p>
-	<h3>Detecting Data Loss</h3>
+	<div class="flex anchor relative">
+		<h3 id="detecting-data-loss">Detecting Data Loss</h3>
+		<a href="https://blog.cloudflare.com/#detecting-data-loss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this example, we’ll be looking for a particular string in the body of the response. This string can be canary data in your database (in our example, the secret is “SHHHTHISISASECRET”, and we are matching on a very specific string).</p>
 	<p>To get the body of the content, we use<code>javascript let body = await response.text()</code>This pulls the body of the response into the body variable. Note, that since this method consumes the body of the response, we will have to construct a new Response object prior to returning it. If you are expecting JSON, you may also call <code>response.json()</code>. Since we cannot read the body of images and other non-text formats, we check the Content-Type of the response prior to trying to parse the body.</p>
 	<pre class="language-javascript"><code class="language-javascript"> if(response.headers.get('Content-Type').includes('text')){
@@ -21,7 +28,14 @@
      return new Response(body, {status: response.status, headers: response.headers})
    }</code></pre>
 	<p>By default, Workers will stream responses back to the client to help improve performance and TTFB. It is worthwhile noting that reading the body of the response in the Worker means that the response will not be streamed (as we must wait on the read to complete to identify the presence of this string in the body)</p>
-	<h3>Returning a response to the client</h3>
+	<div class="flex anchor relative">
+		<h3 id="returning-a-response-to-the-client">Returning a response to the client</h3>
+		<a href="https://blog.cloudflare.com/#returning-a-response-to-the-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Static block</h4>
 	<p>In the example, we create a static response:</p>
 	<pre class="language-javascript"><code class="language-javascript">response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})</code></pre>
@@ -37,7 +51,15 @@
 	</figure>
 	<p>Adding the header in the Worker:</p>
 	<pre class="language-javascript"><code class="language-javascript">response = new Response(body, {status: response.status, headers: new Headers({'X-Rate-Limiting': true}})</code></pre>
-	<h3>Triggering PagerDuty</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="triggering-pagerduty">Triggering PagerDuty</h3>
+		<a href="https://blog.cloudflare.com/#triggering-pagerduty" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As our method of alerting on these incidents, we’ll be making an API call to PagerDuty.</p>
 	<p>To start, you will have to set up a Service to receive alerts and incidents on. In the Integration setting, make sure you select the API since that will allow us to make HTTP requests directly from the Worker.</p>
 	<p>You will additionally need to set up an API key (under Configuration → API Access) to allow the Worker to create Incident events and trigger alerts.</p>
@@ -67,7 +89,16 @@
  event.waitUntil(fetch('https://api.pagerduty.com/incidents', PDInit))
 
 }</code></pre>
-	<h3>The Complete Worker</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-complete-worker">The Complete Worker</h3>
+		<a href="https://blog.cloudflare.com/#the-complete-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-javascript"><code class="language-javascript">const PD_API_KEY = 'key'
 const PD_FROM = 'email@gmail.com'
 const PD_SERVICE_ID = 'ID'
@@ -129,7 +160,15 @@ async function createPagerDutyIncident(event) {
  event.waitUntil(fetch('https://api.pagerduty.com/incidents', PDInit))
 
 }</code></pre>
-	<h3>Conclusion</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers give you full control over each request and response that flows through Cloudflare. Being able to inspect the body of the response means that you can identify, alert and modify content sent back by your origin, and thus use Workers for things such as data loss prevention.</p>
 	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes">here</a>.</p>
 	<p>As always, we would love to hear what you are doing with Workers.</p>

@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>So what is Cloudflare Workers and why is it ideally suited to easy prototyping of optimizations?</p>
-	<h2>Cloudflare Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-workers">Cloudflare Workers</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the documentation :</p>
 	<blockquote>
 		<p>Cloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.A Cloudflare Worker is a programmable proxy which brings the simplicity and flexibility of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Workers event-based fetch API</a> from the browser to the edge. This allows a worker to intercept and modify requests and responses.</p>
@@ -20,7 +27,14 @@
 	</figure>
 	<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin.</p>
 	<p>Cloudflare Workers also provides a <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">streaming HTMLRewriter</a> to enable on the fly modification of HTML as it passes through the worker. The streaming nature of this parser ensures latency is minimised as the entire HTML document does not have to be buffered before rewriting can happen.</p>
-	<h3>Setting up a worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up-a-worker">Setting up a worker</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-a-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is really quick and easy to <a href="https://workers.cloudflare.com">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp;</p>
 	<pre class="language-bash"><code class="language-bash">wrangler generate wpt-proxy https://github.com/xtuc/WebPageTest-proxy</code></pre>
 	<p><a href="https://github.com/xtuc/WebPageTest-proxyYou">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
@@ -29,7 +43,14 @@
 	<p><code>wrangler publish</code></p>
 	<p>At this the point, the worker will be active at</p>
 	<p><code>https://wpt-proxy.&lt;your-subdomain&gt;.workers.dev</code>.</p>
-	<h2>WebPageTest OverrideHost &nbsp;</h2>
+	<div class="flex anchor relative">
+		<h2 id="webpagetest-overridehost">WebPageTest OverrideHost &nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#webpagetest-overridehost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that your worker is configured, the next step is to configure WebPageTest to redirect requests through the worker. WebPageTest has a feature where it can re-point arbitrary origins to a different domain. To access the feature in WebPageTest, you need to use the WebPageTest scripting language "overrideHost" command, as shown:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -60,7 +81,15 @@ navigate https://www.bbc.co.uk</code></pre>
 	<p>A more generic script would look like this: &nbsp; &nbsp;</p>
 	<pre class="language-bash"><code class="language-bash">overrideHost %HOSTR% wpt-proxy.prf.workers.dev    
 navigate %URL% </code></pre>
-	<h2>Basic worker</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="basic-worker">Basic worker</h2>
+		<a href="https://blog.cloudflare.com/#basic-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the base example below, the worker listens for the fetch event, looks for the <code>x-host</code> header that WebPageTest has set and responds by fetching the content from the orginal url:</p>
 	<pre class="language-javascript"><code class="language-javascript">/* 
 * Handle all requests. 
@@ -110,7 +139,14 @@ navigate    https://www.bbc.co.uk</code></pre>
 
 	</figure>
 	<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp;</p>
-	<h2>HTMLRewriter</h2>
+	<div class="flex anchor relative">
+		<h2 id="htmlrewriter">HTMLRewriter</h2>
+		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the HTMLRewriter, it is possible to change the HTML response as it passes through the worker. A jQuery-like syntax provides CSS-selector matching and a standard set of DOM mutation methods. For instance you could rewrite your page to measure the effects of different preload/prefetch strategies, review the performance savings of removing or using different third-party scripts, or you could stock-take the HEAD of your document. One piece of performance advice is to self-host some third-party scripts. This <a href="https://github.com/xtuc/rewrite-3d-party.git">example</a> script invokes the HTMLRewriter to listen for a script tag with a <code>src</code> attribute. If the script is from a proxiable domain the src is rewritten to be first-party, with a specific path prefix.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function rewritePage(request) {  
   const response = await fetch(request);    
@@ -127,7 +163,14 @@ navigate    https://www.bbc.co.uk</code></pre>
 }</code></pre>
 	<p>Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp;</p>
 	<p><code>wrangler generate test [https://github.com/xtuc/rewrite-3d-party.git](https://github.com/xtuc/rewrite-3d-party.git)</code></p>
-	<h2>Request Mangling</h2>
+	<div class="flex anchor relative">
+		<h2 id="request-mangling">Request Mangling</h2>
+		<a href="https://blog.cloudflare.com/#request-mangling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As well as rewriting content, it is also possible to change or delay a request. Below is an example of how to randomly add a delay of a second to a request:</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {    
     const host = event.request.headers.get('x-host');    
@@ -140,10 +183,25 @@ navigate    https://www.bbc.co.uk</code></pre>
     event.respondWith(fetch(originUrl, init));
 //...
 }</code></pre>
-	<h2>HTTP/2 prioritization</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="http-2-prioritization">HTTP/2 prioritization</h2>
+		<a href="https://blog.cloudflare.com/#http-2-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What if you want to see what the effect of changing the HTTP/2 prioritization of assets would make to your website? Cloudflare Workers provide <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">custom http2 prioritization schemes</a> that can be applied by setting a custom header on the response. The <code>cf-priority</code> header is defined as <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so adding: &nbsp; &nbsp;</p>
 	<p><code>response.headers.set('cf-priority', “30/0”);</code> &nbsp; &nbsp;</p>
 	<p>would set the priority of that response to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n. With this flexibility, you can prioritize the bytes that are important for your website or run a bulk test to prove that your new &nbsp;prioritization scheme is better than any of the existing browser implementations.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A major barrier to understanding and innovation, is the amount of time is takes to get feedback. Having a quick and easy framework, to try out a new idea and comprehend the impact, is key. I hope this post has convinced you that combining WebPageTest and Cloudflare Workers is an easy solution to this problem and is indeed magic</p>
 </div>

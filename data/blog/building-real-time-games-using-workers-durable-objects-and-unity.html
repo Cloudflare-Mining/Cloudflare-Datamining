@@ -26,7 +26,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6h6IhL6O32SUwdi9vXF1cl/0b5d1fc5edd48f590968a18387d99c5c/image2-7.png" alt="" class="kg-image" width="1566" height="1057" loading="lazy">
 
 	</figure>
-	<h3>Managing connections: the Character Durable Object</h3>
+	<div class="flex anchor relative">
+		<h3 id="managing-connections-the-character-durable-object">Managing connections: the Character Durable Object</h3>
+		<a href="https://blog.cloudflare.com/#managing-connections-the-character-durable-object" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My biggest fear before embarking on this project was working with Durable Objects. Even though I've never made any sort of serious game with Unity, and I couldn't even define C# variables without doing Google searches on basic syntax, something about the conceptual pieces of Durable Objects has continued to be intimidating to me, down to the moment I started writing actual code.</p>
 	<p>Imagine my surprise when writing Durable Objects and working with the API turned out to be incredibly easy.</p>
 	<p>The Character module, a Durable Object using our new module support in Workers, is built on top of our <a href="https://github.com/cloudflare/modules-rollup-esm">modules-rollup-esm</a> template. The module handles incoming requests, and acts as a WebSocket provider for clients:</p>
@@ -168,7 +175,14 @@ async handleSession(websocket, ip) {
   }
 }</code></pre>
 	<p>When setting up a new WebSocketPair, the Workers function creates a unique ID derived from the user's IP address (though you could just as easily use a UUID or anything else), and begins sending WebSocket data down to the new client. When data comes in (e.g. a new player position), the function looks at <i>who</i> is sending it, and sends the new information to every <i>other</i> WebSocket currently in the game.</p>
-	<h3>Handling player position and movement: building with Durable Objects in Unity</h3>
+	<div class="flex anchor relative">
+		<h3 id="handling-player-position-and-movement-building-with-durable-objects-in-unity">Handling player position and movement: building with Durable Objects in Unity</h3>
+		<a href="https://blog.cloudflare.com/#handling-player-position-and-movement-building-with-durable-objects-in-unity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unity is a great game engine for someone like me: a fairly experienced programmer who has <i>no</i> experience in making games. I've been working with Unity on and off for years, but in the last few months I've been diving deep into it and expanding my understanding of how to actually build real games.</p>
 	<p>Here's what you need to know about Unity in the context of building Durable World: Game Objects are the primary <i>class</i> of everything in Unity, and using C# scripts you can program different behaviors for your Game Objects, whether networked or local to the player.</p>
 	<p>In our game, there are three distinct types of Game Objects. First, there's the world itself — a collection of static meshes, mostly cubes. These meshes aren't represented inside the networked aspects of the game at all. Via a series of <i>colliders</i>, any other Game Objects that navigate on top of or around these meshes are stopped from falling through floors and moving through walls. This same sort of design is what you've seen in every 3D game over the last twenty years, including classics like Super Mario 64.</p><!--kg-card-begin: html-->
@@ -386,6 +400,14 @@ public class InterpolateMovement : MonoBehaviour
     }
   }
 }</code></pre>
-	<h3>What’s next</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The availability of tools like Durable Objects and WebSockets at the edge unlocks a new class of application that we can build with Cloudflare Workers. Games are just a single use case, and we’ve only begun exploring the possibilities for real-time, highly interactive games at the edge. If you're interested in checking out the source for Durable World, you can check it out <a href="https://github.com/signalnerve/durable-world">on GitHub</a>. <a href="https://discord.com/invite/cloudflaredev">Join us in our Cloudflare Workers Discord</a> if you want to chat Workers, Durable Objects, or anything else exploring new, interesting stuff we can build in a distributed serverless context.</p>
 </div>

@@ -8,7 +8,14 @@
 	</figure>
 	<p>A little over two weeks ago, <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we shared extensive benchmarking results</a> of edge networks all around the world. &nbsp;It showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on a range of measurements (p95, mean), that Cloudflare had some impressive network performance. But we weren't the fastest everywhere. So we made a commitment: <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we would improve in at least 10%</a> of networks where we were not #1.</p>
 	<p>Today, we’re happy to tell you that we’ve delivered as promised. Of the networks where our average latency exceeded 100ms behind the leading provider during Speed Week, we’ve dramatically improved our performance. There were 61 networks; now, we’re the fastest in 29 of them. Of course, we’re not done yet — but we wanted to share with you the latest results, and explain how we did it.</p>
-	<h3>Measuring What Matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-what-matters">Measuring What Matters</h3>
+		<a href="https://blog.cloudflare.com/#measuring-what-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the process of quantifying network performance, it became clear where we were not the fastest everywhere. There were 61 country/network pairs where we more than 100ms behind the leading provider:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,7 +36,14 @@
 
 	</figure>
 	<p>With the results out of the way, let’s share the story of chasing peak performance in three very different geographies — each with three very different sets of challenges. Before we begin: a lot of Cloudflare’s internal network performance is automatically tuned. However, by its very nature, the Internet is a network of networks — and that inherently relies on us talking to other network operators to maximize performance. That’s often what we had to do here.</p>
-	<h3>Rectifying Route Advertisement in Brazil</h3>
+	<div class="flex anchor relative">
+		<h3 id="rectifying-route-advertisement-in-brazil">Rectifying Route Advertisement in Brazil</h3>
+		<a href="https://blog.cloudflare.com/#rectifying-route-advertisement-in-brazil" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One particular network that was flagged for improvement during <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">Speed Week</a> stood out: we’ll refer to it as Network-A. This network was well known to our edge team (the team that looks after our network connectivity in <a href="https://www.cloudflare.com/network">Cloudflare data centers</a>) for frequently congesting the dedicated interconnection we have with the network in São Paulo. This type of dedicated connection is called a Private Network Interconnect (PNI), or private peering, and it helps Cloudflare talk to Network-A without any intermediaries using the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">BGP</a> protocol.</p>
 	<p>At a first look, we noticed that a significant chunk of traffic to Network-A was not using the PNI, but instead was being sent through one of our transit providers. A transit provider is an intermediary network that provides connectivity to the rest of the Internet.</p>
 	<p>This is not uncommon. The most likely reason for this behavior is that at some point in the past traffic was shifted away from the PNI due to capacity issues mentioned earlier.</p>
@@ -53,7 +67,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mgJnmGVrbvhJZ0NnEBHQF/d91d5d72f6ef373dd42c151f88d2939a/image6-3.png" alt="" class="kg-image" width="1542" height="940" loading="lazy">
 
 	</figure>
-	<h3>Immaculate Ingress in Spain</h3>
+	<div class="flex anchor relative">
+		<h3 id="immaculate-ingress-in-spain">Immaculate Ingress in Spain</h3>
+		<a href="https://blog.cloudflare.com/#immaculate-ingress-in-spain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another network that stood out was a European ISP with a global presence. We’ll refer to it as Network-B. Our RUM measurements showed that we were experiencing high latencies in several parts of the world, including Spain.</p>
 	<p>The first thing we did was to check how we handled traffic from Spain for Network-B. Our data showed that we had several data centers outside the country which were serving users from Network-B: Milan in Italy and Marseille in France. This obviously raised a question: why is traffic not staying locally in Spain?</p>
 	<p>The traffic was not staying local because Network-B had not peered with us in Madrid. If private peering describes a connection between exactly two networks using a dedicated circuit, public peering allows multiple networks to interconnect, if they wish so, at an <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp">Internet Exchange Point</a> (IXP) location using a shared infrastructure. We looked at our <a href="https://peering.cloudflare.com">Peering Portal</a> to identify any potential peering opportunities with Network-B and established peering sessions in various locations where we saw high latency, including Madrid.</p>
@@ -66,7 +87,14 @@
 
 	</figure>
 	<p>You may notice that going from #2 to #1 still means we have a latency of about 300ms. &nbsp;We want to ensure that every network has amazing performance, but we <a href="https://blog.cloudflare.com/last-mile-insights">can’t control all network providers</a> and how they connect with the rest of the Internet. We’re constantly working to ensure that end users see the best experience possible.</p>
-	<h3>Upstream Selection in Africa</h3>
+	<div class="flex anchor relative">
+		<h3 id="upstream-selection-in-africa">Upstream Selection in Africa</h3>
+		<a href="https://blog.cloudflare.com/#upstream-selection-in-africa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve previously discussed private peering and transit providers and how a direct connection is better than a transit connection which usually routes through intermediary networks. However, sometimes this might not be true. This was the case for a network in Africa, which we will call Network-C.</p>
 	<p>As before, we started by looking at the locations from where we serve traffic to Network-C. This was mostly from our data centers in Western Europe. Looking at the parent <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a> for Network-C, we expected this outcome since we don’t peer with either of them anywhere in Africa.</p>
 	<p>Let’s take our data center in London. There, we had a private peering connection with Parent-1 and a transit connection with Parent-2. We were receiving IP addresses belonging to Network-C from both parents, however we were only sending traffic to Parent-1 since that was our private peer.</p>
@@ -78,7 +106,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/41Llttys5yJZtpvroQMbFz/edd8088b968c11d3892f3027a477795a/image5-4.png" alt="" class="kg-image" width="1322" height="804" loading="lazy">
 
 	</figure>
-	<h3>Update on Speed Week</h3>
+	<div class="flex anchor relative">
+		<h3 id="update-on-speed-week">Update on Speed Week</h3>
+		<a href="https://blog.cloudflare.com/#update-on-speed-week" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Two weeks ago, when <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we first reported our measurements</a>, there were two charts that stuck out where Cloudflare was not #1 in terms of number of networks where we had the lowest connection time or TTLB.</p>
 	<p>The first was the mean TCP connection time in the top 1,000 networks by number of IP addresses. Since then, we’ve been optimizing and have measured our performance again, and we’ve now moved into the #1 spot.</p>
 	<figure class="kg-card kg-image-card ">
@@ -92,7 +127,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4y2K8NiG4zsWGkL6D26AX/19e35d4629c808e99d19504c5df5a7b8/image9-2.png" alt="" class="kg-image" width="1068" height="822" loading="lazy">
 
 	</figure>
-	<h3>Getting ever faster</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-ever-faster">Getting ever faster</h3>
+		<a href="https://blog.cloudflare.com/#getting-ever-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Improving performance on the Internet is a long tail problem: each issue requires a different solution because every network is unique and covers different end users. As we continue to grow our network and interconnect with more of the world, it’s important that we constantly examine our performance to ensure that we’re the fastest.</p>
 	<p>The efforts of our team have yielded great improvements for our customers, but we’re not just stopping because Speed Week and Birthday Week are over. We’re automating the discovery process of poor performance on networks like these, and are working hard to also automate the remediation processes in order to deliver more incredible performance for our customers.</p>
 	<p>And we have two more innovation weeks coming in 2021. We’ll be back each week to report on further progress on optimizing our performance globally.</p>

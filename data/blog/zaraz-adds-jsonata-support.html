@@ -10,7 +10,14 @@
 	<p>Typically, information reaches Zaraz through the execution of <code>zaraz.track("event name", { properties })</code> within the website's code. The <code>properties</code> object can contain relevant details that will be sent to third-party tools, such as the button ID in the previous example. However, there are cases where users may need to process and manipulate the information before sending it to their third-party tools.</p>
 	<p>To address this requirement, we recently introduced <a href="https://blog.cloudflare.com/dynamic-data-collection-with-zaraz-worker-variables">Worker Variables</a>, which enables users to send information to a Cloudflare Worker, perform manipulations on it, and return a modified value. This feature offers immense power and flexibility. For instance, users can communicate with their backend server to retrieve data and leverage JavaScript to perform necessary calculations. With Worker Variables, users have access to a fully-featured Worker, opening up endless possibilities.</p>
 	<p>However, feedback from our users highlighted the need for a middle-ground solution. Sometimes, the data manipulation required is minor, and employing a Cloudflare Worker might feel like overkill. It is in response to this feedback that we decided to integrate with <a href="https://jsonata.org">JSONata</a>.</p>
-	<h3>What is JSONata?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-jsonata">What is JSONata?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-jsonata" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JSONata calls itself a JSON query and transformation language. While some developers may already be familiar with jq, the command-line JSON processor, JSONata offers similar features with a syntax that we believe is more intuitive and easier to understand. Since JSONata is a JavaScript library, it was very easy to integrate into Cloudflare Zaraz.</p>
 	<p>Let’s say we have JSON document like the following:</p>
 	<pre class="language-javascript"><code class="language-javascript">{
@@ -32,7 +39,14 @@ address.city // London
 
 pets[type="parrot"].name // ["Alfie", "Milo"]</code></pre>
 	<p>The JSONata documentation includes many examples for what you do with it, and there’s even <a href="https://try.jsonata.org">a playground</a> where you can try your JSONata queries live.</p>
-	<h3>Using JSONata with Zaraz</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-jsonata-with-zaraz">Using JSONata with Zaraz</h3>
+		<a href="https://blog.cloudflare.com/#using-jsonata-with-zaraz" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JSONata has been tightly integrated with Cloudflare Zaraz, allowing you to leverage its capabilities in the fields of all Actions, Triggers, and Variables. Before diving into writing your JSONata expressions, it's essential to understand the JSON document you'll be working with.</p>
 	<p>Similar to Worker Variables or the HTTP Request tool, JSONata has access to the Zaraz Context. This object contains information from your <code>zaraz.track()</code> and <code>zaraz.ecommerce()</code> calls, as well as automatically gathered data by Zaraz, such as the current page URL, cookies, page title, user-agent string, and more. You can find the complete reference for this object in <a href="https://developers.cloudflare.com/zaraz/reference/context">the Zaraz documentation</a>.</p>
 	<p>Using your JSONata query is straightforward once you are familiar with it. To incorporate the query into your field content, simply enclose it within double curly brackets. The expression will be passed to JSONata along with the Zaraz Context object, and the resulting value will be used for the field.</p>
@@ -66,6 +80,13 @@ pets[type="parrot"].name // ["Alfie", "Milo"]</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nbdz3jTkzgSojEw0MhXqU/171f8c64ca65968f809dd9395a723e90/image3-31.png" alt="" class="kg-image" width="1950" height="1102" loading="lazy">
 
 	</figure>
-	<h3>Start using JSONata today</h3>
+	<div class="flex anchor relative">
+		<h3 id="start-using-jsonata-today">Start using JSONata today</h3>
+		<a href="https://blog.cloudflare.com/#start-using-jsonata-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JSONata support is available to all Zaraz users at no cost, and it is enabled automatically for all websites. Start using JSONata today to send finely tuned data to your providers or APIs with minimal code and zero maintenance for your data infrastructure. If you need any help - join <a href="https://discord.gg/2TRr6nSxdd">our Discord channel</a>!</p>
 </div>

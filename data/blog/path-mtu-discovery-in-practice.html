@@ -7,11 +7,25 @@
 
 	</figure>
 	<p>via <a href="https://www.flickr.com/photos/balintfoeldesi">Flickr</a></p>
-	<h3>First There Was the Fragmentation</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-there-was-the-fragmentation">First There Was the Fragmentation</h3>
+		<a href="https://blog.cloudflare.com/#first-there-was-the-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a host on the Internet wants to send some data, it must know how to divide the data into packets. And in particular, it needs to know the maximum size of packet. The maximum size of a packet a host can send is called <a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">Maximum Transmission Unit: MTU</a>.</p>
 	<p>The longer the MTU the better for performance, but the worse for reliability. This is because a lost packet means more data to be retransmitted and because many routers on the Internet can't deliver very long packets.</p>
 	<p>The fathers of the Internet assumed that this problem would be solved at the IP layer with IP fragmentation. Unfortunately IP <a href="http://www.hpl.hp.com/techreports/Compaq-DEC/WRL-87-3.pdf">fragmentation has serious disadvantages</a>, and it's avoided in practice.</p>
-	<h3>Do-not-fragment bit</h3>
+	<div class="flex anchor relative">
+		<h3 id="do-not-fragment-bit">Do-not-fragment bit</h3>
+		<a href="https://blog.cloudflare.com/#do-not-fragment-bit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To work around fragmentation problems the IP layer contains a "Don't Fragment" bit on every IP packet. It forbids any router on the path from performing fragmentation.</p>
 	<p>So what does the router do if it can't deliver a packet and can't fragment it either?</p>
 	<p>That's when the fun begins.</p>
@@ -29,7 +43,14 @@
 
 	</figure>
 	<p>via <a href="https://www.flickr.com/photos/gsfc">Flickr</a></p>
-	<h3>Another Black Hole</h3>
+	<div class="flex anchor relative">
+		<h3 id="another-black-hole">Another Black Hole</h3>
+		<a href="https://blog.cloudflare.com/#another-black-hole" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A situation when a router drops packets but for some reason can't deliver relevant ICMP messages is called <a href="https://en.wikipedia.org/wiki/Black_hole_(networking)">an ICMP black hole</a>.</p>
 	<p>When that happens the whole connection gets stuck. The sending side constantly tries to resend lost packets, while the receiving side acknowledges only the small packets that get delivered.</p>
 	<p>There are generally three solutions to this problem.</p>
@@ -51,7 +72,14 @@ $ sudo tcpdump -s0 -p -ni eth0 '(ip and ip[20+13] &amp; tcp-syn != 0)'
 	<pre class="language-bash"><code class="language-bash">echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing
 echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	<p>The second setting bumps the starting MSS used in discovery from a miserable default of 512 bytes to an RFC4821 suggested 1,024.</p>
-	<h3>CloudFlare Architecture</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-architecture">CloudFlare Architecture</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand what happened last week, first we need to make a detour and discuss our architecture. At CloudFlare <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">we use BGP in two ways</a>. We use it externally, the BGP that organizes the Internet, and internally between servers.</p>
 	<p>The internal use of BGP allows us to get high availability across servers. If a machine goes down the BGP router will notice and will push the traffic to another server automatically.</p>
 	<p>We've used this for a long time but last week increased its use in our network as we increased internal BGP load balancing. The load balancing mechanism is known as <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing">ECMP: Equal Cost Multi Path routing</a>. From the configuration point of view the change was minimal, it only required adjusting the BGP metrics to equal values, the ECMP-enabled router does the rest of the work.</p>
@@ -67,7 +95,14 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 
 	</figure>
 	<p>And uses this hash to chose destination server. This guarantees that packets from one "flow" will always hit the same server.</p>
-	<h3>ECMP dislikes ICMP</h3>
+	<div class="flex anchor relative">
+		<h3 id="ecmp-dislikes-icmp">ECMP dislikes ICMP</h3>
+		<a href="https://blog.cloudflare.com/#ecmp-dislikes-icmp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ECMP will indeed forward TCP packets in a session to the appropriate server. Unfortunately, it has no special knowledge of ICMP and it hashes only (src ip, dst ip).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -76,11 +111,25 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	</figure>
 	<p>Where the the source IP is most likely an IP of a router on the Internet. In practice, this may sometimes end up delivering the ICMP packets to a different server than the one handling the TCP connection.</p>
 	<p>This is exactly what happened in our case.</p>
-	<h3>Temporary Fix</h3>
+	<div class="flex anchor relative">
+		<h3 id="temporary-fix">Temporary Fix</h3>
+		<a href="https://blog.cloudflare.com/#temporary-fix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A couple of users who were accessing CloudFlare via IPv6 tunnels reported this problem. They were affected as almost every tunneling IPv6 has a reduced MTU.</p>
 	<p>As a temporary fix we reduced the MTU for all IPv6 paths to 1,280 (solution mentioned as #2). Many other providers have the same problem and use this trick on IPv6, and never send IPv6 packets greater than 1,280 bytes.</p>
 	<p>For better or worse this problem is not so prevalent on IPv4. Fewer people use IPv4 tunneling and the Path MTU problems were well understood for much longer. As temporary fix for IPv4, we deployed RFC4821 path MTU discovery (the solution mentioned in #3 above).</p>
-	<h3>Our solution: PMTUD</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-solution-pmtud">Our solution: PMTUD</h3>
+		<a href="https://blog.cloudflare.com/#our-solution-pmtud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the meantime we were working on a comprehensive and reliable solution the restores the real MTUs. The idea is to broadcast ICMP MTU messages to all servers. That way we can guarantee that ICMP messages will hit the relevant server that handles a particular flow, no matter where the ECMP router decides to forward it.</p>
 	<p>We're happy to open source our small "Path MTU Daemon" that does the work:</p>
 	<ul>
@@ -88,7 +137,14 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 			<p><a href="https://github.com/cloudflare/pmtud">https://github.com/cloudflare/pmtud</a></p>
 		</li>
 	</ul>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Delivering Path MTU ICMP messages correctly in a network that uses ECMP for internal routing is a surprisingly hard problem. While there is still plenty to improve we're happy to report:</p>
 	<ul>
 		<li>

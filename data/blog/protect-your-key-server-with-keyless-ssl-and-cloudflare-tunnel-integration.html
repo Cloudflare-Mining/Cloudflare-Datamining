@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Today, we’re excited to announce a big security enhancement to our Keyless SSL offering. Keyless SSL allows customers to store their private keys on their own hardware, while continuing to use Cloudflare’s proxy services. In the past, the configuration required customers to expose the location of their key server through a DNS record - something that is publicly queryable. Now, customers will be able to use our Cloudflare Tunnels product to send traffic to the key server through a secure channel, without publicly exposing it to the rest of the Internet.</p>
-	<h3>A primer on Keyless SSL</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-primer-on-keyless-ssl">A primer on Keyless SSL</h3>
+		<a href="https://blog.cloudflare.com/#a-primer-on-keyless-ssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security has always been a critical aspect of online communication, especially when it comes to protecting sensitive information. Today, Cloudflare manages private keys for millions of domains which allows the data communicated by a client to stay secure and encrypted. While Cloudflare adopts the strictest controls to secure these keys, certain industries such as financial or medical services may have compliance requirements that prohibit the sharing of private keys.In the past, Cloudflare required customers to upload their private key in order for us to provide our L7 services. That was, until we built out Keyless SSL in 2014, a feature that allows customers to keep their private keys stored on their own infrastructure while continuing to make use of Cloudflare’s services.</p>
 	<p>While Keyless SSL is compatible with any hardware that support PKCS#11 standard, Keyless SSL users frequently opt to secure their private keys within HSMs (Hardware Security Modules), which are specialized machines designed to be tamper proof and resistant to to unauthorized access or manipulation, secure against attacks, and optimized to efficiently execute cryptographic operations such as signing and decryption. To make it easy for customers to set this up, during Security Week in 2021, we <a href="https://blog.cloudflare.com/keyless-ssl-supports-fips-140-2-l3-hsm">launched</a> integrations between Keyless SSL and HSM offerings from all major cloud providers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -14,7 +21,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wuHcCOkcDcvmXTGLrFQho/eed5e7ca0b82ac5a589364ec4599b1b6/image1-36.png" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]" class="kg-image" width="1368" height="587" loading="lazy">
 
 	</figure>
-	<h3>Strengthening the security of key servers even further</h3>
+	<div class="flex anchor relative">
+		<h3 id="strengthening-the-security-of-key-servers-even-further">Strengthening the security of key servers even further</h3>
+		<a href="https://blog.cloudflare.com/#strengthening-the-security-of-key-servers-even-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order for Cloudflare to communicate with a customer’s key server, we have to know the IP address associated with it. To configure Keyless SSL, we ask customers to create a DNS record that indicates the IP address of their keyserver. As a security measure, we ask customers to keep this record under a long, random hostname such as “11aa40b4a5db06d4889e48e2f738950ddfa50b7349d09b5f.example.com”. While it adds a layer of obfuscation to the location of the key server, it does expose the IP address of the keyserver to the public Internet, allowing anyone to send requests to that server. We lock the connection between Cloudflare and the Keyless server down through Mutual TLS, so that the Keyless server should only accept the request if a Cloudflare client certificate associated with the Keyless client is served. While this allows the key server to drop any requests with an invalid or missing client certificate, the key server is still publicly exposed, making it susceptible to attacks.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -22,7 +36,14 @@
 
 	</figure>
 	<p>Instead, Cloudflare should be the only party that knows about this key server’s location, as it should be the only party making requests to it.</p>
-	<h3>Enter: Cloudflare Tunnel</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-cloudflare-tunnel">Enter: Cloudflare Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#enter-cloudflare-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of re-inventing the wheel, we decided to make use of an existing Cloudflare product that our customers use to protect the connections between Cloudflare and their origin servers — Cloudflare Tunnels!</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -31,7 +52,15 @@
 	</figure>
 	<p>Cloudflare Tunnel gives customers the tools to connect incoming traffic to their private networks without exposing those networks to the Internet through a public hostname. It works by having customers install a Cloudflare daemon, called “cloudflared” which Cloudflare’s client will then connect to.</p>
 	<p>Now, customers will be able to use the same functionality but for connections made to their key server.</p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cwgNSFiwyruWuHOlNDBKO/08ad7b1bad2982c1fd875787a7414893/image2-20.png" alt="" class="kg-image" width="1200" height="628" loading="lazy">

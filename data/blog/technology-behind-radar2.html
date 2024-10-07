@@ -15,7 +15,14 @@
 	<p>We're building a <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a>. Cloudflare's products now include hundreds of features in networking, security, access controls, computing, storage, and more.</p>
 	<p>This blog will explain how we built the new Radar from an engineering perspective. We wanted to do this to demonstrate that anyone could build a somewhat complex website that involves demanding requirements and multiple architectural layers, do it on top of our stack, and how easy it can be.</p>
 	<p>Hopefully, this will inspire other developers to switch from traditional software architectures and build their applications using modern, more efficient technologies.</p>
-	<h2>High level architecture</h2>
+	<div class="flex anchor relative">
+		<h2 id="high-level-architecture">High level architecture</h2>
+		<a href="https://blog.cloudflare.com/#high-level-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following diagram is a birds-eye view of the Radar 2.0 architecture. As you can see, it's divided into three main layers:</p>
 	<ul>
 		<li>
@@ -36,7 +43,14 @@
 	<p>As you can see, there are Cloudflare products <i>everywhere</i>. They provide the foundational resources to host and securely run our code at scale, but also other building blocks necessary to run the application end to end.</p>
 	<p>By having these features readily available and tightly integrated into our ecosystem and tools, at the distance of a click and a few lines of code, engineering teams don't have to reinvent the wheel constantly and can use their time on what is essential: their app logic.</p>
 	<p>Let's dig in.</p>
-	<h2>Cloudflare Pages</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-pages">Cloudflare Pages</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Radar 2.0 is deployed using <a href="https://pages.cloudflare.com">Cloudflare Pages</a>, our developer-focused website hosting platform. In the early days, you could only host static assets on Pages, which was helpful for many use cases, including integrating with static site generators like <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site">Hugo</a>, <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site">Jekyll</a>, or <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-gatsby-site">Gatsby</a>. Still, it wouldn't solve situations where your application needs some sort of server-side computing or advanced logic using a single deployment.</p>
 	<p>Luckily Pages recently added support to run custom Workers scripts. With <a href="https://developers.cloudflare.com/pages/platform/functions">Functions</a>, you can now run server-side code and enable any kind of dynamic functionality you'd typically implement using a separate Worker.</p>
 	<p>Cloudflare Pages Functions also allow you to use <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV</a>, <a href="https://developers.cloudflare.com/r2">R2</a>, or <a href="https://developers.cloudflare.com/d1">D1</a>, just like a regular Worker would. We provide <a href="https://developers.cloudflare.com/pages/platform/functions">excellent documentation</a> on how to do this and more in our Developer Documentation. Furthermore, the team wrote a blog on <a href="https://blog.cloudflare.com/building-full-stack-with-pages">how to build a full-stack application</a> that describes all the steps in detail.</p>
@@ -49,7 +63,14 @@
 			<p>To implement and serve our frontend API.</p>
 		</li>
 	</ul>
-	<h2>Remix and Server-side Rendering</h2>
+	<div class="flex anchor relative">
+		<h2 id="remix-and-server-side-rendering">Remix and Server-side Rendering</h2>
+		<a href="https://blog.cloudflare.com/#remix-and-server-side-rendering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use Remix with Cloudflare Pages on Radar 2.0.</p>
 	<p><a href="https://remix.run">Remix</a> follows a server/client model and works under the premise that you can't control the user's network, so web apps must reduce the amount of Javascript, CSS, and JSON they send through the wire. To do this, they move some of the logic to the server.</p>
 	<p>In this case, the client browser will get pre-rendered DOM components and the result of pre-fetched API calls with just the right amount of JSON, Javascript, and CSS code, rightfully adjusted to the UI needs. Here’s the <a href="https://remix.run/docs/en/v1/pages/technical-explanation">technical explanation</a> with more detail.</p>
@@ -152,12 +173,33 @@ export default function Outages() {
 
 	</figure>
 	<p>You can use <a href="https://blog.cloudflare.com/early-hints-on-cloudflare-pages">Cloudflare Pages with Early Hints</a>.</p>
-	<h2>APIs</h2>
+	<div class="flex anchor relative">
+		<h2 id="apis">APIs</h2>
+		<a href="https://blog.cloudflare.com/#apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Radar has two APIs. The backend which has direct access to our data sources, and the frontend, which is available on the Internet.</p>
-	<h3>Backend API</h3>
+	<div class="flex anchor relative">
+		<h3 id="backend-api">Backend API</h3>
+		<a href="https://blog.cloudflare.com/#backend-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The backend API was written using <a href="https://www.python.org">Python</a>, <a href="https://pandas.pydata.org">Pandas</a> and <a href="https://fastapi.tiangolo.com">FastAPI</a> and is protected by <a href="https://developers.cloudflare.com/cloudflare-one/policies/access">Cloudflare Access</a>, <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json">JWT tokens</a> and an <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up">authenticated origin pull</a> (AOP) configuration. Using Python allows anyone on the team, engineers or data scientists, to collaborate easily and contribute to improving and expanding the API, which is great. Our data science team uses <a href="https://jupyter.org/hub">JupyterHub</a> and <a href="https://docs.jupyter.org/en/latest/start/index.html">Jupyter Notebooks</a> as part of their data exploration workflows, which makes prototyping and reusing code, algorithms and models particularly easy and fast.</p>
 	<p>It then talks to the upstream frontend API via a <a href="https://strawberry.rocks">Strawberry</a> based GraphQL server. Using <a href="https://graphql.org">GraphQL</a> makes it easy to create complex queries, giving internal users and analysts the flexibility they need when building reports from our vast collection of data.</p>
-	<h3>Frontend API</h3>
+	<div class="flex anchor relative">
+		<h3 id="frontend-api">Frontend API</h3>
+		<a href="https://blog.cloudflare.com/#frontend-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We built Radar's frontend API on top of Cloudflare <a href="https://developers.cloudflare.com/workers">Workers</a>. This worker has two main functions:</p>
 	<ul>
 		<li>
@@ -179,10 +221,24 @@ export default function Outages() {
 			<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> and <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> output formats. The CSV format is convenient and makes it easier for data scientists, analysts, and others to use the API and consume our API data directly from other tools.</p>
 		</li>
 	</ul>
-	<h3>Open sourcing our OpenAPI 3 schema generator and validator</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-sourcing-our-openapi-3-schema-generator-and-validator">Open sourcing our OpenAPI 3 schema generator and validator</h3>
+		<a href="https://blog.cloudflare.com/#open-sourcing-our-openapi-3-schema-generator-and-validator" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One last feature on the frontend API is <a href="https://spec.openapis.org/oas/latest.html">OpenAPI 3</a> support. We automatically generate an OpenAPI schema and validate user input with it. This is done through a custom library that we built on top of <a href="https://github.com/kwhitley/itty-router">itty-router</a>, which we also use. Today we’re open sourcing this work.</p>
 	<p><a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a> provides an easy and compact OpenAPI 3 schema generator and validator for Cloudflare Workers. Check our <a href="https://github.com/cloudflare/itty-router-openapi">GitHub repository</a> for more information and details on how to use it.</p>
-	<h3>Developer’s Documentation</h3>
+	<div class="flex anchor relative">
+		<h3 id="developers-documentation">Developer’s Documentation</h3>
+		<a href="https://blog.cloudflare.com/#developers-documentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we’re also launching our developer’s <a href="https://developers.cloudflare.com/radar">documentation pages for the Radar API</a> where you can find more information about our data license, basic concepts, how to get started and the available API methods. Cloudflare Radar's API is free, allowing academics, data sleuths and other web enthusiasts to investigate Internet usage across the globe, based on data from our global network.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -195,7 +251,14 @@ export default function Outages() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IQocyWiVv1U9ecurP6AOg/634c5c6f904f2ec303591503cea15a74/image7-4.png" alt="" class="kg-image" width="1999" height="1260" loading="lazy">
 
 	</figure>
-	<h2>The Radar App</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-radar-app">The Radar App</h2>
+		<a href="https://blog.cloudflare.com/#the-radar-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Radar App is the code that runs in your browser. We've talked about Remix, but what else do we use?</p>
 	<p>Radar relies on a lot of <b>data visualizations</b>. Things like charts and maps are essential to us. We decided to build our reusable library of visualization components on top of two other frameworks: <a href="https://airbnb.io/visx">visx</a>, a "collection of expressive, low-level visualization primitives for React," <a href="https://d3js.org">D3</a>, a powerful JavaScript library for manipulating the DOM based on data, and <a href="https://maplibre.org">MapLibre</a>, an open-source map visualization stack.</p>
 	<p>Here’s one of our visualization components in action. We call it the “PewPew map”.</p>
@@ -228,7 +291,15 @@ export default function Outages() {
       direction={attacksDirection}
     /&gt;
   &lt;/Card.Section&gt;</code></pre>
-	<h3>SVGs</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="svgs">SVGs</h3>
+		<a href="https://blog.cloudflare.com/#svgs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another change we made to Radar was switching our images and graphical assets to <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a>. SVGs are great because they're essentially a declarative graphics language. They're XML text files with vectorial information. And so, they can be easily manipulated, transformed, stored, or indexed, and of course, they can be rendered at any size, producing beautiful, crisp results on any device and resolution.</p>
 	<p>SVGs are also extremely small and efficient in size compared to bitmap formats and support <a href="https://www.w3.org/TR/SVGTiny12/i18n.html">internationalization</a>, making them easier to translate to other languages (localization), thus providing better <a href="https://www.a11yproject.com">accessibility</a>.</p>
 	<p>Here’s an example of a Radar Bubble Chart, inspected, where you can see the SVG code and the strings embedded.</p>
@@ -237,7 +308,14 @@ export default function Outages() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PJgCboffVUKXDjtRTPFov/12923814b48580a14770a1b532c83155/image17.png" alt="" class="kg-image" width="1878" height="478" loading="lazy">
 
 	</figure>
-	<h3>Cosmos</h3>
+	<div class="flex anchor relative">
+		<h3 id="cosmos">Cosmos</h3>
+		<a href="https://blog.cloudflare.com/#cosmos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://reactcosmos.org">React Cosmos</a> is a "sandbox for developing and testing UI components in isolation." We wanted to use Cosmos with Radar 2.0 because it's the perfect project for it:</p>
 	<ol>
 		<li>
@@ -257,7 +335,14 @@ export default function Outages() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LBKvrUOyalqcEkuie59dB/5d879161fc1e60a74f95d6fb158916b5/image1-57.png" alt="" class="kg-image" width="1999" height="957" loading="lazy">
 
 	</figure>
-	<h2>Continuous integration and development</h2>
+	<div class="flex anchor relative">
+		<h2 id="continuous-integration-and-development">Continuous integration and development</h2>
+		<a href="https://blog.cloudflare.com/#continuous-integration-and-development" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Continuous integration is important for any team doing modern software. Cloudflare Pages provides multiple options to work with CI tools using direct uploads, out of the box. The team has put up <a href="https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration">documentation and examples</a> on how to do that with GitHub Actions, CircleCI, and Travis, but you can use others.</p>
 	<p>In our case, we use BitBucket and TeamCity internally to build and deploy our releases. Our workflow automatically builds, tests, and deploys Radar 2.0 within minutes on an approved PR and follow-up merge.</p>
 	<p>Unit tests are done with <a href="https://vitest.dev">Vitest</a> and E2E tests with <a href="https://playwright.dev">Playwright</a>. Visual Regression testing is planned and <a href="https://playwright.dev/docs/test-snapshots">Playwright can also help with that</a>.</p>
@@ -268,7 +353,14 @@ export default function Outages() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Q9hXo3Iz04CtXpmaALbzI/f14743b0a2f71797831a63d3cbd2ab4a/image19.png" alt="" class="kg-image" width="1694" height="516" loading="lazy">
 
 	</figure>
-	<h3>Fast previews and notifications</h3>
+	<div class="flex anchor relative">
+		<h3 id="fast-previews-and-notifications">Fast previews and notifications</h3>
+		<a href="https://blog.cloudflare.com/#fast-previews-and-notifications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Radar 1.0 wasn't particularly fast doing CI/CD, we confess. We had a few episodes when a quick fix could take some good 30 minutes from committing the code to deployment, and we felt frustrated about it.</p>
 	<p>So we invested a lot in ensuring that the new CI would be fast, efficient, and furious.</p>
 	<p>One cool thing we ended up doing was fast preview links on any commit pushed to the code repository. Using a combination of intelligent caching during builds and doing asynchronous tests when the commit is outside the normal release branches, we were able to shorten the deployment time to seconds.</p>
@@ -280,7 +372,14 @@ export default function Outages() {
 	</figure>
 	<p>Anyone can follow a thread for a specific branch in the chat and get notified on new changes when they happen.</p>
 	<p>Blazing-fast builds, preview links and notifications are game-changers. An engineer can go from an idea or a quick fix to showing the result on a link to a product manager or another team member. Anyone can quickly click the link to see the changes on a fully working end-to-end version of Radar.</p>
-	<h2>Accessibility and localization</h2>
+	<div class="flex anchor relative">
+		<h2 id="accessibility-and-localization">Accessibility and localization</h2>
+		<a href="https://blog.cloudflare.com/#accessibility-and-localization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is committed to web accessibility. Recently we announced how we upgraded Cloudflare’s Dashboard to <a href="https://blog.cloudflare.com/project-a11y">adhere to industry accessibility standards</a>, but this premise is valid for all our properties. The same is true for localization. In 2020, we <a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard">internationalized</a> our Dashboard and added support for new languages and locales.</p>
 	<p>Accessibility and localization go hand in hand and are both important, but they are also different. The <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines</a> define many best practices around accessibility, including using <a href="https://color.cloudflare.design">color</a> and contrast, tags, SVGs, shortcuts, gestures, and many others. The <a href="https://www.a11yproject.com">A11Y project page</a> is an excellent resource for learning more.</p>
 	<p>Localization, though, also known as <a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">L10n</a>, is more of a technical requirement when you start a new project. It's about making sure you choose the right set of libraries and frameworks that will make it easier to add new translations without engineering dependencies or code rewrites.</p>
@@ -306,7 +405,14 @@ export default function Outages() {
   "card.about.cloudflare.title": "About Cloudflare",
 ...</code></pre>
 	<p>You can expect us to release Radar in other languages soon.</p>
-	<h2>Radar Reports and Jupyter notebooks</h2>
+	<div class="flex anchor relative">
+		<h2 id="radar-reports-and-jupyter-notebooks">Radar Reports and Jupyter notebooks</h2>
+		<a href="https://blog.cloudflare.com/#radar-reports-and-jupyter-notebooks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://radar.cloudflare.com/reports">Radar Reports</a> are documents that use data exploration and storytelling to analyze a particular theme in-depth. Some reports tend to get updates from time to time. Examples of Radar Reports are our quarterly <a href="https://radar.cloudflare.com/reports/ddos-2022-q3">DDoS Attack Trends</a>, or the <a href="https://radar.cloudflare.com/reports/ipv6">IPv6 adoption</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -329,7 +435,14 @@ export default function Outages() {
 
 	</figure>
 	<p>We will eventually open-source this tool so that anyone can use it.</p>
-	<h2>More Cloudflare, less to worry about</h2>
+	<div class="flex anchor relative">
+		<h2 id="more-cloudflare-less-to-worry-about">More Cloudflare, less to worry about</h2>
+		<a href="https://blog.cloudflare.com/#more-cloudflare-less-to-worry-about" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We gave examples of using Cloudflare's products and features to build your next-gen app without worrying too much about things that aren't core to your business or logic. A few are missing, though.</p>
 	<p>Once the app is up and running, you must protect it from bad traffic and malicious actors. Cloudflare offers you <a href="https://www.cloudflare.com/ddos">DDoS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, and <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> protection out of the box at a click's distance.</p>
 	<p>For example, here are some of our security rules. This is traffic we don't have to worry about in our app because Cloudflare detects it and acts on it according to our rules.</p>
@@ -346,7 +459,14 @@ export default function Outages() {
 	</figure>
 	<p>It's also important to mention that every time we talk about what you can do using our Dashboard, we're, in fact, also saying you can do precisely the same using <a href="https://api.cloudflare.com">Cloudflare's APIs</a>. Our Dashboard is built entirely on top of them. And if you're the infrastructure as code kind of person, we have you covered, too; you can use the <a href="https://developers.cloudflare.com/terraform/tutorial">Cloudflare Terraform provider</a>.</p>
 	<p>Deploying and managing Workers, R2 buckets, or Pages sites is obviously scriptable too. <a href="https://github.com/cloudflare/wrangler">Wrangler</a> is the command-line tool to do this and more, and it goes the extra mile to allow you to run your full app <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev">locally</a>, emulating our stack, on your computer, before deploying.</p>
-	<h2>Final words</h2>
+	<div class="flex anchor relative">
+		<h2 id="final-words">Final words</h2>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We hope you enjoyed this Radar team write-up and were inspired to build your next app on top of our <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a>. We will continue improving and innovating on Radar 2.0 with new features, share our findings and open-sourcing our tools with you.</p>
 	<p>In the meantime, we opened a <a href="https://discord.gg/cloudflaredev">Radar room</a> on our Developers Discord Server. Feel free to <a href="https://discord.gg/cloudflaredev">join</a> it and ask us questions; the team is eager to receive feedback and discuss web technology with you.</p>
 	<p>You can also follow us <a href="https://twitter.com/cloudflareradar">on Twitter</a> for more Radar updates.</p>

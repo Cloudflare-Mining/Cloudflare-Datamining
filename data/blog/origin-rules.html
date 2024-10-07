@@ -5,7 +5,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ytLCcef0Vf1F6cXURqSsZ/579687bbd1dc88c1c7683f7340245c4c/image3-37.png" alt="Where to? Introducing Origin Rules" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<h3>Host headers are key</h3>
+	<div class="flex anchor relative">
+		<h3 id="host-headers-are-key">Host headers are key</h3>
+		<a href="https://blog.cloudflare.com/#host-headers-are-key" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>host</code> header of an HTTP request tells the receiving server (‘origin’) which website or application a client wants to access.</p>
 	<p>When an origin receives an HTTP request, it checks the value of this ‘host’ header to see if it is responsible for that traffic. If it finds a match the request will be routed appropriately and the correct data will be returned to the visitor. If it doesn't find a match, it will return an error telling the visitor it doesn’t have an application or website that matches what they are asking for.</p>
 	<p>In simple setups this is often not an issue. All requests for <code>example.com</code> are sent to the same origin, which sees the host header <code>example.com</code> and returns the relevant files. However, not all setups are as straightforward. SaaS (Software-as-a-Service) platforms use host headers to route visitors to the correct instance or S3-compatible bucket.</p>
@@ -15,7 +22,14 @@
 	<p>Cloudflare users want more control on where their traffic goes to - when it goes there - and what it looks like when it arrives. And they want this to be simple to set up and maintain.</p>
 	<p>To meet those demands we are today announcing <b>Origin Rules</b>, a new product which allows for overriding the host header, the Server Name Indication (SNI), destination port and <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS resolution</a> of matching HTTP requests.</p>
 	<p>Origin Rules is now the one-stop destination for users who want to change which origin traffic goes to, when this should happen, and what that traffic looks like when it arrives - all without ever having to write a single line of code.</p>
-	<h3>One hostname, many origins</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-hostname-many-origins">One hostname, many origins</h3>
+		<a href="https://blog.cloudflare.com/#one-hostname-many-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Setting up your service on Cloudflare is very simple. You tell us your domain name, <code>example.com</code>, and where traffic should be sent to when we receive requests that match it. Often this is an IP address. You can also create subdomains, e.g. <code>shop.example.com</code>, and follow the same pattern.</p>
 	<p>This allows for the web server running <code>www.example.com</code> to live on the IP address 98.51.100.12, and the web server responsible for running <code>shop.example.com</code> to live on a different IP address, e.g. 203.0.113.34. When Cloudflare receives a request for <code>shop.example.com</code>, we send that traffic to the web server at <code>203.0.113.34</code> with the <b>host header</b> <code>shop.example.com</code>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +61,14 @@
 	</figure>
 	<p>The management of these selective overrides, and other overrides, is achieved via <b>Origin Rules</b>.</p>
 	<p>Origin Rules allow users to route HTTP traffic to different destinations and override certain request characteristics based on a number of criteria such as the visitor's country, IP address or HTTP request headers.</p>
-	<h3>Route on more than a URL</h3>
+	<div class="flex anchor relative">
+		<h3 id="route-on-more-than-a-url">Route on more than a URL</h3>
+		<a href="https://blog.cloudflare.com/#route-on-more-than-a-url" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Origin Rules is built on top of our <a href="https://developers.cloudflare.com/ruleset-engine">ruleset engine</a>. This gives users the ability to perform routing decisions based on many fields including the requested URL, and also the visitors country, specific request headers, and more.</p>
 	<p>Using a combination of one or more of these available <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">fields</a>, users can ensure traffic is routed to specific backends, only when specific criteria are met such as host, URI path, visitor’s country, and HTTP request headers.</p>
 	<p>Historically, host header override and resolve override were achieved with the setting of a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rule</a>.</p>
@@ -59,7 +80,14 @@
 	<p>Page Rules is the ‘If This Then That’ of Cloudflare. Where the ‘If…’ is a URL, and the ‘Then That’ is changing how we handle traffic to specific parts of a ‘zone’. It allows users to selectively change how traffic is handled, or in this case, where traffic is sent. It is very well adopted, with over one million Page Rules in the past three months alone.</p>
 	<p>Page Rules, however, are limited to performing actions based upon the requested URL. This means if users want to change the backend a HTTP request goes to, they need to make that decision based on the URL alone. This can be challenging for users who may want to perform this decision-making on more nuanced aspects, like the user agent of the visitor or on the presence of a specific cookie.</p>
 	<p>With Origin Rules, users can perform host header override, resolve override, destination port override and SNI overrides - based on any number of criteria - not only the requested URL. This unlocks a number of interesting use cases.</p>
-	<h3>Example use case: integration with cloud storage endpoints</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-use-case-integration-with-cloud-storage-endpoints">Example use case: integration with cloud storage endpoints</h3>
+		<a href="https://blog.cloudflare.com/#example-use-case-integration-with-cloud-storage-endpoints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One such use case is using a cloud storage provider as a backend for static assets, such as images. Enterprise zones can use a combination of host header override and resolve override actions to override the destination of outgoing HTTP requests. This allows for all traffic to <code>example.net</code> to be sent to <code>98.51.100.12</code>, but requests to <code>example.net/*.jpg</code> be sent to a publicly accessible S3-compatible bucket.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -70,7 +98,14 @@
 	<p>Combined, this ensures requests matching the pattern correctly reach the cloud storage provider - with a host header it can use to correctly route the request to the correct bucket.</p>
 	<p>Origin Rules also enable new use cases. For example, a user can use Origin Rules to A/B test different cloud providers prior to a cut over. This is possible by using the field <code>http.request.cookies</code> and routing traffic to a new, test bucket or cloud provider based on the presence of a specific cookie on the request.</p>
 	<p>Users with multiple storage regions can also use the <code>ip.geoip.country</code> field within a filter expression to route users to the closest storage instance, reducing latency and time to load for these requests.</p>
-	<h3>Destination port override</h3>
+	<div class="flex anchor relative">
+		<h3 id="destination-port-override">Destination port override</h3>
+		<a href="https://blog.cloudflare.com/#destination-port-override" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare listens on 13 <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/network-ports">ports</a>; seven ports for HTTP, six ports for HTTPS. This means if a request is sent to a URL with the destination port of 443, as is standard for HTTPS, it will be sent to the origin server with a destination port of 443. The same 1:1 mapping applies to the other twelve ports.</p>
 	<p>But what if a user wanted to change that mapping? For example, when the backend origin server is listening on port 8001. In this scenario, an intermediate service is required to listen for requests on port 443 and create a sub-request with the destination port set to 8001.</p>
 	<p>Historically this was done on the origin server itself - with a reverse proxy server listening for requests on 443 and other ports and proxying those requests to another port.</p>
@@ -98,10 +133,24 @@ server {
 
 	</figure>
 	<p>This destination port modification can also be triggered on almost any <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">field</a> available in the ruleset engine, also, allowing users to change which port to send requests to based on URL, URI path, the presence of HTTP request header and more.</p>
-	<h3>Server Name Indication</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-name-indication">Server Name Indication</h3>
+		<a href="https://blog.cloudflare.com/#server-name-indication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Server Name Indication (SNI) is an addition to the TLS encryption protocol. It enables a client device to specify the domain name it is trying to reach in the first step of the TLS handshake, preventing common “name mismatch” errors. Customers using Cloudflare for SaaS may have millions of hostnames pointing to Cloudflare. However, the origin that these requests are sent to may not have an individual certificate for each of the hostnames.</p>
 	<p>Users today have the option of doing this on a per custom hostname basis using <a href="https://developers.cloudflare.com/cloudflare-for-saas/start/advanced-settings/custom-origin"><i>custom origins</i></a> in SSL for SaaS, however for Enterprise customers not using this setup it was an impossible task.</p>
 	<p>Enterprise users can use Origin Rules to override the value of the SNI, providing it matches any other zone in their account. This removes the need for users to manage multiple certificates on the origin or choose not to encrypt connections from Cloudflare to the origin.</p>
-	<h3>Try it now</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-now">Try it now</h3>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Origin Rules are available to use <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">now</a> via API, Terraform, and our dashboard. Further details can be found on our <a href="https://developers.cloudflare.com/rules/origin-rules">Developers Docs</a>. Currently, destination port rewriting is available for all our customers as part of Origin Rules. Resolve Override, Host Header Override and SNI overrides are available to our Enterprise users.</p>
 </div>

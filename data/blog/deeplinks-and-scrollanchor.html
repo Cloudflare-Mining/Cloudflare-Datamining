@@ -1,9 +1,23 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6neEMhq4G7VLzdtb8taQok/68ee08d5f7bef0e79fdc09af4d87cb45/deeplinks-and-scrollanchor.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>What are DeepLinks?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-deeplinks">What are DeepLinks?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-deeplinks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking">Wikipedia</a>:</p>
 	<p><b>“Deep linking</b> is the use of a hyperlink that links to a specific, generally searchable or indexed, piece of web content on a website (e.g. <code>http://example.com/path/page</code>), rather than the website's home page (e.g., <code>http://example.com</code>). The URL contains all the information needed to point to a particular item.”</p>
-	<h3>Why DeepLinks in Dashboard?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-deeplinks-in-dashboard">Why DeepLinks in Dashboard?</h3>
+		<a href="https://blog.cloudflare.com/#why-deeplinks-in-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are many user experiences in Cloudflare’s Dashboard that are enhanced by the use of deep linking, such as:</p>
 	<ul>
 		<li>
@@ -21,7 +35,14 @@ dash.cloudflare.com/&lt;accountId&gt;/ -&gt; account-level resources: analytics,
 dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources: dns, ssl-tls, firewall, speed, caching, page-rules, traffic, etc.</code></pre>
 	<p>You might notice that in order to deep link to anything more interesting than logging in, a deep linker will need to know a user’s account or zone beforehand. A troubleshooting doc might want to send a user to the Page Rules tab in Dashboard to help a user fix their zone, but <i>the linker doesn’t know what that zone is</i>.</p>
 	<p>Another highly desired feature was the ability for a deep link to scroll to a particular piece of content on a Dashboard page, making it even easier for users to navigate. Instead of a troubleshooting doc asking a user to fumble around to find a setting, we could helpfully scroll that setting right into view. Now that would be slick!</p>
-	<h3>What do DeepLinks look like in Dashboard?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-do-deeplinks-look-like-in-dashboard">What do DeepLinks look like in Dashboard?</h3>
+		<a href="https://blog.cloudflare.com/#what-do-deeplinks-look-like-in-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The solution we came up with involves 3 main parts:</p>
 	<ul>
 		<li>
@@ -41,7 +62,14 @@ dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources:
 
 	</figure>
 	<p>It works! I was asked to select one of my several accounts, then our DeepLink routing component was smart enough to know that I have only one zone within that account and auto-filled the rest of the URL path. After the page was fully loaded, we were automatically scrolled to the TLS 1.3 setting. If you’re curious how all of this works and want to jump into the nitty gritty details, read on!</p>
-	<h3>How are DeepLinks exposed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-deeplinks-exposed">How are DeepLinks exposed?</h3>
+		<a href="https://blog.cloudflare.com/#how-are-deeplinks-exposed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates</code></pre>
 	<p>This example is saying that we’d like to link to the “Edge Certificates” section of the “SSL-TLS” product for <i>some</i> account and <i>some</i> zone that a user needs to manually resolve, as you saw above. It’s easy to imagine removing “?to=/” to transform the link URL into the resolved one:</p>
@@ -51,7 +79,14 @@ dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources:
 	<p>Or allowing the linker to supply known information</p>
 	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/1234567890abcdef/:zone/traffic</code></pre>
 	<p>This link takes the user to the “Traffic” product tab for <i>some</i> zone inside of account 1234567890abcdef. Indeed, the :account and :zone symbols are placeholders for user-supplied values, but they can be replaced with any permutation of real, known values to speed up resolution time to provide a better UX.</p>
-	<h3>DeepLink routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="deeplink-routing">DeepLink routing</h3>
+		<a href="https://blog.cloudflare.com/#deeplink-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These links are parsed and resolved in our top-level routing component, DeepLink. At a high level, this component contains a series of “resolvers” for unknown symbols that need automatic or user-interactive resolution (i.e. :account and :zone). But before we dive in, let’s take a step back and gain appreciation for how cool this component is.</p>
 	<p>Cloudflare’s Dashboard is a single page React app, which means we use React Router to create routing components that handle what’s rendered on different URLs:</p>
 	<pre class="language-typescript"><code class="language-typescript">&lt;Switch&gt;
@@ -61,7 +96,14 @@ dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources:
   &lt;AccountRoutes /&gt;
 &lt;/Switch&gt;</code></pre>
 	<p>When a page is loaded, a lot of things need to happen: API calls need to be made to fetch all the data needed to render a page, like account/user/zone info not cached in the browser. Many components need to be rendered. It turns out that we can improve the UX of many users by <i>blocking React Router</i> to make specific queries to our API instead of rendering an entire page that anecdotally fetches the information we need. For example, there’s no need to render a zone selection page if a user only has one zone, like in our GIF above ☝️.</p>
-	<h3>Resolvers</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolvers">Resolvers</h3>
+		<a href="https://blog.cloudflare.com/#resolvers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a deep link gets parsed and split into parts, the framework iterates over those parts and tries to build a URL string that is later used to redirect users to a specific location in the dashboard.</p>
 	<pre class="language-javascript"><code class="language-javascript">// to=/:account/:zone/traffic
 // parts = [‘:account’, ‘:zone’, ‘traffic’]
@@ -109,9 +151,23 @@ for (let part of parts) {
 }
 const finalUrl = resolvedParts.join(‘/’);</code></pre>
 	<p>The internal implementation is a little bit more complicated, but this is a rough overview of how our DeepLink works.</p>
-	<h3>Resolver context</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolver-context">Resolver context</h3>
+		<a href="https://blog.cloudflare.com/#resolver-context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We mentioned that each resolver has a context parameter. Context is an object that is passed to resolvers from the DeepLink component and it contains a bunch of handy utilities that give resolvers control over any part of the app. For example, it has access to the Redux store (we use Redux.js in the Dashboard to help us manage the application’s state). It has access to previously resolved values, and to all other parts of the deep link. It also has functions to help with user interactions.</p>
-	<h3>User interactions</h3>
+	<div class="flex anchor relative">
+		<h3 id="user-interactions">User interactions</h3>
+		<a href="https://blog.cloudflare.com/#user-interactions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In many cases, a resolver is not able to resolve without the user's help. For example, if a user has multiple zones, the resolver working on :zone symbol needs to wait for the user to select a zone.</p>
 	<pre class="language-typescript"><code class="language-typescript">const zoneResolver: Resolver = async ctx =&gt; {
   const zones = await fetchZone();
@@ -140,7 +196,14 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
   }
 };</code></pre>
 	<p>Now, the last piece is to somehow observe user interactions from within the resolver. To be able to do that, we have written a powerful utility.</p>
-	<h3>waitForPageAction</h3>
+	<div class="flex anchor relative">
+		<h3 id="waitforpageaction">waitForPageAction</h3>
+		<a href="https://blog.cloudflare.com/#waitforpageaction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Resolvers are isolated functions that live outside of the application’s components. To be able to observe anything that happens in distant branches of React DOM, we created a function called <code>waitForPageAction</code>. This function takes two parameters:</p>
 	<p>1. <code>pageToAwaitActionOn</code> - URL string pointing to a page we want to await the user's action on. For example, “dash.cloudflare.com/123abc”</p>
 	<p>2. <code>actionType</code> - Unique string describing the action. For example, <code>ZONE_SELECTED</code>.</p>
@@ -162,7 +225,15 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
     return action.zoneName
   }
 };</code></pre>
-	<h3>How does waitForPageAction work?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="how-does-waitforpageaction-work">How does waitForPageAction work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-waitforpageaction-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned above, we use Redux to manage our state. The <code>actionType</code> parameter is nothing else than a type of Redux action. Whenever a zone is selected, React dispatches a Redux action in an onClick handler.</p>
 	<pre class="language-typescript"><code class="language-typescript">&lt;ZoneCard onClick={zoneName =&gt; { dispatch({type: ‘ZONE_SELECTED’, zoneName}) }} /&gt;</code></pre>
 	<p>Now, how does <code>waitForPageAction</code> know that <code>ZONE_SELECTED’</code> has been dispatched? Aren’t we supposed to write a reducer?!</p>
@@ -202,7 +273,14 @@ const finalUrl = resolvedParts.join(‘/’);</code></pre>
 	<p>The listener reads the current state and grabs the <code>currentPage</code> and <code>lastAction</code> data. If <code>currentPage</code> doesn’t match <code>pageToAwaitActionOn</code>, it means the user navigated away, and there’s no need to continue resolving the deep link - we unsubscribe, and reject the promise. Deep link resolvers are stopped, and React Router unblocked.</p>
 	<p>Else, if <code>lastAction.type</code> matches the <code>actionType</code> parameter, it means the action we are waiting on just happened! Unsubscribe, and resolve the promise with action metadata. The deep link keeps resolving.</p>
 	<p>That’s it! We also added a similar function - <code>waitForAction</code> - which does exactly the same thing, but is not restricted to a specific page.</p>
-	<h3>ScrollAnchor component</h3>
+	<div class="flex anchor relative">
+		<h3 id="scrollanchor-component">ScrollAnchor component</h3>
+		<a href="https://blog.cloudflare.com/#scrollanchor-component" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We implemented a wrapper component ScrollAnchor that will scroll to its wrapped content, making our deep links even more targeted. A client would wrap some content like this:</p>
 	<pre class="language-typescript"><code class="language-typescript">&lt;ScrollAnchor id=”super-important-setting-card”&gt;
   &lt;SuperImportantSettingCard /&gt;
@@ -269,6 +347,13 @@ observer.observe(document.body, {childList: true, subtree: true});
 
 domTimer = window.setTimeout(scrollThunk, SETTLE_THRESHOLD, observer);</code></pre>
 	<p>A key assumption is that API calls take roughly the same amount of time to resolve. If most fetches take 250ms to resolve but others take 1500ms, we might see that the DOM hasn’t been changed for a while and think that it’s settled. Who knew there would be so much work involved in scrolling!</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There you have it. A fully-featured deep linking solution with an intuitive schema, React Router blocking, autofilling, and scrolling. Thanks for reading.</p>
 </div>

@@ -16,7 +16,14 @@
 	</figure>
 	<p>Oh and one last thing, We have a new generic connector which allows you to integrate any OIDC based identity provider with Cloudflare Access. <a href="https://en.wikipedia.org/wiki/OpenID_Connect">OpenID Connect</a> (OIDC) is supported by many identity providers (some popular OIDC based Identity Providers are Ping Identity and Forgerock)</p>
 	<p>If you’re eager to get started, steps are below for configuring OneLogin, Centrify and a custom OIDC provider. Each take about 3-5 minutes. Hope you enjoy!</p>
-	<h3>Steps for setting up Centrify</h3>
+	<div class="flex anchor relative">
+		<h3 id="steps-for-setting-up-centrify">Steps for setting up Centrify</h3>
+		<a href="https://blog.cloudflare.com/#steps-for-setting-up-centrify" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Login to your Centrify admin portal and click on apps.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -66,7 +73,14 @@
 
 	</figure>
 	<p>Now copy your Client ID, Client Secret, OpenID Connect Issuer URL without the forward slash and Application ID from Settings tab in the Centrify dashboard and then paste them into the Cloudflare dashboard.</p>
-	<h3>Steps for setting up OneLogin</h3>
+	<div class="flex anchor relative">
+		<h3 id="steps-for-setting-up-onelogin">Steps for setting up OneLogin</h3>
+		<a href="https://blog.cloudflare.com/#steps-for-setting-up-onelogin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Login to your Onelogin admin portal and click on custom connectors.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -104,7 +118,14 @@
 
 	</figure>
 	<p>Now copy your Client ID and Client Secret from the Onelogin dashboard and then paste them into the Cloudflare dashboard.</p>
-	<h3>Setting up a custom identity provider using OIDC</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up-a-custom-identity-provider-using-oidc">Setting up a custom identity provider using OIDC</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-a-custom-identity-provider-using-oidc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following are the information you would need from your identity provider into the Cloudflare Dashboard.</p>
 	<ul>
 		<li>

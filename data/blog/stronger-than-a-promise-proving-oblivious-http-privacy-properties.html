@@ -8,7 +8,14 @@
 	</figure>
 	<p>We recently announced <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today">Privacy Gateway</a>, a fully managed, scalable, and performant Oblivious HTTP (OHTTP) relay. Conceptually, OHTTP is a simple protocol: end-to-end encrypted requests and responses are forwarded between client and server through a relay, decoupling <i>who</i> from <i>what</i> was sent. This is a common pattern, as evidenced by deployed technologies like <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DoH</a> and <a href="https://blog.cloudflare.com/icloud-private-relay">Apple Private Relay</a>. Nevertheless, OHTTP is still new, and as a new protocol it’s imperative that we analyze the protocol carefully.</p>
 	<p>To that end, we conducted a formal, computer-aided security analysis to complement the ongoing standardization process and deployment of this protocol. In this post, we describe this analysis in more depth, digging deeper into the cryptographic details of the protocol and the model we developed to analyze it. If you’re already familiar with the OHTTP protocol, feel free to skip ahead to the analysis to dive right in. Otherwise, let’s first review what OHTTP sets out to achieve and how the protocol is designed to meet those goals.</p>
-	<h3>Decoupling who from what was sent</h3>
+	<div class="flex anchor relative">
+		<h3 id="decoupling-who-from-what-was-sent">Decoupling who from what was sent</h3>
+		<a href="https://blog.cloudflare.com/#decoupling-who-from-what-was-sent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>OHTTP is a protocol that combines public key encryption with a proxy to separate the contents of an HTTP request (and response) from the sender of an HTTP request. In OHTTP, clients generate encrypted requests and send them to a relay, the relay forwards them to a gateway server, and then finally the gateway decrypts the message to handle the request. The relay only ever sees ciphertext and the client and gateway identities, and the gateway only ever sees the relay identity and plaintext.</p>
 	<p>In this way, OHTTP is a lightweight application-layer proxy protocol. This means that it proxies application messages rather than network-layer connections. This distinction is important, so let’s make sure we understand the differences. Proxying connections involves a whole other suite of protocols typically built on <a href="https://blog.cloudflare.com/a-primer-on-proxies">HTTP CONNECT</a>. (Technologies like VPNs and WireGuard, including Cloudflare WARP, can also be used, but let’s focus on HTTP CONNECT for comparison.)</p>
 	<figure class="kg-card kg-image-card ">
@@ -37,7 +44,14 @@
 	<p>These two properties make OHTTP a perfect fit for applications that wish to provide privacy to their users without compromising basic functionality. It’s served as the foundation for a widespread deployment of Oblivious DoH for over a year now, and as of recently, serves as the foundation for <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode">Flo Health Inc.’s Anonymous Mode feature</a>.</p>
 	<p>It’s worth noting that both of these properties could be achieved with a connection-oriented protocol, but at the cost of a new end-to-end TLS connection for each message that clients wish to transmit. This can be prohibitively expensive for all entities that participate in the protocol.</p>
 	<p>So how exactly does OHTTP achieve these goals? Let’s dig deeper into OHTTP to find out.</p>
-	<h3>Oblivious HTTP protocol design</h3>
+	<div class="flex anchor relative">
+		<h3 id="oblivious-http-protocol-design">Oblivious HTTP protocol design</h3>
+		<a href="https://blog.cloudflare.com/#oblivious-http-protocol-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A single transaction in OHTTP involves the following steps:</p>
 	<ol>
 		<li>
@@ -68,7 +82,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JuJ9CoqPX4v8HQuqjjoeh/8420f1d8270c8362de6d2d67181fa7fc/image4-10.png" alt="" class="kg-image" width="1596" height="384" loading="lazy">
 
 	</figure>
-	<h3>Simplified model and security goals</h3>
+	<div class="flex anchor relative">
+		<h3 id="simplified-model-and-security-goals">Simplified model and security goals</h3>
+		<a href="https://blog.cloudflare.com/#simplified-model-and-security-goals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our formal analysis, we set out to make sure that OHTTP’s use of encryption and proxying achieves the desired privacy goals described above.</p>
 	<p>To motivate the analysis, consider the following simplified model where there exists two clients C1 and C2, one relay R, and one gateway, G. OHTTP assumes an attacker that can observe all network activity and can adaptively compromise either R or G, but not C1 or C2. OHTTP assumes that R and G do not collude, and so we assume only one of R and G is compromised. Once compromised, the attacker has access to all session information and private key material for the compromised party. The attacker is prohibited from sending client-identifying information, such as IP addresses, to the gateway. (This would allow the attacker to trivially link a query to the corresponding client.)</p>
 	<p>In this model, both C1 and C2 send OHTTP requests Q1 and Q2, respectively, through R to G, and G provides answers A1 and A2. The attacker aims to link C1 to (Q1, A1) and C2 to (Q2, A2), respectively. The attacker succeeds if this linkability is possible without any additional interaction. OHTTP prevents such linkability. Informally, this means:</p>
@@ -81,9 +102,23 @@
 		</li>
 	</ol>
 	<p>And informally it might seem clear that OHTTP achieves these properties. But we want to prove this formally, which means that the design, if implemented perfectly, would have these properties. This type of formal analysis is distinct from formal verification, where you take a protocol design and prove that some code implements it correctly. Whilst both are useful they are different processes, and in this blog post we’ll be talking about the former. But first, let’s give some background on formal analysis.</p>
-	<h3>Formal analysis programming model</h3>
+	<div class="flex anchor relative">
+		<h3 id="formal-analysis-programming-model">Formal analysis programming model</h3>
+		<a href="https://blog.cloudflare.com/#formal-analysis-programming-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our setting, a formal analysis involves producing an algebraic description of the protocol and then using math to prove that the algebraic description has the properties we want. The end result is proof that shows that our idealized algebraic version of the protocol is “secure”, i.e. has the desired properties, with respect to an attacker we want to defend against. In our case, we chose to model our idealized algebraic version of OHTTP using a tool called <a href="https://tamarin-prover.github.io">Tamarin</a>, a security-focused theorem prover and model checker. Tamarin is an intimidating tool to use, but makes intuitive sense once you get familiar with it. We’ll break down the various parts of a Tamarin model in the context of our OHTTP model below.</p>
-	<h3>Modeling the Protocol Behavior</h3>
+	<div class="flex anchor relative">
+		<h3 id="modeling-the-protocol-behavior">Modeling the Protocol Behavior</h3>
+		<a href="https://blog.cloudflare.com/#modeling-the-protocol-behavior" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tamarin uses a technique known as <a href="https://resources.mpi-inf.mpg.de/departments/rg1/conferences/vtsa18/slides/basin-lecture2.pdf">multiset rewriting</a> to describe protocols. A protocol description is formed of a series of “rules” that can “fire” when certain requirements are met. Each rule represents a discrete step in the protocol, and when a rule fires that means the step was taken. For example, we have a rule representing the gateway generating its long-term public encapsulation key, and for different parties in the protocol establishing secure TLS connections. These rules can be triggered pretty much any time as they have no requirements.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -96,7 +131,14 @@
 	<p>A rule requirement is satisfied if there exist output facts that match the rule’s input facts. As an example, in OHTTP, one requirement for the client rule for generating a request is that the long-term public encapsulation key exists. This matching is shown below.</p><!--kg-card-begin: html--><img src="/content/images/2022/10/image8-3.png" width="50%" alt=""><!--kg-card-end: html-->
 	<p>Let’s put some of these pieces together to show a very small but concrete part of OHTTP as an example: the client generating its encapsulated request and sending it to the relay. This step should produce a message for the relay, as well as any corresponding state needed to process the eventual response from the relay. As a precondition, the client requires (1) the gateway public key and (2) a TLS connection to the relay. And as mentioned earlier, generating the public key and TLS connection do not require any inputs, so they can be done at any time.</p><!--kg-card-begin: html--><img src="/content/images/2022/10/image1-21.png" width="50%" alt="">
 	<p></p><!--kg-card-end: html-->
-	<h3>Modeling events in time</h3>
+	<div class="flex anchor relative">
+		<h3 id="modeling-events-in-time">Modeling events in time</h3>
+		<a href="https://blog.cloudflare.com/#modeling-events-in-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Beyond consuming and producing new facts, each Tamarin rule can also create side effects, called “action facts.” Tamarin records the action facts each time a rule is triggered. An action fact might be something like “a client message containing the contents m was sent at time t.” Sometimes rules can only be triggered in a strict sequence, and we can therefore put their action facts in a fixed time order. At other times multiple rules might have their prerequisites met at the same time, and therefore we can’t put their action facts into a strict time sequence. We can represent this pattern of partially ordered implications as a directed acyclic graph, or DAG for short.</p>
 	<p>Altogether, multiset rewriting rules describe the steps of a protocol, and the resulting DAG records the actions associated with the protocol description. We refer to the DAG of actions as the action graph. If we’ve done our job well it’s possible to follow these rules and produce every possible combination of messages or actions allowed by the protocol, and their corresponding action graph.</p>
 	<p>As an example of the action graph, let’s consider what happens when the client successfully finishes the protocol. When the requirements for this rule are satisfied, the rule triggers, marking that the client is done and that the response was valid. Since the protocol is done at this point, there are no output facts produced.</p>
@@ -106,7 +148,14 @@
 
 	</figure>
 	<p>Action graph for terminal client response handler rule</p>
-	<h3>Modeling the attacker</h3>
+	<div class="flex anchor relative">
+		<h3 id="modeling-the-attacker">Modeling the attacker</h3>
+		<a href="https://blog.cloudflare.com/#modeling-the-attacker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The action graph is core to reasoning about the protocol’s security properties. We can check a graph for various properties, e.g. “does the first action taken by the relay happen after the first action taken by the client?”. Our rules allow for multiple runs of the protocol to happen at the same time. This is very powerful. We can look at a graph and ask “did something bad happen here that might break the protocol’s security properties?”</p>
 	<p>In particular, we can prove (security and correctness) properties by querying this graph, or by asserting various properties about it. For example, we might say “for all runs of the protocol, if the client finishes the protocol and can decrypt the response from the gateway, then the response must have been generated and encrypted by an entity which has the corresponding shared secret.”</p>
 	<p>This is a useful statement, but it doesn’t say much about security. What happens if the gateway private key is compromised, for example? In order to prove security properties, we need to define our threat model, which includes the adversary and their capabilities. In Tamarin, we encode the threat model as part of the protocol model. For example, when we define messages being passed from the client to the relay, we can add a special rule that allows the attacker to read it as it goes past. This gives us the ability to describe properties such as “for all runs of the protocol in our language the attacker never learns the secret key.”</p>
@@ -119,7 +168,14 @@
 	</figure>
 	<p>Action graph for key compromise rule</p>
 	<p>Putting everything together, we have a way to model the protocol behavior, attacker capabilities, and security properties. Let’s now dive into how we applied these to prove OHTTP secure.</p>
-	<h3>OHTTP Tamarin model</h3>
+	<div class="flex anchor relative">
+		<h3 id="ohttp-tamarin-model">OHTTP Tamarin model</h3>
+		<a href="https://blog.cloudflare.com/#ohttp-tamarin-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our model, we give the attacker the ability to compromise the server’s long-term keys and the key between the client and the relay. Against this attacker, we aim to prove these two informal statements stated above:</p>
 	<ol>
 		<li>

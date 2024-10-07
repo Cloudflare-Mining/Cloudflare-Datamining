@@ -1,7 +1,14 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dNmUrWsfdFF3cK59ZDND4/63624350564a7716bee0265595b237f8/the-effect-of-switching-to-tcmalloc-on-rocksdb-memory-use.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In previous posts we wrote about our configuration distribution system <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> and the story of <a href="https://blog.cloudflare.com/moving-quicksilver-into-production">migrating its storage engine to RocksDB</a>. This solution proved to be fast, resilient and stable. During the migration process, we noticed that <a href="https://blog.cloudflare.com/tag/quicksilver">Quicksilver</a> memory consumption was unexpectedly high. After our investigation we found out that the root cause was a default memory allocator that we used. Switching memory allocator improved service memory consumption by almost three times.</p>
-	<h3>Unexpected memory growth</h3>
+	<div class="flex anchor relative">
+		<h3 id="unexpected-memory-growth">Unexpected memory growth</h3>
+		<a href="https://blog.cloudflare.com/#unexpected-memory-growth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After migrating to RocksDB, the memory used by the application increased significantly. Also, the way memory was growing over time looked suspicious. It was around 15GB immediately after start and then was steadily growing for multiple days, until stabilizing at around 30GB. &nbsp;Below, you can see a memory consumption increase after migrating one of our test instances to RocksDB.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -10,7 +17,14 @@
 	</figure>
 	<p>We started our investigation with heap profiling with the assumption that we had a memory leak somewhere and found that heap size was almost three times less than the RSS value reported by the operating system. So, if our application does not actually use all this memory, it means that memory is ‘lost’ somewhere between the system and our application, which points to possible problems with the memory allocator.</p>
 	<p>We have multiple services running with the tcmalloc allocator, so in order to test our hypothesis, we ran a test with TCMalloc on a couple of instances. The test showed significant improvement in memory usage. So why did this happen? We’ll dig into memory allocator internals to understand the issue.</p>
-	<h3>glibc malloc</h3>
+	<div class="flex anchor relative">
+		<h3 id="glibc-malloc">glibc malloc</h3>
+		<a href="https://blog.cloudflare.com/#glibc-malloc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s begin with a high level view of glibc’s malloc design. malloc uses a concept called an <code>arena</code>. An arena is a contiguous block of memory obtained from the system. An important part of glibc malloc design is that it expects developers to free memory in a reverse order of allocation, otherwise a lot of memory will be ‘locked’, and never returned to the system. Let’s see what it means on practise:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -82,7 +96,14 @@
 		</li>
 	</ul>
 	<p>Short summary: multiple arenas cause higher memory fragmentation that can lead to 2-3x higher memory consumption.</p>
-	<h3>TCMalloc</h3>
+	<div class="flex anchor relative">
+		<h3 id="tcmalloc">TCMalloc</h3>
+		<a href="https://blog.cloudflare.com/#tcmalloc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While glibc malloc was designed for single-threaded applications and later optimized for multithreaded services, TCMalloc was built for multithreading at the beginning. Let’s take a look at how it tries to solve the problems we just talked about. The TCMalloc design is more complex, so if you want to understand the details I recommend reading the official design <a href="https://google.github.io/tcmalloc/design.html">page</a>. Here is a high level view of its design:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -120,7 +141,14 @@
 		</li>
 	</ol>
 	<p>This design dramatically improves memory reuse. If memory was freed by one thread it can be moved to the middle-end and later reused by other threads.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main goal of this post is to make people aware of the importance of the choice of memory allocator. After deploying TCMalloc, we decreased memory usage by 2.5 times.</p>
 	<figure class="kg-card kg-image-card ">
 

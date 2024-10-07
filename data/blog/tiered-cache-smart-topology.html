@@ -9,7 +9,14 @@
 	<p>A few years ago, we released <a href="https://blog.cloudflare.com/argo">Argo</a> to help make the Internet faster and more efficient. Argo observes network conditions and finds the optimal route across the Internet for origin server requests, avoiding congestion along the way.</p>
 	<p>Tiered Cache is an Argo feature that reduces the number of data centers responsible for requesting assets from the origin. With Tiered Cache active, a request in South Africa won’t go directly to an origin in North America, but, instead, look in a large, nearby data center to see if the data requested is cached there first. The number and location of the data centers used by Tiered Cache is controlled by a piece of configuration called the topology. By default, we use a generic topology for every customer that strikes a balance between cache hit ratios and latency that is suitable for most users.</p>
 	<p>Today we’re introducing Smart Topology, which maximizes cache hit ratios by building on Argo’s internal infrastructure to identify the single best data center for making requests to the origin.</p>
-	<h2>Standard Cache</h2>
+	<div class="flex anchor relative">
+		<h2 id="standard-cache">Standard Cache</h2>
+		<a href="https://blog.cloudflare.com/#standard-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The standard method for caching assets is to let each data center be a reverse proxy for the origin server. In this scheme, a miss in any data center causes a request to the origin for an asset. A request to the origin for one asset could be made as many times as there are data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -21,7 +28,14 @@
 	<p>The minimum possible cache hit latency is achieved if the asset is moved into the nearest cache before the request for it is made, but this kind of prediction is generally not possible. Instead, a good heuristic is to move the asset into the nearest cache after the first cache miss.</p>
 	<p>However, the asset has to be copied from somewhere and it isn’t possible to know where in the network it might be without querying each data center.</p>
 	<p>To avoid querying each data center, a copy of the asset has to be stored in a known location after the first cache miss so it is available to other data centers. This is precisely what Tiered Cache does.</p>
-	<h2>Tiered Cache</h2>
+	<div class="flex anchor relative">
+		<h2 id="tiered-cache">Tiered Cache</h2>
+		<a href="https://blog.cloudflare.com/#tiered-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tiered Cache improves cache hit ratios by allowing some data centers to serve as caches for others, before the latter has to make a request to the origin. With Tiered Cache, certain data centers are reverse proxies to the origin for other data centers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,23 +43,58 @@
 
 	</figure>
 	<p>If the proxied data centers make requests for the same asset, the asset will already be cached in the proxying data center and can be retrieved from there rather than from the origin. Fewer requests to the origin are made overall.</p>
-	<h2>Custom Topology</h2>
+	<div class="flex anchor relative">
+		<h2 id="custom-topology">Custom Topology</h2>
+		<a href="https://blog.cloudflare.com/#custom-topology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Tiered Cache, the topology describes which data center should serve as a proxy for others.</p>
 	<p>For customers, devising an optimal topology is a challenge requiring optimization and continuous maintenance. The best topology is a configuration based on information that is privately held by the customer and other information held only by Cloudflare.</p>
 	<p>For instance, knowing the desired balance of latency versus cache hit ratio is information only the customer has, but how to best make use of the Internet is something we would know. Enterprise customers usually have dedicated infrastructure teams that work with our solutions engineers to manually optimize and maintain their tiered cache topology.</p>
 	<p>Not every customer would want to personalize their topology. For this reason a generic topology exists.</p>
-	<h2>Generic Topology</h2>
+	<div class="flex anchor relative">
+		<h2 id="generic-topology">Generic Topology</h2>
+		<a href="https://blog.cloudflare.com/#generic-topology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The generic topology is designed to achieve good latency and cache efficiency for any origin, regardless of location. A balance is struck between two constraints — &nbsp;cache efficiency and &nbsp;latency.</p>
 	<p>The generic topology has multiple proxying data centers that are distributed around the world in order to ensure that requests that result in a cache miss do not take a very long detour before going to the origin. There is a balance between the number of proxying data centers and the cache hit ratio, because the proxying data centers are oblivious to each other.</p>
 	<p>If a proxying data center is taken offline, the proxied data centers either use a fallback (if the fallback is online) or revert to behaving like Tiered Cache is disabled.</p>
 	<p>To achieve the best balance for general usage, the generic topology instructs the smaller data centers to be proxied by the larger data centers in the same geographic region.</p>
-	<h2>Smart Topology</h2>
+	<div class="flex anchor relative">
+		<h2 id="smart-topology">Smart Topology</h2>
+		<a href="https://blog.cloudflare.com/#smart-topology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Smart Topology assumes the origin is in one place and then automatically configures itself to be optimal once the customer just flips a switch in the dashboard. In order to actually do this, Cloudflare needs to be able to determine which data center has the lowest latency to the origin without making the customer tell Cloudflare where the origin is.</p>
-	<h3>Methods for Latency Determination</h3>
+	<div class="flex anchor relative">
+		<h3 id="methods-for-latency-determination">Methods for Latency Determination</h3>
+		<a href="https://blog.cloudflare.com/#methods-for-latency-determination" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a few ways to determine which data center has the lowest latency with respect to the origin.</p>
 	<p><b>IP geolocation</b>Physical distance can be used as an approximation for latency, but Smart Topology was not built this way for a couple of reasons. First, even the best commercial IP geo database doesn’t have the required coverage and accuracy. Second, even with perfect accuracy, physical distance is a questionable approximation of Internet latency.</p>
 	<p><b>Probing</b>Latency to an IP address can be determined exactly by probing that address. The probe can just be the time required to perform the TCP handshake. Each data center probes the origin so that the latencies can be directly measured and the minimum can be found. Except for edge cases involving Anycast and TCP termination, we can assume that the latency to an IP address is the same as the latency to the origin server behind that IP address.</p>
-	<h3>Topology Selection Algorithm</h3>
+	<div class="flex anchor relative">
+		<h3 id="topology-selection-algorithm">Topology Selection Algorithm</h3>
+		<a href="https://blog.cloudflare.com/#topology-selection-algorithm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The goal of the topology selection algorithm is to minimize cache misses and latency. The topology chooses a single proxying data center in order to maximize the cache hit ratio. The proxying data center is chosen to be close to the origin so that the latencies of cache misses in the proxied data centers are not much worse than they would be with tiered cache turned off.</p>
 	<p>The choice should eventually become stable. Stability is important because each time the choice changes, cache misses in proxied data centers are likely to cause cache misses in the new proxying data center. Capacity is important because when a data center goes offline, it can cause a large number of cache misses. Minimizing latency to the origin is important to ensure that the network is used efficiently.</p>
 	<p>The data center selection algorithm is rather like a leaderboard of the fastest data center for each origin. As data is collected, a faster data center can knock others off a given origin’s leaderboard. This competition is based on the 24 hour median latency and is held each hour. Only a subset of data centers deemed large enough are permitted to compete.</p>
@@ -67,7 +116,14 @@
 	</figure>
 	<p>Imagine putting the origin server as a pitstop in that journey. Then, the theoretical minimum possible observable pair of latencies between the origin server and any two data centers can be computed. We have the latency probe data from both of these data centers and the origin, so we can check to see whether the observed latency is lower than what is possible.</p>
 	<p>The original assumption was that the origin IP address identifies an origin server that is in one location and the latency to that IP address is the latency to the origin server. If the observed latencies are faster than light then clearly the assumption is false. Smart Topology falls back to the generic topology when the original assumption does not hold. To be extra sure, we check this constraint on a bunch of data centers around the world and fall back if there is even a single physically impossible observation.</p>
-	<h3>The Big Picture</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-big-picture">The Big Picture</h3>
+		<a href="https://blog.cloudflare.com/#the-big-picture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Smart Topology is enabled many Cloudflare systems work together to ensure the correct data center is eventually used to request assets from the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -75,6 +131,13 @@
 
 	</figure>
 	<p>When the customer enables Tiered Cache Smart Topology, one of a few things can happen from the perspective of the origin. If a proxying data center has already been assigned to the CIDR block that encompasses the origin IP, the preferred or fallback data center is used to request assets from the origin. Otherwise, the generic topology is used to determine which proxying data centers to use to pull assets from the origin. The latency to the proxying data center should only decrease as the choice for proxying data center is updated over time.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Developing this technology offered a lot of opportunities to exercise great engineering and build an impactful product. It was not done in a vacuum; we used infrastructure that Cloudflare had already built, and we moved along that exponential gradient of using existing progress to make more progress. Building this framework opens a lot of doors to future progress too; for instance, in the future, we can explore ways to select the ideal proxying data center even for origins behind Anycast networks that hide the true latency to the origin.</p>
 </div>

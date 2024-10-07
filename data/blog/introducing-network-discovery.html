@@ -11,7 +11,14 @@
 	<p>To get started, <a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery">sign-up</a> for early access to the closed beta and gain instant visibility into your network today. If you’re interested in learning more about how it works and what else we will be launching in the future for general availability, keep scrolling.</p>
 	<p>One of the most laborious aspects of migrating to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> is replicating the security policies which are active within your network today. Even if you do have a point-in-time understanding of your environment, networks are constantly evolving with new resources being spun up dynamically for various operations. This results in a constant cycle to discover and secure applications which creates an endless backlog of due diligence for security teams.</p>
 	<p>That’s why we built Private Network Discovery. With Private Network Discovery, organizations can easily gain complete visibility into the users and applications that live on their network without any additional effort on their part. Simply connect your private network to Cloudflare, and we will surface any unique traffic we discover on your network to allow you to seamlessly translate them into Cloudflare Access applications.</p>
-	<h3>Building your private network on Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-your-private-network-on-cloudflare">Building your private network on Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#building-your-private-network-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building out a private network has two primary components: the infrastructure side, and the client side.</p>
 	<p>The infrastructure side of the equation is powered by Cloudflare Tunnel, which simply connects your infrastructure (whether that be a single application, many applications, or an entire <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">network segment</a>) to Cloudflare. This is made possible by running a simple command-line daemon in your environment to establish multiple secure, outbound-only links to Cloudflare. Simply put, Tunnel is what connects your network to Cloudflare.</p>
 	<p>On the other side of this equation, you need your end users to be able to easily connect to Cloudflare and, more importantly, your network. This connection is handled by our robust device agent, Cloudflare WARP. This agent can be rolled out to your entire organization in just a few minutes using your in-house MDM tooling, and it establishes a secure connection from your users’ devices to the Cloudflare network.</p>
@@ -21,7 +28,14 @@
 
 	</figure>
 	<p>Now that we have your infrastructure and your users connected to Cloudflare, it becomes easy to tag your applications and layer on Zero Trust security controls to verify both identity and device-centric rules for each and every request on your network.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we mentioned earlier, we built this feature to help your team gain visibility into your network by passively cataloging unique traffic destined for an RFC 1918 or RFC 4193 address space. By design, this tool operates in an observability mode whereby all applications are surfaced, but are tagged with a base state of “Unreviewed.”</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -38,7 +52,14 @@
 
 	</figure>
 	<p>By creating an application, our Network Discovery tool will automatically update the status of these individual origins from “Unreviewed'' to “In-Review.” This will allow your team to easily track the origin’s status. From there, you can drill further down to review the number of unique users accessing a particular origin as well as the total number of requests each user has made. This will help equip your team with the information it needs to create identity and device-driven Zero Trust policies. Once your team is comfortable with a given application's usage, you can then manually update the status of a given application to be either “Approved” or “Unapproved”.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our closed beta launch is just the beginning. While the closed beta release supports creating friendly names for your private network applications, those names do not currently appear in the Cloudflare Zero Trust policy builder.</p>
 	<p>As we move towards general availability, our top priority will be making it easier to secure your private network based on what is surfaced by the Private Network Discovery tool. With the general availability launch, you will be able to create Access applications directly from your Private Network Discovery report, reference your private network applications in Cloudflare Access and create Zero Trust security policies for those applications, all in one singular workflow.</p>
 	<p>As you can see, we have exciting plans for this tool and will continue investing in Private Network Discovery in the future. If you’re interested in gaining access to the closed beta, sign-up <a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery">here</a> and be among the first users to try it out!</p>

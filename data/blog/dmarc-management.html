@@ -18,7 +18,14 @@
 
 	</figure>
 	<p>When the survey platform your company uses is sending emails from your domain, there’s nothing to worry about - you configured it that way. But if an unknown mail service from a remote country is sending emails using your domain that can be quite scary, and something you’ll want to address. Let’s see how.</p>
-	<h3>Anti-spoofing mechanisms</h3>
+	<div class="flex anchor relative">
+		<h3 id="anti-spoofing-mechanisms">Anti-spoofing mechanisms</h3>
+		<a href="https://blog.cloudflare.com/#anti-spoofing-mechanisms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM) and Domain-based Message Authentication Reporting and Conformance (DMARC) are three common email authentication methods. Together, they help <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">prevent</a> spammers, phishers, and other unauthorized parties from sending emails on behalf of a domain they do not own.</p>
 	<p><b>SPF</b> is a way for a domain to list all the servers the company sends emails from. Think of it like a publicly available employee directory that helps someone to confirm if an employee works for an organization. <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record">SPF records</a> list all the IP addresses of all the servers that are allowed to send emails from the domain.</p>
 	<p><b>DKIM</b> enables domain owners to automatically "sign" emails from their domain. Specifically, DKIM uses <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work">public key cryptography</a>:</p>
@@ -36,7 +43,14 @@
 	<p><b>DMARC</b> tells a receiving email server what to do after evaluating the SPF and DKIM results. A domain's DMARC policy can be set in a variety of ways — it can instruct mail servers to quarantine emails that fail SPF or DKIM (or both), to reject such emails, or to deliver them.</p>
 	<p>It’s not trivial to configure and maintain SPF and DMARC, though. If your configuration is too strict, legitimate emails will be dropped or marked as spam. If it’s too relaxed, your domain might be misused for email spoofing. The proof is that these authentication mechanisms (SPF / DKIM / DMARC) have existed for over 10 years and still, there are still <a href="https://dmarc.org/stats/dmarc">less than 6 million active DMARC records</a>.</p>
 	<p>DMARC reports can help, and a full solution like DMARC Management reduces the burden of creating and maintaining a proper configuration.</p>
-	<h3>DMARC reports</h3>
+	<div class="flex anchor relative">
+		<h3 id="dmarc-reports">DMARC reports</h3>
+		<a href="https://blog.cloudflare.com/#dmarc-reports" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All DMARC-compliant mailbox providers support sending DMARC aggregated reports to an email address of your choice. Those reports list the services that have sent emails from your domain and the percentage of messages that passed DMARC, SPF and DKIM. They are extremely important because they give administrators the information they need to decide how to adjust their DMARC policies — for instance, that’s how administrators know if their legitimate emails are failing SPF and DKIM, or if a spammer is trying to send illegitimate emails.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -52,7 +66,14 @@
 
 	</figure>
 	<p>As reports are received in this dedicated email address, they are processed by a <a href="https://workers.cloudflare.com">Worker</a> that extracts the relevant data, parses it and sends it over to our analytics solution. And you guessed again, that’s implemented using <a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a>. You can read more about the technical implementation <a href="https://blog.cloudflare.com/how-we-built-dmarc-management">here</a>.</p>
-	<h3>Taking action</h3>
+	<div class="flex anchor relative">
+		<h3 id="taking-action">Taking action</h3>
+		<a href="https://blog.cloudflare.com/#taking-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that reports are coming in, you can review the data and take action.</p>
 	<p><i>Note: It may take up to 24 hours for mailbox providers to start sending reports and for these analytics to be available to you.</i></p>
 	<p>At the top of DMARC Management you have an at-a-glance view of the outbound security configuration for your domain, more specifically DMARC, DKIM, and SPF. DMARC Management will soon start reporting on inbound email security as well, which includes STARTTLS, MTA-STS, DANE, and TLS reporting.</p>
@@ -81,7 +102,14 @@
 	</figure>
 	<p>The ones that fail are the ones you’ll want to take action on, as they will need to either be approved (which technically means including in the <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf">SPF</a> record) if legitimate, or stay unapproved and be rejected by the receiving server when the DMARC policy is configured with p=reject.</p>
 	<p>Getting to a DMARC reject policy is the goal, but you don’t want to apply such a restrictive policy until you have high confidence that all legitimate sending services are accounted for in SPF (and DKIM, if appropriate). That may take a few weeks, depending on the number of services you have sending messages from your domain, but with DMARC Management you will quickly grasp when you’re ready to go.</p>
-	<h3>What else is needed</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-else-is-needed">What else is needed</h3>
+		<a href="https://blog.cloudflare.com/#what-else-is-needed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you have approved all your authorized email senders (sources) and configured DMARC to quarantine or reject, you should be confident that your brand and organization are much safer. From then on, keeping an eye on your approved sources list is a very lightweight operation that doesn’t take more than a few minutes per month from your team. Ideally, when new applications that send emails from your domain are deployed in your company, you would proactively include the corresponding IP addresses in your SPF record.</p>
 	<p>But even if you don’t, you will find new unapproved senders notices on your Security Center, under the Security Insights tab, alongside other important security issues you can review and manage.</p>
 	<figure class="kg-card kg-image-card ">
@@ -91,7 +119,14 @@
 	</figure>
 	<p>Or you can check the unapproved list on DMARC Management every few weeks.</p>
 	<p>Whenever you see a legitimate sender source show up as unapproved, you know what to do — click “…” and mark them as approved!</p>
-	<h3>What’s coming next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-coming-next">What’s coming next</h3>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DMARC Management takes <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security</a> to the next level, and this is only the beginning.</p>
 	<p>We’re excited to demonstrate our investments in features that provide customers even more insight into their security. Up next we’ll be connecting security analytics from Cloudflare’s <a href="https://www.cloudflare.com/products/zero-trust/casb">Cloud Access Security Broker</a> (CASB) into the <a href="https://www.cloudflare.com/securitycenter">Security Center</a>.</p>
 	<figure class="kg-card kg-image-card ">

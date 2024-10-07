@@ -9,7 +9,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GYEmOh20uTb4JDz53fLUO/64289c0406f7e8af2c08719ebd2fab23/ipv6-2_1.png" alt="" class="kg-image" width="645" height="400" loading="lazy">
 
 	</figure>
-	<h3>20% of the IPv6 web uses CloudFlare IPv6</h3>
+	<div class="flex anchor relative">
+		<h3 id="20-of-the-ipv6-web-uses-cloudflare-ipv6">20% of the IPv6 web uses CloudFlare IPv6</h3>
+		<a href="https://blog.cloudflare.com/#20-of-the-ipv6-web-uses-cloudflare-ipv6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at the top one million web sites tracked by Alexa we see that around 7% are accessible using IPv6. Of that 7% a full 20% are accessible using IPv6 because they are CloudFlare customers with IPv6 enabled.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -17,7 +24,14 @@
 
 	</figure>
 	<p>We hope and expect that both those percentages will grow over time.</p>
-	<h3>The web logfile problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-web-logfile-problem">The web logfile problem</h3>
+		<a href="https://blog.cloudflare.com/#the-web-logfile-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>However some complex sites, that use the origin server IP address within their codebase, have had issues enabling IPv6.</p>
 	<p>Many sites log the IP address of the visitor when a web page is accessed. This has caused some interesting headaches when migrating to IPv6. Why? Because when software developers hardcode a 4-byte IPv4-address into a database they will have a near-impossible time dealing with at 16-byteIPv6 address. Take a look at this IETF style graphic showing the overall size of the two addressing schemes.</p>
 	<p>IPv4 (32 bits)
@@ -30,9 +44,23 @@
 		+----+----+----+----+----+----+----+----+</p>
 	<p>When a developer uses a string (or character) area to store the IP address there’s a string length issue.</p>
 	<p>In IPv4, the maximum length could be represented by the IP address <code>255.255.255.255</code> (which is 15 bytes long). For IPv6 the address could be <code>FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF</code> (which is 39 bytes long). Some programming languages and databases can be string length agnostic; however most aren’t.</p>
-	<h3>Pseudo IPv4 to the (Temporary) Rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="pseudo-ipv4-to-the-temporary-rescue">Pseudo IPv4 to the (Temporary) Rescue</h3>
+		<a href="https://blog.cloudflare.com/#pseudo-ipv4-to-the-temporary-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a stopgap measure CloudFlare has introduced a <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">pseudo IPv4</a> address that is mapped from the real IPv6 address and can be used in place of the IPv6. It's not a perfect solution and software and databases are going to have to be upgraded to support IPv6, but in the meantime this pseudo IPv4 address can be used where an IPv4 format address is expected.</p>
-	<h3>Going forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="going-forward">Going forward</h3>
+		<a href="https://blog.cloudflare.com/#going-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This workaround is now available for every CloudFlare customer and we promise to persuade as many of our users who have chosen to disable IPv6 to enable IPv6 fully. Those few remaining sites will want to be part of the new Internet.</p>
 	<p>Happy third anniversary World IPv6 Day!</p>
 </div>

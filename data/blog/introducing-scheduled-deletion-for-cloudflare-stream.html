@@ -7,12 +7,34 @@
 	</figure>
 	<p>Designed with developers in mind, Cloudflare Stream provides a seamless, integrated workflow that simplifies video streaming for creators and platforms alike. With features like <a href="https://blog.cloudflare.com/stream-live-ga">Stream Live</a> and <a href="https://blog.cloudflare.com/stream-creator-management">creator management</a>, customers have been looking for ways to streamline storage management.</p>
 	<p>Today, August 11, 2023, Cloudflare Stream is introducing scheduled deletion to easily manage video lifecycles from the Stream dashboard or our API, saving time and reducing storage-related costs. Whether you need to retain recordings from a live stream for only a limited time, or preserve direct creator videos for a set duration, scheduled deletion will simplify storage management and reduce costs.</p>
-	<h2>Stream scheduled deletion</h2>
+	<div class="flex anchor relative">
+		<h2 id="stream-scheduled-deletion">Stream scheduled deletion</h2>
+		<a href="https://blog.cloudflare.com/#stream-scheduled-deletion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Scheduled deletion allows developers to automatically remove on-demand videos and live recordings from their library at a specified time. Live inputs can be set up with a deletion rule, ensuring that all recordings from the input will have a scheduled deletion date upon completion of the stream.</p>
 	<p>Let’s see how it works in those two configurations.</p>
-	<h2>Getting started with scheduled deletion for on-demand videos</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-scheduled-deletion-for-on-demand-videos">Getting started with scheduled deletion for on-demand videos</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-scheduled-deletion-for-on-demand-videos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whether you run a learning platform where students can upload videos for review, a platform that allows gamers to share clips of their gameplay, or anything in between, scheduled deletion can help manage storage and ensure you only keep the videos that you need. Scheduled deletion can be applied to both new and existing on-demand videos, as well as recordings from completed live streams. This feature lets you specify a specific date and time at which the video will be deleted. These dates can be applied in the Cloudflare dashboard or via the Cloudflare API.</p>
-	<h3>Cloudflare dashboard</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-dashboard">Cloudflare dashboard</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D1lNclKMneZTtlGbY2rO9/dba842691f16d1cf5c3811f2add83d1f/Screenshot-2023-08-11-at-12.49.57.png" alt="" class="kg-image" width="1594" height="630" loading="lazy">
@@ -35,16 +57,38 @@
 			<p>Click <b>Submit</b> to save the changes</p>
 		</li>
 	</ol>
-	<h3>Cloudflare API</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-api">Cloudflare API</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Stream API can also be used to set the scheduled deletion property on new or existing videos. In this example, we’ll create a direct creator upload that will be deleted on December 31, 2023:</p>
 	<pre class="language-json"><code class="language-json">curl -X POST \
 -H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
 -d '{ "maxDurationSeconds": 10, "scheduledDeletion": "2023-12-31T12:34:56Z" }' \
 https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_upload </code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
-	<h2>Getting started with automated deletion for Live Input recordings</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-automated-deletion-for-live-input-recordings">Getting started with automated deletion for Live Input recordings</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-automated-deletion-for-live-input-recordings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We love how recordings from live streams allow those who may have missed the stream to catch up, but these recordings aren’t always needed forever. Scheduled recording deletion is a policy that can be configured for new or existing live inputs. Once configured, the recordings of all future streams on that input will have a scheduled deletion date calculated when the recording is available. Setting this retention policy can be done from the Cloudflare dashboard or via API operations to create or edit Live Inputs:</p>
-	<h3>Cloudflare Dashboard</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-dashboard">Cloudflare Dashboard</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2b60PHplltSmxKQQQ3LERW/bc31d2f0e2aae9c95d36a58a1d6777e4/image3-3.png" alt="" class="kg-image" width="846" height="629" loading="lazy">
@@ -67,7 +111,14 @@ https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_u
 			<p>Click <b>Submit</b> to save the rule or create the new live input</p>
 		</li>
 	</ol>
-	<h3>Cloudflare API</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-api">Cloudflare API</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Stream API makes it easy to add a deletion policy to new or existing inputs. Here is an example API request to create a live input with recordings that will expire after 30 days:</p>
 	<pre class="language-json"><code class="language-json">curl -X POST \
 -H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
@@ -75,6 +126,13 @@ https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_u
 -d '{ "recording": {"mode": "automatic"}, "deleteRecordingAfterDays": 30 }' \
 https://api.staging.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/live_inputs/</code></pre>
 	<p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api">the documentation</a>.</p>
-	<h2>Try out scheduled deletion today</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-out-scheduled-deletion-today">Try out scheduled deletion today</h2>
+		<a href="https://blog.cloudflare.com/#try-out-scheduled-deletion-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Scheduled deletion is now available to all Cloudflare Stream customers. Try it out now and join our <a href="https://discord.gg/cloudflaredev">Discord community</a> to let us know what you think! To learn more, check out our <a href="https://developers.cloudflare.com/stream">developer docs</a>. Stay tuned for more exciting Cloudflare Stream updates in the future.</p>
 </div>

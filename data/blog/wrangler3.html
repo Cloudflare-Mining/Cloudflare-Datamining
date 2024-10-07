@@ -9,7 +9,14 @@
 	<p>To start, we integrated <a href="https://github.com/cloudflare/miniflare">Miniflare</a>, a fully-local simulator for Workers, directly <a href="https://blog.cloudflare.com/miniflare">into Wrangler</a>, the Workers CLI. This allowed users to develop locally with Wrangler by running <code>wrangler dev --local</code>. Compared to the <code>wrangler dev</code> default, which relied on remote resources, this represented a significant step forward in local development. As good as it was, it couldn’t leverage the actual Workers runtime, which led to some inconsistencies and behavior mismatches.</p>
 	<p>Last November, we <a href="https://blog.cloudflare.com/miniflare-and-workerd">announced the experimental version of Miniflare v3,</a> powered by the newly open-sourced <a href="https://github.com/cloudflare/workerd"><code>workerd</code> runtime</a>, the same runtime used by Cloudflare Workers. Since then, we’ve continued to improve upon that experience both in terms of accuracy with the real runtime and in cross-platform compatibility.</p>
 	<p>As a result of all this work, we are proud to announce the release of Wrangler v3 – the first version of Wrangler with local-by-default development.</p>
-	<h2>A new default for Wrangler</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-new-default-for-wrangler">A new default for Wrangler</h2>
+		<a href="https://blog.cloudflare.com/#a-new-default-for-wrangler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting with Wrangler v3, users running <code>wrangler dev</code> will be leveraging Miniflare v3 to run your Worker locally. This local development environment is effectively as accurate as a production Workers environment, providing an ability for you to test every aspect of your application before deploying. It provides the same runtime and bindings, but has its own simulators for KV, R2, D1, Cache and Queues. Because you’re running everything on your machine, you won’t be billed for operations on KV namespaces or R2 buckets during development, and you can try out paid-features like Durable Objects for free.</p>
 	<p>In addition to a more accurate developer experience, you should notice performance differences. Compared to remote mode, we’re seeing a 10x reduction to startup times and 60x reduction to script reload times with the new local-first implementation. This massive reduction in reload times drastically improves developer velocity!</p>
 	<figure class="kg-card kg-image-card ">
@@ -18,9 +25,23 @@
 
 	</figure>
 	<p>Remote development isn’t going anywhere. We recognise many developers still prefer to test against real data, or want to test Cloudflare services like <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers">image resizing</a> that aren’t implemented locally yet. To run <code>wrangler dev</code> on Cloudflare’s network, just like previous versions, use the new <code>--remote</code> flag.</p>
-	<h2>Deprecating Miniflare v2</h2>
+	<div class="flex anchor relative">
+		<h2 id="deprecating-miniflare-v2">Deprecating Miniflare v2</h2>
+		<a href="https://blog.cloudflare.com/#deprecating-miniflare-v2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For users of Miniflare, there are two important pieces of information for those updating from v2 to v3. First, if you’ve been using Miniflare’s CLI directly, you’ll need to switch to <code>wrangler dev</code>. Miniflare v3 no longer includes a CLI. Secondly, if you’re using Miniflare’s API directly, upgrade to <code>miniflare@3</code> and follow the <a href="https://miniflare.dev/get-started/migrating">migration guide</a>.</p>
-	<h2>How we built Miniflare v3</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-miniflare-v3">How we built Miniflare v3</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-miniflare-v3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Miniflare v3 is now built using <code>workerd</code>, the open-source Cloudflare Workers runtime. As <code>workerd</code> is a server-first runtime, every configuration defines at least one socket to listen on. Each socket is configured with a service, which can be an external server, disk directory or most importantly for us, a Worker! To start a <code>workerd</code> server running a Worker, create a <code>worker.capnp</code> file as shown below, run <code>npx workerd serve worker.capnp</code> and visit <a href="http://localhost:8080">http://localhost:8080</a> in your browser:</p>
 	<pre class="language-capnp"><code class="language-capnp">using Workerd = import "/workerd/workerd.capnp";
 
@@ -54,10 +75,24 @@ const helloWorker :Workerd.Worker = (
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44vdcPO7sdaTtBi0u0HMgE/012af10a590fc10cf968110df4074d5b/image1-43.png" alt="overview of Miniflare v3’s architecture, workerd handles incoming requests directly, routing all binding requests to a Node.js server implementing simulators for the Developer Platform" class="kg-image" width="1999" height="1013" loading="lazy">
 
 	</figure>
-	<h3>Building a flexible storage system</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-flexible-storage-system">Building a flexible storage system</h3>
+		<a href="https://blog.cloudflare.com/#building-a-flexible-storage-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you can see from the diagram above, most of Miniflare’s job is now providing different interfaces for data storage. In Miniflare v2, we used a custom key-value store to back these, but this had <a href="https://github.com/cloudflare/miniflare/issues/167">a</a> <a href="https://github.com/cloudflare/miniflare/issues/247">few</a> <a href="https://github.com/cloudflare/miniflare/issues/530">limitations</a>. For Miniflare v3, we’re now using the industry-standard <a href="https://sqlite.org/index.html">SQLite</a>, with a separate blob store for KV values, R2 objects, and cached responses. Using SQLite gives us much more flexibility in the queries we can run, allowing us to support future unreleased storage solutions. 👀</p>
 	<p>A separate blob store allows us to provide efficient, ranged, <a href="https://streams.spec.whatwg.org/#example-rbs-pull">streamed access</a> to data. Blobs have unguessable identifiers, can be deleted, but are otherwise immutable. These properties make it possible to perform atomic updates with the SQLite database. No other operations can interact with the blob until it's committed to SQLite, because the ID is not guessable, and we don't allow listing blobs. For more details on the rationale behind this, check out the <a href="https://github.com/cloudflare/miniflare/discussions/525">original GitHub discussion</a>.</p>
-	<h3>Running unit tests inside Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-unit-tests-inside-workers">Running unit tests inside Workers</h3>
+		<a href="https://blog.cloudflare.com/#running-unit-tests-inside-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of Miniflare’s primary goals is to provide a great local testing experience. Miniflare v2 provided <a href="https://miniflare.dev/testing/vitest">custom environments</a> for popular Node.js testing frameworks that allowed you to run your tests <i>inside</i> the Miniflare sandbox. This meant you could import and call any function using Workers runtime APIs in your tests. You weren’t restricted to integration tests that just send and receive HTTP requests. In addition, these environments provide per-test isolated storage, automatically undoing any changes made at the end of each test.</p>
 	<p>In Miniflare v2, these environments were relatively simple to implement. We’d already reimplemented Workers Runtime APIs in a Node.js environment, and could inject them using Jest and Vitest’s APIs into the global scope.</p>
 	<figure class="kg-card kg-image-card ">
@@ -83,9 +118,23 @@ const helloWorker :Workerd.Worker = (
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HqXRYKmlaionjMJK7PW6i/edfb54efdffa75025ae147d2310494fa/image2-23.png" alt="running Worker unit tests using Vitest and Miniflare 3, note we’re just importing functions from our Worker, and have access to Worker’s runtime APIs in tests" class="kg-image" width="1999" height="1301" loading="lazy">
 
 	</figure>
-	<h3>Running on every platform</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-on-every-platform">Running on every platform</h3>
+		<a href="https://blog.cloudflare.com/#running-on-every-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want developers to have this great local testing experience, regardless of which operating system they’re using. Before open-sourcing, the Cloudflare Workers runtime was originally only designed to run on Linux. For Miniflare v3, we needed to add support for macOS and Windows too. macOS and Linux are both Unix-based, making porting between them relatively straightforward. Windows on the other hand is an entirely different beast… 😬</p>
 	<p>The <code>workerd</code> runtime uses <a href="https://github.com/capnproto/capnproto/tree/master/c%2B%2B/src/kj">KJ</a>, an alternative C++ base library, which is already cross-platform. We’d also migrated to the <a href="https://bazel.build">Bazel</a> build system in preparation for open-sourcing the runtime, which has good Windows support. When compiling our C++ code for Windows, we use LLVM's MSVC-compatible compiler driver <a href="https://llvm.org/devmtg/2014-04/PDFs/Talks/clang-cl.pdf"><code>clang-cl</code></a>, as opposed to using Microsoft’s Visual C++ compiler directly. This enables us to use the "same" compiler frontend on Linux, macOS, and Windows, massively reducing the effort required to compile <code>workerd</code> on Windows. Notably, this provides proper support for <code>#pragma once</code> when using symlinked virtual includes produced by Bazel, <code>__atomic_*</code> functions, a standards-compliant preprocessor, GNU statement expressions used by some KJ macros, and understanding of the <code>.c++</code> extension by default. After switching out <a href="https://github.com/mrbbot/workerd/blob/5e10e308e6683f8f88833478801c07da4fe01063/src/workerd/server/workerd.c%2B%2B#L802-L808">unix API calls for their Windows equivalents</a> using <code>#if _WIN32</code> preprocessor directives, and fixing a bunch of segmentation faults caused by execution order differences, we were finally able to get <code>workerd</code> running on Windows! No WSL or Docker required! 🎉</p>
-	<h2>Let us know what you think!</h2>
+	<div class="flex anchor relative">
+		<h2 id="let-us-know-what-you-think">Let us know what you think!</h2>
+		<a href="https://blog.cloudflare.com/#let-us-know-what-you-think" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wrangler v3 is now generally available! Upgrade by running <code>npm install --save-dev wrangler@3</code> in your project. Then run <code>npx wrangler dev</code> to try out the new local development experience powered by Miniflare v3 and the open-source Workers runtime. Let us know what you think in the <code>#wrangler</code> channel on the <a href="https://discord.com/invite/cloudflaredev">Cloudflare Developers Discord</a>, and please <a href="https://github.com/cloudflare/workers-sdk/issues/new/choose">open a GitHub issue</a> if you hit any unexpected behavior.</p>
 </div>

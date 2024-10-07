@@ -10,17 +10,38 @@
 	<p>Cloudflare Workers has had <a href="https://github.com/cloudflare/workers-rs">first-party support for Rust and Wasm</a> for quite some time. We've been using this powerful combination to bootstrap and build some of our most recent services, like <a href="https://blog.cloudflare.com/introducing-d1">D1</a>, <a href="https://blog.cloudflare.com/introducing-constellation">Constellation</a>, and <a href="https://blog.cloudflare.com/automatic-signed-exchanges">Signed Exchanges</a>, to name a few.</p>
 	<p>Using tools like <a href="https://github.com/cloudflare/workers-sdk">Wrangler</a>, our command-line tool for building with Cloudflare developer products, makes streaming real-time logs from our applications running remotely easy. Still, to be honest, debugging Rust and Wasm with Cloudflare Workers involves a lot of the good old time-consuming and nerve-wracking <a href="https://news.ycombinator.com/item?id=26925570">printf'ing</a> strategy.</p>
 	<p>What if there’s a better way? This blog is about enabling and using Wasm core dumps and how you can easily debug Rust in Cloudflare Workers.</p>
-	<h3>What are core dumps?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-core-dumps">What are core dumps?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-core-dumps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In computing, a <a href="https://en.wikipedia.org/wiki/Core_dump">core dump</a> consists of the recorded state of the working memory of a computer program at a specific time, generally when the program has crashed or otherwise terminated abnormally. They also add things like the processor registers, stack pointer, program counter, and other information that may be relevant to fully understanding why the program crashed.</p>
 	<p>In most cases, depending on the system’s configuration, core dumps are usually initiated by the operating system in response to a program crash. You can then use a debugger like <a href="https://linux.die.net/man/1/gdb">gdb</a> to examine what happened and hopefully determine the cause of a crash. <a href="https://linux.die.net/man/1/gdb">gdb</a> allows you to run the executable to try to replicate the crash in a more controlled environment, inspecting the variables, and much more. The Windows' equivalent of a core dump is a <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/read-small-memory-dump-file">minidump</a>. Other mature languages that are interpreted, like Python, or languages that run inside a virtual machine, like <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/coredumps.html">Java</a>, also have their ways of generating core dumps for post-mortem analysis.</p>
 	<p>Core dumps are particularly useful for post-mortem debugging, determining the conditions that lead to a failure after it has occurred.</p>
-	<h3>WebAssembly core dumps</h3>
+	<div class="flex anchor relative">
+		<h3 id="webassembly-core-dumps">WebAssembly core dumps</h3>
+		<a href="https://blog.cloudflare.com/#webassembly-core-dumps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebAssembly has had a <a href="https://github.com/WebAssembly/tool-conventions/blob/main/Coredump.md">proposal for implementing core dumps</a> in discussion for a while. It's a work-in-progress experimental specification, but it provides basic support for the main ideas of post-mortem debugging, including using the <a href="https://yurydelendik.github.io/webassembly-dwarf">DWARF</a> (debugging with attributed record formats) debug format, the same that Linux and gdb use. Some of the most popular Wasm runtimes, like <a href="https://github.com/bytecodealliance/wasmtime/pull/5868">Wasmtime</a> and <a href="https://github.com/wasmerio/wasmer/pull/3626">Wasmer</a>, have experimental flags that you can enable and start playing with Wasm core dumps today.</p>
 	<p>If you run Wasmtime or Wasmer with the flag:</p>
 	<pre class="language-bash"><code class="language-bash">--coredump-on-trap=/path/to/coredump/file</code></pre>
 	<p>The core dump file will be emitted at that location path if a crash happens. You can then use tools like <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/wasmgdb">wasmgdb</a> to inspect the file and debug the crash.</p>
 	<p>But let's dig into how the core dumps are generated in WebAssembly, and what’s inside them.</p>
-	<h3>How are Wasm core dumps generated</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-wasm-core-dumps-generated">How are Wasm core dumps generated</h3>
+		<a href="https://blog.cloudflare.com/#how-are-wasm-core-dumps-generated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>(and what’s inside them)</p>
 	<p>When WebAssembly terminates execution due to abnormal behavior, we say that it entered a trap. With Rust, examples of operations that can trap are accessing out-of-bounds addresses or a division by zero arithmetic call. You can read about the <a href="https://webassembly.org/docs/security">security model of WebAssembly</a> to learn more about traps.</p>
 	<p>The core dump specification plugs into the trap workflow. When WebAssembly crashes and enters a trap, core dumping support kicks in and starts unwinding the call <a href="https://webassembly.github.io/spec/core/exec/runtime.html#stack">stack</a> gathering debugging information. For each frame in the stack, it collects the <a href="https://webassembly.github.io/spec/core/syntax/modules.html#syntax-func">function</a> parameters and the values stored in locals and in the stack, along with binary offsets that help us map to exact locations in the source code. Finally, it snapshots the <a href="https://webassembly.github.io/spec/core/syntax/modules.html#syntax-mem">memory</a> and captures information like the <a href="https://webassembly.github.io/spec/core/syntax/modules.html#syntax-table">tables</a> and the <a href="https://webassembly.github.io/spec/core/syntax/modules.html#syntax-global">global variables</a>.</p>
@@ -57,7 +78,14 @@ frame       ::= 0x0 ... funcidx:u32 codeoffset:u32 locals:vec(value)
 	<p>At the time of this writing these are the possible <a href="https://webassembly.github.io/spec/core/binary/types.html#binary-numtype">numbers types</a> in a value. Again, we wanted to describe the basics; you should track the full <a href="https://github.com/WebAssembly/tool-conventions/blob/main/Coredump.md#coredump-file-format">specification</a> to get more detail or find information about future changes. WebAssembly core dump support is in its early stages of specification and implementation, things will get better, things might change.</p>
 	<p>This is all great news. Unfortunately, however, the Cloudflare Workers <a href="https://github.com/cloudflare/workerd">runtime</a> doesn’t support WebAssembly core dumps yet. There is no technical impediment to adding this feature to <a href="https://github.com/cloudflare/workerd">workerd</a>; after all, it's <a href="https://developers.cloudflare.com/workers/learning/how-workers-works">based on V8</a>, but since it powers a critical part of our production infrastructure and products, we tend to be conservative when it comes to adding specifications or standards that are still considered experimental and still going through the definitions phase.</p>
 	<p>So, how do we get core Wasm dumps in Cloudflare Workers today?</p>
-	<h3>Polyfilling</h3>
+	<div class="flex anchor relative">
+		<h3 id="polyfilling">Polyfilling</h3>
+		<a href="https://blog.cloudflare.com/#polyfilling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Polyfilling means using userland code to provide modern functionality in older environments that do not natively support it. <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill">Polyfills</a> are widely popular in the JavaScript community and the browser environment; they've been used extensively to address issues where browser vendors still didn't catch up with the latest standards, or when they implement the same features in different ways, or address cases where old browsers can never support a new standard.</p>
 	<p>Meet <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/rewriter">wasm-coredump-rewriter</a>, a tool that you can use to rewrite a Wasm module and inject the core dump runtime functionality in the binary. This runtime code will catch most traps (exceptions in host functions are not yet catched and memory violation not by default) and generate a standard core dump file. To some degree, this is similar to how Binaryen's <a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp">Asyncify</a> <a href="https://kripken.github.io/blog/wasm/2019/07/16/asyncify.html">works</a>.</p>
 	<p>Let’s look at code and see how this works. He’s some simple pseudo code:</p>
@@ -165,7 +193,14 @@ function addTwo(v1, v2) {
 	<p>If you're curious about the actual details of the core dump implementation, you can find the <a href="https://github.com/xtuc/wasm-coredump/blob/main/lib/asc-coredump/assembly/coredump.ts">source code here</a>. It was written in <a href="https://www.assemblyscript.org">AssemblyScript</a>, a TypeScript-like language for WebAssembly.</p>
 	<p>This is how we use the polyfilling technique to implement Wasm core dumps when the runtime doesn’t support them yet. Interestingly, some Wasm runtimes, being optimizing compilers, are likely to make debugging more difficult because function arguments, locals, or functions themselves can be optimized away. Polyfilling or rewriting the binary could actually preserve more source-level information for debugging.</p>
 	<p>You might be asking what about performance? We did some testing and found that the <a href="https://github.com/xtuc/wasm-coredump-bench/blob/main/results.md">impact is negligible</a>; the cost-benefit of being able to debug our crashes is positive. Also, you can easily turn wasm core dumps on or off for specific builds or environments; deciding when you need them is up to you.</p>
-	<h3>Debugging from a core dump</h3>
+	<div class="flex anchor relative">
+		<h3 id="debugging-from-a-core-dump">Debugging from a core dump</h3>
+		<a href="https://blog.cloudflare.com/#debugging-from-a-core-dump" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We now know how to generate a core dump, but how do we use it to diagnose and debug a software crash?</p>
 	<p>Similarly to <a href="https://en.wikipedia.org/wiki/GNU_Debugger">gdb</a> (GNU Project Debugger) on Linux, <a href="https://github.com/xtuc/wasm-coredump/blob/main/bin/wasmgdb/README.md">wasmgdb</a> is the tool you can use to parse and make sense of core dumps in WebAssembly; it understands the file structure, uses DWARF to provide naming and contextual information, and offers interactive commands to navigate the data. To exemplify how it works, <a href="https://github.com/xtuc/wasm-coredump/blob/main/bin/wasmgdb/demo.md">wasmgdb has a demo</a> of a Rust application that deliberately crashes; we will use it.</p>
 	<p>Let's imagine that our Wasm program crashed, wrote a core dump file, and we want to debug it.</p>
@@ -214,7 +249,14 @@ value (0xfff2c): usize = 0x00000003</code></pre>
     value (0xfff2c): usize = 0x00000003
 }</code></pre>
 	<p>All this information in every step of the stack is very helpful to determine the cause of a crash. In our test case, if you look at frame #10, we triggered an integer overflow. Once you get comfortable walking through wasmgdb and using its commands to inspect the data, debugging core dumps will be another powerful skill under your belt.</p>
-	<h3>Tidying up everything in Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="tidying-up-everything-in-cloudflare-workers">Tidying up everything in Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#tidying-up-everything-in-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We learned about core dumps and how they work, and we know how to make Cloudflare Workers generate them using the wasm-coredump-rewriter polyfill, but how does all this work in practice end to end?</p>
 	<p>We've been dogfooding the technique described in this blog at Cloudflare for a while now. Wasm core dumps have been invaluable in helping us debug Rust-based services running on top of Cloudflare Workers like <a href="https://blog.cloudflare.com/introducing-d1">D1</a>, <a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier">Privacy Edge</a>, <a href="https://blog.cloudflare.com/announcing-amp-real-url">AMP</a>, or <a href="https://blog.cloudflare.com/introducing-constellation">Constellation</a>.</p>
 	<p>Today we're open-sourcing the <a href="https://github.com/cloudflare/wasm-coredump">Wasm Coredump Service</a> and enabling anyone to deploy it. This service collects the Wasm core dumps originating from your projects and applications when they crash, parses them, prints an exception with the stack information in the logs, and can optionally store the full core dump in a file in an <a href="https://developers.cloudflare.com/r2">R2 bucket</a> (which you can then use with wasmgdb) or send the exception to <a href="https://sentry.io">Sentry</a>.</p>
@@ -253,7 +295,14 @@ async function fetch(request, env, ctx) {
 
 	</figure>
 	<p>You can find a <a href="https://github.com/cloudflare/wasm-coredump/tree/main/example">working example</a>, the Sentry and R2 configuration options, and more details in the <a href="https://github.com/cloudflare/wasm-coredump">@cloudflare/wasm-coredump</a> GitHub repository.</p>
-	<h3>Too big to fail</h3>
+	<div class="flex anchor relative">
+		<h3 id="too-big-to-fail">Too big to fail</h3>
+		<a href="https://blog.cloudflare.com/#too-big-to-fail" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's worth mentioning one corner case of this debugging technique and the solution: sometimes your codebase is so big that adding core dump and DWARF debugging information might result in a Wasm binary that is too big to fit in a Cloudflare Worker. Well, worry not; we have a solution for that too.</p>
 	<p>Fortunately the DWARF for WebAssembly specification also supports <a href="https://yurydelendik.github.io/webassembly-dwarf/#external-DWARF">external DWARF files</a>. To make this work, we have a tool called <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/debuginfo-split">debuginfo-split</a> that you can add to the build command in the <code>wrangler.toml</code> configuration:</p>
 	<pre class="language-toml"><code class="language-toml">command = "... &amp;&amp; debuginfo-split ./build/worker/index.wasm"</code></pre>
@@ -307,7 +356,14 @@ async function fetch(request, env, ctx) {
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We hope you enjoyed reading this blog as much as we did writing it and that it can help you take your Wasm debugging journeys, using Cloudflare Workers or not, to another level.</p>
 	<p>Note that while the examples used here were around using Rust and WebAssembly because that's a common pattern, you can use the same techniques if you're compiling WebAssembly from other languages like C or C++.</p>
 	<p>Also, note that the WebAssembly core dump standard is a hot topic, and its implementations and adoption are evolving quickly. We will continue improving the <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/rewriter">wasm-coredump-rewriter</a>, <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/debuginfo-split">debuginfo-split</a>, and <a href="https://github.com/xtuc/wasm-coredump/tree/main/bin/wasmgdb">wasmgdb</a> tools and the <a href="https://github.com/cloudflare/wasm-coredump">wasm-coredump service</a>. More and more runtimes, including V8, will eventually support core dumps natively, thus eliminating the need to use polyfills, and the tooling, in general, will get better; that's a certainty. For now, we present you with a solution that works today, and we have strong incentives to keep supporting it.</p>

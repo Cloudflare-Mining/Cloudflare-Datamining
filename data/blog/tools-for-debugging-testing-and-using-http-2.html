@@ -3,7 +3,14 @@
 	<p>With CloudFlare's release of HTTP/2 for all our customers the web suddenly has a lot of HTTP/2 connections. To get the most out of HTTP/2 you'll want to be using an up to date web browser (all the major browsers support HTTP/2).</p>
 	<p>But there are some non-browser tools that come in handy when working with HTTP/2. This blog post starts with a useful browser add-on, and then delves into command-line tools, load testing, conformance verification, development libraries and packet decoding for HTTP/2.</p>
 	<p>If you know of something that I've missed please write a comment.</p>
-	<h3>Browser Indicators</h3>
+	<div class="flex anchor relative">
+		<h3 id="browser-indicators">Browser Indicators</h3>
+		<a href="https://blog.cloudflare.com/#browser-indicators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For Google Chrome there's a handy <a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin?hl=en">HTTP/2 and SPDY Indicator</a> extension that adds a colored lightning bolt to the browser bar showing the protocol being used when a web page is viewed.</p>
 	<p>The blue lightning bolt shown here indicates that the CloudFlare home page was served using HTTP/2:</p>
 	<figure class="kg-card kg-image-card ">
@@ -38,7 +45,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xZKZgNYat4xEKVCyzYhn4/5fd9ee2db87d1a011235aeb6e1c3e633/Screen-Shot-2015-12-03-at-17-12-50.png" alt="" class="kg-image" width="717" height="762" loading="lazy">
 
 	</figure>
-	<h3>Command-line Tools</h3>
+	<div class="flex anchor relative">
+		<h3 id="command-line-tools">Command-line Tools</h3>
+		<a href="https://blog.cloudflare.com/#command-line-tools" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There's a handy command-line tool called <a href="https://github.com/stefanjudis/is-http2-cli">is-http</a> which is installed using npm as follows:</p>
 	<pre class="language-bash"><code class="language-bash">npm install -g is-http2-cli</code></pre>
 	<p>Once installed you can check the HTTP/2 status of a web on the command-line:</p>
@@ -166,7 +180,15 @@ h2i&gt; headers
    cache-control = "public, max-age=14400"
  [FrameHeader DATA stream=1 len=7261]
    "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</code></pre>
-	<h3>Load Testing</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="load-testing">Load Testing</h3>
+		<a href="https://blog.cloudflare.com/#load-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://nghttp2.org">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html">HOWTO</a> on using the tool.</p>
 	<p>I ran it against the CloudFlare test server like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -174,7 +196,14 @@ h2i&gt; headers
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hWDbuK231mcZwO1JOKtvo/d3b3a2c9eb24d5ef91fb5b67ad8383b4/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
 
 	</figure>
-	<h3>Conformance</h3>
+	<div class="flex anchor relative">
+		<h3 id="conformance">Conformance</h3>
+		<a href="https://blog.cloudflare.com/#conformance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl">Go 1.5.1</a> and then do</p>
 	<pre class="language-bash"><code class="language-bash">$ go get github.com/summerwind/h2spec/cmd/h2spec</code></pre>
 	<p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
@@ -196,12 +225,27 @@ name,resolves,port443Open,tlsWorks,httpsWorks,cloudflare,spdyAnnounced,http2Anno
 www.cloudflare.com,t,t,t,t,t,t,t,t,t,h2 spdy/3.1 http/1.1
 www.amazon.com,t,t,t,t,f,f,f,-,-,http/1.1
 www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
-	<h3>Useful Libraries</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="useful-libraries">Useful Libraries</h3>
+		<a href="https://blog.cloudflare.com/#useful-libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c">servers</a>.</p>
 	<p>Go programmers will find full HTTP/2 support will arrive with Go 1.6. If you can't wait until then there's an extension package for HTTP/2 <a href="https://godoc.org/golang.org/x/net/http2">golang.org/x/net/http2</a> . Details <a href="https://http2.golang.org">here</a>.</p>
 	<p>There's a pure Ruby implementation of HTTP/2 available from <a href="https://github.com/igrigorik/http-2">Ilya Grigorik</a>.</p>
 	<p>Haskell programmers can use the <a href="https://hackage.haskell.org/package/http2">http2</a> hackage.</p>
-	<h3>Packet Snooping</h3>
+	<div class="flex anchor relative">
+		<h3 id="packet-snooping">Packet Snooping</h3>
+		<a href="https://blog.cloudflare.com/#packet-snooping" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The popular Wireshark packet analyzer added decoding on HTTP/2 in version <a href="https://www.wireshark.org/docs/relnotes/wireshark-1.12.0.html#_new_protocol_support">1.12.0</a> and fully decodes HTTP/2 frames. Unfortunately most HTTP/2 is sent over TLS which means that, by default, Wireshark will not be able to decrypt the packets to be able to get to the HTTP/2 for decoding.</p>
 	<p>Fortunately, there is a workaround if you are using Google Chrome for testing. It is possible to get Chrome to save the symmetric cryptographic key used for TLS connections to a file and Wireshark is able to read that file to decode TLS connections.</p>
 	<p>This is done by setting the <code>SSLKEYLOGFILE</code> environment variable before running Chrome. I'm running on Mac OS X and use Google Chrome Canary for testing so I run:</p>
@@ -225,7 +269,14 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3g7dIhFoqbTfoj24iX4Yu/882407188b150041eec291c98ad7cf00/Screen-Shot-2015-12-03-at-15-51-04.png" alt="" class="kg-image" width="2956" height="1814" loading="lazy">
 
 	</figure>
-	<h3>Chrome Developer View</h3>
+	<div class="flex anchor relative">
+		<h3 id="chrome-developer-view">Chrome Developer View</h3>
+		<a href="https://blog.cloudflare.com/#chrome-developer-view" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, if you are looking at the performance of your own web site it can be handy to understand which parts of the page were downloaded using HTTP/2 and which were not. You can do that pretty easily using the Developer view in Google Chrome. Here's a shot of the CloudFlare blog loaded in Chrome. There's an additional Protocol fields available on the pop-up menu.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -238,7 +289,14 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4yftvuhcm97tnJvQJou28Z/b3db3e86521d78ebc9fa60920ce6daa9/Screen-Shot-2015-12-04-at-10-46-29.png" alt="" class="kg-image" width="2681" height="1512" loading="lazy">
 
 	</figure>
-	<h3>Learning about HTTP/2</h3>
+	<div class="flex anchor relative">
+		<h3 id="learning-about-http-2">Learning about HTTP/2</h3>
+		<a href="https://blog.cloudflare.com/#learning-about-http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Short <a href="https://www.cloudflare.com/http2/what-is-http2">introduction to HTTP/2</a> from CloudFlare.</p>

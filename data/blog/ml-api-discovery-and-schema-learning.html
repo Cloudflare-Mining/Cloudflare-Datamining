@@ -11,7 +11,14 @@
 	<p>The first step in <a href="https://www.cloudflare.com/application-services/solutions/api-security">securing your APIs</a> is knowing your API hostnames and endpoints. We often hear that customers are forced to start their API cataloging and management efforts with something along the lines of “<i>we email around a spreadsheet and ask developers to list all their endpoints</i>”.</p>
 	<p>Can you imagine the problems with this approach? Maybe you have seen them first hand. The “email and ask” approach creates a point-in-time inventory that is likely to change with the next code release. It relies on tribal knowledge that may disappear with people leaving the organization. Last but not least, it is susceptible to human error.</p>
 	<p>Even if you had an accurate API inventory collected by group effort, validating that API was being used as intended by enforcing an API schema would require even more collective knowledge to build that schema. Now, API Gateway’s new API Discovery and Schema Learning features combine to <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">automatically protect APIs</a> across the Cloudflare global network and remove the need for manual <a href="https://www.cloudflare.com/learning/learning/security/api/what-is-api-discovery">API discovery</a> and schema building.</p>
-	<h2>API Gateway discovers and protects APIs</h2>
+	<div class="flex anchor relative">
+		<h2 id="api-gateway-discovers-and-protects-apis">API Gateway discovers and protects APIs</h2>
+		<a href="https://blog.cloudflare.com/#api-gateway-discovers-and-protects-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>API Gateway discovers <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> through a feature called API Discovery. Previously, API Discovery used customer-specific session identifiers (HTTP headers or cookies) to identify API endpoints and display their analytics to our customers.</p>
 	<p>Doing discovery in this way worked, but it presented three drawbacks:</p>
 	<ol>
@@ -28,7 +35,14 @@
 	<p>While this approach had drawbacks, we knew we could quickly deliver value to customers by starting with a session-based product. As we gained customers and passed more traffic through the system, we knew our new labeled data would be extremely useful to further build out our product. If we could train a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning model</a> with our existing API metadata and the new labeled data, we would no longer need a session identifier to pinpoint which endpoints were for APIs. So we decided to build this new approach.</p>
 	<p>We took what we learned from the session identifier-based data and built a machine learning model to uncover all API traffic to a domain, regardless of session identifier. With our new Machine Learning-based API Discovery, Cloudflare continually discovers all API traffic routed through our network without any prerequisite customer input. With this release, API Gateway customers will be able to get started with API Discovery faster than ever, and they’ll uncover unauthenticated APIs that they could not discover before.</p>
 	<p>Session identifiers are still important to API Gateway, as they form the basis of our volumetric abuse prevention <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">rate limits</a> as well as our <a href="https://blog.cloudflare.com/api-sequence-analytics">Sequence Analytics</a>. See more about how the new approach performs in the “How it works” section below.</p>
-	<h3>API Protection starting from nothing</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-protection-starting-from-nothing">API Protection starting from nothing</h3>
+		<a href="https://blog.cloudflare.com/#api-protection-starting-from-nothing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you’ve found new APIs using API Discovery, how do you protect them? To defend against attacks, API developers must know exactly how they expect their APIs to be used. Luckily, developers can programmatically generate an API schema file which codifies acceptable input to an API and upload that into API Gateway’s <a href="https://developers.cloudflare.com/api-shield/security/schema-validation">Schema Validation</a>.</p>
 	<p>However, we already talked about how many customers can't find their APIs as fast as their developers build them. When they do find APIs, it’s very difficult to accurately build a unique OpenAPI schema for each of potentially hundreds of API endpoints, given that security teams seldom see more than the HTTP request method and path in their logs.</p>
 	<p>When we looked at API Gateway’s usage patterns, we saw that customers would discover APIs but almost never enforce a schema. When we ask them ‘why not?’ the answer was simple: “<i>Even when I know an API exists, it takes so much time to track down who owns each API so that they can provide a schema. I have trouble prioritizing those tasks higher than other must-do security items.</i>” The lack of time and expertise was the biggest gap in our customers enabling protections.</p>
@@ -38,8 +52,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VpHCVozyIsmpo7qSr6mTq/8824caea1c01b2a0a7b52a3d124d8cb2/Schema-Learning-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
 
 	</figure>
-	<h2>How it works</h2>
-	<h3>Machine learning-based API discovery</h3>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">How it works</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="machine-learning-based-api-discovery">Machine learning-based API discovery</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning-based-api-discovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With RESTful APIs, requests are made up of different HTTP methods and paths. Take for example the <a href="https://developers.cloudflare.com/api">Cloudflare API</a>. You’ll notice a common trend with the paths that might make requests to this API stand out amongst requests to this blog: API requests all start with /client/v4 and continue with the service name, a unique identifier, and sometimes service feature names and further identifiers.</p>
 	<p>How could we easily identify API requests? At first glance, these requests seem easy to programmatically discover with a heuristic like “path starts with /client”, but the core of our new Discovery contains a machine-learned model that powers a classifier that scores HTTP transactions. If API paths are so structured, why does one need machine-learning for this and can’t one just use some simple heuristic?</p>
 	<p>The answer boils down to the question: what actually constitutes an API request and how does it differ from a non-API request? Let’s look at two examples.</p>
@@ -58,7 +87,14 @@
 	<p>With the classification results in our data pipeline, we can use the same <a href="https://blog.cloudflare.com/api-abuse-detection">API Discovery mechanism</a> that we’ve been using for the session identifier-based discovery. This existing system works great and allows us to reuse code efficiently. It also aided us when comparing our results with the session identifier-based Discovery, as the systems are directly comparable.</p>
 	<p>For API Discovery results to be useful, Discovery’s first task is to simplify the unique paths we see into variables. We’ve <a href="https://blog.cloudflare.com/api-abuse-detection">talked about</a> this before. It is not trivial to deduce the various different identifier schemes that we see across the global network, especially when sites use custom identifiers beyond a straightforward GUID or integer format. API Discovery aptly normalizes paths containing variables with the help of a few different variable classifiers and supervised learning.</p>
 	<p>Only after normalizing paths are the Discovery results ready for our users to use in a straightforward fashion.</p>
-	<h3>The results: hundreds of found endpoints per customer</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-results-hundreds-of-found-endpoints-per-customer">The results: hundreds of found endpoints per customer</h3>
+		<a href="https://blog.cloudflare.com/#the-results-hundreds-of-found-endpoints-per-customer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, how does ML Discovery compare to the session identifier-based Discovery which relies on headers or cookies to tag API traffic?</p>
 	<p>Our expectation is that it detects a very similar set of endpoints. However, in our data we knew there would be two gaps. First, we sometimes see that customers are not able to cleanly dissect only API traffic using session identifiers. When this happens, Discovery surfaces non-API traffic. Second, since we required session identifiers in the first version of API Discovery, endpoints that are not part of a session (e.g. login endpoints or unauthenticated endpoints) were conceptually not discoverable.</p>
 	<p>The following graph shows a histogram of the number of endpoints detected on customer domains for both discovery variants.</p>
@@ -75,7 +111,14 @@
 	</figure>
 	<p>For ~15% of the domains, we see an increase in endpoints between 1 and 50, and for ~9%, we see a similar reduction. For ~28% of the domains, we find more than 50 additional endpoints.</p>
 	<p>These results highlight that ML Discovery is able to surface additional endpoints that have previously been flying under the radar, and thus expands the set tools API Gateway offers to help bring order to your API landscape.</p>
-	<h3>On-the-fly API protection through API schema learning</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-the-fly-api-protection-through-api-schema-learning">On-the-fly API protection through API schema learning</h3>
+		<a href="https://blog.cloudflare.com/#on-the-fly-api-protection-through-api-schema-learning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With API Discovery taken care of, how can a practitioner protect the newly discovered endpoints? We already looked at the API request metadata, so now let’s look at the API request body. The compilation of all expected formats for all API endpoints of an API is known as an API schema. API Gateway’s Schema Validation is a great way to protect against <a href="https://github.com/OWASP/API-Security">OWASP Top 10 API attacks</a>, ensuring the body, path, and query string of a request contains the expected information for that API endpoint in an expected format. But what if you don’t know the expected format?</p>
 	<p>Even if the schema of a specific API is not known to a customer, the clients using this API will have been programmed to mostly send requests that conform to this unknown schema (or they would not be able to successfully query the endpoint). Schema Learning makes use of this fact and will look at successful requests to this API to reconstruct the input schema automatically for the customer. As an example, an API might expect the user-ID parameter in a request to have the form <i>id12345-a</i>. Even if this expectation is not explicitly stated, clients that want to have a successful interaction with the API will send user-IDs in this format.</p>
 	<p>Schema Learning first identifies all recent successful requests to an API-endpoint, and then parses the different input parameters for each request according to their position and type. After parsing all requests, Schema Learning looks at the different input values for each position and identifies which characteristics they have in common. After verifying that all observed requests share these commonalities, Schema Learning creates an input schema that restricts input to comply with these commonalities and that can directly be used for Schema Validation.</p>
@@ -101,10 +144,24 @@
 	</figure>
 	<p>For the query, we do see a lot more parameters, sometimes reaching 50 different parameters for one endpoint!</p>
 	<p>Parameter learning is able to estimate numeric constraints with 99.9% confidence for the majority of parameters observed. These constraints can either be a maximum/minimum on the value, length, or size of the parameter, or a limited set of unique values that a parameter has to take.</p>
-	<h2>Protect your APIs in minutes</h2>
+	<div class="flex anchor relative">
+		<h2 id="protect-your-apis-in-minutes">Protect your APIs in minutes</h2>
+		<a href="https://blog.cloudflare.com/#protect-your-apis-in-minutes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, all API Gateway customers can now discover and protect APIs in just a few clicks, even if you're starting with no previous information. In the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">Cloudflare dash</a>, click into API Gateway and on to the <a href="https://developers.cloudflare.com/api-shield/security/api-discovery">Discovery</a> tab to observe your discovered endpoints. These endpoints will be immediately available with no action required from you. Then, add relevant endpoints from Discovery into <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring">Endpoint Management</a>. Schema Learning runs automatically for all endpoints added to Endpoint Management. After 24 hours, export your learned schema and upload it into <a href="https://developers.cloudflare.com/api-shield/security/schema-validation">Schema Validation</a>.</p>
 	<p>Enterprise customers that haven’t purchased API Gateway can get started by <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">enabling the API Gateway trial</a> inside the Cloudflare Dashboard or contacting their account manager.</p>
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We plan to enhance Schema Learning by supporting more learned parameters in more formats, like POST body parameters with both JSON and URL-encoded formats as well as header and cookie schemas. In the future, Schema Learning will also notify customers when it detects changes in the identified API schema and present a refreshed schema.</p>
 	<p>We’d like to hear your feedback on these new features. Please direct your feedback to your account team so that we can prioritize the right areas of improvement. We look forward to hearing from you!</p>
 </div>

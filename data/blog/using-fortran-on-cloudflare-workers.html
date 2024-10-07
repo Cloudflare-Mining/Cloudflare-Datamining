@@ -10,14 +10,28 @@
 	<p>Recently, work on LLVM has enabled Fortran to compile to WebAssembly. So, today, we’re writing about running Fortran code on Cloudflare Workers.</p>
 	<p>Before we dive into how to do this, here’s a little demonstration of number recognition in Fortran. Draw a number from 0 to 9 and Fortran code running somewhere on Cloudflare’s network will predict the number you drew.</p><!--kg-card-begin: html--><iframe src="https://handwritten-digit-classifier.fortran.demos.cloudflare.com/" style="height: 300px"></iframe><!--kg-card-end: html-->
 	<p>This is taken from the wonderful <a href="https://gws.phd/posts/fortran_wasm">Fortran on WebAssembly</a> post but instead of running client-side, the Fortran code is running on Cloudflare Workers. Read on to find out how you can use Fortran on Cloudflare Workers and how that demonstration works.</p>
-	<h3>Wait, Fortran? No one uses that!</h3>
+	<div class="flex anchor relative">
+		<h3 id="wait-fortran-no-one-uses-that">Wait, Fortran? No one uses that!</h3>
+		<a href="https://blog.cloudflare.com/#wait-fortran-no-one-uses-that" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not so fast! Or rather, actually pretty darn fast if you’re doing a lot of numerical programming or have scientific data to work with. Fortran <a href="https://en.wikipedia.org/wiki/Fortran#Naming">(originally FORmula TRANslator)</a> is very well suited for scientific workloads because of its native functionality for things like arithmetic and handling large arrays and matrices.</p>
 	<p>If you look at the <a href="https://en.wikipedia.org/wiki/TOP500">ranking</a> of the fastest supercomputers in the world you’ll discover that the measurement of “fast” is based on these supercomputers running a piece of software called <a href="https://en.wikipedia.org/wiki/LINPACK">LINPACK</a> that was originally written in Fortran. LINPACK is designed to help with problems solvable using linear algebra.</p>
 	<p>The <a href="https://en.wikipedia.org/wiki/LINPACK_benchmarks">LINPACK benchmarks</a> use LINPACK to solve an n x n system of linear equations using matrix operations and, in doing so, determine how fast supercomputers are. The code is available in <a href="https://www.netlib.org/benchmark/linpackd">Fortran</a>, <a href="https://www.netlib.org/benchmark/linpackc">C</a> and <a href="https://www.netlib.org/benchmark/linpackjava">Java</a>.</p>
 	<p>A related Fortran package, <a href="https://www.netlib.org/blas">BLAS</a>, also does linear algebra and forms the basis of the number identifying code above. But other Fortran packages are still relevant. Back in 2017, NASA ran a <a href="https://www.bbc.com/news/technology-39803425">competition</a> to make FUN3D (used to perform calculations of airflow over simulated aircraft). <a href="https://fun3d.larc.nasa.gov">FUN3D</a> is written in Fortran.</p>
 	<p>So, although Fortran (or at the time FORTRAN) first came to life in 1957, it’s alive and well and being used widely for scientific applications (there’s even <a href="https://developer.nvidia.com/cuda-fortran">Fortran for CUDA</a>). One particular application left Earth 20 years after Fortran was born: Voyager. The Voyager probes use a combination of <a href="https://www.popularmechanics.com/space/a17991/voyager-1-voyager-2-retiring-engineer">assembly language and Fortran</a> to keep chugging along.</p>
 	<p>But back in our solar system, and back on Region: Earth, you can now use Fortran on Cloudflare Workers. Here’s how.</p>
-	<h3>How to get your Fortran code running on Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-your-fortran-code-running-on-cloudflare-workers">How to get your Fortran code running on Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-your-fortran-code-running-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To make it easy to run your Fortran code on Cloudflare Workers, we created a tool called <a href="https://github.com/cloudflare/fortiche">Fortiche</a> (translates to smart in French). It uses <a href="https://flang.llvm.org/docs">Flang</a> and <a href="https://emscripten.org">Emscripten</a> under the hood.</p>
 	<p><a href="https://flang.llvm.org/docs">Flang</a> is a frontend in <a href="https://en.wikipedia.org/wiki/LLVM">LLVM</a> and, if you read the <a href="https://gws.phd/posts/fortran_wasm">Fortran on WebAssembly</a> blog post, we currently have to patch <a href="https://en.wikipedia.org/wiki/LLVM">LLVM</a> to work around a few issues.</p>
 	<p><a href="https://emscripten.org">Emscripten</a> is used to compile <a href="https://en.wikipedia.org/wiki/LLVM">LLVM</a> output and produce code that is compatible with Cloudflare Workers.</p>
@@ -77,7 +91,15 @@ export default {
 
 {"res":444}</code></pre>
 	<p>You can find the <a href="https://github.com/cloudflare/fortiche/tree/main/examples/add">full example here</a>.</p>
-	<h3>Handwritten digit classifier</h3>
+	<div class="flex anchor relative">
+		<h3 id="handwritten-digit-classifier">Handwritten digit classifier</h3>
+		<a href="https://blog.cloudflare.com/#handwritten-digit-classifier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PKFBCv6bCWa20pqrFTEnV/293926391b26c4d4f97719802fb7808f/image1-2.png" alt="" class="kg-image" width="1688" height="858" loading="lazy">

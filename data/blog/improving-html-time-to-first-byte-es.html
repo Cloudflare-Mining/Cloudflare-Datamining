@@ -24,7 +24,14 @@
 	<p>Unos tres segundos para que el servidor responda.</p>
 	<p>La lentitud de respuesta de origen puede estar causada por problemas muy diversos, desde la configuración del servidor, la carga del sistema, las bases de datos del back-end y los sistemas con los que se comunica, hasta el propio código de la aplicación. Llegar a la raíz de los problemas de rendimiento generalmente implica equipos de ingenieros <a href="https://en.wikipedia.org/wiki/DevOps">desarrolladores de operaciones</a> que trabajen con herramientas de <a href="https://en.wikipedia.org/wiki/Application_performance_management">Gestión de rendimiento de aplicaciones</a> para rastrear las partes más lentas de la aplicación y mejorarlas.</p>
 	<p>Buena parte de los propietarios de sitios con quienes he trabajado no tienen recursos o conocimientos para realizar ese tipo de investigación. En la mayoría de los casos, habían contratado de manera puntual a un desarrollador para que creara su sitio o lo habían hecho ellos mismos en WordPress y lo alojaban con el hosting más económico que habían encontrado. El hosting generalmente está diseñado para ejecutar tantos sitios como sea posible, no necesariamente con el máximo rendimiento.</p>
-	<h3><b>Almacenamiento perimetral de HTML</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="almacenamiento-perimetral-de-html">Almacenamiento perimetral de HTML</h3>
+		<a href="https://blog.cloudflare.com/#almacenamiento-perimetral-de-html" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>En realidad, la mayoría del HTML no es especialmente dinámica. Tiene que poder cambiar relativamente rápido cuando se actualiza el sitio, pero en gran parte de la web el contenido es estático durante meses o años.</p>
 	<p>Existen casos especiales, como cuando un usuario inicia sesión (como administrador u otro) donde el contenido difiere, pero la gran mayoría de visitas son de usuarios anónimos. Si el HTML puede almacenarse en caché y servirse directamente desde el perímetro, entonces la mejora del rendimiento puede ser considerable (unos 3 segundos más rápido en todas las métricas en este caso).</p>
 	<figure class="kg-card kg-image-card ">
@@ -35,7 +42,14 @@
 	<p>Un tiempo de respuesta de servidor mucho más rápido.</p>
 	<p>Hay docenas de plugins para WordPress para el almacenamiento en caché de contenido en el origen, pero requieren configuración (dónde almacenar las páginas) y el rendimiento depende todavía en gran medida del rendimiento del hosting. Si se aparta contenido para su almacenamiento perimetral se reduce la complejidad, se elimina el tiempo adicional para volver al origen y se suprime por completo el rendimiento del hosting de la ecuación. También puede reducirse significativamente la carga sobre los sistemas de alojamiento al descargar todo el tráfico anónimo.</p>
 	<p>Cloudflare es compatible con el <a href="https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce">almacenamiento caché estático de HTML</a>, y los clientes comerciales y empresariales pueden posibilitar que los usuarios con sesión iniciada se salten la caché habilitando "evitar almacenamiento de cookies". Esto funciona en tándem con el <a href="https://wordpress.org/plugins/cloudflare">plugin de Cloudflare para WordPress</a>, así que la caché se puede borrar cuando se actualiza el contenido. Hay también otros plugins de almacenamiento que se integran con varias redes de distribución de contenidos, pero en todos los casos tienen que configurarse con claves de API para la red de distribución de contenidos y las implementaciones son específicas para cada una de ellas.</p>
-	<h3><b>Almacenamiento perimetral de HTML con cero configuración</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="almacenamiento-perimetral-de-html-con-cero-configuracion">Almacenamiento perimetral de HTML con cero configuración</h3>
+		<a href="https://blog.cloudflare.com/#almacenamiento-perimetral-de-html-con-cero-configuracion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Para que se adopte ampliamente, tenemos que hacer que el almacenamiento de HTML en caché se produzca automáticamente (o lo más parecido a automáticamente como sea posible). Con ese fin, necesitamos una vía de comunicación entre un origen (como un sitio de WordPress) y un almacenamiento perimetral (como nodos perimetrales de Cloudflare) para gestionar una caché remota que pueda purgarse explícitamente.</p>
 	<p>El origen debe poder:</p>
 	<ul>
@@ -85,10 +99,24 @@
 
 	</figure>
 	<p>Con este sencillo comando basado en el encabezado y esta interfaz de control, podemos eliminar la necesidad de que un origen se comunique con una API y de cualquier configuración explícita. También hace que la lógica del origen sea significativamente más fácil de implementar, ya que no hay ninguna configuración (o interfaz de usuario) y no hay necesidad de realizar solicitudes salientes a una API específica de un proveedor. El <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php">ejemplo del plugin de WordPress</a>es menos de 50 líneas de código que en su gran mayoría conecta retrollamadas de todos los eventos que cambian contenidos.</p>
-	<h3><b>Empezar a almacenar hoy con WordPress y Workers</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="empezar-a-almacenar-hoy-con-wordpress-y-workers">Empezar a almacenar hoy con WordPress y Workers</h3>
+		<a href="https://blog.cloudflare.com/#empezar-a-almacenar-hoy-con-wordpress-y-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Una de las cosas que más me gustan de Workers es que te da un perímetro totalmente programable para experimentar con ideas e implementar tu propia lógica. He creado un <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html">script de Worker</a> que implementa el protocolo basado en el encabezado y el almacenamiento perimetral de Cloudflare y un <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html/WordPress%20Plugin">plugin para WordPress</a> que implementa la lógica del origen de WordPress.</p>
 	<p>La única parte delicada de Worker era encontrar una manera de purgar elementos de la caché globalmente. Las cachés de Worker son locales en cada perímetro y no proporcionan una interfaz para hacer operaciones globales. Una de las formas de hacerlo es utilizar la API de Cloudflare para purgar la caché global, pero es un poco fuerte (purga todo de la caché, incluidas secuencias de comandos e imágenes) y requiere cierta configuración. Si sabes qué URL específicas se cambiarán al cambiar un contenido, hacer una purga dirigida en la API solo de esas URL sería probablemente la mejor solución.</p>
 	<p>Utilizando el nuevo <a href="https://developers.cloudflare.com/workers/kv">Almacén KV de Workers</a> podemos purgar la caché de una manera diferente. El script de Worker utiliza un esquema de versionado de la caché donde cada URL obtiene un número de versión que se añade a él (es decir, <a href="http://www.example.com/?cf_edge_cache_ver=32">http://www.example.com/?cf_edge_cache_ver=32</a>). La URL modificada solo se usa localmente por parte del Worker como una clave para las respuestas almacenadas en caché y el número actual de la versión se guarda en KV, que es un almacén global. Cuando se purga la caché, el número de versión se incrementa, lo que cambia la URL de todos los recursos. Las entradas más antiguas irán quedando fuera de la caché con normalidad, ya que no se accederá a ellas. Requiere un pequeño ajuste configurar KV para Worker, pero esperemos que en algún momento futuro pueda ser automático.</p>
-	<h3><b>¿Y luego?</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="y-luego">¿Y luego?</h3>
+		<a href="https://blog.cloudflare.com/#y-luego" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Creo que tiene un gran valor para la web la estandarización de una forma de que el almacenamiento perimetral y el origen se comuniquen para almacenar en caché contenido dinámico. Incentivaría que los sistemas de gestión de contenidos creen apoyo directamente en las plataformas y proporcionen una interfaz estándar que podría usarse con diferentes proveedores (e incluso para almacenamiento perimetral local en equilibradores de carga u otros servidores de proxy inverso). Después de hacer algunas pruebas más con diferentes tipos de sitios, estoy pensando en traer el concepto al <a href="https://httpwg.org">Grupo de trabajo de HTTP del IETF</a> para ver si podemos crear una norma oficial para las cabeceras de control (usando nombres diferentes). Si tienes comentarios sobre cómo debería funcionar o qué características habría que exponer, me encantaría que me lo contaras (como purgar URL específicas, variar contenidos para móvil/ordenador o por región, expandirlo para cubrir todos los tipos de contenido, etc.).</p>
 </div>

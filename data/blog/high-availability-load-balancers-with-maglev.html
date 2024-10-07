@@ -5,10 +5,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uvj1OyKQ5tysl2y1PW7S2/fd5da221b283f3690c7726432ed7a7fd/image1-4.png" alt="" class="kg-image" width="1200" height="688" loading="lazy">
 
 	</figure>
-	<h2>Background</h2>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We run many backend services that power our customer dashboard, APIs, and features available at our edge. We own and operate physical infrastructure for our backend services. We need an effective way to route arbitrary TCP and UDP traffic between services and also from outside these data centers.</p>
 	<p>Previously, all traffic for these backend services would pass through several layers of stateful TCP proxies and NATs before reaching an available instance. This solution worked for several years, but as we grew it caused our service and operations teams many issues. Our service teams needed to deal with drops of availability, and our operations teams had much toil when needing to do maintenance on load balancer servers.</p>
-	<h2>Goals</h2>
+	<div class="flex anchor relative">
+		<h2 id="goals">Goals</h2>
+		<a href="https://blog.cloudflare.com/#goals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the experience with our stateful TCP proxy and NAT solutions in mind, we had several goals for a replacement load balancing service, while remaining on our own infrastructure:</p>
 	<ol>
 		<li>
@@ -30,8 +44,24 @@
 			<p>Allow for staged rollout from the previous load balancer implementation. We should be able to migrate the traffic of specific services between the two implementations to find issues and gain confidence in the system.</p>
 		</li>
 	</ol>
-	<h2>Reaching Zero Downtime</h2>
-	<h3>Problems</h3>
+	<div class="flex anchor relative">
+		<h2 id="reaching-zero-downtime">Reaching Zero Downtime</h2>
+		<a href="https://blog.cloudflare.com/#reaching-zero-downtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="problems">Problems</h3>
+		<a href="https://blog.cloudflare.com/#problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CMbFBlBDHc4rzZ458SE03/e7f775064cb52098dd6ef904938cce83/image6-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
@@ -39,7 +69,15 @@
 	</figure>
 	<p>Previously, when traffic arrived at our backend data centers, our routers would pick and forward packets to one of the L4 load balancers servers it knew about. &nbsp;These L4 load balancers would determine what service the traffic was for, then forward the traffic to one of the service's L7 servers.</p>
 	<p>This architecture worked fine during normal operations. However, issues would quickly surface whenever the set of load balancers changed. Our routers would forward traffic to the new set and it was very likely traffic would arrive to a different load balancer than before. As each load balancer maintained its own connection state, it would be unable to forward &nbsp;traffic for these new in-progress connections. These connections would then be reset, potentially causing errors for our customers.</p>
-	<h3>Consistent Hashing</h3>
+	<div class="flex anchor relative">
+		<h3 id="consistent-hashing">Consistent Hashing</h3>
+		<a href="https://blog.cloudflare.com/#consistent-hashing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sQ0ZsemGl1ZjnxB8SaBZ2/86bed762c7491b31fb2ed431ea66ab5e/image5-1.png" alt="" class="kg-image" width="1200" height="723" loading="lazy">
@@ -47,18 +85,47 @@
 	</figure>
 	<p>During normal operations, our new architecture has similar behavior to the previous design. A L4 load balancer would be selected by our routers, which would then forward traffic to a service's L7 server.</p>
 	<p>There's a significant change when the set of load balancers changes. As our load balancers are now stateless, it doesn't matter which load balancer our router selects to forward traffic to, they'll end up reaching the same backend server.</p>
-	<h2>Implementation</h2>
-	<h3>BGP</h3>
+	<div class="flex anchor relative">
+		<h2 id="implementation">Implementation</h2>
+		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="bgp">BGP</h3>
+		<a href="https://blog.cloudflare.com/#bgp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our load balancer servers announce service IP addresses to our data centers’ routers using BGP, unchanged from the previous solution. Our routers choose which load balancers will receive packets based on a routing strategy called equal-cost multi-path routing (ECMP).</p>
 	<p>ECMP hashes information from packets to pick a path for that packet. The hash function used by routers is often fixed in firmware. Routers that chose a poor hashing function, or chose bad inputs, can create unbalanced network and server load, or break assumptions made by the protocol layer.</p>
 	<p>We worked with our networking team to ensure ECMP is configured on our routers to hash only based on the packet's 5-tuple—the protocol, source address and port, and destination address and port.</p>
 	<p>For maintenance, our operators can withdraw the BGP session and traffic will transparently shift to other load balancers. However, if a load balancer suddenly becomes unavailable, such as with a kernel panic or power failure, there is a short delay before the BGP keepalive mechanism fails and routers terminate the session.</p>
 	<p>It's possible for routers to terminate BGP sessions after a much shorter delay using the Bidirectional Forwarding Detection (BFD) protocol between the router and load balancers. Different routers have different limitations and restrictions on BFD that makes it difficult to use in an environment heavily using L2 link aggregation and VXLANs.</p>
 	<p>We're continuing to work with our networking team to find solutions to reduce the time to terminate BGP sessions, using tools and configurations they're most comfortable with.</p>
-	<h3>Selecting Backends with Maglev</h3>
+	<div class="flex anchor relative">
+		<h3 id="selecting-backends-with-maglev">Selecting Backends with Maglev</h3>
+		<a href="https://blog.cloudflare.com/#selecting-backends-with-maglev" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To ensure all load balancers are sending traffic to the same backends, we decided to use the <a href="https://research.google/pubs/pub44824">Maglev connection scheduler</a>. Maglev is a consistent hash scheduler hashing a 5-tuple of information from each packet—the protocol, source address and port, and destination address and port—to determine a backend server.</p>
 	<p>By being a consistent hash, the same backend server is chosen by every load balancer for a packet without needing to persist any connection state. This allows us to transparently move traffic between load balancers without requiring explicit connection synchronization between them.</p>
-	<h3>IPVS and Foo-Over-UDP</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipvs-and-foo-over-udp">IPVS and Foo-Over-UDP</h3>
+		<a href="https://blog.cloudflare.com/#ipvs-and-foo-over-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Where possible, we wanted to use commonplace and reliable Linux features. Linux has implemented a powerful layer 4 load balancer, the IP Virtual Server (IPVS), since the early 2000s. IPVS has supported the Maglev scheduler <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=039f32e8cdea29b4d0680df7a83817b5ec4166e1">since Linux 4.18</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -110,10 +177,24 @@ $ sysctl -w net.ipv4.conf.tunl0.rp_filter=0
 $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 	<p>IPVS does not support Foo-Over-UDP as a packet forwarding method. To work around this limitation, we've created virtual interfaces that implement Foo-Over-UDP encapsulation. We can then use IPVS's direct packet forwarding method along with the kernel routing table to choose a specific interface.</p>
 	<p>Linux is often configured to ignore packets that arrive on an interface that is different from the interface used for replies. As packets will now be arriving on the virtual "tunl0" interface, we need to disable reverse path filtering on this interface. The kernel uses the higher value of the named and "all" interfaces, so you may need to decrease "all" and adjust other interfaces.</p>
-	<h3>MTUs and Encapsulation</h3>
+	<div class="flex anchor relative">
+		<h3 id="mtus-and-encapsulation">MTUs and Encapsulation</h3>
+		<a href="https://blog.cloudflare.com/#mtus-and-encapsulation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The maximum IPv4 packet size, or maximum transmission unit (MTU), we accept from the internet is 1500 bytes. To ensure we did not fragment these packets during encapsulation we increased our internal MTUs from the default to accommodate the IP and UDP headers.</p>
 	<p>The team had underestimated the complexity of changing the MTU across all our racks of equipment. We had to adjust the MTU across all our routers and switches, of our bonded and VXLAN interfaces, and finally our Foo-Over-UDP encapsulation. Even with a carefully orchestrated rollout, and we still uncovered MTU-related bugs with our switches and server stack, many of which manifested first as issues on other parts of the network.</p>
-	<h3>Node Agent</h3>
+	<div class="flex anchor relative">
+		<h3 id="node-agent">Node Agent</h3>
+		<a href="https://blog.cloudflare.com/#node-agent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've written a Go agent running on each load balancer that synchronizes with a control plane layer that's tracking the location of services. The agent then configures the system based on active services and available backend servers.</p>
 	<p>To configure IPVS and the routing table we're using packages built upon the <a href="https://github.com/mdlayher/netlink">netlink</a> Go package. We're <a href="https://github.com/cloudflare/ipvs">open sourcing</a> the IPVS netlink package we built today, which supports querying, creating and updating IPVS virtual servers, destinations, and statistics.</p>
 	<p>Unfortunately, there is no official programming interface for iptables, so we must instead execute the iptables binary. The agent computes an ideal set of iptables chains and rules, which is then reconciled with the live rules.</p>
@@ -128,10 +209,24 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 -A LEIFUR-GQ4OKHRLCJYOWIN9 -s 172.16.0.0/12 -m comment --comment \
 "leif:0XxZ2OwlQWzIYFTD" -j ACCEPT</code></pre>
 	<p>The iptables output of a rule may differ significantly from the input given by our ideal rule. To avoid needing to parse the entire iptables rule in our comparisons, we store a hash of the rule, including the position in the chain, as an iptables comment. We then can compare the comment to our ideal rule to determine if we need to take any actions. On chains that are shared (such as INPUT) the agent ignores unmanaged rules.</p>
-	<h2>Kubernetes Integration</h2>
+	<div class="flex anchor relative">
+		<h2 id="kubernetes-integration">Kubernetes Integration</h2>
+		<a href="https://blog.cloudflare.com/#kubernetes-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use the network load balancer described here as a <a href="https://www.cloudflare.com/learning/performance/cloud-load-balancing-lbaas">cloud load balancer</a> for Kubernetes. A controller assigns virtual IP addresses to Kubernetes services requesting a load balancer IP. These IPs get configured by the agent in IPVS. Traffic is directed to a subset of cluster nodes for handling by kube-proxy, unless the External Traffic Policy is set to "Local" in which case the traffic is sent to the specific backends the workloads are running on.</p>
 	<p>This allows us to have internal Kubernetes clusters that better replicate the load balancer behavior of managed clusters on cloud providers. Services running Kubernetes, such as ingress controllers, <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateways</a>, and databases, have access to correct client IP addresses of load balanced traffic.</p>
-	<h2>Future Work</h2>
+	<div class="flex anchor relative">
+		<h2 id="future-work">Future Work</h2>
+		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Continuing a close eye on future developments of IPVS and alternatives, including nftlb and Express Data Path (XDP) and eBPF.</p>
@@ -146,7 +241,14 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0</code></pre>
 			<p>Investigate using Lightweight Tunnels to reduce the number of Foo-Over-UDP interfaces are needed on the load balancer nodes.</p>
 		</li>
 	</ul>
-	<h2>Additional Reading</h2>
+	<div class="flex anchor relative">
+		<h2 id="additional-reading">Additional Reading</h2>
+		<a href="https://blog.cloudflare.com/#additional-reading" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://vincent.bernat.im/en/blog/2018-multi-tier-loadbalancer"><i>Multi-tier load-balancing with Linux</i></a>. Vincent Bernat (2018). Describes a network load balancer using IPVS and IPIP.</p>

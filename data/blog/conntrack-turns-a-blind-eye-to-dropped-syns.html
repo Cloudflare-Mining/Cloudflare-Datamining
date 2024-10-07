@@ -1,6 +1,13 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OztDB9XCSExjkMFfbL0i4/38c4b838be7f3fa46a7ade4c6b42c274/conntrack-turns-a-blind-eye-to-dropped-syns.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>Intro</h2>
+	<div class="flex anchor relative">
+		<h2 id="intro">Intro</h2>
+		<a href="https://blog.cloudflare.com/#intro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have been working with conntrack, the connection tracking layer in the Linux kernel, for years. And yet, despite the collected know-how, questions about its inner workings occasionally come up. When they do, it is hard to resist the temptation to go digging for answers.</p>
 	<p>One such question popped up while writing <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows">the previous blog post on conntrack</a>:</p>
 	<blockquote>
@@ -35,7 +42,14 @@ nf_conntrack          163840  1 nf_conntrack_netlink</code></pre>
 	</figure>
 	<p>Based on an <a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg"><i>image</i></a> <i>by</i> <a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh"><i>Jan Engelhardt</i></a> <i>CC BY-SA 3.0</i></p>
 	<p>Clearly everything we learned about conntrack last time is not the whole story.</p>
-	<h2>Calling into conntrack</h2>
+	<div class="flex anchor relative">
+		<h2 id="calling-into-conntrack">Calling into conntrack</h2>
+		<a href="https://blog.cloudflare.com/#calling-into-conntrack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our little experiment with SSH’ing into a VM begs the question — how does conntrack actually get notified about network packets passing through the stack?</p>
 	<p>We can walk <a href="https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data">the receive path step by step</a> and we won’t find any direct calls into the conntrack code in either the IPv4 or IPv6 stack. Conntrack does not interface with the network stack directly.</p>
 	<p>Instead, it relies on the Netfilter framework, and its set of hooks baked into in the stack:</p>
@@ -71,7 +85,14 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<p>Nice! The conntrack table now contains an entry for our SSH session.</p>
 	<p>The Netfilter hook notified conntrack about SSH session packets passing through the stack.</p>
 	<p>Now that we know how conntrack gets called, we can go back to our question — can we observe a TCP SYN packet dropped by the firewall with conntrack?</p>
-	<h2>Listing Netfilter hooks</h2>
+	<div class="flex anchor relative">
+		<h2 id="listing-netfilter-hooks">Listing Netfilter hooks</h2>
+		<a href="https://blog.cloudflare.com/#listing-netfilter-hooks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>That is easy to check:</p>
 	<ol>
 		<li>
@@ -150,7 +171,14 @@ drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 
 	</figure>
 	<p>Based on <a href="https://thermalcircle.de/doku.php?id=blog%3Alinux%3Anftables_packet_flow_netfilter_hooks_detail"><i>Netfilter PRE_ROUTING hook</i></a><i>,</i> <a href="https://thermalcircle.de"><i>thermalcircle.de</i></a><i>,</i> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><i>CC BY-SA 4.0</i></a></p>
-	<h2>Tracing conntrack callbacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="tracing-conntrack-callbacks">Tracing conntrack callbacks</h2>
+		<a href="https://blog.cloudflare.com/#tracing-conntrack-callbacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We expect that when the Netfilter <code>PRE_ROUTING</code> hook processes a TCP SYN packet, it will invoke <code>ipv4_conntrack_defrag</code> and then <code>ipv4_conntrack_in</code> callbacks.</p>
 	<p>To confirm it we will put to use the tracing powers of <a href="https://ebpf.io">BPF ?</a>. BPF programs can run on entry to functions. These kinds of programs are known as BPF kprobes. In our case we will attach BPF kprobes to conntrack callbacks.</p>
 	<p>Usually, when working with BPF, we would write the BPF program in C and use <code>clang -target bpf</code> to compile it. However, for tracing it will be much easier to use <a href="https://bpftrace.org">bpftrace</a>. With bpftrace we can write <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/trace-conntrack-prerouting.bt">our BPF kprobe program</a> in a <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md">high-level language</a> inspired by <a href="https://en.wikipedia.org/wiki/AWK">AWK</a>:</p>
@@ -188,7 +216,14 @@ Tracing conntrack prerouting callbacks... Hit Ctrl-C to quit
 [vagrant@ct-vm ~]$</code></pre>
 	<p>Conntrack callbacks have processed the TCP SYN packet destined to tcp/2570.</p>
 	<p>But if conntrack saw the packet, why is there no corresponding flow entry in the conntrack table?</p>
-	<h2>Going down the rabbit hole</h2>
+	<div class="flex anchor relative">
+		<h2 id="going-down-the-rabbit-hole">Going down the rabbit hole</h2>
+		<a href="https://blog.cloudflare.com/#going-down-the-rabbit-hole" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What actually happens inside the conntrack <code>PRE_ROUTING</code> callbacks?</p>
 	<p>To find out, we can trace the call chain that starts on entry to the conntrack callback. The <code>function_graph</code> tracer built into the <a href="https://lwn.net/Articles/365835">Ftrace</a> framework is perfect for this task.</p>
 	<p>But because all incoming traffic goes through the <code>PRE_ROUTING</code> hook, including our SSH connection, our trace will be polluted with events from SSH traffic. To avoid that, let’s switch from SSH access to a serial console.</p>
@@ -245,7 +280,14 @@ Once connected to the console and logged into the VM, we can record the call cha
        traversing  the  stack, but did not reach the confirmation point
        at the postrouting hook.</code></pre>
 	<p>Perhaps we have been looking for our flow in the wrong table? Does the unconfirmed table have a record for our dropped TCP SYN?</p>
-	<h2>Pulling the rabbit out of the hat</h2>
+	<div class="flex anchor relative">
+		<h2 id="pulling-the-rabbit-out-of-the-hat">Pulling the rabbit out of the hat</h2>
+		<a href="https://blog.cloudflare.com/#pulling-the-rabbit-out-of-the-hat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I have bad news…</p>
 	<pre class="language-ssh"><code class="language-ssh">[vagrant@ct-vm ~]$ sudo conntrack -L unconfirmed
 conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
@@ -282,7 +324,14 @@ Attaching 1 probe...
 	<p>It makes sense. After all we have a <code>DROP</code> rule in the <code>filter/INPUT</code> chain. And that <code>iptables -j DROP</code> rule has a significant side effect. It cleans up an entry in the conntrack <code>unconfirmed</code> table!</p>
 	<p>This explains why we can’t observe the flow in the <code>unconfirmed</code> table. It lives for only a very short period of time.</p>
 	<p>Not convinced? You don’t have to take my word for it. I will prove it with a dirty trick!</p>
-	<h2>Making the rabbit disappear, or actually appear</h2>
+	<div class="flex anchor relative">
+		<h2 id="making-the-rabbit-disappear-or-actually-appear">Making the rabbit disappear, or actually appear</h2>
+		<a href="https://blog.cloudflare.com/#making-the-rabbit-disappear-or-actually-appear" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you recall the output from <code>list-nf-hooks</code> that we’ve seen earlier, there is another conntrack callback there - <code>ipv4_confirm</code>, which I have ignored:</p>
 	<pre class="language-ssh"><code class="language-ssh">[vagrant@ct-vm ~]$ sudo /vagrant/tools/list-nf-hooks
 …
@@ -331,7 +380,14 @@ tcp      6 115 SYN_SENT src=192.168.122.1 dst=192.168.122.204 sport=54868 dport=
 conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</code></pre>
 	<p>We have fooled conntrack ?</p>
 	<p>Conntrack promoted the flow from the <code>unconfirmed</code> to the main <code>conntrack</code> table despite the fact that the firewall dropped the packet. We can observe it.</p>
-	<h2>Outro</h2>
+	<div class="flex anchor relative">
+		<h2 id="outro">Outro</h2>
+		<a href="https://blog.cloudflare.com/#outro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Conntrack processes every received packet<sup>4</sup> and creates a flow for it. A flow entry is always created even if the packet is dropped shortly after. The flow might never be promoted to the main conntrack table and can be short lived.</p>
 	<p>However, this blog post is not really about conntrack. Its internals have been covered by <a href="https://www.usenix.org/publications/login/june-2006-volume-31-number-3/netfilters-connection-tracking-system">magazines</a>, <a href="https://www.semanticscholar.org/paper/Netfilter-Connection-Tracking-and-NAT-Boye/3f3c09dbc2a13c4840bb4a148753bb528493b607">papers</a>, <a href="https://books.google.pl/books?id=RpsQAwAAQBAJ&amp;lpg=PP1&amp;pg=PA253#v=onepage&amp;q&amp;f=false">books</a>, and on other blogs long before. We probably could have learned elsewhere all that has been shown here.</p>
 	<p>For us, conntrack was really just an excuse to demonstrate various ways to discover the inner workings of the Linux network stack. As good as any other.</p>

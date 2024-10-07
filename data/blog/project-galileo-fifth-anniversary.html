@@ -14,23 +14,58 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wu9fDfa8jwPTPJaE0EcCQ/9bf39760d5f29dcdeac335abc492edac/image3-1.png" alt="" class="kg-image" width="1999" height="1429" loading="lazy">
 
 	</figure>
-	<h3>The Project Galileo Backstory</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-project-galileo-backstory">The Project Galileo Backstory</h3>
+		<a href="https://blog.cloudflare.com/#the-project-galileo-backstory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Five years ago, Project Galileo was born out of a mistake we made. At the time, Cloudflare's free service didn't include DDoS mitigation. If a free customer came under attack, our operations team would generally stop proxying their traffic. We did this to protect our own network, which was much smaller than it is today.</p>
 	<p>Usually this wasn't a problem. Most sites that got attacked at the time were companies or businesses that could pay for our services.</p>
 	<p>Every morning I'd receive a report of the sites that were kicked off Cloudflare the night before. One morning in late February 2014 I was reading the report as I walked to work. One of the sites listed as having been dropped stood out as familiar but I couldn't place it.</p>
 	<p>I tried to pull up the site on my phone but it was offline, presumably because we were no longer shielding the site from attack. Still curious, I did a quick search and found a Wikipedia page describing the site. It was an independent newspaper in Ukraine and had been covering the ongoing Russian invasion of Crimea.</p>
 	<p>I felt sick.</p>
-	<h3>When Nation States Attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-nation-states-attack">When Nation States Attack</h3>
+		<a href="https://blog.cloudflare.com/#when-nation-states-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What we later learned was that this publication had come under a significant attack, most likely directly from the Russian government. The newspaper had turned to Cloudflare for protection. Their IT director actually tried to pay for our higher tier of service but the bank tied to the publication's credit card had had its systems disrupted by a cyber attack as well and the payment failed. So they’d signed up for the free version of Cloudflare and, for a while, we mitigated the attack.</p>
 	<p>The attack was large enough that it triggered an alert in our Network Operations Center (NOC). A member of our Systems Reliability Engineering (SRE) team who was on call investigated and found a free customer being pummeled by a major attack. He followed our run book and triggered a FINT — which stands for "Fail Internal" — directing traffic from the site directly back to its origin rather than passing through Cloudflare's protective edge. Instantly the site was overwhelmed by the attack and, effectively, fell off the Internet.</p>
-	<h3>Broken Process</h3>
+	<div class="flex anchor relative">
+		<h3 id="broken-process">Broken Process</h3>
+		<a href="https://blog.cloudflare.com/#broken-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I should be clear: the SRE didn't do anything wrong. He followed the procedures we had established at the time exactly. He was a great computer scientist, but not a political scientist, so didn't recognize the site or understand its importance due to the situation at the time in Crimea and why a newspaper covering it may come under attack. But, the next morning, as I read the report on my walk in to work, I did.</p>
 	<p>Cloudflare's mission is to help build a better Internet. That day we failed to live up to that mission. I knew we had to do something.</p>
-	<h3>Politically or Artistically Important?</h3>
+	<div class="flex anchor relative">
+		<h3 id="politically-or-artistically-important">Politically or Artistically Important?</h3>
+		<a href="https://blog.cloudflare.com/#politically-or-artistically-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It was relatively easy for us to decide to provide Cloudflare's security services for free to politically or artistically important non-profits and small commercial entities. We were confident that we could stand up to even the largest attacks. What we were less confident about was our ability to determine who was "politically or artistically important."</p>
 	<p>While Cloudflare runs infrastructure all around the world, our team is largely based in San Francisco, Austin, London, and Singapore. That certainly gives us a viewpoint, but it isn't a particularly globally representative viewpoint. We're also a very technical organization. If we surveyed our team to determine what organizations deserved protection we'd no-doubt identify a number of worthy organizations that were close to home and close to our interests, but we'd miss many others.</p>
 	<p>We also worried that it was dangerous for an infrastructure provider like Cloudflare to start making decisions about what content was "good." Doing so inherently would imply that we were in a position to make decisions about what content was "bad." While moderating content and curating communities is appropriate for some more visible platforms, the deeper you go into Internet infrastructure, the less transparent, accountable, and consistent those decisions inherently become.</p>
-	<h3>Turning to the Experts</h3>
+	<div class="flex anchor relative">
+		<h3 id="turning-to-the-experts">Turning to the Experts</h3>
+		<a href="https://blog.cloudflare.com/#turning-to-the-experts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, rather than making the determination of who was politically or artistically important ourselves, we turned to civil society organizations that were experts in exactly that. Initially, we partnered with 15 organizations, including:</p>
 	<ul>
 		<li>
@@ -123,7 +158,14 @@
 			<p>X-Lab</p>
 		</li>
 	</ul>
-	<h3>Cloudflare's Mission: Help Build a Better Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-mission-help-build-a-better-internet">Cloudflare's Mission: Help Build a Better Internet</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-mission-help-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some companies start with a mission. Cloudflare was not one of those companies. When Michelle, Lee, and I started building Cloudflare it was because we thought we'd identified a significant business opportunity. Truth be told, I thought the idea of being "mission driven" was kind of hokum.</p>
 	<p>I clearly remember the day that changed for me. The director of one of the Project Galileo partners called me to say that he had three journalists who had received protection under Project Galileo that were visiting San Francisco and asked if it would be okay to bring them by our office. I said sure and carved out a bit of time to meet with them.</p>
 	<p>The three journalists turned out to all be covering alleged government corruption in their home countries. One was from Angola, one was from Ethiopia, and they wouldn't tell me the name or home country of the third because he was "currently being hunted by death squads." All three of them hugged me. One had tears in his eyes. And then they proceeded to tell me about how they couldn't do their work as journalists without Cloudflare's protection.</p>

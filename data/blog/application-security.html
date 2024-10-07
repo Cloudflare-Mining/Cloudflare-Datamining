@@ -16,7 +16,14 @@
 		<p><i>“Cloudflare continues to make strong gains amongst the million busiest websites, where it saw the only notable increases, with an additional 3,200 sites helping to bring its market share up to 19.4%”</i></p>
 	</blockquote>
 	<p>The breadth and diversity of the sites we protect, and the billions of browsers and devices that interact with them, gives us unique insight into the ever-changing application security trends on the Internet. In this post, we share some of those insights we’ve gathered from the 32 million HTTP requests/second that pass through our network.</p>
-	<h2>Definitions</h2>
+	<div class="flex anchor relative">
+		<h2 id="definitions">Definitions</h2>
+		<a href="https://blog.cloudflare.com/#definitions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we examine the data, it is useful to define the terminology we use. Throughout this post, we will refer to the following terms:</p>
 	<ul>
 		<li>
@@ -32,9 +39,23 @@
 	<p>Unless otherwise stated, the time frame evaluated in this post is the three-month period from December 1, 2021, to March 1, 2022.</p>
 	<p>Finally, please note that the data is calculated based only on traffic observed across the Cloudflare network and does not necessarily represent overall HTTP traffic patterns across the Internet.</p>
 	<p>*When referring to HTTP traffic we mean both HTTP and HTTPS.</p>
-	<h2>Global Traffic Insights</h2>
+	<div class="flex anchor relative">
+		<h2 id="global-traffic-insights">Global Traffic Insights</h2>
+		<a href="https://blog.cloudflare.com/#global-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first thing we can look at is traffic mitigated across all HTTP requests proxied by the Cloudflare network. This will give us a good baseline view before drilling into specific traffic types, such as bot and API traffic.</p>
-	<h3>8% of all Cloudflare HTTP traffic is mitigated</h3>
+	<div class="flex anchor relative">
+		<h3 id="8-of-all-cloudflare-http-traffic-is-mitigated">8% of all Cloudflare HTTP traffic is mitigated</h3>
+		<a href="https://blog.cloudflare.com/#8-of-all-cloudflare-http-traffic-is-mitigated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare proxies ~32 million HTTP requests per second on average, with more than ~44 million HTTP requests per second at peak. Overall, ~2.5 million requests per second are mitigated by our global network and never reach our caches or the origin servers, ensuring our customers’ bandwidth and compute power is only used for clean traffic.</p>
 	<p>Site owners using Cloudflare gain access to tools to mitigate unwanted or malicious traffic and allow access to their applications only when a request is deemed clean. This can be done both using fully managed features, such as our <a href="https://www.cloudflare.com/ddos">DDoS mitigation</a>, <a href="https://www.cloudflare.com/waf">WAF</a> managed ruleset or schema validation, as well as custom rules that allow users to define their own filters for blocking traffic.</p>
 	<p>If we look at the top five Cloudflare features (sources) that mitigated traffic, we get a clear picture of how much each Cloudflare feature is contributing towards helping keep customer sites and applications online and secure:</p>
@@ -75,7 +96,14 @@
 			<p>Our <b>Managed WAF Rules</b> are rules that are handcrafted by our internal security analyst team aimed at matching only against valid malicious payloads. They contribute to about 1.5% of all mitigated requests.</p>
 		</li>
 	</ul>
-	<h3>HTTP anomalies are the most common attack vector</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-anomalies-are-the-most-common-attack-vector">HTTP anomalies are the most common attack vector</h3>
+		<a href="https://blog.cloudflare.com/#http-anomalies-are-the-most-common-attack-vector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we drill into Managed WAF Rules, we get a clear picture of what type of attack vectors malicious users are attempting against the Internet properties we protect.</p>
 	<p>The vast majority (over 54%) of HTTP requests blocked by our Managed WAF Rules contain HTTP anomalies, such as malformed method names, null byte characters in headers, non-standard ports or content length of zero with a <code>POST</code> request.</p>
 	<p>Common attack types in this category are shown below. These have been grouped when relevant:</p>
@@ -122,7 +150,14 @@
 	<p>0.1%</p>
 	<p>Other</p>
 	<p>1.5%</p>
-	<h3>Businesses still rely on IP address-based access lists to protect their assets</h3>
+	<div class="flex anchor relative">
+		<h3 id="businesses-still-rely-on-ip-address-based-access-lists-to-protect-their-assets">Businesses still rely on IP address-based access lists to protect their assets</h3>
+		<a href="https://blog.cloudflare.com/#businesses-still-rely-on-ip-address-based-access-lists-to-protect-their-assets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the prior section, we noted that 19% of mitigated requests come from Custom WAF Rules. These are rules that Cloudflare customers have implemented using the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">wirefilter syntax</a>. At time of writing, Cloudflare customers had a total of ~6.5 million Custom WAF rules deployed.</p>
 	<p>It is interesting to look at what rule fields customers are using to identify malicious traffic, as this helps us focus our efforts on what other fully automated mitigations could be implemented to improve the Cloudflare platform.</p>
 	<p>The most common field, found in approximately 64% of all custom rules, remains the source IP address or fields easily derived from the IP address, such as the client country location. Note that IP addresses are becoming <a href="https://blog.cloudflare.com/icloud-private-relay">less useful</a> signals for security policies, but they are often the quickest and simplest type of filter to implement during an attack. Customers are also starting to adopt better <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">approaches</a> such as those offered in our <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access">Zero Trust portfolio</a> to further reduce reliance on IP address-based fields.</p>
@@ -157,9 +192,23 @@
 	<p>cf_threat_score</p>
 	<p>4.4%</p>
 	<p>Beyond IP addresses, standard HTTP request fields (<code>URI</code>, <code>User-Agent</code>, <code>Path</code>, <code>Referer</code>) tend to be the most popular. Note, also, that across the entire rule corpus, the average rule combines at least three independent fields.</p>
-	<h2>Bot Traffic Insights</h2>
+	<div class="flex anchor relative">
+		<h2 id="bot-traffic-insights">Bot Traffic Insights</h2>
+		<a href="https://blog.cloudflare.com/#bot-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has long offered a <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> solution to allow customers to gain insights into the automated traffic that might be accessing their application. Using Bot Management classification data, we can perform a deep dive into the world of bots.</p>
-	<h3>38% of HTTP traffic is automated</h3>
+	<div class="flex anchor relative">
+		<h3 id="38-of-http-traffic-is-automated">38% of HTTP traffic is automated</h3>
+		<a href="https://blog.cloudflare.com/#38-of-http-traffic-is-automated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the time period analyzed, bot traffic accounted for about 38% of all HTTP requests. This traffic includes bot traffic from hundreds of <a href="https://radar.cloudflare.com/verified-bots">Verified Bots tracked by Cloudflare</a>, as well as any request that received a bot score below 30, indicating a high likelihood that it is automated.</p>
 	<p>Overall, when bot traffic matches a security configuration, customers allow 41% of bot traffic to pass to their origins, blocking only 6.4% of automated requests. Remember that this includes traffic coming from <a href="https://blog.cloudflare.com/friendly-bots">Verified Bots</a> like GoogleBot, which ultimately benefits site owners and end users. It’s a reminder that automation in and of itself is not necessarily detrimental to a site. &nbsp;This is why we segment Verified Bot traffic, and why we give customers a granular bot score, rather than a binary “bot or not bot” indicator. Website operators want the flexibility to be precise with their response to different types of bot traffic, and we can see that they do in fact use this flexibility. Note that our self-serve customers can also decide how to handle bot traffic using our <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode</a> feature.</p>
 	<figure class="kg-card kg-image-card ">
@@ -181,7 +230,14 @@
 	<p>6.4%</p>
 	<p>jschallenge</p>
 	<p>0.5%</p>
-	<h3>More than a third of non-verified bot HTTP traffic is mitigated</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-a-third-of-non-verified-bot-http-traffic-is-mitigated">More than a third of non-verified bot HTTP traffic is mitigated</h3>
+		<a href="https://blog.cloudflare.com/#more-than-a-third-of-non-verified-bot-http-traffic-is-mitigated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>31% of all bot traffic observed by Cloudflare is not verified, and comes from thousands of custom-built automated tools like scanners, crawlers, and bots built by hackers. As noted above, automation does not necessarily mean these bots are performing malicious actions. If we look at customer responses to identified bot traffic, we find that 38.5% of HTTP requests from non-verified bots are mitigated. This is obviously a much more defensive configuration compared to overall bot traffic actions shown above:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -203,15 +259,36 @@
 	<p>managed_challenge</p>
 	<p>3.7%</p>
 	<p>You’ll notice that almost 30% of customers log traffic rather than take immediate action. We find that many enterprise customers choose to not immediately block bot traffic, so they don’t give a feedback signal to attackers. Rather, they prefer to tag and monitor this traffic, and either drop at a later time or redirect to alternate content. As targeted attack vectors have evolved, responses to those attacks have had to evolve and become more sophisticated as well. Additionally, nearly 3% of non-verified bot traffic is automatically mitigated by our DDoS protection (<code>connection_close</code>). These requests tend to be part of botnets used to attack customer applications.</p>
-	<h2>API Traffic Insights</h2>
+	<div class="flex anchor relative">
+		<h2 id="api-traffic-insights">API Traffic Insights</h2>
+		<a href="https://blog.cloudflare.com/#api-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many applications built on the Internet today are not meant to be consumed by humans. Rather, they are intended for computer-to-computer communication. The common way to expose an application for this purpose is to build an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">Application Programming Interface</a> (API) that can be accessed using HTTP.</p>
 	<p>Due to the underlying format of the data in transit, API traffic tends to be a lot more structured than standard web applications, causing all sorts of problems from a security standpoint. First, the structured data often causes <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewalls (WAFs)</a> to generate a large number of false positives. Secondly, due to the nature of APIs, they often go unnoticed, and many companies end up exposing old and unmaintained APIs without knowing, often referred to as “<a href="https://www.cloudflare.com/learning/security/api/what-is-shadow-api">shadow APIs</a>”.</p>
 	<p>Below, we look at some differences in API trends compared to the global traffic insights shown above.</p>
-	<h3>10% of API traffic is mitigated</h3>
+	<div class="flex anchor relative">
+		<h3 id="10-of-api-traffic-is-mitigated">10% of API traffic is mitigated</h3>
+		<a href="https://blog.cloudflare.com/#10-of-api-traffic-is-mitigated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A good portion of bot traffic is accessing API endpoints, and <a href="https://blog.cloudflare.com/landscape-of-api-traffic">as discussed previously</a>, API traffic is the fastest growing traffic type on the Cloudflare network, currently accounting for 55% of total requests.</p>
 	<p>API endpoints globally receive more malicious requests compared to standard web applications (10% vs 8%) potentially indicating that attackers are focusing more on APIs for their <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> as opposed to standard web apps.</p>
 	<p>Our DDoS mitigation is still the top source of mitigated events for API endpoints, accounting for just over 63% of the total mitigated requests. More interestingly, Custom WAF rules account for 35% compared to 19% when looking at global traffic. Customers have, to date, been heavily using WAF Custom Rules to lock down and validate traffic to API endpoints, although we expect our <a href="https://blog.cloudflare.com/api-gateway">API Gateway</a> schema validation feature to soon surpass Custom WAF Rules in terms of mitigated traffic.</p>
-	<h3>SQLi is the most common attack vector on API endpoints</h3>
+	<div class="flex anchor relative">
+		<h3 id="sqli-is-the-most-common-attack-vector-on-api-endpoints">SQLi is the most common attack vector on API endpoints</h3>
+		<a href="https://blog.cloudflare.com/#sqli-is-the-most-common-attack-vector-on-api-endpoints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we look at our WAF Managed Rules mitigations on API traffic only, we see notable differences compared to global trends. These differences include much more equal distribution across different types of attacks, but more noticeably, SQL injection attacks in the top spot.</p>
 	<p>Command Injection attacks are also much more prominent (14.3%), and vectors such as Deserialization make an appearance, contributing to more than 1% of the total mitigated requests.</p>
 	<figure class="kg-card kg-image-card ">
@@ -243,6 +320,13 @@
 	<p>0.6%</p>
 	<p>Other</p>
 	<p>1.3%</p>
-	<h2>Looking ahead</h2>
+	<div class="flex anchor relative">
+		<h2 id="looking-ahead">Looking ahead</h2>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we shared some initial insights around Internet application security trends based on traffic to Cloudflare’s network. Of course, we have only just scratched the surface. Moving forward, we plan to publish quarterly reports with dynamic filters directly on <a href="https://radar.cloudflare.com">Cloudflare Radar</a> and provide much deeper insights and investigations.</p>
 </div>

@@ -8,11 +8,25 @@
 	</figure>
 	<p><a href="https://www.writethedocs.org/guide/docs-as-code">Docs-as-code</a> is an approach to writing and publishing documentation with the same tools and processes developers use to create code. This philosophy has become more popular in recent years, especially in tech companies. Automatic link checking is part of this process, which ensures that writer's changes are sound and safe to deploy. By setting the stage with a docs-as-code approach, technical writers can focus on what they do best: ensure that our readers get useful and accurate information that is easy to find, and our documentation speaks a single language.</p>
 	<p>Besides following a docs-as-code approach, at Cloudflare we handle our documentation changes in public, in our <a href="https://github.com/cloudflare/cloudflare-docs"><code>cloudflare-docs</code> GitHub repository</a>. Having our documentation open to external contributions has helped us improve our documentation over time — our community is great at finding issues! While we need to review these contributions and ensure that they fit our style guide and content strategy, the contributions provided by the Cloudflare community have been instrumental in making our documentation better every day. While Cloudflare helps build a better Internet, our community helps build better documentation.</p>
-	<h2>Docs-as-code at Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="docs-as-code-at-cloudflare">Docs-as-code at Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#docs-as-code-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we follow a docs-as-code approach to create and publish product documentation in <a href="https://developers.cloudflare.com">Developer Docs</a>.</p>
 	<p>Such an approach involves different components. We use Git with a <a href="https://github.com/cloudflare/cloudflare-docs">public GitHub repository</a> to keep track of changes and to handle branching and merging. We rely on GitHub Actions and Cloudflare Pages for continuous integration and delivery (CI/CD). Our continuous integration pipeline checks if the documentation builds successfully and if there are any broken links. Users, both internal and external, can preview the changes in each pull request, which means that collaborators don't have to set up local environments to preview the changes they're proposing. However, if they wish to do so, users can set up a local environment using open-source tools and create local builds of the documentation.</p>
 	<p>Following this docs-as-code strategy has a few advantages. We use well-known workflows that technical folks use on a daily basis. This makes it easier to get feedback from engineers, while still being simple enough to get contributions from less tech-inclined people in the company and from the general Cloudflare community. After reviewing and approving a contribution to the documentation, we can deploy those changes to the live documentation site with the click of a button. Thanks to <a href="https://blog.cloudflare.com/new-dev-docs">recent changes in our documentation engine</a>, both deployments and local builds are fast, which helps increase our team's velocity. Additionally, it's safe to restructure parts of the documentation without being afraid of breaking stuff — our CI/CD pipeline ensures we don't have broken links.</p>
-	<h2>Our open source approach</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-open-source-approach">Our open source approach</h2>
+		<a href="https://blog.cloudflare.com/#our-open-source-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's possible to use a docs-as-code approach internally, using private repositories. However, we would not be extending some benefits of this approach to contributions provided by the larger Cloudflare community.</p>
 	<p>As a technical writer at Cloudflare, the great part about documentation-related work is that it’s done in our public GitHub repository. I can push changes to the <code>cloudflare-docs</code> GitHub repository with new or updated documentation that is then reviewed by my Cloudflare stakeholders, such as product managers and engineers.</p>
 	<p>Besides this work done together with other Cloudflare employees, I can also address issues and review pull requests from external stakeholders, since our documentation is open source. For example, pull request #4601 from an external contributor fixed an expression that was incorrect in the documentation:</p>
@@ -26,10 +40,24 @@
 	<p>Our work is similar both for internal and external contributions. We review the proposed changes, making sure that the new or updated content follows our style guide and our content strategy. When required, we ask for technical validation of the content. Finally, we merge the changes when they're approved.</p>
 	<p>For issues that are not related to the documentation, we have a feedback mechanism in every documentation page that allows readers to provide feedback about the product itself. This information is then reviewed internally and addressed by the correct team.</p>
 	<p>For more information on how you can contribute to the documentation by creating an issue or a pull request, refer to the <a href="https://github.com/cloudflare/cloudflare-docs/blob/production/CONTRIBUTING.md">Contributing to Cloudflare's Documentation</a> page in our public GitHub repository.</p>
-	<h3>Keeping some secrets</h3>
+	<div class="flex anchor relative">
+		<h3 id="keeping-some-secrets">Keeping some secrets</h3>
+		<a href="https://blog.cloudflare.com/#keeping-some-secrets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For content that we cannot disclose just yet, we currently have several approaches, depending on the exact technical writer and on the involved stakeholders.</p>
 	<p>In some situations, we work on a shared document where we receive and address direct feedback. Close to the feature release date, we create the corresponding Markdown version that we push to the public GitHub repository at the right time.</p>
 	<p>In other cases, we work in a private Git repository, getting early feedback using the same processes we have in place for our public repository. This method of handling non-public content is easy to implement because we're already following a docs-as-code approach. In this case, pushing the content to GitHub is a straightforward operation when the time comes — it's just a matter of pushing the branch to a different remote and creating a public pull request.</p>
-	<h2>What's next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What's next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Much of our work is already done in public, but we can still improve. While we do provide <a href="https://github.com/cloudflare/cloudflare-docs/issues/new/choose">issue creation templates</a> and pull request guidelines, we'll eventually make our style guide and content strategy public. This will allow users to know in advance what we will check for (and enforce) for every contribution to the public documentation, making our review process more transparent.</p>
 </div>

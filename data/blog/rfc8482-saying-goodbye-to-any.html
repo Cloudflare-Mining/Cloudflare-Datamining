@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>But let's rewind a bit.</p>
-	<h2>Historical context</h2>
+	<div class="flex anchor relative">
+		<h2 id="historical-context">Historical context</h2>
+		<a href="https://blog.cloudflare.com/#historical-context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It all started in 2015, when we were looking at the code of our authoritative DNS server. The code flow was generally fine, but it was all peppered with naughty statements like this:</p>
 	<pre class="language-bash"><code class="language-bash">if qtype == "ANY" {
     // special case
@@ -79,7 +86,14 @@
 	<p>The DoS problem with ANY is really old. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html">patch to bind tweaking ANY from 2013</a>.</p>
 	<p>There is also a second angle to the ANY DoS problem. Some reports suggested that performant DNS servers (authoritative or resolvers) <a href="https://fanf.livejournal.com/140566.html">can fill their outbound network capacity</a> with a large number of ANY responses.</p>
 	<p>The recommendation is simple - network operators must use <a href="https://kb.isc.org/docs/aa-00994">"response rate limiting"</a> when answering large DNS queries, otherwise they pose a DoS threat. The "ANY" query type just happens to often give such large responses, while providing little value to legitimate users.</p>
-	<h2>Terminating ANY</h2>
+	<div class="flex anchor relative">
+		<h2 id="terminating-any">Terminating ANY</h2>
+		<a href="https://blog.cloudflare.com/#terminating-any" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2015 frustrated with the experience we announced we would like to stop giving responses to "ANY" queries and wrote a (controversial at a time) blog post:</p>
 	<ul>
 		<li>
@@ -99,7 +113,14 @@
 
 	</figure>
 	<p>ANY queries are a background noise. Under normal circumstances, we see a very small volume of ANY queries.</p>
-	<h2>The future for our users</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-future-for-our-users">The future for our users</h2>
+		<a href="https://blog.cloudflare.com/#the-future-for-our-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What precisely can be done about "ANY" queries? RFC8482 specifies that:</p>
 	<blockquote>
 		<p>A DNS responder that receives an ANY query MAY decline to provide aconventional ANY response or MAY instead send a response with asingle RRset (or a larger subset of available RRsets) in the answersection.</p>
@@ -120,9 +141,24 @@ wikipedia.org.		3600	IN	HINFO	"RFC8482" ""</code></pre>
 	<p>On our resolver service we stop ANY queries with NOTIMP code. This makes us more confident the resolver isn't used to perform DNS reflections:</p>
 	<pre class="language-bash"><code class="language-bash">$ dig ANY cloudflare.com @1.1.1.1
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOTIMP, id: 14151</code></pre>
-	<h2>The future for developers</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="the-future-for-developers">The future for developers</h2>
+		<a href="https://blog.cloudflare.com/#the-future-for-developers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the client side, just don't use ANY DNS queries. On the DNS server side - you are allowed to rip out all the gory QTYPE::ANY handling code, and replace it with a top level HINFO message or first RRset found. Enjoy cleaning your codebase!</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It took the DNS community some time to agree on the specifics, but here we are at the end. RFC8482 cleans up the last remaining DNS meta-qtype, and allows for simpler DNS authoritative and DNS resolver implementations. It finally clearly defines the semantics of ANY queries going through resolvers and reduces the DoS risk for the whole Internet.</p>
 	<p>Not all the effort must go to new shiny protocols and developments, sometimes, cleaning the bitrot is as important. Similar cleanups are being done <a href="https://tools.ietf.org/html/draft-davidben-tls-grease-00">in other areas</a>. Keep up the good work!</p>
 	<p>We would like to thank the co-authors of RFC8482, and the community scrutiny and feedback. For us, RFC8482 is definitely a good thing, and allowed us to simplify our codebase and make the Internet safer.</p>

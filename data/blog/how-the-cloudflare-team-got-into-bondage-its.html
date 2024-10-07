@@ -7,7 +7,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 
 	</figure>
 	<p>(Imagecourtesy of ferelswirl)At CloudFlare, we're always looking for ways to eliminate bottlenecks. We're only able to deal with the very large amount of traffic that we handle, especially during large denial of service attacks, because we've built a network that can efficiently handle an extremely high volume of network requests. This post is about the nitty gritty of port bonding, one of the technologies we use, and how it allows us to get the maximum possible network throughput out of our servers.</p>
-	<h3>Generation Three</h3>
+	<div class="flex anchor relative">
+		<h3 id="generation-three">Generation Three</h3>
+		<a href="https://blog.cloudflare.com/#generation-three" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A rack of equipment in CloudFlare's network has three core components: routers, switches, and servers. We own and install all our own equipment because it's impossible to have the flexibility and efficiency you need to do what we do running on someone else's gear. Over time, we've adjusted the specs of the gear we use based on the needs of our network and what we are able to cost effectively source from vendors.</p>
 	<p>Most of the equipment in our network today is based on our Generation 3 (G3) spec, which we deployed throughout 2012. Focusing just on the network connectivity for our G3 gear, our routers have multiple 10Gbps ports which connect out to the Internet as well as in to our switches. Our switches have a handful of 10Gbps ports that we use to connect to our routers and then 48 1Gbps ports that connect to the servers. Finally, our servers have 6 1Gbps ports, two on the motherboard (using Intel's chipset) and four on an Intel PCI network card. (There's an additional IPMI management port as well, but it doesn't figure into this discussion.)</p>
 	<figure class="kg-card kg-image-card ">
@@ -17,7 +24,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	</figure>
 	<p>To get high levels of utilization and keep our server spec consistent and flexible, each of the servers in our network can perform any of the key CloudFlare functions: DNS, front-line, caching, and logging. Cache, for example, is spread across multiple machines in a facility. This means if we add another drive to one of the servers in a data center, then the total available storage space for the cache increases for all the servers in that data center. What's good about this is that, as we need to, we can add more servers and linearly scale capacity across storage, CPU, and, in some applications, RAM. The challenge is that in order to pull this off there needs to be a significant amount of communication between servers across our local area network (LAN).</p>
 	<p>When we originally started deploying our G3 servers in early 2012, we treated each 1Gbps port on the switches and routers discretely. While each server could, in theory, handle 6Gbps of traffic, each port could only handle 1Gbps. Usually this was no big deal because we load balanced customers across multiple servers in multiple data centers so on no individual server port was a customer likely to burst over 1Gbps. However, we found that, from time to time, when a customer would come under attack, traffic to individual machines could exceed 1Gbps and overwhelm a port.</p>
-	<h3>When A Problem Comes Along...</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-a-problem-comes-along">When A Problem Comes Along...</h3>
+		<a href="https://blog.cloudflare.com/#when-a-problem-comes-along" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The goal of a denial of service attack is to find a bottleneck and then send enough garbage requests to fill it up and prevent legitimate requests from getting through. At the same time, our goal when mitigating such an attack is first to ensure the attack doesn't harm other customers and then to stop the attack from hurting the actual target.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,7 +43,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>Beyond raw bandwidth, the other bottleneck with some attacks centers on network interrupts. In most operating systems, every time a packet is received by a server, the network card generates an interrupt (known as an IRQ). An IRQ is effectively an instruction to the CPU to stop whatever else it's doing and deal with an event, in this case a packet arriving over the network. Each network adapter has multiple queues per port that receive these IRQs and then hands them to the server's CPU. The clock speed and driver efficiency in the network adapters, and message passing rate of the bus, effectively sets the maximum number of interrupts per second, and therefore packets per second, a server's network interface can handle.</p>
 	<p>In certain attacks, like large SYN floods which send a very high volume of very small packets, there can be plenty of bandwidth on a port but a CPU can be bottlenecked on IRQ handling. When this happens it can shut down a particular core on a CPU or, in the worst case if IRQs aren't properly balanced, shut down the whole CPU. To better deal with these attacks, we needed to find a way to more intelligently spread IRQs across more interfaces and, in turn, more CPU cores.</p>
 	<p>Both these problems are annoying if it affects the customer under attack, but it is unacceptable it spills over and affects customers who are not under attack. To ensure that would never happen, we needed to find a way to both increase network capacity and ensure that customer attacks were isolated from one another. To accomplish this we launched what we affectionately refer to in the office as "Project Bondage."</p>
-	<h3>Getting Into Bondage</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-into-bondage">Getting Into Bondage</h3>
+		<a href="https://blog.cloudflare.com/#getting-into-bondage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To deal with these challenges we started by implementing what is known as port bonding. The idea of port bonding is simple: use the resources of multiple ports in aggregate in order to support more traffic than any one port can on its own. We use a custom operating system based on the Debian line of Linux. Like most Linux varieties, our OS supports seven different port bonding modes:</p>
 	<ul>
 		<li>
@@ -55,7 +76,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 		</li>
 	</ul>
 	<p>We use mode 4, 802.3ad Dynamic Link Aggregation. This requires switches that support 802.3ad (our workhorse switch is a Juniper 4200, which does). Our switches are configured to send packets from each stream to the same network interface. If you want to experiment with port bonding yourself, the next section covers the technical details of exactly how we set it up.</p>
-	<h3>The Nitty Gritty</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-nitty-gritty">The Nitty Gritty</h3>
+		<a href="https://blog.cloudflare.com/#the-nitty-gritty" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Port bonding is configured on each server. It requires two Linux components that you can apt-get (assuming you're using a Debian-based Linux) if they're not already installed: ifenslave and ethtool. To initialize the bonding driver we use the following command:</p>
 	<p>modprobe bonding mode=4 miimon=100 xmit_hash_policy=1 lacp_rate=1</p>
 	<p>Here's how that command breaks down:</p>
@@ -82,7 +110,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 	<p>Finally, we check the status of the bonded interface:</p>
 	<p>cat /proc/net/bonding/bond0</p>
 	<p>From an application perspective, bonded ports appear as a single logical network interface with a higher maximum throughput. Since our switch recognizes and supports 802.3ad Dynamic Link Aggregation, we don't have to make any changes to its configuration in order for port bonding to work. In our case, we aggregate three ports (3Gbps) for handling external traffic and the remaining three ports (3Gbps) for handling intra-server traffic across our LAN.</p>
-	<h3>Working Out the Kinks</h3>
+	<div class="flex anchor relative">
+		<h3 id="working-out-the-kinks">Working Out the Kinks</h3>
+		<a href="https://blog.cloudflare.com/#working-out-the-kinks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Expanding the maximum effective capacity of each logical interface is half the battle. The other half is ensuring that network interrupts (IRQs) don't become a bottleneck. By default most Linux distributions rely on a service called irqbalance to set the CPU affinity of each IRQ queue. Unfortunately, we found that irqbalance does not effectively isolate each queue from overwhelming another on the same CPU. The problem with this is, because of the traffic we need to send from machine to machine, external attack traffic risked disrupting internal LAN traffic and affecting site performance beyond the customer under attack.</p>
 	<p>To solve this, the first thing we did was disable irqbalance:</p>
 	<p>/etc/init.d/irqbalance stopupdate-rc.d irqbalance remove</p>
@@ -93,7 +128,14 @@ Think)" class="kg-image" width="500" height="336" loading="lazy">
 
 	</figure>
 	<p>Each port on our NICs has a number of queues to handle incoming requests. These are known as RSS (Receive Side Scaling) queues. Each port has 8 RSS queues, we have 6 1Gbps NIC ports per server, so a total of 48 RSS queues. These 48 RSS queues are allocated to the 24 cores, with 2 RSS queues per core. We divide the RSS queues between internal (LAN) traffic and external traffic and bind each type of traffic to one of the two server CPUs. This ensures that even large SYN floods that may affect a machine's ability to handle more external requests won't keep it from handling requests from other servers in the data center.</p>
-	<h3>The Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-results">The Results</h3>
+		<a href="https://blog.cloudflare.com/#the-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The net effect of these changes allows us to handle 30% larger SYN floods per server and increases our maximum throughput per site per server by 300%. Equally importantly, by custom tuning our IRQ handling, it has allowed us to ensure that customers under attack are isolated from those who are not while still delivering the maximum performance by fully utilizing all the gear in our network.</p>
 	<p>Near the end of 2012, our ops and networking teams sat down to spec our next generation of gear, incorporating everything we've learned over the previous year. One of the biggest changes we're making with G4 is the jump from 1Gbps network interfaces up to 10Gbps network interfaces on our switches and servers. Even without bonding, our tests of the new G4 gear show that it significantly increases both maximum throughput and IRQ handling. Or, put more succinctly: this next generation of servers is smokin' fast.</p>
 	<figure class="kg-card kg-image-card ">

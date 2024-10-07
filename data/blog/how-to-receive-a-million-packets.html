@@ -28,7 +28,14 @@
 			<p>The source code of the test programs is available here: <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpsender.c"><code>udpsender</code></a>, <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpreceiver1.c"><code>udpreceiver</code></a>.</p>
 		</li>
 	</ul>
-	<h3>Prerequisites</h3>
+	<div class="flex anchor relative">
+		<h3 id="prerequisites">Prerequisites</h3>
+		<a href="https://blog.cloudflare.com/#prerequisites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's use port 4321 for our UDP packets. Before we start we must ensure the traffic won't be interfered with by the <code>iptables</code>:</p>
 	<pre class="language-.bash"><code class="language-.bash">receiver$ iptables -I INPUT 1 -p udp --dport 4321 -j ACCEPT
 receiver$ iptables -t raw -I PREROUTING 1 -p udp --dport 4321 -j NOTRACK</code></pre>
@@ -114,7 +121,14 @@ receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5I5jyc0W0N38xUaZAvFH1C/f5f8f8474bab1c1a7cd056ace6da43d7/htop-onecpu.png" alt="htop one cpu" class="kg-image" width="366" height="365" loading="lazy">
 
 	</figure>
-	<h3>Crash course to multi-queue NICs</h3>
+	<div class="flex anchor relative">
+		<h3 id="crash-course-to-multi-queue-nics">Crash course to multi-queue NICs</h3>
+		<a href="https://blog.cloudflare.com/#crash-course-to-multi-queue-nics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, network cards had a single RX queue that was used to pass packets between hardware and kernel. This design had an obvious limitation - it was impossible to deliver more packets than a single CPU could handle.</p>
 	<p>To utilize multicore systems, NICs began to support multiple RX queues. The design is simple: each RX queue is pinned to a separate CPU, therefore, by delivering packets to all the RX queues a NIC can utilize all CPUs. But it raises a question: given a packet, how does the NIC decide to which RX queue to push it?</p>
 	<figure class="kg-card kg-image-card ">
@@ -125,7 +139,15 @@ receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321
 	<p><a href="https://www.cloudflare.com/learning/dns/glossary/round-robin-dns">Round-robin balancing</a> is not acceptable, as it might introduce reordering of packets within a single connection. An alternative is to use a hash from packet to decide the RX queue number. The hash is usually counted from a tuple (src IP, dst IP, src port, dst port). This guarantees that packets for a single flow will always end up on exactly the same RX queue, and reordering of packets within a single flow can't happen.</p>
 	<p>In our case, the hash could have been used like this:</p>
 	<pre class="language-.bash"><code class="language-.bash">RX_queue_number = hash('192.168.254.30', '192.168.254.1', 65400, 4321) % number_of_queues</code></pre>
-	<h3>Multi-queue hashing algorithms</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="multi-queue-hashing-algorithms">Multi-queue hashing algorithms</h3>
+		<a href="https://blog.cloudflare.com/#multi-queue-hashing-algorithms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The hash algorithm is configurable with <code>ethtool</code>. On our setup it is:</p>
 	<pre class="language-.bash"><code class="language-.bash">receiver$ ethtool -n eth2 rx-flow-hash udp4
 UDP over IPV4 flows use these fields for computing Hash flow key:
@@ -137,7 +159,14 @@ IP DA</code></pre>
 	<pre class="language-.bash"><code class="language-.bash">receiver$ ethtool -N eth2 rx-flow-hash udp4 sdfn
 Cannot change RX network flow hashing options: Operation not supported</code></pre>
 	<p>Unfortunately our NIC doesn't support it - we are constrained to (src IP, dst IP) hashing.</p>
-	<h3>A note on NUMA performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-note-on-numa-performance">A note on NUMA performance</h3>
+		<a href="https://blog.cloudflare.com/#a-note-on-numa-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far all our packets flow to only one RX queue and hit only one CPU. Let's use this as an opportunity to benchmark the performance of different CPUs. In our setup the receiver host has two separate processor banks, each is a different <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access">NUMA node</a>.</p>
 	<p>We can pin the single-threaded receiver to one of four interesting CPUs in our setup. The four options are:</p>
 	<ol>
@@ -228,7 +257,14 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
 
 	</figure>
 	<p>Two threads received all the work and the other two got no packets at all. This is caused by a hashing collision, but this time it is at the <code>SO_REUSEPORT</code> layer.</p>
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I've done some further tests, and with perfectly aligned RX queues and receiver threads on a single NUMA node it was possible to get 1.4Mpps. Running receiver on a different NUMA node caused the numbers to drop achieving at best 1Mpps.</p>
 	<p>To sum up, if you want a perfect performance you need to:</p>
 	<ul>

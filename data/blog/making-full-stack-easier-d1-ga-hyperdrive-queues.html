@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4BKrpfqvHnl6yaHdXXsCoc/6991c92463ae0f7c92560def10489389/image4-31.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<h3>Making full-stack easier</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-full-stack-easier">Making full-stack easier</h3>
+		<a href="https://blog.cloudflare.com/#making-full-stack-easier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today might be April Fools, and while we like to have fun as much as anyone else, we like to use this day for serious announcements. In fact, as of today, there are over 2 million developers building on top of Cloudflare’s platform — that’s no joke!</p>
 	<p>To kick off this Developer Week, we’re flipping the big “production ready” switch on three products: <a href="https://developers.cloudflare.com/d1">D1, our serverless SQL database</a>; <a href="https://developers.cloudflare.com/hyperdrive">Hyperdrive</a>, which makes your <i>existing</i> databases feel like they’re distributed (and faster!); and <a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a>, our time-series database.</p>
 	<p>We’ve been on a mission to allow developers to bring their entire stack to Cloudflare for some time, but what might an application built on Cloudflare look like?</p>
@@ -18,7 +25,15 @@
 	</figure>
 	<p>The diagram itself shouldn’t look too different from the tools you’re already familiar with: you want a <a href="https://developers.cloudflare.com/d1">database</a> for your core user data. <a href="https://developers.cloudflare.com/r2">Object storage</a> for assets and user content. Maybe a <a href="https://developers.cloudflare.com/queues">queue</a> for background tasks, like email or upload processing. A <a href="https://developers.cloudflare.com/kv">fast key-value store</a> for runtime configuration. Maybe even a <a href="https://developers.cloudflare.com/analytics/analytics-engine">time-series database</a> for aggregating user events and/or performance data. And that’s before we get to <a href="https://developers.cloudflare.com/workers-ai">AI</a>, which is increasingly becoming a core part of many applications in search, recommendation and/or image analysis tasks (at the very least!).</p>
 	<p>Yet, without having to think about it, this architecture runs on Region: Earth, which means it’s scalable, reliable and fast — all out of the box.</p>
-	<h3>D1 GA: Production Ready</h3>
+	<div class="flex anchor relative">
+		<h3 id="d1-ga-production-ready">D1 GA: Production Ready</h3>
+		<a href="https://blog.cloudflare.com/#d1-ga-production-ready" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FBwcKFjSHTCL2LcJRtNCo/ca9cd4412a6ce99af058b6baa1f836db/image2-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
@@ -134,7 +149,15 @@
 }</code></pre>
 	<p>Importantly, we will give developers the ability to maintain session-based consistency, so that users still see their own changes reflected, whilst still benefiting from the performance and latency gains that replication can bring.</p>
 	<p>You can learn more about how D1’s read replication works under the hood <a href="https://blog.cloudflare.com/building-d1-a-global-database">in our deep-dive post</a>, and if you want to start building on D1 today, <a href="https://developers.cloudflare.com/d1">head to our developer docs</a> to create your first database.</p>
-	<h3>Hyperdrive: GA</h3>
+	<div class="flex anchor relative">
+		<h3 id="hyperdrive-ga">Hyperdrive: GA</h3>
+		<a href="https://blog.cloudflare.com/#hyperdrive-ga" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/47WBGHvqFpRkza2ldA5RBi/4ab4df903b00471b22c949ed8d7be8d8/image1-37.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
@@ -188,7 +211,14 @@ const db = drizzle(client);</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>To get started with Hyperdrive, <a href="https://developers.cloudflare.com/hyperdrive">head over to the docs</a> to learn how to connect your existing database and start querying it from your Workers.</p>
-	<h3>Queues: Pull From Anywhere</h3>
+	<div class="flex anchor relative">
+		<h3 id="queues-pull-from-anywhere">Queues: Pull From Anywhere</h3>
+		<a href="https://blog.cloudflare.com/#queues-pull-from-anywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The task queue is an increasingly critical part of building a modern, full-stack application, and this is what we had in mind when we <a href="https://blog.cloudflare.com/cloudflare-queues-open-beta">originally announced</a> the open beta of <a href="https://developers.cloudflare.com/queues">Queues</a>. We’ve since been working on several major Queues features, and we’re launching two of them this week: pull-based consumers and new message delivery controls.</p>
 	<p>Any HTTP-speaking client <a href="https://developers.cloudflare.com/queues/reference/pull-consumers">can now pull messages from a queue</a>: call the new /pull endpoint on a queue to request a batch of messages, and call the /ack endpoint to acknowledge each message (or batch of messages) as you successfully process them:</p>
 	<pre class="language-js"><code class="language-js">// Pull and acknowledge messages from a Queue using any HTTP client
@@ -220,7 +250,14 @@ for (const msg of batch.messages) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RhxWjKGRmoJtgQ4toybvY/414c5fd87486b7d4172e63f1788c62c3/image3-35.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
 
 	</figure>
-	<h3>Workers Analytics Engine is GA</h3>
+	<div class="flex anchor relative">
+		<h3 id="workers-analytics-engine-is-ga">Workers Analytics Engine is GA</h3>
+		<a href="https://blog.cloudflare.com/#workers-analytics-engine-is-ga" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a> provides unlimited-cardinality analytics at scale, via a built-in API to write data points from Workers, and a SQL API to query that data.</p>
 	<p>Workers Analytics Engine is backed by the same ClickHouse-based system we have depended on for years at Cloudflare. We use it ourselves to observe the health of our own services, to capture product usage data for billing, and to answer questions about specific customers’ usage patterns. At least one data point is written to this system on nearly every request to Cloudflare’s network. Workers Analytics Engine lets you build your own custom analytics using this same infrastructure, while we manage the hard parts for you.</p>
 	<p>Since <a href="https://blog.cloudflare.com/workers-analytics-engine">launching in beta</a>, developers have started depending on Workers Analytics Engine for these same use cases and more, from large enterprises to open-source projects like <a href="https://github.com/benvinegar/counterscale">Counterscale</a>. Workers Analytics Engine has been operating at production scale with mission-critical workloads for years — but we hadn’t shared anything about pricing, until today.</p>
@@ -280,6 +317,13 @@ for (const msg of batch.messages) {
 	</table><!--kg-card-end: html-->
 	<p>With this pricing, you can answer, “how much will Workers Analytics Engine cost me?” by counting the number of times you call a function in your Worker, and how many times you make a request to a HTTP API endpoint. Napkin math, rather than spreadsheet math.</p>
 	<p>This pricing will be made available to everyone in coming months. Between now and then, Workers Analytics Engine continues to be available at no cost. You can <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#limits">start writing data points from your Worker today</a> — it takes just a few minutes and less than 10 lines of code to start capturing data. We’d love to hear what you think.</p>
-	<h3>The week is just getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-week-is-just-getting-started">The week is just getting started</h3>
+		<a href="https://blog.cloudflare.com/#the-week-is-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tune in to what we have in store for you tomorrow on our second day of Developer Week. If you have questions or want to show off something cool you already built, please join our developer <a href="https://discord.cloudflare.com"><i>Discord</i></a>.</p>
 </div>

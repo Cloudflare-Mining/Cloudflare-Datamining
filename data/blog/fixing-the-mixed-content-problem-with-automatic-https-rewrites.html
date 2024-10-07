@@ -26,7 +26,14 @@
 
 	</figure>
 	<p>If you had clicked Yes back in 1997, Internet Explorer would have ignored the dangers of mixed content and gone ahead and loaded subresources using plaintext HTTP. Clicking No prevented them from being loaded (often resulting in a broken but secure web page).</p>
-	<h3>Transitioning to fully secure content</h3>
+	<div class="flex anchor relative">
+		<h3 id="transitioning-to-fully-secure-content">Transitioning to fully secure content</h3>
+		<a href="https://blog.cloudflare.com/#transitioning-to-fully-secure-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's tempting, but naive, to think that the solution to mixed content is easy: “Simply load everything using https:// and just fix your website”. Unfortunately, the smörgåsbord of content loaded into modern websites from first-party and third-party web sites makes it very hard to ‘simply’ make that change.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,7 +47,14 @@
 	<p><i>"To successfully move to HTTPS, all requests to page assets need to be made over a secure channel. It’s a daunting challenge, and there are a lot of moving parts. We have to consider resources that are currently being loaded from insecure domains — everything from JavaScript to advertisement assets.”</i></p>
 	<p>And the W3C <a href="https://www.w3.org/TR/upgrade-insecure-requests">recognized</a> this as a huge problem saying: <i>“Most notably, mixed content checking has the potential to cause real headache for administrators tasked with moving substantial amounts of legacy content onto HTTPS. In particular, going through old content and rewriting resource URLs manually is a huge undertaking.”</i> And cited the BBC’s <a href="http://www.bbc.co.uk/blogs/internet/entries/f7126d19-2afa-3231-9c4e-0f7198c468ab">huge archive</a> as a difficult example.</p>
 	<p>But it’s not just media sites that have a problem with mixed content. Many CMS users find it difficult or impossible to update all the links that their CMS generates as they may be buried in configuration files, source code or databases. In addition, sites that need to deal with user-generated content also face a problem with http:// URIs.</p>
-	<h3>The Dangers of Mixed Content</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-dangers-of-mixed-content">The Dangers of Mixed Content</h3>
+		<a href="https://blog.cloudflare.com/#the-dangers-of-mixed-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mixed content comes in two flavors: active and passive. Modern web browsers approach the dangers from these different types of mixed content as follows: active mixed content (the most dangerous) is automatically and completely blocked, passive mixed content is allowed through but results in a warning.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -54,7 +68,14 @@
 	<p>Passive content is a different kind of threat: because requests for passive content are sent in the clear an eavesdropper can monitor the requests and extract information. For example, a well positioned eavesdropper could monitor cookies, web pages visited and potentially authentication information.</p>
 	<p>The <a href="http://codebutler.com/firesheep">Firesheep</a> Firefox add-on can be used to monitor a local network (for example, in a coffee shop) for requests sent over HTTP and automatically steal cookies allowing a user to hijack someone’s identity with a single click.</p>
 	<p>Today, modern browsers block active content that's loaded insecurely, but allow passive content through. Nevertheless, transitioning to all https:// is the only way to address all the security concerns of mixed content.</p>
-	<h3>Fixing Mixed Content Automatically</h3>
+	<div class="flex anchor relative">
+		<h3 id="fixing-mixed-content-automatically">Fixing Mixed Content Automatically</h3>
+		<a href="https://blog.cloudflare.com/#fixing-mixed-content-automatically" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve wanted to help fix the mixed content properly for a long time as our goal is that the web become completely encrypted. And, like other CloudFlare services, we wanted to make this a ‘one click’ experience.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -82,7 +103,14 @@
 gstatic\.com/" to="https://$1.gstatic.com/"/&gt;</code></pre>
 	<p>It uses a regular expression to identify specific subdomains of gstatic.com that can safely be upgraded to use HTTPS. The complete set of rules can be browsed <a href="https://www.eff.org/https-everywhere/atlas">here</a>.</p>
 	<p>Because we need to upgrade a huge number of URIs embedded in web pages (we estimate around 5 million per second) we benchmarked existing HTML parsers (including our own) and decided to write a new one for this type of rewriting task. We’ll write more about its design, testing and performance in a future post.</p>
-	<h3>Automatic HTTPS Rewrites</h3>
+	<div class="flex anchor relative">
+		<h3 id="automatic-https-rewrites">Automatic HTTPS Rewrites</h3>
+		<a href="https://blog.cloudflare.com/#automatic-https-rewrites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Automatic HTTPS Rewrites are now available in the customer dashboard for all CloudFlare customers. Today, this feature is disabled by default and can be enabled in ‘one click’:</p>
 	<figure class="kg-card kg-image-card ">
 

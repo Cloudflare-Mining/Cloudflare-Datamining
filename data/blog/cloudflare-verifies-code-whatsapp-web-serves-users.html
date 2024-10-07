@@ -11,7 +11,14 @@
 	<p>So how will this work? Cloudflare holds a hash of the code that WhatsApp users should be running. When users run WhatsApp in their browser, the WhatsApp Code Verify extension compares a hash of that code that is executing in their browser with the hash that Cloudflare has — enabling them to easily see whether the code that is executing is the code that should be.</p>
 	<p>The idea itself — comparing hashes to detect tampering or even corrupted files — isn’t new, but automating it, deploying it at scale, and making sure it “just works” for WhatsApp users is. Given the reach of WhatsApp and the implicit trust put into Cloudflare, we want to provide more detail on how this system actually works from a technical perspective.</p>
 	<p>Before we dive in, there's one important thing to explicitly note: Cloudflare is providing a trusted audit endpoint to support Code Verify. Messages, chats or other traffic between WhatsApp users are never sent to Cloudflare; those stay private and end-to-end encrypted. Messages or media do not traverse <a href="https://www.cloudflare.com/network">Cloudflare’s network</a> as part of this system, an important property from Cloudflare’s perspective in our role as a trusted third party.</p>
-	<h3>Making verification easier</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-verification-easier">Making verification easier</h3>
+		<a href="https://blog.cloudflare.com/#making-verification-easier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Hark back to 2003: Fedora, a popular Linux distribution based on Red Hat, has just been launched. You’re keen to download it, but want to make sure you have the “real” Fedora, and that the download isn’t a “fake” version that siphons off your passwords or logs your keystrokes. You head to the download page, kick off the download, and see an MD5 hash (considered secure at the time) next to the download. After the download is complete, you run <code>md5 fedora-download.iso</code> and compare the hash output to the hash on the page. They match, life is good, and you proceed to installing Fedora onto your machine.</p>
 	<p>But hold on a second: if the same website providing the download is also providing the hash, couldn’t a malicious actor replace both the download and the hash with their own values? The <code>md5</code> check we ran above would still pass, but there’s no guarantee that we have the “real” (untampered) version of the software we intended to download.</p>
 	<figure class="kg-card kg-image-card ">
@@ -44,7 +51,14 @@
 		</li>
 	</ol>
 	<p>If the hashes match, as they should under almost any circumstance, the code is “verified” from the perspective of the extension. If the hashes <i>don’t</i> match, it indicates that the code running on the user's browser is different from the code WhatsApp intended to run on all its user's browsers.</p>
-	<h3>Security needs to be convenient</h3>
+	<div class="flex anchor relative">
+		<h3 id="security-needs-to-be-convenient">Security needs to be convenient</h3>
+		<a href="https://blog.cloudflare.com/#security-needs-to-be-convenient" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s this process — and the fact that is automated on behalf of the user — that helps provide transparency in a scalable way. If users had to manually fetch, compute and compare the hashes themselves, detecting tampering would only be for the small fraction of technical users. For a service as large as WhatsApp, that wouldn’t have been a particularly accessible or user-friendly approach.</p>
 	<p>This approach also has parallels to a number of technologies in use today. One of them is <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity</a> in web browsers: when you fetch a third-party asset (such as a script or stylesheet), the browser validates that the returned asset matches the hash described. If it doesn’t, it refuses to load that asset, preventing potentially compromised scripts from siphoning off user data. Another is <a href="https://certificate.transparency.dev">Certificate Transparency</a> and the related <a href="https://binary.transparency.dev">Binary Transparency</a> projects. Both of these provide publicly auditable transparency for critical assets, including WebPKI certificates and other binary blobs. The system described in this post doesn’t scale to arbitrary assets – yet – but we are exploring ways in which we could extend this offering for something more general and usable like Binary Transparency.</p>
 	<p>Our collaboration with the team at WhatsApp is just the beginning of the work we’re doing to help improve privacy and <a href="https://www.cloudflare.com/application-security">security on the web</a>. &nbsp;We’re aiming to help other organizations verify the code delivered to users is the code they’re meant to be running. Protecting Internet users at scale and enabling privacy are core tenets of what we do at Cloudflare, and we look forward to continuing this work throughout 2022.</p>

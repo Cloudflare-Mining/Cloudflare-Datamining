@@ -10,7 +10,14 @@
 	<p>Cloudflare is raising prices for the first time in the last 12 years. Beginning January 15, 2023, new sign-ups will be charged \$25 per month for our Pro Plan (up from \$20 per month) and \$250 per month for our Business Plan (up from \$200 per month). Any paying customers who sign up before January 15, 2023, including any currently paying customers who signed up at any point over the last 12 years, will stay at the old monthly price until May 14, 2023.</p>
 	<p>We are also introducing an option to pay annually, rather than monthly, that we hope most customers will choose to switch to. Annual plans are available today and discounted from the new monthly rate to \$240 per year for the Pro Plan (the equivalent of \$20 per month, saving \$60 per year) and \$2,400 per year for the Business Plan (the equivalent of \$200 per month, saving \$600 per year). In other words, if you choose to pay annually for Cloudflare you can lock in our old monthly prices.</p>
 	<p>After not raising prices in our history, this was something we thought carefully about before deciding to do. While we have over a decade of network expansion and innovation under our belts, what may not be intuitive is that our goal is not to increase revenue from this change. We need to invest up front in building out our network, and the main reason we're making this change is to more closely map our business with the timing of our underlying costs. Doing so will enable us to further accelerate our network expansion and pace of innovation — which all of our customers will benefit from. Since this is a big change for us, I wanted to take the time to walk through how we came to this decision.</p>
-	<h3>Cloudflare's history</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-history">Cloudflare's history</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare launched on September 27, 2010. At the time we had two plans: one Free Plan that was free, and a Pro Plan that cost $20 per month. Our network at the time consisted of "four and a half" data centers: Chicago, Illinois; Ashburn, Virginia; San Jose, California; Amsterdam, Netherlands; and Tokyo, Japan. The routing to Tokyo was so flaky that we'd turn it off for half the day to not mess up routing around the rest of the world. The biggest difference for the first couple years between our Free and Pro Plans was that only the latter included HTTPS support.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -25,7 +32,14 @@
 
 	</figure>
 	<p><i>Cloudflare’s Network as of June 16, 2012, courtesy of</i> <a href="https://web.archive.org/web/20120616135819/http://www.cloudflare.com:80/network-map"><i>The Internet Archive’s Wayback Machine</i></a>‌‌</p>
-	<h3>My how you've grown</h3>
+	<div class="flex anchor relative">
+		<h3 id="my-how-youve-grown">My how you've grown</h3>
+		<a href="https://blog.cloudflare.com/#my-how-youve-grown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fast-forward to today and a lot has changed. We're up to presence in more than <a href="https://www.cloudflare.com/network">275 cities in more than 100 countries worldwide</a>. We included HTTPS support in our Free Plan with the launch of <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL in September 2014</a>. We included unlimited DDoS mitigation in our Free Plan with the launch of <a href="https://blog.cloudflare.com/unmetered-mitigation">Unmetered DDoS Mitigation in September 2017</a>. Today, we stop attacks for Free Plan customers on a daily basis that are more than 10-times as big as what was <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">headline news back in 2013</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -40,7 +54,14 @@
 	</figure>
 	<p>And we've delivered on that promise, accelerating our roll-out of new features across our platform and bundling them into our existing plans without increasing prices. What you get for our Free, Pro, and Business Plans today is orders of magnitude more valuable across every dimension — performance, reliability, and security — than those plans were when they launched.</p>
 	<p>And yet we know we are our customers’ infrastructure. You rely on us. And therefore we have been very reluctant to ever raise prices just to take price and capture more revenue.</p>
-	<h3>Annual plans for even faster innovation</h3>
+	<div class="flex anchor relative">
+		<h3 id="annual-plans-for-even-faster-innovation">Annual plans for even faster innovation</h3>
+		<a href="https://blog.cloudflare.com/#annual-plans-for-even-faster-innovation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early on, we only charged monthly because we were an unproven service we knew customers were taking a risk on. Today, that's no longer the case. The majority of our customers have been using us for years and, from our conversations with them, plan to continue using us for the foreseeable future. In fact, one of the top requests we receive is from customers who want to pay once per year rather than getting billed every month.</p>
 	<p>While I'm proud of our pace of innovation, one of the challenges we have is managing the cash flow to fund those investments as quickly as we'd like. We invest up front in building out our network or developing a new feature, but then only get paid monthly by our customers. That, inherently, is a governor on our pace of innovation. We can invest even faster — hire more engineers, deploy more servers — if those customers who know they're going to use us for the next year pay for us up front. We have no shortage of things we know customers want us to build, so by collecting revenue earlier we know we can unlock even faster innovation.</p>
 	<p>In other words, we are making this change hoping most of you won't pay us anything more than you did before. Instead, our hope is that most of you will adopt our annual plans — you’ll get to lock in the existing pricing, and you’ll help us further accelerate our network growth and pace of innovation.</p>

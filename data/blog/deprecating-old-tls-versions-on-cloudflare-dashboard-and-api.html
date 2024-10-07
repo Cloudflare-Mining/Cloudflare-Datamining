@@ -3,11 +3,25 @@
 	<p>On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on api.cloudflare.com. Additionally, the dashboard will be moved from <a href="https://www.cloudflare.com/a">www.cloudflare.com/a</a> to dash.cloudflare.com and will require a browser that supports TLS 1.2 or higher.</p>
 	<p>No changes will be made to customer traffic that is proxied through <a href="https://www.cloudflare.com/network">our network</a>, though you may decide to enforce a minimum version for your own traffic. We will soon expose TLS analytics that indicate the percent of connections to your sites using TLS 1.0-1.3, and controls to set a specific minimum version. Currently, you may enforce version 1.2 or higher using the <a href="https://support.cloudflare.com/hc/en-us/articles/206029258-How-to-use-Cloudflare-s-Require-Modern-TLS-Feature">Require Modern TLS</a> setting.</p>
 	<p>Prior to June 4, API calls made with TLS 1.0 or 1.1 will have warning messages inserted into responses and dashboard users will see a banner encouraging you to upgrade your browser. Additional details on these changes, and a complete schedule of planned events can be found in the <a href="https://blog.cloudflare.com/#detailedtimeline">timeline below</a>.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Transport Layer Security (TLS) is the protocol used on the web today to encrypt HTTPS connections. Version 1.0 was standardized <a href="https://www.ietf.org/rfc/rfc2246.txt">almost 20 years ago</a> as the successor to <a href="https://tools.ietf.org/html/rfc6101">SSL 3.0</a>, but is universally considered insecure due to being vulnerable to attacks such as <a href="https://blog.qualys.com/ssllabs/2013/09/10/is-beast-still-a-threat">BEAST</a> and <a href="https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls">POODLE</a>.<a href="https://blog.cloudflare.com/#fn1">[1]</a> Version 1.1 <a href="https://www.ietf.org/rfc/rfc4346.txt">followed in 2006</a> and mitigated BEAST, but adoption was minimal as some major browsers opted to make the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=422232#c2">jump directly to TLS 1.2</a> (codified <a href="https://www.ietf.org/rfc/rfc5246.txt">in 2008</a>).</p>
 	<p>In addition to the documented vulnerabilities, standards bodies such as the Payment Cards Industry Security Standards Council (PCI SSC) and the National Institute of Standards and Technology (NIST) recommend disabling TLS 1.0 and 1.1. Specifically, <a href="https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls">PCI requires</a> that sites use a minimum of TLS 1.1, with TLS 1.2 recommended, and <a href="https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/draft">NIST requires</a> at least TLS 1.2.</p>
 	<p>Fortunately, almost all (&gt;96%) the traffic we see on api.cloudflare.com is already using TLS 1.2 or greater, so most users will not need to make any changes. However, if you’re using one of the user agents or operating systems <a href="https://blog.cloudflare.com/#problematicuseragents">listed below</a>, you may need to upgrade. To check which version your browser or API client is using, make a request to <a href="https://version.tls.fun">https://version.tls.fun</a>.</p>
-	<h3>Problematic user agents</h3>
+	<div class="flex anchor relative">
+		<h3 id="problematic-user-agents">Problematic user agents</h3>
+		<a href="https://blog.cloudflare.com/#problematic-user-agents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Below are the user agents with the highest frequency of TLS 1.0 or 1.1 requests to api.cloudflare.com. If you recognize your API client in this list, please take steps to upgrade as soon as possible.</p>
 	<h5>curl running on outdated operating systems</h5>
 	<p>Many developers use <a href="https://curl.haxx.se">curl</a>, an excellent tool built by Daniel Stenberg, to make API calls to api.cloudflare.com. As is common with command-line tools, curl relies on the underlying crypto library that it is built against for SSL/TLS support, e.g., <a href="https://www.openssl.org">OpenSSL</a>, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS">NSS</a>, etc.</p>
@@ -16,7 +30,14 @@
 	<p>TLS 1.2 support was added to the JRE in <a href="http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html">1.7.0_131-b12</a>, so API calls made using ancient versions of Java may fail.</p>
 	<h5>Internet Explorer 10 or earlier</h5>
 	<p>Internet Explorer did not ship with TLS 1.2 enabled by default until v11 on Windows 7 and Windows Server 2008 R2. While these versions went End of Life (EOL) in January 2015, many still exist in the wild as observed on our edge.</p>
-	<h3>Detailed timeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="detailed-timeline">Detailed timeline</h3>
+		<a href="https://blog.cloudflare.com/#detailed-timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While TLS 1.0 and 1.1 will be permanently disabled on June 4 (12 weeks from today), we will take steps before then to encourage users still running outdated browsers and operating systems to upgrade.<a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
 	<p>Date</p>
 	<p>Days from Today</p>
@@ -58,7 +79,14 @@
 			<p>Cloudflare Dashboard available exclusively at <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> and will require TLS 1.2 or higher.</p>
 		</li>
 	</ul>
-	<h3>Deprecation message in API responses</h3>
+	<div class="flex anchor relative">
+		<h3 id="deprecation-message-in-api-responses">Deprecation message in API responses</h3>
+		<a href="https://blog.cloudflare.com/#deprecation-message-in-api-responses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Beginning on April 30, API responses from api.cloudflare.com will include a deprecation warning in the messages field when the request is made using TLS 1.0 or 1.1:</p>
 	<pre class="language-bash"><code class="language-bash">{
   "result": {
@@ -75,13 +103,35 @@
     ...
   }
 }</code></pre>
-	<h3>Twenty-four (24) hour brownout</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="twenty-four-24-hour-brownout">Twenty-four (24) hour brownout</h3>
+		<a href="https://blog.cloudflare.com/#twenty-four-24-hour-brownout" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On May 7, we will temporary disable TLS 1.0 and 1.1 for a 24-hour "brownout" period. All calls made to api.cloudflare.com using TLS 1.0 or 1.1 will be immediately returned with an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400">HTTP 400</a> (Bad Request) error and the requested action will not be processed. Additionally, the Cloudfare Dashboard will be inaccessible using TLS 1.0 or 1.1 during this time.</p>
 	<p>The purpose of this brownout is to provide a warning to Cloudflare customers still using legacy browsers or operating systems. If your API calls suddenly stop working on this date, take a look at your technical stack.</p>
-	<h3>Permanent disabling of TLS 1.0 and 1.1</h3>
+	<div class="flex anchor relative">
+		<h3 id="permanent-disabling-of-tls-1-0-and-1-1">Permanent disabling of TLS 1.0 and 1.1</h3>
+		<a href="https://blog.cloudflare.com/#permanent-disabling-of-tls-1-0-and-1-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On June 4, we will permanently disable TLS 1.0 and 1.1 on api.cloudflare.com. All users accessing the dashboard will also require TLS 1.2 or greater.</p>
 	<p>As a reminder, we will not be making any changes to <i>your</i> traffic. While we recommend that you also disable TLS 1.0 and 1.1 for security reasons, we prefer to let our customers decide what is best for them. Continue reading to see how we will provide you with the data and controls you need to make and enforce this decision.</p>
-	<h3>Upcoming controls and analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="upcoming-controls-and-analytics">Upcoming controls and analytics</h3>
+		<a href="https://blog.cloudflare.com/#upcoming-controls-and-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Currently you have the ability in the Crypto tab of the dashboard to disable TLS 1.0 and 1.1 together, but not 1.0 only:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -104,7 +154,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59LjU9F2gks9LDLvrrSbm0/8303a7ff5419e5584073d6602e5cc8c1/tls-analytics.png" alt="tls-analytics" class="kg-image" width="1586" height="902" loading="lazy">
 
 	</figure>
-	<h3>Additional communications</h3>
+	<div class="flex anchor relative">
+		<h3 id="additional-communications">Additional communications</h3>
+		<a href="https://blog.cloudflare.com/#additional-communications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will update this blog post with any changes, as well as publish new posts as the changes outlined above take effect (including availability of the new TLS analytics for your domain and ability to enforce a specific minimum version).</p>
 	<p>Enterprise customers who are still making API calls with TLS 1.0 or 1.1 will receive an email from your Customer Success Manager with problematic user agents and frequencies.</p>
 	<p>Everyone else should contact <a href="https://support.cloudflare.com">Cloudflare Support</a> with any questions.</p>

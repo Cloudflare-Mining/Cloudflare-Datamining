@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>During CIO week we announced the general availability of our client-side security product, Page Shield. Page Shield protects websites’ end users from client-side attacks that target vulnerable JavaScript dependencies in order to run malicious code in the victim’s browser. One of the biggest client-side threats is the exfiltration of sensitive user data to an attacker-controlled domain (known as a Magecart-style attack). This kind of attack has impacted large organizations like <a href="https://www.bbc.co.uk/news/technology-54568784">British Airways</a> and <a href="https://ico.org.uk/about-the-ico/news-and-events/news-and-blogs/2020/11/ico-fines-ticketmaster-uk-limited-125million-for-failing-to-protect-customers-payment-details">Ticketmaster</a>, resulting in substantial GDPR fines in both cases. Today we are sharing details of how we detect these types of attacks and how we’re going to be developing the product into the future.</p>
-	<h3>How does a Magecart-style attack work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-a-magecart-style-attack-work">How does a Magecart-style attack work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-a-magecart-style-attack-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Magecart-style attacks are generally quite simple, involving just two stages. First, an attacker finds a way to compromise one of the JavaScript files running on the victim’s website. The attacker then inserts malicious code which reads personally identifiable information (PII) being entered by the site’s users, and exfiltrates it to an attacker-controlled domain. This is illustrated in the diagram below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -27,7 +34,14 @@
 		</li>
 	</ul>
 	<p>Frequently, the third-party providers themselves get compromised and attackers gain the ability to modify code that’s being distributed to a number of websites; this was the case with the Ibenta breach that compromised Ticketmaster. Alternatively, if attackers gain admin access to the site itself, they can modify one of the scripts being used and insert their malicious code — which happened in 2018 to British Airways. Libraries that have reached their end of life and are no longer maintained by their creators are vulnerable to zero-day exploits. Automated attacks have been seen compromising thousands of checkout pages in one go by taking advantage of this.</p>
-	<h3>What can be done about it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-be-done-about-it">What can be done about it?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-be-done-about-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Application security providers and security teams are able to provide several defense mechanisms for site owners that include:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,7 +54,14 @@
 	<p><b><i>Subresource Integrity Checks:</i></b> Application owners can include a cryptographic hash of the files they are loading in the ‘integrity’ attribute of any script or link. This is effective at protecting against unexpected changes at the source by malicious third parties.</p>
 	<p><b><i>External Connection Checks:</i></b> Extracting a list of external connections being made by each script and comparing these against blocklists and allowlists can help spot malicious exfiltration attempts to attacker-controlled domains.</p>
 	<p>Page Shield currently leverages CSP reports, threat-intelligence feeds, and ML-based static analysis in order to detect malicious scripts. We think static analysis has an important role to play in the detection of client-side threats with the ability to detect attacks that are unlikely to be found with the other mechanisms.</p>
-	<h3>Some ways we’re doing static analysis</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-ways-were-doing-static-analysis">Some ways we’re doing static analysis</h3>
+		<a href="https://blog.cloudflare.com/#some-ways-were-doing-static-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our static analysis system covers two scenarios:</p>
 	<ol>
 		<li>
@@ -127,7 +148,14 @@
 	</figure>
 	<p>Normalizing strings that have been through complex transformations requires execution of the code, and so in order to avoid a trivial bypass with an encoding scheme such as the above, our model also detects the presence of malicious, encoded strings that cannot be normalized.</p>
 	<p>With our approach of analyzing clean and obfuscated content separately, looking for connected paths on the data flow graph, revealed risk or arbitrary string transformations, we’ve been able to detect most attacks that we’ve seen to date. We’re excited to see what we find as we onboard more customers onto Page Shield and will continue to evolve our detection capabilities over time.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're constantly improving on our models and will be expanding content-based risk-scoring to include other attack types like crypto-mining and adware over the coming months. Enterprise customers can sign up for Page Shield’s enterprise add-on which includes content-based detection of Magecart-style attacks within your sites’ JavaScript dependencies.</p>
 	<p>Sign up for <a href="https://www.cloudflare.com/lp/page-shield-sign-up">Page Shield</a> today to protect your customers’ data.</p>
 </div>

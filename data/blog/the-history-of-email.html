@@ -24,7 +24,14 @@ Hi, wanna grab lunch?</code></pre>
 	<pre class="language-bash"><code class="language-bash">Message from zack@Awesome-Mainframe.local on ttys003 at 10:36 ...
 Hi, wanna grab lunch?</code></pre>
 	<p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
-	<h3>Persistant Messages</h3>
+	<div class="flex anchor relative">
+		<h3 id="persistant-messages">Persistant Messages</h3>
+		<a href="https://blog.cloudflare.com/#persistant-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>When the mail was being developed, nobody thought at the beginning it was going to be the smash hit that it was. People liked it, they thought it was nice, but nobody imagined it was going to be the explosion of excitement and interest that it became. So it was a surprise to everybody, that it was a big hit.</p>
 		<p>— Frank Heart, director of the ARPANET infrastructure team</p>
@@ -35,12 +42,26 @@ chmod 0442 ~/messages</code></pre>
 	<p>Anyone who wants to send a message just has to append to the file:</p>
 	<pre class="language-bash"><code class="language-bash">echo "??\n" &gt;&gt; /Users/zack/messages</code></pre>
 	<p>This is, of course, not a great system because anyone could delete your messages! I trust the Tenex implementation (called <code>SNDMSG</code>) was a bit more secure.</p>
-	<h3>ARPANET</h3>
+	<div class="flex anchor relative">
+		<h3 id="arpanet">ARPANET</h3>
+		<a href="https://blog.cloudflare.com/#arpanet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
 	<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
 	<pre class="language-bash"><code class="language-bash">SNDMSG zack@cloudflare</code></pre>
 	<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
-	<h3>FTP</h3>
+	<div class="flex anchor relative">
+		<h3 id="ftp">FTP</h3>
+		<a href="https://blog.cloudflare.com/#ftp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The CPYNET format did not have much of a life outside of Tenex unfortunately. It was necessary to create a standard method of communication which every system could understand. Fortunately, this was also the goal of another similar protocol, FTP. FTP (the File Transfer Protocol) sought to create a single way by which different machines could transfer files over the ARPANET.</p>
 	<p>FTP <a href="https://tools.ietf.org/html/rfc114">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
 	<pre class="language-bash"><code class="language-bash">$ ftp
@@ -57,7 +78,14 @@ chmod 0442 ~/messages</code></pre>
 
 &gt; 250 Mail stored</code></pre>
 	<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821">1982</a>.</p>
-	<h3>Mailboxes</h3>
+	<div class="flex anchor relative">
+		<h3 id="mailboxes">Mailboxes</h3>
+		<a href="https://blog.cloudflare.com/#mailboxes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733">standardized</a> in 1977:</p>
 	<pre class="language-bash"><code class="language-bash">Date     :  27 Aug 1976 0932-PDT
 From     :  Ken Davis &lt;KDavis at Other-Host&gt;
@@ -137,7 +165,14 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 % edit vi</code></pre>
 	<p>You could then edit your reply in vim which is actually pretty cool.</p>
 	<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
-	<h3>Pine, Elm &amp; Mutt</h3>
+	<div class="flex anchor relative">
+		<h3 id="pine-elm-mutt">Pine, Elm &amp; Mutt</h3>
+		<a href="https://blog.cloudflare.com/#pine-elm-mutt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>All mail clients suck. This one just sucks less.</p>
 		<p>— Mutt Slogan</p>
@@ -158,7 +193,14 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 	<blockquote>
 		<p>We in the ARPA community (and no doubt many others outside it) have come to realize that we have in our hands something very big, and possibly very important. It is now plain to all of us that message service over computer networks has enormous potential for changing the way communication is done in all sectors of our society: military, civilian government, and private.</p>
 	</blockquote>
-	<h3>Webmail</h3>
+	<div class="flex anchor relative">
+		<h3 id="webmail">Webmail</h3>
+		<a href="https://blog.cloudflare.com/#webmail" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>Its like when I did the referer field. I got nothing but grief for my choice of spelling. I am now attempting to get the spelling corrected in the OED since my spelling is used several billion times a minute more than theirs.</p>
 		<p>— Phillip Hallam-Baker on his spelling of ’Referer’ <a href="https://groups.google.com/forum/#!original/alt.folklore.computers/7X75In21_54/JgV9Rw04f-EJ"><code>2000</code></a></p>
@@ -172,7 +214,15 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 
 	</figure>
 	<p>Gmail was famously created in 2004 as a ‘20% project’ of Paul Buchheit. Originally it wasn’t particularly believed in as a product within Google. They had to launch using a few hundred Pentium III computers no one else wanted, and it took three years before they had the resources to accept users without an invitation. It was notable both for being much closer to a desktop application (using AJAX) and for the unprecedented offer of 1GB of mail storage.</p>
-	<h3>The Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future">The Future</h3>
+		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vOMbpChEaJ0JNHRgRr7hn/1513127f464e0bf34713d932ac0e7a6a/posts-history-of-email-images-mail.gif" alt="Volume of Postal Mail" class="kg-image" width="568" height="325" loading="lazy">

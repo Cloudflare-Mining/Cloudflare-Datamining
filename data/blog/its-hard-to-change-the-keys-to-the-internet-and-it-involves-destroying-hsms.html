@@ -31,15 +31,36 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>If you are able to access the secret key that’s used to sign the root, it’s possible to trick resolvers into verifying a "forged" answer.</p>
 	<p>While this DNSSEC signing has been deployed on the root zone, for over seven years, there is one operation that has never been attempted: rolling the Key Signing Key. This means to generate a new key and update every part of DNS infrastructure on the internet that needs it, retiring the old one completely.</p>
 	<p>The ZSK (Zone Signing Key) has been rolled religiously every quarter since 2010, however rolling the Key Signing Key is a much scarier operation. If it goes wrong it could leave the root zone signing invalid, meaning a large part of the internet would not trust any of the content, effectively knocking DNS offline for validating resolvers. After DNSSEC was designed, a mechanism was devised for rolling out a new Key Signing Key in RFC5011, this operation is commonly known as the 5011 roll-over.</p>
-	<h3>What is a KEY rollover?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-key-rollover">What is a KEY rollover?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-key-rollover" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All cryptographic keys have a life cycle that can represented by states:Generated == the key is created but only the “owner” knows of its properties.Published == the key has been made public either as a public key or a hash of it.Active == the key is in useRetired == the has been withdrawn from service but is still publishedRevoked == they key has been marked as not to be trusted ever again.Removed == taken out of publication</p>
 	<p>Different keys move through the states in different ways depending on the usage, for example some keys are never revoked, just removing them is sufficient, for example the root ZSK’s are never revoked. When rolled, the root KSK will pass through all states.</p>
-	<h3>Why is the Root KSK different ?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-the-root-ksk-different">Why is the Root KSK different ?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-the-root-ksk-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For most keys used in DNS the trust is derived by a relationship between the parent zone and the child zone. The parent publishes a special record, the DS (Delegation Signer), that contains cryptographically strong binding to the actual key, a hash. The child has a DNSKEY RRset at the top of its zone that has at least one key that matches one of the DS records in the parent. To complete the chain of trust the DNSKEY RRset MUST be signed by that key.</p>
 	<p>The root zone has no parent, thus trust cannot be derived in the same way. Instead, validating resolvers must be configured with the root Trust Anchor. This anchor must be refreshed during a key rollover or the validating resolver will not trust anything it sees in the root zone after the old KSK (from 2010) is retired from service. The Trust Anchors can be updated in a number of ways, such as a manual update, a software update, or an in-band update. The preferred update mechanism is the previously mentioned in-band update mechanism RFC5011-roll.</p>
 	<p>The process outlined in RFC 5011 relies on two factors, first that the new key is published in the DNSKEY RRset – which is signed by the old KSK, and is kept there for at least a hold-down period of 30 days. Validating resolvers that follow the procedure will check frequently to see if there is a new KSK in the DNSKEY set. The new key can be trusted because it has been signed with a key that is already in service. When there is new key, it is placed in PendingAddition state If at any point one of the key’s in PendingAddition is removed from the DNSKEY set, the resolver will forget about it. This means that if the key were to appear again, it would start a new 30 day hold-down period.</p>
 	<p>After the key has been in PendingAddtional for 30 consecutive days it is accepted into Active state and will be trusted to sign the DNSKEY set for the root. From this point onwards, the new key can be used to sign the Zone Signing Key, and in turn the root zone content itself.</p>
-	<h3>Why are we rolling the root key trust anchor?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-are-we-rolling-the-root-key-trust-anchor">Why are we rolling the root key trust anchor?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-we-rolling-the-root-key-trust-anchor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two main reasons;</p>
 	<ol>
 		<li>
@@ -50,7 +71,14 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 		</li>
 	</ol>
 	<p>Some people advocated rolling the key and changing the algorithm at the same time but that was deemed too risky. The right time to start talking about that is after the current roll concludes successfully.</p>
-	<h3>What has happened so far?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-has-happened-so-far">What has happened so far?</h3>
+		<a href="https://blog.cloudflare.com/#what-has-happened-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.icann.org/en/system/files/files/ksk-rollover-operational-implementation-plan-22jul16-en.pdf">ICANN started the rollover process last year</a>. The new keys has been created and replicated to all the <a href="https://en.wikipedia.org/wiki/Hardware_security_module">HSM’s (Hardware Security Modules)</a> in the two facilities that ICANN operates. From now on we will use the terms <b>KSK2010 (the old key)</b> and <b>KSK2017 (the new key)</b>.</p>
 	<p>Before starting the roll-over process, testing of RFC5011 implementations took place and most implementations reported success.</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,7 +92,14 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>On September 29 <a href="https://www.icann.org/news/announcement-2017-09-27-en">ICANN postponed the roll</a> based on evidence from the resolvers that sent in reports.It was concerning that the latest and <a href="https://www.icann.org/news/blog/update-on-the-root-ksk-rollover-project">greatest version of Bind-9 in 4%</a> of cases did not pick up the new Trust Anchor, this was explained in more detail in a <a href="https://indico.dns-oarc.net/event/27/session/1/contribution/11/material/slides/0.pdf">DNS-OARC presentation</a>. But this still leaves us with the question, why?</p>
 	<p>It is also important to note that although other implementations of RFC8145 did not enable it by default thus most of the reports were by Bind-9.</p>
 	<p>Rolling the KSK at this point would have resulted in the remaining resolvers not trusting the content of the root zone, ultimately breaking all DNS resolution through them.</p>
-	<h3>Operational reality vs the protocol design</h3>
+	<div class="flex anchor relative">
+		<h3 id="operational-reality-vs-the-protocol-design">Operational reality vs the protocol design</h3>
+		<a href="https://blog.cloudflare.com/#operational-reality-vs-the-protocol-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare we operate validating resolvers in all of our &gt;120 data centers, and we monitored the adoption of trust anchors on a weekly basis, expecting everything to work correctly. After 6 weeks we noticed that things were not going right, some of the resolvers had picked up the new trust anchor and others had not accepted the new trust anchor even though more than enough time had passed.</p>
 	<p>First let’s look at the assumptions that RFC5011 makes.</p>
 	<ul>
@@ -83,12 +118,26 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>Modern operating practices use “containers” that are spun up and down, in those cases there is no “persistent” storage. To avoid validation errors in this case the software installed must know about the new key or perform a key discovery upon startup like the <a href="https://www.unbound.net/documentation/unbound-anchor.html">unbound-anchor</a> program performs for Unbound.</p>
 	<p>There are probably few other reasons where operations may cause the errors seen by the Trust Anchor Signaling.</p>
 	<p>Back to what happened at Cloudflare? In our case the issue was a combination of upgrades and container issues. We were upgrading software on all our nodes and our resolver processes were allocated to different computers. Our fix was to quickly upgrade to a software version that knew about the new trust anchor, so future restarts/migrations would not cause loss in trust.</p>
-	<h3>What is next for the KSK rollover</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-next-for-the-ksk-rollover">What is next for the KSK rollover</h3>
+		<a href="https://blog.cloudflare.com/#what-is-next-for-the-ksk-rollover" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ICANN has just asked for comments on restarting the rollover process and <a href="https://www.icann.org/news/blog/announcing-draft-plan-for-continuing-with-the-ksk-roll">perform the roll on October 11th 2018</a>.</p>
 	<p>What can you do to prepare for the key rollover?If you operate a validating resolver, make sure you have the latest version of your vendors software, audit the configuration files and file permissions and check that your software supports both KSK2010 (key tag 19036) and KSK2017 (key tag <b>20326</b>).</p>
 	<p>If you are a concerned end user right now there is nothing you can do, but the IETF is considering a proposal <a href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-kskroll-sentinel/?include_text=1">to allow remote trust anchor checking via queries</a>. Hopefully this will be standardized soon and DNS resolver software vendors add support, but until then there is no testing possible by you.</p>
 	<p>If you speak languages other than English and you worry about your local operators should know about the DNSSEC Key Rollover failure modes, feel free to republish this blog or parts of it in your language.</p>
-	<h3>HSM destruction at the next KSK ceremony Feb 7th 2018</h3>
+	<div class="flex anchor relative">
+		<h3 id="hsm-destruction-at-the-next-ksk-ceremony-feb-7th-2018">HSM destruction at the next KSK ceremony Feb 7th 2018</h3>
+		<a href="https://blog.cloudflare.com/#hsm-destruction-at-the-next-ksk-ceremony-feb-7th-2018" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every quarter there is a new KSK signing ceremony where signatures for 3 months of use of the KSK are generated. <a href="https://www.iana.org/dnssec/ceremonies/32">February 6th 2018 is the next one</a> and it will sign a DNSKEY set with both KSKs but only signed by KSK2010 . You can see the script for the ceremony here and you can even watch it online. But the fun part of this particular ceremony is the destruction of old HSM (Hardware Security Module), via some fancy contraption.</p>
 	<p>An HSM is a special kind of equipment that can store private keys and never leak them, and protects its secrets by erasing them when someone tries to access/tamper with the equipment. The secrets remain in the HSM as long as a non-replaceable battery lasts. The old KSK HSMs have a lifetime of 10 years and were made in late 2009 or early 2010 thus the battery is not designed to last much longer. Last year the private keys were safely and securly moved to newer models and the new machines have been in use for about a year. The final step of retiring the old machines is to destroy them during the ceremony, tune in to see how that is done.</p>
 	<p>Excited by working on cutting edge stuff? Or building systems at a scale where once-in-a-decade problems can get triggered every day? <a href="https://www.cloudflare.com/careers">Then join our team</a>.</p>

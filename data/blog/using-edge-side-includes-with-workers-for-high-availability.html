@@ -8,10 +8,24 @@
 	<p><i>Last week, we wrote about </i><a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers"><i>implementing ESI with Cloudflare Workers</i></a><i>. This is a guest post by </i><a href="https://twitter.com/Overbryd"><i>Lukas Reider</i></a><i> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</i></p>
 	<p>In this post, you will learn about how my client Titel Media was able to use Cloudflare Workers to implement simple edge side includes.</p>
 	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
-	<h3>Backstory</h3>
+	<div class="flex anchor relative">
+		<h3 id="backstory">Backstory</h3>
+		<a href="https://blog.cloudflare.com/#backstory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My current project, <a href="https://www.highsnobiety.com">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
 	<p>The company behind it, Titel Media GmbH, a publishing house with offices in Berlin, and New York, surely has grown out of Wordpress for hosting their content.</p>
-	<h3>The show must go on</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-show-must-go-on">The show must go on</h3>
+		<a href="https://blog.cloudflare.com/#the-show-must-go-on" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One does not simply rewrite a sophisticated web publishing pipeline like WordPress. Nor does one, simply rewrite a complete frontend in any manageable timeframe and then deploy it safely without causing any interruptions.</p>
 	<p>There is an inherent risk in such “big rewrites”. They can fail in many spectacular ways. Not getting it done being one of them, very popular. Failing to live up to high expectations (the ones that also caused the rewrite), is also well known to shatter the dreams of every project manager. Or how to manage changing requirements for a transition period of 1+ years?</p>
 	<p>Our working group, that should solve the transition, layed out a plan to sustainably grow the development team, while making level for safe path for the future.</p>
@@ -26,7 +40,14 @@
 			<p>And we did not want to interrupt the current publishing pipeline for our editors</p>
 		</li>
 	</ul>
-	<h3>The idea: Partially rewriting the page</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-idea-partially-rewriting-the-page">The idea: Partially rewriting the page</h3>
+		<a href="https://blog.cloudflare.com/#the-idea-partially-rewriting-the-page" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wordpress is, and was running just fine. Years of dealing with the intricate details of such an installation, have lead to a pretty mature setup.</p>
 	<p>Fortunately, there is no pressure from the underlying technology to finish the transition in a hurry. Time, about 1+ years, is actually on our side. The team is able to contribute changes step by step. This is when we are incorporating some of the great ideas out there: Edge Side Includes.</p>
 	<p>I first heard about it, in some office kitchen talks, about how Amazon is apparently never failing, because so many of their services are backed up by fallbacks. For example, if some part of the page does not render in time, this part is able to fallback to other fitting content gracefully.</p>
@@ -40,7 +61,14 @@
 			<p>Fallbacks: Wordpress will remain running during the live transition period. Any fragment, that fails, can still be taken from Wordpress.</p>
 		</li>
 	</ul>
-	<h3>Origin HTML document</h3>
+	<div class="flex anchor relative">
+		<h3 id="origin-html-document">Origin HTML document</h3>
+		<a href="https://blog.cloudflare.com/#origin-html-document" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lets look at a simplified example. The origin responds with the following HTML document, and the corresponding X-Fragment headers:</p>
 	<pre class="language-html"><code class="language-html">&lt; HTTP/2 200
 &lt; server: wordpress
@@ -87,7 +115,14 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 	<p>In case, one fragment does not respond timely, is down or could not be found, The fragments resolve to their fallback. That is just the content of the HTML-comment.</p>
-	<h3>Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-workers">Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is the forefront (pun intended) of amazing cloud services. Their latest feature: Cloudflare Workers, really spiked my interest. We were in the process of examining the ESI space for potential solutions. And there are not many. So we were already planning to build our own caching layer, that would be capable of handling includes and fallbacks. But now, with the power of running a Service Worker API on the edge, we might have just found the perfect solution for our limited ESI-needs.</p>
 	<h4>Worker code</h4>
 	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f">available on GitHub</a>):</p>
@@ -195,7 +230,14 @@ async function main(request) {
 			<p>If not, either the fragments fallback-content is returned, or it is simply removed from the output.</p>
 		</li>
 	</ul>
-	<h3>Recap</h3>
+	<div class="flex anchor relative">
+		<h3 id="recap">Recap</h3>
+		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The article shows the power of running code on the http-edge. With the power of V8 at your fingertips, you can really build great services right in front of your content delivery. Edge side includes, if narrowed down to a small feature set, are simple to implement and can even be safely controlled with timeouts.</p>
 	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
 	<p>Always Remember: “Web development is the art of finding the most complex way to concatenate strings.” Leave a message, or subscribe if you liked this post. I am curious what you think about this solution.</p>

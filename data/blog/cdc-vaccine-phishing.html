@@ -40,7 +40,14 @@
 		</li>
 	</ul>
 	<p>Traditional defenses will continually miss phish like this. In fact, the messages for this campaign successfully passed through Microsoft’s Office 365 native defenses before being identified and stopped by Area 1.</p>
-	<h3>CDC “Vassine” Count</h3>
+	<div class="flex anchor relative">
+		<h3 id="cdc-vassine-count">CDC “Vassine” Count</h3>
+		<a href="https://blog.cloudflare.com/#cdc-vassine-count" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to complete the purported contact form for receiving the COVID-19 vaccine, the target is prompted to click on the “COVID19 CDC Count” or “Yes / No” button in the message body. Clicking this link will result in the target’s browser loading the malicious webpage <code>hxxps://mail10298[.]buzz/covid/index.php</code>.</p>
 	<p>This phishing website, shown below in Figure 3, lures the victim into entering sensitive information, such as their physical address and driver’s license number. Once provided, the attacker could easily steal the victim’s identity or use the information to enable a range of fraudulent schemes.</p>
 	<p>Interestingly enough, the attacker misspells vaccine as “vassine,” indicating English is likely not their native language.</p>
@@ -104,7 +111,14 @@
 	</ul>
 	<p>Area 1 also uses lexical analysis of message body and subject to detect attacks aimed at stealing sensitive information. To find phish, our technology goes beyond validation of SPF, DKIM and DMARC records. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including those with malicious newly registered domains, that other defenses miss.</p>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology allow our algorithms to uncover the clever tactics seen in this campaign, enabling us to block the messages in real-time instead of waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time.</p>
-	<h3>Indicators of Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Phishing Link:</b></p>
 	<p>hxxps://mail10298[.]buzz/covid/index.php</p>
 	<p><b>Phishing Domain and Subdomains:</b></p>

@@ -6,9 +6,23 @@
 
 	</figure>
 	<p><a href="https://workers.cloudflare.com">Cloudflare Workers</a> allow developers to deploy code instantly across the globe. <a href="https://github.com/cloudflare/workers-sdk">Wrangler</a> is the CLI tool we build (and use!) to create, modify, and upload Workers. We recently <a href="https://blog.cloudflare.com/wrangler-v2-beta">announced a new version of Wrangler</a> with <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">a bunch of new features</a> – including <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/#4-local-mode">offline development</a>, <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/#2-zero-config-startup">zero-config startup</a>, and <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/#7-on-demand-developer-tools-for-debugging-">developer tools support</a>. Since then, we’ve been working hard to make the developer experience with version 2 as smooth and enjoyable as possible. We’re confident in what we’ve built and are now planning to officially deprecate version 1.</p>
-	<h3>What’s happening?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-happening">What’s happening?</h3>
+		<a href="https://blog.cloudflare.com/#whats-happening" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Version 1 of Wrangler (<a href="https://www.npmjs.com/package/@cloudflare/wrangler">@cloudflare/wrangler</a> on npm) is now deprecated, which means no new features or bug fixes will be published unless they’re critical. Beginning August 2023, no further updates will be provided and the <a href="https://github.com/cloudflare/wrangler-legacy">Wrangler v1 GitHub repo</a> will be archived. We strongly recommend you upgrade to version 2 (<a href="https://www.npmjs.com/package/wrangler">wrangler</a> on npm) to receive continued support. We have a <a href="https://developers.cloudflare.com/workers/wrangler-legacy/migration">migration guide</a> to make this process easy!</p>
-	<h3>Why?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why">Why?</h3>
+		<a href="https://blog.cloudflare.com/#why" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our goal is to make development on the Cloudflare platform as smooth and enjoyable as possible. Whether that means <a href="https://github.com/cloudflare/workers-sdk/pull/1735">simplifying common workflows</a>, <a href="https://github.com/cloudflare/workers-sdk/pull/82">incorporating powerful tools into the Wrangler codebase</a>, or <a href="https://github.com/cloudflare/workers-sdk/pull/1350">opening up Wrangler for use as a library</a>, we want Wrangler to be a one-stop shop for developing on Cloudflare.</p>
 	<p>With that in mind, last year we set out to align our product with our goals. Wrangler was the primary way developers interacted with our platform, but the codebase was difficult to maintain and had spiraled in complexity. Weighing our options, we found that the best way forward was a total rewrite of Wrangler, culminating in the 2.0 release.</p>
 	<p>Typically, <a href="https://semver.org/#:~:text=Given%20a%20version,incompatible%20API%20changes">semver-major releases</a> (such as 1.x to 2.0) introduce breaking changes into a codebase – making it non-trivial to update to the latest version of software. While some breakage was inevitable with the release of a new major version of Wrangler, we aimed to ensure smooth upgrades. We <a href="https://github.com/cloudflare/workers-sdk/pull/733">provided detailed deprecation messages</a> and <a href="https://developers.cloudflare.com/workers/wrangler-legacy/migration/deprecations">documented breaking changes</a> wherever they occurred. We carefully <a href="https://github.com/cloudflare/workers-sdk/issues/1519">monitored issue reports</a>, and responded with <a href="https://github.com/cloudflare/workers-sdk/pull/1595">updates to fix problems</a>. We monitored download statistics of both versions of wrangler, and celebrated internally when <a href="https://npmtrends.com/@cloudflare/wrangler-vs-wrangler">downloads for version 2 of Wrangler surpassed downloads for version 1 on npm</a>.</p>
@@ -18,6 +32,13 @@
 
 	</figure>
 	<p>Download statistics for @cloudflare/wrangler (version 1, in blue) and wrangler (version 2, in orange). Source: <a href="https://npmtrends.com/@cloudflare/wrangler-vs-wrangler">https://npmtrends.com/@cloudflare/wrangler-vs-wrangler</a></p>
-	<h3>What do I need to do?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-do-i-need-to-do">What do I need to do?</h3>
+		<a href="https://blog.cloudflare.com/#what-do-i-need-to-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For most of our users, deprecation of version 1 will be invisible – they’re already on version 2! If you’re still on version 1, please upgrade – we have a <a href="https://developers.cloudflare.com/workers/wrangler/migration/migrating-from-wrangler-1">migration guide</a> that details everything you need to do to update to the latest and greatest version. If you encounter any bugs, unexpected behavior, or anything blocking you from upgrading, <a href="https://github.com/cloudflare/workers-sdk/issues/new/choose">file an issue</a>! If you’re not using Wrangler, <a href="https://developers.cloudflare.com/workers/get-started/guide">give it a shot</a>! We’re really proud of what we’ve built, and we want your feedback on how we can continue to make it even better.</p>
 </div>

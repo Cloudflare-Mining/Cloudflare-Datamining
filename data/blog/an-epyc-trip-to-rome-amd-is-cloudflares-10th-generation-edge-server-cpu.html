@@ -90,11 +90,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ue5oOlAdewYkerMSsEPWN/00ebe2d4a4c374321821141522e26d8d/2.png" alt="" class="kg-image" width="1999" height="560" loading="lazy">
 
 	</figure>
-	<h3>Ecosystem Readiness</h3>
+	<div class="flex anchor relative">
+		<h3 id="ecosystem-readiness">Ecosystem Readiness</h3>
+		<a href="https://blog.cloudflare.com/#ecosystem-readiness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the beginning of our journey to choose our next CPU, we got a variety of processors from different vendors that could fit well with our software stack and services, which are written in C, LuaJIT, and Go. More details about benchmarking for our stack were explained when we benchmarked <a href="https://blog.cloudflare.com/arm-takes-wing">Qualcomm's ARM® chip in the past</a>. We're going to go through the same suite of tests as Vlad's blog this time around since it is a quick and easy "sniff test". This allows us to test a bunch of CPUs within a manageable time period before we commit to spend more engineering effort and need to apply our software stack.</p>
 	<p>We tried a variety of CPUs with different number of cores, sockets, and frequencies. Since we're explaining how we chose the AMD EPYC 7642, all of the graphs in this blog focus on how AMD compares with our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9's Intel Xeon Platinum 6162 CPU</a> as a baseline.</p>
 	<p>Our results correspond to server node for both CPUs tested; meaning the numbers pertain to 2x 24-core processors for Intel, and 1x 48-core processor for AMD – a two socket Intel based server and a one socket AMD EPYC powered server. Before we started our testing, we changed the Cloudflare lab test servers’ BIOS settings to match our production server settings. This gave us CPU frequencies yields for AMD at 3.03 Ghz and Intel at 2.50 Ghz on average with very little variation. With gross simplification, we expect that with the same amount of cores AMD would perform about 21% better than Intel. Let’s start with our crypto tests.</p>
-	<h3>Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="cryptography">Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AZYQDj2nhVofkFNuK7fhb/e2fb32e61124339a848e01216cf15b1c/3.png" alt="" class="kg-image" width="1999" height="1239" loading="lazy">
@@ -106,7 +121,14 @@
 
 	</figure>
 	<p>Looking promising for AMD. In public key cryptography, it does 18% better. Meanwhile for symmetric key, AMD loses on AES-128-GCM but it’s comparable overall.</p>
-	<h3>Compression</h3>
+	<div class="flex anchor relative">
+		<h3 id="compression">Compression</h3>
+		<a href="https://blog.cloudflare.com/#compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We do a lot of compression at the edge to save bandwidth and help deliver content faster. We go through both zlib and brotli libraries written in C. All tests are done on <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> HTML file in memory.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -120,13 +142,29 @@
 	</figure>
 	<p>AMD wins by an average of 29% using gzip across all qualities. It does even better with brotli with tests lower than quality 7, which we use for dynamic compression. There’s a throughput cliff starting brotli-9 which <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad’s explanation</a> is that Brotli consumes lots of memory and thrashes cache. Nevertheless, AMD wins by a healthy margin.</p>
 	<p>A lot of our services are written in Go. In the following graphs we’re redoing the crypto and compression tests in Go along with RegExp on 32KB strings and the strings library.</p>
-	<h3>Go Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-cryptography">Go Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#go-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1JRYfDXEC61iGL6Ds7LjL1/0fb6e366bb30fc41b6a08a5c089f3281/7.png" alt="" class="kg-image" width="1999" height="1240" loading="lazy">
 
 	</figure>
-	<h3>Go Compression</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-compression">Go Compression</h3>
+		<a href="https://blog.cloudflare.com/#go-compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5U6GEnTLU1VVvqbZtJZ1df/7be4ec80627dcc0051b1481b60e93b3b/Screen-Shot-2020-02-24-at-14.37.27.png" alt="" class="kg-image" width="2000" height="1234" loading="lazy">
@@ -137,7 +175,15 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YQTrE7SfEiCXjivU7NXXf/fd68760aabc2f8b7f5f7f22c1ddb7319/9.png" alt="" class="kg-image" width="1999" height="1240" loading="lazy">
 
 	</figure>
-	<h3>Go Regexp</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-regexp">Go Regexp</h3>
+		<a href="https://blog.cloudflare.com/#go-regexp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZQn6rtg7fE6IJ3wNgpCf/627abf2769167bbbd47398d8adc6b439/10.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
@@ -148,14 +194,29 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vvUuNzVuRrgGqVrGOxagJ/1412e8db825faab5dd31cd3e9768b9ab/11.png" alt="" class="kg-image" width="1999" height="1239" loading="lazy">
 
 	</figure>
-	<h3>Go Strings</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-strings">Go Strings</h3>
+		<a href="https://blog.cloudflare.com/#go-strings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BY6NTdgjUWGiDBwC0NMNv/924ed56bcba1f34003f3942343ac4c51/12.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
 
 	</figure>
 	<p>AMD performs better in all of our Go benchmarks except for ECDSA P256 Sign losing by 38%, which is peculiar since with the test in C it does 24% better. It’s worth investigating what’s going on here. Other than that, AMD doesn’t win by as much of a margin but it still proves to be better.</p>
-	<h3>LuaJIT</h3>
+	<div class="flex anchor relative">
+		<h3 id="luajit">LuaJIT</h3>
+		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We rely a lot on LuaJIT in our stack. As <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad said</a>, it’s the glue that holds Cloudflare together. We’re glad to show that AMD wins here as well.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -163,7 +224,14 @@
 
 	</figure>
 	<p>Overall our tests show a single EPYC 7642 to be more competitive than two Xeon Platinum 6162. While there are a couple of tests where AMD loses out such as OpenSSL AES-128-GCM and Go OpenSSL ECDSA-P256 Sign, AMD wins in all the others. By scanning quickly and treating all tests equally, AMD does on average 25% better than Intel.</p>
-	<h3>Performance Simulations</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-simulations">Performance Simulations</h3>
+		<a href="https://blog.cloudflare.com/#performance-simulations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After our ‘sniff’ tests, we put our servers through another series of emulations which apply synthetic workloads simulating our edge software stack. Here we are simulating workloads of scenarios with different types of requests we see in production. Types of requests vary from asset size, whether they go through HTTP or HTTPS, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>, Workers, or one of many additional variables. Below shows the throughput comparison between the two CPUs of the types of requests we see most typically.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -172,7 +240,14 @@
 	</figure>
 	<p>The results above are ratios using Gen 9's Intel CPUs as the baseline normalized at 1.0 on the X-axis. For example, looking at simple requests of 10KiB assets over HTTPS, we see that AMD does 1.50x better than Intel in Requests per Second. On average for the tests shown on the graph above, AMD performs 34% better than Intel. Considering that the TDP for the single AMD EPYC 7642 is 225W, when compared to two Intel's being 300W, we're looking at AMD delivering up to 2.0x better Requests per Watt vs. the Intel CPUs!</p>
 	<p>By this time, we were already leaning heavily toward a single socket setup with AMD EPYC 7642 as our CPU for Gen X. We were excited to see exactly how well AMD EPYC servers would do in production, so we immediately shipped a number of the servers out to some of our data centers.</p>
-	<h3>Live Production</h3>
+	<div class="flex anchor relative">
+		<h3 id="live-production">Live Production</h3>
+		<a href="https://blog.cloudflare.com/#live-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Step one of course was to get all our test servers set up for a production environment. All of our machines in the fleet are loaded with the same processes and services which makes for a great apples-to-apples comparison. &nbsp;Like data centers everywhere, we have multiple generations of servers deployed and we deploy our servers in clusters such that each cluster is pretty homogeneous by server generation. In some environments this can lead to varying utilization curves between clusters. &nbsp;This is not the case for us. Our engineers have optimized CPU utilization across all server generations so that no matter if the machine's CPU has 8 cores or 24 cores, CPU usage is generally the same.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -211,7 +286,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yWj3MsDnro619KjtJwVAW/bf422ba59bf1971bc5c299a6dbdadf2d/20.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Hardware and Performance engineers at Cloudflare do significant research and testing to figure out the best server configuration for our customers. Solving big problems like this is why <a href="https://www.fastcompany.com/best-workplaces-for-innovators/2019">we love working here</a>, and we're also helping solving yours with our services like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">serverless</a> edge compute and the array of security solutions such as <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a>, and <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS protection</a>. All of our servers on the Cloudflare Network are designed to make our products work reliably, and we strive to make each new generation of our server design better than its predecessor. We believe the AMD EPYC 7642 is the answer for our Gen X's processor question.</p>
 	<p>With <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, developers have enjoyed deploying their applications to our <a href="https://blog.cloudflare.com/tag/cloudflare-network">Network</a>, which is ever expanding across the globe. We’ve been proud to empower our customers by letting them focus on writing their code while we are managing the security and reliability in the cloud. We are now even more excited to say that their work will be deployed on our Gen X servers powered by 2nd Gen AMD EPYC processors.</p>
 	<figure class="kg-card kg-image-card ">

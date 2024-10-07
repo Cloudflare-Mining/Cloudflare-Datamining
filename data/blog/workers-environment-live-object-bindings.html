@@ -70,7 +70,14 @@ export default {
 	<blockquote>
 		<p><i>Bindings don't just reduce boilerplate. They are a core design feature of the Workers platform which simultaneously improve developer experience and application security in several ways. Usually these two goals are in opposition to each other, but bindings elegantly solve for both at the same time.</i></p>
 	</blockquote>
-	<h2>Security</h2>
+	<div class="flex anchor relative">
+		<h2 id="security">Security</h2>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It may not be obvious at first glance, but bindings neatly solve a number of common security problems in distributed systems.</p>
 	<h4>SSRF is Not A Thing</h4>
 	<p>Bindings, when used properly, make Workers immune to Server-Side Request Forgery (SSRF) attacks, one of the most common yet deadly security vulnerabilities in application servers today. In an SSRF attack, an attacker tricks a server into making requests to other internal services that only it can see, thus giving the attacker access to those internal services.</p>
@@ -124,7 +131,14 @@ let myKv = KV.connect("my-kv-namespace");</code></pre>
 	<p>Bindings fix that. When you define a binding from a Worker to a particular KV namespace, the platform inherently understands that you are telling the Worker to use the KV namespace. Therefore, it can implicitly ensure that the correct permissions are granted. There is no step 2.</p>
 	<p>And conversely, if no binding is configured, then the Worker does not have access. That means that every Worker starts out with no access by default, and only receives access to exactly the things it needs. Secure by default.</p>
 	<p>As a related benefit, you can always accurately answer the question "What services are using this resource?" based on bindings. Since the system itself understands bindings and what they point to, the system can answer the query without knowing anything about the service's internals.</p>
-	<h2>Developer Experience</h2>
+	<div class="flex anchor relative">
+		<h2 id="developer-experience">Developer Experience</h2>
+		<a href="https://blog.cloudflare.com/#developer-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've seen that bindings improve security in a number of ways. Usually, people expect security and developer friendliness to be a trade-off, with each security measure making life harder for developers. Bindings, however, are entirely the opposite! They actually make life easier!</p>
 	<h4>Easier setup</h4>
 	<p>As we saw in the intro, using a binding reduces setup boilerplate. Instead of receiving an environment variable containing an API key which must be passed into some sort of library, the environment variable itself is an already-initialized client library.</p>
@@ -162,7 +176,14 @@ let myKv = KV.connect(env.MY_KV_NAMESPACE, env.MY_KV_AUTHKEY);</code></pre>
 	<p>Dependency injection isn't just for tests. A service whose dependencies can be changed out easily will be easier to deploy into new environments, including new production environments.</p>
 	<p>Say, for instance, you have a service that authenticates users. Now you are launching a new product, which, for whatever reason, has a separate userbase from the original product. You need to deploy a new version of the auth service that uses a different database to implement a separate user set. As long as all dependencies are injectable, this should be easy.</p>
 	<p>Again, bindings are not the only way to achieve dependency injection, but a bindings-based system will tend to lead developers to write dependency-injectable code by default.</p>
-	<h2>Q&amp;A</h2>
+	<div class="flex anchor relative">
+		<h2 id="q-a">Q&amp;A</h2>
+		<a href="https://blog.cloudflare.com/#q-a" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Has anyone done this before?</h4>
 	<p>You have. Every time you write code.</p>
 	<p>As it turns out, this approach is used all the time at the programming language level. Bindings are analogous to parameters of a function, or especially parameters to a class constructor. In a memory-safe programming language, you can't access an object unless someone has passed you a pointer or reference to that object. Objects in memory don't have URLs that you use to access them.</p>
@@ -253,6 +274,13 @@ export default {
 	<p>Under the hood, a Workers KV binding encapsulates a secret key used to access the corresponding KV namespace. This key is actually the encryption key for the namespace. The key is distributed to the edge along with the Worker's code and configuration, using encrypted storage to keep it safe.</p>
 	<p>Although the key is distributed with the Worker, the Worker itself has no way to access the key. In fact, even the owner of the Cloudflare account cannot see the key – it is simply never revealed outside of Cloudflare's systems. (Cloudflare employees are also prevented from viewing these keys.)</p>
 	<p>Even if an attacker somehow got ahold of the key, it would not be useful to them as-is. Cloudflare's API does not provide any way for a user to upload a raw key to use in a KV binding. The API instead has the client specify the public ID of the namespace they want to use. The deployment system verifies that the KV namespace in question is on the same account as the Worker being uploaded (and that the client is authorized to deploy Workers on said account).</p>
-	<h2>Get Started</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-started">Get Started</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To learn about all the types of bindings offered by Workers and how to use them, <a href="https://developers.cloudflare.com/workers/configuration/bindings">check out the documentation</a>.</p>
 </div>

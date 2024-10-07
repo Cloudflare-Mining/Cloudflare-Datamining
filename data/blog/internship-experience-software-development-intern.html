@@ -1,10 +1,24 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3w8KPvuhKi2SsiRbg3xZTT/7be9ee04fab4a3f2ba383dde4a8b8ed7/internship-experience-software-development-intern.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Before we dive into my experience interning at Cloudflare, let me quickly introduce myself. I am currently a master’s student at the National University of Singapore (NUS) studying Computer Science. I am passionate about building software that improves people’s lives and making the Internet a better place for everyone. Back in December 2021, I joined Cloudflare as a Software Development Intern on the Partnerships team to help improve the experience that Partners have when using the platform. I was extremely excited about this opportunity and jumped at the prospect of working on serverless technology to build viable tools for our partners and customers. In this blog post, I detail my experience working at Cloudflare and the many highlights of my internship.</p>
-	<h3>Interview Experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="interview-experience">Interview Experience</h3>
+		<a href="https://blog.cloudflare.com/#interview-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The process began for me back when I was taking a software engineering module at NUS where one of my classmates had shared a job post for an internship at Cloudflare. I had known about Cloudflare’s DNS service prior and was really excited to learn more about the internship opportunity because I really resonated with the company's mission to help build a better Internet.</p>
 	<p>I knew right away that this would be a great opportunity and submitted my application. Soon after, I heard back from the recruiting team and went through the interview process – the entire interview process was extremely accommodating and is definitely the most enjoyable interview experience I have had. Throughout the process, I was constantly asked about the kind of things I would like to work on and the relevance of the work that I would be doing. I felt that this thorough communication carried on throughout the internship and really was a cornerstone of my experience interning at Cloudflare.</p>
-	<h3>My Internship</h3>
+	<div class="flex anchor relative">
+		<h3 id="my-internship">My Internship</h3>
+		<a href="https://blog.cloudflare.com/#my-internship" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My internship began with onboarding and training, and then after, I had discussions with my mentor, Ayush Verma, on the projects we aimed to complete during the internship and the order of objectives. The main issues we wanted to address was the current manual process that our internal teams and partners go through when they want to duplicate the configuration settings on a zone, or when they want to compare one zone to other zones to ensure that there are no misconfigurations. As you can imagine, with the number of different configurations offered on the Cloudflare dashboard for customers, it could take significant time to copy over every setting and rule manually from one zone to another. Additionally, this process, when done manually, poses a potential threat for misconfigurations due to human error. Furthermore, as more and more customers onboard different zones onto Cloudflare, there needs to be a more automated and improved way for them to make these configuration setups.</p>
 	<p>Initially, we discussed using Terraform as Cloudflare already supports terraform automation. However, this approach would only cater towards customers and users that have more technical resources and, in true Cloudflare spirit, we wanted to keep it simple such that it could be used by any and everyone. Therefore, we decided to leverage the publicly available Cloudflare APIs and create a browser-based application that interacts with these APIs to display configurations and make changes easily from a simple UI.</p>
 	<p>With the end goal of simplifying the experience for our partners and customers in duplicating zone configurations, we decided to build a Zone Copier web application solely built on Cloudflare Workers. This tool would, in a click of a button, automatically copy over every setting that can be copied from one zone to another, significantly reducing the amount of time and effort required to make the changes.</p>
@@ -19,7 +33,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/16b1r6p12eWbtss72II7Qp/d2263f8f680e84962d153ee7410c057d/unnamed--1--1.png" alt="" class="kg-image" width="1600" height="886" loading="lazy">
 
 	</figure>
-	<h3>Presenting the prototype application</h3>
+	<div class="flex anchor relative">
+		<h3 id="presenting-the-prototype-application">Presenting the prototype application</h3>
+		<a href="https://blog.cloudflare.com/#presenting-the-prototype-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As developers will know, the best way to obtain feedback for the tool that you’re building is to directly have your customers use them and let you know what they think of your application and the kind of features they want to have built on top of it. Therefore, once we had a prototype version of the web application for the Zone Viewer and Zone Comparison complete, we presented the application to the Solutions Engineering team to hear their thoughts on the impact the tool would have on their work and additional features they would like to see built on the application. I found this process very enriching as they collectively mentioned how impactful the application would be for their work and the value add this project provides to them.</p>
 	<p>Some interesting feedback and feature requests I received were:</p>
 	<ol>
@@ -40,7 +61,14 @@
 		</li>
 	</ol>
 	<p>It was also a very cool experience speaking to the broad Solutions Engineering team as I found that many were very technically inclined and had many valid suggestions for improving the architecture and development of the applications. A special thanks to Edwin Wong for setting up the sharing session with the internal team, and many thanks to Xin Meng, AQ Jiao, Yonggil Choi, Steve Molloy, Kyouhei Hayama, Claire Lim and Jamal Boutkabout for their great insight and suggestions!</p>
-	<h3>Impact of Cloudflare outside of work</h3>
+	<div class="flex anchor relative">
+		<h3 id="impact-of-cloudflare-outside-of-work">Impact of Cloudflare outside of work</h3>
+		<a href="https://blog.cloudflare.com/#impact-of-cloudflare-outside-of-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While Cloudflare is known for its impeccable transparency throughout the company, and the stellar products it provides in helping make the Internet better, I wanted to take this opportunity to talk about the other endeavors that the company has too.</p>
 	<p>Cloudflare is part of the <i>Pledge 1%</i>, where the company dedicates 1% of products and 1% of our time to give back to the local communities as well as all the communities we support online around the world.</p>
 	<p>I took part in one of these activities, where we spent a morning cleaning up parts of the East Coast Park beach, by picking up trash and litter that had been left behind by other park users. Here’s a picture of us from that morning:</p>
@@ -51,7 +79,14 @@
 	</figure>
 	<p>From day one, I have been thoroughly impressed by Cloudflare’s commitment to its culture and the effort everyone at Cloudflare puts in to make the company a great place to work and have a positive impact on the surrounding community.</p>
 	<p>In addition to giving back to the community, other aspects of company culture include having a good team spirit and safe working environment where you feel appreciated and taken care of. At Cloudflare, I have found that everyone is very understanding of work commitments. I faced a few challenges during the internship where I had to spend additional time on university related projects and work, and my manager has always been very supportive and understanding if I required additional time to complete parts of the internship project.</p>
-	<h3>Concluding takeaways</h3>
+	<div class="flex anchor relative">
+		<h3 id="concluding-takeaways">Concluding takeaways</h3>
+		<a href="https://blog.cloudflare.com/#concluding-takeaways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My experience interning at Cloudflare has been extremely positive, and I have seen first hand how transparent the company is with not only its employees but also its customers, and it truly is a great place to work. Cloudflare’s collaborative culture allowed me to access members from different teams, to obtain their thoughts and assistance with certain issues that I faced from time to time. I would not have been able to produce an impactful project without the help of the different brilliant, and motivated, people I worked with across the span of the internship, and I am truly grateful for such a rewarding experience.</p>
 	<p>We are getting ready to open intern roles for this coming Fall, so we encourage you to visit our <a href="https://www.cloudflare.com/careers/jobs">careers page</a> frequently, to be up-to-date on all the opportunities we have within our teams.</p>
 </div>

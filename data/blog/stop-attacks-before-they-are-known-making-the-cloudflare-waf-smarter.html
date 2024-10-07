@@ -11,13 +11,34 @@
 	<p>Today, we are solving this problem by making our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> smarter and announcing our WAF attack scoring system in general availability.</p>
 	<p>Customers on our Enterprise Core and Advanced Security bundles will have gradual access to this new feature. All remaining Enterprise customers will gain access over the coming months.</p>
 	<p>Our WAF attack scoring system, fully complementary to our Cloudflare Managed Rules, classifies all requests using a model trained on observed true positives across the Cloudflare network, allowing you to detect (and block) evasion, bypass and new attack techniques before they are publicly known.</p>
-	<h2>The problem with signature based WAFs</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-problem-with-signature-based-wafs">The problem with signature based WAFs</h2>
+		<a href="https://blog.cloudflare.com/#the-problem-with-signature-based-wafs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attackers trying to infiltrate web applications often use known or recently disclosed payloads. The Cloudflare WAF has been built to handle these attacks very well. The Cloudflare Managed Ruleset and the Cloudflare <a href="https://en.wikipedia.org/wiki/OWASP">OWASP</a> Managed Ruleset are in fact continuously updated and aimed at protecting web applications against known threats while minimizing false positives.</p>
 	<p>Things become harder with not publicly known attacks, often referred to as <a href="https://en.wikipedia.org/wiki/Zero-day_(computing)">zero-days</a>. While our teams do their best to research new threat vectors and keep the Cloudflare Managed rules updated, human speed becomes a limiting factor. Every time a new vector is found a window of opportunity becomes available for attackers to bypass mitigations.</p>
 	<p>One well known example was the <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">Log4j RCE attack</a>, where we had to deploy frequent rule updates as new bypasses were discovered by changing the known <a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns">attack patterns</a>.</p>
-	<h2>The solution: complement signatures with a machine learning scoring model</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-solution-complement-signatures-with-a-machine-learning-scoring-model">The solution: complement signatures with a machine learning scoring model</h2>
+		<a href="https://blog.cloudflare.com/#the-solution-complement-signatures-with-a-machine-learning-scoring-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our WAF attack scoring system is a machine-learning-powered enhancement to Cloudflare’s WAF. It scores every request with a probability of it being malicious. You can then use this score when implementing WAF Custom Rules to keep your application safe alongside existing Cloudflare Managed Rules.</p>
-	<h3>How do we use machine learning in Cloudflare’s WAF?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-we-use-machine-learning-in-cloudflares-waf">How do we use machine learning in Cloudflare’s WAF?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-we-use-machine-learning-in-cloudflares-waf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In any classification problem, the quality of the training set directly relates to the quality of the classification output, so a lot of effort was put into preparing the training data.</p>
 	<p>And this is where we used a Cloudflare superpower: we took advantage of Cloudflare’s network visibility by gathering millions of true positive samples generated by our existing signature based WAF and further enhanced it by using techniques covered in “<a href="https://blog.cloudflare.com/data-generation-and-sampling-strategies">Improving the accuracy of our machine learning WAF</a>”.</p>
 	<p>This allowed us to train a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">model</a> that is able to classify, given an HTTP request, the probability that the request contains a malicious payload, but more importantly, to classify when a request is very similar to a known true positive but yet sufficiently different to avoid a managed rule match.</p>
@@ -28,10 +49,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57Kl8w8yxxC4ZZ7DOu2tUB/9c08552a2562c62bb202f7a2afeb7e49/image4-5.png" alt="Scale showing distribution of the WAF Attack Score between 1 and 99" class="kg-image" width="842" height="366" loading="lazy">
 
 	</figure>
-	<h3>Proving immediate value</h3>
+	<div class="flex anchor relative">
+		<h3 id="proving-immediate-value">Proving immediate value</h3>
+		<a href="https://blog.cloudflare.com/#proving-immediate-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As one example of the effectiveness of this new system, on October 13, 2022 <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-42889">CVE-2022-42889</a> was identified as a “Critical Severity” in <a href="https://github.com/apache/commons-text">Apache Commons Text</a> affecting versions 1.5 through 1.9.</p>
 	<p>The payload used in the attack, although not immediately blocked by our Cloudflare Managed Rules, was correctly identified (by scoring very low) by our attack scoring system. This allowed us to protect endpoints and identify the attack with zero time to deploy. Of course, we also still updated the Cloudflare Managed Rules to cover the new attack vector, as this allows us to improve our training data further completing our feedback loop.</p>
-	<h2>Know what you don’t know with the new Security Analytics</h2>
+	<div class="flex anchor relative">
+		<h2 id="know-what-you-dont-know-with-the-new-security-analytics">Know what you don’t know with the new Security Analytics</h2>
+		<a href="https://blog.cloudflare.com/#know-what-you-dont-know-with-the-new-security-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to the attack scoring system, we have another big announcement: our new Security Analytics! You can read more about this in <a href="https://blog.cloudflare.com/security-analytics">the official announcement</a>.</p>
 	<p>Using the new security analytics you can view the attack score distribution regardless of whether the requests were blocked or not allowing you to explore potentially malicious attacks before deploying any rules.</p>
 	<p>The view won’t only show the WAF Attack Score but also Bot Management and Content Scanning with the ability to mix and match filters as you desire.</p>
@@ -40,9 +75,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MJ8mVGxP5c3qKrOMXs0H9/2970f327f1c1b809333e76dcf7d41b21/image1-10.png" alt="Snapshot from the dashboard showing the Analytics default view" class="kg-image" width="1309" height="1256" loading="lazy">
 
 	</figure>
-	<h2>How to use the WAF Attack Score and Security Analytics</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-use-the-waf-attack-score-and-security-analytics">How to use the WAF Attack Score and Security Analytics</h2>
+		<a href="https://blog.cloudflare.com/#how-to-use-the-waf-attack-score-and-security-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s go on a tour to spot attacks using the new Security Analytics, and then use the WAF Attack Scores to mitigate them.</p>
-	<h3>Starting with Security Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-with-security-analytics">Starting with Security Analytics</h3>
+		<a href="https://blog.cloudflare.com/#starting-with-security-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This new view has the power to show you everything in one place about your traffic. You have tens of filters to mix and match from, top statistics, multiple interactive graph distributions, as well as the log samples to verify your insights. In essence this gives you the ability to preview a number of filters without the need to create WAF Custom Rules in the first place.</p>
 	<p><b>Step 1</b> - access the new Security Analytics: To Access the new Security Analytics in the dashboard, head over to the “Security” tab (<b>Security &gt; Analytics</b>), the previous (<b>Security &gt; Overview</b>) still exists under (<b>Security &gt; Events</b>). You must have access to at least the WAF Attack Score to be able to see the new Security Analytics for the time being.</p>
 	<p><b>Step 2</b> - explore insights: On the new analytics page, you will view the time distribution of your entire traffic, along with many filters on the right side showing distributions for several features including the WAF Attack Score and the Bot Management score, to make it super easy to apply interesting filters we added the “Insights” section.</p>
@@ -70,7 +119,14 @@
 
 	</figure>
 	<p><b>Step 5</b> - create a rule to mitigate the attack traffic: Once you have verified that your filter is not matching false positives, by using a single click on the “Create custom rule” button, you will be directed to the WAF Custom Rules builder with all your filters pre-populated and ready for you to “Deploy”.</p>
-	<h3>Attack scores in Security Event logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="attack-scores-in-security-event-logs">Attack scores in Security Event logs</h3>
+		<a href="https://blog.cloudflare.com/#attack-scores-in-security-event-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WAF Attack Scores are also available in <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">HTTP logs</a>, and by navigating to (<b>Security &gt; Events)</b> when expanding any of the event log samples:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -84,6 +140,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ij7IQl7b2fRa5Gmv3Cofo/884a86ef2dc345610b3de9000e5bf823/image9.png" alt="Dashboard view of a custom rule with action log for WAF Attack Score less than 40" class="kg-image" width="1738" height="1360" loading="lazy">
 
 	</figure>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is just step one of many to make our Cloudflare WAF truly “intelligent”. In addition to rolling this new technology out to more customers, we are already working on providing even better visibility and cover additional attack vectors. For all that and more, stay tuned!</p>
 </div>

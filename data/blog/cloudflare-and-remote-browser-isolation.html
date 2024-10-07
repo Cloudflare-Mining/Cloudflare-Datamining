@@ -2,13 +2,27 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-and-remote-browser-isolation">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-and-remote-browser-isolation">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-and-remote-browser-isolation">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-and-remote-browser-isolation">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F3rZ8Vcs15ea9FAmuzrb2/efce20bcfd22bc6566567d1c607b4871/cloudflare-and-remote-browser-isolation.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare announced today that it has purchased S2 Systems Corporation, a Seattle-area startup that has built an innovative remote browser isolation solution unlike any other currently in the market. The majority of endpoint compromises involve web browsers — by putting space between users’ devices and where web code executes, browser isolation makes endpoints substantially more <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">secure</a>. In this blog post, I’ll discuss what browser isolation is, why it is important, how the S2 Systems cloud browser works, and how it fits with Cloudflare’s mission to help build a better Internet.</p>
-	<h3>What’s wrong with web browsing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-wrong-with-web-browsing">What’s wrong with web browsing?</h3>
+		<a href="https://blog.cloudflare.com/#whats-wrong-with-web-browsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s been more than 30 years since Tim Berners-Lee wrote the project proposal defining the technology underlying what we now call the world wide web. What Berners-Lee envisioned as being useful for “<i>several thousand people, many of them very creative, all working toward common goals</i>”<sup>[1]</sup> has grown to become a fundamental part of commerce, business, the global economy, and an integral part of society used by more than 58% of the world’s population<sup>[2]</sup>.</p>
 	<p>The world wide web and web browsers have unequivocally become the platform for much of the productive work (and play) people do every day. However, as the pervasiveness of the web grew, so did opportunities for bad actors. Hardly a day passes without a major new cybersecurity breach in the news. Several contributing factors have helped propel cybercrime to unprecedented levels: the commercialization of hacking tools, the emergence of malware-as-a-service, the presence of well-financed nation states and organized crime, and the development of cryptocurrencies which enable malicious actors of all stripes to anonymously monetize their activities.</p>
 	<p>The vast majority of security breaches originate from the web. This should not be surprising. Although modern web browsers are remarkable, many fundamental architectural decisions were made in the 1990’s before concepts like <i>security</i>, <i>privacy</i>, <i>corporate oversight</i>, and <i>compliance</i> were issues or even considerations. Core web browsing functionality (including the entire underlying WWW architecture) was designed and built for a different era and circumstances.</p>
 	<p>In today’s world, several web browsing assumptions are outdated or even dangerous. Web browsers and the underlying server technologies encompass an extensive – and growing – list of complex interrelated technologies. These technologies are constantly in flux, driven by vibrant open source communities, content publishers, search engines, advertisers, and competition between browser companies. As a result of this underlying complexity, web browsers have become primary attack vectors.</p>
 	<p>The very structure and underlying technologies that power the web are inherently difficult to secure. Some browser vulnerabilities result from <i>illegitimate use of legitimate functionality</i>: enabling browsers to download files and documents is good, but allowing downloading of files infected with malware is bad; dynamic loading of content across multiple sites within a single webpage is good, but cross-site scripting is bad; enabling an extensive advertising ecosystem is good, but the inability to detect hijacked links or malicious redirects to malware or phishing sites is bad; etc.</p>
-	<h3>Enterprise Browsing Issues</h3>
+	<div class="flex anchor relative">
+		<h3 id="enterprise-browsing-issues">Enterprise Browsing Issues</h3>
+		<a href="https://blog.cloudflare.com/#enterprise-browsing-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enterprises have additional challenges with traditional browsers.</p>
 	<p>Paradoxically, IT departments have the least amount of control over the most ubiquitous app in the enterprise – the web browser. The most common complaints about web browsers from enterprise security and IT professionals are:</p>
 	<ol>
@@ -25,7 +39,14 @@
 	<p>Given vulnerabilities exposed through everyday user activities such as <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">email</a> and web browsing, some organizations attempt to restrict these activities. As both are legitimate and critical business functions, efforts to limit or curtail web browser use inevitably fail or have a substantive negative impact on business productivity and employee morale.</p>
 	<p>Current approaches to mitigating security issues inherent in browsing the web are largely based on <i>signature</i> technology for data files and executables, and lists of known good/bad URLs and <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS addresses</a>. The challenge with these approaches is the difficulty of keeping current with known attacks (file signatures, URLs and DNS addresses) and their inherent vulnerability to zero-day attacks. Hackers have devised automated tools to defeat signature-based approaches (e.g. generating hordes of files with unknown signatures) and create millions of transient websites in order to defeat URL/DNS blocklists.</p>
 	<p>While these approaches certainly prevent some attacks, the growing number of incidents and severity of security breaches clearly indicate more effective alternatives are needed.</p>
-	<h3>What is browser isolation?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-browser-isolation">What is browser isolation?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The core concept behind <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">browser isolation</a> is security-through-physical-isolation to create a “gap” between a user’s web browser and the endpoint device thereby protecting the device (and the <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise network</a>) from exploits and attacks. Unlike <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateways</a>, antivirus software, or firewalls which rely on known threat patterns or signatures, this is a zero-trust approach.</p>
 	<p>There are two primary browser isolation architectures: (1) client-based <i>local</i> isolation and (2) <i>remote</i> isolation.</p>
 	<p><b>Local</b> <b>browser isolation</b> attempts to isolate a browser running on a local endpoint using app-level or OS-level sandboxing. In addition to leaving the endpoint at risk when there is an isolation failure, these systems require significant endpoint resources (memory + compute), tend to be brittle, and are difficult for IT to manage as they depend on support from specific hardware and software components.</p>
@@ -40,7 +61,14 @@
 		</li>
 	</ul>
 	<p>Given the inherent advantages, most browser isolation solutions – including S2 Systems – leverage cloud-based remote isolation. Properly <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">implemented</a>, remote browser isolation can <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect the organization</a> from browser exploits, plug-ins, zero-day vulnerabilities, malware and other attacks embedded in web content.</p>
-	<h3>How does Remote Browser Isolation (RBI) work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-remote-browser-isolation-rbi-work">How does Remote Browser Isolation (RBI) work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-remote-browser-isolation-rbi-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a typical cloud-based RBI system (the blue-dashed box ❶ below), individual remote browsers ❷ are run in the cloud as disposable containerized instances – typically, one instance per user. The remote browser sends the rendered contents of a web page to the user endpoint device ❹ using a specific protocol and data format ❸. Actions by the user, such as keystrokes, mouse and scroll commands, are sent back to the isolation service over a secure encrypted channel where they are processed by the remote browser and any resulting changes to the remote browser webpage are sent back to the endpoint device.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -86,7 +114,14 @@
 	<p>Customers are left to choose between a secure solution with a bad user experience and high operating costs, or a faster, much less secure solution that breaks websites. These tradeoffs have driven some RBI providers to implement both remoting technologies into their products. However, this leaves customers to pick their poison without addressing the fundamental issues.</p>
 	<p>Given the significant tradeoffs in RBI systems today, one common optimization for current customers is to deploy remote browsing capabilities to only the most vulnerable users in an organization such as high-risk executives, finance, business development, or HR employees. Like vaccinating half the pupils in a classroom, this results in a false sense of security that does little to protect the larger organization.</p>
 	<p>Unfortunately, the largest “gap” created by current remote browser isolation systems is the void between the potential of the underlying isolation concept and the implementation reality of currently available RBI systems.</p>
-	<h3>S2 Systems Remote Browser Isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="s2-systems-remote-browser-isolation">S2 Systems Remote Browser Isolation</h3>
+		<a href="https://blog.cloudflare.com/#s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>S2 Systems remote browser isolation is a fundamentally different approach based on S2-patented technology called Network Vector Rendering (NVR).</p>
 	<p>The S2 remote browser is based on the open-source Chromium engine on which Google Chrome is built. In addition to powering Google Chrome which has a ~70% market share<sup>[3]</sup>, Chromium powers twenty-one other web browsers including the new Microsoft Edge browser.<sup>[4]</sup> As a result, significant ongoing investment in the Chromium engine ensures the highest levels of website support, compatibility and a continuous stream of improvements.</p>
 	<p>A key architectural feature of the Chromium browser is its use of the <a href="https://skia.org">Skia</a> graphics library. Skia is a widely-used cross-platform graphics engine for Android, Google Chrome, Chrome OS, Mozilla Firefox, Firefox OS, FitbitOS, Flutter, the <a href="https://electronjs.org">Electron</a> application framework and many other products. Like Chromium, the pervasiveness of Skia ensures ongoing broad hardware and platform support.</p>
@@ -114,7 +149,14 @@
 	<p>(7) &nbsp; &nbsp;Cost-effective scalability: although the details are beyond the scope of this post, the S2 backend and NVR technology have substantially lower operating costs than existing RBI technologies. Operating costs translate directly to customer costs. The S2 system was designed to make deployment to an entire enterprise and not just targeted users (aka: vaccinating half the class) both feasible and attractive for customers.</p>
 	<p>(8) &nbsp; &nbsp;RBI-as-a-platform: enables implementation of related/adjacent services such as DLP, content disarm &amp; reconstruction (CDR), phishing detection and prevention, etc.</p>
 	<p>S2 Systems Remote Browser Isolation Service and underlying NVR technology eliminates the disconnect between the conceptual potential and promise of browser isolation and the unsatisfying reality of current RBI technologies.</p>
-	<h3>Cloudflare + S2 Systems Remote Browser Isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-s2-systems-remote-browser-isolation">Cloudflare + S2 Systems Remote Browser Isolation</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s global cloud platform is uniquely suited to remote browsing isolation. Seamless integration with our cloud-native performance, reliability and advanced security products and services provides powerful capabilities for our customers.</p>
 	<p>Our Cloudflare Workers architecture enables edge computing in 200 cities in more than 90 countries and will put a remote browser within 100 milliseconds of 99% of the Internet-connected population in the developed world. With more than 20 million Internet properties directly connected to our network, Cloudflare remote browser isolation will benefit from locally cached data and builds on the impressive connectivity and performance of our network. Our Argo Smart Routing capability leverages our communications backbone to route traffic across faster and more reliable network paths resulting in an average 30% faster access to web assets.</p>
 	<p>Once it has been integrated with our Cloudflare for Teams suite of advanced security products, remote browser isolation will provide protection from browser exploits, zero-day vulnerabilities, malware and other attacks embedded in web content. Enterprises will be able to secure the browsers of all employees without having to make trade-offs between security and user experience. The service will enable IT control of browser-conveyed enterprise data and compliance oversight. Seamless integration across our products and services will enable users and enterprises to browse the web without fear or consequence.</p>

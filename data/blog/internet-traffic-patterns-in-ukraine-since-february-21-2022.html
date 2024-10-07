@@ -1,7 +1,14 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2j1FhsnLUPdEx9ImmXStWY/cfe93b74a7e8571f28a69f2c21f42f58/internet-traffic-patterns-in-ukraine-since-february-21-2022.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare operates in more than 250 cities worldwide where we connect our equipment to the Internet to provide our broad range of services. We have data centers in Ukraine, Belarus and Russia and across the world. To operate our service we monitor traffic trends, performance and errors seen at each data center, aggregate data about DNS, and congestion and packet loss on Internet links.</p>
-	<h3>Internet Traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-traffic">Internet Traffic</h3>
+		<a href="https://blog.cloudflare.com/#internet-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For reference, here is a map of Ukraine showing its major cities. Note that whenever we talk about dates and times in this post, we are using UTC. Ukraine’s current time zone is UTC+2.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -122,7 +129,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6atfVSLe5Pwsxdn3irMtT8/14997cd252eb0234d67284ca0de62e60/18.png" alt="" class="kg-image" width="1600" height="532" loading="lazy">
 
 	</figure>
-	<h3>Cyberattacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="cyberattacks">Cyberattacks</h3>
+		<a href="https://blog.cloudflare.com/#cyberattacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The physical world invasion has been accompanied by an increase in cyberattacks against Ukrainian domain names and networks.</p>
 	<p>Just prior to the invasion, on February 23, Cloudflare’s automated systems detected a large amount of packet loss on a major Internet connection to our Kyiv data center and automatically mitigated the problem by routing traffic onto other networks. This packet loss was caused by congestion on the transit provider’s network, which in turn was caused by a large <b>DDoS attack</b>. It appeared in our dashboards as packet loss over a 30-minute period between 1500-1530 (the different colors are different parts of our network infrastructure in Kyiv).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -163,7 +177,14 @@
 	</figure>
 	<p>Note that although the layer 3/4 and layer 7 attacks we are mitigating have been relatively small, that does not mean they are not devastating or problematic. A small website or service can be taken down by relatively small attacks, and the layer 7 attack traffic often includes vulnerability scanning, credential stuffing, SQL injection, and the usual panoply of techniques carried out to either deface or penetrate an Internet service.</p>
 	<p>Unprotected Internet properties are vulnerable to even small attacks and need protection.</p>
-	<h3>Social media and communications</h3>
+	<div class="flex anchor relative">
+		<h3 id="social-media-and-communications">Social media and communications</h3>
+		<a href="https://blog.cloudflare.com/#social-media-and-communications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Much of the imagery and information coming out of Ukraine is being shared on social networks. Looking at social networks in Ukraine via <a href="https://radar.cloudflare.com/glossary#:~:text=the%201.1.1.1%20Public-,DNS,-Resolver%20that%20has">DNS data</a> shows that <b>Facebook</b> use has increased.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

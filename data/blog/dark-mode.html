@@ -13,7 +13,14 @@
 
 	</figure>
 	<p>Side by side comparing the Cloudflare dashboard in dark mode and in light mode</p>
-	<h3>How to enable dark mode</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-enable-dark-mode">How to enable dark mode</h3>
+		<a href="https://blog.cloudflare.com/#how-to-enable-dark-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Log into Cloudflare.</p>
@@ -32,7 +39,14 @@
 	</figure>
 	<p>The appearance card in the dashboard for modifying color themes</p>
 	<p>There are many primers and how-tos on implementing dark mode, and you can find articles talking about the general complications of implementing a dark mode including <a href="https://www.reddit.com/r/explainlikeimfive/comments/hq2s0z/eli5_why_did_it_take_so_much_time_to_introduce">this straightforward explanation</a>. Instead, we will talk about what enabled us to be able to implement dark mode in only a matter of weeks.</p>
-	<h3>Cloudflare’s Design System - Our Secret Weapon</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-design-system-our-secret-weapon">Cloudflare’s Design System - Our Secret Weapon</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-design-system-our-secret-weapon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before getting into the specifics of how we implemented dark mode, it helps to understand the system that underpins all product design and UI work at Cloudflare - the Cloudflare Design System.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -43,7 +57,14 @@
 	<p>Cloudflare’s Design System defines and documents the interface elements and patterns used to build products at Cloudflare. The system can be used to efficiently build consistent experiences for Cloudflare customers. In practice, the Design System defines primitives like typography, color, layout, and icons in a clear and standard fashion. What this means is that anytime a new interface is designed, or new UI code is written, an easily referenceable, highly detailed set of documentation is available to ensure that the work matches previous work. This increases productivity, especially for new employees, and prevents repetitious discussions about style choices and interaction design.</p>
 	<p>Built on top of these design primitives, we also have our own component library. This is a set of ready to use components that designers and engineers can combine to form the products our customers use every day. They adhere to the design system, are battle tested in terms of code quality, and enhance the user experience by providing consistent implementations of common UI components. Any button, table, or chart you see looks and works the same because it <i>is</i> the same underlying code with the relevant data changed for the specific use case.</p>
 	<p>So, what does all of this have to do with dark mode? Everything, it turns out. Due to the widespread adoption of the design system across the dashboard, changing a set of variables like background color and text color in a specific way and seeing the change applied nearly everywhere at once becomes much easier. Let’s take a closer look at how we did that.</p>
-	<h3>Turning Out the Lights</h3>
+	<div class="flex anchor relative">
+		<h3 id="turning-out-the-lights">Turning Out the Lights</h3>
+		<a href="https://blog.cloudflare.com/#turning-out-the-lights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The use of color at Cloudflare has a well documented history. When we originally set out to build our color system, the <a href="https://color.cloudflare.design">tools we built</a> and the extensive <a href="https://blog.cloudflare.com/thinking-about-color">research we performed</a> resulted in a ten-hue, ten-luminosity set of colors that can be used to build digital products. These colors were built to be accessible — not just in terms of internal use, but for our customers. Take our blue hue scale, for example.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -72,7 +93,14 @@
 	<p>Our color contrast principles remain sound — just as the first five colors in a scale would be accessible with light text, when flipped, the first five colors in the scale are accessible with dark text. Our scales aren’t perfectly symmetrical, but when using white and black, the principle still holds.</p>
 	<p>In a traditional approach of “inverting” colors, we face the issue of a color’s hue being changed too. When a color is broken down into its constituent hue, saturation, and luminosity values, inverting it would mean a vibrant light blue would become a dull dark orange. Our approach of just inverting the luminosity of a color means that we retain the saturation and hue of a color, meaning we retain Cloudflare’s brand aesthetic and the associated meaning of each hue (blue buttons as calls-to-action, and so on).</p>
 	<p>Of course, shipping a dark mode for a product as complex as the Cloudflare Dashboard can’t just be done in a matter of minutes.</p>
-	<h3>Not Quite Just Turning the Lights Off</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-quite-just-turning-the-lights-off">Not Quite Just Turning the Lights Off</h3>
+		<a href="https://blog.cloudflare.com/#not-quite-just-turning-the-lights-off" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although our prototype did meet our initial requirements of facilitating the dashboard in a dark theme, some details just weren’t quite right. The data visualization and mapping libraries we use, our icons, text, and various button and link states all had to be audited and required further iterations. One of the most obvious and prominent examples was the page background color. Our prototype had simply changed the background color from white (#FFFFFF) to black (#000000). It quickly became apparent that black wasn’t appropriate. We received feedback that it was “too intense” and “harsh.” We instead opted for off black, specifically what we refer to as “gray.0” or #1D1D1D. The difference may not seem noticeable, but at larger dimensions, the gray background is much less distracting.</p>
 	<p>Here is what it looks like in our design system:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -132,7 +160,14 @@
 	<p>Side by side comparison of the navbar in light and dark modes</p>
 	<p>The navigation bar used to select between the different applications was a component we wanted to treat differently compared to light mode. In light mode, the app icons are a solid blue with an outline of the icon; it’s a distinct look and certainly one that grabs your attention. However, for dark mode, the consensus was that it was too bright and distracting for the overall desired experience. We wanted the overall aesthetic of dark mode to be subtle, but it’s important to not conflate aesthetic with poor usability. With that in mind, we made the decision for the navigation bar to use outlines around each icon, instead of being filled in. Only the selected application has a filled state. By using outlines, we are able to create sufficient contrast between the current active application and the rest. Additionally, this provided a visually distinct way to present hover states, by displaying a filled state.</p>
 	<p>After applying the same methodology as described to other components like charts, icons, and links, we end up with a nicely tailored experience without requiring a substantial overhaul of our codebase. For any new UI that teams at Cloudflare build going forward, they will not have to worry about extra work to support dark mode. This means we get an improved customer experience without any impact to our long term ability to keep delivering amazing new capabilities — that’s a win-win!</p>
-	<h3>Welcome to the Dark Side</h3>
+	<div class="flex anchor relative">
+		<h3 id="welcome-to-the-dark-side">Welcome to the Dark Side</h3>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-dark-side" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We know many of you have been asking for this, and we are excited to bring dark mode to all. Without the investment into our design system by many folks at Cloudflare, dark mode would not have seen the light of day. You can enable dark mode on the <b>Appearance</b> card in your <a href="https://dash.cloudflare.com/profile">user profile</a>. You can give feedback to shape the future of the dark theme with the feedback form in the card.</p>
 	<p>If you find these types of problems interesting, come help us tackle them! We are hiring across <a href="https://boards.greenhouse.io/cloudflare/jobs/3120477?gh_jid=3120477">product</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3421232?gh_jid=3421232%60">design</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3192227?gh_jid=3192227">engineering</a>!</p>
 </div>

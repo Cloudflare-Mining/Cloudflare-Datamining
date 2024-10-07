@@ -6,7 +6,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yecvBDkVigJV3qqH9PlBt/be43926c471f913c9e677b88721daade/workers_slack_bot2-1.jpg" alt="workers_slack_bot2-1" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
-	<h3>What are we Building?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-we-building">What are we Building?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-we-building" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're going to build a <a href="https://api.slack.com/slash-commands">Slack bot</a> (as an external webhook) for fetching the latest stock prices.</p>
 	<p>This Worker could also be adapted to fetch <a href="https://developer.github.com/v3/issues">open issues</a> from GitHub's API; to <a href="https://www.themoviedb.org/documentation/api/discover">discover what movie to watch</a> after work; anything with a REST API you can make query against.</p>
 	<p>Nevertheless, our "stock prices bot":</p>
@@ -22,7 +29,14 @@
 		</li>
 	</ul>
 	<p>Using the cache allows you to improve your bot's response times across all invocations of your Worker. It's also polite to reduce redundant calls to an API (less you get rate limited!) where possible, so it's win-win.</p>
-	<h3>Prerequisites</h3>
+	<div class="flex anchor relative">
+		<h3 id="prerequisites">Prerequisites</h3>
+		<a href="https://blog.cloudflare.com/#prerequisites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to get started, you'll need:</p>
 	<ul>
 		<li>
@@ -38,7 +52,14 @@
 	<blockquote>
 		<p><i>Note: You can enable Workers via the "Workers" app in the Cloudflare dashboard.</i></p>
 	</blockquote>
-	<h3>Creating our Worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-our-worker">Creating our Worker</h3>
+		<a href="https://blog.cloudflare.com/#creating-our-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We'll get our Worker up and running first, and test it outside of Slack before wiring it up. Our Worker needs to:</p>
 	<ol>
 		<li>
@@ -55,7 +76,14 @@
 		</li>
 	</ol>
 	<p>We'll step through each requirement and its associated code, deploy the Worker to a route, and then connect it to Slack.</p>
-	<h3>Handling the Webhook</h3>
+	<div class="flex anchor relative">
+		<h3 id="handling-the-webhook">Handling the Webhook</h3>
+		<a href="https://blog.cloudflare.com/#handling-the-webhook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like all Cloudflare Workers, we need to add a hook for the <code>fetch</code> event and attach the entry point to our Worker. Our <code>slackWebhookHandler</code> function will then be responsible for triggering the rest of our logic and returning a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response"><code>Response</code></a> to Slack's request.</p>
 	<pre class="language-js"><code class="language-js">// SLACK_TOKEN is used to authenticate requests are from Slack.
 // Keep this value secret.
@@ -149,7 +177,14 @@ async function slackWebhookHandler(request) {
 	<blockquote>
 		<p>Note: Caching (often called "memoizing") static data outside of our request handler in a Worker allows it to be re-used across requests, should the Worker instance itself be re-used. Although the performance gain in this case is negligible, it's good practice, and doesn't hinder our Workers' readability.</p>
 	</blockquote>
-	<h3>Parsing the User Message</h3>
+	<div class="flex anchor relative">
+		<h3 id="parsing-the-user-message">Parsing the User Message</h3>
+		<a href="https://blog.cloudflare.com/#parsing-the-user-message" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next step is to parse the message sent in the POST request from Slack. This is where we capture the requested equity, ready to be passed to the Alpha Vantage API.</p>
 	<p>To receive the correct stock information from the API, we will parse the input we received from Slack, so that we can pass it to the API to collect information about the stock we are looking for.</p>
 	<pre class="language-js"><code class="language-js">/**
@@ -176,7 +211,14 @@ function parseMessage(message) {
 	</ol>
 	<p>In the future, if we want to parse more values from the bot (maybe get the currency the user is interested in, or the date), we easily can add additional values to the object.</p>
 	<p>Now that we have the stock we are looking for, we can move on to making the API request!</p>
-	<h3>Making the API Request</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-the-api-request">Making the API Request</h3>
+		<a href="https://blog.cloudflare.com/#making-the-api-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want to make sure our bot doesn't have to make a request to the Alpha Vantage API unnecessarily: if we had thousands of users every minute, there's no need to fetch the (same) price every time. We can fetch it once (per Cloudflare PoP), store in the Cloudflare cache for a short period of time (say 1 minute), and serve users that cached copy. This is win-win: our bot responds more quickly and we're kinder to the API we're consuming).</p>
 	<p>For customers on the <a href="https://www.cloudflare.com/plans/enterprise">Enterprise plan</a>, you may also use the <code>cacheTtlByStatus</code> functionality, which allows you to set different TTLs based on the response status. This way, if you get an error code, you may only cache it for 1 second, or not cache at all, so that subsequent requests (once the API has been updated) will not fail as well.</p>
 	<p>Given the requested stock, we'll make a HTTP request to the API, confirm we got an acceptable response (HTTP 200), and then return an object with the fields we need:</p>
@@ -247,7 +289,14 @@ async function stockRequest(stock) {
 </code></pre>
 	<p>We build an object representing our reply. We're also careful to handle any errors should we get a bad response back from the API: be it a non-HTTP 200 response, or a non-JSON response body. When relying on a third-party service/API, any assumptions you make about the format or correctness of a response that could cause an exception to be thrown if broken—such as calling <code>resp.json()</code> on HTML body—must be accounted for.</p>
 	<p>Additionally, note that subrequests will respect the SSL Mode you have for your entire zone. Thus, if the SSL mode is set to flexible, Cloudflare will try to connect to the API over port 80 and over HTTP, and the request will fail (you will see a 525 error).</p>
-	<h3>Responding to Slack</h3>
+	<div class="flex anchor relative">
+		<h3 id="responding-to-slack">Responding to Slack</h3>
+		<a href="https://blog.cloudflare.com/#responding-to-slack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Slack expects responses in <a href="https://api.slack.com/slash-commands#responding_to_a_command">two possible formats</a>: a plain text string, or a simple JSON structure. Thus, we need to take our reply and build a response for Slack.</p>
 	<pre class="language-js"><code class="language-js">/**
  * slackResponse builds a message for Slack with the given text
@@ -279,7 +328,15 @@ function slackResponse(text) {
   "text": "Current price (*MSFT*): ? USD $101.8300 (Last updated on 2018-06-20 11:52:00).",
   "attachments": []
 }</code></pre>
-	<h3>Configuring Slack &amp; Testing Our Bot</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="configuring-slack-testing-our-bot">Configuring Slack &amp; Testing Our Bot</h3>
+		<a href="https://blog.cloudflare.com/#configuring-slack-testing-our-bot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With our bot ready, let's configure Slack to talk to it for our chosen slash-command. First, log into Slack and head to the <a href="https://api.slack.com/apps">app management</a> dashboard.</p>
 	<p>You'll then want to click "Create an App" and fill in the fields, including nominating which workspace to attach it to:</p>
 	<figure class="kg-card kg-image-card ">

@@ -26,7 +26,14 @@
 		</li>
 	</ul>
 	<p>When used in conjunction, these features can be a powerful and easy tool to deploy to increase end user account security.</p>
-	<h3>Cloudflare Open Proxies list</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-open-proxies-list">Cloudflare Open Proxies list</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-open-proxies-list" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In July 2020 we introduced <a href="https://blog.cloudflare.com/introducing-ip-lists">IP lists</a> - a reusable list of IPs users can create and maintain as a primitive when writing custom Firewall Rules. Although this is a great tool for any Firewall administrator, like any IP list used for access control - it quickly becomes outdated.</p>
 	<p>With our new <a href="https://blog.cloudflare.com/protecting-apis-from-abuse-and-data-exfiltration">Cloudflare Open Proxy Managed list</a> - you can now write custom firewall rules and match against a list that is fully managed and regularly updated (every hour) by Cloudflare. The list is populated based on observed network traffic and proactive searching of open proxy endpoints.</p>
 	<figure class="kg-card kg-image-card ">
@@ -39,7 +46,14 @@
 	<pre class="language-bash"><code class="language-bash">http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)</code></pre>
 	<p>Any authentication attempt will then be BLOCKed or CHALLENGEed according to the chosen action on the rule.</p>
 	<p>The SOCKs and Proxy IP list is available for all Enterprise customers.</p>
-	<h3>Super Bot Fight Mode and API Abuse Detection</h3>
+	<div class="flex anchor relative">
+		<h3 id="super-bot-fight-mode-and-api-abuse-detection">Super Bot Fight Mode and API Abuse Detection</h3>
+		<a href="https://blog.cloudflare.com/#super-bot-fight-mode-and-api-abuse-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Login endpoints present an opportunity for bots. And bad bots make really good use of time by testing thousands, if not millions, of credentials in just a few seconds. These bots will persist until they have extracted some kind of value from your site.</p>
 	<p>Fortunately, we recently released <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode</a>. This feature is included in all Pro and Business plans, and we’ve paired it with real-time analytics so you can watch attacks as they happen. Super Bot Fight Mode was built to stop credential stuffing. Under the hood, we’re running many of the same detection engines that power our <a href="https://www.cloudflare.com/products/bot-management">Enterprise Bot Management</a> product.</p>
 	<figure class="kg-card kg-image-card ">
@@ -49,7 +63,14 @@
 	</figure>
 	<p>Our new Super Bot Fight Mode. Can be found under Firewall → Bots</p>
 	<p>The best part: you can add protection immediately. Pro users can choose to allow, block, or challenge “definite bots” on the Internet. Business users can even target “likely bots,” which tend to be more sophisticated and difficult to spot. Our Free users can continue to use the Bot Fight Mode toggle for basic protection.</p>
-	<h3>Exposed Credential Checks</h3>
+	<div class="flex anchor relative">
+		<h3 id="exposed-credential-checks">Exposed Credential Checks</h3>
+		<a href="https://blog.cloudflare.com/#exposed-credential-checks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Credential stuffing attackers try to login to a target account with a username/password pair - a user’s credential - that was previously stolen in a breach of some other service. This works sadly often because <a href="https://www.ndss-symposium.org/ndss2014/programme/tangled-web-password-reuse">more than 50% of users reuse the same password for multiple accounts</a> - and the result is a large number of breached accounts. Your own end user account security therefore relies not only on the security of your own systems, but on the security of all other systems used by your users. And while multi-factor authentication can provide defense-in-depth, many authentication services and users don’t yet employ it and, even so, we’d like to be able to warn services and their users when a username/password pair is vulnerable.</p>
 	<p>In addition to other approaches like bot detection, a new best practice in industry is for login services to themselves check if one of their user’s credentials is in a known data breach. This requires having a good set of known breached username/password pairs. Services like <a href="https://haveibeenpwned.com">Have I Been Pwned</a> and <a href="https://security.googleblog.com/2020/10/new-password-protections-and-more-in.html">Google’s Password Breach Alerting</a> aggregate large databases of known-breached username/password pairs, and allow companies or end users to do a lookup to determine vulnerability. But integration can be challenging, and ideally organizations would be able to turn on credential checking protection with the push of a button.</p>
 	<p>We’re doing just that. Today, we’re launching a new feature of the <a href="https://www.cloudflare.com/waf">Web Application Firewall (WAF)</a>: Exposed Credential Checks.</p>
@@ -62,11 +83,25 @@
 	<p>Login requests for any application protected by Cloudflare are routed through the WAF, and this provides the opportunity for an “on-path” exposed credential check. When enabled, on any authentication attempt, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> will automatically check end user credentials against a database of leaked credentials gathered and maintained by Cloudflare. In the event that a match is found, the WAF will add a header to the origin, so that your application can be warned about a vulnerable credential and, for example, trigger a password reset flow for that user or a second factor authentication challenge.</p>
 	<p>Handling usernames and passwords is, to say the least, highly sensitive and we’ve architected the exposed credential check feature to protect user credentials. A key design principle was that the username/password pair should never be exposed outside the boundaries of the WAF process, thereby ensuring we can perform the check without adding any additional risk. That means the feature never transmits usernames or passwords outside the WAF process or logs them<sup>1</sup> as we have no interest in knowing what any of these credentials are -- only if they pose a risk to the <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">security of your network</a>. But even beyond that we have built a privacy-preserving cryptographic protocol to perform the database look-up. Roughly speaking, we apply a keyed cryptographic hash function to the username/password pair within the WAF process and check whether the resulting hash value matches keyed hashes of pairs from our database of known breached credentials. We will explain this further in a follow up technical deep dive.</p>
 	<p>Starting today, Enterprise customers can request access to this feature by contacting our team on <a href="https://www.cloudflare.com/waf/exposed-credential-checks">this page</a>. Exposed credential checks are provided both as a managed ruleset, that will work “out of the box” for common systems such as WordPress, Joomla and others, and as a filter for custom rules so that any application can be supported.</p>
-	<h3>Cloudflare Access with Managed Devices</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-access-with-managed-devices">Cloudflare Access with Managed Devices</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-with-managed-devices" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> you can provide an additional authentication layer in front of any application protected by Cloudflare. Access protects applications by verifying user identity, location and network on every request. This naturally increases security for the end user account.</p>
 	<p>The device the user is using may, however, still not be secure. A valid authentication session with a compromised device may lead to data exfiltration, or worse, total compromise of the end user account or application. Enterprises try to reduce this risk by managing and issuing corporate devices where security policies can be enforced via mobile device management (MDM) solutions.</p>
 	<p>To solve this problem, we are improving Cloudflare Access to enforce that only corporate devices access sensitive applications. Via access rules, it is now possible to verify a device’s serial number against a list of managed devices before allowing access. Even if a user’s credentials were to be exposed, any unauthorized access would be blocked due the device having a serial number outside the list of managed devices. For more information see our <a href="https://blog.cloudflare.com/zero-trust-with-managed-devices">recent announcement</a>.</p>
-	<h3>Rate Limiting on Failed Logins</h3>
+	<div class="flex anchor relative">
+		<h3 id="rate-limiting-on-failed-logins">Rate Limiting on Failed Logins</h3>
+		<a href="https://blog.cloudflare.com/#rate-limiting-on-failed-logins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brute force attacks are surprisingly effective, especially when performed by iterating over databases of leaked credentials. To stop these attacks, it is often sufficient to slow them down to the point they are too expensive to execute.</p>
 	<p>On a failed login attempt, many username/password forms will issue a HTTP 403 Forbidden status code or other recognisable error message<sup>2</sup>. This can be used as a very effective signal to issue a rate limit response, hence avoiding any potential side effect to legitimate users.</p>
 	<figure class="kg-card kg-image-card ">
@@ -77,7 +112,14 @@
 	<p>The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.</p>
 	<p>The rate limiting response can be customised as necessary to support both APIs with JSON payloads or standard HTML based endpoints.</p>
 	<p>Rate limiting is available to all self service customers as a paid add on.</p>
-	<h3>Future plans</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-plans">Future plans</h3>
+		<a href="https://blog.cloudflare.com/#future-plans" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are spending a lot of time thinking about how to best secure end user accounts with easy one click solutions.</p>
 	<p>By leveraging our network visibility we are starting to gain valuable insights that only come with the Cloudflare scale. Our managed open proxy list is one such example but we are already experimenting with anomaly based detections going far beyond simple device posture or rate limits. Additionally we are thinking through use cases and scenarios on how to share verified anomalies more broadly across our entire customer base, bringing us back to the original community protection based approach Cloudflare was built upon.</p>
 	<p>.....

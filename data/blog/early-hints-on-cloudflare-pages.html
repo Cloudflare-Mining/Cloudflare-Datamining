@@ -7,9 +7,23 @@
 
 	</figure>
 	<p>Last year, we demonstrated what we meant by “lightning fast”, <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">showing Pages' first-class performance</a> in all parts of the world, and today, we’re thrilled to announce an integration that takes this commitment to speed even further – introducing Pages support for Early Hints! Early Hints allow you to unblock the loading of page critical resources, ahead of any slow-to-deliver HTML pages. Early Hints can be used to improve the loading experience for your visitors by significantly reducing key performance metrics such as the largest contentful paint (LCP).</p>
-	<h2>What is Early Hints?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-early-hints">What is Early Hints?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-early-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/early-hints">Early Hints</a> is a new feature of the Internet which is <a href="https://developer.chrome.com/blog/early-hints/#implementing-early-hints">supported in Chrome since version 103</a>, and that <a href="https://blog.cloudflare.com/early-hints-performance">Cloudflare made generally available</a> for websites using our network. Early Hints supersedes <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vOWBKZGoAQAJ">Server Push</a> as a mechanism to "hint" to a browser about critical resources on your page (e.g. fonts, CSS, and above-the-fold images). The browser can immediately start loading these resources before waiting for a full HTML response. This uses time that was otherwise previously wasted! Before Early Hints, no work could be started until the browser received the first byte of the response. Now, the browser can fill this time usefully when it was previously sat waiting. Early Hints can bring significant improvements to the performance of your website, particularly for metrics such as LCP.</p>
-	<h3>How Early Hints works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-early-hints-works">How Early Hints works</h3>
+		<a href="https://blog.cloudflare.com/#how-early-hints-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare caches any <code>preload</code> and <code>preconnect</code> type <code>Link</code> headers sent from your 200 OK response, and sends them early for any subsequent requests as a 103 Early Hints response.</p>
 	<p>In practical terms, an HTTP conversation now looks like this:</p>
 	<p><b>Request</b></p>
@@ -26,9 +40,24 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 &lt;html&gt;
 &lt;!-- ... --&gt;
 &lt;/html&gt;</code></pre>
-	<h2>Early Hints on Cloudflare Pages</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="early-hints-on-cloudflare-pages">Early Hints on Cloudflare Pages</h2>
+		<a href="https://blog.cloudflare.com/#early-hints-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Websites hosted on Cloudflare Pages can particularly benefit from Early Hints. If you're using <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> to generate dynamic server-side rendered (SSR) pages, there's a good chance that Early Hints will make a significant improvement on your website.</p>
-	<h3>Performance Testing</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-testing">Performance Testing</h3>
+		<a href="https://blog.cloudflare.com/#performance-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We created a simple demonstration e-commerce website in order to evaluate the performance of Early Hints.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -69,7 +98,14 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
   Cache-Control: max-age=60</code></pre>
 	<p>We could take this performance audit further by exploring other features that Cloudflare offers, such as <a href="https://support.cloudflare.com/hc/en-us/articles/200168196">automatic CSS minification</a>, <a href="https://developers.cloudflare.com/images">Cloudflare Images</a>, and <a href="https://developers.cloudflare.com/images/image-resizing">Image Resizing</a>.</p>
 	<p>We already serve Cloudflare Pages from <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">one of the fastest networks in the world</a> — Early Hints simply allows developers to take advantage of our global network even further.</p>
-	<h2>Using Early Hints and Cloudflare Pages</h2>
+	<div class="flex anchor relative">
+		<h2 id="using-early-hints-and-cloudflare-pages">Using Early Hints and Cloudflare Pages</h2>
+		<a href="https://blog.cloudflare.com/#using-early-hints-and-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Early Hints feature on Cloudflare is currently restricted to caching <code>Link</code> headers in a webpage's response. Typically, this would mean that Cloudflare Pages users would either need to use the <code>_headers</code> file, or Pages Functions to apply these headers. However, for your convenience, we've also added support to transform any <code>&lt;link&gt;</code> HTML elements you include in your body into <code>Link</code> headers. This allows you to directly control the Early Hints you send, straight from the same document where you reference these resources – no need to come out of HTML to take advantage of Early Hints.</p>
 	<p>For example, for the following HTML document, will generate an Early Hints response:</p>
 	<p><b>HTML Document</b></p>
@@ -93,7 +129,15 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style</code></pre>
 	<p>Early Hints (and the automatic HTML <code>&lt;link&gt;</code> parsing) has already been enabled automatically for all <code>pages.dev</code> domains. If you have any custom domains configured on your Pages project, make sure to enable Early Hints on that domain in the Cloudflare dashboard under the "Speed" tab. More information can be found in our <a href="https://developers.cloudflare.com/pages/platform/early-hints">documentation</a>.</p>
 	<p>Additionally, in the future, we hope to support the Smart Early Hints features. Smart Early Hints will enable Cloudflare to automatically generate Early Hints, even when no <code>Link</code> header or <code>&lt;link&gt;</code> elements exist, by analyzing website traffic and inferring which resources are important for a given page. We'll be sharing more about Smart Early Hints soon.</p>
 	<p>In the meantime, try out <a href="https://developers.cloudflare.com/pages/platform/early-hints">Early Hints on Pages</a> today! Let us know how much of a loading improvement you see in <a href="https://discord.com/invite/cloudflaredev">our Discord server</a>.</p>
-	<h2>Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

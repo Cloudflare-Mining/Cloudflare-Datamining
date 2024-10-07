@@ -9,7 +9,14 @@
 	<p>There is an implicit and unearned trust we place in our email communications. This realization — that an organization can't truly have a Zero Trust security posture without including email — was the driving force behind <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Cloudflare’s acquisition of Area 1 Security</a> earlier this year. &nbsp;Today, we have taken our first step in this exciting journey of integrating Cloudflare Area 1 email security into our broader Cloudflare One platform. Cloudflare Secure Web Gateway customers can soon enable <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation (RBI)</a> for email links, giving them an unmatched level of protection from modern multi-channel email-based attacks.</p>
 	<p>Research from Cloudflare Area 1 found that nearly 10% of all observed malicious attacks involved credential harvesters, highlighting that victim identity is what threat actors usually seek. While commodity phishing attacks are blocked by existing security controls, modern attacks and payloads don’t have a set pattern that can reliably be matched with a block or quarantine rule. Additionally, with the growth of multi-channel phishing attacks, an effective <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security solution</a> needs the ability to detect blended campaigns spanning email and Web delivery, as well as deferred campaigns that are benign at delivery time, but weaponized at click time.</p>
 	<p>When enough “fuzzy” signals exist, isolating the destination to ensure end users are secure is the most effective solution. Now, with the integration of <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation">Cloudflare Browser Isolation</a> into Cloudflare Area 1 email security, these attacks can now be easily detected and neutralized.</p>
-	<h3>Human error is human</h3>
+	<div class="flex anchor relative">
+		<h3 id="human-error-is-human">Human error is human</h3>
+		<a href="https://blog.cloudflare.com/#human-error-is-human" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Why do humans <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7005690">still click</a> on malicious links? It’s not because they haven’t attended enough training sessions or are not conscious about security. It’s because they have 50 unread emails in their inbox, have another Zoom meeting to get to, or are balancing a four-year old on their shoulders. They are trying their best. Anyone, <a href="https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers">including security researchers</a>, can fall for socially engineered attacks if the adversary is well-prepared.</p>
 	<p>If we accept that human error is here to stay, developing security workflows introduces new questions and goals:</p>
 	<ul>
@@ -24,9 +31,23 @@
 		</li>
 	</ul>
 	<p>It’s these questions that we had in mind when we reached the conclusion that email needs to be a fundamental part of any <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust platform</a>. Humans make mistakes in email just as regularly — in fact, sometimes more so — as they make mistakes surfing the Web.</p>
-	<h3>To block, or not to block?</h3>
+	<div class="flex anchor relative">
+		<h3 id="to-block-or-not-to-block">To block, or not to block?</h3>
+		<a href="https://blog.cloudflare.com/#to-block-or-not-to-block" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For IT teams, that is the question they wrestle with daily to balance risk mitigation with user productivity. The <a href="https://www.cloudflare.com/learning/security/glossary/what-is-a-security-operations-center-soc">SOC</a> team wants IT to block everything risky or unknown, whereas the business unit wants IT to allow everything not explicitly bad. If IT decides to block risky or unknown links, and it results in a false positive, they waste time manually adding URLs to allow lists — and perhaps the attacker later pivots those URLs to malicious content anyway. If IT decides to allow risky or unknown sites, best case they waste time reimaging infected devices and resetting login credentials — but all too common, they triage the damage from a data breach or <a href="https://blog.cloudflare.com/targeted-ransomware-attack">ransomware</a> lockdown. The operational simplicity of enabling RBI with email — also known as email link isolation — saves the IT, SOC, and business unit teams significant time.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For a Cloudflare Area 1 customer, the initial steps involve enabling RBI within your portal:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -46,7 +67,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QDHEc1rlX53Z5kc2k0tob/77a8e3d553a46a8158d994415c03cc3c/image1-11.png" alt="" class="kg-image" width="945" height="751" loading="lazy">
 
 	</figure>
-	<h3>A phishing attack before email link isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-phishing-attack-before-email-link-isolation">A phishing attack before email link isolation</h3>
+		<a href="https://blog.cloudflare.com/#a-phishing-attack-before-email-link-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s look at a specific example of a deferred phishing attack, how it slips past traditional defenses, and how email link isolation addresses the threat.</p>
 	<p>As organizations look to adopt new security principles and network architectures like <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>, adversaries continually come up with techniques to bypass these controls by exploiting the most used and most vulnerable application – email. Email is a good candidate for compromise because of its ubiquity and ability to be bypassed pretty easily by a motivated attacker.</p>
 	<p>Let’s take an example of a “deferred phishing attack”, without email link isolation.</p>
@@ -75,7 +103,14 @@
 	<p><b>Attack launch: Sunday evening</b>Once the attacker is sure that all emails have reached their destination, they pivot the link to a malicious destination by changing the attacker-controlled webpage, perhaps by creating a fake login page to harvest credentials.</p>
 	<p><b>Attack landing: Monday morning</b>As employees scan their inboxes to begin their week, they see the email. Maybe not all of them click the link, but some of them do. Maybe not all of those that clicked enter their credentials, but a handful do. Without email link isolation, the attack is successful.</p>
 	<p>The consequences of the attack have also just begun – once user login credentials are obtained, attackers can <a href="https://www.crn.com/news/security/solarwinds-ceo-confirms-office-365-email-compromise-played-role-in-broad-based-attack">compromise legitimate accounts</a>, distribute malware to your organization’s network, steal confidential information, and cause much more downstream damage.</p>
-	<h3>A phishing attack after email link isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-phishing-attack-after-email-link-isolation">A phishing attack after email link isolation</h3>
+		<a href="https://blog.cloudflare.com/#a-phishing-attack-after-email-link-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The integration between Cloudflare Area 1 and Cloudflare Browser Isolation provides a critical layer of post-delivery protection that can foil attacks like the deferred phishing example described above.</p>
 	<p>If the attacker prepares for and executes the attack as stated in the previous section, our email link isolation would analyze the email link at the time of click and perform a high-level assessment on whether the user should be able to navigate to it.</p>
 	<p><b>Safe link</b> - Users will be redirected to this site transparently</p>
@@ -93,7 +128,14 @@
 	</figure>
 	<p>While a splash warning page was the mitigation employed in the above example, email link isolation will also offer security administrators other customizable mitigation options as well, including putting the webpage in read-only mode, restricting the download and upload of files, and disabling keyboard input altogether within their Cloudflare Gateway consoles.</p>
 	<p>Email link isolation also fits into users’ existing workflows without impacting productivity or sapping their time with IT tickets. Because Cloudflare Browser Isolation is built and deployed on the Cloudflare network, with global locations in 270 cities, web browsing sessions are served as close to users as possible, minimizing latency. Additionally, Cloudflare Browser Isolation sends the final output of each webpage to a user instead of page scrubbing or sending a pixel stream, further reducing latency and not breaking browser-based applications such as SaaS.</p>
-	<h3>How do I get started?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-get-started">How do I get started?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Existing Cloudflare Area 1 and Cloudflare Gateway customers are eligible for the beta release of email link isolation. To learn more and to express interest, <a href="https://www.cloudflare.com/zero-trust/lp/email-link-isolation">sign up for our upcoming beta</a>.</p>
 	<p>If you’d like to see what threats Cloudflare Area 1 detects on your live email traffic, request a free phishing risk assessment <a href="https://www.cloudflare.com/lp/emailsecurity">here</a>. It takes five minutes to get started and does not impact mail flow.</p>
 </div>

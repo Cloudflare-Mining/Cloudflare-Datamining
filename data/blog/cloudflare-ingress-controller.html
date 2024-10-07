@@ -26,7 +26,14 @@
 	<p>Sadly, these little programs have one last hurdle before they turn into useful Internet services: they have to be connected to the brutish outside world. Services must be safely and scalably exposed to the Internet.</p>
 	<p>Recently, Cloudflare introduced a new service that can be used to connect a web server to Cloudflare without needing to have a public IP address for it. That service, <a href="https://warp.cloudflare.com">Cloudflare Warp</a>, maintains a connection from the server into the Cloudflare network. The server is then only exposed to the Internet through Cloudflare with no way for attackers to reach the server directly.</p>
 	<p>That means that any connection to it is protected and accelerated by Cloudflare’s service.</p>
-	<h3>Cloudflare Warp Ingress Controller and StackPointCloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-warp-ingress-controller-and-stackpointcloud">Cloudflare Warp Ingress Controller and StackPointCloud</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-warp-ingress-controller-and-stackpointcloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we are extending Warp’s reach by announcing the Cloudflare Warp <a href="https://kubernetes.io/docs/concepts/services-networking/ingress">Ingress Controller</a> for Kubernetes (it’s an open source project and can be found <a href="https://github.com/cloudflare/cloudflare-warp-ingress">here</a>). We worked closely with the team at <a href="https://stackpoint.io">StackPointCloud</a> to integrate Warp, Kubernetes and their universal control plane for Kubernetes.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -85,7 +92,14 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30</code></pre>
 	<p>The full documentation is <a href="https://developers.cloudflare.com/argo-tunnel/reference/kubernetes">here</a> and shows how to get up and running with Kubernetes and Cloudflare Warp on StackPointCloud, Google GKE, Amazon EKS or even <a href="https://kubernetes.io/docs/getting-started-guides/minikube">minikube</a>.</p>
-	<h3>One Click with StackPointCloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-click-with-stackpointcloud">One Click with StackPointCloud</h3>
+		<a href="https://blog.cloudflare.com/#one-click-with-stackpointcloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Within StackPointCloud adding the Cloudflare Warp Ingress Controller requires just <i>a single click</i>. And one more click and you've deployed a Kubernetes cluster.</p>
 	<p>The connection between the Kubernetes cluster and Cloudflare is made using a TLS tunnel ensuring that all communication between the cluster and the outside world is secure.</p>
 	<p>Once connected the cluster and its services then benefit from Cloudflare's DDoS protection, WAF, global load balancing and health checks and huge global network.</p>

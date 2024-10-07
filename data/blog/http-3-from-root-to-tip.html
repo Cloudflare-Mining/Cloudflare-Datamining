@@ -11,13 +11,27 @@
 
 	</figure>
 	<p>An HTTP/3 layer cake</p>
-	<h2>Setting the scene</h2>
+	<div class="flex anchor relative">
+		<h2 id="setting-the-scene">Setting the scene</h2>
+		<a href="https://blog.cloudflare.com/#setting-the-scene" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just before we focus on HTTP, it is worth reminding ourselves that there are two protocols that share the name QUIC. As we explained <a href="https://blog.cloudflare.com/the-road-to-quic">previously</a>, gQUIC is commonly used to identify Google QUIC (the original protocol), and QUIC is commonly used to represent the IETF standard-in-progress version that diverges from gQUIC.</p>
 	<p>Since its early days in the 90s, the web’s needs have changed. We've had new versions of HTTP and added user security in the shape of Transport Layer Security (TLS). We'll only touch on TLS in this post, our other <a href="https://blog.cloudflare.com/tag/tls">blog posts</a> are a great resource if you want to explore that area in more detail.</p>
 	<p>To help me explain the history of HTTP and TLS, I started to collate details of protocol specifications and dates. This information is usually presented in a textual form such as a list of bullets points stating document titles, ordered by date. However, there are branching standards, each overlapping in time and a simple list cannot express the real complexity of relationships. In HTTP, there has been parallel work that refactors core protocol definitions for easier consumption, extends the protocol for new uses, and redefines how the protocol exchanges data over the Internet for performance. When you're trying to join the dots over nearly 30 years of Internet history across different branching work streams you need a visualisation. So I made one - &nbsp;the Cloudflare Secure Web Timeline. (NB: Technically it is a <a href="https://en.wikipedia.org/wiki/Cladogram">Cladogram</a>, but the term timeline is more widely known).</p>
 	<p>I have applied some artistic license when creating this, choosing to focus on the successful branches in the IETF space. Some of the things not shown include efforts in the W3 Consortium <a href="https://www.w3.org/Protocols/HTTP-NG">HTTP-NG</a> working group, along with some exotic ideas that their authors are keen on explaining how to pronounce: &nbsp;<a href="https://blog.jgc.org/2012/12/speeding-up-http-with-minimal-protocol.html">HMURR (pronounced 'hammer')</a> and <a href="https://github.com/HTTPWorkshop/workshop2017/blob/master/talks/waka.pdf">WAKA (pronounced “wah-kah”)</a>.</p>
 	<p>In the next few sections I'll walk this timeline to explain critical chapters in the history of HTTP. To enjoy the takeaways from this post, it helps to have an appreciation of why standardisation is beneficial, and how the IETF approaches it. Therefore we'll start with a very brief overview of that topic before returning to the timeline itself. Feel free to skip the next section if you are already familiar with the IETF.</p>
-	<h2>Types of Internet standard</h2>
+	<div class="flex anchor relative">
+		<h2 id="types-of-internet-standard">Types of Internet standard</h2>
+		<a href="https://blog.cloudflare.com/#types-of-internet-standard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Generally, standards define common terms of reference, scope, constraint, applicability, and other considerations. Standards exist in many shapes and sizes, and can be informal (aka de facto) or formal (agreed/published by a Standards Defining Organisation such as IETF, ISO or MPEG). Standards are used in many fields, there is even a formal British Standard for making tea - BS 6008.</p>
 	<p>The early Web used HTTP and SSL protocol definitions that were published outside the IETF, these are marked as <b>red lines</b> on the Secure Web Timeline. The uptake of these protocols by clients and servers made them de facto standards.</p>
 	<p>At some point, it was decided to formalise these protocols (some motivating reasons are described in a later section). Internet standards are commonly defined in the IETF, which is guided by the informal principle of "rough consensus and running code". This is grounded in experience of developing and deploying things on the Internet. This is in contrast to a "clean room" approach of trying to develop perfect protocols in a vacuum.</p>
@@ -37,7 +51,14 @@
 	</figure>
 	<p>IETF Datatracker view of RFC 1945</p>
 	<p>Interestingly, in the course of my work I found that the above visualisation is incorrect. It is missing <a href="https://tools.ietf.org/html/draft-ietf-http-v10-spec-05">draft-ietf-http-v10-spec-05</a> for some reason. Since the I-D lifetime is 6 months, there appears to be a gap before it became an RFC, whereas in reality draft 05 was still active through until August 1996.</p>
-	<h2>Exploring the Secure Web Timeline</h2>
+	<div class="flex anchor relative">
+		<h2 id="exploring-the-secure-web-timeline">Exploring the Secure Web Timeline</h2>
+		<a href="https://blog.cloudflare.com/#exploring-the-secure-web-timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a small appreciation of how Internet standards documents come to fruition, we can start to walk the the Secure Web Timeline. In this section are a number of excerpt diagrams that show an important part of the timeline. Each dot represents the date that a document or capability was made available. For IETF documents, draft numbers are omitted for clarity. However, if you want to see all that detail please check out the <a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">complete timeline</a>.</p>
 	<p>HTTP began life as the so-called HTTP/0.9 protocol in 1991, and in 1994 the I-D <a href="https://tools.ietf.org/html/draft-fielding-http-spec-00">draft-fielding-http-spec-00</a> was published. This was adopted by the IETF soon after, causing the name change to <a href="https://tools.ietf.org/html/draft-ietf-http-v10-spec-00">draft-ietf-http-v10-spec-00</a>. The I-D went through 6 draft versions before being published as <a href="https://tools.ietf.org/html/rfc1945">RFC 1945</a> - HTTP/1.0 in 1996.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +68,15 @@
 	</figure>
 	<p>However, even before the HTTP/1.0 work completed, a separate activity started on HTTP/1.1. The I-D <a href="https://tools.ietf.org/html/draft-ietf-http-v11-spec-00">draft-ietf-http-v11-spec-00</a> was published in November 1995 and was formally published as <a href="https://tools.ietf.org/html/rfc2068">RFC 2068</a> in 1997. The keen eyed will spot that the Secure Web Timeline doesn't quite capture that sequence of events, this is an unfortunate side effect of the tooling used to generate the visualisation. I tried to minimise such problems where possible.</p>
 	<p>An HTTP/1.1 revision exercise was started in mid-1997 in the form of <a href="https://tools.ietf.org/html/draft-ietf-http-v11-spec-rev-00">draft-ietf-http-v11-spec-rev-00</a>. This completed in 1999 with the publication of <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>. Things went quiet in the IETF HTTP world until 2007. We'll come back to that shortly.</p>
-	<h2>A History of SSL and TLS</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-history-of-ssl-and-tls">A History of SSL and TLS</h2>
+		<a href="https://blog.cloudflare.com/#a-history-of-ssl-and-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pnAQiXiXCFpQpSkznYI1T/bad9001675ad3560acab3fbf8d695d03/ssl-tls-standardisation.png" alt="" class="kg-image" width="1215" height="420" loading="lazy">
@@ -57,12 +86,26 @@
 	<p>Of more interest to us is how SSL inspired the development of TLS, which began life as <a href="https://tools.ietf.org/html/draft-ietf-tls-protocol-00">draft-ietf-tls-protocol-00</a> in November 1996. This went through 6 draft versions and was published as <a href="https://tools.ietf.org/html/rfc2246">RFC 2246</a> - TLS 1.0 at the start of 1999.</p>
 	<p>Between 1995 and 1999, the SSL and TLS protocols were used to secure HTTP communications on the Internet. This worked just fine as a de facto standard. It wasn't until January 1998 that the formal standardisation process for HTTPS was started with the publication of I-D <a href="https://tools.ietf.org/html/draft-ietf-tls-https-00">draft-ietf-tls-https-00</a>. That work concluded in May 2000 with the publication of <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a> - HTTP over TLS.</p>
 	<p>TLS continued to evolve between 2000 and 2007, with the standardisation of TLS 1.1 and 1.2. There was a gap of 7 years until work began on the next version of TLS, which was adopted as <a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-00">draft-ietf-tls-tls13-00</a> in April 2014 and, after 28 drafts, completed as <a href="https://tools.ietf.org/html/rfc8446">RFC 8446</a> - TLS 1.3 in August 2018.</p>
-	<h2>Internet standardisation process</h2>
+	<div class="flex anchor relative">
+		<h2 id="internet-standardisation-process">Internet standardisation process</h2>
+		<a href="https://blog.cloudflare.com/#internet-standardisation-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After taking a small look at the timeline, I hope you can build a sense of how the IETF works. One generalisation for the way that Internet standards take shape is that researchers or engineers design experimental protocols that suit their specific use case. They experiment with protocols, in public or private, at various levels of scale. The data helps to identify improvements or issues. The work may be published to explain the experiment, to gather wider input or to help find other implementers. Take up of this early work by others may make it a de facto standard; eventually there may be sufficient momentum that formal standardisation becomes an option.</p>
 	<p>The status of a protocol can be an important consideration for organisations that may be thinking about implementing, deploying or in some way using it. A formal standardisation process can make a de facto standard more attractive because it tends to provide stability. The stewardship and guidance is provided by an organisation, such as the IETF, that reflects a wider range of experiences. However, it is worth highlighting that not all all formal standards succeed.</p>
 	<p>The process of creating a final standard is almost as important as the standard itself. Taking an initial idea and inviting contribution from people with wider knowledge, experience and use cases can to help produce something that will be of more use to a wider population. However, the standardisation process is not always easy. There are pitfalls and hurdles. Sometimes the process takes so long that the output is no longer relevant.</p>
 	<p>Each Standards Defining Organisation tends to have its own process that is geared around its field and participants. Explaining all of the details about how the IETF works is well beyond the scope of this blog. The IETF's "<a href="https://www.ietf.org/how">How we work</a>" page is an excellent starting point that covers many aspects. The best method to forming understanding, as usual, is to get involved yourself. This can be as easy as joining an email list or adding to discussion on a relevant GitHub repository.</p>
-	<h2>Cloudflare's running code</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-running-code">Cloudflare's running code</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-running-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is proud to be early an adopter of new and evolving protocols. We have a long record of adopting new standards early, such as <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a>. We also test &nbsp;features that are experimental or yet to be final, like <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> and <a href="https://blog.cloudflare.com/introducing-spdy">SPDY</a>.</p>
 	<p>In relation to the IETF standardisation process, deploying this running code on real networks across a diverse body of websites helps us understand how well the protocol will work in practice. We combine our existing expertise with experimental information to help improve the running code and, where it makes sense, feedback issues or improvements to the WG that is standardising a protocol.</p>
 	<p>Testing new things is not the only priority. Part of being an innovator is knowing when it is time to move forward and put older innovations in the rear view mirror. Sometimes this relates to security-oriented protocols, for example, Cloudflare <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability">disabled SSLv3 by default</a> due of the POODLE vulnerability. In other cases, protocols become superseded by a more technologically advanced one; Cloudflare <a href="https://blog.cloudflare.com/deprecating-spdy">deprecated SPDY</a> support in favour of HTTP/2.</p>
@@ -72,7 +115,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ptcxVRf8P4wmKMz6uSzAk/8bc97ef7de6ff00009aaba23657e5971/cf-events.png" alt="" class="kg-image" width="623" height="463" loading="lazy">
 
 	</figure>
-	<h2>Refactoring in HTTPbis</h2>
+	<div class="flex anchor relative">
+		<h2 id="refactoring-in-httpbis">Refactoring in HTTPbis</h2>
+		<a href="https://blog.cloudflare.com/#refactoring-in-httpbis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP/1.1 is a very successful protocol and the timeline shows that there wasn't much activity in the IETF after 1999. However, the true reflection is that years of active use gave implementation experience that unearthed latent issues with <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>, which caused some interoperability issues. Furthermore, the protocol was extended by other RFCs like 2817 and 2818. It was decided in 2007 to kickstart a new activity to improve the HTTP protocol specification. This was called HTTPbis (where "bis" stems from Latin meaning "two", "twice" or "repeat") and it took the form of a new Working Group. The original <a href="https://tools.ietf.org/wg/httpbis/charters?item=charter-httpbis-2007-10-23.txt">charter</a> does a good job of describing the problems that were trying to be solved.</p>
 	<p>In short, HTTPbis decided to refactor <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>. It would incorporate errata fixes and buy in some aspects of other specifications that had been published in the meantime. It was decided to split the document up into parts. This resulted in 6 I-Ds published in December 2007:</p>
 	<ul>
@@ -101,7 +151,14 @@
 
 	</figure>
 	<p>The diagram shows how this work progressed through a lengthy drafting process of 7 years, with 27 draft versions being released, before final standardisation. In June 2014, the so-called RFC 723x series was released (where x ranges from 0 to 5). The Chair of the HTTPbis WG celebrated this achievement with the acclimation "<a href="https://www.mnot.net/blog/2014/06/07/rfc2616_is_dead">RFC2616 is Dead</a>". If it wasn't clear, these new documents obsoleted the older <a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a>.</p>
-	<h2>What does any of this have to do with HTTP/3?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-does-any-of-this-have-to-do-with-http-3">What does any of this have to do with HTTP/3?</h2>
+		<a href="https://blog.cloudflare.com/#what-does-any-of-this-have-to-do-with-http-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the IETF was busy working on the RFC 723x series the world didn't stop. People continued to enhance, extend and experiment with HTTP on the Internet. Among them were Google, who had started to experiment with something called SPDY (pronounced speedy). This protocol was touted as improving the performance of web browsing, a principle use case for HTTP. At the end of 2009 SPDY v1 was announced, and it was quickly followed by SPDY v2 in 2010.</p>
 	<p>I want to avoid going into the technical details of SPDY. That's a topic for another day. What is important, is to understand that SPDY took the core paradigms of HTTP and modified the interchange format slightly in order to gain improvements. With hindsight, we can see that HTTP has clearly delimited semantics and syntax. Semantics describe the concept of request and response exchanges including: methods, status codes, header fields (metadata) and bodies (payload). Syntax describe how to map semantics to bytes on the wire.</p>
 	<p>HTTP/0.9, 1.0 and 1.1 share many semantics. They also share syntax in the form of character strings that are sent over TCP connections. SPDY took HTTP/1.1 semantics and changed the syntax from strings to binary. This is a really interesting topic but we will go no further down that rabbit hole today.</p>
@@ -116,7 +173,14 @@
 	<p>These years were a very busy period for the HTTP-related work at the IETF, with the HTTP/1.1 refactor and HTTP/2 standardisation taking place in parallel. This is in stark contrast to the many years of quiet in the early 2000s. Be sure to check out the full timeline to really appreciate the amount of work that took place.</p>
 	<p>Although HTTP/2 was in the process of being standardised, there was still benefit to be had from using and experimenting with SPDY. Cloudflare <a href="https://blog.cloudflare.com/spdy-now-one-click-simple-for-any-website">introduced support for SPDY</a> in August 2012 and only deprecated it in February 2018 when our statistics showed that less than 4% of Web clients continued to want SPDY. Meanwhile, we <a href="https://blog.cloudflare.com/introducing-http2">introduced HTTP/2</a> support in December 2015, not long after the RFC was published, when our analysis indicated that a meaningful proportion of Web clients could take advantage of it.</p>
 	<p>Web client support of the SPDY and HTTP/2 protocols preferred the secure option of using TLS. The introduction of <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> in September 2014 helped ensure that all websites signed up to Cloudflare were able to take advantage of these new protocols as we introduced them.</p>
-	<h3>gQUIC</h3>
+	<div class="flex anchor relative">
+		<h3 id="gquic">gQUIC</h3>
+		<a href="https://blog.cloudflare.com/#gquic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Google continued to experiment between 2012 and 2015 they released SPDY v3 and v3.1. They also started working on gQUIC (pronounced, at the time, as quick) and the initial public specification was made available in early 2012.</p>
 	<p>The early versions of gQUIC made use of the SPDY v3 form of HTTP syntax. This choice made sense because HTTP/2 was not yet finished. The SPDY binary syntax was packaged into QUIC packets that could sent in UDP datagrams. This was a departure from the TCP transport that HTTP traditionally relied on. When stacked up all together this looked like:</p>
 	<figure class="kg-card kg-image-card ">
@@ -128,7 +192,14 @@
 	<p>gQUIC used clever tricks to achieve performance. One of these was to break the clear layering between application and transport. What this meant in practice was that gQUIC only ever supported HTTP. So much so that gQUIC, termed "QUIC" at the time, was synonymous with being the next candidate version of HTTP. Despite the continued changes to QUIC over the last few years, which we'll touch on momentarily, to this day, the term QUIC is understood by people to mean that initial HTTP-only variant. Unfortunately this is a regular source of confusion when discussing the protocol.</p>
 	<p>gQUIC continued to experiment and eventually switched over to a syntax much closer to HTTP/2. So close in fact that most people simply called it "HTTP/2 over QUIC". However, because of technical constraints there were some very subtle differences. One example relates to how the HTTP headers were serialized and exchanged. It is a minor difference but in effect means that HTTP/2 over gQUIC was incompatible with the IETF's HTTP/2.</p>
 	<p>Last but not least, we always need to consider the security aspects of Internet protocols. gQUIC opted not to use TLS to provide security. Instead Google developed a different approach called QUIC Crypto. One of the interesting aspects of this was a new method for speeding up security handshakes. A client that had previously established a secure session with a server could reuse information to do a "zero <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trip time</a>", or 0-RTT, handshake. 0-RTT was later incorporated into TLS 1.3.</p>
-	<h2>Are we at the point where you can tell me what HTTP/3 is yet?</h2>
+	<div class="flex anchor relative">
+		<h2 id="are-we-at-the-point-where-you-can-tell-me-what-http-3-is-yet">Are we at the point where you can tell me what HTTP/3 is yet?</h2>
+		<a href="https://blog.cloudflare.com/#are-we-at-the-point-where-you-can-tell-me-what-http-3-is-yet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Almost.</p>
 	<p>By now you should be familiar with how standardisation works and gQUIC is not much different. There was sufficient interest that the Google specifications were written up in I-D format. In June 2015 <a href="https://tools.ietf.org/html/draft-tsvwg-quic-protocol-00">draft-tsvwg-quic-protocol-00</a>, entitled "QUIC: A UDP-based Secure and Reliable Transport for HTTP/2" was submitted. Keep in mind my earlier statement that the syntax was almost-HTTP/2.</p>
 	<p>Google <a href="https://groups.google.com/a/chromium.org/forum/#!topic/proto-quic/otGKB4ytAyc">announced</a> that a Bar BoF would be held at IETF 93 in Prague. For those curious about what a "Bar BoF" is, please consult <a href="https://tools.ietf.org/html/rfc6771">RFC 6771</a>. Hint: BoF stands for Birds of a Feather.</p>
@@ -158,7 +229,14 @@
 	<p>The first IETF QUIC I-D for mapping HTTP to QUIC, <a href="https://tools.ietf.org/html/draft-ietf-quic-http-00">draft-ietf-quic-http-00</a>, took the Ronseal approach and simplified its name to "HTTP over QUIC". Unfortunately, it didn't finish the job completely and there were many instances of the term HTTP/2 throughout the body. Mike Bishop, the I-Ds new editor, identified this and started to fix the HTTP/2 misnomer. In the 01 draft, the description changed to "a mapping of HTTP semantics over QUIC".</p>
 	<p>Gradually, over time and versions, the use of the term "HTTP/2" decreased and the instances became mere references to parts of <a href="https://tools.ietf.org/html/rfc7540">RFC 7540</a>. Roll forward two years to October 2018 and the I-D is now at version 16. While HTTP over QUIC bares similarity to HTTP/2 it ultimately is an independent, non-backwards compatible HTTP syntax. However, to those that don't track IETF development very closely (a very very large percentage of the Earth's population), the document name doesn't capture this difference. One of the main points of standardisation is to aid communication and interoperability. Yet a simple thing like naming is a major contributor to confusion in the community.</p>
 	<p>Recall what was said in 2012, "HTTP/2.0 only signifies that the wire format isn't compatible with that of HTTP/1.x". The IETF followed that existing cue. After much deliberation in the lead up to, and during, IETF 103, consensus was reached to rename "HTTP over QUIC" to HTTP/3. The world is now in a better place and we can move on to more important debates.</p>
-	<h2>But RFC 7230 and 7231 disagree with your definition of semantics and syntax!</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-rfc-7230-and-7231-disagree-with-your-definition-of-semantics-and-syntax">But RFC 7230 and 7231 disagree with your definition of semantics and syntax!</h2>
+		<a href="https://blog.cloudflare.com/#but-rfc-7230-and-7231-disagree-with-your-definition-of-semantics-and-syntax" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes document titles can be confusing. The present HTTP documents that describe syntax and semantics are:</p>
 	<ul>
 		<li>
@@ -181,7 +259,14 @@
 		</li>
 	</ul>
 	<p>Under this new structure, it becomes more evident that HTTP/2 and HTTP/3 are syntax definitions for the common HTTP semantics. This doesn't mean they don't have their own features beyond syntax but it should help frame discussion going forward.</p>
-	<h2>Pulling it all together</h2>
+	<div class="flex anchor relative">
+		<h2 id="pulling-it-all-together">Pulling it all together</h2>
+		<a href="https://blog.cloudflare.com/#pulling-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This blog post has taken a shallow look at the standardisation process for HTTP in the IETF across the last three decades. Without touching on many technical details, I've tried to explain how we have ended up with HTTP/3 today. If you skipped the good bits in the middle and are looking for a one liner here it is: HTTP/3 is just a new HTTP syntax that works on IETF QUIC, a UDP-based multiplexed and secure transport. There are many interesting technical areas to explore further but that will have to wait for another day.</p>
 	<p>In the course of this post, we explored important chapters in the development of HTTP and TLS but did so in isolation. We close out the blog by pulling them all together into the complete Secure Web Timeline presented below. You can use this to investigate the detailed history at your own comfort. And for the super sleuths, be sure to check out the <a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">full version including draft numbers</a>.</p>
 	<figure class="kg-card kg-image-card ">

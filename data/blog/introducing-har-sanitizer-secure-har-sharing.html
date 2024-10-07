@@ -9,7 +9,14 @@
 	<p>The bad actor in the Okta breach compromised user sessions by capturing session tokens from administrators at Cloudflare and other impacted organizations. They did this by infiltrating Okta’s customer support system and stealing one of the most common mechanisms for troubleshooting — an HTTP Response Archive (HAR) file.</p>
 	<p>HAR files contain a record of a user’s browser session, a kind of step-by-step audit, that a user can share with someone like a help desk agent to diagnose an issue. However, the file can also contain sensitive information that can be used to launch an attack.</p>
 	<p>As a follow-up to the Okta breach, we are making a <a href="https://har-sanitizer.pages.dev">HAR file sanitizer</a> available to everyone, not just Cloudflare customers, at no cost. We are publishing this tool under an <a href="https://github.com/cloudflare/har-sanitizer">open source license</a> and are making it available to any support, engineering or security team. At Cloudflare, we are committed to making the Internet a better place and using HAR files without the threat of stolen sessions should be part of the future of the Internet.</p>
-	<h2>HAR Files - a look back in time</h2>
+	<div class="flex anchor relative">
+		<h2 id="har-files-a-look-back-in-time">HAR Files - a look back in time</h2>
+		<a href="https://blog.cloudflare.com/#har-files-a-look-back-in-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine being able to rewind time and revisit every single step a user took during a web session, scrutinizing each request and the responses the browser received.</p>
 	<p><a href="https://en.wikipedia.org/wiki/HAR_%28file_format%29">HAR (HTTP Archive)</a> files are a JSON formatted archive file of a web browser’s interaction with a web application. HAR files provide a detailed snapshot of every request, including headers, cookies, and other types of data sent to a web server by the browser. This makes them an invaluable resource to troubleshoot web application issues especially for complex, layered web applications.</p>
 	<p>The snapshot that a HAR file captures can contain the following information:</p>
@@ -17,17 +24,45 @@
 	<p><b>Payload Content:</b> Details of what was actually exchanged between the client and server, which can be essential for diagnosing issues related to data submission or retrieval.</p>
 	<p><b>Timing Information:</b> Precise timing breakdowns of each phase – from DNS lookup, connection time, SSL handshake, to content download – giving insight into performance bottlenecks.</p>
 	<p>This information can be difficult to gather from an application’s logs due to the diverse nature of devices, browsers and networks used to access an application. A user would need to take dozens of manual steps. A HAR file gives them a one-click option to share diagnostic information with another party. The file is also standard, providing the developers, support teams, and administrators on the other side of the exchange with a consistent input to their own tooling. This minimizes the frustrating back-and-forth where teams try to recreate a user-reported problem, ensuring that everyone is, quite literally, on the same page.</p>
-	<h2>HAR files as an attack vector</h2>
+	<div class="flex anchor relative">
+		<h2 id="har-files-as-an-attack-vector">HAR files as an attack vector</h2>
+		<a href="https://blog.cloudflare.com/#har-files-as-an-attack-vector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HAR files, while powerful, come with a cautionary note. Within the set of information they contain, session cookies make them a target for malicious actors.</p>
-	<h3>The Role of Session Cookies</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-role-of-session-cookies">The Role of Session Cookies</h3>
+		<a href="https://blog.cloudflare.com/#the-role-of-session-cookies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before diving into the risks, it's crucial to understand the role of session cookies. A session cookie is sent from a server and stored on a user's browser to maintain stateful information across web sessions for that user. In simpler terms, it’s how the browser keeps you logged into an application for a period of time even if you close the page. Generally, these cookies live in local memory on a user’s browser and are not often shared. However, a HAR file is one of the most common ways that a session cookie could be inadvertently shared.</p>
-	<h3>Dangers of a stolen session cookie</h3>
+	<div class="flex anchor relative">
+		<h3 id="dangers-of-a-stolen-session-cookie">Dangers of a stolen session cookie</h3>
+		<a href="https://blog.cloudflare.com/#dangers-of-a-stolen-session-cookie" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If a HAR file with a valid session cookie is shared, then there are a number of potential security threats that user, and company, may be exposed to:</p>
 	<p><b>Unauthorized Access:</b> The biggest risk is unauthorized access. If a HAR file with a session cookie lands in the wrong hands, it grants entry to the user’s account for that application. For platforms that store personal data or financial details, the consequences of such a breach can be catastrophic. Especially if the session cookie of a user with administrative or elevated permissions is stolen.</p>
 	<p><b>Session Hijacking:</b> Armed with a session cookie, attackers can impersonate legitimate users, a tactic known as session hijacking. This can lead to a range of malicious activities, from spreading misinformation to siphoning off funds.</p>
 	<p><b>Persistent Exposure:</b> Unlike other forms of data, a session cookie's exposure risk doesn't necessarily end when a user session does. Depending on the cookie's lifespan, malicious actors could gain prolonged access, repeatedly compromising a user's digital interactions.</p>
 	<p><b>Gateway to Further Attacks:</b> With access to a user's session, especially an administrator’s, attackers can probe for other vulnerabilities, exploit platform weaknesses, or jump to other applications.</p>
-	<h2>Mitigating the impact of a stolen HAR file</h2>
+	<div class="flex anchor relative">
+		<h2 id="mitigating-the-impact-of-a-stolen-har-file">Mitigating the impact of a stolen HAR file</h2>
+		<a href="https://blog.cloudflare.com/#mitigating-the-impact-of-a-stolen-har-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thankfully, there are ways to render a HAR file inert even if stolen by an attacker. One of the most effective methods is to “sanitize” a HAR file of any session related information before sharing it for debugging purposes.</p>
 	<p>The <a href="https://har-sanitizer.pages.dev">HAR sanitizer</a> we are introducing today allows a user to upload any HAR file, and the tool will strip out any session related cookies or JSON Web Tokens (JWT). The tool is built entirely on Cloudflare Workers, and all sanitization is done client-side which means Cloudflare never sees the full contents of the session token.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -35,11 +70,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50hGJi9BlyGNoT428LPEJL/afc2c85d3c06b73be7d342a9e2c246e3/image1-8.png" alt="" class="kg-image" width="1623" height="499" loading="lazy">
 
 	</figure>
-	<h3>Just enough sanitization</h3>
+	<div class="flex anchor relative">
+		<h3 id="just-enough-sanitization">Just enough sanitization</h3>
+		<a href="https://blog.cloudflare.com/#just-enough-sanitization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, the sanitizer will remove all session-related cookies and tokens — but there are some cases where these are essential for troubleshooting. For these scenarios, we are implementing a way to conditionally strip “just enough” data from the HAR file to render them safe, while still giving support teams the information they need.</p>
 	<p>The first product we’ve optimized the HAR sanitizer for is <a href="https://developers.cloudflare.com/cloudflare-one/policies/access">Cloudflare Access</a>. Access relies on a user’s <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/application-token">JWT</a> — a compact token often used for secure authentication — to verify that a user should have access to the requested resource. This means a JWT plays a crucial role in troubleshooting issues with Cloudflare Access. We have tuned the HAR sanitizer to strip the cryptographic signature out of the Access JWT, rendering it inert, while still providing useful information for internal admins and Cloudflare support to debug issues.</p>
 	<p>Because HAR files can include a diverse array of data types, selectively sanitizing them is not a case of ‘one size fits all’. We will continue to expand support for other popular authentication tools to ensure we strip out “just enough” information.</p>
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the coming months, we will launch additional security controls in Cloudflare Zero Trust to further mitigate attacks stemming from session tokens stolen from HAR files. This will include:</p>
 	<ul>
 		<li>

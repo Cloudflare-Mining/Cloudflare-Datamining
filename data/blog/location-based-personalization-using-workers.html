@@ -41,13 +41,37 @@
 	<p>Geolocation data on Workers makes it even easier to build server rendered apps and customized services.</p>
 	<p>Refer to the <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">documentation</a> to learn more.</p>
 	<p>In case you need some inspiration on how you can use this data, here are some quick and fun examples to get you started:</p>
-	<h3>Hello World</h3><!--kg-card-begin: html--><iframe src="https://geolocation-hello-world.r.workers.dev/" style="border:0px #ffffff none;" name="hello-world-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="hello-world">Hello World</h3>
+		<a href="https://blog.cloudflare.com/#hello-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html--><iframe src="https://geolocation-hello-world.r.workers.dev/" style="border:0px #ffffff none;" name="hello-world-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
 	<p>Hello World! This is a simple Worker to show you the available geolocation data fields and how to access them. Refer to the <a href="https://developers.cloudflare.com/workers/examples/geolocation-hello-world">source code</a> and <a href="https://geolocation-hello-world.r.workers.dev">live demo</a> to learn more.</p>
-	<h3>Personalized UI Design</h3><!--kg-card-begin: html--><iframe src="https://geolocation-custom-design.r.workers.dev/" style="border:0px #ffffff none;" name="geolocation-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="personalized-ui-design">Personalized UI Design</h3>
+		<a href="https://blog.cloudflare.com/#personalized-ui-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html--><iframe src="https://geolocation-custom-design.r.workers.dev/" style="border:0px #ffffff none;" name="geolocation-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
 	<p>This is a Worker that customizes the user interface based on the user’s local time. The background changes throughout the day showing blue gradients during daylight and darker gradients at night. It’d be interesting to implement automatic dark mode for apps on Workers using a similar approach as well.</p>
 	<p>Traditionally, websites customize the user experience by loading JavaScript and cookies into the client side, which causes longer load times and other challenges. Web apps like the example above would have to store cookies and have delays updating the visuals to wait for the client side code to personalize the experience for the user. With Workers, you can take full advantage of server rendered apps and eliminate these challenges while decreasing load times.</p>
 	<p>Refer to the <a href="https://developers.cloudflare.com/workers/examples/geolocation-custom-styling">source code</a> and <a href="https://geolocation-custom-design.r.workers.dev">live demo</a> to learn more.</p>
-	<h3>Location Based Applications</h3><!--kg-card-begin: html--><iframe src="https://geolocation-app-weather.r.workers.dev/" style="border:0px #ffffff none;" name="weather-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="location-based-applications">Location Based Applications</h3>
+		<a href="https://blog.cloudflare.com/#location-based-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html--><iframe src="https://geolocation-app-weather.r.workers.dev/" style="border:0px #ffffff none;" name="weather-cloudflare-worker" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="800px" allowfullscreen=""></iframe><!--kg-card-end: html-->
 	<p>This is a Worker reporting the air quality near your location using <a href="https://aqicn.org">the World Air Quality Project’s API</a>. For other ideas, you could build a simple analytics service or a review platform for local businesses.</p>
 	<p>Refer to the <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather">source code</a> and <a href="https://geolocation-app-weather.r.workers.dev">live demo</a> to learn more.</p>
 	<p>These are just some examples of what you can make using geolocation. We are excited to see what you build and we’d love to hear from you in our Workers <a href="https://discord.gg/TGG8Fw4zKP">Discord</a>.</p>

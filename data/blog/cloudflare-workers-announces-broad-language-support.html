@@ -12,12 +12,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gnOXAk9K4vWzDnK70ndDP/efbeb0e59f111edbc6e1b590cda46b94/Workers-Languages_2x.png" alt="" class="kg-image" width="1600" height="779" loading="lazy">
 
 	</figure>
-	<h2><b>Getting Started</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting Started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Getting started is as simple as installing <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, then running generate for the template for your chosen language: <a href="https://github.com/cloudflare/python-worker-hello-world">Python</a>, <a href="https://github.com/cloudflare/scala-worker-hello-world">Scala</a>, <a href="https://github.com/cloudflare/kotlin-worker-hello-world">Kotlin</a>, <a href="https://github.com/cloudflare/dart-worker-hello-world">Dart</a>, or <a href="https://github.com/cloudflare/reason-worker-hello-world">Reason</a>. For Python, this looks like:</p>
 	<p><code>wrangler generate my-python-project https://github.com/cloudflare/python-worker-hello-world</code></p>
 	<p>Follow the installation instructions in the README inside the generated project directory, then run <code>wrangler publish</code>. You can see the output of your Worker at your workers.dev subdomain, e.g. <a href="https://my-python-project.cody.workers.dev">https://my-python-project.cody.workers.dev/</a>. You can sign up for a <a href="https://dash.cloudflare.com/sign-up/workers">free Workers account</a> if you don't have one yet.</p>
 	<p>That’s it. It is really easy to write in your favorite languages. But, this wouldn’t be a very compelling blog post if we left it at that. Now, I’ll shift the focus to how we added support for these languages and how you can add support for others.</p>
-	<h3>How it all works under the hood</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-all-works-under-the-hood">How it all works under the hood</h3>
+		<a href="https://blog.cloudflare.com/#how-it-all-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Language features are important. For instance, it's hard to give up the safety and expressiveness of <a href="https://reasonml.github.io/docs/en/pattern-matching">pattern matching</a> once you've used it. Familiar syntax matters to us as programmers.</p>
 	<p>You may also have existing code in your preferred language that you'd like to reuse. Just keep in mind that the <a href="https://www.infoq.com/presentations/cloudflare-v8">advantages of running on V8</a> come with the limitation that if you use libraries that depend on native code or language-specific VM features, they may not translate to JavaScript. WebAssembly may be an option in that case. But for memory-managed languages you're usually better off compiling to JavaScript, at least until the story around <a href="https://github.com/WebAssembly/gc/issues/44">garbage collection for WebAssembly</a> stabilizes.</p>
 	<p>I'll walk through how the Worker language templates are made using a representative example of a dynamically typed language, Python, and a statically typed language, Scala. If you want to follow along, you'll need to have <a href="https://github.com/cloudflare/wrangler">Wrangler</a> installed and configured with your Workers account. If it's your first time using Workers it's a good idea to go through the <a href="https://developers.cloudflare.com/workers/quickstart">quickstart</a>.</p>
@@ -125,7 +139,15 @@ trait KVNamespace extends js.Object {
   }</code></pre>
 	<p>You can get the complete code for this example by running</p>
 	<pre class="language-bash"><code class="language-bash">wrangler generate projectname https://github.com/cloudflare/scala-worker-kv</code></pre>
-	<h2>How to contribute</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="how-to-contribute">How to contribute</h2>
+		<a href="https://blog.cloudflare.com/#how-to-contribute" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I'm a fan of programming languages, and will continue to add more <a href="https://developers.cloudflare.com/workers/templates">Workers templates</a>. You probably know your favorite language better than I do, so <a href="https://github.com/cloudflare/template-registry/blob/master/CONTRIBUTING.md">pull requests are welcome</a> for a simple hello world or more complex example.</p>
 	<p>And if you're into programming languages check out the <a href="https://redmonk.com/sogrady/2020/07/27/language-rankings-6-20/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=language-rankings-6-20">latest language rankings</a> from RedMonk where Python is the first non-Java or JavaScript language ever to place in the top two of these rankings.</p>
 	<p>Stay tuned for the rest of <a href="https://blog.cloudflare.com/tag/serverless-week">Serverless Week</a>!</p>

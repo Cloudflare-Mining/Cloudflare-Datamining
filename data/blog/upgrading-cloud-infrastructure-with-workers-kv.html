@@ -18,12 +18,33 @@
 		</li>
 	</ol>
 	<p>Despite their limited number, these are vitally important. We did a lot of testing but it was clear we’d only really know if everything was working once we had production traffic. How could we migrate traffic?</p>
-	<h3>Option 1</h3>
+	<div class="flex anchor relative">
+		<h3 id="option-1">Option 1</h3>
+		<a href="https://blog.cloudflare.com/#option-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Change the CNAME to point to the new hosting infrastructure. This is high risk. DNS takes time to propagate so, if we needed to roll back, it would take time. We would also be shifting over everything at once.</p>
-	<h3>Option 2</h3>
+	<div class="flex anchor relative">
+		<h3 id="option-2">Option 2</h3>
+		<a href="https://blog.cloudflare.com/#option-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Use a traffic manager to shift a percentage of traffic using Cloudflare Load Balancing. We could start at, say, 5% traffic to the new infrastructure and, assuming everything appears to be ok, slowly increase the traffic.</p>
 	<p>In our case the vast majority of our traffic goes to our calendar integration endpoints. The other endpoints were unlikely to receive traffic, especially if started with just 5% of traffic. This wasn’t the best option.</p>
-	<h3>Enter Option 3: Cloudflare Workers and Workers KV</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-option-3-cloudflare-workers-and-workers-kv">Enter Option 3: Cloudflare Workers and Workers KV</h3>
+		<a href="https://blog.cloudflare.com/#enter-option-3-cloudflare-workers-and-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I remember thinking: wouldn’t it be great if we could migrate traffic one endpoint at a time? We have about 20. We could start at the low risk endpoints and progressively move our way up.</p>
 	<p>We were able to write a Cloudflare Worker script that:</p>
 	<ul>
@@ -79,7 +100,16 @@
      // Handle with the existing infra
      response = await fetch(request)
    }</code></pre>
-	<h3>Complete Code</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="complete-code">Complete Code</h3>
+		<a href="https://blog.cloudflare.com/#complete-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">addEventListener('fetch', event =&gt; {
  event.passThroughOnException()
  event.respondWith(handleRequest(event))
@@ -145,10 +175,25 @@ async function handleRequest(event) {
    throw error
  }
 }</code></pre>
-	<h3>Why use Workers KV?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="why-use-workers-kv">Why use Workers KV?</h3>
+		<a href="https://blog.cloudflare.com/#why-use-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We could have written everything as a hard coded script, which was updated each time to enable/disable redirection of traffic. This would require the team to make code changes and deploy the worker every time we wanted to make a change.</p>
 	<p>Using Workers KV, I enabled any member of the team to enable/disable endpoints using the Cloudflare API. To make things easier I created a Postman collection and shared it.</p>
-	<h3>Go Live Problems - and Solutions!</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-live-problems-and-solutions">Go Live Problems - and Solutions!</h3>
+		<a href="https://blog.cloudflare.com/#go-live-problems-and-solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We went live with our first endpoint. The Workers script and KV worked fine but I noticed a small number of exceptions were being reported in Workers &gt; Worker Status.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -164,7 +209,14 @@ async function handleRequest(event) {
 	</figure>
 	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
 	<p>We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
-	<h3>Where to From Here?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-to-from-here">Where to From Here?</h3>
+		<a href="https://blog.cloudflare.com/#where-to-from-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As I write this we’ve transitioned all traffic. All endpoints are enabled. Once we’re ready to decommission the old infrastructure we will:</p>
 	<ul>
 		<li>

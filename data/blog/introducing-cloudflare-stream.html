@@ -15,7 +15,15 @@
 	<p>For example, a surprising number don't have lossless compression enabled. There's no good technical reason not to enable lossless compression. Making content half the size effectively makes it twice as fast. And yet, company after company we talked to didn't have lossless compression turned on. We asked the companies why and they kept telling us: "Our vendor doesn't make it easy." It took us a while to figure out why until we got a former executive from a traditional CDN company in a meeting. He said: "Of course they don't make it easy to turn on compression. They charge based on bandwidth. Compression means less bandwidth which means less money."</p>
 	<p>Other companies don’t turn on performance management techniques such as adaptive streaming or bear the penalty of serving all their video from a limited subset of cities due to prohibitive regional pricing.</p>
 	<p>Yes, the video streaming market today is really that messed up. And so we thought it was time to help fix it. Today, we're introducing Cloudflare Stream. With it, we're trying to fix both the technical and business issues that have plagued the video streaming market to date.</p>
-	<h3>Easy Integrated Workflow</h3>
+	<div class="flex anchor relative">
+		<h3 id="easy-integrated-workflow">Easy Integrated Workflow</h3>
+		<a href="https://blog.cloudflare.com/#easy-integrated-workflow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qlUU9LnPC7yG2Sr1feRUx/f526456533e95681880d545bbd3739a6/Video-GIF.gif" alt="" class="kg-image" width="600" height="338" loading="lazy">
@@ -25,7 +33,14 @@
 	<p>First, we made it technically simple. We have combined encoding, global delivery, and player into one package. While we're happy to split them apart for customers that have a preference, we anticipate that most just want video streaming to work as a rational, seamless package. So you shoot a video, upload it to an API endpoint, and within seconds we make it available globally to adaptively stream via an embeddable link we provide. Our goal was the ease of YouTube with the power and control you used to previously only get from bespoke solutions.</p>
 	<p>Second, we have aligned the business model with the objectives of video streaming customers. That means simplified pricing end-to-end. Instead of charging based on multiple variables, Cloudflare Stream charges simply on the duration people actually consume the video. That charge is inclusive of encoding, global delivery, and player. This approach aligns our interests with our customers'. Compression, for example, is enabled by default. If a better codec is released tomorrow that produces higher quality while using less bandwidth, then we and our customers are aligned in supporting it.</p>
 	<p>At any given video quality, we want to be the low cost provider — but with incentives to continue to invest in our platform to make it faster, more efficient, and less expensive. And, more than that, we want to open the market.</p>
-	<h3>Next Generation of Video Apps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-generation-of-video-apps">Next Generation of Video Apps</h3>
+		<a href="https://blog.cloudflare.com/#next-generation-of-video-apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's nuts that video isn't a part of more products. We hope we can help fix that. Ultimately our goal is to expand the number of companies that are streaming video from 1,000 to 100,000. The next Evan Spiegel shouldn’t have to know what a megabit per second or H.264 are. If someone has an idea for an app or a service that would be better with video Cloudflare Stream is designed to remove the barriers for them to bring it to market.</p>
 	<p>Take Pathwright, a Greenville, South Carolina based startup using video as part of their online education platform. "Our company is focused on bringing thoughtful and easy-to-use course delivery tools to teachers and learners wherever they are, and a huge part of doing that is through video," said Mark Johnson, co-founder of Pathwright. "We've long been looking for a video solution that is simple to implement and seamless to use, and have not found one that checks all the boxes for us. We're excited that Cloudflare Stream is being launched with the developer in mind from the beginning. It sounds like exactly what we’ve been searching for and we can't wait to get started."</p>
 	<p>We are excited to support the next generation of developers building video into their applications, and can’t wait to see what you’ll create.</p>

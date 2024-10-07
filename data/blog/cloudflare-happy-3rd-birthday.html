@@ -8,7 +8,14 @@
 	<p>Today is CloudFlare's birthday. We opened to the public exactly three years ago today, September 27, 2010. In those three years we've grown to power more than 1.5 million websites and sit in front of more than 4% of all web requests. Three years ago, however, those first signups were terrifying.</p>
 	<p>Early on we realized that if we were going to bring CloudFlare's services to as broad an audience as possible we needed to focus on making the signup process ridiculously easy. Traditional CDNs typically require months of integration work and, often, thousands of dollars in professional consulting services to get up and running. We spent most of our engineering time designing a signup process that took less than 5 minutes to complete on average.</p>
 	<p>While we were convinced that would be a long term advantage, as our launch grew near we started to worry: what would happen if hundreds, or even thousands, of websites signed up? We only had a limited number of servers running in a handful of data centers around the world (Chicago, San Jose, Ashburn, Amsterdam, and Tokyo).</p>
-	<h3>Circuit Breakers</h3>
+	<div class="flex anchor relative">
+		<h3 id="circuit-breakers">Circuit Breakers</h3>
+		<a href="https://blog.cloudflare.com/#circuit-breakers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We debated internally how to deal with this problem. We decided, about a month before launch, that what we would do is create an invite system for people to sign up with their email and then we'd let them in as we had capacity. Unfortunately, the Monday morning of our launch we realized no one on the team had gotten around to building the invite system.</p>
 	<p>As Michelle and I practiced our presentation back stage at the TechCrunch Disrupt conference, where we were scheduled to launch on stage, Lee sat in the audience and hastily coded together a system of "circuit breakers" that would limit new signups. Every hundred signups or so the circuit breakers would trip and cause the signup form to shut down. This would allow us time to check all the systems before opening up again for new customers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -23,10 +30,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Iqos7JQYhvwnMiBR9Ji0K/137fef54b42d867be013379afc486dd9/TC_Disrupt_Judges.jpg" alt="Cloudflare: Happy 3rd Birthday" class="kg-image" width="720" height="480" loading="lazy">
 
 	</figure>
-	<h3>Full Steam Ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="full-steam-ahead">Full Steam Ahead</h3>
+		<a href="https://blog.cloudflare.com/#full-steam-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sri, who was our first and, at the time, only member of our ops team, was checking all the servers to find any hot spots. Our traffic across the network had spiked from virtually nothing just a few minutes before to hundreds of requests per second. But the system appeared to be holding up. Lee made the call to allow people to keep signing up and didn't fix the circuit breakers.</p>
 	<p>By the end of the day, we'd signed up just shy of 2,000 new sites -- almost 10 times what we'd originally anticipated. The core system we'd spent the previous 9 months building held up. None of us slept much that first night as we were all logged in to our dashboards and watched the health of the systems. New signups slowed down a bit but traffic only compounded. Lee called me sometime Tuesday afternoon and said, "Ok, I've looked everything over and I'm confident what we've built will continue to scale for at least the next 2 to 3 years. After that, we'll have to redesign some things, but until then I don't think we'll ever have to turn away a new customer, so I terminated the circuit breakers."</p>
-	<h3>Hitting Our Stride</h3>
+	<div class="flex anchor relative">
+		<h3 id="hitting-our-stride">Hitting Our Stride</h3>
+		<a href="https://blog.cloudflare.com/#hitting-our-stride" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we signup as many as 5,000 new customers a day. And, as Lee correctly predicted, the core system has held up very well. About a year ago we conducted a full survey of CloudFlare's core systems. Based on that we embarked on an effort to rearchitect all the systems where we were beginning to see bottlenecks. That effort is largely finished and is beginning to bear fruit with a new flexibility and extensibility for more features, faster performance, and a dramatic expansion of our network.</p>
 	<p>While we've had an amazing third year, I predict you'll be blown away by what we have in store over the next twelve months. But, today, at the CloudFlare office our team will be taking a short break to celebrate our birthday.</p>
 </div>

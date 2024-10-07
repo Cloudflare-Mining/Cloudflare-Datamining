@@ -22,7 +22,14 @@
 		</li>
 	</ol>
 	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
-	<h3>Setup</h3>
+	<div class="flex anchor relative">
+		<h3 id="setup">Setup</h3>
+		<a href="https://blog.cloudflare.com/#setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
 	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
 	<figure class="kg-card kg-image-card ">

@@ -12,7 +12,14 @@
 	<p>I know that most of you don’t have English as a first language so I’m going to speak a little more deliberately than usual. And I’ll make the text of this talk available for you to read.</p>
 	<p>But there are no slides today.</p>
 	<p>I’m going to talk about how Cloudflare thinks about internal security, how we protect ourselves and how we secure our day to day work. This isn’t a talk about Cloudflare’s products.</p>
-	<h3>Culture</h3>
+	<div class="flex anchor relative">
+		<h3 id="culture">Culture</h3>
+		<a href="https://blog.cloudflare.com/#culture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s begin with culture.</p>
 	<p>Many companies have culture statements. I think almost 100% of these are pure nonsense. Culture is how you act every day, not words written in the wall.</p>
 	<p>One significant piece of company culture is the internal Security Incident mailing list which anyone in the company can send a message to. And they do! So far this month there have been 55 separate emails to that list reporting a security problem.</p>
@@ -23,12 +30,26 @@
 	<p>This has led to a culture of reporting problems, however minor, when they occur. It’s our first line of internal defense.</p>
 	<p>Just this month I clicked on a link that sent my web browser crazy hopping through redirects until I ended up at a bad place. I reported that to the mailing list.</p>
 	<p>I’ve never worked anywhere with such a strong culture of reporting security problems big and small.</p>
-	<h3>Hackers</h3>
+	<div class="flex anchor relative">
+		<h3 id="hackers">Hackers</h3>
+		<a href="https://blog.cloudflare.com/#hackers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We also use HackerOne to let people report security problems from the outside. This month we’ve received 14 reports of security problems. To be honest, most of what we receive through HackerOne is very low priority. People run automated scanning tools and report the smallest of configuration problems, or, quite often, things that they don’t understand but that look like security problems to them. But we triage and handle them all.</p>
 	<p>And people do on occasion report things that we need to fix.</p>
 	<p>We also have a private paid bug bounty program where we work with a group of individual hackers (around 150 right now) who get paid for the vulnerabilities that they’ve found.</p>
 	<p>We’ve found that this combination of a public responsible disclosure program and then a private paid program is working well. We invite the best hackers who come in through the public program to work with us closely in the private program.</p>
-	<h3>Identity</h3>
+	<div class="flex anchor relative">
+		<h3 id="identity">Identity</h3>
+		<a href="https://blog.cloudflare.com/#identity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, that’s all about people, internal and external, reporting problems, vulnerabilities, or attacks. A very short step from that is knowing who the people are.</p>
 	<p>And that’s where identity and authentication become critical. In fact, as an industry trend identity management and authentication are one of the biggest areas of spending by CSOs and <a href="https://www.cloudflare.com/ciso">CISOs</a>. And Cloudflare is no different.</p>
 	<p>OK, well it is different, instead of spending a lot of identity and authentication we’ve built our own solutions.</p>
@@ -42,7 +63,14 @@
 	<p>Last year the security team gave everyone a pair of physical security tokens (a Yubikey and a Titan Key from Google for Bluetooth) and in an epic session configured everyone’s accounts to use them.</p>
 	<p>Note: do not attempt to get 500 people to sync Bluetooth devices in the same room at the same time. Bluetooth cannot cope.</p>
 	<p>Another important thing we implemented is automatic timeout of access to a system. If you don’t use access to a system you lose it. That way we don’t have accounts that might have access to sensitive systems that could potentially be exploited.</p>
-	<h3>Openness</h3>
+	<div class="flex anchor relative">
+		<h3 id="openness">Openness</h3>
+		<a href="https://blog.cloudflare.com/#openness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To return to the subject of Culture for a moment an important Cloudflare trait is openness.</p>
 	<p>Some of you may know that back in 2017 Cloudflare had a horrible bug in our software that became called Cloudbleed. This bug leaked memory from inside our servers into people’s web browsing. Some of that web browsing was being done by search engine crawlers and ended up in the caches of search engines like Google.</p>
 	<p>We had to do two things: stop the actual bug (this was relatively easy and was done in under an hour) and then clean up the equivalent of an oil spill of data. That took longer (about a week to ten days) and was very complicated.</p>
@@ -55,12 +83,26 @@
 	<p>Similarly, at RSA last year I gave a talk about Cloudbleed and a very large company’s CSO came up and asked to use my talk internally to try to encourage their company to be so open.</p>
 	<p>When on July 2 this year we had an outage, which wasn’t security related, we once again blogged in incredible detail about what happened. And once again we heard from people about how our transparency mattered to them.</p>
 	<p>The lesson is that being open about mistakes increases trust. And if people trust you then they’ll tend to tell you when there are problems. I get a ton of reports of potential security problems via Twitter or email.</p>
-	<h3>Change</h3>
+	<div class="flex anchor relative">
+		<h3 id="change">Change</h3>
+		<a href="https://blog.cloudflare.com/#change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After Cloudbleed we started changing how we write software. Cloudbleed was caused, in part, by the use of memory-unsafe languages. In that case it was C code that could run past the end of a buffer.</p>
 	<p>We didn’t want that to happen again and so we’ve prioritized languages where that simply cannot happen. Such as Go and Rust. We were very well known for using Go. If you’ve ever visited a Cloudflare website, or used an app (and you have because of our scale) that uses us for its API then you’ve first done a DNS query to one of our servers.</p>
 	<p>That DNS query will have been responded to by a Go program called RRDNS.</p>
 	<p>There’s also a lot of Rust being written at Cloudflare and some of our newer products are being created using it. For example, Firewall Rules which do arbitrary filtering of requests to our customers are handled by a Rust program that needs to be low latency, stable and secure.</p>
-	<h3>Security is a company wide commitment</h3>
+	<div class="flex anchor relative">
+		<h3 id="security-is-a-company-wide-commitment">Security is a company wide commitment</h3>
+		<a href="https://blog.cloudflare.com/#security-is-a-company-wide-commitment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other post-Cloudbleed change was that any crashes on our machines came under the spotlight from the very top. If a process crashes I personally get emailed about it. And if the team doesn’t take those crashes seriously they get me poking at them until they do.</p>
 	<p>We missed the fact that Cloudbleed was crashing our machines and we won’t let that happen again. We use Sentry to correlate information about crashes and the Sentry output is one of the first things I look at in the morning.</p>
 	<p>Which, I think, brings up an important point. I spoke earlier about our culture of “If you see something weird, say something” but it’s equally important that security comes from the top down.</p>
@@ -70,7 +112,14 @@
 	<p>This makes me a less attractive target for hackers, and we apply the same rule to everyone. If you don’t need access for your job you don’t get it. That’s made a lot easier by the identity and authentication systems and by our rule about timing out access if you don’t use a service. You probably didn’t need it in the first place.</p>
 	<p>The flip side of all of us owning security is that deliberately doing the wrong thing has severe consequences.</p>
 	<p>Making a mistake is just fine. The person who wrote the bad line of code that caused Cloudbleed didn’t get fired, the person who wrote the bad regex that brought our service to a halt on July 2 is still with us.<b>‌‌</b></p>
-	<h3>Detection and Response‌‌</h3>
+	<div class="flex anchor relative">
+		<h3 id="detection-and-response">Detection and Response‌‌</h3>
+		<a href="https://blog.cloudflare.com/#detection-and-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Naturally, things do go wrong internally. Things that didn’t get reported. To do with them we need to detect problems quickly. This is an area where the security team does have real expertise and data.‌‌</p>
 	<p>We do this by collecting data about how our endpoints (my laptop, a company phone, servers on the edge of our network) are behaving. And this is fed into a homebuilt data platform that allows the security team to alert on anomalies.‌‌</p>
 	<p>It also allows them to look at historical data in case of a problem that occurred in the past, or to understand when a problem started. ‌‌</p>
@@ -82,7 +131,14 @@
 	<p>The time between the malware being downloaded and detected was about 40 minutes.‌‌</p>
 	<p>If you don’t want to build something like this yourself, take a look at Google’s Chronicle product. It’s very cool. ‌‌</p>
 	<p>One really rich source of data about your organization is DNS. For example, you can often spot malware just by the DNS queries it makes from a machine. If you do one thing then make sure all your machines use a single DNS resolver and get its logs.‌‌‌‌</p>
-	<h3>Edge Security‌‌</h3>
+	<div class="flex anchor relative">
+		<h3 id="edge-security">Edge Security‌‌</h3>
+		<a href="https://blog.cloudflare.com/#edge-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In some ways the most interesting part of Cloudflare is the least interesting from a security perspective. Not because there aren’t great technical challenges to securing machines in 194 cities but because some of the more apparently mundane things I’ve talked about how such huge impact.‌‌</p>
 	<p><i>Identity, Authentication, Culture, Detection and Response.‌‌</i></p>
 	<p>But, of course, the edge needs securing. And it’s a combination of physical data center security and software. ‌‌</p>
@@ -93,16 +149,37 @@
 	<p>But wait… there’s more!‌‌</p>
 	<p>We don’t actually want to have decrypted keys stored in any process that accessible from the Internet. So we use a technology called Keyless SSL where the keys are kept by a separate process and accessed only when needed to perform operations.‌‌</p>
 	<p>And Keyless SSL can run anywhere. For example, it doesn’t have to be on the same machine as the machine handling an SSL connection. It doesn’t even have to be in the same country. Some of our customers make use of that to specify where their keys are distributed to).</p>
-	<h3>Use Cloudflare to secure Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="use-cloudflare-to-secure-cloudflare">Use Cloudflare to secure Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#use-cloudflare-to-secure-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One key strategy of Cloudflare is to eat our own dogfood. If you’ve not heard that term before it’s quite common in the US. The idea is that if you’re making food for dogs you should be so confident in its quality that you’d eat it yourself.</p>
 	<p>Cloudflare does the same for security. We use our own products to secure ourselves. But more than that if we see that there’s a product we don’t currently have in our security toolkit then we’ll go and build it.</p>
 	<p>Since Cloudflare is a cybersecurity company we face the same challenges as our customers, but we can also build our way out of those challenges. In &nbsp;this way, our internal security team is also a product team. They help to build or influence the direction of our own products.</p>
 	<p>The team is also a Cloudflare customer using our products to secure us and we get feedback internally on how well our products work. That makes us more secure and our products better.</p>
-	<h3>Our customers data is more precious than ours‌‌</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-customers-data-is-more-precious-than-ours">Our customers data is more precious than ours‌‌</h3>
+		<a href="https://blog.cloudflare.com/#our-customers-data-is-more-precious-than-ours" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The data that passes through Cloudflare’s network is private and often very personal. Just think of your web browsing or app use. So we take great care of it.‌‌</p>
 	<p>We’re handling that data on behalf of our customers. They are trusting us to handle it with care and so we think of it as more precious than our own internal data.‌‌</p>
 	<p>Of course, we secure both because the security of one is related to the security of the other. But it’s worth thinking about the data you have that, in a way, belongs to your customer and is only in your care.‌‌‌‌</p>
-	<h3>Finally‌‌</h3>
+	<div class="flex anchor relative">
+		<h3 id="finally">Finally‌‌</h3>
+		<a href="https://blog.cloudflare.com/#finally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I hope this talk has been useful. I’ve tried to give you a sense of how Cloudflare thinks about security and operates. We don’t claim to be the ultimate geniuses of security and would love to hear your thoughts, ideas and experiences so we can improve.‌‌</p>
 	<p>Security is not static and requires constant attention and part of that attention is listening to what’s worked for others.‌‌</p>
 	<p>Thank you.‌‌‌‌‌‌‌‌‌‌‌‌</p>

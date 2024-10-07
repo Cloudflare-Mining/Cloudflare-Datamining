@@ -7,7 +7,14 @@
 	</figure>
 	<p>Pages Functions are now out of beta and <a href="https://blog.cloudflare.com/pages-function-goes-ga">generally available</a>, bringing dynamic computation within 50ms of 95% of users globally. Built on top of Cloudflare Workers, Pages projects are easy to deploy and instantly benefit from this low latency, with over 275 data centers across the globe.</p>
 	<p>With Page Functions comes the ability to add dynamic server-side rendering to your applications. Pages makes it easy to deploy applications built using all the major meta-frameworks such as Astro, Next.js, Qwik, Remix, Solid, and Svelte. There is no better time to start deploying your server-side rendered full-stack applications to Cloudflare Pages.</p>
-	<h2>Go server-side with Pages Functions</h2>
+	<div class="flex anchor relative">
+		<h2 id="go-server-side-with-pages-functions">Go server-side with Pages Functions</h2>
+		<a href="https://blog.cloudflare.com/#go-server-side-with-pages-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Pages <a href="https://blog.cloudflare.com/cloudflare-pages">launched in December 2020</a>, it was focused on being a high-performance host for static assets. Pages was a perfect choice for anyone building websites which could be generated ahead of time with static site generation. <a href="https://jamstack.org">Jamstack</a> was all the rage, and Cloudflare's network was an excellent choice for its ability to serve static files to visitors from around the globe.</p>
 	<p>Once deployed the files would be effortlessly hosted and served at incredible speeds across the world to your users. These statically generated applications can run client-side code in the browser to customize the appearance and behavior of the page, but this approach often struggles with slow <a href="https://web.dev/tti">time-to-interactive (TTI)</a>, which results in a poor user experience, and SEO rankings.</p>
 	<p>Once loaded, client-side rendered applications are great at building highly interactive applications, but in order for such applications to load and become interactive, they usually need to make several network requests to fetch all the code and data it needs to create the UI. If your client devices have a slow or unreliable network connection, each request will become a hurdle that decreases the quality of the user experience.</p>
@@ -26,10 +33,24 @@
 
 	</figure>
 	<p>Fast connected Worker making lots of requests</p>
-	<h2>Use a full-stack framework</h2>
+	<div class="flex anchor relative">
+		<h2 id="use-a-full-stack-framework">Use a full-stack framework</h2>
+		<a href="https://blog.cloudflare.com/#use-a-full-stack-framework" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Writing your own library to do server-side rendering is no simple task. But luckily many frontend frameworks support server-side rendering, and Cloudflare Pages offers the perfect deployment platform for them. Each framework has its own take on server-side rendering, but most can be integrated effortlessly with Pages Functions. In fact, many frameworks come with starter kits and libraries that make deploying to Pages trivial.</p>
 	<p>We have previously blogged about deploying <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack/#what-else-can-you-do">SvelteKit</a>, <a href="https://blog.cloudflare.com/remix-on-cloudflare-pages">Remix</a> and <a href="https://blog.cloudflare.com/next-on-pages">Next.js</a> to Cloudflare Pages, but there are many more <a href="https://developers.cloudflare.com/pages/framework-guides">integrations already available</a>. Let’s take a look at a few of the other popular ones:</p>
-	<h3>QwikCity</h3>
+	<div class="flex anchor relative">
+		<h3 id="qwikcity">QwikCity</h3>
+		<a href="https://blog.cloudflare.com/#qwikcity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full-stack framework that uses the Qwik frontend framework is called QwikCity. You can read the full quick-start documentation for running Qwik on Pages <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site">here</a>.</p>
 	<p>Create a new project by running the following command in your terminal:</p>
 	<pre class="language-bash"><code class="language-bash">npm create qwik@latest</code></pre>
@@ -40,7 +61,14 @@ npm run qwik add cloudflare-pages</code></pre>
 	<pre class="language-bash"><code class="language-bash">npm run build
 npx wrangler pages dev ./dist</code></pre>
 	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site.</p>
-	<h3>Astro</h3>
+	<div class="flex anchor relative">
+		<h3 id="astro">Astro</h3>
+		<a href="https://blog.cloudflare.com/#astro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Astro is a full-stack framework that can run a range of different frontend frameworks. It added support for server-side rendering <a href="https://astro.build/blog/experimental-server-side-rendering">earlier this year</a>. You can read the full quick-start documentation for running Astro on Pages <a href="https://docs.astro.build/en/guides/deploy/cloudflare/#how-to-deploy-an-ssr-site">here</a>.</p>
 	<p>Create a new project by running the following command in your terminal:</p>
 	<pre class="language-bash"><code class="language-bash">npm create astro@latest</code></pre>
@@ -55,7 +83,14 @@ npx astro add cloudflare</code></pre>
 	<pre class="language-bash"><code class="language-bash">npm run build
 npx wrangler pages dev ./dist</code></pre>
 	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site. <a href="https://docs.astro.build/en/guides/integrations-guide/cloudflare">Check out Astro’s docs</a> to read more about configuring your Astro project when deploying it to Cloudflare Pages.</p>
-	<h3>SolidStart</h3>
+	<div class="flex anchor relative">
+		<h3 id="solidstart">SolidStart</h3>
+		<a href="https://blog.cloudflare.com/#solidstart" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full-stack framework that uses the SolidJS frontend framework is called SolidStart. Support for running SolidStart on Cloudflare Pages is provided by the <a href="https://github.com/solidjs/solid-start/tree/main/packages/start-cloudflare-pages">start-cloudflare-pages</a> Vite adapter.</p>
 	<p>Create a new SolidStart project by running the following command in your terminal:</p>
 	<pre class="language-bash"><code class="language-bash">mkdir my-app
@@ -75,7 +110,14 @@ export default defineConfig({
 	<pre class="language-bash"><code class="language-bash">npm run build
 npx wrangler pages dev ./dist/public</code></pre>
 	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site.</p>
-	<h3>Nuxt.js</h3>
+	<div class="flex anchor relative">
+		<h3 id="nuxt-js">Nuxt.js</h3>
+		<a href="https://blog.cloudflare.com/#nuxt-js" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full-stack framework that uses the Vue.js frontend framework is called Nuxt.js. Nuxt.js supports deploying to Cloudflare Pages natively via a Nitro preset.</p>
 	<p>Create a new Nuxt project using <code>nuxi</code> (a Nuxt.js specific version of Nitro), giving it the title <code>nuxt-app</code> in your terminal:</p>
 	<pre class="language-bash"><code class="language-bash">npx nuxi init nuxt-app
@@ -85,7 +127,14 @@ npm install</code></pre>
 	<pre class="language-bash"><code class="language-bash">NITRO_PRESET=cloudflare-pages npx nuxi build
 npx wrangler pages dev .output/public</code></pre>
 	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site.</p>
-	<h2>Get rendering!</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-rendering">Get rendering!</h2>
+		<a href="https://blog.cloudflare.com/#get-rendering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that Pages Functions are generally available, and the major full-stack frameworks provide straightforward integrations with Pages, there is no better time to add server-side rendering to your application and deploy to Cloudflare Pages.</p>
 	<p>Check out the Cloudflare Pages documentation for more help in <a href="https://pages.cloudflare.com">getting started</a> or chat with us <a href="https://discord.gg/cloudflaredev">on our friendly Discord server</a> about what Pages Functions can do for your project.</p>
 	<p>If you are a framework author and would also like to integrate with Pages Functions then get in touch. We would love to help make that happen!</p>

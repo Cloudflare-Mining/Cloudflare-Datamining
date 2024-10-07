@@ -3,14 +3,28 @@
 <div class="post-content lh-copy gray1">
 	<p>The modern use of "cloud" arguably traces its origins to the cloud icon, omnipresent in network diagrams for decades. A cloud was used to represent the vast and intricate infrastructure components required to deliver network or Internet services without going into depth about the underlying complexities. At Cloudflare, we embody this principle by providing critical infrastructure solutions in a user-friendly and easy-to-use way. Our logo, featuring the cloud symbol, reflects our commitment to simplifying the complexities of Internet infrastructure for all our users.</p>
 	<p>This blog post provides an update about our infrastructure, focusing on our global backbone in 2024, and highlights its benefits for our customers, our competitive edge in the market, and the impact on our mission of helping build a better Internet. Since the time of our last backbone-related <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">blog post</a> in 2021, we have increased our backbone capacity (Tbps) by more than 500%, unlocking new use cases, as well as reliability and performance benefits for all our customers.</p>
-	<h3>A snapshot of Cloudflare’s infrastructure</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-snapshot-of-cloudflares-infrastructure">A snapshot of Cloudflare’s infrastructure</h3>
+		<a href="https://blog.cloudflare.com/#a-snapshot-of-cloudflares-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As of July 2024, Cloudflare has data centers in 330 cities across more than 120 countries, each running Cloudflare equipment and services. The goal of delivering Cloudflare products and services everywhere remains consistent, although these data centers vary in the number of servers and amount of computational power.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38RRu7BaumWFemL23JcFLW/2d94ad22b2a85e48b1bdde361bd17f25/BLOG-2432-2.png" alt="BLOG-2432-2" class="kg-image" width="1600" height="1000" loading="lazy">
 	</figure>
 	<p></p>
 	<p>These data centers are strategically positioned around the world to ensure our presence in all major regions and to help our customers comply with local regulations. It is a programmable smart network, where your traffic goes to the best data center possible to be processed. This programmability allows us to keep sensitive data regional, with our <a href="https://www.cloudflare.com/data-localization">Data Localization Suite solutions</a>, and within the constraints that our customers impose. Connecting these sites, exchanging data with customers, public clouds, partners, and the broader Internet, is the role of our network, which is managed by our infrastructure engineering and network strategy teams. This network forms the foundation that makes our products lightning fast, ensuring our global reliability, security for every customer request, and helping customers comply with data sovereignty requirements.</p>
-	<h3>Traffic exchange methods</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-exchange-methods">Traffic exchange methods</h3>
+		<a href="https://blog.cloudflare.com/#traffic-exchange-methods" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is an interconnection of different networks and separate <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">autonomous systems</a> that operate by exchanging data with each other. There are multiple ways to exchange data, but for simplicity, we'll focus on two key methods on how these networks communicate: Peering and IP Transit. To better understand the benefits of our global backbone, it helps to understand these basic connectivity solutions we use in our network.</p>
 	<ol>
 		<li>
@@ -26,7 +40,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RgjDtW5LehGZEYXey4AQH/76549b9c50214c8df1497b79501f4daa/BLOG-2432-3.png" alt="BLOG-2432-3" class="kg-image" width="1999" height="750" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>Backbone operations and benefits</h3>
+	<div class="flex anchor relative">
+		<h3 id="backbone-operations-and-benefits">Backbone operations and benefits</h3>
+		<a href="https://blog.cloudflare.com/#backbone-operations-and-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Operating a global backbone is challenging, which is why many competitors don’t do it. We take this challenge for two key reasons: traffic routing control and cost-effectiveness.</p>
 	<p>With IP transit, we rely on our transit partners to carry traffic from Cloudflare to the ultimate destination network, introducing unnecessary third-party reliance. In contrast, our backbone gives us full control over routing of both internal and external traffic, allowing us to manage it more effectively. This control is crucial because it lets us optimize traffic routes, usually resulting in the lowest latency paths, as previously mentioned. Furthermore, the cost of serving large traffic volumes through the backbone is, on average, more cost-effective than IP transit. This is why we are doubling down on backbone capacity in regions such as Frankfurt, London, Amsterdam, and Paris and Marseille, where we see continuous traffic growth and where connectivity solutions are widely available and competitively priced.</p>
 	<p>Our backbone serves both internal and external traffic. Internal traffic includes customer traffic using our security or performance products and traffic from Cloudflare's internal systems that shift data between our data centers. <a href="https://blog.cloudflare.com/introducing-regional-tiered-cache">Tiered caching</a>, for example, optimizes our caching delivery by dividing our data centers into a hierarchy of lower tiers and upper tiers. If lower-tier data centers don’t have the content, they request it from the upper tiers. If the upper tiers don’t have it either, they then request it from the origin server. This process reduces origin server requests and improves cache efficiency. Using our backbone to transport the cached content between lower and upper-tier data centers and the origin is often the most cost-effective method, considering the scale of our network. <a href="https://www.cloudflare.com/network-services/products/magic-transit">Magic Transit</a> is another example where we attract traffic, by means of BGP anycast, to the Cloudflare data center closest to the end user and implement our DDoS solution. Our backbone transports the clean traffic to our customer’s data center, which they connect through a <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">Cloudflare Network Interconnect (CNI)</a>.</p>
@@ -37,7 +58,14 @@
 	</figure>
 	<p><sub><i>This map is a simplification of our current backbone network and does not show all paths</i></sub></p>
 	<p></p>
-	<h3>Expanding our network</h3>
+	<div class="flex anchor relative">
+		<h3 id="expanding-our-network">Expanding our network</h3>
+		<a href="https://blog.cloudflare.com/#expanding-our-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned in the introduction, we have increased our backbone capacity (Tbps) by more than 500% since 2021. With the addition of sub-sea cable capacity to Africa, we achieved a big milestone in 2023 by completing our global backbone ring. It now reaches six continents through terrestrial fiber and subsea cables.</p>
 	<p>Building out our backbone within regions where Internet infrastructure is less developed compared to markets like Central Europe or the US has been a key strategy for our latest network expansions. We have a shared goal with regional ISP partners to keep our data flow localized and as close as possible to the end user. Traffic often takes inefficient routes outside the region due to the lack of sufficient local peering and regional infrastructure. This phenomenon, known as traffic tromboning, occurs when data is routed through more cost-effective international routes and existing peering agreements.</p>
 	<p>Our regional backbone investments in countries like India or Turkey aim to reduce the need for such inefficient routing. With our own in-region backbone, traffic can be directly routed between in-country Cloudflare data centers, such as from Mumbai to New Delhi to Chennai, reducing latency, increasing reliability, and helping us to provide the same level of service quality as in more developed markets. We can control that data stays local, supporting our Data Localization Suite (<a href="https://www.cloudflare.com/data-localization">DLS</a>), which helps businesses comply with regional data privacy laws by controlling where their data is stored and processed.</p>
@@ -45,7 +73,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WCNB78y1jHHsid46pBZOo/ff80961f5d853dfa33eff32eacdc2116/BLOG-2432-5.png" alt="BLOG-2432-5" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>Improved latency and performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="improved-latency-and-performance">Improved latency and performance</h3>
+		<a href="https://blog.cloudflare.com/#improved-latency-and-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This strategic expansion has not only extended our global reach but has also significantly improved our overall latency. One illustration of this is that since the deployment of our backbone between Lisbon and Johannesburg, we have seen a major performance improvement for users in Johannesburg. Customers benefiting from this improved latency can be, for example, a financial institution running their APIs through us for real-time trading, where milliseconds can impact trades, or our <a href="https://www.cloudflare.com/network-services/products/magic-wan">Magic WAN</a> users, where we facilitate site-to-site connectivity between their branch offices.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1o0H8BNLf5ca8BBx38Q5Ee/f1ad8e0b78627cbdaeff8a4aa0ab653a/BLOG-2432-6.png" alt="BLOG-2432-6" class="kg-image" width="1999" height="455" loading="lazy">
@@ -56,7 +91,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZEEZJERWQ2UB1sdTjWUtM/e4b0ff80088dee2c39450f23dadd8010/BLOG-2432-7.png" alt="BLOG-2432-7" class="kg-image" width="1999" height="533" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>Traffic control</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-control">Traffic control</h3>
+		<a href="https://blog.cloudflare.com/#traffic-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Consider a navigation system using 1) GPS to identify the route and 2) a highway toll pass that is valid until your final destination and allows you to drive straight through toll stations without stopping. Our backbone works quite similarly.</p>
 	<p>Our global backbone is built upon two key pillars. The first is BGP (<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a>), the routing protocol for the Internet, and the second is Segment Routing MPLS (<a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">Multiprotocol label switching</a>), a technique for steering traffic across predefined forwarding paths in an IP network. By default, Segment Routing provides end-to-end encapsulation from ingress to egress routers where the intermediate nodes execute no route lookup. Instead, they forward traffic across an end-to-end virtual circuit, or tunnel, called a label-switched path. Once traffic is put on a label-switched path, it cannot detour onto the public Internet and must continue on the predetermined route across Cloudflare’s backbone. This is nothing new, as many networks will even run a “BGP Free Core” where all the route intelligence is carried at the edge of the network, and intermediate nodes only participate in forwarding from ingress to egress.</p>
 	<p>While leveraging Segment Routing Traffic Engineering (SR-TE) in our backbone, we can automatically select paths between our data centers that are optimized for latency and performance. Sometimes the “shortest path” in terms of routing protocol cost is not the lowest latency or highest performance path.</p>
@@ -64,7 +106,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QettBytPdJxacwVLVHYFN/585cedf09a43e10db7c764d90fa54001/BLOG-2432-8.png" alt="BLOG-2432-8" class="kg-image" width="1200" height="675" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>Supercharged: Argo and the global backbone</h3>
+	<div class="flex anchor relative">
+		<h3 id="supercharged-argo-and-the-global-backbone">Supercharged: Argo and the global backbone</h3>
+		<a href="https://blog.cloudflare.com/#supercharged-argo-and-the-global-backbone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/lp/pg-argo-smart-routing/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=ao-fy-pay-gbl_en_native-applications-ge-ge-general-core_paid_apo_argo&amp;utm_content=argo&amp;utm_term=cloudflare+argo&amp;campaignid=71700000092259497&amp;adgroupid=58700007751943324&amp;creativeid=666481290143&amp;_bt=666481290143&amp;_bk=cloudflare+argo&amp;_bm=e&amp;_bn=g&amp;_bg=138787490550&amp;_placement=&amp;_target=&amp;_loc=1017825&amp;_dv=c&amp;awsearchcpc=1&amp;gad_source=1&amp;gclid=Cj0KCQjwvb-zBhCmARIsAAfUI2uj2VOkHjvM2qspAfBodOROAH_bG040P6bjvQeEbVwFF1qwdEKLXLkaAllMEALw_wcB&amp;gclsrc=aw.ds">Argo Smart Routing</a> is a service that uses Cloudflare’s portfolio of backbone, transit, and peering connectivity to find the most optimal path between the data center where a user’s request lands and your back-end origin server. Argo may forward a request from one Cloudflare data center to another on the way to an origin if the performance would improve by doing so. <a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed">Orpheus</a> is the counterpart to Argo, and routes around degraded paths for all customer origin requests free of charge. Orpheus is able to analyze network conditions in real-time and actively avoid reachability failures. Customers with Argo enabled get optimal performance for requests from Cloudflare data centers to their origins, while Orpheus provides error self-healing for all customers universally. By mixing our global backbone using Segment Routing as an underlay with <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing">Argo Smart Routing</a> and Orpheus as our connectivity overlay, we are able to transport critical customer traffic along the most optimized paths that we have available.</p>
 	<p>So how exactly does our global backbone fit together with Argo Smart Routing? <a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Transit Selection</a> is an extension of Argo Smart Routing where the lowest latency path between Cloudflare data center hops is explicitly selected and used to forward customer origin requests. The lowest latency path will often be our global backbone, as it is a more dedicated and private means of connectivity, as opposed to third-party transit networks.</p>
 	<p>Consider a multinational Dutch pharmaceutical company that relies on Cloudflare's network and services with our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE solution</a> to connect their global offices, research centers, and remote employees. Their Asian branch offices depend on Cloudflare's security solutions and network to provide secure access to important data from their central data centers back to their offices in Asia. In case of a cable cut between regions, our network would automatically look for the best alternative route between them so that business impact is limited.</p>
@@ -79,7 +128,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A8CdaGq8P2hF3DtIs9dQI/6290cd8cd156797535c343042a924bc5/BLOG-2432-10.png" alt="BLOG-2432-10" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>Call to action</h3>
+	<div class="flex anchor relative">
+		<h3 id="call-to-action">Call to action</h3>
+		<a href="https://blog.cloudflare.com/#call-to-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Argo improves performance in our network, Cloudflare Network Interconnects (<a href="https://developers.cloudflare.com/network-interconnect">CNIs</a>) optimize getting onto it. We encourage our Enterprise customers to use our free CNI’s as on-ramps onto our network whenever practical. In this way, you can fully leverage our network, including our robust backbone, and increase overall performance for every product within your Cloudflare Connectivity Cloud. In the end, our global network is our main product and our backbone plays a critical role in it. This way we continue to help build a better Internet, by improving our services for everybody, everywhere.</p>
 	<p>If you want to be part of our mission, join us as a Cloudflare network on-ramp partner to offer secure and reliable connectivity to your customers by integrating directly with us. Learn more about our on-ramp partnerships and how they can benefit your business <a href="https://www.cloudflare.com/network-onramp-partners">here</a>.</p>
 </div>

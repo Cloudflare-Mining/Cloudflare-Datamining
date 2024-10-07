@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Theoretically, there is no impediment to adding <a href="https://blog.cloudflare.com/post-quantum-taxonomy">post-quantum cryptography</a> to any system. But the reality is harder. In the middle of last year, we posed ourselves a big challenge: <b>to change all</b> <b><i>internal connections</i></b> <b>at Cloudflare to use post-quantum cryptography</b>. We call this, in a cheeky way, “post-quantum-ifying” our services. Theoretically, this should be simple: swap algorithms for post-quantum ones and move along. But with dozens of different services in various programming languages (as we have at Cloudflare), it is not so simple. The challenge is big but we are here and up for the task! In this blog post, we will look at what our plan was, where we are now, and what we have learned so far. Welcome to the first announcement of a post-quantum future at Cloudflare: our connections are going to be quantum-secure!</p>
-	<h3>What are we doing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-we-doing">What are we doing?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-we-doing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The life of most requests at Cloudflare <a href="https://blog.cloudflare.com/more-data-more-data">begins and ends at the edge</a> of our global network. Not all requests are equal and on their path they are transmitted by several protocols. Some of those protocols provide security properties whilst others do not. For the protocols that do, for context, Cloudflare uses: <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">TLS</a>, <a href="https://blog.cloudflare.com/tag/quic">QUIC</a>, <a href="https://blog.cloudflare.com/1111-warp-better-vpn">WireGuard</a>, <a href="https://blog.cloudflare.com/tag/dnssec">DNSSEC</a>, <a href="https://blog.cloudflare.com/anycast-ipsec">IPsec</a>, <a href="https://blog.cloudflare.com/privacy-pass-v3">Privacy Pass</a>, and more. Migrating all of these protocols and connections to use post-quantum cryptography is a formidable task. It is also a task that we do not treat lightly because:</p>
 	<ul>
 		<li>
@@ -32,7 +39,14 @@
 		</li>
 	</ul>
 	<p>Let’s explore now what we chose: welcome to our path!</p>
-	<h3>TLS and post-quantum in the real world</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-and-post-quantum-in-the-real-world">TLS and post-quantum in the real world</h3>
+		<a href="https://blog.cloudflare.com/#tls-and-post-quantum-in-the-real-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most used security protocols is Transport Layer Security (TLS). It is the vital protocol that protects most of the data that flows over the Internet today. Many of Cloudflare’s internal services also rely on TLS for security. It seemed natural that, for our migration to post-quantum cryptography, we would start with this protocol.</p>
 	<p>The protocol provides three security properties: integrity, authentication, and confidentiality. The algorithms used to provide the first property, integrity, seem to not be <a href="https://research.kudelskisecurity.com/2017/02/01/defeating-quantum-algorithms-with-hash-functions">quantum-threatened</a> (there is <a href="https://eprint.iacr.org/2012/606.pdf">some research</a> on the matter). The second property, authentication, is under quantum threat, but we will not focus on it for reasons detailed later. The third property, confidentiality, is the one that we are interested in protecting as it is urgent to do this now.</p>
 	<p>Confidentiality assures that no one other than the intended receiver and sender of a message can read the transmitted message. Confidentiality is especially threatened by quantum computers as an attacker can record traffic now and decrypt it in the future (when they get access to a quantum computer): this means that all past and current traffic, not just future traffic, is vulnerable to be read by anyone who obtains a quantum computer (and has stored the encrypted traffic captured today).</p>
@@ -81,9 +95,23 @@
 	<p>Table 1: Benchmarks of the “key share” operation of Curve P-256 and Kyber-512: Scalar Multiplication and Encapsulation respectively. Benchmarks ran on Darwin, amd64, Intel(R) Core(TM) i7-9750H CPU @ 2.60 GHz.</p>
 	<p>Note that as TLS supports the described “negotiation” mechanism for the key exchange, the client and server have a way of mutually deciding what algorithms they want to use. This means that it is not required that both a client or a server support or even prefer the exact same algorithms: they just need to share support for a single algorithm for a handshake to succeed. In turn, herewith, even if we advertise post-quantum cryptography and a server/client does not support it, they will not fail but rather agree on some other algorithm they share.</p>
 	<p>A note on a matter we left on hold above: why are we not migrating the authentication phase of TLS to post-quantum? Certificate-based authentication in TLS, which is the one we commonly use at Cloudflare, also depends on systems on the wider Internet. Thus, changes to authentication require a coordinated and much wider effort to change. Certificates are attested as proofs of identity by outside parties: migrating authentication means coordinating a ceremony of migration with these outside parties. Note though that at Cloudflare we use a <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">PKI with internally-hosted Certificate Authorities (CAs)</a>, which means that we can more easily change our algorithms. This will still need careful planning. We will not do this today, but we will in the near future.</p>
-	<h3>Cloudflare services</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-services">Cloudflare services</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step of our post-quantum migration is done. We have TLS libraries with post-quantum cryptography using a hybrid mechanism. The second step is to test this new mechanism in specific Cloudflare connections and services. We will look at three systems from Cloudflare that we have started migrating to post-quantum cryptography. The services in question are: Logfwrdr, Cloudflare Tunnel, and GoKeyless.</p>
-	<h3>A post-quantum Logfwdr</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-post-quantum-logfwdr">A post-quantum Logfwdr</h3>
+		<a href="https://blog.cloudflare.com/#a-post-quantum-logfwdr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/more-data-more-data">Logfwdr</a> is an internal service, written in Golang, that handles structured logs, and sends them from our servers for processing (to a subservice called ‘Logreceiver’) where they write them to Kafka. The connection between Logfwdr and Logreceiver is protected by TLS. The same goes for the connection between Logreceiver and <a href="https://kafka.apache.org">Kafka</a> in core. Logfwdr pushes its logs through “streams” for processing.</p>
 	<p>This service seemed an ideal candidate for migrating to post-quantum cryptography as its architecture is simple, it has long-lived connections, and it handles a lot of traffic. In order to first test the viability of using post-quantum cryptography, we created our own instance of Logreceiver and deployed it. We also created our own stream (the “pq-stream”), which is basically a copy of a HTTP stream (which was remarkably easy to add). We then compiled these services with the modified TLS library and we got a post-quantum protected Logfwdr.</p>
 	<figure class="kg-card kg-image-card ">
@@ -103,7 +131,14 @@
 	<p>Figure 2: Average batch send duration: post-quantum (orange) and non-post-quantum streams (green).</p>
 	<p>We didn’t encounter any failures during this testing that ran for about some weeks. This gave us good insight that putting post-quantum cryptography into our internal network with actual data is possible. It also gave us confidence to begin migrating codebases to modified TLS libraries, which we will maintain.</p>
 	<p>What are the next steps for Logfwdr? Now that we confirmed it is possible, we will first start migrating stream by stream to this hybrid mechanism until we reach full post-quantum migration.</p>
-	<h3>A post-quantum gokeyless</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-post-quantum-gokeyless">A post-quantum gokeyless</h3>
+		<a href="https://blog.cloudflare.com/#a-post-quantum-gokeyless" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/going-keyless-everywhere"><i>gokeyless</i></a> is our own way to separate servers and TLS long-term private keys. With it, private keys are kept on a specialized key server operated by customers on their own architecture or, if using <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, in selected Cloudflare locations. We also use it for Cloudflare-held private keys with a service creatively known as <i>gokeyless-internal</i>. The final piece of this architecture is another service called <a href="https://blog.cloudflare.com/scaling-geo-key-manager"><i>Keynotto</i></a>. Keynotto is a service written in Rust that only mints RSA and ECDSA key signatures (that are executed with the stored private key).</p>
 	<p>How does the overall architecture of gokeyless work? Let’s start with a request. The request arrives at the Cloudflare network and we perform TLS termination. Any signing request is forwarded to Keynotto. A small portion of requests (specifically from GeoKDL or external gokeyless) cannot be handled by Keynotto directly, and are instead forwarded to gokeyless-internal. gokeyless-internal also acts as a key server proxy, as it redirects connections to the customer’s keyservers (external gokeyless). <a href="https://github.com/cloudflare/gokeyless">External gokeyless</a> is both the server that a customer runs and the client that will be used to contact it. The architecture can be seen in Figure 3.</p>
 	<figure class="kg-card kg-image-card ">
@@ -127,7 +162,14 @@
 	</figure>
 	<p>Figure 5: usage of the post-quantum API for rustls.</p>
 	<p>We ran a small test between Keynotto and gokeyless-internal with much success. Our next steps are to integrate this test into the real connection between Keynotto and gokeyless-internal, and to devise a plan for a customer post-quantum protected gokeyless external. This is the first instance in which our migration to post-quantum will not be ending at our edge but rather at the customer’s connection point.</p>
-	<h3>A post-quantum Cloudflare Tunnel</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-post-quantum-cloudflare-tunnel">A post-quantum Cloudflare Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#a-post-quantum-cloudflare-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/en-gb/products/tunnel">Cloudflare Tunnel</a> is a reverse proxy that allows customers to quickly connect their private services and networks to the Cloudflare network without having to expose their public IPs or ports through their firewall. It is mainly managed at the customer level through the <a href="https://github.com/cloudflare/cloudflared">usage of <i>cloudflared</i></a><i>,</i> a lightweight server-side daemon_,_ in their infrastructure. <i>cloudflared</i> opens several long-lived TCP connections (although, <i>cloudflared</i> is <a href="https://blog.cloudflare.com/getting-cloudflare-tunnels-to-connect-to-the-cloudflare-network-with-quic">increasingly using the QUIC</a> protocol) to servers on <a href="https://www.cloudflare.com/en-gb/learning/serverless/glossary/what-is-edge-computing">Cloudflare’s global network</a>. When a request to a hostname comes, it is proxied through these connections to the origin service behind <i>cloudflared</i>.</p>
 	<p>The easiest part of the service to make post-quantum secure appears to be the connection between our network (with a service part of Tunnel called <i>origintunneld</i> located there) and <i>cloudflared</i>, which we have started migrating. While exploring this path and looking at the whole life of a Tunnel connection, we found something more interesting, though. When the Tunnel connections eventually reach core, they end up going to a service called <i>Tunnelstore</i>. <i>Tunnelstore</i> runs as a stateless application in a Kubernetes deployment, and to provide TLS termination (alongside load balancing and more) it uses a <a href="https://kubernetes.io">Kubernetes</a> <a href="https://kubernetes.io/docs/concepts/services-networking/ingress">ingress</a>.</p>
 	<p>The <a href="https://blog.cloudflare.com/cloudflare-ingress-controller">Kubernetes ingress</a> we use at Cloudflare is made of <a href="https://www.envoyproxy.io">Envoy</a> and <a href="https://projectcontour.io">Contour</a>. The latter configures the former depending on Kubernetes resources. Envoy uses the <a href="https://www.envoyproxy.io/docs/envoy/latest/faq/build/boringssl">BoringSSL library</a> for TLS. Switching TLS libraries in Envoy seemed difficult: there are <a href="https://github.com/envoyproxy/envoy-openssl">thoughts</a> on how to integrate OpenSSL to it (and <a href="https://github.com/open-quantum-safe/oqs-demos/issues/79">even some thoughts</a> on adding post-quantum cryptography) and <a href="https://github.com/envoyproxy/envoy/pull/7377">ways to switch TLS libraries</a>. Adding post-quantum cryptography to a modified version of BoringSSL, and then specifying <a href="https://github.com/google/boringssl/blob/master/INCORPORATING.md">that dependency</a> in the <a href="https://github.com/envoyproxy/envoy/blob/main/bazel/repository_locations.bzl#L74">Bazel file of Envoy</a> seems to be the path to go for, as our internal test has confirmed (as seen in Figure 6). As for Contour, for many years, Cloudflare has been running their own patched version of it: we will have to again patch this version with our Golang library to provide post-quantum cryptography. We will make these libraries (and the TLS ones) available for usage.</p>
@@ -138,6 +180,13 @@
 	</figure>
 	<p>Figure 6: Option to allow post-quantum cryptography in Envoy.</p>
 	<p>Changing the Kubernetes ingress at Cloudflare not only makes Tunnel completely quantum-safe (beyond the connection between our global network and <i>cloudflared</i>), but it also makes any other services using ingress safe. Our first tests on migrating Envoy and Contour to TLS libraries that contain post-quantum protections have been successful, and now we have to test how it behaves in the whole ingress ecosystem.</p>
-	<h3>What is next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-next">What is next?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main tests are now done. We now have TLS libraries (in Go, Rust, and C) that give us post-quantum cryptography. We have two systems ready to deploy post-quantum cryptography, and a shared service (Kubernetes ingress) that we can change. At the beginning of the blog post, we said that “the life of most requests at Cloudflare begins and ends at the edge of our global network”: our aim is that post-quantum cryptography does not end there, but rather reaches all the way to where customers connect as well. Let’s explore the future challenges and this customer post-quantum path in this <a href="https://blog.cloudflare.com/post-quantum-future">other blog post</a>!</p>
 </div>

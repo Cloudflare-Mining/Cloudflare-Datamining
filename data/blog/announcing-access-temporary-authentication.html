@@ -2,18 +2,39 @@
 <div class="post-content lh-copy gray1">
 	<p>Zero Trust rules by default block attempts to reach a resource. To obtain access, users need to prove they should be allowed to connect using signals like their identity, their device health, and other factors.</p>
 	<p>However, some workflows need a second opinion. Starting today, you can add new policies in Cloudflare Access that grant temporary access to specific users based on approvals for a set of predefined administrators. You can decide that some applications need second-party approval in addition to other Zero Trust signals. We’re excited to give your team another layer of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust control</a> for any application — whether it’s a popular SaaS tool or you host it yourself.</p>
-	<h3>Why temporary authentication?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-temporary-authentication">Why temporary authentication?</h3>
+		<a href="https://blog.cloudflare.com/#why-temporary-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Configuring appropriate user access is a challenge. Most companies start granting employee-specific application access based on username or email. This requires manual provisioning and deprovisioning when an employee joins or leaves.</p>
 	<p>When this becomes unwieldy, security teams generally use identity provider groups to set access levels by employee role. Which allows better provisioning and deprovisioning, but again starts to get clunky when application access requirements do not conform around roles. If a specific support rep needs access, then they need to be added to an existing group (for example, engineering) or a new group needs to be created (for example, specfic_support_reps). Even if that new team member only needed temporary access, it is unlikely they were ever removed from the identity group they were added to. This leads to overprovisioned and unnecessary groups in your identity provider.</p>
 	<p>In most cases, there are two sets of application users — those that access every day to do their jobs and those that need specific access periodically. We wanted to make it possible to give these periodic users temporary access to applications. Additionally, some services are so sensitive that every user should only have temporary access, for example in the case of production database access.</p>
-	<h3>Starting with Purpose Justification</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-with-purpose-justification">Starting with Purpose Justification</h3>
+		<a href="https://blog.cloudflare.com/#starting-with-purpose-justification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access starts solving this problem by allowing security administrators to collect a business reason for accessing a specific application. This provides an audit trail and a prompt to remind users that they should only connect to the resource with a good reason. However, the feature does actively stop a user from accessing something.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49Dzxn2vfXt5TM1pQl0WGb/6506ea1aeb1d1fda940ddd3dcc99550c/image2-7.png" alt="" class="kg-image" width="828" height="746" loading="lazy">
 
 	</figure>
-	<h3>Added control with Temporary Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="added-control-with-temporary-authentication">Added control with Temporary Authentication</h3>
+		<a href="https://blog.cloudflare.com/#added-control-with-temporary-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of this release, we have extended Purpose Justification with Temporary Access to introduce scoped permissions and second approval requirements. Now a user’s Purpose Justification, along with location and IP address, will be sent to a preconfigured list of approvers who can then either approve or deny a user’s access request, or grant access for a set amount of time.</p>
 	<p>This allows security teams to avoid over-provisioning sensitive applications without also creating bottlenecks on a few key individuals in their organization with access to sensitive tools. Better yet, all of these requests and approvals are logged for regulatory and investigative purposes.</p>
 	<figure class="kg-card kg-image-card ">
@@ -24,6 +45,13 @@
 	<p>When the user’s session expires, they need to repeat the process if they need access again. If you have a group of users who should always be allowed to reach a resource, without second approval, you can define groups that are allowed to skip this step.</p>
 	<p>Purpose Justification and Temporary Access were both built using Cloudflare Workers. This means both user access requests and administrator access reviews are rendered from the closest data center to the user. You could request access to an application from an approver across the world with virtually no latency.</p>
 	<p>Workers also allowed us to be very flexible when Temporary Authentication is required. As an example, the same user who normally has persistent access to an application can be required to request access when connecting from a personal device or when visiting a high-risk country.</p>
-	<h3>How to get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">How to get started</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get started with Temporary Authentication in Cloudflare Access, go to the Teams Dashboard and create an Access application. Within the Application's Zero Trust policy, you can configure when you want to allow for temporary authentication with human approval. For more detailed information, you can refer to our developer docs.</p>
 </div>

@@ -18,7 +18,14 @@ source:       IANA
 
 https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p>Unassigned, however is not the same as reserved for private use!</p>
-	<h3>What we found</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-found">What we found</h3>
+		<a href="https://blog.cloudflare.com/#what-we-found" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To put it simply, 1.1.1.1 was BROKEN! The good news is, for most users 1.1.1.1 is now reachable. We’ve worked hard to ensure that issues get resolved and continue to contact operators to resolve issues quickly. We’re confident we can get everything cleaned up, but this is a stark reminder that you shouldn’t hijack IP addresses not assigned to you. We found over 1,000 probes out of just over 10,000 were unable to make DNS queries to 1.1.1.1 successfully. Some of this was due to single large networks having reachability issues, for example a large operator in Germany has nearly 350 probes connected, all of them failing. The methodology for testing was very simple:</p>
 	<ol>
 		<li>
@@ -47,7 +54,14 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 		</li>
 	</ol>
 	<p>Of these three main causes, the majority of cases were either 1, 2 or both! Several ISPs even had route loops internally, where they were advertising 1.1.1.1 inside their network, but had no actually path to it, so packets loop around and around.</p>
-	<h3>Time to get fixing</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-to-get-fixing">Time to get fixing</h3>
+		<a href="https://blog.cloudflare.com/#time-to-get-fixing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once we had narrowed it down for each group of probes we began contacting ISPs for clarification on what was happening, several networks responded very quickly reporting they had removed an internal route to 1.1.1.1, which in most cases was the beginning and end of the matter. There were plenty of networks which took their time to respond, but in the end did the same, removing the internal routes left there for legacy testing reasons.</p>
 	<p>All of those fixes were great to make, but most were quite uninteresting, what was more interesting was finding cases from issue number 1, CPEs (customer premises equipment) aka home routers, gateways and wireless access points. With the help from the folks at <a href="https://www.sonic.com">Sonic</a> we were quickly able to identify that the Pace 5268 a common xDSL modem deployed primarily in the United States (including wide usage on AT&amp;T) uses 1.1.1.0/29 for internal communication. We requested comment from AT&amp;T’s noc, but have not heard anything from them. We did however receive a response from them via social media:</p>
 	<figure class="kg-card kg-image-card ">
@@ -124,14 +138,29 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<pre class="language-bash"><code class="language-bash">Traceroute to 1.1.1.1 (1.1.1.1), 48 byte packets
 
 1 1.1.1.1 1dot1dot1dot1.cloudflare-dns.com AS13335 8.301ms 1.879ms 1.836ms</code></pre>
-	<h3>Who else has been mis-using 1.1.1.1 more than others?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="who-else-has-been-mis-using-1-1-1-1-more-than-others">Who else has been mis-using 1.1.1.1 more than others?</h3>
+		<a href="https://blog.cloudflare.com/#who-else-has-been-mis-using-1-1-1-1-more-than-others" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using the RIPE Atlas probes gives excellent visibility into residential and business internet connections, however they’re connected via a cable, so this rules out another use-case, WiFi access points. After very little research we quickly came across <a href="https://supportforums.cisco.com/t5/wireless-mobility-documents/web-authentication-1-1-1-1-login-redirect-issue-wireless-lan/ta-p/3161248">Cisco mis-using 1.1.1.1</a>, a quick search for “cisco 1.1.1.1” brought up numerous articles where Cisco are squatting on 1.1.1.1 for their Wireless LAN Controllers (WLC). It’s unclear if Cisco officially regards 1.0.0.0/8 as <a href="https://en.wikipedia.org/wiki/Bogon_filtering">bogon</a> space, but there are lots of examples that can be found on their community websites giving example bogon lists that include the /8. It mostly seems to be used for captive portal when authenticating to the wireless access point, often found in hotels, cafés and other public WiFi hotspot locations.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PR9A4lMN8YjfHlKhXbkjD/758dff216e398e7dc7ee5ef9d4c08ffb/cisco_captive_portal_issue.jpg" alt="cisco_captive_portal_issue" class="kg-image" width="750" height="902" loading="lazy">
 
 	</figure>
-	<h3>Some statistics</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-statistics">Some statistics</h3>
+		<a href="https://blog.cloudflare.com/#some-statistics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here are some interesting statistics from before we started contacting operators and after we have fixed many issues. It’s staggering to see how fixing some key networks increased availability by almost 20% in Europe &amp; North America!</p>
 	<p>We began testing the availability of 1.1.1.1 on the 23rd of March, in Europe and North America it was only around 91%.</p>
 	<figure class="kg-card kg-image-card ">
@@ -163,7 +192,14 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 	<p><i>1.1.1.1 availability for the World (Europe and North America excluded), 3rd of April</i></p>
 	<p>We are continuing to work with ISPs and CPE manufacturers to clean up bad routing globally. Our goal is for 1.1.1.1 to be properly routed and available for 100% of Internet users.</p>
 	<p><i>Above images from Catchpoint analytics</i></p>
-	<h3>Bad traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="bad-traffic">Bad traffic</h3>
+		<a href="https://blog.cloudflare.com/#bad-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The last public analysis was done in 2010 by <a href="http://www.potaroo.net/studies/1slash8/1slash8.html">RIPE and APNIC</a>. At the time, 1.1.1.0/24 was 100 to 200Mb/s of traffic, most of it being audio traffic. In March, when Cloudflare announced 1.0.0.0/24 and 1.1.1.0/24, ~10Gbps of unsolicited background traffic appeared on our interfaces.</p>
 	<p>The most targeted IPs were 1.1.1.1, 1.1.1.8, 1.1.1.10, 1.0.0.19. When searching these IPs, we notice it is usually misconfiguration or hardcoded IPs.</p>
 	<p>The destination port is usually 80/443, but also other variants of HTTP ports (8000, 8080, et al.) using UDP and TCP, seemingly trying to setup a proxy connection. Some of the traffic was also DHCP/BOOTP, iperf and syslog.</p>
@@ -175,7 +211,14 @@ https://www.iana.org/whois?q=1.0.0.0%2F8</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60MHzDgsP3kPWPHXDSg0Nh/462532430d06063bc69b05aaa15fbf88/Screen-Shot-2018-04-05-at-7.28.41-AM.png" alt="Screen-Shot-2018-04-05-at-7.28.41-AM" class="kg-image" width="1294" height="510" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It was clear from the start that we’d have our work cut out, especially with CPE vendors, where a firmware update would be required. What was impressive was the willingness of operators to collaborate with us to clean up the legacy misconfiguration. It was clear that 1.1.1.1 needed a lot of cleaning in order to be globally accessible. We decided six months before the 1st of April release date we'd commit the network and support resources to that task. Now that 1.1.1.1 is live, we’re thankful to all the networks and hardware companies who have assisted us in this effort. We’re not done, nor are others.</p>
 	<p>The <a href="https://atlas.ripe.net">RIPE Atlas</a> project was immensely useful in testing reachability from as many networks around the world as possible. If you’d like to help the project, please consider <a href="https://atlas.ripe.net/get-involved/become-a-host">hosting a probe</a>. Some networks are not covered with at least one probe, you can see if your ISP has a probe <a href="http://sg-pub.ripe.net/petros/population_coverage/table.html">here</a>, sorted by country.</p>
 	<p>Particular thanks to the following operators who were responsive and helped clean up issues quickly.</p>

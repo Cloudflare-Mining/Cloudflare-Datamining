@@ -10,18 +10,39 @@
 	<p>However, sometimes users want traffic to stay local. If a user is sitting within a few meters of their printer, they might prefer to connect through their local network instead of adding a hop through Cloudflare. They could configure Cloudflare to always ignore traffic bound for the printer, keeping it local, but when they leave the office they still need to use Cloudflare’s network to reach that printer remotely.</p>
 	<p>Solving this use case and others like it previously required manual changes from an administrator every time a user moved. An administrator would need to tell Cloudflare’s agent to include traffic sometimes and, in other situations, ignore it. This does not scale.</p>
 	<p>Starting today, any team using Cloudflare One has the flexibility to decide what traffic is sent to Cloudflare and what traffic stays local depending on the network of the user. End users do not need to change any settings when they enter or exit a managed network. Cloudflare One’s device agent will automatically detect and make the change for them.</p>
-	<h2>Not everyone needs the same controls</h2>
+	<div class="flex anchor relative">
+		<h2 id="not-everyone-needs-the-same-controls">Not everyone needs the same controls</h2>
+		<a href="https://blog.cloudflare.com/#not-everyone-needs-the-same-controls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not every user in your enterprise needs the same network configuration. Sometimes you need to make exceptions for teams, certain members of staff, or speciality hardware/software based on business needs. Those exceptions can become a manual mess when you compound how locations and networks might also require different settings.</p>
 	<p>We’ve heard several examples from customers who run into that type of headache. Each case below describes a common theme: rigid network configuration breaks when it means real world usage.</p>
 	<p>In some cases, a user will work physically close to a server or another device that their device needs to reach. We talk to customers in manufacturing or lab environments who prefer to send all Internet-bound traffic to Cloudflare but want to continue to operate a private network inside their facility.</p>
 	<p>Today’s announcement allows teams to adapt to this type of model. When users operate inside the physical location in the trusted network, they can connect directly. When they leave, they can use Cloudflare’s network to reach back into the trusted network after they meet the conditions of the Zero Trust rules configured by an administrator.</p>
 	<p>In other situations, customers are in the process of phasing out legacy appliances in favor of Cloudflare One. However, the migration to a Zero Trust model sometimes needs to be stepwise and deliberate. In these cases, customers maintain some existing on-premise infrastructure while they deploy Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> solution.</p>
 	<p>As part of this release, teams can configure Cloudflare’s device agent to detect that a user sits inside a known location where those appliances still operate. The agent will automatically stop directing traffic to Cloudflare and instead send it to your existing appliances while you deprecate them over time.</p>
-	<h2>Configuration Profiles and Managed Networks</h2>
+	<div class="flex anchor relative">
+		<h2 id="configuration-profiles-and-managed-networks">Configuration Profiles and Managed Networks</h2>
+		<a href="https://blog.cloudflare.com/#configuration-profiles-and-managed-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today’s release introduces the ability to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/device-profiles">create a profile</a>, a defined set of configuration options. You can create rules that decide when and where profiles apply, changing settings without manual intervention.</p>
 	<p>For our network-aware work, administrators can define a profile that decides what traffic is sent to Cloudflare and what stays local. Next, that profile can apply when users are in specific networks and not when they are in other locations.</p>
 	<p>Beyond network detection, profiles can apply based on user group membership. Not every user in your workforce needs the same on-ramp configuration. Some developers might need certain traffic excluded due to local development work. As part of this launch, you can configure profiles to apply based on who the user is in addition to where the user sits.</p>
-	<h2>Defining a secure way to detect a network you manage</h2>
+	<div class="flex anchor relative">
+		<h2 id="defining-a-secure-way-to-detect-a-network-you-manage">Defining a secure way to detect a network you manage</h2>
+		<a href="https://blog.cloudflare.com/#defining-a-secure-way-to-detect-a-network-you-manage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare needs to be able to decide what network a device is using in a way that can’t easily be spoofed by someone looking to skirt policy. To solve that challenge, today’s release introduces the ability to define a known TLS endpoint which Cloudflare’s agent can reach. In just a few minutes, an administrator can create a certificate-validated check to indicate a device is operating within a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/managed-networks">managed network</a>.</p>
 	<p>First, an administrator can create a TLS certificate that Cloudflare will use and match based on the SHA-256 hash of the certificate. You can leverage existing infrastructure or create a new TLS endpoint via the following example:</p>
 	<p>1. Create a local certificate you can use</p>
@@ -49,7 +70,15 @@ server.socket = sslcontext.wrap_socket(server.socket, server_side=True)
 server.serve_forever()</code></pre>
 	<p>Run the server</p>
 	<pre class="language-bash"><code class="language-bash">python3 myserver.py</code></pre>
-	<h3>Configure the network location in Zero Trust dashboard</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="configure-the-network-location-in-zero-trust-dashboard">Configure the network location in Zero Trust dashboard</h3>
+		<a href="https://blog.cloudflare.com/#configure-the-network-location-in-zero-trust-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you’ve created the example TLS endpoint above, provide the fingerprint to Cloudflare to define a managed network.</p>
 	<ol>
 		<li>
@@ -64,7 +93,14 @@ server.serve_forever()</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Mwd8xWdnqPjlaiqgWF7Lt/cd9552fb596db883972b506ae9fab274/image2-14.png" alt="Picture of new Managed network definition UI in Zero trust dashboard" class="kg-image" width="815" height="639" loading="lazy">
 
 	</figure>
-	<h3>Configure a Device Profile</h3>
+	<div class="flex anchor relative">
+		<h3 id="configure-a-device-profile">Configure a Device Profile</h3>
+		<a href="https://blog.cloudflare.com/#configure-a-device-profile" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the network is defined, you can <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/configure-warp/device-profiles">create profiles</a> that apply based on whether the agent is operating in this network. To do so, follow the steps below.</p>
 	<ol>
 		<li>
@@ -79,10 +115,24 @@ server.serve_forever()</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8GMjayplYNW1fxpM8f3VE/b0aa199ec3dd1e36ce1f425b486fc8e6/image3-10.png" alt="Picture of new profile creation" class="kg-image" width="1142" height="547" loading="lazy">
 
 	</figure>
-	<h3>Reconnect your Agent</h3>
+	<div class="flex anchor relative">
+		<h3 id="reconnect-your-agent">Reconnect your Agent</h3>
+		<a href="https://blog.cloudflare.com/#reconnect-your-agent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each time the device agent detects a network change event from the operating systems (ex. waking up the device, changing Wi-Fi networks, etc.) the agent will also attempt to reach that endpoint inside your network to prove that it is operating within a network you manage.</p>
 	<p>If an endpoint that matches the SHA-256 fingerprint you’ve defined is detected, the device will get the settings profile as configured above. You can quickly validate that the device agent received the required settings by using warp-cli settings or warp-cli get-alternate-network from your command line / terminal.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Managed network detection and settings profiles are both new and available for you to use today. While settings profiles will work with any modern version of the agent from this last year, network detection requires at least version 2022.12.</p>
 	<p>The WARP device client currently runs on <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp">all major operating systems</a> and is easy to deploy with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners">device management</a> tools your organization already uses. You can find the download links to all versions of our agent by visiting Settings →Downloads</p>
 	<figure class="kg-card kg-image-card ">

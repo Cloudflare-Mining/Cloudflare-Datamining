@@ -8,15 +8,36 @@
 	</figure>
 	<p>Your team can now use Cloudflare’s <a href="https://www.cloudflare.com/teams/browser-isolation">Browser Isolation</a> service to protect against phishing attacks and credential theft inside the web browser. Users can browse more of the Internet without taking on the risk. Administrators can define <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> policies to prohibit keyboard input and transmitting files during high risk browsing activity.</p>
 	<p>Earlier this year, Cloudflare Browser Isolation introduced <a href="https://blog.cloudflare.com/data-protection-browser">data protection controls</a> that take advantage of the remote browser’s ability to manage all input and outputs between a user and any website. We’re excited to extend that functionality to apply more controls such as prohibiting keyboard input and file uploads to avert phishing attacks and credential theft on high risk and unknown websites.</p>
-	<h3>Challenges defending against unknown threats</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-defending-against-unknown-threats">Challenges defending against unknown threats</h3>
+		<a href="https://blog.cloudflare.com/#challenges-defending-against-unknown-threats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Administrators protecting their teams from threats on the open Internet typically implement a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway (SWG)</a> to filter Internet traffic based on threat intelligence feeds. This is effective at mitigating known threats. In reality, not all websites fit neatly into malicious or non-malicious categories.</p>
 	<p>For example, a parked domain with typo differences to an established web property could be legitimately registered for an unrelated product or become weaponized as a phishing attack. False-positives are tolerated by risk-averse administrators but come at the cost of employee productivity. Finding the balance between these needs is a fine art, and when applied too aggressively it leads to user frustration and the increased support burden of micromanaging exceptions for blocked traffic.</p>
 	<p>Legacy secure web gateways are blunt instruments that provide security teams limited options to protect their teams from threats on the Internet. Simply allowing or blocking websites is not enough, and modern security teams need more sophisticated tools to fully protect their teams without compromising on productivity.</p>
-	<h3>Intelligent filtering with Cloudflare Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="intelligent-filtering-with-cloudflare-gateway">Intelligent filtering with Cloudflare Gateway</h3>
+		<a href="https://blog.cloudflare.com/#intelligent-filtering-with-cloudflare-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/teams/gateway">Cloudflare Gateway</a> provides a secure web gateway to customers wherever their users work. Administrators can build rules that include blocking security risks, scanning for viruses, or restricting browsing based on SSO group identity among other options. User traffic leaves their device and arrives at a Cloudflare data center close to them, providing security and logging without slowing them down.</p>
 	<p>Unlike the blunt instruments of the past, Cloudflare Gateway applies security policies based on the unique magnitude of data Cloudflare’s network processes. For example, Cloudflare sees just over one trillion <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a> every day. We use that data to build a comprehensive model of what “good” DNS queries look like — and which DNS queries are anomalous and could represent DNS tunneling for data exfiltration, for example. We use our network to build more intelligent filtering and reduce false positives. You can review that research as well with <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
 	<p>However, we know some customers want to allow users to navigate to destinations in a sort of “neutral” zone. Domains that are newly registered, or newly seen by DNS resolvers, can be the home of a great new service for your team or a surprise attack to steal credentials. Cloudflare works to categorize these as soon as possible, but in those initial minutes users have to request exceptions if your team blocks these categories outright.</p>
-	<h3>Safely browsing the unknown</h3>
+	<div class="flex anchor relative">
+		<h3 id="safely-browsing-the-unknown">Safely browsing the unknown</h3>
+		<a href="https://blog.cloudflare.com/#safely-browsing-the-unknown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Browser Isolation shifts the risk of executing untrusted or malicious website code from the user’s endpoint to a <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser</a> hosted in a low-latency data center. Rather than aggressively blocking unknown websites, and potentially impacting employee productivity, Cloudflare Browser Isolation provides administrators control over <i>how</i> users can interact with risky websites.</p>
 	<p>Cloudflare’s network intelligence tracks higher risk Internet properties such as Typosquatting and New Domains. Websites in these categories could be benign websites, or phishing attacks waiting to be weaponized. Risk-averse administrators can protect their teams without introducing false-positives by isolating these websites and serving the website in a read-only mode by disabling file uploads, downloads and keyboard input.</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,7 +47,14 @@
 	</figure>
 	<p>Users are able to safely browse the unknown website without risk of leaking credentials, transmitting files and falling victim to a phishing attack. Should the user have a legitimate reason to interact with an unknown website they are advised to contact their administrator to obtain elevated permissions while browsing the website.</p>
 	<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation">See our developer documentation to learn more about remote browser policies.</a></p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Browser Isolation is integrated natively into Cloudflare’s Secure Web Gateway and Zero Trust Network Access services, and unlike legacy remote browser isolation solutions does not require IT teams to piece together multiple disparate solutions or force users to change their preferred web browser.</p>
 	<p>The Zero Trust threat and data protection that Browser Isolation provides make it a natural extension for any company trusting a secure web gateway to protect their business. We’re currently including it with our Cloudflare for Teams Enterprise Plan at no additional charge.<sup>1</sup> <a href="https://www.cloudflare.com/teams/browser-isolation">Get started at our Zero Trust web page</a>.</p>
 	<hr>

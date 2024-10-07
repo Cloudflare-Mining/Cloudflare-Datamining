@@ -8,10 +8,25 @@
 	<p>CloudFlare operates at a significant scale, handling more than a trillion requests through our network every month. To ensure this is as efficient as possible, we own and operate all the equipment in our <a href="https://www.cloudflare.com/network-map">23 locations around the world</a> in order to process the volume of traffic that flows through our network. We spend a significant amount of time specing and, in some cases, designing the hardware that makes up our network. At the edge of CloudFlare's network we run three main components: routers, switches, and servers. On regular intervals, we will take everything we've learned about a last generation of hardware and refresh each component with a next generation.</p>
 	<p>For servers, we are on our fourth generation (G4) of servers. Our first generation (G1) servers were stock Dell PowerEdge servers. We deployed these in early 2010 while we were building the beta of CloudFlare. We learned quickly from that experience and then worked with a company called ZT Systems to build our G2 servers, which we deployed just before our public launch in September 2010.</p>
 	<p>In 2011, we worked with HP to build our G3 servers. We deployed that generation through mid 2012, forming the core of our current network of 23 data centers worldwide. In the Fall of 2012 we started working with vendors to take everything we'd learned about running a network to date and roll out newest generation of servers. We wanted to share a peek literally inside the equipment we're now using across CloudFlare's network.</p>
-	<h3>Generation 3</h3>
+	<div class="flex anchor relative">
+		<h3 id="generation-3">Generation 3</h3>
+		<a href="https://blog.cloudflare.com/#generation-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before looking at G4 it's important to understand what we learned about our previous generation of servers. Our G3 servers were built by HP. They were each 2U (meaning they were about as tall as two pizza boxes stacked on top of each other). Each had two Intel Xeon E5645 (Westmere variant) CPUs running at 2.4GHz, up to 25 Intel SSDs across the front of the boxes, 48GB of RAM, 6 1Gbps Intel-based network interfaces (2 on the motherboard and four on a PCI card), and a single high efficiency (Platinum) power supply.</p>
 	<p>We liked the build quality and reliability of the HP gear and it continues to power a significant amount of traffic across our network. When we went to design our G4 servers we looked at the bottlenecks we faced with G3 and sought new hardware designed specifically to solve them.</p>
-	<h3>Storage</h3>
+	<div class="flex anchor relative">
+		<h3 id="storage">Storage</h3>
+		<a href="https://blog.cloudflare.com/#storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/hUZui0mI4wq6GaDiECcu3/c75c430e872950f0e4757095f9f02a3c/array-of-ssds.png" alt="Array of SSDs" class="kg-image" width="505" height="645" loading="lazy">
@@ -32,7 +47,14 @@
 
 	</figure>
 	<p>Our software, for certain applications like caching where it makes sense, shares resources across all the servers within a location. This means that as we add additional servers to a data center the overall storage capacity of that data center increases. This architecture has allowed us to scale quickly to meet our continued growth.</p>
-	<h3>CPU</h3>
+	<div class="flex anchor relative">
+		<h3 id="cpu">CPU</h3>
+		<a href="https://blog.cloudflare.com/#cpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With our G3 equipment we were not CPU bound under normal circumstances. When we mitigate large Layer 4 DDoS attacks (e.g., SYN floods) our CPUs would, from time to time, become overwhelmed with excessive processor interrupts. In our tests, increasing or decreasing the clockspeed of the CPU did little to change this problem. Adding more cores to a CPU did help mitigate this and we tested some of the high core count AMD CPUs, but ultimately decided against going that direction.</p>
 	<p>While top clockspeed was not our priority, our product roadmap includes more CPU-heavy features. These include image optimization (e.g., Mirage and Polish), high volumes of SSL/TLS connections, and extremely fast pattern expression matching (e.g., PCRE tests for our WAF). These CPU-heavy operations can, in most cases, take advantage of special vector processing instruction sets on post-Westmere Intel chips. This made Intel's newest generation Sandybridge chipset attractive.</p>
 	<figure class="kg-card kg-image-card ">
@@ -41,7 +63,14 @@
 
 	</figure>
 	<p>We were willing to sacrifice a bit of clockspeed and spend a bit more on chips to save power. We tend to put our equipment in data centers that have high network density. These facilities, however, are usually older and don't always have the highest power capacity. We settled on our G4 servers having two <a href="http://ark.intel.com/products/64586">Intel Xeon 2630L</a> CPUs (a low power chip in the Sandybridge family) running at 2.0GHz. This gives us 12 physical cores (and 24 virtual cores with hyperthreading) per server. The power savings per chip (60 watts vs. 95 watts) is sufficient to allow us at least one more server per rack than we'd be able to get if we went with the non-low power version.</p>
-	<h3>Network</h3>
+	<div class="flex anchor relative">
+		<h3 id="network">Network</h3>
+		<a href="https://blog.cloudflare.com/#network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This biggest change from our G3 to G4 servers was the jump from 1Gbps to 10Gbps network interfaces. With our G3 servers, we would sometimes max out the 6Gbps of network capacity per server when under certain high-volume Layer 7 attacks. We knew we wanted to jump to 10Gbps on each server, but we also wanted to pick the right network controller card.</p>
 	<p>We ended up testing a very wide range of network cards, spending more time optimizing this component in the servers than any other. In the end, we settled on the network cards from a company called <a href="http://solarflare.com">Solarflare</a>. (It didn't hurt that their name was similar to ours.)</p>
 	<figure class="kg-card kg-image-card ">
@@ -59,7 +88,15 @@
 
 	</figure>
 	<p>Finally, while 10Gbps Ethernet can run across standard Cat5/6 cable, we elected to use SFP+ connectors. We chose this to have the flexibility between optical (fiber) and copper connections. Some network card and switch vendors lock down their equipment to only support proprietary SFP+s, which they charge a significant premium for. We spent significant time testing a combination of SFP+ vendors before finding <a href="http://www.fiberstore.com">FiberStore</a>, a SFP+ manufacturer from which we could directly source SFP+s at a reasonable price that worked in the network gear we wanted to use.</p>
-	<h3>Designed to Our Unique Needs</h3>
+	<div class="flex anchor relative">
+		<h3 id="designed-to-our-unique-needs">Designed to Our Unique Needs</h3>
+		<a href="https://blog.cloudflare.com/#designed-to-our-unique-needs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/N6fM38wNLuJCpJIC4SvOg/ea9adfbdd5ff1217ffd846e7a3457116/platinum-power-supply.png" alt="Platinum power supply" class="kg-image" width="645" height="406" loading="lazy">

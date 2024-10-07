@@ -7,7 +7,14 @@
 	</figure>
 	<p>In this blog post, we're excited to present Foundations, our foundational library for Rust services, now released as <a href="https://github.com/cloudflare/foundations">open source on GitHub</a>. Foundations is a foundational Rust library, designed to help scale programs for distributed, production-grade systems. It enables engineers to concentrate on the core business logic of their services, rather than the intricacies of production operation setups.</p>
 	<p>Originally developed as part of our <a href="https://blog.cloudflare.com/introducing-oxy">Oxy proxy framework</a>, Foundations has evolved to serve a wider range of applications. For those interested in exploring its technical capabilities, we recommend consulting the library’s <a href="https://docs.rs/foundations/latest/foundations">API documentation</a>. Additionally, this post will cover the motivations behind Foundations' creation and provide a concise summary of its key features. Stay with us to learn more about how Foundations can support your Rust projects.</p>
-	<h2>What is Foundations?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-foundations">What is Foundations?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-foundations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In software development, seemingly minor tasks can become complex when scaled up. This complexity is particularly evident when comparing the deployment of services on server hardware globally to running a program on a personal laptop.</p>
 	<p>The key question is: what fundamentally changes when transitioning from a simple laptop-based prototype to a full-fledged service in a production environment? Through our experience in developing numerous services, we've identified several critical differences:</p>
 	<ul>
@@ -35,7 +42,14 @@
 		</li>
 	</ul>
 	<p>Next, let's delve into the components Foundations offers. To better illustrate the functionality that Foundations provides we will refer to the <a href="https://github.com/cloudflare/foundations/tree/main/examples/http_server">example web server</a> from Foundations’ source code repository.</p>
-	<h3>Telemetry</h3>
+	<div class="flex anchor relative">
+		<h3 id="telemetry">Telemetry</h3>
+		<a href="https://blog.cloudflare.com/#telemetry" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In any production system, observability, which we refer to as telemetry, plays an essential role. Generally, three primary types of telemetry are adequate for most service needs:</p>
 	<ul>
 		<li>
@@ -49,7 +63,14 @@
 		</li>
 	</ul>
 	<p>Foundations integrates an API that encompasses all these telemetry aspects, consolidating them into a unified package for ease of use.</p>
-	<h3>Tracing</h3>
+	<div class="flex anchor relative">
+		<h3 id="tracing">Tracing</h3>
+		<a href="https://blog.cloudflare.com/#tracing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Foundations’ tracing API shares similarities with <a href="https://github.com/tokio-rs/tracing">tokio/tracing</a>, employing a comparable approach with implicit context propagation, instrumentation macros, and futures wrapping:</p>
 	<pre class="language-rust"><code class="language-rust">#[tracing::span_fn("respond to request")]
 async fn respond(
@@ -76,7 +97,14 @@ async fn respond(
 		</li>
 	</ul>
 	<p>We regard telemetry as a vital component of our software, not merely an optional add-on. As such, we believe in rigorous testing of this feature, considering it our primary tool for monitoring software operations. Consequently, Foundations includes an API and user-friendly macros to facilitate the collection and analysis of tracing data within tests, presenting it in a format conducive to assertions.</p>
-	<h3>Logging</h3>
+	<div class="flex anchor relative">
+		<h3 id="logging">Logging</h3>
+		<a href="https://blog.cloudflare.com/#logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Foundations’ logging API shares its foundation with tokio/tracing and <a href="https://github.com/slog-rs/slog">slog</a>, but introduces several notable enhancements.</p>
 	<p>During our work on various services, we recognized the hierarchical nature of logging contextual information. For instance, in a scenario involving a connection, we might want to tag each log record with the connection ID and HTTP protocol version. Additionally, for requests served over this connection, it would be useful to attach the request URL to each log record, while still including connection-specific information.</p>
 	<p>Typically, achieving this would involve creating a new logger for each request, copying tags from the connection’s logger, and then manually passing this new logger throughout the relevant code. This method, however, is cumbersome, requiring explicit handling and storage of the logger object.</p>
@@ -101,7 +129,14 @@ async fn respond(
 	<p>Refer to <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L155-L198">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/log/index.html">documentation</a> for more comprehensive examples.</p>
 	<p>In an effort to simplify the user experience, we merged all APIs related to context management into a single, implicitly available in each code scope, TelemetryContext object. This integration not only simplifies the process but also lays the groundwork for future advanced features. These features could blend tracing and logging information into a cohesive narrative by cross-referencing each other.</p>
 	<p>Like tracing, Foundations also offers a user-friendly API for testing service’s logging.</p>
-	<h3>Metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="metrics">Metrics</h3>
+		<a href="https://blog.cloudflare.com/#metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Foundations incorporates the official <a href="https://github.com/prometheus/client_rust">Prometheus Rust client library</a> for its metrics functionality, with a few enhancements for ease of use. One key addition is a procedural macro provided by Foundations, which simplifies the definition of new metrics with typed labels, reducing boilerplate code:</p>
 	<pre class="language-rust"><code class="language-rust">use foundations::telemetry::metrics::{metrics, Counter, Gauge};
 use std::sync::Arc;
@@ -122,11 +157,32 @@ pub(crate) mod http_server {
 }</code></pre>
 	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/metrics.rs">example web server</a> and <a href="https://docs.rs/foundations/latest/foundations/telemetry/metrics/index.html">documentation</a> for more information of how metrics can be defined and used.</p>
 	<p>In addition to this, we have refined the approach to metrics collection and structuring. Foundations offers a streamlined, user-friendly API for both these tasks, focusing on simplicity and minimalism.</p>
-	<h3>Memory profiling</h3>
+	<div class="flex anchor relative">
+		<h3 id="memory-profiling">Memory profiling</h3>
+		<a href="https://blog.cloudflare.com/#memory-profiling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recognizing the <a href="https://mjeanroy.dev/2021/04/19/Java-in-K8s-how-weve-reduced-memory-usage-without-changing-any-code.html">efficiency</a> of <a href="https://jemalloc.net">jemalloc</a> for long-lived services, Foundations includes a feature for enabling jemalloc memory allocation. A notable aspect of jemalloc is its memory profiling capability. Foundations packages this functionality into a straightforward and safe Rust API, making it accessible and easy to integrate.</p>
-	<h3>Telemetry server</h3>
+	<div class="flex anchor relative">
+		<h3 id="telemetry-server">Telemetry server</h3>
+		<a href="https://blog.cloudflare.com/#telemetry-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Foundations comes equipped with a built-in, customizable telemetry server endpoint. This server automatically handles a range of functions including health checks, metric collection, and memory profiling requests.</p>
-	<h2>Security</h2>
+	<div class="flex anchor relative">
+		<h2 id="security">Security</h2>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A vital component of Foundations is its robust and ergonomic API for <a href="https://en.wikipedia.org/wiki/Seccomp">seccomp</a>, a Linux kernel feature for syscall sandboxing. This feature enables the setting up of hooks for syscalls used by an application, allowing actions like blocking or logging. Seccomp acts as a formidable line of defense, offering an additional layer of security against threats like arbitrary code execution.</p>
 	<p>Foundations provides a simple way to define lists of all allowed syscalls, also allowing a composition of multiple lists (in addition, Foundations ships predefined lists for common use cases):</p>
 	<pre class="language-rust"><code class="language-rust">  use foundations::security::common_syscall_allow_lists::{ASYNC, NET_SOCKET_API, SERVICE_BASICS};
@@ -143,7 +199,14 @@ pub(crate) mod http_server {
     enable_syscall_sandboxing(ViolationAction::KillProcess, &amp;ALLOWED)
  </code></pre>
 	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/main.rs#L239-L254">web server example</a> and <a href="https://docs.rs/foundations/latest/foundations/security/index.html">documentation</a> for more comprehensive examples of this functionality.</p>
-	<h2>Settings and CLI</h2>
+	<div class="flex anchor relative">
+		<h2 id="settings-and-cli">Settings and CLI</h2>
+		<a href="https://blog.cloudflare.com/#settings-and-cli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Foundations simplifies the management of service settings and command-line argument parsing. Services built on Foundations typically use YAML files for configuration. We advocate for a design where every service comes with a default configuration that's functional right off the bat. This philosophy is embedded in Foundations’ settings functionality.</p>
 	<p>In practice, applications define their settings and defaults using Rust structures and enums. Foundations then transforms Rust documentation comments into configuration annotations. This integration allows the CLI interface to generate a default, fully annotated YAML configuration files. As a result, service users can quickly and easily understand the service settings:</p>
 	<pre class="language-rust"><code class="language-rust">use foundations::settings::collections::Map;
@@ -266,7 +329,14 @@ endpoints:
         # Content of the route's response.
         response: bar</code></pre>
 	<p>Refer to the <a href="https://github.com/cloudflare/foundations/blob/347548000cab0ac549f8f23e2a0ce9e1147b7640/examples/http_server/settings.rs">example web server</a> and documentation for <a href="https://docs.rs/foundations/latest/foundations/settings/index.html">settings</a> and <a href="https://docs.rs/foundations/latest/foundations/cli/index.html">CLI API</a> for more comprehensive examples of how settings can be defined and used with Foundations-provided CLI API.</p>
-	<h2>Wrapping Up</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrapping-up">Wrapping Up</h2>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we greatly value the contributions of the open source community and are eager to reciprocate by sharing our work. Foundations has been instrumental in reducing our development friction, and we hope it can do the same for others. We welcome external contributions to Foundations, aiming to integrate diverse experiences into the project for the benefit of all.</p>
 	<p>If you're interested in working on projects like Foundations, consider joining our team — <a href="https://www.cloudflare.com/en-gb/careers">we're hiring</a>!</p>
 </div>

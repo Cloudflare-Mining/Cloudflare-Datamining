@@ -1,16 +1,37 @@
 <div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lz4LgrW4EkD7PUCueVBUt/62bfae91f118e92079a8bd4c87a36e00/increasing-cache-hit-rates-with-query-string-sort.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>Optimized Performance: Increasing Cache Hit Rate</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimized-performance-increasing-cache-hit-rate">Optimized Performance: Increasing Cache Hit Rate</h3>
+		<a href="https://blog.cloudflare.com/#optimized-performance-increasing-cache-hit-rate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare, we care a lot about serving requests as fast as possible. Files can be served much faster when already in CloudFlare’s cache. Skipping the trip to the customer’s web server eliminates the latency of that connection and saves bandwidth from the connection between CloudFlare and the customer’s origin, and allows us to utilize the full speed of our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">ultra-fast servers</a>.</p>
 	<p>By default, CloudFlare only caches <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-What-file-extensions-does-CloudFlare-cache-for-static-content-">static files</a>. However, Page Rules can be utilized to set more files as cacheable. For more information on Page Rules, please see the <a href="https://support.cloudflare.com/hc/en-us/categories/200276257">Page Rules section of our knowledge base</a>.</p>
 	<p>Items are cached by their full URL, including the <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>. However, due to the details of how query strings work, this can lead to some cache misses. There is no RFC which defines that the order of query strings arguments matter, but in some (rare) cases they do. Thus, by default, CloudFlare caches the following two requests separately:</p>
 	<p><code>https://example.com/a?color=red&amp;word=hi</code><code>https://example.com/a?word=hi&amp;color=red</code></p>
-	<h3>Introducing Query String Sort</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-query-string-sort">Introducing Query String Sort</h3>
+		<a href="https://blog.cloudflare.com/#introducing-query-string-sort" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a newly available Enterprise-level feature called <a href="https://support.cloudflare.com/hc/en-us/articles/206776797">Query String Sort</a>, CloudFlare will first sort the query strings in a URL into a deterministic order before checking cache for the resource or requesting it from the origin, meaning that the URLs:</p>
 	<p><code>https://example.com/a?color=red&amp;day=friday&amp;word=hi</code><code>https://example.com/a?color=red&amp;word=hi&amp;day=friday</code><code>https://example.com/a?day=friday&amp;color=red&amp;word=hi</code><code>https://example.com/a?day=friday&amp;word=hicolor=red</code><code>https://example.com/a?word=hi&amp;color=red&amp;day=friday</code><code>https://example.com/a?word=hi&amp;day=friday&amp;color=red</code></p>
 	<p>will all be cached and be requested from the origin as:<code>https://example.com/a?color=red&amp;day=friday&amp;word=hi</code></p>
 	<p>This feature is especially useful for API servers, which often rely heavily on multiple query string arguments. Remember, we chose an examples with only two and three arguments, but the number of permutations of a set of n elements is n!.</p>
-	<h3>Turning on Query String Sort</h3>
+	<div class="flex anchor relative">
+		<h3 id="turning-on-query-string-sort">Turning on Query String Sort</h3>
+		<a href="https://blog.cloudflare.com/#turning-on-query-string-sort" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To turn on the feature, Enterprise customers can visit the Caching app in the CloudFlare dashboard.</p>
 	<figure class="kg-card kg-image-card ">
 

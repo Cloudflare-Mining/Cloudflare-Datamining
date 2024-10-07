@@ -3,7 +3,14 @@
 	<p>An enterprise needs security and controls around access.</p>
 	<p>Your web developer needs to update your website’s logo and make sure it’s live immediately, but doesn’t need access to your SSL keys. Your sysadmin manages your DNS, but doesn’t need to see your visitor traffic. Your marketing team needs to see traffic, but shouldn’t have access to your <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>.</p>
 	<p>Today CloudFlare is introducing new Multi-User functionality so that many members of a team can work together to manage one CloudFlare account, each with different levels of access.</p>
-	<h3>The Super Admin, and Role-Based Permissions</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-super-admin-and-role-based-permissions">The Super Admin, and Role-Based Permissions</h3>
+		<a href="https://blog.cloudflare.com/#the-super-admin-and-role-based-permissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare Multi-User accounts are hierarchical, with the root privileges given to the account’s Super Administrator. The Super Administrator can add or delete users in the organization, change the permissions given to each user, and see and edit all CloudFlare settings. If there is more than one Super Administrator, the Super Administrators can remove each other, which is good practice when an employee leaves the company or switches jobs.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -34,11 +41,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oJYil8y0hjlsua2FIBFs/50db9e4d9975d66c1a6d7c4928db3fb3/dns-analytics-1.png" alt="" class="kg-image" width="997" height="153" loading="lazy">
 
 	</figure>
-	<h3>Multi-User and Two-Factor Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="multi-user-and-two-factor-authentication">Multi-User and Two-Factor Authentication</h3>
+		<a href="https://blog.cloudflare.com/#multi-user-and-two-factor-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Passwords are known to be weak, (<a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation">try yours here</a>: how quickly does it break?) but stronger methods of authentication such as two-factor authentication (2FA) typically don’t work when multiple people need to share access to a single account.</p>
 	<p>Over the past year, the world has witnessed many <a href="http://arstechnica.com/security/2014/12/23/jpmorgan-chase-hack-because-of-missing-2-factor-auth-on-one-server">prominent</a> <a href="https://nakedsecurity.sophos.com/2015/02/09/chipotle-apologises-for-offensive-tweets-says-account-was-hacked">corporate</a> and <a href="http://www.bloomberg.com/news/2015-01-13/the-centcom-hack-was-no-joke.html">government</a> accounts compromised as a result of not using two-factor authentication. We’ve <a href="https://blog.cloudflare.com/2-factor-authentication-now-available">supported two-factor authentication for years</a>, and we encourage everyone to <a href="https://www.cloudflare.com/a/account/my-account">turn it on</a>. With Multi-User, any size organization can use 2FA for account security.</p>
 	<p>Beyond 2FA, Multi-User also provides each user with their own API key so that independent keys can easily be revoked and reissued.</p>
-	<h3>Multi-User Rollout</h3>
+	<div class="flex anchor relative">
+		<h3 id="multi-user-rollout">Multi-User Rollout</h3>
+		<a href="https://blog.cloudflare.com/#multi-user-rollout" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Multi-User is an Enterprise-only feature and is already in use by large multinational organizations and governments. Starting today, Multi-User is available for all CloudFlare Enterprise customers. If you are an Enterprise customer who would like to have Multi-User enabled, contact your account manager. Not yet a customer? <a href="https://www.cloudflare.com/enterprise-service-request">Contact our sales team.</a></p>
 	<p>This new functionality is only possible on the new CloudFlare <a href="https://blog.cloudflare.com/cloudflares-new-control-panel">dashboard</a> that we are in the process of rolling out to all users this week</p>
 </div>

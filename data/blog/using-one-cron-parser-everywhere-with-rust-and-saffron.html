@@ -8,7 +8,14 @@
 	<p>As part of the development for <a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers">Cron Triggers</a> on Cloudflare Workers, we had an interesting problem to tackle relating to parsers and the cron expression format. Cron expressions are the format used to write schedules in Cron Triggers, and extensions for cron expressions are everywhere. They vary between parsers and platforms as well, and aren’t standardized by a governing body, which means most parsers out there support many different feature sets, which isn’t good if you’d like something off the shelf that just works.</p>
 	<p>It can be tough to find the right parser for each part of the Cron Triggers stack, when its user interface, API, and edge service are all written in different languages. On top of that, it isn’t practical to reinvent the wheel multiple times by writing the same parser in different languages and make sure they all match perfectly. So you’re likely stuck with a less-than-perfect solution.</p>
 	<p>However, in the end, because we wrote our backend service in Rust, it took much less effort to solve this problem. Rust has a great ecosystem for working across multiple languages, which allows us to write a parser once and pull it from the backend to the frontend and everywhere in between with minimal glue code.</p>
-	<h3>The Trouble with Cron</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-trouble-with-cron">The Trouble with Cron</h3>
+		<a href="https://blog.cloudflare.com/#the-trouble-with-cron" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cron expressions are a set of fields that represent a set of times. They act as a pattern that matches over the minute, hour, day of the month, month, and day of the week of a given time. Since cron is a simple format, it’s easy to extend with extra fields, so some parsers and platforms allow specifying seconds and years as well. However, seconds are a bit too granular and years are a bit too long, so we opted to not support them as part of Cron Triggers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -46,7 +53,14 @@
 		</li>
 	</ul>
 	<p>So far I’ve only listed extensions we currently support on Workers, but others exist such as ‘H’ in Jenkins and ‘?’ in some cron implementations for start-up time. Most libraries don’t support said extensions, however ‘?’ is used in some implementations in certain circumstances, but not as start-up time. With all these extensions and a lack of standardization, some libraries aren’t guaranteed to support them all.</p>
-	<h3>The Multitude of Libraries</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-multitude-of-libraries">The Multitude of Libraries</h3>
+		<a href="https://blog.cloudflare.com/#the-multitude-of-libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During the development of Cron Triggers, we needed some things to just work, and to do that, we opted to pull some libraries off the shelf from package repositories for different parts of the stack.</p>
 	<p>In the Rust backend, we needed a cron library that supported all the extensions we wanted, while also leaving off other field extensions like seconds and years, and had an API that let us simply check if a given time matched the expression pattern. None of the crates on crates.io offered these, so we had to write it ourselves. Using the <a href="https://github.com/geal/nom">nom</a> crate, it was easy to draft a simple, fast, safe parser, named ‘saffron’. As time went on and we got closer to release, it became clearer which extensions we really wanted to support. It was incredibly easy to add support for the new features without worrying about safety since the compiler checked it for us, so all we had to do was extensive logic testing. Last offset weekdays (“L-XW”) and leap years were difficult to get right the first time, but testing them was easy with Rust.</p>
 	<pre class="language-rust"><code class="language-rust">#[test]
@@ -113,10 +127,24 @@
 
 	</figure>
 	<p>So even though we dropped it to three parsers before release, it still didn’t seem good enough. Soon after release, I made plans to remedy it and started working on saffron (originally this project was called cfron but Cloudflare’s CTO couldn’t resist suggesting renaming it to saffron because he loves puns) to fill in for the one library holding us back in the UI. It would’ve been OK if missing extension support was the only thing wrong after release, but soon some other issues came up.</p>
-	<h3>Off By One</h3>
+	<div class="flex anchor relative">
+		<h3 id="off-by-one">Off By One</h3>
+		<a href="https://blog.cloudflare.com/#off-by-one" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Saffron is based on the Quartz open source scheduler’s cron parser, which makes days of the week when specified as integers start from 1 (Sunday) and go to 7 (Saturday). Both parsers on the frontend follow the original values for cron, where days start from 0 and go to 6, and 7 could be used for Sunday as well. So when users entered 1-5, the UI told them they were entering a schedule from Monday to Friday, and the backend ended up executing Sunday to Thursday! This was missed when testing Cron Triggers initially and was caught by observant community members on the forum.</p>
 	<p>Fixing the issue turned out to be a bit difficult. While the library we were using for descriptions had the option to simply switch from 0-6 to 1-7 days of the week, our future times library did not have that option. Luckily, development was already halfway through with replacing it in Saffron. However, we couldn’t place it directly on the frontend yet, since web bindings didn’t exist and I didn't have time to write them. We needed something easier to develop quickly.</p>
-	<h3>Reintroducing: Cloudflare Workers!</h3>
+	<div class="flex anchor relative">
+		<h3 id="reintroducing-cloudflare-workers">Reintroducing: Cloudflare Workers!</h3>
+		<a href="https://blog.cloudflare.com/#reintroducing-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers made it incredibly easy to take the existing code, add some wasm entry points for a makeshift API, and call with JavaScript. No need to build a whole separate API in Go! Just take your existing code and put it directly within 100ms of nearly everyone on the Internet. Why call all the way back home when the nearest PoP works just as well?</p>
 	<p>Plus, we don’t have to worry about building and publishing, wrangler does it for us! For example, our validation code is all written in Rust:</p>
 	<pre class="language-rust"><code class="language-rust">#[wasm_bindgen]
@@ -196,7 +224,14 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BlsrGxNNu22q5Inpi8Gyz/a8af3d7bf2556561a8c5c748b5997439/image8-7.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
 
 	</figure>
-	<h3>The Quest for the One True Parser</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-quest-for-the-one-true-parser">The Quest for the One True Parser</h3>
+		<a href="https://blog.cloudflare.com/#the-quest-for-the-one-true-parser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This brings us to today. In the search of better and faster, we want to bring the number of parsers down from two to one. One source of truth for the entire stack. To make it all faster, we should do parsing on the frontend locally instead of making a call to a remote Worker (if possible). In the API, the separate entry point was a nice easy solution, but starting the schedule runner just to check if a cron string is valid every time a user adds one doesn’t seem like it’s the best it could be.</p>
 	<p>Luckily Rust has a vibrant ecosystem that can meet all these needs! To bring the parser to the UI, we can compile saffron to wasm and use generated bindings created with wasm-pack. This can be easily integrated with our existing webpack setup, making it simple to get future times and create descriptions of cron strings on the frontend. Then, to bring the parser closer to the API, we can use Rust’s ability to create C APIs that we can then integrate with Go using cgo.</p>
 	<p>With our parser everywhere, we can then focus exclusively on cron descriptions to replace the one other parser we’re using in the UI. At that point we will have one parser for the whole stack, a single source of truth that anyone can reference to understand how the frontend, API, and backend all work together. It also simplifies our graph. Now instead of multiple libraries written in different languages, we have one library with multiple language wrappers, each serving a different part of the stack. No inconsistencies will exist since they’re all using the same parser!</p>
@@ -206,7 +241,14 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
 
 	</figure>
 	<p>However, we wanted to do something before that…</p>
-	<h3>We made it open source!</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-made-it-open-source">We made it open source!</h3>
+		<a href="https://blog.cloudflare.com/#we-made-it-open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I think this project serves as a great example of Rust’s type system, its safety, and its extensibility across the entire stack. The project itself is simple, easy to understand, and easy to port and provide bindings for. By open sourcing, we can publish packages for these bindings on npm and crates.io, allowing anyone to use these bindings for whatever they want. It also means you can also follow along with development to see the finishing touches get added and maybe make some suggestions for future improvements in the UI and the parser itself.</p>
 	<p>You can view the project on GitHub at <a href="https://github.com/cloudflare/saffron">https://github.com/cloudflare/saffron</a>.</p>
 </div>

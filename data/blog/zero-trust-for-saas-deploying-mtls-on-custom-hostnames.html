@@ -2,7 +2,14 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">한국어</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/zero-trust-for-saas-deploying-mtls-on-custom-hostnames">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YvLw2RK0h9dQEnTN1Rj8t/c8638033aa89d26cdc6aaf0c6c1aa36c/zero-trust-for-saas-deploying-mtls-on-custom-hostnames.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare has a large base of Software-as-a-Service (SaaS) customers who manage thousands or millions of their customers’ domains that use their SaaS service. We have helped those SaaS providers grow by extending our infrastructure and services to their customer’s domains through a product called <a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a>. Today, we’re excited to give our SaaS providers a new tool that will help their customers add an extra layer of security: they can now enable mutual TLS authentication on their customer’s domains through our Access product.</p>
-	<h3>Primer on Mutual TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="primer-on-mutual-tls">Primer on Mutual TLS</h3>
+		<a href="https://blog.cloudflare.com/#primer-on-mutual-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you connect to a website, you should see a lock icon in the address bar — that’s your browser telling you that you’re connecting to a website over a secure connection and that the website has a valid public TLS certificate. TLS certificates keep Internet traffic encrypted using a public/private key pair to encrypt and decrypt traffic. They also provide authentication, proving to clients that they are connecting to the correct server.</p>
 	<p>To make a secure connection, a <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> needs to take place. During the handshake, the client and the server exchange cryptographic keys, the client authenticates the identity of the server, and both the client and the server generate session keys that are later used to encrypt traffic.</p>
 	<p>A TLS handshake looks like this:</p>
@@ -21,19 +28,47 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qRrMeIBvIWAKu8hDGxGhF/dee2a0a570b05b25a76e2bef3be7be4d/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6sw.png" alt="" class="kg-image" width="1222" height="1028" loading="lazy">
 
 	</figure>
-	<h3>mTLS + Access = Zero Trust</h3>
+	<div class="flex anchor relative">
+		<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#mtls-access-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A few years ago, we added mTLS support to our <a href="https://developers.cloudflare.com/cloudflare-one">Access</a> product, allowing customers to enable a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> policy on their applications. Access customers can deploy a policy that dictates that all clients must present a valid certificate when making a request. That means that requests made without a valid certificate — usually from unauthorized clients — will be blocked, adding an extra layer of protection. Cloudflare has allowed customers to configure mTLS on their Cloudflare domains by setting up Access policies. The only caveat was that to use this feature, you had to be the owner of the domain. Now, what if you’re not the owner of a domain, but you do manage that domain’s origin? This is the case for a large base of our customers, the SaaS providers that extend their services to their customers’ domains that they do not own.</p>
-	<h3>Extending Cloudflare benefits through SaaS providers</h3>
+	<div class="flex anchor relative">
+		<h3 id="extending-cloudflare-benefits-through-saas-providers">Extending Cloudflare benefits through SaaS providers</h3>
+		<a href="https://blog.cloudflare.com/#extending-cloudflare-benefits-through-saas-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a> enables SaaS providers to extend the benefits of the Cloudflare network to their customers’ domains. These domains are not owned by the SaaS provider, but they do use the SaaS provider’s service, routing traffic back to the SaaS provider’s origin.</p>
 	<p>By doing this, SaaS providers take on the responsibility of providing their customers with the highest uptime, lightning fast performance, and unparalleled security — something they can easily extend to their customers through Cloudflare.</p>
 	<p>Cloudflare for SaaS actually started out as <a href="https://blog.cloudflare.com/introducing-ssl-for-saas">SSL for SaaS</a>. We built SSL for SaaS to give SaaS providers the ability to issue TLS certificates for their customers, keeping the SaaS provider’s customers safe and secure.</p>
 	<p>Since then, our SaaS customers have come to us with a new request: extend the mTLS support that we built out for our direct customers, but to their customers.</p>
-	<h3>Why would SaaS providers want to use mTLS?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-would-saas-providers-want-to-use-mtls">Why would SaaS providers want to use mTLS?</h3>
+		<a href="https://blog.cloudflare.com/#why-would-saas-providers-want-to-use-mtls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a SaaS provider, there’s a wide range of services that you can provide. Some of these services require higher security controls than others.</p>
 	<p>Let’s say that the SaaS solution that you’re building is a payment processor. Each customer gets its own API endpoint that their users send requests to, for example, <i>pay.&lt;business_name&gt;.com.</i> As a payment processor, you don’t want any client or device to make requests to your service, instead you only want authorized devices to do so — mTLS does exactly that.</p>
 	<p>As the SaaS provider, you can configure a Root CA for each of your customers’ API endpoints. Then, have each Root CA issue client certificates that will be installed on authorized devices. Once the client certificates have been installed, all that is left is enforcing a check for valid certificates.</p>
 	<p>To recap, by doing this, as a SaaS provider, your customers can now ensure that requests bound for their payment processing API endpoint only come from valid devices. In addition, by deploying individual Root CAs for each customer, you also prevent clients that are authorized to make requests to one customers’ API endpoint from making requests to another customers’ API endpoint when they are not authorized to do so.</p>
-	<h3>How can you set this up with Cloudflare?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-you-set-this-up-with-cloudflare">How can you set this up with Cloudflare?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-you-set-this-up-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a SaaS provider, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/getting-started">configure Cloudflare for SaaS</a> and add your customer’s domains as Custom Hostnames. Then, in the Cloudflare for Teams dashboard, <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration">add mTLS authentication</a> with a few clicks.</p>
 	<p>This feature is currently in Beta and is available for Enterprise customers to use. If you have any feedback, please let your Account Team know.</p>
 </div>

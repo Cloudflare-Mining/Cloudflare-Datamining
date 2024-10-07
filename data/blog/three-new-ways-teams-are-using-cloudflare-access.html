@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Since <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">leaving</a> beta three weeks ago, <a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a> has become our fastest-growing subscription service. Every day, more teams are using Access to leave their VPN behind and <a href="https://www.cloudflare.com/application-services/solutions">connect to applications quickly and securely</a> from anywhere in the world.</p>
 	<p>We’ve heard from a number of teams about how they’re using Access. Each team has unique needs to consider as they move away from a VPN and to a zero trust model. In a zero trust framework, each request has to prove that a given application should trust its attempt to reach a secure tool. In this post, we’re highlighting some of the solutions that groups are using to transition to Cloudflare Access.</p>
-	<h3>Solution 1: Collaborate with External Partners</h3>
+	<div class="flex anchor relative">
+		<h3 id="solution-1-collaborate-with-external-partners">Solution 1: Collaborate with External Partners</h3>
+		<a href="https://blog.cloudflare.com/#solution-1-collaborate-with-external-partners" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access integrates with popular identity providers (IdPs) so that your team can reach internal applications without adding more credentials. However, teams rarely work in isolation. They frequently rely on external partners who also need to reach shared tools.</p>
 	<p>How to grant and manage permissions with external partners poses a security risk. Just because you are working with a third-party doesn’t mean they should have credentials to your IdP. They typically need access to a handful of tools, not all of your internal resources.</p>
 	<p>We’ve heard from Access customers who are increasingly using the <a href="https://developers.cloudflare.com/access/configuring-identity-providers/one-time-pin">One-Time Pin</a> feature to solve this problem. With One-Time Pin, you can grant access to third-party users without adding them to your IdP. Your internal team will continue to use their IdP credentials to authenticate while external users input their email address and receive a single-use code in their inbox. Here’s how your team can set this up:</p>
@@ -38,7 +45,14 @@
 
 	</figure>
 	<p>When they choose One-Time Pin, they will be prompted to input their email address. Access will send a one-time code to their inbox. If they are an authorized user, as defined by the Access Group list, they can follow a link in that email or input the code to reach the application.</p>
-	<h3>Solution 2: Require a Specific Network</h3>
+	<div class="flex anchor relative">
+		<h3 id="solution-2-require-a-specific-network">Solution 2: Require a Specific Network</h3>
+		<a href="https://blog.cloudflare.com/#solution-2-require-a-specific-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For some applications, you want to ensure that your end users are both part of an approved list and originate from a known connection, like a secure office network. Building a rule with this requirement adds an extra layer of scrutiny to each request. Teams are using Access to enforce more comprehensive requirements like this one by creating policies with multiple rules. You can set this up for a specific application by creating a policy like the one below.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -53,11 +67,25 @@
 	</figure>
 	<p>Next, create a new policy. First, allow users to authenticate with their IdP credentials by including your team’s email domain or the group name from your IdP. Second, add a rule to require that requests originate from the network(s) you defined in your Access Group.</p>
 	<p>In this example, users who want to reach the site would first need to authenticate with the IdP you have configured. In addition, Access will check to make sure their request is coming from the IP range you configured in the second rule underneath the “Require” line.</p>
-	<h3>Solution 3: Reach On-Premise Applications with Argo Tunnel</h3>
+	<div class="flex anchor relative">
+		<h3 id="solution-3-reach-on-premise-applications-with-argo-tunnel">Solution 3: Reach On-Premise Applications with Argo Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#solution-3-reach-on-premise-applications-with-argo-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some applications are too sensitive to expose to the public internet through firewall ports and access control lists (ACLs). At first glance, these tools seem doomed to live on-premise and require a VPN when your team members are away from the office.</p>
 	<p>Cloudflare Access can still help. When you combine Access with Cloudflare <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a>, you can avoid the hassle of a VPN while making your on-premise applications available to end users through secure connections to the Internet. Argo Tunnel securely exposes your web servers to the Internet without opening up firewall ports or requiring ACL configuration. Argo Tunnel ensures that requests route through Cloudflare before reaching the web server.</p>
 	<p>To configure Argo Tunnel, you’ll first need to create a zone in Cloudflare to serve as the hostname for your web server. Argo Tunnel creates a DNS entry for that hostname so that visitors can find it. Next, lock down that hostname with a new Access policy. Once you’re ready, you can proceed to install Argo Tunnel on your web server by following the instructions <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">here</a>.</p>
 	<p>With Access and Argo Tunnel, teams are making their on-premise applications feel and operate like SaaS products.</p>
-	<h3>What's next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re always excited to hear about how customers use our products. The feedback helps us iterate and build better solutions for your teams. We’d like to thank our Access beta users, as well as early adopters, for their input. We’re excited to continue to improving Access so that your team can continue transitioning away from your VPN.</p>
 </div>

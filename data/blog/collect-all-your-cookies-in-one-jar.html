@@ -9,15 +9,36 @@
 	<p>Though cookies are very useful, they are also used for tracking and advertising, sometimes with repercussions for user privacy. Cookies are a core tool, for example, for all advertising networks. To protect users, privacy laws may require website owners to clearly specify what cookies are being used and for what purposes, and, in many cases, to obtain a user's consent before storing those cookies in the user's browser. A key example of this is the <a href="https://gdpr.eu/cookies/#:~:text=Cookie%20compliance,cookies%20except%20strictly%20necessary%20cookies.">ePrivacy Directive</a>.</p>
 	<p>Herein lies the problem: often website administrators, developers, or compliance team members don’t know what cookies are being used by their website. A common approach for gaining a better understanding of cookie usage is to set up a scanner bot that crawls through each page, collecting cookies along the way. However, many websites requiring authentication or additional security measures do not allow for these scans, or require custom security settings to allow the scanner bot access.</p>
 	<p>To address these issues, we developed Page Shield Cookie Monitor, which provides a full single dashboard view of all first-party cookies being used by your websites. Over the next few weeks, we are rolling out Page Shield Cookie Monitor to all paid plans, no configuration or scanners required if Page Shield is enabled.</p>
-	<h3>HTTP cookies</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-cookies">HTTP cookies</h3>
+		<a href="https://blog.cloudflare.com/#http-cookies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/HTTP_cookie">HTTP cookies</a> are designed to allow persistence for the stateless HTTP protocol. A basic example of cookie usage is to identify a logged-in user. The browser submits the cookie back to the website whenever you access it again, letting the website know who you are, providing you a customized experience. Cookies are implemented as <a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">HTTP headers</a>.</p>
 	<p>Cookies can be classified as first-party or third-party.</p>
 	<p>First-party cookies are normally set by the website owner<sup>1</sup>, and are used to track state against the given website. The logged in example above falls into this category. First party cookies are normally restricted and sent to the given website only and won’t be visible by other sites.</p>
 	<p>Third-party cookies, on the other hand, are often set by large advertising networks, social networks, or other large organizations that want to track user journeys across the web (across domains). For example, some websites load advertisement objects from a different domain that may set a third-party cookie associated with that advertising network.</p>
-	<h3>Cookies are used for tracking</h3>
+	<div class="flex anchor relative">
+		<h3 id="cookies-are-used-for-tracking">Cookies are used for tracking</h3>
+		<a href="https://blog.cloudflare.com/#cookies-are-used-for-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Growing concerns around user privacy has led browsers to start blocking third-party cookies by default. Led by <a href="https://blog.mozilla.org/en/products/firefox/todays-firefox-blocks-third-party-tracking-cookies-and-cryptomining-by-default">Firefox</a> and <a href="https://www.theverge.com/2020/3/24/21192830/apple-safari-intelligent-tracking-privacy-full-third-party-cookie-blocking">Safari</a> a few years back, <a href="https://developers.google.com/privacy-sandbox/blog/cookie-countdown-2024jan">Google Chrome</a>, which currently has the <a href="https://radar.cloudflare.com/reports/browser-market-share-2023-q4">largest browser market share</a>, and whose parent company owns Google Ads, the <a href="https://w3techs.com/technologies/overview/advertising">dominant advertising network</a>, started restricting third-party cookies beginning in January of this year.</p>
 	<p>However, this does not mean the end of tracking users for advertising purposes; the technology has advanced allowing tracking to continue based on first-party cookies. Facebook Pixel, for example, started offering to set first-party cookies <i>alongside</i> third-party cookies <a href="https://www.inc.com/peter-roesler/facebook-to-allow-for-first-party-cookies-on-october-24th.html">in 2018</a> when being embedded in a website, in order “<a href="https://www.facebook.com/business/help/471978536642445?id=1205376682832142">to be more accurate in measurement and reporting</a>”.</p>
-	<h3>Scanning for cookies?</h3>
+	<div class="flex anchor relative">
+		<h3 id="scanning-for-cookies">Scanning for cookies?</h3>
+		<a href="https://blog.cloudflare.com/#scanning-for-cookies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To inventory all the cookies used when your website is accessed, you can open up any modern browser’s developer console and review which cookie is being set and sent back per HTTP request. However, collecting cookies with this approach won’t be practical unless your website is rather static, containing few external <a href="https://en.wikipedia.org/wiki/Snippet_(programming)">snippets</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -26,7 +47,14 @@
 	</figure>
 	<p><i>Screen capture of Chrome’s developer console listing cookies being set and sent back when visiting a website.</i></p>
 	<p>To resolve this, a cookie scanner can be used to automate cookie collection. Depending on your security setup, additional configurations are sometimes required in order to let the scanner bots pass through protection and/or authentication. This may open up a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">potential attack surface</a>, which isn’t ideal.</p>
-	<h3>Introducing Page Shield Cookie Monitor</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-page-shield-cookie-monitor">Introducing Page Shield Cookie Monitor</h3>
+		<a href="https://blog.cloudflare.com/#introducing-page-shield-cookie-monitor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Page Shield <a href="https://developers.cloudflare.com/page-shield/get-started/#activate-page-shield">enabled</a>, all the first-party cookies, whether set by your website or by external snippets, are collected and displayed in one place, no scanner required. With the click of a button, the full list can be exported in CSV format for further inventory processing.</p>
 	<p>If you run multiple websites like a marketing website and an admin console that require different cookie strategies, you can simply filter the list based on either domain or path, under the same view. This includes the websites that require authentication such as the admin console.</p>
 	<figure class="kg-card kg-image-card ">
@@ -43,7 +71,14 @@
 	</figure>
 	<p><i>Detailed view of a captured cookie in the dashboard, including all cookie attributes as well as under which host and path this cookie has been set.</i></p>
 	<p>Last but not least, we are adding one more alert type specifically for newly seen cookies. When subscribed to this alert, we will notify you through either email or <a href="https://developers.cloudflare.com/notifications/get-started/configure-webhooks">webhook</a> as soon as a new cookie is detected with all the details mentioned above. This allows you to trigger any workflow required, such as inventorying this new cookie for compliance.</p>
-	<h3>How Cookie Monitor works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cookie-monitor-works">How Cookie Monitor works</h3>
+		<a href="https://blog.cloudflare.com/#how-cookie-monitor-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s imagine you run an e-commerce website <code>example.com</code>. When a user logs in to view their ongoing orders, your website would send a header with key <code>Set-Cookie</code>, and value to identify each user’s login activity:</p>
 	<ul>
 		<li>
@@ -61,7 +96,14 @@
 	</ul>
 	<p>As these two cookies from Google Analytics are considered first-party given their domain attribute, they are automatically included together with the logged-in cookie sent back to your website. The final cookie sent back for a logged-in user would be <code>Cookie: login_id=ABC123; _ga=GA1.2; _ga_ABC=GS1.3</code> with three cookies concatenated into one string, even though only one of them is directly consumed by your website.</p>
 	<p>If your website happens to be <a href="https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#with-cloudflare">proxied</a> through Cloudflare already, we will observe <i>one</i> <code>Set-Cookie</code> header with cookie name of <code>login_id</code> during response, while receiving <i>three</i> cookies back: <code>login_id</code>, <code>_ga</code>, and <code>_ga_ABC</code>. Comparing <i>one</i> cookie set with <i>three</i> returned cookies, the overlapping <code>login_id</code> cookie is then tagged as set by your website directly. The same principle applies to all the requests passing through Cloudflare, allowing us to build an overview of all the first-party cookies used by your websites.</p>
-	<h3>All cookies in one jar</h3>
+	<div class="flex anchor relative">
+		<h3 id="all-cookies-in-one-jar">All cookies in one jar</h3>
+		<a href="https://blog.cloudflare.com/#all-cookies-in-one-jar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Inventorying all cookies set through using your websites is a first step towards protecting your users’ privacy, and Page Shield makes this step just one click away. <a href="https://cloudflare.com/lp/pages-cookie-monitor">Sign up now</a> to be notified when Page Shield Cookie Monitor becomes available!</p>
 	<p>...</p>
 	<p><sup>1</sup><a href="https://webkit.org/tracking-prevention">Technically</a>, a first-party cookie is a cookie scoped to the given domain only (so not cross domain). Such a cookie can also be set by a third party snippet used by the website to the given domain.</p>

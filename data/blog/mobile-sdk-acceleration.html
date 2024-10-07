@@ -5,17 +5,38 @@
 		<source src="https://www.cloudflare.com/video/mobile-sdk.mp4" type="video/mp4">
 		<source src="https://www.cloudflare.com/video/mobile-sdk.webm" type="video/webm">
 	</video><!--kg-card-end: html-->
-	<h2>How it works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">How it works</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mobile applications interact with the Internet to do everything — to fetch the weather, your email, to step through a checkout flow. Everything that makes a smartphone magical is powered by a service on the Internet. How quickly those network interactions happen is dictated by two things: how large the payloads are for the given request/response, and what the available link bandwidth is.</p>
 	<p>Payload size is mostly application specific: a shopping app is going to request product images and similar medium sized assets, while a stock quotes app could be expected to have smaller payloads in the API responses powering it.</p>
 	<p>Available link bandwidth is usually dictated by your network provider. Everyone familiar with the feeling of trying to check out in an <a href="https://www.cloudflare.com/ecommerce">e-commerce app</a> and being stymied by poor cell connectivity. But network quality is not the only thing that impacts available bandwidth; the transport protocol (at Layer 4, in OSI-model-speak) in use also has a huge <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">impact</a> on how quickly your phone can pull content off the Internet.</p>
-	<h2>A primer on TCP congestion control</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-primer-on-tcp-congestion-control">A primer on TCP congestion control</h2>
+		<a href="https://blog.cloudflare.com/#a-primer-on-tcp-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCP is the dominant transport protocol for most applications you know and love. It’s over 40 years old, and impressive in both its simplicity and longevity (they are likely related). TCP relies on congestion control algorithms to understand how quickly to send traffic over a connection without congesting the link (filling the pipe to the point things start getting backed up).</p>
 	<p>Congestion is something to be avoided. TCP guarantees reliable delivery, and cleaning up from a congestion event often involves additional round trips and retransmits. TCP implementations are often conservative in two important dimensions: how much data they choose to send on connection establishment (called the <i>initcwnd</i>, or initial congestion window), and what to do when the sender senses packet loss (congestion avoidance).</p>
 	<p>Source: <a href="https://commons.wikimedia.org/wiki/File:TCP_Slow-Start_and_Congestion_Avoidance.svg">https://commons.wikimedia.org/wiki/File:TCP_Slow-Start_and_Congestion_Avoidance.svg</a></p>
 	<p>An example of the data rate on a connection over time. Congestion avoidance is illustrated in pink.</p>
 	<p>How TCP opens connections and how it responds to packet loss are critical factors in determining how much data actually gets to flow over the connection. Tuning TCP connection parameters allows more data to flow over the link without actually touching the actual physical layer (i.e. boosting your cell signal).</p>
-	<h2>Moving beyond TCP</h2>
+	<div class="flex anchor relative">
+		<h2 id="moving-beyond-tcp">Moving beyond TCP</h2>
+		<a href="https://blog.cloudflare.com/#moving-beyond-tcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, TCP parameters governing a connection’s data rate are hidden in the kernel, out of reach of user space and the optimizing, enterprising app developer. Cloudflare Mobile SDK aims to solve this problem by shipping a replacement transport protocol implemented on top of UDP, which the SDK can speak with the Cloudflare edge.</p>
 	<p>There are three advantages to replacing TCP with a custom UDP transport protocol:</p>
 	<ol>
@@ -30,11 +51,25 @@
 		</li>
 	</ol>
 	<p>All of these factors lead directly to reduced latency, increased throughput, and improved user experiences.</p>
-	<h2>Integrating with SDK and example results</h2>
+	<div class="flex anchor relative">
+		<h2 id="integrating-with-sdk-and-example-results">Integrating with SDK and example results</h2>
+		<a href="https://blog.cloudflare.com/#integrating-with-sdk-and-example-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once an app is integrated with the SDK, enabling Acceleration is straightforward. Most standard HTTP networking libraries are supported out of the box, and require no additional integration work beyond initializing the SDK with your API key.</p>
 	<p>Customers accelerating their traffic with Cloudflare Mobile SDK see significant reductions in latency, increases in throughput, and reductions in TCP related timeouts.</p>
 	<p>As an example, a transportation company enabled acceleration in their iOS app. Their users immediately saw a 7% decrease in network response time and a 13.8% drop in network timeouts. This directly translates to an increase in conversions: <b>purchases per user increased 3% with Acceleration enabled</b>.</p>
-	<h2>Early Access</h2>
+	<div class="flex anchor relative">
+		<h2 id="early-access">Early Access</h2>
+		<a href="https://blog.cloudflare.com/#early-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to bring Acceleration to a broader audience. <a href="mailto:mobilesdk@cloudflare.com">Get in touch</a> with us for early access. Mobile SDK supports both iOS and Android.</p>
 	<p>In addition to developing features to improve app performance, we’re working hard on features to better authenticate mobile devices with the APIs that power them. Why is this important? Non-humans (bots) are increasingly interacting with the APIs that power apps to scrape data, stuff credentials, and otherwise act in ways humans would not.</p>
 	<p>The Mobile SDK will soon include features to help API owners understand whether or not the user purporting to be using an app actually is a real mobile user. We’ll have a lot more detail on this soon; if you’re interested in hearing more sooner, please <a href="mailto:mobilesdk@cloudflare.com">get in touch</a>!</p>

@@ -10,7 +10,14 @@
 	<p>Today, we’re introducing a new API that takes a <a href="https://eips.ethereum.org/EIPS/eip-721">ERC-721</a> token ID and contact address and sets it on a video so every video on Stream can be represented with an NFT.</p>
 	<p><code>curl -X POST -H "Authorization: Bearer $AUTH_TOKEN" --data '{"contract":"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85","token":"5"}' https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/$VIDEO_ID/nft</code></p>
 	<p>Once you set it, you cannot change these values so be sure to set it to an NFT you own! If you set a video you own to an NFT you don’t own, the owner of the NFT can claim your video and delete it. As the owner of the linked NFT changes, admin rights on videos can be transferred between users without the involvement of the original user who uploaded the video.</p>
-	<h2>How can I represent a video with a NFT?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-represent-a-video-with-a-nft">How can I represent a video with a NFT?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-represent-a-video-with-a-nft" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Stream doesn’t create NFTs for you, however, you can use online platforms like <a href="https://opensea.io">OpenSea</a> and &nbsp;<a href="https://foundation.app">Foundation</a> or a command line tool like <a href="https://docs.ipfs.io/how-to/mint-nfts-with-ipfs/#minty">Minty</a> to create them. These tools don't actually host your video but only allow you to create a NFT on the blockchain. For example, if you shot a cool video and want to turn it into an NFT, you'd use a third party service to get a token ID and contact address. Starting today, you can associate the token ID and contact address with your video on Stream.</p>
 	<p>You should consider storing a copy of the video you shot in a storage system like IPFS or Filecoin as they can help with long term storage for the NFT. A link from a decentralized storage system should be the one to use in your NFT metadata URL (We’re working on making a copy of the Stream videos available automatically in IPFS to facilitate long term storage of videos).</p>
 	<p>You can use Stream with your NFT to store high quality or longer versions of the video that may cost too much to store and distribute through decentralized storage. Stream offers accessibility features such as captions, compatibility with mobile and desktop devices and automatic quality switching.</p>
@@ -19,7 +26,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mkV46CgxM3bixzqaRxvVL/b0c9c323c958348c8e8260c7e79d725e/image2-18.png" alt="" class="kg-image" width="686" height="225" loading="lazy">
 
 	</figure>
-	<h2>Why NFTs?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-nfts">Why NFTs?</h2>
+		<a href="https://blog.cloudflare.com/#why-nfts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NFTs allow for unlimited options for unique business models around media: videos can be owned by an entity with many owners (made into a crypto coin with voting rights proportional to ownership), crowdfunded (for example as done for the <a href="https://j.mirror.xyz/uVGCCwwm3k341lPpxaJmHTZROESVse9Pe_rmbiuUAC0">$ESSAY</a>) or simply traded (like <a href="https://www.cryptokitties.co">cryptokittes</a> or <a href="https://www.nbatopshot.com">NBA Top Shot</a>).</p>
 	<p>Digital ownership is not new (domain names are a good example that existed for decades) but it has never been this popular. We’ve been watching the explosive growth of the NFT community closely. If you’ve heard of <a href="https://www.cryptokitties.co">CryptoKitties</a> a while back or <a href="https://www.bbc.com/news/technology-56371912">visited</a> <a href="https://www.businessinsider.com/nft-artists-make-millions-traditional-galleries-adapt-cryptoart-2021-3?op=1">any</a> <a href="https://www.cnn.com/style/article/beeple-first-nft-artwork-at-auction-sale-result/index.html">news</a> <a href="https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them">website</a> recently you’ve probably heard of the vibrant community forming around digital ownership of art and the growth of creators that are able to monetize their work. &nbsp;By permitting creators to embed their NFT claim to ownership into their video on Cloudflare Stream, we hope this will be a helpful step as acceptance of the process for minting, validating, and utilizing NFTs moves forward.</p>
 	<p>If you visit one of the many NFT marketplaces, you will see that most tokens are either images or short animations yet there are no films. We think this is partly because it’s hard to host videos on the Internet and get it to work on every device and connection speed. Storage technologies such as IPFS are not yet fit to support video streaming and require work on the creators’ part to make accessibility features such as captions to work.</p>
@@ -39,7 +53,14 @@
 	<blockquote>
 		<p>Dapper Labs is excited that Cloudflare continues to make it easier for folks to adopt Blockchain, the most democratizing technology since the creation of the Internet itself. Cloudflare Stream creates new opportunities for creators to showcase and monetize their work using NFTs.- <b>Dieter Shirley, CTO at Dapper Labs and creator of ERC-721</b></p>
 	</blockquote>
-	<h2>A model for decentralized ownership</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-model-for-decentralized-ownership">A model for decentralized ownership</h2>
+		<a href="https://blog.cloudflare.com/#a-model-for-decentralized-ownership" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By tagging token ID and contract on Stream videos, you make it possible to transfer admin rights on a video. If a change in ownership of the ERC-721 token happens on the Ethereum blockchain, the new owner of the token may claim control over the video on Cloudflare Stream by proving they own the token associated with the video. Once the video has been claimed via the API call, the video may be deleted or transferred to the new owner’s Cloudflare Stream account.</p>
 	<p>Here’s how the transfer API looks like:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST -H "Authorization: $AUTH_TOKEN" --data '{"signature": "0xcac010d5ac8ef1f325c14fa0e7df5bb3a1920a205d827bd727e96b32b918875c26d8635dd778e0a1fa77f2cb547259e05fb40f3cb5c2673b77d77e372cc22f091b", "contract":"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85","token":"5"}' https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/nft/claim</code></pre>
@@ -54,10 +75,25 @@
 	</figure>
 	<p>Cloudflare Stream doesn’t do anything complicated besides storing a token ID and contract address pair for each video in our database. When an NFT is set, we verify compatibility with ERC-721 using <a href="https://developers.cloudflare.com/distributed-web/ethereum-gateway">Cloudflare’s Ethereum Gateway</a>. When ownership on an NFT associated with a video is claimed, we update control over the video.</p>
 	<p>After making this API call, the video claimed shows up in the new account where the new owner of the NFT can change settings for the video, restrict views, add captions: anything that the original user who uploaded the video can do.</p>
-	<h2>NFTs on the video player</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="nfts-on-the-video-player">NFTs on the video player</h2>
+		<a href="https://blog.cloudflare.com/#nfts-on-the-video-player" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/875822872f1007b3d235c039e31f473c" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Big Buck Bunny by Blender Foundation (Creative Commons Attribution 3.0 license) associated here with an example NFT.</p>
 	<p>An important part of digital ownership is linking back to the contract and token that governs the ownership. If a video on Stream is linked to an NFT, the Stream video player will show a link to the token and contract.</p>
-	<h2>We’re hiring</h2>
+	<div class="flex anchor relative">
+		<h2 id="were-hiring">We’re hiring</h2>
+		<a href="https://blog.cloudflare.com/#were-hiring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re working on more ways to support creators and platforms that enable creators to do their best work. If you’re interested in working on technology for creators, Stream team at Cloudflare is hiring both in <a href="https://boards.greenhouse.io/cloudflare/jobs/2953274?gh_jid=2953274">the United States</a> and in <a href="https://boards.greenhouse.io/cloudflare/jobs/2953354?gh_jid=2953354">Europe</a>.</p>
 </div>

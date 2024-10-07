@@ -8,10 +8,24 @@
 	<p>The last two years have given rise to hundreds of live streaming platforms. Most live streaming platforms enable their creators to go live by providing them with a server and an RTMP/SRT key that they can configure in their broadcasting app.</p>
 	<p>Until today, even if your live streaming platform was called <i>live-yoga-classes.com</i>, your users would need to push the RTMPS feed to <i>live.cloudflare.com</i>. Starting today, every Stream account can configure its own domain in the Stream dashboard. And your creators can broadcast to a domain such as <i>push.live-yoga-classes.com</i>.</p>
 	<p>This feature is available to all Stream accounts, including self-serve customers at no additional cost. Every Cloudflare account with a Stream subscription can add up to five ingest domains.</p>
-	<h3>Secure CNAMEing for live video ingestion</h3>
+	<div class="flex anchor relative">
+		<h3 id="secure-cnameing-for-live-video-ingestion">Secure CNAMEing for live video ingestion</h3>
+		<a href="https://blog.cloudflare.com/#secure-cnameing-for-live-video-ingestion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Stream only supports encrypted video ingestion using RTMPS and SRT protocols. These are secure protocols and, similar to HTTPS, ensure encryption between the broadcaster and Cloudflare servers. Unlike non-secure protocols like RTMP, secure RTMP (or RTMPS) protects your users from monster-in-the-middle attacks.</p>
 	<p>In an unsecure world, you could simply CNAME a domain to another domain regardless of whether you own the domain you are sending traffic to. Because Stream Live intentionally does not support insecure live streams, you cannot simply CNAME your domain to <code>live.cloudflare.com</code>. So we leveraged other Cloudflare products such as Spectrum to natively support custom-branded domains in the Stream Live product <i>without</i> making the live streams less private for your broadcasters.</p>
-	<h3>Configuring Custom Domain for Live Ingestion</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuring-custom-domain-for-live-ingestion">Configuring Custom Domain for Live Ingestion</h3>
+		<a href="https://blog.cloudflare.com/#configuring-custom-domain-for-live-ingestion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To begin configuring your custom domain, add the domain to your Cloudflare account as a regular zone.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -48,7 +62,14 @@
 	</figure>
 	<p><i>Confirmation of domain being added as an ingest domain</i></p>
 	<p>Once you’ve added your ingest domain, test it by changing your existing configuration in your broadcasting software to your ingest domain. You can read the complete docs and limitations in the <a href="https://developers.cloudflare.com/stream/stream-live/custom-domains">Stream Live developer docs.</a></p>
-	<h3>What’s Next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s Next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Besides the branding upside — &nbsp;you don’t have to instruct your users to configure a domain such as live.cloudflare.com — custom domains help you avoid vendor lock-in and seamless migration. For example, if you have an existing live video pipeline that you are considering moving to Stream Live, this makes the migration one step easier because you no longer have to ask your users to change any settings in their broadcasting app.</p>
 	<p>A natural next step is to support custom keys. Currently, your users must still use keys that are provided by Stream Live. Soon, you will be able to bring your own keys. Custom domains combined with custom keys will help you migrate to Stream Live with zero breaking changes for your end users.</p>
 </div>

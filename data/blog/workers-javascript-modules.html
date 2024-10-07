@@ -12,7 +12,14 @@
 }</code></pre>
 	<p>The above syntax is known as the “<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a>” API, and it was proposed to be standardized for use in web browsers. The idea is that you can attach a JavaScript file to a web page to modify its HTTP requests and responses, acting like a virtual endpoint. It was exactly what we needed for Workers, and it even integrated well with standard Web APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch"><code>fetch()</code></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/cache"><code>caches</code></a>.</p>
 	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <i>you</i> need to rewrite <i>your</i> code because an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
-	<h3>What are JavaScript modules?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-javascript-modules">What are JavaScript modules?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-javascript-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p>
 	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/util.js
 export function getDate(time) {
@@ -24,7 +31,14 @@ import { getDate } from "./util.js"
 
 console.log("Today’s date:", getDate());</code></pre>
 	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <i>every</i> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive">technical deep-dive</a> by Lin Clark.</p>
-	<h3>How can I use modules in Workers?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-use-modules-in-workers">How can I use modules in Workers?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-modules-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker">scheduled</a>" for cron triggers.</p>
 	<pre class="language-javascript"><code class="language-javascript">export default {
   async fetch(request, environment, context) {
@@ -82,7 +96,15 @@ export default {
     return counter.fetch("https://counter.object/increment");
   }
 }</code></pre>
-	<h3>Are there non-JavaScript modules?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="are-there-non-javascript-modules">Are there non-JavaScript modules?</h3>
+		<a href="https://blog.cloudflare.com/#are-there-non-javascript-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yes! While modules are primarily for JavaScript, we also support other modules types, some of which are not yet standardized.</p>
 	<p>For instance, you can import <a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WebAssembly</a> as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module">module</a>. Previously, with the Service Worker API, WebAssembly was included as a binding. We think that was a mistake, since WebAssembly should be represented as code and not an external resource. With modules, here’s the new way to import WebAssembly:</p>
 	<pre class="language-javascript"><code class="language-javascript">import module from "./lib/hello.wasm"
@@ -121,7 +143,15 @@ export default {
     return fetch(request);
   }
 }</code></pre>
-	<h3>How can I get started?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-get-started">How can I get started?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are many ways to get started with modules.</p>
 	<p>First, you can try out modules in your browser using our <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev">playground</a> (which doesn’t require an account) or by using the dashboard <a href="https://workers.new">quick editor</a>. Your browser will automatically detect when you’re using modules to allow you to seamlessly switch from the Service Worker API. For now, you’ll only be able to create one JavaScript module in the browser, though supporting multiple modules is something we’ll be improving soon.</p>
 	<p>If you’re feeling adventurous and want to start a <i>new</i> project using modules, you can try out the beta release of <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, the next-generation of the command-line interface (CLI) for Workers.</p>
@@ -149,7 +179,15 @@ globs = ["**/*.js"]
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ZcNNYExuFZtWS9zT5TZ9E/2cbf416e05d53344c1d2c80bf3a8fa10/image2-11.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
 
 	</figure>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

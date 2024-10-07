@@ -7,11 +7,33 @@
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@chuttersnap?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">chuttersnap</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>At the end of 2017, Xinhua reported that there will be 200 Million IPv6 users inside Mainland China <a href="http://www.xinhuanet.com/english/2017-11/26/c_136780735.htm">by the end of this year</a>. Halfway into the year, we’re seeing a rapid growth in IPv6 users and traffic originating from Mainland China.</p>
-	<h3>Why does this matter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-does-this-matter">Why does this matter?</h3>
+		<a href="https://blog.cloudflare.com/#why-does-this-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IPv6 is often referred to the next generation of IP addressing. The reality is, IPv6 is what is needed for addressing today. Taking the largest mobile network in China today, China Mobile has over 900 Million mobile subscribers and over <a href="https://www.chinamobileltd.com/en/ir/operation_m.php">670 Million 4G/LTE subscribers</a>. To be able to provide service to their users, they need to provide an IP address to each subscriber’s device. This means close to a billion IP addresses would be required, which is far more than what is available in IPv4, especially as the available IP address pools have been <a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion">exhausted</a>.</p>
-	<h3>What is the solution?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-solution">What is the solution?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To solve the addressability of clients, many networks, especially mobile networks, will use <a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">Carrier Grade NAT (CGN)</a>. This allows thousands, possibly up to hundreds of thousands, of devices to be shared behind a single internet IP address. The CGN equipment can be very expensive to scale and further, given the scale of the networks, they might need to layer CGNs behind other CGNs. This increases costs per subscriber, can reduce performance and makes scaling very challenging. A further solution, <a href="https://en.wikipedia.org/wiki/NAT64">NAT64</a>, allows IPv6 addresses to be given to subscribers, but then translated to IPv4 addresses similar to other NATs. This allows networks and ISPs to begin deploying IPv6 to subscribers, a first step in transition to IPv6.</p>
-	<h3>IPv6 IPv6 IPv6!</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-ipv6-ipv6">IPv6 IPv6 IPv6!</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-ipv6-ipv6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iY3FD5e6ymhDdlae7sTwV/4330214ecc32c7b341aaf32667f257e3/AS9808-BGP-Announcements.png" alt="AS9808-BGP-Announcements" class="kg-image" width="762" height="330" loading="lazy">

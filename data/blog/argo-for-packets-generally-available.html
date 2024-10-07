@@ -11,7 +11,14 @@
 	<p>If you’re not familiar with Argo, it’s a Cloudflare product that makes your traffic faster. Argo finds the fastest, most available path for your traffic on the Internet. Every day, Cloudflare carries trillions of requests, connections, and packets across our network and the Internet. Because our network, our customers, and their end users are well distributed globally, all of these requests flowing across our infrastructure paint a great picture of how different parts of the Internet are performing at any given time. Cloudflare leverages this picture to ensure that your traffic takes the fastest path through our infrastructure.</p>
 	<p>Previously, Argo optimized traffic at the Layer 7 application layer and at the Layer 4 protocol layer. With the GA of Argo for Packets, we’re now optimizing the IP layer for your private network. During <a href="https://blog.cloudflare.com/argo-v2">Speed Week we announced</a> the early access for Argo for Packets, and how it can offer a 10% latency reduction. Today, to celebrate Argo for Packets reaching GA, we’re going to dive deeper into the latency reductions, show you examples, explain how you can see even greater optimizations, and talk about how Argo’s secure data plane gives you additional encryption even at Layer 3.</p>
 	<p>And if you’re interested in enabling Argo for Packets today, please reach out to your account team to get the process started!</p>
-	<h3>Better than BGP</h3>
+	<div class="flex anchor relative">
+		<h3 id="better-than-bgp">Better than BGP</h3>
+		<a href="https://blog.cloudflare.com/#better-than-bgp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we said during Speed Week, Argo for Packets provides an average 10% latency improvement across the world in our internal testing:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,7 +38,14 @@
 	</figure>
 	<p>Using this map, Cloudflare constructs dynamic routes for each customer based on where their traffic enters Cloudflare’s network and where they need to go.</p>
 	<p>Let’s dive into some examples of how your latency reductions manifest depending on your setup.</p>
-	<h3>Cloudflare’s Network is Your Network</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-network-is-your-network">Cloudflare’s Network is Your Network</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-network-is-your-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">Speed Week blog</a> outlining how Magic products make your network faster, we outlined several different network topology examples and showed the improvements Magic Transit and Magic WAN had on their networks. Let’s supercharge those numbers by adding Argo for Packets on top of that to see how we can improve performance even further.</p>
 	<p>The example from the blog outlined a company with locations in South Carolina, Oregon, and Los Angeles. In that blog, we showed the latency improvements that Magic Transit by itself provided for one leg of the trip. That network looks like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -174,7 +188,14 @@
 	<p>For this sample customer network, Argo for Packets improves latencies on every possible path. As you can see the average percent improvement is much higher for this particular network than the global average of 10%.</p>
 	<p>Let’s take another example of a customer with locations in Asia: South Korea, Philippines, Singapore, Osaka, and Hong Kong. For a network with those locations, Argo for Packets is able to create a 17% latency reduction by finding the optimal paths between locations that were typically trickiest to navigate, like between South Korea, Osaka, and the Philippines. A customer with many locations will see huge benefits from Argo for Packets, because it optimizes the trickiest paths on the Internet and makes them just as fast as the other paths. It removes the latency incurred by your worst network paths and makes not only your average numbers look good, but especially your 90th percentile latency numbers.</p>
 	<p>Reducing these long-tail latencies is critical especially as customers move back to better and start returning to offices all around the world.</p>
-	<h3>Next Stop: Your Office</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-stop-your-office">Next Stop: Your Office</h3>
+		<a href="https://blog.cloudflare.com/#next-stop-your-office" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo for Packets pairs brilliantly with Magic WAN and Cloudflare for Offices to create a hyper-optimized, ultra-secure, private network that adapts to whatever you throw at it. If this is your first time hearing about <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a>, it’s our new initiative to provide private, secure, performant connectivity to thousands of new locations around the world. And that private connectivity provides a great foundation for Argo for Packets to speed up your network.</p>
 	<p>Taking the above example from the United States, if this company adds two new locations in Boston and Dallas, those locations also see significant latency reduction through Argo for Packets. Now, their network looks like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -380,7 +401,14 @@
 		</table>
 	</div>
 	<p>Cloudflare for Offices makes it so easy to get those offices set up because customers don’t have to bring their perimeter firewalls, WAN devices, or anything else — they can just plug into Cloudflare at their building, and the power of Cloudflare One allows them to get all their <a href="https://www.cloudflare.com/network-security">network security services</a> over a private connection to Cloudflare, optimized by Argo for Packets.</p>
-	<h3>Your Network, but Faster</h3>
+	<div class="flex anchor relative">
+		<h3 id="your-network-but-faster">Your Network, but Faster</h3>
+		<a href="https://blog.cloudflare.com/#your-network-but-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo for Packets is the perfect complement to any of our Cloudflare One solutions: providing faster bits through your network, built on Cloudflare. Now, your SD-WAN and Magic Transit solutions can be optimized to not just be secure, but performant as well.</p>
 	<p>If you’re interested in turning on Argo for Packets or onboarding your offices to a private and secure connectivity solution, reach out to your account team to get the process started.</p>
 </div>

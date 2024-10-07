@@ -21,7 +21,14 @@
 			<p>DNS resolvers can serve DNS queries without linking who made the request with what website they’re visiting – a pattern we’ve implemented with <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS</a>.Privacy Gateway is based on <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp">Oblivious HTTP (OHTTP), an emerging IETF standard</a> and is built upon standard <a href="https://datatracker.ietf.org/doc/html/rfc9180">hybrid public-key cryptography</a>.</p>
 		</li>
 	</ul>
-	<h2>How does it work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">How does it work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main innovation in the Oblivious HTTP standard – beyond a basic proxy service – is that these messages are encrypted <i>to the application’s server</i>, such that Privacy Gateway learns nothing of the application data beyond the source and destination of each message.</p>
 	<p>Privacy Gateway enables application developers and platforms, especially those with strong privacy requirements, to build something that closely resembles a “<a href="https://en.wikipedia.org/wiki/Mix_network">Mixnet</a>”: an approach to obfuscating the source and destination of a message across a network. To that end, Privacy Gateway consists of three main components:</p>
 	<ol>
@@ -57,7 +64,14 @@
 			<p>The application server returns an <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2">encapsulated response</a> to Privacy Gateway, which then forwards the result to the client.As specified in the protocol, requests from the client to the server are encrypted using HPKE, a state-of-the-art standard for public key encryption – which you can read more about <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">here</a>. We’ve taken additional measures to ensure that OHTTP’s use of HPKE is secure by conducting a <a href="https://blog.cloudflare.com/stronger-than-a-promise-proving-oblivious-http-privacy-properties">formal analysis of the protocol</a>, and we expect to publish a deeper analysis in the coming weeks.</p>
 		</li>
 	</ol>
-	<h2>How Privacy Gateway improves end-user privacy</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-privacy-gateway-improves-end-user-privacy">How Privacy Gateway improves end-user privacy</h2>
+		<a href="https://blog.cloudflare.com/#how-privacy-gateway-improves-end-user-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This interaction offers two types of privacy, which we informally refer to as <i>request privacy</i> and <i>client privacy</i>.</p>
 	<p>Request privacy means that the application server does not learn information that would otherwise be revealed by an HTTP request, such as IP address, geolocation, TLS and HTTPS fingerprints, and so on. Because Privacy Gateway uses a separate HTTPS connection between itself and the application server, all of this per-request information revealed to the application server represents that of Privacy Gateway, not of the client. However, developers need to take care to not send personally identifying information in the contents of requests. If the request, once decapsulated, includes information like users’ email, phone number, or credit card info, for example, Privacy Gateway will not meaningfully improve privacy.</p>
 	<p>Client privacy is a stronger notion. Because Cloudflare and the application server are not colluding to share individual user’s data, from the server’s perspective, each individual transaction came from some unknown client behind Privacy Gateway. In other words, a properly configured Privacy Gateway deployment means that applications cannot link any two requests to the same client. In particular, with Privacy Gateway, privacy loves company. If there is only one end-user making use of Privacy Gateway, then it only provides request privacy (since the client IP address remains hidden from the Gateway). It would not provide client privacy, since the server would know that each request corresponds to the same, single client. Client privacy requires that there be many users of the system, so the application server cannot make this determination.</p>
@@ -96,9 +110,23 @@
 	<p>Privacy Gateway configuration with a client anonymity set of size k</p>
 	<p>This is request privacy. All information about the client’s location and identity are hidden from the application server. And all details about the application data are hidden from Privacy Gateway. For sensitive applications and protocols like DNS, keeping this metadata separate from the application data is an important step towards improving end-user privacy.</p>
 	<p>Moreover, applications should take care to not reveal sensitive, per-client information in their individual requests. Privacy Gateway cannot guarantee that applications do not send identifying info – such as email addresses, full names, etc – in request bodies, since it cannot observe plaintext application data. Applications which reveal user identifying information in requests may violate client privacy, but not request privacy. This is why – unlike our full <a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier">application-level Privacy Proxy</a> product – Privacy Gateway is <i>not</i> meant to be used as a generic proxy-based protocol for arbitrary applications and traffic. It is meant to be a special purpose protocol for sensitive applications, including DNS (as is evidenced by <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>), telemetry data, or generic API requests as discussed above.</p>
-	<h2>Integrating Privacy Gateway into your application</h2>
+	<div class="flex anchor relative">
+		<h2 id="integrating-privacy-gateway-into-your-application">Integrating Privacy Gateway into your application</h2>
+		<a href="https://blog.cloudflare.com/#integrating-privacy-gateway-into-your-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Integrating with Privacy Gateway requires applications to implement the client and server side of the OHTTP protocol. Let’s walk through what this entails.</p>
-	<h3>Server Integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-integration">Server Integration</h3>
+		<a href="https://blog.cloudflare.com/#server-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The server-side part of the protocol is responsible for two basic tasks:</p>
 	<ol>
 		<li>
@@ -142,7 +170,14 @@ func (r *BinaryResponse) Marshal() ([]byte, error) {
 	...
 }</code></pre>
 	<p>While there exist several open source libraries that one can use to implement OHTTP server support, we’ve packaged all of it up in our open source server implementation <a href="https://github.com/cloudflare/app-relay-gateway-go">available here</a>. It includes instructions for building, testing, and deploying to make it easy to get started.</p>
-	<h3>Client integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="client-integration">Client integration</h3>
+		<a href="https://blog.cloudflare.com/#client-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Naturally, the client-side behavior of OHTTP mirrors that of the server. In particular, the client must:</p>
 	<ol>
 		<li>
@@ -207,6 +242,13 @@ if err != nil {
 
 fmt.Println(response)</code></pre>
 	<p>A standalone client like this isn’t likely very useful to you if you have an existing application. To help integration into your existing application, we created a <a href="https://github.com/cloudflare/app-relay-client-library">sample OHTTP client library</a> that’s compatible with iOS and macOS applications. Additionally, if there’s language or platform support you would like to see to help ease integration on either or the client or server side, please let us know!</p>
-	<h2>Interested?</h2>
+	<div class="flex anchor relative">
+		<h2 id="interested">Interested?</h2>
+		<a href="https://blog.cloudflare.com/#interested" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Privacy Gateway is currently in early access – available to select privacy-oriented companies and partners. If you’re interested, <a href="https://www.cloudflare.com/lp/privacy-edge">please get in touch</a>.</p>
 </div>

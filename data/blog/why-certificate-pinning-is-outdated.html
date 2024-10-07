@@ -9,7 +9,14 @@
 	<p>PKI exists to help issue and manage <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate">TLS certificates</a>, which are vital to keeping the Internet secure – they ensure that users access the correct applications or servers and that data between two parties stays encrypted. The mis-issuance of a certificate can pose great risk. For example, if a malicious party is able to issue a TLS certificate for your bank’s website, then they can potentially impersonate your bank and intercept that traffic to get access to your bank account. To prevent a mis-issued certificate from intercepting traffic, the server can give a certificate to the client and say “only trust connections if you see this certificate and drop any responses that present a different certificate” – this practice is called certificate pinning.</p>
 	<p>In the early 2000s, it was common for banks and other organizations that handle sensitive data to pin certificates to clients. However, over the last 20 years, TLS certificate issuance has evolved and changed, and new solutions have been developed to help customers achieve the security benefit they receive through certificate pinning, with simpler management, and without the risk of disruption.</p>
 	<p>Cloudflare’s mission is to help build a better Internet, which is why our teams are always focused on keeping domains secure and online.</p>
-	<h2>Why certificate pinning is causing more outages now than it did before</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-certificate-pinning-is-causing-more-outages-now-than-it-did-before">Why certificate pinning is causing more outages now than it did before</h2>
+		<a href="https://blog.cloudflare.com/#why-certificate-pinning-is-causing-more-outages-now-than-it-did-before" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Certificate pinning is not a new practice, so why are we emphasizing the need to stop using it <i>now</i>? The reason is that the PKI ecosystem is moving towards becoming more agile, flexible, and secure. As a part of this change, <a href="https://www.ssl.com/article/what-is-a-certificate-authority-ca">certificate authorities (CAs)</a> are starting to rotate certificates and their intermediates, certificates that bridge the root certificate and the domain certificate, more frequently to improve security and encourage automation.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -27,12 +34,35 @@
 	<p>Before migrating customer’s certificates away from using DigiCert as the CA, Cloudflare sent multiple notifications to customers to inform them that they should update or remove their certificate pins, so that the migration does not impact their domain’s availability.</p>
 	<p>However, what we’ve learned is that almost all customers that were impacted by the change were unaware that they had a certificate pin in place. One of the consequences of using certificate pinning is that the “set and forget” mentality doesn’t work, now that certificates are being rotated more frequently. Instead, changes need to be closely monitored to ensure that a regular certificate renewal doesn't cause an outage. This goes to show that to implement certificate pinning successfully, customers need a robust system in place to track certificate changes and implement them.</p>
 	<p>We built our <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Universal SSL</a> pipeline to be resilient and redundant, ensuring that we can always issue and renew a TLS certificate on behalf of our customers, <a href="https://blog.cloudflare.com/introducing-backup-certificates">even in the event of a compromise or revocation</a>. CAs are starting to make changes like more frequent certificate rotations to encourage a move towards a more secure ecosystem. Now, it’s up to domain owners to stop implementing legacy practices like certificate pinning, which cause breaking changes, and instead start adopting modern standards that aim to provide the same level of security, but without the management overhead or risk.</p>
-	<h2>Modern standards &amp; practices are making the need for certificate pinning obsolete</h2>
-	<h3>Shorter certificate lifetimes</h3>
+	<div class="flex anchor relative">
+		<h2 id="modern-standards-practices-are-making-the-need-for-certificate-pinning-obsolete">Modern standards &amp; practices are making the need for certificate pinning obsolete</h2>
+		<a href="https://blog.cloudflare.com/#modern-standards-practices-are-making-the-need-for-certificate-pinning-obsolete" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="shorter-certificate-lifetimes">Shorter certificate lifetimes</h3>
+		<a href="https://blog.cloudflare.com/#shorter-certificate-lifetimes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the last few years, we have seen certificate lifetimes quickly decrease. Before 2011, a certificate could be valid for up to 96 months (eight years) and now, in 2024, the maximum validity period for a certificate is 1 year. We’re seeing this trend continue to develop, with Google Chrome <a href="https://www.chromium.org/Home/chromium-security/root-ca-policy/moving-forward-together">pushing</a> for shorter CA, intermediate, and certificate lifetimes, advocating for 3 month certificate validity as the new standard.</p>
 	<p>This push improves security and redundancy of the entire PKI ecosystem in several ways. First, it reduces the scope of a compromise by limiting the amount of time that a malicious party could control a TLS certificate or private key. Second, it reduces reliance on certificate revocation, a process that lacks standardization and enforcement by clients, browsers, and CAs. Lastly, it encourages automation as a replacement for legacy certificate practices that are time-consuming and error-prone.</p>
 	<p>Cloudflare is moving towards only using CAs that follow the <a href="https://datatracker.ietf.org/doc/html/rfc8555">ACME</a> (Automated Certificate Management Environment) protocol, which by default, issues certificates with 90 day validity periods. We have already started to roll this out to Universal SSL certificates and have removed the ability to issue 1-year certificates as a part of our <a href="https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-update">reduced usage of DigiCert</a>.</p>
-	<h3>Regular rotation of intermediate certificates</h3>
+	<div class="flex anchor relative">
+		<h3 id="regular-rotation-of-intermediate-certificates">Regular rotation of intermediate certificates</h3>
+		<a href="https://blog.cloudflare.com/#regular-rotation-of-intermediate-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38pDF476Nnjx7acXBN5eTM/2dc003db045d9e371331dfefdb1dbe9a/image2-8.png" alt="" class="kg-image" width="512" height="288" loading="lazy">
@@ -42,17 +72,52 @@
 	<p>Both Let’s Encrypt and Google Trust Services changed their intermediate chains in June 2024. In addition, <a href="https://community.letsencrypt.org/t/lets-encrypt-new-intermediate-certificates/209498">Let’s Encrypt has started to balance their certificate issuance across 10 intermediates</a> (5 RSA and 5 ECDSA).</p>
 	<p>Cloudflare customers using <a href="https://www.cloudflare.com/advanced-certificate-manager">Advanced Certificate Manager</a> have the ability to choose their issuing CA. The issue is that even if Cloudflare uses the same CA for a certificate renewal, there is no guarantee that the same certificate chain (root or intermediate) will be used to issue the renewed certificate. As a result, if pinning is used, a successful renewal could cause a full outage for a domain or application.</p>
 	<p>This happens because certificate pinning relies on the exact matching of certificates. When an intermediate certificate is rotated or changed, the new certificate might not match the pinned certificate on the client side. As a result, the client will reject the renewed certificate, even if it’s a valid certificate issued by the same CA. This mismatch leads to a failure on the client side, causing the domain to become inaccessible until the pinned certificate is updated to reflect the new intermediate certificate. This risk of an unexpected outage is a major downside of continuing to use certificate pinning, especially as CAs increasingly update their intermediates as a security measure.</p>
-	<h3>Increased use of certificate transparency</h3>
+	<div class="flex anchor relative">
+		<h3 id="increased-use-of-certificate-transparency">Increased use of certificate transparency</h3>
+		<a href="https://blog.cloudflare.com/#increased-use-of-certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">Certificate transparency (CT) logs</a> provide a standardized framework for monitoring and auditing the issuance of TLS certificates. CT logs help detect misissued or malicious certificates and Cloudflare customers can set up <a href="https://blog.cloudflare.com/introducing-certificate-transparency-monitoring">CT monitoring</a> to receive notifications about any certificates issued for their domain. This provides a better mechanism for detecting certificate mis-issuance, reducing the need for pinning.</p>
-	<h3>Why modern standards make certificate pinning obsolete</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-modern-standards-make-certificate-pinning-obsolete">Why modern standards make certificate pinning obsolete</h3>
+		<a href="https://blog.cloudflare.com/#why-modern-standards-make-certificate-pinning-obsolete" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Together, these practices – shorter certificate lifetimes, regular rotations of intermediate certificates, and increased use of certificate transparency – address the core security concerns that certificate pinning was initially designed to mitigate. Shorter lifetimes and frequent rotations limit the impact of compromised certificates, while certificate transparency allows for real time monitoring and detection of misissued certificates. These advancements are automated, scalable, and robust and eliminate the need for the manual and error-prone process of certificate pinning. By adopting these modern standards, organizations can achieve a higher level of security and resiliency without the management overhead and risk associated with certificate pinning.</p>
-	<h2>Reasons behind continued use of certificate pinning</h2>
+	<div class="flex anchor relative">
+		<h2 id="reasons-behind-continued-use-of-certificate-pinning">Reasons behind continued use of certificate pinning</h2>
+		<a href="https://blog.cloudflare.com/#reasons-behind-continued-use-of-certificate-pinning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Originally, certificate pinning was designed to prevent <a href="https://blog.cloudflare.com/monsters-in-the-middleboxes">monster-in-the-middle (MITM)</a> attacks by associating a hostname with a specific TLS certificate, ensuring that a client could only access an application if the server presented a certificate issued by the domain owner.</p>
 	<p>Certificate pinning was traditionally used to secure IoT (Internet of Things) devices, mobile applications, and APIs. IoT devices are usually equipped with more limited processing power and are oftentimes unable to perform software updates. As a result, they’re less likely to perform things like certificate revocation checks to ensure that they’re using a valid certificate. As a result, it’s common for these devices to come pre-installed with a set of trusted certificate pins to ensure that they can maintain a high level of security. However, the increased frequency of certificate changes poses significant risk, as many devices have immutable software, preventing timely updates to certificate pins during renewals.</p>
 	<p>Similarly, certificate pinning has been employed to secure Android and iOS applications, ensuring that only the correct certificates are served. Despite this, both <a href="https://developer.apple.com/news/?id=g9ejcf8y">Apple</a> and <a href="https://developer.android.com/privacy-and-security/security-ssl">Google</a> warn developers against the use of certificate pinning due to the potential for failures if not implemented correctly.</p>
-	<h2>Understanding the trade-offs of different certificate pinning implementations</h2>
+	<div class="flex anchor relative">
+		<h2 id="understanding-the-trade-offs-of-different-certificate-pinning-implementations">Understanding the trade-offs of different certificate pinning implementations</h2>
+		<a href="https://blog.cloudflare.com/#understanding-the-trade-offs-of-different-certificate-pinning-implementations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While certificate pinning can be applied at various levels of the certificate chain, offering different levels of granularity and security, we don’t recommend it due to the challenges and risks associated with its use.</p>
-	<h3>Pinning certificates at the root certificate</h3>
+	<div class="flex anchor relative">
+		<h3 id="pinning-certificates-at-the-root-certificate">Pinning certificates at the root certificate</h3>
+		<a href="https://blog.cloudflare.com/#pinning-certificates-at-the-root-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pinning the root certificate instructs a client to only trust certificates issued by that specific Certificate Authority (CA).</p>
 	<p><b>Advantages</b>:</p>
 	<ul>
@@ -69,7 +134,14 @@
 			<p><b><b><b>Neglected Maintenance:</b></b></b> Root certificates are infrequently rotated, which can lead to a “set and forget” mentality when pinning them. Although it's rare, CAs do <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html">change their roots</a> and when this happens, a correctly renewed certificate will break the pin, causing an outage. Since these pins are rarely updated, resolving such outages can be time-consuming as engineering teams try to identify and locate where the outdated pins have been set.</p>
 		</li>
 	</ul>
-	<h3>Pinning certificates at the intermediate certificate</h3>
+	<div class="flex anchor relative">
+		<h3 id="pinning-certificates-at-the-intermediate-certificate">Pinning certificates at the intermediate certificate</h3>
+		<a href="https://blog.cloudflare.com/#pinning-certificates-at-the-intermediate-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pinning an intermediate certificate instructs a client to only trust certificates issued by a specific intermediate CA, issued from a trusted root CA. With lifetimes ranging from 3 to 10 years, intermediate certificates offer a better balance between security and flexibility.</p>
 	<p><b>Advantages:</b></p>
 	<ul>
@@ -92,7 +164,14 @@
 			<p><b><b><b>Less predictability:</b></b></b> With CAs like Let’s Encrypt issuing their certificates from varying intermediates, it’s no longer possible to predict which certificate chain will be used during a renewal, making it more likely for a certificate renewal to break a certificate pin and cause an outage.</p>
 		</li>
 	</ul>
-	<h3>Pinning certificates at the leaf certificate</h3>
+	<div class="flex anchor relative">
+		<h3 id="pinning-certificates-at-the-leaf-certificate">Pinning certificates at the leaf certificate</h3>
+		<a href="https://blog.cloudflare.com/#pinning-certificates-at-the-leaf-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pinning the leaf certificate instructs a client to only trust that specific certificate. Although this option offers the highest level of security, it also poses the greatest risk of causing an outage during a certificate renewal.</p>
 	<p><b>Advantages:</b></p>
 	<ul>
@@ -109,27 +188,76 @@
 			<p><b><b><b>Management burden:</b></b></b> Leaf certificates have shorter lifetimes, with 90 days becoming the standard, requiring constant updates to the certificate pin to avoid a breaking change during a renewal.</p>
 		</li>
 	</ul>
-	<h2>Alternatives to certificate pinning</h2>
+	<div class="flex anchor relative">
+		<h2 id="alternatives-to-certificate-pinning">Alternatives to certificate pinning</h2>
+		<a href="https://blog.cloudflare.com/#alternatives-to-certificate-pinning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given the risks and challenges associated with certificate pinning, we recommend the following as more effective and modern alternatives to achieve the same level of security (preventing a mis-issued certificate from intercepting traffic) that certificate pinning aims to provide.</p>
-	<h3>Shorter certificate lifetimes</h3>
+	<div class="flex anchor relative">
+		<h3 id="shorter-certificate-lifetimes">Shorter certificate lifetimes</h3>
+		<a href="https://blog.cloudflare.com/#shorter-certificate-lifetimes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using shorter certificate lifetimes ensures that certificates are regularly renewed and replaced, reducing the risk of misuse of a compromised certificate by limiting the window of opportunity for attackers.</p>
 	<p>By default, Cloudflare issues 90-day certificates for customers. Customers using Advanced Certificate Manager can request TLS certificates with lifetimes as short as 14 days.</p>
-	<h3>CAA records to restrict which CAs can issue certificates for a domain</h3>
+	<div class="flex anchor relative">
+		<h3 id="caa-records-to-restrict-which-cas-can-issue-certificates-for-a-domain">CAA records to restrict which CAs can issue certificates for a domain</h3>
+		<a href="https://blog.cloudflare.com/#caa-records-to-restrict-which-cas-can-issue-certificates-for-a-domain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/ssl/edge-certificates/caa-records">Certification Authority Authorization</a> (CAA) DNS records allow domain owners to specify which CAs are allowed to issue certificates for their domain. This adds an extra layer of security by restricting issuance to trusted authorities, providing a similar benefit as pinning a root CA certificate. For example, if you’re using Google Trust Services as your CA, you can add the following CAA DNS record to ensure that only that CA issues certificates for your domain:</p>
 	<pre class="language-bash"><code class="language-bash">example.com         CAA 0 issue "pki.goog"</code></pre>
 	<p>By default, <a href="https://developers.cloudflare.com/ssl/edge-certificates/caa-records/#caa-records-added-by-cloudflare">Cloudflare sets CAA records</a> on behalf of customers to ensure that certificates can be issued from the CAs that Cloudflare partners with. Customers can choose to further restrict that list of CAs by adding their own CAA records.</p>
-	<h3>Certificate Transparency &amp; monitoring</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-transparency-monitoring">Certificate Transparency &amp; monitoring</h3>
+		<a href="https://blog.cloudflare.com/#certificate-transparency-monitoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Certificate Transparency (CT) provides the ability to monitor and audit certificate issuances. By logging certificates in publicly accessible CT logs, organizations are able to monitor, detect, and respond to misissued certificates at the time they are issued.</p>
 	<p>Cloudflare customers can set up <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring">CT Monitoring</a> to receive notifications when certificates are issued in their domain. Today, we notify customers using the product about all certificates issued for their domains. In the future, we will allow customers to filter those notifications, so that they are only notified when an external party that isn’t Cloudflare issues a certificate for the owner’s domain. This product is available to all customers and can be enabled with the click of a button.</p>
-	<h3>Multi-vantage point Domain Control Validation (DCV) checks to prevent mis-issuances</h3>
+	<div class="flex anchor relative">
+		<h3 id="multi-vantage-point-domain-control-validation-dcv-checks-to-prevent-mis-issuances">Multi-vantage point Domain Control Validation (DCV) checks to prevent mis-issuances</h3>
+		<a href="https://blog.cloudflare.com/#multi-vantage-point-domain-control-validation-dcv-checks-to-prevent-mis-issuances" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For a CA to issue a certificate, the domain owner needs to prove ownership of the domain by serving Domain Control Validation (DCV) records. While uncommon, one attack vector of DCV validation allows an actor to perform BGP hijacking to spoof the DNS response and trick a CA into mis-issuing a certificate. To prevent this form of attack, CAs have started to perform DCV validation checks from multiple locations to ensure that a certificate is only issued when a full quorum is met.</p>
 	<p>Cloudflare has developed <a href="https://blog.cloudflare.com/secure-certificate-issuance">its own solution</a> that CAs can use to perform multi vantage point DCV checks. In addition, Cloudflare partners with CAs like Let’s Encrypt who continue to develop these checks to support <a href="https://community.letsencrypt.org/t/lets-encrypt-is-adding-two-new-remote-perspectives-for-domain-validation/214123/3">new locations</a>, reducing the risk of a certificate mis-issuance.</p>
-	<h3>Specifying ACME account URI in CAA records</h3>
+	<div class="flex anchor relative">
+		<h3 id="specifying-acme-account-uri-in-caa-records">Specifying ACME account URI in CAA records</h3>
+		<a href="https://blog.cloudflare.com/#specifying-acme-account-uri-in-caa-records" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A new enhancement to the <a href="https://datatracker.ietf.org/doc/html/rfc8555">ACME protocol</a> allows certificate requesting parties to specify an ACME account URI, the ID of the ACME account that will be requesting the certificates, in CAA records to tighten control over the certificate issuance process. This ensures that only certificates issued through an authorized ACME account are trusted, adding another layer of verification to certificate issuance. Let’s Encrypt <a href="https://letsencrypt.org/docs/caa">supports</a> this extension to CAA records which allows users with a Let’s Encrypt certificate to set a CAA DNS record, such as the following:</p>
 	<pre class="language-bash"><code class="language-bash">example.com         CAA 0 issue "letsencrypt.org;accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/&lt;account_id&gt;"</code></pre>
 	<p>With this record, Let’s Encrypt subscribers can ensure that only Let’s Encrypt can issue certificates for their domain and that these certificates were only issued through their ACME account.</p>
 	<p>Cloudflare will look to support this enhancement automatically for customers in the future.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Years ago, certificate pinning was a valuable tool for enhancing security, but over the last 20 years, it has failed to keep up with new advancements in the certificate ecosystem. As a result, instead of providing the intended security benefit, it has increased the number of outages caused during a successful certificate renewal. With new enhancements in certificate issuance standards and certificate transparency, we’re encouraging our customers and the industry to move towards adopting those new standards and deprecating old ones.</p>
 	<p>If you’re a Cloudflare customer and are required to pin your certificate, the only way to ensure a zero-downtime renewal is to upload your own custom certificates. We recommend using the <a href="https://blog.cloudflare.com/staging-tls-certificate-every-deployment-safe-deployment">staging network</a> to test your certificate renewal to ensure you have updated your certificate pin.</p>
 </div>

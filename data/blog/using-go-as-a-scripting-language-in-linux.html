@@ -8,7 +8,14 @@
 
 	</figure>
 	<p><a href="https://golang.org/doc/gopher/gophercolor.png">gopher image</a> <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> <a href="https://reneefrench.blogspot.com">Renee French</a><a href="https://pixabay.com/en/linux-penguin-tux-2025536">Tux image</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 BY</a> <a href="https://pixabay.com/en/users/OpenClipart-Vectors-30363">OpenClipart-Vectors</a></p>
-	<h3>Why consider Go as a scripting language</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-consider-go-as-a-scripting-language">Why consider Go as a scripting language</h3>
+		<a href="https://blog.cloudflare.com/#why-consider-go-as-a-scripting-language" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Short answer: why not? Go is relatively easy to learn, not too verbose and there is a huge ecosystem of libraries which can be reused to avoid writing all the code from scratch. Some other potential advantages it might bring:</p>
 	<ul>
 		<li>
@@ -24,7 +31,14 @@
 			<p>Strongly-typed scripting language: if you make a small typo somewhere in the middle of the script, most scripts will execute everything up to that point and fail on the typo itself. This might leave your system in an inconsistent state. With strongly-typed languages many typos can be caught at compile time, so the buggy script will not run in the first place.</p>
 		</li>
 	</ul>
-	<h3>Current state of Go scripting</h3>
+	<div class="flex anchor relative">
+		<h3 id="current-state-of-go-scripting">Current state of Go scripting</h3>
+		<a href="https://blog.cloudflare.com/#current-state-of-go-scripting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At first glance Go scripts seem easy to implement with Unix support of <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang lines</a> for scripts. A shebang line is the first line of the script, which starts with <code>#!</code> and specifies the script interpreter to be used to execute the script (for example, <code>#!/bin/bash</code> or <code>#!/usr/bin/env python</code>), so the system knows exactly how to execute the script regardless of the programming language used. And Go already supports interpreter-like invocation for <code>.go</code> files with <code>go run</code> command, so it should be just a matter of adding a proper shebang line, something like <code>#!/usr/bin/env go run</code>, to any <code>.go</code> file, setting the executable bit and we're good to go.</p>
 	<p>However, there are problems around using <code>go run</code> directly. <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd">This great post</a> describes in detail all the issues around <code>go run</code> and potential workarounds, but the gist is:</p>
 	<ul>
@@ -46,10 +60,24 @@ helloscript.go:1:1: illegal character U+0023 '#'</code></pre>
 			<p>have to use a custom wrapper program <a href="https://github.com/erning/gorun">gorun</a> in the shebang line, which works well, however, you end up with <code>.go</code> files, which are not compilable with standard <code>go build</code> command because of the illegal <code>#</code> character.</p>
 		</li>
 	</ul>
-	<h3>How Linux executes files</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-linux-executes-files">How Linux executes files</h3>
+		<a href="https://blog.cloudflare.com/#how-linux-executes-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>OK, it seems the shebang approach does not provide us with an all-rounder solution. Is there anything else we could use? Let's take a closer look how Linux kernel executes binaries in the first place. When you try to execute a binary/script (or any file for that matter which has executable bit set), your shell in the end will just use Linux <code>execve</code> <a href="https://en.wikipedia.org/wiki/System_call">system call</a> passing it the filesystem path of the binary in question, command line parameters and currently defined environment variables. Then the kernel is responsible for correct parsing of the file and creating a new process with the code from the file. Most of us know that Linux (and many other Unix-like operating systems) use <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF binary format</a> for its executables.</p>
 	<p>However, one of the core principles of Linux kernel development is to avoid "vendor/format lock-in" for any subsystem, which is part of the kernel. Therefore, Linux implements a "pluggable" system, which allows any binary format to be supported by the kernel - all you have to do is to write a correct module, which can parse the format of your choosing. And if you take a closer look at the kernel source code, you'll see that Linux supports more binary formats out of the box. For example, for the recent <code>4.14</code> Linux kernel <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs?h=linux-4.14.y">we can see</a> that it supports at least 7 binary formats (in-tree modules for various binary formats usually have <code>binfmt_</code> prefix in their names). It is worth to note the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_script.c?h=linux-4.14.y">binfmt_script</a> module, which is responsible for parsing above mentioned shebang lines and executing scripts on the target system (not everyone knows that the shebang support is actually implemented in the kernel itself and not in the shell or other daemon/process).</p>
-	<h3>Extending supported binary formats from userspace</h3>
+	<div class="flex anchor relative">
+		<h3 id="extending-supported-binary-formats-from-userspace">Extending supported binary formats from userspace</h3>
+		<a href="https://blog.cloudflare.com/#extending-supported-binary-formats-from-userspace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But since we concluded that shebang is not the best option for our Go scripting, seems we need something else. Surprisingly Linux kernel already has a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_misc.c?h=linux-4.14.y">"something else" binary support module</a>, which has an appropriate name <code>binfmt_misc</code>. The module allows an administrator to dynamically add support for various executable formats directly from userspace through a well-defined <code>procfs</code> interface and is <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html">well-documented</a>.</p>
 	<p>Let's follow <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html">the documentation</a> and try to setup a binary format description for <code>.go</code> files. First of all the guide tells you to mount special <code>binfmt_misc</code> filesystem to <code>/proc/sys/fs/binfmt_misc</code>. If you're using relatively recent systemd-based Linux distribution, it is highly likely the filesystem is already mounted for you, because systemd by default installs special <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.mount">mount</a> and <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.automount">automount</a> units for this purpose. To double-check just run:</p>
 	<pre class="language-bash"><code class="language-bash">$ mount | grep binfmt_misc

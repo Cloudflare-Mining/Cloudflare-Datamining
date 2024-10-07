@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Data encryption at rest is a must-have for any modern Internet company. Many companies, however, don't encrypt their disks, because they fear the potential performance penalty caused by encryption overhead.</p>
 	<p>Encrypting data at rest is vital for Cloudflare with <a href="https://www.cloudflare.com/network">more than 200 data centres across the world</a>. In this post, we will investigate the performance of disk encryption on Linux and explain how we made it at least two times faster for ourselves and our customers!</p>
-	<h3>Encrypting data at rest</h3>
+	<div class="flex anchor relative">
+		<h3 id="encrypting-data-at-rest">Encrypting data at rest</h3>
+		<a href="https://blog.cloudflare.com/#encrypting-data-at-rest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When it comes to encrypting data at rest there are several ways it can be implemented on a modern operating system (OS). Available techniques are tightly coupled with a <a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/Storage">typical OS storage stack</a>. A simplified version of the storage stack and encryption solutions can be found on the diagram below:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -20,7 +27,14 @@
 	<h4>Hardware vs software disk encryption</h4>
 	<p>When encrypting data at the block layer it is possible to do it directly in the storage hardware, if the hardware <a href="https://en.wikipedia.org/wiki/Hardware-based_full_disk_encryption">supports it</a>. Doing so usually gives better read/write performance and consumes less resources from the host. However, since most hardware firmware is proprietary, it does not receive as much attention and review from the security community. In the past this led to <a href="https://www.us-cert.gov/ncas/current-activity/2018/11/06/Self-Encrypting-Solid-State-Drive-Vulnerabilities">flaws in some implementations of hardware disk encryption</a>, which render the whole security model useless. Microsoft, for example, <a href="https://support.microsoft.com/en-us/help/4516071/windows-10-update-kb4516071">started to prefer software-based disk encryption</a> since then.</p>
 	<p>We didn't want to put our data and our customers' data to the risk of using potentially insecure solutions and we <a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">strongly believe in open-source</a>. That's why we rely only on software disk encryption in the Linux kernel, which is open and has been audited by many security professionals across the world.</p>
-	<h3>Linux disk encryption performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="linux-disk-encryption-performance">Linux disk encryption performance</h3>
+		<a href="https://blog.cloudflare.com/#linux-disk-encryption-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We aim not only to save bandwidth costs for our customers, but to deliver content to Internet users as fast as possible.</p>
 	<p>At one point we noticed that our disks were not as fast as we would like them to be. Some profiling as well as a quick A/B test pointed to Linux disk encryption. Because not encrypting the data (even if it is supposed-to-be a public Internet cache) is not a sustainable option, we decided to take a closer look into Linux disk encryption performance.</p>
 	<h4>Device mapper and dm-crypt</h4>
@@ -213,7 +227,14 @@ Run status group 0 (all jobs):
 		</li>
 	</ul>
 	<p>And many of the design choices above may not be applicable to modern Linux.</p>
-	<h3>The "clean-up"</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-clean-up">The "clean-up"</h3>
+		<a href="https://blog.cloudflare.com/#the-clean-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Based on the research above we decided to try to remove all the extra queueing and asynchronous behaviour and revert <code>dm-crypt</code> to its original purpose: simply encrypt/decrypt IO requests as they pass through. But for the sake of stability and further benchmarking we ended up not removing the actual code, but rather adding yet another <code>dm-crypt</code> option, which bypasses all the queues/threads, if enabled. The flag allows us to switch between the current and new behaviour at runtime under full production load, so we can easily revert our changes should we see any side-effects. The resulting patch can be found on the <a href="https://github.com/cloudflare/linux/blob/12a61de6dd06408f4f3c27f8019beb66366e98e3/patches/0023-Add-DM_CRYPT_FORCE_INLINE-flag-to-dm-crypt-target.patch">Cloudflare GitHub Linux repository</a>.</p>
 	<h4>Synchronous Linux Crypto API</h4>
 	<p>From the diagram above we remember that not all queueing is implemented in <code>dm-crypt</code>. Modern Linux Crypto API may also be asynchronous and for the sake of this experiment we want to eliminate queues there as well. What does "may be" mean, though? The OS may contain different implementations of the same algorithm (for example, <a href="https://en.wikipedia.org/wiki/AES_instruction_set">hardware-accelerated AES-NI on x86 platforms</a> and generic C-code AES implementations). By default the system chooses the "best" one based on <a href="https://www.kernel.org/doc/html/v4.19/crypto/architecture.html#crypto-api-cipher-references-and-priority">the configured algorithm priority</a>. <code>dm-crypt</code> allows overriding this behaviour and <a href="https://gitlab.com/cryptsetup/cryptsetup/-/wikis/DMCrypt#mapping-table-for-crypt-target">request a particular cipher implementation</a> using the <code>capi:</code> prefix. However, there is one problem. Let us actually check the available AES-XTS (this is our disk encryption cipher, remember?) implementations on our system:</p>
@@ -338,7 +359,14 @@ chunksize    : 16</code></pre>
 
 	</figure>
 	<p>This graph represents a three-way comparison of the worst-case response times (99th percentile) for a <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">cache hit in one of our servers</a>. The green line is from a server with unencrypted disks, which we will use as baseline. The red line is from a server with encrypted disks with the default Linux disk encryption implementation and the blue line is from a server with encrypted disks and our optimisations enabled. As we can see the default Linux disk encryption implementation has a significant impact on our cache latency in worst case scenarios, whereas the patched implementation is indistinguishable from not using encryption at all. In other words the improved encryption implementation does not have any impact at all on our cache response speed, so we basically get it for free! That’s a win!</p>
-	<h3>We're just getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-just-getting-started">We're just getting started</h3>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This post shows how an architecture review can double the performance of a system. Also we <a href="https://blog.cloudflare.com/how-expensive-is-crypto-anyway">reconfirmed that modern cryptography is not expensive</a> and there is usually no excuse not to protect your data.</p>
 	<p>We are going to submit this work for inclusion in the main kernel source tree, but most likely not in its current form. Although the results look encouraging we have to remember that Linux is a highly portable operating system: it runs on powerful servers as well as small resource constrained IoT devices and on <a href="https://blog.cloudflare.com/arm-takes-wing">many other CPU architectures</a> as well. The current version of the patches just optimises disk encryption for a particular workload on a particular architecture, but Linux needs a solution which runs smoothly everywhere.</p>
 	<p>That said, if you think your case is similar and you want to take advantage of the performance improvements now, you may <a href="https://github.com/cloudflare/linux/blob/master/patches">grab the patches</a> and hopefully provide feedback. The runtime flag makes it easy to toggle the functionality on the fly and a simple A/B test may be performed to see if it benefits any particular case or setup. These patches have been running across our <a href="https://www.cloudflare.com/network">wide network of more than 200 data centres</a> on five generations of hardware, so can be reasonably considered stable. Enjoy both performance and security from Cloudflare for all!</p>
@@ -347,6 +375,13 @@ chunksize    : 16</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QGDkwHsSsWOJBpiZYunWH/b5deb0fd8b2ebfb1cb240f56051ff88e/perf-sec.png" alt="perf-sec" class="kg-image" width="1024" height="512" loading="lazy">
 
 	</figure>
-	<h3>Update (October 11, 2020)</h3>
+	<div class="flex anchor relative">
+		<h3 id="update-october-11-2020">Update (October 11, 2020)</h3>
+		<a href="https://blog.cloudflare.com/#update-october-11-2020" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main patch from this blog (in a slightly updated form) has been <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/md/dm-crypt.c?id=39d42fa96ba1b7d2544db3f8ed5da8fb0d5cb877">merged</a> into mainline Linux kernel and is available since version 5.9 and onwards. The main difference is the mainline version exposes two flags instead of one, which provide the ability to bypass dm-crypt workqueues for reads and writes independently. For details, see <a href="https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html">the official dm-crypt documentation</a>.</p>
 </div>

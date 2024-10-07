@@ -56,7 +56,15 @@
    6604 3269   # IT Telecom Italia
    6377 12768  # RU JSC "ER-Telecom Holding"
    ...</code></pre>
-	<h3>What's SSDP anyway?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="whats-ssdp-anyway">What's SSDP anyway?</h3>
+		<a href="https://blog.cloudflare.com/#whats-ssdp-anyway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking#UPnP">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html">how UPnP compares to Bonjour</a>.</p>
 	<p><a href="http://www.upnp-hacks.org/upnp.html">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
 	<p><i>When a control point is added to the network, the UPnP discovery protocol allows that control point to search for devices of interest on the network. It does this by multicasting on the reserved address and port (239.255.255.250:1900) a search message with a pattern, or target, equal to a type or identifier for a device or service.</i></p>
@@ -131,7 +139,15 @@ Server: Linux/3.2 UPnP/1.0 Network_Module/1.0 (RX-S601D)
 EXT:
 ST: upnp:rootdevice
 USN: uuid:9ab0c000-f668-11de-9976-000adedd7411::upnp:rootdevice</code></pre>
-	<h3>The firewall</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-firewall">The firewall</h3>
+		<a href="https://blog.cloudflare.com/#the-firewall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we understand the basics of SSDP, understanding the reflection attack should be easy. You see, there are in fact two ways of delivering the <code>M-SEARCH</code> frame:</p>
 	<ul>
 		<li>
@@ -162,7 +178,15 @@ USN: uuid:3e55ade9-c344-4baa-841b-826bda77dcb2::upnp:rootdevice
 EXT:
 SERVER: TBS/R2 UPnP/1.0 MiniUPnPd/1.2
 LOCATION: http://192.168.2.1:40464/rootDesc.xml</code></pre>
-	<h3>The amplification</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-amplification">The amplification</h3>
+		<a href="https://blog.cloudflare.com/#the-amplification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The real damage is done by the <code>ssdp:all</code> <code>ST</code> type though. These responses are <i>much</i> larger:</p>
 	<pre class="language-bash"><code class="language-bash">$ python ssdp-query.py 100.42.x.x ssdp:all
 [+] ('100.42.x.x', 1900)
@@ -196,7 +220,14 @@ LOCATION: http://192.168.2.1:40464/rootDesc.xml
  00:00:00.215522 IP 100.42.x.x.1900 &gt; 192.168.1.200.61794: UDP, length 291
  00:00:00.219190 IP 100.42.x.x.1900 &gt; 192.168.1.200.61794: UDP, length 291</code></pre>
 	<p>That target exposes 8x packet count amplification and 26x bandwidth amplification. Sadly, this is typical for SSDP.</p>
-	<h3>IP Spoofing</h3>
+	<div class="flex anchor relative">
+		<h3 id="ip-spoofing">IP Spoofing</h3>
+		<a href="https://blog.cloudflare.com/#ip-spoofing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The final step for the attack is to fool the vulnerable servers to flood the target IP - not the attacker. For that the attacker needs to <a href="https://en.wikipedia.org/wiki/IP_address_spoofing">spoof the source IP address</a> on their queries.</p>
 	<p>We probed the reflector IPs used in the shown 100 Gbps+ attack. We found that out of the 920k reflector IPs, only 350k (38%) still respond to SSDP probes.</p>
 	<p>Out of the reflectors that responded, each sent on average 7 packets:</p>
@@ -233,7 +264,14 @@ Response packets per IP:
 		</li>
 	</ul>
 	<p>In other words: a single well connected 10 Gbps server able to perform IP spoofing can deliver a significant SSDP attack.</p>
-	<h3>More on the SSDP servers</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-on-the-ssdp-servers">More on the SSDP servers</h3>
+		<a href="https://blog.cloudflare.com/#more-on-the-ssdp-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since we probed the vulnerable SSDP servers, here are the most common <code>Server</code> header values we received:</p>
 	<pre class="language-bash"><code class="language-bash"> 104833 Linux/2.4.22-1.2115.nptl UPnP/1.0 miniupnpd/1.0
   77329 System/1.0 UPnP/1.0 IGD/1.0
@@ -287,7 +325,14 @@ Response packets per IP:
    6063 urn:schemas-microsoft-com:service:OSInfo:1
     ...</code></pre>
 	<p>The vulnerable IPs are seem to be mostly unprotected home routers.</p>
-	<h3>Open SSDP is a vulnerability</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-ssdp-is-a-vulnerability">Open SSDP is a vulnerability</h3>
+		<a href="https://blog.cloudflare.com/#open-ssdp-is-a-vulnerability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's not a novelty that allowing UDP port 1900 traffic from the Internet to your home printer or such is not a good idea. This problem has been known since at least January 2013:</p>
 	<ul>
 		<li>
@@ -334,7 +379,14 @@ Response packets per IP:
 		</li>
 	</ul>
 	<p>Sadly, the most unprotected routers we saw in the described attack were from China, Russia and Argentina, places not historically known for the most agile internet service providers.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
 	<p><i>This article is a joint work of Marek Majkowski and Ben Cartwright-Cox.</i></p>
 	<p>Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>

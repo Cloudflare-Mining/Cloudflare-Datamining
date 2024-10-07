@@ -13,7 +13,14 @@
 	<p>Smaller file sizes are also particularly beneficial for end users with limited Internet connections, such as mobile devices on cellular networks or users in areas with slow network speeds.</p>
 	<p>Cloudflare has always supported compression in the form of Gzip. Gzip is a widely used compression algorithm that has been around since 1992 and provides file compression for all Cloudflare users. However, in 2013 Google introduced Brotli which supports higher compression levels and better performance overall. Switching from gzip to Brotli results in smaller file sizes and faster load times for web pages. We have supported Brotli since 2017 for the connection between Cloudflare and client browsers. Today we are announcing end-to-end Brotli support for web content: support for Brotli compression, at the highest possible levels, from the origin server to the client.</p>
 	<p>If your origin server supports Brotli, turn it on, crank up the compression level, and enjoy the performance boost.</p>
-	<h3>Brotli compression to 11</h3>
+	<div class="flex anchor relative">
+		<h3 id="brotli-compression-to-11">Brotli compression to 11</h3>
+		<a href="https://blog.cloudflare.com/#brotli-compression-to-11" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brotli has 12 levels of compression ranging from 0 to 11, with 0 providing the fastest compression speed but the lowest compression ratio, and 11 offering the highest compression ratio but requiring more computational resources and time. During our initial implementation of Brotli five years ago, we identified that <a href="https://blog.cloudflare.com/results-experimenting-brotli">compression level 4</a> offered the balance between bytes saved and compression time without compromising performance.</p>
 	<p>Since 2017, Cloudflare has been using a maximum compression of Brotli level 4 for all compressible assets based on the end user's "accept-encoding" header. However, one issue was that Cloudflare only requested Gzip compression from the origin, even if the origin supported Brotli. Furthermore, Cloudflare would always decompress the content received from the origin before compressing and sending it to the end user, resulting in additional processing time. As a result, customers were unable to fully leverage the benefits offered by Brotli compression.</p>
 	<p><b>Old world</b></p>
@@ -43,7 +50,14 @@ brotli_types text/plain text/css application/javascript application/x-javascript
 application/xml application/xml+rss text/javascript image/x-icon 
 image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	<p>Cloudflare will then serve these assets to the client at the exact same compression level (11) for the matching file brotli_types. This means any SVG or BMP images will be sent to the client compressed at Brotli level 11.</p>
-	<h3>Testing</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing">Testing</h3>
+		<a href="https://blog.cloudflare.com/#testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We applied compression against a simple CSS file, measuring the impact of various compression algorithms and levels. Our goal was to identify potential improvements that users could experience by optimizing compression techniques. These results can be seen in the following table:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -156,10 +170,24 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	</figure>
 	<p>If any of these rewrite features are enabled, your origin can still send Brotli compression at higher levels. However, we will decompress, apply the Cloudflare feature(s) enabled, and recompress on the fly using Cloudflare’s default Brotli level 4 or Gzip level 8 depending on the user's accept-encoding header.</p>
 	<p>For browsers that do not accept Brotli compression, we will continue to decompress and send Gzipped responses or uncompressed.</p>
-	<h3>Implementation</h3>
+	<div class="flex anchor relative">
+		<h3 id="implementation">Implementation</h3>
+		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The initial step towards implementing Brotli from the origin involved constructing a decompression module that could be integrated into Cloudflare software stack. It allows us to efficiently convert the compressed bits received from the origin into the original, uncompressed file. This step was crucial as numerous <a href="https://blog.cloudflare.com/rust-nginx-module">features</a> such as Email Obfuscation and Cloudflare Workers Customers, rely on accessing the body of a response to apply customizations.</p>
 	<p>We integrated the decompressor into &nbsp;the core <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">reverse web proxy</a> of Cloudflare. This integration ensured that all Cloudflare products and features could access Brotli decompression effortlessly. This also allowed our Cloudflare Workers team to incorporate Brotli Directly into Cloudflare Workers allowing our Workers customers to be able to interact with responses returned in Brotli or pass through to the end user unmodified.</p>
-	<h3>Introducing Compression rules - Granular control of compression to end users</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-compression-rules-granular-control-of-compression-to-end-users">Introducing Compression rules - Granular control of compression to end users</h3>
+		<a href="https://blog.cloudflare.com/#introducing-compression-rules-granular-control-of-compression-to-end-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default Cloudflare compresses <a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress">certain content types</a> based on the Content-Type header of the file. Today we are also announcing Compression Rules for our Enterprise Customers to allow you even more control on how and what Cloudflare will compress.</p>
 	<p>Today we are also announcing the introduction of Compression Rules for our Enterprise Customers. With Compression Rules, you gain enhanced control over Cloudflare's compression capabilities, enabling you to customize how and which content Cloudflare compresses to <a href="https://www.cloudflare.com/learning/performance/why-site-speed-matters">optimize your website's performance</a>.</p>
 	<p>For example, by using Cloudflare's Compression Rules for .ktx files, customers can optimize the delivery of textures in webGL applications, enhancing the overall user experience. Enabling compression minimizes the bandwidth usage and ensures that webGL applications load quickly and smoothly, even when dealing with large and detailed textures.</p>
@@ -180,7 +208,14 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K6o1RMDHunR0xDyl61sdI/39e572a972c7b8d717a1e4d4682d89cd/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
 
 	</figure>
-	<h3>Deprecating the Brotli toggle</h3>
+	<div class="flex anchor relative">
+		<h3 id="deprecating-the-brotli-toggle">Deprecating the Brotli toggle</h3>
+		<a href="https://blog.cloudflare.com/#deprecating-the-brotli-toggle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brotli has been long supported by some <a href="https://caniuse.com/brotli">web browsers</a> since 2016 and Cloudflare offered Brotli Support in 2017. As with all new web technologies Brotli was unknown and we gave customers the ability to selectively enable or disable BrotlI via the API and our UI.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -188,7 +223,14 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 
 	</figure>
 	<p>Now that Brotli has evolved and is supported by all browsers, we plan to enable Brotli on all zones by default in the coming months. Mirroring the Gzip behavior we currently support and removing the toggle from our dashboard. If browsers do not support Brotli, Cloudflare will continue to support their accepted encoding types such as Gzip or uncompressed and Enterprise customers will still be able to use Compression rules to granularly control how we compress data towards their users.</p>
-	<h3>The future of web compression</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-web-compression">The future of web compression</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-web-compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've seen great adoption and great performance for Brotli as the new compression technique for the web. Looking forward, we are closely following trends and new compression algorithms such as <a href="https://www.rfc-editor.org/rfc/rfc8478">zstd</a> as a possible next-generation compression algorithm.</p>
 	<p>At the same time, we're looking to improve Brotli directly where we can. One development that we're particularly focused on is shared dictionaries with Brotli. Whenever you compress an asset, you use a "dictionary" that helps the compression to be more efficient. A simple analogy of this is typing OMW into an iPhone message. The iPhone will automatically translate it into On My Way using its own internal dictionary.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -261,9 +303,24 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 	<p>This internal dictionary has taken three characters and morphed this into nine characters (including spaces) The internal dictionary has saved six characters which equals performance benefits for users.</p>
 	<p>By default, the <a href="https://www.rfc-editor.org/rfc/rfc7932#page-28">Brotli RFC</a> defines a static dictionary that both clients and the origin servers use. The static dictionary was designed to be general purpose and apply to everyone. Optimizing the size of the dictionary as to not be too large whilst able to generate best compression results. However, what if an origin could generate a bespoke dictionary tailored to a specific website? For example a Cloudflare-specific dictionary would allow us to compress the words and phrases that appear repeatedly on our site such as the word “Cloudflare”. The bespoke dictionary would be designed to compress this as heavily as possible and the browser using the same dictionary would be able to translate this back.</p>
 	<p>A <a href="https://github.com/wicG/compression-dictionary-transport">new proposal</a> by the Web Incubator CG aims to do just that, allowing you to specify your own dictionaries that browsers can use to allow websites to optimize compression further. We're excited about contributing to this proposal and plan on publishing our research soon.</p>
-	<h3>Try it now</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-now">Try it now</h3>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Compression Rules are available now! With End to End Brotli being rolled out over the coming weeks. Allowing you to improve performance, reduce bandwidth and granularly control how Cloudflare handles compression to your end users.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f1c71fdb05263b5ec3077e6e7acdb7e2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff1c71fdb05263b5ec3077e6e7acdb7e2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p></p>

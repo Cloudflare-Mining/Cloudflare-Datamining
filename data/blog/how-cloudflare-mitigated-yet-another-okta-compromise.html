@@ -6,7 +6,14 @@
 	<p>This is the second time Cloudflare has been impacted by a breach of Okta’s systems. In <a href="https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise">March 2022</a>, we blogged about our investigation on how a breach of Okta affected Cloudflare. In that incident, we concluded that there was no access from the threat actor to any of our systems or data – Cloudflare’s use of hard keys for multi-factor authentication stopped this attack. &nbsp;</p>
 	<p>The key to mitigating this week’s incident was our team’s early detection and immediate response. In fact, we contacted Okta about the breach of their systems before they had notified us. The attacker used an open session from Okta, with Administrative privileges, and accessed our Okta instance. We were able to use our Cloudflare Zero Trust Access, Gateway, and Data Loss Prevention and our Cloudforce One threat research to validate the scope of the incident and contain it before the attacker could gain access to customer data, customer systems, or our production network. With this confidence, we were able to quickly mitigate the incident before the threat-actors were able to establish persistence.</p>
 	<p>According to Okta’s statement, the threat-actor accessed Okta’s customer support system and viewed files uploaded by certain Okta customers as part of recent support cases. It appears that in our case, the threat-actor was able to hijack a session token from a support ticket which was created by a Cloudflare employee. Using the token extracted from Okta, the threat-actor accessed Cloudflare systems on October 18. In this sophisticated attack, we observed that threat-actors compromised two separate Cloudflare employee accounts within the Okta platform. We detected this activity internally more than 24 hours before we were notified of the breach by Okta. Upon detection, our SIRT was able to engage quickly to identify the complete scope of compromise and contain the security incident. Cloudflare’s <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust architecture</a> protects our production environment, which helped prevent any impact to our customers.</p>
-	<h2>Recommendations for Okta</h2>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-okta">Recommendations for Okta</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-okta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We urge Okta to consider implementing the following best practices, including:</p>
 	<ul>
 		<li>
@@ -20,7 +27,14 @@
 		</li>
 	</ul>
 	<p>For a critical security service provider like Okta, we believe following these best practices is table stakes.</p>
-	<h2>Recommendations for Okta’s Customers</h2>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-oktas-customers">Recommendations for Okta’s Customers</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-oktas-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are an Okta customer, we recommend that you reach out to them for further information regarding potential impact to your organization. We also advise the following actions:</p>
 	<ul>
 		<li>

@@ -5,11 +5,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pbd6fdrraXYLC5WKlqz83/37efd1648a5deb1f4be63a9638532663/image1-54.png" alt="Monitoring our monitoring: how we validate our Prometheus alert rules" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use <a href="https://prometheus.io">Prometheus</a> as our core monitoring system. We’ve been heavy Prometheus users since 2017 when we migrated off our previous monitoring system which used a customized <a href="https://www.nagios.org">Nagios</a> setup. Despite growing our infrastructure a lot, adding tons of new products and learning some hard lessons about operating Prometheus at scale, our original architecture of Prometheus (see <a href="https://www.youtube.com/watch?v=ypWwvz5t_LE">Monitoring Cloudflare's Planet-Scale Edge Network with Prometheus</a> for an in depth walk through) remains virtually unchanged, proving that Prometheus is a solid foundation for building observability into your services.</p>
 	<p>One of the key responsibilities of Prometheus is to alert us when something goes wrong and in this blog post we’ll talk about how we make those alerts more reliable - and we’ll introduce an open source tool we’ve developed to help us with that, and share how you can use it too. If you’re not familiar with Prometheus you might want to start by watching <a href="https://www.youtube.com/watch?v=PzFUwBflXYc">this video</a> to better understand the topic we’ll be covering here.</p>
 	<p>Prometheus works by collecting metrics from our services and storing those metrics inside its database, called TSDB. We can then <a href="https://prometheus.io/docs/prometheus/latest/querying/basics">query these metrics</a> using Prometheus query language called PromQL using ad-hoc queries (for example to power <a href="https://grafana.com/grafana">Grafana dashboards</a>) or via <a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules">alerting</a> or <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules">recording</a> rules. A rule is basically a query that Prometheus will run for us in a loop, and when that query returns any results it will either be recorded as new metrics (with recording rules) or trigger alerts (with alerting rules).</p>
-	<h3>Prometheus alerts</h3>
+	<div class="flex anchor relative">
+		<h3 id="prometheus-alerts">Prometheus alerts</h3>
+		<a href="https://blog.cloudflare.com/#prometheus-alerts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since we’re talking about improving our alerting we’ll be focusing on alerting rules.</p>
 	<p>To create alerts we first need to have some metrics collected. For the purposes of this blog post let’s assume we’re working with http_requests_total metric, which is used on the examples <a href="https://prometheus.io/docs/prometheus/latest/querying/examples">page</a>. Here are some examples of how our metrics will look:</p>
 	<pre class="language-bash"><code class="language-bash">http_requests_total{job="myserver", handler="/", method=”get”, status=”200”}
@@ -43,9 +57,23 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	<p>This is great because if the underlying issue is resolved the alert will resolve too.</p>
 	<p>We can improve our alert further by, for example, alerting on the percentage of errors, rather than absolute numbers, or even calculate error budget, but let’s stop here for now.</p>
 	<p>It’s all very simple, so what do we mean when we talk about improving the reliability of alerting? What could go wrong here?</p>
-	<h3>What could go wrong?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-could-go-wrong">What could go wrong?</h3>
+		<a href="https://blog.cloudflare.com/#what-could-go-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can craft a valid YAML file with a rule definition that has a perfectly valid query that will simply not work how we expect it to work. Which, when it comes to alerting rules, might mean that the alert we rely upon to tell us when something is not working correctly will fail to alert us when it should. To better understand why that might happen let’s first explain how querying works in Prometheus.</p>
-	<h3>Prometheus querying basics</h3>
+	<div class="flex anchor relative">
+		<h3 id="prometheus-querying-basics">Prometheus querying basics</h3>
+		<a href="https://blog.cloudflare.com/#prometheus-querying-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two basic types of queries we can run against Prometheus. The first one is an <b>instant query</b>. It allows us to ask Prometheus for a point in time value of some time series. If we write our query as http_requests_total we’ll get all time series named http_requests_total along with the most recent value for each of them. We can further customize the query and filter results by adding label matchers, like http_requests_total{status=”500”}.</p>
 	<p>Let’s consider we have two instances of our server, green and red, each one is scraped (Prometheus collects metrics from it) every one minute (independently of each other).</p>
 	<p>This is what happens when we issue an instant query:</p>
@@ -69,7 +97,14 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dBwnYThdf3ioljbPdmSKV/a77b1a86010cbf7b8207b4bb55218adf/4-fixed.png" alt="" class="kg-image" width="1763" height="858" loading="lazy">
 
 	</figure>
-	<h3>When queries don’t return anything</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-queries-dont-return-anything">When queries don’t return anything</h3>
+		<a href="https://blog.cloudflare.com/#when-queries-dont-return-anything" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Knowing a bit more about how queries work in Prometheus we can go back to our alerting rules and spot a potential problem: queries that don’t return anything.</p>
 	<p>If our query doesn’t match any time series or if they’re considered stale then Prometheus will return an empty result. This might be because we’ve made a typo in the metric name or label filter, the metric we ask for is no longer being exported, or it was never there in the first place, or we’ve added some condition that wasn’t satisfied, like value of being non-zero in our http_requests_total{status=”500”} &gt; 0 example.</p>
 	<p>Prometheus will not return any error in any of the scenarios above because none of them are really problems, it’s just how querying works. If you ask for something that doesn’t match your query then you get empty results. This means that there’s no distinction between “all systems are operational” and “you’ve made a typo in your query”. So if you’re not receiving any alerts from your service it’s either a sign that everything is working fine, or that you’ve made a typo, and you have no working monitoring at all, and it’s up to you to verify which one it is.</p>
@@ -95,12 +130,26 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 
 	</figure>
 	<p>There are more potential problems we can run into when writing Prometheus queries, for example any operations between two metrics will only work if both have the same set of labels, you can read about this <a href="https://prometheus.io/docs/prometheus/latest/querying/operators/#vector-matching">here</a>. But for now we’ll stop here, listing all the gotchas could take a while. The point to remember is simple: if your alerting query doesn’t return anything then it might be that everything is ok and there’s no need to alert, but it might also be that you’ve mistyped your metrics name, your label filter cannot match anything, your metric disappeared from Prometheus, you are using too small time range for your range queries etc.</p>
-	<h3>Renaming metrics can be dangerous</h3>
+	<div class="flex anchor relative">
+		<h3 id="renaming-metrics-can-be-dangerous">Renaming metrics can be dangerous</h3>
+		<a href="https://blog.cloudflare.com/#renaming-metrics-can-be-dangerous" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve been running Prometheus for a few years now and during that time we’ve grown our collection of alerting rules a lot. Plus we keep adding new products or modifying existing ones, which often includes adding and removing metrics, or modifying existing metrics, which may include renaming them or changing what labels are present on these metrics.</p>
 	<p>A lot of metrics come from metrics exporters maintained by the Prometheus community, like <a href="https://github.com/prometheus/node_exporter">node_exporter</a>, which we use to gather some operating system metrics from all of our servers. Those exporters also undergo changes which might mean that some metrics are deprecated and removed, or simply renamed.</p>
 	<p>A problem we’ve run into a few times is that sometimes our alerting rules wouldn’t be updated after such a change, for example when we upgraded node_exporter across our fleet. Or the addition of a new label on some metrics would suddenly cause Prometheus to no longer return anything for some of the alerting queries we have, making such an alerting rule no longer useful.</p>
 	<p>It’s worth noting that Prometheus does have a way of <a href="https://prometheus.io/docs/prometheus/latest/configuration/unit_testing_rules">unit testing rules</a>, but since it works on mocked data it’s mostly useful to validate the logic of a query. Unit testing won’t tell us if, for example, a metric we rely on suddenly disappeared from Prometheus.</p>
-	<h3>Chaining rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="chaining-rules">Chaining rules</h3>
+		<a href="https://blog.cloudflare.com/#chaining-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When writing alerting rules we try to limit <a href="https://en.wikipedia.org/wiki/Alarm_fatigue">alert fatigue</a> by ensuring that, among many things, alerts are only generated when there’s an action needed, they clearly describe the problem that needs addressing, they have a link to a runbook and a dashboard, and finally that we aggregate them as much as possible. This means that a lot of the alerts we have won’t trigger for each individual instance of a service that’s affected, but rather once per data center or even globally.</p>
 	<p>For example, we might alert if the rate of HTTP errors in a datacenter is above 1% of all requests. To do that we first need to calculate the overall rate of errors across all instances of our server. For that we would use a <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules">recording rule</a>:</p>
 	<pre class="language-bash"><code class="language-bash">- record: job:http_requests_total:rate2m
@@ -121,7 +170,14 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	</figure>
 	<p>What if all those rules in our chain are maintained by different teams? What if the rule in the middle of the chain suddenly gets renamed because that’s needed by one of the teams? Problems like that can easily crop up now and then if your environment is sufficiently complex, and when they do, they’re not always obvious, after all the only sign that something stopped working is, well, silence - your alerts no longer trigger. If you’re lucky you’re plotting your metrics on a dashboard somewhere and hopefully someone will notice if they become empty, but it’s risky to rely on this.</p>
 	<p>We definitely felt that we needed something better than hope.</p>
-	<h3>Introducing pint: a Prometheus rule linter</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-pint-a-prometheus-rule-linter">Introducing pint: a Prometheus rule linter</h3>
+		<a href="https://blog.cloudflare.com/#introducing-pint-a-prometheus-rule-linter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To avoid running into such problems in the future we’ve decided to write a tool that would help us do a better job of testing our alerting rules against live Prometheus servers, so we can spot missing metrics or typos easier. We also wanted to allow new engineers, who might not necessarily have all the in-depth knowledge of how Prometheus works, to be able to write rules with confidence without having to get feedback from more experienced team members.</p>
 	<p>Since we believe that such a tool will have value for the entire Prometheus community we’ve open-sourced it, and it’s available for anyone to use - say hello to pint!</p>
 	<p>You can find sources on <a href="https://github.com/cloudflare/pint">github</a>, there’s also <a href="https://cloudflare.github.io/pint">online documentation</a> that should help you get started.</p>
@@ -156,7 +212,14 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	<p>We also require all alerts to have priority labels, so that high priority alerts are generating pages for responsible teams, while low priority ones are only routed to <a href="https://github.com/prymitive/karma">karma dashboard</a> or create tickets using <a href="https://github.com/prometheus-community/jiralert">jiralert</a>. It’s easy to forget about one of these required fields and that’s not something which can be enforced using unit testing, but pint allows us to do that with a few configuration lines.</p>
 	<p>With pint running on all stages of our Prometheus rule life cycle, from initial pull request to monitoring rules deployed in our many data centers, we can rely on our Prometheus alerting rules to always work and notify us of any incident, large or small.</p>
 	<p>GitHub: <a href="https://github.com/cloudflare/pint">https://github.com/cloudflare/pint</a></p>
-	<h3>Putting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s see how we can use pint to validate our rules as we work on them.</p>
 	<p>We can begin by creating a file called “rules.yml” and adding both recording rules there.</p>
 	<p>The goal is to write new rules that we want to add to Prometheus, but before we actually add those, we want pint to validate it all for us.</p>
@@ -259,7 +322,14 @@ level=fatal msg="Execution completed with error(s)" error="problems found"</code
 	<p>But what if that happens after we deploy our rule? For that we can use the “pint watch” command that runs pint as a daemon periodically checking all rules.</p>
 	<p>Please note that validating all metrics used in a query will eventually produce some false positives. In our example metrics with status=”500” label might not be exported by our server until there’s at least one request ending in HTTP 500 error.</p>
 	<p>The <a href="https://cloudflare.github.io/pint/checks/promql/series.html">promql/series</a> check responsible for validating presence of all metrics has some documentation on how to deal with this problem. In most cases you’ll want to add a comment that instructs pint to ignore some missing metrics entirely or stop checking label values (only check if there’s “status” label present, without checking if there are time series with status=”500”).</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prometheus metrics don’t follow any strict schema, whatever services expose will be collected. At the same time a lot of problems with queries hide behind empty results, which makes noticing these problems non-trivial.</p>
 	<p>We use pint to find such problems and report them to engineers, so that our global network is always monitored correctly, and we have confidence that lack of alerts proves how reliable our infrastructure is.</p>
 </div>

@@ -5,7 +5,14 @@
 	<p>In summary, this browser extension allows a user to generate cryptographically ‘blinded’ tokens that can then be signed by supporting servers following some receipt of authenticity (e.g. a CAPTCHA solution). The browser extension can then use these tokens to ‘prove’ honesty in future communications with the server, without having to solve more authenticity challenges.</p>
 	<p>The ‘blind’ aspect of the protocol means that it is infeasible for a server to link tokens token that it signs to tokens that are redeemed in the future. This means that a client using the browser extension should not compromise their own privacy with respect to the server they are communicating with.</p>
 	<p>In this blog post we hope to give more of an insight into how we have developed the protocol and the security considerations that we have taken into account. We have made use of some interesting and modern cryptographic techniques that we believe could have a future impact on a wide array of problems.</p>
-	<h3>Previously…</h3>
+	<div class="flex anchor relative">
+		<h3 id="previously">Previously…</h3>
+		<a href="https://blog.cloudflare.com/#previously" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The research team released a specification last year for a “blind signing” protocol (very similar to the original proposal of <a href="https://blog.cloudflare.com/#Cha82">Chaum</a> using a variant of RSA known as ‘blind RSA’. Blind RSA simply uses the homomorphic properties of the textbook RSA signature scheme to allow the user to have messages signed <i>obliviously</i>. Since then, George Tankersley and Filippo Valsorda gave a talk at <a href="https://youtu.be/GqY7YUv8b5Y">Real World Crypto 2017</a> explaining the idea in more detail and how the protocol could be implemented. The intuition behind a blind signing protocol is also given in <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Nick’s blog post</a>.</p>
 	<p>A blind signing protocol between a server A and a client B roughly takes the following form:</p>
 	<ul>
@@ -26,7 +33,14 @@
 		</li>
 	</ul>
 	<p>Due to limitations arising from the usage of RSA (e.g. large signature sizes, slower operations), there were efficiency concerns surrounding the extra bandwidth and computation time on the client browser. Fortunately, we received a lot of feedback from many notable individuals (full acknowledgments below). In short, this helped us to come up with a protocol with much lower overheads in storage, bandwidth and computation time using elliptic curve cryptography as the foundation instead.</p>
-	<h3>Elliptic curves (a very short introduction)</h3>
+	<div class="flex anchor relative">
+		<h3 id="elliptic-curves-a-very-short-introduction">Elliptic curves (a very short introduction)</h3>
+		<a href="https://blog.cloudflare.com/#elliptic-curves-a-very-short-introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An elliptic curve is defined over a finite field modulo some prime <code>p</code>. Briefly, an <code>(x,y)</code> coordinate is said to lie on the curve if it satisfies the following equation:</p>
 	<p><code>y^2 = x^3 + a*x + b (modulo p)</code></p>
 	<p>Nick Sullivan wrote an introductory <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">blog post</a> on the use of elliptic curves in cryptography a while back, so this may be a good place to start if you’re new to the area.</p>
@@ -150,14 +164,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UrTr7lpAY9Fin8rctVoLa/932a51c8ba03f9137ffacc31b5914e7a/image1-1.png" alt="" class="kg-image" width="600" height="400" loading="lazy">
 
 	</figure>
-	<h3>Cryptographic security of protocol</h3>
+	<div class="flex anchor relative">
+		<h3 id="cryptographic-security-of-protocol">Cryptographic security of protocol</h3>
+		<a href="https://blog.cloudflare.com/#cryptographic-security-of-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are many different ways in which we need to ensure that the protocol remains “secure”. Clearly one of the main features is that the user remains anonymous in the transaction. Furthermore, we need to show that the client is unable to leverage the protocol in order to learn the private key of the edge, or arbitrarily gain infinite tokens. We give two security arguments for our protocol that we can easily reduce to cryptographic assumptions on the hardness of widely-used problems. There are a number of other security goals for the protocol but we consider the two arguments below as fundamental security requirements.</p>
 	<h4>Unlinkability in the presence of an adversarial edge</h4>
 	<p>Similarly to the RSA blind signing protocol, the blind r is used to prevent the edge from learning the value of <code>T</code>, above. Since <code>r</code> is not used in the redemption phase of the protocol, there is no way that the server can link a blinded token <code>rT</code> in the signing phase to any token in a given redemption phase. Since S recalculates <code>T</code> during redemption, it may be tempting to think that S could recover <code>r</code> from <code>rT</code>. However, the hardness of the discrete log problem prevents S from launching this attack. Therefore, the server has no knowledge of <code>r</code>.</p>
 	<p>As mentioned and similarly to the <a href="https://blog.cloudflare.com/#jkk14">JKK14</a> OPRF protocol above, we rely on the hardness of standard cryptographic assumptions such as the discrete log problem (DLP), and collision-resistant hash functions. Using these hardness assumptions it is possible to write a proof of security in the presence of a dishonest server. The proof of security shows that assuming that these assumptions are hard, then a dishonest server is unable to link an execution of the signing phase with any execution of the redemption phase with probability higher than just randomly guessing.</p>
 	<p>Intuitively, in the signing phase, C sends randomly distributed data due to the blinding mechanism and so S cannot learn anything from this data alone. In the redemption phase, C unveils their token, but the transcript of the signing phase witnessed by S is essentially random and so it cannot be used to learn anything from the redemption phase.</p>
 	<p>This is not a full proof of security but gives an idea as to how we can derive cryptographic hardness for the underlying protocol. We hope to publish a more detailed cryptographic proof in the near future to accompany our protocol design.</p>
-	<h3>Key privacy for the edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-privacy-for-the-edge">Key privacy for the edge</h3>
+		<a href="https://blog.cloudflare.com/#key-privacy-for-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is also crucial to prove that the exchange does not reveal the secret key <code>x</code> to the user. If this were to happen, then the user would be able to arbitrarily sign their own tokens, giving them an effectively infinite supply.</p>
 	<p>Notice that the only time when the client is exposed to the key is when they receive <code>Z = xM</code>. In elliptic-curve terminology, the client receives their blinded token scalar multiplied with <code>x</code>. Notice, that this is also identical to the interaction that an adversary witnesses in the discrete log problem. In fact, if the client was able to compute <code>x</code> from <code>Z</code>, then the client would also be able to solve the DLP — which is thought to be very hard for established key sizes. In this way, we have a sufficient guarantee that an adversarial client would not be able to learn the key from the signing interaction.</p>
 	<h4>Preventing further deanonymization attacks using “Verifiable” OPRFs</h4>

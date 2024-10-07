@@ -11,7 +11,14 @@
 	<p>Combining Cloudflare’s edge network with Linc’s approach to server-side rendering, we’re able to set a new standard for performance on the web by delivering the speed of powerful servers close to users. Now, I’ll hand it over to Glen Maddern, who was the CTO of Linc, to share why they joined Cloudflare.</p>
 	<hr>
 	<p>Linc and the Frontend Application Bundle (FAB) specification were designed with a single goal in mind: to give frontend developers the best possible tools to build, review, refine, and deploy their applications. An important piece of that is making server-side logic and rendering much more accessible, regardless of what type of app you're building.</p>
-	<h3>Static vs Dynamic frontends</h3>
+	<div class="flex anchor relative">
+		<h3 id="static-vs-dynamic-frontends">Static vs Dynamic frontends</h3>
+		<a href="https://blog.cloudflare.com/#static-vs-dynamic-frontends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the biggest problems in frontend web development today is the dramatic difference in complexity when moving from generating static sites (e.g. building a directory full of HTML, JS, and CSS files) to hosting a full application (traditionally using NodeJS and a web server like Express). While you gain the flexibility of being able to render everything on-demand and customised for the current user, you increase your maintenance cost — you now have servers that you need to keep running. And unless you're operating at a global scale already, you'll often see worse end-user performance as your requests are only being served from one or maybe a couple of locations worldwide.</p>
 	<p>While serverless platforms have arisen to solve these problems for backend services and can be brought to bear on frontend apps, they're much less cost-effective than using static hosting, especially if the bulk of your frontend assets are static. As such, we've seen a rise of technologies under the umbrella term of "JAMstack"; they aim at making static sites more powerful (like rebuilding based off CMS updates), or at making it possible to deploy small pieces of server-side APIs as "cloud functions", along with each update of your app. But it's still fundamentally a limited architecture — you always have a static layer between you and your users, so the more dynamic your needs, the more complex your build pipeline becomes, or the more you're forced to rely on client-side logic.</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,7 +27,14 @@
 
 	</figure>
 	<p>FABs took a different approach: a deployment artefact that could support the full range of server-side needs, from entirely static sites, apps with some API routes or cloud functions, all the way to full server-side streaming rendering. We also made it compatible with all the cloud hosting providers you might want, so that deploying becomes as easy as uploading a ZIP file. Then, as your needs change, as dynamic content becomes more important, as new frameworks arise that offer increasing performance or you look at moving which provider you're hosting with, you never need to change your tooling and deployment processes.</p>
-	<h3>The FAB approach</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-fab-approach">The FAB approach</h3>
+		<a href="https://blog.cloudflare.com/#the-fab-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Regardless of what framework you're working with, the FAB compiler generates a fab.zip file that has two components: a server.js file that acts as a server-side entry point, and an _assets directory that stores the HTML, CSS, JS, images, and fonts that are sent to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,7 +58,14 @@
 	<p>Workers, unlike other serverless platforms, truly runs at the edge: there is no CDN or load balancer in front of it to split off /_assets routes and send them directly to the Assets storage. This means that every request hits the worker, whether it's triggering a full page render or piping through the bytes for an image file. It might feel like a downside, but with Workers' performance and cost profile, it's quite the opposite — it actually gives us much more flexibility in what we end up building, and gets us closer to the goal of fully unlocking server-side code.</p>
 	<p>To give just one example, we no longer need to store our asset files on a dedicated static file host — instead, we can use Cloudflare's global key-value storage: Workers KV. Our server.js running inside a Worker can then map /_assets requests directly into the KV store and stream the result to the user. This results in significantly better performance than proxying to a third-party asset host.</p>
 	<p>What we've found is that Cloudflare offered the most "FAB-native" hosting option, and so it's very exciting to have the opportunity to further develop what they can do.</p>
-	<h3>Linc + Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="linc-cloudflare">Linc + Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#linc-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we stated above, Linc's goal was to give frontend developers the best tooling to build and refine their apps, regardless of which hosting they were using. But we started to notice an important trend — &nbsp;if a team had a free choice for where to host their frontend, they inevitably chose Cloudflare Workers. In some cases, for a period, teams even used Linc to deploy a FAB to Workers alongside their existing hosting to demonstrate the performance improvement before migrating permanently.</p>
 	<p>At the same time, we started to see more and more opportunities to fully embrace edge-rendering and make global serverless hosting more powerful and accessible. But the most exciting ideas required deep integration with the hosting providers themselves. Which is why, when we started talking to Cloudflare, everything fell into place.</p>
 	<p>We're so excited to join the Cloudflare effort and work on expanding Cloudflare Pages to cover the full spectrum of applications. Not only do they share our goal of bringing sophisticated technology to every development team, but with innovations like Durable Objects starting to offer new storage paradigms, the potential for a truly next-generation deployment, review &amp; &nbsp;hosting platform is tantalisingly close.</p>

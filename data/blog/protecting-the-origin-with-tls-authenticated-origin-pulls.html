@@ -1,7 +1,15 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oQmk0Xnt1xt8wQVlKeyFk/23f72abff5a6d1d9d4a32d63f8b67509/protecting-the-origin-with-tls-authenticated-origin-pulls.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>As we have been discussing this week, securing the connection between Cloudflare and the origin server is arguably just as important as securing the connection between end users and Cloudflare. The <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">origin certificate authority</a> we announced this week will help CloudFlare verify that it is talking to the correct origin server. But what about verification in the opposite direction? How can the origin verify that the client talking to it is actually CloudFlare?</p>
-	<h3>TLS Client Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-client-authentication">TLS Client Authentication</h3>
+		<a href="https://blog.cloudflare.com/#tls-client-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4j8yHcLklM13sQFFE5NLds/b71be15ffefd747b72ca64c8986edbc8/illustration-tls-ssl-standard-1.png" alt="Normal TLS handshake" class="kg-image" width="900" height="1058" loading="lazy">
@@ -15,7 +23,14 @@
 	</figure>
 	<p>Enter <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
 	<p>To implement TLS client authentication in Cloudflare, one of our engineers, Piotr Sikora, <a href="http://hg.nginx.org/nginx/rev/20d966ad5e89">added support to nginx</a>. This code is open source and has been merged into the official nginx 1.7 branch, and can be used by anyone utilizing nginx's proxy module.</p>
-	<h3>Enabling Authenticated Origin Pulls</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-authenticated-origin-pulls">Enabling Authenticated Origin Pulls</h3>
+		<a href="https://blog.cloudflare.com/#enabling-authenticated-origin-pulls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Generally, enabling Authenticated Origin Pulls does not cause any problems with a website, even if client certificates are not validated. However, in the event a website uses client certificates for other purposes, the Cloudflare origin-pull certificate may conflict and cause problems. Consequently, Authenticated Origin Pulls are an opt-in setting for Cloudflare customers. This service is available for all levels of Cloudflare plan: Free, Professional, Business, and Enterprise.</p>
 	<p>In order to enable Authenticated Origin Pulls for your Cloudflare protected website, you will need to use our new dashboard (currently in beta). To access this beta dashboard, first log in to your Cloudflare account. In the lower right corner of the page there is a button labeled "Try Our New Dashboard." Click and log in again. At this point, you're in our new dashboard with access to all your existing domains and settings through a completely new user interface.</p>
 	<figure class="kg-card kg-image-card ">
@@ -24,7 +39,14 @@
 
 	</figure>
 	<p>There will be more information about this new dashboard in the near future, but feel free to check it out. You can continue to freely switch between old and new dashboard.</p>
-	<h3>Certificate</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate">Certificate</h3>
+		<a href="https://blog.cloudflare.com/#certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare presents certificates signed by a CA with the following certificate:</p>
 	<pre class="language-bash"><code class="language-bash">
 -----BEGIN CERTIFICATE-----
@@ -63,7 +85,14 @@ QzMmZpRpIBB321ZBlcnlxiTJvWxvbCPHKHj20VwwAz7LONF59s84ZsOqfoBv8gKM
 s0s5dsq5zpLeaw==
 -----END CERTIFICATE-----</code></pre>
 	<p>This certificate is also available from <a href="https://origin-pull.cloudflare.com">https://origin-pull.cloudflare.com/</a></p>
-	<h3>Origin Server Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="origin-server-configuration">Origin Server Configuration</h3>
+		<a href="https://blog.cloudflare.com/#origin-server-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up">Cloudflare Support Docs</a> in the next week.</p>
 	<figure class="kg-card kg-image-card ">
 

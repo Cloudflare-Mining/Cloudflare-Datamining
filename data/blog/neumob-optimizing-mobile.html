@@ -14,13 +14,27 @@
 	<p>We’ve also been extending the network to reach directly into devices and servers. Our 2014 technology <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun</a> helped to speed up connections to origin HTTP servers. Our recently announced <a href="https://www.cloudflare.com/products/cloudflare-warp">Warp</a> technology is used to connect servers and services (such as those running inside a Kubernetes cluster) to Cloudflare without having a public HTTP endpoint. Our IoT solution, <a href="https://www.cloudflare.com/orbit">Orbit</a>, enables smart devices to connect to our network securely.</p>
 	<p>The goal is that any end device (web browser, mobile application, smart meter, …) should be able to securely connect to our network and have secure, fast communication from device to origin server with every step of the way optimized and secured by Cloudflare.</p>
 	<p>While we’ve spent a lot of time on the latest encryption and performance technologies for the web browser and server, we had not done the same for mobile applications. That changes with our acquisition of Neumob.</p>
-	<h3>Why Neumob</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-neumob">Why Neumob</h3>
+		<a href="https://blog.cloudflare.com/#why-neumob" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Neumob software running on your phone changes how a mobile app interacts with an API running on an HTTP server. Without Neumob, that API traffic uses that standard Internet protocols (such as HTTPS) and is prone to be affected negatively by varying performance and availability in mobile networks.</p>
 	<p>With the Neumob software any API request from a mobile application is sent across an optimized set of protocols to the nearest Cloudflare data center. These optimized protocols are able to handle mobile network variability gracefully and securely.</p>
 	<p>Cloudflare's Argo then optimizes the route across the long-haul portion of the network to our data center closest to the origin API server. Then Cloudflare's Warp optimizes the path from the edge of our network to the origin server where the application’s API is running. End-to-end, Cloudflare can supercharge and secure the network experience.</p>
 	<p>Ultimately, the Neumob software is easily extended to operate as a “VPN” for mobile devices that can secure and accelerate all HTTP traffic from a mobile device (including normal web browsing and app API calls). Most VPN software, frankly, is awful. Using a VPN feels like a backward step to the dial up era of obscure error messages, slow downs, and clunky software. It really doesn’t have to be that way.</p>
 	<p>And in an era where SaaS, PaaS, IaaS and mobile devices have blown up the traditional company ‘<a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a>’ the entire concept of a Virtual Private Network is an anachronism.</p>
-	<h3>Going Forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="going-forward">Going Forward</h3>
+		<a href="https://blog.cloudflare.com/#going-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the current time the Neumob service has been discontinued as we move their server components onto the Cloudflare network. We’ll soon relaunch it under a new name and make it available to mobile app developers worldwide. Developers of iOS and Android apps will be able to accelerate and protect their applications’ connectivity by adding just two lines of code to take advantage of Cloudflare’s global network.</p>
 	<p>As a personal note, I’m thrilled that the Neumob team is joining Cloudflare. We’d been tracking their progress and development for a few years and had long wanted to build a Cloudflare Mobile App SDK that would bring the network benefits of Cloudflare right into devices. It became clear that Neumob’s technology and team was world-class and that it made more sense to abandon our own work to build an SDK and adopt theirs.</p>
 	<p><i>Cloudflare is hiring to grow the mobile team and is looking for people in San Francisco, Sunnyvale and Austin: </i><a href="https://boards.greenhouse.io/cloudflare/jobs/927839"><i>iOS Backend Engineer</i></a><i>, </i><a href="https://boards.greenhouse.io/cloudflare/jobs/927821"><i>Android Backend Engineer</i></a><i>, </i><a href="https://boards.greenhouse.io/cloudflare/jobs/927821"><i>Android SDK Engineer</i></a><i>, </i><a href="https://boards.greenhouse.io/cloudflare/jobs/927839"><i>iOS SDK Engineer</i></a><i> and </i><a href="https://boards.greenhouse.io/cloudflare/jobs/927798"><i>Protocol Engineer</i></a><i>.</i></p>

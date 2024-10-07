@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>We're going to do a series of blog posts about some of the inner workings of CloudFlare. One of the questions we get often is what the names of our name servers mean. Here's the story.</p>
-	<h3>Two Names Enter</h3>
+	<div class="flex anchor relative">
+		<h3 id="two-names-enter">Two Names Enter</h3>
+		<a href="https://blog.cloudflare.com/#two-names-enter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When someone signs up for CloudFlare, we give them two domains for their name servers. For example:</p>
 	<ul>
 		<li>
@@ -17,10 +24,24 @@
 		</li>
 	</ul>
 	<p>So who are Bob and Lola? To understand, you have to understand a bit about a problem we were trying to solve.</p>
-	<h3>Slick Signup</h3>
+	<div class="flex anchor relative">
+		<h3 id="slick-signup">Slick Signup</h3>
+		<a href="https://blog.cloudflare.com/#slick-signup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We worked to make the sign up process for CloudFlare as easy as possible. Typically, it takes users about 5 minutes to complete. Imagine you own example.com and want to sign up. You enter example.com on our sign up form, we slurp your DNS records and allow you to add any we've missed, then we give you your two name servers that you enter at your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a>.</p>
 	<p>We have systems that almost instantly push your records to our DNS servers at the edge of CloudFlare's network. As a result, when you switch to our name servers at your registrar, your site will be served as normal without any downtime. In most cases, this is all easy. One problem we worried about early on was simply: what would happen if two people signed up the same domain at the same time?</p>
-	<h3>Resolving Conflicts</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolving-conflicts">Resolving Conflicts</h3>
+		<a href="https://blog.cloudflare.com/#resolving-conflicts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine two people sign up example.com at the same time. We now have two sets of DNS records and it's not clear which one is accurate. We needed a clear way to tell which record is authoritative. What we needed was a way to embed a code in the name server names themselves so that, when we saw the first DNS request on our network, we could test what name servers domains were authoritative for the domain and return the correct DNS records.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,7 +61,15 @@
 		</li>
 	</ul>
 	<p>We would pair those together to create a unique combination. If Alex signed up example.com he may get dns7.cloudflare.com and dns23.cloudflare.com. If Betty then signed up example.com then she may get dns3.cloudflare.com and dns84.cloudflare.com. When we received our first DNS request for example.com then we'd test what name servers were actually entered at the registrar. Assuming it was dns3 and dns84, then Betty's sign up would be considered valid and the DNS records she entered would become authoritative.</p>
-	<h3>Out Clevering Clever Users</h3>
+	<div class="flex anchor relative">
+		<h3 id="out-clevering-clever-users">Out Clevering Clever Users</h3>
+		<a href="https://blog.cloudflare.com/#out-clevering-clever-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/76cBH8JLtmQGkWYDJQRUsM/b7320b6f5410ed82df457c0aca2ef38a/ninja-erin.png" alt="Ninja Erin" class="kg-image" width="1600" height="1600" loading="lazy">
@@ -49,7 +78,14 @@
 	<p>What we found was that a lot of people saw these DNS domain names and tried to be clever. While it may seem that the two domain names only point to two physical servers, in fact they reference potentially hundreds of servers running in all of our global data centers. While we tried to explain that adding more domains wouldn't actually result in your queries being served by any more name servers, we found users tried anyway. Betty may have received dns3 and dns84, but we found sometimes she'd try and enter dns3, dns4, dns5, dns6, and so on. Not only did this not actually add any benefit, it would cause our verification to fail.</p>
 	<p>Our solution was to come up with domain names where the sequence wasn't obvious. We spent an afternoon generating a list of one hundred common 2- to 4-letter names, like Bob and Lola. We then used them to create the domain names we handed out at signup. Initially there were 50 boys names and 50 girls names. Everyone who signs up gets one of each, allowing for 2,500 unique combinations.</p>
 	<p>One side note on this point: we once had someone write in to support criticizing us based on the fact that our name server convention is hetro-normative. I will simply say that just because you get two name servers doesn't mean they're in any kind of relationship. I do, however, believe that <a href="http://techcrunch.com/2012/03/25/on-women-in-tech">diversity in the workplace is a good thing</a>.</p>
-	<h3>The Story of Woz</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-story-of-woz">The Story of Woz</h3>
+		<a href="https://blog.cloudflare.com/#the-story-of-woz" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To add some personality to the name servers we commissioned an artist to draw representations of the 100 name servers as if they were ninjas. While we've never done much with the drawings, we liked the metaphor of two ninja name servers protecting your website. As a perk, we allowed some of CloudFlare's early team members (e.g., <a href="https://www.facebook.com/photo.php?fbid=434527810431&amp;set=a.434527500431.221755.92466435431&amp;type=3&amp;theater=">Lee Holloway</a>&nbsp;&amp; <a href="https://www.facebook.com/photo.php?fbid=434527845431&amp;set=a.434527500431.221755.92466435431&amp;type=3&amp;theater=">Ian Pye</a>), investors (e.g., <a href="https://www.facebook.com/photo.php?fbid=434528285431&amp;set=a.434527500431.221755.92466435431&amp;type=3&amp;theater=">Ray Rothrock</a> &amp; <a href="https://www.facebook.com/photo.php?fbid=434527975431&amp;set=a.434527500431.221755.92466435431&amp;type=3&amp;theater=">Carl Ledbetter</a>), and even <a href="https://www.facebook.com/photo.php?fbid=434527920431&amp;set=a.434527500431.221755.92466435431&amp;type=3&amp;theater=">Sam Coates</a>, our corporate counsel, to pick the representations of their namesake ninjas.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -58,7 +94,14 @@
 	</figure>
 	<p>One of the drawings featured a smiling ninja on a Segway. It immediately reminded us of Apple co-founder Steve Wozniak, who lived not far from our office which was at the time in Palo Alto, California. It wasn't uncommon to see Steve, who was affectionately known as Woz, scooting around town on his Segway. I'd been a fan of Woz since I was a kid, having learned to program on an Apple GS. When I was 7 and graduated from that to a <a href="https://en.wikipedia.org/wiki/Apple_IIGS#Limited_Edition_.28.22Woz.22_signed_case.29">limited edition, Wozniak-signed Apple</a>.</p>
 	<p>While it wasn't a name on our original list of 100, when we saw the ninja on the Segway it was obvious we needed to include "Woz." We'd already put the 100 name server names into production so we couldn't just eliminate Bill to make room. So we appended a 101st name (51 boys, 50 girls). As of today, there are 13,899 CloudFlare customers who have Woz as one of their name server domains.</p>
-	<h3>Two Domains, Many Combinations, Many Servers</h3>
+	<div class="flex anchor relative">
+		<h3 id="two-domains-many-combinations-many-servers">Two Domains, Many Combinations, Many Servers</h3>
+		<a href="https://blog.cloudflare.com/#two-domains-many-combinations-many-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given the 51 boy name server names and the 50 girl name server names, we have 2,550 unique combinations. This has been more than enough to ensure that the correct DNS records are pushed to our network, even when two people attempt to sign up the same domain.</p>
 	<figure class="kg-card kg-image-card ">
 

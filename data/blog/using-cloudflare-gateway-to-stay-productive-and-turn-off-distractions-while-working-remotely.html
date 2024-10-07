@@ -5,7 +5,14 @@
 	<p>… and it’s really hard not to get distracted.</p>
 	<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
 	<p>This blog post isn’t very long, but that’s a function of how easy it is to get Gateway up and running!</p>
-	<h2>Getting Started</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting Started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
 	<p>If you are using Gateway for the first time, the dashboard will take you through an onboarding experience:</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,7 +33,14 @@
 	</ul>
 	<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions">created a page</a> to show you how to change DNS settings for different devices.</p>
 	<p>You can also watch this video to learn how to setup Gateway:</p>
-	<h2>Deep Work</h2>
+	<div class="flex anchor relative">
+		<h2 id="deep-work">Deep Work</h2>
+		<a href="https://blog.cloudflare.com/#deep-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next up, in the dashboard, I am going to go to my policies and create a policy that will block my access to distracting sites. You can call your policy anything you want, but I am going to call mine “Deep work.”</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -48,7 +62,14 @@
 	</figure>
 	<p>So if I select Sports, all websites that are related to Sports will now be blocked by Gateway. This will take most people a few minutes to complete.</p>
 	<p>And once you set the rules by hitting ‘Save’, it will take just seconds for the selected policies to propagate across all of Cloudflare’s data centers, spread across more than 200 cities around the world.</p>
-	<h2>How can I test if Gateway is blocking the websites?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-test-if-gateway-is-blocking-the-websites">How can I test if Gateway is blocking the websites?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-test-if-gateway-is-blocking-the-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you now try to go to one of the blocked websites, you will see the following page on your browser:</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>There has been a lot of news lately about <a href="http://arstechnica.com/security/2013/09/we-dont-enable-backdoors-in-our-crypto-products-rsa-tells-customers">nefarious-sounding backdoors</a> being inserted into cryptographic standards and toolkits. One algorithm, a pseudo-random bit generator, Dual_EC_DRBG, was ratified by the National Institute of Standards and Technology (NIST) in 2007 and is attracting a lot of attention for having a potential backdoor. This is the algorithm into which the NSA allegedly inserted a backdoor and then paid RSA to use.</p>
 	<p>So how is that possible? This is a technical primer that explains what a backdoor is, how easy it can be to create your own, and the dangerouconsequences of using a random number generator that was designed to have a backdoor. This is necessarily a long technical discussion, but hopefully by the end it should be clear why Dual_EC_DRBG has such a bad reputation.</p>
-	<h3>Backdoors</h3>
+	<div class="flex anchor relative">
+		<h3 id="backdoors">Backdoors</h3>
+		<a href="https://blog.cloudflare.com/#backdoors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The concept of a backdoor has cast a shadow over the security industry for a long time. A backdoor is an intentional flaw in a cryptographic algorithm or implementation that allows an individual to bypass the security mechanisms the system was designed to enforce. A backdoor is a way for someone to get something out of the system that they otherwise would not be able to. If a security system is wall, a backdoor is a secret tunnel underneath it.</p>
 	<p>Backdoors can be inserted by lazy programmers who want to bypass their own security systems for debugging reasons, or they can be created to intentionally weaken a system used by others. Government agencies have been known to insert backdoors into commonly used software to enable mass surveillance. Backdoors can be built into software, hardware, or even built into the design of an algorithm.</p>
 	<figure class="kg-card kg-image-card ">
@@ -13,7 +20,14 @@
 	<p>In theory, a well-designed cryptographic system does not include a backdoor. In practice, it is hard to guarantee that a piece of software is backdoor-free. A backdoor was recently found in a widely-deployed version of <a href="http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor">D-Link router firmware</a>. The backdoor allows anyone with knowledge of a secret user agent string to log in and modify settings on any router running the vulnerable software. The D-Link backdoor took a long time to find because the source code for the router software was not available to security researchers to examine. With open source software, a researcher can look directly at the part of the code that verifies authentication and check for backdoors.</p>
 	<p>Open source is great tool for understanding how code works but it is not a cure-all for finding backdoors in software. It can be difficult and time-consuming to fully analyze all the code in a complicated codebase. The <a href="http://www.ioccc.org">International Obfuscated C Code Contest</a> shows how code can be made extremely hard to understand. <a href="http://underhanded.xcott.com">The Underhanded C Contest</a> takes this even further, showing that benign looking code can hide malicious behavior.</p>
 	<p>The translation step between human programming languages and machine code can also be used to insert a backdoor. The classic article "<a href="http://cm.bell-labs.com/who/ken/trust.html">Reflections on Trusting Trust</a>" introduced this idea back in 1984. The cryptographic community has recently banded together <a href="http://istruecryptauditedyet.com">to audit</a> the open source disk encryption software TrueCrypt for backdoors. One of the key steps in this audit is verifying that the machine code distributed online for TrueCrypt matches the source code. This requires re-building the audited source code with a fully open source compiler and making sure the machine code matches. Reproducible binaries help demonstrate that a backdoor was not inserted in the program's machine code by a malicious person or compiler.</p>
-	<h3>Random weakness</h3>
+	<div class="flex anchor relative">
+		<h3 id="random-weakness">Random weakness</h3>
+		<a href="https://blog.cloudflare.com/#random-weakness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In some cases, even this might not be enough. For example, TrueCrypt, like most cryptographic systems, use the system's random number generator to create secret keys. If an attacker can control or predict the random numbers produced by a system, they can often break otherwise secure cryptographic algorithms. Any predictability in a system's random number generator can render it vulnerable to attacks.</p>
 	<p>Examples of security systems being bypassed using flaws (intentionally created or otherwise) in random number generators are very common. Some recent examples:</p>
 	<ul>
@@ -28,7 +42,14 @@
 		</li>
 	</ul>
 	<p>It's absolutely essential to have an unpredictable source of random numbers in secure systems that rely on them. This includes SSL/TLS, the fundamental security layer of the internet where session keys are generated using random numbers. If you design a random number generator that allows you to predict the output, and convince someone to use it, you can break their system. This kind of algorithmic backdoor is what we will create in this blog post.</p>
-	<h3>A random stream that isn't</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-random-stream-that-isnt">A random stream that isn't</h3>
+		<a href="https://blog.cloudflare.com/#a-random-stream-that-isnt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The digits of pi are quite random looking but they don't make a very good random number generator because they are predictable. Anyone who knows that someone is using the digits of pi as their source of randomness can use that against them. Convincing someone to use a pi-based random number generator is a difficult challenge.</p>
 	<p>Many pseudo-random number generators start with a number called a seed. The seed is the starting point for the internal state of the algorithm. The algorithm generates a stream of random numbers using some mathematical operation on the internal state. As long as the seed (and the subsequent internal state) are kept secret, the pseudo-random numbers output by the algorithm are unpredictable to any observer. Conversely, anyone who knows the state will be able to predict the output.</p>
 	<p>Linux uses a <a href="https://blog.cloudflare.com/ensuring-randomness-with-linuxs-random-number-generator">pool of numbers</a> as the internal state of /dev/random, its pseudo-random number generator. Every time a program requests random data from the system, Linux returns a cryptographic hash of its internal state using the algorithm SHA-1. This hash function is designed to be one-way, it is easy to compute but very difficult to find the input given an output. It is so difficult, no person has ever published an inversion of a SHA-1 hash without knowing the input beforehand. This keeps the internal state of the random number generator secret.</p>
@@ -43,7 +64,14 @@
 	<p>This construction is pretty standard. The internal state is kept secret, data is output via a one-way function, and the internal state is updated by mixing the data back into the state.</p>
 	<p>At any point, if an attacker can figure out the internal state, they can predict the output. The strategic choices for F and G here are what make this construction safe. You do not lose the randomness in the pool by XOR-ing with something else, entropy always goes up.</p>
 	<p>If F and G were chosen to be two completely independent one-way functions, it would probably still be safe. Having SHA-1 as F and MD5 (a different hash function) as G would not be too unreasonable of a choice. The key here is in the word independent, but first a sidestep into elliptic curves.</p>
-	<h3>Elliptic Curves and one-way functions</h3>
+	<div class="flex anchor relative">
+		<h3 id="elliptic-curves-and-one-way-functions">Elliptic Curves and one-way functions</h3>
+		<a href="https://blog.cloudflare.com/#elliptic-curves-and-one-way-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a previous <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">blog post</a> we gave a gentle introduction to elliptic curve cryptography. We talked about how this class of curves can be used for encryption and digital signature algorithms. We also hinted that elliptic curves could be used for generating random numbers. That is what we we will describe here.</p>
 	<p>The reason elliptic curves are used in cryptography is the strongly one way function they enable. As described previously, there is a geometrically intuitive way to define an arithmetic on the points of an elliptic curve.</p>
 	<figure class="kg-card kg-image-card ">
@@ -75,7 +103,14 @@
 
 	</figure>
 	<p>These two balls have specific points on the curve where they start. This is a two person game where one person is called the generator and the other is the observer. The generator has a secret number "n". The generator takes the ball P1 and performs n shots, and lets the observer see its final location. Then it takes P2 and performs n shots, taking the final location of P2 as a new value for n. Then P1 and P2 are reset to their original location and that's the end of the turn. Each turn the observer sees a new pseudo-random location for P1, and that's the output of the game.</p>
-	<h3>There's a trap door in your one-way functions</h3>
+	<div class="flex anchor relative">
+		<h3 id="theres-a-trap-door-in-your-one-way-functions">There's a trap door in your one-way functions</h3>
+		<a href="https://blog.cloudflare.com/#theres-a-trap-door-in-your-one-way-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the Linux random number generator example above, SHA-1 is used as the one-way function. Let's consider what happens when we use our elliptic curve one way function instead.</p>
 	<p>Looking back at the construction for a pseudo-random number generator above, we need to choose two functions to serve as F and G. The elliptic curve one-way function above seems to fit the bill, so let's use the functions defined by two points on the curve, P1 and P2. Each one-way function is hard to reverse, and if P1 and P2 are chosen randomly, they should be independent.</p>
 	<p>So how do we add a backdoor? The key is to choose P1 and P2 so that to any outside observer they look random and independent, but in reality they have a special relationship that only we know.</p>
@@ -87,13 +122,27 @@
 	<p>Seeing that P1 dotted with itself n times is the output Q, we can write this as:Q ◦ Q ◦ … ◦ Q (s times)</p>
 	<p>And since we know s and the output (and therefore Q), we can calculate the next internal state of the algorithm. The state is revealed and all subsequent bytes can be predicted. In just one round! Since given P1 and P2, finding s requires solving the discrete logarithm problem, you get to be the only one who knows this mathematical backdoor.</p>
 	<p>This can be described in the terms of the billiards game from the last section. Remember the output of one turn of the game is the location of P1 after n shots and generator's secret number comes from the location of P2 after n shots. Knowing the value s is like knowing how many shots it takes to go from P1 to P2. This lets the observer cheat at the game. If you know where P1 lands after n shots, you can shoot s times from that location to get the location of P2 after n shots. This gives you the generator's secret number and allows you to predict the next turn of the game.</p>
-	<h3>Back to the real world</h3>
+	<div class="flex anchor relative">
+		<h3 id="back-to-the-real-world">Back to the real world</h3>
+		<a href="https://blog.cloudflare.com/#back-to-the-real-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This toy random number generator may seem very simple and the backdoor might even seem obvious. The amazing fact is that our toy random number generator described above is Dual_EC_DRBG, almost exactly. It was published by the NSA with two "random" looking points P1 and P2. There is no indication of how these values were generated.</p>
 	<p>The values for the points P1 and P2 could have been chosen randomly or they could have been chosen with a deliberate relationship. If they were chosen deliberately, there is a backdoor. If they truly were chosen randomly, then finding the internal state is as difficult as breaking elliptic curve cryptography. Unfortunately, there is no way to identify if the two points were chosen together or randomly without either solving the elliptic curve discrete logarithm function, or catching the algorithm's author with the secret backdoor value. This is the nature of a one-way trapdoor function.</p>
 	<p>The authors did not provide any proof of randomness for the two points P1 and P2. This could have easily been done by choosing P1 and P2 as outputs of a hash function, but they did not. This is <a href="http://blog.cryptographyengineering.com/2013/09/the-many-flaws-of-dualecdrbg.html">just one of many</a> flaws in the design of this algorithm.</p>
 	<p>The evidence is mounting for Dual_EC_DRBG being well-suited for use as a back door. A working <a href="http://blog.0xbadc0de.be/archives/155">proof of concept backdoor</a> was published in late 2013 using OpenSSL, and a patent for using the construction as "key escrow" (another term for backdoor) was <a href="https://www.google.com/patents/US20070189527">filed back in 2006</a>.</p>
 	<p>Up until recently, Dual_EC_DRBG was the default random number generator for several cryptographic products from RSA (the security division of EMC), even though <a href="http://rump2007.cr.yp.to/15-shumow.pdf">cryptographers have long been skeptical</a> of the algorithm's design. There <a href="http://arstechnica.com/security/2013/12/report-nsa-paid-rsa-to-make-flawed-crypto-algorithm-the-default">are reports of impropriety</a> connecting a $10 million investment by the United States government and RSA's decision to use this obscure and widely maligned algorithm in their widely-distributed products.</p>
-	<h3>Looking Ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="looking-ahead">Looking Ahead</h3>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is very difficult to implement a secure system. Backdoors can be introduced at the software, hardware or even algorithm level. Algorithms backed by standards are not necessarily safe or free of backdoors. Some lessons to take away from this exercise are:</p>
 	<ol>
 		<li>

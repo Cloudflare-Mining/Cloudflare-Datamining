@@ -10,7 +10,14 @@
 	<p>We’re excited to <a href="https://www.cloudflare.com/press-releases/2024/cloudflare-acquires-bastionzero-to-add-zero-trust-infrastructure-access">announce</a> that <a href="https://www.bastionzero.com">BastionZero</a>, a Zero Trust infrastructure access platform, has joined Cloudflare. This acquisition extends our Zero Trust Network Access (ZTNA) flows with native access management for infrastructure like servers, Kubernetes clusters, and databases.</p>
 	<p>Security teams often prioritize application and Internet access because these are the primary vectors through which users interact with corporate resources and external threats infiltrate networks. Applications are typically the most visible and accessible part of an organization's digital footprint, making them frequent targets for cyberattacks. Securing application access through methods like Single Sign-On (SSO) and Multi-Factor Authentication (MFA) can yield immediate and tangible improvements in user security.</p>
 	<p>However, infrastructure access is equally critical and many teams still rely on <a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security">castle-and-moat</a> style network controls and local resource permissions to protect infrastructure like servers, databases, Kubernetes clusters, and more. This is difficult and fraught with risk because the security controls are fragmented across hundreds or thousands of targets. Bad actors are increasingly focusing on targeting infrastructure resources as a way to take down huge swaths of applications at once or steal sensitive data. We are excited to extend Cloudflare One’s Zero Trust Network Access to natively protect infrastructure with user- and device-based policies along with multi-factor authentication.</p>
-	<h2>Application vs. infrastructure access</h2>
+	<div class="flex anchor relative">
+		<h2 id="application-vs-infrastructure-access">Application vs. infrastructure access</h2>
+		<a href="https://blog.cloudflare.com/#application-vs-infrastructure-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Application access typically involves interacting with web-based or client-server applications. These applications often support modern authentication mechanisms such as Single Sign-On (SSO), which streamline user authentication and enhance security. SSO integrates with identity providers (IdPs) to offer a seamless and secure login experience, reducing the risk of password fatigue and credential theft.</p>
 	<p>Infrastructure access, on the other hand, encompasses a broader and more diverse range of systems, including servers, databases, and network devices. These systems often rely on protocols such as SSH (Secure Shell), RDP (Remote Desktop Protocol), and Kubectl (Kubernetes) for administrative access. The nature of these protocols introduces additional complexities that make securing infrastructure access more challenging.</p>
 	<ul>
@@ -24,11 +31,25 @@
 			<p><b>Kubernetes Authentication:</b> Kubernetes, as a container orchestration platform, introduces its own set of authentication challenges. Access to Kubernetes clusters involves managing roles, service accounts, and kubeconfig files along with user certificates.</p>
 		</li>
 	</ul>
-	<h2>Infrastructure access with Cloudflare One today</h2>
+	<div class="flex anchor relative">
+		<h2 id="infrastructure-access-with-cloudflare-one-today">Infrastructure access with Cloudflare One today</h2>
+		<a href="https://blog.cloudflare.com/#infrastructure-access-with-cloudflare-one-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare One facilitates <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access</a> (ZTNA) for infrastructure resources with an approach superior to traditional VPNs. An administrator can define a set of identity, device, and network-aware policies that dictate if a user can access a specific IP address, hostname, and/or port combination. This allows you to create policies like “Only users in the identity provider group ‘developers’ can access resources over port 22 (default SSH port) in our corporate network,” which is already much finer control than a VPN with basic firewall policies would allow.</p>
 	<p>However, this approach still has limitations, as it relies on a set of assumptions about how corporate infrastructure is provisioned and managed. If an infrastructure resource is configured outside of the assumed network structure, e.g. SSH over a non-standard port is allowed, all network-level controls may be bypassed. This leaves only the native authentication protections of the specific protocol protecting that resource and is often how leaked SSH keys or database credentials can lead to a wider system outage or breach.</p>
 	<p>Many organizations will leverage more complex network structures like a bastion host model or complex Privileged Access Management (PAM) solutions as an added defense-in-depth strategy. However, this leads to significantly more cost and management overhead for IT security teams and sometimes complicates challenges related to least-privileged access. Tools like bastion hosts or PAM solutions end up eroding least-privilege over time because policies expand, change, or drift from a company’s security stance. This leads to users incorrectly retaining access to sensitive infrastructure.</p>
-	<h2>How BastionZero fits in</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-bastionzero-fits-in">How BastionZero fits in</h2>
+		<a href="https://blog.cloudflare.com/#how-bastionzero-fits-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While our goal for years has been to help organizations of any size replace their VPNs as simply and quickly as possible, BastionZero expands the scope of Cloudflare’s VPN replacement solution beyond apps and networks to provide the same level of simplicity for extending Zero Trust controls to infrastructure resources. This helps security teams centralize the management of even more of their hybrid IT environment, while using standard Zero Trust practices to keep DevOps teams productive and secure. Together, Cloudflare and BastionZero can help organizations replace not only VPNs but also bastion hosts; SSH, Kubernetes, or database key management systems; and redundant PAM solutions.</p>
 	<p>BastionZero provides native integration to major infrastructure access protocols and targets like SSH, RDP, Kubernetes, database servers, and more to ensure that a target resource is configured to accept connections for that specific user, instead of relying on network level controls. This allows administrators to think in terms of resources and targets, not IP addresses and ports. Additionally, BastionZero is built on <a href="https://github.com/openpubkey/openpubkey">OpenPubkey</a>, an open source library that binds identities to cryptographic keys using OpenID Connect (OIDC). With OpenPubkey, SSO can be used to grant access to infrastructure. &nbsp;BastionZero uses multiple roots of trust to ensure that your SSO does not become a single point of compromise for your critical servers and other infrastructure.</p>
 	<p>BastionZero will add the following capabilities to Cloudflare’s SASE platform:</p>
@@ -43,7 +64,14 @@
 			<p><b>Clientless RDP</b> to support access to desktop environments without the overhead and hassle of installing a client on a user’s device.</p>
 		</li>
 	</ul>
-	<h2>What’s next for BastionZero</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-bastionzero">What’s next for BastionZero</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-bastionzero" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The BastionZero team will be focused on integrating their infrastructure access controls directly into Cloudflare One. During the third and fourth quarters of this year, we will be announcing a number of new features to facilitate Zero Trust infrastructure access via Cloudflare One. All functionality delivered this year will be included in the Cloudflare One free tier for organizations with less than 50 users. We believe that everyone should have access to world-class security controls.</p>
 	<p>We are looking for early beta testers and teams to provide feedback about what they would like to see with respect to infrastructure access. If you are interested in learning more, please sign up <a href="https://cloudflare.com/lp/infrastructure-access">here</a>.</p>
 </div>

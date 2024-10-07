@@ -8,7 +8,14 @@
 	<p>We are constantly researching ways to improve our products. For the <a href="https://www.cloudflare.com/application-services/products/waf">Web Application Firewall (WAF)</a>, the goal is simple: keep customer web applications safe by building the best solution available on the market.</p>
 	<p>In this blog post we talk about our approach and ongoing research into detecting novel web attack vectors in our WAF before they are seen by a security researcher. If you are interested in learning about our secret sauce, read on.</p>
 	<p>This post is the written form of a presentation first delivered at Black Hat USA 2023.</p>
-	<h2>The value of a WAF</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-value-of-a-waf">The value of a WAF</h2>
+		<a href="https://blog.cloudflare.com/#the-value-of-a-waf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many companies offer web application firewalls and application security products with a total addressable market forecasted to increase for the foreseeable future.</p>
 	<p>In this space, vendors, including ourselves, often like to boast the importance of their solution by presenting ever-growing statistics around threats to web applications. Bigger numbers and scarier stats are great ways to justify expensive investments in web security. Taking a few examples from our very own application security report research (see our latest report <a href="https://blog.cloudflare.com/application-security-report-q2-2023">here</a>):</p>
 	<figure class="kg-card kg-image-card ">
@@ -27,7 +34,14 @@
 	<p>But herein hides the real value: how quickly can a WAF mitigate a new zero-day/CVE?</p>
 	<p>By definition a zero-day is not well known, and a single malicious payload could be <b><i>the</i></b> one that compromises your application. From a purist standpoint, if your WAF is not fast at detecting new attack vectors, it is not providing sufficient value.</p>
 	<p>The faster the mitigation, the better. We refer to this as “time to mitigate”. Any WAF evaluation should focus on this metric.</p>
-	<h2>How fast is fast enough?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-fast-is-fast-enough">How fast is fast enough?</h2>
+		<a href="https://blog.cloudflare.com/#how-fast-is-fast-enough" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>24 hours? 6 hours? 30 minutes? Luckily we run one of the world's largest <a href="https://www.cloudflare.com/network">networks</a>, and we can look at some real examples to understand how quickly a WAF really needs to be to protect most environments. I specifically mention “most” here as not everyone is <i><b>the</b></i> target of a highly sophisticated attack, and therefore, most companies should seek to be protected at least by the time a zero-day is <i><b>widely known</b></i>. Anything better is a plus.</p>
 	<p>Our first example is <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">Log4Shell (CVE-2021-44228)</a>. A high and wide impacting vulnerability that affected <a href="https://logging.apache.org/log4j/2.x">Log4J</a>, a popular logging software maintained by the Apache Software Foundation. The vulnerability was disclosed back in December 2021. If you are a security practitioner, you have certainly heard of this exploit.</p>
 	<p>The proof of concept of this attack was published on GitHub on December 9, 2021, at 15:27 UTC. A tweet followed shortly after. We started observing a substantial amount of attack payloads matching the signatures from about December 10 at 10:00 UTC. That is about ~19 hours after the PoC was published.</p>
@@ -52,7 +66,14 @@
 	<p>The list of examples could go on, but the data tells the same story: for most, as long as you have mitigations in place within a few hours, you are likely to be fine.</p>
 	<p>That, however, is a dangerous statement to make. Cloudflare protects applications that have some of the most stringent security requirements due to the data they hold and the importance of the service they provide. They could be <b><i>the</i></b> one application that is first targeted with the zero-day well before it is widely known. Also, we are a WAF vendor and I would not be writing this post if I thought “a few hours” was fast enough.</p>
 	<p>Zero (time) is the only acceptable time to mitigate!</p>
-	<h2>Signatures are not enough, but are here to stay</h2>
+	<div class="flex anchor relative">
+		<h2 id="signatures-are-not-enough-but-are-here-to-stay">Signatures are not enough, but are here to stay</h2>
+		<a href="https://blog.cloudflare.com/#signatures-are-not-enough-but-are-here-to-stay" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All WAFs on the market today will have a signature based component. Signatures are great as they can be built to minimize false positives (FPs), their behavior is predictable and can be improved overtime.</p>
 	<p>We build and maintain our own signatures provided in the WAF as the <a href="https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset">Cloudflare Managed Ruleset</a>. This is a set of over 320 signatures (at time of writing) that have been fine-tuned and optimized over the 13 years of Cloudflare’s existence.</p>
 	<p>Signatures tend to be written in ModSecurity, regex-like syntax or other proprietary language. At Cloudflare, we use <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">wirefilter</a>, a language understood by our global proxy. To use the same example as above, here is what one of our Log4Shell signatures looks like:</p>
@@ -64,14 +85,35 @@
 	<p>Our network, which runs our WAF, also gives us an additional superpower: the ability to test new signatures (or updates to existing ones) on over 64M HTTP/S requests per second at peak. We can tell pretty quickly if a signature is well written or not.</p>
 	<p>But one of their qualities (low false positive rates), along with the fact that humans have to write them, are the source of our inability to solely rely on signatures to reach zero time to mitigate. Ultimately a signature is limited by the speed at which we can write it, and combined with our goal to keep FPs low, they only match things we know and are 100% sure about. Our WAF security analyst team is, after all, limited by human speed while balancing the effectiveness of the rules.</p>
 	<p>The good news: signatures are a vital component to reach zero time to mitigate, and will always be needed, so the investment remains vital.</p>
-	<h2>Getting to zero time to mitigation</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-to-zero-time-to-mitigation">Getting to zero time to mitigation</h2>
+		<a href="https://blog.cloudflare.com/#getting-to-zero-time-to-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To reach zero time to mitigate we need to rely on some <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning algorithms</a>. It turns out that WAFs are a great application for this type of technology especially combined with existing signature based systems. In this post I won’t describe the algorithms themselves (subject for another post) but will provide the high level concepts of the system and the steps of how we built it.</p>
-	<h3>Step 1: create the training set</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-1-create-the-training-set">Step 1: create the training set</h3>
+		<a href="https://blog.cloudflare.com/#step-1-create-the-training-set" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is a well known fact in data science that the quality of any classification system, including the latest <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI systems</a>, is highly dependent on the quality of the training set. The old saying “garbage in, garbage out” resonates well.</p>
 	<p>And this is where our signatures come into play. As these were always written with a low false positive rate in mind, combined with our horizontal WAF deployment on our network, we essentially have access to millions of true positive examples per second to create what is likely one of the best WAF training sets available today.</p>
 	<p>We also, due to customer configurations and other tools such as <a href="https://www.cloudflare.com/application-services/products/bot-management">Bot Management</a>, have a pretty clear idea of what true negatives look like. In summary, we have a constant flow of training data. Additionally due to our self-service plans and the globally distributed nature of Cloudflare’s service and customer base, our data tends to be very diverse, removing a number of biases that may otherwise be present.</p>
 	<p>It is important to note at this point that we paid a lot of effort to ensure we anonymised data, removed PII, and that data boundary settings provided by our <a href="https://www.cloudflare.com/data-localization">data localization suite</a> were implemented correctly. We’ve published previously <a href="https://blog.cloudflare.com/data-generation-and-sampling-strategies">blog posts describing some of our strategies for data collection in the context of WAF use cases</a>.</p>
-	<h3>Step 2: enhance the training set</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-2-enhance-the-training-set">Step 2: enhance the training set</h3>
+		<a href="https://blog.cloudflare.com/#step-2-enhance-the-training-set" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Simply relying on real traffic data is good, but with a few artificial enhancements the training set can become a lot better, leading to much higher detection efficacy.</p>
 	<p>In a nutshell we went through the process of generating artificial (but realistic) data to increase the diversity of our data even further by studying statistical distribution of existing real-world data. For example, mutating benign content with random character noise, language specific keywords, generating new benign content and so on.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -80,7 +122,14 @@
 
 	</figure>
 	<p>Some of the <a href="https://blog.cloudflare.com/data-generation-and-sampling-strategies">methods adopted to improve accuracy are discussed in detail in a prior blog post</a> if you wish to read further.</p>
-	<h3>Step 3: build a very fast classifier</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-3-build-a-very-fast-classifier">Step 3: build a very fast classifier</h3>
+		<a href="https://blog.cloudflare.com/#step-3-build-a-very-fast-classifier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One restriction that often applies to machine learning based classifiers running to inline traffic, like the Cloudflare proxy, is latency performance. To be useful, we need to be able to compute classification “inline” without affecting the user experience for legitimate end users. We don’t want security to be associated with “slowness”.</p>
 	<p>This required us to fine tune not only the feature set used by the classification system, but also the underlying tooling, so it was both fast and lightweight. The classifier is built using <a href="https://www.tensorflow.org/lite">TensorFlow Lite</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -89,7 +138,14 @@
 
 	</figure>
 	<p>At time of writing, our classification model is able to provide a classification output under 1ms at 50th percentile. We believe we can reach 1ms at 90th percentile with ongoing efforts.</p>
-	<h3>Step 4: deploy on the network</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-4-deploy-on-the-network">Step 4: deploy on the network</h3>
+		<a href="https://blog.cloudflare.com/#step-4-deploy-on-the-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the classifier is ready, there is still a large amount of additional work needed to deploy on live production HTTP traffic, especially at our scale. Quite a few additional steps need to be implemented starting from a fully formed live HTTP request and ending with a classification output.</p>
 	<p>The diagram below is a good summary of each step. First and foremost, starting from the raw HTTP request, we normalize it, so it can easily be parsed and processed, without unintended consequences, by the following steps in the pipeline. Second we extract the relevant features found after experimentation and research, that would be more beneficial for our use case. To date we extract over 6k features. We then run inference on the resulting features (the actual classification) and generate outputs for the various attack types we have trained the model for. To date we classify <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting">cross site scripting payloads (XSS)</a>, SQL injection payloads (SQLi) and remote code execution payloads (RCE). The final step is to consolidate the output in a single <a href="https://developers.cloudflare.com/waf/about/waf-attack-score">WAF Attack Score</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -97,7 +153,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51Eq8znJjkgyrKqUBmzRgY/9f1aaaf7c4f1cb5efdacfb74580bf109/The-full-pipeline-required-to-run-malicious-HTTP-request-classification-at-Cloudflare.png" alt="The full pipeline required to run malicious HTTP request classification at Cloudflare" class="kg-image" width="1600" height="991" loading="lazy">
 
 	</figure>
-	<h3>Step 5: expose output as a simple interface</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-5-expose-output-as-a-simple-interface">Step 5: expose output as a simple interface</h3>
+		<a href="https://blog.cloudflare.com/#step-5-expose-output-as-a-simple-interface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To make the system usable we decided the output should be in the same format as our Bot Management system output. A single score that ranges from 1 to 99. Lower scores indicate higher probability that the request is malicious, higher scores indicate the request is clean.</p>
 	<p>There are two main benefits of representing the output within a fixed range. First, using the output to <code>BLOCK</code> traffic becomes very easy. It is sufficient to deploy a WAF rule that blocks all HTTP requests with a score lower than <code>$x</code>, for example a rule that blocks all traffic with a score lower than 10 would look like this:</p>
 	<p><code>cf.waf.score &lt; 10 then **BLOCK**</code></p>
@@ -108,7 +171,14 @@
 
 	</figure>
 	<p>All that remains, is to actually use the score!</p>
-	<h2>Success in the wild</h2>
+	<div class="flex anchor relative">
+		<h2 id="success-in-the-wild">Success in the wild</h2>
+		<a href="https://blog.cloudflare.com/#success-in-the-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The classifier has been deployed for just over a year on Cloudflare’s network. The main question stated at the start of this post remains: does it work? Have we been able to detect attacks before we’ve seen them? Have we achieved zero time to mitigate?</p>
 	<p>To answer this we track classification output for new CVEs that fail to be detected by existing Cloudflare Managed Rules. Of course our rule improvement work is always ongoing, but this gives us an idea on how well the system is performing.</p>
 	<p>And the answer: YES. For all CVEs or bypasses that rely on syntax similar to existing vulnerabilities, the classifier performs very well, and we have observed several instances of it blocking valid malicious payloads that were not detected by our signatures. All of this, while keeping false positives very low at a threshold of 15 or below. XSS variations, SQLi CVEs, are in most cases, a problem fully solved if the classifier is deployed.</p>
@@ -232,7 +302,14 @@
 	<p>This does not mean there isn’t space for further improvement.</p>
 	<p>The classification works very well for attack types that are aligned, or somewhat similar to existing attack types. If the payload implements a brand new never seen before syntax, then we still have some work to do. Log4Shell is actually a very good example of this. If another zero-day vulnerability was discovered that leveraged the JNDI Java syntax, we are confident that our customers who have deployed WAF rules using the WAF Attack Score would be safe against it.</p>
 	<p>We are already working on adding more detection capabilities including web shell detection and open redirects/path traversal.</p>
-	<h2>The perfect feedback loop</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-perfect-feedback-loop">The perfect feedback loop</h2>
+		<a href="https://blog.cloudflare.com/#the-perfect-feedback-loop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I mentioned earlier that our security analyst driven improvements to our Cloudflare Managed Rulesets are not going to stop. Our <a href="https://developers.cloudflare.com/waf/change-log">public changelog</a> is full of activity and there is no sign of slowing down.</p>
 	<p>There is a good reason for this: the signature based system will remain, and likely eventually be converted to our training set generation tool. But not only that, it also provides an opportunity to speed up improvements by focusing on reviewing malicious traffic that is classified by our machine learning system but not detected by our signatures. The delta between the two systems is now one of the main focuses of attention for our security analyst team. The diagram below visualizes this concept.</p>
 	<figure class="kg-card kg-image-card ">
@@ -248,7 +325,14 @@
 	</figure>
 	<p>Better signatures provide a better training set (data). In turn, we can create a better model. The model will provide us with a more interesting delta, which, once reviewed by humans, will allow us to create better signatures. And start over.</p>
 	<p>We are now working to automate this entire process with the goal of having humans simply review and click to deploy. This is the leading edge for WAF zero-day mitigation in the industry.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main value propositions of any web application security product is the ability to detect novel attack vectors before they can cause an issue, allowing internal teams time to patch and remediate the underlying codebase. We call this time to mitigate. The ideal value is zero.</p>
 	<p>We’ve put a lot of effort and research into a machine learning system that augments our existing signature based system to yield very good classification results of new attack vectors the first time they are seen. The system outputs a score that we call the WAF Attack Score. We have validated that for many CVEs, we are indeed able to correctly classify malicious payloads on the first attempt and provide Sitecore CVEs as an example.</p>
 	<p>Moving forward, we are now automating a feedback loop that will allow us to both improve our signatures faster, to then subsequently iterate on the model and provide even better detection.</p>

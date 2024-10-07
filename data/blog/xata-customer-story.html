@@ -7,12 +7,26 @@
 	</figure>
 	<p>We’re excited to have Xata building their serverless functions product – Xata Workers – on top of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">Workers for Platforms</a>. Xata Workers act as middleware to simplify database access and allow their developers to deploy functions that sit in front of their databases. Workers for Platforms opens up a whole suite of use cases for Xata developers all while providing the security, scalability and performance of Cloudflare Workers.</p>
 	<p>Now, handing it over to Alexis, a Senior Software Engineer at Xata to tell us more.</p>
-	<h3>Introduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="introduction">Introduction</h3>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the last few years, there's been a rise of Jamstack, and new ways of thinking about the cloud that some people call serverless or edge computing. Instead of maintaining dedicated servers to run a single service, these architectures split applications in smaller services or functions.</p>
 	<p>By simplifying the state and context of our applications, we can benefit from external providers deploying these functions in dozens of servers across the globe. This architecture benefits the developer and user experience alike. Developers don’t have to manage servers, and users don’t have to experience latency. Your application simply scales, even if you receive hundreds of thousands of unexpected visitors.</p>
 	<p>When it comes to databases though, we still struggle with the complexity of orchestrating replication, failover and high availability. Traditional databases are difficult to scale horizontally and usually require a lot of infrastructure maintenance or learning complex database optimization concepts.</p>
 	<p>At Xata we are building a modern data platform designed for scalable applications. It allows you to focus on your application logic, instead of having to worry about how the data is stored.</p>
-	<h3>Making databases accessible to everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-databases-accessible-to-everyone">Making databases accessible to everyone</h3>
+		<a href="https://blog.cloudflare.com/#making-databases-accessible-to-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started Xata with the mission of helping developers build their applications and forget about maintaining the underlying infrastructure.</p>
 	<p>With that mission in mind, we asked ourselves: how can we make databases accessible to everyone? How can we provide a delightful experience for a frontend engineer or designer using a database?</p>
 	<p>To begin with, we built an appealing web dashboard, that any developer — no matter their experience — can be comfortable using to work with their data.</p>
@@ -22,7 +36,14 @@
 	<p>It was a hard problem to solve, and after plenty of brainstorming, we agreed on two potential ways forward: implementing row-level access rules or writing API routes that talked to the database from server code.</p>
 	<p>Row-level access rules are a good way to solve this, but they would have required us to define our own opinionated language. For our users, it would have been hard to migrate away when they outgrow this solution. Instead, we preferred to focus on making serverless functions easier for our users.</p>
 	<p>Typically, serverless functions require you to either choose a full stack framework or manually write, compile, deploy and use them. This generally adds a lot of cognitive overhead even to choose the right solution. We wanted to simplify accessing the database from the frontend without sacrificing flexibility for developers. This is why we decided to build Xata Workers.</p>
-	<h3>Xata Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="xata-workers">Xata Workers</h3>
+		<a href="https://blog.cloudflare.com/#xata-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A Xata Worker is a function that a developer can write in JavaScript or TypeScript as client-side code. Rather than being executed client-side, it will actually be executed on Cloudflare’s global network.</p>
 	<p>You can think of a Xata Worker as a <code>getServerSideProps</code> function in Next.js or a <code>loader</code> function in Remix. You write your server logic in a function and our tooling takes care of deploying and running it server-side for you (yes, it’s that easy).</p>
 	<p>The main difference with other alternatives is that Xata Workers are, by design, agnostic to a framework or hosting provider. You can use them to build any kind of application or website, and even upload it as static HTML in a service like GitHub Pages or S3. You don't need a full stack web framework to use Xata Workers.</p>
@@ -55,7 +76,14 @@ export const Home = () =&gt; {
 	</figure>
 	<p>A Xata Worker, like any other function, can receive additional parameters that pass application state, context or user tokens. The code you write in the function can either return an object that will be serialized over the network with a superset of JSON to support dates and other non-primitive data types, or a full response with a custom status code and headers.</p>
 	<p>Developers can write all their logic, including their own authentication and authorization. Unlike complex row level access control rules, you can easily express your logic without constraints and even unit test it with the rest of your code.</p>
-	<h3>How we use Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-use-cloudflare">How we use Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#how-we-use-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are happy to join the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a> movement, Cloudflare has an excellent track record, and we are using <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">Cloudflare Workers for Platforms</a> to host our serverless functions. By using the Workers isolated execution contexts we reduce security risks of running untrusted code on our own while being close to our users, resulting in super low latency.</p>
 	<p>All of it, without having to deploy extra infrastructure to handle our user’s application load or ask them to configure how the serverless functions should be deployed. It really feels like magic! Now, let's dive into the internals of how we use Cloudflare to run our Xata Workers.</p>
 	<p>For every workspace in Xata we create a Worker Namespace, a Workers for Platform concept to organize Workers and restrict the routing between them. We used Namespaces to group and encapsulate the different functions coming from all the databases built by a client or team.</p>
@@ -76,7 +104,14 @@ const listProducts = xataWorker('listProducts', async ({ xata }) =&gt; {
   });
 });</code></pre>
 	<p>In development mode, we provide a command to run the functions locally and test them before deploying them to production. This enables rapid development workflows with real-time filesystem change monitoring and hot reloading of the workers code. Internally, we use the latest version of miniflare to emulate the Cloudflare Workers runtime, mimicking the real production environment.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Xata is now out of beta and available for everyone. We offer a generous free tier that allows you to build and deploy your applications and only pay to scale them when you actually need it.</p>
 	<p>You can <a href="https://app.xata.io">sign up for free</a>, create a database in seconds and enjoy features such as branching with zero downtime migrations, search and analytics, transactions, and many others. Check out our <a href="https://xata.io">website</a> to learn more!</p>
 	<p>Xata Workers are currently in private beta. If you are interested in trying them out, you can sign up for the <a href="https://xata.io/beta/workers">waitlist</a> and talk us through your use case. We are looking for developers that are willing to provide feedback and shape this new feature for our serverless data platform.</p>

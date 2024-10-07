@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Over the past few years, the CloudFlare blog has covered a great range of different topics, drilling down into the technology we use to both protect websites from attack, and optimise them so that they load faster for visitors.</p>
 	<p>One thing we haven't spent enough time talking about so far though also happens to be at the core of the way our service, as well as any service on the Internet works: <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>. CloudFlare offers DNS services for free- you don't even need to use any of our other free performance or security features to take advantage of our DNS. One of the side effects of building a network such as ours is that our DNS has properties unlike that of nearly all other DNS providers: even within the cutting edge world of <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">Content Delivery Networks</a>. These unique properties allow you to do things that would be much harder or impossible with other providers.</p>
-	<h3>A bit about DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-bit-about-dns">A bit about DNS</h3>
+		<a href="https://blog.cloudflare.com/#a-bit-about-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First though, a recap for the uninitiated. DNS (Domain Name System) is the way in which the human-readable addresses such as <code>www.cloudflare.com</code> are turned into the IP addresses that computers use to communicate with each other, such as</p>
 	<p><code>198.41.213.157</code> or <code>2400:cb00:2048:1::c629:d59d</code>.</p>
 	<p>You can think of it as the world's greatest phone book, turning human-readable names such Joe Bloggs into the string of numbers you need to call them. DNS entries (or 'records', in the correct parlance) are announced by DNS 'nameservers', which hold the records for a particular domain name or list of domains, such as <code>cloudflare.com</code>. (As a side note, a common misconception is that the domain name includes the <code>www</code> at the beginning: the address <code>www.cloudflare.com</code> is actually a <i>subdomain</i> of the <code>cloudflare.com</code> domain.) Anyone can run a DNS nameserver, and become part of the DNS network.</p>
@@ -14,10 +21,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TzSCOgjZB69oUHQYwqmHn/2281ce4600ca6a9162ec9a761d7e51f5/dnsrequest.png" alt="A DNS Request" class="kg-image" width="960" height="585" loading="lazy">
 
 	</figure>
-	<h3>In theory, there is no difference between theory and practice. In practice, there is.</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-theory-there-is-no-difference-between-theory-and-practice-in-practice-there-is">In theory, there is no difference between theory and practice. In practice, there is.</h3>
+		<a href="https://blog.cloudflare.com/#in-theory-there-is-no-difference-between-theory-and-practice-in-practice-there-is" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All great in theory, but there are a few ways in which this process is hampered. Firstly, let's say you run a web site with a DNS nameserver in London, and someone from San Francisco wants to visit your site. To find the correct IP address, they need to make a request all the way from San Francisco to London. A distance of 8,611km is going to add some latency to the request, and slow down the load time of your web site. Secondly, the DNS records have a property known as Time To Live (or TTL). This specifies the length of time that a DNS name should be cached with an ISP's nameservers before being refreshed. This caching means that a commonly accessed name like <code>www.google.com</code> isn't constantly being sent to Google's servers. The lower the TTL (it's usually specified in seconds) the more often DNS resolvers will ask the nameserver for the DNS records of a particular domain name.</p>
 	<p>Often to save on traffic and processing power, web hosts and other DNS providers will set this to hours or even days. That means that if you want to make some changes to your DNS, it can often take hours or days for the change to be seen by visitors to your web site, as the resolvers don't know to check for changes to your domain. (Web hosts often refer to this as 'propagation time', though the idea that DNS records need to 'propagate-out' is largely a myth: in most cases, it's the TTL set by the web host or DNS provider that causes delays in DNS changes.) Also like all servers, DNS nameservers will fail from time to time, and when they do your web site will drop off the internet.</p>
-	<h3>Anycast DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-dns">Anycast DNS</h3>
+		<a href="https://blog.cloudflare.com/#anycast-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The way CloudFlare routes traffic allows us to get around these issues, and provide interesting advantages to boot. As with the rest of CloudFlare's networking, our DNS works over Anycast. That means that instead of having to make requests all the way back to the web host, who could be on a different continent, the request is instead made to the nearest of CloudFlare's 24 data centres worldwide. For example, I'm based in the UK, but <code>cloudflare.com</code> is hosted in California. Even so, when I perform a traceroute to CloudFlare's DNS nameserver <code>dns2.cloudflare.com</code>, it's only 7 short hops to reach a server in our London data centre.</p>
 	<p>$ traceroute dns2.cloudflare.com
 		traceroute to dns2.cloudflare.com (173.245.58.99), 64 hops max, 52 byte packets
@@ -29,13 +50,27 @@
 		6 195.66.225.179 (195.66.225.179) 46.333 ms * *
 		7 dns2.cloudflare.com (173.245.58.99) 16.925 ms 15.713 ms 15.698 ms</p>
 	<p>This can significantly reduce the time that your web site takes to load for visitors, anywhere in the world. Not only that, but because there's no one single physical DNS server, the chances that DNS would fail for the domain are greatly reduced.</p>
-	<h3>Short TTLs</h3>
+	<div class="flex anchor relative">
+		<h3 id="short-ttls">Short TTLs</h3>
+		<a href="https://blog.cloudflare.com/#short-ttls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To solve the issue of having to wait ages for new DNS records to set correctly, CloudFlare has TTLs of 5 minutes on all DNS records by default. That means that if you make a change to, or add a new DNS record, you can expect visitors to your site to see the change in under 5 minutes (2 and a half minutes on average).</p>
 	<p>As well as never having to wait for DNS propagation again, this allows you to do things with DNS records that you wouldn't be able to do with other providers. Let's say you've been working on a replacement for your current website in a staging area on a different IP address, and it's now ready to go live. All you need to do is change the IP address set through your account with us and seconds later the new site will be live and publicly accessible.</p>
 	<p>Alternatively, let's say you have a server at home which contains personal files such as documents, music and other things you might want to access from work or a coffee shop. Some DNS providers including CloudFlare offer an API so you can <a href="https://github.com/scotchmist/dyndns-cf">write a script</a> to constantly update an address such as <code>home.example.com</code> to point to your server at home, similar to a service such as DynDNS but with your own domain name. With a TTL of hours or days, an update to your home's IP address would make such a script pretty unreliable, as you would need to wait for your domain's records to change. With our DNS though, any downtime for that address wouldn't ever last more than a handful of minutes, allowing you to access your files remotely at all times.</p>
 	<p>Low TTLs can have more serious uses as well: let's say you run an enterprise-level service, and near-100% uptime is a major concern. If one of your servers stopped working, a quick DNS change to the IP address of your fail-over server is all that's need to get it back up again. As before, this process is scriptable, and can be set to happen automatically if the script detects issues connecting to the primary server.</p>
 	<p>Another advantage of low TTLs is it means we can move the IP addresses used for customers around at short notice. This is really important for CloudFlare as an attack mitigation service. When <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">an attack</a> reaches our network, our primary goal is to isolate it so that it doesn't affect any other customers, and 'null-route' it so that it doesn't go anywhere. Lowering the TTLs for DNS records even further allows us to do this on-the-fly, allowing us to react to attacks within a few seconds of them hitting our network edge.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking to the future, we are investigating other things we can do with the network we've built, and other DNS-related services we can add on top of the ones we already offer. One interesting feature would be the ability for traffic to be sent to different IP addresses depending on where the visitor is located, allowing customers with servers in multiple data centres to direct requests based on where it comes from. For the time-being though, our DNS offers some of the best reliability and speed in the industry, and can help to speed up your website, for free, regardless of whether you use any of the other services CloudFlare offers.</p>
 	<hr>
 	<p><i>Sam Howson is a member of the Support team for CloudFlare, based in London. When he isn't helping customers to take advantage of CloudFlare's awesome features, he enjoys irritating his housemates with the sounds of his violin and mandolin, going to gigs, concerts &amp; plays and exploring London on his bike.</i></p>

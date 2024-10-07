@@ -6,7 +6,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SOUdiHMcr2MNIaJbtzkvY/b838a6d9cf4a09bbe425fa837fdf5101/Whitesnake.jpg.scaled500.jpg" alt="The Wednesday Witching Hour: CloudFlare DoS Statistics" class="kg-image" width="473" height="427" loading="lazy">
 
 	</figure>
-	<h3>Still of the Night</h3>
+	<div class="flex anchor relative">
+		<h3 id="still-of-the-night">Still of the Night</h3>
+		<a href="https://blog.cloudflare.com/#still-of-the-night" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Those attacks literally keep our network engineers awake at night: the busiest time is during the night in the USA. This graph shows the number of 'attack minutes' (number of attacks in each sampled minute; often our engineers are dealing with multiple attacks at the same time) by UTChour. The peak corresponds to morning in Europe and the deep, dark night in the US.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -29,7 +36,14 @@ Statistics" class="kg-image" width="500" height="330" loading="lazy">
 	</figure>
 	<p>As CloudFlare is a protection and acceleration service for web sites it's not surprising that 92% of the DoS attacks using TCP are on port 80 (HTTP); and on UDP 97% are against port 53 (DNS). But we've also seen DNS attacks on TCP port 53 and UDP attacks on port 870 and 514 (syslog). Looking into TCP, SYN flooding remains the favorite attack method with 84% of the attacks.</p>
 	<p>Ironically, DNSSEC is currently making some DNS reflection attacks worse because of the large amount of data that DNSSEC can return. Attackers make EDNS0 requests to servers that are able to interpret them; they do that from forged IP addresses resulting in a large amount of data (in the form of valid EDNS0 replies) hitting a target IP range.</p>
-	<h3>Carpet Bombing and Drive-Bys</h3>
+	<div class="flex anchor relative">
+		<h3 id="carpet-bombing-and-drive-bys">Carpet Bombing and Drive-Bys</h3>
+		<a href="https://blog.cloudflare.com/#carpet-bombing-and-drive-bys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've also seen attackers increasing the intensity of attacks by 'carpet bombing'. To knock off a single web site we see attackers attempting a TCP SYN to the web site's IP addresses, SYN flooding against the DNS server handling the web site and DNS reflection and then the same thing across the entire /24 IP range handling the web server and the entire /24 IP range handling the DNS server.</p>
 	<p>Those massive attacks keep our network engineers up at night keeping CloudFlare web sites online and fast. But the overall trend in attacks has been slightly down over the last 6 months. We believe that attackers are becoming aware of CloudFlare's DoS protection and are switching to other attack methods (such as trying to break into web sites and not just knock them off line) and we've seen attackers try <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">sophisticated technical and social engineering attacks</a> to break into CloudFlare.</p>
 	<figure class="kg-card kg-image-card ">

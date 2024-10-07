@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>For each of our racks, all of our dual power-supply (PSU) servers are cabled to one of the two vertically mounted PDUs. As shown in the picture above, one PDU feeds a server’s PSU via a red cable, and the other PDU feeds that server’s other PSU via a blue cable. This is to ensure we have power redundancy maximizing our service uptime; in case one of the PDUs or server PSUs fail, the redundant power feed will be available keeping the server alive.</p>
-	<h3>Faraday’s Law and Ohm’s Law</h3>
+	<div class="flex anchor relative">
+		<h3 id="faradays-law-and-ohms-law">Faraday’s Law and Ohm’s Law</h3>
+		<a href="https://blog.cloudflare.com/#faradays-law-and-ohms-law" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like most high-voltage applications, PDUs and servers are designed to use AC power. Meaning voltage and current aren’t constant — they’re sine waves with magnitudes that can alternate between positive and negative at a certain frequency. For example, a voltage feed of 100V is not constantly at 100V, but it bounces between 100V and -100V like a sine wave. One complete sine wave cycle is one phase of 360 degrees, and running at 50Hz means there are 50 cycles per second.</p>
 	<p>The sine wave can be explained by Faraday’s Law and by looking at how an AC power generator works. Faraday’s Law tells us that a current is induced to flow due to a changing magnetic field. Below illustrates a simple generator with a permanent magnet rotating at constant speed and a coil coming in contact with the magnet’s magnetic field. Magnetic force is strongest at the North and South ends of the magnet. So as it rotates on itself near the coil, current flow fluctuates in the coil. One complete rotation of the magnet represents one phase. As the North end approaches the coil, current increases from zero. Once the North end leaves, current decreases to zero. The South end in turn approaches, now the current “increases” in the opposite direction. And finishing the phase, the South end leaves returning the current back to zero. Current <i>alternates</i> its direction at every half cycle, hence the naming of Alternating Current.</p>
 	<figure class="kg-card kg-image-card ">
@@ -52,7 +59,14 @@
 
 	</figure>
 	<p>The PDU shown above is a 3-phase model of 48 outlets. We can see three pairs of circuit breakers for the three branches that are intertwined with each other <b>—</b> white, grey, and black. Industry demands today pressure engineers to maximize compute performance and minimize physical footprint, making the 3-phase PDU a widely-used part of operating a data center.</p>
-	<h3>What is 3-phase?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-3-phase">What is 3-phase?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-3-phase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A 3-phase AC generator has three coils instead of one where the coils are 120 degrees apart inside the cylindrical core, as shown in the figure below. Just like the 1-phase generator, current flow is induced by the rotation of the magnet thus creating power from each coil sequentially at every one-third of the magnet’s rotation cycle. In other words, we’re generating three 1-phase power offset by 120 degrees.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -92,7 +106,14 @@
 
 	</figure>
 	<p>Thanks to a neutral line, a Wye PDU can offer a second voltage source that is √3 times lower for smaller devices, like laptops or monitors. Common voltages for Wye PDUs are 230V/400V or 120V/208V, particularly in North America.</p>
-	<h3>Where does the √3 come from?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-does-the-3-come-from">Where does the √3 come from?</h3>
+		<a href="https://blog.cloudflare.com/#where-does-the-3-come-from" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Why are we multiplying by √3? As the name implies, we are adding phasors. Phasors are complex numbers representing sine wave functions. Adding phasors is like adding vectors. Say your GPS tells you to walk 1 mile East (vector a), then walk a 1 mile North (vector b). You walked 2 miles, but you only moved by 1.4 miles NE from the original location (vector a+b). That 1.4 miles of “work” is what we want.</p>
 	<p>Let’s take in our application L1 and L2 in a Delta circuit. we add phases L1 and L2, we get a L1/L2 line. We assume the 2 coils are identical. Let’s say α represents the voltage magnitude for each phase. The 2 phases are 120 degrees offset as designed in the 3-phase power generator:</p>
 	<pre class="language-bash"><code class="language-bash">|L1| = |L2| = α
@@ -124,7 +145,14 @@ L2 = |L2|∠-120° = α∠-120°</code></pre>
 	<p>P<sub>overall</sub> = √3 x V<sub>phase</sub> x I<sub>phase</sub></p><!--kg-card-begin: html-->
 	<p></p><!--kg-card-end: html-->
 	<p>Using the US example, V<sub>phase</sub> is 208V and I<sub>phase</sub> is 24A. This leads to the overall 3-phase power to be 8646W (√3 x 208V x 24A) or 8.6kW. There lies the biggest advantage for using 3-phase systems. Adding 2 sets of coils and wires (ignoring the neutral wire), we’ve turned a generator that can produce √3 or 1.7 times more power!</p>
-	<h3>Dealing with 3-phase</h3>
+	<div class="flex anchor relative">
+		<h3 id="dealing-with-3-phase">Dealing with 3-phase</h3>
+		<a href="https://blog.cloudflare.com/#dealing-with-3-phase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The derivation in the section above assumes that the magnitude at all three phases is equal, but we know in practice that's not always the case. In fact, it's barely ever. We rarely have servers and switches evenly distributed across all three branches on a PDU. Each machine may have different loads and different specs, so power could be wildly different, potentially causing a dramatic phase imbalance. Having a heavily imbalanced setup could potentially hinder the PDU's available capacity.</p>
 	<p>A perfectly balanced and fully utilized PDU at 8.6kW means that each of its three branches has 2.88kW of power consumed by machines. Laid out simply, it's spread 2.88 + 2.88 + 2.88. This is the best case scenario. If we were to take 1kW worth of machines out of one branch, spreading power to 2.88 + 1.88 + 2.88. Imbalance is introduced, the PDU is underutilized, but we're fine. However, if we were to put back that 1kW into another branch — like 3.88 + 1.88 + 2.88 — the PDU is over capacity, even though the sum is still 8.6kW. In fact, it would be over capacity even if you just added 500W instead of 1kW on the wrong branch, thus reaching 3.18 + 1.88 + 2.88 (8.1kW).</p>
 	<p>That's because a 8.6kW PDU is spec'd to have a maximum of 24A for each phase current. Overloading one of the branches can force phase currents to go over 24A. Theoretically, we can reach the PDU’s capacity by loading one branch until its current reaches 24A and leave the other two branches unused. That’ll render it into a 1-phase PDU, losing the benefit of the √3 multiplier. In reality, the branch would have fuses rated less than 24A (usually 20A) to ensure we won't reach that high and cause overcurrent issues. Therefore the same 8.6kW PDU would have one of its branches tripped at 4.2kW (208V x 20A).</p>

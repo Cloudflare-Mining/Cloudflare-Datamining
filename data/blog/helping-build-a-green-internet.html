@@ -9,13 +9,34 @@
 	<p>When we started Cloudflare, we weren't thinking about minimizing the environmental impact of the Internet. Frankly, I didn't really think of the Internet as having much of an environmental impact. It was just this magical resource that gave access to information and services from anywhere.</p>
 	<p>But that was before I started racking servers in hyper-cooled data centers. Before Cloudflare started paying the bills to keep those servers powered up and cooled down. Before we became obsessed with maximizing the number of requests we could process per watt of power. And long before we started buying directly from renewable power suppliers to drive down the cost of electricity across our network.</p>
 	<p>Today, I have a very good understanding of how much power it takes to run the Internet. It therefore wasn't surprising to read the <a href="https://www.sciencefocus.com/science/what-is-the-carbon-footprint-of-the-internet">Boston Consulting Group study</a> which found that 2% of all carbon output, about 1 billion metric tons per year, is attributable to the Internet. That’s the equivalent of the entire aviation industry.</p>
-	<h3>Cloudflare: Accidentally Environmentally Friendly By Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-accidentally-environmentally-friendly-by-design">Cloudflare: Accidentally Environmentally Friendly By Design</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-accidentally-environmentally-friendly-by-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we didn't set out to reduce the environmental impact of the Internet, Cloudflare has always had efficiency at its core. It comes from our ongoing fight with an old nemesis: the speed of light.</p>
 	<p>Because we knew we couldn't beat the speed of light, in order to make our network fast we needed to get close to where Internet users were. In order to do that, we needed to partner directly with ISPs around the world so they'd allow us to install our gear directly inside their networks. In order to do that, we needed to make our gear as low power as possible. And we needed to invent network technology to spread load around our network to deal with spikes of traffic — whether because of a cyber attack or a sale on an exclusive new sneaker line — and to efficiently use all available capacity.</p>
-	<h3>Fighting for Efficiency</h3>
+	<div class="flex anchor relative">
+		<h3 id="fighting-for-efficiency">Fighting for Efficiency</h3>
+		<a href="https://blog.cloudflare.com/#fighting-for-efficiency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When back in December 2012, just two years after we launched, I traveled to Intel's Oregon Research Center to talk to their senior engineering team about how we needed server chips with more cores per watt, I wasn't thinking we needed it to save the environment. Instead, I was trying to figure out how we could build equipment that was power efficient enough that ISPs wouldn't object to installing it. Unfortunately, Intel told me that I was worrying about the wrong thing. So that's when we started looking for alternatives, including the very power-efficient Arm.</p>
 	<p>But, it turns out, our obsession with efficiency has made Cloudflare the environmental choice in cloud computing. A 2015 <a href="https://www.mdpi.com/2078-1547/6/1/117/htm">study by Anders S. G. Andrae and Tomas Edler</a> estimated the average cost of processing a byte of information online. Even accounting for the efficiency gains across the industry, based on the study’s data our best estimates are that Cloudflare data processing is more than 19 times more efficient.</p>
-	<h3>Serve Local</h3>
+	<div class="flex anchor relative">
+		<h3 id="serve-local">Serve Local</h3>
+		<a href="https://blog.cloudflare.com/#serve-local" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The imperfect analogy that I like is buying from the local farmers' market versus the big box retailer. By serving requests locally, and not backhauling them around the world to massive data centers, Cloudflare is able to reduce the environmental impact of our customers on the Internet. In 2020, we estimate that our customers reduced their carbon output by 550,000 metric tons versus if they had not used our services. That's the equivalent of eliminating 635 million miles driven by passenger cars last year.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -23,12 +44,26 @@
 
 	</figure>
 	<p>We're proud of that, but it's still a tiny percentage of the overall impact the Internet still has on the environment. As we thought about Impact Week, we set out to make reducing the environmental impact of the Internet a top priority. Given today <a href="https://w3techs.com/technologies/history_overview/proxy/all/q">more than 1 in 6 websites</a> uses Cloudflare, we're in a position where changes we make can have a meaningful impact.</p>
-	<h3>We Can Do More</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-can-do-more">We Can Do More</h3>
+		<a href="https://blog.cloudflare.com/#we-can-do-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, we're announcing four major initiatives to reduce Cloudflare's environmental impact and help the Internet as a whole be more environmentally friendly.</p>
 	<p>First, we're committing to be carbon neutral by 2022. We already extensively use renewable energy to power our global network, but we're going to expand that usage to cover 100% of our energy use. But we're going a step further. We're going to look back over the 11 years since Cloudflare launched and purchase offsets to zero out all of Cloudflare's historical carbon output from powering our global network. It's not enough that we have less impact than others, we want to make sure Cloudflare since our beginning has been a net positive for the planet.</p>
 	<p>Second, we are ramping up our deployment of a new class of hyper-efficient servers. Based on Arm technology, these servers can perform the same amount of work while using half the energy. We are hopeful that by prioritizing energy efficiency in the server market we can help catalyze more chip manufacturers to release more efficient designs.</p>
 	<p>Third, we're releasing a new option for Cloudflare Workers and Pages, our computing platform and JAMStack offering, which allows developers to choose to run their workloads in the most energy efficient data centers. We believe we are the first major cloud computing vendor to offer developers a way to optimize for the environment. The Green Workers option won't cost any more. The tradeoff will be that workloads may incur a bit of additional network latency, but we believe for many developers that's a tradeoff they'll be willing to make.</p>
-	<h3>New Standards and Partnerships to Eliminate Excessive Emissions</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-standards-and-partnerships-to-eliminate-excessive-emissions">New Standards and Partnerships to Eliminate Excessive Emissions</h3>
+		<a href="https://blog.cloudflare.com/#new-standards-and-partnerships-to-eliminate-excessive-emissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, and maybe most ambitiously, we're working with a number of the leading search and crawl companies to introduce an open standard to minimize the amount of load from excessive crawl as possible. Nearly half of all Internet traffic is automated. The majority of that is malicious, and Cloudflare is designed to stop that as efficiently as possible.</p>
 	<p>But more than 5% of all Internet traffic is generated by legitimate crawlers which index the web in order to power services we all rely on like search. The problem is, more than half of that legitimate crawl traffic is redundant — reindexing pages that haven't changed. If we can eliminate redundant crawl, it'd be the equivalent of planting a new 30 million acres of forest. That's a goal worth striving for.</p>
 	<p>When we started Cloudflare we weren't thinking about how we could reduce the Internet's environmental impact. But that's changed. Cloudflare's mission is to help build a better Internet. And a better Internet is clearly a more environmentally friendly Internet.</p>

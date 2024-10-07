@@ -8,11 +8,25 @@
 	<p>Network Analytics v2 is a fundamental redesign of the backend systems that provide real-time visibility into network layer traffic patterns for Magic Transit and Spectrum customers. In this blog post, we'll dive into the technical details behind this redesign and discuss some of the more interesting aspects of the new system.</p>
 	<p>To protect Cloudflare and our customers against <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service (DDoS) attacks</a>, we operate a sophisticated in-house DDoS detection and mitigation system called dosd. It takes samples of incoming packets, analyzes them for attacks, and then deploys mitigation rules to our global network which drop any packets matching specific attack fingerprints. For example, a simple network layer mitigation rule might say “drop UDP/53 packets containing responses to DNS ANY queries”.</p>
 	<p>In order to give our Magic Transit and Spectrum customers insight into the mitigation rules that we apply to their traffic, we introduced a new reporting system called "Network Analytics" back in 2020. Network Analytics is a data pipeline that analyzes raw packet samples from the Cloudflare global network. At a high level, the analysis process involves trying to match each packet sample against the list of mitigation rules that dosd has deployed, so that it can infer whether any particular packet sample was dropped due to a mitigation rule. Aggregated time-series data about these packet samples is then rolled up into one-minute buckets and inserted into a ClickHouse database for long-term storage. The Cloudflare dashboard queries this data using our public GraphQL APIs, and displays the data to customers using interactive visualizations.</p>
-	<h2>What was wrong with v1?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-was-wrong-with-v1">What was wrong with v1?</h2>
+		<a href="https://blog.cloudflare.com/#what-was-wrong-with-v1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This original implementation of Network Analytics delivered a ton of value to customers and has served us well. However, in the years since it was launched, we have continued to significantly improve our mitigation capabilities by adding entirely new mitigation systems like <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection">Advanced TCP Protection</a> (otherwise known as flowtrackd) and <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a>. The original version of Network Analytics only reports on mitigations created by dosd, which meant we had a reporting system that was showing incomplete information.</p>
 	<p>Adapting the original version of Network Analytics to work with Magic Firewall would have been relatively straightforward. Since firewall rules are “stateless”, we can tell whether a firewall rule matches a packet sample just by looking at the packet itself. That’s the same thing we were already doing to figure out whether packets match dosd mitigation rules.</p>
 	<p>However, despite our efforts, adapting Network Analytics to work with flowtrackd turned out to be an insurmountable problem. flowtrackd is “stateful”, meaning it determines whether a packet is part of a legitimate connection by tracking information about the other packets it has seen previously. The original Network Analytics design is incompatible with stateful systems like this, since that design made an assumption that the fate of a packet can be determined simply by looking at the bytes inside it.</p>
-	<h2>Rethinking our approach</h2>
+	<div class="flex anchor relative">
+		<h2 id="rethinking-our-approach">Rethinking our approach</h2>
+		<a href="https://blog.cloudflare.com/#rethinking-our-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i">Rewriting</a> a working system is not usually a good idea, but in this case it was necessary since the fundamental assumptions made by the old design were no longer true. When starting over with Network Analytics v2, it was clear to us that the new design not only needed to fix the deficiencies of the old design, it also had to be flexible enough to grow to support future products that we haven’t even thought of yet. To meet this high bar, we needed to really understand the core principles of network observability.</p>
 	<p>In the world of on-premise networks, packets typically chain through a series of appliances that each serve their own special purposes. For example, a packet may first pass through a <a href="https://www.cloudflare.com/learning/security/what-is-a-firewall">firewall</a>, then through a <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-router">router</a>, and then through a <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing">load balancer</a>, before finally reaching the intended destination. The links in this chain can be thought of as independent “network functions”, each with some well-defined inputs and outputs.</p>
 	<figure class="kg-card kg-image-card ">
@@ -41,7 +55,14 @@
 
 	</figure>
 	<p>Even though it seemed counterintuitive for our software to emit multiple streams of packet samples this way, we realized through taking inspiration from traditional network monitoring that doing so was exactly how we could build the extensible and future-proof observability that we needed.</p>
-	<h2>Design &amp; implementation</h2>
+	<div class="flex anchor relative">
+		<h2 id="design-implementation">Design &amp; implementation</h2>
+		<a href="https://blog.cloudflare.com/#design-implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The implementation of Network Analytics v2 could be broken down into two separate pieces of work. First, we needed to build a new data pipeline that could receive packet samples from different sources, then normalize those samples and write them to long-term storage. We called this data pipeline <i>samplerd</i> – the “sampler daemon”.</p>
 	<p>The samplerd pipeline is relatively small and straightforward. It implements a few different interfaces that other software can use to send it metadata-rich packet samples. It then normalizes these samples and forwards them for postprocessing and insertion into a ClickHouse database.</p>
 	<figure class="kg-card kg-image-card ">
@@ -50,7 +71,14 @@
 
 	</figure>
 	<p>The other, larger piece of work was to modify existing Cloudflare systems and make them send packet samples to samplerd. The rest of this post will cover a few interesting technical challenges that we had to overcome to adapt these systems to work with samplerd.</p>
-	<h3>l4drop</h3>
+	<div class="flex anchor relative">
+		<h3 id="l4drop">l4drop</h3>
+		<a href="https://blog.cloudflare.com/#l4drop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first system that incoming packets enter is our <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">xdp daemon</a>, called xdpd. In a few words, xdpd manages the installation of multiple XDP programs: a packet sampler, l4drop and L4LB. l4drop is where many types of attacks are mitigated. Mitigations done at this level are very cheap, because they happen so early in the network stack.</p>
 	<p>Before introducing samplerd, these XDP programs were organized like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -71,14 +99,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PhssbefKXY78fC6fHZxCb/5c2c7979456d4d25e8a319109da86450/download--1--2.png" alt="" class="kg-image" width="1600" height="609" loading="lazy">
 
 	</figure>
-	<h3>iptables</h3>
+	<div class="flex anchor relative">
+		<h3 id="iptables">iptables</h3>
+		<a href="https://blog.cloudflare.com/#iptables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another of our mitigation layers is iptables. We use it for some types of mitigations that we can’t perform in l4drop, like stateful connection tracking. iptables mitigations are organized as a list of rules that an incoming packet will be evaluated against. It’s also possible for a rule to jump to another rule when some conditions are met. Some of these rules will perform rate limiting, which will only drop packets beyond a certain threshold. For instance, we might drop all packets beyond a 10 packet-per-second threshold.</p>
 	<p>Prior to the introduction of samplerd, our typical rules would match on some characteristics of the packet – say, the IP and port – and make a decision whether to immediately drop or pass the packet.</p>
 	<p>To adapt our iptables rules to samplerd, we need to make them emit annotated samples, so that we can know why a decision was taken. To this end, one idea would be to just make the rules which drop packets also emit a nflog sample with a certain probability. One of the issues with that approach has to do with rate limiting rules. A packet may match such a rule, but the packet may be under the threshold and so that packet gets passed further down the line. That doesn’t work because we also want to sample those passed packets too, since it’s important for a customer to know what was passed and dropped by the rate limiter. But since a packet that passes the rate limiter may be dropped by further rules down the line, it’ll have multiple chances to be sampled, causing oversampling of some parts of the traffic. That would introduce statistical distortions in the sampled data.</p>
 	<p>To solve this, we can once again separate these steps like we did in l4drop, and make several sets of rules. First, the sampling decision is made by the first set of rules. Then, the pass-or-drop decision is made by the second set of rules. Finally, the sample can be emitted (if necessary), and then the packet can be passed or dropped by the third set of rules.</p>
 	<p>To communicate between rules we use Linux packet markings. For instance, a mark will be placed on a packet to signal that the packet will be sampled, and another mark will signify that the packet matched a particular rule and that it needs to be dropped.</p>
 	<p>For incoming packets, the rule in charge of the random sampling decision is evaluated first. Then the mitigation rules are evaluated next, in a specific order. When one of those rules decides to drop a packet, it jumps straight to the last set of rules, which will emit a sample if necessary before dropping. If no mitigation rule matches, eventually packets fall through to the last set of rules, where they will match a generic pass rule. That rule will emit a sample if necessary and pass the packet down the stack for further processing. By organizing rules in stages this way, we won’t ever double-sample packets.</p>
-	<h3>ClickHouse &amp; GraphQL</h3>
+	<div class="flex anchor relative">
+		<h3 id="clickhouse-graphql">ClickHouse &amp; GraphQL</h3>
+		<a href="https://blog.cloudflare.com/#clickhouse-graphql" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the samplerd daemon has the samples from the various mitigation systems, it does some light processing and ships those samples to be stored in ClickHouse. This inserter further enriches the metadata present in the sample, for instance by identifying the account associated with a particular destination IP. It also identifies ongoing attacks and adds a unique attack ID to each sample that is part of an attack.</p>
 	<p>We designed the inserters so that we’ll never need to change the data once it has been written, so that we can sustain high levels of insertion. Part of how we achieved this was by using ClickHouse’s <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree">MergeTree</a> table engine. However, for improved performance, we have also used a less common ClickHouse table engine, called <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree">AggregatingMergeTree</a>. Let’s dive into this using a simplified example.</p>
 	<p>Each packet sample is stored in a table that looks like the below:</p><!--kg-card-begin: html-->
@@ -321,6 +363,14 @@ WHERE attack_id = ‘abcd’</code></pre>
 	<pre class="language-bash"><code class="language-bash">SELECT if(min(min_dest_ip) == max(max_dest_ip), min(min_dest_ip), NULL), if(min(min_dest_port) == max(max_dest_port), min(min_dest_port), NULL)
 FROM aggregated_samples
 WHERE attack_id = ‘abcd’</code></pre>
-	<h2>Takeaways</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="takeaways">Takeaways</h2>
+		<a href="https://blog.cloudflare.com/#takeaways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rewriting Network Analytics was a bet that has paid off. Customers now have a more accurate and higher fidelity view of their network traffic. Internally, we can also now troubleshoot and fine tune our mitigation systems much more effectively. And as we develop and deploy new mitigation systems in the future, we are confident that we can adapt our reporting in order to support them.</p>
 </div>

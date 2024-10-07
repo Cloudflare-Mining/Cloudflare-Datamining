@@ -93,7 +93,14 @@
 	<p>Why is it important to pay attention to sequences for API security? If the above API received requests for POST /api/v1/transferFunds without any of the prior requests, it would seem suspicious. Think about it: how would the API client know what the relevant account IDs are without listing them for the user? How would the API client know how much money is available to transfer? While this example may be obvious, the sheer number of API requests to any given production API can make it hard for human analysts to spot suspicious usage.</p>
 	<p>In security, one approach to defending against an untold number of threats that are impossible to screen by a team of humans is to create a <i>positive security model</i>. Instead of trying to block everything that could potentially be a threat, you allow all known good or benign traffic and block everything else by default.</p>
 	<p>Customers could already create positive security models with <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> in two main areas: <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">volumetric abuse protection</a> and <a href="https://developers.cloudflare.com/api-shield/security/schema-validation">schema validation</a>. Sequences will form the third pillar of a positive security model for API traffic. API Gateway will be able to enforce the precedence of endpoints in any given API sequence. By establishing precedence within an API sequence, API Gateway will log or block any traffic that doesn’t match expectations, reducing abusive traffic.</p>
-	<h3>Detecting abuse by sequence</h3>
+	<div class="flex anchor relative">
+		<h3 id="detecting-abuse-by-sequence">Detecting abuse by sequence</h3>
+		<a href="https://blog.cloudflare.com/#detecting-abuse-by-sequence" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When attackers attempt to exfiltrate data in an abusive way, they rarely follow the patterns of expected API traffic. Attacks often use special software to <a href="https://owasp.org/www-community/Fuzzing">‘fuzz’</a> the API, sending several requests with different request parameters hoping to find unexpected responses from the API indicating opportunities to exfiltrate data. Attackers can also manually send requests to APIs that attempt to trick the API in performing unauthorized actions, like granting an attacker elevated privileges or access to data through a <a href="https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa1-broken-object-level-authorization.md">Broken Object Level Authentication attack</a>. Protecting APIs with rate limits is a common best practice; however, in both of the above examples attackers may deliberately execute request sequences slowly, in an attempt to thwart volumetric abuse detection.</p>
 	<p>Think of the sequence of requests above again, but this time imagine an attacker copying the legitimate funds transfer request and modifying the request payload in an attempt to trick the system:</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -223,7 +230,14 @@
 			<p><b>Sequence Mitigation:</b> Identifying relevant rules on sequences of API requests for deciding which traffic to allow or block.</p>
 		</li>
 	</ol>
-	<h3>Challenges of sequence creation</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-of-sequence-creation">Challenges of sequence creation</h3>
+		<a href="https://blog.cloudflare.com/#challenges-of-sequence-creation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sequence Analytics presents some difficult technical challenges, because sessions may be long-lived and may consist of many requests. As a result, it is not sufficient to define sequences by session identifier alone. Instead, it was necessary for us to develop a solution capable of automatically identifying multiple sequences which occur within a given session. Additionally, since important sequences are not necessarily characterized by volume alone and the set of possible sequences is large, it was necessary to develop a solution capable of identifying <i>important</i> sequences, as opposed to simply surfacing <i>frequent</i> sequences.</p>
 	<p>To help illustrate these challenges for the example of api.cloudflare.com, we can group API requests by session and plot the number of distinct sequences versus sequence length:</p>
 	<figure class="kg-card kg-image-card ">
@@ -233,7 +247,14 @@
 	</figure>
 	<p>The plot is based on a one hour snapshot comprising approximately 88,000 sessions and 260 million API requests, with 301 distinct API endpoints. We process the data by applying a fixed-length sliding window to each session, then we count the total number of different fixed-length sequences (‘n-grams’) that we observe as a result of applying the sliding window. The plot displays results for a window size (‘n-gram length’) varying between 1 and 10 requests. The number of distinct sequences ranges from 301 (for a window size of 1 request) to approximately 780,000 (for a window size of 10 requests). Based on the plot, we observe a large number of possible sequences which grows with sequence length: As we increase the sliding window size, we see an increasingly large amount of different sequences in the sample. The smooth trend can be explained by the fact that we apply a sliding window (sessions may themselves contain many sequences) in combination with many long sessions relative to the sequence length.</p>
 	<p>Given the large number of possible sequences, trying to find abusive sequences is a ‘needles in a haystack’ situation.</p>
-	<h3>Introducing Sequence Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-sequence-analytics">Introducing Sequence Analytics</h3>
+		<a href="https://blog.cloudflare.com/#introducing-sequence-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is a screenshot from the API Gateway dashboard highlighting Sequence Analytics:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -244,9 +265,23 @@
 	<p>API Gateway intelligently determines sequences of requests made by your API consumers using the methods described earlier in this article. API Gateway scores sequences by a metric we call Correlation Score. Sequence Analytics displays the top 20 sequences by highest correlation score, and we refer to these as your most important sequences. High-importance sequences contain API requests which are likely to occur together in order.</p>
 	<p>You should inspect each of your sequences to understand their correlation scores. High correlation score sequences may consist of rarely used endpoints (potentially anomalous user behavior) as well as commonly used endpoints (likely benign user behavior). Since the endpoints found in these sequences commonly occur together, they represent true usage patterns of your API. You should apply all possible API Gateway protections to these endpoints (<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">rate limiting suggestions</a>, <a href="https://developers.cloudflare.com/api-shield/security/schema-validation">Schema Validation</a>, <a href="https://developers.cloudflare.com/api-shield/security/jwt-validation">JWT Validation</a>, and <a href="https://developers.cloudflare.com/api-shield/security/mtls">mTLS</a>) and check their specific endpoint order with your development team.</p>
 	<p>We know customers want to explicitly set allowable behavior on their APIs beyond the active protections offered by API Gateway today. Coming soon, we’re releasing sequence precedence rules and enabling the ability to block requests based on those rules. The new sequence precedence rules will allow customers to specify the exact order of allowable API requests, bringing yet another way of establishing a positive security model to <a href="https://www.cloudflare.com/application-services/solutions/api-security">protect your API against unknown threats</a>.</p>
-	<h3>How to get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">How to get started</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All API Gateway customers now have access to Sequence Analytics. Navigate to a zone in the Cloudflare dashboard, then click the Security tab &gt; API Gateway tab &gt; Sequences tab. You’ll see the most important sequences that your API consumers request.</p>
 	<p>Enterprise customers that haven’t purchased API Gateway can get started by <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">enabling the API Gateway trial</a> inside the Cloudflare Dashboard or contacting their account manager.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sequence-based detection is a powerful and unique capability that unlocks many new opportunities to identify and stop attacks. As we fine-tune the methods of identifying these sequences and shipping them to our global network, we will release custom sequence matching and real-time mitigation features at a future date. We will also ensure you have the actionable intelligence to take back to your team on who the API users were that attempted to request sequences that don’t match your policy.</p>
 </div>

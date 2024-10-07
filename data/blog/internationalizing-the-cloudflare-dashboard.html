@@ -9,7 +9,14 @@
 
 	</figure>
 	<p>In this blog post, I want to help those unfamiliar with internationalization and localization to better understand how it works. I also would like to tell the story of how we made internationalizing and localizing our application a standard and repeatable process along with sharing a few tips that may help you as you do the same.</p>
-	<h3>Beginning the journey</h3>
+	<div class="flex anchor relative">
+		<h3 id="beginning-the-journey">Beginning the journey</h3>
+		<a href="https://blog.cloudflare.com/#beginning-the-journey" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step in internationalization is externalizing all the strings in your application. In concrete terms this means taking any text that could be read by a user and extracting it from your application code into separate, stand-alone files. This needs to be done for a few reasons:</p>
 	<ul>
 		<li>
@@ -168,7 +175,15 @@
 &lt;VerificationReminder&gt;
   No olvide &lt;Link to="/profile"&gt;verificar la dirección de correo electrónico.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;</code></pre>
-	<h3>Safety third!</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="safety-third">Safety third!</h3>
+		<a href="https://blog.cloudflare.com/#safety-third" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The functionality outlined above was enough for us to externalize our strings. However, it did at times result in bulky, repetitive code that was easy to mess up. A couple of pitfalls quickly became apparent.</p>
 	<p>The first was that small hardcoded strings were now easier to hide in plain sight, and because they weren't glaringly obvious to a developer until the rest of the page had been translated, the feedback loop in finding these was often days or weeks. A common solution to surfacing these issues is introducing a pseudolocalization mode into your application during development which will transform all properly internationalized strings by replacing each character with a similar looking unicode character.</p>
 	<p>For example <code>You've selected 3 Page Rules.</code> might be transformed to <code>Ýôú'Ʋè ƨèℓèçƭèδ 3 Þáϱè Rúℓèƨ</code>.</p>
@@ -191,11 +206,25 @@
 
 	</figure>
 	<p>Not only did it make the problems more obvious, but it also meant that violations would cause builds to fail, preventing bad code from entering the codebase.</p>
-	<h3>Scaling locale files</h3>
+	<div class="flex anchor relative">
+		<h3 id="scaling-locale-files">Scaling locale files</h3>
+		<a href="https://blog.cloudflare.com/#scaling-locale-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the beginning, you'll probably start out with one translation file per locale that you support. In addition, the naming scheme you use for your keys can remain somewhat simple. As your app scales, your translation file will grow too large and need to be broken up into separate files. Files that are too large will overwhelm Translation Management applications, or if left unchecked, your code editor. All of our translation strings (not including keys), when lumped together into a single file, is around 50,000 words. For comparison, that's roughly the same size as a copy of "The Hitchhiker's Guide to the Galaxy" or "Slaughterhouse Five".</p>
 	<p>We break up our translations into a number of "catalog" files roughly corresponding to feature verticals (like Firewall or Cloudflare Workers). This works out well for our developers since it provides a predictable place to find strings, and keeps the line count of a translation catalog down to a manageable length. It also works out well for the outside translation teams since a single feature vertical is a good unit of work for a translator (or small team).</p>
 	<p>In addition to per-feature catalogs, we have a common catalog file to hold strings that are re-used throughout the application. It allows us to keep ids short ( <code>common.delete</code> vs <code>some_page.some_tab.some_feature.thing.delete</code> ) and lowers the likelihood of duplication since developers habitually check the common catalog before adding new strings.</p>
-	<h3>Libraries</h3>
+	<div class="flex anchor relative">
+		<h3 id="libraries">Libraries</h3>
+		<a href="https://blog.cloudflare.com/#libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we've talked at length about our <code>&lt;Trans&gt;</code> component and what it can do. Now, let's talk about how it's built.</p>
 	<p>Perhaps unsurprisingly, we didn't want to reinvent the wheel and come up with a base i18n library from scratch. Due to prior efforts to internationalize the legacy parts of our application written in Backbone, we were already using Airbnb's <a href="https://airbnb.io/polyglot.js">Polyglot library</a>, a "tiny I18n helper library written in JavaScript" which, among other things, "provides a simple solution for interpolation and pluralization, based off of Airbnb’s experience adding I18n functionality to its Backbone.js and Node apps".</p>
 	<p>We took a look at a few of the most popular libraries that had been purpose-built for internationalizing React applications, but ultimately decided to stick with Polyglot. We created our <code>&lt;Trans&gt;</code> component to bridge the gap to React. We chose this direction for a few reasons:</p>
@@ -231,7 +260,14 @@
 	<p>First, human translators sometimes appreciate the context of the translation keys. It helps with organization, and it gives some clues about the string's purpose.</p>
 	<p>And although we no longer have to worry about typos in translation ids, we're just as susceptible to slight copy mismatches (ex. "Verify your email" vs "Verify your e-mail"). This is almost worse, since in this case it would introduce a near duplication which would be hard to detect. We'd also have to pay for it.</p>
 	<p>Whichever tech stack you're working with, there are likely a few i18n libraries that can help you out. Which one to pick is highly dependent on technical constraints of your application and the context of your team's goals and culture.</p>
-	<h3>Numbers, Dates, and Times</h3>
+	<div class="flex anchor relative">
+		<h3 id="numbers-dates-and-times">Numbers, Dates, and Times</h3>
+		<a href="https://blog.cloudflare.com/#numbers-dates-and-times" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Earlier when we talked about injecting data translated strings, we glossed over a major issue: the data we're injecting may also need to be formatted to conform to the user's local customs. This is true for dates, times, numbers, currencies and some other types of data.</p>
 	<p>Let's take our simple example from earlier:</p>
 	<pre class="language-jsx"><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;</code></pre>
@@ -364,7 +400,14 @@
 	<p>Russian (Russia)</p>
 	<p>ru-RU</p>
 	<p>14:02:37</p><!--kg-card-begin: html--><br><!--kg-card-end: html-->
-	<h3>Libraries for Handling Numbers, Dates, and Times</h3>
+	<div class="flex anchor relative">
+		<h3 id="libraries-for-handling-numbers-dates-and-times">Libraries for Handling Numbers, Dates, and Times</h3>
+		<a href="https://blog.cloudflare.com/#libraries-for-handling-numbers-dates-and-times" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ensuring the correct format for all these types of data for all supported locales is no easy task. Fortunately, there are a number of mature, battle-tested libraries that can help you out.</p>
 	<p>When we kicked off our project, we were using the <a href="https://momentjs.com">Moment.js</a> library extensively for date and time formatting. This handy library abstracts away the details of formatting dates to different lengths ("Jul 9th 20", "July 9th 2020", vs "Thursday"), displaying relative dates ("2 days ago"), amongst many other things. Since almost all of our dates were already being formatted via Moment.js for readability, and since Moment.js already has i18n support for a large number of locales, it meant that we were able to flip a couple of switches and have properly localized dates with very little effort.</p>
 	<p>There are some strong criticisms of Moment.js (mainly bloat), but ultimately the benefits realized from switching to a lower footprint alternative when compared to the cost it would take to redo every date and time didn't add up.</p>
@@ -386,7 +429,14 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>If you need to support older browsers, this can be solved with a polyfill.</p>
-	<h3>Translating</h3>
+	<div class="flex anchor relative">
+		<h3 id="translating">Translating</h3>
+		<a href="https://blog.cloudflare.com/#translating" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With all strings externalized, and all injected data being carefully formatted to locale specific standards, the bulk of the engineering work is complete. At this point, we can now claim that we’ve <b>internationalized</b> our application, since we’ve adapted it in a way that makes it easy to localize.</p>
 	<p>Next comes the process of <b>localization</b> where we actually create varying content based on the user’s language and cultural norms.</p>
 	<p>This is no small feat. Like we mentioned before, the strings in our application added together are the size of a small novel. It takes a significant amount of coordination and human expertise to create a translated copy that both captures the information with fidelity and speaks to the user in a familiar way.</p>
@@ -418,16 +468,37 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>After translation teams signal that new files are ready for pickup, the assets are pulled from the server and unpacked into their correct locations in the application code. We then run a suite of automated checks to make sure that all files are valid and free of any formatting issues.</p>
 	<p>An optional (but highly recommended) step takes place at this stage — in-context review. A team of translation reviewers then look at the translated output in context to make sure everything looks perfect in its finalized state. Having support staff that are both highly proficient with the product and fluent in the target language are especially useful in this effort. Shoutout to all our team members from around the company that have taken the time and effort to do this. To make this possible for outside contractors, we prepare special preview versions of our app that allow them to test with development mode locales enabled.</p>
 	<p>And there you have it, everything it takes to deliver a localized version of your application to your users all around the world.</p>
-	<h3>Continual Localization</h3>
+	<div class="flex anchor relative">
+		<h3 id="continual-localization">Continual Localization</h3>
+		<a href="https://blog.cloudflare.com/#continual-localization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It would be great to stop here, but what we’ve discussed up until this point is the effort required to do it once. As we all know, code changes. New strings will be gradually added, modified, and deleted over the course of ti me as new features are launched and tweaked.</p>
 	<p>Since translation is a highly human process that often involves effort from people in different corners of the world, there is a lower bound to the timeframe in which turnover is possible. Since our release cadence (daily) is often faster than this turnover rate (2-5 days), it means that developers making changes to features have to make a choice: slow down to match this cadence, or ship slightly ahead of the localization schedule without full coverage.</p>
 	<p>In order to ensure that features shipping ahead of translations don’t cause application-breaking errors, we fallback to our base locale (en_US) if a string doesn’t exist for the configured language.</p>
 	<p>Some applications have a slightly different fallback behavior: displaying raw translation keys (perhaps you've seen <i>some.funny.dot.delimited.string</i> in an app you're using). There's a tradeoff between velocity and correctness here, and we chose to optimize for velocity and minimal overhead. In some apps correctness is important enough to slow down cadence for i18n. In our case it wasn't.</p>
-	<h3>Finishing Touches</h3>
+	<div class="flex anchor relative">
+		<h3 id="finishing-touches">Finishing Touches</h3>
+		<a href="https://blog.cloudflare.com/#finishing-touches" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a few more things we can do to optimize the user experience in our newly localized application.</p>
 	<p>First, we want to make sure there isn’t any performance degradation. If our application made the user fetch all of its translated strings before rendering the page, this would surely happen. So, in order to keep everything running smoothly, the translation catalogs are fetched asynchronously and only as the application needs them to render some content on the page. This is easy to accomplish nowadays with the code splitting features available in module bundlers that support dynamic import statements such as <a href="https://parceljs.org/code_splitting.html">Parcel</a> or <a href="https://webpack.js.org/guides/code-splitting">Webpack</a>.</p>
 	<p>We also want to eliminate any friction the user might experience with needing to constantly select their desired language when visiting different Cloudflare properties. To this end, we made sure that any language preference a user selects on our <a href="https://www.cloudflare.com/fr-fr">marketing site</a> or our <a href="https://support.cloudflare.com/hc/fr-fr">support site</a> persists as they navigate to and from our <a href="https://dash.cloudflare.com/login?lang=fr-fr">dashboard</a> (all links are in French to belabor the point).</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s been an exciting journey, and we’ve learned a lot from the process. It’s difficult (perhaps impossible) to call an i18n project truly complete. &nbsp;Expanding into new languages will surface slippery bugs and expose new challenges. Budget pressure will challenge you to find ways of cutting costs and increasing efficiency. In addition, you will discover ways in which you can enhance the localized experience even more for users.</p>
 	<p>There’s a long list of things we’d like to improve upon, but here are some of the highlights:</p>
 	<ul>

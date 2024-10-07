@@ -9,7 +9,14 @@
 	<p>Cloudflare is a security company, and the heart of Workers is, in my view, a security project. Running code written by third parties is always a scary proposition, and the primary concern of the Workers team is to make that safe.</p>
 	<p>For a project like this, it is not enough to pass a security review and say "ok, we're secure" and move on. It's not even enough to consider security at every stage of design and implementation. For Workers, security in and of itself is an ongoing project, and that work is never done. There are always things we can do to reduce the risk and impact of future vulnerabilities.</p>
 	<p>Today, I want to give you an overview of our security architecture, and then address two specific issues that we are frequently asked about: V8 bugs, and Spectre.</p>
-	<h2>Architectural Overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="architectural-overview">Architectural Overview</h2>
+		<a href="https://blog.cloudflare.com/#architectural-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's start with a quick overview of the Workers Runtime architecture.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -17,7 +24,14 @@
 
 	</figure>
 	<p>There are two fundamental parts of designing a code sandbox: secure isolation and API design.</p>
-	<h3>Isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="isolation">Isolation</h3>
+		<a href="https://blog.cloudflare.com/#isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, we need to create an execution environment where code can't access anything it's not supposed to.</p>
 	<p>For this, our primary tool is V8, the JavaScript engine developed by Google for use in Chrome. V8 executes code inside "isolates", which prevent that code from accessing memory outside the isolate -- even within the same process. Importantly, this means we can run many isolates within a single process. This is essential for an edge compute platform like Workers where we must host many thousands of guest apps on every machine, and rapidly switch between these guests thousands of times per second with minimal overhead. If we had to run a separate process for every guest, the number of tenants we could support would be drastically reduced, and we'd have to limit edge compute to a small number of big enterprise customers who could pay a lot of money. With isolate technology, we can make edge compute available to everyone.</p>
 	<p>Sometimes, though, we do decide to schedule a worker in its own private process. We do this if it uses certain features that we feel need an extra layer of isolation. For example, when a developer uses the devtools debugger to inspect their worker, we run that worker in a separate process. This is because historically, in the browser, the inspector protocol has only been usable by the browser's trusted operator, and therefore has not received as much security scrutiny as the rest of V8. In order to hedge against the increased risk of bugs in the inspector protocol, we move inspected workers into a separate process with a process-level sandbox. We also use process isolation as an extra defense against Spectre, which I'll describe later in this post.</p>
@@ -27,7 +41,14 @@
 	<p>One such process in particular, which we call the "supervisor", is responsible for fetching worker code and configuration from disk or from other internal services. The supervisor ensures that the sandbox process cannot read any configuration except that which is relevant to the workers that it should be running.</p>
 	<p>For example, when the sandbox process receives a request for a worker it hasn't seen before, that request includes the encryption key for that worker's code (including attached secrets). The sandbox can then pass that key to the supervisor in order to request the code. The sandbox cannot request any worker for which it has not received the appropriate key. It cannot enumerate known workers. It also cannot request configuration it doesn't need; for example, it cannot request the TLS key used for HTTPS traffic to the worker.</p>
 	<p>Aside from reading configuration, the other reason for the sandbox to talk to other processes on the system is to implement APIs exposed to Workers. Which brings us to API design.</p>
-	<h3>API Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-design">API Design</h3>
+		<a href="https://blog.cloudflare.com/#api-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is a saying: "If a tree falls in the forest, but no one is there to hear it, does it make a sound?" I have a related saying: "If a Worker executes in a fully-isolated environment in which it is totally prevented from communicating with the outside world, does it actually run?"</p>
 	<p>Complete code isolation is, in fact, useless. In order for Workers to do anything useful, they have to be allowed to communicate with users. At the very least, a Worker needs to be able to receive requests and respond to them. It would also be nice if it could send requests to the world, safely. For that, we need <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a>.</p>
 	<p>In the context of sandboxing, API design takes on a new level of responsibility. Our APIs define exactly what a Worker can and cannot do. We must be very careful to design each API so that it can only express operations which we want to allow, and no more. For example, we want to allow Workers to make and receive HTTP requests, while we do not want them to be able to access the local filesystem or internal network services.</p>
@@ -38,14 +59,29 @@
 	<p>Now what about network access? Today, Workers are allowed to talk to the rest of the world only via HTTP -- both incoming and outgoing. There is no API for other forms of network access, therefore it is prohibited (though we plan to support other protocols in the future).</p>
 	<p>As mentioned before, the sandbox process cannot connect directly to the network. Instead, all outbound HTTP requests are sent over a Unix domain socket to a local proxy service. That service implements restrictions on the request. For example, it verifies that the request is either addressed to a public Internet service, or to the Worker's zone's own origin server, not to internal services that might be visible on the local machine or network. It also adds a header to every request identifying the worker from which it originates, so that abusive requests can be traced and blocked. Once everything is in order, the request is sent on to our HTTP caching layer, and then out to the Internet.</p>
 	<p>Similarly, inbound HTTP requests do not go directly to the Workers Runtime. They are first received by an inbound proxy service. That service is responsible for TLS termination (the Workers Runtime never sees TLS keys), as well as identifying the correct Worker script to run for a particular request URL. Once everything is in order, the request is passed over a Unix domain socket to the sandbox process.</p>
-	<h2>V8 bugs and the "patch gap"</h2>
+	<div class="flex anchor relative">
+		<h2 id="v8-bugs-and-the-patch-gap">V8 bugs and the "patch gap"</h2>
+		<a href="https://blog.cloudflare.com/#v8-bugs-and-the-patch-gap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every non-trivial piece of software has bugs, and sandboxing technologies are no exception. Virtual machines have bugs, containers have bugs, and yes, isolates (which we use) also have bugs. We can't live life pretending that no further bugs will ever be discovered; instead, we must assume they will and plan accordingly.</p>
 	<p>We rely heavily on isolation provided by V8, the JavaScript engine built by Google for use in Chrome. This has good sides and bad sides. On one hand, V8 is an extraordinarily complicated piece of technology, creating a wider "attack surface" than virtual machines. More complexity means more opportunities for something to go wrong. On the bright side, though, an extraordinary amount of effort goes into finding and fixing V8 bugs, owing to its position as arguably the most popular sandboxing technology in the world. Google regularly pays out 5-figure bounties to anyone finding a V8 sandbox escape. Google also operates fuzzing infrastructure that automatically finds bugs faster than most humans can. Google's investment does a lot to minimize the danger of V8 "zero-days" -- bugs that are found by the bad guys and not known to Google.</p>
 	<p>But, what happens after a bug is found and reported by the good guys? V8 is open source, so fixes for security bugs are developed in the open and released to everyone at the same time -- good guys and bad guys. It's important that any patch be rolled out to production as fast as possible, before the bad guys can develop an exploit.</p>
 	<p>The time between publishing the fix and deploying it is known as the "patch gap". Earlier this year, <a href="https://www.zdnet.com/article/google-cuts-chrome-patch-gap-in-half-from-33-to-15-days">Google announced that Chrome's patch gap had been reduced from 33 days to 15 days</a>.</p>
 	<p>Fortunately, we have an advantage here, in that we directly control the machines on which our system runs. We have automated almost our entire build and release process, so the moment a V8 patch is published, our systems automatically build a new release of the Workers Runtime and, after one-click sign-off from the necessary (human) reviewers, automatically push that release out to production.</p>
 	<p>As a result, our patch gap is now under 24 hours. A patch published by V8's team in Munich during their work day will usually be in production before the end of our work day in the US.</p>
-	<h2>Spectre: Introduction</h2>
+	<div class="flex anchor relative">
+		<h2 id="spectre-introduction">Spectre: Introduction</h2>
+		<a href="https://blog.cloudflare.com/#spectre-introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4WEQXH8Xp38VMUTyfFF5LW/b3d9e02edf7d6d6df4aa50a0117dd3e1/Spectre-vulnerability-_2x.png" alt="Spectre-vulnerability-@2x" class="kg-image" width="1263" height="697" loading="lazy">
@@ -53,14 +89,35 @@
 	</figure>
 	<p>We get a lot of questions about Spectre. The V8 team at Google has stated in no uncertain terms that <a href="https://arxiv.org/abs/1902.05178">V8 itself cannot defend against Spectre</a>. Since Workers relies on V8 for sandboxing, many have asked if that leaves Workers vulnerable. However, we do not need to depend on V8 for this; the Workers environment presents many alternative approaches to mitigating Spectre.</p>
 	<p>Spectre is complicated and nuanced, and there's no way I can cover everything there is to know about it or how Workers addresses it in a single blog post. But, hopefully I can clear up some of the confusion and concern.</p>
-	<h3>What is it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-it">What is it?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Spectre is a class of attacks in which a malicious program can trick the CPU into "speculatively" performing computation using data that the program is not supposed to have access to. The CPU eventually realizes the problem and does not allow the program to see the results of the speculative computation. However, the program may be able to derive bits of the secret data by looking at subtle side effects of the computation, such as the effects on cache.</p>
 	<p><a href="https://www.cloudflare.com/learning/security/threats/meltdown-spectre">For more background about Spectre, check out our Learning Center page on the topic.</a></p>
-	<h3>Why does it matter for Workers?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-does-it-matter-for-workers">Why does it matter for Workers?</h3>
+		<a href="https://blog.cloudflare.com/#why-does-it-matter-for-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Spectre encompasses a wide variety of vulnerabilities present in modern CPUs. The specific vulnerabilities vary by architecture and model, and it is likely that many vulnerabilities exist which haven't yet been discovered.</p>
 	<p>These vulnerabilities are a problem for every cloud compute platform. Any time you have more than one tenant running code on the same machine, Spectre attacks come into play. However, the "closer together" the tenants are, the more difficult it can be to mitigate specific vulnerabilities. Many of the known issues can be mitigated at the kernel level (protecting processes from each other) or at the hypervisor level (protecting VMs), often with the help of CPU microcode updates and various tricks (many of which, unfortunately, come with serious performance impact).</p>
 	<p>In Cloudflare Workers, we isolate tenants from each other using V8 isolates -- not processes nor VMs. This means that we cannot necessarily rely on OS or hypervisor patches to "solve" Spectre for us. We need our own strategy.</p>
-	<h3>Why not use process isolation?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-not-use-process-isolation">Why not use process isolation?</h3>
+		<a href="https://blog.cloudflare.com/#why-not-use-process-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers is designed to run your code in every single Cloudflare location, of which there are currently 200 worldwide and growing.</p>
 	<p>We wanted Workers to be a platform that is accessible to everyone -- not just big enterprise customers who can pay megabucks for it. We need to handle a huge number of tenants, where many tenants get very little traffic.</p>
 	<p>Combine these two points, and things get tricky.</p>
@@ -68,36 +125,79 @@
 	<p>With Workers, on the other hand, every tenant, regardless of traffic level, currently runs in every Cloudflare location. And in our quest to get as close to the end user as possible, we sometimes choose locations that only have space for a limited number of machines. The net result is that we need to be able to host thousands of active tenants per machine, with the ability to rapidly spin up inactive ones on-demand. That means that each guest cannot take more than a couple megabytes of memory -- hardly enough space for a call stack, much less everything else that a process needs.</p>
 	<p>Moreover, we need context switching to be extremely cheap. Many Workers resident in memory will only handle an event every now and then, and many Workers spend less than a fraction of a millisecond on any particular event. In this environment, a single core can easily find itself switching between thousands of different tenants every second. Moreover, to handle one event, a significant amount of communication needs to happen between the guest application and its host, meaning still more switching and communications overhead. If each tenant lives in its own process, all this overhead is orders of magnitude larger than if many tenants live in a single process. When using strict process isolation in Workers, we find the CPU cost can easily be 10x what it is with a shared process.</p>
 	<p>In order to keep Workers inexpensive, fast, and accessible to everyone, we must solve these issues, and that means we must find a way to host multiple tenants in a single process.</p>
-	<h3>There is no "fix" for Spectre</h3>
+	<div class="flex anchor relative">
+		<h3 id="there-is-no-fix-for-spectre">There is no "fix" for Spectre</h3>
+		<a href="https://blog.cloudflare.com/#there-is-no-fix-for-spectre" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A dirty secret that the industry doesn't like to admit: no one has "fixed" Spectre. Not even when using heavyweight virtual machines. Everyone is still vulnerable.</p>
 	<p>The current approach being taken by most of the industry is essentially a game of whack-a-mole. Every couple months, researchers uncover a new Spectre vulnerability. CPU vendors release some new microcode, OS vendors release kernel patches, and everyone has to update.</p>
 	<p>But is it enough to merely deploy the latest patches?</p>
 	<p>It is abundantly clear that many more vulnerabilities exist, but haven't yet been publicized. Who might know about those vulnerabilities? Most of the bugs being published are being found by (very smart) graduate students on a shoestring budget. Imagine, for a minute, how many more bugs a well-funded government agency, able to buy the very best talent in the world, could be uncovering.</p>
 	<p>To truly defend against Spectre, we need to take a different approach. It's not enough to block individual known vulnerabilities. We must address the entire class of vulnerabilities at once.</p>
-	<h3>We can't stop it, but we can slow it down</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-cant-stop-it-but-we-can-slow-it-down">We can't stop it, but we can slow it down</h3>
+		<a href="https://blog.cloudflare.com/#we-cant-stop-it-but-we-can-slow-it-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, it's unlikely that any catch-all "fix" for Spectre will be found. But for the sake of argument, let's try.</p>
 	<p>Fundamentally, all Spectre vulnerabilities use side channels to detect hidden processor state. Side channels, by definition, involve observing some non-deterministic behavior of a system. Conveniently, most software execution environments try hard to eliminate non-determinism, because non-deterministic execution makes applications unreliable.</p>
 	<p>However, there are a few sorts of non-determinism that are still common. The most obvious among these is timing. The industry long ago gave up on the idea that a program should take the same amount of time every time it runs, because deterministic timing is fundamentally at odds with heuristic performance optimization. Sure enough, most Spectre attacks focus on timing as a way to detect the hidden microarchitectural state of the CPU.</p>
 	<p>Some have proposed that we can solve this by making timers inaccurate or adding random noise. However, it turns out that this does not stop attacks; it only makes them slower. If the timer tracks real time at all, then anything you can do to make it inaccurate can be overcome by running an attack multiple times and using statistics to filter out the noise.</p>
 	<p>Many security researchers see this as the end of the story. What good is slowing down an attack, if the attack is still possible? Once the attacker gets your private key, it's game over, right? What difference does it make if it takes them a minute or a month?</p>
-	<h3>Cascading Slow-downs</h3>
+	<div class="flex anchor relative">
+		<h3 id="cascading-slow-downs">Cascading Slow-downs</h3>
+		<a href="https://blog.cloudflare.com/#cascading-slow-downs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We find that, actually, measures that slow down an attack can be powerful.</p>
 	<p>Our key insight is this: as an attack becomes slower, new techniques become practical to make it even slower still. The goal, then, is to chain together enough techniques that an attack becomes so slow as to be uninteresting.</p>
 	<p>Much of cryptography, after all, is technically vulnerable to "brute force" attacks -- technically, with enough time, you can break it. But when the time required is thousands (or even billions) of years, we decide that this is good enough.</p>
 	<p>So, what do we do to slow down Spectre attacks to the point of meaninglessness?</p>
-	<h2>Freezing a Spectre Attack</h2>
+	<div class="flex anchor relative">
+		<h2 id="freezing-a-spectre-attack">Freezing a Spectre Attack</h2>
+		<a href="https://blog.cloudflare.com/#freezing-a-spectre-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5y7HqWBzP2bdM5HCvoJ2Mq/538401a63e2af66162524a239e052dc7/freeze-Spectre_2x.png" alt="freeze-Spectre@2x" class="kg-image" width="1405" height="697" loading="lazy">
 
 	</figure>
-	<h3>Step 0: Don't allow native code</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-0-dont-allow-native-code">Step 0: Don't allow native code</h3>
+		<a href="https://blog.cloudflare.com/#step-0-dont-allow-native-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We do not allow our customers to upload native-code binaries to run on our network. We only accept JavaScript and WebAssembly. Of course, many other languages, like Python, Rust, or even Cobol, can be compiled or transpiled to one of these two formats; the important point is that we do another pass on our end, using V8, to convert these formats into true native code.</p>
 	<p>This, in itself, doesn't necessarily make Spectre attacks harder. However, I present this as step 0 because it is fundamental to enabling everything else below.</p>
 	<p>Accepting native code programs implies being beholden to an existing CPU architecture (typically, x86). In order to execute code with reasonable performance, it is usually necessary to run the code directly on real hardware, severely limiting the host's control over how that execution plays out. For example, a kernel or hypervisor has no ability to prohibit applications from invoking the CLFLUSH instruction, an instruction <a href="https://gruss.cc/files/flushflush.pdf">which is very useful in side channel attacks</a> and almost nothing else.</p>
 	<p>Moreover, supporting native code typically implies supporting whole existing operating systems and software stacks, which bring with them decades of expectations about how the architecture works under them. For example, x86 CPUs allow a kernel or hypervisor to disable the RDTSC instruction, which reads a high-precision timer. Realistically, though, disabling it will break many programs because they are implemented to use RDTSC any time they want to know the current time.</p>
 	<p>Supporting native code would bind our hands in terms of mitigation techniques. By using an abstract intermediate format, we have much greater freedom.</p>
-	<h3>Step 1: Disallow timers and multi-threading</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-1-disallow-timers-and-multi-threading">Step 1: Disallow timers and multi-threading</h3>
+		<a href="https://blog.cloudflare.com/#step-1-disallow-timers-and-multi-threading" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Workers, you can get the current time using the JavaScript Date API, for example by calling <code>Date.now()</code>. However, the time value returned by this is not really the current time. Instead, it is the time at which the network message was received which caused the application to begin executing. While the application executes, time is locked in place. For example, say an attacker writes:</p>
 	<pre class="language-javascript"><code class="language-javascript">let start = Date.now();
 for (let i = 0; i &lt; 1e6; i++) {
@@ -115,7 +215,14 @@ let end = Date.now();</code></pre>
 	</blockquote>
 	<p>But is an attack based on remote timers really feasible in practice? <b>In adversarial testing, with help from leading Spectre experts, we have not been able to develop an attack that actually works in production.</b></p>
 	<p>However, we don't feel the lack of a working attack means we should stop building defenses. Instead, we're currently testing some more advanced measures, which we plan to roll out in the coming weeks.</p>
-	<h3>Step 2: Dynamic Process Isolation</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-2-dynamic-process-isolation">Step 2: Dynamic Process Isolation</h3>
+		<a href="https://blog.cloudflare.com/#step-2-dynamic-process-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We know that if an attack is possible at all, it would take a very long time to run -- hours at the very least, maybe as long as weeks. But once an attack has been running even for a second, we have a huge amount of new data that we can use to trigger further measures.</p>
 	<p>Spectre attacks, you see, do a lot of "weird stuff" that you wouldn't usually expect to see in a normal program. These attacks intentionally try to create pathological performance scenarios in order to amplify microarchitectural effects. This is especially true when the attack has already been forced to run billions of times in a loop in order to overcome other mitigations, like those discussed above. This tends to show up in metrics like CPU performance counters.</p>
 	<p>Now, the usual problem with using performance metrics to detect Spectre attacks is that sometimes you get false positives. Sometimes, a legitimate program behaves really badly. You can't go around shutting down every app that has bad performance.</p>
@@ -124,12 +231,26 @@ let end = Date.now();</code></pre>
 	<p>Once a Worker is isolated, then we can rely on the operating system's Spectre defenses, just aslike, for example, most desktop web browsers now do.</p>
 	<p>Over the past year we've been working with the experts at Graz Technical University to develop this approach. (TU Graz's team co-discovered Spectre itself, and has been responsible for a huge number of the follow-on discoveries since then.) We have developed the ability to dynamically isolate workers, and we have identified metrics which reliably detect attacks. The whole system is currently undergoing testing to work out any remaining bugs, and we expect to roll it out fully within the next several weeks.</p>
 	<p>But wait, didn't I say earlier that even process isolation isn't a complete defense, because it only addresses known vulnerabilities? Yes, this is still true. However, the trend over time is that new Spectre attacks tend to be slower and slower to carry out, and hence we can reasonably guess that by imposing process isolation we have further slowed down even attacks that we don't know about yet.</p>
-	<h3>Step 3: Periodic Whole-Memory Shuffling</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-3-periodic-whole-memory-shuffling">Step 3: Periodic Whole-Memory Shuffling</h3>
+		<a href="https://blog.cloudflare.com/#step-3-periodic-whole-memory-shuffling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After Step 2, we already think we've prevented all known attacks, and we're only worried about hypothetical unknown attacks. How long does a hypothetical unknown attack take to carry out? Well, obviously, nobody knows. But with all the mitigations in place so far, and considering that new attacks have generally been slower than older ones, we think it's reasonable to guess attacks will take days or longer.</p>
 	<p>On a time scale of a day, we have new things we can do. In particular, it's totally reasonable to restart the entire Workers runtime on a daily basis, which resets the locations of everything in memory, forcing attacks to restart the process of discovering the locations of secrets.</p>
 	<p>We can also reschedule Workers across physical machines or cordons, so that the window to attack any particular neighbor is limited.</p>
 	<p>In general, because Workers are fundamentally preemptible (unlike containers or VMs), we have a lot of freedom to frustrate attacks.</p>
 	<p>Once we have dynamic process isolation fully deployed, we plan to develop these ideas next. We see this as an ongoing investment, not something that will ever be "done".</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Phew. You just read <i>twelve pages</i> about Workers security. Hopefully I've convinced you that designing a secure sandbox is only the beginning of building a secure compute platform, and the real work is never done. Popular security culture often dwells on clever hacks and clean fixes. But for the difficult real-world problems, often there is no right answer or simple fix, only the hard work of building defenses thicker and thicker.</p>
 </div>

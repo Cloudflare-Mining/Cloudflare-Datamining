@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>We are thrilled to announce the full support of wildcard and multi-domain application definitions in Cloudflare Access. Until now, Access had limitations that restricted it to a single hostname or a limited set of wildcards. Before diving into these new features let’s review Cloudflare Access and its previous limitations around application definition.</p>
-	<h3>Access and hostnames</h3>
+	<div class="flex anchor relative">
+		<h3 id="access-and-hostnames">Access and hostnames</h3>
+		<a href="https://blog.cloudflare.com/#access-and-hostnames" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access is the gateway to applications, enforcing security policies based on identity, location, network, and device health. Previously, Access applications were defined as a single hostname. A hostname is a unique identifier assigned to a device connected to the internet, commonly used to identify a website, application, or server. For instance, "<a href="http://www.example.com">www.example.com</a>" is a hostname.</p>
 	<p>Upon successful completion of the security checks, a user is granted access to the protected hostname via a cookie in their browser, in the form of a JSON Web Token (JWT). This cookie's session lasts for a specific period of time defined by the administrators and any request made to the hostname must have this cookie present.</p>
 	<p>However, a single hostname application definition was not sufficient in certain situations, particularly for organizations with Single Page Applications and/or hundreds of identical hostnames.</p>
@@ -14,7 +21,14 @@
 	<p>In many instances, organizations also deploy applications using a consistent naming convention, such as example.service123.example.com, especially for automatically provisioned applications. These applications often have the same set of security requirements. Previously, an Access administrator had to create a unique Access application per unique hostname, even if the services were functionally identical. This resulted in hundreds or thousands of Access applications needing to be created.</p>
 	<p>We aimed to make things easier for security teams as easier configuration means a more coherent security architecture and ultimately more secure applications.</p>
 	<p>We introduced two significant changes to Cloudflare Access: Multi-Domain Applications and Wildcard Support.</p>
-	<h3>Multi-Domain Applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="multi-domain-applications">Multi-Domain Applications</h3>
+		<a href="https://blog.cloudflare.com/#multi-domain-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Multi-Domain Applications allow teams to protect multiple subdomains with a single Access app, simplifying the process and reducing the need for multiple apps.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -22,7 +36,14 @@
 
 	</figure>
 	<p>Access also takes care of JWT cookie issuance across all hostnames associated with a given application. This means that a front-end and API service on two different hostnames can communicate securely without any additional software changes.</p>
-	<h3>Wildcards</h3>
+	<div class="flex anchor relative">
+		<h3 id="wildcards">Wildcards</h3>
+		<a href="https://blog.cloudflare.com/#wildcards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A wildcard is a special character, in this case *, defines a specific application pattern to match instead of explicitly having to define each unique application. Access applications can now be defined using a wildcard anywhere in the subdomain or path of a hostname. This allows an administrator to protect hundreds of applications with a single application policy.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,6 +51,13 @@
 
 	</figure>
 	<p>In a scenario where an application requires additional security controls, Access is configured such that the most specific hostname definition wins (e.g., test.example.com will take precedence over *.example.com).</p>
-	<h3>Give it a try!</h3>
+	<div class="flex anchor relative">
+		<h3 id="give-it-a-try">Give it a try!</h3>
+		<a href="https://blog.cloudflare.com/#give-it-a-try" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wildcard Applications are now available in open beta on the Cloudflare One Dashboard. Multi Domain support will enter an open beta in the coming weeks. For more information, please see our product documentation about Multi-domain applications and wildcards.</p>
 </div>

@@ -9,7 +9,15 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72">image</a> by <a href="https://www.flickr.com/photos/isaimoreno">Isaí Moreno</a></p>
 	<p>One subject hasn't had enough attention though - SYN floods. We use Linux and it turns out that SYN packet handling in Linux is truly complex. In this post we'll shine some light on this subject.</p>
-	<h3>The tale of two queues</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-tale-of-two-queues">The tale of two queues</h3>
+		<a href="https://blog.cloudflare.com/#the-tale-of-two-queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/X9oaRfcffxKbxYg4VvWuc/7db3cfce1b67388cdbb42a6ed69cf5cf/all-1.jpeg.jpeg" alt="all-1" class="kg-image" width="480" height="265" loading="lazy">
@@ -25,7 +33,14 @@
 		</li>
 	</ul>
 	<p>In the literature these queues are often given other names such as "reqsk_queue", "ACK backlog", "listen backlog" or even "TCP backlog", but I'll stick to the names above to avoid confusion.</p>
-	<h3>SYN Queue</h3>
+	<div class="flex anchor relative">
+		<h3 id="syn-queue">SYN Queue</h3>
+		<a href="https://blog.cloudflare.com/#syn-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The SYN Queue stores inbound SYN packets<a href="https://blog.cloudflare.com/#fn1">[1]</a> (specifically: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L73"><code>struct inet_request_sock</code></a>). It's responsible for sending out SYN+ACK packets and retrying them on timeout. On Linux the number of retries is configured with:</p>
 	<pre class="language-bash"><code class="language-bash">$ sysctl net.ipv4.tcp_synack_retries
 net.ipv4.tcp_synack_retries = 5</code></pre>
@@ -40,17 +55,39 @@ net.ipv4.tcp_synack_retries = 5</code></pre>
 	happen after 63 seconds.
 </code></pre>
 	<p>After transmitting the SYN+ACK, the SYN Queue waits for an ACK packet from the client - the last packet in the three-way-handshake. All received ACK packets must first be matched against the fully established connection table, and only then against data in the relevant SYN Queue. On SYN Queue match, the kernel removes the item from the SYN Queue, happily creates a fully fledged connection (specifically: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L183"><code>struct inet_sock</code></a>), and adds it to the Accept Queue.</p>
-	<h3>Accept Queue</h3>
+	<div class="flex anchor relative">
+		<h3 id="accept-queue">Accept Queue</h3>
+		<a href="https://blog.cloudflare.com/#accept-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Accept Queue contains fully established connections: ready to be picked up by the application. When a process calls <code>accept()</code>, the sockets are de-queued and passed to the application.</p>
 	<p>This is a rather simplified view of SYN packet handling on Linux. With socket toggles like <code>TCP_DEFER_ACCEPT</code><a href="https://blog.cloudflare.com/#fn2">[2]</a> and <code>TCP_FASTOPEN</code> things work slightly differently.</p>
-	<h3>Queue size limits</h3>
+	<div class="flex anchor relative">
+		<h3 id="queue-size-limits">Queue size limits</h3>
+		<a href="https://blog.cloudflare.com/#queue-size-limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The maximum allowed length of both the Accept and SYN Queues is taken from the <code>backlog</code> parameter passed to the <code>listen(2)</code> syscall by the application. For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
 	<pre class="language-bash"><code class="language-bash">listen(sfd, 1024)</code></pre>
 	<p>Note: In kernels before 4.3 the <a href="https://github.com/torvalds/linux/commit/ef547f2ac16bd9d77a780a0e7c70857e69e8f23f#diff-56ecfd3cd70d57cde321f395f0d8d743L43">SYN Queue length was counted differently</a>.</p>
 	<p>This SYN Queue cap used to be configured by the <code>net.ipv4.tcp_max_syn_backlog</code> toggle, but this isn't the case anymore. Nowadays <code>net.core.somaxconn</code> caps both queue sizes. On our servers we set it to 16k:</p>
 	<pre class="language-bash"><code class="language-bash">$ sysctl net.core.somaxconn
 net.core.somaxconn = 16384</code></pre>
-	<h3>Perfect backlog value</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="perfect-backlog-value">Perfect backlog value</h3>
+		<a href="https://blog.cloudflare.com/#perfect-backlog-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Knowing all that, we might ask the question - what is the ideal <code>backlog</code> parameter value?</p>
 	<p>The answer is: it depends. For the majority of trivial TCP Servers it doesn't really matter. For example, before version 1.11 <a href="https://github.com/golang/go/issues/6079">Golang famously didn't support customizing backlog value</a>. There are valid reasons to increase this value though:</p>
 	<ul>
@@ -76,7 +113,15 @@ net.core.somaxconn = 16384</code></pre>
 $ ss -n state syn-recv sport = :443 | wc -l
 78</code></pre>
 	<p>Similar data can be shown with our <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp">overenginered SystemTap script: <code>resq.stp</code></a>.</p>
-	<h3>Slow application</h3>
+	<div class="flex anchor relative">
+		<h3 id="slow-application">Slow application</h3>
+		<a href="https://blog.cloudflare.com/#slow-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/M8OtXMLU8ocN9jg1du8p1/4440ff64dcc371315b7b9c6325931685/full-accept-1.jpeg.jpeg" alt="full-accept-1" class="kg-image" width="480" height="267" loading="lazy">
@@ -123,7 +168,15 @@ time (us)        acceptq qmax  local addr    remote_addr
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B">image</a> by <a href="https://www.flickr.com/photos/16339684@N00">internets_dairy</a></p>
-	<h3>SYN Flood</h3>
+	<div class="flex anchor relative">
+		<h3 id="syn-flood">SYN Flood</h3>
+		<a href="https://blog.cloudflare.com/#syn-flood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KIPBW1tsmG1nRfI3Guvmn/bd5fd47c61d0bb4c688751d97f1bfd3d/full-syn-1.jpeg.jpeg" alt="full-syn-1" class="kg-image" width="480" height="268" loading="lazy">
@@ -154,7 +207,14 @@ time (us)        acceptq qmax  local addr    remote_addr
 		</li>
 	</ul>
 	<p>A sysctl <code>net.ipv4.tcp_syncookies</code> can disable SYN Cookies or force-enable them. Default is good, don't change it.</p>
-	<h3>SYN Cookies and TCP Timestamps</h3>
+	<div class="flex anchor relative">
+		<h3 id="syn-cookies-and-tcp-timestamps">SYN Cookies and TCP Timestamps</h3>
+		<a href="https://blog.cloudflare.com/#syn-cookies-and-tcp-timestamps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The SYN Cookies magic works, but isn't without disadvantages. The main problem is that there is very little data that can be saved in a SYN Cookie. Specifically, only 32 bits of the sequence number are returned in the ACK. These bits are used as follows:</p>
 	<pre class="language-bash"><code class="language-bash">+----------+--------+-------------------+
 |  6 bits  | 2 bits |     24 bits       |
@@ -186,7 +246,15 @@ net.ipv4.tcp_timestamps = 1</code></pre>
 	</ul>
 	<p>Currently at Cloudflare, we have TCP Timestamps disabled.</p>
 	<p>Finally, with SYN Cookies engaged some cool features won't work - things like <a href="https://lwn.net/Articles/645128"><code>TCP_SAVED_SYN</code></a>, <code>TCP_DEFER_ACCEPT</code> or <code>TCP_FAST_OPEN</code>.</p>
-	<h3>SYN Floods at Cloudflare scale</h3>
+	<div class="flex anchor relative">
+		<h3 id="syn-floods-at-cloudflare-scale">SYN Floods at Cloudflare scale</h3>
+		<a href="https://blog.cloudflare.com/#syn-floods-at-cloudflare-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nw81MpcuH9JCz80nnq4du/a1ce4ed12a3f44916ba77987364e2e0c/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt="Screen-Shot-2016-12-02-at-10.53.27-1" class="kg-image" width="1354" height="191" loading="lazy">
@@ -194,7 +262,14 @@ net.ipv4.tcp_timestamps = 1</code></pre>
 	</figure>
 	<p>SYN Cookies are a great invention and solve the problem of smaller SYN Floods. At Cloudflare though, we try to avoid them if possible. While sending out a couple of thousand of cryptographically verifiable SYN+ACK packets per second is okay, we see <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">attacks of more than 200 Million packets per second</a>. At this scale, our SYN+ACK responses would just litter the internet, bringing absolutely no benefit.</p>
 	<p>Instead, we attempt to drop the malicious SYN packets on the firewall layer. We use the <code>p0f</code> SYN fingerprints compiled to BPF. Read more in this blog post <a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler">Introducing the p0f BPF compiler</a>. To detect and deploy the mitigations we developed an automation system we call "Gatebot". We described that here <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Meet Gatebot - the bot that allows us to sleep</a></p>
-	<h3>Evolving landscape</h3>
+	<div class="flex anchor relative">
+		<h3 id="evolving-landscape">Evolving landscape</h3>
+		<a href="https://blog.cloudflare.com/#evolving-landscape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For more - slightly outdated - data on the subject read on <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html">an excellent explanation by Andreas Veithen from 2015</a> and <a href="https://www.giac.org/paper/gsec/2013/syn-cookies-exploration/103486">a comprehensive paper by Gerald W. Gordon from 2013</a>.</p>
 	<p>The Linux SYN packet handling landscape is constantly evolving. Until recently SYN Cookies were slow, due to an old fashioned lock in the kernel. This was fixed in 4.4 and now you can rely on the kernel to be able to send millions of SYN Cookies per second, practically solving the SYN Flood problem for most users. With proper tuning it's possible to mitigate even the most annoying SYN Floods without affecting the performance of legitimate connections.</p>
 	<p>Application performance is also getting significant attention. Recent ideas like <code>SO_ATTACH_REUSEPORT_EBPF</code> introduce a whole new layer of programmability into the network stack.</p>

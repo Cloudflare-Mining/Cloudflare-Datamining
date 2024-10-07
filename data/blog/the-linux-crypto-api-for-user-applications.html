@@ -74,17 +74,45 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>Here and later ignore the absolute numbers, as they depend on the environment where the tests were running. Rather look at the relationship between the numbers.</p>
 	<p>The <a href="https://en.wikipedia.org/wiki/AES_instruction_set">x86 AES instructions</a> showed the best results, twice as fast vs the generic portable C implementation. As expected, this implementation has the highest priority in the <code>/proc/crypto</code>. We will use only this one later.</p>
 	<p>This brief introduction can be rephrased as: “I can ask the kernel to encrypt or decrypt data from my application”. But, why do I need it?</p>
-	<h2>Why do I need it?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-do-i-need-it">Why do I need it?</h2>
+		<a href="https://blog.cloudflare.com/#why-do-i-need-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our previous blog post <a href="https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Linux Kernel Key Retention Service</a> we talked a lot about cryptographic key protection. We concluded that the best Linux option is to store <a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key">cryptographic keys</a> in the kernel space and restrict the access to a limited number of applications. However, if all our cryptography is processed in user space, potentially damaging code still has access to the raw key material. We have to think wisely about using the key: what part of the code has access to it, don’t log it accidentally, how the open-source libraries manage it and if the memory is purged after using it. We may need to support a dedicated process to not have a key in network-facing code. Thus, many things need to be done for security, and for each application which works with cryptography. And even after all these precautionary measures, the best of the best are subject to bugs and vulnerabilities. <a href="https://en.wikipedia.org/wiki/OpenSSL">OpenSSL</a>, the most known and widely used cryptographic library in user space, <a href="https://blog.cloudflare.com/cloudflare-is-not-affected-by-the-openssl-vulnerabilities-cve-2022-3602-and-cve-2022-37">has had a few problems in its security</a>.</p>
 	<p>Can we move all the cryptography to the kernel and help solve these problems? Looks like it! Our <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7984ceb134bf31aa9a597f10ed52d831d5aede14">recent patch</a> to upstream extended the key types which can be used in symmetric encryption in the Crypto API directly from the Linux Kernel Key Retention Service.</p>
 	<p>But nothing is free. There will be some overhead for the system calls and data copying between user and kernel spaces. So, the next question is how fast it is.</p>
-	<h2>Is it fast?</h2>
+	<div class="flex anchor relative">
+		<h2 id="is-it-fast">Is it fast?</h2>
+		<a href="https://blog.cloudflare.com/#is-it-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To answer this question we need to have some baseline to compare with. OpenSSL would be the best as it’s used all around the Internet. OpenSSL provides a good composite of toolkits, including C-functions, a console utility and various speed tests. For the sake of equality, we will ignore the built-in tests and write our own tests using OpenSSL C-functions. We want the same data to be processed and the same logic parts to be measured in both cases (Kernel versus OpenSSL).</p>
 	<p>So, the task: write a benchmark for AES-CTR-128 encrypting data split in chunks. Make implementations for the Kernel Crypto API and OpenSSL.</p>
-	<h3>About AES-CTR-128</h3>
+	<div class="flex anchor relative">
+		<h3 id="about-aes-ctr-128">About AES-CTR-128</h3>
+		<a href="https://blog.cloudflare.com/#about-aes-ctr-128" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AES stands for <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard</a>. It is a block cipher algorithm, which means the whole plaintext is split into blocks and two operations are applied: substitution and permutation. There are two parameters characterizing a block cipher: the block size and the key size. AES processes a block of 128 bits using a key of either 128, 192 or 256 bits. Each 128 bits or 16 bytes block is presented as a 4x4 two-dimensional array (matrix), where one element of the matrix presents one byte of the plaintext. To change the plaintext to ciphertext several rounds of transformation are applied: the bits of the block XORs with a key derived from the main key and substitution with permutation are applied to rows and columns of the matrix. There can be 10, 12 or 14 rounds depending on the key size (the key size determines how many keys can be derived from it).</p>
 	<p>AES is a secure cipher, but there is one nuance - the same plaintext/block of text will produce the same result. Look at <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)">Linux’s mascot Tux</a>. To avoid this, a <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">mode of operation</a> (or just mode) has to be applied. It determines how the text changes, so the same input doesn't result in the same output. Tux was encrypted using ECB mode, there is no text transformation at all. Another mode example is CBC, where the ciphertext from the previously encrypted block is added to the next block, for the first block an initial value (IV) is added. This mode guarantees that for the same input and different IV the output will be different. However, this mode is slow as each block depends on the previous one and so encryption can’t be parallelized. CTR is a counter mode, instead of using previously encrypted blocks it uses a counter and a nonce. A counter is an integer which is incremented for each block. A nonce is just a random number similar to the IV. The nonce, and IV, should be different for each message and can be transferred openly with the encrypted text. So, the title AES-CTR-128 means AES used in CTR mode with the key size of 128 bits.</p>
-	<h3>Implementing AES-CTR-128 with the Kernel Crypto API</h3>
+	<div class="flex anchor relative">
+		<h3 id="implementing-aes-ctr-128-with-the-kernel-crypto-api">Implementing AES-CTR-128 with the Kernel Crypto API</h3>
+		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-the-kernel-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The kernel and user spaces are isolated for security reasons and each time data needs to be transferred between them, it’s copied. In our case, it would add a significant overhead - copying a big bunch of plain or encrypted text to the kernel and back. However, the crypto API supports a zero-copy interface. Instead of transferring the actual data, a file descriptor is passed. But it has a limitation - the maximum size is only <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html#zero-copy-interface">16 pages</a>. So for our tests we picked the number closest to the maximum limit - 63KB (16 pages of 4KB minus 1KB to avoid any potential edge cases).</p>
 	<p>The code below is the exact implementation of what is written in the <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html">kernel documentation</a>. Firstly we created a socket of AF_ALG type. The <code>salg_type</code> and <code>salg_name</code> parameters can be taken from the <code>/proc/crypto</code> file. Instead of a generic name we used the driver name <code>ctr-aes-aesni</code>. We might put just a name <code>ctr(aes)</code> and the driver with the highest priority (<code>ctr-aes-aesni</code> in our context) will be picked for us by the Kernel. Further we put the key length and accepted the socket. The IV size is provided before the payload as ancillary data. Constraints of the key and IV sizes can be found in <code>/proc/crypto</code> too.</p>
 	<p>Now we are ready to start communication. We excluded all pre-set up steps from the measurements. In a loop we send plaintext for encryption with the flag <code>SPLICE_F_MORE</code> to inform the kernel that more data will be provided. And here in the loop we <code>read</code> the cipher text from the kernel. The last plaintext should be sent without the flag thus saying that we are done, and the kernel can finalize the encryption.</p>
@@ -205,7 +233,15 @@ int main(void)
 	<pre class="language-bash"><code class="language-bash">$ gcc -o kernel kernel.c
 $ ./kernel
 Kernel: 2112.49 Mb/s</code></pre>
-	<h3>Implementing AES-CTR-128 with OpenSSL</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="implementing-aes-ctr-128-with-openssl">Implementing AES-CTR-128 with OpenSSL</h3>
+		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-openssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With OpenSSL everything is straight forward, we just repeated an example from the <a href="https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption#Encrypting_the_message">official documentation</a>.</p>
 	<p>openssl.c</p>
 	<pre class="language-cpp"><code class="language-cpp">#include &lt;time.h&gt;
@@ -271,7 +307,16 @@ int main(void)
 	<pre class="language-bash"><code class="language-bash">$ gcc -o openssl openssl.c -lcrypto
 $ ./openssl
 OpenSSL: 3758.60 Mb/s</code></pre>
-	<h3>Results of OpenSSL vs Crypto API</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="results-of-openssl-vs-crypto-api">Results of OpenSSL vs Crypto API</h3>
+		<a href="https://blog.cloudflare.com/#results-of-openssl-vs-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-bash"><code class="language-bash">OpenSSL: 3758.60 Mb/s
 Kernel: 2112.49 Mb/s</code></pre>
 	<p>Don’t pay attention to the absolute values, look at the relationship.</p>
@@ -294,6 +339,13 @@ Kernel: 1971.63 Mb/s
 		</li>
 	</ol>
 	<p>It would be fair to say that <code>bpftrace</code> adds some overhead and our numbers for the kernel are less than they could be. So, we can safely say that while the Kernel Crypto API is two times slower than OpenSSL, the crypto part itself is almost equal.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we reviewed the Linux Kernel Crypto API and its user space interface. We reiterated some security benefits of doing encryption through the Kernel vs using some sort of cryptographic library. We also measured the performance overhead of doing data encryption/decryption through the Kernel Crypto API, confirmed that in-kernel crypto is likely as good as in OpenSSL, but a better user space interface is needed to make Kernel Crypto API as fast as using a cryptographic library. Using Crypto API is a subjective decision depending on your circumstances, it’s a trade-off in speed vs. security.</p>
 </div>

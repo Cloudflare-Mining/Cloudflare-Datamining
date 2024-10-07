@@ -8,7 +8,14 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/88478656@N00/217591669">image</a> by <a href="https://www.flickr.com/photos/chris-short">Chris Short</a></p>
 	<p>I will briefly explain a few concepts you need to know about DNSSEC and negative answers, and then we will dive into how CloudFlare saves on compute when asked for names that don’t exist.</p>
-	<h3>What You Need To Know: DNSSEC Edition</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-you-need-to-know-dnssec-edition">What You Need To Know: DNSSEC Edition</h3>
+		<a href="https://blog.cloudflare.com/#what-you-need-to-know-dnssec-edition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here’s a quick summary of DNSSEC:</p>
 	<p>This is an unsigned DNS answer (unsigned == no DNSSEC):</p>
 	<pre class="language-bash"><code class="language-bash">cloudflare.com.		299	IN	A	198.41.214.162
@@ -18,7 +25,15 @@ cloudflare.com.		299	IN	A	198.41.215.162</code></pre>
 cloudflare.com.		299	IN	A	198.41.215.162
 cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273     cloudflare.com. RqRna0qkih8cuki++YbFOkJi0DGeNpCMYDzlBuG88LWqx+Aaq8x3kQZX TzMTpFRs6K0na9NCUg412bOD4LH3EQ==</code></pre>
 	<p>Answers with DNSSEC contain a signature for every record type that is returned. (In this example, only A records are returned so there is only one signature.) The signatures allow DNS resolvers to validate the records returned and prevent on-path attackers from intercepting and changing the answers.</p>
-	<h3>What You Need To Know: Negative Answer Edition</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-you-need-to-know-negative-answer-edition">What You Need To Know: Negative Answer Edition</h3>
+		<a href="https://blog.cloudflare.com/#what-you-need-to-know-negative-answer-edition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EDDHJnSfGNBWos6pw07VT/a6ab2d3485cc5f091e0f65b0eee78c12/250521158_0c5de0ef97_z.jpg" alt="" class="kg-image" width="500" height="400" loading="lazy">
@@ -26,7 +41,14 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 	</figure>
 	<p>There are two types of negative answers. The first is <code>NXDOMAIN</code>, which means that the name asked for does not exist. An example of this is a query asking for <code>missing.cloudflare.com</code>. <code>missing.cloudflare.com</code> doesn’t exist at all.</p>
 	<p>The second type is <code>NODATA</code>, which means that the name does exist, just not in the requested type. An example of this would be asking for the <code>MX</code> record of <code>blog.cloudflare.com</code>. There are <code>A</code> records for <code>blog.cloudflare.com</code> but no <code>MX</code> records so the appropriate response is <code>NODATA</code>.</p>
-	<h3>What Goes Into An <code>NXDOMAIN</code> With DNSSEC</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-goes-into-an">What Goes Into An </h3>
+		<a href="https://blog.cloudflare.com/#what-goes-into-an" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To see what gets returned in a negative <code>NXDOMAIN</code> answer, let’s look at the response for a query for <code>bogus.ietf.org</code>.</p>
 	<p>The first record that has to be returned in a negative answer with DNSSEC is an SOA, just like in an unsigned negative answer. The SOA contains some metadata about the zone and lets the recursor know how long to cache the negative answer for.</p>
 	<pre class="language-bash"><code class="language-bash">ietf.org.	1179	IN	SOA	ns0.amsl.com. glen.amsl.com. 1200000325 1800 1800 604800 1800</code></pre>
@@ -41,7 +63,15 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 	<p>This record above tells you that a wildcard (<code>*. ietf.org</code>) would have existed between those two names. Because there is no wildcard record at <code>*.ietf.org</code>, as proven by this NSEC record, the DNS resolver knows that really nothing should have been returned for <code>bogus.ietf.org</code>. This <code>NSEC</code> record also has a signature:</p>
 	<pre class="language-bash"><code class="language-bash">ietf.org.	1062	IN	RRSIG	NSEC 5 2 1800 20170308083303 20160308073501 40452 ietf.org. homg5NrZIKo0tR+aEp0MVYYjT7J/KGTKP46bJ8eeetbq4KqNvLKJ5Yig ve4RSWFYrSARAmbi3GIFW00P/dFCzDNVlMWYRbcFUt5NfYRJxg25jy95 yHNmInwDUnttmzKuBezdVVvRLJY3qSM7S3VfI/b7n6++ODUFcsL88uNB V6bRO6FOksgE1/jUrtz6/lEKmodWWI2goFPGgmgihqLR8ldv0Dv7k9vy Ao1uunP6kDQEj+omkICFHaT/DBSSYq59DVeMAAcfDq2ssbr4p8hUoXiB tNlJWEubMnHi7YmLSgby+m8b97+8b6qPe8W478gAiggsNjc2gQSKOOXH EejOSA==</code></pre>
 	<p>All in all, the negative answer for <code>bogus.ietf.org</code> contains an <code>SOA + SOA RRSIG + (2) NSEC + (2) NSEC RRSIG</code>. It is 6 records in total, returning an answer that is 1095 bytes (this is a large DNS answer).</p>
-	<h3>Zone Walking</h3>
+	<div class="flex anchor relative">
+		<h3 id="zone-walking">Zone Walking</h3>
+		<a href="https://blog.cloudflare.com/#zone-walking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IvO8IS03cvULjAZJGiGNh/b995a981411e104aff60908304d26ca1/4950628049_030625b5e1_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
@@ -84,21 +114,50 @@ cloudflare.com.		299	IN	RRSIG	A 13 2 300 20160311145051 20160309125051 35273    
 			<p><a href="https://tools.ietf.org/html/rfc5155">RFC5155</a></p>
 		</li>
 	</ul>
-	<h3><code>NODATA</code> Responses</h3>
+	<div class="flex anchor relative">
+		<h3 id="nodata">NODATA</h3>
+		<a href="https://blog.cloudflare.com/#nodata" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you recall from above, <code>NODATA</code> is the response from a server when it is asked for a name that exists, but not in the requested type (like an <code>MX</code> record for <code>blog.cloudflare.com</code>). <code>NODATA</code> is similar in output to <code>NXDOMAIN</code>. It still requires <code>SOA</code>, but it only takes one <code>NSEC</code> record to prove the next name, and to specify which types do exist on the queried name.</p>
 	<p>For example, if you look for a <code>TXT</code> record on <code>apps.ietf.org</code>, the <code>NSEC</code> record will tell you that while there is no <code>TXT</code> record on <code>apps.ietf.org</code>, there are <code>MX</code>, <code>RRSIG</code> and <code>NSEC</code> records.</p>
 	<pre class="language-bash"><code class="language-bash">apps.ietf.org.		1799	IN	NSEC 	mail.apps.ietf.org. MX RRSIG NSEC</code></pre>
-	<h3>Problems With Negative Answers</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="problems-with-negative-answers">Problems With Negative Answers</h3>
+		<a href="https://blog.cloudflare.com/#problems-with-negative-answers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two problems with negative answers:</p>
 	<p>The first is that the authoritative server needs to return the previous and next name. As you’ll see, this is computationally expensive for CloudFlare, and as you’ve already seen, it can leak information about a zone.</p>
 	<p>The second is that negative answers require two <code>NSEC</code> records and their two subsequent signatures (or three <code>NSEC3</code> records and three <code>NSEC3</code> signatures) to authenticate the nonexistence of one name. This means that answers are bigger than they need to be.</p>
-	<h3>The Trouble with Previous and Next Names</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-trouble-with-previous-and-next-names">The Trouble with Previous and Next Names</h3>
+		<a href="https://blog.cloudflare.com/#the-trouble-with-previous-and-next-names" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare has a custom in house DNS server built in Go called <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go">RRDNS</a>. What's unique about RRDNS is that unlike standard DNS servers, it does not have the concept of a zone file. Instead, it has a <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">key value store</a> that holds all of the DNS records of all of the domains. When it gets a query for a record, it can just pick out the record that it needs.</p>
 	<p>Another unique aspect of CloudFlare's DNS is that a lot of our business logic is handled in the DNS. We often dynamically generate DNS answers on the fly, so we don't always know what we will respond with before we are asked.</p>
 	<p>Traditional negative answers require the authoritative server to return the previous and next name of a missing name. Because CloudFlare does not have the full view of the zone file, we'd have to ask the database to do a sorted search just to figure out the previous and next names. Beyond that, because we generate answers on the fly, we don’t have a reliable way to know what might be the previous and next name, unless we were to precompute every possible option ahead of time.</p>
 	<p>One proposed solution to the previous and next name, and secrecy problems is <a href="https://www.ietf.org/rfc/rfc4470.txt">RFC4470</a>, dubbed 'White Lies'. This RFC proposes that DNS operators make up a previous and next name by randomly generating names that are canonically slightly before and after the requested name.</p>
 	<p>White lies is a great solution to block zone walking (and it helps us prevent unnecessary database lookups), but it still requires 2 <code>NSEC</code> records (one for previous and next name and another for the wildcard) to say one thing, so the answer is still bigger than it needs to be.</p>
-	<h3>When CloudFlare Lies</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-cloudflare-lies">When CloudFlare Lies</h3>
+		<a href="https://blog.cloudflare.com/#when-cloudflare-lies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We decided to take lying in negative answers to its fullest extent. Instead of white lies, we do black lies.</p>
 	<p>For an <code>NXDOMAIN</code>, we always return <code>\000</code>.(the missing name) as the next name, and because we return an <code>NSEC</code> directly on the missing name, we do not have to return an additional <code>NSEC</code> for the wildcard. This way we only have to return <code>SOA</code>, <code>SOA RRSIG</code>, <code>NSEC</code> and <code>NSEC RRSIG</code>, and we do not need to search the database or precompute dynamic answers.</p>
 	<p>Our negative answers are usually around 300 bytes. For comparison, negative answers for <code>ietf.org</code> which uses <code>NSEC</code> and <code>icann.org</code>, which uses <code>NSEC3</code> are both slightly over 1000 bytes, three times the size. The reason this matters so much is that the maximum size of an unsigned UDP packet is typically 512 octets. DNSSEC requires support for at least 1220 octets long messages over UDP, but above that limit, the client may need to upgrade to DNS over TCP. A good practice is to keep enough headroom in order to keep response sizes below fragmentation threshold during zone signing key rollover periods.</p>
@@ -114,7 +173,15 @@ www.apps.ietf.org.	1799	IN	RRSIG	NSEC 5 4 1800 20170213210614 20160214200831 404
 blog.cloudflare.com.	3599	IN	NSEC	\000.blog.cloudflare.com. RRSIG NSEC
 cloudflare.com.		1799	IN	RRSIG	SOA 13 2 86400 20160220230013 20160218210013 35273 cloudflare.com. kgjtJDuuNC/yX8yWQpol4ZUUr8s8yAXZi26KWBI6S3HDtry2t6LnP1ou QK10Ut7DXO/XhyZddRBVj3pIpWYdBQ==
 blog.cloudflare.com.	3599	IN	RRSIG	NSEC 13 3 3600 20160220230013 20160218210013 35273 cloudflare.com. 8BKAAS8EXNJbm8DxEI1OOBba8KaiimIuB47mPlteiZf3sVLGN1edsrXE +q+pHaSHEfYG5mHfCBJrbi6b3EoXOw==</code></pre>
-	<h3>DNS Shotgun</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="dns-shotgun">DNS Shotgun</h3>
+		<a href="https://blog.cloudflare.com/#dns-shotgun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our take on <code>NODATA</code> responses is also unique. Traditionally, <code>NODATA</code> responses contain one <code>NSEC</code> record to tell the resolver which types exist on the requested name. This is highly inefficient. To do this, we’d have to search the database for all the types that do exist, just to answer that the requested type does not exist. Remember that’s not even always possible because we have dynamic answers that are generated on the fly.</p>
 	<p>What we realized was that <code>NSEC</code> is a denial of existence. What matters in <code>NSEC</code> are the missing types, not the present ones. So what we do is we set all the types. We say, this name does exist, just not on the one type you asked for.</p>
 	<p>For example, if you asked for an <code>TXT</code> record of <code>blog.cloudflare.com</code> we would say, all the types exist, just not <code>TXT</code>.</p>
@@ -122,9 +189,23 @@ blog.cloudflare.com.	3599	IN	RRSIG	NSEC 13 3 3600 20160220230013 20160218210013 
 	<p>And then if you queried for a <code>MX</code> on <code>blog.cloudflare.com</code>, we would return saying we have every record type, even <code>TXT</code>, but just not <code>MX</code>.</p>
 	<pre class="language-bash"><code class="language-bash">blog.cloudflare.com.	3599	IN	NSEC	\000.blog.cloudflare.com. A WKS HINFO TXT AAAA LOC SRV CERT SSHFP IPSECKEY RRSIG NSEC TLSA HIP OPENPGPKEY SPF</code></pre>
 	<p>This saves us a database lookup and from leaking any zone information in negative answers. We call this the DNS Shotgun.</p>
-	<h3>How Are Black Lies and DNS Shotgun Standards Compliant</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-black-lies-and-dns-shotgun-standards-compliant">How Are Black Lies and DNS Shotgun Standards Compliant</h3>
+		<a href="https://blog.cloudflare.com/#how-are-black-lies-and-dns-shotgun-standards-compliant" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We put a lot of care to ensure CloudFlare’s negative answers are standards compliant. We’re even pushing for them to become an Internet Standard by <a href="https://tools.ietf.org/html/draft-valsorda-dnsop-black-lies">publishing an Internet Draft</a> earlier this year.</p>
 	<p><a href="https://www.ietf.org/rfc/rfc4470.txt">RFC4470</a>, White Lies, allows us to randomly generate next names in <code>NSEC</code>. Not setting the second <code>NSEC</code> for the wildcard subdomain is also allowed, so long as there exists an <code>NSEC</code> record on the actual queried name. And lastly, our lie of setting every record type in <code>NSEC</code> records for <code>NODATA</code>, is okay too –– after all, domains are constantly changing, it’s feasible that the zone file changed in between the time the <code>NSEC</code> record indicated to you there was no <code>MX</code> record on <code>blog.cloudflare.com</code> and when you queried successfully for <code>MX</code> on <code>blog.cloudflare.com</code>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re proud of our negative answers. They help us keep packet size small, and CPU consumption low enough for us to provide <a href="https://www.cloudflare.com/dnssec">DNSSEC for free</a> for any domain. Let us know what you think, we’re looking forward to hearing from you.</p>
 </div>

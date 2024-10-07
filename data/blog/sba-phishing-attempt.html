@@ -3,7 +3,14 @@
 	<p><i>This blog originally appeared in September 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Congress may be in a deadlock over a second stimulus package, but malicious actors are always ready to pounce on the slightest opportunity to exploit the public’s confusion. The US Small Business Administration (SBA) is being impersonated in Coronavirus-themed phishing messages that leverage unfamiliarity with loan application procedures. With many small businesses relying on loans from the SBA to keep their doors open during the quarantine slump, cyber criminals are capitalizing on delays in loan approvals to swindle businesses.</p>
 	<p>Since at least April, malicious actors have been impersonating the SBA in <a href="https://www.sba.gov/blog/be-alert-about-email-phishing-scams-bad-actors-seeking-take-advantage-through-sba-loan-application">various campaigns</a> leveraging diverse Tactics, Techniques and Procedures (TTPs), such as malicious payloads, credential harvesters, and stealthy social engineering, all aimed at severely compromising devices and stealing money from companies. In our “How to Stop Financial Phishing Attacks” webinar earlier this year (available on-demand <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3952832/beyond-email-gateways-email-authentication-how-to-stop-financial-phishing-attacks">here</a>), we covered one such campaign, which attempted to spread <a href="https://securityboulevard.com/2020/04/guloader-the-rat-downloader">GuLoader malware</a>.</p>
-	<h3>A Simple Yet Effective Approach</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-simple-yet-effective-approach">A Simple Yet Effective Approach</h3>
+		<a href="https://blog.cloudflare.com/#a-simple-yet-effective-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The latest wave of attacks involves a clever social engineering tactic that can fly under almost any radar. This phishing message does not contain errant red flags that would maladroitly trigger a litany of detections. Unlike the previously observed campaigns, this wave of attacks does not contain any malicious payloads, only a benign attachment named <b>SBA - Disaster Loan Assistance Form.pdf</b>. The attacker opts for a clever and silent attack vector, relying on the target believing the email is indeed from the SBA.</p>
 	<p>Looking at the email below, it is clear this is not your typical <a href="https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/nigerian-letter-or-419-fraud">419 phishing scam</a>, poorly masquerading as an official entity to solicit money. The attacker ensures that even the smallest of details are correct in order to give the message a more credible appearance:</p>
 	<ul>
@@ -96,7 +103,14 @@ Received-SPF: pass (990w8b.myvserver.online: connection is authenticated)
 Reply-To: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@gov-sba.us&gt;
 From: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@sba.gov&gt;</code></pre>
 	<p>The HELO command told the receiving email server to treat the message as if it originated from SBA’s domain, when in fact the sender actually had a completely different domain and IP address, namely 990w8b[.]myvserver[.]online and 64[.]44[.]141[.]5. This resulted in various legacy email security solutions accepting the message for delivery.</p>
-	<h3>Reply with Bank Details</h3>
+	<div class="flex anchor relative">
+		<h3 id="reply-with-bank-details">Reply with Bank Details</h3>
+		<a href="https://blog.cloudflare.com/#reply-with-bank-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A target’s reply to this phish is the lynchpin of the whole scam, given the attached EIDL application requests private financial information. Further, the likelihood of a reply is dramatically increased by the seemingly benign and unassuming nature of this purported government form. In the body of the message, the attacker provides instructions to simply reply to the email with a completed EIDL application, of course making sure to note that all personal and banking details must be correct.</p>
 	<p>Looking at the PDF below, it’s almost impossible to believe this is a forgery, especially with a valid Office of Management and Budget (OMB) form number. In fact, the PDF closely resembles the legitimate <a href="https://covid19relief.sba.gov/#/business-info">Business Information form</a> of the SBA’s online application for EIDL, and even includes an oath at the bottom certifying that all information is true under penalty of perjury. <b>With this attached PDF the attacker clearly has one goal in mind -- steal sensitive account and routing information from businesses.</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -123,14 +137,35 @@ From: "U.S. Small Business Administration (SBA)" &lt;disastercustomerservice@sba
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eR2z7fvU5PANaxamjrOyR/f35d684e469ae2722c4aeef62cd5549c/image2-12.png" alt="" class="kg-image" width="1156" height="658" loading="lazy">
 
 	</figure>
-	<h3>Exposing the Imposter</h3>
+	<div class="flex anchor relative">
+		<h3 id="exposing-the-imposter">Exposing the Imposter</h3>
+		<a href="https://blog.cloudflare.com/#exposing-the-imposter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To thwart these sneaky SBA-themed phish, Area 1 Security uses multiple advanced techniques that leverage insight gained from early identification of attacker campaign infrastructure, enabling superior detection of emails from spoofed domains and accounts. Our anti-phishing service analyzes email for threat indicators, such as recently registered domains, domain name obfuscation, and look-a-like domains. Additionally, the service uses real-time correlation with associated brand infrastructure to verify authenticity.</p>
 	<p>Area 1 also uses lexical analysis of message body and subject to detect financially driven attacks. Headers are checked for sender display name and true sender mismatches, and SPF, DKIM, and DMARC records are checked to validate the sender. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including those with malicious newly registered domains, that other defenses miss.</p>
-	<h3>Recommendations</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://www.sba.gov/document/report-sba-programs-scams-fraud-alerts">official SBA website</a> provides information on protecting yourself from these scams. The SBA will <i>never</i> proactively contact you for loan applications. If you receive an email asking for additional information regarding an existing loan application, first ensure there is an application number referenced in the email, and it matches your application.</p>
 	<p>If you suspect that you have received an SBA phishing email, call the Office of Inspector General Hotline at 800-767-0385 or report it online, <a href="https://www.sba.gov/about-sba/oversight-advocacy/office-inspector-general/office-inspector-general-hotline">Office of Inspector General Hotline</a>.</p>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology leverages algorithms to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real-time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3>Indicators of Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Reply-To Address:</b></p>
 	<p>disastercustomerservice@gov-sba[.]us</p>
 	<p><b>Malicious look-alike NRD:</b></p>

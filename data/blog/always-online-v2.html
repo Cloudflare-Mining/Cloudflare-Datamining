@@ -8,7 +8,14 @@ v.2" class="kg-image" width="500" height="63" loading="lazy">
 	</figure>
 	<p>The video on CloudFlare's home page promises that we will keep your web page online "even if your server goes down." It's a feature we dubbed "Always Online" and, when it works, it's magical. The problem is, Always Online doesn't always work.</p>
 	<p>This blog post is to announce that we've just released a new version of Always Online which we believe will make the feature significantly better. But, before I get to that, let me tell you a bit about the history of Always Online, how it has worked up until recently, and why it didn't always work. Then I'll turn to what we've done to create Always Online v.2.</p>
-	<h3>An Accidental Feature</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-accidental-feature">An Accidental Feature</h3>
+		<a href="https://blog.cloudflare.com/#an-accidental-feature" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prior to starting CloudFlare, Lee and I ran Project Honey Pot. The Project Honey Pot website is database driven and contains a virtually infinite number of pages. One of the biggest challenges we had wasn't human traffic, which followed a predictable browsing pattern and could therefore reliably be cached, but instead dealing with traffic from automated crawlers.</p>
 	<p>These crawlers, whether legitimate (e.g., Google's bot) or illegitimate (e.g., spam harvesters), tend to crawl very "deep" into sites. As a result, they hit pages that are unlikely to have been crawled in a while and, in doing so, can impose significant load on a database. I've previously written about the <a href="https://blog.cloudflare.com/cloudflare-uses-intelligent-caching-to-avoid">hidden tax web crawlers impose on web performance</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,7 +26,14 @@ v.2" class="kg-image" width="291" height="180" loading="lazy">
 	</figure>
 	<p>At Project Honey Pot, Lee built a number of sophisticated caching strategies in order to help lessen the load of automated crawlers on the site's database. At CloudFlare, he realized that we could provide the same type of caching in order to cut the burden bots placed on backends. In essence, we automatically cache content for a short amount of time and, if it hasn't changed since the last request from a bot, deliver it without having to burden your web application. It works great.</p>
 	<p>In the process of building the bot content cache, Lee realized he could implement something else: a system to serve static versions of pages if an origin server fails. Using human traffic to build such a cache is dangerous because you don't want to expose one user's private information to another user (e.g., we can't cache when one user visits their bank's website to view their statement and then show that statement to another user). However, search engine crawlers are the perfect anonymous user to build a site's cache. The logic was: if it's in Google, then it's already effectively cached.</p>
-	<h3>Good, Not Perfect</h3>
+	<div class="flex anchor relative">
+		<h3 id="good-not-perfect">Good, Not Perfect</h3>
+		<a href="https://blog.cloudflare.com/#good-not-perfect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The approach of using known search engine bot traffic to build CloudFlare's cache was clever, but it had some problems. The first was that CloudFlare runs multiple data centers around the world and the cache in each is different. The solution was to find the data center with the most search engine crawler traffic and, if a copy of the page didn't exist in the local data center's cache, fall back on the "primary" data center. In our case, our Ashburn, Virginia data center received the most crawl traffic so we added a lot more disks there and used it to build up the Always Online cache.</p>
 	<p>That worked great for some sites, but for others we still would not have content in our cache when the server went offline. Seemingly bizarrely, the more static the page the less likely it was to be in our cache. The explanation was the source of the cache data: search engine crawlers. These crawlers are generally setup to visit pages that change regularly more often, and for pages that rarely change only occasionally. If the page returned a 304 "Not Modified" response then the content didn't get recached. We didn't help things by automatically expiring items in ourcache after a period of time.</p>
 	<figure class="kg-card kg-image-card ">
@@ -29,7 +43,14 @@ v.2" class="kg-image" width="500" height="285" loading="lazy">
 
 	</figure>
 	<p>The net result was, far too often, when someone's site would go offline their visitors wouldn't see a cached version of the page but, instead, a CloudFlare error page telling them that the site was offline and no cached version was available. This became one of the top complaints from our users and the visitors to their sites. When our support team dubbed the feature "Always Offline" we knew it was time to make it better.</p>
-	<h3>Version 2</h3>
+	<div class="flex anchor relative">
+		<h3 id="version-2">Version 2</h3>
+		<a href="https://blog.cloudflare.com/#version-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We made a number of improvements in how we cache pages in order to improve Always Online, but the biggest change we made was to begin to actively crawl pages ourselves. CloudFlare now runs a crawler which periodically crawls our customers' pages if they have the Always Online feature enabled. The crawler's useragent is:</p>
 	<blockquote>
 		<p>Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +<a href="https://www.cloudflare.com/always-online">http://www.cloudflare.com/always-online</a> )</p>

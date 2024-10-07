@@ -6,10 +6,24 @@
 
 	</figure>
 	<p>The World Cup is, at once, exhilarating and agonizing, and not just for those lucky souls in Rio or Manaus, folks working from home, or anyone else sitting happily in front of a TV. I’m talking about the quiet victories and silent pains loyal fans everywhere experience week after week at their desks. The muffled “YES!” breathed through your teeth as you check the FIFA app update; or a soft sigh when a text from a friend informs you that, yep, unfortunately, Belgium managed to score in overtime; and all too many of us know the slow burning resentment that accompanies those howls wafting through an open window from a bar near by. Sure, from your desk you can see the score, you can read the updates, you know who is winning—but you need to see that goal! And the major sports networks won’t start showing replays for hours!</p>
-	<h3>Replay that last goal! NOW!</h3>
+	<div class="flex anchor relative">
+		<h3 id="replay-that-last-goal-now">Replay that last goal! NOW!</h3>
+		<a href="https://blog.cloudflare.com/#replay-that-last-goal-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, too, was Xavier Damman, co-founder of Storify, stuck at his desk during the World Cup. He felt our pain, but, unlike the rest of us, he also knew there was a solution. With a vision for innovation and disruption, Xavier spent a few long nights building <a href="http://replaylastgoal.com">Replaylastgoal.com</a>. ReplayLastGoal is a Twitter bot that automatically records and posts—instantly—an animated gif of the most recent World Cup goal. By the time you get that phone alert, or start hearing those cheers from down the street, you can watch the goal yourself on Twitter via <a href="https://twitter.com/ReplayLastGoal">@ReplayLastGoal</a>. I’ll say it for all the World Cup fanatics far from Brazil, out of reach of a TV, but still trying to follow the action from the office: Thank you.</p>
 	<p>Xavier thinks that automatic and instant generation of sports highlights is the way people will follow sports in the future. So what did he do? He open sourced <a href="https://github.com/xdamman/ReplayLastGoal">his code</a>, and kept the project not for profit. “Use my code!” Xavier exclaimed on the phone this afternoon, “FIFA! ESPN! use my code! Give your fans what they want: instant access to goal replays as they happen!” That’s the idea, and, to pour some sugar on top, Xavier wrote <a href="http://replaylastgoal.com/hooks/add">hooks for Hipchat, Slack, and Flowdock</a>.</p>
-	<h3>CloudFlare: changing the game, delivering the passion.</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-changing-the-game-delivering-the-passion">CloudFlare: changing the game, delivering the passion.</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-changing-the-game-delivering-the-passion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The World Cup is truly an international event, and Xavier created a simple solution to a global problem. ReplayLastGoal.com has changed the way those of us stuck in an office during the big game can participate in the glory.</p>
 	<p>It only took one server for Xavier to create and host ReplayLastGoal.com’s content, but, given the massive World Cup fan base, it wasn't scalable. At best, it would be great for a few friends to enjoy.</p>
 	<p>Sites like ReplayLastGoal.com are prone to downtime because, if they are massively popular, they see spikes in traffic, and those spikes can overwhelm a single server. You know this afternoon, as soon as Germany or Brazil score, thousands of people are going to want to see the replay, and ReplayLastGoal.com will get a flood of traffic.</p>

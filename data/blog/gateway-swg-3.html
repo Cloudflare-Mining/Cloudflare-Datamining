@@ -8,7 +8,14 @@
 	<p>During Zero Trust Week in October, <a href="https://blog.cloudflare.com/gateway-swg">we released HTTP filtering</a> in Cloudflare Gateway, which expands protection beyond DNS threats to those at the HTTP layer as well. With this feature, Cloudflare WARP proxies all Internet traffic from an enrolled device to a data center in our network. Once there, Cloudflare Gateway enforces organization-wide rules to <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-uploads">prevent data loss</a> and <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-web-gateway/block-football">protect team members</a>.</p>
 	<p>However, rules are not one-size-fits-all. Corporate policies can vary between groups or even single users. For example, we heard from customers who want to stop users from uploading files to cloud storage services except for a specific department that works with partners. Beyond filtering, security teams asked for the ability to audit logs on a user-specific basis. If a user account was compromised, they needed to know what happened during that incident.</p>
 	<p>We’re excited to announce the ability for administrators to create policies based on a user’s identity and correlate that identity to activity in the Gateway HTTP logs. Your team can reuse the same identity provider integration configured in Cloudflare Access and start building policies tailored to your organization today.</p>
-	<h3>Fine-grained rule enforcement</h3>
+	<div class="flex anchor relative">
+		<h3 id="fine-grained-rule-enforcement">Fine-grained rule enforcement</h3>
+		<a href="https://blog.cloudflare.com/#fine-grained-rule-enforcement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Until today, organizations could protect their users' Internet-bound traffic by configuring DNS and HTTP policies that applied to every user. While that makes it simple to configure policies to enforce content restrictions and mitigate security threats, any IT administrator knows that for every policy there’s an exception to that policy.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -27,7 +34,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/NCD76Z26ZrcGWoikzXknC/fb2ba0707e2dc632f5fcb91fdd9cb8c9/image6-12.png" alt="" class="kg-image" width="1999" height="1019" loading="lazy">
 
 	</figure>
-	<h3>Identity integration and filtering options</h3>
+	<div class="flex anchor relative">
+		<h3 id="identity-integration-and-filtering-options">Identity integration and filtering options</h3>
+		<a href="https://blog.cloudflare.com/#identity-integration-and-filtering-options" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Gateway leverages the integration between your chosen identity provider (IdP) and Cloudflare Access to add identity to rules and logs. Customers can integrate one or more providers at the same time, including corporate providers like Okta and Azure AD, as well as public providers like GitHub and LinkedIn.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -50,7 +64,14 @@
 	<p>1234</p>
 	<p><i>*Note: some IdPs use group email in place of a group name</i></p>
 	<p>Cloudflare Gateway gives teams the ability to create fine-grained rules that meet the real needs of IT administrators. But policy enforcement is only one side of the equation — protecting users and preventing corporate data loss requires visibility into Internet traffic across an organization, for auditing compliance or security incident investigations.</p>
-	<h3>User-level visibility in activity logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="user-level-visibility-in-activity-logs">User-level visibility in activity logs</h3>
+		<a href="https://blog.cloudflare.com/#user-level-visibility-in-activity-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to the ability to create identity-based rules, IT administrators can use the Gateway activity logs to filter the HTTP traffic logs for specific users and device IDs. This is critical for reasons with varying degrees of seriousness: on one end an administrator can identify users who are attempting to bypass content security policies, and on the other end, that administrator can identify users or devices that may be compromised.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -58,7 +79,14 @@
 
 	</figure>
 	<p>Securing your team from Internet threats requires IT or security administrators to keep pace with evolving attackers and, just as importantly, maintain full visibility on what’s happening to your users and data. Cloudflare Gateway now allows you to do both, so your team can get back to what matters.</p>
-	<h3>One more thing</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing">One more thing</h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the end of Zero Trust Week, <a href="https://blog.cloudflare.com/browser-beta">we announced our Cloudflare Isolated Browser</a> to protect organizations from Internet threats unknown to threat intelligence (i.e., zero-day attacks). By integrating with Gateway, organizations can use the Remote Browser to provide higher levels of security to individual users who might be targets of spear phishing campaigns.</p>
 	<p>For example, consider an employee in the finance department who interfaces with systems handling procurements or fund disbursement. A security team might consider preventing this employee from accessing the public Internet with their native browser and forcing that traffic into an isolated remote browser. Any traffic destined to internal systems would use the native browser. To create this policy, an administrator could create the following rules:</p>
 	<figure class="kg-card kg-image-card ">
@@ -68,7 +96,14 @@
 	</figure>
 	<p>While other Gateway rules protect you from known threats, the isolate rule can help guard against everything else. Your team can build rules that isolate traffic based on identity or content without requiring the user to switch between browsers or client applications.</p>
 	<p>Cloudflare Browser Isolation is available in private beta today; you can sign up to join the wait list <a href="https://www.cloudflare.com/teams/lp/browser-isolation">here</a>.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to bring customers with us on our journey to providing a full <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> with features such as network-level rules, in-line anti-virus scanning, and data loss prevention. This feature is <a href="https://www.cloudflare.com/teams-pricing">available</a> to any Gateway Standard or Teams customer at no additional cost. We plan to extend these capabilities from individual remote users to branch offices and data centers.</p>
 	<p>Our goal is dead-simple integration and configuration of products that secure your users and data, so you can focus on bringing your own products into the world — we’re thrilled to help you do that. Follow this <a href="https://www.cloudflare.com/teams">link</a> to get started.</p>
 </div>

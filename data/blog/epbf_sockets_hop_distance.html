@@ -7,7 +7,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725">image</a> by <a href="https://www.flickr.com/photos/paulmiller">Paul Miller</a></p>
-	<h3>Context</h3>
+	<div class="flex anchor relative">
+		<h3 id="context">Context</h3>
+		<a href="https://blog.cloudflare.com/#context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may wonder why she wanted to inspect the TTL packet field (formally known as "IP Time To Live (TTL)" in IPv4, or "Hop Count" in IPv6)? The reason is simple - she wanted to ensure that the connections are routed outside of our datacenter. The "Hop Distance" - the difference between the TTL value set by the originating machine and the TTL value in the packet received at its destination - shows how many routers the packet crossed. If a packet crossed two or more routers, we know it indeed came from outside of our datacenter.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -47,12 +54,27 @@
 		</li>
 	</ul>
 	<p>For our use case, we want to see if the Hop Distance was two or more - this would ensure the connection was routed outside the datacenter.</p>
-	<h3>Not so easy</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-so-easy">Not so easy</h3>
+		<a href="https://blog.cloudflare.com/#not-so-easy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's easy to read TTL values from a userspace application, right? No. It turns out it's almost impossible. Here are the theoretical options we considered early on:</p>
 	<p>A) Run a libpcap/tcpdump-like raw socket, and catch the SYN+ACK's manually. We ruled out this design quickly - it requires elevated privileges. Also, raw sockets are pretty fragile: they can suffer packet loss if the userspace application can’t keep up.</p>
 	<p>B) Use the IP_RECVTTL socket option. IP_RECVTTL requests a "cmsg" data to be attached to control/ancillary data in a <code>recvmsg()</code> syscall. This is a good choice for UDP connections, but this socket option is not supported by TCP SOCK_STREAM sockets.</p>
 	<p>Extracting the TTL is not so easy.</p>
-	<h3>SO_ATTACH_FILTER to rule the world!</h3>
+	<div class="flex anchor relative">
+		<h3 id="so_attach_filter-to-rule-the-world">SO_ATTACH_FILTER to rule the world!</h3>
+		<a href="https://blog.cloudflare.com/#so_attach_filter-to-rule-the-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qX4zkQCTMRtJsnaqzysvp/a53376ccd7a1178d741ff9990af7a72b/315128991_d49c312fbc_z.jpg" alt="315128991_d49c312fbc_z" class="kg-image" width="500" height="375" loading="lazy">
@@ -74,7 +96,14 @@
 	<p>You probably take advantage of SO_ATTACH_FILTER already: This is how tcpdump/wireshark does filtering when you're dumping packets off the wire.</p>
 	<p>How does it work? Depending on the result of a <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF program</a>, packets can be filtered, truncated or passed to the socket without modification. Normally SO_ATTACH_FILTER is used for RAW sockets, but surprisingly, BPF filters can also be attached to normal SOCK_STREAM and SOCK_DGRAM sockets!</p>
 	<p>We don't want to truncate packets though - we want to extract the TTL. Unfortunately with Classical BPF (cBPF) it's impossible to extract any data from a running BPF filter program.</p>
-	<h3>eBPF and maps</h3>
+	<div class="flex anchor relative">
+		<h3 id="ebpf-and-maps">eBPF and maps</h3>
+		<a href="https://blog.cloudflare.com/#ebpf-and-maps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This changed with modern BPF machinery, which includes:</p>
 	<ul>
 		<li>
@@ -98,7 +127,14 @@
 
 	</figure>
 	<p>To solve our TTL problem, we can use eBPF filter program. It will look at the TTL values of passing packets, and save them in an eBPF map. Later, we can inspect the eBPF map and analyze the recorded values from userspace.</p>
-	<h3>SO_ATTACH_BPF to rule the world!</h3>
+	<div class="flex anchor relative">
+		<h3 id="so_attach_bpf-to-rule-the-world">SO_ATTACH_BPF to rule the world!</h3>
+		<a href="https://blog.cloudflare.com/#so_attach_bpf-to-rule-the-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To use eBPF we need a number of things set up. First, we need to create an "eBPF map". There <a href="https://elixir.bootlin.com/linux/v4.15.13/source/include/uapi/linux/bpf.h#L99">are many specialized map types</a>, but for our purposes let's use the "hash" BPF_MAP_TYPE_HASH type.</p>
 	<p>We need to figure out the <i>"bpf(BPF_MAP_CREATE, map type, key size, value size, limit, flags)"</i> parameters. For our small TTL program, let's set 4 bytes for key size, and 8 byte value size. The max element limit is set to 5. It doesn't matter, we expect all the packets in one connection to have just one coherent TTL value anyway.</p>
 	<p>This is how it would look in a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-03-ebpf/ebpf.go#L57">Golang code</a>:</p>
@@ -136,7 +172,14 @@
 bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)</code></pre>
 	<p>Writing eBPF by hand is rather controversial. Most people use <code>clang</code> (from version 3.7 onwards) to compile a code written in a C dialect into an eBPF bytecode. The resulting bytecode is saved in an ELF file, which can be loaded by most eBPF libraries. This ELF file also includes description of maps, so you don’t need to set them manually.</p>
 	<p>I personally don't see the point in adding an ELF/clang dependency for simple SO_ATTACH_BPF snippets. Don't be afraid of the raw bytecode!</p>
-	<h3>BPF calling convention</h3>
+	<div class="flex anchor relative">
+		<h3 id="bpf-calling-convention">BPF calling convention</h3>
+		<a href="https://blog.cloudflare.com/#bpf-calling-convention" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we go further we should highlight couple of things about the eBPF environment. The official kernel documentation isn't too friendly:</p>
 	<ul>
 		<li>
@@ -163,7 +206,14 @@ bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)</
 	<p>Or in other words:</p>
 	<pre class="language-bash"><code class="language-bash">ebpf.BPFIDstOffSrc(ebpf.LdXW, ebpf.Reg0, ebpf.Reg1, 16),</code></pre>
 	<p>Which is exactly what we do in first line of our program, since we need to choose between IPv4 or IPv6 code branches.</p>
-	<h3>Accessing the BPF payload</h3>
+	<div class="flex anchor relative">
+		<h3 id="accessing-the-bpf-payload">Accessing the BPF payload</h3>
+		<a href="https://blog.cloudflare.com/#accessing-the-bpf-payload" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next, there are special instructions for packet payload loading. Most BPF programs (but not all!) run in the context of packet filtering, so it makes sense to accelerate data lookups by having magic opcodes for accessing packet data.</p>
 	<p>Instead of dereferencing context, like <code>ctx-&gt;data[x]</code> to load a byte, BPF supports the <code>BPF_LD</code> instruction that can do it in one operation. There are caveats though, the documentation says:</p>
 	<pre class="language-bash"><code class="language-bash">eBPF has two non-generic instructions: (BPF_ABS | &lt;size&gt; | BPF_LD) and
@@ -182,15 +232,37 @@ BPF_IND | BPF_LD instructions.</code></pre>
 	<p>Then we can call the load:</p>
 	<pre class="language-bash"><code class="language-bash">ebpf.BPFIImm(ebpf.LdAbsB, int32(-0x100000+7)),</code></pre>
 	<p>At this stage the result is in r0, but we must remember the r1-r5 should be considered dirty. For an instruction the <code>BPF_LD</code> looks very much like a function call.</p>
-	<h3>Magical Layer 3 offset</h3>
+	<div class="flex anchor relative">
+		<h3 id="magical-layer-3-offset">Magical Layer 3 offset</h3>
+		<a href="https://blog.cloudflare.com/#magical-layer-3-offset" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next note the load offset - we loaded the <code>-0x100000+7</code> byte of the packet. This magic offset is another BPF context curiosity. It turns out that the BPF script loaded under SO_ATTACH_BPF on a SOCK_STREAM (or SOCK_DGRAM) socket, will only see Layer 4 and higher OSI layers by default. To extract the TTL we need access to the layer 3 header (i.e. the IP header). To access L3 in the L4 context, we must offset the data lookups by magical -0x100000.</p>
 	<p>This magic constant <a href="https://github.com/torvalds/linux/blob/ead751507de86d90fa250431e9990a8b881f713c/include/uapi/linux/filter.h#L84">is defined in the kernel</a>.</p>
 	<p>For completeness, the <code>+7</code> is, of course, the offset of the TTL field in an IPv4 packet. Our small BPF program also supports IPv6 where the TTL/Hop Count is at offset <code>+8</code>.</p>
-	<h3>Return value</h3>
+	<div class="flex anchor relative">
+		<h3 id="return-value">Return value</h3>
+		<a href="https://blog.cloudflare.com/#return-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, the return value of the BPF program is meaningful. In the context of packet filtering it will be interpreted as a truncated packet length.Had we returned 0 - the packet would be dropped and wouldn't be seen by the userspace socket application. It's quite interesting that we can do packet-based data manipulation with eBPF on a stream-based socket. Anyway, our script returns -1, which when cast to unsigned will be interpreted as a very large number:</p>
 	<pre class="language-bash"><code class="language-bash">ebpf.BPFIDstImm(ebpf.MovImm, ebpf.Reg0, -1),
 ebpf.BPFIOp(ebpf.Exit),</code></pre>
-	<h3>Extracting data from map</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="extracting-data-from-map">Extracting data from map</h3>
+		<a href="https://blog.cloudflare.com/#extracting-data-from-map" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our running BPF program will set a key on our map for any matched packet. The key is the recorded TTL value, the value is the packet count. The value counter is somewhat vulnerable to a tiny race condition, but it's ignorable for our purposes. Later on, to extract the data from userspace program we use this Golang loop:</p>
 	<pre class="language-bash"><code class="language-bash">var (
 	value   MapU64
@@ -210,7 +282,15 @@ for {
 	}
 	k1 = k2
 }</code></pre>
-	<h3>Putting it all together</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now with all the pieces ready we can make it a proper runnable program. There is little point in discussing it here, so allow me to refer to the source code. The BPF pieces are here:</p>
 	<ul>
 		<li>
@@ -236,7 +316,15 @@ for {
 [+] TTL distance to tcp6://google.com:80 [2607:f8b0:4005:809::200e] is 4
 [+] TTL distance to tcp4://cloudflare.com:80 198.41.215.162 is 3
 [+] TTL distance to tcp6://cloudflare.com:80 [2400:cb00:2048:1::c629:d6a2] is 3</code></pre>
-	<h3>Takeaways</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="takeaways">Takeaways</h3>
+		<a href="https://blog.cloudflare.com/#takeaways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post we dived into the new eBPF machinery, including the <code>bpf()</code> syscall, maps and SO_ATTACH_BPF. This work allowed me to realize the potential of running SO_ATTACH_BPF on fully established TCP sockets. Undoubtedly, eBPF still requires plenty of love and documentation, but it seems to be a perfect bridge to expose low level toggles to userspace applications.</p>
 	<p>I highly recommend keeping the dependencies small. For small BPF programs, like the one shown, there is little need for complex clang compilation and ELF loading. Don't be afraid of the eBPF bytecode!</p>
 	<p>We only touched on SO_ATTACH_BPF, where we analyzed network packets with BPF running on network sockets. There is more! First, you can attach BPFs to a dozen "things", XDP being the most obvious example. <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L119">Full list</a>. Then, it's possible to actually affect kernel packet processing, here is a <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L318">full list of helper functions</a>, some of which can modify kernel data structures.</p>

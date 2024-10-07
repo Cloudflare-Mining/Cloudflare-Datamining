@@ -7,7 +7,14 @@
 	</figure>
 	<p>A couple of months ago, we announced the general availability of <a href="https://pages.cloudflare.com">Cloudflare Pages</a>: the easiest way to host and collaboratively develop websites on Cloudflare’s global network. It’s been amazing to see over 20,000 incredible sites built by users and hear your feedback. Since then, we’ve released user-requested features like URL redirects, web analytics, and Access integration.</p>
 	<p>We’ve been listening to your feedback and today we announce two new features: rollbacks and the Pages API. Deployment rollbacks allow you to host production-level code on Pages without needing to stress about broken builds resulting in website downtime. The API empowers you to create custom functionality and better integrate Pages with your development workflows. Now, it’s even easier to use Pages for production hosting.</p>
-	<h3>Rollbacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="rollbacks">Rollbacks</h3>
+		<a href="https://blog.cloudflare.com/#rollbacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can now rollback your production website to a previous working deployment with just a click of a button. This is especially useful when you want to quickly undo a new deployment for troubleshooting. Before, developers would have to push another deployment and then wait for the build to finish updating production. Now, you can restore a working version within a few moments by rolling back to a previous working build.</p>
 	<p>To rollback to a previous build, just click the “Rollback to this deployment” button on either the deployments list menu or on a specific deployment page.</p>
 	<figure class="kg-card kg-image-card ">
@@ -15,7 +22,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/EgmHaPNJ9tsoAkaPDXEqi/1e5fc0fde377e49f54d2448be7226893/image3.gif" alt="" class="kg-image" width="1280" height="550" loading="lazy">
 
 	</figure>
-	<h3>API Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-access">API Access</h3>
+		<a href="https://blog.cloudflare.com/#api-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Pages API exposes endpoints for you to easily create automations and to integrate Pages within your development workflow. Refer to the <a href="https://api.cloudflare.com/#pages-project-properties">API documentation</a> for a full breakdown of the object types and endpoints. To get started, navigate to the <a href="https://dash.cloudflare.com/profile/api-tokens">Cloudflare API Tokens</a> page and copy your "Global API Key". Now, you can authenticate and make requests to the API using your email and auth key in the request headers.</p>
 	<p>For example, here is an API request to get all projects on an account.</p>
 	<p>Request (example)</p>
@@ -342,7 +356,14 @@
 }</code></pre>
 	<p>Try out an API request with one of your projects by replacing {account_id}, {deployment_id},{email}, and {auth_key}. You can find your <code>account_id</code> in the URL address bar by navigating to the <a href="https://dash.cloudflare.com">Cloudflare Dashboard</a>. (Ex: <code>41643ed677c7c7gba4x463c4zdb9563c</code>).</p>
 	<p>Refer to the <a href="https://api.cloudflare.com/#pages-project-properties">API documentation</a> for a full breakdown of the object types and endpoints.</p>
-	<h3>Using the Pages API on Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-the-pages-api-on-workers">Using the Pages API on Workers</h3>
+		<a href="https://blog.cloudflare.com/#using-the-pages-api-on-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Pages API is even more powerful and simple to use with <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9003761&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=CjwKCAjwiLGGBhAqEiwAgq3q_glwMF_1OxraB8Ot18vFR78uKF9rCAWNALrvlHmfQRPcKSWiKYwTPBoCwgMQAvD_BwE&amp;gclsrc=aw.ds">Cloudflare Workers</a>: the easiest way to deploy serverless functions globally. Below are three ways you can use the Pages API on Workers.</p>
 	<p><b>1. Triggering a new build every hour:</b> Suppose you have a CMS that pulls data from live sources to compile a static output. You can keep the static content as fresh as possible by triggering new builds periodically using the API. This is easy to do on Workers using Cron Triggers, so let’s walk through an example.</p>
 	<p>First, let’s create a new Worker by navigating to <a href="https://workers.new">workers.new</a>. If you haven’t used Workers before, feel free to go through the <a href="https://developers.cloudflare.com/workers/get-started/guide">getting started guide</a> to learn more. However, you’ll need to have set up a Pages project to follow along. Next, you can copy and paste this template for the new worker. Then, customize the values such as {account_id}, {project_name}, {auth_key}, and {your_email}.</p>
@@ -388,6 +409,13 @@ async function handleScheduled(request) {
 	<p><b>2. Deleting old deployments after a week</b>: Pages hosts and serves all project deployments on preview links. Suppose you want to keep your project relatively private and prevent access to old deployments. You can use the API to delete deployments after a month so that they are no longer public online. This is easy to do on Workers using Cron Triggers.</p>
 	<p><b>3. Sharing project information</b>: Imagine you are working on a development team using Pages to build our websites. You probably want an easy way to share deployment preview links and build status without having to share Cloudflare accounts. Using the API, you can easily share project information, including deployment status and preview links, and serve this content as HTML from a Cloudflare Worker.</p>
 	<p>Find the code snippets for all three examples <a href="https://developers.cloudflare.com/pages/platform/api">here</a>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will continue making the API more powerful with features such as supporting prebuilt deployments in the future. We are excited to see what you build with the API and hope you enjoy using rollbacks. At Cloudflare, we are committed to building the best developer experience on Pages, and we always appreciate hearing your feedback. Come chat with us and share more feedback on the <a href="https://discord.com/invite/cloudflaredev">Workers Discord</a> (We have a dedicated #pages-help channel!).</p>
 </div>

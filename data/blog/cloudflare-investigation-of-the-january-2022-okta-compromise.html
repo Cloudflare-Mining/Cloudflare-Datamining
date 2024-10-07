@@ -2,7 +2,14 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-investigation-of-the-january-2022-okta-compromise">日本語</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-investigation-of-the-january-2022-okta-compromise">Español</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lPEkvJ5REDKWhFjfIjhQj/83b2d8e5d55531b2dbba63f66121ae14/cloudflare-investigation-of-the-january-2022-okta-compromise.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today, March 22, 2022 at 03:30 UTC we learnt of a compromise of Okta. We use Okta internally for employee identity as part of our authentication stack. We have investigated this compromise carefully and do not believe we have been compromised as a result. We do not use Okta for customer accounts; customers do not need to take any action unless they themselves use Okta.</p>
-	<h3>Investigation and actions</h3>
+	<div class="flex anchor relative">
+		<h3 id="investigation-and-actions">Investigation and actions</h3>
+		<a href="https://blog.cloudflare.com/#investigation-and-actions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our <a href="https://twitter.com/toddmckinnon/status/1506184721922859010">understanding</a> is that during January 2022, hackers outside Okta had access to an Okta support employee’s account and were able to take actions as if they were that employee. In a screenshot shared on social media, a Cloudflare employee’s email address was visible, along with a popup indicating the hacker was posing as an Okta employee and could have initiated a password reset.</p>
 	<p>We learnt of this incident via Cloudflare’s internal SIRT. SIRT is our Security Incident Response Team and any employee at Cloudflare can alert SIRT to a potential problem. At exactly 03:30 UTC, a Cloudflare employee emailed SIRT with a link to a <a href="https://twitter.com/_MG_/status/1506109152665382920">tweet</a> that had been sent at 03:22 UTC. The tweet indicated that Okta had potentially been breached. Multiple other Cloudflare employees contacted SIRT over the following two hours.</p>
 	<p>The following timeline outlines the major steps we took following that initial 03:30 UTC email to SIRT.</p>
@@ -21,7 +28,14 @@
 	<p>05:44 - A list of all users that changed their password in the last three months is finalized. All accounts were required to go through a password reset.</p>
 	<p>06:40 - <a href="https://twitter.com/eastdakota/status/1506158901078618118">Tweet</a> from Matthew Prince about the password reset.</p>
 	<p>07:57 - We received confirmation from Okta that there were no relevant events that may indicate malicious activity in their support console for Cloudflare instances.</p>
-	<h3>How Cloudflare uses Okta</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-uses-okta">How Cloudflare uses Okta</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-uses-okta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare uses Okta internally as our identity provider, integrated with Cloudflare Access to guarantee that our users can safely access internal resources. In previous blog posts, we described <a href="https://blog.cloudflare.com/dogfooding-from-home">how we use Access to protect internal resources</a> and <a href="https://blog.cloudflare.com/securing-cloudflare-using-cloudflare">how we integrated hardware tokens to make our user authentication process more resilient</a> and <a href="https://blog.cloudflare.com/account-compromise-security-overview">prevent account takeovers</a>.</p>
 	<p>In the case of the Okta compromise, it would not suffice to just change a user's password. The attacker would also need to change the hardware (FIDO) token configured for the same user. As a result it would be easy to spot compromised accounts based on the associated hardware keys.</p>
 	<p>Even though logs are available in the Okta console, we also store them in our own systems. This adds an extra layer of security as we are able to store logs longer than what is available in the Okta console. That also ensures that a compromise in the Okta platform cannot alter evidence we have already collected and stored.</p>
@@ -44,7 +58,14 @@
 			<p>Compile a list of Cloudflare employee accounts that changed their passwords in the last three months and require a new password reset for all of them. As part of their account recovery, each user will join a video call with the Cloudflare IT team to verify their identity prior to having their account re-enabled.</p>
 		</li>
 	</ol>
-	<h3>What to do if you are an Okta customer</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-to-do-if-you-are-an-okta-customer">What to do if you are an Okta customer</h3>
+		<a href="https://blog.cloudflare.com/#what-to-do-if-you-are-an-okta-customer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are also an Okta customer, you should reach out to them for further information. We advise the following actions:</p>
 	<ol>
 		<li>
@@ -57,7 +78,14 @@
 			<p>Make sure you have other security layers to provide extra security in case one of them fails.</p>
 		</li>
 	</ol>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s Security and IT teams are continuing to work on this compromise. If further information comes to light that indicates compromise beyond the January timeline we will publish further posts detailing our findings and actions.</p>
 	<p>We are also in contact with Okta with a number of requests for additional logs and information. If anything comes to light that alters our assessment of the situation we will update the blog or write further posts.</p>
 </div>

@@ -31,7 +31,14 @@
 			<p>Originless: build the entire backend using <a href="https://workers.cloudflare.com">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</p>
 		</li>
 	</ul>
-	<h3>Securing the videos using signed URLs</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-the-videos-using-signed-urls">Securing the videos using signed URLs</h3>
+		<a href="https://blog.cloudflare.com/#securing-the-videos-using-signed-urls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every video uploaded to Cloudflare Stream can be locked down by requiring signed URLs. A Stream video can be marked as requiring signed URLs using the UI or by making an API call:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -75,11 +82,26 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<p>Stream provides an embed code for each video. The “src” attribute of the embed code typically contains the video ID. But if the video is private, instead of setting the “src” attribute to the video ID, you set it to the signed token value:</p>
 	<pre class="language-bash"><code class="language-bash">&lt;stream src="eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh" controls&gt;&lt;/stream&gt;
 &lt;script data-cfasync="false" defer type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"&gt;&lt;/script&gt;</code></pre>
-	<h3>Tagging videos</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="tagging-videos">Tagging videos</h3>
+		<a href="https://blog.cloudflare.com/#tagging-videos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We would like to categorize videos uploaded to Stream by tagging them. This can be done by updating the video object’s meta field and passing it arbitrary JSON data. To categorize a video, we simply update the meta field with a comma-delimited list of tags:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST  -d '{"uid": "VIDEO_ID", "meta": {"tags": "All Hands,Stream"}}' "https://api.cloudflare.com/client/v4/accounts/{$ACCOUNT_ID}/stream/{$VIDEO_ID}"  -H "X-Auth-Email: {$EMAIL}"  -H "X-Auth-Key: {$ACCOUNT_KEY}"  -H "Content-Type: application/json"</code></pre>
 	<p>Later, we will create a <b>getVideos</b> Worker function to fetch a list of videos and all associated data so we can render the UI. The tagging data we just set for this video will be included in the video data returned by the Worker.</p>
-	<h3>Fetching Video Data using Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="fetching-video-data-using-workers">Fetching Video Data using Workers</h3>
+		<a href="https://blog.cloudflare.com/#fetching-video-data-using-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The heart of the UI is a list of videos. How do we get this list of videos programmatically? Stream provides an endpoint that returns all the videos and any metadata associated with them.</p>
 	<p>First, we set up environment variables for our Worker:</p>
 	<figure class="kg-card kg-image-card ">
@@ -106,7 +128,14 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rxhNxPv0rVfFTXofb8xOL/82ed59df4c76df97ca3432712bbc7ed7/4-2.png" alt="" class="kg-image" width="1111" height="479" loading="lazy">
 
 	</figure>
-	<h3>Authenticating using Cloudflare Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="authenticating-using-cloudflare-access">Authenticating using Cloudflare Access</h3>
+		<a href="https://blog.cloudflare.com/#authenticating-using-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we want to restrict access to CloudflareTV to people within the organization. We can do this using Cloudflare Access, available under the <b>Access</b> tab.</p>
 	<p>To restrict access to CloudflareTV, we must do two things:</p>
 	<ol>
@@ -136,7 +165,14 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 
 	</figure>
 	<p>We set up an Access Policy to only allow emails ending in our domain name. This effectively makes CloudflareTV only accessible by our team!</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you have interesting ideas around video, Cloudflare Stream lets you focus on your idea while it handles storage, encoding and the viewing experience for your users. Coupled that with Access and Workers, you can build powerful applications. Here are the docs to help you get started:</p>
 	<ul>
 		<li>

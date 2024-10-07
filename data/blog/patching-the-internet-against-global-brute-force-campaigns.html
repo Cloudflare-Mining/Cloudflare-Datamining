@@ -20,7 +20,14 @@
 			<p>Deployment of remote shells, such as a variant of the <a href="https://github.com/xl7dev/WebShell/tree/master/reGeorg-master">reGeorg web shell</a>, and network reconnaissance to gather additional information;</p>
 		</li>
 	</ol>
-	<h2>Detecting Brute Force Login Attempts</h2>
+	<div class="flex anchor relative">
+		<h2 id="detecting-brute-force-login-attempts">Detecting Brute Force Login Attempts</h2>
+		<a href="https://blog.cloudflare.com/#detecting-brute-force-login-attempts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The findings in the report highlight the increasing problem of password reuse and compromise that affects online applications, including government and large private sector online properties.</p>
 	<p>In March 2021, during Security Week, <a href="https://blog.cloudflare.com/account-takeover-protection">we launched a beta program for a new feature called Exposed Credential Checks</a>. This feature allows website administrators to be notified whenever a login attempt is performed using a breached username and password credential pair. This is a very strong signal to enforce two factor authentication, a password reset, or simply increase user logging for the duration of the session.</p>
 	<p>Starting today, all paid plans (i.e., Pro and above) can enable the exposed credential check feature of Account Takeover Protection. We made the decision to give this to more customers due to the severity of the report and ongoing nature of the exploitation attempts.</p>
@@ -62,7 +69,14 @@
 		</li>
 	</ul>
 	<p>Developer documentation can <a href="https://developers.cloudflare.com/waf/exposed-credentials-check">be found here</a>.</p>
-	<h2>WAF Rule Update</h2>
+	<div class="flex anchor relative">
+		<h2 id="waf-rule-update">WAF Rule Update</h2>
+		<a href="https://blog.cloudflare.com/#waf-rule-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to exposed credential checks, we have implemented improvements to the following WAF rules effective immediately:</p>
 	<ul>
 		<li>
@@ -78,7 +92,15 @@ StrTr
 System.Net.IPEndPoint
 Response.AddHeader
 Socket</code></pre>
-	<h2>Additional Mitigations</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="additional-mitigations">Additional Mitigations</h2>
+		<a href="https://blog.cloudflare.com/#additional-mitigations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to monitoring and defending against credential stuffing attacks using datasets of compromised credentials, security administrators should implement additional best practices for their authentication endpoints. For example, multi-factor authentication, account time-out and lock-out features, and stronger methods of authentication that require “having” something such as a hard token or client certificate—not just “knowing” something such as a username and password.</p>
 	<p>Cloudflare has a number of additional features that customers are also advised to deploy where possible on their environments to strengthen their security posture:</p>
 	<ul>
@@ -95,7 +117,14 @@ Socket</code></pre>
 			<p>The use of our Bot Management detection has recently been expanded to all self-serve paid plans via our <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode product</a> - this product allows customers to set up rules to challenge/block automated traffic, such as bots attempting brute force attacks, while letting verified bots access Internet properties normally.</p>
 		</li>
 	</ul>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Brute force attacks are a prevalent and successful means to gain initial access to private networks, especially when applications require only username and password pairs for authentication. The <a href="https://www.nsa.gov/news-features/press-room/Article/2677750/nsa-partners-release-cybersecurity-advisory-on-brute-force-global-cyber-campaign">report</a> released today reinforced the widespread use of these credential stuffing attacks to gain access and then pivot to additional sensitive resources and data using other vulnerabilities.</p>
 	<p>Cloudflare customers are protected against these automated attacks by two new WAF rules, and also through the exposed credential check feature of our Account Takeover Protection offering. We have made the exposed credential check feature available today, to all paid plans, in advance of our planned launch later this month. Reach out to our support team immediately if you would like this feature enabled as we work to turn it on for everyone.</p>
 </div>

@@ -6,7 +6,14 @@
 	<p>Let’s focus on the transport and recovery layer first. This layer provides a basis for what is sent on the wire (the packet binary format) and how we send it reliably. It includes how to open the connection, how to handshake a new secure session with the help of TLS, how to send data reliably and how to react when there is packet loss or reordering of packets. Also it includes flow control and congestion control to interact well with other transport protocols in the same network. With confidence in the basic transport and recovery layer, &nbsp;we can take a look at higher application layers such as HTTP/3.</p>
 	<p>To develop such a transport protocol, we need multiple stages of the development environment. Since this is a network protocol, it’s best to test in an actual physical network to see how works on the wire. We may start the development using localhost, but after some time we may want to send and receive packets with other hosts. We can build a lab with a couple of virtual machines, using Virtualbox, VMWare or even with Docker. We also have a local testing environment with a Linux VM. But sometimes these have a limited network (localhost only) or are noisy due to other processes in the same host or virtual machines.</p>
 	<p>Next step is to have a test lab, typically an isolated network focused on protocol analysis only consisting of dedicated x86 hosts. Lab configuration is particularly important for testing various cases - there is no one-size-fits-all scenario for protocol testing. For example, EDGE is still running in production mobile networks but LTE is dominant and 5G deployment is in early stages. WiFi is very common these days. We want to test our protocol in all those environments. Of course, we can't buy every type of machine or have a very expensive network simulator for every type of environment, so using cheap hardware and an open source OS where we can configure similar environments is ideal.</p>
-	<h2>The QUIC Protocol Testing lab</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-quic-protocol-testing-lab">The QUIC Protocol Testing lab</h2>
+		<a href="https://blog.cloudflare.com/#the-quic-protocol-testing-lab" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The goal of the QUIC testing lab is to aid transport layer protocol development. To develop a transport protocol we need to have a way to control our network environment and a way to get as many different types of debugging data as possible. Also we need to get metrics for comparison with other protocols in production.</p>
 	<p>The QUIC Testing Lab has the following goals:</p>
 	<ul>
@@ -38,7 +45,14 @@
 			<p>We can add a real smartphone for testing, such as Android or iPhone. We can test with WiFi but these devices also support Ethernet, so we can test them with a wired network for better consistency.</p>
 		</li>
 	</ul>
-	<h2>Lab Configuration</h2>
+	<div class="flex anchor relative">
+		<h2 id="lab-configuration">Lab Configuration</h2>
+		<a href="https://blog.cloudflare.com/#lab-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is a diagram of our QUIC Protocol Testing Lab:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -61,7 +75,14 @@
 		</li>
 	</ul>
 	<p>The goal is to run tests with various network conditions, such as bandwidth, latency and packet loss upstream and downstream. The lab is able to run a plaintext HTTP test but currently our focus of testing is HTTPS over TCP and HTTP/3 over QUIC. Since QUIC is running over UDP, both TCP and UDP traffic need to be controlled.</p>
-	<h2>Test Automation and Visualization</h2>
+	<div class="flex anchor relative">
+		<h2 id="test-automation-and-visualization">Test Automation and Visualization</h2>
+		<a href="https://blog.cloudflare.com/#test-automation-and-visualization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the lab, we have a script installed in Client, which can run a batch of testing with various configuration parameters - for each test combination, we can define a test configuration, including:</p>
 	<ul>
 		<li>
@@ -84,14 +105,28 @@ $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit
 	</ul>
 	<p>The test script outputs a CSV file of results for importing into other tools for data processing and visualization - such as Google Sheets, Excel or even a jupyter notebook. Also it’s able to post the result to a database (Clickhouse in our case), so we can query and visualize the results.</p>
 	<p>Sometimes a whole test combination takes a long time - the current standard test set with simulated 2G, 3G, LTE, WiFi and various object sizes repeated 10 times for each request may take several hours to run. Large object testing on a slow network takes most of the time, so sometimes we also need to run a limited test (e.g. testing LTE-like conditions only for a smoke test) for quick debugging.</p>
-	<h3>Chart using Google Sheets:</h3>
+	<div class="flex anchor relative">
+		<h3 id="chart-using-google-sheets">Chart using Google Sheets:</h3>
+		<a href="https://blog.cloudflare.com/#chart-using-google-sheets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following comparison chart shows the total transfer time in msec for TCP vs QUIC for different network conditions. The QUIC protocol used here is a development version one.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2umJkG3YBHNnxyD2tJRHQA/678a4796b3c5314dd0a21f84b1dad77d/Screen-Shot-2020-01-13-at-3.09.41-PM.png" alt="" class="kg-image" width="718" height="549" loading="lazy">
 
 	</figure>
-	<h2>Debugging and performance analysis using of a smartphone</h2>
+	<div class="flex anchor relative">
+		<h2 id="debugging-and-performance-analysis-using-of-a-smartphone">Debugging and performance analysis using of a smartphone</h2>
+		<a href="https://blog.cloudflare.com/#debugging-and-performance-analysis-using-of-a-smartphone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mobile devices have become a crucial part of our day to day life, so testing the new transport protocol on mobile devices is critically important for mobile app performance. To facilitate that, we need to have a mobile test app which will proxy data over the new transport protocol under development. With this we have the ability to analyze protocol functionality and performance in mobile devices with different network conditions.</p>
 	<p>Adding a smartphone to the testbed mentioned above gives an advantage in terms of understanding real performance issues. The major smartphone operating systems, iOS and Android, have quite different networking stack. Adding a smartphone to testbed gives the ability to understand these operating system network stacks in depth which aides new protocol designs.</p>
 	<figure class="kg-card kg-image-card ">
@@ -113,7 +148,14 @@ $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit
 	<p>We can capture packets on internal loopback interfaces on jailbroken iPhones and rooted Android devices. Jailbreaking a recent iOS device is nontrivial. We also need to make sure that autoupdate of any sort is disabled on such a phone otherwise it would disable the jailbreak and you have to start the whole process again. With a jailbroken phone we have root access to the device which lets us take packet captures as needed using tcpdump.</p>
 	<p>Packet captures taken using jailbroken iOS devices or rooted Android devices connected to the lab testbed help us analyze &nbsp;performance bottlenecks and improve protocol performance.</p>
 	<p>iOS and Android devices different network stacks in their core operating systems. These packet captures also help us understand the network stack of these mobile devices, for example in iOS devices packets punted through loopback interface had a mysterious delay of 5 to 7ms.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is actively involved in helping to drive forward the QUIC and HTTP/3 standards by testing and optimizing these new protocols in simulated real world environments. By simulating a wide variety of networks we are working on our mission of Helping Build a Better Internet. For everyone, everywhere.</p>
 	<p><i>Would like to thank SangJo Lee, Hiren Panchasara, Lucas Pardue and Sreeni Tellakula for their contributions.</i></p>
 </div>

@@ -7,11 +7,25 @@
 
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
-	<h3>Upgrading our systems to Debian Stretch</h3>
+	<div class="flex anchor relative">
+		<h3 id="upgrading-our-systems-to-debian-stretch">Upgrading our systems to Debian Stretch</h3>
+		<a href="https://blog.cloudflare.com/#upgrading-our-systems-to-debian-stretch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For quite some time we've been rolling out Debian Stretch, to the point where we have reached ~10% adoption in our core datacenters. As part of upgarding the underlying OS, we also evaluate the higher level software stack, e.g. taking a look at our ClickHouse and Kafka clusters.</p>
 	<p>During our upgrade of Kafka, we sucessfully migrated two smaller clusters, <code>logs</code> and <code>dns</code>, but ran into issues when attempting to upgrade one of our larger clusters, <code>http</code>.</p>
 	<p>Thankfully, we were able to roll back the <code>http</code> cluster upgrade relatively easily, due to heavy versioning of both the OS and the higher level software stack. If there's one takeaway from this blog post, it's to take advantage of consistent versioning.</p>
-	<h3>High level differences</h3>
+	<div class="flex anchor relative">
+		<h3 id="high-level-differences">High level differences</h3>
+		<a href="https://blog.cloudflare.com/#high-level-differences" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/04/1.png">
@@ -26,7 +40,14 @@
 		</a>
 	</figure>
 	<p><i>The command used was: </i><code><i>perf top -F 99</i></code><i>.</i></p>
-	<h3>RCU stalls</h3>
+	<div class="flex anchor relative">
+		<h3 id="rcu-stalls">RCU stalls</h3>
+		<a href="https://blog.cloudflare.com/#rcu-stalls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html">read-copy update (RCU)</a> stalls:</p>
 	<pre class="language-bash"><code class="language-bash">[ 4909.110009] logfwdr (26887) used greatest stack depth: 11544 bytes left
 [ 4909.392659] oom_reaper: reaped process 26861 (logfwdr), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB
@@ -121,7 +142,14 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<pre class="language-bash"><code class="language-bash">[78991.546088] systemd-network: page allocation stalls for 287000ms, order:0, mode:0x24200ca(GFP_HIGHUSER_MOVABLE)</code></pre>
 	<p>You don't want your page allocations to stall for 5 minutes, especially when it's order zero allocation (smallest allocation of one 4 KiB page).</p>
 	<p>Comparing to our control nodes, the only two possible explanations were: a kernel upgrade, and the switch from Debian Jessie to Debian Stretch. We suspected the former, since CPU usage implies a kernel issue. However, just to be safe, we rolled both the kernel back to 4.4.55, and downgraded the affected nodes back to Debian Jessie. This was a reasonable compromise, since we needed to minimize downtime on production nodes.</p>
-	<h3>Digging a bit deeper</h3>
+	<div class="flex anchor relative">
+		<h3 id="digging-a-bit-deeper">Digging a bit deeper</h3>
+		<a href="https://blog.cloudflare.com/#digging-a-bit-deeper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keeping servers running on older kernel and distribution is not a viable long term solution. Through bisection, we found the issue lay in the Jessie to Stretch upgrade, contrary to our initial hypothesis.</p>
 	<p>Now that we knew what the problem was, we proceeded to investigate why. With the help from existing automation around <code>perf</code> and Java, we generated the following flamegraphs:</p>
 	<ul>
@@ -190,7 +218,14 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<p>These two look very different.</p>
 	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
 	<p>We'll dive into the differences in the next section.</p>
-	<h3>And deeper</h3>
+	<div class="flex anchor relative">
+		<h3 id="and-deeper">And deeper</h3>
+		<a href="https://blog.cloudflare.com/#and-deeper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc">bcc-tools</a>:</p>
 	<ul>
 		<li>
@@ -553,7 +588,14 @@ Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
     return res;
 }</code></pre>
 	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
-	<h3>Even deeper, to the crux</h3>
+	<div class="flex anchor relative">
+		<h3 id="even-deeper-to-the-crux">Even deeper, to the crux</h3>
+		<a href="https://blog.cloudflare.com/#even-deeper-to-the-crux" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It turned out that we had segmentation offload enabled for only a few of our NICs: <code>eth2</code>, <code>eth3</code>, and <code>bond0</code>. Our network setup can be described as follows:</p>
 	<pre class="language-bash"><code class="language-bash">eth2 --&gt;|              |--&gt; vlan10
         |---&gt; bond0 --&gt;|
@@ -653,7 +695,14 @@ udp-fragmentation-offload: on</code></pre>
 			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CWuJQCmMt7QarvAdU0b3g/641e0fd513eb61fc32f3f2b8e49b9f4d/19.png" alt="19" class="kg-image" width="3104" height="1972" loading="lazy">
 		</a>
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It was an error on our part to hit performance degradation without a good regression framework in place to catch the issue. Luckily, due to our heavy use of version control, we managed to bisect the issue rather quickly, and had a temp rollback in place while root causing the problem.</p>
 	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
 	<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>

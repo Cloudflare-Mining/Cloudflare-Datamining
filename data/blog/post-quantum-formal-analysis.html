@@ -11,7 +11,14 @@
 	<p>Let’s go back for the moment to not being smart enough to break a cryptosystem. Saying “I tried very hard to break this, and couldn’t” isn’t a very satisfying answer, and so for many years cryptographers (and others) have been trying to find a better one. There are some obvious approaches to building confidence in your cryptosystem, for example you could <a href="https://github.com/google/wycheproof">try all previously known attacks</a>, and see if the system breaks. This approach will probably weed out any simple flaws, but it doesn’t mean that some new <a href="https://en.wikipedia.org/wiki/Cryptanalysis_of_the_Enigma">attack won’t be found</a> or even that some new twist on an old one <a href="https://ieeexplore.ieee.org/document/8835216">won’t be discovered</a>.</p>
 	<p>Another approach you can take is to offer a large prize to anyone who can break your new system; but to do that not only do you need a <a href="https://en.wikipedia.org/wiki/RSA_Factoring_Challenge">big</a> <a href="https://www.microsoft.com/en-us/msrc/sike-cryptographic-challenge">prize</a> that you can afford to give away if you’re wrong, you can’t be sure that everyone would prefer your prize to, for example, selling an attack to cybercriminals, or even to a government.</p>
 	<p>Simply trying hard, and inducing other people to do so too still felt unsatisfactory, so in the late ‘80s researchers started trying to use mathematical techniques to prove that their protocol <a href="https://en.wikipedia.org/wiki/Burrows%E2%80%93Abadi%E2%80%93Needham_logic">was secure</a>. Now, if you aren’t versed in theoretical computer science you might not even have a clear idea of what it even means to “prove” a protocol is secure, let alone how you might go about it, so let’s start at the very beginning.</p>
-	<h3>A proof</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-proof">A proof</h3>
+		<a href="https://blog.cloudflare.com/#a-proof" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First things first: let’s nail down what we mean by a <i>proof</i>. At its most general level, a mathematical proof starts with some assumptions, and by making logical inferences it builds towards a statement. If you can derive your target statement from your initial assumptions then you can be sure that, if your assumptions are right, then your final statement is true.</p>
 	<p>Euclid’s famous work, <i>The Elements</i>, a standard math textbook for over 2,000 years, is written in this style. Euclid gives five “postulates”, or assumptions, from which he can derive a huge portion of the geometry known in his day. Euclid’s first postulate, that you can draw a straight line between any two points, is never proven, but taken as read. You can take his first postulate, and his third, that you can draw a circle with any center and radius, and use it to prove his first proposition, that you can draw an equilateral triangle given any finite line. For the curious, you can find <a href="https://gutenberg.org/ebooks/21076">public-domain translations of Euclid’s work</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -91,7 +98,14 @@
 	<p>Writing formal proofs of protocol correctness has been very effective at finding and fixing all kinds of issues. During the design of TLS 1.3, for example, it uncovered a number of serious security flaws that were eventually fixed prior to standardization. However, something we need to be wary of with formal analysis is being over-reliant on its results. It’s very possible to be so taken with the rigour of the process and of its mathematical proofs, that the result gets overinterpreted. Not only can a mistake exist in a proof, even in a machine-checked one, the proof may not actually prove what you think it does. There are many examples of this: <a href="https://en.wikipedia.org/wiki/Needham%E2%80%93Schroeder_protocol">Needham-Schroeder</a> had a <a href="https://www.cs.cmu.edu/afs/cs/academic/class/17654-f01/www/refs/BAN.pdf">proof of security written in the BAN logic</a>, before Lowe found <a href="https://www.sciencedirect.com/science/article/abs/pii/0020019095001442">an attack on a case that the BAN logic did not cover</a>.</p>
 	<p>In fact, the initial specification of the TLS 1.3 proof made the assumption that nobody uses the same certificate for both a client and a server, even though this is not explicitly disallowed in the specification. This gap led to the <a href="https://eprint.iacr.org/2019/347">“Selfie” vulnerability</a> where a client could be tricked into connecting to itself, potentially leading to resource exhaustion attacks.</p>
 	<p>Formal analysis of protocol designs also tells you nothing about whether a particular implementation correctly implements a protocol. In other <a href="https://blog.cloudflare.com/post-quantum-easycrypt-jasmin">blog posts</a>, we will talk about this. Let’s now return to our core topic: the formal analysis of KEMTLS.</p>
-	<h3>Proving KEMTLS’s security</h3>
+	<div class="flex anchor relative">
+		<h3 id="proving-kemtlss-security">Proving KEMTLS’s security</h3>
+		<a href="https://blog.cloudflare.com/#proving-kemtlss-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we have the needed notions, let’s get down to the nitty-gritty: we show you how we proved KEMTLS is secure. KEMTLS is a proposal to do authentication in TLS handshakes using key exchange (via key encapsulation mechanisms or KEMs). <a href="https://blog.cloudflare.com/making-protocols-post-quantum">KEMTLS examines</a> the trade-offs between post-quantum signature schemes and post-quantum key exchange, as we discussed in <a href="https://blog.cloudflare.com/making-protocols-post-quantum">other blog posts</a>.</p>
 	<p>The main idea of KEMTLS is the following: instead of using a signature to prove that you have access to the private key that corresponds to the (signing) public key in the certificate presented, we derive a shared secret <i>encapsulated to</i> a (KEM) public key. The party that presented the certificate can only derive (<i>decapsulate</i>) it from the resulting <i>encapsulation</i> (often also called the ciphertext) if they have access to the correct private key; and only then can they read encrypted traffic. A brief overview of how this looks in the “traditional arrows on paper” form is given below.</p>
 	<figure class="kg-card kg-image-card ">
@@ -101,7 +115,14 @@
 	</figure>
 	<p>Brief overview of the core idea of KEMTLS.</p>
 	<p>We want to show that the KEMTLS handshake is secure, no matter how an adversary might mess with, reorder, or even create new protocol messages. Symbolic analysis tools such as Tamarin or <a href="https://bblanche.gitlabpages.inria.fr/proverif">ProVerif</a> are well suited to this task: as said, they allow us to consider every possible combination or manipulation of protocol messages, participants, and key information. We can then write lemmas about the behavior of the protocol.</p>
-	<h3>Why prove it in Tamarin?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-prove-it-in-tamarin">Why prove it in Tamarin?</h3>
+		<a href="https://blog.cloudflare.com/#why-prove-it-in-tamarin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There exists a pen-and-paper proof of the KEMTLS handshake. You might ask: why should we still invest the effort of modeling it in a tool like Tamarin?</p>
 	<p>Pen-and-paper proofs are in theory fairly straightforward. However, they are <i>very hard</i> to get right. We need to carefully express the security properties of the protocol, and it is very easy to let assumptions lead you to write something that your model does not correctly cover. Verifying that a proof has been done correctly is also very difficult and requires almost as much careful attention as writing the proof itself. In fact, several mistakes in definitions of the properties of the model of the original KEMTLS proof were found, after the paper had been accepted and published at a top-tier security conference.</p>
 	<blockquote>
@@ -119,7 +140,14 @@
 	</ol>
 	<p>Another reason why computer proofs are interesting is because they give the ability to construct extensions. The <a href="https://eprint.iacr.org/2021/779">“pre-distributed keys” extension of KEMTLS</a>, for example, has been only proven on paper in isolation. Tamarin allows us to construct that extension in the same space as the main proof, which will help rule out any cross-functional attacks. With this, the complexity of the proof is increased exponentially, but Tamarin allows us to handle that just by using more computer power. Doing the same on paper requires very, very careful consideration.</p>
 	<p>One final reason we wanted to perform this computer analysis is because whilst the pen-and-paper proof was in the computational model, our computer analysis is in the symbolic model. Computational proofs attain “high resolution” proofs, giving very tight bounds on exactly how secure a protocol is. Symbolic models are “low resolution”: giving a binary yes/no answer on whether a protocol meets the security goals (with the assumption that the underlying cryptographic primitives are secure). This might sound like computational proofs are the best: their downside is that one has to simplify the model in other areas. The computational proof of KEMTLS, for example, does not model TLS message formats, which a symbolic model can.</p>
-	<h3>Modeling KEMTLS in Tamarin</h3>
+	<div class="flex anchor relative">
+		<h3 id="modeling-kemtls-in-tamarin">Modeling KEMTLS in Tamarin</h3>
+		<a href="https://blog.cloudflare.com/#modeling-kemtls-in-tamarin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we can start making security claims and asking Tamarin to prove them, we first need to explain to Tamarin what KEMTLS is. As we mentioned earlier, Tamarin treats the world as a “bag of facts”. Keys, certificates, identities, and protocol messages are all facts. Tamarin can take those facts and apply rules to them to construct (or deconstruct) new facts. Executing steps in the KEMTLS protocol is, in a very literal sense, just another way to perform such transformations — and if everything is well-designed, the only “honest” way to reach the end state of the protocol.</p>
 	<p>We need to start by modeling the protocol. We were fortunate to be able to reuse the work of <a href="https://tls13tamarin.github.io/TLS13Tamarin">Cremers et al.</a>, who contributed their significant modeling talent to the TLS 1.3 standardization effort. They created a very complete model of the TLS 1.3 protocol, which showed that the protocol is generally secure. For more details, see <a href="https://tls13tamarin.github.io/TLS13Tamarin">their paper</a>.</p>
 	<p>We modified the ephemeral key exchange by substituting the Diffie-Hellman operations in TLS 1.3 with the appropriate KEM operations. Similarly, we modified the messages that perform the certificate handling: instead of verifying a signature, we send back a KemEncapsulation message with the ciphertext. Let’s have a look at one of the changed rules. Don’t worry, it looks a bit scary, but we’re going to break it down for you. And also, don’t worry if you do not grasp all the details: we will cover the most necessary bits when they come up again, so you can also just skip to the next section “Modeling the adversary” instead.</p>
@@ -187,7 +215,14 @@ in
     exists-trace
     "Ex tid #j. C2d(tid)@#j"</code></pre>
 	<p>This was the first lemma that we asked Tamarin to prove. Because we’ve marked this lemma <code>exists-trace</code>, it does not need to hold in all traces, all runs of the protocol. It just needs one. This lemma asks if there exists a trace ( <code>exists-trace</code>), where there exists ( <code>Ex</code> ) a variable <code>tid</code> and a time <code>#j</code> (times are marked with <code>#</code>) at which action <code>C2d(tid)</code> is recorded. What this captures is that Tamarin could find a branch of the tree where the rule described above was triggered. Thus, we know that our model can be executed, at least as far as <code>C2d</code>.</p>
-	<h3>Modeling the adversary</h3>
+	<div class="flex anchor relative">
+		<h3 id="modeling-the-adversary">Modeling the adversary</h3>
+		<a href="https://blog.cloudflare.com/#modeling-the-adversary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the symbolic model, all cryptography is perfect: if the adversary does not have a particular key, they can not perform any deconstructions to, for example, decrypt a message or decapsulate a ciphertext. Although a proof with this default adversary would show the protocol to be secure against, for example, reordering or replaying messages, we want it to be secure against a slightly stronger adversary. Fortunately, we can model this adversary. Let’s see how.</p>
 	<p>Let’s take an example. We have a rule that honestly generates long-term keys (certificates) for participants:</p>
 	<pre class="language-bash"><code class="language-bash">rule Register_pk:
@@ -202,7 +237,14 @@ in
 	<pre class="language-bash"><code class="language-bash">rule Reveal_Ltk:
    [ !Ltk($A, ~ltkA) ] --[ RevLtk($A) ]-&gt; [ Out(~ltkA) ]</code></pre>
 	<p>Executing this rule registers the <code>RevLtk($A)</code> action, so that we know that <code>$A</code>’s certificate can no longer be trusted after <code>RevLtk</code> occurred.</p>
-	<h3>Writing security lemmas</h3>
+	<div class="flex anchor relative">
+		<h3 id="writing-security-lemmas">Writing security lemmas</h3>
+		<a href="https://blog.cloudflare.com/#writing-security-lemmas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>KEMTLS, like TLS, is a cryptographic handshake protocol. These protocols have the general goal to generate session keys that we can use to encrypt user’s traffic, preferably as quickly as possible. One thing we might want to prove is that these session keys are secret:</p>
 	<pre class="language-bash"><code class="language-bash">lemma secret_session_keys [/*snip*/]:
   "All tid actor peer kw kr aas #i.
@@ -246,7 +288,14 @@ in
 	</ul>
 	<p>The next line of the lemma is about the <code>SessionKey</code> action. We record the <code>SessionKey</code> action when the client or the server thinks they have completed the protocol.</p>
 	<p>The next lines are about two attacker abilities: <code>RevLtk</code>, as discussed earlier; and <code>RevEKemSk</code>, which the attacker can use to reveal ephemeral secrets. The <code>K(x)</code> action means that the attacker learns (or rather, <code>K</code>nows) <code>x</code>. We, then, assert that if there does not <code>Ex</code>ist a <code>RevEKemSk</code> or <code>RevLtk</code> action on one of the keys used in the session, then there also does not exist a time when <code>K(kr)</code> (when the attacker learns the read key). <a href="https://en.wikipedia.org/wiki/Q.E.D."><i>Quod erat demonstrandum</i></a>. Let’s run the proofs now.</p>
-	<h3>Proving lemmas in Tamarin</h3>
+	<div class="flex anchor relative">
+		<h3 id="proving-lemmas-in-tamarin">Proving lemmas in Tamarin</h3>
+		<a href="https://blog.cloudflare.com/#proving-lemmas-in-tamarin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tamarin offers two methods to prove security lemmas: it has an autoprover that can try to find the solution for you, or you can do it manually. Tamarin sometimes has a hard time figuring out what is important for proving a particular security property, and so manual effort is sometimes unavoidable.</p>
 	<p>The manual prover interface allows you to select what goal Tamarin should pursue step by step. A proof quickly splits into separate branches: in the picture, you see that Tamarin has already been able to prove the branches that are green, leaving us to make a choice for case 1.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -260,7 +309,14 @@ in
 	<p>Unfortunately, all these strategies require a lot of intuition that is very hard to obtain without spending a lot of time hands-on with Tamarin. Tamarin can sometimes be a bit unclear about what lemmas it’s trying to apply. We had to resort to tricks, like using unique, highly recognizable variable names in lemmas, such that we can reconstruct where a certain goal in the Tamarin interface is coming from.</p>
 	<p>While doing this work, auto-proving lemmas has been incredibly helpful. Each time you make a tiny change in either a lemma (or any of the lemmas that are reused by it) or in the whole model, you have to re-prove everything. If we needed to put in lots of manual effort each time, this project would be nowhere near done.</p>
 	<p>This was demonstrated by two bugs we found in one of the core lemmas of the TLS 1.3 model. It turned out that after completing the proof, some refactoring changes were made to the <code>session_key_agreement</code> lemma. These changes seemed innocent, but actually changed the meaning of the lemma, so that it didn’t make sense anymore (the original definition did cover the right security properties, so luckily this doesn’t cause a security problem). Unfortunately, this took a lot of our time to figure out. However, after a huge effort, we’ve done it. We have a proof that <a href="https://github.com/thomwiggers/TLS13Tamarin">KEMTLS achieves its security goals</a>.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Formal methods definitely have a place in the development of security protocols; the development process of TLS 1.3 has really demonstrated this. We think that any proposal for new security protocols should be accompanied by a machine-verified proof of its security properties. Furthermore, because many protocols are currently specified in natural language, formal specification languages should definitely be under consideration. Natural language is inherently ambiguous, and the inevitable differences in interpretation that come from that lead to all kinds of problems.</p>
 	<p>However, this work cannot be done by academics alone. Many protocols come out of industry who will need to do this for themselves. We would be the first to admit that the usability of these tools for non-experts is not all the way there yet — and industry and academia should collaborate on making these tools more accessible for everyone. We welcome and look forward to these collaborations in the future!</p>
 	<h4>References</h4>

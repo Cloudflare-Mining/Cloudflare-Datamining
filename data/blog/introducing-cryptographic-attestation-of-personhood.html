@@ -11,10 +11,24 @@
 	<p>This very simple back of the envelope math equates to somewhere in the order of 500 human years wasted every single day — just for us to prove our humanity.</p>
 	<p>Today, we are launching an experiment to end this madness. We want to get rid of CAPTCHAs completely. The idea is rather simple: a real human should be able to touch or look at their device to prove they are human, without revealing their identity. We want you to be able to prove that you are human without revealing which human you are! You may ask if this is even possible? And the answer is: Yes! We’re starting with trusted USB keys (like <a href="https://www.yubico.com">YubiKey</a>) that have been around for a while, but increasingly phones and computers come equipped with this ability by default.</p>
 	<p>Today marks the beginning of the end for fire hydrants, crosswalks, and traffic lights on the Internet.</p>
-	<h2>Why CAPTCHAs?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-captchas">Why CAPTCHAs?</h2>
+		<a href="https://blog.cloudflare.com/#why-captchas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In many instances, businesses need a way to tell whether an online user is human or not. Typically those reasons relate to security, or abuse of an online service. Back at the turn of the century, CAPTCHAs were created to do just that. The first one <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%20term%20was%20coined%20in,two%20groups%20working%20in%20parallel.">was developed back in 1997</a>, and the term ("Completely Automated Public Turing test to tell Computers and Humans Apart") was coined in 2003 by Luis von Ahn, Manuel Blum, Nicholas J. Hopper, and John Langford.</p>
 	<p>By their very nature, the challenge-response nature of CAPTCHAs have to be automated: so they can scale across both humans and the bots they need to catch.</p>
-	<h2>Why get rid of CAPTCHAs?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-get-rid-of-captchas">Why get rid of CAPTCHAs?</h2>
+		<a href="https://blog.cloudflare.com/#why-get-rid-of-captchas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Put simply: we all hate them.</p>
 	<p>The best we’ve been able to do to date has been to minimize them. For example, at Cloudflare, we’ve continuously <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">improved our Bot management solution</a> to get as smart as possible about when to serve a CAPTCHA to the user. However, over the years the web moved from simple CAPTCHAs based on text recognition against backgrounds to OCRing old books to identifying objects from pictures as <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> has improved (see <a href="https://arxiv.org/abs/1312.6082">Google paper on Street Numbers</a>). This creates some real problems for the human users of the Internet:</p>
 	<ol>
@@ -35,7 +49,15 @@
 	<p><i>And this is just from the user side</i>. Inflicting all these costs on users has very real costs for businesses, too. There’s a reason why businesses spend so much time &nbsp;optimizing the performance and layout of their websites and applications. That work stops users from bouncing when you want them to register. It stops shopping carts getting abandoned when you want them to end in the checkout. In general, you want to stop customers from getting frustrated and simply not come back.</p>
 	<p>CAPTCHAs are effectively businesses putting friction in front of their users, and as anyone who has managed a high performing online business will tell you, it’s not something you want to do unless you have no choice.</p>
 	<p>We started tackling these issues when we <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">moved from Google reCAPTCHA to hCAPTCHA</a>. Today, we are going further.</p>
-	<h2>CAPTCHA without Picture: Cryptographic Attestation of Personhood</h2>
+	<div class="flex anchor relative">
+		<h2 id="captcha-without-picture-cryptographic-attestation-of-personhood">CAPTCHA without Picture: Cryptographic Attestation of Personhood</h2>
+		<a href="https://blog.cloudflare.com/#captcha-without-picture-cryptographic-attestation-of-personhood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1WeboSgc6BWaS2HxVOGRcb/030fce4dead22f8e1ac732495a4a47df/image4-4.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
@@ -69,7 +91,14 @@
 	<blockquote>
 		<p>“Driving open authentication standards like WebAuthn has long been at the heart of Yubico’s mission to deliver powerful security with a delightful user experience,” said Christopher Harrell, Chief Technology Officer at Yubico. “By offering a CAPTCHA alternative via a single touch backed by YubiKey hardware and public key cryptography, Cloudflare’s Cryptographic Attestation of Personhood experiment could help further reduce the cognitive load placed on users as they interact with sites under strain or attack. I hope this experiment will enable people to accomplish their goals with minimal friction and strong privacy, and that the results will show it is worthwhile for other sites to consider using hardware security for more than just authentication.”</p>
 	</blockquote>
-	<h2>How does it work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">How does it work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cryptographic Attestation of Personhood relies on <a href="https://www.w3.org/TR/webauthn-2/#sctn-attestation">Web Authentication (WebAuthn) Attestation</a>. This is an API that has been standardized at the W3C and is already implemented in most modern web browsers and operating systems. It aims to provide a standard interface to authenticate users on the web and use the cryptography capability of their devices.</p>
 	<p>As the need for stronger security with improved usability increases, we envision the deployment instances of WebAuthn to rise.</p>
 	<p>Platform</p>
@@ -85,14 +114,28 @@
 	<p>Ubuntu</p>
 	<p>All browsers</p>
 	<p>Assuming you are using a hardware device with a compatible configuration, you might be wondering what is happening behind the scenes.</p>
-	<h3>The elevator pitch</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-elevator-pitch">The elevator pitch</h3>
+		<a href="https://blog.cloudflare.com/#the-elevator-pitch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The short version is that your device has an embedded secure module containing a unique secret sealed by your manufacturer. The security module is capable of proving it owns such a secret without revealing it. Cloudflare asks you for proof and checks that your manufacturer is legitimate.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5msss4WaXkkCMEgBwldIwi/a42b2863a35d76a12e806eb91d88bd85/image7.png" alt="" class="kg-image" width="1230" height="482" loading="lazy">
 
 	</figure>
-	<h3>The technical explanation</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-technical-explanation">The technical explanation</h3>
+		<a href="https://blog.cloudflare.com/#the-technical-explanation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The longer version is that this verification involves public-key cryptography and digital certificates.</p>
 	<p>Public-key cryptography provides a way to produce unforgeable digital signatures. A user generates a signing key that can sign messages and a verification key that can be used by anyone to verify a message is authentic. This is akin to a <a href="https://en.wikipedia.org/wiki/Seal_(emblem)#Signet_rings">signet ring</a>, where the imprint of the ring is the signature and the ring itself the signing key.</p>
 	<p>Signature schemes are used widely to prove authenticity. Right now, your browser has verified that the server claiming to be “blog.cloudflare.com” is legitimate by verifying a signature made by someone who has a signing key associated with “blog.cloudflare.com”. To show the verification key is legitimate, the server provides a certificate that links the verification key to “blog.cloudflare.com”, itself signed by another verification key in another certificate. This chain goes all the way up to a root certificate from a <i>Certificate Authority</i> built into your browser.</p>
@@ -115,7 +158,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/O9TXLinQvwKA19xqCzcGb/d2957a21054b9a7091cc6305aa60c139/image5-3.png" alt="" class="kg-image" width="1030" height="534" loading="lazy">
 
 	</figure>
-	<h2>Privacy first</h2>
+	<div class="flex anchor relative">
+		<h2 id="privacy-first">Privacy first</h2>
+		<a href="https://blog.cloudflare.com/#privacy-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Designing a challenge asking users to prove they are in control of a key from a certain manufacturer comes with a privacy and security challenge.</p>
 	<p>The privacy properties of the Cryptographic Attestation of Personhood are summarized in the following table.</p>
 	<p>Property</p>
@@ -132,18 +182,46 @@
 	<p>NO</p>
 	<p><i>* There must be 100,000 or more keys per batch (</i><a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation"><i>FIDO UAF Protocol Specification #4.1.2.1.1</i></a><i>). However, self-signed keys and keys from certain manufacturers have been found to</i> <a href="https://www.chromium.org/security-keys"><i>not meet this requirement</i></a><i>.</i></p>
 	<p><i>**This would require that we set a separate and distinct cookie to track your key. This is antithetical to privacy on the Internet, and to the goals of this project. You can learn more about how we are removing cookies like</i> <a href="https://blog.cloudflare.com/deprecating-cfduid-cookie"><i>__cfduid here</i></a><i>.</i></p>
-	<h3>Attestation without collecting biometrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="attestation-without-collecting-biometrics">Attestation without collecting biometrics</h3>
+		<a href="https://blog.cloudflare.com/#attestation-without-collecting-biometrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The aim of this project: we want to know <i>that</i> you’re human. But we’re not interested in <i>which</i> human you are.</p>
 	<p>Happily, the WebAuthn API goes a long way to take care of this for us. Not that we want it, but the WebAuthn API prevents the collection of biometrics, such as a fingerprint. When your device asks for a biometric authentication — such as via a fingerprint sensor — it all happens locally. The verification is meant to unlock the secure module of your device, which provides a signature associated with your platform.</p>
 	<p>For our challenge, we leverage the <a href="https://w3c.github.io/webauthn/#sctn-sample-registration">WebAuthn registration</a> process. It has been designed to perform multiple authentications, which we do not have a use for. Therefore, we do assign the same constant value to the required username field. It protects users from deanonymization.</p>
-	<h3>No hidden work</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-hidden-work">No hidden work</h3>
+		<a href="https://blog.cloudflare.com/#no-hidden-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common use of CAPTCHA is to label datasets that AI has difficulty identifying. This could be for books, street numbers, or fire hydrants. While this is useful for science, it has also been used as a way for companies to leverage human recognition ability for commercial gain without their users’ knowledge.</p>
 	<p>With the Cryptographic Attestation of Personhood, this does not happen. We have more flexibility designing the user flow, as we are not constrained by the CAPTCHA challenge model anymore.</p>
-	<h3>What Cloudflare is doing to push privacy even further</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-cloudflare-is-doing-to-push-privacy-even-further">What Cloudflare is doing to push privacy even further</h3>
+		<a href="https://blog.cloudflare.com/#what-cloudflare-is-doing-to-push-privacy-even-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the Cryptographic Attestation of Personhood has a lot of upside in terms of privacy, it is not perfect. Cloudflare still needs to know your manufacturer to let you in. As WebAuthn works with any certificate, we need to make sure Cloudflare receives certificates from untampered hardware keys. We would prefer to not have that information, further preserving your privacy.</p>
 	<p>We have worked on privacy standards in the past, leading the efforts with Privacy Pass for instance. <a href="https://privacypass.cloudflare.com">Privacy Pass</a> allows you to solve a challenge once and provide a proof you passed it, meaning you don’t have to solve multiple CAPTCHAs. It greatly improved the user experience of VPN users, who face more challenges than other Internet users.</p>
 	<p>For the Cryptographic Attestation of Personhood, we dig into an emerging field in cryptography called <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">Zero Knowledge proofs</a> (ZK proof). It allows our users to prove their manufacturer is part of a set of manufacturers trusted by Cloudflare. Using a &nbsp;ZK proof, the devices from a single manufacturer become indistinguishable from each other, as well as from devices from other manufacturers. This new system requires more technical details and deserves a dedicated blog post. Stay tuned.</p>
-	<h2>A never-ending quest</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-never-ending-quest">A never-ending quest</h2>
+		<a href="https://blog.cloudflare.com/#a-never-ending-quest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Designing a challenge aimed at protecting millions of Internet properties is no easy task. In the current setup, we believe Cryptographic Attestation of Personhood offers strong security and usability guarantees compared to traditional CAPTCHA challenges. During a preliminary user study, users indicated a strong preference for touching their hardware key over clicking on pictures. Nevertheless, we know that this is a new system with room for improvements.</p>
 	<p>This experiment will be available on a limited basis in English-speaking regions. This allows us to have diversity in the pool of users and test this process in various locations. However, we recognize this is insufficient coverage and we intend to test further. If you have specific needs, feel free to reach out.</p>
 	<p>Another issue that we keep a close eye on is security. The security of this challenge depends on the underlying hardware provided by trusted manufacturers. We have confidence they are secured. If any breach were to occur, we would be able to quickly deauthorize manufacturers’ public keys at various levels of granularity.</p>
@@ -153,12 +231,26 @@
 
 	</figure>
 	<p>We also have to consider the possibility of facing automated button-pressing systems. A <a href="https://en.wikipedia.org/wiki/Drinking_bird">drinking bird</a> able to press the capacitive touch sensor could pass the Cryptographic Attestation of Personhood. At best, the bird solving rate matches the time it takes for the hardware to generate an attestation. With our current set of trusted manufacturers, this would be slower than the solving rate of professional CAPTCHA-solving services, while allowing legitimate users to pass through with certainty. In addition, existing Cloudflare mitigations would remain in place, efficiently protecting Internet properties.</p>
-	<h2>Final words</h2>
+	<div class="flex anchor relative">
+		<h2 id="final-words">Final words</h2>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For Cloudflare, it always comes back to: helping build a better Internet. The very idea that we’re all wasting 500 years per day on the Internet — that nobody had revisited the fundamental assumptions of CAPTCHAs since the turn of the century — seemed absurd to us.</p>
 	<p>We’re very proud of the work we’ve done here to release the Cryptographic Attestation of Personhood. This challenge has been built with a user-first approach while maintaining a high level of security for accessing Internet properties sitting behind Cloudflare’s global network. We’re now in the process of augmenting our existing humanity challenge with the Cryptographic Attestation of Personhood. You should expect to see it more frequently as time passes. You can try it out today at <a href="https://cloudflarechallenge.com">cloudflarechallenge.com</a>.</p>
 	<p>We want to acknowledge the work of other teams at Cloudflare. While this work is led by the Research team, we have been extremely privileged to get support from all across the company. If you want to help us build a better Internet, <a href="https://www.cloudflare.com/careers/jobs/?department=Technology+Research&amp;location=default">we are hiring</a>.</p>
 	<p>Finally: we’re excited to bring about the demise of the fire hydrant on the Internet. It’s no longer needed.</p>
-	<h2>Feedback and Common errors</h2>
+	<div class="flex anchor relative">
+		<h2 id="feedback-and-common-errors">Feedback and Common errors</h2>
+		<a href="https://blog.cloudflare.com/#feedback-and-common-errors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As this is currently an experimental project from the Cloudflare Research Team only USB or NFC security keys work today. We’re happy for the feedback and will look into adding other authenticators as soon as possible. If you use a non-supported device then you’re likely to get a somewhat difficult to understand error message from your browser. On Google Chrome you would see:</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -10,7 +10,14 @@
 	<p>Our goal is to integrate with web frameworks in the most natural way possible, without developers having to learn and adopt significant workflow changes or custom APIs when deploying their app to Cloudflare. Whether you are a Next.js developer, a Nuxt developer, or prefer another framework, you can now keep on using the blazing fast local development workflow familiar to you, and ship your application on Cloudflare.</p>
 	<p>All full-stack web frameworks come with a local development server (dev server) that is custom tailored to the framework and often provides an excellent development experience, with only one exception — they don't natively support some important features of Cloudflare’s development platform, especially our <a href="https://www.cloudflare.com/developer-platform/products/#storage">storage solutions</a>.</p>
 	<p>So up until recently, you had to make a tough choice. You could use the framework-specific dev server to develop your application, but forgo access to many of Cloudflare’s features. Alternatively, you could take full advantage of Cloudflare’s platform including various resources like D1 or R2<a href="https://developers.cloudflare.com/workers/configuration/bindings">, but you would have to give up using the framework specific developer tooling. In that case, your iteration cycle would slow down, and it would take seconds rather than milliseconds for you to see results of your code changes in the browser.</a> But not anymore! Let’s take a look.</p>
-	<h3>Let’s build an application</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-build-an-application">Let’s build an application</h3>
+		<a href="https://blog.cloudflare.com/#lets-build-an-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s create a new application using <a href="https://developers.cloudflare.com/pages/get-started/c3">C3</a> — our create-cloudflare CLI. We could use any npm client of our choice (pnpm anyone?!?), but to keep things simple in this post, we’ll stick with the default npm client. To get started, just run:</p>
 	<p><code>$ npm create cloudflare@latest</code></p>
 	<p>Provide a name for your app, or stick with the randomly generated one. Then select the “Website or web app” category, and pick a full-stack framework of your choice. We support many: <a href="https://astro.build">Astro</a>, <a href="https://nextjs.org">Next.js</a>, <a href="https://nuxt.com">Nuxt</a>, <a href="https://qwik.dev">Qwik</a>, <a href="https://remix.run">Remix</a>, <a href="https://start.solidjs.com/getting-started/what-is-solidstart">SolidStart</a>, and <a href="https://kit.svelte.dev">SvelteKit</a>.</p>
@@ -74,7 +81,14 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 		</li>
 	</ul>
 	<p>Now that you know how to access Cloudflare’s resources in the framework of your choice, everything else you know about your framework remains the same. You can now develop your application locally, using the development server optimized for your framework, which often includes support for hot module replacement (HMR), custom dev tools, enhanced debugging support and more, all while still benefiting from Cloudflare-specific APIs and features. Win-win!</p>
-	<h3>What has actually changed to enable these development workflows?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-has-actually-changed-to-enable-these-development-workflows">What has actually changed to enable these development workflows?</h3>
+		<a href="https://blog.cloudflare.com/#what-has-actually-changed-to-enable-these-development-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To decrease the development latency and preserve the custom framework-specific experiences, we needed to enable web frameworks and their dev servers to integrate with wrangler and miniflare in a seamless, almost invisible way.</p>
 	<p><a href="https://miniflare.dev">Miniflare</a> is a key component in this puzzle. It is our local simulator for Cloudflare-specific resources, which is powered by <a href="https://github.com/cloudflare/workerd">workerd</a>, our JavaScript (JS) runtime. By relying on workerd, we ensure that Cloudflare’s JavaScript APIs run locally in a way that faithfully simulates our production environment. The trouble is that framework dev servers already rely on Node.js to run the application, so bringing another JS runtime into the mix breaks many assumptions in how these dev servers have been architected.</p>
 	<p>Our team however came up with an interesting approach to bridging the gap between these two JS runtimes. We call it the <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy">getPlatformProxy()</a> API, which is now part of wrangler and is super-powered by <a href="https://github.com/cloudflare/miniflare/pull/639">miniflare’s magic proxy</a>. This API exposes a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">JS proxy object</a> that behaves just like the usual <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters">Workers env object</a> containing all bound resources. The proxy object enables code from Node.js to transparently invoke JavaScript code running in workerd, as well access Cloudflare-specific runtime APIs.</p>
@@ -97,7 +111,14 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
  const productsResults = await db.prepare('SELECT * FROM products').all();
  console.log(productsResults.results);</code></pre>
 	<p>With the <code>getPlatformProxy()</code> API available, the remaining work was all about updating all framework adapters, plugins, and in some cases frameworks themselves to make use of this API. We are grateful for the support we received from framework teams on this journey, especially <a href="https://github.com/alexanderniebuhr">Alex</a> from Astro, <a href="https://github.com/pi0">pi0</a> from Nuxt, <a href="https://github.com/pcattori">Pedro</a> from Remix, <a href="https://github.com/ryansolid">Ryan</a> from Solid, <a href="https://github.com/benmccann">Ben</a> and <a href="https://github.com/Rich-Harris">Rich</a> from Svelte, and our collaborator on the <a href="https://github.com/cloudflare/next-on-pages">next-on-pages</a> project, <a href="https://github.com/james-elicx">James Anderson</a>.</p>
-	<h3>Future improvements to development workflows with Vite</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-improvements-to-development-workflows-with-vite">Future improvements to development workflows with Vite</h3>
+		<a href="https://blog.cloudflare.com/#future-improvements-to-development-workflows-with-vite" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy"><code>getPlatformProxy()</code></a> API is a good solution for many scenarios, we can do better. If we could run the entire application in our JS runtime rather than Node.js, we could even more faithfully simulate the production environment and reduce developer friction and production surprises.</p>
 	<p>In the ideal world, we’d like you to develop against the same runtime that you deploy to in production, and this can only be achieved by integrating workerd directly into the dev servers of all frameworks, which is not a small feat considering the number of frameworks out there and the differences between them.</p>
 	<p>We however got a bit lucky. As we kicked off this effort, we quickly realized that <a href="https://vitejs.dev">Vite</a>, a popular dev server used by many full-stack frameworks, was gaining increasingly greater adoption. In fact, Remix switched over to <a href="https://remix.run/blog/remix-vite-stable">Vite just recently</a> and confirmed the popularity of Vite as the common foundation for web development today.</p>
@@ -108,7 +129,14 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 
 	</figure>
 	<p>Sounds too good to be true? Maybe. We are very stoked to be working with the Vite team on the <a href="https://github.com/vitejs/vite/pull/16089">Vite environments</a> proposal, which could enable just that. This proposal is still evolving, so stay tuned for updates.</p>
-	<h3>What will you build today?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-will-you-build-today">What will you build today?</h3>
+		<a href="https://blog.cloudflare.com/#what-will-you-build-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We aim to make Cloudflare the best development platform for web developers. Making it quick and easy to develop your application with frameworks and tools you are already familiar with is a big part of our story. Start your journey with us by running a single command:</p>
 	<p><code>$ npm create cloudflare@latest</code></p>
 </div>

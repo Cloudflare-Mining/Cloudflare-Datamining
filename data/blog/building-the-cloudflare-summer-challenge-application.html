@@ -7,7 +7,14 @@
 	</figure>
 	<p>If you haven’t already heard, we’re hosting the <a href="https://blog.cloudflare.com/developer-summer-challenge">Cloudflare Summer Developer Challenge</a>, a contest for the Cloudflare community at large. Anybody – yes, including you – can sign up for free and compete for a chance to win one of 300 available prizes. To submit you need to use &nbsp;at least two products from the <a href="https://developers.cloudflare.com">Cloudflare developer platform</a> — which makes this contest a great opportunity to give them a try if you haven’t already! The top 300 submissions will receive a box of our most popular swag, so you should give it a go!</p>
 	<p>Coincidentally, the Cloudflare Summer Developer Challenge’s landing page and signup workflow qualifies as a valid project submission (so meta), so if you’re looking for some inspiration, this walkthrough will shed some light on how it was built.</p>
-	<h2>Overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="overview">Overview</h2>
+		<a href="https://blog.cloudflare.com/#overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At its core, the application is a series of static HTML pages, most of which have a form to submit, with a backend API to handle those submissions, and a storage layer to persist the data. In a Cloudflare lens, this would point towards using Pages, a Worker, and Workers KV. And while this <i>should be</i> the preferred stack for a project like this, truthfully, this “application” was originally intended to be a single HTML page with a single form, but its list of requirements grew over time, as things tend to do. So instead, this project began as–and remains–a Workers Site project, comprised of a single Worker and a single Workers KV namespace.</p>
 	<p>Workers Sites, the precursor to our <a href="https://pages.dev">Pages</a> product, is a pattern where your Worker handles all the requests for your site’s assets. While doing this, your Worker Site can still include backend-y things, like offering a collection of JSON API endpoints. Basically, Workers Sites is a coined term for building monoliths within a Worker, but without the negative associations that the word “monolith” can bring. Given that a Workers Site is still a Worker, this means your monolith is deployed globally – tough to beat!</p>
 	<p>As with all Workers Sites, routing is the primary concern. For this, I used the <a href="https://github.com/lukeed/worktop"><code>worktop</code></a> web framework, which includes a router among many other utilities. <i>(Disclosure: I am also the author of worktop.)</i> This allowed me to quickly structure the layout of the entire application:</p>
@@ -39,7 +46,14 @@ API.add('POST', '/submit', (req, res) =&gt; {
 // init; w/ Cache API
 Cache.listen(API.run);</code></pre>
 	<p>At this point, nothing useful is happening, but having an application skeleton laid out like this is my preferred format for a TODO list. It’s very satisfying to go through and fill out the handler bodies as development progresses. Additionally, the <code>Cache.listen</code> helper at the bottom of the file integrates the entire application with the Cache API, which I know I’ll want since most of the requests will be for the static HTML pages anyway.</p>
-	<h2>Building and Optimizing the Client pages</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-and-optimizing-the-client-pages">Building and Optimizing the Client pages</h2>
+		<a href="https://blog.cloudflare.com/#building-and-optimizing-the-client-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, deploying a Workers Site meant uploading all of your assets into a KV namespace. Then you would include something like <a href="https://github.com/cloudflare/kv-asset-handler"><code>@cloudflare/kv-asset-handler</code></a> into your Worker so that incoming requests would seamlessly route to keys within the namespace. However, I chose to go a different route.</p>
 	<p>Knowing that each of my static pages would – at most – have <i>one</i> CSS stylesheet and sometimes only <i>one</i> JavaScript file, I thought it would be pretty nifty to include a build system that would <i>inline</i> these assets into the built HTML page. This would mean that my static HTML pages would have <i>absolutely zero</i> network requests for additional resources, which is generally good news for performance.</p>
 	<blockquote>
@@ -71,7 +85,14 @@ Cache.listen(API.run);</code></pre>
 
 	</figure>
 	<p>You can see how the <code>localhost</code> document loads, only dispatching a single request for the <code>favicon-128.png</code> file, which is hosted externally. The three <code>data:image/*</code> requests are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob URLs</a> and don’t actually transfer network packets. All in all, this means that the HTML document is fully self-contained.</p>
-	<h2>Including HTML into the Worker</h2>
+	<div class="flex anchor relative">
+		<h2 id="including-html-into-the-worker">Including HTML into the Worker</h2>
+		<a href="https://blog.cloudflare.com/#including-html-into-the-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers can send anything in a Response. Of course, this includes a HTML string. If I wanted to make things incredibly difficult for myself, I could have skipped the <code>/src</code> directory with its own build system, and instead written the HTML, CSS, and JS entirely within a JS string. This would certainly work, but it would be a nightmare to maintain and (for me, at least) be extremely error prone:</p>
 	<pre class="language-js"><code class="language-js">API.add('GET', '/', (req, res) =&gt; {
   // Note: Worktop APIs
@@ -184,7 +205,14 @@ API.add('GET', '/', async (req, res) =&gt; {
   return utils.render(res, LANDING, { count });
 });</code></pre>
 	<p>With these changes, the landing page will always check the KV namespace for the latest <code>::remain</code> value and inject it into the correct location. If you’re interested in checking out the project’s <a href="https://github.com/cloudflare/developer-summer-challenge/blob/master/worker/index.ts">source code</a>, you’ll find that this pattern is used in nearly every HTML response.</p>
-	<h2>Accepting Form Submissions</h2>
+	<div class="flex anchor relative">
+		<h2 id="accepting-form-submissions">Accepting Form Submissions</h2>
+		<a href="https://blog.cloudflare.com/#accepting-form-submissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As expected, this application made heavy use of form submissions. Luckily, the Fetch API offers a variety of <a href="https://fetch.spec.whatwg.org/#body">built-in body parsers</a> to make retrieval of the data trivial. Additionally, <code>worktop</code> offers a convenience function that will automatically invoke the correct parser based on the request’s <code>Content-Type</code> header. It’s aptly named <code>req.body()</code>.</p>
 	<p>It’s easy to parse and retrieve user data, but it still has to be validated. There are a number of ways to do this, all of which boil down to an input object, a group of rules, and a loop through those rules, collecting any error messages into an <code>errors</code> object. This is precisely what my <code>utils.validate</code> helper does, allowing me to clearly define and manage my rules inline.</p>
 	<p>Let’s see how this looks within the <code>POST /submit</code> handler, which accepts the initial registration form:</p>
@@ -318,7 +346,14 @@ $('form').onsubmit = async function (ev) {
 	<blockquote>
 		<p><b><i>BONUS:</i></b><i> Because a full HTML response is returned, and all the client-side </i><code><i>&lt;form&gt;</i></code><i> elements are semantically correct, the form submission workflow will work with JavaScript disabled! The client-side validation will remain functional, but be a degraded experience – the error dialog won’t popup and any error messages will not appear beneath their respective form inputs.</i></p>
 	</blockquote>
-	<h2>Sending Transactional Emails</h2>
+	<div class="flex anchor relative">
+		<h2 id="sending-transactional-emails">Sending Transactional Emails</h2>
+		<a href="https://blog.cloudflare.com/#sending-transactional-emails" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It should (hopefully) come as no surprise that programmatically sending an email is pretty straightforward these days. We chose to use SparkPost, but practically every service has the same API mechanics:</p>
 	<ul>
 		<li>
@@ -399,7 +434,14 @@ export function confirm(entry: Entry): Promise&lt;boolean&gt; {
   });
 }</code></pre>
 	<p>The above snippet includes the <i>entire</i> <code>POST</code> request formatter – there’s nearly more type-hinting than there is code! Also shown is an example <code>confirm</code> method, which is responsible for sending the unique submission link to the newly-registered user. You’ll notice that <code>firstname</code> and <code>code</code> are the injected variables, required by the “devchallenge-confirm” template.</p>
-	<h2>Overall Performance</h2>
+	<div class="flex anchor relative">
+		<h2 id="overall-performance">Overall Performance</h2>
+		<a href="https://blog.cloudflare.com/#overall-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I’d call this a success!</p>
 	<p>Even though this certainly wasn’t my first Worker project – and definitely won’t be my last – I’m consistently amazed how much the Workers runtime lets me get away with. I mean, if you could only take away two points from this article, they should be:</p>
 	<ol>
@@ -417,12 +459,26 @@ export function confirm(entry: Entry): Promise&lt;boolean&gt; {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3irhqabprRjLez9WXuHyi6/da3465091ca6308804d140fd69218bcf/lighthouse.png" alt="A Lighthouse report that grades the deployed landing page a perfect score for Performance and Best Practices. It’s also received a 98% for Accessibility and 99% for SEO health." class="kg-image" width="1600" height="1549" loading="lazy">
 
 	</figure>
-	<h2>Lessons Learned</h2>
+	<div class="flex anchor relative">
+		<h2 id="lessons-learned">Lessons Learned</h2>
+		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As I alluded to earlier, if I were to rebuild this application, or if I were to add more to it down the road, I would replace the Workers Site architecture with a Pages project and deploy a Worker in front of it for my API requirements and dynamic KV injections.</p>
 	<p>Since the static assets would no longer be embedded into the Worker’s source, I would need to replace the `utils.render` approach for another utility that fetches the URL from Pages (which becomes my “origin server”) and then uses <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter"><code>HTMLRewriter</code></a> to inject the variables. Also, not that I was anywhere near the 1MB size limit, the largest contributor to my Worker’s bytesize would disappear.</p>
 	<p>But, more significantly, this refactor would also reduce my total tooling since the <i>majority</i> of the project’s complexity lies in the custom build system for the frontend assets. In other words, the entire <code>/src</code> directory could have been built and deployed like a normal static website, which would allow me to make use of existing frameworks and/or toolkits instead of taking my self-imposed detour. There would have been no need to create a custom frontend toolkit <i>and</i> its bridge to get the static assets loaded into my Worker.</p>
 	<p>However, none of this is to say that Workers Sites was a bad approach for this application. It’s quite the contrary! This is all to highlight the flexibility of Worker Sites – and the Workers platform at large. Cloudflare Pages exists so that I, the developer, can lean into existing, well-traveled paths and let the experts worry about toolkits, build pipelines, and deployments… But that doesn’t prevent you, the resident expert, from customizing every aspect if that’s your desire.</p>
-	<h2>Resources</h2>
+	<div class="flex anchor relative">
+		<h2 id="resources">Resources</h2>
+		<a href="https://blog.cloudflare.com/#resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://github.com/cloudflare/developer-summer-challenge">Source Code on GitHub</a></p>

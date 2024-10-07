@@ -42,13 +42,27 @@
 		</li>
 	</ul>
 	<p><b>Note on avoiding data biases:</b> When we analyze attack trends, we calculate the “DDoS activity” rate, which is the percentage of attack traffic of the total traffic (attack + clean). When reporting application- and network-layer DDoS attack trends, we use this metric, which allows us to normalize the data points and avoid biases toward, for example, a larger Cloudflare data center that naturally handles more traffic and therefore also, possibly, more attacks compared to a smaller Cloudflare data center located elsewhere.</p>
-	<h2>Application-layer DDoS attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="application-layer-ddos-attacks">Application-layer DDoS attacks</h2>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack">Application-layer DDoS attacks</a>, specifically HTTP DDoS attacks, are attacks that usually aim to disrupt a web server by making it unable to process legitimate user requests. If a server is bombarded with more requests than it can process, the server will drop legitimate requests and — in some cases — crash, resulting in degraded performance or an outage for legitimate users.</p>
 	<h4>Q3 ‘21 was the quarter of Meris — one of the most powerful botnets deployed to launch some of the largest HTTP DDoS attacks in history.</h4>
 	<p>This past quarter, we observed <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">one of the largest recorded HTTP attacks</a> — 17.2M rps (requests per second) — targeting a customer in the financial services industry. One of the most powerful botnets ever observed, called Meris, is known to be deployed in launching these attacks.</p>
 	<p>Meris (Latvian for plague) is a botnet behind recent DDoS attacks that have targeted networks or organizations around the world. The Meris botnet infected routers and other networking equipment manufactured by the Latvian company MikroTik. According to MikroTik’s blog, a vulnerability in the MikroTik RouterOS (that was patched after its detection back in 2018) was exploited in still unpatched devices to build a botnet and launch coordinated DDoS attacks by bad actors.</p>
 	<p>Similar to the <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai botnet</a> of 2016, Meris is one of the most powerful botnets recorded. While Mirai infected IoT devices with low computational power such as smart cameras, Meris is a growing swarm of networking infrastructure (such as routers and switches) with significantly higher processing power and data transfer capabilities than IoT devices — making them much more potent in causing harm at a larger scale. Be that as it may, Meris is an example of how the attack volume doesn’t necessarily guarantee damage to the target. As far as we know, Meris, despite its strength, was not able to cause significant impact or Internet outages. On the other hand, by tactically <a href="https://en.wikipedia.org/wiki/DDoS_attack_on_Dyn">targeting the DYN DNS service in 2016</a>, Mirai succeeded in causing significant Internet disruptions.</p>
-	<h3>Application-layer DDoS attacks by industry</h3>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-industry">Application-layer DDoS attacks by industry</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-industry" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>The tech and gaming industries were the most targeted industries in Q3 ‘21.</b></p>
 	<p>When we break down the application-layer attacks targeted by industry, Computer Software companies topped the charts. The Gaming/Gambling industry, also known to be regular targets of online attacks, was a close second, followed by the Internet and IT industries.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -56,7 +70,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JPadNrIHstG6fM3Oxg6A7/c86d3189b5357f92222d45962154a041/image6-5.png" alt="Application-layer DDoS attacks by industry" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Application-layer DDoS attacks by source country</h3>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-source-country">Application-layer DDoS attacks by source country</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-source-country" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand the origin of the HTTP attacks, we look at the geolocation of the source IP address belonging to the client that generated the attack HTTP requests. Unlike network-layer attacks, source IPs cannot be <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoofed</a> in HTTP attacks. A high DDoS activity rate in a given country usually indicates the presence of botnets operating from within.</p>
 	<p>In the third quarter of 2021, most attacks originated from devices/servers in China, the United States, and India. While China remains in first place, the number of attacks originating from Chinese IPs actually decreased by 30% compared to the previous quarter. Almost one out of every 200 HTTP requests that originated from China was part of an HTTP DDoS attack.</p>
 	<p>Additionally, attacks from Brazil and Germany shrank by 38% compared to the previous quarter. Attacks originating from the US and Malaysia reduced by 40% and 45%, respectively.</p>
@@ -65,7 +86,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ABqWAhmZCoG1eZ6RBNc9g/cdf99e006ac87569a9850fffa14af8fb/image31.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Application-layer DDoS attacks by target country</h3>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-target-country">Application-layer DDoS attacks by target country</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-target-country" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to identify which countries are targeted the most by L7 attacks, we break down the DDoS activity by our customers’ billing countries.</p>
 	<p>For the second consecutive time this year, organizations in the United States were targeted the most by L7 DDoS attacks in the world, followed by those in the UK and Canada.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -73,11 +101,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6T0eaxRVbixvISjvuFzNGG/d15ae976edf610ffff11d97e6ca54355/image10-7.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h2>Network-layer DDoS attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="network-layer-ddos-attacks">Network-layer DDoS attacks</h2>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While application-layer attacks target the application (Layer 7 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a>) running the service that end users are trying to access, <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks">network-layer attacks</a> aim to overwhelm network infrastructure (such as in-line routers and servers) and the Internet link itself.</p>
 	<h4>Mirai-variant botnet strikes with a force of 1.2 Tbps.</h4>
 	<p>Q3 ‘21 was also the quarter when the infamous Mirai made a resurgence. A Mirai-variant botnet launched over a dozen UDP- and TCP-based DDoS attacks that peaked multiple times above 1 Tbps, with a max peak of approximately 1.2 Tbps. These network-layer attacks targeted Cloudflare customers on the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> services. One of these targets was a major APAC-based Internet services, telecommunications, and hosting provider and the other was a gaming company. In all cases, the attacks were automatically detected and mitigated without human intervention.</p>
-	<h3>Network-layer DDoS attacks by month</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-month">Network-layer DDoS attacks by month</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-month" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>September was, by far, the busiest month for attackers this year.</h4>
 	<p>Q3 ‘21 accounted for more than 38% of all attacks this year. September was the busiest month for attackers so far in 2021 — accounting for over 16% of all attacks this year.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -85,7 +127,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rSRKsyrgPbljcg6EKZLAt/3587110a1cafba3aa57bddfa2646dd6f/image20.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Network-layer DDoS attacks by attack rate</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-attack-rate">Network-layer DDoS attacks by attack rate</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-attack-rate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Most attacks are ‘small’ in size, but the number of larger attacks continues to rise.</b></p>
 	<p>There are different ways of measuring the size of a L3/4 DDoS attack. One is the volume of traffic it delivers, measured as the bit rate (specifically, terabits per second or gigabits per second). Another is the number of packets it delivers, measured as the packet rate (specifically, millions of packets per second).</p>
 	<p>Attacks with high bit rates attempt to cause a denial-of-service event by clogging the Internet link, while attacks with high packet rates attempt to overwhelm the servers, routers, or other in-line hardware appliances. Appliances dedicate a certain amount of memory and computation power to process each packet. Therefore, by bombarding it with many packets, the appliance can be left with no further processing resources. In such a case, packets are “dropped,” i.e., the appliance is unable to process them. For users, this results in service disruptions and denial of service.</p>
@@ -123,7 +172,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ktaoC9RxCLuAKOxdrHZHx/b9e2be97f44d9d2c5eb7f7c40620f33d/image2-3.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Network-layer DDoS attacks by duration</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-duration">Network-layer DDoS attacks by duration</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-duration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Most attacks remain under one hour in duration, reiterating the need for automated always-on DDoS mitigation solutions.</h4>
 	<p>We measure the duration of an attack by recording the difference between when it is first detected by our systems as an attack and the last packet we see with that attack signature. As in previous quarters, most of the attacks are short-lived. To be specific, 94.4% of all DDoS attacks lasted less than an hour. On the other end of the axis, attacks over 6 hours accounted for less than 0.4% in Q3 ‘21, and we did see a QoQ increase of 165% in attacks ranging 1-2 hours. Be that as it may, a longer attack does not necessarily mean a more dangerous one.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -133,7 +189,14 @@
 	</figure>
 	<p>Short attacks can easily go undetected, especially burst attacks that, within seconds, bombard a target with a significant number of packets, bytes, or requests. In this case, DDoS protection services that rely on manual mitigation by security analysis have no chance in mitigating the attack in time. They can only learn from it in their post-attack analysis, then deploy a new rule that filters the attack fingerprint and hope to catch it next time. Similarly, using an “on-demand” service, where the security team will redirect traffic to a DDoS provider during the attack, is also inefficient because the attack will already be over before the traffic routes to the on-demand DDoS provider.</p>
 	<p>Cloudflare recommends that companies use automated, always-on DDoS protection services that analyze traffic and apply real-time fingerprinting fast enough to block the short-lived attacks. Cloudflare analyzes traffic out-of-path, ensuring that DDoS mitigation does not add any latency to legitimate traffic, even in always-on deployments. Once an attack is identified, our autonomous edge DDoS protection system (<a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">dosd</a>) generates and applies a dynamically crafted rule with a real-time signature. Pre-configured firewall rules comprising allow/deny lists for known traffic patterns take effect immediately.</p>
-	<h3>Attack vectors</h3>
+	<div class="flex anchor relative">
+		<h3 id="attack-vectors">Attack vectors</h3>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>SYN floods remain attackers’ favorite method of attack, while attacks over DTLS saw a massive surge — 3,549% QoQ.</h4>
 	<p>An attack vector is the term used to describe the method that the attacker utilizes in their attempt to cause a denial-of-service event.</p>
 	<p>As observed in previous quarters, attacks utilizing SYN floods remain the most popular method used by attackers.</p>
@@ -145,7 +208,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Vo4muJmB01yU0Qh88Ni35/f3e2993ee8fa5bf047c03bb13e1c7929/image4-3.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Emerging threats</h3>
+	<div class="flex anchor relative">
+		<h3 id="emerging-threats">Emerging threats</h3>
+		<a href="https://blog.cloudflare.com/#emerging-threats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While SYN and RST floods remain popular overall, when we look at emerging attack vectors — which helps us understand what new vectors attackers are deploying to launch attacks — we observed a massive spike in <a href="https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security">DTLS</a> amplification attacks. DTLS floods increased by 3,549% QoQ.</p>
 	<p>Datagram Transport Layer Security (DTLS) is a protocol similar to Transport Layer Security (<a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a>) designed to provide similar security guarantees to connectionless datagram-based applications to prevent message forgery, eavesdropping, or tampering. DTLS, being connectionless, is specifically useful for establishing VPN connections, without the <a href="https://openvpn.net/faq/what-is-tcp-meltdown">TCP meltdown</a> problem. The application is responsible for reordering and other connection properties.</p>
 	<p>Just as with most UDP-based protocols, DTLS is spoofable and being used by attackers to generate reflection amplification attacks to overwhelm network gateways.</p>
@@ -154,7 +224,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73mUxKAOpch92qdR7CR6ZJ/32c505301a290978da1ff1bb6c4d544c/image18-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Network-layer DDoS attacks by country</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-country">Network-layer DDoS attacks by country</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-country" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>While Morocco topped the charts in terms of the highest network attack rate observed, Asian countries closely followed.</b></p>
 	<p>When analyzing network-layer DDoS attacks, we bucket the traffic by the Cloudflare edge data center locations where the traffic was ingested, and not by the source IP. The reason for this is that, when attackers launch network-layer attacks, they can <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">spoof</a> the source IP address in order to obfuscate the attack source and introduce randomness into the attack properties, which may make it harder for simple DDoS protection systems to block the attack. Hence, if we were to derive the source country based on a spoofed source IP, we would get a spoofed country.</p>
 	<p>Cloudflare is able to overcome the challenges of spoofed IPs by displaying the attack data by the location of the Cloudflare data center in which the attack was observed. We are able to achieve geographical accuracy in our report because we have data centers in <a href="https://www.cloudflare.com/network">over 250 cities</a> around the world.</p>
@@ -165,7 +242,15 @@
 
 	</figure>
 	<p>To view all regions and countries, check out the <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q3#network-layer-ddos-attacks-by-country">Radar DDoS Report dashboard’s interactive map</a>.</p>
-	<h3>A note on recent attacks on voice over-IP service providers — and ransom DDoS attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-note-on-recent-attacks-on-voice-over-ip-service-providers-and-ransom-ddos-attacks">A note on recent attacks on voice over-IP service providers — and ransom DDoS attacks</h3>
+		<a href="https://blog.cloudflare.com/#a-note-on-recent-attacks-on-voice-over-ip-service-providers-and-ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EzEvtPaswPIEik7EsnQZq/52a13d5b8109793f438974659b41e3cd/image25-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
@@ -204,7 +289,14 @@
 			<p><a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> protects organizations’ networks against <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">DDoS attacks</a> using BGP route redistribution — without impacting latency.</p>
 		</li>
 	</ul>
-	<h2>Helping build a better Internet</h2>
+	<div class="flex anchor relative">
+		<h2 id="helping-build-a-better-internet">Helping build a better Internet</h2>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare was founded on the mission to help build a better Internet. And part of that mission is to build an Internet where the impact of DDoS attacks is a thing of the past. Over the last 10 years, we have been unwavering in our efforts to protect our customers’ Internet properties from DDoS attacks of any size or kind. In <a href="https://blog.cloudflare.com/unmetered-mitigation">2017</a>, we announced <a href="https://www.cloudflare.com/ddos">unmetered DDoS protection</a> for free — as part of every Cloudflare service and plan, including the Free plan — to make sure every organization can stay protected and available. Organizations big and small have joined Cloudflare over the past several years to ensure their websites, applications, and networks are secure from DDoS attacks, and remain fast and reliable.</p>
 	<p>But cyberattacks come in various forms, not just DDoS attacks. Malicious bots, ransomware attacks, email phishing, and VPN / remote access hacks are some many attacks that continue to plague organizations of all sizes globally. These attacks target websites, APIs, applications, and entire networks — which form the lifeblood of any online business. That is why the <a href="https://www.cloudflare.com/security">Cloudflare security portfolio</a> accounts for everything and everyone connected to the Internet.</p>
 	<p>To learn more about <a href="https://www.cloudflare.com/ddos">Cloudflare DDoS</a> or our <a href="https://www.cloudflare.com/network-services">network services</a>, <a href="https://dash.cloudflare.com">create an account</a> or <a href="https://www.cloudflare.com/enterprise">reach out to us</a>.</p>

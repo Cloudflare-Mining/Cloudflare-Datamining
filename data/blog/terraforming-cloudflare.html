@@ -6,18 +6,53 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37cT4OaneCnyyBgWYOprbJ/e3ee665ccb149e9cbc53837746722c99/Image_20191002_222359-1-1.png" alt="" class="kg-image" width="1662" height="1142" loading="lazy">
 
 	</figure>
-	<h2>Overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="overview">Overview</h2>
+		<a href="https://blog.cloudflare.com/#overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This post is about our introductive journey to the infrastructure-as-code practice; managing Cloudflare configuration in a declarative and version-controlled way. We'd like to share the experience we've gained during this process; our pain points, limitations we faced, different approaches we took and provide parts of our solution and experimentations.</p>
-	<h2>Terraform world</h2>
+	<div class="flex anchor relative">
+		<h2 id="terraform-world">Terraform world</h2>
+		<a href="https://blog.cloudflare.com/#terraform-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.terraform.io/intro/index.html">Terraform</a> is a great tool that fulfills our requirements, and fortunately, Cloudflare maintains its own <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">provider</a> that allows us to manage its service configuration hasslefree.</p>
 	<p>On top of that, <a href="https://github.com/gruntwork-io/terragrunt">Terragrunt</a>, is a thin wrapper that provides extra commands and functionality for keeping Terraform configurations DRY, and managing remote state.</p>
 	<p>The combination of both leads to a more modular and re-usable structure for Cloudflare <a href="https://www.terraform.io/docs/configuration/resources.html">resources</a> (configuration), by utilizing <a href="https://www.terraform.io/docs/configuration/modules.html">terraform</a> and <a href="https://github.com/gruntwork-io/terragrunt-infrastructure-modules-example">terragrunt</a> modules.</p>
 	<p>We've chosen to use the latest version of both tools (<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview">Terraform-v0.12</a> &amp; <a href="https://github.com/gruntwork-io/terragrunt/releases/tag/v0.19.0">Terragrunt-v0.19</a> respectively) and constantly upgrade to take advantage of the valuable new features and functionality, which at this point in time, remove important limitations.</p>
-	<h2>Workable context</h2>
+	<div class="flex anchor relative">
+		<h2 id="workable-context">Workable context</h2>
+		<a href="https://blog.cloudflare.com/#workable-context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our set up includes multiple domains that are grouped in two distinct Cloudflare organisations: production &amp; staging. Our environments have their own purposes and technical requirements (i.e.: QA, development, sandbox and production) which translates to slightly different sets of Cloudflare zone configuration.</p>
-	<h2>Our approach</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-approach">Our approach</h2>
+		<a href="https://blog.cloudflare.com/#our-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our main goal was to have a modular set up with the ability to manage any configuration for any zone, while keeping code repetition to a minimum. This is more complex than it sounds; we have repeatedly changed our Terraform folder structure - and other technical aspects - during the development period. The following sections illustrate a set of alternatives through our path, along with pros &amp; cons.</p>
-	<h3>Structure</h3>
+	<div class="flex anchor relative">
+		<h3 id="structure">Structure</h3>
+		<a href="https://blog.cloudflare.com/#structure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Terraform configuration is based on the project's directory structure, so this is the place to start.</p>
 	<p>Instead of retaining the Cloudflare organisation structure (production &amp; staging as root level directories containing the zones that belong in each organization), our decision was to group zones that share common configuration under the same directory. This helps keep the code dry and the set up consistent and readable.</p>
 	<p>On the down side, this structure adds an extra layer of complexity, as two different sets of credentials need to be handled conditionally and two state files (at the <i>environments/</i> root level) must be managed and isolated using <a href="https://www.terraform.io/docs/state/workspaces.html">workspaces</a>.</p>
@@ -51,7 +86,14 @@
 │    └── terragrunt.hcl
 └──</code></pre>
 	<p>The Terragrunt modules tree gives flexibility, since we are able to apply configuration on a zone, group zone, or organisation level (which is inline with Cloudflare configuration capabilities - i.e.: custom error pages can also be configured on the organisation level).</p>
-	<h3>Resource types</h3>
+	<div class="flex anchor relative">
+		<h3 id="resource-types">Resource types</h3>
+		<a href="https://blog.cloudflare.com/#resource-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We decided to implement Terraform resources in different ways, to cover our requirements more efficiently.</p>
 	<h5>1. Static resource</h5>
 	<p>The first thought that came to mind was having one, or multiple <i>.tf</i> files implementing all the resources with hardcoded values assigned to each attribute. It's simple and straightforward, but can have a high maintenance cost if it leads to code copy/paste between environments.</p>
@@ -284,7 +326,14 @@ resource "cloudflare_page_rule" "page_rule_1" {
   }
 }</code></pre>
 	<p>So we had to go with to a more static resource configuration because the <i>depends_on</i> attribute only takes static values (not dynamically calculated ones during the runtime).</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After changing our minds several times along the way on Terraform structure and other technical details, we believe that there isn't a single best solution. It all comes down to the requirements and keeping a balance between complexity and simplicity. In our case, a mixed approach is good middle ground.</p>
 	<p>Terraform is evolving quickly, but at this point it lacks some common coding capabilities. So over engineering can be a catch (which we fell-in too many times). Keep it simple and as DRY as possible. :)</p>
 </div>

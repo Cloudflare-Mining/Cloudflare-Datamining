@@ -7,7 +7,14 @@
 	</figure>
 	<p>On February 24, 2022, when Russia invaded Ukraine, Cloudflare jumped into action to provide services that could help prevent potentially destructive cyber attacks and keep the global Internet flowing. In the nearly 10 months since that day, we’ve posted about our <a href="https://blog.cloudflare.com/steps-taken-around-cloudflares-services-in-ukraine-belarus-and-russia">actions</a>, <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">network traffic patterns</a>, <a href="https://blog.cloudflare.com/2022-attacks-an-august-reading-list-to-go-shields-up">cyberattacks</a> and network <a href="https://radar.cloudflare.com/outage-center">outages</a> we’ve seen during the conflict.</p>
 	<p>During Impact Week, we want to provide an update on where things currently stand, the role of security companies like Cloudflare, and some of our takeaways from the conflict so far.</p>
-	<h3>Cyberattacks on Ukrainian infrastructure and Cloudflare’s assistance</h3>
+	<div class="flex anchor relative">
+		<h3 id="cyberattacks-on-ukrainian-infrastructure-and-cloudflares-assistance">Cyberattacks on Ukrainian infrastructure and Cloudflare’s assistance</h3>
+		<a href="https://blog.cloudflare.com/#cyberattacks-on-ukrainian-infrastructure-and-cloudflares-assistance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the time of the invasion, Ukrainian government and civilian infrastructure has come under a barrage of DDoS and other common cyberattacks. Although the public perception has been that cyberattacks have not played a significant role in the conflict, cyberspace has been an active battlefield. Ukrainian websites saw a significant spike in application layer firewall mitigated attacks in March 2022 and another spike in mid-September. Ukrainian sites have also seen a significant increase in the percentage of requests that were mitigated as attack traffic on a daily average, when compared with Q4 2021. &nbsp;Those spikes are shown below, using a seven-day rolling average:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -23,12 +30,26 @@
 	</figure>
 	<p>Cloudflare was proud to play a role in ensuring that these types of widespread DDoS and other cyberattacks did not disrupt the Ukrainian Internet. Cloudflare has offered free services and support to a wide variety of Ukrainian government and infrastructure providers to help address those attacks since the beginning of the conflict. We currently protect approximately 130 Ukrainian domains in this program, run by more than 50 different Ukrainian government agencies and companies.</p>
 	<p>Many nonprofit groups trying to operate in the region by helping refugees, documenting war crimes, sharing information and providing local services have also had to contend with cyberattacks. We expedited the onboarding of these groups onto Cloudflare’s Project Galileo, Cloudflare’s project to provide free services to vulnerable non-profits and human rights defenders. Since the invasion, we have onboarded 54 organizations in Ukraine to Project Galileo. Overall, we protect 79 organizations in Ukraine. We currently protect 130 organizations in the broader region, with 77 organizations (including those in Ukraine) onboarded to the project during the crisis.</p>
-	<h3>New models of security</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-models-of-security">New models of security</h3>
+		<a href="https://blog.cloudflare.com/#new-models-of-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Russian troops advanced deep into Ukraine earlier this year, the physical security of Ukrainian Internet infrastructure became as much a concern as the digital security. Companies and data centers operating in the region had to plan for possible degradation of the infrastructure through power outages or bombings as well as the possibility that Russian forces might get physical access to their offices or equipment. This reality raised both security and data destruction concerns.</p>
 	<p>Cloudflare took steps to secure our infrastructure in the region, configuring our machines to brick themselves if they lost power or connectivity. We carefully monitored activity in the region, ensuring that we would be aware of any notable changes in circumstances. We also secured our customers’ data, moving customer key material out of our data centers in the region. We’ve continued to operate our services in the region with Keyless SSL.</p>
 	<p>The Russian occupation of Ukraine highlighted the importance of having networks and digital defense systems that extend beyond a single country’s borders. Ukrainian government agencies and companies looking to make sure they could continue to provide vital services migrated their data to public clouds, allowing them to move it to safety in data centers throughout Europe. Cloudflare’s massive global network allowed those same entities to easily mitigate cyberattacks in the country where the attacks originated, rather than battling massive influxes of traffic and attacks inside Ukraine.</p>
 	<p>The possibility that Russian troops would get physical access to work locations also brought into sharp view the need for entities to have granular control over access to internal systems and applications. Companies needed to be able to quickly and efficiently withdraw access for those who might have remained in the region. Cloudflare saw a spike in demand for our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero trust</a> solutions, prompted by those concerns about possible lateral movement in the event of a breach, as well as the need for VPN availability and performance.</p>
-	<h3>Internet disruptions and routing as tools in armed conflict</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-disruptions-and-routing-as-tools-in-armed-conflict">Internet disruptions and routing as tools in armed conflict</h3>
+		<a href="https://blog.cloudflare.com/#internet-disruptions-and-routing-as-tools-in-armed-conflict" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The world has been watching as the Ukrainian Internet has become a tool in the ongoing conflict. Internet shutdowns in war torn areas disrupt critical communications, making it challenging for people to learn about the safety of their loved ones and to disseminate information about events on the ground to the world.</p>
 	<p>At Cloudflare, we have tracked dozens of Internet outages in Ukraine since the beginning of the conflict, caused by power outages and Russian attacks. We continue to publicly report on outages in the <a href="https://radar.cloudflare.com/outage-center?range=28d">Cloudflare Radar Outages Center</a>.</p>
 	<p>Some of these outages also raise significant questions. On September 1, 2022, for example, the day the International Atomic Energy Agency (IAEA) inspectors arrived at the Zaporizhzhia Nuclear Power Plant, there were Internet outages in two local ISPs that service the area. Those outages lasted until September 10, as shown in the charts below.</p>
@@ -43,6 +64,13 @@
 
 	</figure>
 	<p>The Russian military also took advantage of its occupation of parts of Ukraine to manipulate Internet access. In multiple instances, they took charge of local telecoms, forcing the <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine">rerouting</a> of Internet traffic through Russia or even a complete change of traffic to a Russian Internet service provider. Between May 1, 2022, and September 1, 2022, Cloudflare tracked more than 20 networks whose routing was altered to a Russian Internet service provider. Eleven of those networks had routes altered between May 29, 2022, and May 31, 2022, just as Ukraine announced its counteroffensive in Kherson. Those actions resulted in imposition of the same Russian controls, surveillance, and censorship as the Internet within Russia, giving Russia significant control over the information environment in the affected areas.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can’t predict how long the war in Ukraine will last, but we do know that the need for a secure and reliable Internet there is as critical as ever. At Cloudflare, we’re committed to continue providing tools that protect critical services from cyber attack, improve security for those operating in the region, and share information about what is happening with the Internet inside Ukraine.</p>
 </div>

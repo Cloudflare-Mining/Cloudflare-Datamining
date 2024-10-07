@@ -8,7 +8,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4p3qau2rRNWaH13YFDmHRg/99fc06e92fbdecb693114bbf13cadceb/50522885.jpg" alt="" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
-	<h3>Y U No IPv6?</h3>
+	<div class="flex anchor relative">
+		<h3 id="y-u-no-ipv6">Y U No IPv6?</h3>
+		<a href="https://blog.cloudflare.com/#y-u-no-ipv6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare makes supporting IPv6 on a website ridiculously easy. If your backend supports IPv6 then visitors arriving on an IPv6 connection will be transported via the protocol end-to-end. If your backend only supports IPv4, CloudFlare will accept a visitor over IPv6 and then seamlessly make a request to your server over IPv4. We've been defaulting the gateway on for new customers for several months and any existing customer can enable it with a single click. So, if we've made IPv6 so easy, what's stopping those sites that haven't yet enabled it?</p>
 	<p>The answer is usually legacy software that assumes an IPv4 world. Often this is software that handles sessions or stops fraud or abuse. For example, the popular, if sometimes controversial, website 4chan is a CloudFlare customer. 4chan has a notoriously mischievous audience. Sometimes, users will try to spam the service. To keep spammers at bay, 4chan uses algorithms which look for suspicious behavior. Unfortunately, these algorithms use a visitor's IP address as one of their parameters and they assume the IP will be in the IPv4 format.</p>
 	<p>The long term solution, of course, is for platforms like 4chan to rewrite their software to accommodate IPv6. That takes time. We wanted to provide a stopgap solution that would allow CloudFlare customers to enable IPv6 quickly while they worked to upgrade their software to fully support it.</p>
@@ -17,7 +24,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4H3Mqw7RIjhyfdWc4L6ZZB/52061f5ba68504263a89a6e110a1bef0/tumblr_n3jfmoaNSN1qbgvpzo1_1280_2.jpg" alt="" class="kg-image" width="400" height="395" loading="lazy">
 
 	</figure>
-	<h3>Introducing Pseudo IPv4</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-pseudo-ipv4">Introducing Pseudo IPv4</h3>
+		<a href="https://blog.cloudflare.com/#introducing-pseudo-ipv4" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To accommodate software that assumes a IPv4 world, today we're enabling a new CloudFlare option: Pseudo IPv4. The option will, whenever a connection is established over IPv6, add a HTTP header to requests with a "pseudo" IPv4 address. We are using <a href="https://en.wikipedia.org/wiki/Classful_network">Class E</a> IP space (240.0.0.0 - 255.255.255.255) for these addresses. Class E address space is reserved as experimental and no actual traffic should originate from it. If, at some point, some or all of Class E space is designated for a specific use then we'll adjust the schema for the Pseudo IPv4 header.</p>
 	<p>Class E space gives us 268,435,456 possible unique IPv4 addresses. That's much smaller than the 340 undecillion possible IPv6 addresses, but it's larger than the number of IPs seen by all but the very largest websites. The Pseudo IPv4 service uses a hashing algorithm applied to top 64 bits of the connecting IPv6 address in order to map the visitor to one of the Class E IPs. Because the hashing algorithm will always produce the same output for the same input, the same IPv6 address will always result in the same Pseudo IPv4 address.</p>
 	<p>There are two options for the Pseudo IPv4 service: 1) you can have us automatically add a header (<code>Cf-Pseudo-IPv4</code>), which can then be parsed by software as needed; or 2) you can have us overwrite the existing <code>Cf-Connecting-IP</code> and <code>X-Forwarded-For</code> headers with a Pseudo IPv4 address. The advantage of the overwrite option is that, in most cases, it won't require any software changes. If you choose the overwrite option, we'll append a new header (<code>Cf-Connecting-IPv6</code>) in order to ensure you can still find the actual connecting IP address for debugging.</p>
@@ -33,7 +47,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rj92MlvwzuJfOPEKwVuKo/57b5f55dd37ab0e15da1c4d7f80f0744/001c0674220.jpg" alt="" class="kg-image" width="600" height="421" loading="lazy">
 
 	</figure>
-	<h3>Addendum: Nitty Gritty Details</h3>
+	<div class="flex anchor relative">
+		<h3 id="addendum-nitty-gritty-details">Addendum: Nitty Gritty Details</h3>
+		<a href="https://blog.cloudflare.com/#addendum-nitty-gritty-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the technical in the audience, here are some of the nitty gritty details on how we implemented Pseudo IPv4.</p>
 	<p>We chose to use the MD5 hashing algorithm. While MD5 has risks when it's used in cryptography, it is faster than many alternatives and has a acceptable uniformity over the hash space. Note that there is some risk of a collision (i.e., where two IPv6 addresses map to the same IPv4 pseudo address), however most abuse/fraud systems take this into account already in order to deal with NATs and other instances where multiple people may share a single IP.</p>
 	<p>At CloudFlare, we use a modified version of NGINX and wrote most of our request processing code in Lua, relying on the <a href="http://openresty.org">ngx_openresty</a> app server. Here's the Lua code for the proof-of-concept prototype of the hashing algorithm:</p>

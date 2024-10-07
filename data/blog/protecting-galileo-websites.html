@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Yesterday, we celebrated the <a href="https://blog.cloudflare.com/project-galileo-fifth-anniversary">fifth anniversary of Project Galileo</a>. More than 550 websites are part of this program, and they have something in common: each and every one of them has been subject to attacks in the last month. In this blog post, we will look at the security events we observed between the 23 April 2019 and 23 May 2019.</p>
 	<p>Project Galileo sites are protected by the Cloudflare Firewall and Advanced DDoS Protection which contain a number of features that can be used to detect and mitigate different types of attack and suspicious traffic. The following table shows how each of these features contributed to the protection of sites on Project Galileo.</p>
-	<h3>WAF (Web Application Firewall)</h3>
+	<div class="flex anchor relative">
+		<h3 id="waf-web-application-firewall">WAF (Web Application Firewall)</h3>
+		<a href="https://blog.cloudflare.com/#waf-web-application-firewall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although not the most impressive in terms of blocked requests, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> is the most interesting as it identifies and blocks malicious requests, based on heuristics and rules that are the result of seeing attacks across all of our customers and learning from those. The WAF is available to all of our paying customers, protecting them against 0-days, SQL/XSS exploits and more. For the Project Galileo customers the WAF rules blocked more than <b>4.5</b> million requests in the month that we looked at, matching over 130 WAF rules and approximately 150k requests per day.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -20,7 +27,14 @@
 	</figure>
 	<p>Heat map showing the attacks blocked for each WAF rule (rows) per day (columns)</p>
 	<p>This heat map shows the WAF rules that blocked requests by day. At first, it seems some rules are useless as they never match malicious requests, but this plot makes it obvious that some attack vectors become active all of a sudden (isolated dark cells). This is especially true for 0-days, malicious traffic starts once an exploit is published and is very active on the first few days. The dark active lines are the most common malicious requests, and these WAF rules protect against things like <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks">XSS</a> and SQL injection attacks.</p>
-	<h3>DoS (Denial of Service)</h3>
+	<div class="flex anchor relative">
+		<h3 id="dos-denial-of-service">DoS (Denial of Service)</h3>
+		<a href="https://blog.cloudflare.com/#dos-denial-of-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation"><b>DoS</b></a> attack prevents legitimate visitors from accessing a website by flooding it with bad traffic. &nbsp;Due to the way Cloudflare works, websites protected by Cloudflare are immune to many DoS vectors, out of the box. We block layer 3 and 4 attacks, which includes SYN floods and UDP amplifications. DNS nameservers, often described as the Internet’s phone book, are fully managed by Cloudflare, and protected - visitors know how to reach the websites.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -30,7 +44,14 @@
 	<p>Line plot - requests per second to a website under DoS attack</p>
 	<p>Can you spot the attack?</p>
 	<p>As for layer 7 attacks (for instance, HTTP floods), we rely on Gatebot, an automated tool to detect, analyse and block DoS attacks, so you can sleep. The graph shows the requests per second we received on a zone, and whether or not it reached the origin server. As you can see, the bad traffic was identified automatically by Gatebot, and more than 1.6 million requests were blocked as a result.</p>
-	<h3>Firewall Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="firewall-rules">Firewall Rules</h3>
+		<a href="https://blog.cloudflare.com/#firewall-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For websites with specific requirements we provide tools to allow customers to block traffic to precisely fit their needs. Customers can easily implement complex logic using Firewall Rules to filter out specific chunks of traffic, block IPs / Networks / Countries using Access Rules and Project Galileo sites have done just that. Let’s see a few examples.</p>
 	<p><a href="https://blog.cloudflare.com/announcing-firewall-rules"><b>Firewall Rules</b></a> allows website owners to challenge or block as much or as little traffic as they desire, and this can be done as a surgical tool “block just this request” or as a general tool “challenge every request”.</p>
 	<p>For instance, a well-known website used <b>Firewall Rules</b> to prevent twenty IPs from fetching specific pages. 3 of these IPs were then used to send a total of 4.5 million requests over a short period of time, and the following chart shows the requests seen for this website. When this happened Cloudflare, mitigated the traffic ensuring that the website remains available.</p>
@@ -44,10 +65,31 @@
 	<p>Website owners can also deny or challenge requests based on the visitor’s IP address, Autonomous System Number (ASN) or Country. Dubbed <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules"><b>Access Rules</b></a>, it is enforced on all pages of a website - hassle-free.</p>
 	<p>For example, a news website is using Cloudflare’s Access Rules to challenge visitors from countries outside of their geographic region who are accessing their website. We enforce the rules globally even for cached resources, and take care of GeoIP database updates for them, so they don’t have to.</p>
 	<p>The <a href="https://support.cloudflare.com/hc/en-us/articles/115001595131-How-do-I-Lockdown-URLs-in-Cloudflare-"><b>Zone Lockdown</b></a> utility restricts a specific URL to specific IP addresses. This is useful to protect an internal but public path being accessed by external IP addresses. A non-profit based in the United Kingdom is using Zone Lockdown to restrict access to their WordPress’ admin panel and login page, hardening their website without relying on non official plugins. Although it does not prevent very sophisticated attacks, it shields them against automated attacks and phishing attempts - as even if their credentials are stolen, they can’t be used as easily.</p>
-	<h3>Rate Limiting</h3>
+	<div class="flex anchor relative">
+		<h3 id="rate-limiting">Rate Limiting</h3>
+		<a href="https://blog.cloudflare.com/#rate-limiting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare acts as a CDN, caching resources and happily serving them, reducing bandwidth used by the origin server … and indirectly the costs. Unfortunately, not all requests can be cached and some requests are very expensive to handle. Malicious users may abuse this to increase load on the server, and website owners can rely on our <a href="https://support.cloudflare.com/hc/en-us/articles/235240767-Cloudflare-Rate-Limiting"><b>Rate Limit</b></a> to help them: they define thresholds, expressed in requests over a time span, and we make sure to enforce this threshold. A non-profit fighting against poverty relies on rate limits to protect their donation page, and we are glad to help!</p>
-	<h3>Security Level</h3>
+	<div class="flex anchor relative">
+		<h3 id="security-level">Security Level</h3>
+		<a href="https://blog.cloudflare.com/#security-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last but not least, one of Cloudflare’s greatest assets is our threat intelligence. With such a wide lens of the threat landscape, Cloudflare uses our Firewall data, combined with machine learning to curate our IP Reputation databases. This data is provided to all Cloudflare customers, and is configured through our <b>Security Level</b> feature. Customers then may define their threshold sensitivity, ranging &nbsp;from <b>Essentially Off</b> to <b>I’m Under Attack</b>. For every incoming request, we ask visitors to complete a challenge if the score is above a customer defined threshold. This system alone is responsible for 25% of the requests we mitigated: it’s extremely easy to use, and it constantly learns from the other protections.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When taken together, the Cloudflare Firewall features provide our Project Galileo customers comprehensive and effective security that enables them to ensure their important work is available. The majority of security events were handled automatically, and this is our strength - security that is always on, always available, always learning.</p>
 </div>

@@ -10,7 +10,15 @@
 	<p>Since its <a href="https://blog.cloudflare.com/waf-ml">launch in 2022</a>, WAF attack score adoption has grown exponentially, now protecting millions of Internet properties and running real-time inference on tens of millions of requests per second. The feature's popularity has driven us to seek performance improvements, enabling even broader customer use and enhancing Internet security.</p>
 	<p>In this post, we will discuss the performance optimizations we've implemented for our WAF ML product. We'll guide you through specific code examples and benchmark numbers, demonstrating how these enhancements have significantly improved our system's efficiency. Additionally, we'll share the impressive latency reduction numbers observed after the rollout.</p>
 	<p>Before diving into the optimizations, let's take a moment to review the inner workings of the WAF Attack Score, which powers our WAF ML product.</p>
-	<h2>WAF Attack Score system design</h2>
+	<div class="flex anchor relative">
+		<h2 id="waf-attack-score-system-design">WAF Attack Score system design</h2>
+		<a href="https://blog.cloudflare.com/#waf-attack-score-system-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Bis9LE38A3aK4k7HEn7k9/dafa794ea88cf9cba34695fb77c9c6d1/unnamed--4--6.png" alt="" class="kg-image" width="1600" height="343" loading="lazy">
@@ -40,7 +48,14 @@
 
 	</figure>
 	<p>Next, we will explore feature extraction and inference optimizations.</p>
-	<h2>Feature extraction optimizations</h2>
+	<div class="flex anchor relative">
+		<h2 id="feature-extraction-optimizations">Feature extraction optimizations</h2>
+		<a href="https://blog.cloudflare.com/#feature-extraction-optimizations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the context of the WAF Attack Score ML model, feature extraction or pre-processing is essentially a process of tokenizing the given input and producing a float tensor of 1 x m size:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -48,7 +63,14 @@
 
 	</figure>
 	<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
-	<h3>Initial benchmarks</h3>
+	<div class="flex anchor relative">
+		<h3 id="initial-benchmarks">Initial benchmarks</h3>
+		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
 	<pre class="language-rust"><code class="language-rust">RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo criterion</code></pre>
 	<p>Here are initial numbers for these benchmarks executed on a Linux laptop with a 13th Gen Intel® Core™ i7-13800H processor:</p><!--kg-card-begin: html-->
@@ -250,7 +272,14 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
    }
 }</code></pre>
 	<p>So essentially the pre-processing function performs a ton of hash map lookups, the volume of which depends on the size of the input string, e.g. 1469 lookups for the given benchmark case <i>avg-body-1000</i>.</p>
-	<h3>Optimization attempt #1: HashMap → Aho-Corasick</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimization-attempt-1-hashmap-aho-corasick">Optimization attempt #1: HashMap → Aho-Corasick</h3>
+		<a href="https://blog.cloudflare.com/#optimization-attempt-1-hashmap-aho-corasick" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rust hash maps are generally quite fast. However, when that many lookups are being performed, it's not very cache friendly.</p>
 	<p>So can we do better than hash maps, and what should we try first? The answer is the <a href="https://docs.rs/aho-corasick/latest/aho_corasick">Aho-Corasick library</a>.</p>
 	<p>This library provides multiple pattern search principally through an implementation of the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">Aho-Corasick algorithm</a>, which builds a fast finite state machine for executing searches in linear time.</p>
@@ -371,7 +400,14 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>That's substantially better – Aho-Corasick DFA does wonders.</p>
-	<h3>Optimization attempt #2: Aho-Corasick → match</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimization-attempt-2-aho-corasick-match">Optimization attempt #2: Aho-Corasick → match</h3>
+		<a href="https://blog.cloudflare.com/#optimization-attempt-2-aho-corasick-match" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One would think optimization with Aho-Corasick DFA is enough and that it seems unlikely that anything else can beat it. Yet, we can throw Aho-Corasick away and simply use the Rust match statement and let the compiler do the optimization for us!</p>
 	<pre class="language-python"><code class="language-python">#[inline]
 const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {     
@@ -486,7 +522,14 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Switching to match gave us another 7-18% drop in latency, depending on the case.</p>
-	<h3>Optimization attempt #3: Regex → WindowedReplacer</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimization-attempt-3-regex-windowedreplacer">Optimization attempt #3: Regex → WindowedReplacer</h3>
+		<a href="https://blog.cloudflare.com/#optimization-attempt-3-regex-windowedreplacer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, what exactly is the purpose of <i>Regex::replace_all</i> in pre-processing? Regex is defined and used like this:</p>
 	<pre class="language-regex"><code class="language-regex">pub static SIG_REGEX: Lazy&lt;Regex&gt; =
     Lazy::new(|| RegexBuilder::new("[a-z]+").unicode(false).build().unwrap());
@@ -662,7 +705,14 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>The new letters replacement implementation has doubled the preprocessing speed compared to the previously optimized version using match statements, and it is four to five times faster than the original version!</p>
-	<h3>Optimization attempt #4: Going nuclear with branchless ngram lookups</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimization-attempt-4-going-nuclear-with-branchless-ngram-lookups">Optimization attempt #4: Going nuclear with branchless ngram lookups</h3>
+		<a href="https://blog.cloudflare.com/#optimization-attempt-4-going-nuclear-with-branchless-ngram-lookups" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, 4-5x improvement might seem like a lot and there is no point pursuing any further optimizations. After all, using an ngram lookup with a match statement has beaten the following methods, with benchmarks omitted for brevity:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -905,8 +955,23 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 	<p>The longer input is, the higher the latency drop will be due to branchless ngram lookups and loop unrolling, ranging from <b>six to twelve times faster</b> than baseline implementation.</p>
 	<p>After trying various optimizations, the final version of pre-processing retains optimization attempts 3 and 4, using branchless ngram lookup with offset tables and a single-pass non-allocating replacement iterator.</p>
 	<p>There are potentially more CPU cycles left on the table, and techniques like memory pre-fetching and manual SIMD intrinsics could speed this up a bit further. However, let's now switch gears into looking at inference latency a bit closer.</p>
-	<h2>Model inference optimizations</h2>
-	<h3>Initial benchmarks</h3>
+	<div class="flex anchor relative">
+		<h2 id="model-inference-optimizations">Model inference optimizations</h2>
+		<a href="https://blog.cloudflare.com/#model-inference-optimizations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="initial-benchmarks">Initial benchmarks</h3>
+		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s have a look at original performance numbers of the WAF Attack Score ML model, which uses <a href="https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0">TensorFlow Lite 2.6.0</a>:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -1106,7 +1171,14 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 	</ul>
 	<p>To gain a better understanding of how these techniques work, we recommend watching this video, which brilliantly depicts the process of matrix multiplication:</p><!--kg-card-begin: html--><iframe width="560" height="315" src="https://www.youtube.com/embed/aMvCEEBIBto?si=tbw1XsYwHFezUX98&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
 	<p></p><!--kg-card-end: html-->
-	<h3>Tensorflow Lite with AVX2</h3>
+	<div class="flex anchor relative">
+		<h3 id="tensorflow-lite-with-avx2">Tensorflow Lite with AVX2</h3>
+		<a href="https://blog.cloudflare.com/#tensorflow-lite-with-avx2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TensorFlow Lite does, in fact, support SIMD matrix multiplication – we just need to enable it and re-compile the TensorFlow Lite library:</p>
 	<pre class="language-python"><code class="language-python">if [[ "$(uname -m)" == x86_64* ]]; then
     # On x86_64 target x86-64-v3 CPU to enable AVX2 and FMA.
@@ -1279,7 +1351,14 @@ fi</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Quite a nice performance boost just from a few lines of build config change!</p>
-	<h3>Tensorflow Lite with XNNPACK</h3>
+	<div class="flex anchor relative">
+		<h3 id="tensorflow-lite-with-xnnpack">Tensorflow Lite with XNNPACK</h3>
+		<a href="https://blog.cloudflare.com/#tensorflow-lite-with-xnnpack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark">benchmark_model</a>, which also has a built-in profiler.</p>
 	<p>The tool can be built locally using the command:</p>
 	<pre class="language-bash"><code class="language-bash">bazel build -j 4 --copt=-march=native -c opt tensorflow/lite/tools/benchmark:benchmark_model</code></pre>
@@ -1444,7 +1523,14 @@ fi</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>By upgrading TensorFlow Lite from 2.6.0 to 2.16.1 and enabling SIMD optimizations along with the XNNPack, we were able to decrease WAF ML model inference time more than <b>four-fold</b>, achieving a <b>77.17%</b> reduction.</p>
-	<h2>Caching inference result</h2>
+	<div class="flex anchor relative">
+		<h2 id="caching-inference-result">Caching inference result</h2>
+		<a href="https://blog.cloudflare.com/#caching-inference-result" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While making code faster through pre-processing and inference optimizations is great, it's even better when code doesn't need to run at all. This is where caching comes in. <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> suggests that optimizing only parts of a program has diminishing returns. By avoiding redundant executions with caching, we can achieve significant performance gains beyond the limitations of traditional code optimization.</p>
 	<p>A simple key-value cache would quickly occupy all available memory on the server due to the high cardinality of URLs, HTTP headers, and HTTP bodies. However, because "everything on the Internet has an L-shape" or more specifically, follows a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's law</a> distribution, we can optimize our caching strategy.</p>
 	<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
@@ -1456,7 +1542,14 @@ fi</code></pre>
 	<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
 	<p>We use <a href="https://github.com/openresty/lua-resty-lrucache">lua-resty-mlcache</a> as our caching solution, allowing us to share cached inference results between different Nginx workers via a shared memory dictionary. The LRU cache effectively exploits the <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff">space-time trade-off</a>, where we trade a small amount of memory for significant CPU time savings.</p>
 	<p>This approach enables us to achieve a <b>~70%</b> cache hit ratio, significantly reducing latency further, as we will analyze in the final section below.</p>
-	<h2>Optimization results</h2>
+	<div class="flex anchor relative">
+		<h2 id="optimization-results">Optimization results</h2>
+		<a href="https://blog.cloudflare.com/#optimization-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The optimizations discussed in this post were rolled out in several phases to ensure system correctness and stability.</p>
 	<p>First, we enabled SIMD optimizations for TensorFlow Lite, which reduced WAF ML total execution time by approximately <b>41.80%,</b> decreasing from <b>1519</b> ➔ <b>884 μs</b> on average.</p>
 	<figure class="kg-card kg-image-card ">
@@ -1478,7 +1571,14 @@ fi</code></pre>
 	</figure>
 	<p>Overall, we cut WAF ML execution time by <b>~81.90%</b>, decreasing from <b>1519</b> ➔ <b>275 μs</b>, or <b>5.5x</b> faster!</p>
 	<p>To illustrate the significance of this: with Cloudflare’s average rate of 9.5 million requests per second passing through WAF ML, saving <b>1244 microseconds</b> per request equates to saving ~<b>32 years</b> of processing time every single day! That’s in addition to the savings of <b>523 microseconds</b> per request or <b>65 years</b> of processing time per day demonstrated last year in our <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">Every request, every microsecond: scalable machine learning at Cloudflare</a> post about our Bot Management product.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We hope you enjoyed reading about how we made our WAF ML models go brrr, just as much as we enjoyed implementing these optimizations to bring scalable WAF ML to more customers on a truly global scale.</p>
 	<p>Looking ahead, we are developing even more sophisticated ML security models. These advancements aim to bring our <a href="https://www.cloudflare.com/application-services/products/waf">WAF</a> and <a href="https://www.cloudflare.com/application-services/products/bot-management">Bot Management</a> products to the next level, making them even more useful and effective for our customers.</p>
 </div>

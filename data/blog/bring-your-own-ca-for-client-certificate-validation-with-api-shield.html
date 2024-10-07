@@ -6,9 +6,23 @@
 
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> account for more than half of the total traffic of the Internet. They are the building blocks of many modern web applications. As API usage grows, so does the number of <a href="https://www.cloudflare.com/learning/insights-waap-api-security">API attacks</a>. And so now, more than ever, it’s important to keep these API endpoints secure. Cloudflare’s API Shield solution offers a comprehensive suite of products to safeguard your API endpoints and now we’re excited to give our customers one more tool to keep their endpoints safe. We’re excited to announce that customers can now bring their own Certificate Authority (CA) to use for mutual TLS client authentication. This gives customers more security, while allowing them to maintain control around their Mutual TLS configuration.</p>
-	<h3>The power of Mutual TLS (mTLS)</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-power-of-mutual-tls-mtls">The power of Mutual TLS (mTLS)</h3>
+		<a href="https://blog.cloudflare.com/#the-power-of-mutual-tls-mtls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally, when we refer to TLS certificates, we talk about the publicly trusted certificates that are presented by servers to prove their identity to the connecting client. With Mutual TLS, both the client and the server present a certificate to establish a two-way channel of trust. Doing this allows the server to check who the connecting client is and whether or not they’re allowed to make a request. The certificate presented by the client - the client certificate - doesn’t need to come from a publicly trusted CA. In fact, it usually comes from a private or self-signed CA. That’s because the only party that needs to be able to trust it is the connecting server. As long as the connecting server has the client certificate and can check its validity, it doesn’t need to be public.</p>
-	<h3>Securing API endpoints with Mutual TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-api-endpoints-with-mutual-tls">Securing API endpoints with Mutual TLS</h3>
+		<a href="https://blog.cloudflare.com/#securing-api-endpoints-with-mutual-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mutual TLS plays a crucial role in protecting API endpoints. When it comes to safeguarding these endpoints, it's important to have a security model in place that only allows authorized clients to make requests and keeps everyone else out.</p>
 	<p>That’s why when we launched API Shield in 2020 - a product that’s centered around securing API endpoints - we included mutual TLS client certificate validation as a part of the offering. We knew that mTLS was the best way for our customers to identify and authorize their connecting clients.</p>
 	<p>When we launched mutual TLS for API Shield, we gave each of our customers a dedicated self-signed CA that they could use to issue client certificates. Once the certificates are installed on devices and mTLS is set up, administrators can enforce that connections can only be made if they present a client certificate issued from that self-signed CA.</p>
@@ -19,7 +33,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1r7GjCcka2i39OMoxNMQvy/06ee06741b82f20d242be4038b7255c1/image2-3.png" alt="" class="kg-image" width="1244" height="859" loading="lazy">
 
 	</figure>
-	<h3>Get started today</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To simplify the management of private PKI at Cloudflare, we created one account level endpoint that enables customers to upload self-signed CAs to use across different Cloudflare products. Today, this endpoint can be used for API shield CAs and for <a href="https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway">Gateway</a> CAs that are used for traffic inspection.</p>
 	<p>If you’re an Enterprise customer, you can upload up to five CAs to your account. Once you’ve uploaded the CA, you can use the API Shield hostname association API to associate the CA with the mTLS enabled hostnames. That will tell Cloudflare to start validating the client certificate against the uploaded CA for requests that come in on that hostname. Before you enforce the client certificate validation, you can create a Firewall rule that logs an event when a valid or invalid certificate is served. That will help you determine if you’ve set things up correctly before you enforce the client certificate validation and drop unauthorized requests.</p>
 	<p>To learn more about how you can use this, refer to our <a href="https://developers.cloudflare.com/ssl/client-certificates/byo-ca-api-shield">developer documentation</a>.</p>

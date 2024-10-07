@@ -6,10 +6,24 @@
 
 	</figure>
 	<p>Bots using residential proxies are a major source of frustration for security engineers trying to fight online abuse. These engineers often see a similar pattern of abuse when well-funded, modern botnets target their applications. Advanced bots bypass country blocks, <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system">ASN</a> blocks, and rate-limiting. Every time, the bot operator moves to a new IP address space until they blend in perfectly with the “good” traffic, mimicking real users’ behavior and request patterns. Our new Bot Management machine learning model (v8) identifies residential proxy abuse without resorting to IP blocking, which can cause false positives for legitimate users. &nbsp;</p>
-	<h2>Background</h2>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main sources of Cloudflare’s <a href="https://developers.cloudflare.com/bots/concepts/bot-score">bot score</a> is our bot detection machine learning model which analyzes, on average, over 46 million HTTP requests per second in real time. Since our first Bot Management ML model was released in 2019, we have continuously evolved and improved the model. Nowadays, our models leverage features based on request fingerprints, behavioral signals, and global statistics and trends that we see across our network.</p>
 	<p>Each iteration of the model focuses on certain areas of improvement. This process starts with a rigorous R&amp;D phase to identify the emerging patterns of <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack">bot attacks</a> by reviewing <a href="https://developers.cloudflare.com/bots/concepts/feedback-loop">feedback from our customers</a> and reports of missed attacks. In v8, we mainly focused on two areas of abuse. First, we analyzed the campaigns that leverage residential IP proxies, which are proxies on residential networks commonly used to launch widely distributed attacks against high profile targets. In addition to that, we improved model accuracy for detecting attacks that originate from cloud providers.</p>
-	<h3>Residential IP proxies</h3>
+	<div class="flex anchor relative">
+		<h3 id="residential-ip-proxies">Residential IP proxies</h3>
+		<a href="https://blog.cloudflare.com/#residential-ip-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Proxies allow attackers to hide their identity and distribute their attack. Moreover, IP address rotation allows attackers to directly bypass traditional defenses such as IP reputation and IP rate limiting. Knowing this, defenders use a plethora of signals to identify malicious use of proxies. In its simplest forms, IP reputation signals (e.g., data center IP addresses, known open proxies, etc.) can lead to the detection of such distributed attacks.</p>
 	<p>However, in the past few years, bot operators have started favoring proxies operating in residential network IP address space. By using residential IP proxies, attackers can masquerade as legitimate users by sending their traffic through residential networks. Nowadays, residential IP proxies are offered by companies that facilitate access to large pools of IP addresses for attackers. Residential proxy providers claim to offer 30-100 million IPs belonging to residential and mobile networks across the world. Most commonly, these IPs are sourced by partnering with free VPN providers, as well as including the proxy SDKs into popular browser extensions and mobile applications. This allows residential proxy providers to gain a foothold on victims’ devices and abuse their residential network connections.</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,7 +34,14 @@
 	<p>Figure 1: Architecture of a residential proxy network</p>
 	<p>Figure 1 depicts the architecture of a residential proxy. By subscribing to these services, attackers gain access to an authenticated proxy gateway address commonly using the HTTPS/<a href="https://datatracker.ietf.org/doc/html/rfc1928">SOCKS5</a> proxy protocol. Some residential proxy providers allow their users to select the country or region for the proxy exit nodes. Alternatively, users can choose to keep the same IP address throughout their session or rotate to a new one for each outgoing request. Residential proxy providers then identify active exit nodes on their network (on devices that they control within residential networks across the world) and route the proxied traffic through them.</p>
 	<p>The large pool of IP addresses and the diversity of networks poses a challenge to traditional bot defense mechanisms that rely on IP reputation and rate limiting. Moreover, the diversity of IPs enables the attackers to rotate through them indefinitely. This shrinks the window of opportunity for bot detection systems to effectively detect and stop the attacks. Effective defense against residential proxy attacks should be able to detect this type of bot traffic either based on single request features to stop the attack immediately, or identify unique fingerprints from the browsing agent to track and mitigate the bot traffic regardless of the IP source. Overly broad blocking actions, such as IP block-listing, by definition, would result in blocking legitimate traffic from residential networks where at least one device is acting as a residential proxy node.</p>
-	<h3>ML model training</h3>
+	<div class="flex anchor relative">
+		<h3 id="ml-model-training">ML model training</h3>
+		<a href="https://blog.cloudflare.com/#ml-model-training" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At its heart, our model is built using a chain of modules that work together. Initially, we fetch and prepare training and validation datasets from our Clickhouse data storage. We use datasets with high confidence labels as part of our training. For model validation, we use datasets consisting of missed attacks reported by our customers, known sources of bot traffic (e.g., <a href="https://developers.cloudflare.com/bots/reference/verified-bots-policy">verified bots</a>), and high confidence detections from other bot management modules (e.g., heuristics engine). We orchestrate these steps using Apache Airflow, which enables us to customize each stage of the ML model training and define the interdependencies of our training, validation, and reporting modules in the form of directed acyclic graphs (DAGs).</p>
 	<p>The first step of training a new model is fetching labeled training data from our data store. Under the hood, our dataset definitions are SQL queries that will materialize by fetching data from our Clickhouse cluster where we store feature values and calculate aggregates from the traffic on our network. Figure 2 depicts these steps as train and validation dataset fetch operations. Introducing new datasets can be as straightforward as writing the SQL queries to filter the desired subset of requests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -49,7 +70,14 @@
 		</li>
 	</ul>
 	<p>After the model passes the readiness checks, we deploy it in shadow mode. We can observe the behavior of the model on live traffic in log-only mode (i.e., without affecting the <a href="https://developers.cloudflare.com/bots/concepts/bot-score">bot score</a>). After gaining confidence in the model's performance on live traffic, we start onboarding beta customers, and gradually switch the model to active mode all while closely <a href="https://blog.cloudflare.com/monitoring-machine-learning-models-for-bot-detection">monitoring the real-world performance of our new model</a>.</p>
-	<h3>ML features for bot detection</h3>
+	<div class="flex anchor relative">
+		<h3 id="ml-features-for-bot-detection">ML features for bot detection</h3>
+		<a href="https://blog.cloudflare.com/#ml-features-for-bot-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each of our models uses a set of features to make inferences about the incoming requests. We compute our features based on single request properties (single request features) and patterns from multiple requests (i.e., inter-request features). We can categorize these features into the following groups:</p>
 	<ul>
 		<li>
@@ -63,7 +91,14 @@
 		</li>
 	</ul>
 	<p>Our Bot Management system (named <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">BLISS</a>) is responsible for fetching and computing these feature values and making them available on our servers for inference by active versions of our ML models.</p>
-	<h2>Detecting residential proxies using network and behavioral signals</h2>
+	<div class="flex anchor relative">
+		<h2 id="detecting-residential-proxies-using-network-and-behavioral-signals">Detecting residential proxies using network and behavioral signals</h2>
+		<a href="https://blog.cloudflare.com/#detecting-residential-proxies-using-network-and-behavioral-signals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attacks originating from residential IP addresses are commonly characterized by a spike in the overall traffic towards sensitive endpoints on the target websites from a large number of residential ASNs. Our approach for detecting residential IP proxies is twofold. First, we start by comparing direct vs proxied requests and looking for network level discrepancies. Revisiting Figure 1, we notice that a request routed through residential proxies (red dotted line) has to traverse through multiple hops before reaching the target, which affects the network latency of the request.</p>
 	<p>Based on this observation alone, we are able to characterize residential proxy traffic with a high true positive rate (i.e., all residential proxy requests have high network latency). While we were able to replicate this in our lab environment, we quickly realized that at the scale of the Internet, we run into numerous exceptions with false positive detections (i.e., non-residential proxy traffic with high latency). For instance, countries and regions that predominantly use satellite Internet would exhibit a high network latency for the majority of their requests due to the use of <a href="https://datatracker.ietf.org/doc/html/rfc3135">performance enhancing proxies</a>.</p>
 	<p>Realizing that relying solely on network characteristics of connections to detect residential proxies is inadequate given the diversity of the connections on the Internet, we switched our focus to the behavior of residential IPs. To that end, we observe that the IP addresses from residential proxies express a distinct behavior during periods of peak activity. While this observation singles out highly active IPs over their peak activity time, given the pool size of residential IPs, it is not uncommon to only observe a small number of requests from the majority of residential proxy IPs.</p>
@@ -75,7 +110,14 @@
 	</figure>
 	<p>Figure 3: Percentage of direct vs proxied requests from residential proxy IPs.</p>
 	<p>Using this insight, we combined behavioral and latency-based features along with new datasets to train a new <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning model</a> that detects residential proxy traffic on a per-request basis. This scheme allows us to block residential proxy traffic while allowing benign residential users to visit Cloudflare-protected websites from the same residential network.</p>
-	<h2>Detection results and case studies</h2>
+	<div class="flex anchor relative">
+		<h2 id="detection-results-and-case-studies">Detection results and case studies</h2>
+		<a href="https://blog.cloudflare.com/#detection-results-and-case-studies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started testing v8 in shadow mode in March 2024. Every hour, v8 is classifying more than 17 million unique IPs that participate in residential proxy attacks. Figure 4 shows the geographic distribution of IPs with residential proxy activity belonging to more than 45 thousand ASNs in 237 countries/regions. Among the most commonly requested endpoints from residential proxies, we observe patterns of account takeover attempts, such as requests to /login, /auth/login, and /api/login. &nbsp;</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -90,8 +132,22 @@
 
 	</figure>
 	<p>Figure 5: Spikes in bot requests from residential proxies detected by ML v8</p>
-	<h2>Improving detection for bots from cloud providers</h2>
+	<div class="flex anchor relative">
+		<h2 id="improving-detection-for-bots-from-cloud-providers">Improving detection for bots from cloud providers</h2>
+		<a href="https://blog.cloudflare.com/#improving-detection-for-bots-from-cloud-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to residential IP proxies, bot operators commonly use cloud providers to host and run bot scripts that attack our customers. To combat these attacks, we improved our ground truth labels for cloud provider attacks in our latest ML training datasets. Early results show that v8 detects 20% more bots from cloud providers, with up to 70% more bots detected on zones that are marked as <a href="https://developers.cloudflare.com/fundamentals/reference/under-attack-mode">under attack</a>. We further plan to expand the list of cloud providers that v8 detects as part of our ongoing updates.</p>
-	<h2>Check out ML v8</h2>
+	<div class="flex anchor relative">
+		<h2 id="check-out-ml-v8">Check out ML v8</h2>
+		<a href="https://blog.cloudflare.com/#check-out-ml-v8" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For existing Bot Management customers we recommend <a href="https://developers.cloudflare.com/bots/reference/machine-learning-models/#enable-auto-updates-to-the-machine-learning-models">toggling “Auto-update machine learning model”</a> to instantly gain the benefits of ML v8 and its residential proxy detection, and to stay up to date with our future ML model updates. If you’re not a Cloudflare Bot Management customer, <a href="https://www.cloudflare.com/application-services/products/bot-management">contact our sales team</a> to try out <a href="https://www.cloudflare.com/application-services/products/bot-management">Bot Management</a>.</p>
 </div>

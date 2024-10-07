@@ -11,7 +11,14 @@
 	<p>Federal agencies were directed to apply a mitigation against two recently discovered vulnerabilities; the mitigation was to be applied within three days. Further monitoring by CISA revealed that threat actors were continuing to exploit the vulnerabilities and had developed some workarounds to earlier mitigations and detection methods. On January 31, CISA issued <a href="https://www.cisa.gov/news-events/directives/supplemental-direction-v1-ed-24-01-mitigate-ivanti-connect-secure-and-ivanti-policy-secure">Supplemental Direction V1</a> to the Emergency Directive instructing agencies to immediately disconnect all instances of Ivanti Connect Secure and Ivanti Policy Secure products from agency networks and perform several actions before bringing the products back into service.</p>
 	<p>This blog post will explore the threat actor’s tactics, discuss the high-value nature of the targeted products, and show how Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">Secure Access Service Edge</a> (SASE) platform <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protects against such threats</a>.</p>
 	<p>As a side note and showing the value of layered protections, Cloudflare’s WAF had <a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">proactively detected</a> the Ivanti zero-day vulnerabilities and deployed emergency rules to protect Cloudflare customers.</p>
-	<h2>Threat Actor Tactics</h2>
+	<div class="flex anchor relative">
+		<h2 id="threat-actor-tactics">Threat Actor Tactics</h2>
+		<a href="https://blog.cloudflare.com/#threat-actor-tactics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Forensic investigations (see the <a href="https://www.volexity.com/blog/2024/01/10/active-exploitation-of-two-zero-day-vulnerabilities-in-ivanti-connect-secure-vpn">Volexity</a> blog for an excellent write-up) indicate that the attacks began as early as December 2023. Piecing together the evidence shows that the threat actors chained two previously unknown vulnerabilities together to gain access to the Connect Secure and Policy Secure appliances and achieve unauthenticated remote code execution (RCE).</p>
 	<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-46805">CVE-2023-46805</a> is an authentication bypass vulnerability in the products’ web components that allows a remote attacker to bypass control checks and gain access to restricted resources. <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21887">CVE-2024-21887</a> is a command injection vulnerability in the products’ web components that allows an authenticated administrator to execute arbitrary commands on the appliance and send specially crafted requests. The remote attacker was able to bypass authentication and be seen as an “authenticated” administrator, and then take advantage of the ability to execute arbitrary commands on the appliance.</p>
 	<p>By exploiting these vulnerabilities, the threat actor had near total control of the appliance. Among other things, the attacker was able to:</p>
@@ -35,7 +42,14 @@
 			<p>Avoid detection by disabling logging and clearing existing logs</p>
 		</li>
 	</ul>
-	<h2>Little Appliance, Big Risk</h2>
+	<div class="flex anchor relative">
+		<h2 id="little-appliance-big-risk">Little Appliance, Big Risk</h2>
+		<a href="https://blog.cloudflare.com/#little-appliance-big-risk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a serious incident that is exposing customers to significant risk. CISA is justified in issuing their directive, and Ivanti is working hard to mitigate the threat and develop patches for the software on their appliances. But it also serves as another indictment of the legacy “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security">castle-and-moat</a>” security paradigm. In that paradigm, remote users were outside the castle while protected applications and resources remained inside. The moat, consisting of a layer of security appliances, separated the two. The moat, in this case the Ivanti appliance, was responsible for authenticating and authorizing users, and then connecting them to protected applications and resources. Attackers and other bad actors were blocked at the moat.</p>
 	<p>This incident shows us what happens when a bad actor is able to take control of the moat itself, and the challenges customers face to recover control. Two typical characteristics of vendor-supplied appliances and the legacy security strategy highlight the risks:</p>
 	<ul>
@@ -51,7 +65,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ijcyO0LP8vTx3RE2vVdtF/e47b92995e3fd53d3010432c0701036c/image2-13.png" alt="With network-level access, attackers can spread from an entry point to the rest of the network" class="kg-image" width="1395" height="776" loading="lazy">
 
 	</figure>
-	<h2>A better way: Cloudflare’s SASE platform</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-better-way-cloudflares-sase-platform">A better way: Cloudflare’s SASE platform</h2>
+		<a href="https://blog.cloudflare.com/#a-better-way-cloudflares-sase-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/zero-trust">Cloudflare One</a> is Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a> and single-vendor SASE platform. While Cloudflare One spans broadly across security and networking services (and you can read about the latest additions <a href="https://blog.cloudflare.com/single-vendor-sase-announcement-2024">here</a>), I want to focus on the two points noted above.</p>
 	<p>First, Cloudflare One employs the principles of Zero Trust, including the <a href="https://www.cloudflare.com/learning/access-management/principle-of-least-privilege">principle of least privilege</a>. As such, users that authenticate successfully only have access to the resources and applications necessary for their role. This principle also helps in the event of a compromised user account as the bad actor does not have indiscriminate network-level access. Rather, least privilege limits the range of lateral movement that a bad actor has, effectively reducing the blast radius.</p>
 	<figure class="kg-card kg-image-card ">
@@ -60,7 +81,14 @@
 
 	</figure>
 	<p>Second, while customer administrators need to have access to configure their services and policies, Cloudflare One does not provide any external access to the system internals of Cloudflare’s platform. Without that access, a bad actor would not be able to launch the types of attacks executed when they had access to the internals of the Ivanti appliance. &nbsp;</p>
-	<h2>It’s time to eliminate the legacy VPN</h2>
+	<div class="flex anchor relative">
+		<h2 id="its-time-to-eliminate-the-legacy-vpn">It’s time to eliminate the legacy VPN</h2>
+		<a href="https://blog.cloudflare.com/#its-time-to-eliminate-the-legacy-vpn" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If your organization is impacted by the CISA directive, or you are just ready to modernize and want to augment or replace your current VPN solution, Cloudflare is here to help. Cloudflare’s <a href="https://cfl.re/ztna-product-overview">Zero Trust Network Access (ZTNA) service</a>, part of the Cloudflare One platform, is the fastest and safest way to connect any user to any application.</p>
 	<p>Contact us to get immediate onboarding help or to schedule an architecture workshop to help you <a href="https://www.cloudflare.com/vpn-vulnerability">augment or replace your Ivanti (or any) VPN solution</a>.Not quite ready for a live conversation? Read our learning path article on how to <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">replace your VPN</a> with Cloudflare or our <a href="https://developers.cloudflare.com/reference-architecture/architectures/sase">SASE reference architecture</a> for a view of how all of our SASE services and on-ramps work together.</p>
 </div>

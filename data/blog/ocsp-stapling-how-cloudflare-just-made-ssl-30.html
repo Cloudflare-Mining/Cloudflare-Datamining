@@ -8,7 +8,14 @@
 	<p><a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://upload.wikimedia.org/wikipedia/commons/a/ab/2009-cheetah-sprint.jpg">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Yathin_sk">Yathin sk</a></p>
 	<p>This week CloudFlare is announcing several things we're doing to significantly improve the performance of SSL. Too few sites are secured with SSL. One of the reasons sites don't implement SSL is that it can slow down web performance. One of the less frequently discussed, but most significant, performance hits to SSL is the OCSP/CRL check. These checks make up 30% or more of the HTTPS overhead. That's painful.</p>
 	<p>The best solution to speed up OCSP/CRL performance is something called <a href="https://en.wikipedia.org/wiki/OCSP_stapling">OCSP Stapling</a>. CloudFlare is committed to making the Internet faster and safer so we just enabled OCSP Stapling network wide in order to speed up all HTTPS connectionsand making the decision to secure a site with SSL a no-brainer. So what is the OCSP/CRL check? Why does it slow down page loads so significantly? And how have we eliminated this performance tax on HTTP connections with OCSP Stapling? Read on to find out.</p>
-	<h3>The Revocation Overhead</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-revocation-overhead">The Revocation Overhead</h3>
+		<a href="https://blog.cloudflare.com/#the-revocation-overhead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To support secure web connections over HTTPS a website must have a SSL certificate. SSL certificates are issued by what is known as a Certificate Authority (CA). SSL certificates are issued for a period of time during which they will be trusted by browsers. If, however, a SSL certificate is stolen or compromised in some way before it expires, sites need a way to revoke the certificate so it will no longer be trusted.</p>
 	<p>The OCSP and CRL are the two protocols used to revoke certificates. CRL, which stands for Certificate Revocation List, is the older and cruder of the two protocols. When a CA receives a CRL request from a browser, it returns a complete list of all the certificates that CA manages that have been revoked. The browser then needs to parse the list and determine if the certificate of the visited site has been revoked.</p>
 	<p>With OCSP, the browser sends the certificate for the site in question to the CA. The CA then returns good, revoked, or unknown for the particular certificate. OCSP is generally preferable because less data needs to be sent and there's less overhead from the browser having to parse the CRL response. While every browser handles the revocation check process differently, generally modern browsers prefer OCSP to CRL checks.</p>
@@ -17,7 +24,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TmhgM2xaDZSYQBQOLCbnt/34191bf3624a5b7dd0289865d4161595/guard_dogs.jpg.scaled500.jpg" alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" class="kg-image" width="500" height="384" loading="lazy">
 
 	</figure>
-	<h3>Revocation Checks: 30%+ of SSL Slowness</h3>
+	<div class="flex anchor relative">
+		<h3 id="revocation-checks-30-of-ssl-slowness">Revocation Checks: 30%+ of SSL Slowness</h3>
+		<a href="https://blog.cloudflare.com/#revocation-checks-30-of-ssl-slowness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Regardless of whether the browser performs an OCSP or CRL check, the check adds significant overhead. To give you a sense, the following connection flow is taken from this post on <a href="http://www.belshe.com/2012/02/04/rethinking-ssl-for-mobile-apps">SSL overhead on mobile devices</a>:</p>
 	<ol>
 		<li>
@@ -52,7 +66,14 @@
 		</li>
 	</ol>
 	<p>The red portions in the list above (steps 5 - 9) represent the overhead required for the revocation check requests. Add up the time for each step and you'll see that over 30% of the SSL overhead comes from checking whether the certificate has been revoked. And, unfortunately, this check is not done in parallel. In most browsers, until the revocation check is complete, the browser won't begin downloading any additional content. In other words, the OCSP check is blocking on content delivery and inherently adds a significant amount of time to the request. Painful.</p>
-	<h3>Stapling OCSP for the Win</h3>
+	<div class="flex anchor relative">
+		<h3 id="stapling-ocsp-for-the-win">Stapling OCSP for the Win</h3>
+		<a href="https://blog.cloudflare.com/#stapling-ocsp-for-the-win" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The key to speeding up OCSP is to get rid of the requests that go back to the CA. Rather than needing to request the OCSP response from the CA directly, the OCSP response can be included in the initial SSL handshake (step 3 in the example above). In this sense, the OCSP response is "stapled" to the initial SSL handshake. While it seems like this approach would be less secure, the response is signed by the CA's root certificate so the browser can verify its authenticity even if it is not delivered directly from the CA's OCSP server.</p>
 	<figure class="kg-card kg-image-card ">
 

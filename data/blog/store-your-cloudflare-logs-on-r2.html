@@ -20,7 +20,14 @@
 		</li>
 	</ul>
 	<p>Storage on R2 adds to our existing suite of logging products. Storing logs on R2 fills in gaps that our customers have been asking for: a cost-effective solution to store logs for any of our products for any period of time.</p>
-	<h3>Goodbye to old school logging</h3>
+	<div class="flex anchor relative">
+		<h3 id="goodbye-to-old-school-logging">Goodbye to old school logging</h3>
+		<a href="https://blog.cloudflare.com/#goodbye-to-old-school-logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s rewind to the early 2000s. Most organizations were running their own self-managed infrastructure: network devices, firewalls, servers and all the associated software. Each company has to manage logs coming from hundreds of sources in the IT stack. With dedicated storage needed for retaining an endless volume of logs, specialized teams are required to build an ETL pipeline and make the data actionable.</p>
 	<p>Fast-forward to the 2010s. Organizations are transitioning to using managed services for their IT functions. As a result of this shift, the way that customers collect logs for all their services have changed too. With managed services, much of the logging load is shifted off of the customer.</p>
 	<p>The challenge now: collecting logs from a combination of managed services, each of which has its own quirks. Logs can be sent at varying latencies, in different formats and some are too detailed while others not detailed enough. To gain a single pane view of their IT infrastructure, companies need to build or buy a <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> solution.</p>
@@ -32,11 +39,25 @@
 	<p>Logging changes over the years</p>
 	<p>Cloudflare replaces these sets of managed services. When a customer onboards to Cloudflare, we make it super easy to gain visibility to their traffic that hits our network. We’ve built analytics for many of our products, such as CDN, Firewall, Magic Transit and Spectrum to both view high level trends and dig into patterns by slicing and dicing data.</p>
 	<p>Analytics are a great way to see data at an aggregate level, but we know that raw logs are important to our customers as well, so we’ve built out a set of logging products.</p>
-	<h3>Logging today</h3>
+	<div class="flex anchor relative">
+		<h3 id="logging-today">Logging today</h3>
+		<a href="https://blog.cloudflare.com/#logging-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During <a href="https://blog.cloudflare.com/instant-logs">Speed Week</a> we announced Instant Logs to show customers traffic as it hits their domain. Instant Logs is perfect for live debugging and triaging use cases. Monitor your traffic, make a config change and instantly view its impacts. In cases where you need to retroactively inspect your logs, we have Logpush.</p>
 	<p>We’ve built an impressive logging pipeline to get data from the 250+ cities that house our data centers to our customers in under a minute using Logpush. If your organization has existing practices for getting data across your stack into one place, we support Logpush to a variety of cloud storage or SIEM destinations. We also have partnerships in place with major SIEM platforms to surface Cloudflare data in ways that are meaningful to our customers.</p>
 	<p>Last but not least is Logpull. Using Logpull, customers can access HTTP request logs using our REST API. Our customers like Logpull because it's easy to configure, they don’t have to worry about storing logs on a third party, and you can pull data ad hoc for up to seven days.</p>
-	<h3>Why Cloudflare storage?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-cloudflare-storage">Why Cloudflare storage?</h3>
+		<a href="https://blog.cloudflare.com/#why-cloudflare-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The top four requests we’ve heard from customers when it comes to logs are:</p>
 	<ul>
 		<li>
@@ -54,7 +75,14 @@
 	</ul>
 	<p>For many of our customers, Cloudflare is one of the most important data sources, and it also generates more data than other applications on their IT stack. R2 is significantly cheaper than other cloud providers, so our customers don’t need to compromise by sampling or leaving out logs from products all together in order to cut down on costs.</p>
 	<p>Just like the simplicity of Logpull, log storage on R2 will be quick and easy. With a one click setup, we’ll store your logs, and you don’t have to worry about any configuration details. Retention is totally in our customer’s control to match the security and compliance needs of their business. With R2, you can also store your logs for any products we have logging for today (and we’re always adding more as our product line expands).</p>
-	<h3>Log storage; we’re just getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="log-storage-were-just-getting-started">Log storage; we’re just getting started</h3>
+		<a href="https://blog.cloudflare.com/#log-storage-were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With log storage on Cloudflare, we’re creating the building blocks to allow customers to perform log analysis and forensics capabilities directly on Cloudflare. Whether conducting an investigation, responding to a support request or addressing an incident, using analytics for a birds eye view and inspecting logs to determine the root cause is a powerful combination.</p>
 	<p>If you’re interested in getting notified when you can store your logs on Cloudflare, sign up through this <a href="https://forms.gle/x24NKoMF8rJBJPpU7">form</a>.</p>
 	<p>We’re always looking for talented engineers to take on the challenges of working with data at an incredible scale. If you’re interested <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918">apply here</a>.</p>

@@ -1,12 +1,27 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4IjF4VssaTS1Ag3WQSYIl0/131f6ca20744047bfa6cab1fe83f0d31/http-2-prioritization-with-nginx.gif" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Getting the best end-user performance from HTTP/2 requires good support for resource prioritization. While most web servers support HTTP/2 prioritization, getting it to work well all the way to the browser requires a fair bit of coordination across the networking stack. This article will expose some of the interactions between the web server, Operating System and network and how to tune a server to optimize performance for end users.</p>
-	<h3>tl;dr</h3>
+	<div class="flex anchor relative">
+		<h3 id="tl-dr">tl;dr</h3>
+		<a href="https://blog.cloudflare.com/#tl-dr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On Linux 4.9 kernels and later, enable BBR congestion control and set tcp_notsent_lowat to 16KB for HTTP/2 prioritization to work reliably. This can be done in /etc/sysctl.conf:</p>
 	<pre class="language-bash"><code class="language-bash">    net.core.default_qdisc = fq
     net.ipv4.tcp_congestion_control = bbr
     net.ipv4.tcp_notsent_lowat = 16384</code></pre>
-	<h3>Browsers and Request Prioritization</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="browsers-and-request-prioritization">Browsers and Request Prioritization</h3>
+		<a href="https://blog.cloudflare.com/#browsers-and-request-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A single web page is made up of <a href="https://httparchive.org/reports/state-of-the-web#reqTotal">dozens</a> to hundreds of separate pieces of content that a web browser pulls together to create and present to the user. The main content (HTML) for the page you are visiting is a list of instructions on how to construct the page and the browser goes through the instructions from beginning to end to figure out everything it needs to load and how to put it all together. Each piece of content requires a separate HTTP request from the browser to the server responsible for that content (or if it has been loaded before, it can be loaded from a local cache in the browser).</p>
 	<p>In a simple implementation, the web browser could wait until everything is loaded and constructed and then show the result but that would be pretty slow. Not all of the content is critical to the user and can include things such as images way down in the page, analytics for tracking usage, ads, like buttons, etc. All the browsers work more incrementally where they display the content as it becomes available. This results in a much faster user experience. The visible part of the page can be displayed while the rest of the content is being loaded in the background. Deciding on the best order to request the content in is where browser request prioritization comes into play. Done correctly the visible content can display significantly faster than a naive implementation.</p>
 	<figure class="kg-card kg-image-card ">
@@ -44,7 +59,14 @@
 	</figure>
 	<p>Browser requesting a high-priority resource after several low-priority resources.</p>
 	<p><b>In an optimal configuration, the time to retrieve a top-priority resource on a busy connection with lots of other streams will be identical to the time to retrieve it on an empty connection.</b> Effectively that means that the server needs to be able to interrupt the response streams of all of the other responses immediately with no additional buffering to delay the high-priority response (beyond the minimal amount of data in-flight on the network to keep the connection fully utilized).</p>
-	<h3>Buffers on the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="buffers-on-the-internet">Buffers on the Internet</h3>
+		<a href="https://blog.cloudflare.com/#buffers-on-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Excessive buffering is pretty much the nemesis for HTTP/2 because it directly impacts the ability for a server to be nimble in responding to priority shifts. It is not unusual for there to be megabytes-worth of buffering between the server and the browser which is larger than most websites. Practically that means that the responses will get delivered in whatever order they become available on the server. It is not unusual to have a critical resource (like a font or a render-blocking script in the <code>&lt;head&gt;</code> of a document) delayed by megabytes of lower priority images. For the end-user this translates to seconds or even minutes of delay rendering the page.</p>
 	<h4>TCP send buffers</h4>
 	<p>The first layer of buffering between the server and the browser is in the server itself. The operating system maintains a TCP send buffer that the server writes data into. Once the data is in the buffer then the operating system takes care of delivering the data as-needed (pulling from the buffer as data is sent and signaling to the server when the buffer needs more data). A large buffer also reduces CPU load because it reduces the amount of writing that the server has to do to the connection.</p>
@@ -119,7 +141,14 @@
 	</figure>
 	<p>BBR delivering responses without network buffering.</p>
 	<p>Technically, any congestion control that keeps Bufferbloat in check and maintains an accurate congestion window will work for keeping the TCP send buffers in check, BBR just happens to be one of them (with lots of good properties).</p>
-	<h3>Putting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b><i>The combination of TCP_NOTSENT_LOWAT and BBR reduces the amount of buffering on the network to the absolute minimum and is CRITICAL for good end-user performance with HTTP/2.</i></b> This is particularly true for NGINX and other HTTP/2 servers that don’t implement their own buffer throttling.</p>
 	<p>The end-user impact of correct prioritization is huge and may not show up in most of the metrics you are used to watching (particularly any server-side metrics like requests-per-second, request response time, etc).</p>
 	<p>Even on a 5Mbps cable connection proper resource ordering can result in rendering a page significantly faster (and the difference can explode to dozens of seconds or even minutes on a slower connection). <a href="https://www.webpagetest.org/video/view.php?id=180927_1b80249b8e1a7619300d2a51533c07438e4fa5ea">Here</a> is a relatively common case of a WordPress blog served over HTTP/2:</p>
@@ -148,7 +177,14 @@
 	</figure>
 	<p>Visually complete on the default configuration arrives at 10.7 seconds (6.2 seconds or 2.3 times slower than the tuned server).</p>
 	<p>Both configurations served the exact same content using the exact same servers with “After” being tuned for TCP_NOTSENT_LOWAT of 16KB (both configurations used BBR).</p>
-	<h3>Identifying Prioritization Issues In The Wild</h3>
+	<div class="flex anchor relative">
+		<h3 id="identifying-prioritization-issues-in-the-wild">Identifying Prioritization Issues In The Wild</h3>
+		<a href="https://blog.cloudflare.com/#identifying-prioritization-issues-in-the-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you look at a network waterfall diagram of a page loading prioritization issues will show up as high-priority requests completing much later than lower-priority requests from the same origin. Usually that will also push metrics like <a href="https://w3c.github.io/paint-timing/#sec-terminology">First Paint</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded">DOM Content Loaded</a> (the vertical purple bar below) much later.</p>
 	<figure class="kg-card kg-image-card ">
 

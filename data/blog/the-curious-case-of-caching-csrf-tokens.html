@@ -11,7 +11,14 @@
 	<p>Their site was running Magento, a notably slow e-commerce platform - filled with lots of interesting PHP, with a considerable amount of soft code in XML. Running version 1.9, the platform was somewhat outdated (Magento was totally rewritten in version 2.0 and subsequent releases).</p>
 	<p>Despite the somewhat dated technology, the e-commerce site was "good enough" for this customer and had done it's job for many years.</p>
 	<p>They were the first to notice an interesting technical issue surrounding how performance and security can often feel at odds with each other. Although they were the first to highlight this issue, into the run-up of Black Friday, we ultimately saw around a dozen customers on Magento 1.8/1.9 have similar issues.</p>
-	<h3>Initial Optimisations</h3>
+	<div class="flex anchor relative">
+		<h3 id="initial-optimisations">Initial Optimisations</h3>
+		<a href="https://blog.cloudflare.com/#initial-optimisations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After signing-up for Cloudflare, the site owners attempted to make some changes to ensure their site was loading quickly.</p>
 	<p>The website developers had already ensured the site was loading over HTTPS, in doing so they were able to ensure their site was loading over the new HTTP/2 Protocol and made some changes to ensure their site was optimised for HTTP/2 (for details, see our blog post on <a href="https://blog.cloudflare.com/http-2-for-web-developers">HTTP/2 For Web Developers</a>).</p>
 	<p>At Cloudflare we've taken steps to ensure that there isn't a latency overhead for establishing a secure TLS connection, here is a non-complete list of optimisations we use:</p>
@@ -32,7 +39,14 @@
 	<p>Additionally, they had enabled <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server Push</a> to ensure critical CSS/JS assets could be pushed to clients when they made their first request. Without Server Push, a client has to download the HTML response, interpret it and then work out assets it needs to download.</p>
 	<p>Big images were Lazy Loaded, only downloading them when they needed to be seen by the users. Additionally, they had enabled a Cloudflare feature called <a href="https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare">Polish</a>. With this enabled, Cloudflare dynamically works out whether it's faster serve an image in <a href="https://developers.google.com/speed/webp">WebP</a> (a new image format developed by Google) or whether it's faster to serve it in a different format.</p>
 	<p>These optimisations did make some improvement to performance, but their site was still slow.</p>
-	<h3>Respect The TTFB</h3>
+	<div class="flex anchor relative">
+		<h3 id="respect-the-ttfb">Respect The TTFB</h3>
+		<a href="https://blog.cloudflare.com/#respect-the-ttfb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In web performance, there are a few different things which can affect the response times - I've crudely summarised them into the following three categories:</p>
 	<ul>
 		<li>
@@ -59,7 +73,14 @@
 	<p>Time to First Byte itself is an often misunderstood metric and often can't be attributed to a single fault. For example; using a CDN service like Cloudflare may increase TTFB by a few milliseconds, but do so to the benefit of an overall load time. This can be as the CDN is adding additional compression functionality to speed up the response, or simply as it has to establish a connection back to the origin web server (which isn't visible by the client).</p>
 	<p>There are instances where it is important to debug why TTFB is a problem. For example; in this instance, the e-commerce platform was taking upwards of 3 seconds just to generate the HTML response. In this case, it was clear the constraint was the server-side <i>Page Render</i>.</p>
 	<p>When the web server was generating dynamic content, it was having to query databases and perform logic before a request could be served. In most instances (i.e. a product page) the page would be identical to every other request. It would only be when someone would add something to their shopping cart that the site would really become dynamic.</p>
-	<h3>Enabling Cookie-Based Caching</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-cookie-based-caching">Enabling Cookie-Based Caching</h3>
+		<a href="https://blog.cloudflare.com/#enabling-cookie-based-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before someone logs into the the Magento admin panel or adds something to their shopping cart, the page view is anonymous and will be served up identically to every visitor. It will only be the when an anonymous visitor logs in or adds something to their shopping cart that they will see a page that's dynamic and unlike every other page that's been rendered.</p>
 	<p>It therefore is possible to cache those anonymous requests so that Magento on an origin server doesn't need to constantly regenerate the HTML.</p>
 	<p>Cloudflare users on our Business Plan are able to cache anonymous page views when using Magneto using our Bypass Cache on Cookie functionality. This allows for static HTML to be cached at our edge, with no need for it to be regenerated from request to request.</p>
@@ -95,7 +116,14 @@
 	<p>The site administrators initially enabled this configuration on a subdomain for testing purposes, but noticed something rather strange. When they would add something to the cart on their test site, the cart would show up empty. If they then tried again to add something to the cart, the item would be added successfully.</p>
 	<p>The customer reported one additional, interesting piece of information - when they tried to mimic this cookie-based caching behaviour internally using Varnish, they faced the exact same issue.</p>
 	<p>In essence, the <i>Add to Cart</i> functionality would fail, but only on the first request. This was indeed odd behaviour, and the customer reached out to Cloudflare Support.</p>
-	<h3>Debugging</h3>
+	<div class="flex anchor relative">
+		<h3 id="debugging">Debugging</h3>
+		<a href="https://blog.cloudflare.com/#debugging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The customer wrote in just as our Singapore office were finishing up their afternoon and was initially triaged by a Support Engineer in that office.</p>
 	<p>The Support Agent evaluated what the problem was and initially identified that if the <code>frontend</code> cookie was missing, the <i>Add to Cart</i> functionality would fail.</p>
 	<p>No matter which page you access on Magento, it will attempt to set a <code>frontend</code> cookie, even if it doesn't add an <code>external_no_cache</code> cookie</p>
@@ -152,19 +180,40 @@ Amount:
 	<p>A cookie is first set on the clients computer containing a random session cookie. When a form is served to the client, a CSRF token is generated using that cookie. The server will check that the CSRF token submitted in the HTML form actually matches the session cookie, and if it doesn't block the request.</p>
 	<p>In this instance, as there was no session cookie ever set (Cloudflare would strip it out before it entered cache), the <code>POST</code> request to the <i>Add to Cart</i> functionality could never verify the CSRF token and the request would fail.</p>
 	<p>Due to CSRF vulnerabilities, Magento applied CSRF protection to all forms; this broke Full Page Cache implementations in Magento 1.8.x/1.9.x. You can find all the details in the <a href="https://magento.com/security/patches/supee-6285">SUPEE-6285 patch documentation</a> from Magento.</p>
-	<h3>Caching Content with CSRF Protected Forms</h3>
+	<div class="flex anchor relative">
+		<h3 id="caching-content-with-csrf-protected-forms">Caching Content with CSRF Protected Forms</h3>
+		<a href="https://blog.cloudflare.com/#caching-content-with-csrf-protected-forms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To validate that CSRF Tokens were definitely at fault here, I completely disabled CSRF Protection in Magento. Obviously you should never do this in production, I found it slightly odd that they even had a UI toggle for this!</p>
 	<p>Another method which was created in the Magento Community was an extension to disable CSRF Protection just for the Add To Cart functionality (<a href="https://github.com/deivisonarthur/Inovarti_FixAddToCartMage18/blob/master/README.md">Inovarti_FixAddToCartMage18</a>), under the argument that CSRF risks are far reduced when we're talking about <i>Add to Cart</i> functionality. This is still not ideal, we should ideally have CSRF Protection on every form when we're talking about actions which change site behaviour.</p>
 	<p>There is, however, a third way. I did some digging and identified a Magento plugin that effectively uses JavaScript to inject a dynamic CSRF token the moment a user clicks the <i>Add to Cart</i> button but just before the request is actually submitted. There's quite a lengthy Github thread which outlines this issue and references the Pull Requests which fixed this behaviour in the <a href="https://github.com/nexcess/magento-turpentine/issues/345">the Magento Turpentine plugin</a>. I won't repeat the set-up instructions here, but they can be found in an article I've written on the Cloudflare Knowledge Base: <a href="https://support.cloudflare.com/hc/en-us/articles/236168808-Caching-Static-HTML-with-Magento-version-1-2-">Caching Static HTML with Magento (version 1 &amp; 2)</a></p>
 	<p>Effectively what happens here is that the dynamic CSRF token is only injected into the web page the moment that it's needed. This is actually the behaviour that's implemented in other e-commerce platforms and Magento 2.0+, allowing Full Page Caching to be implemented quite easily. We had to recommend this plugin as it wouldn't be practical for the site owner to simply update to Magneto 2.</p>
 	<p>One thing to be wary of when exposing CSRF tokens via an AJAX endpoint is <a href="https://stackoverflow.com/questions/2669690/why-does-google-prepend-while1-to-their-json-responses">JSON Hijacking</a>. There are some tips on how you can prevent this in the <a href="https://www.owasp.org/index.php/AJAX_Security_Cheat_Sheet#Always_return_JSON_with_an_Object_on_the_outside">OWASP AJAX Security Cheat Sheet</a>. Iain Collins has a Medium post with further discussion on the security merits of <a href="https://medium.com/@iaincollins/csrf-tokens-via-ajax-a885c7305d4a">CSRF Tokens via AJAX</a> (that said, however you're performing CSRF prevention, <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same Origin Policies</a> and <a href="https://www.owasp.org/index.php/HttpOnly">HTTPOnly cookies</a> FTW!).</p>
 	<p>There is an even cooler way you can do this using Cloudflare's <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Edge Workers</a> offering. Soon this will allow you to run JavaScript at our Edge network, and you can use that to dynamically insert CSRF tokens into cached content (and, then either perform cryptographic validation of CSRF either at our Edge or the Origin itself using a shared secret).</p>
-	<h3>But this has been a problem since 2015?</h3>
+	<div class="flex anchor relative">
+		<h3 id="but-this-has-been-a-problem-since-2015">But this has been a problem since 2015?</h3>
+		<a href="https://blog.cloudflare.com/#but-this-has-been-a-problem-since-2015" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another interesting observation is that the Magento patch which caused this interesting behaviour had been around since July 7, 2015. Why did our Support Team only see this issue in the run-up to Black Friday in 2017? What's more, we ultimately saw around a dozen support tickets around this exact issue on Magento 1.8/1.9 over the course over 6 weeks.</p>
 	<p>When an Enterprise customer ordinarily joins Cloudflare, there is a named Solutions Engineer who gets them up and running and ensures there is no pain; however when you sign-up online with a credit card, your forgo this privilege.</p>
 	<p>Last year, we released Bypass Cache on Cookie to self-serve users when a lot of e-commerce customers were in their Christmas/New Year release freeze and not making changes to their websites. Since then, there were no major shopping events; most the sites enabling this feature were new build websites using Magento 2 where this wasn't an issue.</p>
 	<p>In the run-up to Black Friday, performance and coping under load became a key consideration for developers working on legacy e-commerce websites - and they turned to Cloudflare. Given the large, but steady, influx of e-commerce websites joining Cloudflare - the low overall percentage of those on Magento 1.8/1.9 became noticeable.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Caching anonymous page views is an important, and in some cases, essential mechanism to dramatically improve site performance to substantially reduce site load, especially during traffic spikes. Whilst aggressively caching content when users are anonymous, you can bypass the cache and allow users to use the dynamic functionality your site has to offer.</p>
 	<p>When you need to insert a dynamic state into cached content, JavaScript offers a nice compromise. JavaScript allows us to cache HTML for anonymous page visits, but insert a state when the users interact in a certain way. In essence, defusing this conflict between performance and security. In the future you'll be able to run this JavaScript logic at our network edge using Cloudflare <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Edge Workers</a>.</p>
 	<p>It also remains important to respect the RESTful properties of HTTP and ensure <code>GET</code>, <code>OPTIONS</code> and <code>HEAD</code> requests remain safe and instead using <code>POST</code>, <code>PUT</code>, <code>PATCH</code> and <code>DELETE</code> as necessary.</p>

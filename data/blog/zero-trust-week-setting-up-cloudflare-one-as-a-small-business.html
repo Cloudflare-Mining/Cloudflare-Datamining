@@ -8,7 +8,14 @@
 	<p>By design, Cloudflare One is accessible to teams of any size. You shouldn't need a massive IT department or a Fortune 500 budget to connect to your tools safely. &nbsp;On Tuesday, we <a href="https://blog.cloudflare.com/teams-plans">announced</a> a new free plan which provides many of the features of Cloudflare One, including DNS filtering, Zero Trust access, and a management dashboard - for up to 50 users at no cost.</p>
 	<p>Starting now, your team can begin deploying Cloudflare One in your organization in just a few simple steps.</p>
 	<p>Step 1: Protect offices from threats on the Internet with DNS Filtering (10 minutes)Step 2: <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">Secure remote workers</a> connecting to the Internet with Cloudflare WARP+ (30 minutes)Step 3: Connect users to applications without a VPN with Cloudflare Access (1 hour)Step 4: Block threats and data loss on devices with a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> (1 hour)Step 5: Add Zero Trust to your SaaS applications (2 hours)</p>
-	<h3>1. Start blocking malicious sites and phishing attempts in 10 minutes</h3>
+	<div class="flex anchor relative">
+		<h3 id="1-start-blocking-malicious-sites-and-phishing-attempts-in-10-minutes">1. Start blocking malicious sites and phishing attempts in 10 minutes</h3>
+		<a href="https://blog.cloudflare.com/#1-start-blocking-malicious-sites-and-phishing-attempts-in-10-minutes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet can be a dangerous place with malware and threats lurking everywhere. Protecting employees from threats on the Internet requires a way to inspect and filter their traffic. That starts with DNS-level filtering that can quickly and easily eliminate known malicious sites as well as restrict access to potentially dangerous neighborhoods on the Internet.</p>
 	<p>When your devices connect to a website, they start by sending a DNS query to a DNS resolver to find the IP address of the hostname for that site. The resolver responds and the device initiates the connection. That initial query creates two challenges for your team’s security:</p>
 	<ul>
@@ -41,7 +48,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Lhs7rdm16nhZ9W56zsCOE/9c1267ebc8bbaa7772a07f3021b49009/image2-16.png" alt="" class="kg-image" width="1999" height="1092" loading="lazy">
 
 	</figure>
-	<h3>2.Next, protect all of your remote employees and send all traffic through Cloudflare over an encrypted connection</h3>
+	<div class="flex anchor relative">
+		<h3 id="2-next-protect-all-of-your-remote-employees-and-send-all-traffic-through-cloudflare-over-an-encrypted-connection">2.Next, protect all of your remote employees and send all traffic through Cloudflare over an encrypted connection</h3>
+		<a href="https://blog.cloudflare.com/#2-next-protect-all-of-your-remote-employees-and-send-all-traffic-through-cloudflare-over-an-encrypted-connection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Employees who used to connect to the Internet through your office network now connect from hundreds or thousands of different home networks or mobile hotspots to do their jobs. That traffic relies on connections that might not be private.</p>
 	<p>You can use Cloudflare One to route all team member traffic over an encrypted, accelerated path to the Internet with Cloudflare WARP. Cloudflare WARP is available as an application that your team members can install on macOS, Windows, iOS, and Android. The client will route all of their device’s traffic to a nearby Cloudflare data center over Cloudflare’s <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust">implementation</a> of a technology called WireGuard.</p>
 	<p>When they connect, Cloudflare One uses WARP+, our implementation of WARP that uses the Argo Smart Routing service to find the shortest path through our global network of data centers to reach the user’s destination.</p>
@@ -53,7 +67,14 @@
 	<p>Your team can begin using Cloudflare WARP today. Navigate to the Cloudflare for Teams dashboard and purchase the Cloudflare Gateway or Cloudflare for Teams Standard plan. Once purchased, you <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client">can create a rule</a> to determine who in your organization can use Cloudflare WARP.</p>
 	<p>Your end users can launch the client, input your team’s organization name, and login to begin using WARP+. &nbsp;Alternatively, you can <a href="https://developers.cloudflare.com/warpclient/teams">deploy the application</a> with settings preconfigured using an device management solution like JAMF or InTune.</p>
 	<p>Cloudflare WARP seamlessly integrates with Gateway’s DNS filtering to bring secure, encrypted, DNS resolution to roaming devices. Users can input the DoH subdomain of a location in your Cloudflare for Teams account to begin using your organization’s DNS filtering settings wherever they work.</p>
-	<h3>3. Replace your VPN with Cloudflare Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="3-replace-your-vpn-with-cloudflare-access">3. Replace your VPN with Cloudflare Access</h3>
+		<a href="https://blog.cloudflare.com/#3-replace-your-vpn-with-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we were a smaller team and relied on a VPN, our IT help desk received hundreds of tickets complaining about our VPN. Some of these descriptions might look familiar.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -75,7 +96,14 @@
 
 	</figure>
 	<p>Cloudflare’s free plan includes up to 50 seats of Cloudflare Access at no cost so that your team can begin</p>
-	<h3>4. Add a Secure Web Gateway to block threats and file loss</h3>
+	<div class="flex anchor relative">
+		<h3 id="4-add-a-secure-web-gateway-to-block-threats-and-file-loss">4. Add a Secure Web Gateway to block threats and file loss</h3>
+		<a href="https://blog.cloudflare.com/#4-add-a-secure-web-gateway-to-block-threats-and-file-loss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Cloudflare WARP, all of the traffic leaving your devices now routes through Cloudflare’s network. However, threats and data loss can hide inside of that traffic. You can add Cloudflare Gateway’s HTTP filtering to your team’s Cloudflare WARP usage to block threats and file loss. For example, if your team uses Box you can restrict all file uploads to other cloud based storage services to ensure everything stays in one, approved place.</p>
 	<p>To get started, navigate to the Policies section of the Cloudflare for Teams dashboard. Select the HTTP tab to begin building rules that inspect traffic for potential issues like known malicious URLs or files being uploaded to unapproved destinations.</p>
 	<figure class="kg-card kg-image-card ">
@@ -84,7 +112,14 @@
 
 	</figure>
 	<p>To inspect traffic, you’ll need to <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client">download and install</a> a certificate on the enrolled devices. Once installed, you can enable HTTP filtering from the Policies tab to begin enforcing the policies that you created and capturing event logs.</p>
-	<h3>5. Bring Zero Trust rules to your SaaS applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="5-bring-zero-trust-rules-to-your-saas-applications">5. Bring Zero Trust rules to your SaaS applications</h3>
+		<a href="https://blog.cloudflare.com/#5-bring-zero-trust-rules-to-your-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you don’t have self-hosted applications, or also use SaaS applications, you can still bring the same Zero Trust rules to the SaaS applications that your team uses with <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">Cloudflare Access for SaaS</a> - wherever they live. With Access for SaaS, companies can now centrally manage user access and security monitoring for all applications.</p>
 	<p>You can integrate Cloudflare Access as an identity provider to any SaaS application that supports SAML SSO. That integration will send all login attempts through Cloudflare’s network to your configured identity providers and enforce rules that you control.</p>
 	<figure class="kg-card kg-image-card ">
@@ -99,10 +134,24 @@
 
 	</figure>
 	<p>Once deployed, Access for SaaS gives your team high visibility, with low effort, into every login to both internal and SaaS applications. You can use the new Access for SaaS feature as part of the Cloudflare for Teams free plan for up to 50 users.</p>
-	<h3>6. Soon: Protect small business office networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="6-soon-protect-small-business-office-networks">6. Soon: Protect small business office networks</h3>
+		<a href="https://blog.cloudflare.com/#6-soon-protect-small-business-office-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s Magic Transit™ product takes everything we learned protecting our own network from IP-layer attacks and extends that security to our customers who operate their own IP address space. By protecting that network, customers also benefit from performant and reliable IP connectivity to the Internet.</p>
 	<p>Today, some of the largest enterprises in the world rely on Magic Transit to keep their business safe from attack. We plan to extend that same protection and connectivity to teams who operate smaller networks in upcoming releases.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare One represents our vision for the future of the corporate network, and we’re just getting started adding products and features that help teams move to that model. That said, your team shouldn’t have to wait to begin connecting through Cloudflare and securing your data and applications with our network.</p>
 	<p>To get started, <a href="https://dash.cloudflare.com/sign-up/teams">sign up for a Cloudflare account</a> and follow the steps above. &nbsp;If you have any questions on setting up Cloudflare One as a small business, or large enterprise, please let us know in this community forum post.</p>
 </div>

@@ -6,14 +6,35 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DPG25xnNPEy75TxEffEiZ/55ac3059515a7ef7865fe3417999b257/spectrum-attack.svg" alt="spectrum-attack" class="kg-image" width="713" height="370" loading="lazy">
 
 	</figure>
-	<h3>DDoS Protection</h3>
+	<div class="flex anchor relative">
+		<h3 id="ddos-protection">DDoS Protection</h3>
+		<a href="https://blog.cloudflare.com/#ddos-protection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The core functionality of Spectrum is its ability to block large DDoS attacks. Spectrum benefits from Cloudflare’s existing DDoS mitigation (which this week <a href="https://twitter.com/jgrahamc/status/983278388059058181">blocked a 900 Gbps flood</a>). Spectrum’s DDoS protection has already been battle tested. Just soon as we opened up Spectrum for beta, Spectrum received its first SYN flood.</p>
 	<p>One of Spectrum's earliest deployments was in front of <a href="https://hypixel.net">Hypixel’s</a> infrastructure. Hypixel runs the largest minecraft server, and because gamers can be - uh, passionate - they were one of the earliest targets of the terabit-per-second Mirai botnet. “Hypixel was one of the first subjects of the Mirai botnet DDoS attacks and frequently receives large attacks. Before Spectrum, we had to rely on unstable services and techniques that increased latency, worsening user's experience. Now, we're able to be continually protected without added latency, which makes it the best option for any latency and uptime sensitive service such as online gaming,” Bruce Blair, the CTO at Hypixel, told us.</p>
 	<p>Another early team we talked to about Spectrum was the security team at <a href="https://montecito.bank">Montecito Bank &amp; Trust</a>. As a financial institution, they have a highly technical and active security team; they were also one of the first customers to use Cloudflare’s DNSSEC when it was brand new. Paul Abramson, Montecito Bank &amp; Trust’s Director of Technology told us, “We were looking for a security solution to protect additional services like email and SSH so that if we are subject to attack, our operations can continue to run reliably and securely.”</p>
-	<h3>TLS Support</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-support">TLS Support</h3>
+		<a href="https://blog.cloudflare.com/#tls-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security and encryption go hand in hand. With Spectrum, you can terminate TLS at Cloudflare’s edge. The main benefit of TLS termination at the edge is that is speeds up performance (there’s less distance to travel for the three round trips of the TLS handshake).</p>
 	<p>We think the most interesting outcome is that just by adding support for TLS in the client, Cloudflare can now add encryption to legacy protocols and services that don’t traditionally support encrypted transit.</p>
-	<h3>Firewall</h3>
+	<div class="flex anchor relative">
+		<h3 id="firewall">Firewall</h3>
+		<a href="https://blog.cloudflare.com/#firewall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Spectrum integrates with Cloudflare’s IP Firewall so that you can choose which connections should be forwarded to your servers and which should be blocked at Cloudflare’s edge.</p>
 	<p>This can be managed via API too, so you can write scripts that allow and deny access on the fly.</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules" \
@@ -21,9 +42,24 @@
      -H "X-Auth-Key: 0000000000000000000" \
      -H "Content-Type: application/json" \
      --data '{"mode":"block","configuration":{"target":"ip","value":"192.0.2.1"}}'</code></pre>
-	<h3>Demo</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="demo">Demo</h3>
+		<a href="https://blog.cloudflare.com/#demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many TCP load balancers and proxies can be cumbersome to set up, but Spectrum takes a few clicks. Tito Esterline on our team recorded a demo you can watch below. My suggestion is to play it with audio so you can hear the play by play.</p>
-	<h3>Get In Touch</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-in-touch">Get In Touch</h3>
+		<a href="https://blog.cloudflare.com/#get-in-touch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to get started, <a href="https://cloudflare.com/products/cloudflare-spectrum">get in touch with our team</a>. Today Spectrum is available for applications on the Enterprise plan.</p>
 	<p>Why just Enterprise? While HTTP can use the <code>Host</code> header to identify services, TCP relies on each service having a unique IP address in order to identify it. Since IPv4 addresses are endangered, it’s quite expensive for us to delegate an IP per application and we needed to limit use. We’re actively thinking about ways to bring Spectrum to everyone. One idea is to offer IPv6-only Spectrum to non-Enterprise customers. Another idea is let anyone use Spectrum but pay for the IPv4 address. We’re not sure yet, but if you prefer one to the other, feel free to comment and let us know.</p>
 	<p>Oh and P.S. If you want to read about how Spectrum works, Marek wrote a <a href="https://blog.cloudflare.com/how-we-built-spectrum">great blog post</a> about the Linux behavior that let us build it.</p>

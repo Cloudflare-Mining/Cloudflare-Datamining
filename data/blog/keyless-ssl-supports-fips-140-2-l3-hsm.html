@@ -16,18 +16,53 @@
 	</figure>
 	<p>Historically the keys were placed on the server running the <a href="https://github.com/cloudflare/gokeyless">open source gokeyless daemon</a> we provide to process the handshake, or secured in an on-prem hardware security module (HSM) that gokeyless interfaces with using a standard protocol known as PKCS#11. However, as financial services, healthcare, cryptocurrency, and other highly regulated or security-focused companies have moved to the cloud, they cannot simply ship these expensive boxes and ask Amazon, Google, IBM, or Microsoft to rack and stack them.</p>
 	<p>For these customers, especially those whose information security policies mandate <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf">FIPS 140-2 Level 3</a> validated HSMs, we are announcing that Keyless SSL now supports the following cloud-hosted HSMs: <a href="https://aws.amazon.com/cloudhsm">Amazon Cloud HSM</a>; <a href="https://cloud.google.com/kms/docs/hsm">Google Cloud HSM</a>; <a href="https://cloud.ibm.com/catalog/infrastructure/hardware-security-module">IBM Cloud HSM</a>; <a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm">Microsoft Azure Dedicated HSM</a> and <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview">Managed HSM</a>. We also support any other HSM that implements the PKCS#11 standard, including series such as the <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ncipher-thales-nshield-connect">nCipher nShield Connect</a> and Thales Luna.</p>
-	<h3>HSM overview</h3>
+	<div class="flex anchor relative">
+		<h3 id="hsm-overview">HSM overview</h3>
+		<a href="https://blog.cloudflare.com/#hsm-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HSMs are purpose-built machines that are tamper-resistant, hardened against weaknesses such as side-channel attacks, and optimized to perform cryptographic operations such as signing and decryption. They can be deployed as stand-alone boxes, as expansion cards inserted into servers, or, most recently, as cloud services.</p>
 	<p>Rather than generate private keys on a server and upload them to the HSM, vendors and security experts typically recommend that keys are generated on (and never leave) the device itself. HSMs have better randomness guarantees than general-purpose servers, and take special precautions to protect keys in memory before synchronizing them to disk in an encrypted state. When operations that require the private key are required, services make authenticated API calls into the device using libraries provided by the HSM vendor.</p>
-	<h3>HSMs and FIPS 140-2 level 3</h3>
+	<div class="flex anchor relative">
+		<h3 id="hsms-and-fips-140-2-level-3">HSMs and FIPS 140-2 level 3</h3>
+		<a href="https://blog.cloudflare.com/#hsms-and-fips-140-2-level-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HSMs are typically validated against the Federal Information Process Standard (FIPS) publication 140-2: <a href="https://csrc.nist.gov/publications/detail/fips/140/2/final">Security Requirements for Cryptographic Modules</a>. There are four levels — 1 through 4 — that specify increasingly stringent requirements around approved algorithms, security functions, <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">role-based access control</a>, and tamper evident/resistant protections.</p>
 	<p>The National Institute of Standards and Technology (NIST) publishes these guidelines, administers the <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules">Cryptographic Module Validation Program</a>, and publishes a <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search">searchable database of validated modules</a>, which includes the offerings listed below. We have provided instructions on how to use them with Cloudflare.</p>
-	<h3>Getting started with cloud offerings</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-cloud-offerings">Getting started with cloud offerings</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-cloud-offerings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All existing Keyless SSL customers can immediately make use of this technology, and you can read instructions for doing so at <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules">https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules</a>. Source code is available on GitHub: <a href="https://github.com/cloudflare/gokeyless">https://github.com/cloudflare/gokeyless</a>.</p>
-	<h3>End-to-end example: Microsoft Azure Managed HSM</h3>
+	<div class="flex anchor relative">
+		<h3 id="end-to-end-example-microsoft-azure-managed-hsm">End-to-end example: Microsoft Azure Managed HSM</h3>
+		<a href="https://blog.cloudflare.com/#end-to-end-example-microsoft-azure-managed-hsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Microsoft’s Azure Key Vault team <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview">released Managed HSM</a>. The offering is FIPS 140-2 Level 3 validated and is integrated with Azure services such as Azure Storage, Azure SQL, and Azure Information Protection. Managed HSM is available in the following regions: East US 2, South Central US, North Europe, and West Europe.</p>
 	<p>The instructions below are taken from the <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli">Quickstart: Provision and activate a managed HSM using Azure CLI</a> guide, followed by instructions for using the Managed HSM with Cloudflare. The commands were run on a Ubuntu VM created in the same region (South Central US) as the HSM; this is also where we will deploy the Cloudflare Keyless SSL daemon.</p>
-	<h3>Provision and activate the HSM</h3>
+	<div class="flex anchor relative">
+		<h3 id="provision-and-activate-the-hsm">Provision and activate the HSM</h3>
+		<a href="https://blog.cloudflare.com/#provision-and-activate-the-hsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First we log in via the CLI and create a resource group for the Managed HSM in one of the supported regions. Note that you may get warnings from various commands based on the preview status of the offering.</p>
 	<pre class="language-bash"><code class="language-bash">$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
 $ az login
@@ -94,19 +129,54 @@ $ apt-get install gokeyless</code></pre>
 	<p>Go back to the Azure portal and open the required TCP ports for the Azure VM. Go to your VM → Networking → Add inbound port rule. Make sure you allow traffic on any source port and indicate Port 2407 for the destination port.</p>
 	<p>Save the change, then go to the Cloudflare dashboard to upload your SSL certificate. You should see “Upload Keyless SSL Certificate” in the Edge Certificates section of the SSL/TLS tab. There, enter the fields with the key server label, the hostname in the YAML file, the key server port-- 2407 is the default port, and paste the SSL certificate.</p>
 	<p>Next you’re ready to test! Run <code>curl -v https://zone.com</code> and check that the TLS handshake is successfully completed.</p>
-	<h3>Microsoft Azure Dedicated HSM</h3>
+	<div class="flex anchor relative">
+		<h3 id="microsoft-azure-dedicated-hsm">Microsoft Azure Dedicated HSM</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-azure-dedicated-hsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to the Managed HSM offering that is now in public preview, Azure customers can configure Cloudflare’s edge to utilize keys stored in Microsoft’s <a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm">Dedicated HSM offering</a>, based on the SafeNet Luna Network HSM 7 Model A790 series.</p>
 	<p>Azure Dedicated HSM is validated against both FIPS 140-2 Level 3 and eIDAS Common Criteria EAL4+. After following the instructions to <a href="https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell">deploy the HSM</a>, customers should follow the Azure specific Keyless SSL instructions <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm">here</a>.</p>
-	<h3>Amazon Web Services (AWS) Cloud HSM</h3>
+	<div class="flex anchor relative">
+		<h3 id="amazon-web-services-aws-cloud-hsm">Amazon Web Services (AWS) Cloud HSM</h3>
+		<a href="https://blog.cloudflare.com/#amazon-web-services-aws-cloud-hsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://aws.amazon.com/cloudhsm">AWS CloudHSM</a> also provides FIPS 140-2 Level 3 validated HSMs to store your private keys.</p>
 	<p>The official <a href="https://registry.terraform.io/providers/hashicorp/aws/latest">AWS Terraform Provider</a> now includes support for the <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_cluster">aws_cloudhsm_v2_cluster</a>, which is the version that Cloudflare supports. After <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html">provisioning the AWS CloudHSM cluster</a>, customers should follow the AWS specific Keyless SSL instructions <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm">here</a>.</p>
-	<h3>Google Cloud HSM</h3>
+	<div class="flex anchor relative">
+		<h3 id="google-cloud-hsm">Google Cloud HSM</h3>
+		<a href="https://blog.cloudflare.com/#google-cloud-hsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://cloud.google.com/kms/docs/hsm">Google Cloud HSM</a> uses GCP’s Cloud KMS as its front end, and allows hosting of keys in FIPS 140-2 Level 3 validated HSMs. Additionally, Google offers the ability to host your own HSM in Google provided space; it is recommended that you contact your GCP account representative for additional information about this option.</p>
 	<p>Once the key ring and key have been <a href="https://cloud.google.com/kms/docs/hsm">created</a> within the HSM, customers should follow the Google Cloud specific Keyless SSL instructions <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm">here</a>. Additional details on using asymmetric keys with GCP KMS can be found <a href="https://cloud.google.com/kms/docs/encrypt-decrypt-rsa">here</a>.</p>
-	<h3>IBM Cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="ibm-cloud">IBM Cloud</h3>
+		<a href="https://blog.cloudflare.com/#ibm-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://cloud.ibm.com/docs/hardware-security-modules/about.html#about-ibm-cloud-hsm">IBM Cloud HSM</a> 7.0 provides FIPS 140-2 Level 3 validated HSM capabilities. The offering is based on the SafeNet Luna A750 series.</p>
 	<p>After <a href="https://cloud.ibm.com/docs/hardware-security-modules?topic=hardware-security-modules-provisioning-ibm-cloud-hsm#provisioning-ibm-cloud-hs">provisioning the HSM</a>, customers should refer to the IBM specific Keyless SSL instructions <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm">here</a>.</p>
-	<h3>Getting help and providing feedback</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-help-and-providing-feedback">Getting help and providing feedback</h3>
+		<a href="https://blog.cloudflare.com/#getting-help-and-providing-feedback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HSMs offer strong key protection capabilities, but can be complicated to set up and deploy. If you need assistance deploying the HSM on your cloud provider, we suggest that you start with their support channels.</p>
 	<p>However, if you need assistance configuring the HSM to work with Cloudfare’s edge, or would like to provide feedback on the process, you should reach out directly to your Solutions Engineering team who can put you in touch with Cloudflare’s Keyless SSL specialists.</p>
 </div>

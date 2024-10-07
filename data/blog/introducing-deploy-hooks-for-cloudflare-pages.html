@@ -7,18 +7,39 @@
 	</figure>
 	<p>With Cloudflare Pages, deploying your Jamstack applications is easier than ever — integrate with GitHub and a simple <b>git push</b> deploys your site within minutes. However, one of the limitations of Pages was that triggering deployments to your site only happens within the confines of committing to GitHub. We started thinking about how users who author content consistently on their site — our bloggers and writers — may not always be editing their copy directly via the code but perhaps through a different service. Headless content management systems (CMSs) are a simple solution to solve this problem, allowing users to store their backend content through an editing interface as a service for an application like Pages.</p>
 	<p>It made us wonder: what if we could trigger deployments based on updates made in other places rather than just via GitHub? Today, we are proud to announce a new way to connect your Pages application with your headless CMSs and databases: introducing Deploy Hooks for Pages.</p>
-	<h2>What’s a headless CMS?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-a-headless-cms">What’s a headless CMS?</h2>
+		<a href="https://blog.cloudflare.com/#whats-a-headless-cms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Headless CMSs such as Contentful, Ghost and Sanity.io allow optimization of content formatting for any type of interface. With tools like these, you can leverage a “decoupled” content management model where all you need to focus on is writing your content within the CMS editing interface and let its API handle the rest!</p>
 	<p>Sounds great! What’s the catch?</p>
 	<p>We started thinking about the implications for those of you who integrate with these headless tools and what your workflow might look like as it relates to Pages. You would build, for example, your blog application on Pages but update all of your content directly on your headless CMS and may make changes to your content three to four times a day. So how exactly does the data from your CMS show up on your Pages site and stay in sync? Enter Deploy Hooks!</p>
-	<h2>What are Deploy Hooks?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-are-deploy-hooks">What are Deploy Hooks?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-deploy-hooks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Deploy Hooks are URLs created on Pages that accept an HTTP POST request to trigger new deployments outside the realm of a git command. Instead of manually redeploying your site via another git push, any time you update the content within your chosen headless CMS, the Deploy Hook will automatically send a real-time update to Pages. On the Pages side, once these updates are received, a new site build will be triggered to include any new data or content detected. It’s that easy!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jXpb7v05PztkuBu93qOdE/e1c661da33f4144ce8f9e433cc84b988/Group-842-1.png" alt="" class="kg-image" width="941" height="270" loading="lazy">
 
 	</figure>
-	<h2>How can I create a Deploy Hook?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-create-a-deploy-hook">How can I create a Deploy Hook?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-create-a-deploy-hook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To set up your deploy hook, navigate to the <b>Deploy Hooks</b> section in your Pages project’s settings. In this section there are two input parameters needed to properly configure your deploy hook and obtain your URL:</p>
 	<ol>
 		<li>
@@ -33,14 +54,42 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rWVd8MfMqpRQgwZQi6HqX/7a8fb5ea932c598d5f67b2c24f4b496d/deployhooks.gif" alt="" class="kg-image" width="600" height="451" loading="lazy">
 
 	</figure>
-	<h2>How can I use a Deploy Hook with my headless CMS?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-use-a-deploy-hook-with-my-headless-cms">How can I use a Deploy Hook with my headless CMS?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-a-deploy-hook-with-my-headless-cms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can put the unique URL provided in the dashboard into just about any service that accepts a Deploy Hook URL. In a headless CMS, you can create and configure a new webhook and, depending on the tool, you can sometimes choose which events you’d like to trigger deployments. Once you’ve configured this webhook, you can paste the Deploy Hook URL provided by Pages to connect your chosen CMS with your Pages project. After that, you’re all set to update content in your headless tool.</p>
-	<h2>What else can I do with a Deploy Hook?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-else-can-i-do-with-a-deploy-hook">What else can I do with a Deploy Hook?</h2>
+		<a href="https://blog.cloudflare.com/#what-else-can-i-do-with-a-deploy-hook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After creating your Deploy Hook, Pages also provides you with the HTTP POST request snippet with your URL that looks something like this:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/ 66c5dd3a-989f-4ba7-a6e2-6d2695524d7”</code></pre>
 	<p>Every time you execute the snippet, you will trigger a new build to your Pages site. In addition to utilizing this snippet for a forced deployment within your command line, you can also customize your CI/CD pipeline and trigger deployments only under certain conditions. For example, you only want to deploy if there were changes within specific directories and only after an extensive test suite passes. Additionally, this snippet is useful for scheduling a CRON trigger to initiate builds on a specific timeline or cadence. Read more about how to use Pages deploy hooks in our <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks">docs</a>.</p>
-	<h2>Try it for yourself!</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-it-for-yourself">Try it for yourself!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-for-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sound like fun? Try it for yourself using our tutorial, <a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity">How to Build a Blog Using Nuxt.js and Sanity.io on Cloudflare Pages</a> or create your own. We can’t wait to see what you build on Pages with Deploy Hooks!</p>
-	<h2>P.S. — we’re hiring!</h2>
+	<div class="flex anchor relative">
+		<h2 id="p-s-were-hiring">P.S. — we’re hiring!</h2>
+		<a href="https://blog.cloudflare.com/#p-s-were-hiring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Want to help us shape the future of development on the web? <a href="https://www.cloudflare.com/careers">Join our team</a>!</p>
 </div>

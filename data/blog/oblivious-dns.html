@@ -11,7 +11,14 @@
 	<p>To safeguard DNS from onlookers and third parties, the IETF standardized DNS encryption with DNS over HTTPS (DoH) and DNS over TLS (DoT). Both protocols prevent queries from being intercepted, redirected, or modified between the client and resolver. Client support for DoT and DoH is growing, having been implemented in recent versions of Firefox, iOS, and more. Even so, until there is wider deployment among Internet service providers, Cloudflare is one of only a few providers to offer a public DoH/DoT service. This has raised two main concerns. One concern is that the centralization of DNS introduces single points of failure (although, with data centers in more than 100 countries, Cloudflare is designed to always be reachable). The other concern is that the resolver can still link all queries to client IP addresses.</p>
 	<p>Cloudflare is committed to end-user privacy. Users of our public DNS resolver service are protected by a <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">strong, audited privacy policy</a>. However, for some, trusting Cloudflare with sensitive query information is a barrier to adoption, even with such a strong privacy policy. Instead of relying on privacy policies and audits, what if we could give users an option to remove that bar with technical guarantees?</p>
 	<p>Today, Cloudflare and partners are launching support for a protocol that does exactly that: Oblivious DNS over HTTPS, or ODoH for short.</p>
-	<h3>ODoH Partners:</h3>
+	<div class="flex anchor relative">
+		<h3 id="odoh-partners">ODoH Partners:</h3>
+		<a href="https://blog.cloudflare.com/#odoh-partners" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're excited to launch ODoH with several leading launch partners who are equally committed to privacy.</p>
 	<p>A key component of ODoH is a proxy that is disjoint from the target resolver. Today, we’re launching ODoH with several leading proxy partners, including: PCCW, SURF, and Equinix.</p>
 	<figure class="kg-card kg-image-card ">
@@ -35,7 +42,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TQuTnYRxLfYdwe6vge5Yp/88a8baf7b92c2ac42519b8506430db60/image9.png" alt="" class="kg-image" width="280" height="178" loading="lazy">
 
 	</figure>
-	<h3>How does Oblivious DNS over HTTPS (ODoH) work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-oblivious-dns-over-https-odoh-work">How does Oblivious DNS over HTTPS (ODoH) work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-oblivious-dns-over-https-odoh-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ODoH is an emerging protocol being developed at the <a href="https://tools.ietf.org/html/draft-pauly-dprive-oblivious-doh-03">IETF</a>. ODoH works by adding a layer of public key encryption, as well as a network proxy between clients and DoH servers such as 1.1.1.1. The combination of these two added elements guarantees that only the user has access to both the DNS messages and their own IP address at the same time.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -58,12 +72,26 @@
 	<p>These three guarantees improve client privacy while maintaining the security and integrity of DNS queries. However, each of these guarantees relies on one fundamental property — that <b>the proxy and the target servers do not collude</b>. So long as there is no collusion, an attacker succeeds only if both the proxy and target are compromised.</p>
 	<p>One aspect of this system worth highlighting is that the target is separate from the upstream recursive resolver that performs DNS resolution. In practice, for performance, we expect the target to be the same. In fact, 1.1.1.1 is now both a recursive resolver and a target! There is no reason that a target needs to exist separately from any resolver. If they are separated then the target is free to choose resolvers, and just act as a go-between. The only real requirement, remember, is that the proxy and target never collude.</p>
 	<p>Also, importantly, clients are in complete control of proxy and target selection. Without any need for <a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver">TRR</a>-like programs, clients can have privacy for their queries, in addition to security. Since the target only knows about the proxy, the target and any upstream resolver are oblivious to the existence of any client IP addresses. Importantly, this puts clients in greater control over their queries and the ways they might be used. For example, clients could select and alter their proxies and targets any time, for any reason!</p>
-	<h3>ODoH Message Flow</h3>
+	<div class="flex anchor relative">
+		<h3 id="odoh-message-flow">ODoH Message Flow</h3>
+		<a href="https://blog.cloudflare.com/#odoh-message-flow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In ODoH, the ‘O’ stands for oblivious, and this property comes from the level of encryption of the DNS messages themselves. This added encryption is `end-to-end` between client and target, and independent from the connection-level encryption provided by TLS/HTTPS. One might ask why this additional encryption is required at all in the presence of a proxy. This is because two separate TLS connections are required to support proxy functionality. Specifically, the proxy terminates a TLS connection from the client, and initiates another TLS connection to the target. Between those two connections, the DNS message contexts would otherwise appear in plaintext! For this reason, ODoH additionally encrypts messages between client and target so the proxy has no access to the message contents.</p>
 	<p>The whole process begins with clients that encrypt their query for the target using <a href="https://tools.ietf.org/html/draft-irtf-cfrg-hpke-06">HPKE</a>. Clients obtain the target’s public key via DNS, where it is bundled into a <a href="https://tools.ietf.org/html/draft-ietf-dnsop-svcb-https-02">HTTPS resource record</a> and protected by DNSSEC. When the TTL for this key expires, clients request a new copy of the key as needed (just as they would for an A/AAAA record when that record’s TTL expires). The usage of a target’s DNSSEC-validated public key guarantees that only the intended target can decrypt the query and encrypt a response (answer).</p>
 	<p>Clients transmit these encrypted queries to a proxy over an HTTPS connection. Upon receipt, the proxy forwards the query to the designated target. The target then decrypts the query, produces a response by sending the query to a recursive resolver such as 1.1.1.1, and then encrypts the response to the client. The encrypted query from the client contains encapsulated keying material from which targets derive the response encryption symmetric key.</p>
 	<p>This response is then sent back to the proxy, and then subsequently forwarded to the client. All communication is authenticated and confidential since these DNS messages are end-to-end encrypted, despite being transmitted over two separate HTTPS connections (client-proxy and proxy-target). The message that otherwise appears to the proxy as plaintext is actually an encrypted garble.</p>
-	<h3>What about Performance? Do I have to trade performance to get privacy?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-about-performance-do-i-have-to-trade-performance-to-get-privacy">What about Performance? Do I have to trade performance to get privacy?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-performance-do-i-have-to-trade-performance-to-get-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve been doing lots of measurements to find out, and will be doing more as ODoH deploys more widely. Our initial set of measurement configurations spanned cities in the USA, Canada, and Brazil. Importantly, our measurements include not just 1.1.1.1, but also 8.8.8.8 and 9.9.9.9. The full set of measurements, so far, is documented for <a href="https://arxiv.org/abs/2011.10121">open access</a>.</p>
 	<p>In those measurements, it was important to isolate the cost of proxying and additional encryption from the cost of TCP and TLS connection setup. This is because the TLS and TCP costs are incurred by DoH, anyway. So, in our setup, we ‘primed’ measurements by establishing connections once and reusing that connection for all measurements. We did this for both DoH and for ODoH, since the same strategy could be used in either case.</p>
 	<p>The first thing that we can say with confidence is that the additional encryption is marginal. We know this because we randomly selected 10,000 domains from the <a href="https://arxiv.org/abs/1806.01156">Tranco million dataset</a> and measured both encryption of the A record with a different public key, as well as its decryption. The additional cost between a proxied DoH query/response and its ODoH counterpart is consistently less than 1ms at the 99th percentile.</p>
@@ -83,7 +111,14 @@
 
 	</figure>
 	<p>Open questions remain, of course. This first set of measurements were executed largely in North America. Does performance change at a global level? How does this affect client performance, in practice? We’re working on finding out, and this release will help us to do that.</p>
-	<h3>Interesting! Can I experiment with ODoH? Is there an open ODoH service?</h3>
+	<div class="flex anchor relative">
+		<h3 id="interesting-can-i-experiment-with-odoh-is-there-an-open-odoh-service">Interesting! Can I experiment with ODoH? Is there an open ODoH service?</h3>
+		<a href="https://blog.cloudflare.com/#interesting-can-i-experiment-with-odoh-is-there-an-open-odoh-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yes, and yes! We have open sourced our interoperable ODoH implementations in Rust, <a href="https://github.com/cloudflare/odoh-rs">odoh-rs</a> and Go, <a href="https://github.com/cloudflare/odoh-go">odoh-go</a>, as well as integrated the target into the Cloudflare DNS Resolver. That’s right, 1.1.1.1 is ready to receive queries via ODoH.</p>
 	<p>We have also open sourced test clients in Rust, <a href="https://github.com/cloudflare/odoh-client-rs">odoh-client-rs</a>, and Go, <a href="https://github.com/cloudflare/odoh-client-go">odoh-client-go</a>, to demo ODoH queries. You can also check out the HPKE configuration used by ODoH for message encryption to 1.1.1.1 by querying the service directly:</p>
 	<pre class="language-bash"><code class="language-bash">$ dig -t type65 +dnssec @ns1.cloudflare.com odoh.cloudflare-dns.com 
@@ -116,6 +151,13 @@ odoh.cloudflare-dns.com. 300	IN	RRSIG	TYPE65 13 3 300 20201119163629 20201117143
 	</blockquote>
 	<p>We hope that more operators join us along the way and provide support for the protocol, by running either proxies or targets, and we hope client support will increase as the available infrastructure increases, too.</p>
 	<p>The ODoH protocol is a practical approach for improving privacy of users, and aims to improve the overall adoption of encrypted DNS protocols without compromising performance and user experience on the Internet.</p>
-	<h3>Acknowledgements</h3>
+	<div class="flex anchor relative">
+		<h3 id="acknowledgements">Acknowledgements</h3>
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/author/marek">Marek Vavruša</a> and <a href="https://blog.cloudflare.com/author/anbang">Anbang Wen</a> were instrumental in getting the 1.1.1.1 resolver to support ODoH. Chris Wood and <a href="https://blog.cloudflare.com/author/peter-wu">Peter Wu</a> helped get the ODoH libraries ready and tested. The <a href="https://tools.ietf.org/html/draft-pauly-dprive-oblivious-doh-03">IETF draft for ODoH</a> is authored by Eric Kinnear, Patrick McManus, Tommy Pauly and Christopher Wood. ODoH itself took inspiration from "<a href="https://odns.cs.princeton.edu/pdf/pets.pdf">Oblivious DNS: Practical Privacy for DNS Queries</a>", the work of Schmitt et al. published in PoPETs 2019.</p>
 </div>

@@ -6,20 +6,55 @@
 
 	</figure>
 	<p>We’ve been working with <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a> and registries in the IETF on making DNSSEC easier for domain owners, and over the next two weeks we’ll be starting out by enabling DNSSEC automatically for .dk domains.</p>
-	<h3>DNSSEC: A Primer</h3>
+	<div class="flex anchor relative">
+		<h3 id="dnssec-a-primer">DNSSEC: A Primer</h3>
+		<a href="https://blog.cloudflare.com/#dnssec-a-primer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we get into the details of how we've improved the DNSSEC experience, we should explain why DNSSEC is important and the function it plays in keeping the web safe.</p>
 	<p>DNSSEC’s role is to verify the integrity of DNS answers. When DNS was written in the early 1980’s, it was only a few researchers and academics on the internet. They all knew and trusted each other, and couldn’t imagine a world in which someone malicious would try to operate online. As a result, DNS relies on trust to operate. When a client asks for the address of a hostname like <a href="https://www.cloudflare.com">www.cloudflare.com</a>, without DNSSEC it will trust basically any server that returns the response, even if it wasn’t the same server it originally asked. With DNSSEC, every DNS answer is signed so clients can verify answers haven’t been manipulated over transit.</p>
-	<h3>The Trouble With DNSSEC</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-trouble-with-dnssec">The Trouble With DNSSEC</h3>
+		<a href="https://blog.cloudflare.com/#the-trouble-with-dnssec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If DNSSEC is so important, why do so few domains support it? First, for a domain to have the opportunity to enable DNSSEC, not only do its DNS provider, its registrar and its registry all have to support DNSSEC, all three of those parties have to also support the same encryption algorithms.</p>
 	<p>For domains that do have the ability to enable DNSSEC, DNSSEC is just not easy enough -- domain owners need to first enable DNSSEC with their DNS provider, and then copy and paste some values (called a DS record) from their DNS provider’s dashboard to their registrar’s dashboard, making sure not to miss any characters when copying and pasting, because that would cut off traffic to their whole domain. What we need here is automation.</p>
-	<h3>Changing an outdated model</h3>
+	<div class="flex anchor relative">
+		<h3 id="changing-an-outdated-model">Changing an outdated model</h3>
+		<a href="https://blog.cloudflare.com/#changing-an-outdated-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's been Cloudflare's long-standing statement that as the DNS operator, we would like to update the DS automatically for a user, but <a href="https://blog.cloudflare.com/updating-the-dns-registration-model-to-keep-pace-with-todays-internet">DNS operates on a legacy model</a> where the registrar is able to talk directly to the registry, but the DNS operator (Cloudflare) is left completely out of that model.</p>
 	<p>Here at Cloudflare, we’re determined it’s time to change that outdated system. We have <a href="https://tools.ietf.org/html/draft-ietf-regext-dnsoperator-to-rrr-protocol">published an Internet Draft</a> to propose a new model for how DNS operators, registries and registrars could operate and communicate to make specific user-authorized changes to domains. It’s important to point out that the IETF works on the principle of rough consensus and running code. Cloudflare, in conjunction with the .dk registry, has produced running code, and we’re very close to getting consensus. That Internet Draft is now making its way through the Standards Track within the IETF and on it’s way to becoming an fully-fledged RFC.</p>
-	<h3>How .dk and Cloudflare are working together</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-dk-and-cloudflare-are-working-together">How .dk and Cloudflare are working together</h3>
+		<a href="https://blog.cloudflare.com/#how-dk-and-cloudflare-are-working-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The ccTLD operator for Denmark (ie. the .dk domains) has also realized that the model is outdated. They provide their users (and the operators of nameservers associated with .dk domains) a programmatic way of installing and updating DS records. This is exactly what operators like Cloudflare need.</p>
 	<p>Cloudflare has been testing their API and is now ready to kick off an automated, clean, safe and reliable way of updating DS records for our .dk customers. Over the next two weeks we will enable DNSSEC for .dk domains that have started to in the past, but haven’t finished the process.</p>
 	<p>Of course, for Cloudflare, there’s no surprise that Denmark is the home to forward thinkers like this!</p>
-	<h3>Onwards!</h3>
+	<div class="flex anchor relative">
+		<h3 id="onwards">Onwards!</h3>
+		<a href="https://blog.cloudflare.com/#onwards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you have a .dk domain on Cloudflare, you really don’t need to do anything except flip the switch enabling DNSSEC within the Cloudflare login console before we do the migration on Tuesday, April 18, 2017.</p>
 	<p>We are excited to work with the .dk registry on this first step to making DNSSEC automatic, and are looking for other TLD’s looking to make DNSSEC easy to use.</p>
 </div>

@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare we strive to combine features that are simple, secure, and backed by solid technology. The <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a> is a great example of this. You no longer need to go to a third-party certificate authority to protect the connection between CloudFlare and your origin server. You can now get a certificate to encrypt the connection between CloudFlare and the origin from CloudFlare directly with one click.</p>
 	<p>In certificate-based security, the most important thing is protecting the private key. We designed the one-click certificate dashboard to maximize private key security. Your private key is created client-side in your browser using the W3C’s <a href="https://www.w3.org/2012/webcrypto">Web Crypto API</a> and only the public key is sent to CloudFlare’s servers. This security feature turned out to be a big win for usability as well as an interesting technical challenge.</p>
-	<h3>Certificate authorities don’t need your private key</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-authorities-dont-need-your-private-key">Certificate authorities don’t need your private key</h3>
+		<a href="https://blog.cloudflare.com/#certificate-authorities-dont-need-your-private-key" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most certificate authorities (CAs) specialize in one type of transaction: they take a certificate signing request (CSR) (and sometimes a fee) and in return they provide a signed certificate. A CSR is a way to tell a certificate authority what your public key is and to prove you have control of the corresponding private key. The certificate authority doesn’t need to see your private key to validate the CSR. This is a good thing. Sharing your private key with anybody, including your CA, makes it more vulnerable to theft.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -11,7 +18,14 @@
 	</figure>
 	<p>Like most CAs, the CloudFlare Origin CA requires you to send a CSR signed by your private key to get a certificate. If you <a href="https://api.cloudflare.com/#origin-ca-create-certificate">take a look at the API</a> for the Origin CA you’ll see that CSRs are exchanged for certificates and private keys are not involved. This API is the only way to get a certificate from CloudFlare’s Origin CA: both the CloudFlare dashboard and the Origin CA CLI use it under the hood.</p>
 	<p>If you want full control over your private key, you can create it yourself using <a href="https://www.digicert.com/easy-csr/openssl.htm">OpenSSL</a> or <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">CFSSL</a> and select “I have my own private key and CSR” in the dashboard. We recommend this for experienced sysadmins. However, we wanted to provide a simpler and more convenient way to get a certificate, preferably one that didn’t require a series of command-line incantations. This posed an interesting problem: how do we let customers create CSRs and private keys without asking them to install or run cryptographic software?</p>
-	<h3>Web Crypto and PKI.js</h3>
+	<div class="flex anchor relative">
+		<h3 id="web-crypto-and-pki-js">Web Crypto and PKI.js</h3>
+		<a href="https://blog.cloudflare.com/#web-crypto-and-pki-js" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The solution to our problem was to create a client-side web application for generating keys and CSRs. By generating the private key and CSR in the customer’s browser, the CSR could be sent to the API while keeping the private key safely on the customer’s machine. Doing anything complex in the browser usually means using JavaScript, and there have been <a href="https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful">convincing</a> <a href="https://www.youtube.com/watch?v=zKuFu19LgZA">arguments</a> that doing cryptography in JavaScript is a bad idea. These arguments were made a half-decade ago and the web changes quickly so we surveyed the landscape to see if these arguments were still convincing in 2016. Things have changed.</p>
 	<p>In the last few years, a new addition to Web standards was introduced that changes everything: support for native cryptography in the browser. The <a href="https://www.w3.org/2012/webcrypto">W3C Web Crypto group</a> has made a lot of progress towards standardizing a set of APIs to do standard cryptographic operations including encryption, digital signatures and key generation. As of today, Web Crypto features are supported by <a href="http://caniuse.com/#feat=cryptography">almost all</a> modern browsers. With native web crypto, we no longer need to use problematic JavaScript cryptography to create private keys and sign CSRs.</p>
 	<figure class="kg-card kg-image-card ">
@@ -28,7 +42,14 @@
 
 	</figure>
 	<p>Of course, not everything smells of roses. Because Web Crypto is an evolving standard, we have to deal with uneven support for the APIs we need. While working on the project, we realized that Firefox was unable to export ECDSA keys in the formats we needed—if we left it as is, a huge portion of our user base would be unable to use modern cryptography. We want our features to be used by as many people as possible, so we built a shim over the WebCrypto API which supports the formatting we need. We intend to continue working on this shim, adding support for Safari, Internet Explorer and other browsers.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Origin CA posed some interesting challenges to the team and hopefully this blog post illustrated one of them. A big shout-out goes to CloudFlare engineers Andrew Kennedy and Brendan McMillion for making this part of the project happen. Here’s to encrypting the back-end of the Internet!</p>
 	<p>If these sort of development projects are interesting to you, <a href="https://www.cloudflare.com/join-our-team">CloudFlare is hiring</a>.</p>
 </div>

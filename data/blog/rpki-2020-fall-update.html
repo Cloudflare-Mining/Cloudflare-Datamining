@@ -14,7 +14,14 @@
 			<p>Network operators download the list of ROAs, perform the cryptographic checks and then apply filters on the prefixes they receive: this is called BGP Origin Validation.</p>
 		</li>
 	</ul>
-	<h3>The “Is BGP Safe Yet” website</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-is-bgp-safe-yet-website">The “Is BGP Safe Yet” website</h3>
+		<a href="https://blog.cloudflare.com/#the-is-bgp-safe-yet-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The launch of the website <a href="https://isbgpsafeyet.com">isbgpsafeyet.com</a> to test if your ISP correctly performs BGP Origin Validation was a success. Since launch, it has been visited more than five million times from over 223 countries and 13,000 unique networks (20% of the entire Internet), generating half a million BGP Origin Validation tests.</p>
 	<p>Many providers subsequently indicated on social media (for example, <a href="https://twitter.com/Aussie_BB/status/1252046032214450176">here</a> or <a href="https://twitter.com/swisscom_csirt/status/1300666695959244800">here</a>) that they had an RPKI deployment in the works. This increase in Origin Validation by networks is increasing the security of the Internet globally.</p>
 	<p>The site’s test for Origin Validation consists of queries toward two addresses, one of which is behind an RPKI invalid prefix and the other behind an RPKI valid prefix. If the query towards the invalid succeeds, the test fails as the ISP does not implement Origin Validation. We counted the number of queries that failed to reach invalid.cloudflare.com. This also included a few thousand <a href="https://atlas.ripe.net/measurements/?page=1&amp;search=target%3Ainvalid.rpki.cloudflare.com#tab-http">RIPE Atlas tests</a> that were started by Cloudflare and various contributors, providing coverage for smaller networks.</p>
@@ -47,7 +54,14 @@
 
 	</figure>
 	<p>What does it mean exactly? <i>If you were hijacking a prefix, the users behind the yellow space would likely not be affected.</i> This also applies if you miss-sign your prefixes: you would not be able to reach the services or users behind the yellow space. Once RPKI is enabled everywhere, there will only be yellow squares.</p>
-	<h3>Progression of signed prefixes</h3>
+	<div class="flex anchor relative">
+		<h3 id="progression-of-signed-prefixes">Progression of signed prefixes</h3>
+		<a href="https://blog.cloudflare.com/#progression-of-signed-prefixes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Owners of IP addresses indicate the networks allowed to announce them. They do this by signing prefixes: they create Route Origin Objects (ROA). As of today, there are more than 200,000 ROAs. The distribution shows that the RIPE region is still leading in ROA count, then followed by the APNIC region.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -62,7 +76,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/mzXuBiiXzCAl7qIUwsMA4/4ed253c65acad8d4dadae813a23b0ba9/count-growth-3.png" alt="Graph showing the growth of the ROA count over the course of 2020" class="kg-image" width="679" height="408" loading="lazy">
 
 	</figure>
-	<h3>Free services and software</h3>
+	<div class="flex anchor relative">
+		<h3 id="free-services-and-software">Free services and software</h3>
+		<a href="https://blog.cloudflare.com/#free-services-and-software" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">2018</a> and <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">2019</a>, Cloudflare was impacted by BGP route hijacks. Both could have been avoided with RPKI. Not long after the first incident, we started signing prefixes and developing RPKI software. It was necessary to make BGP safer and we wanted to do more than talk about it. But we also needed enough networks to be deploying RPKI as well. By making deployment easier for everyone, we hoped to increase adoption.</p>
 	<p>The following is a reminder of what we built over the years around RPKI and how it grew.</p>
 	<p><a href="https://github.com/cloudflare/cfrpki">OctoRPKI</a> is Cloudflare’s open source RPKI Validation software. It periodically generates a JSON document of validated prefixes that we pass onto our routers using <a href="https://github.com/cloudflare/gortr">GoRTR</a>. It generates most of the data behind the graphs here.</p>
@@ -90,7 +111,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uoRqILkpkM58M0iKbqZm6/e6751dec012114414a24415ebac52e3d/rpki_dashboard_candlestick.png" alt="Stock chart like visualization of daily new ROAs" class="kg-image" width="1172" height="604" loading="lazy">
 
 	</figure>
-	<h3>The future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future">The future</h3>
+		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We believe RPKI is going to continue growing, and we would like to thank the hundreds of network engineers around the world who are making the Internet routing more secure by deploying RPKI.</p>
 	<p>25% of routes are signed and 20% of the Internet is doing origin validation and those numbers grow everyday. We believe BGP will be safer <a href="https://youtu.be/3BAwBClazWc?t=1333">before reaching 100%</a> of deployment; for instance, once the remaining transit providers enable Origin Validation, it is unlikely a BGP hijack will make it to the front page of world news outlets.</p>
 	<p>While difficult to quantify, we believe that critical mass of protected resources will be reached in late 2021.</p>

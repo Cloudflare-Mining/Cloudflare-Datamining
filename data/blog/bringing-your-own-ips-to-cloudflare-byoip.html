@@ -21,12 +21,26 @@
 	<p>Spectrum is Cloudflare’s solution to protect and accelerate applications that run any UDP or TCP protocol. The Spectrum <a href="https://developers.cloudflare.com/spectrum/getting-started/byoip">API</a> supports BYOIP today. Spectrum customers who use BYOIP can specify, through Spectrum’s API, which IPs they would like associated with a Spectrum application.</p>
 	<h4>Magic Transit + BYOIP:</h4>
 	<p>Magic Transit is a Layer 3 security service which processes all your network traffic by announcing your IP addresses and attracting that traffic to the Cloudflare edge for processing. &nbsp;Magic Transit supports sophisticated packet filtering and firewall configurations. BYOIP is a requirement for using the Magic Transit service. As Magic Transit is an IP level service, Cloudflare must be able to announce your IPs in order to provide this service</p>
-	<h3>Bringing Your IPs to Cloudflare: What is Required?</h3>
+	<div class="flex anchor relative">
+		<h3 id="bringing-your-ips-to-cloudflare-what-is-required">Bringing Your IPs to Cloudflare: What is Required?</h3>
+		<a href="https://blog.cloudflare.com/#bringing-your-ips-to-cloudflare-what-is-required" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before Cloudflare can announce your prefix we require some documentation to get started. The first is something called a ‘Letter of Authorization’ (LOA), which details information about your prefix and how you want Cloudflare to announce it. We then share this document with our Tier 1 transit providers in advance of provisioning your prefix. This step is done to ensure that Tier 1s are aware we have authorization to announce your prefixes.</p>
 	<p>Secondly, we require that your Internet Routing Registry (IRR) records are up to date and reflect the data in the LOA. This typically means ensuring the entry in your regional registry is updated (i.e. ARIN, RIPE, APNIC).</p>
 	<p>Once the administrivia is out of the way, work with your account team to learn when your prefixes will be ready to announce.</p>
 	<p>We also encourage customers to use <a href="https://blog.cloudflare.com/tag/rpki">RPKI</a> and can support this for customer prefixes. We have blogged and built extensive tooling to make adoption of this protocol easier. If you’re interested in BYOIP with RPKI support just let your account team know!</p>
-	<h3>Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuration">Configuration</h3>
+		<a href="https://blog.cloudflare.com/#configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each customer prefix can be announced via the ‘dynamic advertisement’ toggle in either the UI or <a href="https://api.cloudflare.com/#ip-address-management-dynamic-advertisement-properties">API</a>, which will cause the Cloudflare edge to either announce or withdraw a prefix on your behalf. This can be done as soon as your account team lets you know your prefixes are ready to go.</p>
 	<p>Once the IPs are ready to be announced, you may want to set up ‘delegations’ for your prefixes. Delegations manage how the prefix can be used across multiple Cloudflare accounts and have slightly different implications depending on which service your prefix is bound to. A prefix is owned by a single account, but a delegation can extend some of the prefix functionality to other accounts. This is also captured on our developer docs. Today, delegations can affect Layer 7 and Spectrum BYOIP prefixes.</p>
 	<figure class="kg-card kg-image-card ">

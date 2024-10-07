@@ -71,7 +71,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WHnz7X5VULjd2rQPvSCYM/63840406756d0aab8a744128ef6897cf/pasted-image-0-2.png" alt="" class="kg-image" width="1280" height="800" loading="lazy">
 
 	</figure>
-	<h3>New Integrations</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-integrations">New Integrations</h3>
+		<a href="https://blog.cloudflare.com/#new-integrations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The client implementation uses the <a href="https://developer.chrome.com/extensions/webRequest">WebRequest API</a> to look for certain types of HTTP requests. When these requests are spotted, they are rewritten to include some cryptographic data required for the Privacy Pass protocol. This allows Privacy Pass providers receiving this data to authorize access for the user.</p>
 	<p>For example, a user may receive Privacy Pass tokens for completing some server security checks. These tokens are stored by the browser extension, and any future request that needs similar security clearance can be modified to add a stored token as an extra HTTP header. The server can then check the client token and verify that the client has the correct authorization to proceed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -90,7 +97,14 @@
 	<p></p>
 	<p>— <b>Eli-Shaoul Khedouri</b>, founder of hCaptcha</p>
 	<p>This hCaptcha integration with the Privacy Pass browser extension acts as a proof-of-concept in establishing support for new services. Any new providers that would like to integrate with the Privacy Pass browser extension can do so simply by making a PR to the <a href="https://github.com/privacypass/challenge-bypass-extension">open-source repository</a>.</p>
-	<h2>Improved cryptographic functionality</h2>
+	<div class="flex anchor relative">
+		<h2 id="improved-cryptographic-functionality">Improved cryptographic functionality</h2>
+		<a href="https://blog.cloudflare.com/#improved-cryptographic-functionality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After the release of v1.0 of the extension, there were features that were still unimplemented. These included proper zero-knowledge proof validation for checking that the server was always using the same committed key. In v2.0 this functionality has been completed, verifiably preventing a malicious server from attempting to deanonymize users by using a different key for each request.</p>
 	<p>The cryptographic operations required for Privacy Pass are performed using <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curve cryptography</a> (ECC). The extension currently uses the <a href="https://www.secg.org/SEC2-Ver-1.0.pdf">NIST P-256</a> curve, for which we have included some optimisations. Firstly, this makes it possible to store elliptic curve points in compressed and uncompressed data formats. This means that browser storage can be reduced by 50%, and that server responses can be made smaller too.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -100,7 +114,14 @@
 	</figure>
 	<p>Secondly, support has been added for hashing to the P-256 curve using the “Simplified Shallue-van de Woestijne-Ulas” (SSWU) method specified in an ongoing draft (<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03">https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03</a>) for standardizing encodings for hashing to elliptic curves. The implementation is compliant with the specification of the “P256-SHA256-SSWU-” ciphersuite in this draft.</p>
 	<p>These changes have a dual advantage, firstly ensuring that the P-256 hash-to-curve specification is compliant with the draft specification. Secondly this ciphersuite removes the necessity for using probabilistic methods, such as <a href="https://tools.ietf.org/html/draft-irtf-cfrg-vrf-05#section-5.4.1.1">hash-and-increment</a>. The hash-and-increment method has a non-negligible chance of failure, and the running time is highly dependent on the hidden client input. While it is not clear how to abuse timing attack vectors currently, using the SSWU method should reduce the potential for attacking the implementation, and learning the client input.</p>
-	<h2>Key rotation</h2>
+	<div class="flex anchor relative">
+		<h2 id="key-rotation">Key rotation</h2>
+		<a href="https://blog.cloudflare.com/#key-rotation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we mentioned above, verifying that the server is always using the same key is an important part of ensuring the client’s privacy. This ensures that the server cannot segregate the user base and reduce client privacy by using different secret keys for each client that it interacts with. The server guarantees that it’s always using the same key by publishing a commitment to its public key somewhere that the client can access.</p>
 	<p>Every time the server issues Privacy Pass tokens to the client, it also produces a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">zero-knowledge proof</a> that it has produced these tokens using the correct key.</p>
 	<figure class="kg-card kg-image-card ">
@@ -117,7 +138,14 @@
 	<h1>Implementing server-side support in Workers</h1>
 	<p>So far we have focused on client-side updates. As part of supporting v2.0 of the extension, we are rolling out some major changes to the server-side support that Cloudflare uses. For version 1.0, we used a <a href="https://github.com/privacypass/challenge-bypass-server">Go implementation</a> of the server. In v2.0 we are introducing a new server implementation that runs in the <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> platform. This server implementation is only compatible with v2.0 releases of Privacy Pass, so you may need to update your extension if you have auto-updates turned off in your browser.</p>
 	<p>Our server will run at <a href="https://privacypass.cloudflare.com">https://privacypass.cloudflare.com</a>, and all Privacy Pass requests sent to the Cloudflare edge are handled by Worker scripts that run on this domain. Our implementation has been rewritten using Javascript, with cryptographic operations running in the <a href="https://v8.dev">V8 engine</a> that powers Cloudflare Workers. This means that we are able to run highly efficient and constant-time cryptographic operations. On top of this, we benefit from the enhanced performance provided by running our code in the Workers Platform, as close to the user as possible.</p>
-	<h2>WebCrypto support</h2>
+	<div class="flex anchor relative">
+		<h2 id="webcrypto-support">WebCrypto support</h2>
+		<a href="https://blog.cloudflare.com/#webcrypto-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Firstly, you may be asking, how do we manage to implement cryptographic operations in Cloudflare Workers? Currently, support for performing cryptographic operations is provided in the Workers platform via the <a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto">WebCrypto API</a>. This API allows users to compute functionality such as cryptographic hashing, alongside more complicated operations like ECDSA signatures.</p>
 	<p>In the Privacy Pass protocol, as we’ll discuss a bit later, the main cryptographic operations are performed by a protocol known as a verifiable oblivious pseudorandom function (VOPRF). Such a protocol allows a client to learn function outputs computed by a server, without revealing to the server what their actual input was. The verifiable aspect means that the server must also prove (in a publicly verifiable way) that the evaluation they pass to the user is correct. Such a function is pseudorandom because the server output is indistinguishable from a random sequence of bytes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -128,9 +156,23 @@
 	<p>The VOPRF functionality requires a server to perform low-level ECC operations that are not currently exposed in the WebCrypto API. We balanced out the possible ways of getting around this requirement. First we trialled trying to use the WebCrypto API in a non-standard manner, using EC Diffie-Hellman key exchange as a method for performing the scalar multiplication that we needed. We also tried to implement all operations using pure JavaScript. Unfortunately both methods were unsatisfactory in the sense that they would either mean integrating with large external cryptographic libraries, or they would be far too slow to be used in a performant Internet setting.</p>
 	<p>In the end, we settled on a solution that adds functions necessary for Privacy Pass to the internal WebCrypto interface in the Cloudflare V8 Javascript engine. This algorithm mimics the sign/verify interface provided by signature algorithms like ECDSA. In short, we use the <code>sign()</code> function to issue Privacy Pass tokens to the client. While <code>verify()</code> can be used by the server to verify data that is redeemed by the client. These functions are implemented directly in the V8 layer and so they are much more performant and secure (running in constant-time, for example) than pure JS alternatives.</p>
 	<p>The Privacy Pass WebCrypto interface is not currently available for public usage. If it turns out there is enough interest in using this additional algorithm in the Workers platform, then we will consider making it public.</p>
-	<h3>Applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="applications">Applications</h3>
+		<a href="https://blog.cloudflare.com/#applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In recent times, VOPRFs have been shown to be a highly useful primitive in establishing many cryptographic tools. Aside from Privacy Pass, they are also essential for constructing password-authenticated key exchange protocols such as <a href="https://datatracker.ietf.org/doc/draft-krawczyk-cfrg-opaque">OPAQUE</a>. They have also been used in designs of <a href="https://eprint.iacr.org/2016/799">private set intersection</a>, <a href="https://eprint.iacr.org/2014/650">password-protected secret-sharing</a> protocols, and <a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae">privacy-preserving access-control</a> for private data storage.</p>
-	<h2>Public redemption API</h2>
+	<div class="flex anchor relative">
+		<h2 id="public-redemption-api">Public redemption API</h2>
+		<a href="https://blog.cloudflare.com/#public-redemption-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Writing the server in Cloudflare Workers means that we will be providing server-side support for Privacy Pass on a <a href="https://privacypass.cloudflare.com">public domain</a>! While we only issue tokens to clients after we are sure that we can trust them, anyone will be able to redeem the tokens using our public redemption API at <a href="https://privacypass.cloudflare.com/api/redeem">https://privacypass.cloudflare.com/api/redeem</a>. As we roll-out the server-side component worldwide, you will be able to interact with this API and verify Cloudflare Privacy Pass tokens <a href="https://privacypass.github.io/api-redeem">independently of the browser extension</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -144,10 +186,24 @@
 	<h1>Standardization &amp; new applications</h1>
 	<p>In tandem with the recent engineering work that we have been doing on supporting Privacy Pass, we have been collaborating with the wider community in an attempt to standardize both the <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf">underlying VOPRF functionality</a>, and the <a href="https://github.com/alxdavids/draft-privacy-pass">protocol itself</a>. While the process of standardization for oblivious pseudorandom functions (OPRFs) has been running for over a year, the recent efforts to standardize the Privacy Pass protocol have been driven by very recent applications that have come about in the last few months.</p>
 	<p>Standardizing protocols and functionality is an important way of providing interoperable, secure, and performant interfaces for running protocols on the Internet. This makes it easier for developers to write their own implementations of this complex functionality. The process also provides helpful peer reviews from experts in the community, which can lead to better surfacing of potential security risks that should be mitigated in any implementation. Other benefits include coming to a consensus on the most reliable, scalable and performant protocol designs for all possible applications.</p>
-	<h2>Oblivious pseudorandom functions</h2>
+	<div class="flex anchor relative">
+		<h2 id="oblivious-pseudorandom-functions">Oblivious pseudorandom functions</h2>
+		<a href="https://blog.cloudflare.com/#oblivious-pseudorandom-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Oblivious pseudorandom functions (OPRFs) are a generalization of VOPRFs that do not require the server to prove that they have evaluated the functionality properly. Since July 2019, we have been collaborating <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf">on a draft</a> with the <a href="https://irtf.org/cfrg">Crypto Forum Research Group</a> (CFRG) at the Internet Research Task Force (IRTF) to standardize an OPRF protocol that operates in prime-order groups. This is a generalisation of the setting that is provided by <a href="https://blog.cloudflare.com/tag/elliptic-curves">elliptic curves</a>. This is the same VOPRF construction that was <a href="https://blog.cloudflare.com/privacy-pass-the-math">originally specified</a> by the Privacy Pass protocol and is based heavily on the original protocol design from the <a href="https://eprint.iacr.org/2014/650.pdf">paper of Jarecki, Kiayias and Krawczyk</a>.</p>
 	<p>One of the recent changes that we've made in the draft is to increase the size of the key that we consider for performing OPRF operations on the server-side. Existing research suggests that it is possible to create specific queries that can lead to small amounts of the key being leaked. For keys that provide only 128 bits of security this can be a problem as leaking too many bits would reduce security <a href="https://www.keylength.com/en/4">beyond currently accepted levels</a>. To counter this, we have effectively increased the minimum key size to 192 bits. This prevents this leakage becoming an attack vector using any practical methods. We discuss these attacks in more detail later on when discussing our future plans for VOPRF development.</p>
-	<h2>Recent applications and standardizing the protocol</h2>
+	<div class="flex anchor relative">
+		<h2 id="recent-applications-and-standardizing-the-protocol">Recent applications and standardizing the protocol</h2>
+		<a href="https://blog.cloudflare.com/#recent-applications-and-standardizing-the-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The application that we demonstrated when originally supporting Privacy Pass was always intended as a proof-of-concept for the protocol. Over the past few months, a number of new possibilities have arisen in areas that go far beyond what was previously envisaged.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -156,17 +212,45 @@
 	</figure>
 	<p>For example, the <a href="https://github.com/WICG/trust-token-api">trust token API</a>, developed by the <a href="https://wicg.io">Web Incubator Community Group</a>, has been proposed as an interface for using Privacy Pass. This applications allows third-party vendors to check that a user has received a trust attestation from a set of central issuers. This allows the vendor to make decisions about the honesty of a client without having to associate a behaviour profile with the identity of the user. The objective is to prevent against fraudulent activity from users who are not trusted by the central issuer set. Checking trust attestations with central issuers would be possible using similar redemption APIs to the one that <a href="https://privacypass.cloudflare.com">we have introduced</a>.</p>
 	<p>A <a href="https://engineering.fb.com/security/partially-blind-signatures">separate piece of work from Facebook</a> details a similar application for preventing fraudulent behavior that may also be compatible with the Privacy Pass protocol. Finally, other applications have arisen in the areas of providing access to <a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae">private storage</a> and <a href="https://github.com/brave/brave-browser/wiki/Security-and-privacy-model-for-ad-confirmations">establishing security and privacy models in advertisement confirmations</a>.</p>
-	<h3>A new draft</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-draft">A new draft</h3>
+		<a href="https://blog.cloudflare.com/#a-new-draft" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the applications above in mind, we have recently started collaborative work on a <a href="https://github.com/alxdavids/draft-privacy-pass">new IETF draft</a> that specifically lays out the required functionality provided by the Privacy Pass protocol as a whole. Our aim is to develop, alongside wider industrial partners and the academic community, a functioning specification of the Privacy Pass protocol. We hope that by doing this we will be able to design a base-layer protocol, that can then be used as a cryptographic primitive in wider applications that require some form of lightweight authorization. Our plan is to present the first version of this draft at the upcoming <a href="https://www.ietf.org/how/meetings/106">IETF 106 meeting</a> in Singapore next month.</p>
 	<p>The draft is still in the early stages of development and we are actively looking for people who are interested in helping to shape the protocol specification. We would be grateful for any help that contributes to this process. See <a href="https://github.com/alxdavids/draft-privacy-pass">the GitHub repository</a> for the current version of the document.</p>
 	<h1>Future avenues</h1>
 	<p>Finally, while we are actively working on a number of different pathways in the present, the future directions for the project are still open. We believe that there are many applications out there that we have not considered yet and we are excited to see where the protocol is used in the future. Here are some other ideas we have for novel applications and security properties that we think might be worth pursuing in future.</p>
-	<h2>Publicly verifiable tokens</h2>
+	<div class="flex anchor relative">
+		<h2 id="publicly-verifiable-tokens">Publicly verifiable tokens</h2>
+		<a href="https://blog.cloudflare.com/#publicly-verifiable-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the disadvantages of using a VOPRF is that redemption tokens are only verifiable by the original issuing server. If we used an underlying primitive that allowed public verification of redemption tokens, then anyone could verify that the issuing server had issued the particular token. Such a protocol could be constructed on top of so-called blind signature schemes, such as <a href="https://en.wikipedia.org/wiki/Blind_signature#Blind_RSA_signatures">Blind RSA</a>. Unfortunately, there are performance and security concerns arising from the usage of blind signature schemes in a browser environment. Existing schemes (especially RSA-based variants) require cryptographic computations that are much heavier than the construction used in our VOPRF protocol.</p>
-	<h2>Post-quantum VOPRF alternatives</h2>
+	<div class="flex anchor relative">
+		<h2 id="post-quantum-voprf-alternatives">Post-quantum VOPRF alternatives</h2>
+		<a href="https://blog.cloudflare.com/#post-quantum-voprf-alternatives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The only constructions of VOPRFs exist in pre-quantum settings, usually based on the hardness of well-known problems in group settings such as the <a href="https://en.wikipedia.org/wiki/Decisional_Diffie%E2%80%93Hellman_assumption">discrete-log assumption</a>. No constructions of VOPRFs are known to provide security against adversaries that can run <a href="https://blog.cloudflare.com/the-quantum-menace">quantum computational algorithms</a>. This means that the Privacy Pass protocol is only believed to be secure against adversaries running &nbsp;on classical hardware.</p>
 	<p>Recent developments suggest that quantum computing may arrive <a href="https://www.nature.com/articles/s41586-019-1666-5">sooner than previously thought</a>. As such, we believe that investigating the possibility of <a href="https://blog.cloudflare.com/introducing-circl">constructing practical post-quantum alternatives</a> for our current cryptographic toolkit is a task of great importance for ourselves and the wider community. In this case, devising performant post-quantum alternatives for VOPRF constructions would be an important theoretical advancement. Eventually this would lead to a Privacy Pass protocol that still provides privacy-preserving authorization in a post-quantum world.</p>
-	<h2>VOPRF security and larger ciphersuites</h2>
+	<div class="flex anchor relative">
+		<h2 id="voprf-security-and-larger-ciphersuites">VOPRF security and larger ciphersuites</h2>
+		<a href="https://blog.cloudflare.com/#voprf-security-and-larger-ciphersuites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We mentioned previously that VOPRFs (or simply OPRFs) are susceptible to small amounts of possible leakage in the key. Here we will give a brief description of the actual attacks themselves, along with further details on our plans for implementing higher security ciphersuites to mitigate the leakage.</p>
 	<p>Specifically, malicious clients can interact with a VOPRF for creating something known as a <a href="https://eprint.iacr.org/2010/215.pdf">q-Strong-Diffie-Hellman</a> (q-sDH) sample. Such samples are created in mathematical groups (usually in the elliptic curve setting). For any group there is a public element <code>g</code> that is central to all <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman</a> type operations, along with the server key <code>K</code>, which is usually just interpreted as a randomly generated number from this group. A q-sDH sample takes the form:</p>
 	<pre class="language-bash"><code class="language-bash">( g, g^K, g^(K^2), … , g^(K^q) )</code></pre>
@@ -174,7 +258,14 @@
 	<p>While this problem is believed to be hard to break, there are a number of past works that show that the problem is somewhat easier than the size of the group suggests (for example, see <a href="https://eprint.iacr.org/2004/306">here</a> and <a href="https://www.iacr.org/archive/eurocrypt2006/40040001/40040001.pdf">here</a>). Concretely speaking, the bit security implied by the group can be reduced by up to log<sub>2</sub>(q) bits. While this is not immediately fatal, even to groups that should provide 128 bits of security, it can lead to a loss of security that means that the setting is no longer future-proof. As a result, any group providing VOPRF functionality that is instantiated using an elliptic curve such as P-256 or Curve25519 provides weaker than advised security guarantees.</p>
 	<p>With this in mind, we have taken the recent decision to upgrade the ciphersuites that we recommend for OPRF usage to only those that provide &gt; 128 bits of security, as standard. For example, Curve448 provides 192 bits of security. To launch an attack that reduced security to an amount lower than 128 bits would require making 2^(68) client OPRF queries. This is a significant barrier to entry for any attacker, and so we regard these ciphersuites as safe for instantiating the OPRF functionality.</p>
 	<p>In the near future, it will be necessary to upgrade the ciphersuites that are used in our support of the Privacy Pass browser extension to the recommendations made in the current VOPRF draft. In general, with a more iterative release process, we hope that the Privacy Pass implementation will be able to follow the current draft standard more closely as it evolves during the standardization process.</p>
-	<h2>Get in touch!</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-in-touch">Get in touch!</h2>
+		<a href="https://blog.cloudflare.com/#get-in-touch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can now install v2.0 of the Privacy Pass extension in <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>.</p>
 	<p>If you would like to help contribute to the development of this extension then you can do so on <a href="https://github.com/privacypass/challenge-bypass-extension">GitHub</a>. Are you a service provider that would like to integrate server-side support for the extension? Then we would be very interested in <a href="mailto:privacy-pass-support@cloudflare.com">hearing from you!</a></p>
 	<p>We will continue to work with the wider community in developing the standardization of the protocol; taking our motivation from the available applications that have been developed. We are always looking for new applications that can help to expand the Privacy Pass ecosystem beyond its current boundaries.</p>
@@ -185,7 +276,14 @@
 	</figure>
 	<h1>Appendix</h1>
 	<p>Here are some extra details related to the topics that we covered above.</p>
-	<h2>A. Commitment format for key rotations</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-commitment-format-for-key-rotations">A. Commitment format for key rotations</h2>
+		<a href="https://blog.cloudflare.com/#a-commitment-format-for-key-rotations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Key commitments are necessary for the server to prove that they’re acting honestly during the Privacy Pass protocol. The commitments that Privacy Pass uses for the v2.0 release have a slightly different format from the previous release.</p>
 	<pre class="language-json"><code class="language-json">"2.00": {
   "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
@@ -196,7 +294,14 @@
 	<p>The value of the member <code>H</code> is the public key commitment to the secret key used by the server. This is base64-encoded elliptic curve point of the form <code>H=kG</code> where <code>G</code> is the fixed generator of the curve, and <code>k</code> is the secret key of the server. Since the discrete-log problem is believed to be hard to solve, deriving k from H is believed to be difficult. The value of the member <code>expiry</code> is an expiry date for the commitment that is used. The value of the member <code>sig</code> is an ECDSA signature evaluated using a long-term signing key associated with the server, and over the values of <code>H</code> and <code>expiry</code>.</p>
 	<p>When a client retrieves the commitment, it checks that it hasn’t expired and that the signature verifies using the corresponding verification key that is embedded into the configuration of the extension. If these checks pass, it retrieves <code>H</code> and verifies the issuance response sent by the server. Previous versions of these commitments did not include signatures, but these signatures will be validated from v2.0 onwards.</p>
 	<p>When a server wants to rotate the key, it simply generates a new key <code>k2</code> and appends a new commitment to <code>k2</code> with a new identifier such as <code>2.01</code>. It can then use <code>k2</code> as the secret for the VOPRF operations that it needs to compute.</p>
-	<h2>B. Example Redemption API request</h2>
+	<div class="flex anchor relative">
+		<h2 id="b-example-redemption-api-request">B. Example Redemption API request</h2>
+		<a href="https://blog.cloudflare.com/#b-example-redemption-api-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The redemption API at is available over HTTPS by sending POST requests to <a href="https://privacypass.cloudflare.com/api/redeem">https://privacypass.cloudflare.com/api/redeem</a>. Requests to this endpoint must specify Privacy Pass data using JSON-RPC 2.0 syntax in the body of the request. Let’s look at an example request:</p>
 	<pre class="language-json"><code class="language-json">{
   "jsonrpc": "2.0",
@@ -223,7 +328,14 @@
 }</code></pre>
 	<p>Which specifies that the client has used the curve P-256, with hash function SHA-256, and the SSWU method for hashing to curve. This allows the server to verify the transaction with the correct ciphersuite. The client must bind the redemption request to some fixed information, which it stores as multiple strings in the array <code>params.bindings</code>. For example, it could send the Host header of the HTTP request, and the HTTP path that was used (this is what is used in the Privacy Pass browser extension). Finally, <code>params.compressed</code> is an optional boolean value (defaulting to false) that indicates whether the HMAC tag was computed over compressed or uncompressed point encodings.</p>
 	<p>Currently the only supported ciphersuites are the example above, or the same except with <code>method</code> equal to <code>increment</code> for the hash-and-increment method of hashing to a curve. This is the original method used in v1.0 of Privacy Pass, and is supported for backwards-compatibility only. See the <a href="https://privacypass.github.io/api-redeem">provided documentation</a> for more details.</p>
-	<h3>Example response</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-response">Example response</h3>
+		<a href="https://blog.cloudflare.com/#example-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If a request is sent to the redemption API and it is successfully verified, then the following response will be returned.</p>
 	<pre class="language-json"><code class="language-json">{
   "jsonrpc": "2.0",

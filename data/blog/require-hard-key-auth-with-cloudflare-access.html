@@ -6,7 +6,14 @@
 	<p>We have our own administrative panel at Cloudflare and we’ve deployed a number of safeguards over the last several years to keep it secure from phishing attacks. However, we had no way to enforce the security feature we think would most insulate us from phishing attacks: physical hard keys.</p>
 	<p>With hard keys, users can only login when they use a physical device - one that does not produce codes that could be shared over chat. Google notably <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing">eliminated all employee phishing cases</a> by rolling out their own hard keys. We issued them to every team member who had to login to our identity provider to reach the admin panel, but our identity provider allowed users to to fall back to a less secure option for MFA.</p>
 	<p>To solve that problem, we moved the hard key requirement into Cloudflare’s network. Using Cloudflare Access, we can now restrict the ability to reach our admin panel only to team members who authenticate with a hard key. Starting today, we’re making that feature available to all teams.</p>
-	<h2>Securing our own internal tools</h2>
+	<div class="flex anchor relative">
+		<h2 id="securing-our-own-internal-tools">Securing our own internal tools</h2>
+		<a href="https://blog.cloudflare.com/#securing-our-own-internal-tools" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our admin panel gives our team members the ability to turn on features, manage settings, and investigate issues for our customers. The tool itself maintains its own set of application-level permissions that control the actions that administrators can take. Some customer accounts are scoped to specific team members; other accounts cannot be modified without the customer’s explicit approval.</p>
 	<p>We layer other safeguards on top of those permissions. Users who are inactive for a number of days need to be manually re-enabled. We regularly audit who can use the tool and trim back the list.</p>
 	<p>We used to lean on a VPN to keep the front door to the admin panel secure. Team members would connect to our VPN using a client on their device. Once on the VPN, they could reach the login page of the tool.</p>
@@ -21,12 +28,26 @@
 	</ul>
 	<p>About two years ago, we migrated that <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">admin panel’s security perimeter to Cloudflare Access</a>. Access gave us a zero-trust alternative to our VPN. Instead of being able to reach the admin panel because you are on the private network, Access continuously checks every request to the tool for identity against a list of allowed users.</p>
 	<p>We could use Access to limit who could reach certain tools, and it became a foundation for adding other sources of signal down the road. Access also gave us a new level of visibility. Since all requests pass through Cloudflare’s edge, Access provides our team with visibility into every request to every path. Without making any server-side code changes, <a href="https://blog.cloudflare.com/log-every-request-to-corporate-apps-no-code-changes-required">Access can log every request</a> and attribute it to an authenticated user. We can export those to our SIEM and create a comprehensive audit trail.</p>
-	<h2>Hard keys without weak fallbacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="hard-keys-without-weak-fallbacks">Hard keys without weak fallbacks</h2>
+		<a href="https://blog.cloudflare.com/#hard-keys-without-weak-fallbacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We integrated Cloudflare Access with our identity provider, which supports multifactor authentication (MFA). To login through Cloudflare Access, users would need to authenticate with their password and a MFA option. The ability to choose an option meant a less secure method could be selected.</p>
 	<p>Those fallback options were subject to a higher risk of phishing attack. SMS-based codes can be vulnerable to SIM swapping attacks. App-based time-based one-time-pin (TOTP) codes can linger on forgotten devices and, more dangerously, be transmitted as part of an attack.</p>
 	<p>Hard keys stand out because they rely on control of a physical item. With hard keys, users login with their password and then have to tap an actual key (typically in the form of a USB device). That tap presents a certificate, that only lives on the key, to the service configured to trust it. A user with the hard key could not inadvertently share that code over the phone or in a chat with an attacker.</p>
 	<p>We distribute hard keys to all team members at Cloudflare. However, we could not require team members to use them on an app-by-app basis. If I don’t have my hard key around, I always have the option to fall back to a TOTP code. We needed a filtering engine that could combine multiple sources of identity signal, which Cloudflare Access provided.</p>
-	<h2>How Cloudflare Access solved our own problem</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-access-solved-our-own-problem">How Cloudflare Access solved our own problem</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-access-solved-our-own-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you remember going to bars or clubs before the pandemic, Cloudflare Access might seem familiar. You had to show your identity card at the door to a bouncer. The bouncer (and the establishment) did not issue that card - your government did. However, they know what it should look like and how to use its information.</p>
 	<p>Once checked, the bouncer stamped the back of your hand. You could put your ID back in your wallet and the stamp became proof that the bartenders inside knew to trust.</p>
 	<p>Cloudflare Access works like that bouncer. When users connect to a resource secured by Cloudflare Access, we check for their ID by sending them to login to their identity provider like Okta or Azure AD. Users authenticate and their identity provider sends Cloudflare Access details like who they are and, for certain providers, what MFA method they used.</p>
@@ -40,7 +61,14 @@
 
 	</figure>
 	<p>In our case, that includes any hard keys supported by WebAuthN and FIDO2 or keys tied to a physical device like Apple Touch ID and Windows Hello. Access would reject the attempt if they (or an attacker) used the fallback TOTP code - even if the identity provider allowed the login.</p>
-	<h2>How to get started</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">How to get started</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can begin using the same feature our own security team needed today at no additional cost. You’ll need an identity provider that supports Authenticated Method Reference, or <code>amr</code> <a href="https://tools.ietf.org/html/rfc8176">settings</a>. Today, that consists of Okta and Azure Active Directory. We expect others will add support and we will update our documentation as they do.</p>
 	<p>To get started, navigate to an application you have in Cloudflare Access or create a new one. In the rules that determine who is allowed to reach the application, add a rule in the “Require” section. Select “MFA” from the dropdown and then choose which options you want to require.</p>
 	<figure class="kg-card kg-image-card ">
@@ -48,6 +76,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7yZnRjyP8uX8WNVAI7QPM/4d939a8fbe06bdeaba875b6c1d349d50/Screen-Shot-2020-08-19-at-8.59.26-PM.png" alt="" class="kg-image" width="2000" height="1328" loading="lazy">
 
 	</figure>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access, part of Cloudflare for Teams, is available today. You can follow the documentation <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/mfa-requirements">here</a> to add the additional rule. All accounts can use 50 seats of Cloudflare Access for free, including the hard key requirement feature.</p>
 </div>

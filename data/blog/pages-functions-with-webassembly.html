@@ -10,7 +10,14 @@
 	<p>That’s why today we’re opening the doors to developers who want to build their server side applications with something other than JavaScript. We’re excited to announce WebAssembly support for Pages Functions projects!</p>
 	<p><a href="https://webassembly.org"><b>WebAssembly</b></a> <b>(or Wasm)</b> is a low-level assembly-like language that can run with near-native performance. It provides programming languages such as C/C++, C# or Rust with a compilation target, enabling them to run alongside JavaScript. Primarily designed to run on the <a href="https://webassembly.org/docs/web">web</a> (though <a href="https://webassembly.org/docs/non-web">not exclusively</a>), WebAssembly opens up exciting opportunities for applications to run on the web platform, both on the client and the server, that up until now couldn't have done so.</p>
 	<p>With Pages Functions being Workers “under the hood” and Workers having <a href="https://blog.cloudflare.com/workers-javascript-modules">Wasm module support</a> for quite <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">some time</a>, it is only natural that Pages provides a similar experience for our users as well. While not all use cases are a good fit for Wasm, there are <a href="https://webassembly.org/docs/use-cases">many</a> that are. Our goal with adding Wasm support is enabling those use cases and expanding the boundaries of what Functions can build.</p>
-	<h3>Using WebAssembly in Pages Functions</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-webassembly-in-pages-functions">Using WebAssembly in Pages Functions</h3>
+		<a href="https://blog.cloudflare.com/#using-webassembly-in-pages-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebAssembly in Pages Functions works very similar to how it does today in Workers — we read <code>wasm</code> files as WebAssembly modules, ready for you to import and use directly from within your Functions. In short, like this:</p>
 	<pre class="language-javascript"><code class="language-javascript">// functions/api/distance-between.js
 
@@ -29,7 +36,15 @@ export async function onRequest({ request }) {
 	<pre class="language-javascript"><code class="language-javascript">const moduleInstance = await WebAssembly.instantiate(wasmModule);</code></pre>
 	<p>Once the <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance"><code>WebAssembly.Instance</code></a> object is created, you can start using whatever features your Wasm module <a href="https://webassembly.github.io/spec/core/syntax/modules.html#syntax-export"><code>exports</code></a>, inside your Functions code:</p>
 	<pre class="language-javascript"><code class="language-javascript">const distance = await moduleInstance.exports.distance_between();</code></pre>
-	<h3>More modules, more fun!</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="more-modules-more-fun">More modules, more fun!</h3>
+		<a href="https://blog.cloudflare.com/#more-modules-more-fun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Apart from Wasm modules, this work unlocks support for two other module types that you can import within your Functions code: <b>text</b> and <b>binary</b>. These are not standardized modules, but can be very handy if you need to import raw text blobs (such as HTML files) as a <code>string</code>:</p>
 	<pre class="language-javascript"><code class="language-javascript">// functions/my-function.js
 import html from "404.html";
@@ -48,7 +63,15 @@ export async function onRequest() {
     headers: { "Content-Type": "image/png" }
   });
 }</code></pre>
-	<h3>The distance between us on the surface of Earth</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-distance-between-us-on-the-surface-of-earth">The distance between us on the surface of Earth</h3>
+		<a href="https://blog.cloudflare.com/#the-distance-between-us-on-the-surface-of-earth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s take a look at a live example to see it all in action! We’ve built a small <a href="https://pages-with-wasm-demo.pages.dev">demo app</a> that walks you through an example of Functions with WebAssembly end-to-end. You can check out the code of our demo application available on <a href="https://github.com/cloudflare/pages-fns-with-wasm-demo">GitHub</a>.</p>
 	<p>The application computes the distance in kilometers on the surface of Earth between your current location (based on the geo coordinates of the incoming <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties">request</a>) and any other point on the globe, each time you click on the globe's surface.</p>
 	<figure class="kg-card kg-image-card ">

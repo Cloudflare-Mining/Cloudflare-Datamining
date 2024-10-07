@@ -4,7 +4,14 @@
 	<p>Since CloudFlare’s inception, we have worked tirelessly to make encryption as simple and as accessible as possible. Over the last two years, we’ve made CloudFlare the easiest way to enable encryption for web properties and internet services. From the launch of <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, which gives HTTPS to millions of sites for free, to the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a>, which helps customers encrypt their origin servers, to the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">“No Browser Left Behind” initiative</a>, which ensures that the encrypted Internet is available to everyone, CloudFlare has pushed to make Internet encryption better and more widespread.</p>
 	<p>This week we are introducing three features that will dramatically increase both the quality and the quantity of encryption on the Internet. We are are happy to introduce <a href="https://blog.cloudflare.com/introducing-tls-1-3"><b>TLS 1.3</b></a>, <a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites"><b>Automatic HTTPS Rewrites</b></a>, and <a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web"><b>Opportunistic Encryption</b></a> throughout this week. We consider strong encryption to be a right and fundamental to the growth of the Internet, so we’re making all three of these features available to all customers for free.</p>
 	<p>Every day this week there will be new technical content on this blog about these features. We're calling it Encryption Week.</p>
-	<h3>TLS 1.3: Faster and more secure</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-1-3-faster-and-more-secure">TLS 1.3: Faster and more secure</h3>
+		<a href="https://blog.cloudflare.com/#tls-1-3-faster-and-more-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTPS is the standard for web encryption. Services that support HTTPS use a protocol called TLS to encrypt and authenticate connections. This week, CloudFlare will be the first service on the internet to offer the latest version of the protocol, TLS 1.3. CloudFlare has been heavily involved in the development of the protocol, which is more secure and delivers tangible performance benefits over previous versions. Establishing an HTTPS connection with TLS 1.3 requires fewer messages than previous versions of TLS, making page load times noticeably faster, especially on mobile networks.</p>
 	<p>If it takes 50 miliseconds for a message to travel from the browser to CloudFlare, the speed boost from TLS 1.3 is enough to take sites that seem <a href="https://hpbn.co/primer-on-latency-and-bandwidth/#speed-of-light-and-propagation-latency">“sluggish”</a> (over 300ms), and turn them into sites that load comfortably fast (under 300ms).</p>
 	<figure class="kg-card kg-image-card ">
@@ -14,7 +21,14 @@
 	</figure>
 	<p>Comparison of TLS 1.2 and TLS 1.3 handshakes</p>
 	<p>TLS 1.3 is enabled in the developer releases of both Firefox and Chrome (<a href="https://nightly.mozilla.org">Firefox Nightly</a> and <a href="https://www.google.com/chrome/browser/canary.html">Chrome Canary</a>), and all major browsers have committed to implementing the new protocol.</p>
-	<h3>Why websites don’t use encryption</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-websites-dont-use-encryption">Why websites don’t use encryption</h3>
+		<a href="https://blog.cloudflare.com/#why-websites-dont-use-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare offers HTTPS to all customer sites through Universal SSL, but many sites don’t take advantage of it and continue to offer their sites over unencrypted HTTP. One of the main reasons sites don’t take advantage of HTTPS is because of so-called “mixed content.” This week we are launching Automatic HTTPS Rewrites, a feature that helps site owners address mixed content so they can safely upgrade to HTTPS.</p>
 	<p>A user requesting a web page over HTTPS can assume that the connection is authenticated, encrypted and that the response has not been tampered with. However, if any of the sub-resources (scripts, images) are requested over an insecure protocol such as HTTP, then those parts of the site can be accessed and modified by attackers. HTTPS sites with insecure sub-resources contain mixed content. Modern browsers will attempt to protect users from mixed content by providing warnings for passive content (such as images), and blocking insecure active content (scripts, stylesheets) from loading. Because of this, sites with mixed content often don’t work correctly.</p>
 	<figure class="kg-card kg-image-card ">
@@ -32,7 +46,15 @@
 	<p>Some mixed content is not mixed content at all. Often, sub-resources are available over HTTPS, but the page’s source has been hardcoded to download them over HTTP. Manually changing “http” to “https” in the page’s source is often enough to fix mixed content in these cases. However, many sites can’t do that because their sites are created dynamically by content management systems or they include third party resources that they have no control over.</p>
 	<p>For Wordpress customers, we tackled this issue by modifying the CloudFlare Wordpress plugin to <a href="https://blog.cloudflare.com/flexible-ssl-wordpress-fixing-mixed-content-errors">automatically rewrite insecure URLs</a>. Building on the success of this approach, we decided to build URL rewriting functionality into CloudFlare itself. The result is a feature called Automatic HTTPS Rewrites, which we are making available to all customers for free this week.</p>
 	<p>CloudFlare customers with Automatic HTTPS Rewrites enabled on their site will have “http" replaced with “https” for all sub-resources that are also available over HTTPS. We use the EFF’s <a href="https://www.eff.org/https-Everywhere">HTTPS Everywhere list</a>, Chrome’s <a href="https://hstspreload.appspot.com">HSTS preload list</a>, and soon our own internal list of HTTPS-enabled domains to determine whether sites can be upgraded. This feature facilitates the seamless upgrade of customer sites to HTTPS, allowing them to take full advantage of Universal SSL. As a bonus, Automatic HTTPS Rewrites also re-writes links from “http://” to “https://” whenever possible, ensuring that web visitors <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security">stay safe</a> even when they leave your site.</p>
-	<h3>Opportunistic Encryption</h3>
+	<div class="flex anchor relative">
+		<h3 id="opportunistic-encryption">Opportunistic Encryption</h3>
+		<a href="https://blog.cloudflare.com/#opportunistic-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nHRS3s4GG09UqQluqTvzr/e3e0637132ee8ed7814010555dbfc1ac/2861549541_0336349bfe_z.jpg" alt="" class="kg-image" width="480" height="640" loading="lazy">
@@ -43,7 +65,14 @@
 	<p>Enter <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-encryption-06">Opportunistic Encryption</a>, a web feature that allows HTTP websites to be accessed over an encrypted HTTP/2 connection. With Opportunistic Encryption, CloudFlare adds a header to tell supporting browsers that the site is available over an encrypted connection. Opportunistic Encryption will be available to all customers later this week, for free.</p>
 	<p>For HTTP sites, Opportunistic Encryption can provide some (but not all) of the benefits of HTTPS. Connections secured with Opportunistic Encryption don’t get some HTTPS-only features such as the <a href="https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only?hl=en">location API</a> and the green lock icon. However, the connection is encrypted (and soon authenticated — we present a valid certificate and Firefox Nightly validates it), protecting data from passive snooping.</p>
 	<p>The big advantage provided by Opportunistic Encryption is <a href="https://www.cloudflare.com/http2">HTTP/2</a>, the new web protocol that can dramatically improve load times. HTTP/2 is unavailable over unencrypted connections. Visitors using browsers that support Opportunistic Encryption (currently only Firefox 38 and later) will be able to browse HTTP sites using HTTP/2 for the first time.</p>
-	<h3>The end of the unencrypted Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-end-of-the-unencrypted-internet">The end of the unencrypted Internet</h3>
+		<a href="https://blog.cloudflare.com/#the-end-of-the-unencrypted-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare we are dedicated to improving security and performance for our customers, and building a safer web with strong encryption built in by default. The three features we are introducing during Encryption Week will work in tandem to improve security and performance of all CloudFlare customers.</p>
 	<ul>
 		<li>

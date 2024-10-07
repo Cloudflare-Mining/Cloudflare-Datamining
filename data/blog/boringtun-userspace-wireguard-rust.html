@@ -6,11 +6,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/265ROm9gzfd6Fg7Qg5eL22/05f86ca73b6f54459ee1ae0bf7e3581e/boring-tun-logo.png" alt="boring-tun-logo" class="kg-image" width="1675" height="402" loading="lazy">
 
 	</figure>
-	<h3>A Bit About WireGuard</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-bit-about-wireguard">A Bit About WireGuard</h3>
+		<a href="https://blog.cloudflare.com/#a-bit-about-wireguard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WireGuard is relatively new project that attempts to replace old VPN protocols, with a simple, fast, and safe protocol. Unlike legacy VPNs, WireGuard is built around the <a href="http://www.noiseprotocol.org">Noise Protocol Framework</a> and relies only on a select few, modern, cryptographic primitives: X25519 for public key operations, <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> for authenticated encryption, and Blake2s for message authentication.</p>
 	<p>Like <a href="https://blog.cloudflare.com/http-3-from-root-to-tip">QUIC</a>, WireGuard works over UDP, but its only goal is to securely encapsulate IP packets. As a result, it does not guarantee the delivery of packets, or that packets are delivered in the order they are sent.</p>
 	<p>The simplicity of the protocol means it is more robust than old, unmaintainable codebases, and can also be implemented relatively quickly. Despite its relatively young age, WireGuard is <a href="https://arstechnica.com/gadgets/2018/08/wireguard-vpn-review-fast-connections-amaze-but-windows-support-needs-to-happen">quickly gaining in popularity</a>.</p>
-	<h3>Starting From Scratch</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-from-scratch">Starting From Scratch</h3>
+		<a href="https://blog.cloudflare.com/#starting-from-scratch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While evaluating the potential value WireGuard could provide us, we first considered the existing implementations. Currently, there are three usable implementations</p>
 	<ul>
 		<li>
@@ -36,7 +50,14 @@
 		</li>
 	</ul>
 	<p>Clearly we thought, only one of those fits the bill, and that is wireguard-go. However, benchmarks quickly showed that wireguard-go falls very short of the performance offered by the kernel module. This is because while the Go language is very good for writing servers, it is not so good for raw packet processing, which a VPN essentially does.</p>
-	<h3>Choosing <a href="https://www.rust-lang.org">Rust</a></h3>
+	<div class="flex anchor relative">
+		<h3 id="choosing">Choosing </h3>
+		<a href="https://blog.cloudflare.com/#choosing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After we decided to create a userspace WireGuard implementation, there was the small matter of choosing the right language. While C and C++ are both high performance, low level languages, <a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug">recent history</a> has demonstrated that their memory model was too fragile for a modern cryptography and security-oriented project. Go was shown to be suboptimal for this use case by wireguard-go.</p>
 	<p>The obvious answer was Rust. Rust is a modern, safe language that is both as fast as C++ and is arguably safer than Go (it is memory safe and also imposes rules that allow for safer concurrency), while supporting a huge selection of <a href="https://forge.rust-lang.org/platform-support.html">platforms</a>. We also have some of the best Rust talent in the industry working at the company.</p>
 	<figure class="kg-card kg-image-card ">
@@ -48,7 +69,14 @@
 	<p>Thus BoringTun was born.</p>
 	<p>The name might sound a bit boring but there's a reason for it: BoringTun creates a tunnel by 'boring' it. And it’s a nod to Google’s <a href="https://boringssl.googlesource.com/boringssl">BoringSSL</a> which strips the complexity out of OpenSSL. We think WireGuard has the opportunity to do the same for legacy VPN protocols like OpenVPN. And we hope BoringTun can be a valuable tool as part of that ecosystem.</p>
 	<p>WireGuard is an incredible tool and we believe it has a chance of being the defacto standard for VPN-like technologies going forward. We're adding our Rust implementation of WireGuard to the ecosystem and hope people find it useful.</p>
-	<h3>Next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Next steps</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>BoringTun is currently under internal security review, and it is probably not fully ready to be used in mission critical tasks. We will fix issues as we find them, and we also welcome contributions from the community on the projects <a href="https://github.com/cloudflare/boringtun">Github page</a>. The project is licensed under the open source <a href="https://opensource.org/licenses/BSD-3-Clause">3-Clause BSD License</a>.</p>
 	<p>Note: WireGuard is a registered trademark of <a href="https://www.zx2c4.com">Jason A. Donenfeld</a>.</p>
 </div>

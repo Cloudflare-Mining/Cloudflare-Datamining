@@ -1,6 +1,13 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4L2LYeMJ5dbwiIINGXRCJ2/fc402d5812d80ce884adf382569429da/how-to-execute-an-object-file-part-3.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>Dealing with external libraries</h2>
+	<div class="flex anchor relative">
+		<h2 id="dealing-with-external-libraries">Dealing with external libraries</h2>
+		<a href="https://blog.cloudflare.com/#dealing-with-external-libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>
 	<p><i>obj.c</i>:</p>
 	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
@@ -91,7 +98,14 @@ static int my_puts(const char *s)
 ...</code></pre>
 	<p>Now that we have a <code>puts</code> implementation (and thus its runtime address) we should just write logic in the <code>loader</code> to resolve the relocation by instructing the code to jump to the correct function. However, there is one complication: in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a>, when we processed relocations for constants and global variables, we learned we're mostly dealing with 32-bit relative relocations and that the code or data we're referencing needs to be no more than 2147483647 (<code>0x7fffffff</code> in hex) bytes away from the relocation itself. <code>R_X86_64_PLT32</code> is also a 32-bit relative relocation, so it has the same requirements, but unfortunately we can't reuse the trick from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2</a> as our <code>my_puts</code> function is part of the <code>loader</code> itself and we don't have control over where in the address space the operating system places the <code>loader</code> code.</p>
 	<p>Luckily, we don't have to come up with any new solutions and can just borrow the approach used in shared libraries.</p>
-	<h3>Exploring PLT/GOT</h3>
+	<div class="flex anchor relative">
+		<h3 id="exploring-plt-got">Exploring PLT/GOT</h3>
+		<a href="https://blog.cloudflare.com/#exploring-plt-got" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Real world ELF executables and shared libraries have the same problem: often executables have dependencies on shared libraries and shared libraries have dependencies on other shared libraries. And all of the different pieces of a complete runtime program may be mapped to random ranges in the process address space. When a shared library or an ELF executable is linked together, the linker enumerates all the external references and creates two or more additional sections (for a refresher on ELF sections check out the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">part 1 of our series</a>) in the ELF file. The two mandatory ones are <a href="https://refspecs.linuxfoundation.org/ELF/zSeries/lzsabi0_zSeries/x2251.html">the Procedure Linkage Table (PLT) and the Global Offset Table (GOT)</a>.</p>
 	<p>We will not deep-dive into specifics of the standard PLT/GOT implementation as there are many other great resources online, but in a nutshell PLT/GOT is just a jumptable for external code. At the linking stage the linker resolves all external 32-bit relative relocations with respect to a locally generated PLT/GOT table. It can do that, because this table would become part of the final ELF file itself, so it will be "close" to the main code, when the file is mapped into memory at runtime. Later, at runtime <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> populates PLT/GOT tables for every loaded ELF file (both the executable and the shared libraries) with the runtime addresses of all the dependencies. Eventually, when the program code calls some external library function, the CPU "jumps" through the local PLT/GOT table to the final code:</p>
 	<figure class="kg-card kg-image-card ">
@@ -100,7 +114,14 @@ static int my_puts(const char *s)
 
 	</figure>
 	<p>Why do we need two ELF sections to implement one jumptable you may ask? Well, because real world PLT/GOT is a bit more complex than described above. Turns out resolving all external references at runtime may significantly slow down program startup time, so symbol resolution is implemented via a "lazy approach": a reference is resolved by <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html">the dynamic loader</a> only when the code actually tries to call a particular function. If the main application code never calls a library function, that reference will never be resolved.</p>
-	<h3>Implementing a simplified PLT/GOT</h3>
+	<div class="flex anchor relative">
+		<h3 id="implementing-a-simplified-plt-got">Implementing a simplified PLT/GOT</h3>
+		<a href="https://blog.cloudflare.com/#implementing-a-simplified-plt-got" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For learning and demonstrative purposes though we will not be reimplementing a full-blown PLT/GOT with lazy resolution, but a simple jumptable, which resolves external references when the object file is loaded and parsed. First of all we need to know the size of the table: for ELF executables and shared libraries the linker will count the external references at link stage and create appropriately sized PLT and GOT sections. Because we are dealing with raw object files we would have to do another pass over the <code>.rela.text</code> section and count all the relocations, which point to an entry in the symbol table with undefined section index (or <code>0</code> in code). Let's add a function for this and store the number of external references in a global variable:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-c"><code class="language-c">...

@@ -6,7 +6,14 @@
 		<p>— Matthew Prince (@eastdakota) <a href="https://twitter.com/eastdakota/status/1012420672352542720?ref_src=twsrc%5Etfw">June 28, 2018</a></p>
 	</blockquote>
 	<p>10 million websites, apps and APIs use Cloudflare to give their users a speed boost. At peak we serve more than 10 million requests a second across our 151 data centers. Over the years we’ve made many modifications to our version of NGINX to handle our growth. This is blog post is about one of them.</p>
-	<h3>How NGINX works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-nginx-works">How NGINX works</h3>
+		<a href="https://blog.cloudflare.com/#how-nginx-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NGINX is one of the programs that popularized using event loops to solve <a href="http://www.kegel.com/c10k.html">the C10K problem</a>. Every time a network event comes in (a new connection, a request, or a notification that we can send more data, etc.) NGINX wakes up, handles the event, and then goes back to do whatever it needs to do (which may be handling other events). When an event arrives, data associated with the event is already ready, which allows NGINX to efficiently handle many requests simultaneously without waiting.</p>
 	<pre class="language-bash"><code class="language-bash">num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
 // events is list of active events
@@ -30,7 +37,14 @@ while (buf_len &gt; 0) {
     total += n;
 }</code></pre>
 	<p>When fd is a network socket, this will return the bytes that have already arrived. The final call will return <code>EWOULDBLOCK</code> which means we have drained the local read buffer, so we should not read from the socket again until more data becomes available.</p>
-	<h3>Disk I/O is not like network I/O</h3>
+	<div class="flex anchor relative">
+		<h3 id="disk-i-o-is-not-like-network-i-o">Disk I/O is not like network I/O</h3>
+		<a href="https://blog.cloudflare.com/#disk-i-o-is-not-like-network-i-o" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When <code>fd</code> is a regular file on Linux, <code>EWOULDBLOCK</code> and <code>EAGAIN</code> never happens, and read always waits to read the entire buffer. This is true even if the file was opened with <code>O_NONBLOCK</code>. Quoting <a href="http://man7.org/linux/man-pages/man2/open.2.html"><code>open(2)</code></a>:</p>
 	<blockquote>
 		<p>Note that this flag has no effect for regular files and block devices</p>
@@ -41,10 +55,24 @@ while (buf_len &gt; 0) {
 }</code></pre>
 	<p>Which means that if an event handler needs to read from disk, it will block the event loop until the entire read is finished, and subsequent event handlers are delayed.</p>
 	<p>This ends up being fine for most workloads, because reading from disk is usually fast enough, and much more predictable compared to waiting for a packet to arrive from network. That's especially true now that everyone has an SSD, and our cache disks are all SSDs. Modern SSDs have very low latency, typically in 10s of µs. On top of that, we can run NGINX with multiple worker processes so that a slow event handler does not block requests in other processes. Most of the time, we can rely on NGINX's event handling to service requests quickly and efficiently.</p>
-	<h3>SSD performance: not always what’s on the label</h3>
+	<div class="flex anchor relative">
+		<h3 id="ssd-performance-not-always-whats-on-the-label">SSD performance: not always what’s on the label</h3>
+		<a href="https://blog.cloudflare.com/#ssd-performance-not-always-whats-on-the-label" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you might have guessed, these rosy assumptions aren’t always true. If each read always takes 50µs then it should only take 2ms to read 0.19MB in 4KB blocks (and we read in larger blocks). But our own measurements showed that our time to first byte is sometimes much worse, particularly at 99th and 999th percentile. In other words, the slowest read per 100 (or per 1000) reads often takes much longer.</p>
 	<p>SSDs are very fast but they are also notoriously complicated. Inside them are computers that queue up and re-order I/O, and also perform various background tasks like garbage collection and defragmentation. Once in a while, a request gets slowed down enough to matter. My colleague <a href="https://twitter.com/ibobrik?lang=en">Ivan Babrou</a> ran some I/O benchmarks and saw read spikes of up to 1 second. Moreover, some of our SSDs have more performance outliers than others. Going forward we will consider performance consistency in our SSD purchases, but in the meantime we need to have a solution for our existing hardware.</p>
-	<h3>Spreading the load evenly with <code>SO_REUSEPORT</code></h3>
+	<div class="flex anchor relative">
+		<h3 id="spreading-the-load-evenly-with">Spreading the load evenly with </h3>
+		<a href="https://blog.cloudflare.com/#spreading-the-load-evenly-with" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An individual slow response once in a blue moon is difficult to avoid, but what we really don't want is a 1 second I/O blocking 1000 other requests that we receive within the same second. Conceptually NGINX can handle many requests in parallel but it only runs 1 event handler at a time. So I added a metric that measures this:</p>
 	<pre class="language-bash"><code class="language-bash">gettimeofday(&amp;start, NULL);
 num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
@@ -56,7 +84,14 @@ timersub(&amp;event_start_handle, &amp;start, &amp;event_loop_blocked);</code></
 	<p>p99 of <code>event_loop_blocked</code> turned out to be more than 50% of our TTFB. Which is to say, half of the time it takes to serve a request is a result of the event loop being blocked by other requests. <code>event_loop_blocked</code> only measures about half of the blocking (because delayed calls to <code>epoll_wait()</code> are not measured) so the actual ratio of blocked time is much higher.</p>
 	<p>Each of our machines run NGINX with 15 worker processes, which means one slow I/O should only block up to 6% of the requests. However, the events are not evenly distributed, with the top worker taking 11% of the requests (or twice as many as expected).</p>
 	<p><code>SO_REUSEPORT</code> can solve the uneven distribution problem. Marek Majkowski has previously written about <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">the downside</a> in the context of other NGINX instances, but that downside mostly doesn't apply in our case since upstream connections in our cache process are long-lived, so a slightly higher latency in opening the connection is negligible. This single configuration change to enable <code>SO_REUSEPORT</code> improved peak p99 by 33%.</p>
-	<h3>Moving read() to thread pool: not a silver bullet</h3>
+	<div class="flex anchor relative">
+		<h3 id="moving-read-to-thread-pool-not-a-silver-bullet">Moving read() to thread pool: not a silver bullet</h3>
+		<a href="https://blog.cloudflare.com/#moving-read-to-thread-pool-not-a-silver-bullet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A solution to this is to make read() not block. In fact, this is a feature that's <a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x">implemented in upstream NGINX</a>! When the following configuration is used, <code>read()</code> and <code>write()</code> are done in a thread pool and won't block the event loop:</p>
 	<pre class="language-bash"><code class="language-bash">aio         threads;
 aio_write   on;</code></pre>
@@ -78,7 +113,14 @@ read(fd, buf, 32*1024);</code></pre>
 /cache/prefix/dir/EF/BE
 /cache/prefix/dir/EF/BE/CAFEBEEF</code></pre>
 	<p>That's 6 separate reads done by <code>open()</code> compared to just 1 read done by <code>read()</code>! Fortunately, most of the time lookups are serviced by <a href="https://www.kernel.org/doc/Documentation/filesystems/vfs.txt">the dentry cache</a> and don't require trips to the SSDs. But clearly having <code>read()</code> done in thread pool is only half of the picture.</p>
-	<h3>The coup de grâce: non-blocking open() in thread pools</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-coup-de-grace-non-blocking-open-in-thread-pools">The coup de grâce: non-blocking open() in thread pools</h3>
+		<a href="https://blog.cloudflare.com/#the-coup-de-grace-non-blocking-open-in-thread-pools" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So I modified NGINX to do most of <code>open()</code> inside the thread pool as well so it won't block the event loop. And the result (both non-blocking open and non-blocking read):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -88,6 +130,13 @@ read(fd, buf, 32*1024);</code></pre>
 	<p>On June 26 we deployed our changes to 5 of our busiest data centers, followed by world wide roll-out the next day. Overall peak p99 TTFB improved by a factor of 6. In fact, adding up all the time from processing 8 million requests per second, we saved the Internet 54 years of wait time every day.</p>
 	<p>We've submitted our work to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html">upstream</a>. Interested parties can follow along.</p>
 	<p>Our event loop handling is still not completely non-blocking. In particular, we still block when we are caching a file for the first time (both the <code>open(O_CREAT)</code> and <code>rename()</code>), or doing revalidation updates. However, those are rare compared to cache hits. In the future we will consider moving those off of the event loop to further improve our p99 latency.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NGINX is a powerful platform, but scaling extremely high I/O loads on linux can be challenging. Upstream NGINX can offload reads in separate threads, but at our scale we often need to go one step further. If working on challenging performance problems sounds exciting to you, <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">apply to join our team</a> in San Francisco, London, Austin or Champaign.</p>
 </div>

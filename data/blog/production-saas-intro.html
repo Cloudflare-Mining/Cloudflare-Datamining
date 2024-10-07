@@ -11,21 +11,49 @@
 	<p>With this in mind, we decided to do something unique to the industry: we are developing an example feature-complete SaaS application that will be built entirely on the Cloudflare stack. It is and will continue to be completely free, <a href="https://github.com/cloudflare/production-saas">open-sourced on GitHub</a>, and developed in public. This will be an incredible time as it can be used as a template for launching your own SaaS applications, too! In fact, you can clone the GitHub repository, update a few service tokens, and deploy the pre-built application to your own Cloudflare account within minutes!</p>
 	<p>Of course, examples and templates are great, but technologies and best practices never stop evolving. Cloudflare is no exception and is constantly iterating and introducing new products and product features. By extension, this requires the SaaS application to be a <i>living example</i> that evolves alongside the Workers platform — and this is part of our commitment.</p>
 	<p>|| <b>Don’t miss out!</b> Watch the <a href="https://github.com/cloudflare/production-saas">project on GitHub</a> to track its development progress and stay current with our latest changes and recommendations.</p>
-	<h2>Application Overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="application-overview">Application Overview</h2>
+		<a href="https://blog.cloudflare.com/#application-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, aside from actually building the application, we needed to find a balance between picking an example SaaS application that is both complex enough to serve as a convincing case study and simple — or self-contained — enough so that developers can quickly dive in, follow the source, and understand the components involved and the reasons why and/or how they are used.</p>
 	<p>Ultimately we decided to build an example content management system (CMS) which, as an application archetype, has also transformed over the years. Traditionally, a CMS operated on rented hardware, which was home to a long-lived server that handled incoming requests and queried an SQL-like database in order to retrieve the requested content, render it to an HTML page, and repeat the process over and over again. <a href="https://wordpress.org">WordPress</a> was — and still is — a very common example of this approach.</p>
 	<p>Naturally, this application architecture was improved over the years: layers of caching were introduced, database schemas were redesigned to minimize the number of rows processed, and some frameworks began to skip the database entirely, preferring a build-step to render all content upfront as static HTML pages. (This is now known as “static-site generation” and is still a very popular approach.)</p>
 	<p>Today, in the serverless era, there are a number of “headless CMS” options available. These are made “headless” because they are not monolithic web servers that render HTML for each request. Instead, they offer API endpoints that will return the content as raw JSON data. This allows web developers to build completely custom templates for their website using whatever tools and/or frameworks they prefer. This approach grants an enormous amount of flexibility to the developer without losing the ability to organize their content, image assets, etc. WordPress, the seasoned veteran, is one of few that is able to offer a headless <i>and</i> a “headful” mode. Other headless choices, like <a href="https://www.sanity.io">Sanity.io</a> and <a href="https://www.contentful.com">Contentful</a>, are also quite popular.</p>
 	<p>The CMS application model is a great case study for our open-source example. One of the primary tenets of an edge-first design is that content should be made available as close as physically possible to the users asking for it. And the serverless architecture means that there’s no longer — or should not be — a single point of failure. These both directly benefit the CMS archetype and, when implemented, will yield clear performance gains.</p>
-	<h2>Current Progress</h2>
+	<div class="flex anchor relative">
+		<h2 id="current-progress">Current Progress</h2>
+		<a href="https://blog.cloudflare.com/#current-progress" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before diving into the roadmap and explaining how this project will progress, it’s important to call out that this project <i>has already been</i> — and will continue to be — an ongoing effort! Today, you can find the <a href="https://github.com/cloudflare/production-saas">project on GitHub</a> and inspect the work that’s already been completed. As of now, the application already combines Workers, Workers KV, Cloudflare for SaaS, and Rate Limiting with Pages and Durable Objects additions to come in later milestones.</p>
 	<p><b>Phase 1</b> (see below) is nearing completion and, when finished, will mark the end of a very significant milestone. A new update to this blog post series will be issued, covering the highlights and technical overview of the project so far. This is important and immediately useful because <i>on its own,</i> <b>Phase 1</b> qualifies for a successful, full-stack application.</p>
-	<h2>Development Milestones</h2>
+	<div class="flex anchor relative">
+		<h2 id="development-milestones">Development Milestones</h2>
+		<a href="https://blog.cloudflare.com/#development-milestones" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The CMS application will progress in milestones. We have already released the project and will continue to build upon it in accordance with the roadmap (below). <a href="https://github.com/cloudflare/production-saas">GitHub stargazers</a> will be able to keep tabs on its progress, or at the very least, only subscribe to updates for the milestones they’re interested in following.</p>
 	<p>Each milestone is a sizable checkpoint on its own. As you’ll see below, the project roadmap is planned in a way such that each phase adds a considerable amount of new features and/or integrates with a new Cloudflare product. At every point, the application will remain functional and maintain a live, interactive demo to immediately demonstrate the latest functionality to passersby.</p>
 	<p>This format is chosen because it’s how real applications — and real products — are developed. Our goal is to ensure that the GitHub repository is <b>never</b> out of date. And, because of the development structure, one may <i>always</i> traverse the list of past milestones to review the changes that were necessary to migrate X or how product Y was integrated.</p>
 	<p><b>|| Note:</b> Visit the <a href="https://github.com/cloudflare/production-saas/milestones">GitHub milestones</a> to view more details and to subscribe for updates. There is so much more than can be listed here.</p>
-	<h3>Phase 1 – JSON API</h3>
+	<div class="flex anchor relative">
+		<h3 id="phase-1-json-api">Phase 1 – JSON API</h3>
+		<a href="https://blog.cloudflare.com/#phase-1-json-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The project must begin with some API endpoints to start managing and manipulating data. Using Workers and Workers KV, the work within this milestone will focus on building a robust JSON API that handles the core functionality that the rest of the application will need.</p>
 	<p>There is no HTML, CSS, or client-side JavaScript involved in this phase. Instead, work here should focus solely on the data: how it’s accessed, how models relate to one another, and how best to structure and store these relationships within Workers KV. For example, individuals should be able to create and manage workspaces that belong to their personal user accounts or to the organization(s) that they belong to.</p>
 	<p>Additionally, when creating content, the document should be validated against an existing schema that the document was assigned. This feature is critical in any CMS platform that plans to handle thousands of documents within a workspace. Without it, there’s very little confidence that your contents’ JSON representation is consistently structured.</p>
@@ -37,7 +65,14 @@
 	</figure>
 	<p>By the end of this phase, the project will exist as a collection of API endpoints that, on its own, is a complete application. While it may only be accessible through <code>curl</code> commands — or any other preferred method for manually constructing HTTP requests, the completion of <b>Phase 1</b> already qualifies the project as a full-stack application and <i>could</i> serve a real-world SaaS product.</p>
 	<p>Additionally, the repository will include all the best practices for writing tests, automating deployments, and organizing the source in a way for long-term growth and maintenance. And, because we started with the JSON API, the project is immediately useful and capable of integrating with your existing build tools and frameworks. In other words, <a href="https://github.com/cloudflare/production-saas">stargazers</a> could deploy the project to their own accounts as their own personalized Headless CMS. Perhaps some of you will build Gatsby or Eleventy plugins — if you do, please let us know!</p>
-	<h3>Phase 2 — Dashboard UI</h3>
+	<div class="flex anchor relative">
+		<h3 id="phase-2-dashboard-ui">Phase 2 — Dashboard UI</h3>
+		<a href="https://blog.cloudflare.com/#phase-2-dashboard-ui" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As fun as <code>curl</code> may be, most people prefer some form of visual interface they can interact with. This phase will be all about assembling a frontend to serve as the CMS application’s dashboard.</p>
 	<p>We will use <a href="https://svelte.dev">Svelte</a>, a JavaScript framework for building user interfaces. While not everyone may enjoy or agree with this decision, the templating syntax resembles standard HTML markup, which will allow non-frontend developers to follow along and gauge what’s going on.</p>
 	<p>Svelte will be paired with <a href="https://tailwindcss.com">Tailwind CSS</a> for the design system. Tailwind is a very popular, utility-first CSS framework that allows developers to compose styles through predefined, reusable HTML <code>”class”</code> names.</p>
@@ -49,17 +84,38 @@
 	</figure>
 	<p>Finally, <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">now that Pages integrates with Workers directly</a>, the JSON API from <b>Phase 1</b> will migrate into a new repository structure. While this may seem like an innocent refactor, it actually unlocks an incredible set of features for the JSON API: <a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access">Access-protected preview deployments</a>, <a href="https://developers.cloudflare.com/pages/platform/rollbacks">instant rollbacks</a>, and automated deployments. Yes — these are the same Pages features mentioned above! This is amazing because it means that our API is continuously and atomically versioned, allowing its development to continue safely <i>alongside</i> the client dashboard that depends on it. In other words, there is zero risk of the API and the dashboard diverging, which would have allowed their expectations of one another to misalign. Instant rollbacks will also apply to the API since the <i>entire</i> application operates as a single Pages unit.</p>
 	<p>The previous phase will have built the core SaaS product functionality, but completing this phase will make it feel like a real-world product that can be launched and used on a daily basis. In fact, the end of <b>Phase 2</b> marks the application as a possible contender in the Headless CMS service space.</p>
-	<h3>Phase 3 — Article Edge-Rendering</h3>
+	<div class="flex anchor relative">
+		<h3 id="phase-3-article-edge-rendering">Phase 3 — Article Edge-Rendering</h3>
+		<a href="https://blog.cloudflare.com/#phase-3-article-edge-rendering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous phases are focused on assembling a minimum viable Headless CMS product, but <b>Phase 3</b> looks to grow outside this archetypal box. This will happen by allowing the application to render HTML web pages by injecting the JSON content into predefined templates.</p>
 	<p>Like WordPress, the CMS application should allow its users to choose whether they want to continue using the “headless” feature or enlist the complete template engine. Should they opt for HTML output, the Cloudflare project will only include a few premade templates that a user may select from — but, of course, this can be customized in your own projects.</p>
 	<p>Even though this phase reintroduces the monolithic CMS archetype, it’s a significantly safer, faster, and more resilient architecture than the single, all-in-one server of yesteryear. The CMS contents will still be distributed around the world, close to the customers’ readers — but now, the content can be <i>rendered</i> from anywhere in the world at extremely low latencies, too.</p>
-	<h3>Phase 4 — Feature Upgrades</h3>
+	<div class="flex anchor relative">
+		<h3 id="phase-4-feature-upgrades">Phase 4 — Feature Upgrades</h3>
+		<a href="https://blog.cloudflare.com/#phase-4-feature-upgrades" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this stage, the application is — for the most part — complete. It’s functional, looks nice, performs well globally, and can be used in two very distinct ways.</p>
 	<p>In the context of a real SaaS product, development begins to shift towards adding new features that excite users or towards maintenance health of the project. For example, <b>Phase 4</b> will utilize <a href="https://blog.cloudflare.com/durable-objects-ga">Durable Objects</a> to introduce a document editor that allows multiple users to edit the same document in a real-time, collaborative environment.</p>
 	<p>It’s also very likely that <a href="https://blog.cloudflare.com/introducing-r2-object-storage">Cloudflare R2 Storage</a> will be introduced as a backend for media assets, allowing users to upload and manage images within a workspace. Or perhaps we decide to use <a href="https://blog.cloudflare.com/announcing-cloudflare-images">Cloudflare Images</a> for this and R2 is used for importing and exporting content backups.</p>
 	<p>As you may expect, this milestone is full of unknowns, but that’s because the future holds unlimited possibilities. The project will continue to evolve and expand with Cloudflare and with time.</p>
 	<p>Of course, if you have ideas or suggestions for features, start a discussion with us on GitHub. We would love to hear from you!</p>
-	<h2>Next Steps</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-steps">Next Steps</h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was the introductory post of (what will be) an ongoing series. When each milestone is completed, we will publish a new post in this series with a retrospective and with technical walkthroughs of key aspects from that chapter’s work.</p>
 	<p>We’re at the beginning of an exciting journey, and we hope you’re as interested as we are!</p>
 	<p>You can show your support by starring or <a href="https://github.com/cloudflare/production-saas">following the project on GitHub</a>. All releases, discussions, and milestone tracking will reside within the repository. The next generation of SaaS applications will be built on Cloudflare — subscribe and dive in early!</p>

@@ -8,7 +8,14 @@
 	<p>At CloudFlare, we’ve constructed one of the world’s largest networks purpose-built to protect our customers from a wide range of attacks. We’re so good at it that attackers increasingly look for ways to go around us, rather than go through us. One of the biggest risks for high-profile customers has been having their domain stolen at the registrar.</p>
 	<p>In 2013, we became intimately familiar with this problem when <a href="https://blog.cloudflare.com/details-behind-todays-internet-hacks">domains for the New York Times were hijacked</a> and the newspaper’s CTO reached out to us to help get it back. We were able to assist, but the newspaper had its web and email traffic rerouted for hours.</p>
 	<p>Since the New York Times domain hijack, a number of other sites have had their domains stolen. We ourselves have seen multiple attempts to take control of CloudFlare’s registrar account. Thankfully, none have been successful—but some have gotten closer than we were comfortable with. Given the risk, we began looking for a registrar with security protocols that we could trust.</p>
-	<h3>A Brief History of Registries and Registrars</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-brief-history-of-registries-and-registrars">A Brief History of Registries and Registrars</h3>
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-registries-and-registrars" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the early days of the Internet, domain registration was free. As the Internet began to take off, demand for domain registrations exploded. In 1993, unable to keep up with demand, InterNIC (the quasi-governmental organization that had handled the global registry of domain names) transferred responsibility for the registry to a private company called Network Solutions.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +33,14 @@
 	</ul>
 	<p>By 1998, there was significant pressure to create a competitive market for <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a>. Network Solutions was forced to amend their contract to allow multiple registrars to add domains to the global registry. On November 30, 1999, the new system launched with multiple registrars competing largely on price. The price of domain registrations dropped rapidly over the next ten years. Today, most registrars are volume operations. While this has democratized domain registration, it has done little to incentivize investment in high-security systems.</p>
 	<p>There are a couple of registrars that have tried to differentiate themselves with security services. Generally, their primary business is not security; It’s something else, like intellectual property theft detection. In our search for a high-security registrar for CloudFlare’s domains, we didn’t find any that met our standards. And, it’s worth noting, the New York Times was using one of the supposedly security-focused registrars when their domain was hijacked.</p>
-	<h3>Domain Hijacking at the Registrar</h3>
+	<div class="flex anchor relative">
+		<h3 id="domain-hijacking-at-the-registrar">Domain Hijacking at the Registrar</h3>
+		<a href="https://blog.cloudflare.com/#domain-hijacking-at-the-registrar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Domain hijacking at the registrar works by tricking the registrar into changing the nameservers or title information associated with a domain. The registrar pushes that change up to the registry, after which the entire Internet treats those changes as authoritative. In the worst cases, attackers can even move the domain to a new registrar, making the recovery process much more difficult.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -35,7 +49,14 @@
 	</figure>
 	<p>The fundamental problem of registrar security is that domains are owned by organizations, but the global registrar infrastructure is designed for individuals. For high-profile domains, regular security controls like passwords don’t work because employees (the people that have the passwords) eventually leave, but the domain always stays with the company. In addition, most registrars allow any privileged user to silently remove security settings for the account—there is no two-man rule.</p>
 	<p>This means <i>anyone</i> with access to your registrar account can hijack your domain and point it to any IP address they want, be it an attacker that compromised your account or a rogue employee. Once a domain hijack occurs, your only recourse is to appeal to your registrar (and, if the attacker managed to switch registrars, the registrar that now controls the domain) and hope they do the right thing. If that doesn’t work, you’re stuck filing a legal complaint directly with ICANN. That process can take anywhere from weeks to months, all the while, visitors to your domain are being directed to a web server that you don’t control.</p>
-	<h3>Raising the Bar for Registrar Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="raising-the-bar-for-registrar-security">Raising the Bar for Registrar Security</h3>
+		<a href="https://blog.cloudflare.com/#raising-the-bar-for-registrar-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The solution is a high-touch, offline-only change policy. When setting out to find a secure registrar, we defined the following security requirements:</p>
 	<ul>
 		<li>
@@ -56,23 +77,58 @@
 	</ul>
 	<p>Many registrars support Registrar Lock, which prevents the registry from altering information unless the lock is explicitly removed. The problem is, if an attacker compromises your registrar account, they can unlock it and make whatever changes they want.</p>
 	<p>Registry Lock prevents changes by <i>any</i> registrar until the lock is removed. Unlocking at the registry level requires out-of-band communication between the registrar and Verisign (the global registry operator for several top-level domains), and is thus very manual. Since most registrars are volume operations, it’s very difficult to find one that takes the time to literally pick up the phone and call Verisign every time someone makes a change to their DNS settings.</p>
-	<h3>Becoming an ICANN Accredited Registrar</h3>
+	<div class="flex anchor relative">
+		<h3 id="becoming-an-icann-accredited-registrar">Becoming an ICANN Accredited Registrar</h3>
+		<a href="https://blog.cloudflare.com/#becoming-an-icann-accredited-registrar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>About a year ago, we came to the conclusion that the only way we would find a registrar that met our security standards was to become one ourselves. So, that’s what we did. Today, all of CloudFlare’s critical domains are registered through our own ICANN accredited registrar. Any changes rely on a strict change control process.</p>
 	<p>Today, we are opening CloudFlare Registrar to our enterprise-level customers. The service is available to all enterprise customers that care about the highest level of domain registrar security. The first users of our domain registrar service include dwolla.com and nasdaqprivatemarket.com.</p>
-	<h3>CloudFlare Registrar: Security and Peace of Mind</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-registrar-security-and-peace-of-mind">CloudFlare Registrar: Security and Peace of Mind</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-registrar-security-and-peace-of-mind" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare Registrar automatically implements both registrar and registry locks in order to restrict unauthorized changes to domains. We lock domains to CloudFlare’s DNS and require two-factor authentication to be implemented on any CloudFlare Registrar account.</p>
 	<p>Before any transfers are made, we require both online and offline confirmation from multiple independent sources. And, we can customize the authorization process in order to integrate with our customers’ change control systems. For example, if your organization requires separate authorized users from your security, engineering, and legal departments to approve a domain transfer, CloudFlare Registrar can do that.</p>
 	<p>In addition, we will automatically renew all CloudFlare Registrar domains when they have less than one year left on their registration term. This means the domains will never expire, no matter what.</p>
-	<h3>CloudFlare Registrar and Universal DNSSEC</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-registrar-and-universal-dnssec">CloudFlare Registrar and Universal DNSSEC</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-registrar-and-universal-dnssec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare Registrar protects domains from being hijacked at the registry, but they’re still vulnerable to DNS on-path attacks. <a href="https://www.cloudflare.com/dnssec">Universal DNSSEC</a> adds an additional layer of security by authenticating all DNS queries for your domains with cryptographic signatures. In cases where CloudFlare is both the registrar and the DNS provider of a domain, we can seamlessly deliver DNSSEC. As a result, all CloudFlare Registrar customers will have DNSSEC automatically enabled by default.</p>
-	<h3>Domain and Registrar Security Tool</h3>
+	<div class="flex anchor relative">
+		<h3 id="domain-and-registrar-security-tool">Domain and Registrar Security Tool</h3>
+		<a href="https://blog.cloudflare.com/#domain-and-registrar-security-tool" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Curious about how secure your own domains are? Check out our <a href="https://www.cloudflare.com/domain-security-check">domain and registrar security tool</a> that grades your domain against 5 best practices: Registry Lock, Registrar Lock, Role Accounts, generous expiration windows, and DNSSEC.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69zCrTyhFdyOYAAgoB6l7I/44a7a5fedad8227dc0dd4aa1f15c2bfd/image_3-2.png" alt="Screenshot of CloudFlare's Domain and Registrar Security Tool" class="kg-image" width="1906" height="1512" loading="lazy">
 
 	</figure>
-	<h3>For the Security Conscious, Not the Masses</h3>
+	<div class="flex anchor relative">
+		<h3 id="for-the-security-conscious-not-the-masses">For the Security Conscious, Not the Masses</h3>
+		<a href="https://blog.cloudflare.com/#for-the-security-conscious-not-the-masses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare Registrar is not designed for the masses. There are plenty of great mass-market registrars. However, if you’re an organization where losing your domains would be a front-page story, then CloudFlare Registrar is for you.</p>
 	<p>If you’re an existing CloudFlare enterprise customer, contact your Dedicated Account Manager to get started with CloudFlare Registrar. If you’re not yet a CloudFlare customer, <a href="https://www.cloudflare.com/enterprise-service-request">get in touch</a> with our sales team, and we can help you fully lock down your domains.</p>
 </div>

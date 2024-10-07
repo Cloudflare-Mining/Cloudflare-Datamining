@@ -8,7 +8,14 @@
 	</figure>
 	<p>In 2014, a bug was found in OpenSSL, a popular encryption library used to secure the majority of servers on the Internet. This bug allowed attackers to abuse an obscure feature called TLS heartbeats to read memory from affected servers. Heartbleed was big news because it allowed attackers to extract the most important secret on a server: its TLS/SSL certificate private key. After confirming that the bug was <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge">easy to exploit</a>, we revoked and reissued over <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">100,000 certificates</a>, which highlighted some major issues with how the Internet is secured.</p>
 	<p>As much as Heartbleed and <a href="https://www.bankinfosecurity.com/private-keys-for-23000-digital-certificates-leaked-a-10689">other key compromise events</a> were painful for security and operations teams around the world, they also provided a learning opportunity for the industry. Over the past seven years, Cloudflare has taken the lessons of Heartbleed and applied them to improve the design of our systems and the resiliency of the Internet overall. Read on to learn how using Cloudflare reduces the risk of key compromise and reduces the cost of recovery if it happens.</p>
-	<h3>Keeping keys safe</h3>
+	<div class="flex anchor relative">
+		<h3 id="keeping-keys-safe">Keeping keys safe</h3>
+		<a href="https://blog.cloudflare.com/#keeping-keys-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An important tenet of security system design is defense-in-depth. Important things should be protected with multiple layers of defense. This is why security-conscious people keep spare house keys in a secure lockbox rather than under the mat. For cryptographic systems that face the Internet, defense-in-depth means designing your systems so that keys are not one exploit away from being stolen. This wasn’t the case for OpenSSL and Heartbleed. Private keys were loaded into memory into a memory-unsafe Internet-facing process, so only a single memory disclosure bug was needed to exfiltrate them.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,7 +38,14 @@
 	</figure>
 	<p>Delegated Credentials: key separation with no latency</p>
 	<p>Keyless SSL is a great security solution, but depending on where keys are stored it can introduce some latency. Because of this, we worked with the IETF to develop a new standard called <a href="https://blog.cloudflare.com/keyless-delegation">Delegated Credentials</a>, which allows connections to use short-lived keys that are signed by the certificate instead of the certificate itself in TLS. This eliminates the additional latency introduced by Keyless SSL. We support Delegated Credentials for all Keyless SSL and Geo Key Manager customers; and Firefox 89 (May 2021) will enable Delegated Credential support by default.</p>
-	<h3>Making revocation work</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-revocation-work">Making revocation work</h3>
+		<a href="https://blog.cloudflare.com/#making-revocation-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Heartbleed happened and hundreds of thousands of certificates were deemed potentially compromised, the logical thing to do was to revoke and reissue these certificates. Doing so caused some unexpected consequences.</p>
 	<p>The first consequence of revocation was a massive surge of network traffic related to the revocation information. In 2014, there were three main mechanisms for certificate revocation:</p>
 	<ul>
@@ -84,7 +98,14 @@
 	<p>Mass revocation of certificates back in 2014 plainly didn’t work. Some of the certificates at the time were valid for up to five years, so a compromised key was a problem for a long time.</p>
 	<p>In 2015, a new standard emerged that seemed to provide a reasonable solution to this problem: <a href="https://scotthelme.co.uk/ocsp-must-staple">OCSP Must-staple</a>. Certificates issued with the must-staple feature are only trusted if accompanied by a valid OCSP staple. If a must-staple certificate is compromised and revoked, then it can only be used to attack users for the lifetime of the last issued OCSP (usually 10 days or less). This is a big improvement and allows certificate owners to limit their overall risk.</p>
 	<p>Cloudflare has supported best-effort OCSP stapling <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">since 2012</a>. In 2017, we set out to improve the reliability of our OCSP stapling so that we could support OCSP must-staple certificates. The result of this work was <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">High-reliability OCSP</a> stapling and a research study published <a href="https://dl.acm.org/doi/10.1145/3278532.3278543">in IMC</a> that demonstrated the feasibility of OCSP must-staple more broadly on the Internet. Cloudflare now supports OCSP must-staple certificates, providing an additional safety net in case of a future key compromise.</p>
-	<h3>2014 vs. now</h3>
+	<div class="flex anchor relative">
+		<h3 id="2014-vs-now">2014 vs. now</h3>
+		<a href="https://blog.cloudflare.com/#2014-vs-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve come a long way in seven years. Cloudflare is constantly innovating in the TLS/SSL key protection and security space. Here’s what changed over the past few years:</p>
 	<p>2014</p>
 	<ul>

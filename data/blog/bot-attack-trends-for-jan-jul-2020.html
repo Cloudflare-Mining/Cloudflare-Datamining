@@ -10,7 +10,15 @@
 	<p>This blog post is a high-level overview of bot traffic on Cloudflare’s network. Cloudflare offers a comprehensive <a href="https://www.cloudflare.com/products/bot-management">Bot Management tool</a> for Enterprise customers, along with an effective free tool called Bot Fight Mode. Because of the tremendous amount of traffic that flows through our network each day, Cloudflare is in a unique position to analyze global bot trends.</p>
 	<p>In this post, we will cover the basics of bot traffic and distinguish between automated requests and other human requests (<b>What Is A Bot?)</b>. Then, we’ll move on to a global overview of bot traffic around the world (<b>A RoboBird’s Eye View, A Bot Day</b> and <b>Bots All Over The World</b>), and dive into North American traffic (<b>A Look into North American Traffic)</b>. &nbsp;Lastly, we’ll finish with an overview of how the coronavirus pandemic affected global traffic, and we’ll take a deeper look at European traffic (<b>Bots During COVID-19 In Europe)</b>.</p>
 	<p>On average, Cloudflare processes 18 million HTTP requests every second. This is a great opportunity to understand how bots shape the Internet, how much infrastructure is dedicated to these automated requests, and why our customers need a great bot management solution.</p>
-	<h3>What Is A Bot?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-bot">What Is A Bot?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-bot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WDMsOvCcXwNaDjyPyDA4P/4425e043db8b3510d12df2a0612a8e94/image3-19.png" alt="" class="kg-image" width="1999" height="732" loading="lazy">
@@ -34,7 +42,14 @@
 	<p>If a request is not marked as automated, we mark it as <b>likely human</b> and pass along the bot score from our machine learning system.</p>
 	<p>We also have a behavioral analysis engine and a JavaScript detections engine. You can learn more about these systems by checking out <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Alex Bocharov’s previous post</a> on Cloudflare Bot Management.</p>
 	<p>The two bot definitions for automated traffic are somewhat complementary. Requests caught by heuristic detections will not count towards machine learning detections. Requests that are reliably caught by our machine learning detections won’t need to be registered in our known heuristics bot directory. Because of this, we combine these two together when we discuss “automated traffic” in general.</p>
-	<h3>A RoboBird’s Eye View</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-robobirds-eye-view">A RoboBird’s Eye View</h3>
+		<a href="https://blog.cloudflare.com/#a-robobirds-eye-view" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Data from this piece comes from information about Cloudflare’s customers, analyzed between January 15, 2020 and July 31, 2020.</p>
 	<p>First, let’s get a basic understanding of the traffic on our network.</p>
 	<figure class="kg-card kg-image-card ">
@@ -44,7 +59,14 @@
 	</figure>
 	<p><b>Figure 1.1</b> Traffic type on Cloudflare’s network.</p>
 	<p>Figure 1.1 has a global breakdown regarding classification; 60.6% of traffic is likely human, 19.3% is likely automated, 18.1% is definitely automated and only 2.1% is from verified bots. In total, 39.5% of requests we score come from some kind of bot.</p>
-	<h3>A Bot Day</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-bot-day">A Bot Day</h3>
+		<a href="https://blog.cloudflare.com/#a-bot-day" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Regular traffic fluctuates throughout the day. Do bots follow suit? Let’s check. Figure 2.1 represents traffic deviation from the average hourly traffic. An increase of 10% would mean that the hour is 10% busier than the average hour (measuring requests per hour). We include the total overall traffic in this chart to serve as a comparison to other types of traffic.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -75,7 +97,14 @@
 	</figure>
 	<p><b><i>Figure 2.4</i></b><i> Bot classification over an average week.</i></p>
 	<p>We can also see that good bots don’t take weekends off. Weekdays and weekends have fairly marked differences for most traffic, but good bots keep a consistent schedule. Whereas a typical weekday is slightly above average, we can see a drop of about 4% in overall traffic. This does not fully apply to verified bots, which only see a small 1% drop in traffic.</p>
-	<h3>Bots All Over The World</h3>
+	<div class="flex anchor relative">
+		<h3 id="bots-all-over-the-world">Bots All Over The World</h3>
+		<a href="https://blog.cloudflare.com/#bots-all-over-the-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we’ve taken a look at global traffic, let’s dig a little deeper.</p>
 	<p>Different regions have distinct traffic landscapes regarding automated traffic.</p>
 	<figure class="kg-card kg-image-card ">
@@ -92,7 +121,14 @@
 	</figure>
 	<p><b><i>Figure 3.2</i></b><i> Traffic classification within each region.</i></p>
 	<p>Looking at regional breakdown of traffic in Figure 3.2, we can see just how much North American traffic is automated, well above the global average.</p>
-	<h3>A Look into North American Traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-look-into-north-american-traffic">A Look into North American Traffic</h3>
+		<a href="https://blog.cloudflare.com/#a-look-into-north-american-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As the largest source of automated traffic, North America deserves a closer look.</p>
 	<p>First, we’ll start with a breakdown of each country.</p>
 	<figure class="kg-card kg-image-card ">
@@ -111,7 +147,14 @@
 	</figure>
 	<p><b><i>Figure 3.4</i></b><i> Percentage of traffic within each country.</i></p>
 	<p>Over half of the traffic from the United States is automated in some way, which is a clear departure from trends in Mexico and Canada.</p>
-	<h3>American Bots</h3>
+	<div class="flex anchor relative">
+		<h3 id="american-bots">American Bots</h3>
+		<a href="https://blog.cloudflare.com/#american-bots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far, we’ve seen how much the United States contributes to automated traffic. If we want to go deeper, a good place to start is by understanding how these bots get online. We can do this by examining the networks from which the traffic originates. Networks are identified by Autonomous System Numbers, or ASNs. These form the backbone of the Internet infrastructure.</p>
 	<p>Think of these as Internet Service Providers, but facing inward towards the network instead of outward towards end consumers. ISPs like Comcast and Verizon are examples of residential ASNs, where we expect mostly human traffic. Cloud providers such as Google and Amazon are also ASNs, but targeted towards cloud services. We expect most of these requests to be automated in some way.</p>
 	<p>Looking at traffic on the ASN level is important because we can identify cloud-based traffic, or traffic using residential proxies, among others.</p>
@@ -137,7 +180,14 @@
 	</figure>
 	<p><b><i>Figure 4.3</i></b><i> Top ASN in the United States for likely and definitely automated traffic.</i></p>
 	<p>Automated traffic has a variety of ASNs. Cloud providers such as Amazon, Google and Microsoft make up the 30% of automated traffic. Comcast also makes up a significant portion of traffic at 4.8%, indicating that some bots come from residential services.</p>
-	<h3>Bots During COVID-19 In Europe</h3>
+	<div class="flex anchor relative">
+		<h3 id="bots-during-covid-19-in-europe">Bots During COVID-19 In Europe</h3>
+		<a href="https://blog.cloudflare.com/#bots-during-covid-19-in-europe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lockdowns and limits on public events came as a consequence of the ongoing coronavirus pandemic. Many people have been working from home, and even those who do not have this option are using the Internet in new ways. Overall, this has meant that Cloudflare’s network has grown tremendously.</p>
 	<p>But how does this impact bot traffic? First let’s get an idea of how it impacted traffic in general. Countries were impacted by the virus at different times, so we expect to see differences, right?</p>
 	<figure class="kg-card kg-image-card ">
@@ -201,7 +251,14 @@
 	</figure>
 	<p><b><i>Figure 5.8.</i></b><i> Countries of origin for GoogleImageProxy.</i></p>
 	<p>We can see that the global average barely budges. It appears that Google may be moving image proxy traffic between data centers and during the period we observed above that traffic was coming from Italy.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Cloudflare’s global reach, we’re in a position to understand how bots behave.</p>
 	<p>The first half of 2020 saw a massive increase in web traffic of around 35% since the beginning of the year, driven by the ongoing coronavirus pandemic, and some bots have taken advantage of it.</p>
 	<p>We explained how bot management works for our customers, and how we distinguish between likely automated and human traffic.</p>

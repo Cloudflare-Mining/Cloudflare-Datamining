@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>On August 22 a new vulnerability in the Apache Struts framework was <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">announced.</a> It allows unauthenticated attackers to perform Remote Code Execution (RCE) on vulnerable hosts.</p>
 	<p>As security researcher Man Yue Mo <a href="https://lgtm.com/blog/apache_struts_CVE-2018-11776">explained</a>, the vulnerability has similarities with previous Apache Struts vulnerabilities. The Cloudflare WAF already mitigated these so adjusting our rules to handle the new vulnerability was simple. Within hours of the disclosure we deployed a mitigation with no customer action required.</p>
-	<h3>OGNL, again</h3>
+	<div class="flex anchor relative">
+		<h3 id="ognl-again">OGNL, again</h3>
+		<a href="https://blog.cloudflare.com/#ognl-again" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Apache Struts RCE payloads often come in the form of Object-Graph Navigation Library (OGNL) expressions. OGNL is a language for interacting with the properties and functions of Java classes and Apache Struts supports it in many contexts.</p>
 	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p>
 	<pre class="language-bash"><code class="language-bash">&lt;s:property value="%{getSum(2,3)}" /&gt;</code></pre>
@@ -12,7 +19,14 @@
     @java.lang.Runtime@getRuntime().exec('calc')
 }</code></pre>
 	<p>Which means if you can find a way to make Apache Struts execute a user supplied OGNL expression, you've found an RCE vulnerability. Security researchers have found a significant number of vulnerabilities where this was the root cause.</p>
-	<h3>What’s different this time?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-different-this-time">What’s different this time?</h3>
+		<a href="https://blog.cloudflare.com/#whats-different-this-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The major difference between the various OGNL related Struts vulnerabilities is where the payload can be supplied.</p>
 	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045">S2-045</a>, expressions could be supplied via the ‘Content-Type’ header. &nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
 	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure <a href="https://semmle.com/news/apache-struts-CVE-2018-11776">post</a>.</p>
@@ -31,14 +45,29 @@
 	<pre class="language-bash"><code class="language-bash">vulnerablesite.com/struts2-blank/my-current-name-space/HelloWorld.action</code></pre>
 	<p>If the client inserts an OGNL expression instead, it will be executed.</p>
 	<pre class="language-bash"><code class="language-bash">vulnerablesite.com/struts2-blank/${#_memberAccess["allowStaticMethodAccess"]=true,@java.lang.Runtime@getRuntime().exec('calc')}/HelloWorld.action</code></pre>
-	<h3>Cloudflare’s got your covered</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-got-your-covered">Cloudflare’s got your covered</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-got-your-covered" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has rules to protect against this particular vulnerability, and many other Struts vulnerabilities. These have been configured as Block by default, so no customer action is needed, assuming the Cloudflare Specials rule set is enabled in your WAF configuration.</p>
 	<p>For customers on our Pro, Business and Enterprise plans, you can do this by going to the “Firewall” tab:</p>
 	<p>Clicking “Web Application Firewall” and setting the toggle to “On”:</p>
 	<p>Then finally ensuring the “Cloudflare Specials” rule set is set to “On” as well:</p>
 	<p>Where possible, we signature OGNL expressions in general, because of how dangerous it is for a server to trust any user-supplied OGNL. This allows the WAF to protect you without detailed knowledge of how specific exploits might work.</p>
 	<p>Additionally, for this and other Struts vulnerabilities, we produce rules that target specific locations where payloads can be supplied in (e.g. URI, parameters, etc). By focusing on specific payload vectors these rules can be much stricter in the range of inputs allowed, without the risk of increased false positives.</p>
-	<h3>What we've seen in the last 24h</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-weve-seen-in-the-last-24h">What we've seen in the last 24h</h3>
+		<a href="https://blog.cloudflare.com/#what-weve-seen-in-the-last-24h" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the disclosure, we've seen a fairly constant rate of attacks targeting S2-057 vulnerability:</p>
 	<p>About half of these are coming from known vulnerability scanners, however our research has shown that the vast majority of payloads are only probing, rather than attempting to execute malicious actions. The most common tactics for that are using the OGNL expression print extra strings in the server response, or append extra headers.</p>
 	<p>Aside from that, our Research team have also seen attempts to run various commands:</p>

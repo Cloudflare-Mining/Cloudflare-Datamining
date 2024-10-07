@@ -13,7 +13,14 @@
 	<p>If you want to read all the gory details, they're available <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage">here</a>.</p>
 	<p>It's painful whenever a data center has a complete loss of power, but it's something that we were supposed to expect. Unfortunately, in spite of that expectation, we hadn't enforced a number of requirements on our products that would ensure they continued running in spite of a major failure.</p>
 	<p>That was a mistake we were never going to allow to happen again.</p>
-	<h3>Code Orange</h3>
+	<div class="flex anchor relative">
+		<h3 id="code-orange">Code Orange</h3>
+		<a href="https://blog.cloudflare.com/#code-orange" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The incident was painful enough that we declared what we called Code Orange. We borrowed the idea from Google which, when they have an existential threat to their business, reportedly declares a Code Yellow or Code Red. Our logo is orange, so we altered the formula a bit.</p>
 	<p>Our conception of Code Orange was that the person who led the incident, in this case our SVP of Technical Operations, Jeremy Hartman, would be empowered to charge any engineer on our team to work on what he deemed the highest priority project. (Unless we declared a Code Red, which we actually ended up doing due to a hacking incident, and which would then take even higher priority. If you're interested, you can read more about that <a href="https://blog.cloudflare.com/thanksgiving-2023-security-incident">here</a>.)</p>
 	<p>After getting through the immediate incident, Jeremy quickly triaged the most important work that needed to be done in order to ensure we'd be highly available even in the case of another catastrophic failure of a major data center facility. And the team got to work.</p>
@@ -22,7 +29,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Q7F31g2w6xPxdlq39dpDW/3b9d2ffd272280cc4ef28b5a4ba194ad/image2-15.png" alt="" class="kg-image" width="1800" height="338" loading="lazy">
 
 	</figure>
-	<h3>How'd we do?</h3>
+	<div class="flex anchor relative">
+		<h3 id="howd-we-do">How'd we do?</h3>
+		<a href="https://blog.cloudflare.com/#howd-we-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We didn’t expect such an extensive real-world test so quickly, but the universe works in mysterious ways. On Tuesday, March 26, 2024, — just shy of five months after the initial incident — the same facility had another major power outage. Below, we'll get into what caused the outage this time, but what is most important is that it provided a perfect test for the work our team had done under Code Orange. So, what were the results?</p>
 	<p>First, let’s revisit what functions the Portland data centers at Cloudflare provide. As described in the November 2, 2023, <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage">post</a>, the control plane of Cloudflare primarily consists of the customer-facing interface for all of our services including our website and API. Additionally, the underlying services that provide the Analytics and Logging pipelines are primarily served from these facilities.</p>
 	<p>Just like in November 2023, we were alerted immediately that we had lost connectivity to our PDX01 data center. Unlike in November, we very quickly knew with certainty that we had once again lost all power, putting us in the exact same situation as five months prior. We also knew, based on a successful internal cut test in February, how our systems should react. We had spent months preparing, updating countless systems and activating huge amounts of network and server capacity, culminating with a test to prove the work was having the intended effect, which in this case was an automatic failover to the redundant facilities.</p>
@@ -82,7 +96,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cu18EGvfdwXuXIr81qHN8/7cbafcb907164840f1a45a2dfbd8ac08/Incident-inspection.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
 
 	</figure>
-	<h3>How did we get here?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-did-we-get-here">How did we get here?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-we-get-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned above, the power outage event from last November led us to introduce Code Orange, a process where we shift most or all engineering resources to addressing the issue at hand when there’s a significant event or crisis. Over the past five months, we shifted all non-critical engineering functions to focusing on ensuring high reliability of our control plane.</p>
 	<p>Teams across our engineering departments rallied to ensure our systems would be more resilient in the face of a similar failure in the future. Though the March 26, 2024, incident was unexpected, it was something we’d been preparing for.</p>
 	<p>The most obvious difference is the speed at which the control plane and APIs regained service. Without human intervention, the ability to log in and make changes to Cloudflare configuration was possible seven minutes after PDX01 was lost. This is due to our efforts to move all of our configuration databases to a Highly Available (HA) topology, and pre-provision enough capacity that we could absorb the capacity loss. More than 100 databases across over 20 different database clusters simultaneously failed out of the affected facility and restored service automatically. This was actually the culmination of over a year’s worth of work, and we make sure we prove our ability to failover properly with weekly tests.</p>
@@ -93,7 +114,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hnYtkVM6JHuvAOD3HGNmq/f47cefb3afdd7c0a2a3bb622187b5c61/image1-12.png" alt="" class="kg-image" width="1800" height="320" loading="lazy">
 
 	</figure>
-	<h3>What happened to the power in the data center?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-happened-to-the-power-in-the-data-center">What happened to the power in the data center?</h3>
+		<a href="https://blog.cloudflare.com/#what-happened-to-the-power-in-the-data-center" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On March 26, 2024, at 14:58 UTC, PDX01 experienced a total loss of power to Cloudflare’s physical infrastructure following a reportedly simultaneous failure of four Flexential-owned and operated switchboards serving all of Cloudflare’s cages. This meant both primary and redundant power paths were deactivated across the entire environment. During the Flexential investigation, engineers focused on a set of equipment known as Circuit Switch Boards, or CSBs. CSBs are likened to an electrical panel board, consisting of a main input circuit breaker and series of smaller output breakers. Flexential engineers reported that infrastructure upstream of the CSBs (power feed, generator, UPS &amp; PDU/transformer) was not impacted and continued to act normally. Similarly, infrastructure downstream from the CSBs such as Remote Power Panels and connected switchgear was not impacted – thus implying the outage was isolated to the CSBs themselves.</p>
 	<p>Initial assessment of the root cause of Flexential’s CSB failures points to incorrectly set breaker coordination settings within the four CSBs as one contributing factor. Trip settings which are too restrictive can result in overly sensitive overcurrent protection and the potential nuisance tripping of devices. In our case, Flexential’s breaker settings within the four CSBs were reportedly too low in relation to the downstream provisioned power capacities. When one or more of these breakers tripped, a cascading failure of the remaining active CSB boards resulted, thus causing a total loss of power serving Cloudflare’s cage and others on the shared infrastructure. During the triage of the incident, we were told that the Flexential facilities team noticed the incorrect trip settings, reset the CSBs and adjusted them to the expected values, enabling our team to power up our servers in a staged and controlled fashion. We do not know when these settings were established – typically, these would be set/adjusted as part of a data center commissioning process and/or breaker coordination study before customer critical loads are installed.</p>
 	<figure class="kg-card kg-image-card ">
@@ -101,7 +129,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lJDAVlXMNrU7Eyp7PP0lF/590a1d03bd1d87ff75466ed801f8a628/Incident-inspection-3.png" alt="" class="kg-image" width="1600" height="284" loading="lazy">
 
 	</figure>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our top priority is completing the resilience program for our Analytics platform. Analytics aren’t simply pretty charts in a dashboard. When you want to check the status of attacks, activities a firewall is blocking, or even the status of Cloudflare Tunnels - you need analytics. We have evidence that the resiliency pattern we are adopting works as expected, so this remains our primary focus, and we will progress as quickly as possible.</p>
 	<p>There were some services that still required manual intervention to properly recover, and we have collected data and action items for each of them to ensure that further manual action is not required. We will continue to use production cut tests to prove all of these changes and enhancements provide the resiliency that our customers expect.</p>
 	<p>We will continue to work with Flexential on follow-up activities to expand our understanding of their operational and review procedures to the greatest extent possible. While this incident was limited to a single facility, we will turn this exercise into a process that ensures we have a similar view into all of our critical data center facilities.</p>

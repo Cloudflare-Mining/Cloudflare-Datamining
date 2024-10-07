@@ -7,11 +7,33 @@
 	</figure>
 	<p>Communicating between systems can be a balancing act that has a major impact on your business. <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> have limits, billing frequently depends on usage, and end-users are always looking for more speed in the services they use. With so many conflicting considerations, it can feel like a challenge to get it just right. Cloudflare Queues is a tool to make this balancing act simple. With our latest features like consumer concurrency and explicit acknowledgment, it’s easier than ever for developers to focus on writing great code, rather than worrying about the fees and rate limits of the systems they work with.</p>
 	<p>Queues is a messaging service, enabling developers to send and receive messages across systems asynchronously with guaranteed delivery. It integrates directly with Cloudflare Workers, making for easy message production and consumption working with the many products and services we offer.</p>
-	<h2>What’s new in Queues?</h2>
-	<h3>Consumer concurrency</h3>
+	<div class="flex anchor relative">
+		<h2 id="whats-new-in-queues">What’s new in Queues?</h2>
+		<a href="https://blog.cloudflare.com/#whats-new-in-queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="consumer-concurrency">Consumer concurrency</h3>
+		<a href="https://blog.cloudflare.com/#consumer-concurrency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Oftentimes, the systems we pull data from can produce information faster than other systems can consume them. This can occur when consumption involves processing information, storing it, or sending and receiving information to a third party system. The result of which is that sometimes, a queue can fall behind where it should be. At Cloudflare, a queue shouldn't be a quagmire. That’s why we’ve introduced Consumer Concurrency.</p>
 	<p>With Concurrency, we automatically scale up the amount of consumers needed to match the speed of information coming into any given queue. In this way, customers no longer have to worry about an ever-growing backlog of information bogging down their system.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When setting up a queue, developers can set a Cloudflare Workers script as a target to send messages to. With concurrency enabled, Cloudflare will invoke multiple instances of the selected Worker script to keep the messages in the queue moving effectively. This feature is enabled by default for every queue and set to automatically scale.</p>
 	<p>Autoscaling considers the following factors when spinning up consumers: &nbsp;the number of messages in a queue, the rate of new messages, and successful vs. unsuccessful consumption attempts.</p>
 	<p>If a queue has enough messages in it, concurrency will increase each time a message batch is successfully processed. Concurrency is decreased when message batches encounter errors. Customers can set a <code>max_concurrency</code> value in the Dashboard or via Wrangler, which caps out how many consumers can be automatically created to perform processing for a given queue.</p>
@@ -28,7 +50,14 @@
 
 max_concurrency = 7</code></pre>
 	<p>To learn more about concurrency you can check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency">here</a>.</p>
-	<h3>Concurrency in practice</h3>
+	<div class="flex anchor relative">
+		<h3 id="concurrency-in-practice">Concurrency in practice</h3>
+		<a href="https://blog.cloudflare.com/#concurrency-in-practice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s baseball season in the US, and for many of us that means fantasy baseball is back! This year is the year we finally write a program that uses data and statistics to pick a winning team, as opposed to picking players based on “feelings” and “vibes”. We’re engineers after all, and baseball is a game of rules. If the Oakland A’s can do it, so can we!</p>
 	<p>So how do we put this together? We’ll need a few things:</p>
 	<ol>
@@ -58,11 +87,25 @@ env.baseballqueue.send(jsonData)
 }</code></pre>
 	<p>Our producer Workers script then passes these statistics onto the queue. As each game contains quite a bit of data, this results in hundreds of thousands of “game data” messages waiting to be processed in our queue. Without concurrency, we would have to wait for each batch of messages to be processed one at a time, taking minutes if not longer. But, with Consumer Concurrency enabled, we watch as multiple instances of our worker script invoked to process this information in no time!</p>
 	<p>Our Worker script would then take these statistics, apply a heuristic, and store the player name and a corresponding quality score into a database like a Workers KV store for easy access by your application presenting the data.</p>
-	<h3>Explicit Acknowledgment</h3>
+	<div class="flex anchor relative">
+		<h3 id="explicit-acknowledgment">Explicit Acknowledgment</h3>
+		<a href="https://blog.cloudflare.com/#explicit-acknowledgment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Queues previously, a failure of a single message in a batch would result in the whole batch being resent to the consumer to be reprocessed. This resulted in extra cycles being spent on messages that were processed successfully, in addition to the failed message attempt. This hurts both customers and developers, slowing processing time, increasing complexity, and increasing costs.</p>
 	<p>With Explicit Acknowledgment, we give developers the precision and flexibility to handle each message individually in their consumer, negating the need to reprocess entire batches of messages. Developers can now tell their queue whether their consumer has properly processed each message, or alternatively if a specific message has failed and needs to be retried.</p>
 	<p>An acknowledgment of a message means that that message will not be retried if the batch fails. Only messages that were not acknowledged will be retried. Inversely, a message that is explicitly retried, will be sent again from the queue to be reprocessed without impacting the processing of the rest of the messages currently being processed.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In your consumer, there are 4 new methods you can call to explicitly acknowledge a given message: .ack(), .retry(), .ackAll(), .retryAll().</p>
 	<p>Both ack() and retry() can be called on individual messages. ack() tells a queue that the message has been processed successfully and that it can be deleted from the queue, whereas retry() tells the queue that this message should be put back on the queue and delivered in another batch.</p>
 	<pre class="language-javascript"><code class="language-javascript">async queue(batch, env, ctx) {
@@ -89,7 +132,14 @@ catch (error) {
   }</code></pre>
 	<p>ackAll() and retryAll() work similarly, but act on the entire batch of messages instead of individual messages.</p>
 	<p>For more details check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/batching-retries">here</a>.</p>
-	<h3>Explicit Acknowledgment in practice</h3>
+	<div class="flex anchor relative">
+		<h3 id="explicit-acknowledgment-in-practice">Explicit Acknowledgment in practice</h3>
+		<a href="https://blog.cloudflare.com/#explicit-acknowledgment-in-practice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the course of making our Fantasy Baseball team picker, we notice that data isn’t always sent correctly from the baseball reference API. This results in data not being correctly parsed and rejected from our player heuristics.</p>
 	<p>Without Explicit Acknowledgment, the entire batch of baseball statistics would need to be retried. Thankfully, we can use Explicit Acknowledgment to avoid that, and tell our queue which messages were parsed successfully and which were not.</p>
 	<pre class="language-javascript"><code class="language-javascript">import heuristic from "baseball-heuristic";
@@ -109,19 +159,63 @@ export default {
     }
   },
 };</code></pre>
-	<h3>Higher throughput</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="higher-throughput">Higher throughput</h3>
+		<a href="https://blog.cloudflare.com/#higher-throughput" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Under the hood, we’ve been working on improvements to further increase the amount of messages per second each queue can handle. In the last few months, that number has quadrupled, improving from 100 to over 400 messages per second.</p>
 	<p>Scalability can be an essential factor when deciding which services to use to power your application. You want a service that can grow with your business. We are always aiming to improve our message throughput and hope to see this number quadruple again over the next year. We want to grow with you.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As our service grows, we want to provide our customers with more ways to interact with our service beyond the traditional Cloudflare Workers workflow. We know our customers’ infrastructure is often complex, spanning across multiple services. With that in mind, our focus will be on enabling easy connection to services both within the Cloudflare ecosystem and beyond.</p>
-	<h3>R2 as a consumer</h3>
+	<div class="flex anchor relative">
+		<h3 id="r2-as-a-consumer">R2 as a consumer</h3>
+		<a href="https://blog.cloudflare.com/#r2-as-a-consumer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, the only type of consumer you can configure for a queue is a Workers script. While Workers are incredibly powerful, we want to take it a step further and give customers a chance to write directly to other services, starting with <a href="https://www.cloudflare.com/developer-platform/r2">R2</a>. Coming soon, customers will be able to select an R2 bucket in the Cloudflare Dashboard for a Queue to write to directly, no code required. This will save valuable developer time by avoiding the initial setup in a Workers script, and any maintenance that is required as services evolve. With R2 as a first party consumer in Queues, customers can simply select their bucket, and let Cloudflare handle the rest.</p>
-	<h3>HTTP pull</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-pull">HTTP pull</h3>
+		<a href="https://blog.cloudflare.com/#http-pull" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're also working to allow you to consume messages from existing infrastructure you might have outside of Cloudflare. Cloudflare Queues will provide an HTTP API for each queue from which any consumer can pull batches of messages for processing. Customers simply make a request to the API endpoint for their queue, receive data they requested, then send an acknowledgment that they have received the data, so the queue can continue working on the next batch.</p>
-	<h3>Always working to be faster</h3>
+	<div class="flex anchor relative">
+		<h3 id="always-working-to-be-faster">Always working to be faster</h3>
+		<a href="https://blog.cloudflare.com/#always-working-to-be-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the Queues team, speed is always our focus, as we understand our customers don't want bottlenecks in the performance of their applications. With this in mind the team will be continuing to look for ways to increase the velocity through which developers can build best in class applications on our developer platform. Whether it's reducing message processing time, the amount of code you need to manage, or giving developers control over their application pipeline, we will continue to implement solutions to allow you to focus on just the important things, while we handle the rest.</p>
 	<p>Cloudflare Queues is currently in Open Beta and ready to power your most complex applications.</p>
 	<p>Check out our getting started <a href="https://developers.cloudflare.com/queues/learning/how-queues-works">guide</a> and build your service with us today!</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

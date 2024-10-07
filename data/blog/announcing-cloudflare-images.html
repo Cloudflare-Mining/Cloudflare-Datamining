@@ -7,18 +7,46 @@
 
 	</figure>
 	<p>Today, we are launching Cloudflare Images for all customers. Images is a single product that stores, resizes, optimizes and serves images. We built <a href="https://www.cloudflare.com/products/cloudflare-images">Cloudflare Images</a> so customers of all sizes can build a scalable and affordable image pipeline in minutes.</p>
-	<h2>Store images efficiently</h2>
+	<div class="flex anchor relative">
+		<h2 id="store-images-efficiently">Store images efficiently</h2>
+		<a href="https://blog.cloudflare.com/#store-images-efficiently" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many legacy image pipelines are architected to take an image and create multiple copies of it to account for different sizes and formats. These copies are then stored in a storage bucket and delivered using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>. This architecture can be hard to maintain and adds infrastructure cost in unpredictable ways.</p>
 	<p>With Cloudflare Images, you don’t need to worry about <i>creating</i> and <i>storing</i> multiple versions of the same image in different sizes and formats. Cloudflare Images makes a clear distinction between your stored images and the variants. Once you upload an image, you can apply any defined variant to the uploaded image. The variants and different formats don’t count towards your stored images quota.</p>
 	<p>This means that when a user uploads a picture that you need to resize in three different ways and serve in two different formats, you pay for <i>one</i> stored image instead of seven different images (the original, plus three variants for each of the two formats.)</p>
-	<h2>Built-in access control</h2>
+	<div class="flex anchor relative">
+		<h2 id="built-in-access-control">Built-in access control</h2>
+		<a href="https://blog.cloudflare.com/#built-in-access-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every image that is uploaded to Cloudflare Images can be marked private, so it can only be accessed using an expiring signed URL token. This is ideal for use cases like membership sites that sell premium content.</p>
 	<p>Signed URLs give you the flexibility to validate if someone is a paying member using your custom logic and only give them access to the set of images they have paid for.</p>
-	<h2>Eliminate egress costs</h2>
+	<div class="flex anchor relative">
+		<h2 id="eliminate-egress-costs">Eliminate egress costs</h2>
+		<a href="https://blog.cloudflare.com/#eliminate-egress-costs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Egress cost is the cost of getting your data out of a storage provider. The most common case being when you serve an image from storage you pay for the bits transmitted. And you end up paying every, single time that same image is displayed. It is easy to not account for this cost when you are doing cost-benefit analysis between different solutions. But egress costs add up rapidly, and it is not uncommon for customers to pay their storage provider a <i>very large multiple</i> of their total storage cost in egress.</p>
 	<p>When you use a multi-vendor solution for your image pipeline, you might use vendor A for storage, vendor B for resizing the images and vendor C for delivering the images. At face value, this solution might appear cheaper because you think “<i>we’ve picked the most affordable option for each piece of our image pipeline</i>.” But in this setup, the resizing service (vendor B) and the CDN (vendor C) still need to request images from vendor A.</p>
 	<p>With Cloudflare Images, you never have to worry about egress costs because the images are stored, optimized and delivered by a single product. And you will see only two line items on your bill for Cloudflare Images. You pay \$5/month for every 100,000 stored images and \$1 per 100,000 delivered images. There are no additional resizing, compute or egress costs.</p>
-	<h2>Uploading Images</h2>
+	<div class="flex anchor relative">
+		<h2 id="uploading-images">Uploading Images</h2>
+		<a href="https://blog.cloudflare.com/#uploading-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Images offers multiple ways to upload your images. We accept all the common file formats including JPEG, GIF and WEBP. Each image uploaded to Images can be up to 10 MB.</p>
 	<p>If you only have a few images or simply want a taste of the product, you can use the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages">Images Dashboard</a>. Simply drag and drop one or more images:</p>
 	<figure class="kg-card kg-image-card ">
@@ -45,7 +73,14 @@
   "messages": []
 }</code></pre>
 	<p>Your client-side app can now upload the image directly to the <code>uploadURL</code> without exposing your account credentials to the client.</p>
-	<h2>Resizing with Variants</h2>
+	<div class="flex anchor relative">
+		<h2 id="resizing-with-variants">Resizing with Variants</h2>
+		<a href="https://blog.cloudflare.com/#resizing-with-variants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Images lets you define variants and apply them to your uploaded images. You can define up to 20 different variants to support different use cases. Each variant has properties including the width and height of resized images.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -74,7 +109,14 @@
 
 	</figure>
 	<p><i>Previewing variants in Cloudflare Images</i></p>
-	<h2>Optimized image delivery</h2>
+	<div class="flex anchor relative">
+		<h2 id="optimized-image-delivery">Optimized image delivery</h2>
+		<a href="https://blog.cloudflare.com/#optimized-image-delivery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you’ve uploaded your first image, you will see the Image Delivery URL in your Images Dashboard:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -86,7 +128,14 @@
 	<p><a href="https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name"><code>https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name</code></a></p>
 	<p>You can use this url template to form the final URL that returns any image and variant combination.</p>
 	<p>When a client requests an image, Cloudflare Images will pick the optimal format between WebP, PNG, JPEG and GIF. The format served to the eyeball is determined by client headers and the image type. Cloudflare Images will soon support AVIF, offering further compression. One of the best parts of using Cloudflare Images is that when we add support for newer formats such as AVIF, you will get the upside without needing to make any changes to your codebase.</p>
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All Cloudflare customers can <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages">sign up to use Cloudflare Images</a> this week. We built Cloudflare Images for developers. Check out the <a href="https://developers.cloudflare.com/images">Cloudflare Images developer docs</a> for examples of implementing common use-cases such as letting your users upload images directly to Images and using signed URLs to implement access control.</p>
 	<p>We’re just getting started with Cloudflare Images. Here are some of the features we plan to support soon:</p>
 	<ul>
@@ -100,7 +149,15 @@
 			<p>Analytics to better understand your use of Images.</p>
 		</li>
 	</ul>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

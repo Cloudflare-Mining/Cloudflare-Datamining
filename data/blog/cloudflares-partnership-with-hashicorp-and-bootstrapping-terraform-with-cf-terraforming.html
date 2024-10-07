@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Cloudflare and HashiCorp have been technology partners since 2018, and in that time Cloudflare’s integration with HashiCorp’s technology has deepened, especially with <a href="https://www.terraform.io">Terraform</a>, HashiCorp’s infrastructure-as-code product. Today we are announcing a major update to our Terraform bootstrapping tool, <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming</a>. In this blog, I recap the history of our partnership, the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs?utm_source=WEBSITE&amp;utm_medium=CLOUDFLARE&amp;utm_offer=ARTICLE_PAGE&amp;utm_content=BLOG">HashiCorp Terraform Verified Provider for Cloudflare</a>, and how getting started with Terraform for Cloudflare developers is easier than ever before with the new version of cf-terraforming.</p>
-	<h2>Cloudflare and HashiCorp</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-and-hashicorp">Cloudflare and HashiCorp</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-and-hashicorp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Members of the open source community wrote and supported the first version of Cloudflare's Terraform provider. Eventually our customers began to bring up Terraform in conversations more often. Because of customer demand, we started supporting and developing the Terraform provider ourselves. You can read the initial v1.0 announcement for the provider <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">here</a>. Soon after, Cloudflare’s Terraform provider became ‘verified’ and we began working with HashiCorp to provide a high quality experience for developers.</p>
 	<p>HashiCorp Terraform allows developers to control their infrastructure-as-code through a standard configuration language, HashiCorp Configuration Language (HCL). It works across a myriad of different types of infrastructure including cloud service providers, containers, virtual machines, bare metal, etc. Terraform makes it easy for developers to follow best practices when interacting with SaaS, PaaS, and other service provider APIs that set up infrastructure. Like developers already do with software code, they can store infrastructure configuration as code in git, manage changes through code reviews, and track versions and commit history over time. Terraform also makes it easier to roll back changes if developers discover issues after a deployment.</p>
 	<blockquote>
@@ -16,7 +23,14 @@
 	<blockquote>
 		<p><i>“Leveraging the power of Terraform, you can codify your Cloudflare configuration. Codification enables version control and automation, increasing productivity and reducing human error. We are pleased to have Cloudflare as a technology partner and look forward to our ongoing collaboration.”</i><b>– Asvin Ramesh, Director, Technology Alliances, HashiCorp</b></p>
 	</blockquote>
-	<h3>Getting started with Cloudflare’s Terraform Provider</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-cloudflares-terraform-provider">Getting started with Cloudflare’s Terraform Provider</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-cloudflares-terraform-provider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here are some great resources for developers looking to better understand how to get started using Terraform with Cloudflare:</p>
 	<ul>
 		<li>
@@ -32,15 +46,36 @@
 			<p><a href="https://github.com/cloudflare/terraform-provider-cloudflare">Github repo for Cloudflare’s Terraform Provider</a></p>
 		</li>
 	</ul>
-	<h3>Bootstrapping Terraform configuration with Cf-Terraforming</h3>
+	<div class="flex anchor relative">
+		<h3 id="bootstrapping-terraform-configuration-with-cf-terraforming">Bootstrapping Terraform configuration with Cf-Terraforming</h3>
+		<a href="https://blog.cloudflare.com/#bootstrapping-terraform-configuration-with-cf-terraforming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We released the first version of <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming</a> in early 2019 in this <a href="https://blog.cloudflare.com/introducing-cf-terraform">blog post</a>. Since then we learned a few lessons about building and maintaining such a tool. In this section I’ll recap why we built such a tool in the first place, lessons learned over the last two years, and what is new and improved with the version we are launching today.</p>
-	<h3>Why <code>terraform-ing</code> and why would a developer need this tool?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why">Why </h3>
+		<a href="https://blog.cloudflare.com/#why" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The name for the cf-terraforming library comes from another tool created by dtan4 on github: <a href="https://github.com/dtan4/terraforming">https://github.com/dtan4/terraforming</a>. The original tool allowed users to generate <a href="https://www.terraform.io/docs/language/files/index.html">tfconfig</a> and <a href="https://www.terraform.io/docs/language/state/index.html">tfstate</a> files for existing AWS resources. This made it much easier for existing AWS customers to begin using Terraform. Terraform generally expects to be authoritative about the configuration it manages. Effectively, it expects that you only make changes to that config through Terraform and not anywhere else, like an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> or a dashboard. If you were an existing customer of AWS (or Cloudflare) and already had everything configured via API or a UI, this posed a challenge: How do I quickly and correctly get all of my existing config into Terraform so that it can be the authoritative source of truth? For AWS resources, before dtan4’s terraforming you had to manually write the tfconfig for every object and the run import commands to generate the corresponding tfstate. For sizable deployments, this could be nigh impossible.</p>
 	<p>cf-terraforming served to solve the same problem for Cloudflare services. I had many conversations with customers who had been using Cloudflare for years and who were interested in migrating control of their Cloudflare configuration to Terraform. Cf-terraforming gave them a way to quickly convert all of their existing Cloudflare usage into tfconfig and tfstate.</p>
 	<blockquote>
 		<p><a href="https://blog.cloudflare.com/introducing-cf-terraform"><i>cf-terraforming</i></a><i> was one of the enabling technologies that we used to bootstrap Cloudflare into our Terraform Git-ops workflow. We had thousands of records to port, import, and manage, and doing this by hand would have been an arduous and error-prone task. Using cf-terraforming to generate our initial set of resources allowed our engineers to submit Cloudflare changes, enabling our product engineers to be infrastructure operators.</i>– <b>Sean Chittenden, Infrastructure, DoorDash</b></p>
 	</blockquote>
-	<h3>What we have learned</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-have-learned">What we have learned</h3>
+		<a href="https://blog.cloudflare.com/#what-we-have-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After having cf-terraforming available for some time, we’ve learned quite a bit about the challenges in managing such a tool.</p>
 	<h4>Duplication of effort when resources change</h4>
 	<p>When Cloudflare releases new services or features today, that typically means new or incremental changes to Cloudflare’s APIs. This in turns means updates to our Terraform provider. Since Terraform is a golang program, before we can update our provider we have to first update the <a href="https://github.com/cloudflare/cloudflare-go">cloudflare-go</a> library. Depending on the change, this can be a couple lines in each repo or extensive changes to both. Once we launched cf-terraforming, we now had a third library that needed synchronous changes alongside the provider and go library. Missing a change meant that if someone tried to use cf-terraforming, they may have incomplete config or state, which would not work.</p>
@@ -49,12 +84,33 @@
 	<h4>TF State management</h4>
 	<p>The ability to have cf-terraforming generate a tfstate file was both incredibly important and also experimental. In general a developer never really needs to concern themselves with what is in the tfstate file but needs to know it contains the actual state of those resources such that references in the config can be resolved and managed correctly. We opened up that black box, which meant that we were involved in state file implementation details that we ultimately shouldn’t be.</p>
 	<p>Given these lessons, we looked at how we could update cf-terraforming to alleviate these problems and provide a better tool for both customers and ourselves. After some prototyping to validate our ideas, we came up with a new model that has been productized and is now available for customers.</p>
-	<h3>What’s new in cf-terraforming</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-new-in-cf-terraforming">What’s new in cf-terraforming</h3>
+		<a href="https://blog.cloudflare.com/#whats-new-in-cf-terraforming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we are launching a new version of cf-terraforming that improves upon our previous work. This new version makes it easier for us to support new resources or changes to existing resources and simplifies the workflow for developers looking to bootstrap their Cloudflare Terraform configuration.</p>
-	<h3>Simplified management</h3>
+	<div class="flex anchor relative">
+		<h3 id="simplified-management">Simplified management</h3>
+		<a href="https://blog.cloudflare.com/#simplified-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of hand crafting how to generate both the tfconfig and tfstate for each of the 48 or so resources supported in the Terraform provider, we now leverage Terraform’s capabilities to do more auto generation of what’s needed for similar resource types. HashiCorp has a great CLI tool called <a href="https://github.com/hashicorp/terraform-exec">terraform-exec</a> that provides powerful out-of-the-box capabilities we can take advantage of. Using terraform-exec we get access to `terraform providers schema -json`, which gives us the json schema of our provider. We use this to auto generate the fields we need to populate from the API. In many cases the API response fields map one to one with the json schema, which allows us to automatically populate the tfconfig. In other cases some small tweaks are necessary, which still saves a lot of time to initially support the resource and lowers the burden for future changes. Through this method, if the terraform provider changes for any reason, we can build new versions of cf-terraforming that will fetch the new schema from terraform-exec versus us having to make a lot of manual code changes to the config generation.</p>
 	<p>For tfstate, we simplify our approach by outputting the full set of <a href="https://www.terraform.io/docs/cli/import/index.html">terraform import</a> calls that would need to be run for those resources instead of attempting to generate the tfstate definition itself. This removes virtually any need for future library changes since the import commands do not change if Cloudflare’s API or provider changes.</p>
-	<h3>How to use the new cf-terraforming</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-the-new-cf-terraforming">How to use the new cf-terraforming</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-the-new-cf-terraforming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With that, let’s look at the new cf-terraforming in action. For this walkthrough let’s assume we have an existing zone on Cloudflare with DNS records and firewall rules configured. We want to start managing this zone in Terraform, but we don’t want to have to define all of our configuration by hand.</p>
 	<p>Our goal is to have a ".tf" file with the DNS records resources and firewall rules along with filter resources AND for Terraform to be aware of the equivalent state for those resources. Our inputs are the zone we already have created in Cloudflare, and our tool is the cf-terraforming library. If you are following along at home, you will need <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">terraform installed</a> and at least <a href="https://golang.org/doc/install">Go v1.12.x installed</a>.</p>
 	<h4>Getting the environment setup</h4>
@@ -181,6 +237,13 @@ This means that Terraform did not detect any differences between your
 configuration and real physical resources that exist. As a result, no
 actions need to be performed.</code></pre>
 	<p>You now can begin managing these resources in Terraform. If you want to add more resources into Terraform, follow these steps for other resources. You can find which resources are supported in the <a href="https://github.com/cloudflare/cf-terraforming">README</a>. We will add additional resources over time, but if there are specific ones you are looking for, please create GitHub issues or upvote any existing ones.</p>
-	<h3>It has never been easier to get started with Cloudflare + Terraform</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-has-never-been-easier-to-get-started-with-cloudflare-terraform">It has never been easier to get started with Cloudflare + Terraform</h3>
+		<a href="https://blog.cloudflare.com/#it-has-never-been-easier-to-get-started-with-cloudflare-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whether you are an existing Cloudflare customer and have been curious about Terraform or you are looking to expand your infrastructure-as-code to include Cloudflare’s services, you have everything you need to get building with Terraform, the Cloudflare provider, and cf-terraforming. For questions, comments, or feature requests for either the <a href="https://github.com/cloudflare/terraform-provider-cloudflare">provider</a> or <a href="https://github.com/cloudflare/cf-terraforming">cf-terraforming</a>, see the respective github repos.</p>
 </div>

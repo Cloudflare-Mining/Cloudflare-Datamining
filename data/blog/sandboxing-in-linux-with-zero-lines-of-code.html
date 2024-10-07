@@ -8,7 +8,14 @@
 
 	</figure>
 	<p><a href="https://www.deviantart.com/qubodup/art/Tux-Flat-SVG-607655623">Tux by Iwan Gabovitch, GPL</a><a href="https://pixabay.com/vectors/sandpit-sandbox-container-sand-35536">Sandbox, Simplified Pixabay License</a></p>
-	<h2>Linux system calls</h2>
+	<div class="flex anchor relative">
+		<h2 id="linux-system-calls">Linux system calls</h2>
+		<a href="https://blog.cloudflare.com/#linux-system-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>System calls (syscalls) is a well-defined interface between <a href="https://en.wikipedia.org/wiki/User_space">userspace applications</a> and the <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)">operating system (OS) kernel</a>. On modern operating systems most applications provide only application-specific logic as code. Applications do not, and most of the time cannot, directly access low-level hardware or networking, when they need to store data or send something over the wire. Instead they use system calls to ask the OS kernel to do specific hardware and networking tasks on their behalf:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -16,7 +23,14 @@
 
 	</figure>
 	<p>Apart from providing a generic high level way for applications to interact with the low level hardware, the system call architecture allows the OS kernel to manage available resources between applications as well as enforce policies, like application permissions, networking access control lists etc.</p>
-	<h2>Linux seccomp</h2>
+	<div class="flex anchor relative">
+		<h2 id="linux-seccomp">Linux seccomp</h2>
+		<a href="https://blog.cloudflare.com/#linux-seccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Linux seccomp is <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">yet another syscall</a> on Linux, but it is a bit special, because it influences how the OS kernel will behave when the application uses other system calls. By default, the OS kernel has almost no insight into userspace application logic, so it provides all the possible services it can. But not all applications require all services. Consider an application which converts image formats: it needs the ability to read and write data from disk, but in its simplest form probably does not need any network access. Using seccomp an application can declare its intentions in advance to the Linux kernel. For this particular case it can notify the kernel that it will be using the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html">read</a> and <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write</a> system calls, but never the <a href="https://www.man7.org/linux/man-pages/man2/send.2.html">send</a> and <a href="https://www.man7.org/linux/man-pages/man2/recv.2.html">recv</a> system calls (because its intent is to work with local files and never with the network). It’s like establishing a contract between the application and the OS kernel:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,7 +58,14 @@
 	<p>Although there is a lot of flexibility in defining the potential penalty for the application, from a security perspective it is usually best to stick with the complete application termination upon seccomp policy violation. The reason for that will be described later in the examples in the post.</p>
 	<p>So why would the application take the risk of being abruptly terminated and declare its intentions beforehand, if it can just be “silent” and the OS kernel will allow it to use any system call by default? Of course, for a normal behaving application it makes no sense, but it turns out this feature is quite effective to protect from rogue applications and <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution</a> exploits.</p>
 	<p>Imagine our image format converter is written in some unsafe language and <a href="https://imagetragick.com">an attacker was able to take control of the application by making it process some malformed image</a>. What the attacker might do is to try to steal some sensitive information from the machine running our converter and send it to themselves via the network. By default, the OS kernel will most likely allow it and a data leak will happen. But if our image converter “confined” (or sandboxed) itself beforehand to only read and write local data the kernel will terminate the application when the latter tries to leak the data over the network thus preventing the leak and locking out the attacker from our system!</p>
-	<h2>Integrating seccomp into the application</h2>
+	<div class="flex anchor relative">
+		<h2 id="integrating-seccomp-into-the-application">Integrating seccomp into the application</h2>
+		<a href="https://blog.cloudflare.com/#integrating-seccomp-into-the-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To see how seccomp can be used in practice, let’s consider a toy example program</p>
 	<p><i>myos.c:</i></p>
 	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
@@ -150,7 +171,14 @@ $ ./myos
 uname failed: Network is down</code></pre>
 	<p></p>
 	<p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> in the first place.</p>
-	<h3>seccomp with libseccomp</h3>
+	<div class="flex anchor relative">
+		<h3 id="seccomp-with-libseccomp">seccomp with libseccomp</h3>
+		<a href="https://blog.cloudflare.com/#seccomp-with-libseccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While it is possible to use seccomp directly, as in the examples above, BPF programs are cumbersome to write by hand and hard to debug, review and update later. That’s why it is usually a good idea to use a more high-level library, which abstracts away most of the low-level details. Luckily <a href="https://github.com/seccomp/libseccomp">such a library exists</a>: it is called libseccomp and is even recommended by the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp man page</a>.</p>
 	<p>Let’s rewrite our program’s <code>sandbox()</code> function to use this library instead:</p>
 	<p><i>myos_libseccomp.c:</i></p>
@@ -218,7 +246,14 @@ $ ./myos
 Bad system call</code></pre>
 	<p></p>
 	<p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html">signal</a>. Great!</p>
-	<h2>zero code seccomp</h2>
+	<div class="flex anchor relative">
+		<h2 id="zero-code-seccomp">zero code seccomp</h2>
+		<a href="https://blog.cloudflare.com/#zero-code-seccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous examples worked fine, but both of them have one disadvantage: we actually needed to modify the source code to embed our desired seccomp policy into the application. This is because <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp syscall</a> affects the calling process and its children, but there is no interface to inject the policy from “outside”. It is expected that developers will sandbox their code themselves as part of the application logic, but in practice this rarely happens. When developers are starting a new project, most of the time the focus is on primary functionality and security features are usually either postponed or omitted altogether. Also, most real-world software is usually written using some high-level programming language and/or a framework, where the developers do not deal with the system calls directly and probably are even unaware which system calls are being used by their code.</p>
 	<p>On the other hand we have system operators, sysadmins, SRE and other folks, who run the above code in production. They are more incentivized to keep production systems secure, thus would probably want to sandbox the services as much as possible. But most of the time they don’t have access to the source code. So there are mismatched expectations: developers have the ability to sandbox their code, but are usually not incentivized to do so and operators have the incentive to sandbox the code, but don’t have the ability.</p>
 	<p>This is where “zero code seccomp” might help, where an external operator can inject the desired sandbox policy into any process without needing to modify any source code. <a href="https://www.freedesktop.org/wiki/Software/systemd">Systemd</a> is one of the popular implementations of a “zero code seccomp” approach. Systemd-managed services can have a <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> directive defined in their <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">unit files</a> listing all the system calls the managed service is allowed to make. As an example, let’s go back to our toy application without any sandboxing code embedded:</p>
@@ -243,16 +278,37 @@ Finished with result: exit-code
 Main processes terminated with: code=exited/status=1
 Service runtime: 6ms</code></pre>
 	<p></p>
-	<h3>systemd small print</h3>
+	<div class="flex anchor relative">
+		<h3 id="systemd-small-print">systemd small print</h3>
+		<a href="https://blog.cloudflare.com/#systemd-small-print" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Great! We can now inject almost any seccomp policy into any process without the need to write any code or recompile the application. However, there is an interesting statement in the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=">systemd documentation</a>:</p>
 	<blockquote>
 		<p>...Note that the <code>execve, exit, exit_group, getrlimit, rt_sigreturn, sigreturn</code> system calls and the system calls for querying time and sleeping are implicitly whitelisted and do not need to be listed explicitly...</p>
 	</blockquote>
 	<p>Some system calls are implicitly allowed and we don’t have to list them. This is mostly related to the way how systemd manages processes and injects the seccomp policy. We established earlier that seccomp policy applies to the current process and its children. So, to inject the policy, systemd <a href="https://www.man7.org/linux/man-pages/man2/fork.2.html">forks</a> itself, calls <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html">seccomp</a> in the forked process and then <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execs</a> the forked process into the target application. That’s why always allowing the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> system call is necessary in the first place, because otherwise systemd cannot do its job as a service manager.</p>
 	<p>But what if we want to explicitly prohibit some of these system calls? If we continue with the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> as an example, that can actually be a dangerous system call most applications would want to prohibit. Seccomp is an effective tool to protect the code from arbitrary code execution exploits, remember? If a malicious actor takes over our code, most likely the first thing they will try is to get a shell (or replace our code with any other application which is easier to control) by directing our code to call <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> with the desired binary. So, if our code does not need <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> for its main functionality, it would be a good idea to prohibit it. Unfortunately, it is not possible with the systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> approach...</p>
-	<h2>Introducing Cloudflare sandbox</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-cloudflare-sandbox">Introducing Cloudflare sandbox</h2>
+		<a href="https://blog.cloudflare.com/#introducing-cloudflare-sandbox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We really liked the “zero code seccomp” approach with systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> directive, but were not satisfied with its limitations. We decided to take it one step further and make it possible to prohibit any system call in any process externally without touching its source code, so came up with the <a href="https://github.com/cloudflare/sandbox">Cloudflare sandbox</a>. It’s a simple standalone toolkit consisting of a shared library and an executable. The shared library is supposed to be used with dynamically linked applications and the executable is for statically linked applications.</p>
-	<h3>sandboxing dynamically linked executables</h3>
+	<div class="flex anchor relative">
+		<h3 id="sandboxing-dynamically-linked-executables">sandboxing dynamically linked executables</h3>
+		<a href="https://blog.cloudflare.com/#sandboxing-dynamically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For dynamically linked executables it is possible to inject custom code into the process by utilizing the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html"><code>LD_PRELOAD</code></a> environment variable. The <code>libsandbox.so</code> shared library from our toolkit also contains a so-called <a href="https://gcc.gnu.org/onlinedocs/gccint/Initialization.html">initialization routine</a>, which should be executed before the main logic. This is how we make the target application sandbox itself:</p>
 	<ul>
 		<li>
@@ -303,7 +359,14 @@ $ SECCOMP_SYSCALL_DENY=uname ./myos
 adding uname to the process seccomp filter
 Bad system call</code></pre>
 	<p></p>
-	<h3>sandboxing statically linked executables</h3>
+	<div class="flex anchor relative">
+		<h3 id="sandboxing-statically-linked-executables">sandboxing statically linked executables</h3>
+		<a href="https://blog.cloudflare.com/#sandboxing-statically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The above method is quite convenient and easy, but it doesn’t work for statically linked executables:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -static -o myos myos.c
 $ ldd ./myos
@@ -325,7 +388,14 @@ SECCOMP_SYSCALL_DENY=execve sandboxify /bin/bash -c 'echo I will try to execve s
 adding execve to the process seccomp filter
 I will try to execve something...</code></pre>
 	<p></p>
-	<h3>sandboxify vs libsandbox.so</h3>
+	<div class="flex anchor relative">
+		<h3 id="sandboxify-vs-libsandbox-so">sandboxify vs libsandbox.so</h3>
+		<a href="https://blog.cloudflare.com/#sandboxify-vs-libsandbox-so" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the examples above you may notice that it is possible to use <code>sandboxify</code> with dynamically linked executables as well, so why even bother with <code>libsandbox.so</code>? The difference becomes visible, when we start using not the “denylist” policy as in most examples in this post, but rather the preferred “allowlist” policy, where we explicitly allow only the system calls we need, but prohibit everything else.</p>
 	<p>Let’s convert our toy application back into the dynamically-linked one and try to come up with the minimal list of allowed system calls it needs to function properly:</p>
 	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
@@ -375,7 +445,14 @@ adding write to the process seccomp filter
 My OS is Linux!</code></pre>
 	<p></p>
 	<p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
-	<h2>Conclusions</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusions">Conclusions</h2>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we discussed how to easily sandbox applications on Linux without the need to write any additional code. We introduced the <a href="https://github.com/cloudflare/sandbox">Cloudflare sandbox toolkit</a> and discussed the different approaches we take at sandboxing dynamically linked applications vs statically linked applications.</p>
 	<p>Having safer code online helps to build a Better Internet and we would be happy if you find our <a href="https://github.com/cloudflare/sandbox">sandbox toolkit</a> useful. Looking forward to the feedback, improvements and other contributions!</p>
 </div>

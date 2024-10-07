@@ -19,7 +19,14 @@
 	<p><i>We</i> <a href="https://hyperdrive-demo.pages.dev"><i>built a demo app</i></a> <i>that makes real queries to a PostgreSQL database, with and without Hyperdrive</i></p>
 	<p>Throughout internal testing, initial user reports and the multiple runs in our benchmark, Hyperdrive delivers a 17 - 25x performance improvement vs. going direct to the database for cached queries, and a 6 - 8x improvement for uncached queries and writes. The cached latency might not surprise you, but we think that being 6 - 8x faster on uncached queries changes “I can’t query a centralized database from Cloudflare Workers” to “where has this been all my life?!”. We’re also continuing to work on performance improvements: we’ve already identified additional latency savings, and we’ll be pushing those out in the coming weeks.</p>
 	<p>The best part? Developers with a Workers paid plan can <a href="https://developers.cloudflare.com/hyperdrive">start using the Hyperdrive open beta immediately</a>: there are no waiting lists or special sign-up forms to navigate.</p>
-	<h3>Hyperdrive? Never heard of it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="hyperdrive-never-heard-of-it">Hyperdrive? Never heard of it?</h3>
+		<a href="https://blog.cloudflare.com/#hyperdrive-never-heard-of-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve been working on Hyperdrive in secret for a short while: but allowing developers to connect to databases they already have — with their existing data, queries and tooling — has been something on our minds for quite some time.</p>
 	<p>In a modern distributed cloud environment like Workers, where compute is globally distributed (so it’s close to users) and functions are short-lived (so you’re billed no more than is needed), connecting to traditional databases has been both slow and unscalable. Slow because it takes upwards of seven round-trips (<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP handshake</a>; <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS negotiation</a>; then auth) to establish the connection, and unscalable because databases like PostgreSQL have a <a href="https://www.postgresql.org/message-id/flat/31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi">high resource cost per connection</a>. Even just a couple of hundred connections to a database can consume non-negligible memory, separate from any memory needed for queries.</p>
 	<p>Our friends over at Neon (a popular serverless Postgres provider) wrote about this, and <a href="https://neon.tech/blog/serverless-driver-for-postgres">even released a WebSocket proxy and driver to reduce the</a> connection overhead, but are still fighting uphill in the snow: even with a custom driver, we’re down to 4 round-trips, each still potentially taking 50-200 milliseconds or more. When those connections are long-lived, that’s OK — it might happen once every few hours at best. But when they’re scoped to an individual function invocation, and are only useful for a few milliseconds to minutes at best — your code spends more time waiting. It’s effectively another kind of cold start: having to initiate a fresh connection to your database before making a query means that using a traditional database in a distributed or serverless environment is (to put it lightly) <i>really slow</i>.</p>
@@ -34,13 +41,27 @@
 	<p><i>Even if your database is on the other side of the country, 70ms x 6 round-trips is a lot of time for a user to be waiting for a query response.</i></p>
 	<p>Hyperdrive works not only with PostgreSQL databases — including <a href="https://neon.tech">Neon</a>, Google Cloud SQL, AWS RDS, and <a href="https://www.timescale.com">Timescale</a>, but also PostgreSQL-compatible databases like <a href="https://materialize.com">Materialize</a> (a powerful stream-processing database), <a href="https://www.cockroachlabs.com">CockroachDB</a> (a major distributed database), Google Cloud’s <a href="https://cloud.google.com/alloydb">AlloyDB</a>, and AWS Aurora Postgres.</p>
 	<p>We’re also working on bringing support for MySQL, including providers like PlanetScale, by the end of the year, with more database engines planned in the future.</p>
-	<h3>The magic connection string</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-magic-connection-string">The magic connection string</h3>
+		<a href="https://blog.cloudflare.com/#the-magic-connection-string" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the major design goals for Hyperdrive was the need for developers to keep using their existing drivers, query builder and ORM (Object-Relational Mapper) libraries. It wouldn’t have mattered how fast Hyperdrive was if we required you to migrate away from your favorite ORM and/or rewrite hundreds (or more) lines of code &amp; tests to benefit from Hyperdrive’s performance.</p>
 	<p>To achieve this, we worked with the maintainers of popular open-source drivers — including <a href="https://node-postgres.com">node-postgres</a> and <a href="https://github.com/porsager/postgres">Postgres.js</a> — to help their libraries support <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Worker’s new TCP socket API</a>, which is going through the <a href="https://github.com/wintercg/proposal-sockets-api">standardization process</a>, and we expect to see land in Node.js, Deno and Bun as well.</p>
 	<p>The humble database connection string is the shared language of database drivers, and typically takes on this format:</p>
 	<pre class="language-bash"><code class="language-bash">postgres://user:password@some.database.host.example.com:5432/postgres</code></pre>
 	<p>The magic behind Hyperdrive is that you can start using it in your existing Workers applications, with your existing queries, just by swapping out your connection string for the one Hyperdrive generates instead.</p>
-	<h3>Creating a Hyperdrive</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-a-hyperdrive">Creating a Hyperdrive</h3>
+		<a href="https://blog.cloudflare.com/#creating-a-hyperdrive" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With an existing database ready to go — in this example, we’ll use a Postgres database from <a href="https://neon.tech">Neon</a> — it takes less than a minute to get Hyperdrive running (yes, we timed it).</p>
 	<p>If you don’t have an existing Cloudflare Workers project, you can quickly create one:</p>
 	<pre class="language-python"><code class="language-python">$ npm create cloudflare@latest
@@ -90,11 +111,25 @@ export default {
 	<p>The code above is intentionally simple, but hopefully you can see the magic: our database driver gets a connection string from Hyperdrive, and is none-the-wiser. It doesn’t need to know anything about Hyperdrive, we don’t have to toss out our favorite query builder library, and we can immediately realize the speed benefits when making queries.</p>
 	<p>Connections are automatically pooled and kept warm, our most popular queries are cached, and our entire application gets faster.</p>
 	<p>We’ve also built out <a href="https://developers.cloudflare.com/hyperdrive/examples">guides for every major database provider</a> to make it easy to get what you need from them (a connection string) into Hyperdrive.</p>
-	<h3>Going fast can’t be cheap, right?</h3>
+	<div class="flex anchor relative">
+		<h3 id="going-fast-cant-be-cheap-right">Going fast can’t be cheap, right?</h3>
+		<a href="https://blog.cloudflare.com/#going-fast-cant-be-cheap-right" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We think Hyperdrive is critical to accessing your existing databases when building on Cloudflare Workers: traditional databases were just never designed for a world where clients are globally distributed.</p>
 	<p><b>Hyperdrive’s connection pooling will always be free</b>, for both database protocols we support today and new database protocols we add in the future. Just like <a href="https://www.cloudflare.com/ddos">DDoS protection</a> and our global <a href="https://www.cloudflare.com/application-services/products/cdn">CDN</a>, we think access to Hyperdrive’s core feature is too useful to hold back.</p>
 	<p>During the open beta, Hyperdrive itself will not incur any charges for usage, regardless of how you use it. We’ll be announcing more details on how Hyperdrive will be priced closer to GA (early in 2024), with plenty of notice.</p>
-	<h3>Time to query</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-to-query">Time to query</h3>
+		<a href="https://blog.cloudflare.com/#time-to-query" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So where to from here for Hyperdrive?</p>
 	<p>We’re planning on bringing Hyperdrive to GA in early 2024 — and we’re focused on landing more controls over how we cache &amp; automatically invalidate based on writes, detailed query and performance analytics (soon!), support for more database engines (including MySQL) as well as continuing to work on making it even faster.</p>
 	<p>We’re also working to enable private network connectivity via <a href="https://developers.cloudflare.com/magic-wan">Magic WAN</a> and Cloudflare Tunnel, so that you can connect to databases that aren’t (or can’t be) exposed to the public Internet.</p>

@@ -8,9 +8,23 @@
 	<p>Almost exactly two years ago, we <a href="https://blog.cloudflare.com/spectrum">launched Cloudflare Spectrum</a> for our Enterprise customers. Today, we’re thrilled to extend DDoS protection and traffic acceleration with Spectrum for <a href="https://www.cloudflare.com/products/cloudflare-spectrum/ssh">SSH</a>, <a href="https://www.cloudflare.com/products/cloudflare-spectrum/rdp">RDP</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum/minecraft">Minecraft</a> to our Pro and Business plan customers.</p>
 	<p>When we think of Cloudflare, a lot of the time we think about protecting and improving the performance of websites. But the Internet is so much more, ranging from gaming, to managing servers, to cryptocurrencies. How do we make sure these applications are secure and performant?</p>
 	<p>With Spectrum, you can put Cloudflare in front of your SSH, RDP and Minecraft services, protecting them from DDoS attacks and improving network performance. This allows you to protect the management of your servers, not just your website. Better yet, by leveraging the Cloudflare network you also get increased reliability and increased performance: lower latency!</p>
-	<h3>Remote access to servers</h3>
+	<div class="flex anchor relative">
+		<h3 id="remote-access-to-servers">Remote access to servers</h3>
+		<a href="https://blog.cloudflare.com/#remote-access-to-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While access to websites from home is incredibly important, being able to remotely manage your servers can be equally critical. Losing access to your infrastructure can be disastrous: people need to know their infrastructure is safe and connectivity is good and performant. Usually, server management is done through SSH (Linux or Unix based servers) and RDP (Windows based servers). With these protocols, performance and reliability are <i>key</i>: you need to know you can always reliably manage your servers and that the bad people are kept out. What's more, low latency is really important. Every time you type a key in an SSH terminal or click a button in a remote desktop session, that key press or button click has to traverse the Internet to your origin before the server can process the input and send feedback. While increasing bandwidth can help, lowering latency can help even more in getting your sessions to feel like you're working on a local machine and not one half-way across the globe.</p>
-	<h3>All work and no play makes Jack Steve a dull boy</h3>
+	<div class="flex anchor relative">
+		<h3 id="all-work-and-no-play-makes-jack-steve-a-dull-boy">All work and no play makes Jack Steve a dull boy</h3>
+		<a href="https://blog.cloudflare.com/#all-work-and-no-play-makes-jack-steve-a-dull-boy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we stay at home, many of us are also looking to play and not only work. Video games in particular have seen a huge <a href="https://en.wikipedia.org/wiki/Impact_of_the_2019%E2%80%9320_coronavirus_pandemic_on_the_video_game_industry">increase in popularity</a>. As personal interaction becomes more difficult to come by, Minecraft has become a popular social outlet. Many of us at Cloudflare are using it to stay in touch and have fun with friends and family in the current age of quarantine. And it’s not just employees at Cloudflare that feel this way, we’ve seen a big increase in Minecraft traffic flowing through our network. Traffic per week had remained steady for a while but has more than tripled since many countries have put their citizens in lockdown:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -19,7 +33,14 @@
 	</figure>
 	<p>Minecraft is a particularly popular target for DDoS attacks: it's not uncommon for people to develop feuds whilst playing the game. When they do, some of the more tech-savvy players of this game opt to take matters into their own hands and launch a (D)DoS attack, rendering it unusable for the duration of the attacks. Our friends at Hypixel and Nodecraft have known this for many years, which is why they’ve chosen to protect their servers using Spectrum.</p>
 	<p>While we love recommending their services, we realize some of you prefer to run your own Minecraft server on a VPS (virtual private server like a DigitalOcean droplet) that you maintain. To help you protect your Minecraft server, we're providing Spectrum for Minecraft as well, available on Pro and Business plans. You'll be able to use the entire Cloudflare network to protect your server and increase network performance.</p>
-	<h3>How does it work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">How does it work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Configuring Spectrum is easy, just log into your dashboard and head on over to the Spectrum tab. From there you can choose a protocol and configure the IP of your server:</p>
 	<figure class="kg-card kg-image-card ">
 

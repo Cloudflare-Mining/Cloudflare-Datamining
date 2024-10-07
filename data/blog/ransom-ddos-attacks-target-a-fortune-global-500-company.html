@@ -7,7 +7,14 @@
 	</figure>
 	<p>In late 2020, a major <a href="https://en.wikipedia.org/wiki/Fortune_Global_500">Fortune Global 500</a> company was targeted by a <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack">Ransom DDoS (RDDoS) attack</a> by a group claiming to be the <a href="https://en.wikipedia.org/wiki/Lazarus_Group">Lazarus Group</a>. Cloudflare quickly onboarded them to the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> service and protected them against the lingering threat. This extortion attempt was part of wider ransom campaigns that have been unfolding throughout the year, targeting thousands of organizations around the world. Extortionists are threatening organizations with crippling <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a> if they do not pay a ransom.</p>
 	<p>Throughout 2020, Cloudflare onboarded and protected many organizations with Magic Transit, Cloudflare’s <a href="https://www.cloudflare.com/ddos">DDoS protection service</a> for critical network infrastructure, the <a href="https://www.cloudflare.com/waf">WAF</a> service for HTTP applications, and the <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> service for TCP/UDP based applications -- ensuring their business’s availability and continuity.</p>
-	<h2>Unwinding the attack timeline</h2>
+	<div class="flex anchor relative">
+		<h2 id="unwinding-the-attack-timeline">Unwinding the attack timeline</h2>
+		<a href="https://blog.cloudflare.com/#unwinding-the-attack-timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I spoke with Daniel (a pseudonym) and his team, who work at the Incident Response and Forensics team at the aforementioned company. I wanted to learn about their experience, and share it with our readers so they could learn how to better prepare for such an event. The company has requested to stay anonymous and so some details have been omitted to ensure that. In this blog post, I will refer to them as X.</p>
 	<p>Initially, the attacker sent ransom emails to a handful of X’s publicly listed email aliases such as press@, shareholder@, and hostmaster@. We’ve heard from other customers that in some cases, non-technical employees received the email and ignored it as being spam which delayed the incident response team’s time to react by hours. However, luckily for X, a network engineer that was on the email list of the hostmaster@ alias saw it and immediately forwarded it to Daniel’s incident response team.</p>
 	<p>In the ransom email, the attackers demanded 20 bitcoin and gave them a week to pay up, or else a second larger attack would strike, and the ransom would increase to 30 bitcoin. Daniel says that they had a contingency plan ready for this situation and that they did not intend to pay. Paying the ransom funds illegitimate activities, motivates the attackers, and does not guarantee that they won’t attack anyway.</p>
@@ -17,14 +24,35 @@
 		<p>If you decide not to pay, we will start the attack on the indicated date and uphold it until you do. We will completely destroy your reputation and make sure your services will remain offline until you pay...</p>
 	</blockquote>
 	<p><i>--An excerpt of the ransom note</i></p>
-	<h2>The contingency plan</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-contingency-plan">The contingency plan</h2>
+		<a href="https://blog.cloudflare.com/#the-contingency-plan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Upon receiving the email from the network engineer, Daniel called him and they started combing through the network data -- they noticed a significant increase in traffic towards one of their global data centers. This attacker was not playing around, firing gigabits per second towards a single server. The attack, despite just being a proof of intention, saturated the Internet uplink to that specific data center, causing a denial of service event and generating a series of failure events.</p>
 	<p>This first “teaser” attack came on a work day, towards the end of business hours as people were already wrapping up their day. At the time, X was not protected by Cloudflare and relied on an on-demand DDoS protection service. Daniel activated the contingency plan which relied on the on-demand scrubbing center service.</p>
 	<p>Daniel contacted their DDoS protection service. It took them over 30 minutes to activate the service and redirect X’s traffic to the scrubbing center. Activating the on-demand service caused networking failures and resulted in multiple incidents for X on various services -- even ones that were not under attack. Daniel says hindsight is 2020 and he realized that an always-on service would have been much more effective than on-demand, reactionary control that takes time to implement, after the impact is felt. The networking failures amplified the one-hour attack resulting in incidents lasting much longer than expected.</p>
-	<h2>Onboarding to Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="onboarding-to-cloudflare">Onboarding to Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#onboarding-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Following the initial attack, Daniel’s team reached out to Cloudflare and wanted to onboard to our automated always-on DDoS protection service, Magic Transit. The goal was to onboard to it before the second attack would strike. Cloudflare explained the pre-onboarding steps, provided details on the process, and helped onboard X’s network in a process Daniel defined as “quite painless and very professional. The speed and responsiveness were impressive. One of the key differentiation is the attack and traffic analytics that we see that our incumbent provider couldn’t provide us. We’re seeing attacks we never knew about being mitigated automatically.”</p>
 	<p>The attackers promised a second, huge attack which never happened. Perhaps it was just an empty threat, or it could be that the attackers detected that X is protected by Cloudflare which deterred them and they, therefore, decided to move on to their next target?</p>
-	<h2>Recommendations for organizations</h2>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-organizations">Recommendations for organizations</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-organizations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I asked Daniel if he has any recommendations for businesses so they can learn from his experience and be better prepared, should they be targeted by ransom attacks:</p>
 	<p><b>1. Utilize an automated always-on DDoS protection service</b></p>
 	<p>Do not rely on reactive on-demand SOC-based DDoS Protection services that require humans to analyze attack traffic. It just takes too long. Don’t be tempted to use an on-demand service: “you get all of the pain and none of the benefits”. Instead, onboard to a cloud service that has sufficient network capacity and automated DDoS mitigation systems.</p>

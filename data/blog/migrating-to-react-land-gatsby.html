@@ -14,7 +14,14 @@
 		<p>— Cloudflare Developers (@CloudflareDev) <a href="https://twitter.com/CloudflareDev/status/1235265069283504128?ref_src=twsrc%5Etfw">March 4, 2020</a></p>
 	</blockquote>
 	<p>Through porting our documentation site to Gatsby I learned a lot. In this post, I share some of the learnings that could’ve saved my former self from several headaches. This will hopefully help others considering a move to Gatsby or another static site generator.</p>
-	<h2>Why Gatsby?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-gatsby">Why Gatsby?</h2>
+		<a href="https://blog.cloudflare.com/#why-gatsby" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prior to our migration to Gatsby, we used Hugo for our <a href="https://developers.cloudflare.com/workers">developer documentation</a>. There are a lot of positives about working with Hugo - fast build times, fast load times - that made building a simple static site a great use case for Hugo. Things started to turn sour when we started making our docs more interactive and expanding the content being generated.</p>
 	<p>Going from writing JSX with TypeScript back to string-based templating languages is difficult. Trying to perform complicated tasks, like generating a sidebar, cost me - a developer who knows nothing about liquid code or Go templating (though with Golang experience) - several tears not even to implement but to just understand what was happening.</p>
 	<p>Here is the code to template an item in the sidebar in Hugo:</p>
@@ -127,16 +134,37 @@
 		<p>Go Templates provide an extremely simple template language that adheres to the belief that only the most basic of logic belongs in the template or view layer.</p>
 	</blockquote>
 	<p>Gatsby and React enable the more complex logic we were looking for. After our team built <a href="https://workers.cloudflare.com">workers.cloudflare.com</a> and <a href="https://workers.cloudflare.com/built-with">Built with Workers</a> on Gatsby, I figured this was my shot to really give Gatsby a try on our Workers developer docs.</p>
-	<h3>Decision to Migrate over Starting from Scratch</h3>
+	<div class="flex anchor relative">
+		<h3 id="decision-to-migrate-over-starting-from-scratch">Decision to Migrate over Starting from Scratch</h3>
+		<a href="https://blog.cloudflare.com/#decision-to-migrate-over-starting-from-scratch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I’m normally not a fan of fixing things that aren’t broken. Though I didn’t like working with Hugo, did love working in React, and had all the reasons to. I was timid about being the one in charge of switching from Hugo. I was scared. I hated looking at the liquid code of Go templates. I didn’t want to have to port all the existing templates to React without truly understanding what I might be missing.</p>
 	<p>There comes a point with tech debt though where you have to tackle the tech debt you are most scared of.</p>
 	<p>The easiest solution would be of course to throw the Hugo code away. Start from scratch. A clean slate. But this means taking something that was not broken and breaking it. The styling, SEO, tagging, and analytics of the site took small iterations over the course of a few years to get right and I didn’t want to be the one to break them. Instead of throwing all the styling and logic tied in for search, SEO, etc..., our plan was to maintain as much of the current design and logic as possible while converting it to React piece-by-piece, component-by-component.</p>
 	<p>Also there were existing developer docs still using Hugo on Cloudflare by other teams (e.g. Access, Argo Tunnel, etc...). I wanted a team at Cloudflare to be able to import their existing markdown files with frontmatter into the Gatsby repo and preserve the existing design.</p>
 	<p>I wanted to migrate instead of teleport to Gatsby.</p>
-	<h2>How-to: Hugo to Gatsby</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-hugo-to-gatsby">How-to: Hugo to Gatsby</h2>
+		<a href="https://blog.cloudflare.com/#how-to-hugo-to-gatsby" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post, I go through some but not all of the steps of how I ported to Gatsby from Hugo for our complex doc site. The few examples here help to convey the issues that caused the most pain.</p>
 	<p>Let’s start with getting the markdown files to turn into HTML pages.</p>
-	<h3>Markdown</h3>
+	<div class="flex anchor relative">
+		<h3 id="markdown">Markdown</h3>
+		<a href="https://blog.cloudflare.com/#markdown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One goal was to keep all the existing markdown and frontmatter we had set up in Hugo as similar as possible. The reasoning for this was to not break existing content and also maintain the version history of each doc.</p>
 	<p>Gatsby is built on top of GraphQL. All the data and most all content for Gatsby is put into GraphQL during startup likely via a plugin, then Gatsby will query for this data upon actual page creation. This is quite different from Hugo’s much more abstract model of putting all your content in a folder named <code>content</code> and then Hugo figures out which template to apply based on the logic in the template.</p>
 	<p>MDX is a sophisticated tool that parses markdown into Gatsby so it can later be represented as HTML (it actually can do much more than that but, I won’t get into it here). I started with Gatsby’s MDX plugin to create nodes from my markdown files. Here is the code to set up the plugin to get all the markdown files (files ending in .md and .mdx) I had in the <code>src/content</code> folder into GraphQL:</p>
@@ -268,7 +296,15 @@ export const pageQuery = graphql`
    }
  }
 `</code></pre>
-	<h3>A Complex Component: Sidebar</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="a-complex-component-sidebar">A Complex Component: Sidebar</h3>
+		<a href="https://blog.cloudflare.com/#a-complex-component-sidebar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now let’s get into where I wasted the most time, but learned hard lessons upfront: turning the Hugo template into a React component. At the beginning of this article, I showed that scary sidebar.</p>
 	<p>To set up the <code>li</code> element we had the Hugo logic looks like:</p>
 	<pre class="language-html"><code class="language-html">{{ define "section-tree-nav" }}
@@ -442,7 +478,14 @@ export default function PageTemplate({ data: { mdx } }) {
  )
 }</code></pre>
 	<p>I don’t have to pass any props to <code>Sidebar</code> because the GraphQL static query in <code>Sidebar.tsx</code> gets all the data about all the pages that I need. I don’t even maintain state because <code>Location</code> is used to determine which path is active. Gatsby generates pages using the above component for each page that’s a markdown MDX node.</p>
-	<h2>Wrapping up</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrapping-up">Wrapping up</h2>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was just the beginning of the full migration to Gatsby. I repeated the process above for turning templates, partials, and other HTML component-like parts in Hugo into React, which was actually pretty fun, though turning vanilla JS that once manipulated the DOM into React would probably be a nightmare if I wasn’t somewhat comfortable working in React.</p>
 	<p>Main lessons learned:</p>
 	<ul>

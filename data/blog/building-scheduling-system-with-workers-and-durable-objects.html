@@ -15,7 +15,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5QsLhy4QmfImRWULDDCpRx/05aaf1afaa7a53ab787f2c1175240429/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" alt="" class="kg-image" width="1531" height="871" loading="lazy">
 
 	</figure>
-	<h3>Quick intro into the application stack</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-intro-into-the-application-stack">Quick intro into the application stack</h3>
+		<a href="https://blog.cloudflare.com/#quick-intro-into-the-application-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we dive in, here are some of the tools we’re going to be using today:</p>
 	<ul>
 		<li>
@@ -44,7 +51,14 @@
 		</li>
 	</ul>
 	<p>While we will focus on building the application, the Cloudflare global network will take care of the rest – storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Let’s build it!</p>
-	<h3>Initialize new Workers project</h3>
+	<div class="flex anchor relative">
+		<h3 id="initialize-new-workers-project">Initialize new Workers project</h3>
+		<a href="https://blog.cloudflare.com/#initialize-new-workers-project" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Get started by generating a completely new Workers project using the <code>wrangler init</code> command, which makes creating new projects quick &amp; easy.</p>
 	<p><b>wrangler init -y durable-objects-requests-scheduler</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -53,7 +67,14 @@
 
 	</figure>
 	<p>For more information on how to install, authenticate, or update Wrangler, check out <a href="https://developers.cloudflare.com/workers/wrangler/get-started">https://developers.cloudflare.com/workers/wrangler/get-started</a></p>
-	<h3>Preparing TypeScript types</h3>
+	<div class="flex anchor relative">
+		<h3 id="preparing-typescript-types">Preparing TypeScript types</h3>
+		<a href="https://blog.cloudflare.com/#preparing-typescript-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From my personal experience, at least a draft of TypeScript types significantly helps to be more productive down the road, so let's prepare and describe our scheduled request in advance. Create a file types.ts in src directory and paste the following TypeScript definitions.</p>
 	<p><b>src/types.ts</b></p>
 	<pre class="language-typescript"><code class="language-typescript">export interface Env {
@@ -65,7 +86,15 @@ export interface ScheduledRequest {
   triggerAt?: number // optional, unix timestamp in milliseconds, defaults to `new Date()`
   requestInit?: RequestInit // optional, includes method, headers, body
 }</code></pre>
-	<h3>A scheduled request Durable Object class &amp; alarm</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="a-scheduled-request-durable-object-class-alarm">A scheduled request Durable Object class &amp; alarm</h3>
+		<a href="https://blog.cloudflare.com/#a-scheduled-request-durable-object-class-alarm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Based on our architecture design, each scheduled request will be saved into its own Durable Object, effectively separating storage and alarms from each other and allowing our scheduling system to scale horizontally - there is no limit to the number of Durable Objects we create.</p>
 	<p>In the end, the Durable Object class is a matter of a couple of lines. The code snippet below accepts and saves the request body to a persistent storage and sets the alarm timer. Workers runtime will wake up the Durable Object and call the <code>alarm()</code> method to process the request.</p>
 	<p>The alarm method reads the scheduled request data from the storage, then processes the request, and in the end reschedules itself in case it's configured to be executed on a recurring schedule.</p>
@@ -110,7 +139,15 @@ export class RequestDurableObject {
     }
   }
 }</code></pre>
-	<h3>Wrangler configuration</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="wrangler-configuration">Wrangler configuration</h3>
+		<a href="https://blog.cloudflare.com/#wrangler-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once we have the Durable Object class, we need to create a Durable Object binding by instructing Wrangler where to find it and what the exported class name is.</p>
 	<p><b>wrangler.toml</b></p>
 	<pre class="language-toml"><code class="language-toml">name = "durable-objects-request-scheduler"
@@ -126,7 +163,15 @@ bindings = [
 [[migrations]]
 tag = "v1"
 new_classes = ["RequestDurableObject"]</code></pre>
-	<h3>Scheduling system API</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="scheduling-system-api">Scheduling system API</h3>
+		<a href="https://blog.cloudflare.com/#scheduling-system-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The API Worker will accept POST HTTP methods only, and is expecting a JSON body with scheduled request data - what URL to call, optionally what method, headers, or body to send. Any other method than POST will return 405 - Method Not Allowed HTTP error.</p>
 	<p>HTTP <code>POST /:scheduledRequestId?</code> will create or override a scheduled request, where :scheduledRequestId is optional Durable Object ID returned from a scheduling system API before.</p>
 	<p><b>src/index.ts</b></p>
@@ -157,7 +202,14 @@ export default {
     },
 }</code></pre>
 	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects">Workers storage options</a>.</p>
-	<h3>Starting a local development server and testing our application</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-a-local-development-server-and-testing-our-application">Starting a local development server and testing our application</h3>
+		<a href="https://blog.cloudflare.com/#starting-a-local-development-server-and-testing-our-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>
 	<pre class="language-bash"><code class="language-bash">wrangler dev --local</code></pre>
 
@@ -186,7 +238,14 @@ export default {
 	<pre class="language-bash"><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 60}' http://localhost:8787/000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f
 {"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}</code></pre>
 	<p>Every scheduled request gets a unique Durable Object ID with its own storage and alarm. As we demonstrated, the ID becomes handy when you need to change the settings of the scheduled request, or to deschedule them completely.</p>
-	<h3>Publishing to the network</h3>
+	<div class="flex anchor relative">
+		<h3 id="publishing-to-the-network">Publishing to the network</h3>
+		<a href="https://blog.cloudflare.com/#publishing-to-the-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Following command will bundle our Workers application, export and bind Durable Objects, and deploy it to our workers.dev subdomain.</p>
 	<pre class="language-bash"><code class="language-bash">wrangler publish</code></pre>
 

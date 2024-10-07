@@ -7,7 +7,14 @@
 	<p>The code is developed in the open but is currently targeted only at internal use: the repository is frequently rebased and the API is not guaranteed to be stable or fully documented. You can take <a href="https://gist.github.com/FiloSottile/37d6516af411582e2aa35a981bf12102">a sneak peek at the API here</a>.</p>
 	<p>The final goal is to upstream the patches to the Go project so that all users of the Go standard library benefit from it. You can <a href="https://go-review.googlesource.com/q/status:open+project:go+branch:dev.tls">follow the process here</a>.</p>
 	<p>Below we republish the article about the audit first appeared <a href="https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2017/february/ncc-groups-cryptography-services-complete-an-audit-of-cloudfares-tls13">on the NCC Group's blog</a>.</p>
-	<h3>NCC Group's Cryptography Services Complete an Audit of Cloudflare's TLS1.3</h3>
+	<div class="flex anchor relative">
+		<h3 id="ncc-groups-cryptography-services-complete-an-audit-of-cloudflares-tls1-3">NCC Group's Cryptography Services Complete an Audit of Cloudflare's TLS1.3</h3>
+		<a href="https://blog.cloudflare.com/#ncc-groups-cryptography-services-complete-an-audit-of-cloudflares-tls1-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NCC Group's Cryptography Services practice recently completed a two-week audit of Cloudflare's TLS 1.3 implementation. The audit took place between November 11, 2016 and December 9, 2016.</p>
 	<p>The TLS standard was last updated almost ten years ago and this version brings new features and a simplified handshake to the protocol. Many old cryptographic algorithms have been replaced with more modern ones, key exchanges have forward secrecy by default, the handshake phase will be faster, certificates will be able to enjoy security-proven signature schemes, MAC-then-Encrypt constructions are out—the weakest features of older TLS versions have been updated or removed.</p>
 	<p>Cryptography Services analyzed Cloudflare's TLS 1.3 implementation for protocol-level flaws and for deviations from the draft specification. The team found a small number of issues during the review—all of which were promptly fixed—and was pleased with the quality of the code.</p>

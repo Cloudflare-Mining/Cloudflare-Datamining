@@ -10,17 +10,38 @@
 	<p>We've analyzed this automated traffic, from so-called “bots,” in order to understand the environmental impact. Most of the <a href="https://www.cloudflare.com/learning/bots/what-is-bot-traffic">bot traffic</a> is malicious. Cloudflare protects our clients from this malicious traffic and, in doing so, mitigates their environmental impact. If these bots were not stopped by Cloudflare, they would generate database requests and force dynamic page generation on services far less efficient than Cloudflare's network.</p>
 	<p>We even went a step further, committing to <a href="https://blog.cloudflare.com/cleaning-up-bad-bots">plant trees to offset the carbon cost</a> of our bot mitigation services. While we'd love to be able to tell the bad actors to think of the environment and stop running their bots, we don't think they'd listen. So, instead, we aim to mitigate them as efficiently as possible.</p>
 	<p>But there's another type of bot that we don't want to go away: good bots that index the web for useful reasons. These good bots represent more than 5% of global Internet traffic. The majority of this good bot traffic comes from what are known as <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">search engine crawlers</a>, and they are critical to making the web navigable.</p>
-	<h2>Large-Scale Problems, Large-Scale Opportunities</h2>
+	<div class="flex anchor relative">
+		<h2 id="large-scale-problems-large-scale-opportunities">Large-Scale Problems, Large-Scale Opportunities</h2>
+		<a href="https://blog.cloudflare.com/#large-scale-problems-large-scale-opportunities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Online search remains magical. Enter a query into a box on a search engine like Google, Bing, Yandex, or Baidu and, in a fraction of a second, get a list of web resources with information on whatever you're looking for. To make this magic happen, search engines need to scour the web and, simplistically, make a copy of its contents that are stored and sorted on their own systems to be quickly retrieved whenever needed.</p>
 	<p>Companies that run search engines have worked hard to make the process as efficient as possible, pushing the state-of-the-art in terms of server and data center efficiency. But there remains one clear area of waste: excessive crawl.</p>
 	<p>At Cloudflare, we see traffic from all the major search crawlers. We've spent the last year studying how often these good bots revisit a page that hasn't changed since they last saw it. Every one of these visits is a waste. And, unfortunately, our observation suggests that 53% of this good bot traffic is wasted.</p>
 	<p>The Boston Consulting Group estimates that running the Internet generated 2% of all carbon output, or about 1 billion metric tonnes per year. If 5% of all Internet traffic is good bots, and 53% of that traffic is wasted by excessive crawl, then finding a solution to reduce excessive crawl could help save as much as 26 million tonnes of carbon cost per year. According to the <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator">U.S. Environmental Protection Agency</a>, that's the equivalent of planting 31 million acres of forest, shutting down 6 coal-fired power plants forever, or taking 5.5 million passenger vehicles off the road.</p>
 	<p>Obviously, it's not quite that simple. But suffice it to say there's a big opportunity to make a meaningful impact on the environmental cost of the Internet if we are able to ensure that any search engine only crawls once or whenever it changes.</p>
 	<p>Recognizing this problem, we've been talking with the largest operators of good bots for the last several years to see if, together, we could address the issue.</p>
-	<h3>Crawler Hints</h3>
+	<div class="flex anchor relative">
+		<h3 id="crawler-hints">Crawler Hints</h3>
+		<a href="https://blog.cloudflare.com/#crawler-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we’re excited to announce Crawler Hints. Crawler Hints provide high quality data to search engine crawlers on when content has been changed on sites using Cloudflare, allowing them to precisely time their crawling, avoid wasteful crawls, and generally reduce resource consumption of customer origins, crawler infrastructure, and Cloudflare infrastructure in the process. The cherry on top: because search engine crawlers now receive signals on when content is fresh, the search experiences powered by these “good bots” will improve, delighting Internet users at large with more relevant and useful content. Crawler Hints is a win for the Internet and a win for the Internet’s energy footprint.</p>
 	<p>With Crawler Hints, we expect to make crawling a bit more tractable by providing an additional heuristic to bot developers that will allow them to <i>know</i> when content has been changed or added to a site instead of relying on preferences or previous changes that might not reflect the true change cadence for a site.</p>
-	<h2>How will this work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-will-this-work">How will this work?</h2>
+		<a href="https://blog.cloudflare.com/#how-will-this-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At its simplest we want a way to proactively tell a search engine when a page has changed, rather than having to wait for the search engine to discover a change has happened. Search engines actually typically have a few ways to tell them about when an individual page or group of pages changes.</p>
 	<p>For example, you can ask <a href="https://developers.google.com/search/docs/advanced/crawling/ask-google-to-recrawl">Google to recrawl a website</a>, and they’ll do so in “a few days to a few weeks”.</p>
 	<p>If you wanted to efficiently tell Google about changes you’d have to keep track of when Google last crawled the page and tell them to recrawl when a change happens. You wouldn’t want to tell Google every time a page changes as there’s a time delay between requesting a recrawl and the spider coming to visit. You could be telling Google to come back during the gap between the request and the spider coming to call.</p>
@@ -33,7 +54,14 @@
 	<p>And it adds absolutely no load to the origin website. Cloudflare can tell a search engine in almost real-time about a page’s modifications and provide a view of what changed since their last visit.</p>
 	<p>The sitemaps protocol also contains a priority for a page. Since we know how often a page is visited we can also hint to a search engine that a page is seen frequently by visitors and thus may be more important to add to the index than another page.</p>
 	<p>There are a few details to work out, such as how a search engine should identify itself to get its personalized list of URLs, but the protocol is open and in no way depends on Cloudflare. In fact, we hope that every host and Cloudflare-like service will consider implementing the protocol. We plan to continue to work with the search and hosting communities to refine the protocol in order to make it more efficient. Our goal is to ensure that search engines can have the freshest index, content creators will have their new content optimally indexed, and a big chunk of unnecessary Internet traffic, and the corresponding carbon cost, will disappear.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Crawler Hints doesn’t just benefit search engines. For our customers and origin owners, Crawler Hints will ensure that search engines and other bot-powered experiences will always have the freshest version of your content, translating into happier users and ultimately influencing search rankings. Crawler Hints will also mean less traffic hitting your origin, improving resource consumption and limiting carbon impact. Moreover, your site performance will be improved as well: your human customers will not be competing with bots!</p>
 	<p>And for Internet users? When you interact with bot-fed experiences — which we all do every day, whether we realize it or not, like search engines or pricing tools — these will now deliver more useful results from crawled data, because Cloudflare has signaled to the owners of the bots the moment they need to update their results.</p>
 	<p>Finally, and perhaps the one we’re most excited about, for the Internet more generally: it’s going to be greener. Energy usage across the web will be greatly reduced.</p>

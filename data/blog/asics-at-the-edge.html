@@ -1,20 +1,48 @@
 <div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jyNoJdHbEYVJ8GCTVYH15/83f9152700809de653442bbf81637ed2/asics-at-the-edge.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we pride ourselves in our global network that spans more than 200 cities in over 100 countries. To handle all the traffic passing through our network, there are multiple technologies at play. So let’s have a look at one of the cornerstones that makes all of this work… ASICs. No, not the running shoes.</p>
-	<h2>What's an ASIC?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-an-asic">What's an ASIC?</h2>
+		<a href="https://blog.cloudflare.com/#whats-an-asic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ASIC stands for Application Specific Integrated Circuit. The name already says it, it's a chip with a very narrow use case, geared towards a single application. This is in stark contrast to a CPU (Central Processing Unit), or even a GPU (Graphics Processing Unit). A CPU is designed and built for general purpose computation, and does a lot of things reasonably well. A GPU is more geared towards graphics (it's in the name), but in the last 15 years, there's been a drastic shift towards GPGPU (General Purpose GPU), in which technologies such as <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a> or <a href="https://en.wikipedia.org/wiki/OpenCL">OpenCL</a> allow you to use the highly parallel nature of the GPU to do general purpose computing. A good example of GPU use is video encoding, or more recently, computer vision, used in applications such as self-driving cars.</p>
 	<p>Unlike CPUs or GPUs, ASICs are built with a single function in mind. Great examples are the Google Tensor Processing Units (TPU), used to accelerate machine learning functions<a href="https://blog.cloudflare.com/#fn1">[1]</a>, or for orbital maneuvering<a href="https://blog.cloudflare.com/#fn2">[2]</a>, in which specific orbital maneuvers are encoded, like the Hohmann Transfer, used to move rockets (and their payloads) to a new orbit at a different altitude. And they are also heavily used in the networking industry. Technically, the use case in the network industry should be called an ASSP (Application Specific Standard Product), but network engineers are simple people, so we prefer to call it an ASIC.</p>
-	<h2>Why an ASIC</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-an-asic">Why an ASIC</h2>
+		<a href="https://blog.cloudflare.com/#why-an-asic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ASICs have the major benefit of being hyper-efficient. The more complex hardware is, the more it will need cooling and power. As ASICs only contain the hardware components needed for their function, their overall size can be reduced, and so are their power requirements. This has a positive impact on the overall physical size of the network (devices don’t need to be as bulky to provide sufficient cooling), and helps reduce the power consumption of a data center.</p>
 	<p>Reducing hardware complexity also reduces the failure rate of the manufacturing process, and allows for easier production.</p>
 	<p>The downside is that you need to embed a lot of your features in hardware, and once a new technology or specification comes around, any chips made without that technology baked in, won’t be able to support it (<a href="https://en.wikipedia.org/wiki/Virtual_Extensible_LAN">VXLAN</a> for example).</p>
 	<p>For network equipment, this works perfectly. Overall, the networking industry is slow-moving, and considerable time is taken before new technologies make it to the market (as can be seen with IPv6, MPLS implementations, xDSL availability, …). This means the chips don't need to evolve on a yearly basis, and can instead be created on a much slower cycle, with bigger leaps in technology. For example, it took Broadcom two years to go from Tomahawk 3 to Tomahawk 4, but in that process they doubled the throughput. The benefits listed earlier are super helpful for network equipment, as they allow for considerable throughput in a small form factor.</p>
-	<h2>Building an ASIC</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-an-asic">Building an ASIC</h2>
+		<a href="https://blog.cloudflare.com/#building-an-asic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As with chips of any kind, building an ASIC is a long-term process. Just like with CPUs, if there's a defect in the hardware design, you have to start from scratch, and scrap the entire build line. As such, the development lifecycle is incredibly long. It starts with prototyping in an FPGA (Field Programmable Gate Array), in which chip designers can program their required functionality and confirm compatibility. All of this is done in a HDL (Hardware Description Language), such as <a href="https://en.wikipedia.org/wiki/Verilog">Verilog</a>.</p>
 	<p>Once the prototyping stage is over, they move to baking the new packet processing pipeline into the chip at a foundry. After that, no more changes can be made to the chip, as it's literally baked into the hardware (unlike an FPGA, which can be reprogrammed). Further difficulty is added by the fact that there are a very small number of hardware companies that will buy ASICs in bulk to build equipment with; as such the unit cost can increase drastically.</p>
 	<p>All of this means that the iteration cycle of an ASIC tends to be on the slower side of things (compared to the yearly refreshes in the Intel Process-Architecture-Optimization model for example), and will usually be smaller incremental updates: For example, increases in port-speeds are incremental (1G → 10G → 25G → 40G → 100G → 400G → 800G → ...), and are tied into upgrades to the SerDes (Serialiser/Deserialiser) part of the chip.</p>
 	<p>New protocol support is a lot harder, and might require multiple development cycles before it shows up in a chip.</p>
-	<h2>What ASICs do</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-asics-do">What ASICs do</h2>
+		<a href="https://blog.cloudflare.com/#what-asics-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The ASICs in our network equipment are responsible for the switching and routing of packets, as well as being the first layer of defense (in the form of a stateless firewall). Due to the sheer nature of how fast packets get switched, fast memory access is a primary concern. Most ASICs will use a special sort of memory, called TCAM (Ternary Content-Addressable Memory). This memory will be used to store all sorts of lookup tables. These may be forwarding tables (where does this packet go), ACL (Access Control List) tables (is this packet allowed), or CoS (Class of Service) tables (which priority should be given to this packet)</p>
 	<p>CAM, and its more advanced sibling, TCAM, are fascinating kinds of memory, as they operate fundamentally different than traditional Random Access Memory (RAM). While you have to use a memory address to access data in RAM, with CAM and TCAM you can directly refer to the content you are looking for. It is a physical implementation of a key-value store.</p>
 	<p>In CAM you use the exact binary representation of a word, in a network application, that word is likely going to be an IP address, so 11001011.00000000.01110001.00000000 for example (203.0.113.0). While this is definitely useful, networks operate a big collection of IP addresses, and storing each individually would require significant memory. To remedy this memory requirement, TCAM can store three states, instead of the binary two. This third state, sometimes called ‘ignore’ state, allows for the storage of multiple sequential data words as a single entry.</p>
@@ -54,10 +82,24 @@
 			<p><a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a>, EVPN, VXLAN, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan">SDWAN</a>, <a href="https://www.cloudflare.com/learning/network-layer/what-is-sdn">SDN</a>, ...: I ran out of buzzwords to enumerate here, but while MPLS isn't new (the first RFC was created in 2001), it's a rather advanced requirement, just as the others listed, which means not all ASIC vendors will implement this for all their chips due to the increased complexity.</p>
 		</li>
 	</ol>
-	<h2>Vendor Landscape</h2>
+	<div class="flex anchor relative">
+		<h2 id="vendor-landscape">Vendor Landscape</h2>
+		<a href="https://blog.cloudflare.com/#vendor-landscape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we interact with both hardware and software vendors on a daily basis while operating our global network. As we’re talking about ASICs today, we’ll explore the hardware landscape, but some hardware vendors also have their own NOS (Network Operating System).There’s a vast selection of hardware out there, all with different features and pricing. It can become incredibly hard to see the wood for the trees, so we’ll focus on 4 important distinguishing factors: Throughput (how many bits can the ASIC push through), buffer size (how many bits can the ASIC store in memory in case of resource contention), programmability (how easy is it for a third party programmer like Cloudflare to interact directly with the ASIC), feature set (how many advanced things outside of routing/switching can the ASIC do).</p>
 	<p>The landscape is so varied because different companies have different requirements. A company like Cloudflare has different expectations for its network hardware than your typical corner shop. Even within our own network we’ll have different requirements for the different layers that make up our network.</p>
-	<h3>Broadcom</h3>
+	<div class="flex anchor relative">
+		<h3 id="broadcom">Broadcom</h3>
+		<a href="https://blog.cloudflare.com/#broadcom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The elephant in the networking room (or is it the jumbo frame in the switch?) is Broadcom. Broadcom is a semiconductor company, with their primary revenue in the wired infrastructure segment (over 50% of revenue<a href="https://blog.cloudflare.com/#fn3">[3]</a>). While they've been around since 1991, they've become an unstoppable force in the last 10 years, in part due to their reliance on Apple (25% of revenue). As a semiconductor manufacturer, their market dominance is primarily achieved by acquiring other companies. A great example is the acquisition of Dune Networks, which has become an excellent revenue generator as the StrataDNX series of ASIC (Arad, QumranMX, Jericho). As such, they have become the biggest ASIC vendor by far, and own 59% of the entire Ethernet Integrated Circuits market<a href="https://blog.cloudflare.com/#fn4">[4]</a>.</p>
 	<p>As such, they supply a lot of merchant silicon to Cisco, Juniper, Arista and others. Up until recently, if you wanted to use the Broadcom SDK to accelerate your packet forwarding, you have to sign so many NDAs you might get a hand cramp, which makes programming them a lot trickier. This changed recently when Broadcom open-sourced their <a href="https://github.com/Broadcom-Network-Switching-Software/OpenBCM">SDK</a>. Let's have a quick look at some of their products.</p>
 	<h4>Tomahawk</h4>
@@ -66,7 +108,14 @@
 	<p>These chipsets came through the acquisition of Dune Networks, and are a collection of high-bandwidth, deep buffer (large amount of memory available to store (buffer) packets) chips, allowing them to be deployed in versatile environments, including the Cloudflare edge. The Arista DCS-7280SR that we run in some of our edge locations as edge routers run on the Jericho chipset. Since then, the chips have evolved, and with Jericho2, Broadcom now have a 10Tbps deep buffer chip<a href="https://blog.cloudflare.com/#fn6">[6]</a>. With their fabric chip (this links multiple ASICs together), you can build switches with 48x400G ports<a href="https://blog.cloudflare.com/#fn7">[7]</a> without much effort.Cisco built their NCS5500 line of routers using the QumranMX<a href="https://blog.cloudflare.com/#fn8">[8]</a>.</p>
 	<h4>Trident</h4>
 	<p>This ASIC is an upgrade from the Tomahawk chipset, with a complex and extensive feature set, while maintaining high throughput rates. The latest Trident4 does 12.8Tbps at incredibly low latencies<a href="https://blog.cloudflare.com/#fn9">[9]</a>, making it an incredibly flexible platform. It unfortunately has no buffer space to speak of, which limits its scope for Cloudflare, as we need the buffer space to be able to switch between the different port speeds we have on our edge routers. The Arista 7050X and 7300X are built on top of this.</p>
-	<h3>Intel</h3>
+	<div class="flex anchor relative">
+		<h3 id="intel">Intel</h3>
+		<a href="https://blog.cloudflare.com/#intel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Intel is well known in the network industry for building stable and high-performance 10G NICs (Network Interface Controller). They're not known for ASICs. They made an initial attempt with their acquisition of Fulcrum<a href="https://blog.cloudflare.com/#fn10">[10]</a>, which built the FM6000<a href="https://blog.cloudflare.com/#fn11">[11]</a> series of ASIC, but nothing of note was really built with them. Intel decided to try again in 2019 with their acquisition of Barefoot. This small manufacturer is responsible for the Barefoot Tofino ASIC, which may well be a fundamental paradigm shift in the network industry.</p>
 	<h4>Barefoot Tofino</h4>
 	<p>The Tofino<a href="https://blog.cloudflare.com/#fn12">[12]</a> is built using a PISA (Protocol Independent Switch Architecture), and using P4 (Programming Protocol-Independent Packet Processors)<a href="https://blog.cloudflare.com/#fn13">[13]</a>, you can program the data-plane (packet forwarding) as you see fit. It's a drastic move away from the traditional method of networking, in which direct programming of the ASIC isn't easily possible, and definitely not through a standard programming language. As an added benefit, P4 also allows you to perform a formal verification of your forwarding program, and be sure that it will do what you expect it to. Caveat: OpenFlow tried this, but unfortunately never really got much traction.</p>
@@ -77,12 +126,26 @@
 	</figure>
 	<p><a href="https://blog.cloudflare.com/#fn14">[14]</a></p>
 	<p>There are multiple variations of the Tofino 1 available, but the top-end ASIC has a 6.5Tbps linerate capacity. As the ASIC is programmable, its featureset is as rich as you'd want it to be. Unfortunately, the chip does not come with a lot of buffer memory, so we can't deploy these as edge devices (yet). Both Arista (7170 Series<a href="https://blog.cloudflare.com/#fn15">[15]</a>) and Cisco (Nexus 34180YC and 3464C series<a href="https://blog.cloudflare.com/#fn16">[16]</a>) have built equipment with the Tofino chip inside.</p>
-	<h3>Mellanox</h3>
+	<div class="flex anchor relative">
+		<h3 id="mellanox">Mellanox</h3>
+		<a href="https://blog.cloudflare.com/#mellanox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As some of you may know, Mellanox is the vendor that recently got acquired by Nvidia, which also provides our 25G NICs in our compute nodes. Besides NICs, Mellanox has a well-established line of ASICs, mostly for switching.</p>
 	<h4>Spectrum</h4>
 	<p>The latest iteration of this ASIC, Spectrum 3 offers 12.8Tbps switching capacity, with an extensive featureset, including Deep Packet Inspection and NAT. This chip allows for building dense high-speed port devices, going up to 25.6Tbps<a href="https://blog.cloudflare.com/#fn17">[17]</a>. Buffering wise, there's none to really speak of (64MB). Mellanox also builds their own hardware platforms. Unlike the other vendors below, they aren't shipped with the Mellanox Operating System, instead, they offer you a variety of choices to run on top, including Cumulus Linux (which was also acquired by Nvidia ?).</p>
 	<p>As mentioned, while we use their NIC technology extensively, we currently don't have any Mellanox ASIC silicon in our network.</p>
-	<h3>Juniper</h3>
+	<div class="flex anchor relative">
+		<h3 id="juniper">Juniper</h3>
+		<a href="https://blog.cloudflare.com/#juniper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Juniper is a network hardware supplier, and currently the biggest supplier of network equipment for Cloudflare. As previously mentioned in the Broadcom section, Juniper buys some of their silicon from Broadcom, but they also have a significant lineup of home-grown silicon, which can be split into 2 families: Trio and Express.</p>
 	<h4>Express</h4>
 	<p>The Express family is the switching-skewed family, where bandwidth is a priority, while still maintaining a broad range of feature capabilities. These chips live in the same application landscape as the Broadcom StrataDNX chips.</p>
@@ -106,13 +169,27 @@
 	<h5>Trio Penta (Trio 5.0) (ZT)</h5>
 	<p>Penta is the new generation routing chip, which is built for the MX platform routers. On top of being a very beefy chip, capable of 500Gbps per ASIC, allowing Juniper to build line cards of up to 4Tbps of capacity, the chip also has a lot of baked in features, offering advanced hardware offloading for for example MACSec, or Layer 3 IPsec.</p>
 	<p>The Penta chip is packaged on the MPC10E and MPC11E line card, which can be installed in multiple variations of the MX chassis routers (MX480 included).</p>
-	<h3>Cisco</h3>
+	<div class="flex anchor relative">
+		<h3 id="cisco">Cisco</h3>
+		<a href="https://blog.cloudflare.com/#cisco" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last but not least, there's Cisco. As the saying goes “nobody ever got fired for buying Cisco”, they're the biggest vendor of network solutions around. Just like Juniper, they have a mixed product fleet of merchant silicon, as well as home-grown. While we used to operate Cisco routers as edge routers (Cisco ASR 9000), this is no longer the case. We do still use them heavily for our ToR (Top-of-Rack) switching needs, utilizing both their Nexus 5000 series and Nexus 9000 series switches.</p>
 	<h4>Bigsur</h4>
 	<p>Bigsur is custom silicon developed for the Nexus 6000 line of switches (confusingly, the switches themselves are called Cisco Nexus 5672UP and Cisco Nexus 6001). In our specific model, the Cisco Nexus 5672UP, there's 7 of them interconnected, providing 10G and 40G connectivity. Unfortunately Cisco is a lot more tight-lipped about their ASIC capabilities, so I can't go as deep as I did with the Juniper chips. Feature-wise, there's not a lot we require from them in our edge network. They're simple Layer 2 forwarding switches, with no added requirements. Buffer wise, they use a system called Virtual Output Queueing, just like the Juniper Express chip. Unlike the Juniper silicon, the Bigsur ASIC doesn’t come with a lot of TCAM or buffer space.</p>
 	<h4>Tahoe</h4>
 	<p>The Tahoe is the Cisco ASIC found in the Cisco 9300-EX switches, also known as the LSE (Leaf Spine Engine). It offers higher-density port configurations compared to the Bigsur (1.6Tbps)<a href="https://blog.cloudflare.com/#fn20">[20]</a>. Overall, this ASIC is a maturation of the Bigsur silicon, offering more advanced features such as advanced VXLAN+EVPN fabrics, greater port flexibility (10G, 25G, 40G and 100G), and increased buffer sizes (40MB). We use this ASIC extensively in both our edge data centers as well as in our core data centers.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A lot of different factors come into play when making the decision to purchase the next generation of Cloudflare network equipment. This post only scratches the surface of technical considerations to be made, and doesn't come near any other factors, such as ecosystem contributions, openness, interoperability, or pricing. None of this would've been possible without the contributions from other network engineers—this post was written on the shoulders of giants. In particular, thanks to the excellent work by <a href="https://people.ucsc.edu/~warner/buffer.html">Jim Warner at UCSC</a>, the engrossing book on the new MX platforms, written by David Roy (<a href="https://www.juniper.net/documentation/en_US/day-one-books/DO_MX5G.pdf">Day One: Inside the MX 5G</a>), as well as the best book on the Juniper QFX lineup: <a href="https://www.oreilly.com/library/view/juniper-qfx10000-series/9781491922248">Juniper QFX10000 Series</a> by Douglas Richard Hanks Jr, and to finish it off, the <a href="https://elegantnetwork.github.io/posts/A-Summary-of-Network-ASICs">Summary of Network ASICs</a> post by Justin Pietsch.</p>
 	<hr>
 	<ol>

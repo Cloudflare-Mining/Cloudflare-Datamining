@@ -36,7 +36,14 @@ const newZone = await cloudflare.zones.create({
 	<p><i>The pull requests previously required to ship an SDK change.</i></p>
 	<p>Following the completion of <a href="https://blog.cloudflare.com/open-api-transition">our transition to OpenAPI from JSON Hyper-Schema</a>, we caught up internally and started discussing what else OpenAPI could help us unlock. It was at that point that we set the lofty goal of using OpenAPI for more than just our documentation. It was time to use OpenAPI to generate our SDKs.</p>
 	<p>Before we dove headfirst into generating SDKs, we established some guiding principles. These would be non-negotiable and determine where we spent our effort.</p>
-	<h3>You should not be able to tell what underlying language generated the SDK</h3>
+	<div class="flex anchor relative">
+		<h3 id="you-should-not-be-able-to-tell-what-underlying-language-generated-the-sdk">You should not be able to tell what underlying language generated the SDK</h3>
+		<a href="https://blog.cloudflare.com/#you-should-not-be-able-to-tell-what-underlying-language-generated-the-sdk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was important for us because too often companies build SDKs using automation. Not only do you end up with SDKs that are flavored based on generator language, but the SDKs then lack the language nuances or patterns that are noticeable to users familiar with the language.</p>
 	<p>For example, a Rubyist may use the following <code>if</code> expression:</p>
 	<pre class="language-ruby"><code class="language-ruby">do_something if bar?</code></pre>
@@ -45,7 +52,14 @@ const newZone = await cloudflare.zones.create({
   do_something
 end</code></pre>
 	<p>Despite being a simple and non-material example, it demonstrates a nuance that a machine cannot decipher on its own. This is terrible for developers because you’re then no longer only thinking about how to solve the original task at hand, but you also end up tailoring your code to match how the generator has built the SDK and potentially lose out on the language features you would normally use. The problem is made significantly worse if you’re using a strongly typed language to generate a language without types, since it will be structuring and building code in a way that types are expected but never used.</p>
-	<h3>Lowering the mean time to uniform support</h3>
+	<div class="flex anchor relative">
+		<h3 id="lowering-the-mean-time-to-uniform-support">Lowering the mean time to uniform support</h3>
+		<a href="https://blog.cloudflare.com/#lowering-the-mean-time-to-uniform-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a new feature is added to a product, it’s great that we add API support initially. However, if that new feature or product never makes it to whatever language SDK you are using to drive your API calls, it’s as good as non-existent. Similarly, not every use case is for infrastructure-as-code tools like Terraform, so we needed a better way of meeting our customers with uniformity where they choose to integrate with our services.</p>
 	<p>By extension, we want uniformity in the way the namespaces and methods are constructed. Ignoring the language-specific parts, if you’re using one of our SDKs and you are looking for the ability to list all DNS records, you should be able to trust that the method will be in the <code>dns</code> namespace and that to find all records, you can call a <code>list</code> method regardless of which one you are using. Example:</p>
 	<pre class="language-bash"><code class="language-bash">// Go
@@ -57,7 +71,14 @@ client.dns.records.list(...)
 // Python
 client.dns.records.list(...)</code></pre>
 	<p>This leads to less time digging through documentation to find what invocation you need and more time using the tools you’re already familiar with.</p>
-	<h3>Fast feedback loops, clear conventions</h3>
+	<div class="flex anchor relative">
+		<h3 id="fast-feedback-loops-clear-conventions">Fast feedback loops, clear conventions</h3>
+		<a href="https://blog.cloudflare.com/#fast-feedback-loops-clear-conventions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has <b>a lot</b> of APIs; everything is backed by an API <i>somewhere</i>. However, not all Cloudflare APIs are designed with the same conventions in mind. Those APIs that are on the critical path and regularly experience traffic surges or malformed input are naturally more hardened and more resilient than those that are infrequently used. This creates a divergence in quality of the endpoint, which shouldn’t be the case.</p>
 	<p>Where we have learned a lesson or improved a system through a best practice, we should make it easy for others to be aware of and opt into that pattern with little friction at the earliest possible time, ideally as they are proposing the change in CI. That is why when we built the OpenAPI pipeline for API schemas, we built in mechanisms to allow applying linting rules, using <a href="https://redocly.com/docs/cli">redocly CLI</a>, that will either warn the engineer or block them entirely, depending on the severity of the violation.</p>
 	<p>For example, we want to encourage usage of fine grain API tokens, so we should present those authentication schemes first and ensure they are supported for new endpoints. To enforce this, we can write a <a href="https://redocly.com/docs/cli/configuration/reference/plugins">redocly plugin</a>:</p>
@@ -122,7 +143,14 @@ client.dns.records.list(...)</code></pre>
   assertions:
     local/descriptionIsFormatted: {}</code></pre>
 	<p>This makes shipping endpoints of the same quality much easier and prevents teams needing to sort through all the API design or resiliency patterns we may have introduced over the years – possibly even before they joined Cloudflare.</p>
-	<h2>Building the generation machine</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-the-generation-machine">Building the generation machine</h2>
+		<a href="https://blog.cloudflare.com/#building-the-generation-machine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once we had our guiding principles, we started doing some analysis of our situation and saw that if we decided to build the solution entirely in house, we would be at least 6–9 months away from a single high quality SDK with the potential for additional follow-up work each time we had a new language addition. This wasn’t acceptable and prevented us from meeting the requirement of needing a low-cost followup for additional languages, so we explored the OpenAPI generation landscape.</p>
 	<p>Due to the size and complexity of our schemas, we weren’t able to use most off the shelf products. We tried a handful of solutions and workarounds, but we weren’t comfortable with any of the options; that was, until we tried <a href="https://www.stainlessapi.com">Stainless</a>. Founded by one of the engineers that built what many consider to be the best-in-class API experiences at Stripe, Stainless is dedicated to generating SDKs. If you've used the OpenAI <a href="https://github.com/openai/openai-python">Python</a> or <a href="https://github.com/openai/openai-node">Typescript</a> SDKs, you've used an SDK generated by Stainless.</p>
 	<p>The way the platform offering works is that you bring your OpenAPI schemas and map them to methods with the configuration file. Those inputs then get fed into the generation engine to build your SDKs.</p>
@@ -151,8 +179,23 @@ client.dns.records.list(...)</code></pre>
 
 	</figure>
 	<p><i>Just a single pull request is now required to ship an SDK change.</i></p>
-	<h2>Lessons from our journey, for yours</h2>
-	<h3>Mass updates, made easy</h3>
+	<div class="flex anchor relative">
+		<h2 id="lessons-from-our-journey-for-yours">Lessons from our journey, for yours</h2>
+		<a href="https://blog.cloudflare.com/#lessons-from-our-journey-for-yours" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="mass-updates-made-easy">Mass updates, made easy</h3>
+		<a href="https://blog.cloudflare.com/#mass-updates-made-easy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Depending on the age of your APIs, you will have a diverging history of how they are represented to customers. That may be as simple as path parameters being inconsistent or perhaps something more complex like different HTTP methods for updates. While you can handle these individually at any sort of scale, that just isn’t feasible. As of this post, Cloudflare offers roughly 1,300 publicly documented endpoints, and we needed a more automatable solution. For us, that was codemods. Codemods are a way of applying transformations to perform large scale refactoring of your codebase. This allows you to programmatically rewrite expressions, syntax or other parts of your code without having to manually go through every file. Think of it like find and replace, but on steroids and with more context of the underlying language constructs.</p>
 	<p>We started with a tool called <a href="https://comby.dev">comby</a>. We wrapped it in a custom CLI tool that knew how to speak to our version control endpoints and wired it in a way that provides a comby configuration TOML file, pull request description, and commit message for each transformation we needed to apply. Here is a sample comby configuration where we updated the URI paths to be consistently suffixed with _id instead of other variations (<code>_identifier</code>, <code>Identifier</code>, etc.) where we had a plural resource followed by an individual identifier.</p>
 	<pre class="language-toml"><code class="language-toml">[account-id-1-path-consistency]
@@ -180,10 +223,25 @@ rewrite = 'name: :[topic]_id'</code></pre>
 	<p>After looking around, we eventually found <a href="https://www.grit.io">Grit</a>. It is a tool that does everything we need (including the custom CLI) while being very familiar to anyone that understands basic Javascript through a query language, known as <a href="https://docs.grit.io/tutorials/gritql">GritQL</a>. An added bonus here is that we are able to contribute to the <a href="https://docs.grit.io/patterns">Grit Pattern Library</a>, so our migrations are <a href="https://app.grit.io/studio?preset=cloudflare_go_v2&amp;key=nt_BGTed1mbXzuvxZ9n2q">only ever a single CLI invocation away</a> for anyone to use once they have the CLI installed.</p>
 	<pre class="language-bash"><code class="language-bash">// Migrate to the Golang v2 library 
 grit apply cloudflare_go_v2</code></pre>
-	<h3>Consistency, consistency, consistency</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="consistency-consistency-consistency">Consistency, consistency, consistency</h3>
+		<a href="https://blog.cloudflare.com/#consistency-consistency-consistency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Did I mention consistency is important? Before attempting to feed your OpenAPI schemas into any system (especially a homegrown one), get them consistent with the practices, structures, and how you intend to represent them. This makes determining what is a bug in your generation pipeline vs a bug in your schema much easier. If it’s broken everywhere, it’s the generation pipeline, otherwise it’s an isolated bug to track down in your schema.</p>
 	<p>Having consistency leads into a better developer experience. From our examples above, if your routes always follow the plural resource name followed by an identifier, the end user doesn’t have to think about what the inputs need to be. The consistency and conventions lead them there – even if your documentation is lacking.</p>
-	<h3>Use shared $refs sparingly</h3>
+	<div class="flex anchor relative">
+		<h3 id="use-shared-refs-sparingly">Use shared $refs sparingly</h3>
+		<a href="https://blog.cloudflare.com/#use-shared-refs-sparingly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It seems like a great idea for reusability at the time of writing them, but when overused, <code>$ref</code>s make finding correct values problematic and lead to <a href="https://en.wikipedia.org/wiki/Cargo_cult_programming">cargo cult</a> practices. In turn, this leads to lower quality and difficult-to-change schemas despite looking more usable from the outset. Consider the following schema example:</p>
 	<pre class="language-yaml"><code class="language-yaml">thing_base:
   type: object
@@ -247,9 +305,23 @@ thing_id:
     - created_on
     - modified_on</code></pre>
 	<p>When in doubt, consider the <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI principle</a> instead. You can always refactor and extract this later once you have enough uses to determine the correct abstraction.</p>
-	<h3>Design your ideal usage and work backwards</h3>
+	<div class="flex anchor relative">
+		<h3 id="design-your-ideal-usage-and-work-backwards">Design your ideal usage and work backwards</h3>
+		<a href="https://blog.cloudflare.com/#design-your-ideal-usage-and-work-backwards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we wrote a single line of code to solve the problem of generation, we prepared language design documents for each of our target languages that followed the <a href="https://tom.preston-werner.com/2010/08/23/readme-driven-development.html">README-driven</a> design principles. This meant our focus from the initial design was on the usability of the library and not on the technical challenges that we would eventually encounter. This led us to identify problems and patterns early with how various language nuances would surface to the end user without investing in anything more than a document. Python keyword arguments, Go interfaces, how to enforce required parameters, client instantiation and overrides, types – all considerations made up front that helped minimize the number of unknowns as we built out support.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we embarked on the OpenAPI journey, we knew it was only the beginning and would eventually open more doors and quality of life improvements for teams and customers alike. Now that we have a few language SDKs available, we’re turning our attention to generating our <a href="https://github.com/cloudflare/terraform-provider-cloudflare">Terraform Provider</a> using the same guiding principles to further minimize the maintenance burden. But that’s still not all. Coming later in 2024 are more improvements and integrations with other parts of the Cloudflare Developer Platform, so stay tuned.</p>
 	<p>If you haven’t already, check out one of the SDKs in <a href="https://github.com/cloudflare/cloudflare-go">Go</a>, <a href="https://github.com/cloudflare/cloudflare-typescript">Typescript</a> and <a href="https://github.com/cloudflare/cloudflare-python">Python</a> today. If you’d like support for a different language, go <a href="https://forms.gle/TPQw3eoiRbyQBfEv5">here</a> to submit your details to help determine the next language. We’d love to hear what languages you would like offered as a Cloudflare SDK.</p>
 </div>

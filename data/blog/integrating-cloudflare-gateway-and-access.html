@@ -1,7 +1,14 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6nUWKQwAZf4YZj6GFKHd17/5af7036a02d218fbd0b21c75ee09400d/integrating-cloudflare-gateway-and-access.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>We’re excited to announce that you can now set up your Access policies to require that all user traffic to your application is filtered by Cloudflare Gateway. This ensures that all of the traffic to your self-hosted and SaaS applications is secured and centrally logged. You can also use this integration to build rules that determine which users can connect to certain parts of your SaaS applications, even if the application does not support those rules on its own.</p>
-	<h3>Stop threats from returning to your applications and data</h3>
+	<div class="flex anchor relative">
+		<h3 id="stop-threats-from-returning-to-your-applications-and-data">Stop threats from returning to your applications and data</h3>
+		<a href="https://blog.cloudflare.com/#stop-threats-from-returning-to-your-applications-and-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We built Cloudflare Access as an internal project to replace our own VPN. Unlike a traditional private network, Access follows a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a>. Cloudflare’s edge checks every request to protected resources for identity and other signals like device posture (i.e., information about a user’s machine, like Operating system version, if antivirus is running, etc.).</p>
 	<p>By deploying Cloudflare Access, our security and IT teams could build granular rules for each application and log every request and event. Cloudflare’s network accelerated how users connected. We <a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn">launched</a> Access as a product for our customers in 2018 to share those improvements with <a href="https://blog.cloudflare.com/teams-plans">teams of any size</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -29,7 +36,14 @@
 	<p>We built Cloudflare Gateway to solve those problems. Cloudflare Gateway sends all traffic from a device to Cloudflare’s network, where it can be filtered for threats, file upload/download, and content categories.</p>
 	<p>Administrators deploy a lightweight agent on user devices that proxies all Internet-bound traffic through Cloudflare’s network. As that traffic arrives in one of our data centers in 200 cities around the world, Cloudflare’s edge inspects the traffic. Gateway can then take actions like prevent users from connecting to destinations that contain malware or block the upload of files to unapproved locations.</p>
 	<p>With today’s launch, you can now build Access rules that restrict connections to devices that are running Cloudflare Gateway. You can configure Cloudflare Gateway to <a href="https://developers.cloudflare.com/warp-client/warp-for-teams/teams#enable">run in always-on mode</a> and ensure that the devices connecting to your applications are secured as they navigate the rest of the Internet.</p>
-	<h3>Log every connection to every application</h3>
+	<div class="flex anchor relative">
+		<h3 id="log-every-connection-to-every-application">Log every connection to every application</h3>
+		<a href="https://blog.cloudflare.com/#log-every-connection-to-every-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to filtering, Cloudflare Gateway also logs every request and connection made from a device. With Gateway running, your organization can audit how employees use SaaS applications like Salesforce, Office 365, and Workday.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -38,7 +52,14 @@
 	</figure>
 	<p>However, we’ve talked to several customers who share a concern over log integrity — “what stops a user from bypassing Gateway’s logging by connecting to a SaaS application from a different device?” Users could type in their password and use their second factor authentication token on a different device — that way, the organization would lose visibility into that corporate traffic.</p>
 	<p>Today’s release gives your team the ability to ensure every connection to your SaaS applications uses Cloudflare Gateway. Your team can integrate Cloudflare Access, and its ruleset, into the login flow of your SaaS applications. Cloudflare Access checks for additional factors when your users log in with your SSO provider. By adding a rule to require Cloudflare Gateway be used, you can prevent users from ever logging into a SaaS application without connecting through Gateway.</p>
-	<h3>Build data control rules in SaaS applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="build-data-control-rules-in-saas-applications">Build data control rules in SaaS applications</h3>
+		<a href="https://blog.cloudflare.com/#build-data-control-rules-in-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One other challenge we had internally at Cloudflare is that we lacked the ability to add user-based controls in some of the SaaS applications we use. For example, a team member connecting to a data visualization application had access to dashboards created by other teams, that they shouldn’t have access to.</p>
 	<p>We can use Cloudflare Gateway to solve that problem. Gateway provides the ability to restrict certain URLs to groups of users; this allows us &nbsp;to add rules that only let specific team members reach records that live at known URLs.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +68,14 @@
 
 	</figure>
 	<p>However, if someone is not using Gateway, we lose that level of policy control. The integration with Cloudflare Access ensures that those rules are always enforced. If users are not running Gateway, they cannot login to the application.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can begin using this feature in your Cloudflare for Teams account today with the Teams Standard or Teams enterprise plan. Documentation is available <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/require-swg">here</a> to help you get started.</p>
 	<p>Want to try out Cloudflare for Teams? You can sign up for Teams today on our free plan and test Gateway’s DNS filtering and Access for up to 50 users at no cost.</p>
 </div>

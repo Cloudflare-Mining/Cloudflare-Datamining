@@ -1,6 +1,13 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5v4GYOUEfePdicXF4Cybru/7c736ecebb788a9398c04b131cc88ac2/how-to-execute-an-object-file-part-1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>Calling a simple function without linking</h2>
+	<div class="flex anchor relative">
+		<h2 id="calling-a-simple-function-without-linking">Calling a simple function without linking</h2>
+		<a href="https://blog.cloudflare.com/#calling-a-simple-function-without-linking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we write software using a high-level compiled programming language, there are usually a number of steps involved in transforming our source code into the final executable binary:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -18,7 +25,14 @@
 	<p>One interesting thing to note about this overall process is that we get the executable machine code directly from step 1 (compiling the source code), but if any of the later steps fail, we still can't execute our program. So, in this series of blog posts we will investigate if it is possible to execute machine code directly from object files skipping all the later steps.</p>
 	<h4>Why would we want to execute an object file?</h4>
 	<p>There may be many reasons. Perhaps we're writing an open-source replacement for a proprietary Linux driver or an application, and want to compare if the behaviour of some code is the same. Or we have a piece of a rare, obscure program and we can't link to it, because it was compiled with a rare, obscure compiler. Maybe we have a source file, but cannot create a full featured executable, because of the missing build time or runtime dependencies. Malware analysis, code from a different operating system etc - all these scenarios may put us in a position, where either linking is not possible or the runtime environment is not suitable.</p>
-	<h3>A simple toy object file</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-simple-toy-object-file">A simple toy object file</h3>
+		<a href="https://blog.cloudflare.com/#a-simple-toy-object-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the purposes of this article, let's create a simple toy object file, so we can use it in our experiments:</p>
 	<p><i>obj.c</i>:</p>
 	<pre class="language-c"><code class="language-c">int add5(int num)
@@ -34,7 +48,15 @@ int add10(int num)
 	<pre class="language-bash"><code class="language-bash">$ gcc -c obj.c 
 $ ls
 obj.c  obj.o</code></pre>
-	<h3>Loading an object file into the process memory</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="loading-an-object-file-into-the-process-memory">Loading an object file into the process memory</h3>
+		<a href="https://blog.cloudflare.com/#loading-an-object-file-into-the-process-memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we will try to import the <code>add5</code> and <code>add10</code> functions from the object file and execute them. When we talk about executing an object file, we mean using an object file as some sort of a library. As we learned above, when we have an executable that utilises external shared libraries, the <i>dynamic loader</i> loads these libraries into the process address space for us. With object files, however, we have to do this manually, because ultimately we can't execute machine code that doesn't reside in the operating system's RAM. So, to execute object files we still need some kind of a wrapper program:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
@@ -120,7 +142,14 @@ static void load_obj(void)
 }
 ...</code></pre>
 	<p>If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
-	<h3>A peek inside an object file</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-peek-inside-an-object-file">A peek inside an object file</h3>
+		<a href="https://blog.cloudflare.com/#a-peek-inside-an-object-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
 	<h4>ELF segments and sections</h4>
 	<p>Segments (also known as program headers) and sections are probably the main parts of an ELF file and usually a starting point of any ELF tutorial. However, there is often some confusion between the two. Different sections contain different types of ELF data: executable code (which we are most interested in in this post), constant data, global variables etc. Segments, on the other hand, do not contain any data themselves - they just describe to the operating system how to properly load sections into RAM for the executable to work correctly. Some tutorials say "a segment may include 0 or more sections", which is not entirely accurate: segments do not contain sections, rather they just indicate to the OS where in memory a particular section should be loaded and what is the access pattern for this memory (read, write or execute):</p>
@@ -218,7 +247,14 @@ Symbol table '.symtab' contains 10 entries:
 		</li>
 	</ul>
 	<p>So now we have all the pieces on how to parse an ELF file and find the functions we need.</p>
-	<h3>Finding and executing a function from an object file</h3>
+	<div class="flex anchor relative">
+		<h3 id="finding-and-executing-a-function-from-an-object-file">Finding and executing a function from an object file</h3>
+		<a href="https://blog.cloudflare.com/#finding-and-executing-a-function-from-an-object-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given what we have learned so far, let's define a plan on how to proceed to import and execute a function from an object file:</p>
 	<ol>
 		<li>

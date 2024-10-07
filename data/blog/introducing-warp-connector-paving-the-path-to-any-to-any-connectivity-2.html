@@ -9,7 +9,14 @@
 	</figure>
 	<p>In the ever-evolving domain of enterprise security, <a href="https://www.cloudflare.com/ciso">CISOs</a> and CIOs have to tirelessly build new enterprise networks and maintain old ones to achieve performant any-to-any connectivity. For their team of network architects, surveying their own environment to keep up with changing needs is half the job. The other is often unearthing new, innovative solutions which integrate seamlessly into the existing landscape. This continuous cycle of construction and fortification in the pursuit of secure, flexible infrastructure is exactly what Cloudflare’s SASE offering, Cloudflare One, was built for.</p>
 	<p>Cloudflare One has progressively evolved based on feedback from customers and analysts. Today, we are thrilled to introduce the public availability of the Cloudflare WARP Connector, a new tool that makes bidirectional, site-to-site, and mesh-like connectivity even easier to secure without the need to make any disruptive changes to existing network infrastructure.</p>
-	<h2>Bridging a gap in Cloudflare's Zero Trust story</h2>
+	<div class="flex anchor relative">
+		<h2 id="bridging-a-gap-in-cloudflares-zero-trust-story">Bridging a gap in Cloudflare's Zero Trust story</h2>
+		<a href="https://blog.cloudflare.com/#bridging-a-gap-in-cloudflares-zero-trust-story" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare's approach has always been focused on offering a breadth of products, acknowledging that there is no one-size-fits-all solution for network connectivity. Our vision is simple: any-to-any connectivity, any way you want it.</p>
 	<p>Prior to the WARP Connector, one of the easiest ways to connect your infrastructure to Cloudflare, whether that be a local HTTP server, web services served by a Kubernetes cluster, or a private network segment, was through the <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a> app connector, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><i>cloudflared</i></a>. In many cases this works great, but over time customers began to surface a long tail of use cases which could not be supported based on the underlying architecture of cloudflared. This includes situations where customers utilize VOIP phones, necessitating a SIP server to establish outgoing connections to user’s softphones, or a CI/CD server sending notifications to relevant stakeholders for each stage of the CI/CD pipelines. Later in this blog post, we explore these use cases in detail.</p>
 	<p>As <i>clouflared</i> proxies at Layer 4 of the <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi">OSI model</a>, its design was optimized specifically to proxy requests to origin services — it was not designed to be an active listener to handle requests from origin services. This design trade-off means that cloudflared needs to source NAT all requests it proxies to the application server. This setup is convenient for scenarios where customers don't need to update routing tables to deploy cloudflared in front of their original services. However, it also means that customers can’t see the true source IP of the client sending the requests. This matters in scenarios where a network firewall is logging all the network traffic, as the source IP of all the requests will be <i>cloudflared’s</i> IP address, causing the customer to lose visibility into the true client source.</p>
@@ -18,7 +25,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2nMu5Ecf8e72QaIbf6eyiI/9c292e879c1e4573336052a9053068e0/image6-10.png" alt="" class="kg-image" width="1826" height="1000" loading="lazy">
 
 	</figure>
-	<h2>Build or borrow</h2>
+	<div class="flex anchor relative">
+		<h2 id="build-or-borrow">Build or borrow</h2>
+		<a href="https://blog.cloudflare.com/#build-or-borrow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To solve this problem, we identified two potential solutions: start from scratch by building a new connector, or borrow from an existing connector, likely in either cloudflared or WARP.</p>
 	<p>The following table provides an overview of the tradeoffs of the two approaches:</p><!--kg-card-begin: html-->
 	<table style="border:none;border-collapse:collapse;table-layout:fixed;width:468pt">
@@ -97,7 +111,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h2>Introducing WARP Connector</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-warp-connector">Introducing WARP Connector</h2>
+		<a href="https://blog.cloudflare.com/#introducing-warp-connector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, the introduction of WARP Connector opens up new <a href="https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/#connecting-networks">possibilities</a>: server initiated (SIP/VOIP) flows; site-to-site connectivity, connecting branches, headquarters, and cloud platforms; and even mesh-like networking with WARP-to-WARP. Under the hood, this new connector is an extension of warp-client that can act as a virtual router for any subnet within the network to on/off-ramp traffic through Cloudflare.</p>
 	<p>By building on WARP, we were able to take advantage of its design, where it creates a virtual network interface on the host to logically subdivide the physical interface (NIC) for the purpose of routing IP traffic. This enables us to send bidirectional traffic through the WireGuard/<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque">MASQUE</a> tunnel that’s maintained between the host and Cloudflare edge. By virtue of this architecture, customers also get the added benefit of visibility into the true source IP of the client.</p>
 	<p>WARP Connector can be easily deployed on the default gateway without any additional routing changes. Alternatively, static routes can be configured for specific CIDRs that need to be routed via WARP Connector, and the static routes can be configured on the default gateway or on every host in that subnet.</p>
@@ -106,16 +127,39 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WD2pig7ka0aWKGTL8EBJ0/a7614ab34b207c9909814594cbd8d9b8/image2-31.png" alt="" class="kg-image" width="1256" height="674" loading="lazy">
 
 	</figure>
-	<h2>Private network use cases</h2>
+	<div class="flex anchor relative">
+		<h2 id="private-network-use-cases">Private network use cases</h2>
+		<a href="https://blog.cloudflare.com/#private-network-use-cases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here we’ll walk through a couple of key reasons why you may want to deploy our new connector, but remember that this solution can support numerous services, such as Microsoft’s System Center Configuration Manager (SCCM), Active Directory server updates, VOIP and SIP traffic, and developer workflows with complex CI/CD pipeline interaction. It’s also important to note this connector can either be run alongside cloudflared and Magic WAN, or can be a standalone remote access and site-to-site connector to the Cloudflare Global network.</p>
-	<h3>Softphone and VOIP servers</h3>
+	<div class="flex anchor relative">
+		<h3 id="softphone-and-voip-servers">Softphone and VOIP servers</h3>
+		<a href="https://blog.cloudflare.com/#softphone-and-voip-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1aRUqSm8U71JrJlAjpaR85/71ba03acbbe97e510e80798c91268f2d/image5-18.png" alt="" class="kg-image" width="1938" height="696" loading="lazy">
 
 	</figure>
 	<p>For users to establish a voice or video call over a VOIP software service, typically a SIP server within the private network brokers the connection using the last known IP address of the end-user. However, if traffic is proxied anywhere along the path, this often results in participants only receiving partial voice or data signals. With the WARP Connector, customers can now apply granular policies to these services for secure access, fortifying VOIP infrastructure within their <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust framework</a>.</p>
-	<h3>Securing access to CI/CD pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-access-to-ci-cd-pipeline">Securing access to CI/CD pipeline</h3>
+		<a href="https://blog.cloudflare.com/#securing-access-to-ci-cd-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Yolk1Mb2eQqmkibRapZzU/86cc2097823caec22283aa650af40778/image4-29.png" alt="" class="kg-image" width="1842" height="1026" loading="lazy">
@@ -138,9 +182,23 @@
 		</li>
 	</ol>
 	<p>With WARP Connector, customers can easily connect their developers to the tools in the DevOps ecosystem by keeping the ecosystem private and not exposing it to the public. Once the DevOps ecosystem is securely connected to Cloudflare, granular security policies can be easily applied to secure access to the CI/CD pipeline.</p>
-	<h3>True source IP address preservation</h3>
+	<div class="flex anchor relative">
+		<h3 id="true-source-ip-address-preservation">True source IP address preservation</h3>
+		<a href="https://blog.cloudflare.com/#true-source-ip-address-preservation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations running Microsoft AD Servers or non-web application servers often need to identify the true source IP address for auditing or policy application. If these requirements exist, WARP Connector simplifies this, offering solutions without adding NAT boundaries. This can be useful to <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">rate-limit</a> unhealthy source IP addresses, for ACL-based policies within the perimeter, or to collect additional diagnostics from end-users.</p>
-	<h2>Getting started with WARP Connector</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-warp-connector">Getting started with WARP Connector</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-warp-connector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of this launch, we’re making some changes to the Cloudflare One Dashboard to better highlight our different network on/off ramp options. As of today, a new “Network” tab will appear on your dashboard. This will be the new home for the Cloudflare Tunnel UI.</p>
 	<p>We are also introducing the new “Routes” tab next to “Tunnels”. This page will present an organizational view of customer’s virtual networks, Cloudflare Tunnels, and routes associated with them. This new page helps answer a customer’s questions pertaining to their network configurations, such as: “Which Cloudflare Tunnel has the route to my host 192.168.1.2 ” or “If a route for CIDR 192.168.2.1/28 exists, how can it be accessed” or “What are the overlapping CIDRs in my environment and which VNETs do they belong to?”. This is extremely useful for customers who have very complex enterprise networks that use the Cloudflare dashboard for troubleshooting connectivity issues.</p>
 	<figure class="kg-card kg-image-card ">
@@ -149,7 +207,14 @@
 
 	</figure>
 	<p>Embarking on your WARP Connector journey is straightforward. Currently deployable on Linux hosts, users can select “create a Tunnel” and pick from either cloudflared or WARP to deploy straight from the dashboard. Follow our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#set-up-warp-connector">developer documentation</a> to get started in a few easy steps. In the near future we will be adding support for more platforms where WARP Connectors can be deployed.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thank you to all of our private beta customers for their invaluable feedback. Moving forward, our immediate focus in the coming quarters is on simplifying deployment, mirroring that of cloudflared, and enhancing high availability through redundancy and failover mechanisms.</p>
 	<p>Stay tuned for more updates as we continue our journey in innovating and enhancing the Cloudflare One platform. We're excited to see how our customers leverage WARP Connector to transform their connectivity and security landscape.</p>
 </div>

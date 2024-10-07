@@ -17,7 +17,14 @@
 			<p><b><i>“What can we do more of in order to serve our creators?”</i></b></p>
 		</li>
 	</ul>
-	<h3>Introducing the Creator Property</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-the-creator-property">Introducing the Creator Property</h3>
+		<a href="https://blog.cloudflare.com/#introducing-the-creator-property" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Creator platforms enable artists, teachers and hobbyists to express themselves through various media, including video. We built Cloudflare Stream for these platforms, enabling them to rapidly build video use cases without needing to build and maintain a video pipeline at scale.</p>
 	<p>At its heart, every creator platform must manage ownership of user-generated content. When a video is uploaded to Stream, Stream returns a video ID. Platforms using Stream have traditionally had to maintain their own index to track content ownership. For example, when a user with internal user ID <code>83721759</code> uploads a video to Stream with video ID <code>06aadc28eb1897702d41b4841b85f322</code>, the platform must maintain a database table of some sort to keep track of the fact that Stream video ID <code>06aadc28eb1897702d41b4841b85f322</code> belongs to internal user <code>83721759</code>.</p>
 	<p>With the introduction of the creator property, platforms no longer need to maintain this index. Stream already has a direct creator upload feature to enable users to upload videos directly to Stream using tokenized URLs and without exposing account-wide auth information. You can now set the creator field with your user’s internal user ID at the time of requesting a tokenized upload URL:</p>
@@ -27,7 +34,14 @@
      -H "Content-Type: application/json" \
      --data '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "&lt;CREATOR_ID&gt;", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'</code></pre>
 	<p>When the user uploads the video, the creator property would be automatically set to your internal user ID and can be leveraged for operations such as pulling analytics data for your creators.</p>
-	<h3>Query By Creator Property</h3>
+	<div class="flex anchor relative">
+		<h3 id="query-by-creator-property">Query By Creator Property</h3>
+		<a href="https://blog.cloudflare.com/#query-by-creator-property" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Setting the creator property on your video uploads is just the beginning. You can now filter Stream Analytics via the Dashboard or the GraphQL API using the creator property.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -67,7 +81,14 @@
   }
 }</code></pre>
 	<p>Stream is focused on helping creator platforms innovate and scale. Matt Ober, CTO of NFT media management platform <a href="https://www.pinata.cloud">Piñata</a>, says "By allowing us to upload and then query using creator IDs, large-scale analytics of Cloudflare Stream is about to get a lot easier."</p>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/stream/uploading-videos/creator-id">Read the docs</a> to learn more about setting the creator property on new and previously uploaded videos. You can also set the creator property on live inputs, so the recorded videos generated from the live event will already have the creator field populated.</p>
 	<p>Being able to filter analytics is just the beginning. We can’t wait to enable more creator-level operations, so you can spend more time on what makes your idea unique and less time maintaining table stakes infrastructure.</p>
 </div>

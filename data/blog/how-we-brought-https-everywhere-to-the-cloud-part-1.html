@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>CloudFlare's mission is to make HTTPS accessible for all our customers. It provides security for their websites, <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">improved ranking on search engines</a>, <a href="https://blog.cloudflare.com/introducing-http2">better performance with HTTP/2</a>, and access to browser features such as geolocation that are being deprecated for plaintext HTTP. With <a href="https://www.cloudflare.com/ssl">Universal SSL</a> or similar features, a simple button click can now enable encryption for a website.</p>
 	<p>Unfortunately, as described in a <a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites">previous blog post</a>, this is only half of the problem. To make sure that a page is secure and can't be controlled or eavesdropped by third-parties, browsers must ensure that not only the page itself but also all its dependencies are loaded via secure channels. Page elements that don't fulfill this requirement are called mixed content and can either result in the entire page being reported as insecure or even completely blocked, thus breaking the page for the end user.</p>
-	<h2>What can we do about it?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-can-we-do-about-it">What can we do about it?</h2>
+		<a href="https://blog.cloudflare.com/#what-can-we-do-about-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we conceived the Automatic HTTPS Rewrites project, we aimed to automatically reduce the amount of mixed content on customers' web pages without breaking their websites and without any delay noticeable by end users while receiving a page that is being rewritten on the fly.</p>
 	<p>A naive way to do this would be to just rewrite <code>http://</code> links to <code>https://</code> or let browsers do that with <a href="https://www.w3.org/TR/upgrade-insecure-requests"><code>Upgrade-Insecure-Requests</code></a> directive.</p>
 	<figure class="kg-card kg-image-card ">
@@ -21,7 +28,14 @@
 	</ol>
 	<p>If either of these conditions is unmet, you end up rewriting resources to non-existing URLs and breaking important page dependencies.</p>
 	<p>Thus we decided to take a look at the existing solutions.</p>
-	<h2>How are these problems solved already?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-are-these-problems-solved-already">How are these problems solved already?</h2>
+		<a href="https://blog.cloudflare.com/#how-are-these-problems-solved-already" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many security aware people use the <a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a> browser extension to avoid those kinds of issues. HTTPS Everywhere contains a well-maintained database from the <a href="https://www.eff.org">Electronic Frontier Foundation</a> that contains all sorts of mappings for popular websites that safely rewrite HTTP versions of resources to HTTPS only when it can be done without breaking the page.</p>
 	<p>However, most users are either not aware of it or are not even able to use it, for example, on mobile browsers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -33,7 +47,14 @@
 	<p>So we decided to flip the model around. Instead of re-writing URLs in the browser, we would re-write them inside the CloudFlare reverse proxy. By taking advantage of the existing database on the server-side, website owners could turn it on and all their users would instantly benefit from HTTPS rewriting. The fact that it’s automatic is especially useful for websites with user-generated content where it's not trivial to find and fix all the cases of inserted insecure third-party content.</p>
 	<p>At our scale, we obviously couldn't use the existing JavaScript rewriter. The performance challenges for a browser extension which can find, match and cache rules lazily as a user opens websites, are very different from those of a CDN server that handles millions of requests per second. We usually don't get a chance to rewrite them before they hit the cache either, as many pages are dynamically generated on the origin server and go straight through us to the client.</p>
 	<p>That means, to take advantage of the database, we needed to learn how the existing implementation works and create our own in the form of a native library that could work without delays under our load. Let's do the same here.</p>
-	<h2>How does HTTPS Everywhere know what to rewrite?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-https-everywhere-know-what-to-rewrite">How does HTTPS Everywhere know what to rewrite?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-https-everywhere-know-what-to-rewrite" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTPS Everywhere rulesets can be found in <a href="https://github.com/EFForg/https-everywhere/tree/master/src/chrome/content/rules"><code>src/chrome/content/rules</code></a> folder of the <a href="https://github.com/EFForg/https-everywhere">official repository</a>. They are organized as XML files, each for their own set of hosts (with few exclusions). This allows users with basic technical skills to write and contribute missing rules to the database on their own.</p>
 	<p>Each ruleset is an XML file of the following structure:</p>
 	<pre class="language-xml"><code class="language-xml">&lt;ruleset name="example.org"&gt;
@@ -49,7 +70,14 @@
 	<p>At the moment of writing, the HTTPS Everywhere database consists of ~22K such rulesets covering ~113K domain wildcards with ~32K rewrite rules and exclusions.</p>
 	<p>For performance reasons, we can't keep all those ruleset XMLs in memory, go through nodes, check each wildcard, perform replacements based on specific string format and so on. All that work would introduce significant delays in page processing and increase memory consumption on our servers. That's why we had to perform some compile-time tricks for each type of node to ensure that rewriting is smooth and fast for any user from the very first request.</p>
 	<p>Let's walk through those nodes and see what can be done in each specific case.</p>
-	<h3>Target domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="target-domains">Target domains</h3>
+		<a href="https://blog.cloudflare.com/#target-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First of all, we get target elements which describe domain wildcards that current ruleset potentially covers.</p>
 	<pre class="language-xml"><code class="language-xml">&lt;target host="*.example.org" /&gt;</code></pre>
 	<p>If a wildcard is used, it can be <a href="https://www.eff.org/https-everywhere/rulesets#wildcard-targets">either left-side or right-side</a>.</p>
@@ -121,7 +149,14 @@
 
 	</figure>
 	<p>After we've matched the host name and found potentially applicable rulesets, we need to ensure that we're not rewriting URLs which are not available via HTTPS.</p>
-	<h3>Exclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="exclusions">Exclusions</h3>
+		<a href="https://blog.cloudflare.com/#exclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Exclusion elements serve exactly this goal.</p>
 	<pre class="language-xml"><code class="language-xml">&lt;exclusion pattern="^http://(www\.)?google\.com/analytics/" /&gt;
 &lt;exclusion pattern="^http://(www\.)?google\.com/imgres/" /&gt;</code></pre>
@@ -131,7 +166,14 @@
 	<pre class="language-xml"><code class="language-xml">(^http://(www\.)?google\.com/analytics/)|(^http://(www\.)?google\.com/imgres/)</code></pre>
 	<p>After that, in our action we just need to call <code>pcre_exec</code> without a match data destination – we don't care about matched groups, but only about completion status. If a URL matches a regular expression, we bail out of this action as following rewrites shouldn't be applied. After this, Ragel will automatically call another matched action (another ruleset) on its own until one is found.</p>
 	<p>Finally, after we both matched the host name and ensured that our URL is not covered by any exclusion patterns, we can go to the actual rewrite rules.</p>
-	<h3>Rewrite rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="rewrite-rules">Rewrite rules</h3>
+		<a href="https://blog.cloudflare.com/#rewrite-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These rules are presented as JavaScript regular expressions and replacement patterns. The rewriter matches the URL against each of those regular expressions as soon as a host matches and a URL is not an exclusion.</p>
 	<pre class="language-xml"><code class="language-xml">&lt;rule from="^http://(\w{2})\.wikipedia\.org/wiki/" to="https://secure.wikimedia.org/wikipedia/$1/wiki/" /&gt;</code></pre>
 	<p>As soon as a match is found, the replacement is performed and the search can be stopped. Note: while exclusions cover dangerous replacements, it's totally possible and valid for the URL to not match any of actual rules - in that case it should be just left intact.</p>
@@ -146,18 +188,39 @@
 	<p>The second part of the rule is the replacement pattern which uses the simplest feature of JavaScript regex replacement - number-based groups and has the form of <code>https://www.google.com.$1/</code> which means that the resulting string should be concatenation of <code>"https://www.google.com."</code> with the matched group at position <code>1</code>, and a <code>"/"</code>.</p>
 	<p>Once again, we don't want to waste time performing repetitive analysis looking for dollar signs and converting string indexes to numeric representation at runtime. Instead, it's more efficient to split this pattern at compile-time into <code>{ "https://www.google.com.", "/" }</code> static substrings plus an array of indexes which need to be inserted in between - in our case just <code>{ 1 }</code>. Then, at runtime, we simply build a string going through both arrays one-by-one and concatenating strings with found matches.</p>
 	<p>Finally, after such string is built, it's inserted in place of the previous attribute value and sent to the client.</p>
-	<h3>Wait, but what about testing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="wait-but-what-about-testing">Wait, but what about testing?</h3>
+		<a href="https://blog.cloudflare.com/#wait-but-what-about-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Glad you asked.</p>
 	<p>The HTTPS Everywhere extension uses an automated checker that checks the validity of rewritten URLs on any change in ruleset. In order to do that, rulesets are required to contain special test elements that cover all the rewrite rules.</p>
 	<pre class="language-xml"><code class="language-xml">&lt;test url="http://maps.google.com/" /&gt;</code></pre>
 	<p>What we need to do on our side is to collect those test URLs, combined with our own auto-generated tests from wildcards, and to invoke both the HTTPS Everywhere built-in JavaScript rewriter and our own side-by-side to ensure that we're getting same results — URLs that should be left intact, are left intact with our implementation and URLs that are rewritten, are rewritten identically.</p>
-	<h2>Can we fix even more mixed content?</h2>
+	<div class="flex anchor relative">
+		<h2 id="can-we-fix-even-more-mixed-content">Can we fix even more mixed content?</h2>
+		<a href="https://blog.cloudflare.com/#can-we-fix-even-more-mixed-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After all this was done and tested, we decided to look around for other potential sources of guaranteed rewrites to extend our database.</p>
 	<p>And one such is <a href="https://hstspreload.appspot.com">HSTS preload list</a> maintained by Google and used by all the major browsers. This list allows website owners who want to ensure that their website is never loaded via <code>http://</code>, to submit their hosts (optionally together with subdomains) and this way opt-in to auto-rewrite of any <code>http://</code> references to <code>https://</code> by a modern browser before even hitting the origin.</p>
 	<p>This means, the origin guarantees that the HTTPS version will be always available and will serve just the same content as HTTP - otherwise any resources referenced from it will simply break as the browser won't attempt to fallback to HTTP after domain is in the list. A perfect match for another ruleset!</p>
 	<p>As we already have a working solution and don't have any complexities around regular expressions in this list, we can download the JSON version of it <a href="https://chromium.googlesource.com/chromium/src/net/+/master/http/transport_security_state_static.json">directly from the Chromium source</a> and convert to the same XML ruleset with wildcards and exclusions that our system already understands and handles, as part of the build process.</p>
 	<p>This way, both databases are merged and work together, rewriting even more URLs on customer websites without any major changes to the code.</p>
-	<h2>That was quite a trip</h2>
+	<div class="flex anchor relative">
+		<h2 id="that-was-quite-a-trip">That was quite a trip</h2>
+		<a href="https://blog.cloudflare.com/#that-was-quite-a-trip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It was... but it's not really the end of the story. You see, in order to provide safe and fast rewrites for everyone, and after analyzing the alternatives, we decided to write a new streaming HTML5 parser that became the core of this feature. We intend to use it for even more tasks in future to ensure that we can improve security and performance of our customers websites in even more ways.</p>
 	<p>However, it deserves a separate blog post, so stay tuned.</p>
 	<p>And remember - if you're into web performance, security or just excited about the possibility of working on features that do not break millions of pages every second - we're <a href="https://www.cloudflare.com/join-our-team">hiring</a>!</p>

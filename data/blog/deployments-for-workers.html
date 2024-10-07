@@ -8,7 +8,14 @@
 	<p>Today we’re happy to introduce Deployments for Workers. Deployments allow developers to keep track of changes to their Worker; not just the code, but the configuration and bindings as well. With deployments, developers now have access to a powerful audit log of changes to their production applications.</p>
 	<p>And tracking changes is just the beginning! Deployments provide a strong foundation to add: automated deployments, rollbacks, and integration with version control.</p>
 	<p>Today we’ll dive into the details of deployments, how you can use them, and what we’re thinking about next.</p>
-	<h3>Deployments</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployments">Deployments</h3>
+		<a href="https://blog.cloudflare.com/#deployments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Deployments are a powerful new way to track changes to your Workers. With them, you can track who’s making changes to your Workers, where those changes are coming from, and when those changes are being made.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -22,7 +29,14 @@
 
 	</figure>
 	<p>We expose the source of your deployments, so you can track where changes are coming from. For example, if you have a CI job that’s responsible for changes, and you see a user made a change through the Cloudflare dashboard, it’s easy to flag that and dig into whether the deployment was a mistake.</p>
-	<h3>Interacting with deployments</h3>
+	<div class="flex anchor relative">
+		<h3 id="interacting-with-deployments">Interacting with deployments</h3>
+		<a href="https://blog.cloudflare.com/#interacting-with-deployments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare tracks the authors, sources, and timestamps of deployments. If you have a set of users responsible for deployment, or an API Token that’s associated with your CI tool, it’s easy to see which made recent deployments. Each deployment also includes a timestamp, so you can track when those changes were made.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -36,7 +50,14 @@
 
 	</figure>
 	<p>To learn more about the details of deployments, head over to our <a href="https://developers.cloudflare.com/workers/platform/deployments">Developer Documentation</a>.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to share deployments with our customers, available today in an open beta. As we mentioned up front, we’re just getting started with deployments. We’re also excited for more on-platform tooling like rollbacks, deploy status, deployment rules, and a view-only mode to historical deployments. Beyond that, we want to ensure deployments can be automated from commits to your repository, which means working on version control integrations to services like GitHub, Bitbucket, and Gitlab. We’d love to hear more about how you're currently using Workers and how we can improve developer experience. If you’re interested, <a href="https://www.cloudflare.com/lp/developer-week-deployments">let’s chat</a>.</p>
 	<p>If you’d like to join the conversation, head over to <a href="https://discord.gg/cloudflaredev">Cloudflare’s Developer Discord</a> and give us a shout! We love hearing from our customers, and we’re excited to see what you build with Cloudflare.</p>
 </div>

@@ -18,23 +18,58 @@
 		</li>
 	</ul>
 	<p>If you’re a VeloCloud customer, we are here to help you with your transition to Magic WAN, with planning, products and services. You’ve experienced the turbulence, and that’s why we are taking steps to help. First, it’s necessary to illustrate what’s fundamentally wrong with the architecture by acquisition model in order to define the right path forward. Second, we document the steps involved for making a transition from VeloCloud to Cloudflare. Third, we are offering a helping hand to help VeloCloud customers to get their SASE strategies back on track.</p>
-	<h2>Architecture is the key to SASE</h2>
+	<div class="flex anchor relative">
+		<h2 id="architecture-is-the-key-to-sase">Architecture is the key to SASE</h2>
+		<a href="https://blog.cloudflare.com/#architecture-is-the-key-to-sase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Your IT organization must deliver stability across your information systems, because the future of your business depends on the decisions that you make today. You need to make sure that your SASE journey is backed by vendors that you can depend on. Indecisive vendors and unclear strategies rarely inspire confidence, and it’s driving organizations to reconsider their relationship.</p>
 	<p>It’s not just VeloCloud that’s pivoting. Many vendors are chasing the brass ring to meet the requirement for Single Vendor SASE, and they’re trying to reduce their time to market by acquiring features on their checklist, rather than taking the time to build the right architecture for consistent management and user experience. It’s led to rapid consolidation of both startups and larger product stacks, but now we’re seeing many many instances of vendors having to rationalize their overlapping product lines. Strange days indeed.</p>
 	<p>But the thing is, Single Vendor SASE is not a feature checklist game. It’s not like shopping for PC antivirus software where the most attractive option was the one with the most checkboxes. It doesn’t matter if you acquire a large stack of product acronyms (ZTNA, SD-WAN, SWG, CASB, DLP, &nbsp;FWaaS, SD-WAN to name but a few) if the results are just as convoluted as the technology it aims to replace.</p>
 	<p>If organizations are new to SASE, then it can be difficult to know what to look for. However, one clear sign of trouble is taking an SSE designed by one vendor and combining it with SD-WAN from another. Because you can’t get a converged platform out of two fundamentally incongruent technologies.</p>
-	<h2>Why SASE Math Doesn’t Work</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-sase-math-doesnt-work">Why SASE Math Doesn’t Work</h2>
+		<a href="https://blog.cloudflare.com/#why-sase-math-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The conceptual model for SASE typically illustrates two half circles, with one consisting of cloud-delivered networking and the other being cloud-delivered security. With this picture in mind, it’s easy to see how one might think that combining an implementation of cloud-delivered networking (VeloCloud SD-WAN) and an implementation of cloud-delivered security (Symantec Network Protection - SSE) might satisfy the requirements. Does Single Vendor SASE = SD-WAN + SSE?</p>
 	<p>In practice, networking and network security do not exist in separate universes, but SD-WAN and SSE implementations do, especially when they were designed by different vendors. That’s why the math doesn’t work, because even with the requisite SASE functionality, the implementation of the functionality doesn’t fit. SD-WAN is designed for network connectivity between sites over the SD-WAN fabric, whereas SSE largely focuses on the enforcement of security policy for user-&gt;application traffic from remote users or traffic leaving (rather than traversing) the SD-WAN fabric. Therefore, to bring these two worlds together, you end up with security inconsistency, proxy chains which create a burden on latency, or implementing security at the edge rather than in the cloud.</p>
-	<h2>Why Cloudflare is different</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-cloudflare-is-different">Why Cloudflare is different</h2>
+		<a href="https://blog.cloudflare.com/#why-cloudflare-is-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, the basis for our approach to single vendor SASE starts from building a global network designed with private data centers, overprovisioned network and compute capacity, and a private backbone designed to deliver our customer’s traffic to any destination. It’s what we call any-to-any connectivity. It’s not using the public cloud for SASE services, because the public cloud was designed as a destination for traffic rather than being optimized for transit. We are in full control of the design of our data centers and network and we’re obsessed with making it even better every day.</p>
 	<p>It’s from this network that we deliver networking and <a href="https://www.cloudflare.com/network-security">security services</a>. Conceptually, we implement a philosophy of composability, where the fundamental network connection between the customer’s site and the Cloudflare data center remains the same across different use cases. In practice, and unlike traditional approaches, it means no downtime for service insertion when you need more functionality — the connection to Cloudflare remains the same. It’s the services and the onboarding of additional destinations that changes as organizations expand their use of Cloudflare.</p>
 	<p>From the perspective of branch connectivity, use Magic WAN for the connectivity that ties your business together, no matter which way traffic passes. That’s because we don’t treat the directions of your network traffic as independent problems. We solve for consistency by on-ramping all traffic through one of Cloudflare’s 310+ anycasted data centers (whether inbound, outbound, or east-west) for enforcement of security policy. We solve for latency by eliminating the need to forward traffic to a compute location by providing full compute services in every data center. We implement SASE using a light edge / heavy cloud model, with services delivered within the Cloudflare connectivity cloud rather than on-prem.</p>
-	<h2>How to transition from VeloCloud to Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-transition-from-velocloud-to-cloudflare">How to transition from VeloCloud to Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#how-to-transition-from-velocloud-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Start by contacting us to get a consultation session with our solutions architecture team. Our architects specialize in network modernization and can map your SASE goals across a series of smaller projects. We’ve worked with hundreds of organizations to achieve their SASE goals with the Cloudflare connectivity cloud and can build a plan that your team can execute on.</p>
 	<p>For product education, join one of our product workshops on Magic WAN to get a deep dive into how it’s built and how it can be rolled out to your locations. Magic WAN uses a light edge, heavy cloud model that has multiple network insertion models (whether a tunnel from an existing device, using our turnkey Magic WAN Connector, or deploying a virtual appliance) which can work in parallel or as a replacement for your branch connectivity needs, thus allowing you to migrate at your pace. Our specialist teams can help you mitigate transitionary hardware and license costs as you phase out VeloCloud and accelerate your rollout of Magic WAN.</p>
 	<p>The Magic WAN technical engineers have a number of resources to help you build product knowledge as well. This includes reference architectures and quick start guides that address your organization’s connectivity goals, whether sizing down your on-prem network in favor of the emerging “coffee shop networking” philosophy, retiring legacy SD-WAN, and full replacement of conventional MPLS.</p>
 	<p>For services, our <a href="https://www.cloudflare.com/success-offerings">customer success teams</a> are ready to support your transition, with services that are tailored specifically for Magic WAN migrations both large and small.</p>
-	<h2>Your next move</h2>
+	<div class="flex anchor relative">
+		<h2 id="your-next-move">Your next move</h2>
+		<a href="https://blog.cloudflare.com/#your-next-move" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Interested in learning more? <a href="https://www.cloudflare.com/lp/velocloud-replacement-sd-wan">Contact us to get started</a>, and we’ll help you with your SASE journey. Contact us to learn how to replace VeloCloud with Cloudflare Magic WAN and use our network as an extension of yours.</p>
 </div>

@@ -12,7 +12,14 @@
 	<p>Today, we’re going one step further and launching a new dataset called Radar Domain Rankings (Beta). Domain Rankings is based on aggregated 1.1.1.1 resolver data that is anonymized in accordance with our <a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver">privacy commitments.</a> The dataset aims to identify the top most popular domains based on how people use the Internet globally, without tracking individuals’ Internet use.</p>
 	<p>There are a few reasons why we're doing this now. One is obviously to improve our Radar features with better data and incorporate new learnings. But also, ranking lists are used all over the Internet in all sorts of systems. One of the most used and trusted sources of domain rankings was Alexa, but that service was recently deprecated. We believe we are in a good position to provide a strong alternative.</p>
 	<p>Let's see how we built it.</p>
-	<h3>Differences in domain names</h3>
+	<div class="flex anchor relative">
+		<h3 id="differences-in-domain-names">Differences in domain names</h3>
+		<a href="https://blog.cloudflare.com/#differences-in-domain-names" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we dig into the data science behind Domain Rankings, it's important to understand what a domain and DNS are. <a href="https://www.cloudflare.com/products/registrar">Internet domain names</a> are human-readable dot-separated letters, digits and hyphens that correspond to a network resource, like a server or a website. However, your computer and applications don't know what to do with a domain name; they need IP addresses to send and receive information over the network. <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is the system that converts, or resolves, a domain name into an IP address. Think of it as an Internet phonebook for domain names.</p>
 	<p><b><i>Note:</i></b><i> This is a simplification. A new standard called Internationalized Domain Names, or IDN, allows using Unicode strings in domain names.</i></p>
 	<p>Each dot defines a new hierarchy level, reading right to left. Domains can have multiple levels of depth. The highest level corresponds to country code top-level domains (ccTLDs) like .uk, .fr or .pt, or generic top-level domains (gTLDs) like .com, .org, or .net. These are normally assigned to and managed by either country-level entities or administrative organizations operating a registry.</p>
@@ -35,12 +42,26 @@
 			<p>We will also semi-automate, curate and maintain a list of domains that map to popular platforms and services in the future. Example: fb.audio, fb.com, fb.watch, all map to a “facebook” platform.</p>
 		</li>
 	</ul>
-	<h3>Defining popularity</h3>
+	<div class="flex anchor relative">
+		<h3 id="defining-popularity">Defining popularity</h3>
+		<a href="https://blog.cloudflare.com/#defining-popularity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Definitions are important. We established what we consider a domain, but what does domain popularity mean exactly? Our research showed that the volume of traffic generated to a given domain doesn't really work as a proxy for what we perceive as popular. Instead, Domain Rankings looks at the size of the population of users that look up a domain per unit of time. <b>The more people who are interested in a domain, the more popular it is.</b></p>
 	<p>Sounds pretty straightforward, right? Well, it’s not. Our databases don’t have cookies, IPs, or other tracking artifacts, and we strip information that leads to identifying an individual from all of our data, by design.</p>
 	<p>The good news, however, is that we do a very good job at identifying automated traffic (for instance, you can read about <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Bot Management</a> and how we use Machine Learning to <a href="https://blog.cloudflare.com/machine-learning-mobile-traffic-bots">detect bots</a> in HTTP traffic in our blog) and we found we could develop a reasonable proxy for the unique users metric without sacrificing privacy (using other data points that we store for a limited period of time, like the ASN and high-level geolocation information of the request or the Cloudflare data center that served it).</p>
 	<p>Domain Rankings’ popularity metric is best described as <b>the estimated relative size of the user population that accesses a domain over some period of time</b>.</p>
-	<h3>Our approach</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-approach">Our approach</h3>
+		<a href="https://blog.cloudflare.com/#our-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We <a href="https://blog.cloudflare.com/announcing-1111">announced</a> 1.1.1.1, our privacy-first consumer DNS resolver in 2018, and over the years it’s grown to become one of the <a href="https://www.dnsperf.com/#!dns-resolvers">top DNS services</a> in the world. 1.1.1.1 is also part of a <a href="https://labs.apnic.net/?p=1127">Research Agreement</a> with APNIC in which we collaborate with them doing <a href="https://blog.apnic.net/2022/09/02/doh-dot-and-plain-old-dns">public research</a> and DNS data insights.</p>
 	<p>The data we collect from it honors our <a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver">privacy commitments</a>, and is aggregated and stripped of any information that could lead to identifying or tracking users. We conducted a privacy examination by a Big Four accounting firm to determine whether the 1.1.1.1 resolver was effectively configured to meet our privacy commitments. You can read more about it in this <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">blog</a>, and the full report is publicly available on our <a href="https://www.cloudflare.com/trust-hub/compliance-resources">compliance page</a>.</p>
 	<p>Even without this personally identifying information, the resulting collection is vast and representative of Internet activity.</p>
@@ -52,7 +73,14 @@
 	<p>The paper "<a href="https://arxiv.org/pdf/1805.11506.pdf">A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists</a>" describes this problem well. "The ranking of domains in the long tail should be based on significantly smaller and hence less reliable numbers." Talking to our <a href="https://research.cloudflare.com">Research Team</a> who submitted the collaboration paper “<a href="https://research.cloudflare.com/publications/Ruth2022">Toppling Top Lists: Evaluating the Accuracy of Popular Website Lists</a>” to IMC 2022, got us to the same conclusion: the most popular domains (like google.com and facebook.com) have <a href="https://en.wikipedia.org/wiki/Feature_(machine_learning)">feature</a> values disproportionally higher than the lower-ranked domains.</p>
 	<p>Therefore, we selected the two models that performed best. One model was trained on the population with the highest feature values, uses more features, and is used to generate the ordered top 100 domain list. A second model was trained on a more general group of domains, uses fewer features, and is used to get the top one million most popular domains, which we then divide into ranking buckets.</p>
 	<p>These buckets are ranked, but each bucket’s contents are intentionally unordered. For example, the second bucket of 10,000 most popular domains includes the set of domains that rank from 10,001 to 20,000, but give no further indication of the individual ranking of domains in that bucket. Given the size of some of these buckets and the window of time we use to populate them, they will inherently be exposed to more instability, too. We feel this is a good compromise between the described natural uncertainties of our long tail model and providing a reasonable idea of how close to the top a domain is.</p>
-	<h3>Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="results">Results</h3>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s important to mention there is no global view that can establish the perfect rank, and there’s no easy mechanism to confirm if a ranking is, ultimately, good. Data-driven results are always subject to some bias and skewing, related to the context of the organizations and systems that collect them. Sometimes all that can be done is to be transparent about potential sources of bias. The geographical distribution of customers and users, product characteristics, platform features, and behavioral diversity play an essential role in the final result. We are presenting the Cloudflare view, what we see.</p>
 	<p>Having said this, Cloudflare sits in a privileged position and handles a significant amount of Internet traffic. We have plenty of signals we can extract from our aggregated data, and believe that makes it possible to generate high quality domain rankings.</p>
 	<p>Domain Rankings are available today. You can head up to the <a href="https://radar.cloudflare.com/domains">Domains</a> page and check it out:</p>
@@ -69,7 +97,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/B5SEEhFXhKfdIwe1M5wSU/e4718d50b4e96792cb8a8b28ebd410a6/image2-70.png" alt="" class="kg-image" width="1500" height="1416" loading="lazy">
 
 	</figure>
-	<h3>Next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Next steps</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will keep improving Domain Rankings and monitoring the results. Anyone can access them on <a href="https://radar.cloudflare.com/domains">Cloudflare Radar</a>, read the results, and download the CSV files.</p>
 	<p>Feel free to explore our <a href="https://radar.cloudflare.com/domains">Domain Rankings</a> and share feedback with us.</p>
 </div>

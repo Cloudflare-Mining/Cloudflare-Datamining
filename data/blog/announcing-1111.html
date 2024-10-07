@@ -83,14 +83,35 @@
 		</a>
 	</div><!--kg-card-end: html-->
 	<p>Cloudflare's mission is to help build a better Internet. We're excited today to take another step toward that mission with the launch of <a href="https://1.1.1.1">1.1.1.1</a> — the Internet's fastest, privacy-first consumer DNS service. This post will talk a little about what that is and a lot about why we decided to do it. (If you're interested in the technical details on how we built the service, check out Ólafur Guðmundsson's <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">accompanying post</a>.)</p>
-	<h3>Quick Primer On DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-primer-on-dns">Quick Primer On DNS</h3>
+		<a href="https://blog.cloudflare.com/#quick-primer-on-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> is the directory of the Internet. Whenever you click on a link, send an email, open a mobile app, often one of the first things that has to happen is your device needs to look up the address of a domain. There are two sides of the DNS network: Authoritative (the content side) and Resolver (the consumer side).</p>
 	<p>Every domain needs to have an Authoritative DNS provider. Cloudflare, since our launch in September 2010, has run an <a href="https://www.dnsperf.com">extremely fast</a> and <a href="https://www.datanyze.com/market-share/dns/Alexa%20top%201M/Alexa%20top%201M">widely-used</a> Authoritative DNS service. <a href="https://1.1.1.1">1.1.1.1</a> doesn't (directly) change anything about Cloudflare's Authoritative DNS service.</p>
 	<p>On the other side of the DNS system are resolvers. Every device that connects to the Internet needs a DNS resolver. By default, these resolvers are automatically set by whatever network you're connecting to. So, for most Internet users, when they connect to an ISP, or a coffee shop wifi hot spot, or a mobile network then the network operator will dictate what DNS resolver to use.</p>
-	<h3>DNS's Privacy Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="dnss-privacy-problem">DNS's Privacy Problem</h3>
+		<a href="https://blog.cloudflare.com/#dnss-privacy-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The problem is that these DNS services are often slow and not privacy respecting. What many Internet users don't realize is that even if you're visiting a website that is encrypted — has the little green lock in your browser — that doesn't keep your DNS resolver from knowing the identity of all the sites you visit. That means, by default, your ISP, every wifi network you've connected to, and your mobile network provider have a list of every site you've visited while using them.</p>
 	<p>Network operators have been licking their chops for some time over the idea of taking their users' browsing data and finding a way to monetize it. In the United States, that got easier a year ago when the Senate <a href="https://arstechnica.com/information-technology/2017/03/how-isps-can-sell-your-web-history-and-how-to-stop-them">voted to eliminate rules</a> that restricted ISPs from selling their users' browsing data. With all the concern over the data that companies like Facebook and Google are collecting on you, it worries us to now add ISPs like Comcast, Time Warner, and AT&amp;T to the list. And, make no mistake, this isn't a US-only problem — ISPs around the world see the same privacy-invading opportunity.</p>
-	<h3>DNS's Censorship Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="dnss-censorship-problem">DNS's Censorship Problem</h3>
+		<a href="https://blog.cloudflare.com/#dnss-censorship-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But privacy concerns extend far beyond just ad targeting. Cloudflare operates <a href="https://www.cloudflare.com/galileo">Project Galileo</a> to protect at no cost politically or artistically important organizations around the world from cyber attack. Through the project we protect groups like LGBTQ organizations targeted in the Middle East, journalists covering political corruption in Africa, human rights workers in Asia, and bloggers on the ground covering the conflict in Crimea. We're really proud of the project and we're really good at stopping cyber attacks launched at its participants.</p>
 	<p>But it's been depressing to us to watch all too frequently how DNS can be used as a tool of censorship against many of the groups we protect. While we're good at stopping cyber attacks, if a consumer's DNS gets blocked there's been nothing we could do to help.</p>
 	<figure class="kg-card kg-image-card ">
@@ -99,11 +120,26 @@
 
 	</figure>
 	<p>In March 2014, for instance, the government of Turkey <a href="https://www.theverge.com/2014/3/21/5532522/turkey-twitter-ban-google-dns-workaround">blocked Twitter</a> after recordings showing a government corruption scandal leaked online. The Internet was censored by the country's ISP's DNS resolvers blocking DNS requests for twitter.com. People literally spray painted 8.8.8.8, the IP of Google's DNS resolver service, on walls to help fellow Turks get back online. Google's DNS resolver is great, but diversity is good and <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">we thought we could do even better</a>.</p>
-	<h3>Building a Consumer DNS Service</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-consumer-dns-service">Building a Consumer DNS Service</h3>
+		<a href="https://blog.cloudflare.com/#building-a-consumer-dns-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The insecurity of the DNS infrastructure struck the team at Cloudflare as a bug at the core of the Internet, so we set out to do something about it. Given we run one of the largest, most interconnected global networks — and have a lot of experience with DNS — we were well positioned to launch a consumer DNS service. We began testing and found that a resolver, running across our global network, <a href="https://www.dnsperf.com/#!dns-resolvers">outperformed</a> any of the other consumer DNS services available (including Google's 8.8.8.8). That was encouraging.</p>
 	<p>We began talking with browser manufacturers about what they would want from a DNS resolver. One word kept coming up: privacy. Beyond just a commitment not to use browsing data to help target ads, they wanted to make sure we would wipe all transaction logs within a week. That was an easy request. In fact, we knew we could go much further. We committed to never writing the querying IP addresses to disk and wiping all logs within 24 hours.</p>
 	<p>Cloudflare's business has never been built around tracking users or selling advertising. We don't see personal data as an asset; we see it as a toxic asset. While we need some logging to prevent abuse and debug issues, we couldn't imagine any situation where we'd need that information longer than 24 hours. And we wanted to put our money where our mouth was, so we committed to retaining KPMG, the well-respected auditing firm, to audit our practices annually and publish a public report confirming we're doing what we said we would.</p>
-	<h3>Enter <a href="https://1.1.1.1">1.1.1.1</a></h3>
+	<div class="flex anchor relative">
+		<h3 id="enter">Enter </h3>
+		<a href="https://blog.cloudflare.com/#enter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69srQVXsHYSeeMzO4JACOy/e1c63ff05809e3ce783e2302cb4a406c/spraypainted-1.1.1.1.jpg" alt="spraypainted-1.1.1.1" class="kg-image" width="3024" height="3024" loading="lazy">
@@ -113,7 +149,14 @@
 	<p>We reached out to the team at APNIC. APNIC is a Regional Internet Registery (RIR) responsible for handing out IPs in the Asia Pacific region. It is one of five RIRs that manage IP allocation globally, the other four being: ARIN (North America), RIPE (Europe/Middle East), AFRINIC (Africa), and LACNIC (South America).</p>
 	<p>APNIC's research group held the IP addresses <a href="https://1.1.1.1">1.1.1.1</a> and <a href="https://1.0.0.1">1.0.0.1</a>. While the addresses were valid, so many people had entered them into various random systems that they were continuously overwhelmed by a flood of garbage traffic. APNIC wanted to study this garbage traffic but any time they'd tried to announce the IPs, the flood would overwhelm any conventional network.</p>
 	<p>We talked to the <a href="https://labs.apnic.net/?p=1127">APNIC</a> team about how we wanted to create a privacy-first, extremely fast DNS system. They thought it was a laudable goal. We offered Cloudflare's network to receive and study the garbage traffic in exchange for being able to offer a DNS resolver on the memorable IPs. And, with that, <a href="https://1.1.1.1">1.1.1.1</a> was born.</p>
-	<h3>Seriously, April 1?</h3>
+	<div class="flex anchor relative">
+		<h3 id="seriously-april-1">Seriously, April 1?</h3>
+		<a href="https://blog.cloudflare.com/#seriously-april-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The only question that remained was when to launch the new service? This is the first consumer product Cloudflare has ever launched, so we wanted to reach a wider audience. At the same time, we're geeks at heart. <a href="https://1.1.1.1">1.1.1.1</a> has 4 1s. So it seemed clear that 4/1 (April 1st) was the date we needed to launch it.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -122,7 +165,14 @@
 	</figure>
 	<p>Never mind that it was a Sunday. Never mind that it was on Easter and during Passover. Never mind that it was April Fools Day — a day where tech companies often trot out fictional services they think are cute while the media and the rest of the non-tech world collectively roll their eyes.</p>
 	<p>We justified it to ourselves that Gmail, another great, non-fictional consumer service, also launched on April 1, 2004. Of course, as Cloudflare's PR team has repeatedly pointed out to me in the run up to launch, the Gmail launch day was a Thursday and not on Easter. Nearly every media briefing I did this week ahead of the launch the reporter made me swear that this wasn't a joke. And it's not. I swear. And the best way to prove that is go to <a href="https://1.1.1.1">1.1.1.1</a>, follow the instructions to set it up, and see for yourself. It's real. And it's awesome.</p>
-	<h3>Why Did We Build It?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-did-we-build-it">Why Did We Build It?</h3>
+		<a href="https://blog.cloudflare.com/#why-did-we-build-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The answer to why we built the service goes back to our mission: to help build a better Internet. People come to work at Cloudflare every day in order to make the Internet better, more secure, more reliable, and more efficient. It sounds cheesy, but it's true.</p>
 	<p>When, in 2014, we decided to enable encryption for free for all our customers a lot of people externally thought we were crazy. In addition to the technical and financial costs, <a href="https://www.cloudflare.com/learning/ssl/what-is-ssl">SSL</a> was, at the time, the primary difference between our free and paid service. And yet, it was a hard technical challenge, and clearly the right thing to do for the Internet, so we did it. And, in one day, <a href="https://blog.cloudflare.com/introducing-universal-ssl">we doubled the size of the encrypted web</a>. I'm proud of the fact that, three and a half years later, the rest of the industry is starting to follow suit. The web should have been encrypted from the beginning. It's a bug it wasn't. We're doing what we can do to fix it.</p>
 	<p>When, last year, we <a href="https://blog.cloudflare.com/unmetered-mitigation">made DDoS mitigation free and unmetered across all our plans</a> a lot of people again scratched their heads. But it was the right thing to do. You shouldn't have to have a big bank account to stand up to hackers and bullies online. Over time we're convinced that <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDoS mitigation</a> will be a commodity included with all platforms, so of course we should be leading the way to get to that inevitable that end.</p>
@@ -132,12 +182,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31M5IIIcwyOV6n6050TZDG/51c9659a75ff054502d80e01135ac95f/1.1.1.1-laptop.jpg" alt="1.1.1.1-laptop" class="kg-image" width="2854" height="1960" loading="lazy">
 
 	</figure>
-	<h3>Toward a Better DNS Infrastructure</h3>
+	<div class="flex anchor relative">
+		<h3 id="toward-a-better-dns-infrastructure">Toward a Better DNS Infrastructure</h3>
+		<a href="https://blog.cloudflare.com/#toward-a-better-dns-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But there's more. DNS itself is a 35-year-old protocol and it's showing its age. It was never designed with privacy or security in mind. In our conversations with browser, operating system, app, and router manufacturers nearly everyone lamented that, even with a privacy-first service like <a href="https://1.1.1.1">1.1.1.1</a>, DNS inherently is unencrypted so it leaks data to anyone who's monitoring your network connection. While that's harder to monitor for someone like your ISP than if they run the DNS resolver themselves, it's still not secure.</p>
 	<p>What's needed is a move to a new, modern protocol. There are a couple of different approaches. One is DNS-over-TLS. That takes the existing DNS protocol and adds transport layer encryption. Another is DNS-over-HTTPS. It includes security but also all the modern enhancements like supporting other transport layers (e.g., QUIC) and new technologies like server HTTP/2 Server Push. Both <a href="https://www.cloudflare.com/learning/dns/dns-over-tls">DNS-over-TLS</a> and DNS-over-HTTPS are open standards. And, at launch, we've ensured <a href="https://1.1.1.1">1.1.1.1</a> <a href="https://developers.cloudflare.com/1.1.1.1">supports both</a>.</p>
 	<p>We think DNS-over-HTTPS is particularly promising — fast, easier to parse, and encrypted. To date, Google was the only scale provider supporting DNS-over-HTTPS. For obvious reasons, however, non-Chrome browsers and non-Android operating systems have been reluctant to build a service that sends data to a competitor. We're hoping that with an independent DNS-over-HTTPS service now available, we'll see more experiments from browsers, operating systems, routers, and apps to support the protocol.</p>
 	<p>We have no need to be the only such service. More diversity in DNS providers is a Good Thing™. If, over time, a robust ecosystem of networks offering DNS-over-HTTPS support develops then that'll go down as one of the things we'll be proud of in furthering our mission to help build a better Internet.</p>
-	<h3>Tying It All Together</h3>
+	<div class="flex anchor relative">
+		<h3 id="tying-it-all-together">Tying It All Together</h3>
+		<a href="https://blog.cloudflare.com/#tying-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hy3AVicIYgYEciLW9Oaln/ea02ef9b5ccff266c90314a3583e6b58/1.1.1.1-dns-resolver-performance.png" alt="DNSPerf" class="kg-image" width="2494" height="1276" loading="lazy">

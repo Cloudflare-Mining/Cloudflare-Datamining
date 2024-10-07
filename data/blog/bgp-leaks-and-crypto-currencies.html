@@ -8,12 +8,27 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/77519207@N02/6818192898/in/photolist-EGDA1W-Ga795-6yLrTS-22PPou3-gi3qi-8S6vb4-bov2cY-dgBNxk-ba28ar-ebQUDY-acXCjq-zZppue-j8nDM9-78GCT9-zFTmT1-zFT1ME-a8iKNR-6Hbzuk-bmMV3X-6Hbt1t-HkBYhJ-h7mEUc-8kza6J-inYagg-PUtWHj-cMHLr-g1zfvy-emgRCp-262Z5jD-CLumQP-M13Veh-ur2aSQ-68UJQ1">image</a> by <a href="https://www.flickr.com/photos/77519207@N02">elhombredenegro</a></p>
-	<h3>What is BGP?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-bgp">What is BGP?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-bgp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is composed of routes. For our DNS resolver <a href="https://cloudflare-dns.com"><b>1.1.1.1</b></a> , we tell the world that all the IPs in the range <code>1.1.1.0</code> to <code>1.1.1.255</code> can be accessed at any Cloudflare PoP.</p>
 	<p>For the people who do not have a <a href="https://blog.cloudflare.com/think-global-peer-local-peer-with-cloudflare-at-100-internet-exchange-points">direct link to our routers</a>, they receive the route via transit providers, who will deliver packets to those addresses as they are connected to Cloudflare and the rest of the Internet.</p>
 	<p>This is the normal way the Internet operates.</p>
 	<p>There are authorities (Regional Internet Registries, or RIRs) in charge of distributing IP addresses in order to avoid people using the same address space. Those are <a href="https://www.iana.org">IANA</a>, <a href="https://www.ripe.net">RIPE</a>, <a href="https://www.arin.net">ARIN</a>, <a href="https://www.lacnic.net">LACNIC</a>, <a href="https://www.apnic.net">APNIC</a> and <a href="https://www.afrinic.net">AFRINIC</a>.</p>
-	<h3>What is a BGP leak?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-bgp-leak">What is a BGP leak?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-bgp-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CRfX9GucawxrG5pGUXig7/d6a404c58a1a7ba34adf53f83c50fbe8/6385512087_802c680220_z.jpg" alt="Water pipe leak" class="kg-image" width="640" height="425" loading="lazy">
@@ -33,7 +48,14 @@
 	</ul>
 	<p>The cause of a BGP leak is usually a <b>configuration mistake</b>: a router suddenly announces the IPs it learned. Or smaller prefixes used internally for traffic engineering suddenly becoming public.</p>
 	<p>But sometimes it is done with a <b>malicious intent</b>. The prefix can be re-routed through in order to passively analyze the data. Or somebody can also set-up a service to reply illegitimately instead. This has <a href="https://blog.cloudflare.com/why-google-went-offline-today-and-a-bit-about">happened before</a>.</p>
-	<h3>What happened today?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-happened-today">What happened today?</h3>
+		<a href="https://blog.cloudflare.com/#what-happened-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare maintains a range of BGP collectors gathering BGP information from hundreds of routers around the planet.</p>
 	<p>Between approximately <b>11:05:00 UTC and 12:55:00 UTC today</b> we saw the following announcements:</p>
 	<pre class="language-bash"><code class="language-bash">BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
@@ -83,7 +105,14 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297</code></pre>
 	<p>If you were using HTTPS, the fake website would display a TLS certificate signed by an unknown authority (the domain listed in the certificate was correct but it was self-signed). The only way for this attack to work would be to continue and accept the wrong certificate. From that point on, everything you send would be encrypted but the attacker had the keys.</p>
 	<p>If you were already logged-in, your browser will send the login information in the cookie. Otherwise, your username and password would be sent if you typed them in on a login page.</p>
 	<p>Once the attacker got the login information, it used them on the legitimate website to transfer and steal Ethereum.</p>
-	<h3>Summary in pictures</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary-in-pictures">Summary in pictures</h3>
+		<a href="https://blog.cloudflare.com/#summary-in-pictures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Normal case</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -96,7 +125,14 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6llrWMviALPMBhNwM4M1pY/99541c2a4da49a245a176494ab3f6196/Slide2.png" alt="Slide2" class="kg-image" width="720" height="540" loading="lazy">
 
 	</figure>
-	<h3>Affected regions</h3>
+	<div class="flex anchor relative">
+		<h3 id="affected-regions">Affected regions</h3>
+		<a href="https://blog.cloudflare.com/#affected-regions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As previously mentioned, <b>AS10279</b> announced this route. But only some regions got affected. Hurricane Electric has a strong presence <b>Australia</b>, mostly due to Internet costs. <b>Chicago</b> was affected because AS10279 has a physical presence resulting in direct peering.</p>
 	<p>The following graph displays the number of packets received in the affected regions and unaffected regions (Y axis normalized). The drop is due to the authoritative server not responding to our requests anymore (it only responded for the one website and all other Amazon domains were ignored).</p>
 	<figure class="kg-card kg-image-card ">
@@ -105,7 +141,14 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297</code></pre>
 
 	</figure>
 	<p>The others transits used by eNet (CenturyLink, Cogent and NTT) did not seem to have accepted this route: a reason could be that they have filters and/or Amazon as a customer.eNet provides IP services, so one of their clients could have been announcing it.</p>
-	<h3>Is there somebody to blame?</h3>
+	<div class="flex anchor relative">
+		<h3 id="is-there-somebody-to-blame">Is there somebody to blame?</h3>
+		<a href="https://blog.cloudflare.com/#is-there-somebody-to-blame" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As there are many actors involved, it is hard to determine fault. Actors involved:</p>
 	<ul>
 		<li>
@@ -131,7 +174,14 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297</code></pre>
 		</li>
 	</ul>
 	<p>Just like a <b>blockchain</b>, a network change is usually visible and archived. RIPE maintains a <a href="https://ripe.net/ris">database for this use</a>.</p>
-	<h3>Could we fix this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="could-we-fix-this">Could we fix this?</h3>
+		<a href="https://blog.cloudflare.com/#could-we-fix-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a difficult question to answer. There are proposals for securing BGP:Some terms can be added to the RIR databases, so a list of allowed sources can be generated:</p>
 	<pre class="language-bash"><code class="language-bash">$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
 route:      205.251.192.0/23	origin:     AS16509	source:     RADB

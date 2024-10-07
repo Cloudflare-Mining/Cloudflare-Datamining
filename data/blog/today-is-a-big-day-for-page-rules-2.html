@@ -1,7 +1,14 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/11H1CVRums70EMNVgsJMyW/8bbf74d8aba1f284a8563c71e0855ece/today-is-a-big-day-for-page-rules-2.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today we're releasing a whole suite of upgrades to page rules: API support, additional settings, pausing a page rule and a mobile-friendly design. Page Rules is the technology that allows you to configure your CloudFlare settings on a per-URL basis. It's often our most powerful feature, enabling CloudFlare domain owners to customize CloudFlare's functionality to exactly match their application's needs.</p>
-	<h3>Announcing API Support For Page Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="announcing-api-support-for-page-rules">Announcing API Support For Page Rules</h3>
+		<a href="https://blog.cloudflare.com/#announcing-api-support-for-page-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Page Rules are now fully programmable via API.</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE_TAG}/pagerules" \
     -H "X-Auth-Email: user@example.com" \
@@ -23,14 +30,28 @@
         "status":"active"
     }'</code></pre>
 	<p>Starting today, you can script the creation and modification of page rules. You can integrate page rules into your deployment process to bypass caching on every new API endpoint you ship, or to automatically sync your page rules across your domains on CloudFlare. <a href="https://api.cloudflare.com/#page-rules-for-a-zone-create-a-page-rule">Check out the page rules API docs</a> and get started today. We can't wait to see what automations you build.</p>
-	<h3>13 New Settings Now Available On Page Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="13-new-settings-now-available-on-page-rules">13 New Settings Now Available On Page Rules</h3>
+		<a href="https://blog.cloudflare.com/#13-new-settings-now-available-on-page-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of the short list of settings you could previously toggle, we've added menus with almost every setting on CloudFlare. You can see the full list of settings now available in page rules <a href="https://support.cloudflare.com/hc/en-us/articles/218411427">here</a>. Moreover, as we introduce features, they will automatically be added to page rules.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rZVpFjdpiIRZxjH8KvMa1/666dd2dc2424b7d0125661ac8bfb96fc/Screen-Shot-2016-04-18-at-5-41-19-PM-2.png" alt="" class="kg-image" width="1742" height="1360" loading="lazy">
 
 	</figure>
-	<h3>Pause A Page Rule</h3>
+	<div class="flex anchor relative">
+		<h3 id="pause-a-page-rule">Pause A Page Rule</h3>
+		<a href="https://blog.cloudflare.com/#pause-a-page-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To make debugging page rules easier, we've added a way for you to pause a page rule, temporarily taking it out of production while saving its current configuration. Previously to debug, you'd have to remove a page rule, and then later re-add it from scratch, somehow remembering all of its configuration. Now you can just toggle page rules on and off to take them out of production and reinstate them.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,13 +65,27 @@
 
 	</figure>
 	<p>You can even edit page rules while they are paused, meaning that you can make unlimited changes to a page rule until you choose to finally deploy it into production.</p>
-	<h3>Manage Your Page Rules On The Go</h3>
+	<div class="flex anchor relative">
+		<h3 id="manage-your-page-rules-on-the-go">Manage Your Page Rules On The Go</h3>
+		<a href="https://blog.cloudflare.com/#manage-your-page-rules-on-the-go" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've removed the old page rules iframe and replaced it with a brand new management panel that not only makes page rules even easier to set up and deploy, it's also perfectly responsive to any device so that you can configure page rules on the go from your phone.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7AtJKwp6TtG25wc89PGBt2/6064ba5dd8fed073cf693079e2686775/IMG_3076-4.png" alt="" class="kg-image" width="288" height="512" loading="lazy">
 
 	</figure>
-	<h3>Available Now</h3>
+	<div class="flex anchor relative">
+		<h3 id="available-now">Available Now</h3>
+		<a href="https://blog.cloudflare.com/#available-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're rolling out support for the new page rules dashboard and API this morning for all CloudFlare customers. If you're a current CloudFlare customer, <a href="https://www.cloudflare.com/a/page-rules">visit the dashboard</a> to check it out. All of your existing page rules are still intact and unchanged, just presented in a new interface. If you’re not a customer yet and you’re interested in trying this out, you can sign up <a href="https://www.cloudflare.com/a/sign-up">here</a>.</p>
 </div>

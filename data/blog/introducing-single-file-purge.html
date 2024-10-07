@@ -7,7 +7,14 @@
 	</figure>
 	<p>CloudFlare has supported a way to purge your cache for the last year. Unfortunately, it was all or nothing. While that, for practical purposes, didn't cause a significant performance hit for most websites, since the cache would be rebuilt with the most popular files automatically and quickly, it still seemed inefficient. Why purge the whole cache, customers asked, when only a single file was updated?</p>
 	<p>The answer is technical: for a number of reasons based on how we store cache it's easier to mark all files as expired than to single out a single resource. And so, for the last year, purging everything or waiting for the cache to expire were our users only options.</p>
-	<h3>Single File Purge</h3>
+	<div class="flex anchor relative">
+		<h3 id="single-file-purge">Single File Purge</h3>
+		<a href="https://blog.cloudflare.com/#single-file-purge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're excited today to announce single file purge. The feature allows you to purge the cache of any URL without affecting any other cached files. To access the feature, from your My Websites page visit CloudFlare Settings and select Single File Purge from the Cache Purge section. There you can enter the URL of the object you want to purge from the cache. Hit the Purge button and, typically within less than a second, all the nodes in <a href="https://www.cloudflare.com/network-map">CloudFlare's global network</a> will fetch a new copy of the file.</p>
 	<p>The feature is provided to all CloudFlare users, regardless of your plan type. Moreover, it's available via our API. We'll be providing more information over the next week, but our hope is developers will create systems that will detect when files on a server have been updated and automatically send an update to CloudFlare's network to ensure that the latest copy is fetched.</p>
 </div>

@@ -11,7 +11,15 @@
 	<p>Many organizations have legacy DNS infrastructure that is difficult to change. The hosting industry is a key example of this. A host may have given thousands of clients a set of nameservers but now realize that they don't have the performance or defensibility that their clients need.</p>
 	<p>Virtual DNS means that the host can get the benefits of a global, modern DNS infrastructure without having to contact every customer and get them to update their name servers.</p>
 	<p>With legacy infrastructure blocking a host from deploying modern cloud-based security services, DNS providers, even if they are securing their customers' websites, may have a massive single point of failure: their own nameservers.</p>
-	<h3>A Quick Brief on DDoS</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-quick-brief-on-ddos">A Quick Brief on DDoS</h3>
+		<a href="https://blog.cloudflare.com/#a-quick-brief-on-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HxpoxFqnYJrkoSvaqgfvn/77d947b8787bce445753d15303c8f242/Diner-Dash-apk-mod.jpg" alt="" class="kg-image" width="600" height="292" loading="lazy">
@@ -20,7 +28,14 @@
 	<p><i>Source: </i><a href="http://androidcorps.com"><i>Android Corps</i></a></p>
 	<p>DDoS stands for <a href="https://blog.cloudflare.com/ddos-prevention-protecting-the-origin">Distributed Denial of Service</a>, and works much like the 2004 video game Diner Dash. In each case, the server is expected to handle more and more requests (for food, in the case of Diner Dash, and for data, in the case of web servers) until the server is so overwhelmed that it invariably fails to answer at all.</p>
 	<p>A successful DDoS attack on a provider's nameservers will take every website with DNS records on those nameservers offline. For larger providers, this could be hundreds of thousands or millions of websites depending on those nameservers.</p>
-	<h3>Introducing Virtual DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-virtual-dns">Introducing Virtual DNS</h3>
+		<a href="https://blog.cloudflare.com/#introducing-virtual-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, CloudFlare introduces Virtual DNS, leveraging its global DNS and proxying infrastructure to provide performance and security for any nameserver by acting as authoritative for its domains.</p>
 	<p>With Virtual DNS, DNS queries for the provider's records are responded to by the nearest CloudFlare edge location. If the proper DNS response is available in CloudFlare's cache, CloudFlare will return the response to the visitor, saving bandwidth at the origin nameserver.</p>
 	<p>If the DNS response is not available in cache, CloudFlare will query one of the provider's nameservers in the background to fetch the DNS response and send it back to the visitor. Simultaneously, that response will be temporarily cached on CloudFlare to be automatically returned when the next query for that record comes along. The caching of records at the edge makes CloudFlare one of the <a href="http://dnsperf.com">fastest DNS providers</a> worldwide.</p>
@@ -31,7 +46,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WozKJkxrcKaEjvATEhlJw/33bea8c6ac913b2b954a4f5ed8bd5457/virtual-dns-03-2.png" alt="" class="kg-image" width="1719" height="519" loading="lazy">
 
 	</figure>
-	<h3>Additional Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="additional-security">Additional Security</h3>
+		<a href="https://blog.cloudflare.com/#additional-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Virtual DNS provides two additional layers of security through the CloudFlare proxy:</p>
 	<p>First, if for some reason the origin nameserver is knocked offline and the DNS records are cached on CloudFlare, CloudFlare will keep the records in the cache and will continue to answer for them, providing DNS answers even when the origin nameserver is unreachable, and automatically checking in the background for the origin's return or failing over to designated origins.</p>
 	<p>Secondly, Virtual DNS masks the true origin IP addresses of the provider's nameservers behind CloudFlare’s IP addresses. Visitors and/or attackers only see CloudFlare’s IP addresses when requesting answers, keeping customer nameservers safe from being targeted by attackers.</p>
@@ -40,7 +62,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wYqf3gCLp3ySKp2YPgMfY/c81cb0310c0ca086e618d483621b309c/virtual-dns-only.png" alt="" class="kg-image" width="1968" height="1687" loading="lazy">
 
 	</figure>
-	<h3>Virtual DNS Rollout</h3>
+	<div class="flex anchor relative">
+		<h3 id="virtual-dns-rollout">Virtual DNS Rollout</h3>
+		<a href="https://blog.cloudflare.com/#virtual-dns-rollout" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are currently rolling out Virtual DNS support. Organizations interested in enabling Virtual DNS should <a href="https://www.cloudflare.com/enterprise-service-request">contact our sales team</a>.</p>
 	<p>Over the past year, we’ve been testing the product with hosting providers, <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a> and some enterprises with very positive results.</p>
 	<p>DigitalOcean, for example, put their nameservers behind Virtual DNS in July 2014, and is now supporting 10K requests per second of 100% clean traffic. They <a href="https://www.cloudflare.com/case-studies-digital-ocean">report</a> that they haven’t seen malicious traffic reach their nameservers since.</p>

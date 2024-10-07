@@ -40,7 +40,14 @@
 	<p>Whereas other malicious actors may look for sender domains that do not have these protocols configured or configured correctly, <b>this attacker boldly leverages correctly-configured authentication protocols to their advantage.</b> This tactic allows the attacker to bypass legacy vendors that solely rely on these authentication methods to provide indicators of maliciousness.</p>
 	<p>There is approximately one week of turnover time between each wave of the campaign as the attacker retools to get ahead of defenses. This includes various changes, such as modifying the weaponized attachment and using new compromised sender infrastructure and accounts.</p>
 	<p>Efforts like this can easily equip the attacker with the ability to circumvent typical signature-based detections that depend on IP addresses and payload hashes of known threats, leading defenders through a never-ending game of “cat and mouse”.</p>
-	<h3>Analysis of Malware</h3>
+	<div class="flex anchor relative">
+		<h3 id="analysis-of-malware">Analysis of Malware</h3>
+		<a href="https://blog.cloudflare.com/#analysis-of-malware" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the bottom of the phishing message, there is a Microsoft Word Document that uses VBA Macros to drop the first-stage payload, the Emotet downloader. After clicking on the document, the user is prompted by a dialog box to enable editing and content, as depicted below.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -63,13 +70,34 @@
 	</figure>
 	<p>Figure 4. Screenshot of deobfuscated PowerShell</p>
 	<p>Area 1 Security found that, among the compromised sites hardcoded in the malware, only the link hxxp://cammis[.]com[.]br/wp-admin/8IArx/ was still active at the time of analysis. Once the final payload is found on a functioning site, it is downloaded to a temporary folder on the victim’s device, located at %userprofiles%\AppData\Local\. From here, a message is sent back to the Emotet command and control (C2) server, confirming that it was successfully downloaded.</p>
-	<h3>What Makes Emotet Difficult to Detect?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-makes-emotet-difficult-to-detect">What Makes Emotet Difficult to Detect?</h3>
+		<a href="https://blog.cloudflare.com/#what-makes-emotet-difficult-to-detect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cisecurity.org/white-papers/ms-isac-security-primer-emotet">Emotet</a> is among some of the most destructive and costly malware, affecting both the public and private sectors. Once this advanced, modular banking trojan compromises a target device, other hosts on the network are at risk of infection, as the malware’s worm-like capabilities allow it to easily self-replicate to other connected devices. Sensitive information on the compromised hosts can be considered free rein, where essentially no data is safe from the attacker.</p>
 	<p>Since Emotet is primarily delivered via attachments or links in phishing emails, the attacker takes extra measures to ensure their messages <b>will not trigger legacy email security solutions</b>. These tactics range from simply changing the name and hash of the malicious file, to more advanced anti-debugging and host-environment analysis capabilities.</p>
 	<p>Emotet’s modular Dynamic Link Libraries (DLLs) and polymorphic nature offer the attacker not only continuously evolving capabilities but also effortless evasion of signature-based detection systems. Analysis of this evasive trojan can present challenges for those attempting to reverse the malware, as it is virtual-environment aware and will infinitely sleep in an attempt to render debugging analysis techniques ineffective. With malicious actors using constantly evolving malware, new and advanced techniques are needed to detect and catch these phishing messages before they reach users’ inboxes.</p>
-	<h3>Recommendations</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology leverage algorithms to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real-time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3>Indicators of Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Compromised Sender Email Addresses:</b></p>
 	<p>accounts@alhilaldecors[.]com</p>
 	<p>reservas@carentminibus[.]com</p>

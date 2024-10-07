@@ -14,15 +14,36 @@
 
 	</figure>
 	<p>A key decision customers make when setting up a waiting room is what pages it will protect. Before now, customers could select one hostname and path combination to determine what pages would be covered by a waiting room. Today, we are thrilled to announce that Waiting Room now supports coverage of multiple hostname and path combinations with a single waiting room, giving customers more flexibility and offering broader site coverage without interruptions to end-user flows. This new capability is available to all Enterprise customers with an Advanced Purchase of Waiting Room.</p>
-	<h3>Waiting Room site placement</h3>
+	<div class="flex anchor relative">
+		<h3 id="waiting-room-site-placement">Waiting Room site placement</h3>
+		<a href="https://blog.cloudflare.com/#waiting-room-site-placement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of the simple, no-coding-necessary process for deploying a waiting room, customers specify a hostname and path combination to indicate which pages are covered by a particular waiting room. When a site visitor makes a preliminary request to that hostname and path or any of its subpaths, they will be issued a waiting room cookie and either be admitted to the site or placed in a waiting room if the site is at capacity.</p>
 	<p>Last year, we added <a href="https://blog.cloudflare.com/waiting-room-bypass-rules">Waiting Room Bypass Rules</a>, giving customers many options for creating exceptions to this hostname and path coverage. This unlocked capabilities such as User Agent Bypassing, geo-targeting, URL exclusions, and administrative IP bypassing. It also allowed for some added flexibility regarding which pages a waiting room would apply to on a customer’s site by adding the ability to exclude URLs, paths, and query strings. While this update allowed for greater specificity regarding which traffic should be gated by Waiting Room, it didn’t offer the broader coverage that many customers still needed to protect greater portions of their sites with a single waiting room.</p>
-	<h3>Why customers needed broader Waiting Room coverage</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-customers-needed-broader-waiting-room-coverage">Why customers needed broader Waiting Room coverage</h3>
+		<a href="https://blog.cloudflare.com/#why-customers-needed-broader-waiting-room-coverage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s review some simple yet impactful examples of why this broader coverage option was important for our customers. Imagine you have an online store, example.com, and you want to ensure that a single waiting room covers the entire customer journey —&nbsp;from the homepage, to product browsing, to checkout. Many sites would delineate these steps in the flow using paths: example.com/, example.com/shop/product1, example.com/checkout. Because Waiting Room assumes an implied wildcard at the end of a waiting room’s configured path, this use case was already satisfied for these sites. Thus, placing a waiting room at example.com/ would cover all the URLs associated with every step of this customer journey. In this setup, once a site visitor has passed the waiting room, they would not be re-queued at any step in their user flow because they are still using the same waiting room’s cookie, which indicates to Waiting Room that they are the same user between URLs.</p>
 	<p>However, many sites delineate different steps of this type of shopping flow using subdomains instead of or as well as paths. For example, many sites will have their checkout page on a different subdomain, such as checkout.example.com. Before now, if a customer had this site structure and wanted to protect their entire site with a single waiting room, they would have needed to deploy a waiting room at example.com/ and another at checkout.example.com/. This option was not ideal for many customers because a site visitor could be queued at two different parts of the same customer journey. This is because the waiting room at checkout.example.com/ would count the same visitor as a different user than the waiting room covering example.com/.</p>
 	<p>That said, there are cases where it is wise to separate waiting rooms on a single site. For example, a ticketing website could place a waiting room at its apex domain (example.com) and distinct waiting rooms with pre-queues on pages for specific events (example.com/popular_artist_tour). The waiting room set at example.com/ ensures that the main point of entry to the site does not get overwhelmed and crash when ticket sales for any one event open. The waiting room placed on the specific event page ensures that traffic for a single event can start queuing ahead of the event without impacting traffic going to other parts of the site.</p>
 	<p>Ultimately, whether a customer wants one or multiple waiting rooms to protect their site, we wanted to give our customers the flexibility to deploy Waiting Room however was best for their use cases and site structure. We’re thrilled to announce that Waiting Room now supports multi-hostname and path coverage with a single waiting room!</p>
-	<h3>Getting started with multi-host and path coverage</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-multi-host-and-path-coverage">Getting started with multi-host and path coverage</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-multi-host-and-path-coverage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers can now configure a waiting room on multiple hostname and path combinations —&nbsp;or routes —&nbsp;belonging to the same zone. To do so, navigate to Traffic &gt; Waiting Room and select Create. The name of your domain will already be populated. To add additional routes to your waiting room configuration, select Add Hostname and Path. You can then enter another hostname and path to be covered by the same waiting room. Remember, there is an implied wildcard after each path. Therefore, creating a waiting room for each URL you want your waiting room to cover is unnecessary. Only create additional routes for URLs that wouldn’t be covered by the other hostname and path combinations you have already entered.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -30,7 +51,14 @@
 
 	</figure>
 	<p>When deploying a waiting room that covers multiple hostname and path combinations, you must create a unique cookie name for this waiting room (more on that later!). Then, proceed with the <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room">same workflow</a> as usual to deploy your waiting room.</p>
-	<h3>Deploying a multi-language waiting room</h3>
+	<div class="flex anchor relative">
+		<h3 id="deploying-a-multi-language-waiting-room">Deploying a multi-language waiting room</h3>
+		<a href="https://blog.cloudflare.com/#deploying-a-multi-language-waiting-room" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A frequent customer request was the ability to cover a multi-language site with a single waiting room —&nbsp;offering different text per language while counting all site traffic toward the same waiting room limits. There are various ways a site can be structured to delineate between different language options, but the two most common are either by subdomain or path. For a site that uses path delineation, this could look like example.com/en and example.com/es for English and Spanish, respectively. For a site using subdomain delineation, this could look like en.example.com/ and es.example.com/. Before multihost Waiting Room coverage, the subdomain variation would not have been able to be covered by a single waiting room.</p>
 	<p>Waiting Room’s existing configuration options already supported the path variation. However, this was only true if the customer wanted to gate the entire site, which they could do by placing the waiting room at example.com/. Many e-commerce customers asked for the ability to gate different high-demand product pages selling the same product but with different language options. For instance, consider example.com/en/product_123 and example.com/es/product_123, where the customer wants the same waiting room and traffic limits to cover both URLs. Before now, this would not have been possible without some complex bypass rule logic.</p>
 	<p>Now, customers can deploy a waiting room that accommodates either the subdomain or path approach to structuring a multi-language site. The only remaining step is setting up your waiting room to serve different languages when a user is queued in a waiting room. This can be achieved by constructing a template that reads the URL to determine the locale and define the appropriate translations for each of the locales within the template.</p>
@@ -98,9 +126,23 @@
 	</figure>
 	<p>This is an example of the starter template provided in dev docs. This waiting room is in Queue-all mode and displays the Spanish text when the user visits example.com/es/product_123.</p>
 	<p>These templates can further be expanded to include other languages by adding translations to the `translations` object for each of the locales. Thus, a single template is able to serve multiple languages depending on whatever the locale the site is being served as either via subdomain or path.</p>
-	<h3>How we handle cookies with a multihostname and path waiting room</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-handle-cookies-with-a-multihostname-and-path-waiting-room">How we handle cookies with a multihostname and path waiting room</h3>
+		<a href="https://blog.cloudflare.com/#how-we-handle-cookies-with-a-multihostname-and-path-waiting-room" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The waiting room assigns a <code>__cfwaitingroom</code> <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie">cookie</a> to each user to manage the state of the user that determines the position of the user in line <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects/#:~:text=What%20is%20in%20the%20cookie%20returned%20to%20an%20end%20user%3F">among other properties</a> needed to make the queueing decisions for the user. Traditionally, for a single hostname and path configuration it was trivial to just set the cookie as <code>__cfwaitingroom=[cookie-value]; Domain=example.com; Path=/es/product_123</code>. This ensured that when the page refreshed it would send us the same Waiting Room cookie for us to examine and update. However, this became non-trivial when we wanted to share the same cookie across different subdomain or path combinations, for example, on <code>example.com/en/product_123</code>.</p>
-	<h3>Approaches to setting multiple cookies</h3>
+	<div class="flex anchor relative">
+		<h3 id="approaches-to-setting-multiple-cookies">Approaches to setting multiple cookies</h3>
+		<a href="https://blog.cloudflare.com/#approaches-to-setting-multiple-cookies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There were two approaches that we brainstormed and evaluated to allow the sharing of the cookie for the same waiting room.</p>
 	<p>The first approach we considered was to issue multiple <code>Set-Cookie</code> headers in the HTTP response. For example, in the multi-language example above, we could issue the following in the response header:</p>
 	<pre class="language-bash"><code class="language-bash">Set-Cookie: __cfwaitingroom=[cookie-value]…Domain=example.com; Path=/en/product_123 …

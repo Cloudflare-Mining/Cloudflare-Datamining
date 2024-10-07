@@ -10,7 +10,14 @@
 	<p>The greatest period of impact was from February 13 and February 18 with around 1 in every 3,300,000 HTTP requests through Cloudflare potentially resulting in memory leakage (that’s about 0.00003% of requests).</p>
 	<p>We are grateful that it was found by one of the world’s top security research teams and reported to us.</p>
 	<p>This blog post is rather long but, as is our tradition, we prefer to be open and technically detailed about problems that occur with our service.</p>
-	<h2>Parsing and modifying HTML on the fly</h2>
+	<div class="flex anchor relative">
+		<h2 id="parsing-and-modifying-html-on-the-fly">Parsing and modifying HTML on the fly</h2>
+		<a href="https://blog.cloudflare.com/#parsing-and-modifying-html-on-the-fly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many of Cloudflare’s services rely on parsing and modifying HTML pages as they pass through our edge servers. For example, we can <a href="https://www.cloudflare.com/apps/google-analytics">insert</a> the Google Analytics tag, safely rewrite http:// links to https://, exclude parts of a page from bad bots, obfuscate email addresses, enable <a href="https://blog.cloudflare.com/accelerated-mobile">AMP</a>, and more by modifying the HTML of a page.</p>
 	<p>To modify the page, we need to read and parse the HTML to find elements that need changing. Since the very early days of Cloudflare, we’ve used a parser written using <a href="https://www.colm.net/open-source/ragel">Ragel</a>. A single .rl file contains an HTML parser used for all the on-the-fly HTML modifications that Cloudflare performs.</p>
 	<p>About a year ago we decided that the Ragel-based parser had become too complex to maintain and we started to write a new parser, named cf-html, to replace it. This streaming parser works correctly with HTML5 and is much, much faster and easier to maintain.</p>
@@ -21,7 +28,14 @@
 	<p>Once we knew that the bug was being caused by the activation of cf-html (but before we knew why) we disabled the three features that caused it to be used. Every feature Cloudflare ships has a corresponding <a href="https://en.wikipedia.org/wiki/Feature_toggle">feature flag</a>, which we call a ‘global kill’. We activated the Email Obfuscation global kill 47 minutes after receiving details of the problem and the Automatic HTTPS Rewrites global kill 3h05m later. The Email Obfuscation feature had been changed on February 13 and was the primary cause of the leaked memory, thus disabling it quickly stopped almost all memory leaks.</p>
 	<p>Within a few seconds, those features were disabled worldwide. We confirmed we were not seeing memory leakage via test URIs and had Google double check that they saw the same thing.</p>
 	<p>We then discovered that a third feature, Server-Side Excludes, was also vulnerable and did not have a global kill switch (it was so old it preceded the implementation of global kills). We implemented a global kill for Server-Side Excludes and deployed a patch to our fleet worldwide. From realizing Server-Side Excludes were a problem to deploying a patch took roughly three hours. However, Server-Side Excludes are rarely used and only activated for malicious IP addresses.</p>
-	<h2>Root cause of the bug</h2>
+	<div class="flex anchor relative">
+		<h2 id="root-cause-of-the-bug">Root cause of the bug</h2>
+		<a href="https://blog.cloudflare.com/#root-cause-of-the-bug" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Ragel code is converted into generated C code which is then compiled. The C code uses, in the classic C manner, pointers to the HTML document being parsed, and Ragel itself gives the user a lot of control of the movement of those pointers. The underlying bug occurs because of a pointer error.</p>
 	<pre class="language-bash"><code class="language-bash">/* generated code */
 if ( ++p == pe )
@@ -42,7 +56,14 @@ $lerr{ dd("script consume_attr failed");
 	<p>Internally, the generated C code has a pointer named <code>p</code> that is pointing to the character being examined in the HTML document. <code>fhold</code> is equivalent to <code>p--</code> and is essential because when the error condition occurs <code>p</code> will be pointing to the character that caused the <code>script_consume_attr</code> to fail.</p>
 	<p>And it’s doubly important because if this error condition occurs at the end of the buffer containing the HTML document then <code>p</code> will be after the end of the document (<code>p</code> will be <code>pe + 1</code> internally) and a subsequent check that the end of the buffer has been reached will fail and <code>p</code> will run outside the buffer.</p>
 	<p>Adding an <code>fhold</code> to the error handler fixes the problem.</p>
-	<h2>Why now</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-now">Why now</h2>
+		<a href="https://blog.cloudflare.com/#why-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>That explains how the pointer could run past the end of the buffer, but not why the problem suddenly manifested itself. After all, this code had been in production and stable for years.</p>
 	<p>Returning to the <code>script_consume_attr</code> definition above:</p>
 	<pre class="language-bash"><code class="language-bash">script_consume_attr := ((unquoted_attr_char)* :&gt;&gt; (space|'/'|'&gt;'))
@@ -98,7 +119,14 @@ st1266:
 	<p>The parser runs out of characters while trying to perform <code>script_consume_attr</code> and <code>p</code> will be <code>pe</code> when that happens. Because there’s no <code>fhold</code> (that would have done <code>p--</code>) when the code jumps to <code>st1266</code> <code>p</code> is incremented and is now past <code>pe</code>.</p>
 	<p>It then won’t jump to <code>_test_eof1266</code> (where EOF checking would have been performed) and will carry on past the end of the buffer trying to parse the HTML document.</p>
 	<p>So, the bug had been dormant for years until the internal feng shui of the buffers passed between NGINX filter modules changed with the introduction of cf-html.</p>
-	<h2>Going bug hunting</h2>
+	<div class="flex anchor relative">
+		<h2 id="going-bug-hunting">Going bug hunting</h2>
+		<a href="https://blog.cloudflare.com/#going-bug-hunting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Research by IBM in the 1960s and 1970s showed that bugs tend to cluster in what became known as “error-prone modules”. Since we’d identified a nasty pointer overrun in the code generated by Ragel it was prudent to go hunting for other bugs.</p>
 	<p>Part of the infosec team started <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing</a> the generated code to look for other possible pointer overruns. Another team built test cases from malformed web pages found in the wild. A software engineering team began a manual inspection of the generated code looking for problems.</p>
 	<p>At that point it was decided to add explicit pointer checks to every pointer access in the generated code to prevent any future problem and to log any errors seen in the wild. The errors generated were fed to our global error logging infrastructure for analysis and trending.</p>
@@ -122,13 +150,27 @@ st1266:
 	<p>The three features implicated were rolled out as follows. The earliest date memory could have leaked is 2016-09-22.</p>
 	<p>2016-09-22 Automatic HTTP Rewrites enabled2017-01-30 Server-Side Excludes migrated to new parser2017-02-13 Email Obfuscation partially migrated to new parser2017-02-18 Google reports problem to Cloudflare and leak is stopped</p>
 	<p>The greatest potential impact occurred for four days starting on February 13 because Automatic HTTP Rewrites wasn’t widely used and Server-Side Excludes only activate for malicious IP addresses.</p>
-	<h2>Internal impact of the bug</h2>
+	<div class="flex anchor relative">
+		<h2 id="internal-impact-of-the-bug">Internal impact of the bug</h2>
+		<a href="https://blog.cloudflare.com/#internal-impact-of-the-bug" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare runs multiple separate processes on the edge machines and these provide process and memory isolation. The memory being leaked was from a process based on NGINX that does HTTP handling. It has a separate heap from processes doing SSL, image re-compression, and caching, which meant that we were quickly able to determine that SSL private keys belonging to our customers could not have been leaked.</p>
 	<p>However, the memory space being leaked did still contain sensitive information. One obvious piece of information that had leaked was a private key used to secure connections between Cloudflare machines.</p>
 	<p>When processing HTTP requests for customers’ web sites our edge machines talk to each other within a rack, within a data center, and between data centers for logging, caching, and to retrieve web pages from origin web servers.</p>
 	<p>In response to heightened concerns about surveillance activities against Internet companies, we decided in 2013 to encrypt all connections between Cloudflare machines to prevent such an attack even if the machines were sitting in the same rack.</p>
 	<p>The private key leaked was the one used for this machine to machine encryption. There were also a small number of secrets used internally at Cloudflare for authentication present.</p>
-	<h2>External impact and cache clearing</h2>
+	<div class="flex anchor relative">
+		<h2 id="external-impact-and-cache-clearing">External impact and cache clearing</h2>
+		<a href="https://blog.cloudflare.com/#external-impact-and-cache-clearing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More concerning was that fact that chunks of in-flight HTTP requests for Cloudflare customers were present in the dumped memory. That meant that information that should have been private could be disclosed.</p>
 	<p>This included HTTP headers, chunks of POST data (perhaps containing passwords), JSON for API calls, URI parameters, cookies and other sensitive information used for authentication (such as API keys and OAuth tokens).</p>
 	<p>Because Cloudflare operates a large, shared infrastructure an HTTP request to a Cloudflare web site that was vulnerable to this problem could reveal information about an unrelated other Cloudflare site.</p>
@@ -136,10 +178,24 @@ st1266:
 	<p>Our natural inclination was to get news of the bug out as quickly as possible, but we felt we had a duty of care to ensure that search engine caches were scrubbed before a public announcement.</p>
 	<p>The infosec team worked to identify URIs in search engine caches that had leaked memory and get them purged. With the help of Google, Yahoo, Bing and others, we found 770 unique URIs that had been cached and which contained leaked memory. Those 770 unique URIs covered 161 unique domains. The leaked memory has been purged with the help of the search engines.</p>
 	<p>We also undertook other search expeditions looking for potentially leaked information on sites like Pastebin and did not find anything.</p>
-	<h2>Some lessons</h2>
+	<div class="flex anchor relative">
+		<h2 id="some-lessons">Some lessons</h2>
+		<a href="https://blog.cloudflare.com/#some-lessons" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The engineers working on the new HTML parser had been so worried about bugs affecting our service that they had spent hours verifying that it did not contain security problems.</p>
 	<p>Unfortunately, it was the ancient piece of software that contained a latent security problem and that problem only showed up as we were in the process of migrating away from it. Our internal infosec team is now undertaking a project to fuzz older software looking for potential other security problems.</p>
-	<h2>Detailed Timeline</h2>
+	<div class="flex anchor relative">
+		<h2 id="detailed-timeline">Detailed Timeline</h2>
+		<a href="https://blog.cloudflare.com/#detailed-timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are very grateful to our colleagues at Google for contacting us about the problem and working closely with us through its resolution. All of which occurred without any reports that outside parties had identified the issue or exploited it.</p>
 	<p>All times are UTC.</p>
 	<p>2017-02-18 0011 Tweet from Tavis Ormandy asking for Cloudflare contact information2017-02-18 0032 Cloudflare receives details of bug from Google2017-02-18 0040 Cross functional team assembles in San Francisco2017-02-18 0119 Email Obfuscation disabled worldwide2017-02-18 0122 London team joins2017-02-18 0424 Automatic HTTPS Rewrites disabled worldwide2017-02-18 0722 Patch implementing kill switch for cf-html parser deployed worldwide</p>

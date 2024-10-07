@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3P7EqcZydcPUKVhQNdVwkr/5f9643103acaa16f43c0bdff9a600910/How-we-built-DMARC-Management.png" alt="How we built DMARC Management" class="kg-image" width="1201" height="676" loading="lazy">
 
 	</figure>
-	<h3>What are DMARC reports</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-dmarc-reports">What are DMARC reports</h3>
+		<a href="https://blog.cloudflare.com/#what-are-dmarc-reports" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record">DMARC</a> stands for Domain-based Message Authentication, Reporting, and Conformance. It's an email authentication protocol that helps protect against email <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing</a> and <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing">spoofing</a>.</p>
 	<p>When an email is sent, DMARC allows the domain owner to set up a DNS record that specifies which authentication methods, such as <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record">SPF</a> (Sender Policy Framework) and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record">DKIM</a> (DomainKeys Identified Mail), are used to verify the email's authenticity. When the email fails these authentication checks DMARC instructs the recipient's email provider on how to handle the message, either by quarantining it or rejecting it outright.</p>
 	<p>DMARC has become increasingly important in today's Internet, where email phishing and spoofing attacks are becoming more sophisticated and prevalent. By implementing DMARC, domain owners can protect their brand and their customers from the negative impacts of these attacks, including loss of trust, reputation damage, and financial loss.</p>
@@ -33,7 +40,14 @@
 		</li>
 	</ul>
 	<p>Today we launched <a href="https://blog.cloudflare.com/dmarc-management">DMARC management</a>. This is how we built it.</p>
-	<h3>How we built it</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-it">How we built it</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a leading provider of cloud-based security and performance solutions, we at Cloudflare take a specific approach to test our products. We "dogfood" our own tools and services, which means we use them to run our business. This helps us identify any issues or bugs before they affect our customers.</p>
 	<p>We use our own products internally, such as <a href="https://workers.cloudflare.com">Cloudflare Workers</a>, a serverless platform that allows developers to run their code on our global network. Since its launch in 2017, the Workers ecosystem has grown significantly. Today, there are thousands of developers building and deploying applications on the platform. The power of the Workers ecosystem lies in its ability to enable developers to build sophisticated applications that were previously impossible or impractical to run so close to clients. Workers can be used to build APIs, generate dynamic content, optimize images, perform real-time processing, and much more. The possibilities are virtually endless. We used Workers to power services like <a href="https://blog.cloudflare.com/technology-behind-radar2">Radar 2.0</a>, or software packages like <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare">Wildebeest</a>.</p>
 	<p>Recently our <a href="https://developers.cloudflare.com/email-routing">Email Routing</a> product joined forces with Workers, enabling <a href="https://blog.cloudflare.com/announcing-route-to-workers">processing incoming emails</a> via Workers scripts. As the <a href="https://developers.cloudflare.com/email-routing/email-workers">documentation</a> states: “With Email Workers you can leverage the power of Cloudflare Workers to implement any logic you need to <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">process your emails</a> and create complex rules. These rules determine what happens when you receive an email.” Rules and verified addresses can all be configured via our <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses">API</a>.</p>
@@ -65,7 +79,15 @@
 	<p>For #2 we can also look into the Workers platform, and we will find the <a href="https://developers.cloudflare.com/analytics/analytics-engine">Workers Analytics Engine</a>. We just need to define an appropriate schema, which depends both on what’s present in the reports and the queries we plan to do later. Afterwards we can query the data using either the <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL</a> or <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api">SQL</a> API.</p>
 	<p>For #3 we don’t need to look further than our <a href="https://www.cloudflare.com/products/r2">R2</a> object storage. It is <a href="https://developers.cloudflare.com/r2/examples/demo-worker">trivial</a> to access R2 from a Worker. After extracting the reports from the email we will store them in R2 for posterity.</p>
 	<p>We built this as a managed service that you can enable on your zone, and added a dashboard interface for convenience, but in reality all the tools are available for you to deploy your own DMARC reports processor on top of Cloudflare Workers, in your own account, without having to worry about servers, scalability or performance.</p>
-	<h3>Architecture</h3>
+	<div class="flex anchor relative">
+		<h3 id="architecture">Architecture</h3>
+		<a href="https://blog.cloudflare.com/#architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d55aU3WlGrgQcuc1TKPAF/1b29dc8ee1a2e4fc26bc227d8b351444/Screenshot-2023-03-16-at-4.18.08-PM.png" alt="" class="kg-image" width="2000" height="1146" loading="lazy">
@@ -187,11 +209,25 @@ const email = await parser.parse(arrayBuffer)</code></pre>
 	</ol>
 	<p>In the future, we are also considering integrating <a href="https://developers.cloudflare.com/queues">Queues</a> in the workflow to asynchronously process the report and avoid waiting for the client to complete it.</p>
 	<p>We managed to implement this project end-to-end relying only on the Workers infrastructure, proving that it’s possible, and advantageous, to build non-trivial apps without having to worry about scalability, performance, storage and security issues.</p>
-	<h3>Open sourcing</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-sourcing">Open sourcing</h3>
+		<a href="https://blog.cloudflare.com/#open-sourcing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we mentioned before, we built a managed service that you can enable and use, and we will manage it for you. But, everything we did can also be deployed by you, in your account, so that you can manage your own DMARC reports. It’s easy, and free. To help you with that, we are releasing an open-source version of a Worker that processes DMARC reports in the way described above: <a href="https://github.com/cloudflare/dmarc-email-worker">https://github.com/cloudflare/dmarc-email-worker</a></p>
 	<p>If you don’t have a dashboard where to show the data, you can also <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying">query</a> the Analytics Engine from a Worker. Or, if you want to store them in a relational database, then there’s <a href="https://developers.cloudflare.com/d1/platform/client-api">D1</a> to the rescue. The possibilities are endless and we are excited to find out what you’ll build with these tools.</p>
 	<p>Please contribute, make your own, we’ll be listening.</p>
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We hope that this post has furthered your understanding of the Workers platform. Today Cloudflare takes advantage of this platform to build most of our services, and we think you should too.</p>
 	<p>Feel free to contribute to our open-source version and show us what you can do with it.</p>
 	<p>The Email Routing is also working on expanding the Email Workers API more functionally, but that deserves another blog soon.</p>

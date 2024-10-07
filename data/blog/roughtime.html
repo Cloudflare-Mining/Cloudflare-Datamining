@@ -8,7 +8,14 @@
 	<p>When you visit a secure website, it offers you a TLS certificate that asserts its identity. Every certificate has an expiration date, and when it’s passed due, it is no longer valid. The idea is almost as old as the web itself: limiting the lifetime of certificates is meant to reduce the risk in case a TLS server’s secret key is compromised.</p>
 	<p>Certificates aren’t the only cryptographic artifacts that expire. When you visit a site protected by Cloudflare, we also tell you whether its certificate has been revoked (see our blog post on <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">OCSP stapling</a>) — for example, due to the secret key being compromised — and this value (a so-called OCSP staple) has an expiration date, too.</p>
 	<p>Thus, to determine if a certificate is valid and hasn’t been revoked, your system needs to know the current time. Indeed, time is crucial for the security of TLS and myriad other protocols. To help keep clocks in sync, we are announcing a free, high-availability, and low-latency authenticated time service called <a href="https://roughtime.googlesource.com/roughtime">Roughtime</a>, available at <a href="https://roughtime.cloudflare.com">roughtime.cloudflare.com</a> on port 2002.</p>
-	<h2>Time is tricky</h2>
+	<div class="flex anchor relative">
+		<h2 id="time-is-tricky">Time is tricky</h2>
+		<a href="https://blog.cloudflare.com/#time-is-tricky" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It may surprise you to learn that, in practice, clients’ clocks are heavily skewed. A <a href="https://acmccs.github.io/papers/p1407-acerA.pdf">recent study of Chrome users</a> showed that a significant fraction of reported TLS-certificate errors are caused by client-clock skew. During the period in which error reports were collected, 6.7% of client-reported times were behind by more than 24 hours. (0.05% were ahead by more than 24 hours.) This skew was a causal factor for at least 33.5% of the sampled reports from Windows users, 8.71% from Mac OS, 8.46% from Android, and 1.72% from Chrome OS. These errors are usually presented to users as warnings that the user can click through to get to where they’re going. However, showing too many warnings makes users grow accustomed to clicking through them; <a href="https://en.wikipedia.org/wiki/Alarm_fatigue">this is risky</a>, since these warnings are meant to keep users away from malicious websites.</p>
 	<p>Clock skew also holds us back from improving the security of certificates themselves. We’d like to issue certificates with shorter lifetimes because the less time the certificate is valid, the lower the risk of the secret key being exposed. (This is why Let’s Encrypt issues certificates valid for just <a href="https://letsencrypt.org/2015/11/09/why-90-days.html">90 days by default</a>.) But the long tail of skewed clocks limits the effective lifetime of certificates; shortening the lifetime too much would only lead to more warnings.</p>
 	<p>Endpoints on the Internet often synchronize their clocks using a protocol like the <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Network Time Protocol</a> (NTP). NTP aims for precise synchronization, and even accounts for network latency. However, it is usually deployed without security features, as the added overhead on high-load servers <a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/dowling">degrades precision significantly</a>. As a result, a man-in-the-middle attacker between the client and server can easily influence the client’s clock. By moving the client back in time, the attacker can force it to accept expired (and possibly compromised) certificates; by moving forward in time, it can force the client to accept a certificate that is <i>not yet</i> valid.</p>
@@ -17,7 +24,14 @@
 	<p>We are deploying a Roughtime service for two reasons.</p>
 	<p>First, the clock we use for this service is the same as the clock we use to determine whether our customers’ certificates are valid and haven’t been revoked; as a result, exposing this service makes us accountable for the validity of TLS artifacts we serve to clients on behalf of our customers.</p>
 	<p>Second, Roughtime is a great idea whose time has come. But it is only useful if several independent organizations participate; the more Roughtime servers there are, the more robust the ecosystem becomes. Our hope is that putting our weight behind it will help the Roughtime ecosystem grow.</p>
-	<h2>The Roughtime protocol</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-roughtime-protocol">The Roughtime protocol</h2>
+		<a href="https://blog.cloudflare.com/#the-roughtime-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At its most basic level, Roughtime is a one-round protocol in which the client requests the current time and the server sends a signed response. The response is comprised of a timestamp (the number of microseconds since the Unix epoch) and a <i>radius</i> (in microseconds) used to indicate the server’s certainty about the reported time. For example, a radius of 1,000,000μs means the server is reasonably sure that the true time is within one second of the reported time.</p>
 	<p>The server proves freshness of its response as follows. The request consists of a short, random string commonly called a <i>nonce</i> (pronounced /<a href="https://www.merriam-webster.com/dictionary/nonce">nän(t)s</a>/, or sometimes /ˈen wən(t)s/). The server incorporates the nonce into its signed response so that it’s needed to verify the signature. If the nonce is sufficiently long (say, 16 bytes), then the number of possible nonces is so large that it’s extremely unlikely the server has encountered (or will ever encounter) a request with the same nonce. Thus, a valid signature serves as cryptographic proof that the response is fresh.</p>
 	<p>The client uses the server’s <i>root public key</i> to verify the signature. (The key is obtained out-of-band; you can get our key <a href="https://developers.cloudflare.com/time-services/roughtime/usage">here</a>.) When the server starts, it generates an online public/secret key pair; the root secret key is used to create a delegation for the online public key, and the online secret key is used to sign the response. The delegation serves the same function as a traditional <a href="https://en.wikipedia.org/wiki/X.509">X.509</a> certificate on the web: as illustrated in the figure below, the client first uses the root public key to verify the delegation, then uses the online public key to verify the response. This allows for operational separation of the delegator and the server and limits exposure of the root secret key.</p>
@@ -45,10 +59,24 @@
 	</figure>
 	<p>Roughtime with batching</p>
 	<hr>
-	<h3>Using Roughtime</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-roughtime">Using Roughtime</h3>
+		<a href="https://blog.cloudflare.com/#using-roughtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The protocol is flexible enough to support a variety of use cases. A web browser could use a Roughtime server to proactively synchronize its clock when validating TLS certificates. It could also be used retroactively to avoid showing the user too many warnings: when a certificate validation error occurs — in particular, when the browser believes it’s expired or not yet valid — Roughtime could be used to determine if the clock skew was the root cause. Instead of telling the user the certificate is invalid, it could tell the user that their clock is incorrect.</p>
 	<p>Using just one server is sufficient if that server is trustworthy, but a security-conscious user could make requests to many servers; the delta might be computed by eliminating outliers and averaging the responses, or by some <a href="https://roughtime.googlesource.com/roughtime/+/master/go/client">more sophisticated method</a>. This makes the calculation robust to one or more of the servers misbehaving.</p>
-	<h3>Making servers accountable</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-servers-accountable">Making servers accountable</h3>
+		<a href="https://blog.cloudflare.com/#making-servers-accountable" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The real power of Roughtime is that it’s auditable. Consider the following mode of operation. The client has a list of servers it will query in a particular order. The client generates a random string — called a blind in the parlance of Roughtime — hashes it, and uses the output as the nonce for its request to the server. For subsequent requests, it computes the nonce as follows: generate a blind, compute the hash of this string and the response from the previous server (including the timestamp and signature), and use this hash as the nonce for the next request.</p>
 	<hr>
 	<figure class="kg-card kg-image-card ">
@@ -93,9 +121,23 @@
 	</table>
 	<!--kg-card-end: html-->
 	<p>Servers B and C corroborate the time given by server A, but — oh no! Cloudflare is two hours behind! Unless servers A, B, and C are in cahoots, it’s likely that the time offered by Cloudflare is incorrect. Moreover, you have verifiable, cryptographic proof. In this way, the Roughtime protocol makes our server (and all Roughtime servers) accountable to provide accurate time, or, at least, to be in sync with the others.</p>
-	<h2>The Roughtime ecosystem</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-roughtime-ecosystem">The Roughtime ecosystem</h2>
+		<a href="https://blog.cloudflare.com/#the-roughtime-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The infrastructure for monitoring and auditing the <a href="https://roughtime.googlesource.com/roughtime/+/HEAD/ECOSYSTEM.md">Roughtime ecosystem</a> hasn’t been built yet. Right now there’s only a handful of servers: in addition to Cloudflare’s and <a href="https://roughtime.googlesource.com/roughtime/+/master/roughtime-servers.json">Google’s</a>, there’s also a really nice <a href="https://github.com/int08h/roughenough">Rust implementation</a>. The more diversity there is, the healthier the ecosystem becomes. We hope to see more organizations adopt this protocol.</p>
-	<h3>Cloudflare’s Roughtime service</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-roughtime-service">Cloudflare’s Roughtime service</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-roughtime-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the initial deployment of this service, our primary goals are to ensure high availability and minimal maintenance overhead. Each machine at each Cloudflare location executes an instance of the service and responds to queries using its system clock. The server signs each request individually rather than batch-signing them as described above; we rely on our load balancer to ensure no machine is overwhelmed. There are three ways in which we envision this service could be used:</p>
 	<ol>
 		<li>

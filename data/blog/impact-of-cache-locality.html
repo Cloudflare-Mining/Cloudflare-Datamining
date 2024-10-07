@@ -13,7 +13,14 @@
 	</blockquote>
 	<p>This made many improvements over its predecessors. Improvements include a die shrink from 14nm to 7nm, a doubling of the top end core count from 32 to 64, and a larger L3 cache size. Let’s emphasize again on the size of that L3 cache, which is 32 MiB L3 cache per Core Complex Die (CCD).</p>
 	<p>This time around, we have taken steps to understand our workloads at the hardware level through the use of hardware performance counters and profiling tools. Using these specialized CPU registers and profilers, we collected data on the AMD 2nd Gen EPYC and Intel Skylake-based Xeon processors in a lab environment, then validated our observations in production against other generations of servers from the past.</p>
-	<h2>Simulated Environment</h2>
+	<div class="flex anchor relative">
+		<h2 id="simulated-environment">Simulated Environment</h2>
+		<a href="https://blog.cloudflare.com/#simulated-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CPU Specifications</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -52,20 +59,48 @@
 
 	</figure>
 	<p><i>AMD 2nd Gen EPYC 7642 - Created with 8x CCDs plus an I/O die in the center</i></p>
-	<h3>Methodology</h3>
+	<div class="flex anchor relative">
+		<h3 id="methodology">Methodology</h3>
+		<a href="https://blog.cloudflare.com/#methodology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our production traffic shares many characteristics of a sustained workload which typically does not induce large variation in operating frequencies nor enter periods of idle time. We picked out a simulated traffic pattern that closely resembled our production traffic behavior which was the Cached 10KiB png via HTTPS. We were interested in assessing the CPU’s maximum throughput or requests per second (RPS), one of our key metrics. With that being said, we did not disable Intel Turbo Boost or AMD Precision Boost, nor matched the frequencies clock-for-clock while measuring for requests per second, instructions retired per second (IPS), L3 cache miss rate, and sustained operating frequency.</p>
-	<h3>Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="results">Results</h3>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The 1P AMD 2nd Gen EPYC 7642 powered server took the lead and processed 50% more requests per second compared to our Gen 9’s 2P Intel Xeon Platinum 6162 server.</p>
 	<p>We are running a sustained workload, so we should end up with a sustained operating frequency that is higher than base clock. The AMD EPYC 7642 operating frequency or the number cycles that the processor had at its disposal was approximately 20% greater than the Intel Xeon Platinum 6162, so frequency alone was not enough to explain the 50% gain in requests per second.</p>
 	<p>Taking a closer look, the number of instructions retired over time was far greater on the AMD 2nd Gen EPYC 7642 server, thanks to its low L3 cache miss rate.</p>
-	<h3>Production Environment</h3>
+	<div class="flex anchor relative">
+		<h3 id="production-environment">Production Environment</h3>
+		<a href="https://blog.cloudflare.com/#production-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CPU Specifications</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lji8wRNR827IKHgDE3asr/cde9b52f4d08a68d4f24091baa4ccca7/image-2.png" alt="" class="kg-image" width="1254" height="404" loading="lazy">
 
 	</figure>
-	<h3>Methodology</h3>
+	<div class="flex anchor relative">
+		<h3 id="methodology">Methodology</h3>
+		<a href="https://blog.cloudflare.com/#methodology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our most predominant bottleneck appears to be the cache memory and we saw significant improvement in requests per second as well as <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">time to process a request</a> due to low L3 cache miss rate. The data we present in this section was collected at a point of presence that spanned between Gen 7 to Gen 9 servers. We also collected data from a secondary region to gain additional confidence that the data we present here was not unique to one particular environment. Gen 9 is the baseline just as we have done in the previous section.</p>
 	<p>We put the 2nd Gen EPYC-based Gen X into production with hopes that the results would mirror closely to what we have previously seen in the lab. We found that the requests per second did not quite align with the results we had hoped, but the AMD EPYC server still outperformed all previous generations including outperforming the Intel Gen 9 server by 36%.</p>
 	<figure class="kg-card kg-image-card ">
@@ -80,7 +115,14 @@
 
 	</figure>
 	<p>Due to the lower than expected requests per second, we also saw lower instructions retired over time and higher L3 cache miss rate but maintained a lead over Gen 9, with 29% better performance.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The single AMD EPYC 7642 performed very well during our lab testing, beating our Gen 9 server with dual Intel Xeon Platinum 6162 with the same total number of cores. Key factors we noticed were its large L3 cache, which led to a low L3 cache miss rate, as well as a higher sustained operating frequency. The AMD 2nd Gen EPYC 7642 did not have as big of an advantage in production, but nevertheless still outperformed all previous generations. The observation we made in production was based on a PoP that could have been influenced by a number of other factors such as but not limited to ambient temperature, timing, and other new products that will shape our traffic patterns in the future such as <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">WebAssembly on Cloudflare Workers</a>. The AMD EPYC 7642 opens up the possibility for our upcoming Gen X server to maintain the same core count while processing more requests per second than its predecessor.</p>
 	<p>Got a passion for hardware? I think we should get in touch. We are always looking for talented and curious individuals to <a href="https://www.cloudflare.com/careers/departments">join our team</a>. The data presented here would not have been possible if it was not for the teamwork between many different individuals within Cloudflare. As a team, we strive to work together to create highly performant, reliable, and secure systems that will form the pillars of our rapidly growing <a href="https://www.cloudflare.com/network">network</a> that spans 200 cities in more than 90 countries and we are just getting started.</p>
 </div>

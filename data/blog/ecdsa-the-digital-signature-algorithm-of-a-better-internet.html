@@ -8,7 +8,15 @@
 	<p><i>This blog post is dedicated to the memory of </i><a href="https://en.wikipedia.org/wiki/Scott_Vanstone"><i>Dr. Scott Vanstone</i></a><i>, popularizer of elliptic curve cryptography and inventor of the ECDSA algorithm. He passed away on March 2, 2014.</i></p>
 	<p>At CloudFlare we are constantly working on ways to make the Internet better. An important part of this is enabling our customers to serve their sites encrypted over SSL/TLS. There are some interesting technical challenges in serving sites over TLS at CloudFlare’s scale. The computational cost of the cryptography required on our servers is one of those challenges. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">Elliptic curve cryptography (ECC)</a> is one of the more promising technologies in this area. ECC-enabled TLS is faster and more scalable on our servers and provides the same or better security than the default cryptography in use on the web.</p>
 	<p>In this blog post we will explore how one elliptic curve algorithm, the elliptic curve digital signature algorithm (ECDSA), can be used to improve performance on the Internet. The tl;dr is: CloudFlare now supports custom ECDSA certificates for our customers and that’s good for everybody using the Internet.</p>
-	<h3>Websites and Certificates</h3>
+	<div class="flex anchor relative">
+		<h3 id="websites-and-certificates">Websites and Certificates</h3>
+		<a href="https://blog.cloudflare.com/#websites-and-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4q6xtdkaVXcC8o2MH9uvXS/380d541248fae5bf215348a6306862b1/image01-fs8.png" alt="" class="kg-image" width="645" height="200" loading="lazy">
@@ -29,7 +37,15 @@
 	<p>The certificate is digitally signed by a trusted certificate authority who validates the identity of the site owner.</p>
 	<p>Since the introduction of SSL by Netscape in 1994, certificates for web sites have typically used a public/private key pair based on the RSA algorithm. As the SSL specification evolved into TLS, support for different public key algorithms were added. One of the supported algorithms is ECDSA which is based on elliptic curves.</p>
 	<p>Despite the number of options available in TLS, almost all certificates used on the web today are RSA-based. Web sites have been slow to adopt new algorithms because they want to maintain support for legacy browsers that don’t support the new algorithms. Even as late as 2012, out of 13 million TLS certificates found in a <a href="https://scans.io/study/umich-https">scan of the internet</a>, fewer than 50 use an ECDSA key pair.</p>
-	<h3>The Popular Choice</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-popular-choice">The Popular Choice</h3>
+		<a href="https://blog.cloudflare.com/#the-popular-choice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Gb8DrUFgem6aMVnL5cUxu/8615b0761118f8e6fd08b6d74de5f8c5/popular.jpg" alt="" class="kg-image" width="932" height="600" loading="lazy">
@@ -38,7 +54,14 @@
 	<p>Although ECDSA has not taken off on the web, it has become the digital signature scheme of choice for new cryptographic non-web applications.</p>
 	<p>Bitcoin is a good example of a system that relies on ECDSA for security. Every Bitcoin address is a cryptographic hash of an ECDSA public key. The ownership of the account is determined by who controls the ECDSA private key. To transfer an amount of Bitcoin to another person, you create a message that says something along the lines of “I give this Bitcoin to address X”, sign it with your private key and submit it to the Bitcoin system. The linchpin of the security and consistency of the Bitcoin system is the security of ECDSA private keys.</p>
 	<p>Elliptic curves and ECDSA in particular are also used in messaging and systems security. In Apple’s recent <a href="http://images.apple.com/ipad/business/docs/iOS_Security_Feb14.pdf">white paper on iOS security</a>, they relayed how they use ECDSA extensively in the Apple ecosystem. Messages through iMessage are signed with ECDSA and iCloud keychain syncing relies on ECDSA. More and more technologies are using ECDSA for security, including end-to-end encrypted messaging services <a href="https://github.com/WhisperSystems/TextSecure">TextSecure</a> and <a href="https://crypto.cat">CryptoCat</a>.</p>
-	<h3>ECDSA vs RSA</h3>
+	<div class="flex anchor relative">
+		<h3 id="ecdsa-vs-rsa">ECDSA vs RSA</h3>
+		<a href="https://blog.cloudflare.com/#ecdsa-vs-rsa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Why is ECDSA the algorithm of choice for new protocols when RSA is available and has been the gold standard for asymmetric cryptography since 1977? It boils down to the fact that we are better at breaking RSA than we are at breaking ECC.</p>
 	<p>As we described in a previous blog post, <a href="https://blog.cloudflare.com/why-are-some-keys-small">the security of a key depends on its size and its algorithm</a>. Some algorithms are easier to break than others and require larger keys for the same level of security. Breaking an RSA key requires you to factor a large number. We are pretty good at factoring large numbers and <a href="https://bristolcrypto.blogspot.com/2013/02/discrete-logarithms.html">getting better all the time</a>. Breaking an ECDSA key requires you to solve the Elliptic Curve Discrete Logarithm Problem (ECDLP). The mathematical community has not made any major progress in improving algorithms to solve this problem since is was independently introduced by Koblitz and Miller in 1985.</p>
 	<p>This means that with ECDSA you can get the same level of security as RSA but with smaller keys. Smaller keys are better than larger keys for several reasons. Smaller keys have faster algorithms for generating signatures because the math involves smaller numbers. Smaller public keys mean smaller certificates and less data to pass around to establish a TLS connection. This means quicker connections and faster loading times on websites.</p>
@@ -48,7 +71,14 @@
 		rsa 2048 bits 1001.8</p>
 	<p>(openssl 1.0.2 beta on x86_64 with enable-ec_nistp_64_gcc_128)</p>
 	<p>That table shows the number of ECDSA and RSA signatures possible per second. On our servers, using an ECDSA certificate reduces the cost of the private key operation by a factor of 9.5x, saving a lot of CPU cycles.</p>
-	<h3>Hello Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="hello-future">Hello Future</h3>
+		<a href="https://blog.cloudflare.com/#hello-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I mentioned earlier that fewer than fifty ECDSA certificate are being used on the web. You can now count <a href="https://blog.cloudflare.com">https://blog.cloudflare.com</a> among them. If you don't see a lock icon, click <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">here</a> for the HTTPS version of the site. Once you are viewing this site over HTTPS, take a look at the TLS information bar (click on the lock icon in your address bar). You should see the key exchange mechanism listed as ECDHE_ECDSA, which means the certificate is using ECDSA. If the HTTPS version site does not load, your browser probably does not support ECDSA.</p>
 	<p>This is an image taken from the Chrome browser under the green lock icon for this page under the connection tab:</p>
 	<figure class="kg-card kg-image-card ">
@@ -58,7 +88,15 @@
 	</figure>
 	<p>This blog post is our first experiment using an SSL certificate based on elliptic curves. Our blog is being served by the standard CloudFlare service (yes, we <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">eat our own dog food</a>), and is the first site on CloudFlare that uses an ECDSA certificate. We are happy to annouce that we now support custom ECDSA certificates for all CloudFlare business customers.</p>
 	<p>In the near future we will enable code that will allow sites to have a fallback certificate so that visitors with old browsers without ECDSA support can still view their site over HTTPS. Because ECDSA is so much more efficient for our servers, supporting these certificates is an essential step for enabling <a href="https://blog.cloudflare.com/2013-refactoring-2014-stepping-on-the-gas">SSL for free in 2014</a>.</p>
-	<h3>Danger Zone?</h3>
+	<div class="flex anchor relative">
+		<h3 id="danger-zone">Danger Zone?</h3>
+		<a href="https://blog.cloudflare.com/#danger-zone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q8hFV8t9DNdc6Oza80Agd/47452bacdf9d7e9224c8f9a244ef1a0b/image03-fs8.png" alt="" class="kg-image" width="600" height="281" loading="lazy">
@@ -69,7 +107,14 @@
 	<p>In 2010, a flaw in the way random numbers were used in ECDSA on Sony’s Playstation 3 resulted in a <a href="http://www.exophase.com/20540/hackers-describe-ps3-security-as-epic-fail-gain-unrestricted-access">private key being leaked</a>. More recently, some Android devices were found to be incorrectly generating random values, resulting in a <a href="https://bitcoin.org/en/alert/2013-08-11-android">massive theft</a> of Bitcoins from devices running Bitcoin software.</p>
 	<p>There are other more esoteric attacks against specific ECDSA implementations. Last week, <a href="http://eprint.iacr.org/2014/161.pdf">a paper was published</a> by researchers from Australia and the UK describing an attack on OpenSSL’s implementation of ECDSA for curve secp256k1 (the one used by the Bitcoin protocol). Luckily, this attack is not a threat against busy remote servers.</p>
 	<p>The danger of key leakage via poor random data or <a href="https://en.wikipedia.org/wiki/Side_channel_attack">side channel attacks</a> is a concern but is manageable with proper preparation. At CloudFlare we ensure that the system random number generator <a href="https://blog.cloudflare.com/ensuring-randomness-with-linuxs-random-number-generator">has enough entropy</a>. Even if there is a problem with the system PRNG, OpenSSL 1.0.2 has included a fix to reduce the chance of compromise. Cryptography is hard to implement correctly, especially in the context of a complex protocol like TLS as evidenced in some famous <a href="https://www.imperialviolet.org/2014/02/22/applebug.html">recent</a> <a href="http://arstechnica.com/security/2014/03/critical-crypto-bug-leaves-linux-hundreds-of-apps-open-to-eavesdropping">bug fixes</a>. That said, the benefits seem to outweigh the risks in this case.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On a personal note, Dr. Vanstone was one of my professors at the University of Waterloo. He was passionate about mathematics and cryptography and he was one of the reasons I decided to pursue security engineering as a career. The book he co-authored, <a href="http://cacr.uwaterloo.ca/hac">The Handbook of Applied Cryptography</a>, is still one of the classics in the field.</p>
 	<p>From his <a href="http://www.bulletin.uwaterloo.ca/2014/mar/06th.html">memorial page</a> at the Waterloo Daily Bulletin: "I had studied it enough to believe in it," Vanstone told Silicon Valley North in 2003. "It was the rest of the world that didn't believe in it." He will be missed.</p>
 	<p>Elliptic curve cryptography is a powerful technology that can enable faster and more secure cryptography across the Internet. The time has come for ECDSA to be widely deployed on the web, just as Dr. Vanstone hoped. We are taking the first steps towards that goal by enabling customers to use ECDSA certificates on their CloudFlare-enabled sites.</p>

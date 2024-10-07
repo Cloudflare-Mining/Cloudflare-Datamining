@@ -12,7 +12,15 @@
 	<p>It’s with those use cases in mind that we’ve been participating in the Privacy Preserving Measurement <a href="https://datatracker.ietf.org/group/ppm/about">working group at the IETF</a> whose goal is to develop systems for collecting and using this data while minimizing the amount of per-user information exposed to the data collector.</p>
 	<p>So far, the most promising standard in this space is <a href="https://datatracker.ietf.org/doc/draft-ietf-ppm-dap">DAP – Distributed Aggregation Protocol</a> – a clever way to use <a href="https://en.wikipedia.org/wiki/Secure_multi-party_computation">multi-party computation</a> to aggregate data without exposing individual measurements. Early versions of the algorithms used by DAP have been implemented by Google and Apple for <a href="https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ENPA_White_Paper.pdf">exposure notifications</a>.</p>
 	<p>In this blog post, we’ll do a deep dive into the fundamental concepts behind the DAP protocol and give an example of how we’ve implemented it into <a href="https://github.com/cloudflare/daphne">Daphne</a>, our open source aggregator server. We hope this will inspire others to collaborate with us and get involved in this space!</p>
-	<h3>The principles behind DAP, an open standard for privacy preserving measurement</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-principles-behind-dap-an-open-standard-for-privacy-preserving-measurement">The principles behind DAP, an open standard for privacy preserving measurement</h3>
+		<a href="https://blog.cloudflare.com/#the-principles-behind-dap-an-open-standard-for-privacy-preserving-measurement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Y8EEQM4c3MgIDKhYnp09B/a6030cd0b7f61df572512ce01e36ebc5/MAnxtCSIuR-Y9c_2OkGchGPEHA_U4feb9db_mXD1BOWpc5cMy25ggAgcGg_Ir-8lkU6kCXkLIyq8M25cxxBmPksZL1EIrlsHErLD7rpZXvMxnRdeLmWdavhLIGww.png" alt="" class="kg-image" width="1600" height="845" loading="lazy">
@@ -40,7 +48,14 @@
 	</figure>
 	<p>_MPC solution: secret-share the inputs across multiple parties, a.k.a. Bob and Daphne. If at least one person is honest, Alice gets the aggregate result without anyone knowing individual inputs in the clear._‌ ‌</p>
 	<p>Instead, what we do in DAP is <i>distribute</i> the computation across the servers such that no single server has a complete measurement. The key idea that makes this possible is <i>secret sharing</i>.</p>
-	<h2>Computing on secret shared data</h2>
+	<div class="flex anchor relative">
+		<h2 id="computing-on-secret-shared-data">Computing on secret shared data</h2>
+		<a href="https://blog.cloudflare.com/#computing-on-secret-shared-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To set things up, let's make the problem a little more concrete. Suppose each measurement \( m_{i} \) is a number and our goal is to compute the sum of the measurements. That is, \( f(m_{1},...,m_{N}) = m_{1} + \cdots + m_{N} \). Our goal is to use secret sharing to allow two servers, which we'll call <i>aggregators</i>, to jointly compute this sum.</p>
 	<p>To understand secret sharing, we're going to need a tiny bit of math—modular arithmetic. The expression \( &nbsp;X + Y &nbsp;(\textrm{mod}) &nbsp;\textit{q} \) means "add \( &nbsp;X &nbsp;\) and \( &nbsp;Y &nbsp;\), then divide the sum by \( &nbsp;q &nbsp;\) and return the remainder". For now the modulus \( &nbsp;q &nbsp;\) can be any large number, as long as it's larger than any sum we'd ever want to compute (\( &nbsp;2 ^{64} &nbsp;\), say). In the remainder of this section, we'll omit \( &nbsp;q &nbsp;\) and simply write \( &nbsp;X &nbsp;+ Y \) for addition modulo \( &nbsp;q &nbsp;\).</p>
 	<p>The goal of secret sharing is to shard a measurement (i.e., a "secret") into two "shares" such that (i) the measurement can be recovered by combining the shares together and (ii) neither share leaks any information about the measurement. To secret share each \( &nbsp;m_{i} \), we choose a random number \( R_{i} \in \lbrace &nbsp;0,...,q - 1\rbrace \), set the first share to be \(X_{i} = m_{i} - R_{i} \) and set the other share to be \( Y_{i} = R_{i} \). To recover the measurement, we simply add the shares together. This works because \( X_{i} + Y_{i} = (m_{i} - R_{i}) + R_{i} = m_{i} \). Moreover, each share is indistinguishable from a random number: For example, \( 1337 \) might be secret-shared into \( 11419752798245067454 \) and \( 7026991275464485499 \) (modulo \( q = 2^{64} \)).</p>
@@ -58,7 +73,14 @@
 	</ol>
 	<p>This works because the secret shares are additive, and the order in which we add things up is irrelevant to the function we're computing:</p>
 	<p>\( r = m_{1} + \cdots + m_{N} \) // by definition\( r = (m_{1} - R_{1}) + R_{1} + \cdots (m_{N} - R_{N}) + R_{N} \) // apply sharding\( r = (m_{1} - R_{1}) + \cdots + (m_{N} - R_{N}) + R_{1} + \cdots R_{N} \) // rearrange the sum\( r = X + Y \) // apply aggregation</p>
-	<h3>Rich data types</h3>
+	<div class="flex anchor relative">
+		<h3 id="rich-data-types">Rich data types</h3>
+		<a href="https://blog.cloudflare.com/#rich-data-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This basic template for secure aggregation was described in a paper from Henry Corrigan-Gibbs and Dan Boneh called <a href="https://www.usenix.org/conference/nsdi17/technical-sessions/presentation/corrigan-gibbs">"Prio: Private, Robust, and Scalable Computation of Aggregate Statistics"</a> (NSDI 2017). This paper is a critical milestone in DAP's history, as it showed that a wide variety of aggregation tasks (not just sums) can be solved within one, simple protocol framework, Prio. With DAP, our goal in large part is to bring this framework to life.</p>
 	<p>All Prio tasks are instances of the same template. Measurements are encoded in a form that allows the aggregation function to be expressed as the sum of (shares of) the encoded measurements. For example:</p>
 	<ol>
@@ -76,12 +98,26 @@
 		</li>
 	</ol>
 	<p>This degree of flexibility is essential for wide-spread adoption because it allows us to get the most value we can out of a relatively small amount of software. However, there are a couple problems we still need to overcome, both of which entail the need for some form of interaction.</p>
-	<h3>Input validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="input-validation">Input validation</h3>
+		<a href="https://blog.cloudflare.com/#input-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first problem is <i>input validation</i>. Software engineers, especially those of us who operate web services, know in our bones that validating inputs we get from clients is of paramount importance. (Never, <i>ever</i> stick a raw input you got from a client into an SQL query!) But if the inputs are secret shared, then there is no way for an aggregator to discern even a single bit of the measurement, let alone check that it has an expected value. (A secret share of a valid measurement and a number sampled randomly from \( \lbrace 0,...,q - 1 \rbrace \) look identical.) At least, not on its own.</p>
 	<p>The solution adopted by Prio (and the <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-vdaf">standard</a>, with some improvements), is a special kind of <a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware"><i>zero-knowledge proof (ZKP)</i> system</a> designed to operate on secret shared data. The goal is for a prover to convince a verifier that a statement about some data it has committed to is true (e.g., the user has a valid hardware key), without revealing the data itself (e.g. which hardware key is in-use).</p>
 	<p>Our setting is exactly the same, except that we're working on secret-shared data rather than committed data. Along with the measurement shares, the client sends shares of a validity proof; then during aggregation, the aggregators interact with one another in order to check and verify the proof. (One round-trip over the network is required.)</p>
 	<p>A happy consequence of working with secret shared data is that proof generation and verification are much faster than for committed (or encrypted) data. This is mainly because we avoid the use of public-key cryptography (i.e., <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curves</a>) and are less constrained in how we choose cryptographic parameters. (We require the modulus \( q \) to be a prime number with a particular structure, but such primes are not hard to find.)</p>
-	<h3>Non-linear aggregation</h3>
+	<div class="flex anchor relative">
+		<h3 id="non-linear-aggregation">Non-linear aggregation</h3>
+		<a href="https://blog.cloudflare.com/#non-linear-aggregation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a variety of aggregation tasks for which Prio is not well-suited, in particular those that are non-linear. One such task is to find the "heavy hitters" among the set of measurements. The heavy hitters are the subset of the measurements that occur most frequently, say at least \( t \) times for some threshold \( t \). For example, the measurements might be the URLs visited on a given day by users of a web browser; the heavy hitters would be the set of URLs that were visited by at least \( t \) users.</p>
 	<p>This computation can be expressed as a simple program:</p>
 	<pre class="language-bash"><code class="language-bash">def heavy_hitters(measurements: list[bytes], t: int) -&gt; set[bytes]:
@@ -91,7 +127,14 @@
     return set(map(lambda x: x[0], filter(lambda x: x[1] &gt;= t, hh.items())))</code></pre>
 	<p>However, it cannot be expressed as a linear function, at least not efficiently (with sub-exponential space). This would be required to perform this computation on secret-shared measurements.</p>
 	<p>In order to enable non-linear computation on secret shared data, it is necessary to introduce some form of interaction. There are a few possibilities. For the heavy hitters problem in particular, Henry Corrigan-Gibbs and others devised a protocol called <a href="https://ieeexplore.ieee.org/document/9519492">Poplar</a> (IEEE Security &amp; Privacy 2021) in which several rounds of aggregation and unsharding are performed, where in each round, information provided by the collector is used to "query" the measurements to obtain a refined aggregate result.</p>
-	<h3>Helping to build a world of multi-party computation</h3>
+	<div class="flex anchor relative">
+		<h3 id="helping-to-build-a-world-of-multi-party-computation">Helping to build a world of multi-party computation</h3>
+		<a href="https://blog.cloudflare.com/#helping-to-build-a-world-of-multi-party-computation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Protocols like Prio or Poplar that enable computation over secret shared data fit into a rich tradition in cryptography known as <i>multi-party computation (MPC)</i>. MPC is at once an active research area in theoretical computer science and a class of protocols that are beginning to see real-world use—in our case, to minimize the amount of privacy-sensitive information we collect in order to keep the Internet moving.</p>
 	<p>The PPM working group at IETF represents a significant effort, by Cloudflare and others, to standardize MPC techniques for privacy preserving measurement. This work has three main prongs:</p>
 	<ol>
@@ -106,7 +149,14 @@
 		</li>
 	</ol>
 	<p>The IETF is working on its first set of drafts (DAP/VDAF). These drafts are mature enough to deploy, and a number of deployments are scaling up as we speak. Our hope is that we have initiated positive feedback between theorists and practitioners: as new cryptographic techniques emerge, more practitioners will begin to work with them, which will lead to identifying new problems to solve, leading to new techniques, and so on.</p>
-	<h3>Daphne: Cloudflare’s implementation of a DAP Aggregation Server</h3>
+	<div class="flex anchor relative">
+		<h3 id="daphne-cloudflares-implementation-of-a-dap-aggregation-server">Daphne: Cloudflare’s implementation of a DAP Aggregation Server</h3>
+		<a href="https://blog.cloudflare.com/#daphne-cloudflares-implementation-of-a-dap-aggregation-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our emerging technology group has been working on <a href="https://github.com/cloudflare/daphne">Daphne</a>, our Rust-based implementation of a DAP aggregator server. This is only half of a deployment – DAP architecture requires two aggregator servers to interoperate, both operated by different parties. Our current version only implements the DAP Helper role; the other role is the DAP Leader. Plans are in the works to implement the Leader as well, which will open us up to deploy Daphne for more use cases.</p>
 	<p>We made two big decisions in our implementation here: using Rust and using Workers. Rust has been skyrocketing in popularity in the past few years due to its performance and memory management – a favorite of cryptographers for similar reasons. <a href="https://workers.cloudflare.com">Workers</a> is Cloudflare’s serverless execution environment that allows developers to easily deploy applications globally across our network – making it a favorite tool to prototype with at Cloudflare. This allows for easy integration with our Workers-based storage solutions like: <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>, which we’re using for storing various data artifacts as required by the DAP protocol; and <a href="https://www.cloudflare.com/developer-platform/workers-kv">KV</a>, which we’re using for managing aggregation task configuration. We’ve learned a lot from our interop tests and deployment, which has helped improve our own Workers products and which we have also fed back into the PPM working group to help improve the DAP standard.</p>
 	<p>If you’re interested in learning more about Daphne or collaborating with us in this space, you can fill out <a href="https://www.cloudflare.com/lp/privacy-edge">this form</a>. If you’d like to get involved in the DAP standard, you can check out the <a href="https://datatracker.ietf.org/wg/ppm/about">working group</a>.</p>

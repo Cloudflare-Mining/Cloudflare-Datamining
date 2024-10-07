@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Cloudflare actively protects services from sophisticated attacks day after day. For users of Magic Transit, <a href="https://www.cloudflare.com/ddos">DDoS protection</a> detects and drops attacks, while <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a> allows custom packet-level rules, enabling customers to deprecate hardware firewall appliances and block malicious traffic at Cloudflare’s network. The types of attacks and sophistication of attacks continue to evolve, as recent DDoS and reflection <a href="https://blog.cloudflare.com/attacks-on-voip-providers">attacks</a> <a href="https://blog.cloudflare.com/update-on-voip-attacks">against</a> VoIP services targeting protocols such as <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">Session Initiation Protocol</a> (SIP) have shown. Fighting these attacks requires pushing the limits of packet filtering beyond what traditional firewalls are capable of. We did this by taking best of class technologies and combining them in new ways to turn Magic Firewall into a blazing fast, fully programmable firewall that can stand up to even the most sophisticated of attacks.</p>
-	<h3>Magical Walls of Fire</h3>
+	<div class="flex anchor relative">
+		<h3 id="magical-walls-of-fire">Magical Walls of Fire</h3>
+		<a href="https://blog.cloudflare.com/#magical-walls-of-fire" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a> is a distributed stateless packet firewall built on Linux nftables. It runs on every server, in every Cloudflare data center around the world. To provide isolation and flexibility, each customer’s nftables rules are configured within their own Linux network namespace.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -16,7 +23,14 @@
 	</figure>
 	<p>This diagram shows the life of an example packet when using <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, which has Magic Firewall built in. First, packets go into the server and DDoS protections are applied, which drops attacks as early as possible. Next, the packet is routed into a customer-specific network namespace, which applies the nftables rules to the packets. After this, packets are routed back to the origin via a GRE tunnel. Magic Firewall users can construct firewall statements from a <a href="https://developers.cloudflare.com/magic-firewall">single API</a>, using a flexible <a href="https://github.com/cloudflare/wirefilter">Wirefilter syntax</a>. In addition, rules can be configured via the Cloudflare dashboard, using friendly UI drag and drop elements.</p>
 	<p>Magic Firewall provides a very powerful syntax for matching on various packet parameters, but it is also limited to the matches provided by nftables. While this is more than sufficient for many use cases, it does not provide enough flexibility to implement the advanced packet parsing and content matching we want. We needed more power.</p>
-	<h3>Hello eBPF, meet Nftables!</h3>
+	<div class="flex anchor relative">
+		<h3 id="hello-ebpf-meet-nftables">Hello eBPF, meet Nftables!</h3>
+		<a href="https://blog.cloudflare.com/#hello-ebpf-meet-nftables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When looking to add more power to your Linux networking needs, Extended Berkeley Packet Filter (<a href="https://ebpf.io">eBPF</a>) is a natural choice. With eBPF, you can insert packet processing programs that execute <i>in the kernel</i>, giving you the flexibility of familiar programming paradigms with the speed of in-kernel execution. Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf">loves eBPF</a> and this technology has been transformative in enabling many of our products. Naturally, we wanted to find a way to use eBPF to extend our use of nftables in Magic Firewall. This means being able to match, using an eBPF program within a table and chain as a rule. By doing this we can have our cake and eat it too, by keeping our existing infrastructure and code, and extending it further.</p>
 	<p>If nftables could leverage eBPF natively, this story would be much shorter; alas, we had to continue our quest. To get us started in our search, we know that iptables integrates with eBPF. For example, one can use iptables and a pinned eBPF program for dropping packets with the following command:</p>
 	<pre class="language-bash"><code class="language-bash">iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP</code></pre>
@@ -51,7 +65,14 @@ NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
 	<p>The bytes format can be found in the kernel header definition of <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27">struct xt_bpf_info_v1</a>. The code example above shows the relevant parts of the structure.</p>
 	<p>The xt_bpf module supports both raw bytecodes, as well as a path to a pinned ebpf program. The later mode is the technique we used to combine the ebpf program with nftables.</p>
 	<p>With this information we were able to write code that could create netlink messages and properly serialize any relevant data fields. This approach was just the first step, we are also looking into incorporating this into proper tooling instead of sending custom netfilter messages.</p>
-	<h3>Just Add eBPF</h3>
+	<div class="flex anchor relative">
+		<h3 id="just-add-ebpf">Just Add eBPF</h3>
+		<a href="https://blog.cloudflare.com/#just-add-ebpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we needed to construct an eBPF program and load it into an existing nftables table and chain. Starting to use eBPF can be a bit daunting. Which program type do we want to use? How do we compile and load our eBPF program? We started this process by doing some exploration and research.</p>
 	<p>First we constructed an example program to try it out.</p>
 	<pre class="language-bash"><code class="language-bash">SEC("socket")
@@ -88,7 +109,14 @@ table ip mfw {
 	}
 }</code></pre>
 	<p>Once the program is compiled and pinned, we can add matches into nftables using netlink commands. Listing the ruleset shows the match is present. This is incredible! We are now able to deploy custom C programs to provide advanced matching inside a Magic Firewall ruleset!</p>
-	<h3>More Magic</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-magic">More Magic</h3>
+		<a href="https://blog.cloudflare.com/#more-magic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the addition of eBPF to our toolkit, Magic Firewall is an even more flexible and powerful way to protect your network from bad actors. We are now able to look deeper into packets and implement more complex matching logic than nftables alone could provide. Since our firewall is running as software on all Cloudflare servers, we can quickly iterate and update features.</p>
 	<p>One outcome of this project is SIP protection, which is currently in beta. That’s only the beginning. We are currently exploring using eBPF for protocol validations, advanced field matching, looking into payloads, and supporting even larger sets of IP lists.</p>
 	<p>We welcome your help here, too! If you have other use cases and ideas, please talk to your account team. If you find this technology interesting, come <a href="https://www.cloudflare.com/careers">join our team</a>!</p>

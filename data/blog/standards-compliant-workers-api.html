@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Earlier this year, we <a href="https://blog.cloudflare.com/introducing-the-wintercg">announced our participation</a> in a new W3C Community Group for the advancement of Web-interoperable API standards. Since then, this new <a href="https://github.com/wintercg">WinterCG</a> has been hard at work identifying the common API standards around which all JavaScript runtimes can build. Today I just want to give a peek at some work the WinterCG has been doing; and show off some of the improvements we have been making in the Workers runtime to increase alignment with Web Platform standards around event handling, task cancellation using AbortController, text encoding and decoding, URL parsing and pattern matching, and streams support.</p>
-	<h2>The WinterCG Minimum Common Web Platform API</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-wintercg-minimum-common-web-platform-api">The WinterCG Minimum Common Web Platform API</h2>
+		<a href="https://blog.cloudflare.com/#the-wintercg-minimum-common-web-platform-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Right at the start of the WinterCG activity, the group took some time to evaluate and compare the various non-browser JavaScript runtimes such as <a href="https://nodejs.org">Node.js</a>, <a href="https://deno.land">Deno</a>, <a href="https://oven.sh">Bun</a>, and <a href="https://workers.cloudflare.com">Workers</a> with the purpose of identifying the Web Platform APIs they all had in common. Following a very simple criteria, we looked at the standard APIs that were already implemented and supported by at least two of these runtimes and compiled those into a list that the WinterCG calls the "<a href="https://common-min-api.proposal.wintercg.org">Minimum Common Web Platform API</a>". This list will serve as the basis for what the community group defines as the minimum set of Web Platform APIs that should be implemented consistently across runtimes that claim to be "Web-interoperable".</p>
 	<p>The current list is straightforward:</p><!--kg-card-begin: html-->
 	<table>
@@ -77,9 +84,23 @@
 	</table><!--kg-card-end: html-->
 	<p>In addition to these, the WinterCG also expects Web-interoperable runtimes to have implementations of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob">atob()</a>, <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa">btoa()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask">queueMicrotask()</a>, <a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone">structuredClone()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">setTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout">clearTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval">setInterval()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval">clearInterval()</a>, <a href="https://console.spec.whatwg.org/#namespacedef-console">console</a>, and <a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto">crypto.subtle</a> APIs available on the global scope.</p>
 	<p>Today, we are happy to say that the Workers runtime has compliant or nearly compliant implementations of every one of these WinterCG Minimum Common Web Platform APIs. Some of these APIs intentionally diverge from the standards either due to backwards compatibility concerns, Workers-specific features, or performance optimizations. Other APIs diverge still because we are still in the process of updating them to align with the specifications.</p>
-	<h2>Improving standards compliance in the Workers runtime</h2>
+	<div class="flex anchor relative">
+		<h2 id="improving-standards-compliance-in-the-workers-runtime">Improving standards compliance in the Workers runtime</h2>
+		<a href="https://blog.cloudflare.com/#improving-standards-compliance-in-the-workers-runtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Workers runtime has, from the beginning, had the mission to align its developer experience with JavaScript and Web Platform standards as much as possible. Over the past year we have worked hard to continue advancing that mission forward both by improving the standards-compliance of existing APIs such as Event, EventTarget, URL, and streams; and the introduction of new Web Platform APIs such as URLPattern, encoding streams, and compression streams.</p>
-	<h3>Event and EventTarget</h3>
+	<div class="flex anchor relative">
+		<h3 id="event-and-eventtarget">Event and EventTarget</h3>
+		<a href="https://blog.cloudflare.com/#event-and-eventtarget" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Workers runtime has provided an implementation of the Event and EventTarget Web Platform APIs from the very beginning. These were, however, only limited implementations of what the <a href="https://dom.spec.whatwg.org/#interface-event">WHATWG DOM specification</a> defines. Specifically, Workers had only implemented the bare minimum of the Event API that it itself needed to operate.</p>
 	<p>Today, the Event and EventTarget implementations in Workers provide a more complete implementation.</p>
 	<p>Let's look at the official definition of Event as defined by the WHATWG DOM standard:</p>
@@ -188,7 +209,15 @@ dictionary EventInit {
  
   dispatchEvent(new Event('foo'));
   dispatchEvent(new Event('bar'));</code></pre>
-	<h3>AbortController and AbortSignal</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="abortcontroller-and-abortsignal">AbortController and AbortSignal</h3>
+		<a href="https://blog.cloudflare.com/#abortcontroller-and-abortsignal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As illustrated in the cancelable event example above, we have also introduced an implementation of the <code>AbortController</code> and <code>AbortSignal</code> APIs into Workers. These provide a standard, and interoperable way of signaling cancellation of several kinds of tasks.</p>
 	<p>The <code>AbortController/AbortSignal</code> pattern is straightforward: An <code>AbortSignal</code> is just a type of <code>EventTarget</code> that will emit a single "abort" event when it is triggered:</p>
 	<pre class="language-bash"><code class="language-bash">  const ac = new AbortController();
@@ -219,7 +248,15 @@ dictionary EventInit {
   } catch (err) {
     console.log(err);
   }</code></pre>
-	<h3>TextEncoderStream and TextDecoderStream</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="textencoderstream-and-textdecoderstream">TextEncoderStream and TextDecoderStream</h3>
+		<a href="https://blog.cloudflare.com/#textencoderstream-and-textdecoderstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Workers runtime has long provided basic implementations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder"><code>TextEncoder</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder"><code>TextDecoder</code></a> APIs. Initially, these were limited to only supporting encoding and decoding of UTF-8 text. The standard definition of <code>TextDecoder</code>, however, defines a much broader range of text encodings that are now fully supported by the Workers implementation. Per the standard, <code>TextEncoder</code> currently only supports UTF-8.</p>
 	<pre class="language-bash"><code class="language-bash">  const win1251decoder = new TextDecoder("windows-1251");
   const bytes = new Uint8Array([
@@ -238,7 +275,14 @@ dictionary EventInit {
   const res = await reader.read();
   console.log(res.value); // Привет, мир!</code></pre>
 	<p>Using the encoding streams requires the use of the <code>transformstream_enable_standard_constructor</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a>.</p>
-	<h3>CompressionStream and DecompressionStream</h3>
+	<div class="flex anchor relative">
+		<h3 id="compressionstream-and-decompressionstream">CompressionStream and DecompressionStream</h3>
+		<a href="https://blog.cloudflare.com/#compressionstream-and-decompressionstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Streaming compression and decompression is also now supported in the runtime using the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream"><code>CompressionStream</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream"><code>DecompressionStream</code></a> APIs.</p>
 	<pre class="language-bash"><code class="language-bash">const ds = new DecompressionStream('gzip');
 const decompressedStream = blob.stream().pipeThrough(ds);
@@ -246,7 +290,14 @@ const decompressedStream = blob.stream().pipeThrough(ds);
 const cs = new CompressionStream('gzip');
 const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
 	<p>These are <code>TransformStream</code> implementations that fully conform to the standard definitions. Use of the compression streams does not require a compatibility flag to enable.</p>
-	<h3>URL and URLPattern</h3>
+	<div class="flex anchor relative">
+		<h3 id="url-and-urlpattern">URL and URLPattern</h3>
+		<a href="https://blog.cloudflare.com/#url-and-urlpattern" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Similar to Event, there has been an implementation of the Web Platform standard URL API available within Workers from nearly the beginning. But also like Event, the implementation was not entirely compatible with the standard.</p>
 	<p>The incompatibilities were subtle, for instance, in the original implementation, the URL string "<code>https://a//b//c//</code>" would be parsed incorrectly as "<code>https://a/b/c</code>" (note that the extra empty path segments are removed) whereas the standard parsing algorithm would produce "<code>https://a//b//c/</code>" as a result. Such inconsistent results were causing interoperability issues with JavaScript written to run across multiple JavaScript runtimes and needed to be fixed.</p>
 	<p>A new implementation of the URL parsing algorithm has been provided, and as of October 31, 2022 it has been enabled by default for all newly deployed Workers. Older Workers can begin using the new implementation by updating their compatibility dates to 2022-10-31 or by enabling the <code>url_standard</code> compatibility flag.</p>
@@ -270,7 +321,15 @@ const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
     pathname: '/books/:id',
     baseURL: 'https://example.com',
   });</code></pre>
-	<h3>ReadableStream, WritableStream, and TransformStream</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="readablestream-writablestream-and-transformstream">ReadableStream, WritableStream, and TransformStream</h3>
+		<a href="https://blog.cloudflare.com/#readablestream-writablestream-and-transformstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last, but absolutely not least, our most significant effort over the past year has been providing new standards compliant implementations of the <code>ReadableStream</code>, <code>WritableStream</code>, and <code>TransformStream</code> APIs.</p>
 	<p>The Workers runtime has always provided an implementation of these objects but they were never fully conformant to the standard. User code was not capable of creating custom <code>ReadableStream</code> and <code>WritableStream</code> instances, and <code>TransformStreams</code> were limited to simple identity pass-throughs of bytes. The implementations have been updated now to near complete compliance with the standard (near complete because we still have a few edge cases and features we are working on).</p>
 	<p>The new streams implementation will be enabled by default in all new Workers as of November 30, 2022, or can be enabled earlier using the <code>streams_enable_constructors</code> and <code>transformstream_enable_standard_constructor</code> compatibility flags.</p>
@@ -327,7 +386,14 @@ const compressedStream = blob.stream().pipeThrough(cs);</code></pre>
   const res = await reader.read();
   console.log(dec.decode(res.value));  // "hello world"</code></pre>
 	<p>If your code is using new <code>TransformStream()</code> today as this kind of pass-through, the new implementation will continue to work except for one very important difference: the old, non-standard implementation of new <code>TransformStream()</code> supported BYOB reads on the readable side (i.e. <code>readable.getReader({ mode: 'byob' })</code>). The new implementation (enabled via a compatibility flag and becoming the default on November 30 ) does not support BYOB reads as required by the stream standard.</p>
-	<h2>What's next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What's next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is clear that we have made a lot of progress in improving the standards compliance of the Workers runtime over the past year, but there is far more to do. Next we will be turning our attention to the implementation of the fetch() and WebSockets APIs, as well as actively seeking closer alignment with other runtimes through collaboration in the Web-interoperable Runtimes Community Group.</p>
 	<p>If you are interested in helping drive the implementation of Web Platform APIs forward, and advancing interoperability between JavaScript runtime environments, the Workers Runtime team at Cloudflare is hiring! Reach out, or see our open positions <a href="https://www.cloudflare.com/careers/jobs/?title=Workers+Runtime">here</a>.</p>
 </div>

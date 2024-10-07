@@ -9,12 +9,26 @@
 	<p>Cloudflare first launched Railgun more than ten years ago. Since then, we have released several products in different areas that better address the problems that Railgun set out to solve. However, we shied away from the work to formally deprecate Railgun.</p>
 	<p>That reluctance led to Railgun stagnating and customers suffered the consequences. We did not invest time in better support for Railgun. Feature requests never moved. Maintenance work needed to occur and that stole resources away from improving the Railgun replacements. We allowed customers to deploy a zombie product and, starting with this deprecation, we are excited to correct that by helping teams move to significantly better alternatives that are now available in Cloudflare’s network.</p>
 	<p>We know that this will require migration effort from Railgun customers over the next eight months. We want to make that as smooth as possible. Today’s announcement features recommendations on how to choose a replacement, how to get started, and guidance on where you can reach us for help.</p>
-	<h3>What is Railgun?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-railgun">What is Railgun?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-railgun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s reverse proxy <a href="https://www.cloudflare.com/application-services/solutions">secures and accelerates your applications</a> by placing a Cloudflare data center in over 285+ cities between your infrastructure and your audience. Bad actors attempting to attack your applications hit our network first where products like our WAF and DDoS mitigation service stop them. Your visitors and users connect to our data centers where our cache can serve them content without the need to reach all the way back to your origin server.</p>
 	<p>For some customers, your infrastructure also runs on Cloudflare’s network in the form of Cloudflare Workers. Others maintain origin servers running on anything from a Raspberry Pi to a hyperscale public cloud. In those cases, Cloudflare needs to connect to that infrastructure to grab new content that our network can serve from our cache to your audience.</p>
 	<p>However, some content cannot be cached. Dynamically-generated or personalized pages can change for every visitor and every session. Cloudflare Railgun <a href="https://blog.cloudflare.com/railgun-in-the-real-world">aimed to solve</a> that by determining what was the minimum amount of content that changed and attempting to only send that difference in an efficient transfer - a form of <a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805">delta compression</a>. By reducing the amount of content that needed to be sent to Cloudflare’s network, we could accelerate page loads for end users.</p>
 	<p>Railgun accomplishes this goal by running a piece of software inside the customer’s environment, the Railgun listener, and a corresponding service running in Cloudflare’s network, the Railgun sender. The pair establish a permanent TCP connection. The listener keeps track of the most recent version of a page that was requested. When a request arrives for a known page, the listener sends an HTTP request to the origin server, determines what content changed, and then compresses and sends only the delta to the sender in Cloudflare’s network.</p>
-	<h3>Why deprecate a product?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-deprecate-a-product">Why deprecate a product?</h3>
+		<a href="https://blog.cloudflare.com/#why-deprecate-a-product" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The last major release of Railgun took place eight years ago in 2015. However, products should not be deprecated just because active development stops. We believe that a company should retire a product only when:</p>
 	<ul>
 		<li>
@@ -25,13 +39,27 @@
 		</li>
 	</ul>
 	<p>Hundreds of customers still use Railgun today and the service has continued to run over the last decade without too much involvement from our team. That relative stability deterred us from pushing customers to adopt newer technologies that solved the same problems. As a result, we kept Railgun in a sort of maintenance mode for the last few years.</p>
-	<h3>Why deprecate Railgun now?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-deprecate-railgun-now">Why deprecate Railgun now?</h3>
+		<a href="https://blog.cloudflare.com/#why-deprecate-railgun-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s network has evolved in the eight years since the last Railgun release. We deploy hardware and run services in more than 285 cities around the world, nearly <a href="https://blog.cloudflare.com/panama-expands-cloudflare-network-to-50-countries">tripling</a> the number of cities since Railgun was last updated. The hardware itself also advanced, becoming more <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">efficient and capable</a>.</p>
 	<p>The software platform of Cloudflare’s network developed just as fast. Every data center in Cloudflare’s network can run every service that we provide to our customers. These services range from our traditional reverse proxy products to forward proxy services like Zero Trust to our compute and storage platform Cloudflare Workers. Supporting such a broad range of services requires a platform that can adapt to the requirements of the evolving needs of these products.</p>
 	<p>Maintaining Railgun, despite having better alternatives, creates a burden on our ability to continue investing in new solutions. Some of these tools that power Railgun are themselves approaching an end of life state. Others will likely present security risks that we are not comfortable accepting in the next few years.</p>
 	<p>We considered several options before deciding on deprecation. First, we could accept the consequences of inaction, leaving our network in a worse state and our Railgun customers in purgatory. Second, we could run Railgun on dedicated infrastructure and silo it from the rest of our network. However, that would violate our principle that every piece of hardware in Cloudflare runs every service.</p>
 	<p>Third, we could spin up a new engineering team and rebuild Railgun from scratch in a modern way. Doing so would take away from resources we could otherwise invest in newer technologies. We also believe that existing, newer products from Cloudflare solve the same problems that Railgun set out to address. Rebuilding Railgun would take away from our ability to keep shipping and would duplicate better features already released in other products. As a result, we have decided to deprecate Railgun.</p>
-	<h3>What alternatives are available?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-alternatives-are-available">What alternatives are available?</h3>
+		<a href="https://blog.cloudflare.com/#what-alternatives-are-available" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Railgun addressed a number of problems for our customers at launch. Today, we have solutions available that solve the same range of challenges in significantly improved ways.</p>
 	<p>We do not have an exact like-for-like successor for Railgun. The solutions that solve the same set of problems have also evolved with our customers. Different use cases that customers deploy Railgun to address will map to different solutions available in Cloudflare today. We have broken out some of the most common reasons that customers used Railgun and where we recommend they consider migrating.</p>
 	<p><b>“I use Railgun to maintain a persistent, secure connection to Cloudflare’s network without the need for a static publicly available IP address.”</b>Customers can deploy <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a> to connect their infrastructure to Cloudflare’s network without the need to expose a public IP address. Cloudflare Tunnel software runs in your environment, similar to the Railgun listener, and creates an outbound-only connection to Cloudflare’s network. Cloudflare Tunnel is available at no cost.</p>
@@ -54,13 +82,34 @@
 			<p>Cloudflare’s <a href="https://www.cloudflare.com/products/r2">R2 storage product</a> requires customers to pay zero egress fees as well. R2 provides global object storage with an S3-compatible API and easy migration to give customers the ability to build multi-cloud architectures.</p>
 		</li>
 	</ul>
-	<h3>What is the timeline?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-timeline">What is the timeline?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the time of this announcement, customers have eight months available to migrate away from Railgun. January 31, 2024, will be the last day that Railgun connections will be supported. Starting on February 1, 2024, existing Railgun connections will stop functioning.</p>
 	<p>Over the next few days we will prevent new Railgun deployments from being created. Zones with Railgun connections already established will continue to function during the migration window.</p>
-	<h3>How can I get help?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-get-help">How can I get help?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-get-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Contract customers can reach out to their Customer Success team to discuss additional questions or migration plans. Each of Cloudflare’s regions has a specialist available to help guide teams who need additional help during the migration.</p>
 	<p>Customers can also raise questions and provide commentary in <a href="https://community.cloudflare.com/t/cloudflare-is-deprecating-railgun/516753">this dedicated forum room</a>. We will continue to staff that discussion and respond to questions as customers share them.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Railgun customers will also receive an email notice later today about the deprecation plan and timeline. We will continue sending email notices multiple times over the next eight months leading up to the deprecation.</p>
 	<p>We are grateful to the Railgun customers who first selected Cloudflare to accelerate the applications and websites that power their business. We are excited to share the latest Cloudflare features with them that will continue to make them faster as they reach their audience.</p>
 </div>

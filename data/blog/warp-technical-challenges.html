@@ -3,7 +3,14 @@
 <div class="post-content lh-copy gray1">
 	<p>If you have seen our other post you know that <a href="https://blog.cloudflare.com/announcing-warp-plus">we released WARP</a> to the last members of our waiting list today. With WARP our goal was to secure and improve the connection between your mobile devices and the Internet. Along the way we ran into problems with phone and operating system versions, diverse networks, and our own infrastructure, all while working to meet the pent up demand of a waiting list nearly two million people long.</p>
 	<p>To understand all these problems and how we solved them we first need to give you some background on how the Cloudflare network works:</p>
-	<h2>How Our Network Works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-our-network-works">How Our Network Works</h2>
+		<a href="https://blog.cloudflare.com/#how-our-network-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare network is composed of data centers located in 194 cities and in more than 90 countries. Every Cloudflare data center is composed of many servers that receive a continual flood of requests and has to distribute those requests between the servers that handle them. We use a set of routers to perform that operation:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -38,7 +45,14 @@ forwarding-table {
   export load-balancing-policy;
 }</code></pre>
 	<p>Since the ‘next-hop’ is our server, traffic will be split across multiple machines very efficiently.</p>
-	<h2>TCP, IP, and ECMP</h2>
+	<div class="flex anchor relative">
+		<h2 id="tcp-ip-and-ecmp">TCP, IP, and ECMP</h2>
+		<a href="https://blog.cloudflare.com/#tcp-ip-and-ecmp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IP is responsible for sending packets of data from addresses like 93.184.216.34 to 208.80.153.224 (or [2606:2800:220:1:248:1893:25c8:1946] to [2620:0:860:ed1a::1] in the case of IPv6) across the Internet. It's the "Internet Protocol".</p>
 	<p>TCP (Transmission Control Protocol) operates on top of a protocol like IP which can send a packet from one place to another, and makes data transmission reliable and useful for more than one process at a time. It is responsible for taking the unreliable and misordered packets that might arrive over a protocol like IP and delivering them reliably, in the correct order. It also introduces the concept of a ‘port’, a number from 1-65535 which help route traffic on a computer or phone to a specific service (such as the web or email). Each TCP connection has a source and destination port which is included in the header TCP adds to the beginning of each packet. Without the idea of ports it would not be easy to figure out which messages were destined for which program. For example, both Google Chrome and Mail might wish to send messages over your WiFi connection at the same time, so they will each use their own port.</p>
 	<p>Here's an example of making a request for <a href="https://cloudflare.com">https://cloudflare.com/</a> at 198.41.215.162, on the default port for HTTPS: 443. My computer has randomly assigned me the port 51602 which it will listen on it for a response, which will (hopefully) receive the contents of the site:</p>
@@ -59,13 +73,27 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
     Source Port: 443
     Destination Port: 51602</code></pre>
 	<p>We can now return to ECMP! It could be theoretically possible to use ECMP to balance packets between servers randomly, but you would almost never want to do that. A message over the Internet is generally composed of multiple TCP packets. If each packet were sent to a different server it would be impossible to reconstruct the original message in any one place and act on it. Even beyond that, it would be terrible for performance: we rely on being able to maintain long-lived TCP and TLS sessions which require a persistent connection to a single server. To provide that persistence, our routers don’t balance traffic randomly, they use a combination of four values: the source address, the source port, the destination address, and the destination port. Traffic with the same combination of those four values will always make it to the same server. In the case of my example above, all of my messages destined to cloudflare.com will make it to a single server which can reconstruct the TCP packets into my request and return packets in a response.</p>
-	<h2>Enter WARP</h2>
+	<div class="flex anchor relative">
+		<h2 id="enter-warp">Enter WARP</h2>
+		<a href="https://blog.cloudflare.com/#enter-warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For a conventional request it is very important that our ECMP routing sends all of your packets to the same server for the duration of your request. Over the web a request commonly lasts less than ten seconds and the system works well. Unfortunately we quickly ran into issues with WARP.</p>
 	<p>WARP uses a session key negotiated with public-key encryption to secure packets. For a successful connection, both sides must negotiate a connection which is then only valid for that particular client and the specific server they are talking to. This negotiation takes time and has to be completed any time a client talks to a new server. Even worse, if packets get sent which expect one server, and end up at another, they can’t be decrypted, breaking the connection. Detecting those failed packets and restarting the connection from scratch takes so much time that our alpha testers experienced it as a complete loss of their Internet connection. As you can imagine, testers don’t leave WARP on very long when it prevents them from using the Internet.</p>
 	<p>WARP was experiencing so many failures because devices were switching servers much more often than we expected. If you recall, our ECMP router configuration uses a combination of (Source IP, Source Port, Destination IP, Destination Port) to match a packet to a server. Destination IP doesn’t generally change, WARP clients are always connecting to the same Anycast addresses. Similarly, Destination Port doesn’t change, we always listen on the same port for WARP traffic. The other two values, Source IP and Source Port, were changing much more frequently than we had planned.</p>
 	<p>One source of these changes was expected. WARP runs on cell phones, and cell phones commonly switch from Cellular to Wi-Fi connections. When you make that switch you suddenly go from communicating over the Internet via your cellular carrier’s (like AT&amp;T or Verizon) IP address space to that of the Internet Service Provider your Wi-Fi connection uses (like Comcast or Google Fiber). It’s essentially impossible that your IP address won’t change when you move between connections.</p>
 	<p>The port changes occurred even more frequently than could be explained by network switches however. For an understanding of why we need to introduce one more component of Internet lore: Network Address Translation.</p>
-	<h2>NAT</h2>
+	<div class="flex anchor relative">
+		<h2 id="nat">NAT</h2>
+		<a href="https://blog.cloudflare.com/#nat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An IPv4 address is composed of 32 bits (often written as four eight-bit numbers). If you exclude the reserved addresses which can’t be used, you are left with <a href="https://stackoverflow.com/questions/2437169/what-is-the-total-amount-of-public-ipv4-addresses">3,706,452,992 possible addresses</a>. This number has remained constant since IPv4 was deployed on the ARPANET in 1983, even as the number of devices has exploded (although it might go up a bit soon <a href="https://hub.packtpub.com/linux-kernel-announces-a-patch-to-allow-0-0-0-0-8-as-a-valid-address-range">if the 0.0.0.0/8 becomes available</a>). This data is based on Gartner Research predictions and estimates:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -118,7 +146,14 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	</figure>
 	<p>It's important to note that the <code>clientid</code> is only 24 bits long. That means there are less possible <code>clientid</code> values than the current number of users waiting to use WARP. This suits us well as we don't need or want the ability to track individual WARP users. <code>clientid</code> is only necessary for load balancing, once it serves its purpose we get it expunged from our systems as quickly as we can.</p>
 	<p>The load balancing system now uses a hash of the <code>clientid</code> to identify which machine a packet should be routed to, meaning &nbsp;WARP messages always arrive at the same machine even as you change networks or move from Wi-Fi to cellular, and the problem was eliminated.</p>
-	<h2>Client Software</h2>
+	<div class="flex anchor relative">
+		<h2 id="client-software">Client Software</h2>
+		<a href="https://blog.cloudflare.com/#client-software" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has never developed client software before. We take pride in selling a service anyone can use without needing to buy hardware or provision infrastructure. To make WARP work, however, we needed to deploy our code onto one of the most ubiquitous hardware platforms on Earth: smartphones.</p>
 	<p>While developing software on mobile devices has gotten steadily easier over the past decade, unfortunately developing low-level networking software remains rather difficult. To consider one example: we began the project using the latest iOS connection API called <a href="https://developer.apple.com/documentation/network">Network</a>, introduced in iOS 12. Apple strongly recommends the use of Network, in <a href="https://developer.apple.com/videos/play/wwdc2018/715">their words</a> “Your customers are going to appreciate how much better your connections, how much more reliable your connections are established, and they'll appreciate the longer battery life from the better performance.”</p>
 	<p>The Network framework provides a pleasantly high-level API which, as they say, integrates well with the native performance features built into iOS. Creating a UDP connection (connection is a bit of a misnomer, there are no connections in UDP, just packets) is as simple as:</p>
@@ -126,7 +161,14 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>And sending a message can be as easy as:</p>
 	<p><code>self.connection?.send(content: content)</code></p>
 	<p>Unfortunately, at a certain point code actually gets deployed, and bug reports begin flowing in. The first issue was the simplicity of the API made it impossible for us to process more than a single UDP packet at a time. We commonly use packets of up to 1500 bytes, running a speed test on my Google Fiber connection currently results in a speed of 370 Mbps, or almost thirty-one thousand packets per second. Attempting to process each packet individually was slowing down connections by as much as 40%. According <a href="https://forums.developer.apple.com/message/360236#360236">to Apple</a>, the best solution to get the performance we needed was to fallback to the older <a href="https://developer.apple.com/documentation/networkextension/nwudpsession">NWUDPSession</a> API, introduced in iOS 9.</p>
-	<h2>IPv6</h2>
+	<div class="flex anchor relative">
+		<h2 id="ipv6">IPv6</h2>
+		<a href="https://blog.cloudflare.com/#ipv6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we compare the code required to create a NWUDPSession to the example above you will notice that we suddenly care which protocol, IPv4 or IPv6, we are using:</p>
 	<pre class="language-swift"><code class="language-swift">let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)
 v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</code></pre>
@@ -214,7 +256,14 @@ let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fdq6gNKm10Dnla1jUQaIt/3d4bf80910796152839610f66a241456/IMG_2028-2.PNG.png" alt="" class="kg-image" width="1125" height="1019" loading="lazy">
 
 	</figure>
-	<h2>Dying Connections</h2>
+	<div class="flex anchor relative">
+		<h2 id="dying-connections">Dying Connections</h2>
+		<a href="https://blog.cloudflare.com/#dying-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Nothing is simple however, with iOS 12.2 NWUDPSession began to trigger errors which terminated connections. These errors were only identified with a code ‘55’. After some research it appears 55 has referred to the same error since the early foundations of the FreeBSD operating system OS X was originally built upon. In FreeBSD it’s commonly referred to as ENOBUFS, and it’s returned when the operating system does not have sufficient BUFfer Space to handle the operation being completed. For example, looking at the source of a FreeBSD today, you see <a href="https://github.com/freebsd/freebsd/blob/a6605d2938cce3ab84122eb8f7e12469b7d3356f/sys/netinet6/send.c#L127">this code</a> in its IPv6 implementation:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -244,7 +293,14 @@ Unlike `happyEyeballs`, this function will use viability as its only success cri
 func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</code></pre>
 	<p>Using reconnect we are able to recreate sessions broken by code 55 errors, but it still adds a latency hit which is not ideal. As with all client software development on a closed-source platform however, we are dependent on the platform to identify and fix platform-level bugs.</p>
 	<p>Truthfully, this is just one of a <a href="https://forums.developer.apple.com/thread/121648">long</a> <a href="https://forums.developer.apple.com/thread/95387">list</a> <a href="https://openradar.appspot.com/39743361">of</a> platform-specific bugs we ran into building WARP. We hope to continue working with device vendors to get them fixed. There are an unimaginable number of device and connection combinations, and each connection doesn’t just exist at one moment in time, they are always changing, entering and leaving broken states almost faster than we can track. Even now, getting WARP to work on every device and connection on Earth is not a solved problem, we still get daily bug reports which we work to triage and resolve.</p>
-	<h2>WARP+</h2>
+	<div class="flex anchor relative">
+		<h2 id="warp">WARP+</h2>
+		<a href="https://blog.cloudflare.com/#warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WARP is meant to be a place where we can apply optimizations which make the Internet better. We have a lot of experience making websites more performant, WARP is our opportunity to experiment with doing the same for all Internet traffic.</p>
 	<p>At Cloudflare we have a product called <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a>. Argo makes websites' time to first byte more than 30% faster on average by continually monitoring thousands of routes over the Internet between our data centers. That data builds a database which maps every IP address range with the fastest possible route to every destination. When a packet arrives it first reaches the closest data center to the client, then that data center uses data from our tests to discover the route which will get the packet to its destination with the lowest possible latency. You can think of it like a traffic-aware GPS for the Internet.</p>
 	<p>Argo has historically only operated on HTTP packets. HTTP is the protocol which powers the web, sending messages which load websites on top of TCP and IP. For example, if I load <a href="http://zack.is">http://zack.is</a>/, an HTTP message is sent inside a TCP packet:</p>
@@ -286,7 +342,14 @@ Application: warp\r\n
 
 	</figure>
 	<p>Smart routing is just the beginning of WARP+; We have a long list of projects and plans which are all aimed at making your Internet faster, and couldn’t be more thrilled to finally have a platform to test them with.</p>
-	<h2>Our Mission</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-mission">Our Mission</h2>
+		<a href="https://blog.cloudflare.com/#our-mission" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, after well over a year of development, WARP is available to you and to your friends and family. For us though, this is just the beginning. With the ability to improve full network connection for all traffic, we unlock a whole new world of optimizations and security improvements which were simply impossible before. We couldn't be more excited to experiment, play, and eventually release, all sorts of new WARP and WARP+ features.</p>
 	<p>Cloudflare’s mission is to help build a better Internet. If we are willing to experiment and solve hard technical problems together we believe we can help make the future of the Internet better than the Internet of today, and we are all grateful to play a part in that. Thank you for trusting us with your Internet connection.</p>
 	<p><i>WARP was built by Oli Yu, Vlad Krasnov, Chris Branch, Dane Knecht, Naga Tripirineni, Andrew Plunk, Adam Schwartz, Irtefa, and intern Michelle Chen with support from members of our Austin, San Francisco, Champaign, London, Warsaw, and Lisbon offices.</i></p>

@@ -1,19 +1,55 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kNMhxd9fAFFv38cxFLYWp/a2e5a32702143d41a6042eb9f789ea30/how-argo-tunnel-engineering-uses-argo-tunnel.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Whether you are managing a fleet of machines or sharing a private site from your localhost, Argo Tunnel is here to help. On the Argo Tunnel team we help make origins accessible from the Internet in a secure and seamless manner. We also care deeply about productivity and developer experience for the team, so naturally we want to make sure we have a development environment that is reliable, easy to set up and fast to iterate on.</p>
-	<h2>A brief history of our development environment (dev-stack)</h2>
-	<h3>Docker compose</h3>
+	<div class="flex anchor relative">
+		<h2 id="a-brief-history-of-our-development-environment-dev-stack">A brief history of our development environment (dev-stack)</h2>
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-our-development-environment-dev-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="docker-compose">Docker compose</h3>
+		<a href="https://blog.cloudflare.com/#docker-compose" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When our development team was still small, we used a docker-compose file to orchestrate the services needed to develop Argo Tunnel. There was no native support for hot reload, so every time an engineer made a change, they had to restart their dev-stack.</p>
 	<p>We could hack around it to hot reload with docker-compose, but when that failed, we had to waste time debugging the internals of Docker. As the team grew, we realized we needed to invest in improving our dev stack.</p>
 	<p>At the same time Cloudflare was in the process of migrating from Marathon to kubernetes (k8s). We set out to find a tool that could detect changes in source code and automatically upgrade pods with new images.</p>
-	<h3>Skaffold + Minikube</h3>
+	<div class="flex anchor relative">
+		<h3 id="skaffold-minikube">Skaffold + Minikube</h3>
+		<a href="https://blog.cloudflare.com/#skaffold-minikube" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Initially <a href="https://skaffold.dev/docs/quickstart">Skaffold</a> seemed to match the criteria. It watches for change in source code, builds new images and deploys applications onto any k8s. Following Skaffold’s tutorial, we picked minikube as the local k8s, but together they didn’t meet our expectations. Port forwarding wasn’t stable, we got frequent connections refused or timeout.</p>
 	<p>In addition, iteration time didn’t improve, because spinning up minikube takes a long time and it doesn’t use the host's docker registry and so it can’t take advantage of caching. At this point we considered reverting back to using docker compose, but the k8s ecosystem is booming, so we did some more research.</p>
-	<h3>Tilt + Docker for mac k8s</h3>
+	<div class="flex anchor relative">
+		<h3 id="tilt-docker-for-mac-k8s">Tilt + Docker for mac k8s</h3>
+		<a href="https://blog.cloudflare.com/#tilt-docker-for-mac-k8s" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Eventually we found a great <a href="https://docs.tilt.dev/choosing_clusters.html">blog post</a> from Tilt comparing different options for local k8s, and they seem to be solving the exact problem we are having. Tilt is a tool that makes local development on k8s easier. It detects changes in local sources and updates your deployment accordingly.</p>
 	<p>In addition, it supports live updates without having to rebuild containers, a process that used to take around 20 minutes. With live updates, we can copy the newest source into the container, run <code>cargo build</code> within the container, and restart the service without building a new image. Following Tilt’s blog post, we switched to Docker for Mac’s built-in k8s. Combining Tilt and Docker for Mac k8s, we finally have a development environment that meets our needs.</p>
 	<p>Rust services that could take 20 minutes to rebuild now take less than a minute.</p>
-	<h2>Collaborating with a distributed team</h2>
+	<div class="flex anchor relative">
+		<h2 id="collaborating-with-a-distributed-team">Collaborating with a distributed team</h2>
+		<a href="https://blog.cloudflare.com/#collaborating-with-a-distributed-team" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We reached a much happier state with our dev-stack, but one problem remained: we needed a way to share it. As our teams became distributed with people in Austin, Lisbon and Seattle, we needed better ways to help each other.</p>
 	<p>One day, I was helping our newest member understand an error observed in <code>cloudflared</code>, Argo Tunnel’s command line interface (CLI) client. I knew the error could either originate from the backend service or a mock API gateway service, but I couldn’t tell for sure without looking at logs.</p>
 	<p>To get them, I had to ask our new teammate to manually send me the logs of the two services. By the time I discovered the source of the error, reviewed the deployment manifest, and determined the error was caused by a secret set as an empty string, two full hours had elapsed!</p>
@@ -27,7 +63,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5WXj2BDFGXX2TzlcH5b5y0/dbb6cb6c3f8bb67119f71cd8807ec891/image5-3.png" alt="" class="kg-image" width="1001" height="261" loading="lazy">
 
 	</figure>
-	<h2>Working example</h2>
+	<div class="flex anchor relative">
+		<h2 id="working-example">Working example</h2>
+		<a href="https://blog.cloudflare.com/#working-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Your team can use the same model to develop remotely. Here’s how to get started.</p>
 	<ol>
 		<li>

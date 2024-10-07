@@ -7,19 +7,47 @@
 	</figure>
 	<p>Starting today, we’re excited to share that you can now shift another traditional client-driven use case to a browser. Teams can now provide their users with a Virtual Network Computing (VNC) client fully rendered in the browser with built-in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust controls</a>.</p>
 	<p>Like the <a href="https://blog.cloudflare.com/browser-ssh-terminal-with-auditing">SSH flow</a>, this allows users to connect from any browser on any device, with no client software needed. The feature runs in every one of our data centers in over 200 cities around the world, bringing the experience closer to your end users. We also built the experience using Cloudflare Workers, to offer nearly instant start times. In the future we will support full auditability of user actions in their VNC and SSH sessions.</p>
-	<h3>A quick refresher on VNC</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-quick-refresher-on-vnc">A quick refresher on VNC</h3>
+		<a href="https://blog.cloudflare.com/#a-quick-refresher-on-vnc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Virtual_Network_Computing">VNC</a> is a desktop sharing platform built on top of the Remote Frame Buffer protocol that allows for a GUI on any server. It is built to be platform-independent and provides an easy way for administrators to make interfaces available to users that are less comfortable with a command-line to work with a remote machine. Or to complete work better suited for a visual interface.</p>
 	<p>In my case, the most frequent reason I use VNC is to play games that have compatibility issues. Using a virtual machine to run a Windows Server was much cheaper than buying a new laptop.</p>
 	<p>In most business use cases, VNC isn’t used to play games, it’s driven by security or IT management requirements. VNC can be beneficial to create a “clean room” style environment for users to interact with secure information that cannot be moved to their personal machine.</p>
-	<h3>How VNC is traditionally deployed</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-vnc-is-traditionally-deployed">How VNC is traditionally deployed</h3>
+		<a href="https://blog.cloudflare.com/#how-vnc-is-traditionally-deployed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Typically, VNC deployments require software to be installed onto a user’s machine. This software allows a user to establish a VNC connection and render the VNC server’s GUI. This comes with challenges of operating system compatibility (remember how VNC was supposed to be platform independent?), security, and management overhead.</p>
 	<p>Managing software like a VNC viewer typically requires Mobile Device Management (MDM) software or users making individual changes to their machines. This is further complicated by contractors and external users requiring access via VNC.</p>
-	<h3>Challenges with VNC deployments</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-with-vnc-deployments">Challenges with VNC deployments</h3>
+		<a href="https://blog.cloudflare.com/#challenges-with-vnc-deployments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>VNC is often used to create an environment for a user to interact with sensitive data. However, it can be very difficult to monitor when a user makes a connection to a VNC server and then what they do during their session, without significant network configuration.</p>
 	<p>On top of the security concerns, software installed on a user’s machine, like a VNC viewer, is generally difficult to manage — think compatibility issues with operating systems, security updates, and many other problems.</p>
 	<p>Unlike <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>, where the majority of servers and clients predominantly use OpenSSH, there are numerous commercial and free VNC servers / clients in various states of quality and cost.</p>
 	<p>We wanted to fix this!</p>
-	<h3>It was time for Browser VNC</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-was-time-for-browser-vnc">It was time for Browser VNC</h3>
+		<a href="https://blog.cloudflare.com/#it-was-time-for-browser-vnc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One major challenge of rendering a GUI is latency — if a user’s mouse or keystrokes are slow, the experience is almost unusable. Using Cloudflare Tunnel, we can deliver the VNC connection at our edge, meaning we’re less than &lt;50 ms away from 99% of Internet users.</p>
 	<p>To do this we built a full VNC viewer implementation that runs in a web browser. Something like this would normally require running a server-side TCP → WebSocket proxy (eg. websockify since TCP connections are not natively supported in browsers today). Since we already have exactly this with cloudflared + Cloudflare Tunnel, we can connect to existing TCP tunnels and provide an entirely in-browser VNC experience. Because the server-side proxy happens at the TCP level, the VNC session is end-to-end encrypted between the web client and the VNC server within your network.</p>
 	<figure class="kg-card kg-image-card ">
@@ -41,7 +69,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1l8CwOyzBTOphseoR6uFUq/6e29d910df409782970537fd509a6c4f/image5-4.png" alt="" class="kg-image" width="927" height="645" loading="lazy">
 
 	</figure>
-	<h3>Why Browser Based is the future</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-browser-based-is-the-future">Why Browser Based is the future</h3>
+		<a href="https://blog.cloudflare.com/#why-browser-based-is-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First and foremost, a browser-based experience is straightforward for users. All they need is an Internet connection and URL to access their SSH and VNC instances. Previously they needed software like a puTTY client and RealVNC.</p>
 	<p>Legacy applications, including VNC servers, serve as another attack vector for malicious users because they are difficult to monitor and keep patched with security updates. VNC based in the browser means that we can push security updates instantly. As well as taking advantage of built-in security features of modern browsers (e.g. <a href="https://www.chromium.org/chromium-os/developer-guide/chromium-os-sandboxing">chromium sandboxing</a>).</p>
 	<p>Visibility is another major improvement. In future releases, we will support screen recording and network request logging to provide detailed information on exactly what was completed during a VNC session. We already provide clear logs on any time a user accesses their VNC or SSH server via the browser.</p>
@@ -50,7 +85,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xgXpUjkHhOh5wgLkHFxj3/77fe97197aa8b6062397985871d05567/image4-8.png" alt="" class="kg-image" width="1464" height="581" loading="lazy">
 
 	</figure>
-	<h3>We’re just getting started!</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-just-getting-started">We’re just getting started!</h3>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Browser VNC is available now in every Cloudflare for Teams plan. You can get started for up to 50 users at no cost <a href="https://www.cloudflare.com/teams">here</a>.</p>
 	<p>Soon we’ll be announcing our plans to support additional protocols only available in on-prem deployments. Let us know in the <a href="https://community.cloudflare.com/t/feedback-for-browser-vnc/280619">Community</a> if there are particular protocols you would like us to consider!</p>
 	<p>If you have questions about getting started, feel free to post in the community. If you would like to get started today, follow our <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/vnc-client-in-browser">step-by-step tutorial</a>.</p>

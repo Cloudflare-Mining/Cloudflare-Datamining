@@ -5,14 +5,35 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LGGPwBbcwri0fn60opcSq/b36cf5210208537312ad821f4225c168/illustration-ssl-certificate.png" alt="" class="kg-image" width="645" height="200" loading="lazy">
 
 	</figure>
-	<h3>Free and performant encryption to the origin for CloudFlare customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="free-and-performant-encryption-to-the-origin-for-cloudflare-customers">Free and performant encryption to the origin for CloudFlare customers</h3>
+		<a href="https://blog.cloudflare.com/#free-and-performant-encryption-to-the-origin-for-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the fall of 2014 CloudFlare <a href="https://blog.cloudflare.com/introducing-universal-ssl">launched Universal SSL</a> and doubled the number of sites on the Internet accessible via HTTPS. In just a few days we issued certificates protecting millions of our customers’ domains and became the easiest way to secure your website with SSL/TLS.</p>
 	<p>At the time, we "strongly recommend[ed] that site owners install a certificate on their web servers so we can encrypt traffic to the origin." This recommendation was followed by a <a href="https://blog.cloudflare.com/origin-server-connection-security-with-universal-ssl">blog post</a> describing two readily-available options for doing so—creating a self-signed certificate and purchasing a publicly trusted certificate—and a third, still-in-beta option: using our private CA. Even though out-of-pocket costs of acquiring public CA certificates <a href="https://letsencrypt.org">have since fallen to $0</a> since that post, we have continued to receive requests from our customers for an even easier (and more performant) option.</p>
 	<p>Operating a public certificate authority is difficult because you don't directly control either endpoint of the HTTPS connection (browser or web server). As a result, public CAs are limited both in their ability to issue certificates optimized for inter-server communication, as well as in their ability to revoke certificates if they are compromised. Our situation at CloudFlare is markedly different: we affirmatively control the edge of our network so we have the flexibility to build and operate a secure CA that’s capable of issuing highly streamlined certificates and ensuring they are utilized securely.</p>
-	<h3>Less is more: removing the extraneous</h3>
+	<div class="flex anchor relative">
+		<h3 id="less-is-more-removing-the-extraneous">Less is more: removing the extraneous</h3>
+		<a href="https://blog.cloudflare.com/#less-is-more-removing-the-extraneous" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Origin CA, we questioned all aspects of certificate issuance and browser validation, from domain control validation (DCV) to path bundling and revocation checking. We asked ourselves what cruft public CAs would remove from certificates if they only needed to work with one browser, whose codebase they maintained? Questions such as "why bloat certificates with intermediate CAs when they only need to speak with our NGINX-based reverse proxy" and "why force customers to reconfigure their web or name server to pass DCV checks when they’ve already demonstrated control during zone onboarding?" helped shape our efforts.</p>
 	<p>The result of us asking these questions and removing anything not needed to secure the connection between our servers and yours is described below, along with the benefits you may see and the interfaces you may use. We’re excited to introduce this third option for protecting your origin—more secure than self-signed certificates and more convenient, performant, and cost effective than publicly trusted certificates—and look forward to hearing about all the various ways you may use it.</p>
-	<h3>What are the incremental benefits of Origin CA over public certificates?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-incremental-benefits-of-origin-ca-over-public-certificates">What are the incremental benefits of Origin CA over public certificates?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-incremental-benefits-of-origin-ca-over-public-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>1. Ease of issuance and renewal</h4>
 	<p>The most difficult and time-consuming part of securing your origin with TLS is obtaining—and renewing—a certificate. Or many certificates if you’re using a provider that doesn’t support wildcards. Often this process requires intimate knowledge of OpenSSL or related command line tools, a reconfiguration of your web or DNS server to accommodate domain control validation, and a regularly scheduled reminder or cron job to perform this process again every year (or even every few months). With Origin CA, we took the opportunity to remove as many of these obstacles as possible.</p>
 	<p>Customers more comfortable in the GUI can, with just two clicks, securely generate a private key and wildcard certificate that will be trusted by our systems for anywhere from 7 days to 15 years. And those who prefer more control over the process can use our API or CLI to issue certificates of specified validity, key type, and key size. Regardless of the user interface chosen, the potentially complicated validation process has been replaced by a simple API key now available in your account on the CloudFlare dashboard; we’ve already verified you control your zone, there’s no need to prove it again.</p>
@@ -50,7 +71,15 @@ patriots.com    SSL handshake has read 4507 bytes and written 499 bytes
 
 $ openssl s_client -connect [ORIGIN_IP]:443 -servername [ORIGIN_HOSTNAME] 2&gt;/dev/null &lt;/dev/null | grep "has read"
 SSL handshake has read 1289 bytes and written 496 bytes</code></pre>
-	<h3>How can Origin CA be used?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="how-can-origin-ca-be-used">How can Origin CA be used?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-origin-ca-be-used" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you've learned why you may want to use Origin CA-issued certificates on your origin, let’s explore the various interfaces you have for issuing (and revoking) them. Effective immediately, certificates for your origin can be issued in an automated fashion through our <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin/#2apiapplicationprogramminginterface">API</a> or <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin#3clicommandlineinterfacelinuxonly">CLI</a>, or through a guided wizard in the Crypto app on the <a href="https://www.cloudflare.com">CloudFlare Dashboard</a>. Each of the three available methods is described below along with examples:</p>
 	<h4>1. GUI: Crypto app in the CloudFlare Dashboard</h4>
 	<p>To get started, login to <a href="https://www.cloudflare.com/a/login">the dashboard</a> and click on the Crypto icon.</p>
@@ -155,7 +184,15 @@ $ cat wildcard.foo.com.pem | openssl x509 -noout -text | grep "Not After\|Public
 Not After : May &nbsp;3 19:19:00 2016 GMT
 Public Key Algorithm: id-ecPublicKey
 DNS:*.foo.com, DNS:*.bar.com</code></pre>
-	<h3>Final Recommendations &amp; Feedback</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="final-recommendations-feedback">Final Recommendations &amp; Feedback</h3>
+		<a href="https://blog.cloudflare.com/#final-recommendations-feedback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you use Origin CA to generate certificates and secure your origin servers, keep these recommendations in mind:</p>
 	<ol>
 		<li>

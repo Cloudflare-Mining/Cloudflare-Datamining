@@ -19,7 +19,14 @@
 	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com">League of Entropy</a>. The League of Entropy is a network of beacons that produces <i>distributed</i>, <i>publicly verifiable</i> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand">drand project</a>.</p>
 	<p>Verifiable randomness is essential for ensuring trust in various institutional decision-making processes such as <a href="https://blog.cloudflare.com/league-of-entropy">elections and lotteries</a>. There are also cryptographic applications that require verifiable randomness. In the land of decentralized consensus mechanisms, the <a href="https://dfinity.org/static/dfinity-consensus-0325c35128c72b42df7dd30c22c41208.pdf">DFINITY approach</a> uses random seeds to decide the outcome of leadership elections. In this setting, it is essential that the randomness is publicly verifiable so that the outcome of the leadership election is trustworthy. Such a situation arises more generally in <a href="https://en.wikipedia.org/wiki/Sortition">Sortitions</a>: an election where leaders are selected as a random individual (or subset of individuals) from a larger set.</p>
 	<p>In this blog post, we will give a technical overview behind the cryptography used in the distributed randomness beacon, and how it can be used to generate publicly verifiable randomness. We believe that distributed randomness beacons have a huge amount of utility in realizing the <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Internet of the Future</a>; where we will be able to rely on distributed, decentralized solutions to problems of a global-scale.</p>
-	<h2>Randomness &amp; entropy</h2>
+	<div class="flex anchor relative">
+		<h2 id="randomness-entropy">Randomness &amp; entropy</h2>
+		<a href="https://blog.cloudflare.com/#randomness-entropy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A source of randomness is measured in terms of the amount of <i>entropy</i> it provides. Think about the entropy provided by a random output as a score to indicate how “random” the output actually is. The notion of information entropy was concretised by the famous scientist Claude Shannon in his paper <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">A Mathematical Theory of Communication</a>, and is sometimes known as <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)"><i>Shannon Entropy</i></a>.</p>
 	<p>A common way to think about random outputs is: a sequence of bits derived from some random outcome. For the sake of an argument, consider a fair 8-sided dice roll with sides marked 0-7. The outputs of the dice can be written as the bit-strings <code>000,001,010,...,111</code>. Since the dice is fair, any of these outputs is equally likely. This is means that each of the bits is equally likely to be <code>0</code> or <code>1</code>. Consequently, interpreting the output of the dice roll as a random output then derives randomness with <code>3</code> bits of entropy.</p>
 	<p>More generally, if a perfect source of randomness guarantees strings with <code>n</code> bits of entropy, then it generates bit-strings where each bit is equally likely to be <code>0</code> or <code>1</code>. This allows us to predict the value of any bit with maximum probability <code>1/2</code>. If the outputs are sampled from such a perfect source, we consider them <i>uniformly distributed</i>. If we sample the outputs from a source where one bit is predictable with higher probability, then the string has <code>n-1</code> bits of entropy. To go back to the dice analogy, rolling a 6-sided dice provides less than <code>3</code> bits of entropy because the possible outputs are <code>000,001,010,011,100,101</code> and so the 2nd and 3rd bits are more likely to be to set to <code>0</code> than to <code>1</code>.</p>
@@ -49,10 +56,24 @@
 	</figure>
 	<p>Unfortunately, these phenomena require very specific measuring tools, which are prohibitively expensive to install in mainstream consumer electronics. As such, most personal computing devices usually use external usage characteristics for seeding specific generator functions that output randomness as and when the system requires it. These characteristics include keyboard typing patterns and speed and mouse movement – since such usage patterns are based on the human user, it is assumed they provide sufficient entropy as a randomness source. An example of a random number generator that takes entropy from these characteristics is the Linux-based <a href="https://en.wikipedia.org/wiki/RdRand">RDRAND</a> function.</p>
 	<p>Naturally, it is difficult to tell whether a system is <i>actually</i> returning random outputs by only inspecting the outputs. There are statistical tests that detect whether a series of outputs is not uniformly distributed, but these tests cannot ensure that they are unpredictable. This means that it is hard to detect if a given system has had its randomness generation compromised.</p>
-	<h2>Distributed randomness</h2>
+	<div class="flex anchor relative">
+		<h2 id="distributed-randomness">Distributed randomness</h2>
+		<a href="https://blog.cloudflare.com/#distributed-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s clear we need alternative methods for sampling randomness so that we can provide guarantees that trusted mechanisms, such as elections and lotteries, take place in secure tamper-resistant environments. The <a href="https://github.com/dedis/drand">drand</a> project was started by researchers at <a href="https://www.epfl.ch/about">EPFL</a> to address this problem. The drand charter is to provide an easily configurable randomness beacon running at geographically distributed locations around the world. The intention is for each of these beacons to generate portions of randomness that can be combined into a single random string that is publicly verifiable.</p>
 	<p>This functionality is achieved using <i>threshold cryptography</i>. Threshold cryptography seeks to derive solutions for standard cryptographic problems by combining information from multiple distributed entities. The notion of the threshold means that if there are <code>n</code> entities, then any <code>t</code> of the entities can combine to construct some cryptographic object (like a ciphertext, or a digital signature). These threshold systems are characterised by a setup phase, where each entity learns a <i>share</i> of data. They will later use this share of data to create a combined cryptographic object with a subset of the other entities.</p>
-	<h3>Threshold randomness</h3>
+	<div class="flex anchor relative">
+		<h3 id="threshold-randomness">Threshold randomness</h3>
+		<a href="https://blog.cloudflare.com/#threshold-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the case of a distributed randomness protocol, there are <code>n</code> <i>randomness beacons</i> that broadcast random values sampled from their initial data share, and the current state of the system. This data share is created during a trusted setup phase, and also takes in some internal random value that is generated by the beacon itself.</p>
 	<p>When a user needs randomness, they send requests to some number <code>t</code> of beacons, where <code>t &lt; n</code>, and combine these values using a specific procedure. The result is a random value that can be verified and used for public auditing mechanisms.</p>
 	<figure class="kg-card kg-image-card ">
@@ -68,10 +89,24 @@
 	</figure>
 	<p>If <code>c</code> exceeds <code>t</code> then the random values produced by the system become predictable and the notion of randomness is lost. In summary, the distributed randomness procedure provides verifiably random outputs with sufficient entropy only when <code>c &lt; t</code>.</p>
 	<p>By distributing the beacons independent of each other and in geographically disparate locations, the probability that <code>t</code> locations can be corrupted at any one time is extremely low. The minimum choice of <code>t</code> is equal to <code>n/2</code>.</p>
-	<h2>How does it actually work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-actually-work">How does it actually work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-actually-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What we described above sounds a bit like magic<sup>tm</sup>. Even if <code>c = t-1</code>, then we can ensure that the output is indeed random and unpredictable! To make it clearer how this works, let’s dive a bit deeper into the underlying cryptography.</p>
 	<p>Two core components of drand are: a <i>distributed key generation</i> (DKG) procedure, and a <i>threshold signature scheme</i>. These core components are used in setup and randomness generation procedures, respectively. In just a bit, we’ll outline how drand uses these components (without navigating too deeply into the onerous mathematics).</p>
-	<h3>Distributed key generation</h3>
+	<div class="flex anchor relative">
+		<h3 id="distributed-key-generation">Distributed key generation</h3>
+		<a href="https://blog.cloudflare.com/#distributed-key-generation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At a high-level, the DKG procedure creates a distributed secret key that is formed of <code>n</code> different key pairs <code>(vk_i, sk_i)</code>, each one being held by the entity <code>i</code> in the system. These key pairs will eventually be used to instantiate a <code>(t,n)</code>-threshold signature scheme (we will discuss this more later). In essence, <code>t</code> of the entities will be able to combine to construct a valid signature on any message.</p>
 	<p>To think about how this might work, consider a distributed key generation scheme that creates <code>n</code> distributed keys that are going to be represented by pizzas. Each pizza is split into <code>n</code> slices and one slice from each is secretly passed to one of the participants. Each entity receives one slice from each of the different pizzas (<code>n</code> in total) and combines these slices to form their own pizza. Each combined pizza is unique and secret for each entity, representing their own key pair.</p>
 	<h4>Mathematical intuition</h4>
@@ -99,7 +134,14 @@
 	<p>By running <code>n</code> parallel instances of the secret sharing scheme, each entity receives <code>n</code> shares and then combines all of these to form their overall key pair <code>(vk_i, sk_i)</code>.</p>
 	<p>The DKG procedure uses <code>n</code> parallel secret sharing procedures along with <a href="https://link.springer.com/chapter/10.1007/3-540-46766-1_9">Pedersen commitments</a> to distribute the key pairs. We explain in the next section how this procedure is part of the procedure for provisioning randomness beacons.</p>
 	<p>In summary, it is important to remember that <b>each party</b> in the DKG protocol generates a random secret key from the <code>n</code> shares that they receive, and they compute the corresponding public key from this. We will now explain how each entity uses this key pair to perform the cryptographic procedure that is used by the drand protocol.</p>
-	<h3>Threshold signature scheme</h3>
+	<div class="flex anchor relative">
+		<h3 id="threshold-signature-scheme">Threshold signature scheme</h3>
+		<a href="https://blog.cloudflare.com/#threshold-signature-scheme" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remember: a standard signature scheme considers a key-pair <code>(vk,sk)</code>, where <code>vk</code> is a public verification key and <code>sk</code> is a private signing key. So, messages <code>m</code> signed with <code>sk</code> can be verified with <code>vk</code>. The security of the scheme ensures that it is difficult for anybody who does not hold <code>sk</code> to compute a valid signature for any message <code>m</code>.</p>
 	<p>A <i>threshold signature scheme</i> allows a set of users holding distributed key-pairs <code>(vk_i,sk_i)</code> to compute intermediate signatures <code>u_i</code> on a given message <code>m</code>.</p>
 	<p>Given knowledge of some number <code>t</code> of intermediate signatures <code>u_i</code>, a valid signature <code>u</code> on the message <code>m</code> can be reconstructed under the combined secret key <code>sk</code>. The public key <code>vk</code> can also be inferred using knowledge of the public keys <code>vk_i</code>, and then this public key can be used to verify <code>u</code>.</p>
@@ -109,7 +151,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SpuFg5fE6Trs3KhVfGeQq/f10fead03ece321cda2a39fc2c2e863b/threshold-sig-3-.png" alt="" class="kg-image" width="960" height="720" loading="lazy">
 
 	</figure>
-	<h3>drand protocol</h3>
+	<div class="flex anchor relative">
+		<h3 id="drand-protocol">drand protocol</h3>
+		<a href="https://blog.cloudflare.com/#drand-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>n</code> beacons that will take part in the drand project are identified. In the trusted setup phase, the DKG protocol from above is run, and each beacon effectively creates a key pair <code>(vk_i, sk_i)</code> for a threshold signature scheme. In other words, this key pair will be able to generate intermediate signatures that can be combined to create an entire signature for the system.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -118,17 +167,45 @@
 	</figure>
 	<p>For each round (occurring once a minute, for example), the beacons agree on a signature <code>u</code> evaluated over a message containing the previous round’s signature and the current round’s number. This signature <code>u</code> is the result of combining the intermediate signatures <code>u_i</code> over the same message. Each intermediate signature <code>u_i</code> is created by each of the beacons using their secret <code>sk_i</code>.</p>
 	<p>Once this aggregation completes, each beacon displays the signature for the current round, along with the previous signature and round number. This allows any client to publicly verify the signature over this data to verify that the beacons honestly aggregate. This provides a chain of verifiable signatures, extending back to the first round of output. In addition, there are threshold signature schemes that output signatures that are indistinguishable from random sequences of bytes. Therefore, these signatures can be used directly as verifiable randomness for the applications we discussed previously.</p>
-	<h3>What does drand use?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-does-drand-use">What does drand use?</h3>
+		<a href="https://blog.cloudflare.com/#what-does-drand-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To instantiate the required threshold signature scheme, drand uses the <code>(t,n)</code>-<a href="https://www.iacr.org/archive/pkc2003/25670031/25670031.pdf">BLS signature scheme</a> of Boneh, Lynn and Shacham. In particular, we can instantiate this scheme in the elliptic curve setting using &nbsp;<a href="https://github.com/dfinity/bn">Barreto-Naehrig</a> curves. Moreover, the BLS signature scheme outputs sufficiently large signatures that are randomly distributed, giving them enough entropy to be sources of randomness. Specifically the signatures are randomly distributed over 64 bytes.</p>
 	<p>BLS signatures use a specific form of mathematical operation known as a <i>cryptographic pairing</i>. Pairings can be computed in certain elliptic curves, including the Barreto-Naehrig curve configurations. A detailed description of pairing operations is beyond the scope of this blog post; though it is important to remember that these operations are integral to how BLS signatures work.</p>
 	<p>Concretely speaking, all drand cryptographic operations are carried out using a library built on top of Cloudflare's implementation of the <a href="https://github.com/cloudflare/bn256/tree/lattices">bn256 curve</a>. The Pedersen DKG protocol follows the design of <a href="https://link.springer.com/article/10.1007/s00145-006-0347-3">Gennaro et al.</a>.</p>
-	<h3>How does it work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">How does it work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The randomness beacons are synchronised in rounds. At each round, a beacon produces a new signature <code>u_i</code> using its private key <code>sk_i</code> on the previous signature generated and the round ID. These signatures are usually broadcast on the URL <code>drand.&lt;host&gt;.com/api/public</code>. These signatures can be verified using the keys <code>vk_i</code> and over the same data that is signed. By signing the previous signature and the current round identifier, this establishes a chain of trust for the randomness beacon that can be traced back to the original signature value.</p>
 	<p>The randomness can be retrieved by combining the signatures from each of the beacons using the threshold property of the scheme. This reconstruction of the signature <code>u</code> from each intermediate signature <code>u_i</code> is done internally by the League of Entropy nodes. Each beacon broadcasts the entire signature <code>u</code>, that can be accessed over the HTTP endpoint above.</p>
-	<h2>The drand beacon</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-drand-beacon">The drand beacon</h2>
+		<a href="https://blog.cloudflare.com/#the-drand-beacon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we mentioned at the start of this blog post, Cloudflare has launched our <a href="https://blog.cloudflare.com/league-of-entropy">distributed randomness beacon</a>. This beacon is part of a network of beacons from different institutions around the globe that form the <a href="https://leagueofentropy.com">League of &nbsp;Entropy</a>.</p>
 	<p>The Cloudflare beacon uses <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand</a> as its internal source of randomness for the DKG. Other League of Entropy drand beacons have their own sources of randomness.</p>
-	<h3>Give me randomness!</h3>
+	<div class="flex anchor relative">
+		<h3 id="give-me-randomness">Give me randomness!</h3>
+		<a href="https://blog.cloudflare.com/#give-me-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>The below API endpoints are obsolete. Please see <a href="https://drand.love">https://drand.love</a> for the most up-to-date documentation.</p>
 	</blockquote>
@@ -173,7 +250,14 @@
 			<p><a href="https://drand.zerobyte.io:8888">https://drand.zerobyte.io:8888</a></p>
 		</li>
 	</ul>
-	<h2>Randomness &amp; the future</h2>
+	<div class="flex anchor relative">
+		<h2 id="randomness-the-future">Randomness &amp; the future</h2>
+		<a href="https://blog.cloudflare.com/#randomness-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare will continue to take an active role in the drand project, both as a contributor and by running a randomness beacon with the League of Entropy. The League of Entropy is a worldwide joint effort of individuals and academic institutions. We at Cloudflare believe it can help us realize the mission of helping Build a Better Internet. For more information on Cloudflare's participation in the League of Entropy, visit <a href="https://leagueofentropy.com">https://leagueofentropy.com</a> or read <a href="https://blog.cloudflare.com/league-of-entropy">Dina's blog post</a>.</p>
 	<p>Cloudflare would like to thank all of their collaborators in the League of Entropy; from EPFL, UChile, Kudelski Security and Protocol Labs. This work would not have been possible without the work of those who contributed to the <a href="https://github.com/dedis/drand">open-source drand project</a>. We would also like to thank and appreciate the work of Gabbi Fisher, Brendan McMillion, and Mahrud Sayrafi in launching the Cloudflare randomness beacon.</p>
 </div>

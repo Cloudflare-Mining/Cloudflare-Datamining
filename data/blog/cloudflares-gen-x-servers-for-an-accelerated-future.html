@@ -13,7 +13,15 @@
 	<p>We use Anycast to route a web request to the nearest Cloudflare data center (from among <a href="https://www.cloudflare.com/network">200 cities</a>), improving performance and maximizing the surface area to fight attacks.</p>
 	<p>Once a datacenter is selected, we use Unimog, Cloudflare’s custom load balancing system, to dynamically balance requests across diverse generations of servers. We load balance at different layers: between cities, between physical deployments located across a city, between external Internet ports, between internal cables, between servers, and even between logical CPU threads within a server.</p>
 	<p>As demand grows, we can scale out by simply adding new servers, points of presence (PoPs), or cities to the global pool of available resources. If any server component has a hardware failure, it is gracefully de-prioritized or removed from the pool, to be batch repaired by our operations team. This architecture has enabled us to have no dedicated Cloudflare staff at any of the 200 cities, instead relying on help for infrequent physical tasks from the ISPs (or data centers) hosting our equipment.</p>
-	<h3>Gen X: Intel Not Inside</h3>
+	<div class="flex anchor relative">
+		<h3 id="gen-x-intel-not-inside">Gen X: Intel Not Inside</h3>
+		<a href="https://blog.cloudflare.com/#gen-x-intel-not-inside" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2cA2rKV0dU3II6avmDY7BS/7d3fc5248480acb6d397e502df2e0e04/AMD_EPYC-39.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
@@ -29,7 +37,15 @@
 	<p><i>Intel-based Gen 9 server</i></p>
 	<p>This time, AMD is inside.</p>
 	<p>We were particularly impressed by the 2nd Gen AMD EPYC processors because they proved to be far more efficient for our customers’ workloads. Since the pendulum of technology leadership swings back and forth between providers, we wouldn’t be surprised if that changes over time. However, we were happy to adapt quickly to the components that made the most sense for us.</p>
-	<h3>Compute</h3>
+	<div class="flex anchor relative">
+		<h3 id="compute">Compute</h3>
+		<a href="https://blog.cloudflare.com/#compute" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qvmFWlrsejJpb9NEG6ZqU/a34b5592ff1949e802a2f9347a8f2342/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1064" loading="lazy">
@@ -44,7 +60,14 @@
 	<p>Compute is our largest investment in a server. Our heaviest workloads, from the Firewall to <a href="https://blog.cloudflare.com/cloud-computing-without-containers">Workers</a> (our serverless offering), often require more compute than other server resources. Also, the average size in kilobytes of a web request across our network tends to be small, influenced in part by the relative popularity of APIs and mobile applications. Our approach to server design is very different than traditional <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">content delivery networks</a> engineered to deliver large object video libraries, for whom servers focused on storage might make more sense, and re-architecting to offer serverless is prohibitively capital intensive.</p>
 	<p>Our Gen X server is intentionally designed with an “empty” PCIe slot for a potential add on card, if it can perform some functions more efficiently than the primary CPU. Would that be a GPU, FPGA, SmartNIC, custom ASIC, TPU or something else? We’re intrigued to explore the possibilities.</p>
 	<p>In accompanying blog posts over the next few days, our hardware engineers will describe how AMD 7642 performed against the benchmarks we care about. We are thankful for their hard work.</p>
-	<h2>Memory, Storage &amp; Network</h2>
+	<div class="flex anchor relative">
+		<h2 id="memory-storage-network">Memory, Storage &amp; Network</h2>
+		<a href="https://blog.cloudflare.com/#memory-storage-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since we are typically limited by CPU, Gen X represented an opportunity to grow components such as RAM and SSD more slowly than compute.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -63,7 +86,15 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7idOzt8cy7gwxh6oeOSpI5/ccddd0f13eb0280200f4c868cabd7da7/AMD_EPYC-7.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">
 
 	</figure>
-	<h3>Network Expansion</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-expansion">Network Expansion</h3>
+		<a href="https://blog.cloudflare.com/#network-expansion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kEiqTtyNgUY66Rh34MpuG/17571559c4303ee364748a98653a8a5e/AMD_EPYC-35.jpg" alt="" class="kg-image" width="1600" height="1067" loading="lazy">

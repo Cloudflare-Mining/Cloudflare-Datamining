@@ -31,7 +31,14 @@
 	</figure>
 	<p>(c) <b>Separate listen socket for each worker process</b> By using <a href="https://lwn.net/Articles/542629">the SO_REUSEPORT socket option</a> it's possible to create a dedicated kernel data structure (the listen socket) for each worker process. This can avoid listen socket contention, which isn't really an issue unless you run at Google scale. It can also help in better balancing the load. More on that later.</p>
 	<p>At Cloudflare we run NGINX, and we are most familiar with the (b) model. In this blog post we'll describe a specific problem with this model, but let's start from the beginning.</p>
-	<h3>Spreading the accept() load</h3>
+	<div class="flex anchor relative">
+		<h3 id="spreading-the-accept-load">Spreading the accept() load</h3>
+		<a href="https://blog.cloudflare.com/#spreading-the-accept-load" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not many people realize that there are two different ways of spreading the accept() new connection load across multiple processes. Consider these two code snippets. Let's call the first one <i>blocking-accept</i>. It's best described with this pseudo code:</p>
 	<pre class="language-.py"><code class="language-.py">sd = bind(('127.0.0.1', 1024))
 for i in range(3):
@@ -84,7 +91,14 @@ worker 0</code></pre>
 
 	</figure>
 	<p>Notice the last worker got almost no load, while the busiest is using 30% of CPU.</p>
-	<h3>SO_REUSEPORT to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="so_reuseport-to-the-rescue">SO_REUSEPORT to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#so_reuseport-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Linux supports a feature to work around this balancing problem - the SO_REUSEPORT socket option. We explained this in the (c) model, where the incoming connections are split into multiple separate accept queues. Usually it's one dedicated queue for each worker process.</p>
 	<p>Since the accept queues are not shared, and Linux spreads the load by a simple hashing logic, each worker will get statistically the same number of incoming connections. This results in much better <a href="https://www.cloudflare.com/application-services/products/load-balancing">balancing of the load</a>. Each worker gets roughly a similar amount of traffic to handle:</p>
 	<figure class="kg-card kg-image-card ">
@@ -131,7 +145,14 @@ Duration in ms (multiple queues):
 	<p>The latency distribution is all over the place - it's not something you want to have on a production server.</p>
 	<p>(<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-10-accept-balancing">Instructions to reproduce the test</a>)</p>
 	<p>Take this benchmark with a grain of salt though. We try to generate substantial load in order to prove the point. Depending on your setup it might be possible to shield your server from excessive traffic and prevent it from entering this degraded-latency state<a href="https://blog.cloudflare.com/#fn3">[3]</a>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Balancing the incoming connections across multiple application workers is far from a solved problem. The single queue approach (b) scales well and keeps the max latency in check, but due to the epoll LIFO behavior the worker processes won't be evenly load balanced.</p>
 	<p>For workloads that require even balancing it might be beneficial to use the SO_REUSEPORT pattern (c). Unfortunately in high load situations the latency distribution might degrade.</p>
 	<p>The best generic solution seem to be to change the standard epoll behavior from LIFO to FIFO. There have been attempts to address this in the past by Jason Baron from Akamai (<a href="https://patchwork.kernel.org/patch/5803291">1</a>, <a href="https://patchwork.kernel.org/patch/5841231">2</a>, <a href="https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg831609.html">3</a>), but none had landed in mainline so far.</p>

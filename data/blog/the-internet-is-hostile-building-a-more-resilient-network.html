@@ -33,7 +33,14 @@
 			<p>Building the automatic mitigation mechanisms to ensure the best reaction time</p>
 		</li>
 	</ul>
-	<h3>Monitoring the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="monitoring-the-internet">Monitoring the Internet</h3>
+		<a href="https://blog.cloudflare.com/#monitoring-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having deployed our network in <a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network">a hundred locations</a> worldwide, we are in a unique position to monitor the quality of the Internet from a wide variety of locations. To do this, we are leveraging the probing capabilities of our network hardware and have added some extra tools that we’ve built.</p>
 	<p>By collecting data from thousands of automatically deployed probes, we have a real-time view of the Internet’s infrastructure: packet loss in any of our transit provider’s backbones, packet loss on Internet Exchanges, or packet loss between continents. It is salutary to watch this real-time view over time and realize how often parts of the Internet fail and how resilient the overall network is.</p>
 	<p>Our monitoring data is stored in real-time in our metrics pipeline powered by a mix of open-source software: <a href="http://zeromq.org">ZeroMQ</a>, <a href="https://prometheus.io">Prometheus</a> and <a href="http://opentsdb.net">OpenTSDB</a>. The data can then be queried and filtered on a single dashboard to give us a clear view of the state of a specific transit provider, or one specific PoP.</p>
@@ -49,11 +56,25 @@
 
 	</figure>
 	<p>Here we see a transit provider having some trouble on the US West Coast on October 28, 2016.</p>
-	<h3>Building a Detection Mechanism</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-detection-mechanism">Building a Detection Mechanism</h3>
+		<a href="https://blog.cloudflare.com/#building-a-detection-mechanism" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We didn’t want to stop here. Having a real-time map of Internet quality puts us in a great position to detect problems and create alerts as they unfold. We have defined a set of triggers that we know are indicative of a network issue, which allow us to quickly analyze and repair problems.</p>
 	<p>For example, 3% packet loss from Latin America to Asia is expected under normal Internet conditions and not something that would trigger an alert. However, 3% packet loss between two countries in Europe usually indicates a bigger and potentially more impactful problem, and thus will immediately trigger alerts for our Systems Reliability Engineering and Network Engineering teams to look into the issue.</p>
 	<p>Sitting between eyeball networks and content networks, it is easy for us to correlate this packet loss with various other metrics in our system, such as difficulty connecting to customer origin servers (which manifest as Cloudflare error 522) or a sudden decrease of traffic from a local ISP.</p>
-	<h3>Automatic Mitigation</h3>
+	<div class="flex anchor relative">
+		<h3 id="automatic-mitigation">Automatic Mitigation</h3>
+		<a href="https://blog.cloudflare.com/#automatic-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Receiving valuable and actionable alerts is great, however we were still facing the hard to compress time-to-reaction factor. Thankfully in our early years, we’ve learned a lot from DDoS attacks. We’ve learned how to detect and auto-mitigate most attacks with our <a href="https://blog.cloudflare.com/introducing-the-bpf-tools">efficient automated DDoS mitigation pipeline</a>. So naturally we wondered if we could apply what we’ve learned from DDoS mitigation to these generic internet events? After all, they do exhibit the same characteristics: they’re unpredictable, they’re external to our network, and they can impact our service.</p>
 	<p>The next step was to correlate these alerts with automated actions. The actions should reflect what an on-call network engineer would have done given the same information. This includes running some important checks: is the packet loss really external to our network? Is the packet loss correlated to an actual impact? Do we currently have enough capacity to reroute the traffic? When all the stars align, we know we have a case to perform some action.</p>
 	<p>All that said, automating actions on network devices turns out to be more complicated than one would imagine. Without going into too much detail, we struggled to find a common language to talk to our equipment with because we’re a multi-vendor network. We decided to contribute to the brilliant open-source project <a href="https://github.com/napalm-automation/napalm">Napalm</a>, coupled it with the automation framework <a href="https://saltstack.com">Salt</a>, and <a href="http://nanog.org/meetings/abstract?id=2951">and improved it to bring us the features we needed</a>.</p>
@@ -77,7 +98,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xhgv1pZz3h5ql0xp26nv9/0934aade6b8748327467d70b740e9602/522_year-1.png" alt="" class="kg-image" width="1478" height="726" loading="lazy">
 
 	</figure>
-	<h3>The Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future">The Future</h3>
+		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we keep improving this resiliency pipeline every day, we are looking forward to deploying some new technologies to streamline it further: <a href="http://movingpackets.net/2016/01/11/99-problems-and-configuration-and-telemetry-aint-two">Telemetry</a> will permit a more real-time collection of our data by moving from a pull model to a push model, and new automation languages like <a href="http://www.openconfig.net">OpenConfig</a> will unify and simplify our communication with network devices. We look forward to deploying these improvements as soon as they are mature enough for us to release.</p>
 	<p>At Cloudflare our mission is to help build a better internet. The internet though, by its nature and size, is in constant flux — breaking down, being added to, and being repaired at almost any given moment — meaning services are often interrupted and traffic is slowed without warning. By enhancing the reliability and resiliency of this complex network of networks we think we are one step closer to fulfilling our mission and building a better internet.</p>
 </div>

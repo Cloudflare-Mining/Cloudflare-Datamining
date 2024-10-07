@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Back in late 2009, CloudFlare's service began to take shape and our website first went online. While in the early days I had contributed to CloudFlare's early code, we quickly hired engineers to join Lee's team who were far smarter than I. That left me to turn my attention to another area of the site more appropriate for a recovering lawyer: our <a href="https://www.cloudflare.com/terms">Terms of Service</a> and <a href="https://www.cloudflare.com/security-policy">Privacy Policy</a>.</p>
 	<p>Generally, these documents have held up pretty well since December 5, 2009 when we first published them. However, today we're making some updates to address some issues that have come up over the last two years. I wanted to take the time to walk through the changes here so everyone is clear why we made the updates we have.</p>
-	<h3>Apps</h3>
+	<div class="flex anchor relative">
+		<h3 id="apps">Apps</h3>
+		<a href="https://blog.cloudflare.com/#apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many of the changes to the Terms of Service and Privacy Policy are the result of CloudFlare's <a href="https://www.cloudflare.com/apps">Apps Marketplace</a>. From early in our history, we realized we had an opportunity to help webmasters install services to enhance their sites. Oliver Roup, a friend of mine from business school, approached up about allowing CloudFlare's users to automatically incorporate the service of a company he'd started: <a href="https://www.cloudflare.com/apps/viglink">Viglink</a>. Viglink's service automatically adds an affiliate code to appropriate links on your site so you can make money when people click on a link and then go on to purchase something.</p>
 	<p>It seemed like a no-brainer that we offer Viglink as an option to our users. We always thought it would be a service that people could turn on or off, but I wanted to make sure our Terms of Service included the possibility that if someone had the service on then affiliate codes could be added. I included the following sentence in our terms: "[CloudFlare may] Add tracking codes or affiliate codes to links that do not previously have tracking or affiliate codes." That has, over time, caused endless confusion, customer service inquiries, and even conspiracy theories.</p>
 	<p>We're building a platform that, through Apps, can allow you to update your site in a wide number of ways. While we want to acknowledge that, we also want to make something clear: it is always your choice as to what apps are enabled. As a result, we updated this key section to now read:</p>
@@ -23,12 +30,26 @@
 	</ol>
 	<p>CloudFlare will make it clear whenever a feature will modify your content and, whenever possible, provide you a mechanism to allow you to disable the feature.</p>
 	<p>We've made updates elsewhere to also reflect that we allow you to install third party apps. For example, our Privacy Policy now acknowledges that you should check the Terms of Service and Privacy Policies of these app providers since they may be different from CloudFlare's. The idea of the Apps Marketplace is something that really came into focus after our initial launch, so it's appropriate now for us to update our policies to account for it.</p>
-	<h3>Abuse</h3>
+	<div class="flex anchor relative">
+		<h3 id="abuse">Abuse</h3>
+		<a href="https://blog.cloudflare.com/#abuse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Section 11 of our old Terms of Service included a long list of things that, if you did on our network, we could terminate you for. The history of this section is that I searched a number of other major services to see what they had prohibited and then included just about everything that had ever been listed. This list was largely pulled from hosting providers and similar sites that actually hosted content.</p>
 	<p>This list may be appropriate for a hosting service, but it isn't as appropriate for a network provider. CloudFlare is much more akin to a network provider. People also interpreted the list as if it was self-executing computer code. Someone would find a site that told people how to build a grenade, or whatever, and write to us saying we had to terminate them. We, on the other hand, saw the list as reasons we could terminate people, not reasons we must terminate them.</p>
 	<p>Given the confusion the list created we simplified it. Today our policy remains as it was before, just without the list. If you're using CloudFlare in a way we deem inappropriate we will, at our sole discretion, terminate your use of the CloudFLare network. As I've <a href="https://blog.cloudflare.com/thoughts-on-abuse">written about before</a>, our general position is that CloudFlare is building a better Internet and it's not our role to determine what content should or should not be allowed to be published. That said, if you're using our network solely as a file locker, distributing malware or phishing, or otherwise causing per se harm then we will terminate use.</p>
 	<p>We also updated our abuse process to reflect what we've learned about running an abuse desk in front of hundreds of thousands of websites. What we learned was that as our technical defenses improved, hackers turned to abusing our abuse process to determine the identity of sites on our network. That, effectively, was a mechanism to bypass our technical protections. Our new abuse process allows legitimate rights holders to file complaints that we relay to the owners of sites with alleged violations without compromising the technical protections we offer our customers.</p>
-	<h3>Miscellaneous Other Cleanup</h3>
+	<div class="flex anchor relative">
+		<h3 id="miscellaneous-other-cleanup">Miscellaneous Other Cleanup</h3>
+		<a href="https://blog.cloudflare.com/#miscellaneous-other-cleanup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There was a lot of other cruft in our terms that we cleaned up. For example, we previously included the following paragraph:</p>
 	<blockquote>
 		<p>You are granted a limited, revocable, and nonexclusive right to create a hyperlink to any non-password protected directories, so long as the link does not portray CloudFlare, its affiliated websites, or its services in a false, misleading, derogatory, or otherwise offensive matter. You may not use any of CloudFlare's proprietary graphics or trademarks as part of the link without express written permission.</p>

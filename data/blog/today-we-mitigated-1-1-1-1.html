@@ -14,7 +14,15 @@
 		</li>
 	</ul>
 	<p>Today, things didn't go as planned.</p>
-	<h3>Gatebot</h3>
+	<div class="flex anchor relative">
+		<h3 id="gatebot">Gatebot</h3>
+		<a href="https://blog.cloudflare.com/#gatebot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pW1whDtkORpQAEePgmHo/225335dfccd094079208d9c94d79e285/gatebot-parts.png" alt="gatebot-parts" class="kg-image" width="1018" height="522" loading="lazy">
@@ -49,17 +57,45 @@
         [...] </code></pre>
 	<p>It's the last check in this code that we tried to improve today.</p>
 	<p>Clearly, the code above is a huge oversimplification of all that goes into attack mitigation, but making an early decision about whether the attacked IP serves DNS traffic or not is important. It's that check that went wrong today. If the IP does serve DNS traffic then attack mitigation is handled differently from IPs that never serve DNS.</p>
-	<h3>Cloudflare is growing, so must Gatebot</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-is-growing-so-must-gatebot">Cloudflare is growing, so must Gatebot</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-is-growing-so-must-gatebot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Gatebot was created in early 2015. Three years may not sound like much time, but since then we've grown dramatically and added layers of services to our software stack. Many of the internal integration points that we rely on today didn't exist then.</p>
 	<p>One of them is what we call the <i>Provision API</i>. When Gatebot sees an IP address, it needs to be able to figure out whether or not it’s one of Cloudflare’s addresses. <i>Provision API</i> is a simple RESTful API used to provide this kind of information.</p>
 	<p>This is a relatively new API, and prior to its existence, Gatebot had to figure out which IP addresses were Cloudflare addresses by reading a list of networks from a hard-coded file. In the code snippet above, the <i>ANYCAST_IPS</i> variable is populated using this file.</p>
-	<h3>Things went wrong</h3>
+	<div class="flex anchor relative">
+		<h3 id="things-went-wrong">Things went wrong</h3>
+		<a href="https://blog.cloudflare.com/#things-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, in an effort to reclaim some technical debt, we deployed new code that introduced Gatebot to <i>Provision API</i>.</p>
 	<p>What we did not account for, and what <i>Provision API</i> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
 	<p>As you might be able to guess by now, we didn't implement this manual exception while we were doing the integration work. Remember, the whole idea of the fix was to remove the hardcoded gotchas!</p>
-	<h3>Impact</h3>
+	<div class="flex anchor relative">
+		<h3 id="impact">Impact</h3>
+		<a href="https://blog.cloudflare.com/#impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The effect was that, after pushing the new code release, our systems interpreted the resolver traffic as an attack. The automatic systems deployed DNS mitigations for our DNS resolver IP ranges for 17 minutes, between 17:58 and 18:13 May 31st UTC. This caused 1.1.1.1 DNS resolver to be globally inaccessible.</p>
-	<h3>Lessons Learned</h3>
+	<div class="flex anchor relative">
+		<h3 id="lessons-learned">Lessons Learned</h3>
+		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While Gatebot, the DDoS mitigation system, has great power, we failed to test the changes thoroughly. We are using today’s incident to improve our internal systems.</p>
 	<p>Our team is incredibly proud of 1.1.1.1 and Gatebot, but today we fell short. We want to apologize to all of our customers. We will use today’s incident to improve. The next time we mitigate 1.1.1.1 traffic, we will make sure there is a legitimate attack hitting us.</p>
 </div>

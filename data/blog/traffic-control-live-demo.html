@@ -12,7 +12,14 @@
 	<p>Rate Limiting protects websites and APIs from similar types of bad traffic. By leveraging our massive network, we are able to process and enforce rate limiting near the client, shielding the customer's application from unnecessary load.</p>
 	<p>To make this more concrete, let's look at a live demonstration rule for cloudflare.com. Multiple rules may be used and combined to great effect -- this is just a limited example.</p>
 	<p>Read on, and then test it yourself.</p>
-	<h3>Creating the rule</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-the-rule">Creating the rule</h3>
+		<a href="https://blog.cloudflare.com/#creating-the-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine an endpoint that is resource intensive. To maintain availability, we want to protect it from high-volume request rates - like those from an aggressive bot or attacker.</p>
 	<p><b>URL</b> <code>*.cloudflare.com/rate-limit-test</code></p>
 	<p>Rate Limiting allows for * wildcards to give more flexibility. An API with multiple endpoints might use a pattern of <code>api.example.com/v2/*</code></p>
@@ -27,11 +34,25 @@
 	<p><b>Response body</b></p>
 	<p>The response body can be anything you want. Refresh the link below 10 times very quickly to see our choice for this demonstration rule.</p>
 	<p><a href="https://www.cloudflare.com/rate-limit-test"><b>https://www.cloudflare.com/rate-limit-test</b></a></p>
-	<h3>Other possible configurations</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-possible-configurations">Other possible configurations</h3>
+		<a href="https://blog.cloudflare.com/#other-possible-configurations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We could have specified a <b>Method</b>. If we only cared to rate limit POST requests, we could adjust the rule to do so. This rule could be used for a login page where high frequency of POSTs by the same IP is potentially suspicious.</p>
 	<p>We also could have specified a <b>Response Code</b>. If we only wanted to rate limit IPs which were consistently failing to authenticate, we could create the rule to trigger only after a certain threshold of 403’s have been served. Once an IP is flagged, perhaps because it was pounding a login endpoint with incorrect credentials, that client IP could be blocked from hitting either that endpoint or the whole site.</p>
 	<p>We will expand the matching criteria, such as adding headers or cookies. We will also extend the mitigation options to include CAPTCHA or other challenges. This will give our users even more flexibility and power to protect their websites and API endpoints.</p>
-	<h3>Early Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="early-access">Early Access</h3>
+		<a href="https://blog.cloudflare.com/#early-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We'd love to have you try Rate Limiting. Read more and <a href="https://www.cloudflare.com/traffic-control">sign up for Early Access</a>.</p>
 	<p>**Note: This post was updated 4/13/17 to reflect the current product name. All references to Traffic Control have been changed to Rate Limiting.*</p>
 </div>

@@ -15,7 +15,14 @@
 	<blockquote>
 		<p><i>“With the MosaicML training platform, customers can efficiently use R2 as the durable storage backend for training LLMs on any compute provider with zero egress fees. AI companies are facing outrageous cloud costs, and they are on the hunt for the tools that can provide them with the speed and flexibility to train their best model at the best price.”</i> – <b>Naveen Rao, CEO and co-founder, MosaicML</b></p>
 	</blockquote>
-	<h3>Reading data from R2 using StreamingDataset</h3>
+	<div class="flex anchor relative">
+		<h3 id="reading-data-from-r2-using-streamingdataset">Reading data from R2 using StreamingDataset</h3>
+		<a href="https://blog.cloudflare.com/#reading-data-from-r2-using-streamingdataset" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To read data from R2 efficiently and deterministically, you can use the MosaicML <a href="https://github.com/mosaicml/streaming">StreamingDataset</a> library. First, write your training data (images, text, video, anything!) into <code>.mds</code> shard files using the provided Python API:</p>
 	<pre class="language-python"><code class="language-python">import numpy as np
 from PIL import Image
@@ -67,7 +74,14 @@ cls = sample['class']
 # Create PyTorch DataLoader
 dataloader = DataLoader(dataset)</code></pre>
 	<p>StreamingDataset comes out of the box with high performance, elastic determinism, fast resumption, and multi-worker support. It also uses smart shuffling and distribution to ensure that download bandwidth is minimized. Across a variety of workloads such as LLMs and diffusion models, we find that there is no impact on training throughput (no dataloader bottleneck) when training from object stores like R2. For more information, check out the StreamingDataset <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset">announcement blog</a>!</p>
-	<h3>Reading/writing model checkpoints to R2 using Composer</h3>
+	<div class="flex anchor relative">
+		<h3 id="reading-writing-model-checkpoints-to-r2-using-composer">Reading/writing model checkpoints to R2 using Composer</h3>
+		<a href="https://blog.cloudflare.com/#reading-writing-model-checkpoints-to-r2-using-composer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Streaming data into your training loop solves half of the problem, but how do you load/save your model checkpoints? Luckily, if you use a training library like <a href="https://github.com/mosaicml/composer">Composer</a>, it’s as easy as pointing at an R2 path!</p>
 	<pre class="language-python"><code class="language-python">from composer import Trainer
 ...
@@ -85,7 +99,14 @@ trainer = Trainer(
         # load_path=s3://my-bucket/mpt-7b-prev/checkpoints/ep0-ba100-rank0.pt,
     )</code></pre>
 	<p>Composer uses asynchronous uploads to minimize wait time as checkpoints are being saved during training. It also works out of the box with multi-GPU and multi-node training, and <b>does not require a shared file system.</b> This means you can skip setting up an expensive EFS/NFS system for your compute cluster, saving thousands of dollars or more per month on public clouds. All you need is an Internet connection and appropriate credentials – your checkpoints arrive safely in your R2 bucket giving you scalable and secure storage for your private models.</p>
-	<h3>Using MosaicML and R2 to train anywhere efficiently</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-mosaicml-and-r2-to-train-anywhere-efficiently">Using MosaicML and R2 to train anywhere efficiently</h3>
+		<a href="https://blog.cloudflare.com/#using-mosaicml-and-r2-to-train-anywhere-efficiently" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using the above tools together with Cloudflare R2 enables users to run training workloads on any compute provider, with total freedom and zero switching costs.</p>
 	<p>As a demonstration, in Figure X we use the MosaicML training platform to launch an LLM training job starting on Oracle Cloud Infrastructure, with data streaming in and checkpoints uploaded back to R2. Part way through, we pause the job and seamlessly resume on a different set of GPUs on Amazon Web Services. Composer loads the model weights from the last saved checkpoint in R2, and the streaming dataloader instantly resumes to the correct batch. Training continues deterministically. Finally, we move again to Google Cloud to finish the run.</p>
 	<p>As we train our LLM across three cloud providers, the only costs we pay are for GPU compute and data storage. No egress fees or lock in thanks to Cloudflare R2!</p>
@@ -145,10 +166,25 @@ gpu_num: 8
 gpu_type: a100_40gb
 cluster: oci-1  # can be any compute cluster!</code></pre>
 	<p><i>An MCLI job template. Specify a run name, a Docker image, a set of commands, and a compute cluster to run on.</i></p>
-	<h3>Get started today!</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today!</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The MosaicML platform is an invaluable tool to take your training to the next level, and in this post, we explored how Cloudflare R2 empowers you to train models on your own data, with any compute provider – or all of them. By eliminating egress fees, R2’s storage is an exceptionally cost-effective complement to MosaicML training, providing maximum autonomy and control. With this combination, you can switch between cloud service providers to fit your organization’s needs over time.</p>
 	<p>To learn more about using MosaicML to train custom state-of-the-art AI on your own data visit <a href="https://www.mosaicml.com">here</a> or <a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform">get in touch</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

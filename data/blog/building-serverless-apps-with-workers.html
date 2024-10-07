@@ -22,7 +22,14 @@
 		</li>
 	</ul>
 	<p>These tools make deployments easier to configure, but it still takes time to manage. The <a href="https://serverless.com">Serverless Framework</a> <a href="https://serverless.com/plugins/serverless-cloudflare-workers">Cloudflare Workers plugin</a> removes that deployment overhead so you can spend more time working on your application and less on your deployment.</p>
-	<h3>Focus on your application</h3>
+	<div class="flex anchor relative">
+		<h3 id="focus-on-your-application">Focus on your application</h3>
+		<a href="https://blog.cloudflare.com/#focus-on-your-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here at Cloudflare, we’ve been working to rebuild our Access product to run entirely on Workers. The move will allow Access to take advantage of the resiliency, performance, and flexibility of Workers. We’ll publish a more detailed post about that migration once complete, but the experience required that we retool some of our process to match or existing development experience as much as possible.</p>
 	<p>To us this meant:</p>
 	<ul>
@@ -61,7 +68,14 @@
 		</li>
 	</ol>
 	<p>We decided on the Serverless Framework. Serverless Framework provided a tool to mirror our existing process as closely as possible without too much DevOps overhead. Serverless is extremely simple and doesn’t interfere with the application code. You can get a project set up and deployed in seconds. It’s obviously less work than writing your own custom management scripts. But it also requires less boiler plate than Terraform because the Serverless Framework is designed for the “serverless” niche. However, if you are already using Terraform to manage other Cloudflare products, Terraform might be the best fit.</p>
-	<h3>Walkthrough</h3>
+	<div class="flex anchor relative">
+		<h3 id="walkthrough">Walkthrough</h3>
+		<a href="https://blog.cloudflare.com/#walkthrough" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Everything for the project happens in a YAML file called serverless.yml. Let’s go through the features of the configuration file.</p>
 	<p>To get started, we need to install serverless from npm and generate a new project.</p>
 	<pre class="language-bash"><code class="language-bash">npm install serverless -g
@@ -103,7 +117,14 @@ functions:
 	<p>At this point you can deploy your worker!</p>
 	<pre class="language-yaml"><code class="language-yaml">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy</code></pre>
 	<p>This is very easy to deploy, but it doesn’t address our requirements. Luckily, there’s just a few simple modifications to make.</p>
-	<h3>Maturing our YAML File</h3>
+	<div class="flex anchor relative">
+		<h3 id="maturing-our-yaml-file">Maturing our YAML File</h3>
+		<a href="https://blog.cloudflare.com/#maturing-our-yaml-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here’s a more complex YAML file.</p>
 	<pre class="language-yaml"><code class="language-yaml">service:
   name: hello-world

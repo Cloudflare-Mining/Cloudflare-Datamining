@@ -6,12 +6,26 @@
 	<p>Should that happen, how would you respond and revoke the lost SSH key? Do you have an accounting of the keys which have been generated? Do you rotate SSH keys? How do you manage that across an entire organization so consumed with serving customers that security has to be effortless to be adopted?</p>
 	<p>Cloudflare Access <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">launched</a> support for SSH connections last year to bring zero-trust security to how teams connect to infrastructure. Access integrates with your IdP to bring SSO security to SSH connections by enforcing identity-based rules each time a user attempts to connect to a target resource.</p>
 	<p>However, once Access connected users to the server they still had to rely on legacy SSH keys to authorize their account. Starting today, we’re excited to help teams remove that requirement and replace static SSH keys with short-lived certificates.</p>
-	<h2>Replacing a private network with Cloudflare Access</h2>
+	<div class="flex anchor relative">
+		<h2 id="replacing-a-private-network-with-cloudflare-access">Replacing a private network with Cloudflare Access</h2>
+		<a href="https://blog.cloudflare.com/#replacing-a-private-network-with-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">traditional network perimeter models</a>, teams secure their infrastructure with two gates: a private network and SSH keys.</p>
 	<p>The private network requires that any user attempting to connect to a server must be on the same network, or a peered equivalent (such as a VPN). However, that introduces some risk. Private networks default to trust that a user on the network can reach a machine. Administrators must proactively <a href="https://www.cloudflare.com/learning/access-management/what-is-network-segmentation">segment the network</a> or secure each piece of the infrastructure with control lists to work backwards from that default.</p>
 	<p>Cloudflare Access secures infrastructure by starting from the other direction: no user should be trusted. Instead, users must prove they should be able to access any unique machine or destination by default.</p>
 	<p>We released support for <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH connections</a> in Cloudflare Access <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">last year</a> to help teams leave that network perimeter model and replace it with one that evaluates every request to a server for user identity. Through integration with popular identity providers, that solution also gives teams the ability to bring their SSO pipeline into their SSH flow.</p>
-	<h2>Replacing static SSH keys with short-lived certificates</h2>
+	<div class="flex anchor relative">
+		<h2 id="replacing-static-ssh-keys-with-short-lived-certificates">Replacing static SSH keys with short-lived certificates</h2>
+		<a href="https://blog.cloudflare.com/#replacing-static-ssh-keys-with-short-lived-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once a user is connected to a server over SSH, they typically need to authorize their session. The machine they are attempting to reach will have a set of profiles which consists of user or role identities. Those profiles define what actions the user is able to take.</p>
 	<p>SSH processes make a few options available for the user to login to a profile. In some cases, users can login with a username and password combination. However, most teams rely on public-private key certificates to handle that login. To use that flow, administrators and users need to take prerequisite steps.</p>
 	<p>Prior to the connection, the user will generate a certificate and provide the public key to an administrator, who will then configure the server to trust the certificate and associate it with a certain user and set of permissions. The user stores that certificate on their device and presents it during that last mile. However, this leaves open all of the problems that SSO attempts to solve:</p>
@@ -27,7 +41,14 @@
 		</li>
 	</ul>
 	<p>With Cloudflare Access, you can bring your SSO accounts to user authentication within your infrastructure. No static keys required.</p>
-	<h2>How does it work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">How does it work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To build this we turned to three tools we already had: Cloudflare Access, Argo Tunnel and Workers.</p>
 	<p>Access is a policy engine which combines the employee data in your identity provider (like Okta or AzureAD) with policies you craft. Based on those policies Access is able to limit access to your internal applications to the users you choose. It’s not a far leap to see how the same policy concept could be used to control access to a server over SSH. You write a policy and we use it to decide which of your employees should be able to access which resources. Then we generate a short-lived certificate allowing them to access that resource for only the briefest period of time. If you remove a user from your IdP, their access to your infrastructure is similarly removed, seamlessly.</p>
 	<p>To actually funnel the traffic through our network we use another existing Cloudflare tool: Argo Tunnel. Argo Tunnel flips the traditional model of connecting a server to the Internet. When you spin up our daemon on a machine it makes outbound connections to Cloudflare, and all of your traffic then flows over those connections. This allows the machine to be a part of Cloudflare’s network without you having to expose the machine to the Internet directly.</p>
@@ -47,7 +68,14 @@
 
 	</figure>
 	<p>When the server receives the request, it validates the short-lived certificate against that public key and, if authentic, authorizes the user identity to a matching Unix user. The certificate, once issued, is valid for 2 minutes but the SSH connection can last longer once the session has started.</p>
-	<h2>What is the end user experience?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-the-end-user-experience">What is the end user experience?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-the-end-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access’ SSH feature is entirely transparent to the end user and does not require any unique SSH commands, wrappers, or flags. Instead, Access requires that your team members take a couple one-time steps to get started:</p>
 	<h4>1. Install the cloudflared daemon</h4>
 	<p>The same lightweight software that runs on the target server is used to proxy SSH connections from your team members’ devices through Cloudflare. Users can install it with popular package managers like brew or at the link available <a href="https://developers.cloudflare.com/access/cli/installing-cli-tool">here</a>. Alternatively, the software is open-source and can be built and distributed by your administrators.</p>
@@ -67,6 +95,13 @@ Host cfpipe-vm.example.com
 	<p>In their terminal, <code>cloudflared</code> will establish the session and issue the client certificate that corresponds to their identity.</p><!--kg-card-begin: html-->
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With short-lived certificates, Access can become a single SSO-integrated gateway for your team and infrastructure in any environment. Users can SSH directly to a given machine and administrators can replace their jumphosts altogether, removing that overhead. The feature is available today for all Access customers. You can get started by following the documentation available <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server">here</a>.</p>
 </div>

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Today, we are happy to announce that Cloudflare customers can protect their APIs from broken authentication attacks by validating incoming JSON Web Tokens (JWTs) with <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a>. Developers and their security teams need to control who can communicate with their APIs. Using API Gateway’s JWT Validation, Cloudflare customers can ensure that their Identity Provider previously validated the user sending the request, and that the user’s authentication tokens have not expired or been tampered with.</p>
-	<h3>What’s new in this release?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-new-in-this-release">What’s new in this release?</h3>
+		<a href="https://blog.cloudflare.com/#whats-new-in-this-release" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After our beta release in early 2023, we continued to gather feedback from customers on what they needed from JWT validation in API Gateway. We uncovered four main feature requests and shipped updates in this GA release to address them all:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -79,14 +86,35 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>What is the threat?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-threat">What is the threat?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Broken authentication is the <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control">#1 threat</a> on the OWASP Top 10 and the <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication">#2 threat</a> on the OWASP API Top 10. We’ve <a href="https://blog.cloudflare.com/2024-api-security-report">written before</a> about how flaws in API authentication and authorization at Optus led to a <a href="https://www.bleepingcomputer.com/news/security/optus-hacker-apologizes-and-allegedly-deletes-all-stolen-data">threat actor offering</a> 10 million user records for sale, and government agencies have <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-208a">warned about</a> these exact API attacks.</p>
 	<p>According to Gartner®<sup>1</sup>, “attacks and data breaches involving poorly secured application programming interfaces (APIs) are occurring frequently.” Getting authentication correct for your API users can be challenging, but there are best practices you can employ to cover your bases. JSON Web Token Validation in API Gateway fulfills one of these best practices by enforcing a positive security model for your authenticated API users.</p>
-	<h3>A primer on authentication and authorization</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-primer-on-authentication-and-authorization">A primer on authentication and authorization</h3>
+		<a href="https://blog.cloudflare.com/#a-primer-on-authentication-and-authorization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/access-management/authn-vs-authz/#:~:text=What%20is%20authentication%20(authn)%3F">Authentication</a> establishes identity. Imagine you’re collaborating with multiple colleagues and writing a document in Google Docs. When you’re all authors of the document, you have the same privileges, and you can overwrite each other’s text. You can all see each other’s name next to your respective cursor while you’re typing. You’re all authenticated to Google Docs, so Docs can show all the users on a document who everyone is.</p>
 	<p><a href="https://www.cloudflare.com/learning/access-management/authn-vs-authz/#:~:text=What%20is%20authorization%20(authz)%3F">Authorization</a> establishes ownership or permissions to objects. Imagine you’re collaborating with your colleague in Docs again, but this time they’ve written a document ahead of time and simply wish for you to review it and add comments without changing the document. As the owner of the document, your colleague sets an authorization policy to only allow you ‘comment’ access. As such, you cannot change their writing at all, but you can still view the document and leave comments.</p>
 	<p>While the words themselves might sound similar, the differences between them are hugely important for security. It’s not enough to simply check that a user logging in has the correct login credentials (authentication). If you never check their permissions (authorization), they would be free to overwrite, add, or delete other users’ content. When this happens for APIs, <a href="https://owasp.org">OWASP</a> calls it a <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization">Broken Object Level Authorization</a> attack.</p>
-	<h3>A primer on API access tokens</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-primer-on-api-access-tokens">A primer on API access tokens</h3>
+		<a href="https://blog.cloudflare.com/#a-primer-on-api-access-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Users authenticate to services in many different ways on the web today. Let’s take a look at the history of authentication with username and password authentication, API key authentication, and JWT authentication before we mention how JWTs can help stop API attacks.</p>
 	<p>In the early days, the web used <a href="https://datatracker.ietf.org/doc/html/rfc7617">HTTP Basic Authentication</a>, where browsers transmitted username and password pairs as an HTTP header, posing significant security risks and making credentials visible to any observer when the application failed to adopt SSL/TLS certificates. Basic authentication also complicated API access, requiring hard-coded credentials and potentially giving broad authorization policies to a single user.</p>
 	<p>The introduction of API access keys improved security by detaching authentication from user credentials and instead sending secret text strings along with requests. This approach allowed for more nuanced access control by key instead of by user ID, though API keys still faced risks from man-in-the-middle attacks and problematic storage of secrets in source code.</p>
@@ -97,7 +125,14 @@
 
 	</figure>
 	<p>These attributes enhance security any time a JWT is used instead of a long-lived shared secret. JWTs are not an end-all-be-all solution, but they do represent an evolution in authentication technology and are widely used for authentication and authorization on the Internet today.</p>
-	<h3>What’s the structure of a JWT?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-the-structure-of-a-jwt">What’s the structure of a JWT?</h3>
+		<a href="https://blog.cloudflare.com/#whats-the-structure-of-a-jwt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JWTs are composed of three fields separated by periods. The first field is a header, the second a payload, and the third a signature:</p>
 	<pre class="language-javascript"><code class="language-javascript">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNeURlbW9JRFAiLCJzdWIiOiJqb2huZG9lIiwiYXVkIjoiTXlBcHAiLCJpYXQiOjE3MDg5ODU2MDEsImV4cCI6MTcwODk4NjIwMSwiY2xhc3MiOiJhZG1pbiJ9.v0nywcQemlEU4A18QD9UTgJLyH4ZPXppuW-n0iOmtj4x-hWJuExlMKeNS-vMZt4K6n0pDCFIAKo7_VZqACx4gILXObXMU4MEleFoKKd0f58KscNrC3BQqs3Gnq-vb5Ut9CmcvevQ5h9cBCI4XhpP2_LkYcZiuoSd3zAm2W_0LNZuFXp1wo8swDoKETYmtrdTjuF-IlVjLDAxNsWm2e7T5A8HmCnAWRItEPedm_8XVJAOemx_KqIH5w6zHY1U-M6PJkHK6D2gDU5eiN35A4FCrC5bQ1-0HSTtJkLIed2-1mRO1oANWHpscvpNLQBWQLLiIZ_evbcq_tnwh1X1sA3uxQ</code></pre>
 	<p>If we base64 decode the first two sections, we arrive at the following structure (comments added for clarity):</p>
@@ -125,10 +160,24 @@ mnSEdaxNS8jtFodqpURUaLDIdTOGGgpUZsvzv3jDMYo5IxQK+6y+HUV8eRyDYd/o
 rQIDAQAB
 -----END PUBLIC KEY-----</code></pre>
 	<p>The signature is what makes a JWT special. The token issuer, taking into account the claims, generates a signature based on a private secret or a public/private key pair. The public key can be published online, allowing anyone to check if a JWT was legitimately issued by an organization.</p>
-	<h3>Proper authentication and authorization stop API attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="proper-authentication-and-authorization-stop-api-attacks">Proper authentication and authorization stop API attacks</h3>
+		<a href="https://blog.cloudflare.com/#proper-authentication-and-authorization-stop-api-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>No developer wants to release an insecure application, and no security team wants their developers to skip secure coding practices, but we know both happen. In the Enterprise Strategy Group report “Securing the API Attack Surface”<sup>2</sup>, a survey found that 39% of developers skip security processes due to the faster development cycles of continuous integration and continuous delivery (CI/CD). The same survey found more than half (57%) of responding organizations faced multiple security incidents related to insecure APIs in the last 12 months, and 35% of responding organizations faced at least one incident within the last year.</p>
 	<p>Along with its accompanying database, permissions, and user roles, your origin application is the ultimate security backstop of your API. However, Cloudflare can assist in keeping attacks away from your origin when you configure API Gateway with the correct context. Let’s examine three different API attacks and how to protect against them.</p>
-	<h3>Missing or broken authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="missing-or-broken-authentication">Missing or broken authentication</h3>
+		<a href="https://blog.cloudflare.com/#missing-or-broken-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The ability for a user to send or receive data to an API and entirely bypass authentication falls into ‘<a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication">broken authentication</a>’. It’s easy to think of the expected use cases your users will take with your application. You may assume that just because a user logs in and your application is written so that users can only access their own data in their dashboard, that all users are logged in and would only access their own data. This assumption fails to account for a user making an HTTP request outside your application requesting or modifying another user’s data and there being nothing in the way to stop your API from replying. In the worst case, a lack of authorization policy checks can enable an API client to change data without an authentication token at all!</p>
 	<p>Ensuring that incoming requests have an authentication token attached to them and dropping the requests that don’t is a great way to stop the simplest API attacks.</p>
 	<figure class="kg-card kg-image-card ">
@@ -136,7 +185,14 @@ rQIDAQAB
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42Mpb21IPLfulvcmZ6FPlV/bfd6d7866c268bb68f010e89b5a85d3d/image1-6.png" alt="" class="kg-image" width="1200" height="284" loading="lazy">
 
 	</figure>
-	<h3>Expired token reuse</h3>
+	<div class="flex anchor relative">
+		<h3 id="expired-token-reuse">Expired token reuse</h3>
+		<a href="https://blog.cloudflare.com/#expired-token-reuse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Maybe your application already uses JWTs for user authentication. Your application decodes the JWT and looks for user claims for group membership, and you validate the claims before allowing customers access to your API. But are you checking the JWT expiration time?</p>
 	<p>Imagine a user pays for your service, but they secretly know they will soon downgrade to a free account. If the user’s tier is stored within the JWT and the application or gateway doesn’t validate the expiration time of the JWT, the user could save an old JWT and replay it to continue their access to their paid benefits. Validating JWT expiration time can prevent this type of replay attack.</p>
 	<figure class="kg-card kg-image-card ">
@@ -144,7 +200,14 @@ rQIDAQAB
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SYRZ4vdgAps8zy5oaRzew/20e778c230cd447f8396c201fdcb1fae/image5-1.png" alt="" class="kg-image" width="1200" height="285" loading="lazy">
 
 	</figure>
-	<h3><a href="https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization">Broken Function Level Authorization</a> attacks: Tampering with claims</h3>
+	<div class="flex anchor relative">
+		<h3 id=""></h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you’re using JWTs for authentication, validating the claims inside them, and also validating expiration time. But do you verify the JWT signature? Practically every JWT is signed by its issuer such that API admins and security teams that know the issuer’s signing key can verify that the JWT hasn’t been tampered with. Without the API Gateway or application checking the JWT signature, a malicious user could change their JWT claims, elevating their privileges to assume an administrator role in an application by starting with a normal, non-privileged user account.</p>
 	<p>JWT Validation from API Gateway <a href="https://www.cloudflare.com/application-services/solutions/api-security">safeguards your API</a> from broken authentication and authorization attacks by checking that JWT signatures are intact, expiry times haven’t yet passed, and that authentication tokens are present to begin with.</p>
 	<figure class="kg-card kg-image-card ">
@@ -152,11 +215,25 @@ rQIDAQAB
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J6x1nH7rK3Ox7jQmQDOuI/ddfe83b5a425e2bddbcf152dce11b315/image4-7.png" alt="" class="kg-image" width="1200" height="284" loading="lazy">
 
 	</figure>
-	<h3>Don’t other Cloudflare products do this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="dont-other-cloudflare-products-do-this">Don’t other Cloudflare products do this?</h3>
+		<a href="https://blog.cloudflare.com/#dont-other-cloudflare-products-do-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Other Cloudflare products also use JWTs. Cloudflare Access is part of our suite of Zero Trust products, and is meant to tie into your Identity Provider. As a best practice, customers should <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json">validate</a> the JWT that Access creates and sends to the origin.</p>
 	<p>Conversely, JWT Validation for API Gateway is a security layer compatible with any API without changing the setup, management, or expectation of the existing user flow. API Gateway’s JWT Validation is meant to validate pre-existing JWTs that may be used by any number of services at your API origin. You really need both: Access for your internal users or employees and API Gateway for your external users.</p>
 	<p>In addition, some customers use a custom Cloudflare Worker to validate JWTs, which is a great use case for the Workers platform. However, for straightforward use cases customers may find the JWT Validation experience of API Gateway easier to interact with and manage over the lifecycle of their application. If you are validating JWTs with a Worker and today’s release of JWT Validation isn’t yet at feature parity for your custom Worker, let your account representative know. We’re interested in expanding our capabilities to meet your requirements.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a future release, we will go beyond checking pre-existing JWTs, and customers will be able to generate and enforce authorization policies entirely within API Gateway. We’ll also upgrade our <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal">on-demand developer portal creation</a> with the ability to issue keys and authentication tokens to your development team directly, streamlining API management with Cloudflare.</p>
 	<p>In addition, stay tuned for future API Gateway feature launches where we’ll use our knowledge of API traffic norms to automatically suggest security policies that highlight and stop Broken Object/Function Level Authorization attacks outside the JWT Validation use case.</p>
 	<p>Existing API Gateway customers can <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield%2Fapi-rules">try the new feature now</a>. Enterprise customers without API Gateway should <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">sign up</a> for the trial to try the latest from API Gateway.</p>

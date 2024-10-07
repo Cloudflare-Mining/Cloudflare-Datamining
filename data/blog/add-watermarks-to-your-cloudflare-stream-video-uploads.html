@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream “<i>can you put this watermark image to the top right of my video?</i>” to customers with more detailed asks such as “<i>can you put this watermark image in a way it doesn’t take up more than 10% of the original video and with 20% opacity?”</i> All that and more is now available at no additional cost through the Watermarks API.</p>
-	<h2>What is Cloudflare Stream?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-cloudflare-stream">What is Cloudflare Stream?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-cloudflare-stream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Stream provides out-of-the-box video infrastructure so developers can bring their app ideas to market faster. While building a video streaming app, developers must ask themselves questions like</p>
 	<ul>
 		<li>
@@ -20,7 +27,14 @@
 		</li>
 	</ul>
 	<p>Cloudflare Stream is a single product that handles video encoding, storage, delivery and presentation (with the Stream Player.) Stream lets developers launch their ideas faster while having the confidence the video infrastructure will scale with their app’s growth.</p>
-	<h2>How the Watermark API works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-the-watermark-api-works">How the Watermark API works</h2>
+		<a href="https://blog.cloudflare.com/#how-the-watermark-api-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API:</p>
 	<ul>
 		<li>
@@ -30,7 +44,14 @@
 			<p>Support for a <b>watermark</b> object containing the <b>uid</b> of the watermark profile that can be passed at the time of upload</p>
 		</li>
 	</ul>
-	<h3>Step 1: Creating a Watermark Profile</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-1-creating-a-watermark-profile">Step 1: Creating a Watermark Profile</h3>
+		<a href="https://blog.cloudflare.com/#step-1-creating-a-watermark-profile" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A watermark profile describes the nature of the watermark, including the image to use as a watermark and properties such as its positioning, padding and scale.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -70,7 +91,15 @@
   "errors": [],
   "messages": []
 }</code></pre>
-	<h3>Step 2: Apply the Watermark</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="step-2-apply-the-watermark">Step 2: Apply the Watermark</h3>
+		<a href="https://blog.cloudflare.com/#step-2-apply-the-watermark" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -89,9 +118,24 @@
     "uid": "a85d289c2e3f82701103620d16cd2408"
   }
 }'</code></pre>
-	<h3>Step 3: Your video, now with a watermark!</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="step-3-your-video-now-with-a-watermark">Step 3: Your video, now with a watermark!</h3>
+		<a href="https://blog.cloudflare.com/#step-3-your-video-now-with-a-watermark" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You’re done! You can watch the video with a watermark:</p><!--kg-card-begin: html--><br><!--kg-card-end: html-->
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks">Watermark API docs</a> covering different use cases.</p>
 	<p>In future iterations, we plan to add support for animated watermarks. Additionally, we want to add Watermark support to the Stream Dashboard so you have a UI to manage and add watermarks.</p>
 </div>

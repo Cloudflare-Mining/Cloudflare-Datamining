@@ -12,7 +12,14 @@
 	<p>Performing access control on the edge has many benefits. Brute force attempts and other attacks on private assets don't ever reach an origin server, preventing origin CPU and bandwidth from being wasted on malicious requests.</p>
 	<p>By performing authentication on the edge it's possible to cache protected content, giving users faster access to private content because there’s no round trip to the origin for authentication. At the same time web application owners are assured that only valid, authenticated users have access to the cache content.</p>
 	<p>By validating that an API request is from a valid client, Cloudflare is able to eliminate forged requests coming from bots, attackers or non-authenticated users.</p>
-	<h3>Content Access Control</h3>
+	<div class="flex anchor relative">
+		<h3 id="content-access-control">Content Access Control</h3>
+		<a href="https://blog.cloudflare.com/#content-access-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many Internet applications are not built with access control features for assets, especially static assets like images, PDFs, zip files, apps, eBooks, and other downloadable content. Building an access control layer for these can be difficult and expensive.</p>
 	<p>We’ve worked with many customers to solve problems such as:</p>
 	<ul>
@@ -32,11 +39,25 @@
 			<p>Access to specific resources hosted outside of the main application needs to be limited and restricted.</p>
 		</li>
 	</ul>
-	<h3>API Protection</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-protection">API Protection</h3>
+		<a href="https://blog.cloudflare.com/#api-protection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today most applications are client software that connect to HTTP based APIs on the Internet. Protecting those APIs from malicious use is important as it’s possible to write client software, such as bots, that talks directly to the APIs bypassing the original application. This can lead to abuse and unwanted load on API servers.</p>
 	<p>Cloudflare’s token authentication can be used to validate that an API request is coming from a valid user, client or a mobile device on the edge. Cloudflare will filter out non-authenticated or forged requests and not pass them on to the origin API server.</p>
 	<p>Along with Cloudflare’s <a href="https://www.cloudflare.com/rate-limiting">Rate Limiting</a> and <a href="https://www.cloudflare.com/waf">WAF</a>, a mobile application with an Internet API can be protected at the edge, far from the origin API server.</p>
-	<h3>Cloudflare’s Token Authentication Solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-token-authentication-solution">Cloudflare’s Token Authentication Solution</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-token-authentication-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Token Authentication leverages tokens to verify that a user has access to a specific resource. The token can be sent as a URL parameter or in an HTTP header.</p>
 	<p>The token is an <a href="https://en.wikipedia.org/wiki/Hash-based_message_authentication_code">HMAC</a> generated from the following:</p>
 	<ul>
@@ -54,7 +75,14 @@
 		</li>
 	</ul>
 	<p>The Cloudflare edge validates the token and allow access or not based on the result. The generated HMAC can also be configured to expire after a certain time (e.g. 10 minutes), or so that the expiry is controlled directly from the origin server. In the latter case, the generated URLs would simply include an absolute future Unix timestamp.</p>
-	<h3>Protecting Private Content with Token Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="protecting-private-content-with-token-authentication">Protecting Private Content with Token Authentication</h3>
+		<a href="https://blog.cloudflare.com/#protecting-private-content-with-token-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the simplest implementations, tokens can be used to protect static private content. The code required in the back end application would be as follows (in PHP):</p>
 	<pre class="language-bash"><code class="language-bash">&lt;?php
 // Generate valid URL token
@@ -94,7 +122,14 @@ $url    = "http://www.domain.com/download/private.jpg?verify=" . $token;
 
 	</figure>
 	<p>The block page can be <a href="https://support.cloudflare.com/hc/en-us/articles/200172706-How-do-I-customize-Cloudflare-error-pages-">fully customized</a> to match the customer branding as necessary.</p>
-	<h3>API Requests with Token Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-requests-with-token-authentication">API Requests with Token Authentication</h3>
+		<a href="https://blog.cloudflare.com/#api-requests-with-token-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In more advanced implementations tokens can also be used to perform API authentication:</p>
 	<ul>
 		<li>
@@ -130,9 +165,23 @@ $url    = "http://www.domain.com/download/private.jpg?verify=" . $token;
 	</ul>
 	<p>Allowing access to API servers only from <a href="https://www.cloudflare.com/ips">Cloudflare IP ranges</a> will ensure that users cannot bypass the token authentication.</p>
 	<p>Additionally, for API endpoints, Cloudflare can be configured to generate custom JSON responses compatible with the API specification.</p>
-	<h3>Validating Mobile Apps with Token Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="validating-mobile-apps-with-token-authentication">Validating Mobile Apps with Token Authentication</h3>
+		<a href="https://blog.cloudflare.com/#validating-mobile-apps-with-token-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most mobile applications leverage HTTP based API endpoints to provide dynamic functionality to the end user. The shared secret used to generate the token can be embedded and encrypted within native mobile applications, improving protection of mobile app API endpoints and ensuring only requests from legitimate clients are allowed to access the underlying API.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Token Authentication is available for all paid plans if you are able to follow the default Cloudflare parameter format and expiry times are known beforehand. Our support team is able to provide implementation details on request.</p>
 	<p>If this is not possible, or if you are looking for additional logic and/or custom behavior, please contact us and enquire about our <a href="https://www.cloudflare.com/plans/enterprise/contact">Enterprise Plan</a> and reference Token Authentication.</p>
 </div>

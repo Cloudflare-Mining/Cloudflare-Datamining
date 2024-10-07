@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>On Wednesday, December 16, the RedDrip Team from QiAnXin Technology <a href="https://mp.weixin.qq.com/s/v-ekPFtVNZG1W7vWjcuVug">released their discoveries</a> (<a href="https://twitter.com/RedDrip7/status/1339168187619790848?s=20">tweet</a>, <a href="https://github.com/RedDrip7/SunBurst_DGA_Decode">github</a>) regarding the random subdomains associated with the SUNBURST malware which was present in the SolarWinds Orion compromise. In studying queries performed by the malware, Cloudflare has uncovered additional details about how the Domain Generation Algorithm (DGA) encodes data and exfiltrates the compromised hostname to the command and control servers.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The RedDrip team discovered that the DNS queries are created by combining the previously reverse-engineered unique guid (based on hashing of hostname and MAC address) with a payload that is a custom base 32 encoding of the hostname. The article they published includes screenshots of decompiled or reimplemented C# functions that are included in the compromised DLL. This background primer summarizes their work so far (which is published in Chinese).</p>
 	<p>RedDrip discovered that the DGA subdomain portion of the query is split into three parts:</p>
 	<p><code><b>&lt;encoded_guid&gt; + &lt;byte&gt; + &lt;encoded_hostname&gt;</b></code></p>
@@ -101,10 +108,24 @@
 	<p>The RedDrip Team has posted Python code for encoding and decoding the queries, including identifying random characters inserted into the queries at regular character intervals.</p>
 	<p>One potential issue we encountered with their implementation is the inclusion of a check clause looking for a ‘0’ character in the encoded hostname (line 138 of the decoding script). This line causes the decoding algorithm to ignore any encoded hostnames that do not contain a ‘0’. We believe this was included because ‘0’ is the encoded value of a ‘0’, ‘.’, ‘-’ or ‘_’. Since fully qualified hostnames are comprised of multiple parts separated by ‘.’s, e.g. ‘example.com’, it makes sense to be expecting a ‘.’ in the unencoded hostname and therefore only consider encoded hostnames containing a ‘0’. However, this causes the decoder to ignore many of the recorded DGA domains.</p>
 	<p>As we explain below, we believe that long domains are split across multiple queries where the second half is much shorter and unlikely to include a ‘.’. For example ‘www2.example.c’ takes up one message, meaning that in order to transmit the entire domain ‘www2.example.c’ a second message containing just ‘om’ would also need to be sent. This second message does not contain a ‘.’ so its encoded form does not contain a ‘0’ and it is ignored in the RedDrip team’s implementation.</p>
-	<h3>The quirk: hostnames are split across multiple queries</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-quirk-hostnames-are-split-across-multiple-queries">The quirk: hostnames are split across multiple queries</h3>
+		<a href="https://blog.cloudflare.com/#the-quirk-hostnames-are-split-across-multiple-queries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A list of observed queries performed by the malware was published publicly on <a href="https://github.com/bambenek/research/blob/main/sunburst/uniq-hostnames.txt">GitHub</a>. Applying the decoding script to this set of queries, we see some queries appear to be truncated, such as <code>grupobazar.loca</code>, but also some decoded hostnames are curiously short or incomplete, such as “com”, “.com”, or a single letter, such as “m”, or “l”.</p>
 	<p>When the hostname does not fit into the available payload section of the encoded query, it is split up across multiple queries. Queries are matched up by matching the GUID section after applying a byte-by-byte exclusive-or (xor).</p>
-	<h3>Analysis of first 15 characters</h3>
+	<div class="flex anchor relative">
+		<h3 id="analysis-of-first-15-characters">Analysis of first 15 characters</h3>
+		<a href="https://blog.cloudflare.com/#analysis-of-first-15-characters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Noticing that long domains are split across multiple requests led us to believe that the first 16 characters encoded information to associate multipart messages. This would allow the receiver on the other end to correctly re-assemble the messages and get the entire domain. The RedDrip team identified the first 15 bytes as a GUID, we focused on those bytes and will refer to them subsequently as the header.</p>
 	<p>We found the following queries that we believed to be matches without knowing yet the correct pairings between message 1 and message 2 (payload has been altered):</p>
 	<p><b>Part 1 - Both decode to “www2.example.c”</b><code>r1q6arhpujcf6jb6qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.com</code><code>r8stkst71ebqgj66qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.com</code></p>
@@ -341,7 +362,14 @@ def is_match(string1, string2):
 	<p>xorkey: 0x2B</p>
 	<p>We hypothesize that the xorkey can be derived from the header bytes and/or padding byte of the two messages, though we have not yet determined the relationship.</p>
 	<hr>
-	<h2>Update (12/18/2020):</h2>
+	<div class="flex anchor relative">
+		<h2 id="update-12-18-2020">Update (12/18/2020):</h2>
+		<a href="https://blog.cloudflare.com/#update-12-18-2020" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Erik Hjelmvik posted a blog <a href="https://www.netresec.com/?page=Blog&amp;month=2020-12&amp;post=Reassembling-Victim-Domain-Fragments-from-SUNBURST-DNS">explaining where the xor key is located</a>. Based on his code, we provide a python implementation for converting the header (first 16 bytes) into the decoded GUID as a string. Messages can then be paired by matching GUID’s to reconstruct the full hostname.</p>
 	<pre class="language-bash"><code class="language-bash">def decrypt_secure_string(header):
     decoded = Base32Decode(header[0:16])

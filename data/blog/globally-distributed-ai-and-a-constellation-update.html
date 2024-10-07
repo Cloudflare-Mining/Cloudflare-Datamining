@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>During Cloudflare's 2023 Developer Week, we announced <a href="https://blog.cloudflare.com/introducing-constellation">Constellation</a>, a set of APIs that allow everyone to run fast, low-latency inference tasks using pre-trained machine learning/AI models, directly on Cloudflare’s network.</p>
-	<h3>Constellation update</h3>
+	<div class="flex anchor relative">
+		<h3 id="constellation-update">Constellation update</h3>
+		<a href="https://blog.cloudflare.com/#constellation-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We now have a few thousand accounts onboarded in the Constellation private beta and have been listening to our customer's feedback to evolve and improve the platform. Today, one month after the announcement, we are upgrading Constellation with three new features:</p>
 	<p><b>Bigger models</b>We are increasing the size limit of your models from 10 MB to 50 MB. While still somewhat conservative during the private beta, this new limit opens doors to more pre-trained and optimized models you can use with Constellation.</p>
 	<p><b>Tensor caching</b>When you run a Constellation inference task, you pass multiple tensor objects as inputs, sometimes creating big data payloads. These inputs travel through the wire protocol back and forth when you repeat the same task, even when the input changes from multiple runs are minimal, creating unnecessary network and data parsing overhead.</p>
@@ -22,18 +29,39 @@
 
 	</figure>
 	<p>You can find the updated documentation with these new features and an example on how to use the XGBoost runtime with Constellation in our <a href="https://developers.cloudflare.com/constellation">Developers Documentation</a>.</p>
-	<h3>An era of globally distributed AI</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-era-of-globally-distributed-ai">An era of globally distributed AI</h3>
+		<a href="https://blog.cloudflare.com/#an-era-of-globally-distributed-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since Cloudflare’s network is globally distributed, Constellation is our first public release of globally distributed machine learning.</p>
 	<p>But what does this mean? You may not think of a global network as the place to deploy your machine learning tasks, but machine learning has been a core part of what’s enabled much of Cloudflare’s core functionality for many years. And we run it across our <a href="https://www.cloudflare.com/network">global network in 300 cities</a>.</p>
 	<p>Is this large spike in traffic an attack or a Black Friday sale? What’s going to be the best way to route this request based on current traffic patterns? Is this request coming from a human or a bot? Is this HTTP traffic a zero-day? Being able to answer these questions using automated <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> and <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a>, rather than human intervention, is one of the things that’s enabled Cloudflare to scale.</p>
 	<p>But this is just a small sample of what globally distributed machine learning enables. The reason this was so helpful for us was because we were able to run this machine learning as an integrated part of our stack, which is why we’re now in the process of opening it up to more and more developers with Constellation.</p>
 	<p>As Michelle Zatlyn, our co-founder likes to say, we’re just getting started (in this space) — every day we’re adding hundreds of new users to our <a href="https://blog.cloudflare.com/introducing-constellation">Constellation beta</a>, testing out and globally deploying new models, and beyond that, deploying new hardware to support the new types of workloads that <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> will bring to the our global network.</p>
 	<p>With that, we wanted to share a few announcements and some use cases that help illustrate why we’re so excited about globally distributed AI. And since it’s Speed Week, it should be no surprise that, well, speed is at the crux of it all.</p>
-	<h3>Custom tailored web experiences, powered by AI</h3>
+	<div class="flex anchor relative">
+		<h3 id="custom-tailored-web-experiences-powered-by-ai">Custom tailored web experiences, powered by AI</h3>
+		<a href="https://blog.cloudflare.com/#custom-tailored-web-experiences-powered-by-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve long known about the importance of performance when it comes to web experiences — in e-commerce, every second of page load time can have as much as a 7% drop off effect on conversion. But being fast is not enough. It’s necessary, but not sufficient. You also have to be accurate.</p>
 	<p>That is, rather than serving one-size-fits-all experiences, users have come to expect that you know what they want before they do.</p>
 	<p>So you have to serve personalized experiences, and you have to do it fast. That’s where Constellation can come into play. With Constellation, as a part of your e-commerce application that may already be served from Cloudflare’s network through Workers or Pages, or even store data in <a href="https://developers.cloudflare.com/d1">D1</a>, you can now perform tasks such as categorization (what demographic is this customer most likely in?) and personalization (if you bought this, you may also like that).</p>
-	<h3>Making devices smarter wherever they are</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-devices-smarter-wherever-they-are">Making devices smarter wherever they are</h3>
+		<a href="https://blog.cloudflare.com/#making-devices-smarter-wherever-they-are" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another use case where performance is critical is in interacting with the real world. Imagine a face recognition system that detects whether you’re human or not every time you go into your house. Every second of latency makes a difference (especially if you’re holding heavy groceries).</p>
 	<p>Running inference on Cloudflare’s network, means that within 95% of the world’s population, compute, and thus a decision, is never going to be more than 50ms away. This is in huge contrast to centralized compute, where if you live in Europe, but bought a doorbell system from a US-based company, may be up to hundreds of milliseconds round trip away.</p>
 	<p>You may be thinking, why not just run the compute on the device then?</p>
@@ -42,11 +70,25 @@
 	<p>The first is battery life — the longer the compute, the shorter the battery life. There's always a power consumption hit, even if you have a custom <a href="https://en.wikipedia.org/wiki/Application-specific_integrated_circuit">ASIC chip</a> or a Tensor Processing Unit (<a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit">TPU</a>), meaning shorter battery life if that's one of your constraints. For consumer products, this means having to switch out your doorbell battery (lest you get locked out). For operating fleets of devices at scale (imagine watering devices in a field) this means costs of keeping up with, and swapping out batteries.</p>
 	<p>Lastly, device hardware, and even software, is harder to update. As new technologies or more efficient chips become available, upgrading fleets of hundreds or thousands of devices is challenging. And while software updates may be easier to manage, they’ll never be as easy as updating on-cloud software, where you can effortlessly ship updates multiple times a day!</p>
 	<p>Speaking of shipping software…</p>
-	<h3>AI applications, easier than ever with Constellation</h3>
+	<div class="flex anchor relative">
+		<h3 id="ai-applications-easier-than-ever-with-constellation">AI applications, easier than ever with Constellation</h3>
+		<a href="https://blog.cloudflare.com/#ai-applications-easier-than-ever-with-constellation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Speed Week is not just about making your applications or devices faster, but also your team!</p>
 	<p>For the past six years, our developer platform has been making it easy for developers to ship new code with Cloudflare Workers. With Constellation, it’s now just as easy to add Machine Learning to your existing application, with just a few commands.</p>
 	<p>And if you don’t believe us, don’t just take our word for it. We’re now in the process of opening up the beta to more and more customers. To request access, head on over to the Cloudflare Dashboard where you’ll see a new tab for Constellation. We encourage you to check out <a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker">our tutorial</a> for getting started with Constellation — this AI thing may be even easier than you expected it to be!</p>
-	<h3>We’re just getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-just-getting-started">We’re just getting started</h3>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is just the beginning of our journey for helping developers build AI driven applications, and we’re already thinking about what’s next.</p>
 	<p>We look forward to seeing what you build, and hearing your feedback.</p>
 </div>

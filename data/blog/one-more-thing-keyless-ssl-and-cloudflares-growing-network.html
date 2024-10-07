@@ -7,13 +7,35 @@
 	</figure>
 	<p>I wanted to write one more thing about <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a>, our announcement from last week, before attention shifts to <a href="https://blog.cloudflare.com/celebrating-cloudflares-4th-birthday">what we'll be announcing on Monday</a>. Keyless allows us to provide CloudFlare's service without having private SSL keys stored locally on our edge servers. The news last week focused on how this could allow very large customers, like <a href="http://www.wired.com/2014/09/new-internet-security-tool-guards-goldman-sachs-eavesdroppers">major financial institutions</a>, to use CloudFlare without trusting us with their private keys.</p>
 	<p>But there's another use that will benefit the entire CloudFlare userbase, not just our largest enterprise customers, and it's this: Keyless SSL is a key part of our strategy to continue to expand CloudFlare's global network.</p>
-	<h3>CloudFlare's Global Network Today</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-global-network-today">CloudFlare's Global Network Today</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-global-network-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare's network today consists of <a href="https://www.cloudflare.com/network-map">28 edge data centers that span much of the globe</a>. We have technical and security requirements for these facilities in order to ensure that the equipment they house remains secure. Generally, we're in <a href="https://en.wikipedia.org/wiki/Data_center#Data_center_tiers">Tier III or IV data center facilities</a> with the highest level of security. In our San Jose facility, for instance, you have to pass through 5 biometric scans, in addition to multiple 24x7 manned guard check points, before you can get to the electronically locked cabinets housing our servers.</p>
 	<p>There are only about 30 locations around the world where a large number of networks come together in a building that meets these security requirements. In other words, we have largely run out of places that it makes sense for us to add a new location where we are confident enough in the facility's security to store sensitive information like customers' private keys.</p>
-	<h3>Bigger Network, New Challenges</h3>
+	<div class="flex anchor relative">
+		<h3 id="bigger-network-new-challenges">Bigger Network, New Challenges</h3>
+		<a href="https://blog.cloudflare.com/#bigger-network-new-challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With most of CloudFlare's rival services, even those that have a seemingly larger network footprint, the minute you ask them to enable SSL the size of the network shrinks to something that resembles our network today. That's because they too don't feel comfortable storing customers' private keys in many of their edge nodes. And that's why most legacy CDN providers charge such such an enormous premium the minute you ask them to support SSL.</p>
 	<p>But it makes sense to continue to grow our network. As we do, not only can we provide faster performance, but we can further isolate and mitigate large scale attacks. The way we think about it at CloudFlare is that, ultimately, we want to have equipment running in every cell phone tower base station. In order to do that, we need to ensure that we can do so securely. There are many requirements to pull that off, but one of them is ensuring that our customers' most sensitive data is never stored anywhere without the highest security standards. That's where Keyless SSL comes in.</p>
-	<h3>Securely Extending CloudFlare's Edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="securely-extending-cloudflares-edge">Securely Extending CloudFlare's Edge</h3>
+		<a href="https://blog.cloudflare.com/#securely-extending-cloudflares-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dTsXvQUG7PdF44EsvDaTA/0ae6803fd58747c941aa6889fa510027/cloudflare-illustration-map-upcoming.png" alt="CloudFlare's Network Growth Plans for 2015" class="kg-image" width="1920" height="814" loading="lazy">

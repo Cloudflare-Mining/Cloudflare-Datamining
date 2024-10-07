@@ -19,7 +19,14 @@
 			<p>SQL Injection (SQLi), which is delivering an SQL statement hidden in a payload, accessing a backend database powering a website.</p>
 		</li>
 	</ul>
-	<h3>Remote Code Execution</h3>
+	<div class="flex anchor relative">
+		<h3 id="remote-code-execution">Remote Code Execution</h3>
+		<a href="https://blog.cloudflare.com/#remote-code-execution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Struts vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5638">CVE-2017-5638</a>, which is protected by rule 100054 in Cloudflare Specials, was quite simple. In a payload targeted at the web-server, a specific command could be executed which can be seen in the example below:</p>
 	<pre class="language-bash"><code class="language-bash">"(#context.setMemberAccess(#dm))))."
 "(#cmd='touch /tmp/hacked')."
@@ -43,7 +50,14 @@ root@struts-demo:~$</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IPzn62W8nzdCNR4F8if95/9e5325cabc1000308b7a82d66be0a568/Struts-1.png" alt="" class="kg-image" width="2426" height="2084" loading="lazy">
 
 	</figure>
-	<h3>SQL Injection</h3>
+	<div class="flex anchor relative">
+		<h3 id="sql-injection">SQL Injection</h3>
+		<a href="https://blog.cloudflare.com/#sql-injection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SQL Injection (SQLi) is an attempt to inject nefarious queries into a GET or POST dynamic variable, which is used to query a database. Cloudflare, on a day to day basis will see over 2.3m SQLi attempts on our network. Most commonly, we see SQLi attacks against Wordpress sites, as it is one of the biggest web applications used on Cloudflare today. Wordpress is used by some of the world's giants, like Sony Music, all the way down to "mom &amp; pop" businesses. The challenge with being the leader in the space, is you then become a hot target. Looking at the CVE list as we near the close of 2017, there have been 41 vulnerabilities found in multiple versions of Wordpress which would force people to upgrade to the latest versions. To protect our customers, and buy them time to upgrade, Cloudflare works with a number of vendors to address vulnerabilities and then virtual-patching using our WAF to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent these vulnerabilities being exploited</a>.</p>
 	<p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a “Forgotten Password” link. Below is a straightforward SQL query example, which could be used in a web application:</p>
 	<pre class="language-bash"><code class="language-bash">SELECT user, password FROM users WHERE user = 'john@smith';</code></pre>

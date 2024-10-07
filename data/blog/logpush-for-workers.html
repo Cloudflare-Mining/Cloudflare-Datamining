@@ -7,7 +7,14 @@
 	</figure>
 	<p>Writing an application is like building a rocket. Countless hours in development and thousands of moving parts all come down to one moment - launch day. Picture the countdown: T minus 10 seconds. The entire team is making sure that things are running smoothly by monitoring dashboards that measure the health of every part of the system.</p>
 	<p>It’s every developer’s dream to get the level of visibility that NASA has in their mission control room, but for their own code. For flight directors and engineering directors alike, it’s important to have visibility into the systems that are built throughout development and after release. Today, we’re excited to announce <a href="https://developers.cloudflare.com/logs/about">Logpush</a> for Worker’s Trace Events, making it easier than ever to gain visibility into applications built on Workers.</p>
-	<h3>Workers Visibility Today</h3>
+	<div class="flex anchor relative">
+		<h3 id="workers-visibility-today">Workers Visibility Today</h3>
+		<a href="https://blog.cloudflare.com/#workers-visibility-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we have lots of tools that are used to find out what’s happening in a Worker.</p>
 	<ul>
 		<li>
@@ -25,14 +32,28 @@
 	</ul>
 	<p>These tools are awesome for debugging, generalizing trends and monitoring Workers on third parties. They emphasize ease of use and make it effortless to get visibility quickly from your Workers.</p>
 	<p>As Workers have evolved, we’re now seeing more adoption from larger enterprises and platform companies who are using Workers as a foundation for their customers to develop on top of. When building complex and dynamic applications, customers, especially those building on Workers in the SaaS world need access to raw logs.</p>
-	<h3>Bringing Trace Events to Logpush</h3>
+	<div class="flex anchor relative">
+		<h3 id="bringing-trace-events-to-logpush">Bringing Trace Events to Logpush</h3>
+		<a href="https://blog.cloudflare.com/#bringing-trace-events-to-logpush" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Coming soon — we’re adding Workers execution logs to Logpush! Cloudflare Enterprise customers get access to Logpush for any of our available products, including CDN, WAF, Spectrum and many more. We’re excited to add Workers to this list.</p>
 	<p>Logpush for Worker’s Trace Events will include unstructured <code>console.log()</code> messages, exceptions, and metadata about requests/responses. Here is a sample Trace Event for a fetch request:</p>
 	<p><code>{"accountID":123456,"scriptName":"cloudflare-workers-script","outcome":"ok","duration":0.5,"CPUTime":4,"eventType":"fetch","event":{"request":{"url":"https://workersdevtest.com","method":"GET","headers":{"accept":"*/*","accept-encoding":"gzip","connection":"Keep-Alive"},"cf":{"clientTcpRtt":40,"tlsVersion":"TLSv1.2","httpProtocol":"HTTP/2","edgeRequestKeepAliveStatus":1,"country":"CA","asn":16591}},"subrequests":{"request":{"url":"https://example.com","method":"GET","headers":{"x-custom-header":"my-header-value"}},"logs":[{"message":["foo"],"level":"log","timestamp":1587491479166}],"exceptions":[]}}}</code></p>
 	<p>With this new dataset, our Enterprise customers will be able to send Workers logs to their preferred cloud storage destination such as GCS or R2 or to analysis platforms like Splunk or New Relic. Logpush handles batching and can scale no matter how much traffic your Worker gets.</p>
 	<p>This brings new ways to get transparency into Workers! You can pinpoint when a fetch request fails, find out which call is adding the most lag in your application, and track down specific log lines to debug the end user experience. Also, combine Workers logs with HTTP request logs to get a better picture of the full request lifecycle.</p>
 	<p>It also opens up doors for SaaS companies building on Workers. SaaS companies can <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">get visibility into how their customer’s applications are performing</a> and expose logs to their customer’s developers to make debugging and troubleshooting much easier.</p>
-	<h3>Mission Control in the making</h3>
+	<div class="flex anchor relative">
+		<h3 id="mission-control-in-the-making">Mission Control in the making</h3>
+		<a href="https://blog.cloudflare.com/#mission-control-in-the-making" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>wrangler tail, Workers Analytics Engine (coming later this week!) and Logpush for Worker’s Trace Events are an elite trio to give visibility into every aspect of a Worker.</p>
 	<p>When you’re deep in the mix of development, wrangler tail is by your side to help you crush bugs and eliminate errors. &nbsp;With Workers Analytics Engine, you can instrument business logic and query aggregates within seconds to populate dashboards for monitoring. Logpush for Trace Events is there for when you need to debug very specific cases and get an exact record of what happened.</p>
 	<p>Customers big and small are using Cloudflare Workers for their next launch, and we’re building tools to make that happen successfully. We’re bringing Logpush for Trace Events to our Enterprise customers very soon. Stay tuned for updates.</p>

@@ -33,7 +33,15 @@ diff 18446744073709551615 0xffffffffffffffff</code></pre>
 arg0           4294967296 0x0000000100000000
 arg1                    1 0x0000000000000001
 diff           4294967295 0x00000000ffffffff</code></pre>
-	<h3>Who is messing with my eBPF?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="who-is-messing-with-my-ebpf">Who is messing with my eBPF?</h3>
+		<a href="https://blog.cloudflare.com/#who-is-messing-with-my-ebpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
 	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
 	<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47">a single eBPF instruction</a></p>
@@ -90,7 +98,14 @@ $ sudo bpftool prog dump xlated id 659
 	<p>It shouldn't. It's a bug. The eBPF verifier keeps track of what kind of values the ALU is operating on, and in this corner case the state was ignored.</p>
 	<p>Why running BPF as root is fine, you ask? If your program has <code>CAP_SYS_ADMIN</code> privileges, side-channel mitigations <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L7218">don't</a> <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L3109">apply</a>. As root you already have access to kernel address space, so nothing new can leak through BPF.</p>
 	<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
-	<h3>32-bit ALU to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="32-bit-alu-to-the-rescue">32-bit ALU to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#32-bit-alu-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
 	<p>eBPF registers, <code>r0</code>..<code>r10</code>, are 64-bits wide, but you can also access just the lower 32 bits, which are exposed as subregisters <code>w0</code>..<code>w10</code>. You can operate on the 32-bit subregisters using BPF ALU32 instruction subset. LLVM 7+ can generate eBPF code that uses this instruction subset. Of course, you need to you ask it nicely with trivial <code>-Xclang -target-feature -Xclang +alu32</code> toggle:</p>
 	<pre class="language-bash"><code class="language-bash">$ cat sub32.c
@@ -137,7 +152,14 @@ sub32:
       19:       4f 10 00 00 00 00 00 00         r0 |= r1
       20:       95 00 00 00 00 00 00 00         exit</code></pre>
 	<p>Apparently the compiler decided it was better to operate on 64-bit registers and discard the upper 32 bits. Thus we weren't able to get rid of the problematic <code>0x1f</code> opcode. Annoying, back to square one.</p>
-	<h3>Surely a bit of IR will do?</h3>
+	<div class="flex anchor relative">
+		<h3 id="surely-a-bit-of-ir-will-do">Surely a bit of IR will do?</h3>
+		<a href="https://blog.cloudflare.com/#surely-a-bit-of-ir-will-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
 	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html">reading</a><a href="https://blog.cloudflare.com/#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
 	<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7">IR variant</a> of our <code>sub64()</code> function:</p>
@@ -172,7 +194,14 @@ diff           4294967295 0x00000000ffffffff</code></pre>
 
 	</figure>
 	<p>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov">Sergei Frolov</a></p>
-	<h3>The final trick</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-final-trick">The final trick</h3>
+		<a href="https://blog.cloudflare.com/#the-final-trick" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Hand-written IR does the job. The downside is that linking IR modules to your C modules is hard. Fortunately there is a better way. You can persuade Clang to stick to 32-bit ALU ops in generated IR.</p>
 	<p>We've already seen the problem. To recap, if we ask Clang to subtract 32-bit integers, it will operate on 64-bit values and throw away the top 32-bits. Putting C, IR, and eBPF side-by-side helps visualize this:</p>
 	<figure class="kg-card kg-image-card ">

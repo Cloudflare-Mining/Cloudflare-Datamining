@@ -25,11 +25,25 @@
 	</ul><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/bdc9033796538ef4417626f8a4cb3cc0?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h3>Starting with Zero Trust access control</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-with-zero-trust-access-control">Starting with Zero Trust access control</h3>
+		<a href="https://blog.cloudflare.com/#starting-with-zero-trust-access-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> has been built with access management at its core: rather than trusting anyone on a private network, Access checks for identity, context and device posture every time someone attempts to reach an application or resource.</p>
 	<p>Behind the scenes, administrators build rules to decide who should be able to reach the tools protected by Access. When users need to connect to those tools, they are prompted to authenticate with one of the identity provider options. Cloudflare Access checks their login against the list of allowed users and, if permitted, allows the request to proceed.</p>
 	<p>Some applications and workflows contain data so sensitive that the user should have to prove who they are and why they need to reach that service. In this next phase of <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust security</a>, access to data should be limited to specific business use cases or needs, rather than generic all-or-nothing access.</p>
-	<h3>Deploying Zero Trust purpose justification</h3>
+	<div class="flex anchor relative">
+		<h3 id="deploying-zero-trust-purpose-justification">Deploying Zero Trust purpose justification</h3>
+		<a href="https://blog.cloudflare.com/#deploying-zero-trust-purpose-justification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We created this functionality because we, too, wanted to make sure we had these provisions in place at Cloudflare. We have sensitive internal tools that help our team members serve our customers, and <a href="https://blog.cloudflare.com/dogfooding-from-home">we’ve written before</a> about how we use Cloudflare Access to lock down those tools in a Zero Trust manner.</p>
 	<p>However, we were not satisfied with just restricting access in the least privileged model. We are accountable to the trust our customers put in our services, and we feel it is important to always have an explicit business reason when connecting to some data sets or tools.</p>
 	<p>We built purpose justification capture in Cloudflare Access to solve that problem. When team members connect to certain resources, Access prompts them to justify why. Cloudflare’s network logs that rationale and allows the user to proceed.</p>
@@ -40,7 +54,14 @@
 
 	</figure>
 	<p>Purpose justification capture adds an additional layer of context for enterprise administrators.</p>
-	<h3>Distinguishing Sensitive Domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="distinguishing-sensitive-domains">Distinguishing Sensitive Domains</h3>
+		<a href="https://blog.cloudflare.com/#distinguishing-sensitive-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So how do you distinguish if something is sensitive? There are two main categories of &nbsp;applications that may be considered “sensitive.” First: does it contain personally identifiable information or sensitive financials? Second, do all the employees who have access actually need access? The flexibility of the configuration of Access policies helps effectively distinguish sensitive domains for specific user groups.</p>
 	<p>Purpose justification in Cloudflare Access enables Teams administrators to configure the language of the prompt itself by domain. This is a helpful place to remind employees of the sensitivity of the data, such as, “This application contains PII. Please be mindful of company policies and provide a justification for access,” or “Please enter the case number corresponding to your need for access.” The language can proactively ensure that employees with access to an internal tool are using it as intended.</p>
 	<p>Additionally, Access <a href="https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management">identity management</a> allows Teams customers to configure purpose capture for only specific, more sensitive employee groups. For example, some employees need daily access to an application and should be considered “trusted.” But other employees may still have access, but should only rarely need to use the tool— security teams or data protection officers may view their access as higher risk. The policies enable flexible logical constructions that equate to actions such as “ask everyone but the following employees for a purpose.”</p>
@@ -51,7 +72,14 @@
 
 	</figure>
 	<p>Purpose justification is configurable as an Access policy, allowing for maximum flexibility in configuring and layering rules to protect sensitive applications.</p>
-	<h3>Auditing justification records</h3>
+	<div class="flex anchor relative">
+		<h3 id="auditing-justification-records">Auditing justification records</h3>
+		<a href="https://blog.cloudflare.com/#auditing-justification-records" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a Teams administrator, enterprise data protection officer, or security analyst, you can view purpose justification logs for a specific application to better understand how it has been accessed and used. Auditing the logs can reveal insights about security threats, the need for improved data classification training, or even potential application development to more appropriately address employees’ use cases.</p>
 	<p>The justifications are seamlessly integrated with other Access audit logs — they are viewable in the Teams dashboard as an additional column in the table of login events, and exportable to a SIEM for further data analysis.</p>
 	<figure class="kg-card kg-image-card ">
@@ -60,7 +88,14 @@
 
 	</figure>
 	<p>Teams administrators can review the purpose justifications submitted upon application login by their employees.</p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can start adding purpose justification prompts to your application access policies in Cloudflare Access today. The purpose justification feature is available in all plans, and with the <a href="https://www.cloudflare.com/plans/free">Cloudflare for Teams free plan</a>, you can use it for up to 50 users at no cost.</p>
 	<p>We're excited to continue adding new features that give you more flexibility over purpose justification in Access... Have feedback for us? Let us know <a href="https://community.cloudflare.com/t/cloudflare-access-purpose-justification-is-live-let-us-know-what-you-think">in this community post</a>.</p>
 </div>

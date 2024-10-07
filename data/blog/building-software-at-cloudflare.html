@@ -9,7 +9,14 @@
 	<p>Software delivery consists of all the activities to get working software into the hands of customers. It’s usual to talk about software delivery with reference to a model, or framework. These provide the scaffolding for most modern software delivery models, although in order to minimise operational friction it’s usual for a company to tailor their approach to suit their business context and culture.</p>
 	<p>For example, a company that designs the autopilot systems for passenger aircraft will require very strict tolerances, as a failure could cost hundreds of lives. They would want a different process to a cutting edge tech startup, who may value time to market over system uptime or stability.</p>
 	<p>Before outlining the approach we use at Cloudflare it’s worth quickly running through a couple of commonly used delivery models.</p>
-	<h3>The Waterfall Approach</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-waterfall-approach">The Waterfall Approach</h3>
+		<a href="https://blog.cloudflare.com/#the-waterfall-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Waterfall_model">Waterfall</a> has its foundations (pun intended) in construction and manufacturing. It breaks a project up into phases and presumes that each phase is completed before the next begins. Each phase “cascades” into the next bit like a waterfall, hence the name.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -19,7 +26,14 @@
 	<p>The main criticism of waterfall approaches arises when flaws are discovered downstream, which may necessitate a return to earlier phases — though this can be managed through governance processes that allows for adjusting scope, budgets or timelines.</p>
 	<p>More recently there are a number of modified waterfall models which have been developed as a response to its perceived inflexibility. Some notable examples are the <a href="https://en.wikipedia.org/wiki/Rational_Unified_Process">Rational Unified Process (RUP)</a>, which encourages iteration within phases, and <a href="https://www.thomasalspaugh.org/pub/fnd/softwareProcess.html#Sashimi">Sashimi</a> which provides partial overlap between phases.</p>
 	<p>Despite falling out of favour in recent years, waterfall still has a place in modern technology companies. It tends to be reserved for projects where the scope and requirements can be defined upfront and are unlikely to change. At Cloudflare, we use it for infrastructure rollouts, for example. It also has a place in very large projects with complex dependencies to manage.</p>
-	<h3>Agile Approaches</h3>
+	<div class="flex anchor relative">
+		<h3 id="agile-approaches">Agile Approaches</h3>
+		<a href="https://blog.cloudflare.com/#agile-approaches" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Agile isn’t a single well-defined process, rather a family of approaches which share similar philosophies — those of the <a href="https://agilemanifesto.org">agile manifesto</a>. Implementations vary, but most agile flavours tend to share a number of common traits:</p>
 	<ul>
 		<li>
@@ -46,11 +60,25 @@
 			<p>The “Blue” Team meanwhile is an operational team, where a big part of their role is to monitor production systems and investigate issues as they arise. For them, a flow based approach is much more appropriate, so they can update their plans on the fly as new items arise.</p>
 		</li>
 	</ul>
-	<h3>Which approach does Cloudflare follow?</h3>
+	<div class="flex anchor relative">
+		<h3 id="which-approach-does-cloudflare-follow">Which approach does Cloudflare follow?</h3>
+		<a href="https://blog.cloudflare.com/#which-approach-does-cloudflare-follow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare comprises dozens of globally distributed engineering teams each with their own unique challenges and contexts. A team usually has an Engineering Manager, a Product Manager and less than 10 engineers, who all focus on a singular product or mission. The DDoS team for example is one such team.</p>
 	<p>A team that supports a newly released product will likely want to rapidly incorporate feedback from customers, whereas a team that manages shared internal platforms will prize platform stability over speed of innovation. There is a spectrum of different contexts within Cloudflare which makes it impossible to define a single software delivery method for all teams to follow.</p>
 	<p>Instead, we take a more nuanced approach where we allow teams to decide which methodology they wish to follow within the team, whilst also defining a number of high-level concepts and language that are common to all teams. In other words, we are more concerned with <b>macro</b>-management than micro-management.</p>
-	<h3>“SHIP”s and “Epic”s</h3>
+	<div class="flex anchor relative">
+		<h3 id="ship-s-and-epic-s">“SHIP”s and “Epic”s</h3>
+		<a href="https://blog.cloudflare.com/#ship-s-and-epic-s" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the highest level, our unit of work is called a “SHIP” &nbsp;— this is a change to a service or product which we intend to ship to customers, hence the name. All live SHIPs are published on our internal roadmap, called our “SHIP-board”. Transparency and collaboration are part of our DNA at Cloudflare, so for us, it’s important that anyone in Cloudflare can view the SHIP-board.</p>
 	<p>Individual SHIPs are sized such that they can be comfortably delivered within a month or two, though we have a strong preference towards shorter timescales. We’d much rather deliver three small feature sets monthly than one big launch every quarter.</p>
 	<p>A single SHIP might need work from multiple teams in order for customers to use it. We manage this by ensuring there is an EPIC within the SHIP for each team contributing. To prevent circular dependencies, a SHIP can’t contain another SHIP. SHIPs are owned by their Product Manager, and EPICs are usually owned by an Engineering Manager. We also allow for EPICs to be created that don’t deliver against SHIPs — this is where technical improvement initiatives are typically managed.</p>
@@ -62,17 +90,38 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ysKfyI9KK1Sz9lBwhQgTe/e8ce652b84de454ae22734cd00eb3a7c/image1-2.png" alt="A snippet of our ship-board with linting displayed, feature names redacted" class="kg-image" width="1086" height="399" loading="lazy">
 
 	</figure>
-	<h3>Planning</h3>
+	<div class="flex anchor relative">
+		<h3 id="planning">Planning</h3>
+		<a href="https://blog.cloudflare.com/#planning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Planning takes place every quarter. This lets us deliver aggressively, without having to change plans too frequently. It also forces us to make conscious choices about what to include and exclude from a SHIP so that extraneous work is minimised.</p>
 	<p>About a month before quarter-end, product managers will begin to compile the SHIPs that would deliver the most value to customers. They’ll work with their engineering teams to understand how the work might be done, and what work is required of other teams (e.g. the UI team might need to build a frontend whilst another team builds the API).</p>
 	<p>The team will likely estimate the work at this stage (though the exact mechanism is left up to them). Where work is required of other teams we’ll also begin to reach out to them, so they can factor it into their work for the quarter, and estimate their effort too. It’s also important at this stage to understand what kind of dependency this is — do we need one piece to fully complete before the other, or can they be done in parallel and integrated towards the end? Usually the latter.</p>
 	<p>The final aspect of planned work are unlinked EPICs — these are things that don’t necessarily contribute meaningfully to a SHIP, but the team would still like to get them completed. Examples of this are performance improvements, or changes/fixes to backend tooling.</p>
 	<p>We deliver continuously through the quarter to avoid a scramble of deployment at once, and our target dates will reflect that. We also allow anything delivered in the first two weeks of the following quarter to still count as being on-time — stability of the network is more important than hitting arbitrary dates.</p>
 	<p>We also take a fairly pragmatic approach towards target dates. A natural part of software delivery is that as we begin to explore the solution space we may uncover additional complexity. As long as we can justify a change of date it’s perfectly acceptable to amend the dates of SHIPs/EPICs to reflect the latest information. The exception to this is where we’ve made an external commitment to deliver something, so changing the delivery dates is subject to greater scrutiny.</p>
-	<h3>Keeping us safe</h3>
+	<div class="flex anchor relative">
+		<h3 id="keeping-us-safe">Keeping us safe</h3>
+		<a href="https://blog.cloudflare.com/#keeping-us-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You might think that letting teams set their own process might lead to chaos, but in my experience the opposite is true. By allowing teams to define their own methods we are empowering them to make better decisions and understand their own context within Cloudflare. We explicitly define the interfaces we use between teams, and that allows teams the flexibility to do what works best for them.</p>
 	<p>We don’t go as far as to say “there are no rules”. Last quarter Cloudflare blocked an average of 87 billion cyber threats each day, and in July 2021 we blocked the <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">largest DDoS attack</a> ever recorded. If we have an outage, our customers feel it, and we feel it too. To manage this we have strict, though simple, rules governing how code reaches our data centers. For example, we mandate a minimum number of reviews for each piece of code, and our deployments are phased so that changes are tested on a subset of live traffic, so any issues can be localised.</p>
 	<p>The main takeaway is to find the right balance between freedom and rules, and appreciate that this may vary for different teams within the organisation. Enforcing an unnecessarily strict process can cause a lot of friction in teams, and that’s a shortcut to losing great people. Our ideal process is one that minimises red tape, such that our team can focus on the hard job of protecting our customers.</p>
-	<h3>P.S. — we’re hiring!</h3>
+	<div class="flex anchor relative">
+		<h3 id="p-s-were-hiring">P.S. — we’re hiring!</h3>
+		<a href="https://blog.cloudflare.com/#p-s-were-hiring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Do you want to come and work on advanced technologies where every code push impacts millions of Internet properties? <a href="https://boards.greenhouse.io/cloudflare/jobs/3362628?gh_jid=3362628">Join our team</a>!</p>
 </div>

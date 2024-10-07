@@ -8,7 +8,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC By 2.0</a> <a href="https://www.flickr.com/photos/deanhochman/11940908695">Image</a> by <a href="https://www.flickr.com/photos/deanhochman">Dean Hochman</a></p>
-	<h3>Connection pooling</h3>
+	<div class="flex anchor relative">
+		<h3 id="connection-pooling">Connection pooling</h3>
+		<a href="https://blog.cloudflare.com/#connection-pooling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common pattern that aims to avoid connection setup costs (such as the TCP handshake and TLS setup) and confer control over the number of concurrently established connections is to pool them. <code>net/http</code> maintains a pool of connections to each remote host which supports <code>Connection: keep-alive</code>. The <a href="https://golang.org/src/net/http/transport.go#L42">default size</a> of the pool is two idle connections per <a href="https://golang.org/src/net/http/transport.go#L743">remote host</a>.</p>
 	<p>More interestingly, when you make a request with <code>net/http</code>, a race happens. Races in code are often an unwanted side effect, but in this case it's intentional. Two goroutines operate in parallel: one that tries to dial a connection to the remote host, and another which tries to retrieve an idle connection from the connection pool. The fastest goroutine wins.</p>
 	<p>To illustrate, let's look at the <a href="https://golang.org/src/net/http/transport.go#L187">code executed</a> when <code>transport.RoundTrip(req)</code> is called:</p>
@@ -39,7 +46,14 @@ case &lt;-cancelc:
     return nil, errors.New("net/http: request canceled while waiting for connection")
 }</code></pre>
 	<p>First a connection is dialed, then we select over <code>idleConnCh</code> (down which idle connections are passed) or <code>dialc</code>, which gives us the result of the dial. Cancellation of the request is also possible if the caller decides <code>RoundTrip</code> has taken too long.</p>
-	<h3>Late binding</h3>
+	<div class="flex anchor relative">
+		<h3 id="late-binding">Late binding</h3>
+		<a href="https://blog.cloudflare.com/#late-binding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So if an idle connection is available, retrieving it from the pool should win against dialing a new one. A similar approach (alongside other optimizations) has been used in Chromium, where it's referred to as <a href="https://insouciant.org/tech/connection-management-in-chromium">late binding</a>.</p>
 	<p>This echoes a mechanism we use in <a href="https://www.cloudflare.com/railgun">Railgun</a>, CloudFlare's dynamic content optimizer, to ensure that an incoming request is serviced as quickly as possible. Idle connections to the Railgun component running at an origin server are periodically pruned after a timeout or may be closed because of errors, so an established connection from CloudFlare's edge is not always available. In this case, a direct request is made without Railgun whilst, in parallel, a persistent connection is initiated for use by subsequent requests.</p>
 	<p>As long as you have confidence that your connection manager is capable of cleaning up bad connections and cancelled requests properly, connection pooling and late binding can be important in reducing roundtrip latency. <a href="https://golang.org/pkg/sync/#Pool">sync.Pool</a> in the standard library may be a useful starting point if you need to pool something other than HTTP connections.</p>

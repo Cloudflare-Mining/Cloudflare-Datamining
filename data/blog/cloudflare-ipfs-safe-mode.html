@@ -8,7 +8,14 @@
 	<p>Cloudflare's journey with IPFS started in 2018 when we announced a <a href="https://blog.cloudflare.com/distributed-web-gateway">public gateway for the distributed web</a>. Since then, the number of infrastructure providers for the InterPlanetary FileSystem (IPFS) has grown and matured substantially. This is a huge benefit for users and application developers as they have the ability to choose their infrastructure providers.</p>
 	<p>Today, we’re excited to announce new secure filtering capabilities in IPFS. The Cloudflare IPFS module is a tool to protect users from threats like phishing and ransomware. We believe that other participants in the network should have the same ability. We are releasing that software as open source, for the benefit of the entire community.</p>
 	<p>Its code is available on <a href="https://github.com/cloudflare/go-ipfs/tree/v0.9.1-safemode">github.com/cloudflare/go-ipfs</a>. To understand how we built it and how to use it, read on.</p>
-	<h3>A brief introduction on IPFS content retrieval</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-brief-introduction-on-ipfs-content-retrieval">A brief introduction on IPFS content retrieval</h3>
+		<a href="https://blog.cloudflare.com/#a-brief-introduction-on-ipfs-content-retrieval" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we get to understand how IPFS filtering works, we need to dive a little deeper into the operation of an IPFS node.</p>
 	<p>The InterPlanetary FileSystem (IPFS) is a peer-to-peer network for storing content on a distributed file system. It is composed of a set of computers called nodes that store and relay content using a common addressing system.</p>
 	<p>Nodes communicate with each other over the Internet using a Peer-to-Peer (P2P) architecture, preventing one node from becoming a single point of failure. This is even more true given that anyone can operate a node with limited resources. This can be light hardware such as a Raspberry Pi, a server at a cloud provider, or even your web browser.</p>
@@ -41,7 +48,14 @@
 	<p>Cloudflare’s IPFS gateway is simply a cache in front of IPFS. Cloudflare does not have the ability to modify or remove content from the IPFS network. However, IPFS is a decentralized and open network, so there is the possibility of users sharing threats like phishing or malware. This is content we do not want to provide to the P2P network or to our HTTP users.</p>
 	<p>In the next section, we describe how an IPFS node can protect its users from such threats.</p>
 	<p><i>If you would like to learn more about the inner workings of libp2p, you can go to</i> <a href="https://proto.school/introduction-to-libp2p"><i>ProtoSchool</i></a> <i>which has a great tutorial about it.</i></p>
-	<h3>How IPFS filtering works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-ipfs-filtering-works">How IPFS filtering works</h3>
+		<a href="https://blog.cloudflare.com/#how-ipfs-filtering-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we described earlier, an IPFS node provides content in two ways: to its peers through the IPFS P2P network and to its users via an HTTP gateway.</p>
 	<p>Filtering content of the HTTP interface is no different from the current protection Cloudflare already has in place. If ? is considered malicious and is available at cloudflare-ipfs.com/ipfs/?, we can filter these requests, so the end user is kept safe.</p>
 	<p>The P2P layer is different. We cannot filter URLs because that’s not how the content is requested. IPFS is content-addressed. This means that instead of asking for a specific location such as cloudflare-ipfs.com/ipfs/?, peers request the content directly using its Content IDentifiers (CID), ?.</p>
@@ -55,7 +69,14 @@
 
 	</figure>
 	<p>This cryptographic method of linking content together is known as MerkleDAG. You can learn more about it on <a href="https://proto.school/merkle-dags">ProtoSchool</a>, and Consensys did an article explaining the <a href="https://media.consensys.net/ever-wonder-how-merkle-trees-work-c2f8b7100ed3">basic cryptographic construction with bananas</a> ?.</p>
-	<h3>How to use IPFS secure filtering</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-ipfs-secure-filtering">How to use IPFS secure filtering</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-ipfs-secure-filtering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By now, you should have an understanding of how an IPFS node retrieves and provides content, as well as how we can protect peers and users from shared nodes accessing threats. Using this knowledge, Cloudflare went on to implement IPFS Safemode, a node protection layer on top of <a href="https://github.com/ipfs/go-ipfs">go-ipfs</a>. It is up to every node operator to build their own list of threats to be blocked based on their policy.</p>
 	<p>To use it, we are going to follow the instructions available on <a href="https://github.com/cloudflare/go-ipfs/tree/v0.9.1-safemode#build-from-source">cloudflare/go-ipfs repository</a>.</p>
 	<p>First, you need to clone the git repository</p>
@@ -75,7 +96,15 @@ ipfs safemode --help
 USAGE
 ipfs safemode - Interact with IPFS Safemode to prevent certain CIDs from being provided.
 ...</code></pre>
-	<h3>Going further</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="going-further">Going further</h3>
+		<a href="https://blog.cloudflare.com/#going-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IPFS nodes are running in a diverse set of environments and operated by parties at various scales. The same software has to accommodate configuration in which it is accessed by a single-user, and others where it is shared by thousands of participants.</p>
 	<p>At Cloudflare, we believe that decentralization is going to be the next major step for content networks, but there is still work to be done to get these technologies in the hands of everyone. Content filtering is part of this story. If the community aims at embedding a P2P node in every computer, there needs to be ways to prevent nodes from serving harmful content. Users need to be able to give consent on the content they are willing to serve, and the one they aren’t.</p>
 	<p>By providing an IPFS safemode tool, we hope to make this protection more widely available.</p>

@@ -34,13 +34,27 @@ probe end {
   printf("\nDONE\n")
 }</code></pre>
 	<p>Oh my. What is this? What do you mean, "this is not useful"? This is almost exactly what I want!</p>
-	<h3>SystemTap: Not just for debugging?</h3>
+	<div class="flex anchor relative">
+		<h3 id="systemtap-not-just-for-debugging">SystemTap: Not just for debugging?</h3>
+		<a href="https://blog.cloudflare.com/#systemtap-not-just-for-debugging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SystemTap is a tool designed to allow you to probe the Linux kernel for debugging purposes. It lets you hook any kernel function (yes, any C function defined anywhere in the kernel) and log the argument values, or other system state. Scripts are written in a special language designed to prevent you from doing anything that could break your system.</p>
 	<p>But it turns out you can do more than just read: With the <code>-g</code> flag (for "guru mode", in which you accept responsibility for your actions), you can not just read, but modify. Moreover, you can inject raw C code, escaping the restrictions of SystemTap's normal language.</p>
 	<p>SystemTap's command-line tool, <code>stap</code>, compiles your script into a Linux kernel module and loads it. The module, on load, will find the function you want to probe and will overwrite it with a jump to your probing code. The probe code does what you specify, then jumps back to the original function body to continue as usual. When you terminate <code>stap</code> (e.g. via ctrl+C on the command line), it unloads the module, restoring the probed function to its original state.</p>
 	<p>This means it's easy and relatively safe to inject a probe into your running system at any time. If it doesn't do what you want, you can safely remove it, modify it, and try again. There's no need to modify the actual kernel code nor recompile your kernel. You can make your changes without maintaining a fork.</p>
 	<p>This is, of course, a well-known practice in dynamic programming languages, where it's generally much easier. We call it "Monkey-Patching".</p>
-	<h3>When is it OK to Monkey-Patch?</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-is-it-ok-to-monkey-patch">When is it OK to Monkey-Patch?</h3>
+		<a href="https://blog.cloudflare.com/#when-is-it-ok-to-monkey-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>"Monkey-patch" is often used as a pejorative. Many developers cringe at the thought. It's an awful hack! Never do that!</p>
 	<p>Indeed, in a lot of contexts, monkey-patching is a terrible idea. At a previous job, <a href="https://sandstorm.io/news/2016-09-30-fiber-bomb-debugging-story">I spent weeks</a> debugging problems caused by a bad (but well-meaning) monkey-patch made by one of our dependencies.</p>
 	<p>But, often, a little monkey-patch can save a lot of work. By monkey-patching my kernel, I can get the keyboard behavior I want without maintaining a fork forever, and without spending weeks developing a feature worthy of pushing upstream. And when patching my own machine, I can't hurt anyone but myself.</p>
@@ -54,11 +68,25 @@ probe end {
 		</li>
 	</ol>
 	<p>In this case, I'm the owner of my system, and therefore I have the right to monkey-patch it. If my monkey-patch breaks (say, because the kernel functions I was patching changed in a later kernel version), or if it breaks other programs I use, that's my problem and I'll deal with it.</p>
-	<h3>Setting Up</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up">Setting Up</h3>
+		<a href="https://blog.cloudflare.com/#setting-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To use SystemTap, you must have the kernel headers and debug symbols installed. I found the documentation was not quite right on my Debian system. I managed to get everything installed by running:</p>
 	<pre class="language-bash"><code class="language-bash">sudo apt install systemtap linux-headers-amd64 linux-image-amd64-dbg</code></pre>
 	<p>Note that the debug symbols are a HUGE package (~500MB). Such is the price you pay, it seems.</p>
-	<h3>False Starts</h3>
+	<div class="flex anchor relative">
+		<h3 id="false-starts">False Starts</h3>
+		<a href="https://blog.cloudflare.com/#false-starts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting from the sample script that remaps 'm' to 'b', it seemed obvious how to proceed. I saved the script to a file and did:</p>
 	<pre class="language-bash"><code class="language-bash">sudo stap -g keyhack.stp</code></pre>
 	<p>But… nothing happened. My 'm' key still typed 'm'.</p>
@@ -75,7 +103,14 @@ probe module("evdev").function("__pass_event") {
 	<pre class="language-bash"><code class="language-bash">semantic error: failed to retrieve location attribute for 'event'</code></pre>
 	<p>This error seems strange. The function definitely has a parameter called <code>event</code>!</p>
 	<p>The problem is, <code>__pass_event()</code> is a <code>static</code> function that is called from only one place. As a result, the compiler inlines it. When a function is inlined, its parameters often cease to have a well-defined location in memory, so reading and modifying them becomes infeasible. SystemTap relies on debug info tables that specify where to find parameters, but in this case the tables don't have an answer.</p>
-	<h3>The Working Version</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-working-version">The Working Version</h3>
+		<a href="https://blog.cloudflare.com/#the-working-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alas, it seemed I'd need to use <code>evdev_events()</code> and deal with the array after all. This function takes an array of events to deliver at once, so its parameters aren't quite as convenient. But, it has multiple call sites, so it isn't inlined. I just needed a little loop:</p>
 	<pre class="language-bash"><code class="language-bash">probe module("evdev").function("evdev_events") {
   for (i = 0; i &lt; $count; i++) {

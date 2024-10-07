@@ -6,17 +6,38 @@
 
 	</figure>
 	<p>In the dynamic landscape of modern web applications and organizations, <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access control</a> is critical. Defining who can do what within your Cloudflare account ensures security and efficient workflow management. In order to help meet your organizational needs, whether you are a single developer, a small team, or a larger enterprise, we’re going to cover two changes that we have developed to make it easier to do user management, and best practices on how to use these features, alongside existing features in order to scope everything appropriately into your account, in order to ensure security while you are working with others.</p>
-	<h3>What are roles?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-roles">What are roles?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-roles" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the preceding year, Cloudflare has expanded our list of roles available to everyone from 1 to over 60, and we are continuing to build out more, better roles. We have also made domain scoping a capability for all users. This prompts the question, what are roles, and why do they exist?</p>
 	<p>Roles are a set of permissions that exist in a bundle with a name. Every API call that is made to Cloudflare has a required set of permissions, otherwise an API call will return with a 403. We generally group permissions into a role to allow access to a set of capabilities that allow the use of a Cloudflare Product, or that represent everything needed to fulfill a job function.</p>
 	<p>As of today, we have two entities that we can assign roles: the first entity is a user, representing a profile, or an actor, which we generally require an email address to represent.</p>
 	<p>The second entity is a token, which represents delegation of a subset of a user’s permissions to be used for programmatic purposes.</p>
-	<h3>What is scope?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-scope">What is scope?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-scope" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Permissions are useless without an appropriate actor, and a scope. For every action a user can take, they must be directed to the appropriate resource, which is what we refer to as a scope.</p>
 	<p>When a user first signs up to Cloudflare, they are provided a Cloudflare user, as well as an account. Accounts can be shared with others. Accounts act as our traditional resource boundary, and granting permissions at the account level means that those permissions apply to all zones, and all other resources within the account.</p>
 	<p>Within accounts however, there are zones, R2 Buckets, Workers, and other resources. We are working on expanding the types of scopes that can be set, and as of now, you can scope access to a selective number of zones, or create tokens that only allow access into specified R2 buckets.</p>
 	<p>While our list of available roles is going to continue to grow, I want to go into some detail about how to use the roles right now, and how to use them to their full potential</p>
-	<h3>What are the different types of roles and scopes we have today?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-different-types-of-roles-and-scopes-we-have-today">What are the different types of roles and scopes we have today?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-different-types-of-roles-and-scopes-we-have-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For most of the Cloudflare users and use cases out there, our traditional role model at the account level is the easiest to use. These roles can be viewed by selecting the scope of All domains.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -38,14 +59,28 @@
 
 	</figure>
 	<p>Best practices for creating domain groups is to group a set of similar domains together, such that you can reuse it for every user on your account.</p>
-	<h3>Other best practices when assigning memberships</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-best-practices-when-assigning-memberships">Other best practices when assigning memberships</h3>
+		<a href="https://blog.cloudflare.com/#other-best-practices-when-assigning-memberships" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is always best practice to explicitly define what you are granting access to, as Cloudflare’s permissioning system defers to a fail closed design. If you do not grant access to it, they will not have access to it.</p>
 	<p>We model all the different types of roles in an additive capacity, and we’re going to move forward with creating more capability specific roles. Multiple roles can be assigned given a scope. We recommend against explicitly “excluding” objects, because it can lead to some complex permission processing.</p>
 	<p>An example of this may be your organization’s billing administrator. You may want to grant them both Billing and Analytics, but exclude them from web administration activities by explicitly granting them those two roles.</p>
 	<p>Exciting changes you will see from us soon include the capability to “stack” multiple sets of policies on top of one another. We are currently rolling this out, and some users will already have the ability to define a set of permissions for one set of domains, and an increased set of permissions for another.</p>
 	<p>This will come in handy if you are managing multiple environments within one account, and want to grant differing levels of access to say a development and staging domain.</p>
 	<p>We also recognize that Cloudflare has many resources beyond Accounts and zones, and we are currently experimenting with adding scoping to other objects. As of today, you can specify R2 Tokens to only access certain buckets, and I look forward to adding this capability to more resources.</p>
-	<h3>Best practices when delegating access to tokens</h3>
+	<div class="flex anchor relative">
+		<h3 id="best-practices-when-delegating-access-to-tokens">Best practices when delegating access to tokens</h3>
+		<a href="https://blog.cloudflare.com/#best-practices-when-delegating-access-to-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Memberships and users tend to use Cloudflare in an interactive capacity, but many organizations use Cloudflare programmatically.</p>
 	<p>A new capability we are rolling out to all users soon is the capability to limit API access: on your account as a whole, or on a per-user basis.</p>
 	<p>All programmatic access to Cloudflare at this time is managed at a per-user basis, representing a delegation of that user’s access to their set of accounts. Programmatic access is always bounded by a user’s access, and many of our user’s service accounts have a wide set of access that is split into context specific tokens.</p>
@@ -76,6 +111,13 @@
 
 	</figure>
 	<p>Cloudflare’s roles are meant to provide the flexibility to provide the least amount of privilege possible, in order to keep your Cloudflare resources safe. Recent improvements have included a number of capability specific roles, as well as the ability to lock down API Access. Future improvements will include the ability to grant multiple policies to individual users, as well as more scopes.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All users are able to use our new roles, and there will be several rolling improvements, including the capability to lock down API access, as well as assign multiple policies to users.</p>
 </div>

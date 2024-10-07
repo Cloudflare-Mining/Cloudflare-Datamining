@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FXneXWxAlSjkmdEfZwK8V/22f0cc286eb7b0cfb7a7d244aa095989/bootstrapping-a-typescript-worker.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm">Webstorm</a> and npm run upload your code straight to the edge.</p>
-	<h3>Pre Requisites</h3>
+	<div class="flex anchor relative">
+		<h3 id="pre-requisites">Pre Requisites</h3>
+		<a href="https://blog.cloudflare.com/#pre-requisites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My environment looks like this:</p>
 	<ul>
 		<li>
@@ -20,7 +27,14 @@
 	<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers">activate Workers</a> on it.</p>
 	<p>I'll be using cryptoserviceworker.com</p>
 	<p>I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
-	<h2>Getting Started</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting Started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's start with a minimal node app with a "hello world" class and a test.</p>
 	<pre class="language-bash"><code class="language-bash">mkdir cryptoserviceworker &amp;&amp; cd cryptoserviceworker
 npm install generator-node-typescript -g
@@ -43,7 +57,14 @@ drwxr-xr-x    4 steve  staff     128 Jun 18 20:40 src
 -rw-r--r--    1 steve  staff     454 Jun 18 20:40 tsconfig.json
 -rw-r--r--    1 steve  staff      73 Jun 18 20:40 tslint.json</code></pre>
 	<p>It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
-	<h2>First Test</h2>
+	<div class="flex anchor relative">
+		<h2 id="first-test">First Test</h2>
+		<a href="https://blog.cloudflare.com/#first-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
 	<pre class="language-bash"><code class="language-bash">$ cat greeter.ts 
 export class Greeter {
@@ -77,7 +98,14 @@ Time:        1.867s
 Ran all test suites.
 </code></pre>
 	<p>OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
-	<h3>Hello, World with Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="hello-world-with-workers">Hello, World with Workers</h3>
+		<a href="https://blog.cloudflare.com/#hello-world-with-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A hello world implementation in Typescript might look something like this:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -128,7 +156,14 @@ Time:        1.123s, estimated 2s
 Ran all test suites.
 </code></pre>
 	<p>Better. OK, ship it!</p>
-	<h3>From Local Typescript to Worker Compatible Javascript.</h3>
+	<div class="flex anchor relative">
+		<h3 id="from-local-typescript-to-worker-compatible-javascript">From Local Typescript to Worker Compatible Javascript.</h3>
+		<a href="https://blog.cloudflare.com/#from-local-typescript-to-worker-compatible-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
 	<pre class="language-javascript"><code class="language-javascript">"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -190,7 +225,14 @@ exports.Worker = Worker;</code></pre>
 		</li>
 	</ul>
 	<p>Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
-	<h3>Grunt</h3>
+	<div class="flex anchor relative">
+		<h3 id="grunt">Grunt</h3>
+		<a href="https://blog.cloudflare.com/#grunt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
 	<pre class="language-typescript"><code class="language-typescript">// --BEGIN PREAMBLE--
 /// //Invoke worker
@@ -360,7 +402,14 @@ exports.Worker = Worker;</code></pre>
 	<p>Now let's remove that <code>exports.__esModule = true</code> line.</p>
 	<p><code>grunt fix-export</code></p>
 	<p>and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
-	<h3>Put it together</h3>
+	<div class="flex anchor relative">
+		<h3 id="put-it-together">Put it together</h3>
+		<a href="https://blog.cloudflare.com/#put-it-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
 	<p><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
 	<p>And run it.</p>
@@ -429,7 +478,14 @@ var Worker = /** @class */ (function () {
 }());
 exports.Worker = Worker;</code></pre>
 	<p>Paste that into the Workers IDE... works first time.</p>
-	<h3>Automated upload</h3>
+	<div class="flex anchor relative">
+		<h3 id="automated-upload">Automated upload</h3>
+		<a href="https://blog.cloudflare.com/#automated-upload" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
 	<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
 	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv">dotenv</a> package to load config from a .env file or environment variables.</p>

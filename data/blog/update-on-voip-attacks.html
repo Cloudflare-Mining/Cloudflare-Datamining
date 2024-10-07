@@ -9,7 +9,14 @@
 	<p>Cloudflare’s network stands in front of some of the largest, most performance-sensitive voice and video providers in the world, and is uniquely well suited to mitigating attacks on VoIP providers.</p>
 	<p>Because of the sustained attacks we are observing, we are sharing details on recent attack patterns, what steps they should take before an attack, and what to do after an attack has taken place.</p>
 	<p>Below are three of the most common questions we’ve received from companies concerned about attacks on their VoIP systems, and Cloudflare’s answers.</p>
-	<h3>Question #1: How is VoIP infrastructure being attacked?</h3>
+	<div class="flex anchor relative">
+		<h3 id="question-1-how-is-voip-infrastructure-being-attacked">Question #1: How is VoIP infrastructure being attacked?</h3>
+		<a href="https://blog.cloudflare.com/#question-1-how-is-voip-infrastructure-being-attacked" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The attackers primarily use off-the-shelf <a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser">booter</a> services to launch attacks against VoIP infrastructure. The attack methods being used are not novel, <b>but the persistence of the attacker and their attempts to understand the target’s infrastructure are.</b></p>
 	<p>Attackers have used various attack vectors to probe the existing defenses of targets and try to infiltrate any existing defenses to disrupt VoIP services offered by certain providers. In some cases, they have been successful. HTTP attacks against <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API gateways</a> and the corporate websites of the providers have been combined with network-layer and transport-layer attack against VoIP infrastructures. Examples:</p>
 	<ol>
@@ -26,7 +33,14 @@
 			<p><b><b><b>SIP protocol-specific attacks</b></b></b>Attacks at the application layer are of particular concern because of the higher resource cost of generating application errors vs filtering on network devices.</p>
 		</li>
 	</ol>
-	<h3>Question #2: How should I prepare my organization in case our VoIP infrastructure is targeted?</h3>
+	<div class="flex anchor relative">
+		<h3 id="question-2-how-should-i-prepare-my-organization-in-case-our-voip-infrastructure-is-targeted">Question #2: How should I prepare my organization in case our VoIP infrastructure is targeted?</h3>
+		<a href="https://blog.cloudflare.com/#question-2-how-should-i-prepare-my-organization-in-case-our-voip-infrastructure-is-targeted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p><b><b><b>Deploy an always-on DDoS mitigation service</b></b></b>Cloudflare recommends the deployment of always-on network level protection, like <a href="https://www.cloudflare.com/magic-transit">Cloudflare Magic Transit</a>, prior to your organization being attacked.</p>
@@ -43,7 +57,14 @@
 			<p><b><b><b>Educate your employees</b></b></b>Train all of your employees to be on the lookout for ransom demands. Check email, support tickets, form submissions, and even server access logs. Ensure employees know to immediately report ransom demands to your Security Incident Response team.</p>
 		</li>
 	</ol>
-	<h3>Question #3: What should I do if I receive a ransom/threat?</h3>
+	<div class="flex anchor relative">
+		<h3 id="question-3-what-should-i-do-if-i-receive-a-ransom-threat">Question #3: What should I do if I receive a ransom/threat?</h3>
+		<a href="https://blog.cloudflare.com/#question-3-what-should-i-do-if-i-receive-a-ransom-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p><b><b><b>Do not pay the ransom</b></b></b>Paying the ransom only encourages bad actors—and there’s no guarantee that they won’t attack your network now or later.</p>
@@ -55,7 +76,14 @@
 			<p><b><b><b>Notify local law enforcement</b></b></b>They will also likely request a copy of the ransom letter that you received.</p>
 		</li>
 	</ol>
-	<h3>Cloudflare is here to help</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-is-here-to-help">Cloudflare is here to help</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-is-here-to-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With over 100 Tbps of network capacity, a network architecture that <a href="https://blog.cloudflare.com/magic-transit-network-functions">efficiently filters traffic close to the source</a>, and a physical presence in over 250 cities, Cloudflare can help protect critical VoIP infrastructure without impacting latency, jitter, and call quality. Test results demonstrate a performance improvement of 36% on average across the globe for a real customer network using Cloudflare Magic Transit.</p>
 	<p>Some of the largest voice and video providers in the world rely on Cloudflare to protect their networks and ensure their services remain online and fast. We stand ready to help.</p>
 	<p>Talk to a Cloudflare specialist to <a href="https://www.cloudflare.com/lp/voip-ddos-protection">learn more</a>.Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.</p>

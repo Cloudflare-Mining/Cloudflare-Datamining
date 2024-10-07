@@ -21,10 +21,24 @@
 	</figure>
 	<p>A Factorio map view of a small factory, that’s still too big to easily share fully with screenshots.</p>
 	<p>At FactorioMaps.com, I am building a place for the community of Factorio players to share their factories as interactive Leaflet maps. Due to the size and detail of the game, it can be difficult to share an entire factory through a few screenshots. A Leaflet map provides a Google Maps-like experience allowing viewers to pan and zoom throughout the map almost as if they are playing the game.</p>
-	<h3>Hosting</h3>
+	<div class="flex anchor relative">
+		<h3 id="hosting">Hosting</h3>
+		<a href="https://blog.cloudflare.com/#hosting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for low-latency object storage. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
 	<p>Backblaze B2 requires a prefix of /file/bucketName on all public files, which I don’t want. To remove it, I added a VPS proxy to rewrite paths and add a few 301 redirects. Unfortunately, the latency from the user -&gt; VPS -&gt; B2 was sub-par averaging 800-1200ms in the US.</p>
-	<h3>A Closer Look At Leaflet</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-closer-look-at-leaflet">A Closer Look At Leaflet</h3>
+		<a href="https://blog.cloudflare.com/#a-closer-look-at-leaflet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Leaflet maps work by loading images at the user's X/Y/Z coordinates to render the current view. As a map is zoomed in, it requires 4x as many images to show the same area. That means 75% of a map's images are in the max rendered zoom level.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -32,12 +46,33 @@
 
 	</figure>
 	<p>A diagram of how each zoom level is 4x larger than the previous</p>
-	<h3>Reducing Latency</h3>
+	<div class="flex anchor relative">
+		<h3 id="reducing-latency">Reducing Latency</h3>
+		<a href="https://blog.cloudflare.com/#reducing-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With hosting working, it's time to start making the site faster. The majority of image requests come from the first few zoom levels, representing less than 25% of a given map's images. Adding a local SSD cache on the VPS containing all except the last 1-3 zoom levels for each map reduces latency for 66% of requests. The problem with SSD storage is it's difficult to scale with ever-increasing data and is still limited to the network and CPU performance of the server it occupies.</p>
-	<h3>Going Serverless with Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="going-serverless-with-cloudflare-workers">Going Serverless with Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#going-serverless-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers can run JavaScript using the Service Workers API which means the path rewrites and redirects the VPS was accomplishing could run on Cloudflare's edge.</p>
 	<p>While Google Cloud Storage is more expensive than B2, it has much lower latency to the US and worldwide destinations because of their network and multi-regional object storage. However, it's not time to move the whole site over to GCS just yet; the upload API calls alone would cost $85 for 17 million files.</p>
-	<h3>Multi-Tier Object Storage</h3>
+	<div class="flex anchor relative">
+		<h3 id="multi-tier-object-storage">Multi-Tier Object Storage</h3>
+		<a href="https://blog.cloudflare.com/#multi-tier-object-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first few zoom levels are stored in GCS, while the rest are in B2. Cloudflare Workers figure out where files are located by checking both sources simultaneously. By doing this, 66% of requested files come from GCS with a mean latency of &lt;350ms, while only storing 24% of files on GCS. Another benefit to using B2 as the primary storage is if GCS becomes too expensive in the future, I can move all requests to B2.</p>
 	<pre class="language-javascript"><code class="language-javascript">// Race GCS and B2
 let gcsReq = new Request('https://storage.googleapis.com/bucketName' + url.pathname, event.request)
@@ -65,7 +100,15 @@ if (response.ok) {
 
 // The request failed/doesn't exist
 return response;</code></pre>
-	<h3>Tracking Subrequests</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="tracking-subrequests">Tracking Subrequests</h3>
+		<a href="https://blog.cloudflare.com/#tracking-subrequests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare Workers dashboard contains a few analytics for subrequests, but there is no way to see what responses came from B2 vs. GCS. Fortunately, it’s easy to send request stats to a 3rd party service like StatHat with a few lines of JavaScript.</p>
 	<pre class="language-javascript"><code class="language-javascript"> // Fetch from GCS and B2 with caching
 let reqStartTime = Date.now();
@@ -78,7 +121,14 @@ if (response.ok) {
     return response;
 }</code></pre>
 	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js"><b>here</b></a>. &nbsp;</p>
-	<h3>Making B2 Faster with Argo</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-b2-faster-with-argo">Making B2 Faster with Argo</h3>
+		<a href="https://blog.cloudflare.com/#making-b2-faster-with-argo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tracking request time surfaced another issue. Requests to B2 from countries outside of North America are still quite slow. Cloudflare's Argo can reduce latency by over 50%, but is too expensive to enable for the whole site. Additionally, it would be redundant to smart-route content from GCS that Google already does an excellent job of keeping latency down. Cloudflare request headers include the country of origin, making it trivial to route this subset of requests through an Argo-enabled domain.</p>
 	<pre class="language-javascript"><code class="language-javascript">// Use CF Argo for non-US/CA users
 function getB2Url(request) {
@@ -89,6 +139,14 @@ function getB2Url(request) {
     }
     return b2BackendUrl;
 }</code></pre>
-	<h3>Conclusion</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit">submit</a> your <a href="https://www.factorio.com">Factorio</a> world to share with others!</p>
 </div>

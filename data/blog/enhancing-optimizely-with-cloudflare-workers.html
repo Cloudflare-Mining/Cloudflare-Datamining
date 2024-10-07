@@ -8,13 +8,34 @@
 	<p><i>This is a joint post by </i><a href="https://www.linkedin.com/in/whelan-boyd-411b1174"><i>Whelan Boyd</i></a><i>, Senior Product Manager at Optimizely and </i><a href="https://twitter.com/remyguercio"><i>Remy Guercio</i></a><i>, Product Marketing Manager for Cloudflare Workers.</i></p>
 	<p>Experimentation is an important ingredient in driving business growth: whether you’re iterating on a product or testing new messaging, there’s no substitute for the data and insights gathered from conducting rigorous experiments in the wild.</p>
 	<p>Optimizely is the world’s leading experimentation platform, with thousands of customers worldwide running tests for over 140 million visitors daily. If Optimizely were a website, it would be the third most trafficked in the US. &nbsp;And when it came time to experiment with reinvigorating their own platform, Optimizely chose Cloudflare Workers.</p>
-	<h3>Improving Performance and Agility with Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="improving-performance-and-agility-with-cloudflare-workers">Improving Performance and Agility with Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#improving-performance-and-agility-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers is a globally distributed serverless compute platform that runs across Cloudflare’s network of 180 locations worldwide. Workers are designed for flexibility, with many different use cases ranging from customizing configuration of Cloudflare services and features to building full, independent applications.</p>
 	<p>In this post, we’re going to focus on how Workers can be used to improve performance and increase agility for more complex applications. One of the key benefits of Workers is that they allow developers to move decision logic and data into a highly efficient runtime operating in close proximity to end users — resulting in significant performance benefits and flexibility. Which brings us to Optimizely...</p>
-	<h3>How Optimizely Works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-optimizely-works">How Optimizely Works</h3>
+		<a href="https://blog.cloudflare.com/#how-optimizely-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every week Optimizely delivers billions of experiences to help teams A/B test new products, de-risk new feature launches, and validate alternative designs. Optimizely lets companies test client-side changes like layouts and copy, as well as server-side changes like algorithms and feature rollouts.</p>
 	<p>Let’s explore how both have challenges that can be overcome with Workers, starting with Optimizely’s client-side A/B testing, or Optimizely Web, product.</p>
-	<h3>Use Case: Optimizely Web</h3>
+	<div class="flex anchor relative">
+		<h3 id="use-case-optimizely-web">Use Case: Optimizely Web</h3>
+		<a href="https://blog.cloudflare.com/#use-case-optimizely-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main benefit of <a href="https://www.optimizely.com/platform/experimentation">Optimizely Web</a> — Optimizely’s client-side testing framework — is that it supports A/B testing via straightforward insertion of a JavaScript tag on the web page. The test is designed via the Optimizely WYSIWYG editor, and is live within minutes. Common use cases include style updates, image swaps, headlines and other text changes. You can also write any custom JavaScript or CSS you want.</p>
 	<p>With client-side A/B testing, the browser downloads JavaScript that modifies the page as it’s loading. &nbsp;To avoid “flash-of-unstyled-content” (FOUC), developers need to implement this JavaScript synchronously in their tag. &nbsp;This constraint, though, can lead to page performance issues, especially on slower connections and devices. &nbsp;Downloading and executing JavaScript in the browser has a cost, and this cost increases if the amount of JavaScript is large. &nbsp;With a normal Optimizely Web implementation, all experiments are included in the JavaScript loaded on every page.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -32,7 +53,14 @@
 	<p>Implementing tests with Optimizely and Cloudflare Workers</p>
 	<p>This diagram shows how Optimizely customers can execute experiments created in the point-and-click UI through a Cloudflare Worker. &nbsp;Rather than the browser downloading a large JavaScript file, your Worker handling HTTP/S requests calls out to Optimizely’s Worker. &nbsp;Optimizely’s Worker determines which A/B tests should be active on this page and returns a small amount of JavaScript back to your Worker. &nbsp;In fact, it is the JavaScript required to execute A/B test variations on just that specific page load. &nbsp;Your Worker inlines the code in the page and returns it to the visitor’s browser. &nbsp;</p>
 	<p>Not only does this avoid a browser bottleneck downloading a lot of data, the amount of code to execute is a fraction of a normal client-side implementation. &nbsp;Since the experiments are set up inside the Optimizely interface just like any other Web experiment, you can run as many as you want without waiting for code deploy cycles. &nbsp;Better yet, your non-technical (e.g. marketing) teams can still run these without depending on developers for each test. &nbsp;It’s a one-time implementation.</p>
-	<h3>Use Case: Going Further with Feature Rollouts</h3>
+	<div class="flex anchor relative">
+		<h3 id="use-case-going-further-with-feature-rollouts">Use Case: Going Further with Feature Rollouts</h3>
+		<a href="https://blog.cloudflare.com/#use-case-going-further-with-feature-rollouts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.optimizely.com/products/full-stack">Optimizely Full Stack</a> is Optimizely’s <a href="https://www.optimizely.com/optimization-glossary/server-side-testing">server-side experimentation</a> and feature flagging platform for websites, mobile apps, chatbots, APIs, smart devices, and anything else with a network connection. &nbsp;You can deploy code behind feature flags, experiment with A/B tests, and roll out or roll back features immediately. &nbsp;<a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare">Optimizely Rollouts</a> is a free version of Full Stack that supports key feature rollout capabilities.</p>
 	<p>Full Stack SDKs are often implemented and instantiated directly in application code.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -88,7 +116,14 @@ async function handleRequest(request: Request): Promise&lt;Response&gt; {
 }</code></pre>
 	<p>This kind of setup is common for React applications, which may update store values based on decisions returned by the Worker. No need to force a request all the way back to origin.</p>
 	<p>All in all, using Workers as a centralized decision service can reduce the complexity of your Full Stack implementation and support applications that rely on heavy caching.</p>
-	<h3>How to Improve Your Experimentation Setup</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-improve-your-experimentation-setup">How to Improve Your Experimentation Setup</h3>
+		<a href="https://blog.cloudflare.com/#how-to-improve-your-experimentation-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Both of the examples above demonstrate how Workers can provide speed and flexibility to experimentation and feature flagging. &nbsp;But this is just the tip of the iceberg! &nbsp;There are plenty of other ways you can use these two technologies together. We’d love to hear from you and explore them together!</p>
 	<p>Are you a developer looking for a feature flagging or server-side testing solution? The Optimizely Rollouts product is free and ready for you to <a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare">sign up</a>!</p>
 	<p>Or does your marketing team need a high performance A/B testing solution? The Optimizely Web use case is in <i>developer preview</i>.</p>

@@ -10,7 +10,14 @@
 	<p>Conformance with a technical and legal spec is a bit abstract–but for us, accessibility simply means that as many people as possible can be successful users of the Cloudflare dashboard. This is important because each day, more and more individuals and businesses rely upon Cloudflare to administer and protect their websites.</p>
 	<p>For individuals with disabilities who work on technology, we believe that an accessible Cloudflare dashboard could mean improved economic and technical opportunities, safer websites, and equal access to tools that are shaping how we work and build on the Internet.</p>
 	<p>For designers and developers at Cloudflare, our accessibility remediation project has resulted in an overhaul of our component library. Our newly WCAG-compliant components expedite and simplify our work building accessible products. They make it possible for us to deliver on our commitment to an accessible dashboard going forward.</p>
-	<h2>Our Journey to an Accessible Cloudflare Dashboard</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-journey-to-an-accessible-cloudflare-dashboard">Our Journey to an Accessible Cloudflare Dashboard</h2>
+		<a href="https://blog.cloudflare.com/#our-journey-to-an-accessible-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2021, we initiated an audit with third party experts to identify accessibility challenges in the Cloudflare dashboard. This audit came back with a daunting 213-page document—a very, very long list of compliance gaps.</p>
 	<p>We learned from the audit that there were many users we had unintentionally failed to design and build for in Cloudflare dashboard user interfaces. Most especially, we had not done well accommodating keyboard users and screen reader users, who often rely upon these technologies because of a physical impairment. Those impairments include low vision or blindness, motor disabilities (examples include tremors and repetitive strain injury), or cognitive disabilities (examples include dyslexia and dyscalculia).</p>
 	<p>As a product and engineering organization, we had spent more than a decade in cycles of rapid growth and product development. While we're proud of what we have built, the audit made clear to us that there was a great need to address the design and technical debt we had accrued along the way.</p>
@@ -38,7 +45,14 @@
 			<p><b>Bugs:</b> We squashed <i>a lot</i> of bugs that had made their way into the dashboard over the years. The most common type of bug we encountered related to incorrect or unsemantic use of HTML elements—for example, using a where we should have used a (table data) or (table row) element within a table.</p>
 		</li>
 	</ol>
-	<h3>Case Study: Accessibility Work On Cloudflare Dashboard Data &amp; Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="case-study-accessibility-work-on-cloudflare-dashboard-data-analytics">Case Study: Accessibility Work On Cloudflare Dashboard Data &amp; Analytics</h3>
+		<a href="https://blog.cloudflare.com/#case-study-accessibility-work-on-cloudflare-dashboard-data-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare dashboard is replete with analytics and data visualizations designed to offer deep insight into users' websites’ performance, traffic, security, and more. Making those data visualizations accessible proved to be among the most complex and interdisciplinary issues we faced in the remediation work.</p>
 	<p>An example of a problem we needed to solve related to <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">WCAG success criterion 1.4.1</a>, which pertains to the use of color. 1.4.1 specifies that color cannot be the only means by which to convey information, such as the differentiation between two items compared in a chart or graph.</p>
 	<p>Our charts were clearly nonconforming with this standard, using color alone to represent different data being compared. For example, a typical graph might have used the color blue to show the number of requests to a website that were 200 OK, and the color orange to show 403 Forbidden, but failed to offer users another way to discern between the two status codes.</p>
@@ -74,7 +88,14 @@
 	<p>And lastly, to meet WCAG <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/text-equiv-all.html">1.1.1</a>, we engineered new UI component wrappers to make chart and graph data downloadable in CSV format. We deployed this part of the solution across all charts and graphs, not just the time series charts like those shown above. No matter how you browse and interact with the web, we hope you'll notice this functionality around the Cloudflare dashboard and find value in it.</p>
 	<p>Making all of this data available to low vision, keyboard, and assistive technology users was an interesting challenge for us, and a true team effort. It necessitated a separate data visualization report conducted by another, more specialized team of third party experts, deep collaboration between engineering and design, and many weeks of development.</p>
 	<p>Applying this thorough treatment to all data visualizations on the Cloudflare dashboard is our goal, but still work in progress. Please stay tuned for more accessible updates to our chart and graph components.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There's a lot of nuance to accessibility work, and we were novices at the beginning: researching and learning as we were doing. We also broke a lot of things in the process, which (as any engineering team knows!) can be stressful.</p>
 	<p>Overall, our team’s biggest challenge was figuring out how to complete a high volume of cross-functional work in the shortest time possible, while also setting a foundation for these improvements to persist over time.</p>
 	<p>As a frontend engineering and design team, we are very grateful for having had the opportunity to focus on this problem space and to learn from truly world-class accessibility experts along the way.</p>

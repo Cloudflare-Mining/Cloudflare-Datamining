@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
-	<h3>What is XML-RPC?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-xml-rpc">What is XML-RPC?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-xml-rpc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
 	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
 	<p>Here is an example that requests a list of the user’s blogs:</p>
@@ -103,10 +110,24 @@
 &lt;/params&gt;
 &lt;/methodCall&gt;</code></pre>
 	<p>As you can see, this can lead to very obvious abuse.</p>
-	<h3>Exploitation</h3>
+	<div class="flex anchor relative">
+		<h3 id="exploitation">Exploitation</h3>
+		<a href="https://blog.cloudflare.com/#exploitation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During testing, I was able to call the method <code>wp.getUserBlogs</code> 1,000 times in a single HTTP request (limited only by PHP memory issues). If a user creates a simple shell loop that executes one thousand times and runs a PHP script that crafts an HTTP request with one thousand method calls all requiring authentication, then that user would be able to try one million unique logins in a very short period of time.</p>
 	<p>This makes brute forcing the login very fast and can run down a pretty large wordlist in a short period of time. Also note that the <code>wp.getUserBlogs</code> method isn’t the only RPC call requiring authentication. It’s possible to use any RPC method which requires authentication to attempt logins and brute force the Wordpress credentials.</p>
-	<h3>CloudFlare Customers Are Protected</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-customers-are-protected">CloudFlare Customers Are Protected</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-customers-are-protected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When using CloudFlare with a Pro level plan or higher, you have the ability to turn on the Web Application Firewall (WAF) and take advantage of the new WordPress ruleset I created to mitigate this attack—all without any major interaction or supervision on your end.</p>
 	<p>Our WAF works by checking HTTP requests for consistencies that line up with known attacks and malicious activities. If a request does appear to be malicious, we drop it at the edge so it never even reaches the customer’s origin server.</p>
 	<p>To enable the rule, navigate to your CloudFlare Firewall dashboard, and reference the rule named "Blocks amplified brute force attempts to xmlrpc.php" with the rule ID WP0018.</p>
@@ -116,14 +137,29 @@
 
 	</figure>
 	<p>That’s all there is to it. Now you are protected from the new WordPress XML-RPC brute force amplification attack.</p>
-	<h3>The Manual Solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-manual-solution">The Manual Solution</h3>
+		<a href="https://blog.cloudflare.com/#the-manual-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another way to mitigate this attack is by disabling the ability to call the<code>system.multicall</code> method in your Wordpress installation by editing your<code>functions.php</code> file. Adding the function <code>mmx_remove_xmlrpc_methods()</code> will alleviate the problem, like so:</p>
 	<pre class="language-bash"><code class="language-bash">function mmx_remove_xmlrpc_methods( $methods ) {
 	unset( $methods['system.multicall'] );
 	return $methods;
 }
 add_filter( 'xmlrpc_methods', 'mmx_remove_xmlrpc_methods');</code></pre>
-	<h3>Final Thoughts</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="final-thoughts">Final Thoughts</h3>
+		<a href="https://blog.cloudflare.com/#final-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>XML-RPC can be a useful tool for making changes to WordPress and other web applications; however, improper implementation of certain features can result in unintended consequences. Default-on methods like <code>system.multicall</code> and <code>pingback.ping</code> (we have a <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf">WAF rule for that one</a>, too) are just a few examples of possible exploits.</p>
 	<p>Properly configuring the CloudFlare Web Application Firewall for your Internet facing properties will protect you from such attacks with no changes to your server configuration.</p>
 </div>

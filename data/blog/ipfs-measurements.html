@@ -7,12 +7,26 @@
 	</figure>
 	<p>We have been operating an IPFS gateway for the last four years. It started as a <a href="https://blog.cloudflare.com/distributed-web-gateway">research experiment in 2018</a>, providing <a href="https://blog.cloudflare.com/e2e-integrity">end-to-end integrity with IPFS</a>. A year later, we made <a href="https://blog.cloudflare.com/continuing-to-improve-our-ipfs-gateway">IPFS content faster to fetch</a>. Last year, we announced we were committed to <a href="https://blog.cloudflare.com/announcing-web3-gateways">making IPFS gateway part of our product offering</a>. Through this process, we needed to inform our design decisions to know how our setup performed.</p>
 	<p>To this end, we've developed the IPFS Gateway monitor, an observability tool that runs various IPFS scenarios on a given gateway endpoint. In this post, you'll learn how we use this tool and go over discoveries we made along the way.</p>
-	<h2>Refresher on IPFS</h2>
+	<div class="flex anchor relative">
+		<h2 id="refresher-on-ipfs">Refresher on IPFS</h2>
+		<a href="https://blog.cloudflare.com/#refresher-on-ipfs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IPFS is a distributed system for storing and accessing files, websites, applications, and data. It's different from a traditional centralized file system in that IPFS is completely distributed. Any participant can join and leave at any time without the loss of overall performance.</p>
 	<p>However, in order to access any file in IPFS, users cannot just use web browsers. They need to run an IPFS node to access the file from IPFS using its own protocol. IPFS Gateways play the role of enabling users to do this using only web browsers.</p>
 	<p>Cloudflare provides an IPFS gateway at <a href="https://cloudflare-ipfs.com">https://cloudflare-ipfs.com</a>, so anyone can just access IPFS files by using the gateway URL in their browsers.</p>
 	<p>As IPFS and the Cloudflare IPFS Gateway have become more and more popular, we need a way to know how performant it is: how much time it takes to retrieve IPFS-hosted content and how reliable it is. However, IPFS gateways are not like normal websites which only receive HTTP requests and return HTTP responses. The gateways need to run IPFS nodes internally and sometimes do content routing and peer routing to find the nodes which provide IPFS contents. They sometimes also need to resolve IPNS names to discover the contents. So, in order to measure the performance, we need to do measurements many times for many scenarios.</p>
-	<h2>Enter the IPFS Gateway monitor</h2>
+	<div class="flex anchor relative">
+		<h2 id="enter-the-ipfs-gateway-monitor">Enter the IPFS Gateway monitor</h2>
+		<a href="https://blog.cloudflare.com/#enter-the-ipfs-gateway-monitor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/cloudflare/ipfs-gateway-monitor">IPFS Gateway monitor</a> is this tool. It allows anyone to check the performance of their gateway and export it to the Prometheus monitoring system.</p>
 	<p>This monitor is composed of three independent binaries:</p>
 	<ol>
@@ -37,7 +51,15 @@
 	<p>During this experience, we have operated both the IPFS Monitor, and a test IPFS node. The IPFS node allows the monitor to provide content to the IPFS network. This allows us to be sure that the content provided is fresh, and actually hosted. Peers have not been fixed, and leverage the IPFS default peer discovery mechanism.</p>
 	<p>Cloudflare IPFS Gateway is treated as an opaque system. The monitor performs end-to-end tests by contacting the gateway via its public API, either <a href="https://cloudflare-ipfs.com">https://cloudflare-ipfs.com</a> or via a custom domain registered with the gateway.</p>
 	<p>The following scenarios have been run on consumer hardware in March. They are not representative of all IPFS users. All values provided below have been sourced against Cloudflare’s IPFS gateway endpoint.</p>
-	<h3>First scenarios: Gateway to serve immutable IPFS contents</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-scenarios-gateway-to-serve-immutable-ipfs-contents">First scenarios: Gateway to serve immutable IPFS contents</h3>
+		<a href="https://blog.cloudflare.com/#first-scenarios-gateway-to-serve-immutable-ipfs-contents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qrn6V5qZnqdJzL5V1qzFl/13857e7b124bfffe9a2c2de1de852d30/image3-26.png" alt="IPFS Monitor measuring performance of immutable content retrieval for multiple scenarios: not cached, cached, unavailable" class="kg-image" width="992" height="725" loading="lazy">
@@ -66,7 +88,15 @@
 	<p>90</p>
 	<p>341</p>
 	<p>279</p>
-	<h3>Second scenarios: Gateway to serve mutable IPNS named contents</h3>
+	<div class="flex anchor relative">
+		<h3 id="second-scenarios-gateway-to-serve-mutable-ipns-named-contents">Second scenarios: Gateway to serve mutable IPNS named contents</h3>
+		<a href="https://blog.cloudflare.com/#second-scenarios-gateway-to-serve-mutable-ipns-named-contents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/8qZ6yQPbI8x5Y3iMrkKbh/94088207cfbe4b2df263ea6f9d47fa82/image1-40.png" alt="IPFS Monitor measuring performance of mutable content, IPNS, retrieval for multiple scenarios: not cached, cached, updated" class="kg-image" width="992" height="725" loading="lazy">
@@ -104,7 +134,14 @@
 	<p>60.0</p>
 	<p>146</p>
 	<p>81.0</p>
-	<h3>Third scenarios: Gateway to serve DNSLink websites</h3>
+	<div class="flex anchor relative">
+		<h3 id="third-scenarios-gateway-to-serve-dnslink-websites">Third scenarios: Gateway to serve DNSLink websites</h3>
+		<a href="https://blog.cloudflare.com/#third-scenarios-gateway-to-serve-dnslink-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even though users can use IPNS to provide others a stable address to fetch the content, the address can still be hard to remember. This is what DNSLink is for. Users can address their content using DNSLink, which is just a normal domain name in the Domain Name System (DNS). As a domain owner, you only have to create a TXT record with the value dnslink=/ipfs/baf…1, and your domain can be fetched from a gateway.</p>
 	<p>There are two ways to access the DNSLink websites using the gateway. The first way is to access the website using the domain name as a URL hostname, for example, <a href="https://ipfs.example.com">https://ipfs.example.com</a>. The second way is to put the domain name as a URL path, for example, <a href="https://cloudflare-ipfs.com/ipns/ipfs.example.com">https://cloudflare-ipfs.com/ipns/ipfs.example.com</a>.</p>
 	<p>Scenarios</p>
@@ -131,7 +168,14 @@
 	<p>6.87</p>
 	<p>72.6</p>
 	<p>19.0</p>
-	<h2>What does this mean for regular IPFS users?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-does-this-mean-for-regular-ipfs-users">What does this mean for regular IPFS users?</h2>
+		<a href="https://blog.cloudflare.com/#what-does-this-mean-for-regular-ipfs-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These measurements highlight that IPFS content is fetched best when cached. This is an order of magnitude faster than fetching new content. This result is expected as content publication on IPFS can take time for nodes to retrieve, as highlighted in <a href="https://youtu.be/yylsaXz00_g?t=823">previous studies</a>. Then, when it comes to naming IPFS resources, leveraging DNSLink appears to be the faster strategy. This is likely due to the poor connection of the IPFS node used in this setup, preventing IPNS name from propagating rapidly. Overall, IPNS names would benefit from using a resolver to speed up resolution without losing the trust they provide.</p>
 	<p>As we mentioned in September, IPFS use has seen important growth. So has our tooling. The IPFS Gateway monitor can be found on <a href="https://github.com/cloudflare/ipfs-gateway-monitor">GitHub</a>, and we will keep looking at improving this first set of metrics.</p>
 	<p>At the time of writing, using IPFS via a gateway seems to provide lower retrieval times, while allowing for finer grain control over security settings in the browser context. This configuration preserves the content validity properties offered by IPFS, but reduces the number of nodes a user is peering with to one: the gateway. Ideally, we would like users to peer with Cloudflare because we're offering the best service, while still having the possibility to retrieve content from external sources if they want to. We'll be conducting more measurements to better understand how to best leverage Cloudflare presence in 270 cities to better serve the IPFS network.</p>

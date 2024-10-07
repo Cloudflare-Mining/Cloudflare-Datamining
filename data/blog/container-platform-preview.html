@@ -72,7 +72,14 @@
 		</li>
 	</ol>
 	<p>There wasn’t an off-the-shelf container platform that solved for what we needed, so we built it ourselves — from scheduling to IP address management, pulling and caching images, to improving startup times and more. Our container platform powers many of our newest products, so we wanted to share how we built it, optimized it, and well, you can probably guess what’s next.</p>
-	<h2>Global scheduling — “The Network is the Computer”</h2>
+	<div class="flex anchor relative">
+		<h2 id="global-scheduling-the-network-is-the-computer">Global scheduling — “The Network is the Computer”</h2>
+		<a href="https://blog.cloudflare.com/#global-scheduling-the-network-is-the-computer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare serves the entire world — region: earth. Rather than asking developers to provision resources in specific regions, data centers and availability zones, we think <a href="https://blog.cloudflare.com/the-network-is-the-computer"><u>“The Network is the Computer”</u></a>. When you build on Cloudflare, you build software that runs on the Internet, not just in a data center.</p>
 	<p>When we started working on this, Cloudflare’s architecture was to just run every service via <a href="https://systemd.io"><u>systemd</u></a> on every server (we call them “metals” — we <a href="https://blog.cloudflare.com/gen-12-servers"><u>run our own hardware</u></a>), allowing all services to take advantage of new capacity we add to our network. That fits running <a href="https://blog.cloudflare.com/upgrading-one-of-the-oldest-components-in-cloudflare-software-stack"><u>NGINX</u></a> and a few dozen other services, but cannot fit a world where we need to run <i>many thousands</i> of different compute heavy, resource hungry workloads. We’d <a href="https://blog.cloudflare.com/its-crowded-in-here"><u>run out of space</u></a> just trying to load all of them! Consider a canonical AI workload —&nbsp;deploying <a href="https://blog.cloudflare.com/meta-llama-3-1-available-on-workers-ai"><u>Llama 3.1 8B</u></a> to an inference server. If we simply ran a Llama 3.1 8B service on every Cloudflare metal, we’d have no flexibility to use GPUs for the <a href="https://developers.cloudflare.com/workers-ai/models"><u>many other models</u></a> that Workers AI supports.</p>
 	<p>We needed something that would allow us to still take advantage of the full capacity of Cloudflare’s entire network, not just the capacity of individual machines. And ideally not put that burden on the developer.</p>
@@ -81,7 +88,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/63nPDnWzVLvx2OB9ZPZXM5/3c0b8d46258be3bc3263db271a3dc73a/BLOG-2573_2.png" alt="BLOG-2573 2" class="kg-image" width="1999" height="1277" loading="lazy">
 	</figure>
 	<p>The global scheduler is built on Cloudflare <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>, and <a href="https://developers.cloudflare.com/kv"><u>KV</u></a>, and decides which Cloudflare location to schedule the container to run in. Each location then runs <i>its own</i> scheduler, which decides which metals within that location to schedule the container to run on. Location schedulers monitor compute capacity, and expose this to the global scheduler. This allows Cloudflare to dynamically place workloads based on capacity and hardware availability (e.g. multiple types of GPUs) across our network.</p>
-	<h2>Why does global scheduling matter?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-does-global-scheduling-matter">Why does global scheduling matter?</h2>
+		<a href="https://blog.cloudflare.com/#why-does-global-scheduling-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you run compute on a first generation cloud, the “contract” between the developer and the platform is that the developer must specify what runs where. This is regional scheduling, the status quo.</p>
 	<p>Let’s imagine for a second if we applied regional scheduling to running compute on Cloudflare’s network, with locations in <a href="https://www.cloudflare.com/en-gb/network"><u>330+ cities, across 120+ countries</u></a>. One of the obvious reasons people tell us they want to run on Cloudflare is because we have compute in places where others don’t, within 50ms of 95% of the world’s Internet-connected population. In South America, other clouds have one region in one city. Cloudflare has 19:</p>
 	<figure class="kg-card kg-image-card">
@@ -90,7 +104,14 @@
 	<p>Running anywhere means you can be faster, highly available, and have more control over data location. But with regional scheduling, the more locations you run in, the more work you have to do. You configure and manage load balancing, routing, auto-scaling policies and more. Balancing performance and cost in a multi-region setup is literally a full-time job (or more) at most companies who have reached meaningful scale on traditional clouds.</p>
 	<p>But most importantly, no matter what tools you bring, you were the one who told the cloud provider, “run this container over here”. The cloud platform can’t move it for you, even if moving it would make your workload faster. This prevents the platform from adding locations, because for each location, it has to convince developers to take action themselves to move their compute workloads to the new location. Each new location carries a risk that developers won’t migrate workloads to it, or migrate too slowly, delaying the return on investment.</p>
 	<p>Global scheduling means Cloudflare can add capacity and use it immediately, letting you benefit from it. The “contract” between us and our customers isn’t tied to a specific datacenter or region, so we have permission to move workloads around to benefit customers. This flexibility plays an essential role in all of our own uses of our container platform, starting with&nbsp;GPUs and AI.</p>
-	<h2>GPUs everywhere: Scheduling large images with Workers AI</h2>
+	<div class="flex anchor relative">
+		<h2 id="gpus-everywhere-scheduling-large-images-with-workers-ai">GPUs everywhere: Scheduling large images with Workers AI</h2>
+		<a href="https://blog.cloudflare.com/#gpus-everywhere-scheduling-large-images-with-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In late 2023, <a href="https://blog.cloudflare.com/workers-ai"><u>we launched Workers AI</u></a>, which provides fast, easy to use, and affordable GPU-backed AI inference.</p>
 	<p>The more efficiently we can use our capacity, the better pricing we can offer. And the faster we can make changes to which models run in which Cloudflare locations, the closer we can move AI inference to the application, <a href="https://blog.cloudflare.com/making-workers-ai-more-efficient-with-kv-cache-compression"><u>lowering Time to First Token (TTFT)</u></a>. This also allows us to be more resilient to spikes in inference requests.</p>
 	<p>AI models that rely on GPUs present three challenges though:</p>
@@ -130,7 +151,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jqt4l5joKUkPNek1xACaM/0eb2e4546ac21b2d6da502919cd759a1/image__19_.png" alt="BLOG-2573 4" class="kg-image" width="1256" height="1428" loading="lazy">
 	</figure>
 	<p>To solve the third challenge, and make scheduling fast with large models, we weren’t satisfied with the status quo. So we did something about it.</p>
-	<h2>Docker pull was too slow, so we fixed it (and cut the time in half)</h2>
+	<div class="flex anchor relative">
+		<h2 id="docker-pull-was-too-slow-so-we-fixed-it-and-cut-the-time-in-half">Docker pull was too slow, so we fixed it (and cut the time in half)</h2>
+		<a href="https://blog.cloudflare.com/#docker-pull-was-too-slow-so-we-fixed-it-and-cut-the-time-in-half" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many of the images we need to run for AI inference are over 15 GB. Specialized inference libraries and GPU drivers add up fast. For example, when we make a scheduling decision to run a fresh container in Tokyo, naively running docker pull to fetch the image from a storage bucket in Los Angeles would be unacceptably slow. And scheduling speed is critical to being able to scale up and down in new locations in response to changes in traffic.</p>
 	<p>We had 3 essential requirements:</p>
 	<ul>
@@ -148,7 +176,14 @@
 	<p>This is fast, but we can be faster. Our performance bottleneck was, somewhat surprisingly, <a href="https://docs.docker.com/reference/cli/docker/image/push"><u>docker push</u></a>. Docker uses <a href="https://www.gzip.org"><u>gzip</u></a> to compress and decompress layers of images while pushing and pulling. So we started using <a href="https://github.com/facebook/zstd"><u>Zstandard</u></a> (zstd) instead, which compresses and decompresses faster, and results in smaller compressed files.</p>
 	<p>In order to build, chunk, and push these images to the R2 registry, we built a custom CLI tool that we use internally in lieu of running docker build and docker push. This makes it easy to use zstd and split layers into 500 MB chunks, which allows uploads to be processed by Workers while staying under <a href="https://developers.cloudflare.com/workers/platform/limits/#request-limits"><u>body size limits</u></a>.</p>
 	<p>Using our custom build and push tool doubled the speed of image pulls. Our 30 GB GPU images now pull in 4 minutes instead of 8. We plan on open sourcing this tool in the near future.</p>
-	<h2>Anycast is the gift that keeps on simplifying — Virtual IPs and the Global State Router</h2>
+	<div class="flex anchor relative">
+		<h2 id="anycast-is-the-gift-that-keeps-on-simplifying-virtual-ips-and-the-global-state-router">Anycast is the gift that keeps on simplifying — Virtual IPs and the Global State Router</h2>
+		<a href="https://blog.cloudflare.com/#anycast-is-the-gift-that-keeps-on-simplifying-virtual-ips-and-the-global-state-router" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We still had another challenge to solve. And yes, we solved it with anycast. We’re Cloudflare, did you expect anything else?</p>
 	<p>First, a refresher&nbsp;— Cloudflare operates <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><u>Unimog</u></a>, a Layer 4 load balancer that handles all incoming Cloudflare traffic. Cloudflare’s network uses <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network"><u>anycast</u></a>, which allows a single IP address to route requests to a variety of different locations. For most Cloudflare services with anycast, the given IP address will route to the nearest Cloudflare data center, reducing latency. Since Cloudflare runs almost every service in every data center, Unimog can simply route traffic to any Cloudflare metal that is online and has capacity, without needing to map traffic to a specific service that runs on specific metals, only in some locations.</p>
 	<p>The new compute-heavy, GPU-backed workloads we were taking on forced us to confront this fundamental “everything runs everywhere” assumption. If we run a containerized workflow in 20 Cloudflare locations, how does Unimog know which locations, and which metals, it runs in? You might say “just bring your own <a href="https://developers.cloudflare.com/reference-architecture/architectures/load-balancing"><u>load balancer</u></a>” — but then what happens when you make scheduling decisions to migrate a workload between locations, scale up, or scale down?</p>
@@ -193,12 +228,26 @@
 		</li>
 	</ol>
 	<p>We’re actively working on this, and are excited to continue building on Cloudflare’s anycast capabilities, and pushing to keep the simplicity of running “everywhere” with new categories of workloads.</p>
-	<h2>Low latency &amp; global — Remote Browser Isolation &amp; Browser Rendering</h2>
+	<div class="flex anchor relative">
+		<h2 id="low-latency-global-remote-browser-isolation-browser-rendering">Low latency &amp; global — Remote Browser Isolation &amp; Browser Rendering</h2>
+		<a href="https://blog.cloudflare.com/#low-latency-global-remote-browser-isolation-browser-rendering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our container platform actually started because of a very specific challenge, running <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation"><u>Remote Browser Isolation</u></a> across our network. Remote Browser Isolation provides Chromium browsers that run on Cloudflare, in containers, rather than on the end user’s own computer. Only the rendered output is sent to the end user. This provides a layer of protection against zero-day browser vulnerabilities, phishing attacks, and ransomware.</p>
 	<p>Location is critical — people expect their interactions with a remote browser to feel just as fast as if it ran locally. If the server is thousands of miles away, the remote browser will feel slow. Running across <a href="https://www.cloudflare.com/network"><u>Cloudflare’s network of over 330 locations</u></a> means the browser is nearly always as close to you as possible.</p>
 	<p>Imagine a user in Santiago, Chile, if they were to access a browser running in the same city, each interaction would incur negligible additional latency. Whereas a browser in Buenos Aires might add 21 ms, São Paulo might add 48 ms, Bogota might add 67 ms, and Raleigh, NC might add 128 ms. Where the container runs significantly impacts the latency of every user interaction with the browser, and therefore the experience as a whole.</p>
 	<p>It’s not just browser isolation that benefits from running near the user: WebRTC servers stream video better, multiplayer games have less lag, online advertisements can be served faster, financial transactions can be processed faster. Our container platform lets us run anything we need to near the user, no matter where they are in the world.</p>
-	<h2>Using spare compute — “off-peak” jobs for Workers CI/CD builds</h2>
+	<div class="flex anchor relative">
+		<h2 id="using-spare-compute-off-peak-jobs-for-workers-ci-cd-builds">Using spare compute — “off-peak” jobs for Workers CI/CD builds</h2>
+		<a href="https://blog.cloudflare.com/#using-spare-compute-off-peak-jobs-for-workers-ci-cd-builds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At any hour of the day, Cloudflare has many CPU cores that sit idle. This is compute power that could be used for something else.</p>
 	<p>Via anycast, most of Cloudflare’s traffic is handled as close as possible to the eyeball (person) that requested it. Most of our traffic originates from eyeballs. And the eyeballs of (most) people are closed and asleep between midnight and 5:00 AM local time. While we use our compute capacity very efficiently during the daytime in any part of the world, overnight we have spare cycles. Consider what a map of the world looks like at nighttime in Europe and Africa:</p>
 	<figure class="kg-card kg-image-card">
@@ -212,13 +261,27 @@
 	<p>On Builder Day 2024, we <a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>announced Workers Builds in open beta</u></a>. You connect your Worker to a git repository, and Cloudflare builds and deploys your Worker each time you merge a pull request. Workers Builds run on our containers platform, using otherwise idle “off-peak” compute, allowing us to offer lower pricing, and hold more capacity for unexpected spikes in traffic in Cloudflare locations during daytime hours when load is highest. We preserve our ability to serve requests as close to the eyeball as possible where it matters, while using the full compute capacity of our network.</p>
 	<p>We developed a purpose-built API for these types of jobs. The Workers Builds service has zero knowledge of where Cloudflare has spare compute capacity on its network — it simply schedules an “off-peak” job to run on the containers platform, by defining a scheduling policy:</p>
 	<p><code>scheduling_policy: "off-peak"</code></p>
-	<h2>Making off-peak jobs faster with prewarmed images</h2>
+	<div class="flex anchor relative">
+		<h2 id="making-off-peak-jobs-faster-with-prewarmed-images">Making off-peak jobs faster with prewarmed images</h2>
+		<a href="https://blog.cloudflare.com/#making-off-peak-jobs-faster-with-prewarmed-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just because a workload isn’t “eyeball-facing” doesn’t mean speed isn’t relevant. When a build job starts, you still want it to start as soon as possible.</p>
 	<p>Each new build requires a fresh container though, and we must avoid reusing containers to provide strong isolation between customers. How can we keep build job start times low, while using a new container for each job without over-provisioning?&nbsp;</p>
 	<p>We prewarm servers with the proper image.&nbsp;</p>
 	<p>Before a server becomes eligible to receive an “off peak” job, the container platform instructs it to download the correct image. Once the image is downloaded and cached locally, new containers can start quickly in a Firecracker VM after receiving a request for a new build. When a build completes, we throw away the container, and start the next build using a fresh container based on the prewarmed image.</p>
 	<p>Without prewarming, pulling and unpacking our Workers Build images would take roughly 75 seconds. With prewarming, we’re able to spin up a new container in under 10 seconds. We expect this to get even faster as we introduce optimizations like pre-booting images before new runs, or <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md"><u>Firecracker snapshotting</u></a>, which can restore a VM in under 200ms.</p>
-	<h2>Workers and containers, better together</h2>
+	<div class="flex anchor relative">
+		<h2 id="workers-and-containers-better-together">Workers and containers, better together</h2>
+		<a href="https://blog.cloudflare.com/#workers-and-containers-better-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As more of our own engineering teams rely on our containers platform in production, we’ve noticed a pattern: they want a deeper integration with Workers.</p>
 	<p>We plan to give it to them.&nbsp;</p>
 	<p>Let’s take a look at a project deployed on our container platform already, <a href="https://blog.cloudflare.com/key-transparency"><u>Key Transparency</u></a>. If the container platform were highly integrated with Workers, what would this team’s experience look like?</p>
@@ -272,7 +335,14 @@ bindings = { name = "VERIFIER", class_name = "Verifier", container = "verifier" 
 	<p>And… that’s it.</p>
 	<p>I didn’t have to worry about placement, scaling, service discovery authorization, and I was able to leverage integrations into other services like KV and R2 with just a few lines of code. The container platform took care of routing, placement, and auth. If I needed more instances, I could call the binding with a new ID, and the platform would scale up containers for me.</p>
 	<p>We are still in the early stages of building these integrations, but we’re excited about everything that containers will bring to Workers and vice versa.</p>
-	<h2>So, what do you want to build?</h2>
+	<div class="flex anchor relative">
+		<h2 id="so-what-do-you-want-to-build">So, what do you want to build?</h2>
+		<a href="https://blog.cloudflare.com/#so-what-do-you-want-to-build" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’ve read this far, there’s a non-zero chance you were hoping to get to run a container yourself on our network. While we’re not ready (quite yet) to open up the platform to everyone, now that we’ve built a few GA products on our container platform, we’re looking for a handful of engineering teams to start building, in advance of wider availability in 2025. And we’re <a href="https://job-boards.greenhouse.io/cloudflare/jobs/5547603"><u>continuing to hire engineers</u></a> to work on this.</p>
 	<p>We’ve told you about our use cases for containers, and now it’s your turn. If you’re interested, <a href="https://forms.gle/msrkBLBYNFFYRaqY8"><u>tell us here</u></a> what you want to build, and why it goes beyond what’s possible today in <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a> and on our <a href="https://developers.cloudflare.com/products/?product-group=Developer+platform"><u>Developer Platform</u></a>. What do you wish you could build on Cloudflare, but can’t yet today?</p>
 </div>

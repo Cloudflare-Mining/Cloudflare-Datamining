@@ -7,7 +7,14 @@
 	<p>Instead, Filippo Valsorda and Brendan McMillion suggested that the easier path would be to implement TLS 1.3 on top of the Go TLS library and make a Go replica of nginx-ssl (go-ssl). Go is very easy to iterate and prototype, with a powerful standard library, and we had a great pool of Go talent to use, so it made a lot of sense. Thus <a href="https://github.com/cloudflare/tls-tris">tls-tris</a> was born.</p>
 	<p>The question remained how would we have Go handle only TLS 1.3 while letting nginx handling all prior versions of TLS?</p>
 	<p>And herein lies the problem. Both TLS 1.3 and older versions of TLS communicate on port 443, and it is common knowledge that only one application can listen on a given TCP port, and that application is nginx, that would still handle the bulk of the TLS traffic. We could pipe all the TCP data into another connection in Go, effectively creating an additional proxy layer, but where is the fun in that? Also it seemed a little inefficient.</p>
-	<h2>Meet SCM_RIGHTS</h2>
+	<div class="flex anchor relative">
+		<h2 id="meet-scm_rights">Meet SCM_RIGHTS</h2>
+		<a href="https://blog.cloudflare.com/#meet-scm_rights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So how do you make two different processes, written in two different programming languages, share the same TCP socket?</p>
 	<p>Fortunately, Linux (or rather UNIX) provides us with just the tool that we need. You can use UNIX-domain sockets to pass file descriptors between applications, and like everything else in UNIX connections are files.Looking at <code>man 7 unix</code> we see the following:</p>
 	<pre class="language-bash"><code class="language-bash">   Ancillary messages
@@ -160,7 +167,15 @@ func (l *scmListener) Accept() (*scmConn, error) {
 
 	return fd, nil
 }</code></pre>
-	<h2>Rust</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="rust">Rust</h2>
+		<a href="https://blog.cloudflare.com/#rust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can also do this in Rust, although the standard library in Rust does not yet support UNIX sockets, but it does let you address the C library via the <a href="https://rust-lang.github.io/libc/x86_64-unknown-linux-gnu/libc">libc</a> crate. Warning, unsafe code ahead!</p>
 	<p>First we want to implement some UNIX socket functionality in Rust:</p>
 	<pre class="language-rust"><code class="language-rust">use libc::*;
@@ -289,7 +304,15 @@ impl UNIXConn {
         }
     }
 }</code></pre>
-	<h2>Conclusion</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SCM_RIGHTS is a very powerful tool that can be used for many purposes. In our case we used to to introduce a new service in a non-obtrusive fashion. Other uses may be:</p>
 	<ul>
 		<li>

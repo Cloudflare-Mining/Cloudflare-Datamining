@@ -54,7 +54,14 @@
 	<p>To turn this into an exploit that actually reads illegal memory is easy. Just repeat this process over and over again once per single bit of illegal memory that you are reading. Each single bit’s 1 or 0 can be translated into the presence or absence of an item in the CPU cache which is ‘read’ using the timing trick above.</p>
 	<p>Although that might seem like a laborious process, it is, in fact, something that can be done very quickly enabling the dumping of the entire memory of a computer. In the real world it would be impractical to hike down the path and get zapped by the Men In Black in order to leak details of the aliens (their color, size, language, etc.), but in a computer it’s feasible to redo the branch over and over again because of the inherent speed (100s of millions of branches per second!).</p>
 	<p>And if an attacker can dump the memory of a computer it has access to the crown jewels: what’s in memory at any moment is likely to be very, very sensitive: passwords, cryptographic secrets, the email you are writing, a private chat and more.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I hope that this helps you understand the essence of Meltdown and Spectre. There are many variations of both attacks that all rely on the same ideas: get the CPU to speculatively run some code (through branch prediction or another technique) that illegally accesses memory and extract information using a timing side channel through the CPU cache.</p>
 	<p>If you care to read all the gory detail there’s a <a href="https://meltdownattack.com/meltdown.pdf">paper on Meltdown</a> and a separate one <a href="https://spectreattack.com/spectre.pdf">on Spectre</a>.</p>
 	<p>Acknowledgements: I’m grateful to all the people who read this and gave me feedback (including gently telling me the ways in which I didn’t understand branch prediction and speculative execution). Thank you especially to David Wragg, Kenton Varda, Chris Branch, Vlad Krasnov, Matthew Prince, Michelle Zatlyn and Ben Cartwright-Cox. And huge thanks for Kari Linder for the illustrations.</p>

@@ -3,7 +3,14 @@
 	<p>If you weren’t aware, <a href="https://developers.cloudflare.com/workers/about">Cloudflare Workers</a>, our serverless programming platform, allows you to deploy code onto our 165 data centers around the world.</p>
 	<p>Want to automatically deploy Workers directly from a GitHub repository? Now you can with our official <a href="https://github.com/cloudflare/serverless-action">GitHub Action</a>. This Action is an extension of our existing integration with the Serverless Framework. It runs in a containerized GitHub environment and automatically deploys your Worker to Cloudflare. We chose to utilize the Serverless Framework within our GitHub Action to raise awareness of their awesome work and to enable even more serverless applications to be built with Cloudflare Workers. This Action can be used to deploy individual Worker scripts as well; the Serverless Framework is being used in the background as the deployment mechanism.</p>
 	<p>Before going into the details, we’ll quickly go over what GitHub Actions are.</p>
-	<h3>GitHub Actions</h3>
+	<div class="flex anchor relative">
+		<h3 id="github-actions">GitHub Actions</h3>
+		<a href="https://blog.cloudflare.com/#github-actions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>GitHub Actions allow you to <a href="https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#action-blocks">trigger commands</a> in reaction to GitHub events. These commands run in containers and can receive environment variables. Actions could trigger build, test, or deployment commands across a variety of providers. They can also be linked and run sequentially (i.e. ‘if the build passes, deploy the app’). Similar to many CI/CD tools, these commands run in an isolated container and receive environment variables. You can pass any command to the container that enables your development workflow.</p>
 	<p>Actions are a powerful way to your workflow on GitHub, including automating parts of your deployment pipeline directly from where your codebase lives. To that end, we’ve built an Action to deploy a Worker to your Cloudflare zone via our existing Serverless Framework integration for Cloudflare Workers. To visualize the entire flow see below:</p>
 	<figure class="kg-card kg-image-card ">
@@ -12,11 +19,25 @@
 
 	</figure>
 	<p>To see some of the other actions out there today, please <a href="https://github.com/features/actions">see here</a>.</p>
-	<h3>Why Use the Serverless Framework?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-use-the-serverless-framework">Why Use the Serverless Framework?</h3>
+		<a href="https://blog.cloudflare.com/#why-use-the-serverless-framework" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Serverless applications are deployed without developers needing to worry about provisioning hardware, capacity planning, scaling or paying for equipment when your application isn't running. Unlike most providers who ask you to choose a region for your serverless app to run in, all Cloudflare Workers deploy into our entire global network. Learn more about the <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">benefits of serverless</a>.</p>
 	<p>The <a href="https://serverless.com">Serverless Framework</a> is a popular toolkit for deploying applications that are serverless. The advantage of the Serverless Framework is that it offers a common CLI to use across multiple providers which support serverless applications. In <a href="https://blog.cloudflare.com/serverless-cloudflare-workers">late 2018</a>, Cloudflare integrated Workers deployment into the Serverless CLI. Please check out <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">our docs here</a> to get started.</p>
 	<p>If you run an entire application in a Worker, there is no cost to a business when the application is idle. If the application runs on our network (Cloudflare has 165 PoPs as of writing this), the app can be incredibly close to the end user, reducing latency by proximity. Additionally, Workers can be a powerful way to augment what you've already built in an existing technology, moving just the authentication or performance-sensitive components into Workers.</p>
-	<h3>Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuration">Configuration</h3>
+		<a href="https://blog.cloudflare.com/#configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Configuration of the Action is straightforward, with the side benefit of giving you just a ‘little bit’™ of exposure to the Serverless Framework if desired. A repo using this Action can just contain the Worker script to be deployed. If you feed the Action the right ENV variables, we’ll take care of the rest.</p>
 	<p>Alternatively you can also provide a <code>serverless.yml</code> in the root of your repo with your worker if you want to override the defaults. Get started learning about our integration with Serverless <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless">here</a>.</p>
 	<p>Your Worker script, and optional <code>serverless.yml</code> are passed into the container which runs the Action for deployment. The Serverless Framework picks up these files and deploys the Worker for you.</p>

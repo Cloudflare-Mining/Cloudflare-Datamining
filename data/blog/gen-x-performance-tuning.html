@@ -11,7 +11,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/616TtlNrwVkyeHby6ReKSD/5c0bd9047b44745b4d6f82fedff3a3cf/image14.png" alt="" class="kg-image" width="937" height="754" loading="lazy">
 
 	</figure>
-	<h2>Thermal Design Power &amp; Dynamic Power</h2>
+	<div class="flex anchor relative">
+		<h2 id="thermal-design-power-dynamic-power">Thermal Design Power &amp; Dynamic Power</h2>
+		<a href="https://blog.cloudflare.com/#thermal-design-power-dynamic-power" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thermal design power (TDP) and dynamic power, amongst others, play a critical role when tuning a system. Many share a common belief that thermal design power is the maximum or average power drawn by the processor. The 48-core <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642">AMD EPYC 7642</a> has a TDP rating of 225W which is just as high as the 64-core <a href="https://www.amd.com/en/products/cpu/amd-epyc-7742">AMD EPYC 7742</a>. It comes to mind that fewer cores should translate into lower power consumption, so why is the AMD EPYC 7642 expected to draw just as much power as the AMD EPYC 7742?</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +33,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12AEwpVHIGoT9XGcqHo83V/27e7644fa1e3e21324efcb766b076279/image-7.png" alt="" class="kg-image" width="1162" height="206" loading="lazy">
 
 	</figure>
-	<h2>Determinism Modes &amp; Configurable TDP</h2>
+	<div class="flex anchor relative">
+		<h2 id="determinism-modes-configurable-tdp">Determinism Modes &amp; Configurable TDP</h2>
+		<a href="https://blog.cloudflare.com/#determinism-modes-configurable-tdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The latest AMD processors continue to implement AMD Precision Boost which opportunistically allows the processor to operate at a higher frequency than its base frequency. How much higher can the frequency go depends on many different factors such as electrical, thermal, and power limitations.</p>
 	<p>AMD offers a knob known as determinism modes. This knob affects power and frequency, placing emphasis one over the other depending on the determinism selected. <a href="https://www.amd.com/system/files/2017-06/Power-Performance-Determinism.pdf">There is a white paper</a> posted on AMD's website that goes into the nuanced details of determinism, and remembering how frequency and power are related - this was the simplest definition I took away from the paper:</p>
 	<p><b>Performance Determinism</b> - Power is a function of frequency.</p>
@@ -62,7 +76,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZT2L9MokepRw2GmZbKuxE/a9d375df783d8eb4fc048bcdbb8e9f62/image-5.png" alt="" class="kg-image" width="1270" height="198" loading="lazy">
 
 	</figure>
-	<h2>Nodes Per Socket (NPS)</h2>
+	<div class="flex anchor relative">
+		<h2 id="nodes-per-socket-nps">Nodes Per Socket (NPS)</h2>
+		<a href="https://blog.cloudflare.com/#nodes-per-socket-nps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The AMD EPYC 7642 <a href="https://blog.cloudflare.com/impact-of-cache-locality">physically lays out its 8 dies across 4 different quadrants on a single package</a>. By having such a layout, AMD supports dividing its dies into NUMA domains and this feature is called Nodes Per Socket or NPS. Available NPS options differ model-to-model, the AMD EPYC 7642 supports 4, 2, and 1 node(s) per socket. We thought it might be worth our time exploring this option despite the fact that none of these choices will end up yielding a shared last level cache. We did not observe any significant deltas from the NPS options in terms of performance.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -74,6 +95,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/26jjqqzj8LFJecjFpq8ucU/390beafbda64148e5cbb4c2c92465fe3/image13-1.png" alt="" class="kg-image" width="1298" height="502" loading="lazy">
 
 	</figure>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tuning the processor to yield an additional 6% throughput or requests per second out of the box has been a great start. Some parts will have more rooms for improvement than others. &nbsp;In production we were able to achieve an additional 2% requests per seconds with power determinism, and we achieved another 4% by reconfiguring the TDP to 240W. We will continue to work with AMD as well as internal teams within Cloudflare to identify additional areas of improvement. If you like the idea of supercharging the Internet on behalf of our customers, then <a href="https://www.cloudflare.com/careers/jobs">come join us</a>.</p>
 </div>

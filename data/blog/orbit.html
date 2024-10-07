@@ -7,22 +7,50 @@
 	</figure>
 	<p>In October, we <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">wrote about a 1.75M rps DDoS attack</a> we mitigated on our network, launched by 52,467 unique IP’s, mostly hacked CCTV cameras.</p>
 	<p>We continued to see more IoT devices in DDoS attacks, and so we started to put together a security solution to protect the devices from becoming part of the botnet in the first place. Today we’re announcing it: Cloudflare Orbit.</p>
-	<h2>PC-era security doesn’t work in IoT-era computing</h2>
+	<div class="flex anchor relative">
+		<h2 id="pc-era-security-doesnt-work-in-iot-era-computing">PC-era security doesn’t work in IoT-era computing</h2>
+		<a href="https://blog.cloudflare.com/#pc-era-security-doesnt-work-in-iot-era-computing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we talked to IoT companies, over and over again we heard the same thing. In the consumer electronics space, IoT manufacturers were telling us that they were shipping patches to their devices, but their end users didn’t always download and install them. (Reserve your judgment, how many times have you pressed ignore when your phone asked you to update its operating system?) In the industrial control, medical and automotive spaces, where devices are used in life-critical functions, we heard a different story. Even if someone wanted to apply a patch, it just wasn’t that easy. For example, even if the manager of a nuclear power plant wants to update software on their thermostats, shutting down operations long enough to do that means the update has to be scheduled.</p>
 	<p>This is if the device can be patched at all - most devices are patchable, but up to a point. When <a href="https://www.wired.com/2015/07/hackers-remotely-kill-jeep-highway">Jeep was shown to be vulnerable</a> to <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution">remote code execution</a>, Chrysler had to <a href="https://www.wired.com/2015/07/jeep-hack-chrysler-recalls-1-4m-vehicles-bug-fix">recall 1.4 million</a> vehicles.</p>
 	<p>This model where the end user is responsible for the security of the overall device is a relic of the PC age, where users knew and understood that their computers could have vulnerabilities, and as their software vendors released patches ––on so called “Patch Tuesdays,” for example––users knew to go and download them.</p>
 	<p>PC security does not work for IoT. Consumers do not share that similar understanding that they need to update their toasters, lightbulbs and cars, because they’ve never needed to in the past. And since we will never write perfect code, we <a href="http://www.economist.com/news/science-and-technology/21720268-consequences-pile-up-things-are-starting-improve-computer-security">need a better way of securing devices</a> without waiting for users to do it for us.</p>
-	<h2>Introducing Orbit</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-orbit">Introducing Orbit</h2>
+		<a href="https://blog.cloudflare.com/#introducing-orbit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thinking about this challenge, we were reminded of when the ShellShock vulnerability was discovered, Cloudflare was able to <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">automatically keep the requests</a> that would trigger the vulnerability from reaching our customers. With Orbit, Cloudflare can do the same thing, only for devices. For example, when Jeep was shown to be vulnerable, instead of recalling 1.4 million vehicles, Fiat Chrysler could have patched the bug in all the vehicles with just a simple rule in Cloudflare's firewall restricting access to the vulnerable DBUS service listening on port 6667 of every Jeep.</p>
 	<p>Orbit sits one layer before the device and provides a shield of security, so even if the device is running past its operating system’s expiration date, Cloudflare protects it from exploits. And while devices may be seldom patched, the Cloudflare security team is shipping code every day, adding new firewall rules to Cloudflare’s edge. Think of it like changing IoT to I*oT — devices can still access the Internet, but only after passing through Cloudflare where malicious requests can be filtered.</p>
 	<p>For the last year, Cloudflare has been working with a number of IoT vendors to develop Orbit. Already more than 120 million IoT devices are safer behind Cloudflare’s network. <a href="https://lockitron.com">Lockitron</a> is one of the IoT companies using Cloudflare. “Keeping our products and customers secure is our primary concern,” says Paul Gerhardt, co-founder of Lockitron. “Cloudflare provides an extra layer of security that allows us to keep our devices continually updated and ahead of any vulnerabilities.”</p>
 	<p>Instead of writing and shipping a patch, IoT companies can write logic on Cloudflare’s edge, and write their own firewall rules to run on Cloudflare, and it updates the Cloudflare Orbit layer immediately, for all of their devices, without their users ever being so much as nudged to install something.</p>
 	<p>Plus, with requests going through Cloudflare, Cloudflare can compress transmitted data and speed up traffic, meaning less time is spent waiting on open connections and more time left in battery.</p>
-	<h2>An Extra Layer of Authentication</h2>
+	<div class="flex anchor relative">
+		<h2 id="an-extra-layer-of-authentication">An Extra Layer of Authentication</h2>
+		<a href="https://blog.cloudflare.com/#an-extra-layer-of-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common challenge we heard from IoT device manufacturers was how to authenticate devices and know which connecting clients were authorized company devices, and which were bots only pretending to be. Starting today, Cloudflare now offers Enterprise domains <a href="https://support.cloudflare.com/hc/en-us/articles/115000088491">TLS Client Authentication</a>, a TLS handshake where the client authenticates the server’s certificate (as with any TLS handshake) and also the client has a certificate that the server authenticates.</p>
 	<p>Some IoT vendors already implement their own Client Authentication, but do so at the same origin servers that handle the rest of their IoT infrastructure. Not only is this computationally expensive, but any invalid traffic flood causes a burden on the whole server.</p>
 	<p>With Client Authentication on Cloudflare, Cloudflare’s edge handles the load of the TLS handshakes, validating the device client certificates and only sending the IoT infrastructure traffic from authorized devices.</p>
-	<h2>What People Are Saying</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-people-are-saying">What People Are Saying</h2>
+		<a href="https://blog.cloudflare.com/#what-people-are-saying" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>“This approach of adding security to the network is extremely important for industrial manufacturers. Being able to patch vulnerabilities from the network rather than at the device level is a major shift in the way we secure IoT devices, and one that is completely necessary.” — Sam Cece, CEO of <a href="https://www.swiftsensors.com">Swift Sensors</a>, an industrial IoT company.</p>
 	<p>“Car controllers are IoT devices. Karamba Security hardens these devices and prevents cyberattacks with zero false positives to maintain driver and passenger safety. We view Cloudflare’s Orbit as a complementary solution that enables secure connectivity between the cars’ hardened controllers and the car company’s data center for trusted, over-the-air updates.” — Ami Dotan, CEO of <a href="https://www.karambasecurity.com">Karamba Security</a>, which is building secure platforms for smart automobiles.</p>
 	<p>“We are at the beginning of a new era in which a vast number of devices will be connecting to the Internet and security will play a critical role in the successful roll-out and adoption of IoT devices. Cloudflare’s Orbit adds another layer of defense that compliments other security measures such as strong hardware-based device security and helps ensure a safer Internet of Things." — Quinn Li, VP and global head of <a href="https://www.qualcommventures.com">Qualcomm Ventures</a>, the investment arm of Qualcomm Incorporated, the leading supplier of components for IoT devices.</p>
@@ -32,6 +60,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/68bFX1ixVLjDCSQwoRW5dO/a5357f36e5e408ecfdbbefa6e7e1f1dd/IoT-Illustration-infographic.jpg" alt="" class="kg-image" width="907" height="2926" loading="lazy">
 
 	</figure>
-	<h2>Get Started</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-started">Get Started</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Orbit is available now to all IoT device companies. To learn more or get started, <a href="https://www.cloudflare.com/orbit">visit the site</a>, or <a href="https://www.cloudflare.com/plans/enterprise/contact">get in touch</a>. We’re excited to hear from you.</p>
 </div>

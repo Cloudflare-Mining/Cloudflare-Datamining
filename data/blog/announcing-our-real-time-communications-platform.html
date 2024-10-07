@@ -12,7 +12,14 @@
 	<p>With this in mind, today we’re excited to be introducing Cloudflare’s Real Time Communications platform. This is a new suite of products designed to help you build the next generation of real-time, interactive applications. Whether it’s one-to-one video calling, group audio or video-conferencing, the demand for real-time communications only continues to grow.</p>
 	<p>Running a reliable and scalable real-time communications platform requires building out a large-scale network. You need to <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">get your network edge within milliseconds of your users</a> in multiple geographies to make sure everyone can always connect with low latency, low packet loss and low jitter. A <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">backbone to route around</a> Internet traffic jams. <a href="https://blog.cloudflare.com/designing-edge-servers-with-arm-cpus">Infrastructure that can efficiently scale</a> to serve thousands of participants at once. And then you need to deploy media servers, write business logic, manage multiple client platforms, and keep it all running smoothly. We think we can help with this.</p>
 	<p>Launching today, you will be able to leverage Cloudflare’s global edge network to improve connectivity for any existing WebRTC-based video and audio application, with what we’re calling “WebRTC Components”. &nbsp;This includes scaling to (tens of) thousands of participants, leveraging our <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">DDoS mitigation</a> to protect your services from attacks, and enforce <a href="https://developers.cloudflare.com/spectrum/reference/configuration-options#ip-access-rules">IP and ASN-based access policies</a> in just a few clicks.</p>
-	<h3>How Real Time is “Real Time”?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-real-time-is-real-time">How Real Time is “Real Time”?</h3>
+		<a href="https://blog.cloudflare.com/#how-real-time-is-real-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Real-time typically refers to communication that happens in under 500ms: that is, as fast as packets can traverse the fibre optic networks that connect the world together. In 2021, most real-time audio and video applications use <a href="https://webrtcforthecurious.com/docs/01-what-why-and-how">WebRTC</a>, a set of open standards and browser APIs that define how to connect, secure, and transfer both media and data over UDP. It was designed to bring better, more flexible bi-directional communication when compared to the primary browser-based communication protocol we rely on today, HTTP. And because WebRTC is supported in the browser, it means that users don’t need custom clients, nor do developers need to build them: all they need is a browser.</p>
 	<p>Importantly, we’ve seen the need for reliable, real-time communication across time-zones and geographies increase dramatically, as organizations change the way they work (<a href="https://blog.cloudflare.com/the-future-of-work-at-cloudflare">yes, including us</a>).</p>
 	<p>So where is real-time important in practice?</p>
@@ -31,7 +38,14 @@
 		</li>
 	</ul>
 	<p>We believe that we’ve only collectively scratched the surface when it comes to real-time applications — and part of that is because scaling real-time applications to even thousands of users requires new infrastructure paradigms and demands more from the network than traditional HTTP-based communication.</p>
-	<h3>Enter: WebRTC Components</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-webrtc-components">Enter: WebRTC Components</h3>
+		<a href="https://blog.cloudflare.com/#enter-webrtc-components" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we’re launching our closed beta <i>WebRTC Components</i>, allowing teams running centralized WebRTC TURN servers to offload it to Cloudflare’s distributed, global network and improve reliability, scale to more users, and spend less time managing infrastructure.</p>
 	<p><a href="https://webrtcforthecurious.com/docs/03-connecting/#turn">TURN</a>, or Traversal Using Relays Around NAT (Network Address Translation), was designed to navigate the practical shortcomings of WebRTC’s peer-to-peer origins. WebRTC was (and is!) a peer-to-peer technology, but in practice, establishing reliable peer-to-peer connections remains hard due to Carrier-Grade NAT, corporate NATs and firewalls. Further, each peer is limited by its own network connectivity — in a traditional <a href="https://webrtcforthecurious.com/docs/08-applied-webrtc/#full-mesh">peer-to-peer mesh</a>, participants can quickly find their network connections saturated because they have to receive data from every other peer. In a mixed environment with different devices (mobile, desktops), networks (high-latency 3G through to fast fiber), scaling to more than a handful of peers becomes extremely challenging.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +61,14 @@
 
 	</figure>
 	<p>Of course WebRTC Components is built on the Cloudflare network, benefiting from the DDoS protection that it’s 100 Tbps network offers. From now on deploying scalable, secure, production-grade WebRTC relays globally is only a couple of API calls away.</p>
-	<h3>A Developer First Real-Time Platform</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-developer-first-real-time-platform">A Developer First Real-Time Platform</h3>
+		<a href="https://blog.cloudflare.com/#a-developer-first-real-time-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But, as we like to say at Cloudflare: we’re just getting started. Managed, scalable TURN infrastructure is a critical building block to building real-time services for one-to-one and small group calling, especially for teams who have been managing their own infrastructure, but things become rapidly more complex when you start adding more participants.</p>
 	<p>Whether that’s managing the quality of the streams (“tracks”, in WebRTC parlance) each client is sending and receiving to keep call quality up, permissions systems to determine who can speak or broadcast in large-scale events, and/or building signalling infrastructure with support chat and interactivity on top of the media experience, one thing is clear: it there’s a lot to bite off.</p>
 	<p>With that in mind, here’s a sneak peek at where we’re headed:</p>

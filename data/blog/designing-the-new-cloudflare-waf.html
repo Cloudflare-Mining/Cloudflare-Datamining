@@ -18,7 +18,14 @@
 			<p>Define, create, and refine the interface and interactions</p>
 		</li>
 	</ol>
-	<h2>Identifying the tasks customers are trying to complete</h2>
+	<div class="flex anchor relative">
+		<h2 id="identifying-the-tasks-customers-are-trying-to-complete">Identifying the tasks customers are trying to complete</h2>
+		<a href="https://blog.cloudflare.com/#identifying-the-tasks-customers-are-trying-to-complete" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We support a range of customers — individual developers or hobbyists, small/medium-sized businesses where it’s common for a developer to fulfil multiple roles and responsibilities, through to large global enterprises where often there is an entire department dedicated to information security. Traditionally, product development teams use techniques such as the use of a user persona or a user story to help them focus on a specific problem they’re trying to solve; however each of these methods have their own inefficiencies and importantly aren’t able to scale to match the breadth of our customers. For example, a user persona is typically made by taking the average from a group or a specific selection of demographic indicators (such as age, gender, marital status, and hobbies), presenting it in a document and referring to it as one of multiple user archetypes of the application, but crucially fails to explain why the user decided to use or not use a specific feature. Similarly, user stories make use of user personas, but conflate them with implementation details and desired outcomes all the while failing to describe the situation the user is in.</p>
 	<p>To help the product development team better empathise with our range of customers, we use a technique known as Job Stories. Job Stories, unlike user persona or user stories allow us to focus on the users situation, motivation, and desired outcome.</p>
 	<p>We conducted interviews with a handful of customers directly, but we also supplemented them by interviewing members of our Solutions Engineering team. They help customers configure Cloudflare to meet their requirements and therefore have a direct connection to multiple customers themselves. They are in a position of being able to aggregate feedback from multiple customers. From the various interviews we identified the following job stories among many:</p>
@@ -31,7 +38,14 @@
 		</li>
 	</ul>
 	<p>Next, we began to analyse each of these uses further. We wanted to understand what was working well from the existing interface and more importantly, what was causing confusion or impacting efficiency.</p>
-	<h3><i>“I want to turn on the WAF and use the default settings.”</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="i-want-to-turn-on-the-waf-and-use-the-default-settings">“I want to turn on the WAF and use the default settings.”</h3>
+		<a href="https://blog.cloudflare.com/#i-want-to-turn-on-the-waf-and-use-the-default-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the legacy dashboard experience, a customer had a choice of different managed rulesets (Cloudflare Managed Ruleset or OWASP ModSecurity Core Rule Set.) Making a ruleset actually run however required some tedious configuration. The specific groups within a ruleset would need to be enabled and a separate switch controlling the overall WAF would also need to be enabled. Now, imagine the use case of wanting to use the Cloudflare Managed Ruleset. The current experience would require the user to enable at least two switches:</p>
 	<ol>
 		<li>
@@ -49,14 +63,35 @@
 
 	</figure>
 	<p>The legacy UI of the Web Application Firewall.</p>
-	<h3><i>“I only want to configure the rules I’m interested in.”</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="i-only-want-to-configure-the-rules-im-interested-in">“I only want to configure the rules I’m interested in.”</h3>
+		<a href="https://blog.cloudflare.com/#i-only-want-to-configure-the-rules-im-interested-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the legacy Managed Rules page, all the groups for each of the rulesets were listed beneath the card. This made it super easy to enable or disable specific rule groups and, from our user research sessions, we learned it was actually a very common workflow. However, scratch beneath the surface slightly and you’ll start to see the complexities of the system. Each group is made up of individual rules. By clicking on a group, a new modal would appear listing all the rules belonging to that group. The legacy UI was built to make it easy to change the action of a single rule — select an option from the dropdown and off you go. Simple. Most users probably even have the patience to change the action of a couple of rules like this. But what if it isn’t just a couple? Some groups contain hundreds of rules. A particularly complicated setup of the WAF could mean having to change the action of each rule. With the capabilities of the legacy UI, that would require hundreds of clicks and waste invaluable time. I’m embarrassed to admit that this was the suggested workflow and users were often required to use our APIs instead.</p>
 	<p>We now identified our next area of improvement — create the tools necessary for completing bulk edits and easy rule selection.</p>
 	<p>In summary, users want to easily turn on the WAF and move along. However, the legacy UI had a cumbersome and error-prone process to do so. Secondly, if a user wanted to enable or disable a specific rule of a ruleset, the legacy UI actually made that very simple. However, when it came to changing the action of multiple rules at once, the legacy UI was a time sink.</p>
-	<h2>Prioritising the identified tasks</h2>
+	<div class="flex anchor relative">
+		<h2 id="prioritising-the-identified-tasks">Prioritising the identified tasks</h2>
+		<a href="https://blog.cloudflare.com/#prioritising-the-identified-tasks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve identified the tasks or jobs customers are trying to accomplish and understand where the current difficulties and inefficiencies are within the experience. Using our telemetry and analytics tools, such as Amplitude, we determine how often customers are performing each of the job stories. This is a critical step, as the output will help us decide which job stories we should be optimising the interface for. About 76% of zones that are using the WAF today are doing so with its default configuration. From this we can infer that most customers simply turn on the WAF and continue on with their business, potentially continuing to configure other Cloudflare features.</p>
 	<p>It’s worth pointing out the importance of having sensible defaults within applications. Oftentimes users will continue down the path of least resistance or to whatever helps them complete their goal the quickest — ergo, they’ll usually stick to the default settings of an application as these are usually created with the most common use cases in mind. For this reason, the default state of the Cloudflare Managed Ruleset is such that it exceeds the security requirements of most applications whilst balancing a relatively low false positive rate.</p>
-	<h2>Define, create, and refine the interface and interactions</h2>
+	<div class="flex anchor relative">
+		<h2 id="define-create-and-refine-the-interface-and-interactions">Define, create, and refine the interface and interactions</h2>
+		<a href="https://blog.cloudflare.com/#define-create-and-refine-the-interface-and-interactions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use Figma to design the user interface of the dashboard. Using our Component Library, it allows us to quickly create mockups of what an interface could look like. At this stage of the project, a tool like Figma makes it easy for us to iterate through numerous ideas or permutations of a particular interaction.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -86,6 +121,13 @@
 
 	</figure>
 	<p>Rule Browser page with multiple rules selected and Set Action drop-down menu open.</p>
-	<h2>We’re just getting started</h2>
+	<div class="flex anchor relative">
+		<h2 id="were-just-getting-started">We’re just getting started</h2>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We didn’t get to these interactions straightaway, but rather by taking part in numerous design critiques and constantly evaluating the effectiveness of the new interactions against the identified job stories. We’ll be utilising our telemetry and analytics tools to understand how customers are using the new features and continuing to refine the experience further. Watch this space, because more updates are on the way!</p>
 </div>

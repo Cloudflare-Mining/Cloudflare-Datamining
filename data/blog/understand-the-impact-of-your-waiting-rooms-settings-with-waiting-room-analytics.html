@@ -30,12 +30,26 @@
 		</li>
 	</ul>
 	<p>Today, Waiting Room is ready to answer those questions and more with the launch of Waiting Room Analytics, available in the Waiting Room dashboard to all Business and Enterprise plans! We will show you the new waiting room metrics available and review how these metrics can help you make informed decisions about your waiting room's settings. We'll also walk you through the unique challenge of how we built Waiting Room Analytics on our distributed network.</p>
-	<h2>How Waiting Room settings impact traffic</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-waiting-room-settings-impact-traffic">How Waiting Room settings impact traffic</h2>
+		<a href="https://blog.cloudflare.com/#how-waiting-room-settings-impact-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before covering the newly available Waiting Room metrics, let's review some key settings you configure when creating a waiting room. Understanding these settings is essential as they directly impact your waiting room's analytics, traffic, and user experience.</p>
 	<p>When configuring a waiting room, you will first define traffic limits to your site by setting two values–Total active users and New users per minute. Total active users is a target threshold for how many simultaneous users you want to allow on the pages covered by your waiting room. Waiting Room will kick in as traffic ramps up to keep active users near this limit. The other value which will control the volume of traffic allowed past your waiting room is New users per minute. This setting defines the target threshold for the maximum rate of user influx to your application. Waiting Room will kick in when the influx accelerates to keep this rate near your limits. Queuing occurs when traffic is at or near your New users per minute or Total active users target values.</p>
 	<p>The two other settings which will impact your traffic flow and user wait times are Session duration and session renewal. The session duration setting determines how long it takes for end-user sessions to expire, thereby freeing up spots on your site. If you enable session renewal, users can stay on your site as long as they want, provided they make a request once every <i>session_duration</i> minutes. If you disable session renewal, users' sessions will expire after the duration you set for session_duration has run out. After the session expires, the user will be issued a new waiting room cookie upon their next request. If there is active queueing, this user will be placed in the back of the queue. Otherwise, they can continue browsing for another <i>session_duration</i> minutes.</p>
 	<p>Let's walk through the new analytics available in the Waiting Room dashboard, which allows you to see how these settings can impact waiting room throughput, how many users get queued, and how long users wait to enter your site from the queue.</p>
-	<h3>Waiting Room Analytics in the dash</h3>
+	<div class="flex anchor relative">
+		<h3 id="waiting-room-analytics-in-the-dash">Waiting Room Analytics in the dash</h3>
+		<a href="https://blog.cloudflare.com/#waiting-room-analytics-in-the-dash" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To access metrics for a waiting room, navigate to the Waiting Room dashboard, where you can find pre-built visualizations of your waiting room traffic. The dashboard offers at-a-glance metrics for the peak waiting room traffic over the last 24 hours.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -94,7 +108,14 @@
 
 	</figure>
 	<p>This graph shows queued user and active user data from the same time period as the spike seen in New users per minute graph above. When analyzing your waiting room’s metrics, be sure to review both graphs to understand which Waiting Room traffic setting triggered queueing and to what extent.</p>
-	<h3>Adjusting settings with Waiting Room Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="adjusting-settings-with-waiting-room-analytics">Adjusting settings with Waiting Room Analytics</h3>
+		<a href="https://blog.cloudflare.com/#adjusting-settings-with-waiting-room-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By leveraging the insights provided by the analytics dashboard, you can fine-tune your waiting room settings while ensuring a safe and seamless user experience. A common concern for customers is longer than desired wait times during high traffic periods. We will walk through some guidelines for evaluating peak traffic and settings’ adjustments that could be made.</p>
 	<p><b>Identify peak traffic.</b> The first step is to identify when peak traffic occurred. To do so, zoom out to 30 days or some time period inclusive of a known high traffic event. Reviewing the graph, locate a period of time where traffic peaked and use your cursor to highlight from the left to right of the peak. This will zoom in to that time period, updating all other values on the analytics page.</p>
 	<p><b>Evaluate wait times.</b> Now that you have honed in on the time period of peak traffic, review the Time in queue metric to analyze if the wait times during peak traffic were acceptable. If you determine that wait times were significantly longer than you had anticipated, consider the following options to reduce wait times for your next traffic peak.</p>
@@ -108,7 +129,14 @@
 	</figure>
 	<p><b>Adjust Total active users or New users per minute settings.</b> Lastly, you can decrease wait times by increasing your waiting room’s traffic limits–Total active users or New users per minute. This is the most sure-fire way to reduce wait times but it also requires more consideration. Before increasing either limit, you will need to evaluate if it is safe to do so and make small, iterative adjustments to these limits, monitoring certain signals to ensure your origin is still able to handle the load. A few things to consider monitoring as you adjust settings are origin CPU usage and memory utilization, and increases in 5xx errors which can be reviewed in Cloudflare’s Web Analytics tab. Analyze historical traffic patterns during similar events or periods of high demand. If you observe that previous traffic surges were successfully managed without site instability or crashes, it provides a strong signal that you can consider increasing waiting room limits.</p>
 	<p>Utilize the Active user chart as well as the New users per minute chart to determine which limit is primarily responsible for triggering queuing so that you know which limit to adjust. After considering these signals and making adjustments to your waiting room’s traffic limits, closely monitor the impact of these changes using the waiting room analytics dashboard. Continuously assess the performance and stability of your site, keeping an eye on server metrics and user feedback.</p>
-	<h3>How we built Waiting Room Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-waiting-room-analytics">How we built Waiting Room Analytics</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-waiting-room-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we love to build on top of our own products. Waiting Room is built on <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects">Workers and Durable Objects</a>. Workers have the ability to auto-scale based on the request rate. They are built using <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolates</a> enabling them to spin up hundreds or thousands of isolates within 5 milliseconds without much overhead. Every request that goes to an application behind a waiting room, goes to a Worker.</p>
 	<p>We optimized the way in which we track end users visiting the application while maintaining their position in the queue. Tracking every user individually would incur more overhead in terms of maintaining state, consuming more CPU &amp; memory. Instead, we decided to divide the users into buckets based on the timestamp of the first request made by the end user. For example, all the users who visited a waiting room between 00:00:00 and 00:00:59 for the first time are assigned to the bucket 00:00:00. Every end user gets a unique encrypted cookie on the first request to the waiting room. The contents of the cookie keep getting updated based on the status of the users in the queue. Once the end user is accepted to the origin, we set the cookie expiry to <i>session_duration</i> minutes, which can be set in the dashboard, from the last request timestamp. In the cookie we track the timestamp of when the end user joined the queue which is used in the calculation of time waited in queue.</p>
 	<h4>Collection of metrics in a distributed environment</h4>
@@ -128,7 +156,14 @@
 
 	</figure>
 	<p>This diagram depicts that multiple workers from different locations receive requests and talk to the data center coordinators respectively which aggregate data and report the aggregated keys upstream to the Global Durable Object. The Global Durable Objects further aggregate all the keys received from the data center coordinators to compute a global aggregate key.</p>
-	<h3>Histograms</h3>
+	<div class="flex anchor relative">
+		<h3 id="histograms">Histograms</h3>
+		<a href="https://blog.cloudflare.com/#histograms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The metrics available via Cloudflare’s GraphQL API are a combination of configured values set by the customer when creating a waiting room and values that are computed based on traffic seen by a waiting room. Waiting Room aggregates data every minute for each metric based on the requests it sees. While some metrics like <i>new users per minute</i>, <i>total active users</i> are counts and can be pre-processed and aggregated with a simple summation, metrics like <i>time on origin</i> and <i>total time waited in queue</i> cannot simply be added together into a single metric.</p>
 	<p>For example, there could be users who waited in the queue for four minutes and there could be a new user who joined the queue two minutes ago. However, if we simply sum these two data points, it would not make sense because six minutes would be an incorrect representation of the total time waited in the queue. Therefore, to capture this value more accurately, we store the data in a histogram. This enables us to represent the typical case (50th percentile) and the approximate worst case (in this case 95th percentile) for that metric.</p>
 	<p>Intuitively, we decided to store <i>time on origin</i> and <i>total time waited in queue</i> into a histogram distribution so that we would be able to represent the data and calculate quantiles precisely. We used <a href="http://hdrhistogram.org">Hdr Histogram</a> - A High Dynamic Range Histogram for recording the data in histograms. Hdr Histograms are scalable and we were able to record dynamic numbers of values with auto-resizing without inflating CPU, memory or introducing latency. The time to record a value in the Hdr Histograms range from 3-6 nanoseconds. Querying and recording values can be done in constant time. Two histogram data structures can simply be added together into a bigger histogram. Also, the histograms can be compressed and encoded/decoded into base64 strings. This enabled us to scalably pass the data structure within our internal services for further aggregation.</p>

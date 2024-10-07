@@ -3,7 +3,14 @@
 	<p>The web is an collaborative ecosystem. Web standards exist to ensure that participants of the network behave in a predictable way. If network participants deviate from the established standards then there can be unintended consequences. This blog post is about one of these unintended consequences.</p>
 	<p>A group of researchers recently published a paper <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">"Forwarding Loop Attacks in the Content Delivery Networks"</a> describing what can happen when web services interact in a non-compliant way. They describe an attack where a malicious user can force multiple service providers to send each other an unending stream of requests in a loop. This request loop can result in resource exhaustion and denial of service at the service provider. This paper also demonstrated that the attack is practical, and can be performed using a large list of service providers.</p>
 	<p>CloudFlare's service has been modified to be standards-compliant with respect to HTTP proxying. However, fixing the vulnerability that enables this attack requires all proxy services to conform to the same standards. If even one service provider is non-compliant, the attack can still be carried out against compliant services. In this post, we will describe the attack and explain how a proxy services can go from being part of the problem to part of the solution.</p>
-	<h3>Reverse Proxies</h3>
+	<div class="flex anchor relative">
+		<h3 id="reverse-proxies">Reverse Proxies</h3>
+		<a href="https://blog.cloudflare.com/#reverse-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare works as a reverse proxy. When an HTTP(S) request comes into CloudFlare’s network, one of two things happen; either CloudFlare returns a cached response for the request or CloudFlare makes a request to the website’s origin server and returns that response. The fact that CloudFlare can inspect and modify requests going through its network enables powerful features like caching, WAF, RocketLoader and more.</p>
 	<p>It’s also not uncommon to put multiple reverse proxies in front of your site. This practice, called stacking proxies, is often used to enable multiple service providers that provide different features. For example, you could use another service for WAF and CloudFlare for caching. Although we would prefer that customers use CloudFlare's <a href="https://www.cloudflare.com/waf">state-of-the-art WAF</a> this is a reasonable configuration and one that several CloudFlare customers use. Proxies can be stacked in front of an origin server, but what happens if the last proxy in the stack points to the first? You get a proxy loop.</p>
 	<p>A proxy loop of two is easy to imagine. Configure a first reverse proxy service to use a second reverse proxy service as it’s origin, and then configure the second service to use the first as its origin.</p>
@@ -13,7 +20,14 @@
 
 	</figure>
 	<p>In theory, any request to this site would end up being sent back and forth between the two proxies. Each iteration of this loop will cause a request to be sent and use up resources. Luckily, most reverse proxy services have protections in place to avoid basic attacks like this.</p>
-	<h3>Preventing Naïve Loops</h3>
+	<div class="flex anchor relative">
+		<h3 id="preventing-naive-loops">Preventing Naïve Loops</h3>
+		<a href="https://blog.cloudflare.com/#preventing-naive-loops" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The authors of HTTP 1.1 were aware of the potential of request loops and built in protection as part of the standard. This loop prevention comes in the form of the "Via" header. From section 5.7.1 of [RFC 7230](<a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">https://tools.ietf.org/html/rfc7230#section-5.7.1</a>](<a href="https://tools.ietf.org/html/rfc7230#section-5.7.1">https://tools.ietf.org/html/rfc7230#section-5.7.1</a>):</p>
 	<hr>
 	<blockquote>
@@ -37,7 +51,14 @@
 
 	</figure>
 	<p>Implementing this protection means CloudFlare is safe from HTTP request loops, right? Not so soon.</p>
-	<h3>The Bad News</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-bad-news">The Bad News</h3>
+		<a href="https://blog.cloudflare.com/#the-bad-news" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not all reverse proxy services are RFC 7230 compliant. Some services give customers the ability to strip or modify headers, including the Via header. This is expressly not allowed by the RFC: proxies are obligated to leave existing tags from other proxies as part of incoming Via headers. A proxy is only allowed to modify the parts of the header that were created by its own organization. Allowing proxies to change this header leads to bad things.</p>
 	<p>Let’s take the example above of a two proxy loop. Suppose both proxies are configured to add their tag to the Via header on outgoing requests, and to fail requests that contain their own Via tag. Suppose also that both proxies are set up to remove the "Via" header from incoming requests. When the request comes back from the second proxy, the first one is unable to identify that it has already proxied the request. This request is then treated like a regular request, causing the first proxy to make request to the second proxy, which strips the header and sends it back, and so on.</p>
 	<figure class="kg-card kg-image-card ">
@@ -46,9 +67,23 @@
 
 	</figure>
 	<p>This attack can do a lot of damage, using up resources from both service providers. It can also cause unexpected behavior in automated attack prevention systems, resulting in one service provider being blocked by another. Needless to say, this is not ideal.</p>
-	<h3>For CloudFlare Customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="for-cloudflare-customers">For CloudFlare Customers</h3>
+		<a href="https://blog.cloudflare.com/#for-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, some web servers do not compress outgoing response if the Via header is present in the request. This can result in your origin using unnecessary bandwidth to send data to CloudFlare. Consult the CloudFlare <a href="https://support.cloudflare.com/hc/en-us/articles/215871448">Knowledge Base</a> to learn how to test if your server has this behavior and how to disable it. If you do not have the ability to modify your server's configuration, please <a href="https://support.cloudflare.com/hc/en-us">contact support</a>.</p>
-	<h3>A Call to Action</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-call-to-action">A Call to Action</h3>
+		<a href="https://blog.cloudflare.com/#a-call-to-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The authors of the paper contacted the affected parties before publishing this paper, but not all of them may have taken action. If your organization provides reverse proxy services to the general public, we recommend you implement the following logic:</p>
 	<ul>
 		<li>

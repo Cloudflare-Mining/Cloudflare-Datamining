@@ -10,7 +10,14 @@
 	<p>Today the standardization process is all but complete and implementations of the most recent specification of the cipher suites have begun to surface. Firefox and OpenSSL have both implemented the new cipher suites for upcoming versions, and Chrome updated its implementation as well.</p>
 	<p>We, as pioneers of ChaCha20-Poly1305 adoption on the web, also updated our <a href="https://github.com/cloudflare/sslconfig">open sourced patch for OpenSSL</a>. It implements both the older "draft" version, to keep supporting millions of users of the existing versions of Chrome, and the newer "RFC" version that supports the upcoming browsers from day one.</p>
 	<p>In this blog entry I review the history of ChaCha20-Poly1305, its standardization process, as well as its importance for the future of the web. I will also take a peek at its performance, compared to the other standard AEAD.</p>
-	<h3>What is an AEAD?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-an-aead">What is an AEAD?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-an-aead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ChaCha20-Poly1305 is an AEAD, Authenticated Encryption with Additional Data cipher. AEADs support two operations: "seal" and "open". Another common AEAD in use for TLS connections is AES-GCM.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -43,9 +50,23 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/genista/5730883/in/photolist-vnAk-nbwijY-oqvP2U-djVTUr-4HRo5J-7vyDSj-4ruBSh-4GViwx-upr6h-dTawSs-boDYGK-F3UhJ-nr9o9-8S78ic-9znk6k-5ByUdb-5FwdxE-4zvHb3-rcCeg9-363XxR-6c2mhp-2WP2cp-2WTsWS-2WTuSq-mXTrWc-2WTtid-qMsATA-xj9C8-e1wsgc-euuypv-atjkJQ-Ldsdy-73xJpA-uj5nP-964Fgq-4aFbEx-7zS5wE-7EXkPD-5m2URM-bwMFxR-4tR3xD-9eXn1R-5TeoZP-6oZYqj-8ugZ6e-5m2Xmt-4BuPz9-8Tv15P-4tV4Nj-Gj3Xz">image</a> by <a href="https://www.flickr.com/photos/genista">Kai Schreiber</a></p>
 	<p>The "open" operation is the reverse of "seal". It takes the same key and IV and generates the MAC of the ciphertext and the AD, similarly to the way "seal" did. It then reads the MAC appended after the ciphertext, and compares the two. Any difference in the MAC values would mean the ciphertext or the AD was tampered with, and they should be discarded as unsafe. If the two match, however, the operation decrypts the ciphertext, returning the original plaintext.</p>
-	<h3>What makes AEADs special?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-makes-aeads-special">What makes AEADs special?</h3>
+		<a href="https://blog.cloudflare.com/#what-makes-aeads-special" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AEADs are special in the sense that they combine two algorithms - cipher and MAC, into a single primitive, with provable security guarantees. Before AEADs, it was acceptable to take some cipher and some MAC, which were considered secure independently, and combine them into an insecure combination. For example some combinations were broken by reusing the same keys for encryption and MAC (AES-CBC with CBC-MAC), while others by performing MAC over plaintext instead of the ciphertext <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">AES-CBC with HMAC in TLS</a>.</p>
-	<h3>The new kid in the block</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-new-kid-in-the-block">The new kid in the block</h3>
+		<a href="https://blog.cloudflare.com/#the-new-kid-in-the-block" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Up until recently the only standard AEAD used was AES-GCM. The problem with that, is that if someone breaks the GCM mode, we are left with no alternative - you wouldn't want to jump out of a plane without a backup parachute, would you? ChaCha20-Poly1305 is this backup.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,21 +77,49 @@
 	<p>We can't really call either ChaCha20 or Poly1305 really new. Both are the brain children of Daniel J. Bernstein (DJB). ChaCha20 is based upon an earlier cipher developed by DJB called Salsa, that dates back to 2005, and was submitted to the eSTREAM competition. ChaCha20 itself was published in 2008. It slightly modifies the Salsa round, and the number 20 indicates that it repeats for 20 rounds in total. Similar to AES-CTR, ChaCha20 is a stream cipher. It generates a pseudo-random stream of bits from an incremented counter, the stream is then "XORed" with plaintext to encrypt it (or "XORed" with ciphertext to decrypt). Because you do not need to know the plaintext in advance to generate the stream, this approach allows both to be very efficient and parallelizable. ChaCha20 is a 256-bit cipher.</p>
 	<p>Poly1305 was published in 2004. Poly1305 is a MAC, and can be used with any encrypted or unencrypted message, to generate a keyed authentication token. The purpose of such tokens is to guarantee the integrity of a given message. Originally Poly1305 used AES as the underlying cipher (Poly1305-AES); now it uses ChaCha20. Again, similarly to GHASH, it is a polynomial evaluation hash. Unlike GHASH, its key changes for each new message, because it depends on the IV. When DJB developed this MAC, he made it especially suited for efficient execution on the floating point hardware present on the CPUs back then. Today it is much more efficient to execute using 64-bit integer instructions, and might have been designed slightly differently.</p>
 	<p>Both have received considerable scrutiny from the crypto community in the years since, and today are considered completely safe, albeit there is a concern about the <a href="http://www.metzdowd.com/pipermail/cryptography/2016-March/028824.html">monoculture</a> that forms when one person is responsible for so many standards in the industry (DJB is also responsible for Curve25519 key exchange).</p>
-	<h3>From zero to hero</h3>
+	<div class="flex anchor relative">
+		<h3 id="from-zero-to-hero">From zero to hero</h3>
+		<a href="https://blog.cloudflare.com/#from-zero-to-hero" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The body that governs internet standards is the IETF - Internet Engineering Task Force. All the standards we use on the internet, including TLS, come from that organization. All standards that relate to encryption come from the TLS and CFRG workgroups of IETF. The standardization process is open to all, and the correspondence that relates to it is kept public in a special <a href="https://mailarchive.ietf.org/arch">archive</a>.</p>
 	<p>The first mention for ChaCha20-Poly1305 I found in the archive dates to <a href="https://www.ietf.org/mail-archive/web/tls/current/msg09707.html">30 July 2013</a>. It is still referred to as Salsa back then.</p>
 	<p>After some time and debate an <a href="https://datatracker.ietf.org/doc/draft-agl-tls-chacha20poly1305">initial draft</a> was published by Adam Langley from Google in September 2013. The latest draft of the ChaCha20-Poly1305 for TLS including all the previous revisions can be found <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-chacha20-poly1305">here</a>. It is interesting to see the incremental process, and the gradual refinement. For example initially ChaCha20 was also supposed to work with HMAC-SHA1.</p>
 	<p>Another standard that defines the general usage of ChaCha20-Poly1305 is <a href="https://datatracker.ietf.org/doc/rfc7539">RFC7539</a>. First published in January 2014, it was standardized in May 2015.</p>
-	<h3>Differences</h3>
+	<div class="flex anchor relative">
+		<h3 id="differences">Differences</h3>
+		<a href="https://blog.cloudflare.com/#differences" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two key differences between the draft version we initially implemented and the current version of the cipher suites that make the two incompatible.</p>
 	<p>The first difference relates to how the cipher suite is used in TLS. The current version incorporated the TLS records sequence number into the IV generation, making it more resistant to dangerous IV reuse.</p>
 	<p>The second difference relates to how Poly1305 applies to the TLS record. Records are the equivalent of a TCP packet for TLS. When data is streamed over TLS, it is broken into many smaller records. Each record holds part of the data (encrypted), with the MAC calculated for that record. It also holds other information, such as the protocol version, record type and length. The maximum amount of data a single record can hold is 16KB.</p>
 	<p>The draft Poly1305 calculated the hash of the additional data, followed by the length of the additional data as an 8 byte string, followed by the ciphertext, followed by the length of the ciphertext as an 8 byte string. In the current iteration, the hash is generated over the additional data, padded with zeroes to 16 byte boundary, followed by ciphertext similarly padded with zeroes, followed by the length of the additional data as an 8 byte string, followed by the length of the ciphertext as an 8 byte string.</p>
 	<p>The older cipher suites can be identified by IDs {cc}{13}, {cc}{14} and {cc}{15}, while the newer cipher suites have IDs {cc}{a8} through {cc}{ae}.</p>
-	<h3>Future of ChaCha20-Poly1305</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-of-chacha20-poly1305">Future of ChaCha20-Poly1305</h3>
+		<a href="https://blog.cloudflare.com/#future-of-chacha20-poly1305" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we already see that almost 20% of all the request to sites using CloudFlare use <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">ChaCha20-Poly1305</a>. And that is with only one browser supporting it. In the coming months Firefox will join the party, potentially increasing this number.</p>
 	<p>More importantly, the IETF is currently finalizing another very important standard, <a href="https://blog.cloudflare.com/going-to-ietf-95-join-the-tls-1-3-hackathon">TLS 1.3</a>. Right now it looks like TLS 1.3 will allow AEADs only, leaving AES-GCM and ChaCha20-Poly1305 as the only two options (for now). This would definitely bring the usage of ChaCha20-Poly1305 up significantly.</p>
-	<h3>Can you handle it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="can-you-handle-it">Can you handle it?</h3>
+		<a href="https://blog.cloudflare.com/#can-you-handle-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given the rising popularity of ChaCha20-Poly1305 suites, and TLS in general, it is important to have efficient implementations that does not hog too much of the servers' CPU time. ChaCha20-Poly1305 allows for highly efficient implementation using SIMD instructions. Most of our servers are based on Intel CPUs with 256-bit SIMD extensions called AVX2. We utilize those to get the maximal performance.</p>
 	<p>The main competition for ChaCha20-Poly1305 are the AES-GCM based cipher suites. The most widely used AES-GCM, uses AES with 128 bit key, however in terms of security AES-256 is more comparable to ChaCha20.</p>
 	<p>Usually cipher performance numbers are reported for large messages, to show asymptotic performance, but on our network we started using <a href="https://istlsfastyet.com">dynamic record sizing</a>. In practice it means many connections will never reach the maximal size of a TLS record (16KB), but instead will use significantly smaller records (below 1400 bytes). The records dynamically grow as the connection progresses, scaling to about 4KB and eventually to 16KB. Most messages will also not fit precisely into a record, and all sizes are possible.</p>
@@ -88,9 +137,23 @@
 	</figure>
 	<p>CPU cycles per byte (Y-axis) vs. record size in bytes (X-axis)</p>
 	<p>We can see that our implementation significantly outperforms OpenSSL for short records, and is slightly faster for longer records. The average performance advantage is 7%. AES-128-GCM and AES-256-GCM both still beat ChaCha20-Poly1305 in pure performance for records larger than 320 bytes, but getting below 2 cycles/byte is a major performance achievement. Not many modes can beat this performance. It is also important to note that AES-GCM uses two dedicated CPU instructions (AESENC and CLMULQDQ), whereas both ChaCha and Poly only use the generic SIMD instructions.</p>
-	<h3>Performance outlook</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-outlook">Performance outlook</h3>
+		<a href="https://blog.cloudflare.com/#performance-outlook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The current performance is outstanding. We measured the performance on a Haswell CPU. Broadwell and Skylake CPUs actually perform AES-GCM faster, but we don't use them in our servers yet.</p>
 	<p>In the future, processors with wider SIMD instructions are expected to bridge the performance gap. The AVX512 will provide instructions twice as wide, and potentially will improve the performance two fold as well, bringing it below 1 cycle/byte. Following AVX512, Intel is expected to release the AVX512IFMA extensions too, that will accelerate Poly1305 even <a href="https://rt.openssl.org/Ticket/Display.html?id=3615&amp;user=guest&amp;pass=guest">further</a>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare is constantly pushing the envelope in terms of TLS performance and availability of the most secure cipher suites and modes. We are actively involved in the development and specification of TLS 1.3 and are committed to open source by releasing our performance patches.</p>
 </div>

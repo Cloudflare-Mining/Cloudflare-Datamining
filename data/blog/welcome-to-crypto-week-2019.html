@@ -24,7 +24,14 @@
 			<p>Friday: <a href="https://blog.cloudflare.com/secure-time"><b>Introducing time.cloudflare.com</b></a></p>
 		</li>
 	</ul>
-	<h3>The Internet of the Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-internet-of-the-future">The Internet of the Future</h3>
+		<a href="https://blog.cloudflare.com/#the-internet-of-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many pieces of the Internet in use today were designed in a different era with different assumptions. The Internet’s success is based on strong foundations that support constant reassessment and improvement. Sometimes these improvements require deploying new protocols.</p>
 	<p>Performing an upgrade on a system as large and decentralized as the Internet can’t be done by decree;</p>
 	<ul>
@@ -48,7 +55,14 @@
 	<p>As you would expect, many of the warts of the early Internet still remain. Both academic security researchers and real-life adversaries are still finding and exploiting vulnerabilities in the system. Many vulnerabilities are due to the fact that most of the protocols in use on the Internet have a weak notion of trust inherited from the early days. With 50 hosts online, it’s relatively easy to trust everyone, but in a world-scale system, that trust breaks down in fascinating ways. The primary tool to scale trust is cryptography, which helps provide some measure of accountability, though it has its own complexities.</p>
 	<p>In an ideal world, the Internet would provide a trustworthy substrate for human communication and commerce. Some people naïvely assume that this is the natural direction the evolution of the Internet will follow. However, constant improvement is not a given. <b>It’s possible that the Internet of the future will actually be</b> <b><i>worse</i></b> <b>than the Internet today: less open, less secure, less private, less</b> <b><i>trustworthy</i></b><b>.</b> There are strong incentives to weaken the Internet on a fundamental level by <a href="https://www.ispreview.co.uk/index.php/2019/04/google-uk-isps-and-gov-battle-over-encrypted-dns-and-censorship.html">Governments</a>, by businesses <a href="https://www.theatlantic.com/technology/archive/2017/03/encryption-wont-stop-your-internet-provider-from-spying-on-you/521208">such as ISPs</a>, and even by the <a href="https://www.cyberscoop.com/tls-1-3-weakness-financial-industry-ietf">financial institutions</a> entrusted with our personal data.</p>
 	<p>In a system with as many stakeholders as the Internet, <b>real change requires principled commitment from all invested parties.</b> At Cloudflare, we believe everyone is entitled to an Internet built on a solid foundation of trust. <b>Crypto Week</b> is our way of helping nudge the Internet’s evolution in a more trust-oriented direction. Each announcement this week helps bring the Internet of the future to the present in a tangible way.</p>
-	<h3>Ongoing Internet Upgrades</h3>
+	<div class="flex anchor relative">
+		<h3 id="ongoing-internet-upgrades">Ongoing Internet Upgrades</h3>
+		<a href="https://blog.cloudflare.com/#ongoing-internet-upgrades" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we explore the Internet of the future, let’s explore some of the previous and ongoing attempts to upgrade the Internet’s fundamental protocols.</p>
 	<h4>Routing Security</h4>
 	<p>As we highlighted in <a href="https://blog.cloudflare.com/crypto-week-2018">last year’s Crypto Week</a> <b>one of the weak links on the Internet is routing</b>. Not all networks are directly connected.</p>
@@ -80,7 +94,14 @@
 		</li>
 	</ul>
 	<p>Since we announced our support of RPKI last year, routing security has made big strides. More routes are signed, more networks validate RPKI, and the <a href="https://github.com/cloudflare/cfrpki">software ecosystem has matured</a>, but this work is not complete. Most networks are still vulnerable to BGP hijacking. For example, <a href="https://www.cnet.com/news/how-pakistan-knocked-youtube-offline-and-how-to-make-sure-it-never-happens-again">Pakistan knocked YouTube offline with a BGP hijack</a> back in 2008, and could likely do the same today. Adoption here is driven less by providing a benefit to users, but rather by reducing systemic risk, which is not the strongest motivating factor for adopting a complex new technology. Full routing security on the Internet could take decades.</p>
-	<h3>DNS Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-security">DNS Security</h3>
+		<a href="https://blog.cloudflare.com/#dns-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a> is the phone book of the Internet. Or, for anyone under 25 who doesn’t remember phone books, it’s the system that takes hostnames (like cloudflare.com or facebook.com) and returns the Internet address where that host can be found. For example, as of this publication, <a href="https://www.cloudflare.com">www.cloudflare.com</a> is 104.17.209.9 and 104.17.210.9 (IPv4) and 2606:4700::c629:d7a2, 2606:4700::c629:d6a2 (IPv6). Like BGP, <b>DNS is completely insecure. Queries and responses sent unencrypted over the Internet are modifiable by anyone on the path.</b></p>
 	<p>There are many ongoing attempts to add security to DNS, such as:</p>
 	<ul>
@@ -113,7 +134,14 @@
 			<p>This <b>performance improvement makes it appealing for customers</b> of privacy-conscious applications, like Firefox and Cloudflare’s 1.1.1.1 app, to adopt secure DNS.</p>
 		</li>
 	</ul>
-	<h3>The Web</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-web">The Web</h3>
+		<a href="https://blog.cloudflare.com/#the-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Transport Layer Security (TLS)</b> is a cryptographic protocol that gives two parties the ability to communicate over an encrypted and authenticated channel**.** <b>TLS protects communications from eavesdroppers even in the event of a BGP hijack.</b> TLS is what puts the “S” in <b>HTTPS</b>. TLS protects web browsing against multiple types of network adversaries.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -163,7 +191,14 @@
 	</figure>
 	<p>TLS 1.3 adoption over the last 12 months (from Cloudflare's perspective)</p>
 	<p>Despite this fantastic progress in the adoption of security for routing, DNS, and the web, <b>there are still gaps in the trust model of the Internet.</b> There are other things needed to help build the Internet of the future. To find and identify these gaps, we lean on research experts.</p>
-	<h3>Research Farm to Table</h3>
+	<div class="flex anchor relative">
+		<h3 id="research-farm-to-table">Research Farm to Table</h3>
+		<a href="https://blog.cloudflare.com/#research-farm-to-table" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cryptographic security on the Internet is a hot topic and there have been many flaws and issues recently pointed out in academic journals. Researchers often <b>study the vulnerabilities of the past and ask:</b></p>
 	<ul>
 		<li>
@@ -189,7 +224,14 @@
 		</li>
 	</ul>
 	<p>Cloudflare keeps abreast of these developments and we do what we can to bring these new ideas to the Internet at large. In this respect, we’re truly standing on the shoulders of giants.</p>
-	<h3>Future-proofing Internet Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-proofing-internet-cryptography">Future-proofing Internet Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#future-proofing-internet-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The new protocols we are currently deploying (RPKI, DNSSEC, DoT/DoH, TLS 1.3) use relatively modern cryptographic algorithms published in the 1970s and 1980s.</p>
 	<ul>
 		<li>
@@ -254,7 +296,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oWF3OLLr5WVWIga7mMGf8/7e56a7ed76c5f442a39d67c9ea96cba5/image18.png" alt="" class="kg-image" width="1999" height="787" loading="lazy">
 
 	</figure>
-	<h3>Post-Quantum of Solace</h3>
+	<div class="flex anchor relative">
+		<h3 id="post-quantum-of-solace">Post-Quantum of Solace</h3>
+		<a href="https://blog.cloudflare.com/#post-quantum-of-solace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As far as we know, <b>the algorithms we use for cryptography are functionally uncrackable</b> with all known algorithms that classical computers can run. <b>Quantum computers change this calculus.</b> Instead of transistors and bits, a quantum computer uses the effects of <a href="https://en.wikipedia.org/wiki/Quantum_entanglement">quantum mechanics</a> to perform calculations that just aren’t possible with classical computers. As you can imagine, quantum computers are very difficult to build. However, despite large-scale quantum computers not existing quite yet, computer scientists have already developed algorithms that can only run efficiently on quantum computers. Surprisingly, it turns out that <b>with a sufficiently powerful quantum computer, most of the hard mathematical problems we rely on for Internet security become easy!</b></p>
 	<p>Although there are still <a href="https://www.quantamagazine.org/gil-kalais-argument-against-quantum-computers-20180207">quantum-skeptics</a> out there, <a href="http://fortune.com/2018/12/15/quantum-computer-security-encryption">some experts</a> <b>estimate that within 15-30 years these large quantum computers will exist, which poses a risk to every security protocol online.</b> Progress is moving quickly; every few months a more powerful quantum computer <a href="https://en.wikipedia.org/wiki/Timeline_of_quantum_computing">is announced</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -279,7 +328,14 @@
 	</ul>
 	<p>It is possible to swap our current set of quantum-vulnerable algorithms with new quantum-resistant algorithms, but it’s a daunting engineering task. With widely deployed <a href="https://en.wikipedia.org/wiki/IPsec">protocols</a>, it is hard to make the transition from something fast and small to something slower, bigger or more complicated without providing concrete user benefits. <b>When exploring new quantum-resistant algorithms, minimizing user impact is of utmost importance</b> to encourage adoption. This is a big deal, because almost all the protocols we use to protect the Internet are vulnerable to quantum computers.</p>
 	<p>Cryptography-breaking quantum computing is still in the distant future, but we must start the transition to ensure that today’s secure communications are safe from tomorrow’s quantum-powered onlookers; however, that’s not the most <i>timely</i> problem with the Internet. We haven’t addressed that...yet.</p>
-	<h3>Attacking time</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacking-time">Attacking time</h3>
+		<a href="https://blog.cloudflare.com/#attacking-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just like DNS, BGP, and HTTP, <b>the Network Time Protocol (NTP) is fundamental to how the Internet works</b>. And like these other protocols, it is <b>completely insecure</b>.</p>
 	<ul>
 		<li>
@@ -316,7 +372,14 @@
 			<p>To solve this, it’s natural to turn to the same system of trust that enabled us to patch HTTP and DNS: Web PKI.</p>
 		</li>
 	</ul>
-	<h3>Attacking the Web PKI</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacking-the-web-pki">Attacking the Web PKI</h3>
+		<a href="https://blog.cloudflare.com/#attacking-the-web-pki" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Web PKI is similar to the RPKI, but is more widely visible since it relates to websites rather than routing tables.</p>
 	<ul>
 		<li>
@@ -355,7 +418,14 @@
 	<p><b>One tool at our disposal is the distributed nature of the Cloudflare network.</b></p>
 	<p>Cloudflare is global. We have locations all over the world connected to dozens of networks. That means we have different <i>vantage points</i>, resulting in different ways to traverse networks. This diversity can prove an advantage when dealing with BGP hijacking, since <b>an attacker would have to hijack multiple routes from multiple locations to affect all the traffic between Cloudflare and other distributed parts of the Internet.</b> The natural diversity of the network raises the cost of the attacks.</p>
 	<p>A distributed set of connections to the Internet and using them as a quorum is a mighty paradigm to distribute trust, with or without cryptography.</p>
-	<h3>Distributed Trust</h3>
+	<div class="flex anchor relative">
+		<h3 id="distributed-trust">Distributed Trust</h3>
+		<a href="https://blog.cloudflare.com/#distributed-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This idea of distributing the source of trust is powerful. Last year we announced the <b>Distributed Web Gateway</b> that</p>
 	<ul>
 		<li>
@@ -394,7 +464,14 @@
 	<p>An attacker that has compromised one of the servers cannot break the security of the system‌‌</p>
 	<p>The Internet barge is old and slow, and we’ve only been able to improve it through the meticulous process of patching it piece by piece. Another option is to build new secure systems on top of this insecure foundation. IPFS is doing this, and IPFS is not alone in its design. <b>There has been more research into secure systems with decentralized trust in the last ten years than ever before</b>.</p>
 	<p>The result is radical new protocols and designs that use exotic new algorithms. These protocols do not supplant those at the core of the Internet (like TCP/IP), but instead, they sit on top of the existing Internet infrastructure, enabling new applications, much like HTTP did for the web.</p>
-	<h3>Gaining Traction</h3>
+	<div class="flex anchor relative">
+		<h3 id="gaining-traction">Gaining Traction</h3>
+		<a href="https://blog.cloudflare.com/#gaining-traction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some of the most innovative technical projects were considered failures because <b>they couldn’t attract users.</b> New technology has to bring tangible benefits to users to sustain it: useful functionality, content, and a decent user experience. Distributed projects, such as IPFS and others, are gaining popularity, but have not found mass adoption. This is a chicken-and-egg problem. New protocols have a high barrier to entry**—<b>users have to install new software</b>—**and because of the small audience, there is less incentive to create compelling content. <b>Decentralization and distributed trust are nice security features to have, but they are not products</b>. Users still need to get some benefit out of using the platform.</p>
 	<p>An example of a system to break this cycle is the web. In 1992 the web was hardly a cornucopia of awesomeness. <b>What helped drive the dominance of the web was its users.</b></p>
 	<ul>
@@ -418,7 +495,14 @@
 		</li>
 	</ul>
 	<p>Eventually, as user-side implementations of distributed web technologies improve, people may move to using the distributed web natively rather than through an HTTP gateway. Or they may not! By leveraging Cloudflare’s global network to <b>give users access to new technologies based on distributed trust, we give these technologies a better chance at gaining adoption.</b></p>
-	<h3>Happy Crypto Week</h3>
+	<div class="flex anchor relative">
+		<h3 id="happy-crypto-week">Happy Crypto Week</h3>
+		<a href="https://blog.cloudflare.com/#happy-crypto-week" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we always support new technologies that help make the Internet better. Part of helping make a better Internet is scaling the systems of trust that underpin web browsing and protect them from attack. We provide the tools to create better systems of assurance with fewer points of vulnerability. We work with academic researchers of security to get a vision of the future and engineer away vulnerabilities before they can become widespread. It’s a constant journey.</p>
 	<p>Cloudflare knows that none of this is possible without the work of researchers. From award-winning researcher publishing papers in top journals to the blog posts of clever hobbyists, dedicated and curious people are moving the state of knowledge of the world forward. However, the push to publish new and novel research sometimes holds researchers back from committing enough time and resources to fully realize their ideas. Great research can be powerful on its own, but it can have an even broader impact when combined with practical applications. We relish the opportunity to stand on the shoulders of these giants and use our engineering know-how and global reach to expand on their work to help build a better Internet.</p>
 	<p>So, to all of you dedicated researchers, <b>thank you for your work!</b> Crypto Week is yours as much as ours. If you’re working on something interesting and you want help to bring the results of your research to the broader Internet, please contact us at <a href="mailto:research@cloudflare.com">ask-research@cloudflare.com</a>. We want to help you realize your dream of making the Internet safe and trustworthy.</p>

@@ -7,7 +7,14 @@
 	</figure>
 	<p><a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> is our threat operations and research team. Its primary objective: track and disrupt threat actors targeting Cloudflare and the customer systems we protect. <a href="https://www.cloudflare.com/en-gb/application-services/products/cloudforceone">Cloudforce One customers</a> can engage directly with analysts on the team to help understand and stop the specific threats targeting them.</p>
 	<p>Today, we are releasing in general availability two new tools that will help Cloudforce One customers get the best value out of the service by helping us prioritize and organize the information that matters most to them: Requests for Information (RFIs) and Priority Intelligence Requirements (PIRs). We’d also like to review how we’ve used the Cloudflare <a href="https://developers.cloudflare.com/workers">Workers</a> and <a href="https://developers.cloudflare.com/pages">Pages</a> platform to build our internal pipeline to not only perform investigations on behalf of our customers, but conduct our own internal investigations of the threats and attackers we track.</p>
-	<h3>What are Requests for Information (RFIs)?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-requests-for-information-rfis">What are Requests for Information (RFIs)?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-requests-for-information-rfis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>RFIs are designed to streamline the process of accessing critical intelligence. They provide an avenue for users to submit specific queries and requests directly into Cloudforce One's analysis queue. Essentially, they are a well-structured way for you to tell the team what to focus their research on to best support your security posture.</p>
 	<p>Each RFI filed is routed to an analyst and treated as a targeted call for information on specific threat elements. From malware analysis to <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attack</a> analysis, we have a group of seasoned threat analysts who can provide deeper insight into a wide array of attacks. Those who have found RFIs invaluable typically belong to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-a-security-operations-center-soc">Security Operation Centers</a>, Incident Response Teams, and Threat Research/Intelligence teams dedicated to supporting internal investigations within an organization. This approach proves instrumental in unveiling potential vulnerabilities and enhancing the understanding of the security posture, especially when confronting complex risks.</p>
 	<p>Creating an RFI is straightforward. Through the Security Center dashboard, users can create and track their RFIs:</p>
@@ -29,7 +36,14 @@
 	</figure>
 	<p><i>Fabricated example of the detailed view of an RFI and communication with the Cloudflare Threat Research Team</i></p>
 	<p>Once an RFI is submitted, teams can stay informed about the progress of their requests through automated alerts. These alerts, generated when a Cloudforce One analyst has completed the request, are delivered directly to the user’s email or to a team chat channel via a webhook.</p>
-	<h3>What are Priority Intelligence Requirements (PIRs)?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-priority-intelligence-requirements-pirs">What are Priority Intelligence Requirements (PIRs)?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-priority-intelligence-requirements-pirs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Priority Intelligence Requirements (PIRs) are a structured approach to identifying intelligence gaps, formulating precise requirements, and organizing them into categories that align with Cloudforce One's overarching goals. For example, you can create a PIR signaling to the Cloudforce One team what topic you would like more information on.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,7 +53,14 @@
 	<p><b>PIR dashboard with fictitious examples of priority intelligence requirements</b></p>
 	<p>PIRs help target your intelligence collection efforts toward the most relevant insights, enabling you to make informed decisions and <a href="https://www.cloudflare.com/cybersecurity-risk-management">strengthen your organization's cybersecurity posture</a>.</p>
 	<p>While PIRs currently offer a framework for prioritizing intelligence requirements, our vision extends beyond static requirements. Looking ahead, our plan is to evolve PIRs into dynamic tools that integrate real-time intelligence from Cloudforce One. Enriching PIRs by integrating them with real-time intelligence from Cloudforce One will provide immediate insights into your Cloudflare environment, facilitating a direct and meaningful connection between ongoing threat intelligence and your predefined intelligence needs.</p>
-	<h3>What drives Cloudforce One?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-drives-cloudforce-one">What drives Cloudforce One?</h3>
+		<a href="https://blog.cloudflare.com/#what-drives-cloudforce-one" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since our inception, Cloudforce One has been actively collaborating with our Security Incident Response Team (SIRT) and Trust and Safety (T&amp;S) team, aiming to provide valuable insights into attacks targeting Cloudflare and counteract the misuse of Cloudflare services. Throughout these investigations, we recognized the need for a centralized platform to capture insights from Cloudflare's unique perspective on the Internet, aggregate data, and correlate reports.</p>
 	<p>In the past, our approach would have involved deploying a frontend UI and backend API in a core data center, leveraging common services like Postgres, Redis, and a Ceph storage solution. This conventional route would have entailed managing Docker deployments, constantly upgrading hosts for vulnerabilities, and dealing with a complex environment where we must juggle secrets, external service configurations, and maintaining availability.</p>
 	<p>Instead, we welcomed being <a href="https://www.cloudflare.com/the-net/top-of-mind-security/customer-zero">Customer Zero</a> for Cloudflare and fully embraced Cloudflare's Workers and Pages platforms to construct a powerful threat investigation tool, and since then, we haven’t looked back. For anyone that has used Workers in the past, much of what we have done is not revolutionary, but almost commonplace given the ease of configuring and implementing the features in Cloudflare Workers. We routinely store file data in <a href="https://developers.cloudflare.com/r2">R2</a>, metadata in <a href="https://developers.cloudflare.com/kv">KV</a>, and indexed data in <a href="https://developers.cloudflare.com/d1">D1</a>. That being said, we do have a few non-standard deployments as well, further outlined below.</p>
@@ -88,11 +109,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jVrsni5cUJ9kv0iXuLimo/63d3f8352968d88acc587e30e611bf0b/image3-28.png" alt="" class="kg-image" width="1999" height="368" loading="lazy">
 
 	</figure>
-	<h3>Using RFIs and PIRs</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-rfis-and-pirs">Using RFIs and PIRs</h3>
+		<a href="https://blog.cloudflare.com/#using-rfis-and-pirs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine submitting an RFI for “Passive DNS Resolution - IOCs” and receiving real-time updates directly within the PIR, guiding your next steps.</p>
 	<p>Our workflow ensures that the intelligence you need is not only obtained but also used optimally. This approach empowers your team to tailor your intelligence gathering, strengthening your cybersecurity strategy and security posture.</p>
 	<p>Our mission for Cloudforce One is to equip organizations with the tools they need to stay one step ahead in the rapidly changing world of cybersecurity. The addition of RFIs and PIRs marks another milestone in this journey, empowering users with enhanced threat intelligence capabilities.</p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudforce One customers can already see the PIR and RFI Dashboard in their Security Center, and they can also use the API if they prefer that option. Click to see more documentation about our <a href="https://developers.cloudflare.com/api/operations/cloudforce-one-request-list">RFI</a> and our <a href="https://developers.cloudflare.com/api/operations/cloudforce-one-priority-list">PIR</a> APIs.</p>
 	<p>If you’re looking to try out the new RFI and PIR capabilities within the Security Center, contact your Cloudflare account team or fill out <a href="https://www.cloudflare.com/en-gb/zero-trust/lp/cloudforce-one-threat-intel-subscription/?cf_target_id=99B9BF88D6D4607E503427CE17D61E89">this form</a> and someone will be in touch. Finally, if you’re interested in joining the Cloudflare team, check out our open job postings <a href="https://www.cloudflare.com/en-gb/careers/?cf_target_id=96C6F98DE231254296C355D2DDABBF2E">here</a>.</p>
 </div>

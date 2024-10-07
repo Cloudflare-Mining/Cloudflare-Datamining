@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>We get a number of questions about using CloudFlare with e-commerce sites in customer service. CloudFlare works great at making e-commerce sites faster and protecting them against attacks. I thought I would try to address many of the key questions in a handy guide that you can use to reduce the probability of having issues with your e-commerce site.</p>
-	<h3>Immediate steps after installing CloudFlare</h3>
+	<div class="flex anchor relative">
+		<h3 id="immediate-steps-after-installing-cloudflare">Immediate steps after installing CloudFlare</h3>
+		<a href="https://blog.cloudflare.com/#immediate-steps-after-installing-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Allowlist Cloudflare's IP addresses</h4>
 	<p>You should make sure that you don't have any rules in your .htacess or iptables that are blocking CloudFlare's requests from our IPs. If you have other security solutions in place prior to joining CloudFlare, these may interfere with CloudFlare's ability to connect to your site. Allowlisting our IP ranges will help avoid "Site Offline" messages caused when we cannot reach your server from our network. You can findthe <a href="https://support.cloudflare.com/kb/troubleshooting/what-ip-address-ranges-does-cloudflare-use">current list of CloudFlare's IPs in our FAQ</a>.</p>
 	<h4>Restoring Original Visitor IP</h4>
@@ -15,7 +22,14 @@
 	<p>Since traffic passes through CloudFlare before going to your origin server, if you use SSL on your site you'll either need to set it up on a domain that isn't proxied through CloudFlare, or we'll need to install aSSL certificate for your domain on our network. We've worked with one of the <a href="http://www.globalsign.com">oldest certificate authority partners</a> to make SSL certs that work on our network easy and inexpensive. The full process for SSL and CloudFlare is outlined <a href="https://support.cloudflare.com/entries/22077247-How-do-I-add-SSL-to-my-site-">here</a>.</p>
 	<h4>Subdomains</h4>
 	<p>While CloudFlare will generally get many common subdomain records duringthe process in which you add a domain, customized subdomains may not be picked up and you should make sure that these are correctly added in your <a href="https://www.cloudflare.com/dns-settings.html">CloudFlare DNS settings</a>. In other words, if you have some part of your site hosted at mrscruffypants.yoursite.com, just make sure you add it when you first set up your site.</p>
-	<h3>Some frequently asked questions or concerns from e-commerce site owners</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-frequently-asked-questions-or-concerns-from-e-commerce-site-owners">Some frequently asked questions or concerns from e-commerce site owners</h3>
+		<a href="https://blog.cloudflare.com/#some-frequently-asked-questions-or-concerns-from-e-commerce-site-owners" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>1. Will dynamic content be affected using CloudFlare?</h4>
 	<p>CloudFlare will not hurt dynamic content performance at all. Since CloudFlare only <a href="https://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache">caches staticcontent</a>, such as images and CSS, we wouldn't cause any issues for HTML or PHP. In fact, our system was written to be able to optimize dynamic content with options like minification on the fly without slowing it down orrequiring it to be cached. This means any changes you make to your content are reflected immediately on your site.</p>
 	<h4>2. Will IP geolocation work with CloudFlare?</h4>

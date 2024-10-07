@@ -9,7 +9,14 @@
 	<p>The Cloudflare Radar plugin allows you to talk to ChatGPT about real-time Internet patterns powered by <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
 	<p>The Cloudflare Docs plugin allows developers to use ChatGPT to help them write and build Cloudflare applications with the most up-to-date information from our documentation. It also serves as an open source example of how to build a ChatGPT plugin with Cloudflare Workers.</p>
 	<p>Let’s do a deeper dive into how each of these plugins work and how we built them.</p>
-	<h3>Cloudflare Radar ChatGPT plugin</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-radar-chatgpt-plugin">Cloudflare Radar ChatGPT plugin</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-radar-chatgpt-plugin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When ChatGPT introduced <a href="https://openai.com/blog/chatgpt-plugins">plugins</a>, one of their use cases was retrieving real-time data from third-party applications and their APIs and letting users ask relevant questions using natural language.</p>
 	<p><a href="https://radar.cloudflare.com">Cloudflare Radar</a> has lots of data about how people use the Internet, a well-documented <a href="https://developers.cloudflare.com/radar">public API</a>, an OpenAPI specification, and it’s entirely <a href="https://blog.cloudflare.com/technology-behind-radar2">built on top of Workers</a>, which gives us lots of flexibility for improvements and extensibility. We had all the building blocks to create a ChatGPT plugin quickly. So, that's what we did.</p>
 	<p>We added an <a href="https://api.radar.cloudflare.com/.well-known/ai-plugin.json">OpenAI manifest endpoint</a> which describes what the plugin does, some branding assets, and an <a href="https://api.radar.cloudflare.com/.well-known/openai-schema.json">enriched OpenAPI schema</a> to tell ChatGPT how to use our data APIs. The longest part of our work was fine-tuning the schema with good descriptions (written in natural language, obviously) and examples of how to query our endpoints.</p>
@@ -87,7 +94,14 @@ const router = OpenAPIRouter({
 	</figure>
 	<p>Out of ideas? Ask it “<b>What can I ask the Radar plugin?</b>”, or “<b>Give me a random insight</b>”.</p>
 	<p>Be creative, too; it understands a lot about our data, and we keep improving it. You can also add date or country filters using natural language in your prompts.</p>
-	<h3>Cloudflare Docs ChatGPT plugin</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-docs-chatgpt-plugin">Cloudflare Docs ChatGPT plugin</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-docs-chatgpt-plugin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare Docs plugin is a <a href="https://openai.com/blog/chatgpt-plugins#retrieval">ChatGPT Retrieval Plugin</a> that lets you access the most up-to-date knowledge from our developer documentation using ChatGPT. This means if you’re using ChatGPT to assist you with building on Cloudflare that the answers you’re getting or code that’s being generated will be informed by current best practices and information located within our docs. You can set up and run the Cloudflare Docs ChatGPT Plugin by following the read me in <a href="https://github.com/cloudflare/chatgpt-plugin/tree/main/example-retrieval-plugin">the example repo</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -101,8 +115,23 @@ const router = OpenAPIRouter({
 	<p>The plugin also includes a “Scheduler” Worker that can periodically refresh the documentation embedding vectors, so that the information is always up-to-date. This is advantageous because ChatGPT’s own knowledge has a cutoff of September 2021 – so it’s not aware of changes in documentation, or new Cloudflare products.</p>
 	<p>The Scheduler Worker is triggered by a <a href="https://developers.cloudflare.com/workers/platform/triggers/cron-triggers">Cron Trigger</a>, on a schedule you can set (eg, hourly), where it will check which content has changed since it last ran via GitHub’s API. It then sends these document paths in messages to a <a href="https://developers.cloudflare.com/queues">Queue</a> to be processed. Workers will batch process these messages – for each message, the content is fetched from GitHub, and then turned into embedding vectors via OpenAI’s API. A <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Object</a> is used to coordinate all the Queue processing so that when all the batches have finished processing, the resulting embedding vectors can be combined and stored in KV, ready for querying by the plugin.</p>
 	<p>This is a great example of how Workers can be used not only for front-facing HTTP APIs, but also for scheduled batch-processing use cases.</p>
-	<h3>Let us know what you think</h3>
+	<div class="flex anchor relative">
+		<h3 id="let-us-know-what-you-think">Let us know what you think</h3>
+		<a href="https://blog.cloudflare.com/#let-us-know-what-you-think" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are in a time when technology is constantly changing and evolving, so as you experiment with these new plugins please let us know what you think. What do you like? What could be better? Since ChatGPT plugins are in alpha, changes to the plugins user interface or performance (i.e. latency) may occur. If you build your own plugin, we’d love to see it and if it’s open source you can submit a pull request on our <a href="https://github.com/cloudflare/chatgpt-plugin">example repo</a>. You can always find us hanging out in our <a href="https://discord.cloudflare.com">developer discord</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f422c9ec2baed5c7139f8fc55bdee136/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff422c9ec2baed5c7139f8fc55bdee136%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

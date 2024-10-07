@@ -9,19 +9,54 @@
 	<p>Mobile devices present a number of challenges to delivering fast web performance. Because they rely on radio networks, the bandwidth to a mobile phone or tablet is often slow. However, the problem isn't limited to just slow bandwidth. Mobile connections are much more likely to experience "loss." To optimize for mobile performance you need to prioritize the most important data and download it first and you need to minimize the number of individual connections in order to limit the impact of packet loss.</p>
 	<p>The first version of Mirage was designed to accomplish these goals, but it was relatively naive in the way that it did it. We would store multiple versions of images, which make up the bulk of the data transferred for most websites, and then attempt to deliver the one that best matched the screen size. The problem was that the new versions of the images often weren't perfectly matched for the layout of the page or the size of the screen, especially if the page relied on the image's actual dimensions rather than including dimensions in the tag.</p>
 	<p>For the last year, we've studied sites using Mirage and taken what we've learned to refine and improve every aspect of the feature. Today we're excited to announce Mirage 2.0 which is designed from the ground up to solve the mobile browsing speed challenge.</p>
-	<h3>Virtualized Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="virtualized-images">Virtualized Images</h3>
+		<a href="https://blog.cloudflare.com/#virtualized-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mirage 2.0 starts with the idea of image virtualization. When CloudFlare caches an image on our network for a site with Mirage 2.0 enabled, we store two versions. The first version is the full-resolution image, the second is a virtualized image that includes meta data about all the full-resolution image's dimensions but with the image itself is massively reduced in size. The reduced sized version typically as little as 1% the size of the full-resolution image.</p>
 	<p>If you enable Mirage 2.0, CloudFlare's network modifies the image tags on your page on the fly so they can be loaded by the Virtualized Image Packager ("VIP"). In parallel with the HTML of your page loading, the Mirage 2.0 VIP begins downloading the virtualized images that appear on the page. The VIP will virtualize images served from your own domain as well as images served from third party domains (e.g., Flickr or Imgur). Because the virtualized images have the full-resolution image's dimensions embedded as meta data, the VIP is able to place the images into the browser's DOM correctly sized so the browser can almost immediately begin the process of rendering the page.</p>
-	<h3>Minimizing Requests</h3>
+	<div class="flex anchor relative">
+		<h3 id="minimizing-requests">Minimizing Requests</h3>
+		<a href="https://blog.cloudflare.com/#minimizing-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rather than initiating a new request for each image, the VIP is able to stream all the images from CloudFlare's network with a single request. This uses the same mechanism we created for <a href="https://blog.cloudflare.com/56590463">Rocket Loader, our Javascript performance accelerator</a>. This means that even a page with hundreds of images can begin rendering in the browser with as few as two requests. Even users on slow mobile connections can begin interacting with the page immediately, rather than having to wait for all the full-resolution images to load.</p>
 	<p>After the page is rendered with the virtualized images, the VIP begins to replace them with the full-resolution versions. Since the images are already correctly sized for their tags on the page, the browser does not need to reflow the page as the full-resolution versions are loaded. The VIP prioritizes what full-resolution images to load first based on what images are in the browser's viewport. Visually, images appear to "rez" in, starting as low quality and then coming into sharp focus, similar to how a progressive JPEGs load in a browser.</p>
 	<p>While you can enable CloudFlare features such as <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish in order to optimize your images</a>, by default Mirage 2.0 does not transcode or otherwise alter the original full-resolution images. The VIP will pull third party content directly from the original servers without passing through CloudFlare's network -- unless, of course, the third part is also using CloudFlare.</p>
-	<h3>Learning Loader</h3>
+	<div class="flex anchor relative">
+		<h3 id="learning-loader">Learning Loader</h3>
+		<a href="https://blog.cloudflare.com/#learning-loader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Mirage 2.0, we've also completely rethought how we detect different browsers and respond to their capabilities. Mirage 2.0 is optimized to be more or less aggressive depending on the capabilities of the browser as well as its connection to the Internet. An iPhone connecting to the web over a wifi network is optimized for different loading priorities than the same device connecting over a cellular network. We even detect the different download speeds of cellular networks from LTE to 3G to Edge and optimize for each connection speed appropriately.</p>
 	<p>Mirage 2.0 gathers real browsing intelligence from all its connections which we then use to further optimize the VIP's performance. As more sites enable Mirage 2.0 the CloudFlare's systems automatically begins to optimize for the fastest possible browsing experience from any device on any network. In other words, the same way we use data about security threats in order to protect the sites on our network, we are now using data about real user's browsers around the world in order to ensure everyone on the CloudFlare network has the fastest possible site.</p>
-	<h3>Reviews Are In</h3>
+	<div class="flex anchor relative">
+		<h3 id="reviews-are-in">Reviews Are In</h3>
+		<a href="https://blog.cloudflare.com/#reviews-are-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've been testing Mirage 2.0 on some of our most image heavy sites that get significant traffic from mobile browsers. The reaction has been terrific: "As one of the largest image sharing sites in the world, speed has always been really important to us," explained Alan Schaaf, founder and CEO of Imgur. "We've invested a lot of time into getting images to load as fast as possible over mobile networks, especially since we've been developing our mobile app, and we've seen great improvements with Mirage 2.0. We're really happy that CloudFlare continues to launch innovative products to ensure pages on Imgur.com load as fast as possible."</p>
 	<p>You can see Mirage 2.0 in action for yourself in the following video:</p>
-	<h3>Available Now</h3>
+	<div class="flex anchor relative">
+		<h3 id="available-now">Available Now</h3>
+		<a href="https://blog.cloudflare.com/#available-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mirage 2.0 is currently in beta and will be made available over the next few weeks to all <a href="https://www.cloudflare.com/plans">paid Cloudflare accounts</a>, including our lowest level PRO accounts which are priced at only $20/month. Mirage 2.0 will fully replace the original version of Mirage in the following months and users with the old Mirage enabled will be upgraded to the newer, better version. Given the importance of mobile browsing, and the massive performance benefit Mirage 2.0 delivers with a single click, we think it is one of the most compelling features we've ever offered. Give it a try and let us know what you think.</p>
 </div>

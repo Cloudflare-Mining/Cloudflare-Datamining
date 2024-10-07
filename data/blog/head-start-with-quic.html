@@ -11,7 +11,14 @@
 	<p>But before we begin, let’s take a little bit of time to review what QUIC is. Our previous blog post <a href="https://blog.cloudflare.com/the-road-to-quic">The Road to QUIC</a> by my colleague <a href="https://blog.cloudflare.com/author/alessandro-ghedini">Alessandro Ghedini</a>, gives an excellent introduction to QUIC; its goals, its challenges, and many of the technical advantages that will come with it. It is good background reading for this article and a great introduction to the topic of QUIC in general.</p>
 	<p>If you visit <a href="https://cloudflare-quic.com">cloudflare-quic.com</a> with your regular web browser, you will be presented with an informative landing page. However, what you see will not be delivered using QUIC, because at the time this blog is posted, your browser doesn’t support IETF QUIC. No graphical browser does.</p>
 	<p>Some may point out that Google Chrome has had support for QUIC for many years, but we must re-iterate that the protocol supported by Chrome is Google’s own UDP based transport layer protocol. That protocol was once called QUIC but has forfeited that label and now goes by the name gQUIC, and what’s more, the mechanics of gQUIC are now significantly different to IETF QUIC.</p>
-	<h3>Getting QUIC</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-quic">Getting QUIC</h3>
+		<a href="https://blog.cloudflare.com/#getting-quic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The only way to access <b>cloudflare-quic.com</b> using the QUIC protocol is to use a command line client from one of the various implementations of QUIC that are actively evolving alongside the IETF standard. Most of these implementations can be found <a href="https://github.com/quicwg/base-drafts/wiki/Implementations">here</a>. If you are familiar with any of these, you are welcome to try them against <b>cloudflare-quic.com</b> however please note that your client of choice must support <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-transport/14"><b>draft 14</b></a> of the IETF QUIC standard.</p>
 	<p>Our preferred QUIC client, and the one whose output we will be analysing in this blog, comes as part of the ngtcp2 project. The original project is located here: <a href="https://github.com/ngtcp2/ngtcp2">github.com/ngtcp2/ngtcp2</a>, but we are hosting our own copy here: <a href="https://github.com/cloudflare/ngtcp2/tree/quic-draft-14">github.com/cloudflare/ngtcp2/tree/quic-draft-14</a> so that we may be sure you get the exact resources you need for this demonstration.</p>
 	<p>Before proceeding please be aware that the following instructions will require you to build software from source code. ngtcp2 and its dependencies are buildable on multiple Operating System platforms, however, the processes described below are more likely to succeed on Linux. To start with, you will need:</p>
@@ -38,7 +45,15 @@ $ cd ngtcp2
 $ autoreconf -i
 $ ./configure PKG_CONFIG_PATH=$PWD/../openssl/build/lib/pkgconfig LDFLAGS="-Wl,-rpath,$PWD/../openssl/build/lib"
 $ make check</code></pre>
-	<h3>Testing QUIC</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="testing-quic">Testing QUIC</h3>
+		<a href="https://blog.cloudflare.com/#testing-quic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are still with me, congratulations! The next step is to pre-fabricate a HTTP/1.1 request that we can pass to our QUIC client, in order to avoid typing it out repeatedly. From your ngtcp2 directory, invoke the command:</p>
 	<pre class="language-bash"><code class="language-bash">$ echo -ne "GET / HTTP/1.1\r\nHost: cloudflare-quic.com\r\n\r\n" &gt; cloudflare-quic.req</code></pre>
 	<p>One of the promises of QUIC is the new <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-http">QUIC HTTP</a> protocol, which is another IETF standard being developed in conjunction with the QUIC transport layer. It is a re-engineering of the HTTP/2 protocol to allow it to benefit from the many advantages of QUIC.</p>
@@ -46,7 +61,14 @@ $ make check</code></pre>
 	<p>Now it’s time to invoke the ngtcp2 command line client and establish your QUIC connection to <b>cloudflare-quic.com</b>:</p>
 	<pre class="language-bash"><code class="language-bash">$ examples/client cloudflare-quic.com 443 -d cloudflare-quic.req</code></pre>
 	<p>To be perfectly honest, the debugging output of the ngtcp2 client is not particularly pretty, but who cares! You are now a QUIC pioneer, riding the crest of a new technological wave! Your reward will be the eye-rolls of the teenagers of 2050.</p>
-	<h3>The HANDSHAKE</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-handshake">The HANDSHAKE</h3>
+		<a href="https://blog.cloudflare.com/#the-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s go over some of the ngtcp2 debugging output that you hopefully can see after invoking your HTTP request over QUIC, and at the same time, let’s relate this output back to some important features of the QUIC protocol.</p>
 	<h4>Client HELLO</h4>
 	<pre class="language-bash"><code class="language-bash">01 I00000000 0x07ff706cb107568ef7116f5f58a9ed9010 pkt tx pkt 0 dcid=0xba006470cf7c05009e219ff201e4adbef8a3 scid=0x07ff706cb107568ef7116f5f58a9ed9010 type=Initial(0x7f) len=0
@@ -127,7 +149,14 @@ Ordered STREAM data stream_id=0x0
 …</code></pre>
 	<p>As can be seen on line <code>04</code>, the response arrives on the same QUIC <code>STREAM</code> on which it was sent: (<code>0x0</code>).</p>
 	<p>Many other familiar faces can be seen: line <code>05</code>: the start of the response headers, line <code>09</code>: the chunked encoding header and line <code>13</code>: the start of the response body. It looks almost… normal!</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thank you for following us on this QUIC odyssey! We understand that the process of building the ngtcp2 example client may be new for some people, but we urge you to keep trying and make use of online resources to help you if you come up against anything unexpected.</p>
 	<p>But if all went well, and you managed to see the HTTP response from <b>cloudflare-quic.com</b>, then: <b>Congratulations!</b> You and your screen full of debugging gibberish are on the crest of a new wave of internet communication.</p>
 	<ul>

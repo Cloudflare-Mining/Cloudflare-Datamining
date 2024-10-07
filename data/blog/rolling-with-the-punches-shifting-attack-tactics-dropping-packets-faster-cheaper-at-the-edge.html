@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>On Cloudflare’s 8th birthday in 2017, we announced <a href="https://blog.cloudflare.com/unmetered-mitigation">free unmetered DDoS Protection</a> as part of <a href="https://www.cloudflare.com/plans">all of our plans</a>, regardless if you’re an independent blogger using WordPress on Cloudflare's Free plan or part of a large enterprise operating global network infrastructures. Our <a href="https://www.cloudflare.com/ddos">DDoS protection</a> covers attack vectors on Layers 3-7; whether highly distributed and volumetric (rate-intensive) or small and sneaky. We protect over 26 million Internet properties, and at this scale, identifying small and sneaky DDoS attacks can be challenging, especially at L7. In this post, we discuss this challenge along with trends that we’ve seen, interesting DDoS attacks, and how we’ve responded to them so that you don’t have to worry.</p>
-	<h2>Let’s Talk Trends</h2>
+	<div class="flex anchor relative">
+		<h2 id="lets-talk-trends">Let’s Talk Trends</h2>
+		<a href="https://blog.cloudflare.com/#lets-talk-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When analyzing attacks on the Cloudflare network, we’ve seen a steady decline in the proportion of L3/L4 DDoS attacks that exceed a rate of 30 Gbps in recent months. From September 2019 to March 2020, attacks peaking over 30 Gbps decreased by 82%, and in March 2020, more than 95% of all network-layer DDoS attacks peaked below 30 Gbps. Over the same time period, the average size of a DDoS attack has also steadily decreased by 53%, to just 11.88 Gbps. Yet, very large attacks have not disappeared: we’re still seeing attacks with intensive rates peaking at 330 Gbps on average and up to 400 millions packets per second. &nbsp;Some of our customers are being targeted with as many as 890 DDoS attacks in a single day and 1,750 DDoS attacks in a month.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -15,7 +22,15 @@
 	</figure>
 	<p>As the average rate of these L3/L4 attacks has decreased, they have become more localized and less geographically distributed. Increasingly, we’re seeing attacks hit just one or two of our data centers, which means that these hyper-localized attacks were launched in the catchment of the data center, otherwise <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">our Anycast network</a> would have spread the <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> across our global fleet of data centers. Counterintuitively, these hyper-localized floods can be more difficult to detect on a global scale as the attack samples get diluted when aggregated from all of our data centers in the core. Therefore we’ve had to change our tactics and systems to roll with the change in attacker behavior.</p>
 	<p>Keeping things interesting in the penthouse floor of the OSI Model, over the same time period we’ve also observed some of the most rate-intensive and highly distributed L7 HTTP DDoS attacks we’ve ever seen. These attacks have pushed our engineering teams to invent even more efficient and intelligent ways to defend our network and our customers at scale. Let’s take a look at some of these trends and attacks.</p>
-	<h2>Changing L3/L4 DDoS Attack Trends</h2>
+	<div class="flex anchor relative">
+		<h2 id="changing-l3-l4-ddos-attack-trends">Changing L3/L4 DDoS Attack Trends</h2>
+		<a href="https://blog.cloudflare.com/#changing-l3-l4-ddos-attack-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eG1CLhUz5kNCnZPmeyTrf/6f09a600eebfa74afd9678f304245752/CZwIpS_wb4cuUg9Sa2pWikr_Nr2YksgRhg7pAxBAYaUtvWU0l6qTTgR4yc3uHH_gWkDcCrycg6o5UEeXBfp8s5JOe4HE6yq5YoewItWh1XvUY5ofvBuBFNNIt-Y3.png" alt="" class="kg-image" width="1583" height="1168" loading="lazy">
@@ -26,7 +41,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59c88tefHpHC4dvLACrJJg/73dd8a650de3e52dd1b23d12eebb6b28/jcTdopGvRKB4E5PCMh8ryNd32ZZN_9iYktQD2_-Xg_WMenzt47sel7lJ4djamjN25BTZ4DMs7z36QdRXbTTIZYT8ntNdgJsqPOY1ogJgtHSM6_onzMi5nSqRbQfz.png" alt="" class="kg-image" width="1351" height="935" loading="lazy">
 
 	</figure>
-	<h2>Centrally Analyzed, Edge Enforced DDoS Mitigations</h2>
+	<div class="flex anchor relative">
+		<h2 id="centrally-analyzed-edge-enforced-ddos-mitigations">Centrally Analyzed, Edge Enforced DDoS Mitigations</h2>
+		<a href="https://blog.cloudflare.com/#centrally-analyzed-edge-enforced-ddos-mitigations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we <a href="https://blog.cloudflare.com/who-ddosd-austin">released dosd late last year</a>, the primary automated system responsible for protecting Cloudflare and our customers against distributed rate-intensive attacks was <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. Gatebot works by ingesting samples of flow data from routers and samples of HTTP requests from servers. It then analyzes these samples for anomalies, and when attacks are detected, pushes mitigation instructions automatically to the edge.</p>
 	<p>Gatebot requires a lot of computational power to analyze these samples, and correlate them across all the data centers, so it runs centrally in our “core” data centers, rather than at the edge. It does a terrific job at mitigating large attacks, and on average stops over 4,000 L3/L4 DDoS attacks every month.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,11 +56,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TWY74dHHxzxhGYEcJmvUy/303842603950c91392ea8a84a97d3d58/JUNzyXDiUO7aoitETVp2UhDCsRvIoklS-dEX4n7N4uixjiko1YTNu0BOp-tcWcUivJKCW_c9MWmh7id7X4eQ7YmPVKTPv_ILikwc-lrRjNWprccszAYxVbtcgX0B.png" alt="" class="kg-image" width="1600" height="1016" loading="lazy">
 
 	</figure>
-	<h2>Edge Analyzed, Edge Enforced Mitigations</h2>
+	<div class="flex anchor relative">
+		<h2 id="edge-analyzed-edge-enforced-mitigations">Edge Analyzed, Edge Enforced Mitigations</h2>
+		<a href="https://blog.cloudflare.com/#edge-analyzed-edge-enforced-mitigations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The persistent increase we’ve observed in smaller, more localized attacks was one of the main factors that drove us to develop a new, complementary system to Gatebot. We call this new system our denial of service daemon, or “dosd”, and this past month alone it mitigated 281,746 L3/4 DDoS attacks. This figure is roughly 55 times greater than what Gatebot dropped over the same period, thanks to dosd’s ability to detect smaller network attacks that would previously have flown under the radar (or taken longer to mitigate).</p>
 	<p>To complement the computationally heavy, centralized deployments of Gatebot, dosd was architected as a decentralized system that runs on every single server in every one of our data centers. Each instance detects and mitigates attacks independent of the other instances, or any sort of centralized data center whatsoever. As a result, the system is much faster than Gatebot, and can detect and mitigate attacks within 0-3 seconds (and less than 10 seconds on average). The speed of dosd enables it to generate real-time rules to quickly protect our customers at the data center. Then Gatebot, which samples traffic globally, can determine a mitigation that applies to all data centers if needed. In such a case, Gatebot will push rules to the data centers which will take priority over dosd’s rules.</p>
 	<p>dosd is also a leaner piece of software, consumes less memory and CPU, and significantly improves the resiliency of our network by removing the need to communicate with our core data centers to mitigate attacks. dosd detects and mitigates attacks using a similar logic to Gatebot’s methods, but in the scope of a single server, across a subset of servers in the same data center, or even across the entire data center.</p>
-	<h2>Changing L7 Trends</h2>
+	<div class="flex anchor relative">
+		<h2 id="changing-l7-trends">Changing L7 Trends</h2>
+		<a href="https://blog.cloudflare.com/#changing-l7-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our automated Gatebot system is also tasked with mitigating L7 HTTP floods using request attributes as anomaly indicators. Mitigations can come in the form of actions such as JavaScript challenges, <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">CAPTCHAs</a>, Rate Limits (429), or Blocks (403) which are served back to the client as an error or challenge page. This form of mitigation at L7 allows the request to pass through TCP and TLS to the HTTP web server. During very rate-intensive attacks our servers can waste a lot of CPU and bandwidth as seen in the attack examples below.</p>
 	<h4>Example #1 - Highly Distributed DDoS Attack Targeting A Customer Website</h4>
 	<p>In July 2019, Cloudflare mitigated an HTTP DDoS attack that peaked at 1.4M requests per second. While this isn’t the most rate-intensive attack that we’ve seen, what is interesting is that the attack originated from almost 1.1M unique IP addresses. These were actual clients with the ability to complete a TCP and HTTPS handshake, they were not spoofed IP addresses. As it turns out, responding (rather than dropping at the network level) to over a million clients at a max rate of 1.4M requests per second can be quite costly.</p>
@@ -62,7 +98,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uJUe3Uu2VCS1gPl5XvIs7/1dd545c9357e13a9a27049f6049b8f5f/s7f7-xay1962IbV0gbNbjR2HoddldyaTLw-1Ui_MU88zUHlE1T8PGYA1iUaT_IiCpELXFxVtQYpsqDjoPcdct3RWCu14r81gaoKvga9Nu2eYXtz5aE6hyN0UbG8K.png" alt="" class="kg-image" width="1600" height="676" loading="lazy">
 
 	</figure>
-	<h3>IP Jails in action</h3>
+	<div class="flex anchor relative">
+		<h3 id="ip-jails-in-action">IP Jails in action</h3>
+		<a href="https://blog.cloudflare.com/#ip-jails-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the first graph below, you can see an HTTP flood peaking just below 8M rps before the IPs are <code>jailed</code> for misbehaving. In the second graph, you can see that same attack being dropped as packets at L4.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -98,7 +141,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bfXixOUm8kvnnOa1SZpbc/5b7b04cbac47d94ce700a594b0648103/L7ot8MjARYP5hZIbfIqfzvpDXDpGkr_eH0nF6UVANSSHc1UzffFpDRphu-RTDNcHNotFq4wTq0JzykrIhqNo8YCq84dBs-icBq6sZo70E9s4YIrTR4q9quw8l78u.png" alt="" class="kg-image" width="1201" height="763" loading="lazy">
 
 	</figure>
-	<h2>Don’t Take Our Word For It, See For Yourself</h2>
+	<div class="flex anchor relative">
+		<h2 id="dont-take-our-word-for-it-see-for-yourself">Don’t Take Our Word For It, See For Yourself</h2>
+		<a href="https://blog.cloudflare.com/#dont-take-our-word-for-it-see-for-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whether it's Gatebot or dosd that mitigated L3/4 DDoS attacks, you can see both types of attack events for yourself in our new <a href="https://blog.cloudflare.com/announcing-network-analytics">Network Analytics dashboard</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -107,7 +157,14 @@
 	</figure>
 	<p>Today this dashboard provides Magic Transit &amp; BYOIP customers real-time visibility into L3/4 traffic and DDoS attacks, and in the future we plan to expand access to customers of our other products.</p>
 	<p>Visibility into L7 DDoS attacks is available to our WAF/CDN customers that have access to the <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics">Firewall Analytics dashboard</a>.</p>
-	<h2>Unmetered DDoS Protection For All</h2>
+	<div class="flex anchor relative">
+		<h2 id="unmetered-ddos-protection-for-all">Unmetered DDoS Protection For All</h2>
+		<a href="https://blog.cloudflare.com/#unmetered-ddos-protection-for-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whether you’re part of a large global enterprise, or use Cloudflare for your personal site on the Free plan, we want to make sure that you’re protected and also have the visibility that you need.</p>
 	<p>DDoS Protection is included as part of every Cloudflare service; from <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> at L3, through <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> at L4, to the <a href="https://www.cloudflare.com/waf">WAF/CDN service</a> at L7. Our mission is to help build a better Internet – and this means a safer, faster, and more reliable Internet. For everyone.</p>
 	<p>If you’re a Cloudflare customer of any plan (Free, Pro, Business or Enterprise), these new protections are now enabled by default at no additional charge.</p>

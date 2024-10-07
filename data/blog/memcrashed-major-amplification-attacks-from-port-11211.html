@@ -23,7 +23,14 @@
 
 	</figure>
 	<p>Amplification attacks are effective, because often the response packets are much larger than the request packets. A carefully prepared technique allows an attacker with limited IP spoofing capacity (such as 1Gbps) to launch very large attacks (reaching 100s Gbps) "amplifying" the attacker's bandwidth.</p>
-	<h3>Memcrashed</h3>
+	<div class="flex anchor relative">
+		<h3 id="memcrashed">Memcrashed</h3>
+		<a href="https://blog.cloudflare.com/#memcrashed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Obscure amplification attacks happen all the time. We often see "chargen" or "call of duty" packets hitting our servers.</p>
 	<p>A discovery of a new amplification vector though, allowing very great amplification, happens rarely. This new memcached UDP DDoS is definitely in this category.</p>
 	<p>The <a href="https://ddosmon.net/insight">DDosMon from Qihoo 360</a> monitors amplification attack vectors and this chart shows recent memcached/11211 attacks:</p>
@@ -57,7 +64,14 @@ IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
 IP 5.196.85.159.11211 &gt; 104.28.1.1.1635: UDP, length 1400
 IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13</code></pre>
 	<p>The majority of packets are 1400 bytes in size. Doing the math 23Mpps x 1400 bytes gives 257Gbps of bandwidth, exactly what the chart shows.</p>
-	<h3>Memcached does UDP?</h3>
+	<div class="flex anchor relative">
+		<h3 id="memcached-does-udp">Memcached does UDP?</h3>
+		<a href="https://blog.cloudflare.com/#memcached-does-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I was surprised to learn that memcached does UDP, but there you go! The <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt">protocol specification</a> shows that it's one of <i>the best protocols to use for amplification ever</i>! There are absolutely zero checks, and the data <i>WILL</i> be delivered to the client, with blazing speed! Furthermore, the request can be tiny and the response huge (up to 1MB).</p>
 	<p>Launching such an attack is easy. First the attacker implants a large payload on an exposed memcached server. Then, the attacker spoofs the "get" request message with target Source IP.</p>
 	<p>Synthetic run with Tcpdump shows the traffic:</p>
@@ -67,7 +81,14 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 ...(repeated hundreds times)...</code></pre>
 	<p>15 bytes of request triggered 134KB of response. This is amplification factor of 10,000x! In practice we've seen a 15 byte request result in a 750kB response (that's a 51,200x amplification).</p>
-	<h3>Source IPs</h3>
+	<div class="flex anchor relative">
+		<h3 id="source-ips">Source IPs</h3>
+		<a href="https://blog.cloudflare.com/#source-ips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The vulnerable memcached servers are all around the globe, with higher concentration in North America and Europe. Here is a map of the source IPs we've seen in each of our 120+ points of presence:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -107,7 +128,14 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3M4vOFeXyjG82X94Qb5OdW/d5f443470826d07922b3b220bd8fdf72/memcached-shodan.png" alt="memcached-shodan" class="kg-image" width="970" height="567" loading="lazy">
 
 	</figure>
-	<h3>Let's fix it up</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-fix-it-up">Let's fix it up</h3>
+		<a href="https://blog.cloudflare.com/#lets-fix-it-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's necessary to fix this and prevent further attacks. Here is a list of things that should be done.</p>
 	<h4>Memcached Users</h4>
 	<p>If you are using memcached, please disable UDP support if you are not using it. On memcached startup you can specify <code>--listen 127.0.0.1</code> to listen only to localhost and <code>-U 0</code> to disable UDP completely. <i>By default memcached listens on INADDR_ANY and runs with UDP support ENABLED</i>. Documentation:</p>
@@ -156,10 +184,24 @@ PORT      STATE         SERVICE
 	<h4>Developers</h4>
 	<p>Please please please: Stop using UDP. If you must, please don't enable it by default. If you do not know what an amplification attack is I hereby forbid you from ever typing <code>SOCK_DGRAM</code> into your editor.</p>
 	<p>We've been down this road so many times. DNS, NTP, Chargen, SSDP and now memcached. If you use UDP, you must always respond with strictly a <i>smaller</i> packet size then the request. Otherwise your protocol will be abused. Also remember that people do forget to set up a firewall. Be a nice citizen. Don't invent a UDP-based protocol that lacks authentication of any kind.</p>
-	<h3>That's all</h3>
+	<div class="flex anchor relative">
+		<h3 id="thats-all">That's all</h3>
+		<a href="https://blog.cloudflare.com/#thats-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's anyone's guess how large the memcached attacks will become before we clean the vulnerable servers up. There were already rumors of 0.5Tbps amplifications in the last few days, and this is just a start.</p>
 	<p>Finally, you are OK if you are a Cloudflare customer. Cloudflare's Anycast architecture works well to distribute the load in case of large amplification attacks, and unless your origin IP is exposed, you are safe behind Cloudflare.</p>
-	<h3>Prologue</h3>
+	<div class="flex anchor relative">
+		<h3 id="prologue">Prologue</h3>
+		<a href="https://blog.cloudflare.com/#prologue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A comment (below) points out that the possibility of using memcached for DDoS was discussed in a <a href="http://powerofcommunity.net/poc2017/shengbao.pdf">2017 presentation</a>.</p>
 	<p><b>Update</b>We received a word from Digital Ocean, OVH, Linode and Amazon that they tackled the memcached problem, their networks should not be a vector in future attacks. Hurray!</p>
 	<hr>

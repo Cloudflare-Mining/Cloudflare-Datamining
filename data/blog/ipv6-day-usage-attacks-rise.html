@@ -1,7 +1,14 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f3thTuRv8hkSNQPeIpzID/7a327d386dc6542beabc0de6ebb3a685/ipv6-day-usage-attacks-rise.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>June 6th is known as World IPv6 Day so we thought it was a good time to look at the trends in IPv6 usage across CloudFlare's network. Two big themes we've seen: 1) IPv6 usage is growing steadily, but at the current pace we're still going to be living with IPv4 for many years to come; and 2) while the majority of IPv6 traffic comes from legitimate users on mobile networks, attackers too are beginning to launch attacks over the protocol.</p>
-	<h3>IPv6 Growth</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-growth">IPv6 Growth</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-growth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare has supported IPv6 on our network for the last year and a half. We have become one of the <a href="https://blog.cloudflare.com/ipv6-challenge-to-the-web">largest providers of the IPv6 web</a> because we offer a <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">free IPv6 gateway</a> that allows any website to be available over IPv6 even if a site's origin network doesn't yet support the protocol. For the last year, we've enabled IPv6 for customers on CloudFlare by default. Today, IPv6 is enabled for more than 1 million of our customers' websites.</p>
 	<p>Since the beginning of 2013, IPv6 connections as a percentage of CloudFlare's total traffic fluctuate daily with the minimum 0.849% on January 5 to a maximum of 1.645% on June 3, 2013. If look at the overall trend, IPv6 connections to our network have grown 26.5% since the start of the year.</p>
 	<figure class="kg-card kg-image-card ">
@@ -12,7 +19,15 @@
 	<p>Digging into where IPv6 connections are coming from it appears the majority of the growth has been from mobile network providers. Increasingly, traffic from mobile devices to the web has passed over IPv6. We saw a significant drop in IPv6 connection from mid-March through early-April when it appears a large mobile operator appears to have disabled and then reenabled IPv6 connectivity from their network.</p>
 	<p>While the overall increase in IPv6 usage is encouraging, the trend unfortunately indicates we are going to be living with IPv4 for some time to come. At current growth rates, assuming adoption of IPv6 is linear, it will take almost 67 years for IPv6 connections to surpass IPv4 connections and the last IPv4 connection won't be retired until May 10, 2148.</p>
 	<p>Things are a bit more optimistic if IPv6 adoption turns out to be exponential rather than linear. In that case, IPv6 connections will surpass IPv4 in about 5 years and 9 months. Not long thereafter, we'll extinguish IPv4 entirely on January 10, 2020. Our guess is the reality will be somewhere between the linear and exponential case. Regardless of what IPv6's adoption curve looks like, as a CloudFlare user you're covered. We anticipate we will be operating a dual-stack network with both IPv4 and IPv6 support for all our customers until IPv4 is fully retired, whether that takes 7 years or 140.</p>
-	<h3>IPv6 Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-attacks">IPv6 Attacks</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kcla94XfaQdWmdWSMUcma/f4a4febdc1d532a718b337a710672fe8/IPv6_Attacks.jpg" alt="Mars Attack" class="kg-image" width="609" height="293" loading="lazy">

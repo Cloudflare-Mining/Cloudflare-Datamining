@@ -7,12 +7,33 @@
 
 	</figure>
 	<p>CC BY 2.0 by <a href="https://www.flickr.com/photos/greggman">Gregg Tavares</a></p>
-	<h3>Google Ranks Crypto</h3>
+	<div class="flex anchor relative">
+		<h3 id="google-ranks-crypto">Google Ranks Crypto</h3>
+		<a href="https://blog.cloudflare.com/#google-ranks-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, Google <a href="http://googleonlinesecurity.blogspot.co.uk/2014/08/https-as-ranking-signal_6.html">just announced</a> that they will begin taking into account whether a site supports HTTPS connections in their ranking algorithm. This means that if you care about SEO then ensuring your site supports HTTPS should be a top priority. Kudos to Google to giving webmasters a big incentive to add SSL to their sites.</p>
-	<h3>SSL All Things</h3>
+	<div class="flex anchor relative">
+		<h3 id="ssl-all-things">SSL All Things</h3>
+		<a href="https://blog.cloudflare.com/#ssl-all-things" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Second, at CloudFlare we've cleared one of the last major technical hurdle before making SSL available for every one of our customers -- even free customers. One of the challenges we had was ensuring we still had the flexibility to move traffic to sites dynamically between the servers that make up our network. While we can do this easily when traffic is over an HTTP connection, when a connection uses HTTPS we need to ensure that the correct certificates are in place and loaded into memory before requests are processed by a server.</p>
 	<p>To accomplish this, we needed to redesign how certificates are loaded into a server's memory. Previously, we'd load certificates into memory before traffic was directed to a server. That creates challenges when dealing with millions of domains and when shifting traffic to help isolate or mitigate an attack.</p>
-	<h3>Lazy Loading Certs</h3>
+	<div class="flex anchor relative">
+		<h3 id="lazy-loading-certs">Lazy Loading Certs</h3>
+		<a href="https://blog.cloudflare.com/#lazy-loading-certs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last week we pushed new code that allows us to "lazy load" SSL certificates on demand. This means that a certificate only needs to be in a data center, not on a particular server, before HTTPS traffic needing the certificate is directed to that server. When a request is received, the server can now dynamically retrieve the correct certificate even if it hasn't been previously loaded into memory. This allows us to continue to shift traffic to manage our network even if we are managing SSL certificates for millions of domains.</p>
 	<p>We're on track to roll out SSL for all CloudFlare customers by mid-October. When we do, the number of sites that support HTTPS on the Internet will more than double. That they'll also rank a bit higher is pretty cool too.</p>
 	<p>In the meantime, if you want a quick way to boost your Google ranking, upgrading to any paid CloudFlare account will enable HTTPS by default. Even before we make it free, it's already the fastest, easiest way to get HTTPS support on any site.</p>

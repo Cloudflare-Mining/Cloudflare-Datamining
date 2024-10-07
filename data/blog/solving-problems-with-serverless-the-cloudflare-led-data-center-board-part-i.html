@@ -9,14 +9,36 @@
 	</figure>
 	<p>What the final LEDs will look like on a map of the world.</p>
 	<p>So what does this have to do with Serverless? Well, let’s think about where and how this map will need to operate: This will be going to expo halls and conferences, and we want it to update to show our most current data center statuses for at least that event, if not updating once a day. But we don’t need to stay connected to the information store constantly-- nor should we expect to, over conference or expo WiFi.</p>
-	<h2>Data Stored about Data Centers</h2>
+	<div class="flex anchor relative">
+		<h2 id="data-stored-about-data-centers">Data Stored about Data Centers</h2>
+		<a href="https://blog.cloudflare.com/#data-stored-about-data-centers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The data stored about each data center has two distinct categories; data relevant to the data center itself, and data about how that data center should be rendered on the map. These are relatively simple data structures, however: for a data center, we want to store what city the data center is in, the latitude and longitude, and the status. We arbitrarily assign an ID integer to each data center, which we'll use to match this data with the data in the other store. We’re not going to pick and choose which data centers we want; just pull them all down and let the microcontroller figure out how to display them.</p>
 	<p>Speaking of, this is where the data store relevant to the display comes in. LEDs are on strands numbered 0-7, and are represented by an LED numbered 0-63. We need to store the ID of the data center we created for the first store, the strand number, and the LED number in the strand.</p>
 	<p>Both of these sets of data can be stored in a key-value store, with the ID number as the key and a JSON object representing either the data center or its representative LED on the map as the value. Because of this, coupled with the fact that we do not need to search or index this data, we decided to use <a href="https://developers.cloudflare.com/workers/kv">Workers KV</a> data stores to keep this information.</p>
-	<h2>The Data Center and Data Center Map API</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-data-center-and-data-center-map-api">The Data Center and Data Center Map API</h2>
+		<a href="https://blog.cloudflare.com/#the-data-center-and-data-center-map-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We needed two APIs around the data centers, and we needed them fast– both in the more immediate sense of having only a few weeks to complete the project, and in the sense that we needed the data to download relatively quickly over non-ideal internet situations. We also know this map will be traveling all over the world– we'd need the API to work and have at least a decent latency no matter where the map was geographically.</p>
 	<p>This is where the hundreds of LEDs comes in handy– each one represents a data center that we could deploy <a href="https://developers.cloudflare.com/workers/about">serverless Workers</a> to. We can deploy the API to the data center before we leave from the comfort of the office, and it'd be ready for us when we hit the conference floor. Workers also, unsurprisingly, work really well with Workers KV data stores; allowing us to rapidly develop APIs around our data.</p>
-	<h2>Our Software Architecture Diagram</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-software-architecture-diagram">Our Software Architecture Diagram</h2>
+		<a href="https://blog.cloudflare.com/#our-software-architecture-diagram" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yB2l13rg61b9JTNZu9aZj/89caaf018a4a5f77743999381e8dd2d0/LED-PoP-Board-Architecture-Diagram.png" alt="" class="kg-image" width="391" height="441" loading="lazy">

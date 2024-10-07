@@ -9,7 +9,14 @@
 	<p>We are making it easier for account owners to view and manage the access their users have on an account by allowing them to restrict API access to the account. Ensuring users have the least amount of access they need, and maximizing visibility of the access is critical, and our move today is another step in this direction.</p>
 	<p>When Cloudflare was first introduced, a single user had access to a single account. As we have been adopted by larger enterprises, the need to maximize access granularity and retain control of an account has become progressively more important. Nowadays, enterprises using Cloudflare could have tens or hundreds of users on an account, some of which need to do account configuration, and some that do not. In addition, to centralize the configuration of the account, some enterprises have a need for service accounts, or those shared between several members of an organization.</p>
 	<p>While account owners have always been able to restrict access to an account by their users, they haven’t been able to view the keys and tokens created by their users. Restricting use of the <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> is the first step in a direction that will allow account owners a single control plane experience to manage their users' access.</p>
-	<h3>Steps to secure an account</h3>
+	<div class="flex anchor relative">
+		<h3 id="steps-to-secure-an-account">Steps to secure an account</h3>
+		<a href="https://blog.cloudflare.com/#steps-to-secure-an-account" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The safest thing to do to reduce risk is to scope every user to the minimal amount of access required, and the second is to monitor what they do with their access.</p>
 	<p>While a dashboard login has some degree of non-repudiation, especially when being protected by multiple factors and an SSO configuration, an API key or token can be leaked, and no further authentication factors will block the use of this credential. Therefore, in order to <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">reduce the attack surface</a>, we can limit what the token can do.</p>
 	<p>A Cloudflare account owner can now access their members page, and turn API access on or off for specific users, as well as account wide.</p>
@@ -24,6 +31,13 @@
 
 	</figure>
 	<p>This feature is available for our enterprise users starting today.</p>
-	<h3>Moving forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="moving-forward">Moving forward</h3>
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On our journey to making the account management experience safer, and more granular, we will continue to increase the level of control account owners have over their accounts. Building these API restrictions is a first step on the way to allowing account-owned API tokens (which will limit the need to have personal tokens), as well as increasing general visibility of tokens among account members.</p>
 </div>

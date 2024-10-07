@@ -25,12 +25,26 @@
 		</li>
 	</ul>
 	<p>And there’s likely a long list of things we haven’t even predicted yet. We’ve seen developers <a href="https://workers.cloudflare.com/built-with">build incredible things</a> on top of Cloudflare Workers, and we’re excited to see what they build with the power of a programmable message bus like Pub/Sub, too.</p>
-	<h3>Why, and what is, MQTT?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-and-what-is-mqtt">Why, and what is, MQTT?</h3>
+		<a href="https://blog.cloudflare.com/#why-and-what-is-mqtt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you haven’t heard of <a href="https://mqtt.org">MQTT</a> before, you might be surprised to know that it’s one of the most pervasive “messaging protocols” deployed today. There are tens of millions (at least!) of devices that speak MQTT today, from connected payment terminals through to autonomous vehicles, cell phones, and even video games. Sensor readings, telemetry, financial transactions and/or mobile notifications &amp; messages are all common use-cases for MQTT, and the flexibility of the protocol allows developers to make trade-offs around reliability, topic hierarchy and persistence specific to their use-case.</p>
 	<p>We chose MQTT as the foundation for Cloudflare Pub/Sub as we believe in building on top of open, accessible standards, as we did when we chose the Service Worker API as the foundation for Workers, and with our recently announced participation in the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Winter Community Group around server-side runtime APIs.</a> We also wanted to enable existing clients an easy path to benefit from Cloudflare’s scale and programmability, and ensure that developers have a rich ecosystem of client libraries in languages they’re familiar with today.</p>
 	<p>Beyond that, however, we also think MQTT meets the needs of a modern “publish-subscribe” messaging service. It has flexible delivery guarantees, TLS for transport encryption (no bespoke crypto!), a scalable topic creation and subscription model, extensible per-message metadata, and importantly, it provides a well-defined specification with clear error messages.</p>
 	<p>With that in mind, we expect to support many more “on-ramps” to Pub/Sub: a lot of the best parts of MQTT can be abstracted away from clients who might want to talk to us over HTTP or WebSockets.</p>
-	<h3>Building Blocks</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-blocks">Building Blocks</h3>
+		<a href="https://blog.cloudflare.com/#building-blocks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given the ability to write code that acts on every message published to a Pub/Sub Broker, what does it look like in practice?</p>
 	<p>Here’s a simple-but-illustrative example of handling Pub/Sub messages directly in a Worker. We have clients (in this case, payment terminals) reporting back transaction data, and we want to capture the number of transactions processed in each region, so we can track transaction volumes over time.</p>
 	<p>Specifically, we:</p>
@@ -124,7 +138,14 @@ LIMIT 10</code></pre>
 		</li>
 	</ul>
 	<p>Pub/Sub gives you a way to get data into Cloudflare’s network, filter, aggregate and/or mutate it, and push it back out to subscribers — whether there’s 10, 1,000 or 10,000 of them listening on that topic.</p>
-	<h3>Where are we headed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-are-we-headed">Where are we headed?</h3>
+		<a href="https://blog.cloudflare.com/#where-are-we-headed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we often like to say: we’re just getting started. The private beta for Pub/Sub is just the beginning of our journey, and we have a long list of capabilities we’re already working on.</p>
 	<p>Critically, one of our priorities is to cover as much of the MQTT v5.0 specification as we can, so that customers can migrate existing deployments and have it “just work”. Useful capabilities like <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250">shared subscriptions</a> that allow you to load-balance messages across many subscribers; <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242">wildcard subscriptions</a> (both single- and multi-tier) for aggregation use cases, stronger delivery guarantees (<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234">QoS</a>), and support for additional authentication modes (specifically, Mutual TLS) are just a few of the things we’re working on.</p>
 	<p>Beyond that, we’re focused on making sure Pub/Sub’s developer experience is the best it &nbsp;can be, and during the beta we’ll be:</p>
@@ -141,7 +162,14 @@ LIMIT 10</code></pre>
 	</ul>
 	<p>Our <a href="https://developers.cloudflare.com/pub-sub">developer documentation</a> will cover these capabilities as we land them.</p>
 	<p>We’re also aware that pricing is a huge part of developer experience, and are committed to ensuring that there is an accessible and flexible free tier. We want to enable developers to experiment, prototype and solve problems we haven’t thought of yet. We’ll be sharing more on pricing during the course of the beta.</p>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to start using Pub/Sub, <a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta">sign up for the private beta</a>: we plan to start enabling access within the next month. We’re looking forward to collecting feedback from developers and seeing what folks start to build.</p>
 	<p>In the meantime, review the <a href="https://developers.cloudflare.com/pub-sub">brand-new Pub/Sub developer documentation</a> to understand how Pub/Sub works under the hood, the MQTT protocol, and how it integrates with Cloudflare Workers.</p>
 </div>

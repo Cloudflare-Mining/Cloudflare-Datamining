@@ -15,7 +15,14 @@
 	</figure>
 	<p>All page views</p>
 	<p>So this is total page views by day (UTC) from November 19 (a week before Cyber Monday) until Monday December 3. Other than follow-the-sun fluctuations in a repeating daily pattern, each whole day is pretty similar in shape and size compared to the last. Black Friday and Cyber Monday aren’t visible in overall traffic patterns.</p>
-	<h2>Get specific</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-specific">Get specific</h2>
+		<a href="https://blog.cloudflare.com/#get-specific" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have a very diverse set of customers across 12 million domain names and not all of them are selling products or doing so directly online. To identify those websites that are, I used metadata from the wonderful <a href="https://httparchive.org">HTTP Archive</a> project to export a list of domains using Cloudflare that were also running ecommerce software.</p>
 	<p>Here are the page views for these ecommerce sites over the same time period:</p>
 	<figure class="kg-card kg-image-card ">
@@ -32,7 +39,14 @@
 	</figure>
 	<p>% page view change vs previous week</p>
 	<p>The uplift starts on Wednesday but really kicks in during Thanksgiving with an increase of more than 100% on Black Friday.</p>
-	<h2>Browsing vs Buying</h2>
+	<div class="flex anchor relative">
+		<h2 id="browsing-vs-buying">Browsing vs Buying</h2>
+		<a href="https://blog.cloudflare.com/#browsing-vs-buying" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So we’ve established that these shopping days are important in terms of visitor activity. More pages are being viewed on these days - but is anyone buying anything?</p>
 	<p>We’re dealing with trillions of requests across a really large data set of different websites without any specific knowledge of what a purchase transaction would look like for each - so to approximate this I took a crude approach, which is to look for successful checkout interactions in the data. If you imagine a typical ecommerce application makes a purchase with a HTTP request like “POST /store/checkout HTTP/1.1” we can look for requests similar to this to understand the activity.</p>
 	<figure class="kg-card kg-image-card ">
@@ -51,7 +65,14 @@
 	<p>% of checkout interactions / page views vs prior week</p>
 	<p>Each bar on this chart represents the % change in checkout interactions as a proportion of page views compared to the same day the previous week. We can see this increased by 45% on Black Friday compared to the Friday before (boring old beige Friday November 16). The following Saturday was booming at 60% - because we’re dealing with time in UTC, a UTC Saturday actually includes Black Friday traffic for some parts of the world, the same can be said of Tuesday which contains overlap from Cyber Monday - we’ll break this down a bit later.</p>
 	<p>On Cyber Monday, the increase actually beats Black Friday, meaning page views lead to cart interactions 57% more often than the prior Monday (boring old vanilla Monday November 19), albeit from a lower number of transactions.</p>
-	<h2>What devices are people buying on?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-devices-are-people-buying-on">What devices are people buying on?</h2>
+		<a href="https://blog.cloudflare.com/#what-devices-are-people-buying-on" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What we see here is just how much more browsing people do on mobiles today vs desktop, with mobile winning most days:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -83,7 +104,14 @@
 	</figure>
 	<p>USA Checkout Interaction % (PST)</p>
 	<p>Despite all of that mobile browsing activity, desktop devices are more commonly used for checkout actions. People seem to browse more on mobile, committing to buy more often with desktop, it may also just be that mobile users have more distractions both on the device and in the real world and are therefore less likely to complete a purchase. From personal experience, I also think the poor mobile optimisation of some sites’ checkout flows make desktop preferrable - and when customers are incentivised with discounts &amp; deals, they are more likely to switch devices to complete a transaction if they hit an issue.</p>
-	<h2>Is Black Friday / Cyber Monday international?</h2>
+	<div class="flex anchor relative">
+		<h2 id="is-black-friday-cyber-monday-international">Is Black Friday / Cyber Monday international?</h2>
+		<a href="https://blog.cloudflare.com/#is-black-friday-cyber-monday-international" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It might be obvious if you’re reading this from the UK, but despite the fact that Thanksgiving is not a holiday here, retailers have very much picked up the mantle from US retailers and seized the opportunity to drive sales over this weekend.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -107,7 +135,14 @@
 	</figure>
 	<p>Germany Page Views (CET)</p>
 	<p>Desktop use during typical working hours is much more pronounced in Germany. Black Friday and Cyber Monday show higher page views than a normal Friday / Monday but the difference is much smaller than regions such as the US &amp; UK.</p>
-	<h2>Conclusions</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusions">Conclusions</h2>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Black Friday is spreading internationally despite these still being normal working days for the rest of the world. Cyber Monday is also increasing ecommerce activity internationally but tends to be quieter than Black Friday. Overall, mobile browsing eclipses desktop, but those desktop page views tend to lead to checkout more often.</p>
 	<p>Retailers should continue to invest in making their mobile &amp; desktop ecommerce experiences fast &amp; resilient to seize on these key days.</p>
 </div>

@@ -7,9 +7,23 @@
 
 	</figure>
 	<p>Lava lamps in the Cloudflare lobby Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a></p>
-	<h3>Introduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="introduction">Introduction</h3>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works. This post assumes no technical background. For a more in-depth look at the technical details, see <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Randomness in Cryptography</h4>
 	<p>As we’ve <a href="https://blog.cloudflare.com/why-randomness-matters">discussed in the past</a>, cryptography relies on the ability to generate random numbers that are both unpredictable and kept secret from any adversary.</p>
 	<p>But “random” is a pretty tricky term; it’s used in many different fields to mean slightly different things. And like all of those fields, its use in cryptography is very precise. In some fields, a process is random simply if it has the right statistical properties. For example, the digits of pi are said to be random because all sequences of numbers appear with equal frequency (“15” appears as frequently as “38”, “426” appears as frequently as “297”, etc). But for cryptography, this isn’t enough - random numbers must be <i>unpredictable</i>.</p>
@@ -33,7 +47,14 @@
 	<p>“The rain in Spain stays mainly on the plain.”</p>
 	<p>If you were to decide on movie B, and the coin came up heads, you would send the message, “In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen.” Since your friend knows that the coin came up heads - he was there when it happened - he knows that you must have decided on movie B. But consider it from your nemesis’ perspective. She doesn’t know the result of the coin toss - all she knows is that there’s a 50% chance that the coin came up heads, and a 50% chance that it came up tails. Thus, seeing the message “In Hertford, Hereford, and Hampshire, hurricanes hardly ever happen” doesn’t help her at all! There’s a 50% chance that the coin came up heads (implying movie B), and a 50% chance that it came up tails (implying movie A). She doesn’t know anything more than she knew before!</p>
 	<p>Let’s return now to the concept of <i>unpredictability</i>. Imagine that the result of the coin toss was completely predictable - say your nemesis planted a trick coin that always comes up heads on the first toss, tails on the second, heads on the third, and so on. Since she would know that there was a 100% chance of the first coin toss coming up heads, then regardless of which message you sent, she would know which movie you were going to see. While the trick coin still exhibits some basic properties of “randomness” as the term is used in the field of statistics - it comes up heads as often as it comes up tails - it’s <i>predictable</i>, which makes it useless for cryptography. The takeaway: when we say <i>random</i> in the context of cryptography, we mean <i>unpredictable</i>.</p>
-	<h3>Randomness in Computing</h3>
+	<div class="flex anchor relative">
+		<h3 id="randomness-in-computing">Randomness in Computing</h3>
+		<a href="https://blog.cloudflare.com/#randomness-in-computing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately for cryptographers, if there’s one thing computers are good at, it’s being predictable. They can execute the same code a million times, and so long as they are given the same inputs each time, they’ll always come up with the same outputs. This is very good for reliability, but it’s tricky when it comes to cryptography - after all, we <i>need</i> unpredictability!</p>
 	<p>The solution to this problem is <i>cryptographically-secure pseudorandom number generators</i> (CSPRNGs). CSPRNGs are algorithms which, provided an input which is itself unpredictable, produce a much larger stream of output which is also unpredictable. This stream can be extended indefinitely, producing as much output as required at any time in the future. In other words, if you were to flip a coin a number of times (a process which is known to be unpredictable) and then use the output of those coin flips as the input to a CSPRNG, an adversary who wasn’t able to predict the output of those coin flips would also be unable to predict the output of the CSPRNG - no matter how much output was consumed from the CSPRNG.</p>
 	<p>But even though CSPRNGs are a very powerful tool, they’re only one half of the equation - they still need an unpredictable input to operate. But as we said, computers aren’t unpredictable, so aren’t we back at square one? Well, not quite. It turns out that computers do usually have sources of unpredictability that they can use, but they’re pretty slow. What we can do is combine that slow process of gathering unpredictable input with a CSPRNG, which can take that input and produce a much larger amount of input more quickly, and we can satisfy all of our randomness needs!</p>
@@ -50,12 +71,26 @@
 			<p>Computers can greatly extend this randomness by using a CSPRNG which can quickly turn it into a large amount of unpredictable randomness.</p>
 		</li>
 	</ul>
-	<h3>Hedging Your Bets</h3>
+	<div class="flex anchor relative">
+		<h3 id="hedging-your-bets">Hedging Your Bets</h3>
+		<a href="https://blog.cloudflare.com/#hedging-your-bets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If there’s one thing cryptographers are wary about, it’s certainty. Cryptographic systems are routinely shown to be less secure than they were originally thought to be, and we’re constantly updating our understanding of what algorithms are safe to use in what scenarios.</p>
 	<p>So it shouldn’t be any surprise that cryptographers like to hedge their bets by using more security than they believe necessary in case it turns out that one of their assumptions was wrong. It’s sort of like the cryptographer’s version of the engineering practice of designing buildings to withstand far more weight or wind or heat than they think will arise in practice.</p>
 	<p>When it comes to randomness, this hedging often takes the form of <i>mixing</i>. Unpredictable random values have the neat property that if they’re mixed in the right way with more unpredictable random values, then the result is at least as unpredictable as either of the inputs. That means that if you mix a random value which is highly unpredictability with a random value which is somewhat predictable, the result will be a highly unpredictable value.</p>
 	<p>This mixing property is useful because it allows you to mix unpredictable random values from many sources, and if you later discover that one of those sources was less unpredictable than you’d originally thought, it’s still OK - the other sources come to the rescue.</p>
-	<h3>LavaRand</h3>
+	<div class="flex anchor relative">
+		<h3 id="lavarand">LavaRand</h3>
+		<a href="https://blog.cloudflare.com/#lavarand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we have thousands of computers in data centers all around the world, and each one of these computers needs cryptographic randomness. Historically, they got that randomness using the default mechanism made available by the operating system that we run on them, Linux.</p>
 	<p>But being good cryptographers, we’re always trying to hedge our bets. We wanted a system to ensure that even if the default mechanism for acquiring randomness was flawed, we’d still be secure. That’s how we came up with LavaRand.</p>
 	<figure class="kg-card kg-image-card ">

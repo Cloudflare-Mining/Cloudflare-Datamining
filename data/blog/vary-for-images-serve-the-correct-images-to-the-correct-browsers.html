@@ -7,13 +7,27 @@
 	</figure>
 	<p>Today, we’re excited to announce support for <b>Vary</b>, an HTTP header that ensures different content types can be served to user-agents with differing capabilities.</p>
 	<p>At Cloudflare, we’re obsessed with performance. Our job is to ensure that content gets from our network to visitors quickly, and also that the <i>correct</i> content is served. Serving incompatible or unoptimized content burdens website visitors with a poor experience while needlessly stressing a website’s infrastructure. Lots of traffic served from our edge consists of image files, and for these requests and responses, serving optimized image formats often results in significant performance gains. However, as browser technology has advanced, so too has the complexity required to serve optimized image content to browsers all with differing capabilities — not all browsers support <i>all</i> image formats! Providing features to ensure that the correct images are served to the correct requesting browser, device, or screen is important!</p>
-	<h3>Serving images on the modern web</h3>
+	<div class="flex anchor relative">
+		<h3 id="serving-images-on-the-modern-web">Serving images on the modern web</h3>
+		<a href="https://blog.cloudflare.com/#serving-images-on-the-modern-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the web’s early days, if you wanted to serve a full color image, JPEGs reigned supreme and were universally supported. Since then, the state of the art in image encoding has advanced by leaps and bounds, and there are now increasingly more advanced and efficient codecs like WebP and AVIF that promise reduced file sizes and improved quality.</p>
 	<p>This sort of innovation is exciting, and delivers real improvements to user experience. However, it makes the job of web servers and edge networks more complicated. As an example, until very recently, <a href="https://insanelab.com/blog/web-development/webp-web-design-vs-jpeg-gif-png">WebP</a> image files were <a href="https://www.keycdn.com/support/webp-browser-support#:~:text=Safari%20will%20support%20WebP%20in,almost%20be%20completely%20globally%20supported.">not universally supported</a> by commonly used browsers. A specific browser not supporting an image file becomes a problem when “intermediate caches”, like Cloudflare, are involved in delivering content.</p>
 	<p>Let’s say, for example, that a website wants to provide the best experience to whatever browser requests the site. A desktop browser sends a request to the website and the origin server responds with the website’s content including images. This response is cached by a CDN prior to getting sent back to the requesting browser.</p>
 	<p>Now let’s say a mobile browser comes along and requests that same website with those images. In the situation where a cached image is a WebP file, and WebP is not supported by the mobile browser, the website will not load properly because the content returned from cache is not supported by the mobile browser. That’s a problem.</p>
 	<p>To help solve this issue, today we’re excited to announce our support of the Vary header for images.</p>
-	<h3>How Vary works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-vary-works">How Vary works</h3>
+		<a href="https://blog.cloudflare.com/#how-vary-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Vary is an HTTP response header that allows origins to serve variants of the same content from a single URL, and have intermediate caches serve the correct variant to each user-agent that comes along.</p>
 	<p>Smashing Magazine has an excellent deep dive on how Vary negotiation works <a href="https://www.smashingmagazine.com/2017/11/understanding-vary-header">here</a>.</p>
 	<p>When browsers send a request for a website, they include a variety of request headers. A fairly common example might look something like:</p>
@@ -29,9 +43,24 @@ Accept-Encoding: gzip, deflate, br</code></pre>
 	<pre class="language-bash"><code class="language-bash">HTTP/1.1 200 OK
 Content-Length: 123456
 Vary: Accept</code></pre>
-	<h3>How Vary works with Cloudflare’s cache</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="how-vary-works-with-cloudflares-cache">How Vary works with Cloudflare’s cache</h3>
+		<a href="https://blog.cloudflare.com/#how-vary-works-with-cloudflares-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, let’s add Cloudflare to the mix. Cloudflare sits in between the browser and the origin in the above example. When Cloudflare receives the origin’s response, we cache the specific image variant so that subsequent requests from browsers with the same image preferences can be served from cache. This also means that serving multiple image variants for the same asset will create distinct cache entries.</p>
-	<h3>Accept header normalization</h3>
+	<div class="flex anchor relative">
+		<h3 id="accept-header-normalization">Accept header normalization</h3>
+		<a href="https://blog.cloudflare.com/#accept-header-normalization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Caching variants in intermediate caches can be difficult to get right. Naive caching of variants can cause problems by serving incorrect or unsupported image variants to browsers. Some solutions that reduce the potential for caching incorrect variants generally provide those safeguards at the expense of performance.</p>
 	<p>For example, through a process known as content-negotiation, the correct variant is directed to the requesting browser through a process of multiple requests and responses. The browser could send a request to the origin asking for a list of available resource variants. When the origin responds with the list, the browser can make an additional request for the desired resources from that list, which the server would then respond to. These redundant calls to narrow down which type of content that the browser accepts and the server has available can cause performance delays.</p>
 	<figure class="kg-card kg-image-card ">
@@ -40,7 +69,14 @@ Vary: Accept</code></pre>
 
 	</figure>
 	<p>Vary for Images reduces the need for these redundant negotiations to an origin by parsing the request’s <i>Accept</i> header and sending that on to the origin to ensure that the origin knows exactly what content it needs to deliver to the browser. Additionally because the expected variant values can be set in Cloudflare’s API (see below), we make an end-run around the negotiation process because we are sure what to ask for and expect from the origin. This reduces the needless back-and-forth between browsers and servers.</p>
-	<h3>How to Enable Vary for Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-enable-vary-for-images">How to Enable Vary for Images</h3>
+		<a href="https://blog.cloudflare.com/#how-to-enable-vary-for-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can enable Vary for Images from Cloudflare’s API for Pro, Business, and Enterprise Customers.</p>
 	<p>Things to keep in mind when using Vary:</p>
 	<ul>
@@ -54,7 +90,14 @@ Vary: Accept</code></pre>
 			<p>The list of variant types the origin serves for each extension must be configured so that Cloudflare can decide which variant to serve without having to contact the origin server.</p>
 		</li>
 	</ul>
-	<h3>Enabling Vary in action</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-vary-in-action">Enabling Vary in action</h3>
+		<a href="https://blog.cloudflare.com/#enabling-vary-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enabling Vary functionality currently requires the use of the Cloudflare API. Here’s an example of how to enable variant support for a zone that wants to serve JPEGs in addition to WebP and AVIF variants for jpeg and jpg extensions.</p>
 	<p><b>Create a variants rule:</b></p>
 	<pre class="language-bash"><code class="language-bash">curl -X PATCH
@@ -82,9 +125,24 @@ Vary: Accept</code></pre>
 "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c3533/cache/variants" \
 	-H "X-Auth-Email: user@example.com" \ 
 	-H "X-Auth-Key: 3xamp1ek3y1234"</code></pre>
-	<h3>Purging variants</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="purging-variants">Purging variants</h3>
+		<a href="https://blog.cloudflare.com/#purging-variants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Any purge of varied images will purge <b>all</b> content variants for that URL. That way, if the image changes, you can easily update the cache with a single purge versus chasing down how many potential out-of-date variants may exist. This behavior is true regardless of purge type (single file, tag, or hostname) used.</p>
-	<h3>Other image optimization tools available at Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-image-optimization-tools-available-at-cloudflare">Other image optimization tools available at Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#other-image-optimization-tools-available-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Providing an additional option for customers to optimize the delivery of images also allows Cloudflare to support more customer configurations. For other ways Cloudflare can help you serve images to visitors quickly and efficiently, you can check out:</p>
 	<ul>
 		<li>
@@ -97,8 +155,23 @@ Vary: Accept</code></pre>
 			<p><a href="https://blog.cloudflare.com/announcing-cloudflare-images-beta">Cloudflare for Images</a> — Cloudflare’s all-in-one service to host, resize, optimize, and deliver all of your website’s images.</p>
 		</li>
 	</ul>
-	<h3>Try Vary for Images Out</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-vary-for-images-out">Try Vary for Images Out</h3>
+		<a href="https://blog.cloudflare.com/#try-vary-for-images-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Vary for Images provides options that ensure the best images are served to the browser based on the browser’s capabilities and preferences. If you’re looking for more control over how your images are delivered to browsers, we encourage you to try this new feature out.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/d4e0ceda17365978936cfd3f55765557?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

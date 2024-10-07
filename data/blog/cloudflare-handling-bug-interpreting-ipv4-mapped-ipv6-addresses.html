@@ -122,10 +122,24 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Blocking exploitation</h3>
+	<div class="flex anchor relative">
+		<h3 id="blocking-exploitation">Blocking exploitation</h3>
+		<a href="https://blog.cloudflare.com/#blocking-exploitation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Immediately after the vulnerability was reported to our Bug Bounty program, the team began working to understand the issue and find ways to quickly block potential exploitation. It was determined that the fastest way to prevent exploitation would be to block the creation of the DNS records required to execute the attack.</p>
 	<p>The team then began to implement a patch to prevent the creation of DNS records that include IPv6 addresses that map loopback or RFC 1918 (internal) IPv4 addresses. The fix was fully deployed and confirmed three hours after the report was filed. We later realized that this change was insufficient because records hosted on external DNS servers could also be used in this attack.</p>
-	<h3>The exploit</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-exploit">The exploit</h3>
+		<a href="https://blog.cloudflare.com/#the-exploit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The exploit provided consisted of the following: a DNS entry, and a Cloudflare Worker. The DNS entry was an <code>AAAA</code> record pointing to <code>::ffff:127.0.0.1:</code></p>
 	<p><code>exploit.example.com</code> <code>AAAA</code> <code>::ffff:127.0.0.1</code></p>
 	<p>The worker included the following code:</p>
@@ -142,13 +156,27 @@
 	<p>It was also found that a similar setup could be used with other IPv4 addresses to attempt connections into internal services. In this case, the DNS entry would look like:</p>
 	<pre class="language-bash"><code class="language-bash">exploit.example.com AAAA ::ffff:10.0.0.1</code></pre>
 	<p>This exploit would allow an attacker to connect to services running on the loopback interface of the server. If the attacker was able to bypass the security and authentication mechanisms of a service, it could impact the confidentiality and integrity of data. For services running on other servers, the attacker could also use the worker to attempt connections and map services available over the network. As in most networks, Cloudflare's network policies and ACLs must allow a few ports to be accessible. These ports would be accessible by an attacker using this exploit.</p>
-	<h3>Investigation</h3>
+	<div class="flex anchor relative">
+		<h3 id="investigation">Investigation</h3>
+		<a href="https://blog.cloudflare.com/#investigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started an investigation to understand the root cause of the problem and created a proof-of-concept that allowed the team to debug the issue. At the same time, we started a parallel investigation to determine if the issue had been previously exploited.</p>
 	<p>It all happened when two bugs collided.</p>
 	<p>The first bug happened in our internal DNS system which is responsible for mapping hostnames to IP addresses of our customers’ origin servers (the DNS system). When the DNS system tried to answer a query for the DNS record from exploit.example.com, it serialized the IP as a string. The <a href="https://pkg.go.dev/net#IP.String">Golang net library</a> used for DNS automatically converted the IP <code>::ffff:10.0.0.1</code> to string “10.0.0.1”. However, the DNS system still treated it as an IPv6 address. So a query response <code>{ipv6: “10.0.0.1”}</code> was returned.</p>
 	<p>The second bug was in our internal HTTP system (the proxy) which is responsible for forwarding HTTP traffic to customer’s origin servers. The bug happened in how the proxy validates this DNS response, <code>{ipv6: “10.0.0.1”}</code>. The proxy has two deny lists of IPs that are not allowed to be used, one for IPv4 and one for IPv6. These lists contain localhost IPs and private IPs. The bug was that the proxy system compared the address 10.0.0.1 against the IPv6 deny list because the address was in the “ipv6” section. Naturally the address didn’t match any entry in the deny list. So the address was allowed to be used as an origin IP address.</p>
 	<p>The second investigation team searched through the logs and found no evidence of previous exploitation of this vulnerability. The team also checked Cloudflare DNS for entries using IPv4-mapped IPv6 addresses and determined that all the existing entries had been used for testing purposes. As of now, there are no signs that this vulnerability could have been previously used against Cloudflare systems.</p>
-	<h3>Remediating the vulnerability</h3>
+	<div class="flex anchor relative">
+		<h3 id="remediating-the-vulnerability">Remediating the vulnerability</h3>
+		<a href="https://blog.cloudflare.com/#remediating-the-vulnerability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To address this issue we implemented a fix in the proxy service to correctly use the deny list of the parsed address, not the deny list of the IP family the DNS API response claimed to be, to validate the IP address. We confirmed both in our test and production environments that the fix did prevent the issue from happening again.</p>
 	<p>Beyond maintaining a <a href="https://www.cloudflare.com/disclosure">bug bounty program</a>, we regularly perform internal security reviews and hire third-party firms to audit the software we develop. But it is through our bug bounty program that we receive some of the most interesting and creative reports. Each report has helped us improve the security of our services. We invite those that find a security issue in any of Cloudflare’s services to report it to us through <a href="https://hackerone.com/cloudflare">HackerOne</a>.</p>
 </div>

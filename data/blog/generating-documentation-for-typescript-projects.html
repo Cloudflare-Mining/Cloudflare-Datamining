@@ -72,7 +72,15 @@ sendAnalytics({ foo: 'bar' })</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4o7pH1ZjdsErMByLoT0rIo/9fe21af0110120592ff63ed41c4537d9/amp-viewer-docs-2.png" alt="amp-viewer-docs-2" class="kg-image" width="1312" height="704" loading="lazy">
 	</figure>
 	<p><sub><i>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</i></sub></p>
-	<h3>Why not JSDoc?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-not-jsdoc">Why not JSDoc?</h3>
+		<a href="https://blog.cloudflare.com/#why-not-jsdoc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gM4NbM9ekay7QlBVJrifP/c3e43749e10eb2f893a498c99376b632/jsdoc-example-1.png" alt="jsdoc-example-1" class="kg-image" width="449" height="164" loading="lazy">
 	</figure>
@@ -178,7 +186,14 @@ class Point {
 	<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class">JSDoc documentation</a> and adapted for use with TypeScript.</p>
 	<p>The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
 	<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
-	<h3>Using TypeDoc</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-typedoc">Using TypeDoc</h3>
+		<a href="https://blog.cloudflare.com/#using-typedoc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
 	<p>If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
 	<pre class="language-undefined"><code class="language-undefined">npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build</code></pre>
@@ -249,7 +264,14 @@ const result = hbs.compile(tmpl)({ project })
 
 fs.writeFileSync('dist/docs.html', result)</code></pre>
 	<p>While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
-	<h3>More Than API Reference</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-api-reference">More Than API Reference</h3>
+		<a href="https://blog.cloudflare.com/#more-than-api-reference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
 	<pre class="language-undefined"><code class="language-undefined">To get started, call the `viewer.init()` method.</code></pre>
 	<p>Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
@@ -266,7 +288,14 @@ To get started, call the
 {{/Class}}</code></pre>
 	<p>While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
 	<p>If the source code changes, our docs update too.</p>
-	<h3>Open Source and Beyond</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-source-and-beyond">Open Source and Beyond</h3>
+		<a href="https://blog.cloudflare.com/#open-source-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
 	<p>If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>
 </div>

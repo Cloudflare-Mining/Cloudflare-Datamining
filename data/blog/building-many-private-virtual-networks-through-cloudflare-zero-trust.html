@@ -3,7 +3,14 @@
 <div class="post-content lh-copy gray1">
 	<p>We built Cloudflare’s Zero Trust platform to help companies rely on our network to connect their private networks securely, while improving performance and reducing operational burden. With it, you could build a single virtual private network, where all your connected private networks had to be uniquely identifiable.</p>
 	<p>Starting today, we are thrilled to announce that you can start building many segregated virtual private networks over Cloudflare Zero Trust, beginning with virtualized connectivity for the connectors Cloudflare WARP and Cloudflare Tunnel.</p>
-	<h3>Connecting your private networks through Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="connecting-your-private-networks-through-cloudflare">Connecting your private networks through Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#connecting-your-private-networks-through-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Consider your team, with various services hosted across distinct private networks, and employees accessing those resources. More than ever, those employees may be roaming, remote, or actually in a company office. Regardless, you need to ensure only they can access your private services. Even then, you want to have granular control over what each user can access within your network.</p>
 	<p>This is where Cloudflare can help you. We make our <a href="https://blog.cloudflare.com/private-networking">global, performant network</a> available to you, acting as a virtual bridge between your employees and private services. With your employees’ devices running <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP</a>, their traffic egresses through Cloudflare’s network. On the other side, your private services are behind <a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels">Cloudflare Tunnel</a>, accessible only through Cloudflare’s network. Together, these connectors protect your virtual private network end to end.</p>
 	<figure class="kg-card kg-image-card ">
@@ -13,7 +20,14 @@
 	</figure>
 	<p>The beauty of this setup is that your traffic is immediately faster <b>and</b> more secure. But you can then take it a step further and extract value from many Cloudflare services for your <a href="https://blog.cloudflare.com/private-networking">private network routed traffic</a>: auditing, fine-grained filtering, data loss protection, malware detection, safe browsing, and many others.</p>
 	<p>Our customers are already in love with our Zero Trust private network routing solution. However, like all things we love, they can still improve.</p>
-	<h3>The problem of overlapping networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problem-of-overlapping-networks">The problem of overlapping networks</h3>
+		<a href="https://blog.cloudflare.com/#the-problem-of-overlapping-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the image above, the user can access any private service as if they were physically located within the network of that private service. For example, this means typing <i>jira.intra</i> in the browser or SSH-ing to a private IP <code><i>10.1.2.3</i></code> will work seamlessly despite neither of those private services being exposed to the Internet.</p>
 	<p>However, this has a big assumption in place: those underlying private IPs are assumed to be unique in the private networks connected to Cloudflare in the customer’s account.</p>
 	<p>Suppose now that your Team has two (or more) data centers that use the same IP space — usually referred to as a <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">CIDR</a> — such as <code>10.1.0.0/16</code>. Maybe one is the current primary and the other is the secondary, replicating one another. In such an example situation, there would exist a machine in each of those two data centers, both with the same IP, <code><i>10.1.2.3</i></code>.</p>
@@ -22,7 +36,14 @@
 
 API error: Failed to add route: code: 1014, reason: You already have a route defined for this exact IP subnet</code></pre>
 	<p>In an ideal world, a team would not have this problem: every private network would have unique IP space. But that is just not feasible in practice, particularly for large enterprises. Consider the case where two companies merge: it is borderline impossible to expect them to rearrange their private networks to preserve IP addressing uniqueness.</p>
-	<h3>Getting started on your new virtual networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-on-your-new-virtual-networks">Getting started on your new virtual networks</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-on-your-new-virtual-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can now overcome the problem above by creating unique virtual networks that logically segregate your overlapping IP routes. You can think of a virtual network as a group of IP subspaces. This effectively allows you to compose your overall infrastructure into independent (virtualized) private networks that are reachable by your Cloudflare Zero Trust organization through Cloudflare WARP.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +85,14 @@ Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0
 	<p>When the user changes the virtual network chosen, that informs Cloudflare’s network of the routing decision. This will propagate that knowledge to all our data centers via <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> in a matter of seconds. The WARP client then restarts its connectivity to our network, breaking existing TCP connections that were being routed to the previously selected virtual network. This may be perceived as if you were disconnecting and reconnecting the WARP client.</p>
 	<p>Every current Cloudflare Zero Trust organization using private network routing will now have a default virtual network encompassing the IP Routes to Cloudflare Tunnels. You can start using the commands above to expand your private network to have overlapping IPs and reassign a default virtual network if desired.</p>
 	<p>If you do not have overlapping IPs in your private infrastructure, no action will be required.</p>
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is just the beginning of our support for distinct virtual networks at Cloudflare. As you may have seen, last week we announced the ability to create, deploy, and manage Cloudflare Tunnels directly from the Zero Trust dashboard. Today, virtual networks are only supported through the cloudflared CLI, but we are looking to integrate virtual network management into the dashboard as well.</p>
 	<p>Our next step will be to make Cloudflare Gateway aware of these virtual networks so that <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust policies</a> can be applied to these overlapping IP ranges. Once Gateway is aware of these virtual networks, we will also surface this concept with Network Logging for auditability and troubleshooting moving forward.</p>
 </div>

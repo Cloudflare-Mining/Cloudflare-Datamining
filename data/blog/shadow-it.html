@@ -8,7 +8,14 @@
 	</figure>
 	<p>SaaS application usage has exploded over the last decade. According to <a href="https://www.gartner.com/en/newsroom/press-releases/2021-08-02-gartner-says-four-trends-are-shaping-the-future-of-public-cloud">Gartner</a>, global spending on SaaS in 2021 was \$145bn and is forecasted to reach \$171bn in 2022. A key benefit of SaaS applications is that they are easy to get started with and either free or low cost. This is great for both users and leaders — it’s easy to try out new tools with no commitment or procurement process. But this convenience also presents a challenge to CIOs and security teams. Many SaaS applications are great for a specific task, but lack required security controls or visibility. It can be easy for employees to start using SaaS applications for their everyday job without IT teams noticing — these “unapproved” applications are popularly referred to as Shadow IT.</p>
 	<p>CIOs often have no visibility over what applications their SaaS employees are using. Even when they do, they may not have an easy way to block users from using unapproved applications, or on the contrary, to provide easy access to approved ones.</p>
-	<h3>Visibility into application usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="visibility-into-application-usage">Visibility into application usage</h3>
+		<a href="https://blog.cloudflare.com/#visibility-into-application-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In an office, it was easier for CIOs and their teams to monitor application usage in their organization. Mechanisms existed to inspect outbound DNS and HTTP traffic over office Wi-Fi equipment and detect unapproved applications. In an office setting, IT teams could also notice colleagues using new SaaS applications or maybe hear them mention these new applications. When users moved to remote work due to COVID-19 and other factors, this was no longer possible, and network-driven logging became ineffective. With no central network, the focus of application monitoring needed to shift to user’s devices.</p>
 	<p>We’re excited to announce updates to Cloudflare for Teams that address Shadow IT challenges. Our Zero Trust platform provides a framework to identify new applications, block applications and provide a single location for approved applications. Cloudflare Gateway allows admins to monitor user traffic and detect new application usage. Our Shadow IT report then presents a list of new applications and allows for approval or rejection of each application.</p>
 	<figure class="kg-card kg-image-card ">
@@ -22,7 +29,14 @@
 
 	</figure>
 	<p>This gives CIOs in-depth understanding of what applications are being used across their business, and enables them to come up with a plan to allow and block applications based on their approval status in the organization.</p>
-	<h3>Blocking the right applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="blocking-the-right-applications">Blocking the right applications</h3>
+		<a href="https://blog.cloudflare.com/#blocking-the-right-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the list of “shadow” applications is known, the next step is to block these applications with a meaningful error message to steer the user toward an approved application. The point should not be to make the user feel like they have done something wrong, but to encourage and provide them with the right application to leverage.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,10 +44,24 @@
 
 	</figure>
 	<p>Cloudflare Gateway allows teams to configure policies to block unapproved applications and provide clear instructions to a user about what their alternatives are to that application. In Gateway, administrators can configure application-specific policies like “block all file sharing applications except Google Drive.” <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control">Tenant control</a> can be utilized to restrict access to specific instances of a given application to prevent personal account usage of these tools.</p>
-	<h3>Protect your approved applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="protect-your-approved-applications">Protect your approved applications</h3>
+		<a href="https://blog.cloudflare.com/#protect-your-approved-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next step is to protect the application you do want your users to use. In order to fully protect your SaaS applications, it is important to secure the initial authorization and maintain a clear audit trail of user activity. Cloudflare Access for SaaS allows administrators to protect the front door of their SaaS applications and verify user identity, multi-factor authentication, device posture and location before allowing access. Gateway then provides a clear audit trail of all user activity within the application to provide a clear picture in the case of a breach or other security events.</p>
 	<p>This allows CIOs and their teams to define which users may or may not access specific applications. Instead of creating broad access lists, they can define exactly which users need a specific tool to complete their job. This is beneficial for both security and licensing costs.</p>
-	<h3>Show your users the applications they need</h3>
+	<div class="flex anchor relative">
+		<h3 id="show-your-users-the-applications-they-need">Show your users the applications they need</h3>
+		<a href="https://blog.cloudflare.com/#show-your-users-the-applications-they-need" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The final challenge is making it clear to users which applications they do and do not have access to. New employees often spend their first few weeks discovering new applications that would have helped them get up to speed more quickly.</p>
 	<p>We wanted to make it easy to provide a single place for users to access all of their approved applications. We added bookmarks and application visibility control to the Access application launcher to make this even easier.</p>
 	<figure class="kg-card kg-image-card ">

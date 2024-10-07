@@ -17,7 +17,14 @@
 			<p>how to configure a single Linux server to accept connections on a very large number of IP addresses (we have many thousands of IP addresses in our anycast ranges)</p>
 		</li>
 	</ul>
-	<h3>Assigning millions of IPs to a server</h3>
+	<div class="flex anchor relative">
+		<h3 id="assigning-millions-of-ips-to-a-server">Assigning millions of IPs to a server</h3>
+		<a href="https://blog.cloudflare.com/#assigning-millions-of-ips-to-a-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
 	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
 	<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
@@ -35,7 +42,15 @@
     inet 104.16.0.0/16 scope global lo
        valid_lft forever preferred_lft forever
 ...</code></pre>
-	<h3>Binding to ALL ports</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="binding-to-all-ports">Binding to ALL ports</h3>
+		<a href="https://blog.cloudflare.com/#binding-to-all-ports" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second major issue is the ability to open TCP sockets for any port number. In Linux, and generally in any system supporting the BSD sockets API, you can only bind to a specific TCP port number with a single <code>bind</code> system call. It’s not possible to bind to multiple ports in a single operation.</p>
 	<p>A naive solution would be to <code>bind</code> 65535 times, once for each of the 65535 possible ports. Indeed, this could have been an option, but with terrible consequences:</p>
 	<ul>
@@ -51,7 +66,14 @@
 	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
 	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c">the code doesn't look encouraging</a>.</p>
 	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
-	<h3>Firewall to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="firewall-to-the-rescue">Firewall to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#firewall-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we go any further, let’s revisit the general flow of network packets in an operating system.</p>
 	<p>Commonly, there are two distinct layers in the inbound packet path:</p>
 	<ul>
@@ -64,7 +86,15 @@
 	</ul>
 	<p>These are conceptually distinct. The IP firewall is usually a stateless piece of software (let's ignore <code>conntrack</code> and IP fragment reassembly for now). The firewall analyzes IP packets and decides whether to ACCEPT or DROP them. Please note: at this layer we are talking about <i>packets</i> and <i>port numbers</i> - not <i>applications</i> or <i>sockets</i>.</p>
 	<p>Then there is the network stack. This beast maintains plenty of state. Its main task is to dispatch inbound IP packets into <i>sockets</i>, which are then handled by userspace <i>applications</i>. The network stack manages abstractions which are shared with userspace. It reassembles TCP flows, deals with routing, and knows which IP addresses are local.</p>
-	<h3>The magic dust</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-magic-dust">The magic dust</h3>
+		<a href="https://blog.cloudflare.com/#the-magic-dust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AmbKOGpP2SLYGI4dCFTvG/c71c24b17764a8299cf957b0e478399e/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
@@ -87,7 +117,14 @@ advanced routing rules. </code></pre>
 	</ul>
 	<p>The more we thought about it, the more curious we became...</p>
 	<p>So... What does TPROXY actually <i>do</i>?</p>
-	<h3>Revealing the magic trick</h3>
+	<div class="flex anchor relative">
+		<h3 id="revealing-the-magic-trick">Revealing the magic trick</h3>
+		<a href="https://blog.cloudflare.com/#revealing-the-magic-trick" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119">surprisingly trivial</a>:</p>
 	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
   sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
@@ -101,7 +138,15 @@ advanced routing rules. </code></pre>
 	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299"><code>TPROXY</code> actually <i>does</i> the socket dispatch</a>:</p>
 	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
 	<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
-	<h3>Pulling the rabbit from the hat</h3>
+	<div class="flex anchor relative">
+		<h3 id="pulling-the-rabbit-from-the-hat">Pulling the rabbit from the hat</h3>
+		<a href="https://blog.cloudflare.com/#pulling-the-rabbit-from-the-hat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51PUlTDqve3FXm5AhGdfZt/705af25c02942ee285330038c52a626d/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
@@ -163,7 +208,14 @@ hello world</code></pre>
 [+] Bound to tcp://127.0.0.1:1234
 [ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
 	<p>Tada! This is how to <i>bind to any port</i> on Linux, without using <code>conntrack</code>.</p>
-	<h3>That's all folks</h3>
+	<div class="flex anchor relative">
+		<h3 id="thats-all-folks">That's all folks</h3>
+		<a href="https://blog.cloudflare.com/#thats-all-folks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we described how to use an obscure iptables module, originally designed to help transparent proxying, for something slightly different. With its help we can perform things we thought impossible using the standard BSD sockets API, avoiding the need for any custom kernel patches.</p>
 	<p>The <code>TPROXY</code> module is very unusual - in the context of the Linux firewall it performs things typically done by the Linux network stack. The official documentation is rather lacking, and I don't believe many Linux users understand the full power of this module.</p>
 	<p>It's fair to say that <code>TPROXY</code> allows our Spectrum product to run smoothly on the vanilla kernel. It’s yet another reminder of how important it is to try to understand iptables and the network stack!</p>

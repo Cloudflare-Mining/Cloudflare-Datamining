@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Today we're excited to announce that Cloudflare has acquired Zaraz. The Zaraz value proposition aligns with Cloudflare's mission. They aim to make the web more secure, more reliable, and faster. And they built their solution on Cloudflare Workers. In other words, it was a no-brainer that we invite them to join our team.</p>
-	<h3>Be Careful Who Takes Out the Trash</h3>
+	<div class="flex anchor relative">
+		<h3 id="be-careful-who-takes-out-the-trash">Be Careful Who Takes Out the Trash</h3>
+		<a href="https://blog.cloudflare.com/#be-careful-who-takes-out-the-trash" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand Zaraz's value proposition, you need to understand one of the biggest risks to most websites that people aren't paying enough attention to. And, to understand that, let me use an analogy.</p>
 	<p>Imagine you run a business. Imagine that business is, I don't know, a pharmacy. You have employees. They have a process and way they do things. They're under contract, and you conduct background checks before you hire them. They do their jobs well and you trust them. One day, however, you realize that no one is emptying the trash. So you ask your team to find someone to empty the trash regularly.</p>
 	<p>Your team is busy and no one has the time to add this to their regular duties. But one plucky employee has an idea. He goes out on the street and hails down a relative stranger. "Hey," your employee says to the stranger. "I've seen you walking by this way every day. Would you mind stopping in and taking out the trash when you do?"</p>
@@ -16,7 +23,14 @@
 	<p>And for a while it does. The stranger swings by every day. Takes out the trash. Behaves exactly as hoped. And no one thinks much about the trash again.</p>
 	<p>But one day you walk in, and the pharmacy has been robbed. Drugs stolen, patient records missing. Logs indicate that it was the stranger's badge that had been used to access the pharmacy. You track down the stranger, and he says "Hey, that sucks, but it wasn't me". I handed off that trash responsibility to someone else long ago when I stopped walking past the pharmacy every day."</p>
 	<p>And you never track down the person who used the privileged access to violate your trust.</p>
-	<h3>The Keys to the Kingdom</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-keys-to-the-kingdom">The Keys to the Kingdom</h3>
+		<a href="https://blog.cloudflare.com/#the-keys-to-the-kingdom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, of course, this is crazy. No one would go pick a random stranger off the street and give them access to their physical store. And yet, in the virtual world, a version of this happens all the time.</p>
 	<p>Every day, front end developers, marketers, and even security teams embed third-party scripts directly on their web pages. These scripts perform basic tasks — the metaphorical equivalent of taking out the trash. When performing correctly, they can be valuable at bringing advanced functionality to sites, helping track marketing conversions, providing analytics, or stopping fraud. But, if they ever go bad, they can cause significant problems and even steal data.</p>
 	<p>At the most mundane, poorly configured scripts can slow down the rendering pages. While there are ways to make scripts non-blocking, the unfortunate reality is that their developers don't always follow the best practices. Often when we see slow websites, the biggest cause of slowness is all the third-party scripts that have been embedded.</p>
@@ -44,7 +58,14 @@
 	<p>And worse is that third-party JavaScript can and does load other JavaScript from other unknown parties. Even if you trust the company whose code you’ve chosen to embed, you probably don’t trust (or even know about!) what they choose to include.</p>
 	<p>And even worse these scripts can change any time. Security threats can come and go. The attacker who went after Cloudflare compromised the third-party and modified their service to only attack Cloudflare and included anti-debugging features to try to stop developers spotting the hack. If you're a <a href="https://www.cloudflare.com/cio">CIO</a> and this doesn't freak you out already, ask your web development team how many third-party scripts are on your websites. Do you trust them all?</p>
 	<p>The practice of adding third-party scripts to handle simple tasks is the literal equivalent of pulling a random stranger off the street, giving them physical access to your office, and asking them to stop by once a day to empty the trash. It's completely crazy in the physical world, and yet it's common practice in web development.</p>
-	<h3>Sandboxing the Strangers</h3>
+	<div class="flex anchor relative">
+		<h3 id="sandboxing-the-strangers">Sandboxing the Strangers</h3>
+		<a href="https://blog.cloudflare.com/#sandboxing-the-strangers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, our solution was draconian. We ordered that all third-party scripts be stripped from our websites. Different teams at Cloudflare were concerned. Especially our marketing team, who used these scripts to assess whether the campaigns they were running were successful. But we made the decision that it was more important to protect the integrity of our service than to have visibility into things like marketing campaigns.</p>
 	<p>It was around this time that we met the team behind Zaraz. They argued there didn't need to be such a drastic choice. What if, instead, you could strictly control what the scripts that you insert on your page did. Make sure if ever they were compromised they wouldn't have access to anything they weren't authorized to see. Ensure that if they failed or were slow they wouldn't keep a page from rendering.</p>
 	<p>We've spent the last half year testing Zaraz, and it's magical. It gives you the best of the flexible, extensible web while ensuring that CIOs and <a href="https://www.cloudflare.com/ciso">CISOs</a> can sleep well at night knowing that even if a third-party script provider is compromised, it won't result in a security incident.</p>

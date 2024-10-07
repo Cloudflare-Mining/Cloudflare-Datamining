@@ -7,7 +7,14 @@ Balancers" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p>CloudFlare had an <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">hour-long outage</a> this last weekend. Thankfully, outages like this have been a relatively rare occurrance for our service. This is in spite of hundreds of thousands of customers, the enormous volume of legitimate traffic they generate, and the barrage of large denial of service attacks we are constantly <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">mitigating on their behalf</a>. While last weekend's outage exposed a flaw in our architecture that we're working to fully eliminate, largely our systems have been designed to be balanced and have no single points of failure. We haven't talked much about the architecture of CloudFlare's systems but thought the rest of the community might benefit from seeing some of the choices we've made, how we load balance our systems, and how this has allowed us to scale quickly and efficiently.</p>
-	<h3>Failure Isn't an Option, It's a Fact</h3>
+	<div class="flex anchor relative">
+		<h3 id="failure-isnt-an-option-its-a-fact">Failure Isn't an Option, It's a Fact</h3>
+		<a href="https://blog.cloudflare.com/#failure-isnt-an-option-its-a-fact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare's architecture starts with an assumption: failure is going to happen. As a result, we have to plan for failure at every level and design a system that gracefully handles it when it occurs. To understand how we do this, you have to understand the components of CloudFlare's edge systems. Here are four critical components we deploy at the edge of our network:</p>
 	<ol>
 		<li>
@@ -24,7 +31,14 @@ Balancers" class="kg-image" width="500" height="375" loading="lazy">
 		</li>
 	</ol>
 	<p>Those are the four components you'll find in the racks that we run in locations around the world. You'll notice some things from a typical hardware stack seem to be missing. For example, there's no hardware load balancer. The problem with hardware load balancers (and hardware firewalls, for that matter) is that they often become the bottleneck and create a single point of failure themselves. Instead of relying on a piece of hardware to load balance across our network, we use routing protocols to spread traffic and handle failure.</p>
-	<h3>Anycast Is Your Friend</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-is-your-friend">Anycast Is Your Friend</h3>
+		<a href="https://blog.cloudflare.com/#anycast-is-your-friend" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For most of the Internet, IP addressess correspond to a single device connected to the public Internet. In your home or office, you may have multiple devices sitting behind a gateway using network address translation (NAT), but there is only one public IP address and all the devices that sit behind the network use a unique private IP address (e.g., in the space 192.168.X.X or 10.X.X.X). The general rule on the Internet is one unique IP per devices. This is a routing scheme known as Unicast. However, it's not the only way.</p>
 	<p>There are four major routing schemes: Unicast, Multicast, Broadcast, and Anycast. Multicast and Broadcast are so-called one-to-many routing schemes. With Broadcast, one node sends packets that hit all recipient nodes. Broadcast is not widely used any longer and was actually not implemented in IPv6 (its largest contemporary use has likely been <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">launching SMURF DDoS attacks</a>). With Multicast, one node sends packets that hit multiple (but not all) recipient nodes that have opted into a group (e.g., how a cable company may deliver a television broadcast over an IP network).</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,7 +48,14 @@ Balancers" class="kg-image" width="250" height="167" loading="lazy">
 
 	</figure>
 	<p>Unicast and Anycast are one-to-one routing schemes. In both, there is one sender and one recipient of the packet. The difference between the two is that while there is only one possible destination on the entire network for a packet sent over Unicast, with Anycast there are multiple possible destinations and the network itself picks the route that is most preferential. On the wide area network (WAN) -- aka. the Internet -- this preference is for the shortest path from the sender to the recipient. On the LAN, the preferences can be set with weights that are honored by the router.</p>
-	<h3>Anycast at the WAN</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-at-the-wan">Anycast at the WAN</h3>
+		<a href="https://blog.cloudflare.com/#anycast-at-the-wan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare, we use Anycast at two levels: the WAN and the LAN. At the <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN</a> level, every router in all of CloudFlare's 23 data centers announces all of our external-facing IP addresses. For example, one of the IPs that CloudFlare announces for DNS services is 173.245.58.205. A route to that IP address is announced from all 23 CloudFlare data centers. When you send a packet to that IP address, it passes through a series of routers. Those routers look at the available paths to CloudFlare's end points and send the packet down the one with the fewest stops along the way (i.e., "hops"). You can run a traceroute to see each of these steps.</p>
 	<p>If I run a traceroute from CloudFlare's office in San Francisco, the path my packets take is:</p>
 	<p>$ traceroute 173.245.58.205
@@ -60,7 +81,14 @@ Balancers" class="kg-image" width="250" height="167" loading="lazy">
 		8 173.245.58.205 (173.245.58.205) 0.972 ms 1.292 ms 0.916 ms</p>
 	<p>In both cases, the 8th and final hop is the same. You can tell, however, that they are hitting different CloudFlare data centers from hints in the 7th hop (highlighted in red below): as13335.xe-8-0-5.ar2.<b>sjc</b>1.us.nlayer.net suggesting it is hitting San Jose and cloudflare-ic-154357-<b>ldn</b>-b5.c.telia.net suggesting it is hitting London.</p>
 	<p>Since packets will follow the shortest path, if a particular path is withdrawn then packets will find their way to the next shortest available route. For simple protocols like UDP that don't maintain state, Anycast is ideal and it has been used widely to load balance DNS for some time. At CloudFlare, we've done a significant amount of engineering to allow TCP to run across Anycast without flapping. This involves carefully adjusting routes in order to get optimal routing and also adjusting the way we handle protocol negotiation itself. While more complex to maintain than a Unicast network, the benefit is we can lose an entire data center and packets flow to the next closest facility without anyone noticing and hiccup.</p>
-	<h3>Anycast in the LAN</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-in-the-lan">Anycast in the LAN</h3>
+		<a href="https://blog.cloudflare.com/#anycast-in-the-lan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once a packet arrives as a particular CloudFlare data center we want to ensure it gets to a server that can correctly handle the request. There are four key tasks that CloudFlare's servers perform: <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, proxy, cache, and logging. We tend to follow the Google-like approach and deploy generic, white-box servers that can perform a number of different functions. (Incidentally, if anyone is interested, we're thinking of doing a blog post to "tour" a typical CloudFlare server and discuss the choices we made in working with manufacturers to design them.) Since servers can fail or be overloaded, we need to be able to route traffic intelligently around problems. For that, we return to our old friend Anycast.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -71,7 +99,15 @@ Balancers" class="kg-image" width="275" height="183" loading="lazy">
 	<p>Using Anycast, each server within each of CloudFlare's data centers is setup to receive traffic from any of our public IP addresses. The routes to these servers are announced via the border gateway protocol (BGP) from the servers themselves. To do this we use a piece of software called <a href="http://bird.network.cz">Bird</a>. (You can tell it's an awesomely intense piece of networking software just by looking at <a href="http://artax.karlin.mff.cuni.cz/~zajio1am">one of its developers</a>.) While all servers announce a route across the LAN for all the IPs, each server assigns its own weight to each IPs route. The router is then configured such that the route with the lowest weight is preferred.</p>
 	<p>If a server crashes, Bird stops announcing the BGP route to the router. The router then begins sending traffic to the server with the next-lowest weighted route. We also monitor critical processes on each server. If any of these critical processes fails then it can signal Bird to withdraw a route. This is not all or nothing. The monitor is aware of the server's own load as well as the load on the other servers in the data center. If a particular server starts to become overloaded, and it appears there is sufficient capacity elsewhere, then just some of the BGP routes can be withdrawn to take some traffic away from the overloaded server.</p>
 	<p>Beyond failover, we are beginning to experiment with BGP to do true load balancing. In this case, the weights to multiple servers are the same and the router hashes the source IP, destination IP, and port in order to consistently route traffic to the same server. The hash mapping table can be adjusted to increase or decrease load to any machine in the cluster. This is relatively easy with simple protocols like UDP, so we're playing with it for DNS. It's trickier with protocols that need to maintain some session state, like TCP, and gets trickier still when you throw in SSL, but we have some cool things in our lab that will help us better spread load across all the available resources.</p>
-	<h3>Failure Scenarios</h3>
+	<div class="flex anchor relative">
+		<h3 id="failure-scenarios">Failure Scenarios</h3>
+		<a href="https://blog.cloudflare.com/#failure-scenarios" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Q2xHblTBj6KGeMeaHcRXr/e068f4e1eac7c96caf2edd9ca9937edd/global_thermonuclear_war.jpg.scaled500.jpg" alt="Load Balancing without Load

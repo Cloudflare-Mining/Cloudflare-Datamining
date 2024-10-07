@@ -10,12 +10,26 @@
 	<p>The change in the certificate chain will impact legacy devices and systems, such as Android devices version 7.1.1 or older, as those exclusively rely on the cross-signed chain and lack the ISRG X1 root in their trust store. These clients may encounter TLS errors or warnings when accessing domains secured by a Let’s Encrypt certificate.</p>
 	<p>According to Let’s Encrypt, more than 93.9% of Android devices already trust the ISRG Root X1 and this number is expected to increase in 2024, especially as Android releases version 14, which makes the Android trust store easily and automatically upgradable.</p>
 	<p>We took a look at the data ourselves and found that, from all Android requests, 2.96% of them come from devices that will be affected by the change. In addition, only 1.13% of all requests from Firefox come from affected versions, which means that most (98.87%) of the requests coming from Android versions that are using Firefox will not be impacted.</p>
-	<h3>Preparing for the change</h3>
+	<div class="flex anchor relative">
+		<h3 id="preparing-for-the-change">Preparing for the change</h3>
+		<a href="https://blog.cloudflare.com/#preparing-for-the-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re worried about the change impacting your clients, there are a few things that you can do to reduce the impact of the change. If you control the clients that are connecting to your application, we recommend updating the trust store to include the <a href="https://letsencrypt.org/certificates/#root-certificates">ISRG Root X1</a>. If you use certificate pinning, remove or update your pin. In general, we discourage all customers from pinning their certificates, as this usually leads to issues during certificate renewals or CA changes.</p>
 	<p>If you experience issues with the Let’s Encrypt chain change, and you’re using <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">Advanced Certificate Manager</a> or <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management">SSL for SaaS</a> on the Enterprise plan, you can choose to switch your certificate to use Google Trust Services as the certificate authority instead.</p>
 	<p>For more information, please refer to our <a href="https://developers.cloudflare.com/ssl/reference/migration-guides/lets-encrypt-chain">developer documentation</a>.</p>
 	<p>While this change will impact a very small portion of clients, we support the shift that Let’s Encrypt is making as it supports a more secure and agile Internet.</p>
-	<h3>Embracing change to move towards a better Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="embracing-change-to-move-towards-a-better-internet">Embracing change to move towards a better Internet</h3>
+		<a href="https://blog.cloudflare.com/#embracing-change-to-move-towards-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking back, there were a number of challenges that slowed down the adoption of new technologies and standards that helped make the Internet faster, more secure, and more reliable.</p>
 	<p>For starters, before Cloudflare <a href="https://blog.cloudflare.com/introducing-universal-ssl">launched Universal SSL</a>, free certificates were not attainable. Instead, domain owners had to pay around $100 to get a TLS certificate. For a small business, this is a big cost and without browsers enforcing <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a>, this significantly hindered TLS adoption for years. Insecure algorithms have taken decades to deprecate due to lack of support of new algorithms in browsers or devices. We learned this lesson while <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">deprecating SHA-1</a>.</p>
 	<p>Supporting new security standards and protocols is vital for us to continue improving the Internet. Over the years, big and sometimes risky changes were made in order for us to move forward. The launch of Let’s Encrypt in 2015 was monumental. Let’s Encrypt allowed every domain to get a TLS certificate for free, which paved the way to a more secure Internet, with now <a href="https://radar.cloudflare.com/adoption-and-usage#http-vs-https">around 98%</a> of traffic using <a href="https://www.cloudflare.com/learning/ssl/what-is-https">HTTPS</a>.</p>

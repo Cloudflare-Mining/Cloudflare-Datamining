@@ -7,7 +7,14 @@
 	</figure>
 	<p>Magic Firewall is Cloudflare’s replacement for network-level firewall hardware. It evaluates gigabits of traffic every second against user-defined rules that can include millions of IP addresses. Writing a firewall rule for each IP address is cumbersome and verbose, so we have been building out support for various <a href="https://developers.cloudflare.com/magic-firewall/about/list-types">IP lists</a> in Magic Firewall—essentially named groups that make the rules easier to read and write. Some users want to reject packets based on our growing <a href="https://blog.cloudflare.com/magic-firewall-gets-smarter">threat intelligence</a> of bad actors, while others know the exact set of IPs they want to match, which Magic Firewall supports via the same <a href="https://api.cloudflare.com/#rules-lists-create-list">API</a> as Cloudflare’s WAF.</p>
 	<p>With all those IPs, the system was using more of our memory budget than we’d like. To understand why, we need to first peek behind the curtain of our magic.</p>
-	<h3>Life inside a network namespace</h3>
+	<div class="flex anchor relative">
+		<h3 id="life-inside-a-network-namespace">Life inside a network namespace</h3>
+		<a href="https://blog.cloudflare.com/#life-inside-a-network-namespace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/magic-transit">Magic Transit</a> and <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> enable Cloudflare to route layer 3 traffic, and they are the front door for Magic Firewall. We have <a href="https://blog.cloudflare.com/magic-transit-network-functions">previously written</a> about how Magic Transit uses network namespaces to route packets and isolate customer configuration. Magic Firewall operates inside these namespaces, using <a href="https://wiki.nftables.org">nftables</a> as the primary implementation of packet filtering.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -28,7 +35,14 @@
 	}
 }</code></pre>
 	<p>This design for the feature made it very easy to extend our wirefilter syntax so that <a href="https://developers.cloudflare.com/magic-firewall/how-to/use-rules-list">users could write rules</a> using all the different IP lists we support.</p>
-	<h3>Scaling to many customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="scaling-to-many-customers">Scaling to many customers</h3>
+		<a href="https://blog.cloudflare.com/#scaling-to-many-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We chose this design since sets fit easily into our existing use of nftables. We shipped quickly with just a few, relatively small lists to a handful of customers. This approach worked well at first, but we eventually started to observe a dramatic increase in our system’s memory use. It’s common practice for our team to enable a new feature for just a few customers at first. Here’s what we observed as those customers started using IP lists:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -49,7 +63,14 @@
 	<pre class="language-bash"><code class="language-bash">add element ip mfw set0 { 192.0.2.0, … }
 add element ip mfw set0 { 198.51.100.0, … }</code></pre>
 	<p>just to squeeze out a second or two of reduced time that nft took to process our configuration. We were spending a fair amount of development cycles looking for optimizations, and we needed to find a way to turn the tides.</p>
-	<h3>One more step with eBPF</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-step-with-ebpf">One more step with eBPF</h3>
+		<a href="https://blog.cloudflare.com/#one-more-step-with-ebpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we mentioned <a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall">on our blog</a> recently, Magic Firewall leverages eBPF for some advanced packet-matching. And it may not be a big surprise that eBPF can match an IP in a list, but it wasn’t a tool we thought to reach for a year ago. What makes eBPF relevant to this problem is that eBPF maps exist regardless of a network namespace. That’s right; eBPF gives us a way to share this data across all the network namespaces we create for our customers.</p>
 	<p>Since several of our IP lists contain ranges, we can’t use a simple <code>BPF_MAP_TYPE_HASH</code> or <code>BPF_MAP_TYPE_ARRAY</code> to perform a lookup. Fortunately, Linux already has a data structure that we can use to accommodate ranges: the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/bpf/lpm_trie.c"><code>BPF_MAP_TYPE_LPM_TRIE</code></a>.</p>
 	<p>Given an IP address, the trie’s implementation of <code>bpf_map_lookup_elem()</code> will return a non-null result if the IP falls within any of the ranges already inserted into the map. And using the map is about as simple as it gets for eBPF programs. Here’s an example:</p>
@@ -84,7 +105,15 @@ int saddr_in_list(struct __sk_buff *skb) {
 	return val == NULL ? BPF_OK : BPF_DROP;
 }
 </code></pre>
-	<h3>nftables befriends eBPF</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="nftables-befriends-ebpf">nftables befriends eBPF</h3>
+		<a href="https://blog.cloudflare.com/#nftables-befriends-ebpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the limitations of our prior work incorporating eBPF into the firewall involves how the program is loaded into the nftables ruleset. Because the nft command-line program does not support calling a BPF program from a rule, we formatted the Netlink messages ourselves. While this allowed us to insert a rule that executes an eBPF program, it came at the cost of losing out on <a href="https://wiki.nftables.org/wiki-nftables/index.php/Atomic_rule_replacement">atomic rule replacements</a>.</p>
 	<p>So any native nftables rules could be applied in one transaction, but any eBPF-based rules would have to be inserted afterwards. This introduces some headaches for handling failures—if inserting an eBPF rule fails, should we simply retry, or perhaps roll back the nftables ruleset as well? And what if those follow-up operations fail?</p>
 	<p>In other words, we went from a relatively simple operation—the new firewall configuration either fully applied or didn’t—to a much more complex one. We didn’t want to keep using more and more eBPF without solving this problem. After hacking on the nftables repo for a few days, we came out with a patch that adds a BPF keyword to the nftables configuration syntax.</p>
@@ -111,7 +140,14 @@ table ip mfw {
 }
 EOF</code></pre>
 	<p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p>
-	<h3>Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="results">Results</h3>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This plot shows kernel memory during the time of the deployment - the change was rolled out to each namespace over a few hours.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

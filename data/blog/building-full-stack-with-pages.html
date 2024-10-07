@@ -14,8 +14,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ONc6WtXvEqXxJXIVlwX4o/615cfbefe97122d95c7955997e0c952c/image2-17.png" alt="" class="kg-image" width="1680" height="994" loading="lazy">
 
 	</figure>
-	<h2>Building serverless functions with Cloudflare Pages</h2>
-	<h3>File-based routing</h3>
+	<div class="flex anchor relative">
+		<h2 id="building-serverless-functions-with-cloudflare-pages">Building serverless functions with Cloudflare Pages</h2>
+		<a href="https://blog.cloudflare.com/#building-serverless-functions-with-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="file-based-routing">File-based routing</h3>
+		<a href="https://blog.cloudflare.com/#file-based-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're not already familiar, Cloudflare Pages <a href="https://developers.cloudflare.com/pages/get-started">connects with your git provider</a> (GitHub and <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a>), and automates the deployment of your static site to Cloudflare's network. Functions lets you enhance these apps by sprinkling in dynamic data. If you haven't already, <a href="https://dash.cloudflare.com/sign-up/pages">you can sign up here</a>.</p>
 	<p>In our project, let's create a new function:</p>
 	<pre class="language-javascript"><code class="language-javascript">// ./functions/time.js
@@ -35,7 +50,14 @@ export const onRequest = () =&gt; {
 		</li>
 	</ul>
 	<p>We declare a <code>PagesFunction</code> type in the <a href="https://github.com/cloudflare/workers-types">@cloudflare/workers-types</a> library which you can use to type-check your Functions.</p>
-	<h3>Dynamic data</h3>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-data">Dynamic data</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, returning to our image-sharing app, let's assume we already have some images uploaded, and we want to display them on the homepage. We'll need an endpoint which will return a list of these images, which the front-end can call:</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/images.ts
 
@@ -101,7 +123,14 @@ export const onRequestGet: PagesFunction&lt;{
 	<p>Eagle-eyed readers will notice we're exporting <code>onRequestGet</code> which lets us only respond to <code>GET</code> requests.</p>
 	<p>We're also using a KV namespace (accessed with <code>env.IMAGES</code>) to store information about images that have been uploaded. To create a binding in your Pages project, navigate to the "Settings" tab.</p>
 	<p>![](<a href="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png_REGULAR">/content/images/2021/11/unnamed-15.png_REGULAR</a> "Screenshot of the "Functions" page on the Pages project "Settings" tab in the Cloudflare dashboard")</p>
-	<h3>Interfacing with other APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="interfacing-with-other-apis">Interfacing with other APIs</h3>
+		<a href="https://blog.cloudflare.com/#interfacing-with-other-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Images is an inexpensive, high-performance, and featureful service for hosting and transforming images. You can create multiple variants to render your images in different ways and control access with signed URLs. We'll add a function to interface with this service's API and upload incoming files to Cloudflare Images:</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/admin/upload.ts
 
@@ -169,7 +198,15 @@ export const onRequestPost: PagesFunction&lt;{
 
   return jsonResponse(true);
 };</code></pre>
-	<h3>Persisting data</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="persisting-data">Persisting data</h3>
+		<a href="https://blog.cloudflare.com/#persisting-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're already using KV to store information that is read often but rarely written to. What about features that require a bit more synchronicity?</p>
 	<p>Let's add a download counter to each of our images. We can create a <code>highres</code> variant in Cloudflare Images, and increment the counter every time a user requests a link. This requires a bit more setup, but unlocking the power of Durable Objects in your projects is absolutely worth it.</p>
 	<p>We'll need to create and publish the Durable Object class capable of maintaining this download count:</p>
@@ -198,7 +235,15 @@ export class DownloadCounter {
     return jsonResponse(currentValue);
   }
 }</code></pre>
-	<h3>Middleware</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="middleware">Middleware</h3>
+		<a href="https://blog.cloudflare.com/#middleware" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you need to execute some code (such as authentication or logging) before you run your function, Pages offers easy-to-use middleware which can be applied at any level in your file-based routing. By creating a <code>_middleware.ts</code> file in a directory, we know to first run this file, and then execute your function when <code>next()</code> is called.</p>
 	<p>In our application, we want to prevent unauthorized users from uploading images (<code>/api/admin/upload</code>) or deleting images (<code>/api/admin/delete</code>). Cloudflare Access lets us apply <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">role-based access control</a> to all or part of our application, and you only need a single file to integrate it into our serverless functions. We create &nbsp;<code>./functions/api/admin/_middleware.ts</code> which will apply to all incoming requests at <code>/api/admin/*</code>:</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/api/admin/_middleware.ts
@@ -231,7 +276,14 @@ const cloudflareAccessMiddleware: PagesFunction&lt;{ IMAGES: KVNamespace }&gt; =
 
 export const onRequest = [cloudflareAccessMiddleware];</code></pre>
 	<p>Middleware is a powerful tool at your disposal allowing you to easily protect parts of your application with Cloudflare Access, or quickly integrate with observability and error logging platforms such as Honeycomb and Sentry.</p>
-	<h2>Integrating as Jamstack</h2>
+	<div class="flex anchor relative">
+		<h2 id="integrating-as-jamstack">Integrating as Jamstack</h2>
+		<a href="https://blog.cloudflare.com/#integrating-as-jamstack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The "Jam" of "Jamstack" stands for JavaScript, API and Markup. Cloudflare Pages previously provided the 'J' and 'M', and with Workers in the middle, you can truly go full-stack Jamstack.</p>
 	<p>We've built the front end of this image sharing platform with <a href="https://create-react-app.dev">Create React App</a> as an approachable example, but <a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets">Cloudflare Pages natively integrates with an ever-growing number of frameworks</a> (currently 23), and you can always <a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories">configure your own entirely custom build command</a>.</p>
 	<p>Your front end simply needs to make a call to the Functions we've already configured, and render out that data. We're using <a href="https://swr.vercel.app">SWR</a> to simplify things, but you could do this with entirely vanilla JavaScript <code>fetch</code>-es, if that's your preference.</p>
@@ -254,7 +306,15 @@ export const ImageGrid = () =&gt; {
   );
 
 }</code></pre>
-	<h2>Local development</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="local-development">Local development</h2>
+		<a href="https://blog.cloudflare.com/#local-development" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>No matter how fast it is, iterating on a project like this can be painful if you have to push up every change in order to test how it works. We've released a first-class integration with wrangler for local development of Pages projects, including full support for Functions, Workers, secrets, environment variables and KV. Durable Objects support is coming soon.</p>
 	<p>Install from npm:</p>
 	<pre class="language-sh"><code class="language-sh">npm install wrangler@beta</code></pre>
@@ -264,7 +324,15 @@ npx wrangler pages dev ./public
 
 # or integrate with your other tools
 npx wrangler pages dev -- npx react-scripts start</code></pre>
-	<h2>Go forth, and build!</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="go-forth-and-build">Go forth, and build!</h2>
+		<a href="https://blog.cloudflare.com/#go-forth-and-build" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you like puppies, <a href="https://images.pages.dev">we've deployed our image-sharing application here</a>, and if you like code, <a href="https://github.com/cloudflare/images.pages.dev">that's over on GitHub</a>. Feel free to fork and deploy it yourself! There's a five-minute setup wizard, and you'll need Cloudflare Images, Access, Workers, and Durable Objects.</p>
 	<p>We are so excited about the future of the Pages platform, and we want to hear what you're building! Show off your full-stack applications in the <a href="https://discord.com/channels/595317990191398933/783765338692386886">#what-i-built channel</a>, or get assistance in the <a href="https://discord.com/channels/595317990191398933/789155108529111069">#pages-help channel</a> on <a href="https://discord.gg/cloudflaredev">our Discord server</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -272,7 +340,15 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FMhGC7kxjUEspTnvUGjeQ/73cce33e67c1f00847ace2551f24fadc/image1-37.png" alt="" class="kg-image" width="1800" height="578" loading="lazy">
 
 	</figure>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

@@ -31,7 +31,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/59IDEspjCRavbrtH1Rtu4r/f769bba8ac05062eb94ce068dc2d7ede/image2-5.png" alt="" class="kg-image" width="1482" height="879" loading="lazy">
 
 	</figure>
-	<h2>Unhappy Nodes</h2>
+	<div class="flex anchor relative">
+		<h2 id="unhappy-nodes">Unhappy Nodes</h2>
+		<a href="https://blog.cloudflare.com/#unhappy-nodes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p>
 	<pre class="language-bash"><code class="language-bash">unregister_netdevice: waiting for lo to become free. Usage count = 1</code></pre>
 	<p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p>
@@ -60,7 +67,14 @@
 		</li>
 	</ol>
 	<p>While solving the underlying issue would be ideal, we needed a mitigation to avoid toil in the meantime — an automated node remediation process.</p>
-	<h2>Existing Detection and Remediation Solutions</h2>
+	<div class="flex anchor relative">
+		<h2 id="existing-detection-and-remediation-solutions">Existing Detection and Remediation Solutions</h2>
+		<a href="https://blog.cloudflare.com/#existing-detection-and-remediation-solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While not complicated, the manual remediation process outlined previously became tedious and distracting, as we had to reboot nodes multiple times a day. Some manual intervention is unavoidable, but for cases matching the following, we wanted automation:</p>
 	<ul>
 		<li>
@@ -74,15 +88,50 @@
 		</li>
 	</ul>
 	<p>Limiting automatic remediation to generic worker nodes is important as there are other node types in our clusters where more care is required. For example, for control-plane nodes the process has to be augmented to check <a href="https://etcd.io">etcd</a> cluster health and ensure proper redundancy for components servicing the Kubernetes API. We are also going to limit the problem space to known software issues confined to a node where we expect automatic remediation to be the right answer (as in our ballooning network interface problem). With that in mind, we took a look at existing solutions that we could use.</p>
-	<h3>Node Problem Detector</h3>
+	<div class="flex anchor relative">
+		<h3 id="node-problem-detector">Node Problem Detector</h3>
+		<a href="https://blog.cloudflare.com/#node-problem-detector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/kubernetes/node-problem-detector">Node problem detector</a> is a daemon that runs on each node that detects problems and reports them to the Kubernetes API. It has a pluggable problem daemon system such that one can add their own logic for detecting issues with a node. Node problems are distinguished between temporary and permanent problems, with the latter being persisted as status conditions on the Kubernetes node resources.<sup>2</sup></p>
-	<h3>Draino and Cluster-Autoscaler</h3>
+	<div class="flex anchor relative">
+		<h3 id="draino-and-cluster-autoscaler">Draino and Cluster-Autoscaler</h3>
+		<a href="https://blog.cloudflare.com/#draino-and-cluster-autoscaler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/planetlabs/draino">Draino</a> as its name implies, drains nodes but does so based on Kubernetes node conditions. It is meant to be used with <a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler">cluster-autoscaler</a> which then can add or remove nodes via the cluster plugins to scale node groups.</p>
-	<h3>Kured</h3>
+	<div class="flex anchor relative">
+		<h3 id="kured">Kured</h3>
+		<a href="https://blog.cloudflare.com/#kured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/weaveworks/kured">Kured</a> is a daemon that looks at the presence of a file on the node to initiate a drain, reboot and uncordon of the given node. It uses a locking mechanism via the Kubernetes API to ensure only a single node is acted upon at a time.</p>
-	<h3>Cluster-API</h3>
+	<div class="flex anchor relative">
+		<h3 id="cluster-api">Cluster-API</h3>
+		<a href="https://blog.cloudflare.com/#cluster-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/kubernetes/community/tree/master/sig-cluster-lifecycle">Kubernetes cluster-lifecycle SIG</a> has been working on the <a href="https://github.com/kubernetes-sigs/cluster-api">cluster-api</a> project to enable declaratively defining clusters to simplify provisioning, upgrading, and operating multiple Kubernetes clusters. It has a concept of machine resources which back Kubernetes node resources and furthermore has a concept of <a href="https://cluster-api.sigs.k8s.io/tasks/healthcheck.html">machine health checks</a>. Machine health checks use node conditions to determine unhealthy nodes and then the cluster-api provider is then delegated to replace that machine via create and delete operations.</p>
-	<h2>Proof of Concept</h2>
+	<div class="flex anchor relative">
+		<h2 id="proof-of-concept">Proof of Concept</h2>
+		<a href="https://blog.cloudflare.com/#proof-of-concept" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Interestingly, with all the above except for Kured, there is a theme of pluggable components centered around Kubernetes node conditions. We wanted to see if we could build a proof of concept using the existing theme and solutions. For the existing solutions, draino with cluster-autoscaler didn’t make sense in a non-cloud environment like our bare-metal set up. The cluster-api health checks are interesting, however they require a more complete investment into the cluster-api project to really make sense. That left us with node-problem-detector and kured. Deploying node-problem-detector was simple, and we ended up testing a <a href="https://github.com/kubernetes/node-problem-detector/blob/master/docs/custom_plugin_monitor.md">custom-plugin-monitor</a> like the following:</p>
 	<pre class="language-bash"><code class="language-bash">apiVersion: v1
 kind: ConfigMap
@@ -144,7 +193,14 @@ data:
   "type": "NPDCalicoUnhealthy"
 }</code></pre>
 	<p>With that in place, the actual remediation needed to happen. Kured seemed to do most everything we needed, except that it was looking at a file instead of Kubernetes node conditions. We hacked together a patch to change that and tested it successfully end to end — we had a working proof of concept!</p>
-	<h2>Revisiting Problem Detection</h2>
+	<div class="flex anchor relative">
+		<h2 id="revisiting-problem-detection">Revisiting Problem Detection</h2>
+		<a href="https://blog.cloudflare.com/#revisiting-problem-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the above worked, we found that node-problem-detector was unwieldy because we were replicating our existing monitoring into shell scripts and node-problem-detector configuration. A <a href="https://www.infoq.com/news/2017/10/monitoring-cloudflare-prometheus">2017 blog post</a> describes Cloudflare’s monitoring stack, although some things have changed since then. What hasn’t changed is our extensive usage of <a href="https://prometheus.io">Prometheus</a> and <a href="https://github.com/prometheus/alertmanager">Alertmanager</a>.</p>
 	<p>For the network interface issue and other issues we wanted to address, we already had the necessary exported metrics and alerting to go with them. Here is what our already existing alert looked like<sup>3</sup>:</p>
 	<pre class="language-bash"><code class="language-bash">- alert: CalicoTooManyInterfaces
@@ -154,7 +210,15 @@ data:
     priority: "5"
     notify: chat-sre-core chat-k8s</code></pre>
 	<p>Note that we use a “notify” label to drive the routing logic in Alertmanager. However, that got us asking, could we just route this to a Kubernetes node condition instead?</p>
-	<h2>Introducing Sciuro</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-sciuro">Introducing Sciuro</h2>
+		<a href="https://blog.cloudflare.com/#introducing-sciuro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Hx2xX6FXjjTsCdZZFmn7O/e961a674329ab3494de25ab047136249/image1-6.png" alt="" class="kg-image" width="805" height="253" loading="lazy">
@@ -201,7 +265,14 @@ CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a 
 }</code></pre>
 	<p>One important note is Sciuro added the AlertManager_ prefix to the node condition type to prevent conflicts with other node condition types. For example, DiskPressure, a kubelet managed condition, could also be an alert name. Sciuro will also properly update heartbeat and transition times to reflect when it first saw the alert and its last update. With node conditions synchronized by Sciuro, remediation can take place via one of the existing tools. As mentioned previously we are using a modified version of Kured for now.</p>
 	<p>We’re happy to announce that we’ve open sourced Sciuro, and it can be found on <a href="https://github.com/cloudflare/sciuro">GitHub</a> where you can read the code, find the deployment instructions, or open a Pull Request for changes.</p>
-	<h2>Managing Node Uptime</h2>
+	<div class="flex anchor relative">
+		<h2 id="managing-node-uptime">Managing Node Uptime</h2>
+		<a href="https://blog.cloudflare.com/#managing-node-uptime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we began using automatic node remediation for obvious problems, we’ve expanded its purpose to additionally keep node uptime low. Low node uptime is desirable to further reduce drift on nodes, keep the node initialization process well-oiled, and encourage the best deployment practices on the Kubernetes clusters. To expand on the last point, services that are deployed with best practices and in a high availability fashion should see negligible impact when a single node leaves the cluster. However, services that are not deployed with best practices will most likely have problems especially if they rely on singleton pods. By draining nodes more frequently, it introduces regular chaos that encourages best practices. To enable this with automatic node remediation the following alert was defined:</p>
 	<pre class="language-bash"><code class="language-bash">- alert: WorkerUptimeTooHigh
   expr: |
@@ -224,7 +295,14 @@ CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a 
     priority: "9"
     notify: node-condition-k8s</code></pre>
 	<p>There is a bit of juggling with the kube_node_roles metric in the above to isolate the alert to generic worker nodes, but at a high level it looks at node_boot_time_seconds, a metric from <a href="https://github.com/prometheus/node_exporter">prometheus node_exporter</a>. Again the notify label is configured to send to node conditions which kicks off the automatic node remediation. One further detail is the priority here is set to “9” which is of lower precedence than our other alerts. Note that the message field of the node condition is prefixed with the alert priority in brackets. This allows the remediation process to take priority into account when choosing which node to remediate first, which is important because Kured uses a lock to act on a single node at a time.</p>
-	<h2>Wrapping Up</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrapping-up">Wrapping Up</h2>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the past 30 days, we’ve used the above automatic node remediation process to action 571 nodes. That has saved our humans a considerable amount of time. We’ve also been able to reduce the time to repair for some issues as automatic remediation can act at all times of the day and with a faster response time.</p>
 	<p>As mentioned before, we’re open sourcing Sciuro and its code can be found on <a href="https://github.com/cloudflare/sciuro">GitHub</a>. We’re open to issues, suggestions, and pull requests. We do have some ideas for future improvements. For Sciuro, we may look to reduce latency which is mainly due to polling and potentially add a push model from Altermanager although this isn’t a need we’ve had yet. &nbsp;For the larger node remediation story, we hope to do an overhaul of the remediating component. As mentioned previously, we are currently using a fork of kured, but a future replacement component should include the following:</p>
 	<ul>

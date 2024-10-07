@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>It's no secret that Cloudflare operates at a huge scale. Cloudflare provides security and performance to over 9 million websites all around the world, from small businesses and WordPress blogs to Fortune 500 companies. That means one in every 10 web requests goes through our network.</p>
 	<p>However, hidden behind the scenes, we offer support in using our platform to all our customers - whether they're on our free plan or on our Enterprise offering. This blog post dives into some of the technology that helps make this possible and how we're using it to drive encryption and build a better web.</p>
-	<h3>Why Now?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-now">Why Now?</h3>
+		<a href="https://blog.cloudflare.com/#why-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recently web browser vendors have been working on extending encryption on the internet. Traditionally they would use positive indicators to mark encrypted traffic as secure; when traffic was served securely over HTTPS, a green padlock would indicate in your browser that this was the case. In moving to standardise encryption online, Google Chrome have been leading the charge in marking insecure page loads as "Not Secure". Today, this UI change has been pushed out to all Google Chrome users globally for all websites: any website loaded over HTTP will be marked as insecure.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -10,7 +17,14 @@
 
 	</figure>
 	<p>That's not all though; all resources loaded by a website need to be loaded over HTTPS and such sites need to be configured properly to avoid mixed-content warnings, not to mention correctly configuring secure cryptography at the web server. Cloudflare helped bring widespread adoption of HTTPS to the internet by offering free of charge SSL certificates; in doing so we've become experts at knowing where web developers trip up in configuring HTTPS on their websites. HTTPS is now important for everyone who builds on the web, not just those with an interest in cryptography.</p>
-	<h3>Meet HelperBot</h3>
+	<div class="flex anchor relative">
+		<h3 id="meet-helperbot">Meet HelperBot</h3>
+		<a href="https://blog.cloudflare.com/#meet-helperbot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In recent months, we’ve taken this expertise to help our Cloudflare customers avoid common mistakes. One of things me and my team have been working on building has been intelligent systems which automatically triage support tickets and present relevant debugging information upfront to the agent assigned to the ticket.</p>
 	<p>We use a custom-build Natural Language Processing model to determine the issues related to what the customer is discussing, and then we run technical tests in a Chain-of-Responsibility (with the most relevant to the customer running first) to determine what's going wrong. We then automatically triage the ticket and present this information to the support agent in the ticket.</p>
 	<p>Here's an example of a piece of the information we present upfront:</p>
@@ -31,7 +45,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ai05dz42OOzBvTPyZbKCB/df7cacd1723bda0399cd5a1590e6567e/Screen-Shot-2018-07-20-at-22.42.01.png" alt="New Ticket Form" class="kg-image" width="1494" height="1110" loading="lazy">
 
 	</figure>
-	<h3>Being Proactive About Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="being-proactive-about-security">Being Proactive About Security</h3>
+		<a href="https://blog.cloudflare.com/#being-proactive-about-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To help drive adoption of a more secure internet - and drive down common misconfigurations of SSL - we have started testing emailing customers proactively about Mixed Content errors and Redirect Loops associated with HTTPS web server misconfigurations.</p>
 	<p>By joining forces with our Marketing team, we were able to run an ongoing campaign of testing user behaviour to proactive security advice. Users receive messages similar to the one below.</p>
 	<figure class="kg-card kg-image-card ">
@@ -40,7 +61,15 @@
 
 	</figure>
 	<p>With this capability, we decided to expose the functionality to a wider audience, including those not already using Cloudflare.</p>
-	<h3>SSL Test Tool (Powered by HelperBot-External)</h3>
+	<div class="flex anchor relative">
+		<h3 id="ssl-test-tool-powered-by-helperbot-external">SSL Test Tool (Powered by HelperBot-External)</h3>
+		<a href="https://blog.cloudflare.com/#ssl-test-tool-powered-by-helperbot-external" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 		<a href="https://www.cloudflare.com/lp/ssl-test?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=chrome68">
 			<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z3r2uTJBYPDFo2AXJ2Lla/5bbbd2fdf98c9e02ae8b872279df83ea/Screen-Shot-2018-07-21-at-00.53.26.png" alt="SSL Test Tool" class="kg-image" width="2068" height="824" loading="lazy">
@@ -49,6 +78,13 @@
 	<p>To help website owners make the transition to HTTPS, we've launched <a href="https://www.cloudflare.com/lp/ssl-test?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=chrome68">the SSL Test Tool</a>. We internally codenamed the backend as HelperBot-External, after the internal HelperBot service. We decided to take a subset of the SSL tests we use internally and allow someone to run a basic version of the scan on their own site. This helps users understand what they need to do to move their site to HTTPS by detecting the most common issues. By doing so, we seek to help users who are struggling to get over the line in enabling HTTPS on their sites by providing them some dynamic guidance in a plain-English fashion.</p>
 	<p>The tool runs 12 tests across three key categories of errors: HTTPS Disabled, Client Errors and Cryptography Errors. Unlike other tools, these are tests are based on the questions we see real users ask about their SSL configuration and the tasks they most struggle with. This is a tool designed to support all web developers in enabling HTTPS, not just those with an interest in cryptography. For example; by educating users about mixed content errors, we are able to make the case for them enabling HTTPS Strict Transport Security, thereby improving the security practices they adopt.</p>
 	<p>Further; these tests are available to everyone. We believe it’s important that the entire Internet be safer, not only for our customers and their visitors (although, admittedly, Cloudflare’s SSL and crypto features make it very simple to be HTTPS-ready).</p>
-	<h3>Conclusion: Just the Beginning</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-just-the-beginning">Conclusion: Just the Beginning</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-just-the-beginning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we grow our intelligence capabilities; we do so to provide better performance and security to our customers. We want build a better internet and make our users more successful on our platform. Whilst there's still plenty of ground left to cover in building out our intelligent capability for supporting customers, we're developing rapidly and focussed on using those skills to improve things our customers care about.</p>
 </div>

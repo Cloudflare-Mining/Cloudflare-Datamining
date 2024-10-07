@@ -8,14 +8,28 @@
 	<p>Despite the fact that everyone knows it happens, no other large operation has previously looked at the use of connection tampering at scale and across jurisdictions. We think that creates a notable gap in understanding what is happening in the Internet ecosystem, and that shedding light on these practices is important for transparency and the long-term health of the Internet. So today, we’re proud to share a view of global connection tampering practices.</p>
 	<p>The full technical details were recently peer-reviewed and published in “<a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>Global, Passive Detection of Connection Tampering</u></a>” at ACM SIGCOMM, with its <a href="https://youtu.be/RD73IgzQMFo?si=OWvNnlNNLalbhygV&amp;t=2984"><u>public presentation</u></a>. We’re also announcing a new <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard</u></a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-connection-tampering-summary"><u>API</u></a> on Cloudflare Radar that shows a near real-time view of specific connection timeout and reset events – the two mechanisms dominant in tampering experienced by users<b> </b>connecting to Cloudflare’s network globally.</p>
 	<p>To better understand our perspective, it helps to understand the nature of connection tampering and reasons we’re talking about it.</p>
-	<h2>Global insights for a global audience</h2>
+	<div class="flex anchor relative">
+		<h2 id="global-insights-for-a-global-audience">Global insights for a global audience</h2>
+		<a href="https://blog.cloudflare.com/#global-insights-for-a-global-audience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Evidence of connection tampering is visible in networks all around the world. We were initially shocked that, globally, about 20% of all connections to Cloudflare close unexpectedly before any useful data exchange occurs — consistent with connection tampering. Here is a snapshot of these anomalous connections seen by Cloudflare that, as of today, <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>we’re sharing on Radar</u></a>.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1nPz5Ulu2YS7eV6Hpmniwg/ddc879a6068d720576f5431dc9455606/2544-2.png" alt="2544-2" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><i><sub>via </sub></i><a href="https://radar.cloudflare.com/security-and-attacks?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><i><sub>Cloudflare Radar</sub></i></a></p>
 	<p>It’s not all tampering, but some of it clearly is, as we describe in more detail below. The challenge is filtering through the noise to determine which anomalous connections can confidently be attributed to tampering.</p>
-	<h2>Macro-level analysis and validation</h2>
+	<div class="flex anchor relative">
+		<h2 id="macro-level-analysis-and-validation">Macro-level analysis and validation</h2>
+		<a href="https://blog.cloudflare.com/#macro-level-analysis-and-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>our work</u></a> we identified 19 patterns of anomalous connections as being candidate signatures for connection tampering. From those, we found that 14 had been previously reported by active “on the ground” measurement efforts, which presented an opportunity for validation at macro-level: If we observe our tampering signatures from Cloudflare’s network in the same places others observe them from the ground, we could have greater confidence that the signatures capture true cases of connection tampering when observed elsewhere, where there has been no prior reporting. To mitigate the risk of confirmation bias from looking where tampering is known to exist, we decided to look everywhere at the same time.</p>
 	<p>Taking that approach, the figure below, taken from our peer-review <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>study</u></a>, is a visual side-by-side comparison of each of the 19 signatures. The data is taken from a two-week interval starting January 26, 2023. Within each signature column is the proportion of matching connections broken down by the country where the connection originated. For example, the column third from the right labeled with ⟨PSH → RST;RST<sub>0</sub>⟩ indicates that we almost exclusively observed that signature on connections from China. Overall, what we find is a mirror of known cases from public and prior reports, which is an indication that our methodology works.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,7 +48,14 @@
 	<p><a href="https://research.cloudflare.com/publications/SundaraRaman2023"><sub><i><u>Figure 4</u></i></sub></a><sub><i>: Signature distribution per country: The percentage of connections originating from select countries (and globally) that match a particular signature, or are not tampered with.</i></sub></p>
 	<p>From this perspective we again observe patterns that match prior studies. We focus first on rates above the global average, and ignore the noisiest signature ⟨SYN → ∅⟩ in medium-gray; there are simply too many other explanations for a signature match at this earliest possible stage. Among all connections from Turkmenistan (TM), Russia (RU), Iran (IR), and China (CN), roughly 80%, 30%, 40%, and 30%, respectively, of those connections match a tampering signature. The data also reveals high signature match rates where no prior reports exist. For example, connections from Peru (PE) and Mexico (MX), match roughly 50% and 25%, respectively; <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>analysis of individual networks</u></a> in these countries suggests a likely explanation is zero-rating in mobile and cellular networks, where an ISP allows access to certain resources (but not others) at no cost. If we look below the global average, Great Britain (GB), the United States (US), and Germany (DE), each match a signature on about 10% of connections.</p>
 	<p>The data makes clear that connection tampering is widespread, and close to many users, if not most. In many ways, it’s closer than most know. To explain why, we explain connection tampering with a very familiar communication tool, the telephone.</p>
-	<h2>Explaining tampering with telephone calls</h2>
+	<div class="flex anchor relative">
+		<h2 id="explaining-tampering-with-telephone-calls">Explaining tampering with telephone calls</h2>
+		<a href="https://blog.cloudflare.com/#explaining-tampering-with-telephone-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Connection tampering is a way for a third party to block access to particular content. However, it’s not enough for the third party to know the <i>type</i> of content it wants to block. The third party can only block an identity by name.&nbsp;</p>
 	<p>Ultimately, connection tampering is possible only by accident – an unintended side effect of protocol design. On the Internet, the most common identity is the domain name. In a communication on the Internet, the domain name is most often transmitted in the “<a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni"><u>server name indication (SNI)</u></a>” field in TLS – exposed in cleartext for all to see.</p>
 	<p>To understand why this matters, it helps to understand what connection tampering looks like in human-to-human communications without the Internet. The Internet itself looks and operates much like the postal system, which relies only on addresses and never on names. However, the way most people use the Internet is much more like the “<a href="https://en.wikipedia.org/wiki/Plain_old_telephone_service"><u>plain old telephone system</u></a>,” which <i>requires</i> names to succeed.</p>
@@ -50,7 +71,14 @@
 	<p>Similarly, on the Internet, the only way for a third party to know the intended recipient of a connection is to “look inside” of packets as they are transmitted. Where a telephone company would have to listen for a name, a third party on the Internet waits to see something it does not like, most often a forbidden name. Recall from above the unintended side-effect of the protocol: the name is visible in the SNI, which is required to help encrypt the data communication. When that happens, the third party causes one or both devices to close the connection by either dropping messages or injecting specially-crafted messages that cause the communicating parties to abort the connection.</p>
 	<p>The mechanisms to trigger tampering begin with <a href="https://www.cloudflare.com/learning/security/what-is-next-generation-firewall-ngfw"><u>deep packet inspection (DPI)</u></a>, which means looking into the data portions that lie beyond the address and other metadata belonging to the connection. It’s safe to say that this functionality does not come for free; whether it’s an ISP’s router or a parental proxy, DPI is an expensive operation that gets more expensive at large scale or high speed.&nbsp;</p>
 	<p>One last point worth mentioning is that weaknesses in telephone tampering similarly appear in connection tampering. For example, the sound of Jean and Gene are indistinguishable to any ear, despite being different names. Similarly, tampering with connections to Twitter’s short-form name “t.co” would also affect “microsoft.com” – and <a href="https://en.wikipedia.org/wiki/Internet_censorship_in_Russia#Deep_packet_inspection"><u>has</u></a>.</p>
-	<h2>A live view of tampering during Mahsa Amini protests</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-live-view-of-tampering-during-mahsa-amini-protests">A live view of tampering during Mahsa Amini protests</h2>
+		<a href="https://blog.cloudflare.com/#a-live-view-of-tampering-during-mahsa-amini-protests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we delve deeply into the technical, there is one more motivation that is personal to many at Cloudflare. Transparency is important and the reason we started this work, but it was after seeing the data <i>during</i> the Mahsa Amini protests in Iran in 2022 that we committed internally to share the data on Radar.&nbsp;</p>
 	<p>The figure below is for connections from Iran during 17 days overlapping the protests. The plot-lines track individual signals of anomalous connections, including signatures of <a href="https://blog.cloudflare.com/passive-detection-of-connection-tampering"><u>different types</u></a> of connection tampering. This data pre-dates the Radar service, so we have elected to share this representation from the <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>peer-reviewed paper</u></a>. It was also the first visual example of the value of the data if it could be shared via Radar.&nbsp;
 	</p>
@@ -66,11 +94,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qhesraWkFdNPbWgx2x0xX/e980324e5edd412d44e1bd83afae943b/2544-7.png" alt="2544-7" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><i><sub>via </sub></i><a href="https://radar.cloudflare.com/security-and-attacks/ir?dateStart=2023-08-26&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><i><sub>Cloudflare Radar</sub></i></a></p>
-	<h2>The importance of an open network measurement community</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-importance-of-an-open-network-measurement-community">The importance of an open network measurement community</h2>
+		<a href="https://blog.cloudflare.com/#the-importance-of-an-open-network-measurement-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a testament to the importance of open measurement and research communities, this work very literally “<a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants">builds on the shoulders of giants</a>.” It was produced in collaboration with researchers at the <a href="https://www.cs.umd.edu">University of Maryland</a>, <a href="https://www.epfl.ch">École Polytechnique Fédérale de Lausanne</a>, and the <a href="https://cse.engin.umich.edu">University of Michigan</a>, but does not exist in isolation. There have been extensive efforts to measure connection tampering, most of which comes from the censorship measurement community. The bulk of that work consists of <i>active</i> measurements, in which researchers craft and transmit probes in or along networks and regions to identify blocking behavior. Unsurprisingly, active measurement has both strengths and weaknesses, as described in <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>Section 2</u></a> in the paper).&nbsp;</p>
 	<p>The counterpart to active measurement, and the focus of our project, is <i>passive</i> measurement, which takes an “observe and do nothing” approach. Passive measurement comes with its own strengths and weaknesses but, crucially, it relies on having a good vantage point such as a large network operator. Each of active and passive measurements are most effective when working in conjunction, in this case helping to paint a more complete picture of the impact of connection tampering on users.</p>
 	<p>Most importantly, when embarking upon any type of measurement, great care must be taken to understand and <a href="https://cacm.acm.org/magazines/2016/10/207765-ethical-considerations-in-network-measurement-papers/fulltext"><u>evaluate the safety of the measurement</u></a> since the risk imposed on people and networks are often indirect, or hidden from view.</p>
-	<h2>Limitations of our data</h2>
+	<div class="flex anchor relative">
+		<h2 id="limitations-of-our-data">Limitations of our data</h2>
+		<a href="https://blog.cloudflare.com/#limitations-of-our-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have no doubt about the importance of being transparent with connection tampering, but we also need to be explicit about the limits on the insights that can be gleaned from the data. As passive observers of connections to the Cloudflare network – and only the Cloudflare network – we are only able to see or infer the following:</p>
 	<ol>
 		<li>
@@ -83,10 +125,24 @@
 			<p><b>Who and what </b><b><i>is</i></b><b> affected, but not who or what </b><b><i>could</i></b><b> be affected.</b> As passive observers, there are limits on the kinds of inferences we can make. For example, observable tampering on 1000 out of 1001 connections to <code>example.com</code> suggests that tampering is likely on the next connection attempt. However, that says nothing about connections to <code>another-example.com</code>.&nbsp;</p>
 		</li>
 	</ol>
-	<h2>Data, data, data: Extracting signals from the noise</h2>
+	<div class="flex anchor relative">
+		<h2 id="data-data-data-extracting-signals-from-the-noise">Data, data, data: Extracting signals from the noise</h2>
+		<a href="https://blog.cloudflare.com/#data-data-data-extracting-signals-from-the-noise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you just want to get and use the data on Radar, see our “<a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>how to</u></a>” guide. Otherwise, let’s understand the data itself.</p>
 	<p>The focus of this work is <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip"><u>TCP</u></a>. In our data there are two mechanisms available to a third-party to force a connection to close: <a href="https://en.wikipedia.org/wiki/Packet_drop_attack"><u>dropping packets</u></a> to induce timeouts or <a href="https://en.wikipedia.org/wiki/TCP_reset_attack#TCP_resets"><u>injecting forged TCP RST packets</u></a>, each with various deployment choices. Individual tampering signatures may be reflections of those choices. For comparison, a graceful TCP close is initiated with a FIN packet.&nbsp;</p>
-	<h3>Connection tampering signatures</h3>
+	<div class="flex anchor relative">
+		<h3 id="connection-tampering-signatures">Connection tampering signatures</h3>
+		<a href="https://blog.cloudflare.com/#connection-tampering-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our detection mechanism evaluates sets of packets in a connection against a set of <i>signatures</i> for connection tampering. The signatures are hand-crafted from signatures identified in prior work, and by analyzing samples of connections to Cloudflare’s network that we classify as <i>anomalous </i>– connections that close early, and ungracefully by way of a RST packet or timeout within the first 10 packets from the client. We analyzed the samples and found that 19 patterns accounted for 86.9% of all possibly tampered connections in the samples, shown in the table below.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5LssSxT9SkDpXzMXtPmtZ1/d84fc29e5e5972d5837b8affeb72a03a/2544-8.png" alt="2544-8" class="kg-image" width="1888" height="844" loading="lazy">
@@ -115,7 +171,14 @@
 			<p><b>(d) Later-in-flow (after multiple data packets)</b>: Tampering at later stages in the connection (not immediately after the first data packet, but still within the first 10 packets). The prevalence of encrypted data in TLS makes this the least likely stage for tampering to occur. The likely triggers are keywords appearing in cleartext later in (HTTP) connections, or by the likes of enterprise proxies and parental protection software that has visibility into encrypted traffic and can reset connections when certain keywords are encountered.&nbsp;</p>
 		</li>
 	</ul>
-	<h3>Accounting for alternative explanations</h3>
+	<div class="flex anchor relative">
+		<h3 id="accounting-for-alternative-explanations">Accounting for alternative explanations</h3>
+		<a href="https://blog.cloudflare.com/#accounting-for-alternative-explanations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How can we be confident that the signatures above detect middlebox tampering, and not just atypical client behavior? One of the challenges of passive measurement is that we do not have full visibility into the clients connecting to our network, so absolute positives are hard if not impossible. Instead, we look for strong positive evidence of tampering, that must first begin by identifying <b>false positives</b>.&nbsp;</p>
 	<p>We are aware of the following sources of false positives that can be hard to disambiguate from true sources of tampering. <i>All but the last occur in the first two stages</i> of the connection, before data packets are received.&nbsp;</p>
 	<ul>
@@ -133,7 +196,14 @@
 		</li>
 	</ul>
 	<p>How can we separate legitimate client-initiated false positives from third-party tampering? We seek an evidence-based approach to distinguish tampering signatures from other signals within the dataset. For this we turn to individual bits in the packet headers.</p>
-	<h3>Signature validation – letting the data speak</h3>
+	<div class="flex anchor relative">
+		<h3 id="signature-validation-letting-the-data-speak">Signature validation – letting the data speak</h3>
+		<a href="https://blog.cloudflare.com/#signature-validation-letting-the-data-speak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Signature matches in isolation are insufficient to make good determinations. Alongside, we can find further supporting evidence of their accuracy by examining connections in aggregate – if the cause is tampering, and tampering is targeted, then there must be other patterns or markers in common. For example, we expect browser behavior to appear worldwide; however, as we showed above, signatures that match on connections in only some places or some time intervals stick out.&nbsp;</p>
 	<p>Similarly, we expect certain characteristics in contiguous packets within a connection to also stick out, and indeed they do, namely in the <a href="https://datatracker.ietf.org/doc/html/rfc6864"><u>IP-ID</u></a> and <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl"><u>TTL</u></a> fields in the IP header.</p>
 	<figure class="kg-card kg-image-card">
@@ -143,10 +213,24 @@
 	<p><b>The Time-to-Live (TTL) field </b>offers another clue for detecting injected packets. Here, too, most client implementations use the same <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl"><u>TTL</u></a> for each packet sent on a connection, usually set initially to either 64 or 128 and decremented by every router along the packet’s route. If a RST packet does not have the same TTL as other packets in a connection, it’s a strong signal that it was injected. Looking at the figure above, marked (b), we can see marked differences in TTLs, indicating the presence of a third party.&nbsp;</p>
 	<p>We strongly encourage readers to read the <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>underlying details</u></a> of how and why these make sense.&nbsp; Connections with high maximum IP-ID and TTL differences give positive evidence for traffic tampering, but the <i>absence</i> of these signals does not necessarily mean that tampering did not occur, as some middleboxes are known to <a href="https://censoredplanet.org/assets/censorship-devices.pdf"><u>copy IP header values</u></a> including the IP-ID and TTL from the original packets in the connection. Our interest is in responsibly ensuring our dataset has indicative value.</p>
 	<p><b>There is one last caveat: </b>While our tampering signatures capture many forms of tampering, there is still potential for<b> false negatives</b> for connections that <i>were</i> tampered with but escaped our detection. Some examples are connections terminated after the first 10 packets (since we don’t sample that far), FIN injection (a less common alternative to RST injection), or connections where all packets are dropped before reaching Cloudflare’s servers. Our signatures also do not apply to <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp"><u>UDP-based protocols</u></a> such as QUIC. We hope to expand the scope of our connection tampering signatures in the future.</p>
-	<h2>Case studies</h2>
+	<div class="flex anchor relative">
+		<h2 id="case-studies">Case studies</h2>
+		<a href="https://blog.cloudflare.com/#case-studies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get a sense of how this looks on the Cloudflare network, below we provide further examples of TCP connection anomalies that are consistent with <a href="https://ooni.org/reports"><u>OONI reports</u></a> of connection tampering.</p>
 	<p>For additional insights from this specific study, see the full technical <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>paper</u></a> and <a href="https://www.youtube.com/watch?v=DyDv3MHICto&amp;list=PLU4C2_kotFP2JAkoL6pcgbb52f6GIJJd7&amp;ab_channel=ACMSIGCOMM"><u>presentation</u></a>. For other regions and networks not listed below, please see the <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>new data on Radar</u></a>.</p>
-	<h3>Pakistan</h3>
+	<div class="flex anchor relative">
+		<h3 id="pakistan">Pakistan</h3>
+		<a href="https://blog.cloudflare.com/#pakistan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Reporting from <a href="https://tribune.com.pk/story/2491142/pakistan-should-be-transparent-about-internet-disruptions-surveillance-amnesty-international"><u>inside</u></a> Pakistan suggests changes in users’ Internet experience throughout August 2024. Taking a look at a two-week interval in early August, there is a significant shift in Post-ACK connection anomalies starting on August 9, 2024.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/38SPF52mjzVCDvEnO63hhu/40013024b9d46b083147911cebe04017/2544-12.png" alt="2544-12" class="kg-image" width="1999" height="1125" loading="lazy">
@@ -161,7 +245,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aFE80hJQ5f6uJprUYFmEt/7cbef59280afe60dff88209e82aaab82/2544-14.png" alt="2544-14" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS56167?dateStart=2024-08-03&amp;dateEnd=2024-08-17#http-traffic"><sub><i>Cloudflare Radar</i></sub></a></p>
-	<h3>Tanzania</h3>
+	<div class="flex anchor relative">
+		<h3 id="tanzania">Tanzania</h3>
+		<a href="https://blog.cloudflare.com/#tanzania" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A <a href="https://ooni.org/post/2024-tanzania-lgbtiq-censorship-and-other-targeted-blocks"><u>OONI report</u></a> from April 2024 discusses targeted connection tampering in <a href="https://radar.cloudflare.com/tz"><u>Tanzania</u></a>. The report states that this blocking is observed on the client side as connection timeouts after the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>Client Hello</u></a> message during the <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake"><u>TLS handshake</u></a>, indicating that a middlebox is dropping the packet containing the Client Hello message. On the server side, connections tampered with in this way would appear as Post-ACK timeouts as the PSH packet containing the Client Hello message never reaches the server.</p>
 	<p>Looking at the Post-ACK data represented in the light-blue portion, below, we find matching evidence: close to 30% of all new TCP connections from Tanzania appear as Post-ACK anomalies. Breaking this down further (not shown in the plots below), approximately one third is due to timeouts, consistent with the OONI report above. The remainder is due to RSTs.</p>
 	<figure class="kg-card kg-image-card">
@@ -169,7 +260,14 @@
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/tz?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p></p>
-	<h3>Ethiopia</h3>
+	<div class="flex anchor relative">
+		<h3 id="ethiopia">Ethiopia</h3>
+		<a href="https://blog.cloudflare.com/#ethiopia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://radar.cloudflare.com/et"><u>Ethiopia</u></a> is another location with <a href="https://ooni.org/post/2023-ethiopia-blocks-social-media"><u>previously-reported</u></a> connection tampering. Consistent with this, we see elevated rates of Post-PSH TCP anomalies across networks in Ethiopia. Our internal data shows that the majority of Post-PSH anomalies in this case are due to RSTs, although timeouts are also prevalent.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/YTj7Kypiu0nSjmvZ00Jjo/0ee5074f71c27c6d117c28dc082e5de5/2544-16.png" alt="2544-16" class="kg-image" width="1999" height="1125" loading="lazy">
@@ -184,7 +282,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5fyguCauAPqdXYXkCvhjAl/34ed3b562667051b5ec74df9076c7b58/2544-18.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 	</figure>
 	<p><sub>via </sub><a href="https://radar.cloudflare.com/security-and-attacks/AS328988?dateStart=2024-07-24&amp;dateEnd=2024-08-20#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
-	<h2>Reflecting on the present to promote a resilient future</h2>
+	<div class="flex anchor relative">
+		<h2 id="reflecting-on-the-present-to-promote-a-resilient-future">Reflecting on the present to promote a resilient future</h2>
+		<a href="https://blog.cloudflare.com/#reflecting-on-the-present-to-promote-a-resilient-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Connection tampering is a blocking mechanism that is deployed in various forms throughout the Internet. Although we have developed ways to help detect and understand it globally, the experience is just as individual as an interrupted phone call.</p>
 	<p>Connection tampering is also made possible <i>by accident</i>. It works because domain names are visible in cleartext. But it may not always be this way. For example, <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni"><u>Encrypted Client Hello (ECH)</u></a> is an emerging building block that encrypts the SNI field.&nbsp;</p>
 	<p>We’ll continue to look for ways to talk about network activity and disruption, all to foster wider conversations. Check out the newest additions about connection anomalies on <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>Cloudflare Radar</u></a> and the <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>corresponding blog post</u></a>, as well as the <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>peer-reviewed technical paper</u></a> and its <a href="https://youtu.be/RD73IgzQMFo?si=OWvNnlNNLalbhygV&amp;t=2984"><u>15-minute summary talk</u></a>.</p>

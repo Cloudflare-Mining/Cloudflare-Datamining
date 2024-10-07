@@ -8,7 +8,14 @@
 	<p>Last year, we <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">announced the Browser Rendering API</a> – letting users running Puppeteer, a browser automation library, directly in Workers. Puppeteer is one of the most popular libraries used to interact with a headless browser instance to accomplish tasks like taking screenshots, generating PDFs, crawling web pages, and testing <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security">web applications</a>. We’ve heard from developers that configuring and maintaining their own serverless browser automation systems can be quite painful.</p>
 	<p>The <a href="https://developers.cloudflare.com/browser-rendering">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers!</p>
 	<p>We’ve seen so much interest from the developer community since launching last year. While the Browser Rendering API is still in beta (sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2">waitlist</a> to get access), we wanted to share a way to get more out of our <a href="https://developers.cloudflare.com/browser-rendering/platform/limits">current limits</a> by using the Browser Rendering API with <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>. We’ll also be sharing pricing for the Rendering API, so you can build knowing exactly what you’ll pay for.</p>
-	<h3>Building a responsive web design testing tool with the Browser Rendering API</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-responsive-web-design-testing-tool-with-the-browser-rendering-api">Building a responsive web design testing tool with the Browser Rendering API</h3>
+		<a href="https://blog.cloudflare.com/#building-a-responsive-web-design-testing-tool-with-the-browser-rendering-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a designer or frontend developer, you want to make sure that content is well-designed for visitors browsing on different screen sizes. With the number of possible devices that users are browsing on are growing, it becomes difficult to test all the possibilities manually. While there are many testing tools on the market, we want to show how easy it is to create your own Chromium based tool with the Workers Browser Rendering API and Durable Objects.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -137,7 +144,14 @@ export class Browser {
 
   }</code></pre>
 	<p>That’s it! With less than a hundred lines of code, you can fully customize a powerful tool to automate responsive web design testing. You can even incorporate it into your CI pipeline to automatically test different window sizes with each build and verify the result is as expected by using an automated library like <a href="https://www.npmjs.com/package/pixelmatch">pixelmatch</a>.</p>
-	<h3>How much will this cost?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-much-will-this-cost">How much will this cost?</h3>
+		<a href="https://blog.cloudflare.com/#how-much-will-this-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve spoken to many customers deploying a Puppeteer service on their own infrastructure, on <a href="https://www.cloudflare.com/learning/cloud/what-is-a-public-cloud">public cloud containers</a> or <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas">functions</a> or using managed services. The common theme that we’ve heard is that these services are costly – costly to maintain and expensive to run.</p>
 	<p>While you won’t be billed for the Browser Rendering API yet, we want to be transparent with you about costs you start building. We know it’s important to understand the pricing structure so that you don’t get a surprise bill and so that you can design your application efficiently.</p>
 	<figure class="kg-card kg-image-card ">
@@ -156,6 +170,13 @@ export class Browser {
 	</ol>
 	<p>Using Durable Objects to persist browser sessions improves performance by eliminating the time that it takes to spin up a new browser session. Since it re-uses sessions, it cuts down on the number of concurrent sessions needed. We highly encourage this model of session re-use if you expect to see consistent traffic for applications that you build on the Browser Rendering API.</p>
 	<p>If you have feedback about this pricing, we’re all ears. Feel free to reach out through <a href="https://discord.gg/8Gs9T6jN">Discord</a> (channel name: browser-rendering-api-beta) and share your thoughts.</p>
-	<h3>Get Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get Started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2">waitlist</a> to get access to the Workers Browser Rendering API. We’re so excited to see what you build! Share your creations with us on Twitter/X <a href="https://www.twitter.com/cloudflaredev">@CloudflareDev</a> or on our Discord community.</p>
 </div>

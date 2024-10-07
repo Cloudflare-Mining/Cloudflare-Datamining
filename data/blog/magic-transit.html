@@ -24,10 +24,24 @@
 	<p>Each of these boxes costs time and money to maintain, not to mention the skilled, expensive people required to properly run them. Each additional link in the chain makes a network harder to manage.</p>
 	<p>This all sounded familiar to us. We had an aha! moment: we had the same issues managing our datacenter networks that power all of our products, and we had spent significant time and effort building solutions to those problems. Now, nine years later, we had a robust set of tools we could turn into products for our own customers.</p>
 	<p>Magic Transit aims to bring the traditional datacenter hardware model into the cloud, packaging transit with all the network “hardware” you might need to keep your network fast, reliable, and secure. Once deployed, Magic Transit allows seamless provisioning of virtualized network functions, including routing, DDoS mitigation, firewalling, load balancing, and traffic acceleration services.</p>
-	<h2>Magic Transit is your network’s on-ramp to the Internet</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-is-your-networks-on-ramp-to-the-internet">Magic Transit is your network’s on-ramp to the Internet</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-is-your-networks-on-ramp-to-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Magic Transit delivers its connectivity, security, and performance benefits by serving as the “front door” to your IP network. This means it accepts IP packets destined for your network, processes them, and then outputs them to your origin infrastructure.</p>
 	<p>Connecting to the Internet via Cloudflare offers numerous benefits. Starting with the most basic, Cloudflare is one of the most <a href="https://bgp.he.net/AS13335">extensively connected networks</a> on the Internet. We work with carriers, Internet exchanges, and peering partners around the world to ensure that a bit placed on our network will reach its destination quickly and reliably, no matter the destination.</p>
-	<h3>An example deployment: Acme Corp</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-example-deployment-acme-corp">An example deployment: Acme Corp</h3>
+		<a href="https://blog.cloudflare.com/#an-example-deployment-acme-corp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s walk through how a customer might deploy Magic Transit. Customer Acme Corp. owns the IP prefix 203.0.113.0/24, which they use to address a rack of hardware they run in their own physical datacenter. Acme currently announces routes to the Internet from their customer-premise equipment (CPE, aka a router at the perimeter of their datacenter), telling the world 203.0.113.0/24 is reachable from their autonomous system number, AS64512. Acme has DDoS mitigation and firewall hardware appliances on-premise.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -59,7 +73,14 @@
 		</li>
 	</ol>
 	<p>Let’s dive deeper on how the DDoS mitigation included in Magic Transit works.</p>
-	<h2>Magic Transit protects networks from DDoS attack</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-protects-networks-from-ddos-attack">Magic Transit protects networks from DDoS attack</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-protects-networks-from-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers deploying Cloudflare Magic Transit instantly get access to the same IP-layer DDoS protection system that has protected the Cloudflare Network for the past 9 years. This is the same mitigation system that stopped a 942Gbps attack dead in its tracks, in seconds. This is the same mitigation system that <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">knew how to stop memcached amplification attacks</a> days <i>before</i> a 1.3Tbps attack took down Github, which did not have Cloudflare watching its back. This is the same mitigation we trust every day to protect Cloudflare, and now it protects your network.</p>
 	<p>Cloudflare has historically protected Layer 7 HTTP and HTTPS applications from attacks at all layers of the OSI Layer model. The <a href="https://www.cloudflare.com/ddos">DDoS protection</a> our customers have come to know and love relies on a blend of techniques, but can be broken into a few complementary defenses:</p>
 	<ol>
@@ -117,14 +138,28 @@
 		</li>
 	</ul>
 	<p>Gatebot is designed to protect Cloudflare infrastructure from attack. And today, as part of Magic Transit, customers operating their own IP networks and infrastructure can rely on Gatebot to protect their own network.</p>
-	<h2>Magic Transit puts your network hardware in the cloud</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-puts-your-network-hardware-in-the-cloud">Magic Transit puts your network hardware in the cloud</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-puts-your-network-hardware-in-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve covered how Cloudflare Magic Transit connects your network to the Internet, and how it protects you from DDoS attack. If you were running your network the old-fashioned way, this is where you’d stop to buy firewall hardware, and maybe another box to do load balancing.</p>
 	<p>With Magic Transit, you don’t need those boxes. We have a long track record of delivering common network functions (firewalls, load balancers, etc.) as services. Up until this point, customers deploying our services have relied on DNS to bring traffic to our edge, after which our Layer 3 (IP), Layer 4 (TCP &amp; UDP), and Layer 7 (HTTP, HTTPS, and DNS) stacks take over and deliver performance and security to our customers.</p>
 	<p>Magic Transit is designed to handle your entire network, but does not enforce a one-size-fits-all approach to what services get applied to which portion of your traffic. To revisit Acme, our example customer from above, they have brought 203.0.113.0/24 to the Cloudflare Network. This represents 256 IPv4 addresses, some of which (eg 203.0.113.8/30) might front load balancers and HTTP servers, others mail servers, and others still custom UDP-based applications.</p>
 	<p>Each of these sub-ranges may have different security and traffic management requirements. Magic Transit allows you to configure specific IP addresses with their own suite of services, or apply the same configuration to large portions (or all) of your block.</p>
 	<p>Taking the above example, Acme may wish that the 203.0.113.8/30 block containing HTTP services fronted by a traditional hardware load balancer instead deploy the Cloudflare Load Balancer, and also wants HTTP traffic analyzed with Cloudflare’s <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> and content cached by our CDN. With Magic Transit, deploying these network functions is straight-forward — a few clicks in our dashboard or API calls will have your traffic handled at a higher layer of network abstraction, with all the attendant goodies applying application level load balancing, firewall, and caching logic bring.</p>
 	<p>This is just one example of a deployment customers might pursue. We’ve worked with several who just want pure IP passthrough, with DDoS mitigation applied to specific IP addresses. Want that? We got you!</p>
-	<h2>Magic Transit runs on the entire Cloudflare Global Network. Or, no more scrubs!</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-runs-on-the-entire-cloudflare-global-network-or-no-more-scrubs">Magic Transit runs on the entire Cloudflare Global Network. Or, no more scrubs!</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-runs-on-the-entire-cloudflare-global-network-or-no-more-scrubs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you connect your network to Cloudflare Magic Transit, you get access to the entire Cloudflare network. This means all of our network locations become <i>your</i> network locations. Our network capacity becomes <i>your</i> network capacity, at your disposal to power your experiences, deliver your content, and mitigate attacks on your infrastructure.</p>
 	<p>How expansive is the Cloudflare Network? We’re in 193 cities worldwide, with more than 30Tbps of network capacity spread across them. Cloudflare operates within 100 milliseconds of 98% of the Internet-connected population in the developed world, and 93% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -136,10 +171,24 @@
 	<p>Just as we built our own products in house, we also built our network in house. Every product runs in every datacenter, meaning our entire network delivers all of our services. This might not have been the case if we had assembled our product portfolio piecemeal through acquisition, or not had completeness of vision when we set out to build our current suite of services.</p>
 	<p>The end result for customers of Magic Transit: a network presence around the globe as soon you come on board. Full access to a diverse set of services worldwide. All delivered with latency and performance in mind.</p>
 	<p>We'll be sharing a lot more technical detail on how we deliver Magic Transit in the coming weeks and months.</p>
-	<h2>Magic Transit lowers total cost of ownership</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-lowers-total-cost-of-ownership">Magic Transit lowers total cost of ownership</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-lowers-total-cost-of-ownership" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditional network services don’t come cheap; they require high capital outlays up front, investment in staff to operate, and ongoing maintenance contracts to stay functional. Just as our product aims to be disruptive technically, we want to disrupt traditional network cost-structures as well.</p>
 	<p>Magic Transit is delivered and billed as a service. You pay for what you use, and can add services at any time. Your team will thank you for its ease of management; your management will thank you for its ease of accounting. That sounds pretty good to us!</p>
-	<h2>Magic Transit is available today</h2>
+	<div class="flex anchor relative">
+		<h2 id="magic-transit-is-available-today">Magic Transit is available today</h2>
+		<a href="https://blog.cloudflare.com/#magic-transit-is-available-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve worked hard over the past nine years to get our network, management tools, and network functions as a service into the state they’re in today. We’re excited to get the tools we use every day in customers’ hands.</p>
 	<p>So that brings us to naming. When we showed this to customers the most common word they used was ‘whoa.’ When we pressed what they meant by that they almost all said: ‘It’s so much better than any solution we’ve seen before. It’s, like, magic!’ So it seems only natural, if a bit cheesy, that we call this product what it is: Magic Transit.</p>
 	<p>We think this is all pretty magical, and think you will too. <a href="https://www.cloudflare.com/plans/enterprise/contact">Contact our Enterprise Sales Team</a> today.</p>

@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>In <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">a recent article</a> I described the basic concepts behind the use of Berkeley Packet Filter (aka BSD Packet filter or BPF) bytecode for high performance packet filtering, and the <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c">xt_bpf</a> iptables module. In this post I'll explain how we use BPF and xt_bpf as one tool to deal with large scale DDoS attacks.</p>
 	<p>And, today, CloudFlare is open sourcing the tools we've created to generate and deploy BPF rules.</p>
-	<h3>The Code</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-code">The Code</h3>
+		<a href="https://blog.cloudflare.com/#the-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our BPF Tools are now available on the CloudFlare Github: <a href="https://github.com/cloudflare/bpftools">https://github.com/cloudflare/bpftools</a></p>
 	<p>For installation instructions review the <a href="https://github.com/cloudflare/bpftools#bpf-tools">README</a>, but typing <code>make</code> should do most of the work:</p>
 	<p>$ git clone <a href="https://github.com/cloudflare/bpftools.git">https://github.com/cloudflare/bpftools.git</a>
@@ -29,7 +36,14 @@
 	<p>We rely on the BPF assembler from the Linux Kernel <a href="https://github.com/torvalds/linux/tree/master/tools/net"><code>/tools/net</code></a> directory. To make your life easier we ship a copy in <code>linux_tools</code>.</p>
 	<p>Here at CloudFlare we run a very large number of <a href="https://en.wikipedia.org/wiki/Domain_Name_System#Authoritative_name_server">authoritative DNS servers</a> and we constantly deal with malicious actors flooding our servers with, amongst other things, <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS requests</a>. So no surprise that our current BPF Tools focus on DNS traffic, although they are easily adaptable to any other stateless floods.</p>
 	<p>The BPF Tools should be usable and in working order, but don't expect too much. These small utilities were written to be easily hackable and they will be in a state of constant flux: this <i>is</i> our toolkit after all. Please expect some degree of code instability.</p>
-	<h3>It all starts with a pcap</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-all-starts-with-a-pcap">It all starts with a pcap</h3>
+		<a href="https://blog.cloudflare.com/#it-all-starts-with-a-pcap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here's a concrete example of using these tools to identify and filter a DNS attack. This is based on a real world attack but the actual details have been changed for anonymization.</p>
 	<p>To start you need a <a href="http://www.tcpdump.org/manpages/pcap-savefile.5.txt">pcap savefile</a> containing a traffic dump. For example to capture a pcap of DNS requests we run:</p>
 	<p>$ sudo tcpdump -pni eth0 -s0 -w example.pcap -vv -c 10000 \
@@ -52,7 +66,14 @@
 		.......iivliey.www.example.uk.......)........</p>
 	<p>Taking a look at the traffic, it looks like we captured a flood of requests to <code>&lt;random string&gt;.www.example.uk</code>! We see this kind of flood all the time. I believe the goal of this is to keep our DNS server busy preparing NXDOMAIN responses and not have enough CPU to serve legitimate traffic.</p>
 	<p>Let's take a closer look at these packets.</p>
-	<h3>Parsing the DNS request</h3>
+	<div class="flex anchor relative">
+		<h3 id="parsing-the-dns-request">Parsing the DNS request</h3>
+		<a href="https://blog.cloudflare.com/#parsing-the-dns-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With DNS traffic handy we can take a closer look at the details of the DNS requests. For that pick a hex-encoded packet from the output of <code>pcap2hex</code> and pass it to the <code>parsedns</code> script:</p>
 	<p>$ ./parsedns 000ffffff6603c94d5...
 		...
@@ -76,7 +97,14 @@
 		dnssec_ok_flag</p>
 	<p>This tool pretty prints a DNS packet and presents all the interesting bits. Sometimes the flooding tools have bugs and set a bit somewhere making it easy to distinguish malicious requests from legitimate DNS queries hitting our servers.</p>
 	<p>Unfortunately the request above looks pretty normal. We could distinguish the traffic on the <code>EDNS</code> DNS extension but some real recursors also set this flag as well, so this strategy would result in false positives.</p>
-	<h3>Preparing the BPF</h3>
+	<div class="flex anchor relative">
+		<h3 id="preparing-the-bpf">Preparing the BPF</h3>
+		<a href="https://blog.cloudflare.com/#preparing-the-bpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Blocking this flood is however, simple - we can safely assume that the <code>www.example.uk</code> domain doesn't have <i>any</i> subdomains, instead of looking at low level bits of DNS packets we can drop all the packets asking for <code>*.www.example.uk</code>.</p>
 	<p>The tool <code>bpfgen</code> generates the BPF bytecode to do that. This is the most important tool in the repo.</p>
 	<p>Right now it has three "BPF generators": <code>dns</code>, <code>dns_validate</code> and <code>suffix</code>. We'll focus only on the first one which generates BPF rules matching given DNS domains. To match all the requests matching the pattern <code>*.www.example.uk</code> run:</p>
@@ -101,7 +129,14 @@
 	<p>$ ./bpfgen --offset=0 dns -- *.<a href="http://www.example.uk">www.example.uk</a></p>
 	<p>To create BPF for tcpdump on Ethernet packets you must supply <code>--offset=14</code> flag:</p>
 	<p>$ ./bpfgen --offset=14 dns -- *.<a href="http://www.example.uk">www.example.uk</a></p>
-	<h3>Verification</h3>
+	<div class="flex anchor relative">
+		<h3 id="verification">Verification</h3>
+		<a href="https://blog.cloudflare.com/#verification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's always a good idea to test the bytecode before putting it on production servers. For that we have a <code>filter</code> script. It consumes a pcap file, runs it through a <i>tcpdump</i>-like BPF and produces another pcap with only packets that matched given bytecode.</p>
 	<p>To see what traffic will <i>match</i> our BPF:</p>
 	<p>$ cat example.pcap \
@@ -115,7 +150,14 @@
 		3</p>
 	<p>It's often worthwhile to inspect the matched and unmatched packets and make sure the BPF is indeed correct.</p>
 	<p><b>Note</b>: <code>filter</code> uses the usual <code>libpcap</code> infrastructure, that's why it requires the BPF to consume a layer 2 header. We will likely rewrite that code and change <code>filter</code> to use BPF generated for <code>xt_bpf</code>.</p>
-	<h3>iptables</h3>
+	<div class="flex anchor relative">
+		<h3 id="iptables">iptables</h3>
+		<a href="https://blog.cloudflare.com/#iptables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the BPF bytecode tested we can safely deploy it to the servers. The simplest way to do it is to apply an <code>iptables</code> rule manually:</p>
 	<p>iptables -I INPUT 1 \
 		--wait -p udp --dport 53 \
@@ -123,7 +165,14 @@
 		-j DROP</p>
 	<p>(You will need a recent iptables with <code>xt_bpf</code> support.)</p>
 	<p>This can be very cumbersome. Especially because the <code>--bytecode</code> parameter contains spaces which makes it pretty unfriendly for parsing with bash or ssh.</p>
-	<h3>Generating a bash script</h3>
+	<div class="flex anchor relative">
+		<h3 id="generating-a-bash-script">Generating a bash script</h3>
+		<a href="https://blog.cloudflare.com/#generating-a-bash-script" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To speed up the process we have another tool <code>iptables_bpf</code>. It accepts almost the same parameters as <code>bpfgen</code> but, as opposed to printing a raw BPF bytecode, it produces a bash script:</p>
 	<p>$ ./iptables_bpf dns -- *.example.uk
 		Generated file 'bpf_dns_ip4_any_example_uk.sh'</p>
@@ -143,7 +192,14 @@
 	<p>If things go wrong pass <code>--delete</code> to remove the BPF iptables rule and the ipset:</p>
 	<p>$ sudo ./bpf_dns_ip4_any_example_uk.sh --delete</p>
 	<p>Although fairly advanced and I hope practical, this generated script is not really intended as a fit-for-all deployment tool for all BPF scripts. Feel encouraged to tweak it or fork it for your needs.</p>
-	<h3>Chaining BPF rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="chaining-bpf-rules">Chaining BPF rules</h3>
+		<a href="https://blog.cloudflare.com/#chaining-bpf-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In extreme cases you might want to chain BPF rules. As an example see the <code>iptables_bpf_chain</code> script, you can run it like this:</p>
 	<p>$ ./iptables_bpf_chain -w example_uk \
 		--accept <a href="http://www.example.uk">www.example.uk</a> \
@@ -151,7 +207,14 @@
 		--drop any
 		Generated file 'example_uk_ip4.sh'</p>
 	<p>The generated file will create the iptables chain <code>example_uk</code> and it will add three rules to it: two BPF rules accepting some packets and one rule dropping everything else. The chain will be referenced from the "INPUT" chain in a similar fashion to the previous example. Before using <code>iptables_bpf_chain</code> please do review it carefully.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This article only scratched the surface of our tools. They can do much more, like:</p>
 	<ul>
 		<li>

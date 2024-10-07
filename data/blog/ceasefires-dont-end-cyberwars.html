@@ -3,7 +3,14 @@
 	<p>There is a significant conflict in the Middle East. As has been <a href="http://bits.blogs.nytimes.com/2012/11/20/cyber-attacks-from-iran-and-gaza-on-israel-more-threatening-than-anonymouss-efforts">widely reported</a>, along with the physical confrontation between the Israelis and Palestinians, there have been widespread cyber attacks. These cyber attacks have been launched against both sides in this conflict. At CloudFlare we have found ourselves in the unusual position of protecting websites of both Israeli and Palestinian organizations on the front lines. Among others, our customers include Israeli government sites as well as numerous Palestinian organizations.</p>
 	<p>The conflict that is going on right now may be the first true cyberwar. While previous conflicts have included the use of cyber attacks by one side or the other, in this case supporters of both sides appear to be launching cyber offensives. At CloudFlare, we've been caught in the cross fire. That's allowed us a unique vantage point to report on what we're seeing.</p>
 	<p>We've been following news about the conflict and monitoring the attacks against sites on both sides for the last week. On November 21, 2012 at 19:00 (GMT) a <a href="http://www.aljazeera.com/news/middleeast/2012/11/2012112117122494611.html">ceasefire was announced</a>. The large scale physical attacks appear to have largely stopped along with the ceasefire. We wanted to see what happened to cyber attacks.</p>
-	<h3>When Physical Attacks Stop, Cyber Attacks Start</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-physical-attacks-stop-cyber-attacks-start">When Physical Attacks Stop, Cyber Attacks Start</h3>
+		<a href="https://blog.cloudflare.com/#when-physical-attacks-stop-cyber-attacks-start" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Quite the opposite of stopping, there was a significant increase in cyber attacks against both sides websites that coincided with the ceasefire. The following chart aggregates data from a number of sites on both sides of the conflict. The dotted line about 3/4 of the way along the timeline indicates the point of time the ceasefire was declared. We have intentionally obscured whether the attacks were targeting sites supporting Israel or Palestine, but I can say that we saw significant upticks in attacks targeting both sides in the conflict.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -12,7 +19,14 @@
 	</figure>
 	<p>This graph focuses specifically on what are known as Layer 7 attacks. These are application-layer attacks, and different than some of the Layer 3/4 attacks we have <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">discussed before</a>. Layer 7 attacks tend to be smaller in volume but often harder to defend against using traditional DDoS scrubbing services. CloudFlare's service is able to absorb these attacks and ensure that only legitimate requests are sent to a web server.</p>
 	<p>It is important to be clear. Nothing we've seen allows us to make a claim toward the attribution of the source of these attacks. CloudFlare's network is like a flack jacket, not like a machine gun. We shield sites from the attacks we see, but we don't spend a lot of time trying to determine the motives of the attackers. It is not correct to say that this data proves one side is attacking the other. In fact, third party organizations like Anonymous, which are not directly affiliated with Palestinians, have <a href="http://bits.blogs.nytimes.com/2012/11/15/anonymous-attacks-israeli-web-sites">claimed responsibility</a> for many of the attacks targeting Israeli sites, and several "vigilante hackers," who are not directly affiliated with Israel, have <a href="http://jesterscourt.mil.nf/2012/11/24/offensive-counter-measures-be-like-water">claimed responsibility</a>for attacks against some Palestinian sites.</p>
-	<h3>The Politics of Being a Proxy</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-politics-of-being-a-proxy">The Politics of Being a Proxy</h3>
+		<a href="https://blog.cloudflare.com/#the-politics-of-being-a-proxy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've received criticism from supporters on both sides asking how we can be supporting the other. To be clear, we are not supporting either side. Resolving the difficult political questions of a conflict like this is way above our pay grade. We are proud, however, that in spite of withering cyber attacks CloudFlare has kept both sides' websites online.</p>
 	<p>The Internet is one of the greatest inventions in human history because it allows anyone to reach a global audience. CloudFlare's goal is to power a better Internet. While that will inherently mean we will increasingly find ourselves in difficult situations like this one, we will continue to be guided by the principle that it is not our role to decide whether one idea or another is correct, but instead to ensure that all ideas can find equal footing online.</p>
 </div>

@@ -7,7 +7,14 @@
 	</figure>
 	<p>Stream Live lets users easily scale their live streaming apps and websites to millions of creators and concurrent viewers without having to worry about bandwidth costs or purchasing hardware for real-time encoding at scale. Stream Live lets users focus on the content rather than the infrastructure — taking care of the codecs, protocols, and bitrate automatically. When we launched Stream Live last year, we focused on bringing high quality, feature-rich streaming to websites and applications with HTTP Live Streaming (HLS).</p>
 	<p>Today, we're excited to introduce support for <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming"><i>Low-Latency</i> HTTP Live Streaming</a> (LL-HLS) in a closed beta, offering you an even faster streaming experience. LL-HLS will reduce the latency a viewer may experience on their player from highs of around 30 seconds to less than 10 in many cases. Lower latency brings creators even closer to their viewers, empowering customers to build more interactive features like Q&amp;A or chat and enabling the use of live streaming in more time-sensitive applications like sports, gaming, and live events.</p>
-	<h3>Broadcast with less than 10-second latency</h3>
+	<div class="flex anchor relative">
+		<h3 id="broadcast-with-less-than-10-second-latency">Broadcast with less than 10-second latency</h3>
+		<a href="https://blog.cloudflare.com/#broadcast-with-less-than-10-second-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>LL-HLS is an extension of HLS and allows us to reduce <i>glass-to-glass latency</i> — the time between something happening on the broadcast end and a user seeing it on their screen. This includes everything from broadcaster encoding to client-side buffering because we know the experience is driven by what a user sees, not when a byte is delivered into a buffer. Depending on encoder and player settings, broadcasters' content can be playing on viewers' screens in less than ten seconds.</p>
 	<p>Our addition of LL-HLS support builds on all the best parts of Stream including simple, predictable pricing. You never have to pay for ingest (broadcasting to us), compute (encoding), or egress. It costs \$5 per 1,000 minutes of video stored per month and \$1 per 1,000 minutes of video viewed per month. This allows you to stream with peace of mind, knowing there are no surprise fees.</p>
 	<p>Other platforms tack on live recordings as a separate add-on feature, and those recordings only become available minutes or even hours after a live stream ends. With Cloudflare Stream, Live segments are automatically recorded and immediately available for on-demand playback.</p>
@@ -20,7 +27,14 @@
 	</figure>
 	<p>Left: Broadcasting to Stream Live using OBS. Right: Watching that same Stream. Note the five second difference in the NIST clock between the source and the playback.</p>
 	<p>Powering the LL-HLS experience involved making several improvements to our underlying infrastructure. One of the largest challenges we encountered was that our existing architecture involved a pipeline with multiple buffers as long as the keyframe interval. This meant Stream Live would introduce a delay of up to five times the keyframe interval. To resolve this, we simplified a portion of our pipeline — now, we work with individual frames rather than whole keyframe-intervals, but without giving up the economies of scale our approach to encoding provides. This decoupling of keyframe interval and internal buffer duration lets us dramatically reduce latency in HLS, with a maximum of twice the keyframe interval.</p>
-	<h3>Getting started with the LL-HLS beta</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-the-ll-hls-beta">Getting started with the LL-HLS beta</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-the-ll-hls-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we prepare to ship this new functionality, we're <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ2NBuAXC75aDJllhVA0itW0TZ1w4s48TvFm-eP7R1h9Hc9g/viewform?usp=sf_link">looking for beta testers</a> to help us test non-production workloads. To participate in the beta, your application should be configured with these settings:</p>
 	<ul>
 		<li>
@@ -57,8 +71,23 @@
 
 	</figure>
 	<p>Customers in the LL-HLS beta will need to make a minor adjustment to the built-in player embed code, but there are no changes to Live Input configuration, dashboard interface, API, or existing functionality.</p>
-	<h3>Sign up today</h3>
+	<div class="flex anchor relative">
+		<h3 id="sign-up-today">Sign up today</h3>
+		<a href="https://blog.cloudflare.com/#sign-up-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>LL-HLS is Stream Live’s latest tool to bring your creators and audiences together. After the beta period, this feature will be generally available to all new and existing Stream subscriptions with no pricing changes or contract requirements --- all part of building the fastest, simplest serverless live streaming platform. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ2NBuAXC75aDJllhVA0itW0TZ1w4s48TvFm-eP7R1h9Hc9g/viewform?usp=sf_link">Join our beta</a> to start test-driving Low-Latency HLS!</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/ec0de615dae5590beb4ea66cd762416d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fec0de615dae5590beb4ea66cd762416d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

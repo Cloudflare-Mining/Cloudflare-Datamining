@@ -7,9 +7,23 @@
 	</figure>
 	<p>Today we are excited to announce thresholds for our Security Event Alerts: a new and improved way of detecting anomalous spikes of security events on your Internet properties. Previously, our calculations were based on z-score methodology alone, which was able to determine most of the significant spikes. By introducing a threshold, we are able to make alerts more accurate and only notify you when it truly matters. One can think of it as a romance between the two strategies. This is the story of how they met.</p>
 	<p>Author’s note: as an intern at Cloudflare I got to work on this project from start to finish from investigation all the way to the final product.</p>
-	<h3>Once upon a time</h3>
+	<div class="flex anchor relative">
+		<h3 id="once-upon-a-time">Once upon a time</h3>
+		<a href="https://blog.cloudflare.com/#once-upon-a-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the beginning, there were Security Event Alerts. Security Event Alerts are notifications that are sent whenever we detect a threat to your Internet property. As the name suggests, they track the number of security events, which are requests to your application that match security rules. For example, you can configure a security rule that blocks access from certain countries. Every time a user from that country tries to access your Internet property, it will log as a security event. While a security event may be harmless and fired as a result of the natural flow of traffic, it is important to alert on instances when a rule is fired more times than usual. Anomalous spikes of too many security events in a short period of time can indicate an attack. To find these anomalies and distinguish between the natural number of security events and that which poses a threat, we need a good strategy.</p>
-	<h3>The lonely life of a z-score</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-lonely-life-of-a-z-score">The lonely life of a z-score</h3>
+		<a href="https://blog.cloudflare.com/#the-lonely-life-of-a-z-score" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before a threshold entered the picture, our strategy worked only on the basis of a <a href="https://en.wikipedia.org/wiki/Standard_score">z-score</a>. Z-score is a methodology that looks at the number of standard deviations a certain data point is from the mean. In our current configuration, if a spike crosses the z-score value of 3.5, we send you an alert. This value was decided on after careful analysis of our customers’ data, finding it the most effective in determining a legitimate alert. Any lower and notifications will get noisy for smaller spikes. Any higher and we may miss out on significant events. You can read more about our z-score methodology in this <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">blog post</a>.</p>
 	<p>The following graphs are an example of how the z-score method works. The first graph shows the number of security events over time, with a recent spike.</p>
 	<figure class="kg-card kg-image-card ">
@@ -37,7 +51,14 @@
 
 	</figure>
 	<p>Since a z-score of infinity is greater than 3.5, an alert will be triggered. This means that customers with few security events would often be overwhelmed by event alerts that are not worth worrying about.</p>
-	<h3>Letting go of zeros</h3>
+	<div class="flex anchor relative">
+		<h3 id="letting-go-of-zeros">Letting go of zeros</h3>
+		<a href="https://blog.cloudflare.com/#letting-go-of-zeros" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To avoid the mean and standard deviation becoming zero and thus alerting on every non-zero spike, zero values can be ignored in the calculation. In other words, to calculate the mean and standard deviation, only data points that are higher than zero will be considered.</p>
 	<p>With those conditions, the same spike to five security events will now generate a different z-score:</p>
 	<figure class="kg-card kg-image-card ">
@@ -60,7 +81,14 @@
 	</figure>
 	<p>The z-score does not cross the value 3.5 and an alert will not be triggered.</p>
 	<p>So what’s better? Including zeros in our calculations can skew the results for domains with too many zero events and alert them every time a spike appears. Not including zeros is mathematically wrong and will never alert on these spikes.</p>
-	<h3>Threshold, the prince charming</h3>
+	<div class="flex anchor relative">
+		<h3 id="threshold-the-prince-charming">Threshold, the prince charming</h3>
+		<a href="https://blog.cloudflare.com/#threshold-the-prince-charming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Clearly, a z-score is not enough on its own.</p>
 	<p>Instead, we paired up the z-score with a threshold. The threshold represents the raw number of security events an Internet property can have, below which an alert will not be sent. While z-score checks whether the spike is at least 3.5 standard deviations above the mean, the threshold makes sure it is above a certain static value. If both of these conditions are met, we will send you an alert:</p>
 	<figure class="kg-card kg-image-card ">
@@ -76,10 +104,31 @@
 	</figure>
 	<p>The z-score value crosses 3.5 and an alert will be sent.</p>
 	<p>A threshold for the number of security events comes as the perfect complement. By itself, the threshold cannot determine whether something is a spike, and would simply alert on any value crossing it. This <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">blog post</a> describes in more detail why thresholds alone do not work. However, when paired with z-score, they are able to share their strengths and cover for each other's weaknesses. If the z-score falsely detects an insignificant spike, the threshold will stop the alert from triggering. Conversely, if a value does cross the security events threshold, the z-score ensures there is a reasonable variance from the data average before allowing an alert to be sent.</p>
-	<h3>The invaluable value</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-invaluable-value">The invaluable value</h3>
+		<a href="https://blog.cloudflare.com/#the-invaluable-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To foster a successful relationship between the z-score and security events threshold, we needed to determine the most effective threshold value. After careful analysis of our previous attacks on customers, we set the value to 200. This number is high enough to filter out the smaller, noisier spikes, but low enough to expose any threats.</p>
-	<h3>Am I invited to the wedding?</h3>
+	<div class="flex anchor relative">
+		<h3 id="am-i-invited-to-the-wedding">Am I invited to the wedding?</h3>
+		<a href="https://blog.cloudflare.com/#am-i-invited-to-the-wedding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yes, you are! The z-score and threshold relationship is already enabled for all WAF customers, so all you need to do is sit back and relax. For enterprise customers, the threshold will be applied to each type of alert enabled on your domain.</p>
-	<h3>Happily ever after</h3>
+	<div class="flex anchor relative">
+		<h3 id="happily-ever-after">Happily ever after</h3>
+		<a href="https://blog.cloudflare.com/#happily-ever-after" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The story certainly does not end here. We are constantly iterating on our alerts, so keep an eye out for future updates on the road to make our algorithms even more personalized for your Internet properties!</p>
 </div>

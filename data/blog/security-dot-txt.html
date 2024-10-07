@@ -8,7 +8,14 @@
 	<p>When the security team at Cloudflare takes on new projects, we approach them with the goal of achieving the “builder first mindset” whereby we design, develop, and deploy solutions just as any standard engineering team would. Additionally, we aim to dogfood our products wherever possible. Cloudflare as a security platform offers a lot of functionality that is vitally important to us, including, but not limited to, our WAF, Workers platform, and Cloudflare Access. We get a lot of value out of using Cloudflare to secure Cloudflare. Not only does this allow us to test the security of our products; it provides us an avenue of direct feedback to help improve the roadmaps for engineering projects.</p>
 	<p>One specific product that we get a lot of use out of is our serverless platform, <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. With it, we can have incredible flexibility in the types of applications that we are able to build and deploy to our edge. An added bonus here is that our team does not have to manage a single server that our code runs on.</p>
 	<p>Today, we’re launching support for the <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09">security.txt</a> initiative through Workers to help give security researchers a common location to learn about how to communicate with our team. In this post, I’m going to focus on some of the benefits of managing security projects through Workers, detail how we built out the mechanism that we’re using to manage security.txt on <a href="https://cloudflare.com">cloudflare.com</a>, and highlight some other use cases that our team has built on Workers in the past few months.</p>
-	<h2>Building on Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-on-workers">Building on Workers</h2>
+		<a href="https://blog.cloudflare.com/#building-on-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Workers platform is designed to let anyone deploy code to our edge network which currently spans across 200 cities in 90 countries. As a result of this, applications deployed on the platform perform exceptionally well, while maintaining high reliability. You can implement nearly any logic imaginable on top of zones in your Cloudflare account with almost no effort.</p>
 	<p>One of the biggest immediate benefits of this is the idea that there are no servers for our team to maintain. Far too often I have seen situations where a long running application is deployed onto an instanced machine within a cloud environment and immediately forgotten about. In some cases, outdated software or poorly provisioned permissions can open up dangerous vectors for malicious actors if a compromise is occurring. Our team can deploy new projects with the confidence that they will remain secure. The Workers runtime environment has many wins such as the fact that it receives automatic security updates and that we don't need to maintain the software stack, just the application logic.</p>
 	<p>Another benefit is that since Workers executes JavaScript, we can dream up complex applications and rapidly deploy them as full applications in production without a huge investment in engineering time. This encourages rapid experimentation and iteration while achieving high impact with consistent performance. A couple of examples:</p>
@@ -24,13 +31,28 @@
 		</li>
 	</ul>
 	<p>Stay tuned for future blog posts where we plan to dive deeper on these initiatives and more!</p>
-	<h2>security.txt</h2>
+	<div class="flex anchor relative">
+		<h2 id="security-txt">security.txt</h2>
+		<a href="https://blog.cloudflare.com/#security-txt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our team regularly engages with external security researchers through our HackerOne program and since about 2014, the details of our program can be found on a <a href="https://cloudflare.com/disclosure">dedicated page</a> on our marketing site. This has worked quite well in starting up our program and allows anyone to contact our team if they have a vulnerability to report. However, every so often we’d see that there were issues with this approach. Specifically, there were cases of vulnerabilities being submitted to our support staff who would then tell the reporter about the disclosure page which then directs them to HackerOne resulting in an overall error prone experience for everyone involved. Other times, the team that manages our social media would direct researchers to us.</p>
 	<p>Security researchers, having done the hard work to find a vulnerability, face challenges to responsibly disclose it. They need to be able to quickly locate contact information, consume it and disclose without delay. The security.txt initiative addresses this problem by defining a common location and format for organizations to provide this information to researchers. A specification for this was submitted to the IETF with the description:</p>
 	<p><i>“When security vulnerabilities are discovered by researchers, proper reporting channels are often lacking. &nbsp;As a result, vulnerabilities may be left unreported. &nbsp;This document defines a format ("security.txt") to help organizations describe their vulnerability disclosure practices to make it easier for researchers to report vulnerabilities.”</i></p>
 	<p>Employing the guidance in security.txt doesn't solve the problem entirely but it is becoming common best practice amongst many other security conscious companies. Over time I expect that researchers will rely on security.txt for information gathering. In fact, some integrations are already being built by the community into security tools to automatically fetch information from a company’s security.txt!</p>
 	<p>Our security.txt can be found here: <a href="https://cloudflare.com/.well-known/security.txt">https://cloudflare.com/.well-known/security.txt</a></p>
-	<h2>security.txt as a service -- built on Cloudflare Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="security-txt-as-a-service-built-on-cloudflare-workers">security.txt as a service -- built on Cloudflare Workers</h2>
+		<a href="https://blog.cloudflare.com/#security-txt-as-a-service-built-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uEOC8SJevN6HtsGESajmo/a182045d9656cff3822523025ea8be43/image-10.png" alt="" class="kg-image" width="2000" height="1849" loading="lazy">
@@ -91,6 +113,13 @@ const handleRequest = async request =&gt; {
 }</code></pre>
 	<p>In the interest of transparency and to allow anyone to easily achieve the same wins we did, we’ve open sourced the Worker itself for anyone who wants to deploy this service onto their Cloudflare zone. It just takes a few minutes of time.</p>
 	<p>You can find the project on GitHub: <a href="https://github.com/cloudflare/securitytxt-worker">https://github.com/cloudflare/securitytxt-worker</a></p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The security team at Cloudflare <a href="https://blog.cloudflare.com/international-womens-day-2020-building-a-modern-security-team">has grown</a> a significant amount in the past year. This is most evident in terms of our headcount (<a href="https://www.cloudflare.com/careers">and still growing!</a>) but also in how we take on new projects. We’re hoping to share more stories like this in the future and open source some of the other security services that we are building on Workers to help others achieve the same security wins that we are achieving with the platform.</p>
 </div>

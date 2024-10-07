@@ -31,7 +31,14 @@
 		</li>
 	</ol>
 	<p>This task order is pretty convenient, because it’s almost perfectly split into two parts: first, understanding the Cloudflare/API-level things we need to know about Workers <i>and</i> KV, and second, actually building up a user interface to work with the data.</p>
-	<h3>Understanding Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-workers">Understanding Workers</h3>
+		<a href="https://blog.cloudflare.com/#understanding-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In terms of implementation, a great deal of this project is centered around KV - although that may be the case, it’s useful to break down <i>what</i> Workers are exactly.</p>
 	<p>Service Workers are background scripts that run in your browser, alongside your application. Cloudflare Workers are the same concept, but super-powered: your Worker scripts run on Cloudflare’s edge network, in-between your application and the client’s browser. This opens up a huge amount of opportunity for interesting integrations, especially considering the network’s massive scale around the world. Here’s some of the use-cases that I think are the most interesting:</p>
 	<ol>
@@ -49,7 +56,14 @@
 		</li>
 	</ol>
 	<p>For this project, we’ll lean heavily towards the latter end of that list, building an application that clients communicate with, served on Cloudflare’s edge network. This means that it’ll be globally available, with low-latency, while still allowing the ease-of-use in building applications directly in JavaScript.</p>
-	<h3>Setting up a canvas</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up-a-canvas">Setting up a canvas</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-a-canvas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
 	<p>I also considered using <a href="https://todomvc.com">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
 	<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
@@ -65,7 +79,14 @@
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com">todo.kristianfreeman.com</a>. My personal website was already hosted on Cloudflare, and since I’ll be serving, it was time to create my first Worker.</p>
-	<h3>Creating a worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-a-worker">Creating a worker</h3>
+		<a href="https://blog.cloudflare.com/#creating-a-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Inside of my Cloudflare account, I hopped into the Workers tab and launched the Workers editor.</p>
 	<p>This is one of my favorite features of the editor - working with your actual website, understanding <i>how</i> the worker will interface with your existing project.</p>
 	<figure class="kg-card kg-image-card ">
@@ -102,7 +123,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Boo3xWgZdHEDHgpUgIrKy/80856f43843efc128a3425460dfa1f85/Screen-Shot-2019-05-15-at-10.12.04-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
 
 	</figure>
-	<h3>Writing data to KV</h3>
+	<div class="flex anchor relative">
+		<h3 id="writing-data-to-kv">Writing data to KV</h3>
+		<a href="https://blog.cloudflare.com/#writing-data-to-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next step is to populate our todo list with actual data. To do this, we’ll make use of Cloudflare’s Workers KV - it’s a simple key-value store that you can access inside of your Worker script to read (and write, although it’s less common) data.</p>
 	<p>To get started with KV, we need to set up a “namespace”. All of our cached data will be stored inside that namespace, and given just a bit of configuration, we can access that namespace inside the script with a predefined variable.</p>
 	<p>I’ll create a new namespace in the Workers dashboard, called <code>KRISTIAN_TODOS</code>, and in the Worker editor, I’ll expose the namespace by binding it to the variable <code>KRISTIAN_TODOS</code>.</p>
@@ -155,7 +183,15 @@ async function getTodos(request) {
     data = JSON.parse(cache)
   }
 }</code></pre>
-	<h3>Rendering data from KV</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="rendering-data-from-kv">Rendering data from KV</h3>
+		<a href="https://blog.cloudflare.com/#rendering-data-from-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given the presence of data in our code, which is the cached data object for our application, we should actually take this data and make it available on screen.</p>
 	<p>In our Workers script, we’ll make a new variable, <code>html</code>, and use it to build up a static HTML template that we can serve to the client. In <code>handleRequest</code>, we can construct a new <code>Response</code> (with a <code>Content-Type</code> header of <code>text/html</code>), and serve it to the client:</p>
 	<pre class="language-javascript"><code class="language-javascript">const html = `
@@ -230,7 +266,14 @@ async function handleRequest(request) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/579BL1kiP7vJc6bxWcDD82/1e1f84c326216d3f2bb7eddad03009f1/image3-3.png" alt="" class="kg-image" width="1482" height="1228" loading="lazy">
 
 	</figure>
-	<h3>Adding todos from the UI</h3>
+	<div class="flex anchor relative">
+		<h3 id="adding-todos-from-the-ui">Adding todos from the UI</h3>
+		<a href="https://blog.cloudflare.com/#adding-todos-from-the-ui" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <i>creating</i> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
 	<p>It’s worth noting here that Cloudflare’s Workers documentation suggests that any writes to your KV namespace happen via their API - that is, at its simplest form, a cURL statement:</p>
 	<pre class="language-javascript"><code class="language-javascript">curl "&lt;https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/first-key&gt;" \
@@ -325,7 +368,14 @@ document.querySelector("#create")
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bexkIHx7QhOOnLX7m0T2a/8056c8226bd64b80dcd35d07a6778fba/image7.gif" alt="" class="kg-image" width="444" height="236" loading="lazy">
 
 	</figure>
-	<h3>Updating todos from the UI</h3>
+	<div class="flex anchor relative">
+		<h3 id="updating-todos-from-the-ui">Updating todos from the UI</h3>
+		<a href="https://blog.cloudflare.com/#updating-todos-from-the-ui" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the final piece of our (very) basic todo list, we need to be able to update todos - specifically, marking them as completed.</p>
 	<p>Luckily, a great deal of the infrastructure for this work is already in place. We can currently update the todo list data in our cache, as evidenced by our <code>createTodo</code> function. Performing updates on a todo, in fact, is much more of a client-side task than a Worker-side one!</p>
 	<p>To start, let’s update the client-side code for generating a todo. Instead of a <code>ul</code>-based list, we’ll migrate the todo container <i>and</i> the todos themselves into using <code>div</code>s:</p>
@@ -390,7 +440,14 @@ document.querySelector("#create")
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dSK1aNSHxnICPPqdBZeS1/f8a9d0f618566429e911c18acd9aa661/image8-1.png" alt="" class="kg-image" width="1600" height="1176" loading="lazy">
 
 	</figure>
-	<h3>Conclusions and next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions-and-next-steps">Conclusions and next steps</h3>
+		<a href="https://blog.cloudflare.com/#conclusions-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com">todo.kristianfreeman.com</a>), security, speed, etc.</p>
 	<figure class="kg-card kg-image-card ">
 

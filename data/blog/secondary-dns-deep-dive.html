@@ -1,6 +1,13 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1muUHhV8ymC3QqF4RBGST3/833356a545df94bbed6a2296fec46d75/secondary-dns-deep-dive.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>How Does Secondary DNS Work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-secondary-dns-work">How Does Secondary DNS Work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-secondary-dns-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you already understand how Secondary DNS works, please feel free to skip this section. It does not provide any Cloudflare-specific information.</p>
 	<p>Secondary DNS has many use cases across the Internet; however, traditionally, it was used as a synchronized backup for when the primary DNS server was unable to respond to queries. A more modern approach involves focusing on redundancy across many different nameservers, which in many cases broadcast the same anycasted IP address.</p>
 	<p>Secondary DNS involves the unidirectional transfer of DNS zones from the primary to the Secondary DNS server(s). One primary can have any number of Secondary DNS servers that it must communicate with in order to keep track of any zone updates. A zone update is considered a change in the contents of a &nbsp;zone, which ultimately leads to a Start of Authority (SOA) serial number increase. The zone’s SOA serial is one of the key elements of Secondary DNS; it is how primary and secondary servers synchronize zones. Below is an example of what an SOA record might look like during a dig query.</p>
@@ -29,7 +36,14 @@
 		</li>
 	</ol>
 	<p>Using the above information, the Secondary DNS server stores an SOA record for each of the zones it is tracking. When the serial increases, it knows that the zone must have changed, and that a zone transfer must be initiated. &nbsp;</p>
-	<h2>Serial Tracking</h2>
+	<div class="flex anchor relative">
+		<h2 id="serial-tracking">Serial Tracking</h2>
+		<a href="https://blog.cloudflare.com/#serial-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Serial increases can be detected in the following ways:</p>
 	<ol>
 		<li>
@@ -49,11 +63,32 @@
 		</li>
 	</ol>
 	<p>Generally NOTIFY messages are sent over UDP, however TCP can be used in the event the primary server has reason to believe that TCP is necessary (i.e. firewall issues).</p>
-	<h2>Zone Transfers</h2>
+	<div class="flex anchor relative">
+		<h2 id="zone-transfers">Zone Transfers</h2>
+		<a href="https://blog.cloudflare.com/#zone-transfers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to serial tracking, it is important to ensure that a standard protocol is used between primary and Secondary DNS server(s), to efficiently transfer the zone. DNS zone transfer protocols do not attempt to solve the confidentiality, authentication and integrity triad (CIA); however, the use of TSIG on top of the basic zone transfer protocols can provide integrity and authentication. As a result of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> being a public protocol, confidentiality during the zone transfer process is generally not a concern.</p>
-	<h3>Authoritative Zone Transfer (AXFR)</h3>
+	<div class="flex anchor relative">
+		<h3 id="authoritative-zone-transfer-axfr">Authoritative Zone Transfer (AXFR)</h3>
+		<a href="https://blog.cloudflare.com/#authoritative-zone-transfer-axfr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AXFR is the original zone transfer protocol that was specified in <a href="https://tools.ietf.org/html/rfc1034">RFC 1034</a> and <a href="https://tools.ietf.org/html/rfc1035">RFC 1035</a> and later further explained in <a href="https://tools.ietf.org/html/rfc5936">RFC 5936</a>. AXFR is done over a TCP connection because a reliable protocol is needed to ensure packets are not lost during the transfer. Using this protocol, the primary DNS server will transfer all of the zone contents to the Secondary DNS server, in one connection, regardless of the serial number. AXFR is recommended to be used for the first zone transfer, when none of the records are propagated, and IXFR is recommended after that.</p>
-	<h3>Incremental Zone Transfer (IXFR)</h3>
+	<div class="flex anchor relative">
+		<h3 id="incremental-zone-transfer-ixfr">Incremental Zone Transfer (IXFR)</h3>
+		<a href="https://blog.cloudflare.com/#incremental-zone-transfer-ixfr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IXFR is the more sophisticated zone transfer protocol that was specified in <a href="https://tools.ietf.org/html/rfc1995">RFC 1995</a>. Unlike the AXFR protocol, during an IXFR, the primary server will only send the secondary server the records that have changed since its current version of the zone (based on the serial number). This means that when a Secondary DNS server wants to initiate an IXFR, it sends its current serial number to the primary DNS server. The primary DNS server will then format its response based on previous versions of changes made to the zone. IXFR messages must obey the following pattern:</p>
 	<ol>
 		<li>
@@ -77,7 +112,14 @@
 	</ol>
 	<p>Steps 2,3,4,5,6 can be repeated any number of times, as each of those represents one change set of deletions and additions, ultimately leading to a new serial.</p>
 	<p>IXFR can be done over UDP or TCP, but again TCP is generally recommended to avoid packet loss.</p>
-	<h2>How Does Secondary DNS Work at Cloudflare?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-secondary-dns-work-at-cloudflare">How Does Secondary DNS Work at Cloudflare?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-secondary-dns-work-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The DNS team loves microservice architecture! When we initially implemented Secondary DNS at Cloudflare, it was done using <a href="https://mesosphere.github.io/marathon">Mesos Marathon</a>. This allowed us to separate each of our services into several different marathon apps, individually scaling apps as needed. All of these services live in our core data centers. The following services were created:</p>
 	<ol>
 		<li>
@@ -106,7 +148,14 @@
 	<p>Once the zone transferer completes the AXFR/IXFR, it then passes the zone through to our zone builder, and finally gets pushed out to our edge at each of our <a href="https://www.cloudflare.com/en-gb/network">200 locations.</a></p>
 	<p>Although this current architecture worked great in the beginning, it left us open to many vulnerabilities and scalability issues down the road. As our Secondary DNS product became more popular, it was important that we proactively scaled and reduced the technical debt as much as possible. As with many companies in the industry, Cloudflare has recently migrated all of our core data center services to <a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes">Kubernetes</a>, moving away from individually managed apps and Marathon clusters.</p>
 	<p>What this meant for Secondary DNS is that all of our Marathon-based services, as well as our NOTIFY Listener, had to be migrated to Kubernetes. Although this long migration ended up paying off, many difficult challenges arose along the way that required us to come up with unique solutions in order to have a seamless, zero downtime migration.</p>
-	<h2>Challenges When Migrating to Kubernetes</h2>
+	<div class="flex anchor relative">
+		<h2 id="challenges-when-migrating-to-kubernetes">Challenges When Migrating to Kubernetes</h2>
+		<a href="https://blog.cloudflare.com/#challenges-when-migrating-to-kubernetes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although the entire DNS team agreed that kubernetes was the way forward for Secondary DNS, it also introduced several challenges. These challenges arose from a need to properly scale up across many distributed locations while also protecting each of our individual data centers. Since our core does not rely on anycast to automatically distribute requests, as we introduce more customers, it opens us up to denial-of-service attacks.</p>
 	<p>The two main issues we ran into during the migration were:</p>
 	<ol>
@@ -117,7 +166,14 @@
 			<p>When opening up a public-facing UDP socket to the Internet, how do we protect ourselves while also preventing unnecessary spam towards primary nameservers?.</p>
 		</li>
 	</ol>
-	<h3>Issue 1:</h3>
+	<div class="flex anchor relative">
+		<h3 id="issue-1">Issue 1:</h3>
+		<a href="https://blog.cloudflare.com/#issue-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As was previously mentioned, one form of protection in the Secondary DNS protocol is to only allow certain IPs to initiate zone transfers. There is a fine line between primary servers allow listing too many IPs and them having to frequently update their IP ACLs. We considered several solutions:</p>
 	<ol>
 		<li>
@@ -161,7 +217,14 @@
 			<p>Shadowsocks proxy can be reused by many different Cloudflare services.</p>
 		</li>
 	</ol>
-	<h3>Issue 2:</h3>
+	<div class="flex anchor relative">
+		<h3 id="issue-2">Issue 2:</h3>
+		<a href="https://blog.cloudflare.com/#issue-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Notify Listener requires listening on static IPs for NOTIFY Messages coming from primary DNS servers. This is mostly a solved problem through the use of <a href="https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-typeloadbalancer">k8s services of type loadbalancer</a>, however exposing this service directly to the Internet makes us uneasy because of its susceptibility to <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack">attacks</a>. Fortunately <a href="https://www.cloudflare.com/ddos">DDoS protection</a> is one of Cloudflare's strengths, which lead us to the likely solution of <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfooding</a> one of our own products, <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>.</p>
 	<p>Spectrum provides the following features to our service:</p>
 	<ol>
@@ -226,8 +289,23 @@
 			<p>Only allow at most one working transfer and one scheduled transfer per zone.</p>
 		</li>
 	</ol>
-	<h2>Additional Technical Challenges</h2>
-	<h3>Zone Transferer Scheduling</h3>
+	<div class="flex anchor relative">
+		<h2 id="additional-technical-challenges">Additional Technical Challenges</h2>
+		<a href="https://blog.cloudflare.com/#additional-technical-challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="zone-transferer-scheduling">Zone Transferer Scheduling</h3>
+		<a href="https://blog.cloudflare.com/#zone-transferer-scheduling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As shown in figure 1, there are several ways of sending Kafka messages to the Zone Transferer in order to initiate a zone transfer. There is no benefit in having a large backlog of zone transfers for the same zone. Once a zone has been transferred, assuming no more changes, it does not need to be transferred again. This means that we should only have at most one transfer ongoing, and one scheduled transfer at the same time, for any zone.</p>
 	<p>If we want to limit our number of scheduled messages to one per zone, this involves ignoring Kafka messages that get sent to the Zone Transferer. This is not as simple as ignoring specific messages in any random order. One of the benefits of Kafka is that it holds on to messages until the user actually decides to acknowledge them, by committing that messages offset. Since Kafka is just a queue of messages, it has no concept of order other than first in first out (FIFO). If a user is capable of reading from the Kafka topic concurrently, it is entirely possible that a message in the middle of the queue be committed before a message at the end of the queue.</p>
 	<p>Most of the time this isn’t an issue, because we know that one of the concurrent readers has read the message from the end of the queue and is processing it. There is one Kubernetes-related catch to this issue, though: pods are ephemeral. The kube master doesn’t care what your concurrent reader is doing, it will kill the pod and it’s up to your application to handle it.</p>
@@ -274,7 +352,14 @@
 	</figure>
 	<p>Figure 6: Kafka Algorithm to Solve Message Loss</p>
 	<p>This solution is essentially soft committing Kafka messages, until we can confidently say that all other messages have been acknowledged. It’s important to note that this only truly works in a distributed manner if the Kafka messages are keyed by zone id, this will ensure the same zone will always be processed by the same Kafka consumer.</p>
-	<h2>Life of a Secondary DNS Request</h2>
+	<div class="flex anchor relative">
+		<h2 id="life-of-a-secondary-dns-request">Life of a Secondary DNS Request</h2>
+		<a href="https://blog.cloudflare.com/#life-of-a-secondary-dns-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although Cloudflare has a <a href="https://www.cloudflare.com/en-gb/network">large global network</a>, as shown above, the zone transferring process does not take place at each of the edge datacenter locations (which would surely overwhelm many primary servers), but rather in our core data centers. In this case, how do we propagate to our edge in seconds? After transferring the zone, there are a couple more steps that need to be taken before the change can be seen at the edge.</p>
 	<ol>
 		<li>
@@ -290,7 +375,14 @@
 
 	</figure>
 	<p>Figure 7: End to End Secondary DNS‌‌</p>
-	<h2>What About Performance?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-about-performance">What About Performance?</h2>
+		<a href="https://blog.cloudflare.com/#what-about-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the time of writing this post, according to <a href="http://dnsperf.com">dnsperf.com</a>, Cloudflare leads in global performance for both <a href="https://www.dnsperf.com">Authoritative</a> and <a href="https://www.dnsperf.com/#!dns-resolvers">Resolver</a> DNS. Here, Secondary DNS falls under the authoritative DNS category here. Let’s break down the performance of each of the different parts of the Secondary DNS pipeline, from the primary server updating its records, to them being present at the Cloudflare edge.</p>
 	<ol>
 		<li>
@@ -332,6 +424,13 @@
 	<p>Figure 11: End to End Latency</p>
 	<p>An additional test was performed manually to get a real world estimate, the test had the following attributes:</p>
 	<p>Primary server: NS1Number of records changed: 1Start test timer event: Change record on NS1Stop test timer event: Observe record change at Cloudflare edge using digRecorded timer value: 6 seconds</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare serves 15.8 trillion DNS queries per month, operating within 100ms of 99% of the Internet-connected population. The goal of Cloudflare operated Secondary DNS is to allow our customers with custom DNS solutions, be it on-premise or some other DNS provider, to be able to take advantage of Cloudflare's DNS performance and more recently, through <a href="https://blog.cloudflare.com/orange-clouding-with-secondary-dns">Secondary Override</a>, our proxying and security capabilities too. Secondary DNS is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-">support article</a>.</p>
 </div>

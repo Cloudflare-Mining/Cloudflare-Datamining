@@ -8,7 +8,14 @@
 	<p>It's been a busy 2013 here at CloudFlare. By all external measures it was a terrific year. We grew page views, revenue and traffic across our network – all by more than 400%. We added terrific partners and high profile customers. We continued to hire great people, doubling team size and opening our <a href="https://blog.cloudflare.com/cloudflare-london-is-open-for-business">second office in London near St. Paul's Cathedral</a>.</p>
 	<p>However, 2013 was not without its challenges. For instance, the size of the <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">denial of service attacks we saw over the course of the year reached record levels</a>. To stay ahead of those attacks we upgraded our per server infrastructure from a 1Gbps platform to a <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-latest-generation-servers">10Gbps platform</a>. In the process we learned a lot about the capabilities — and limitations — of network gear vendors.</p>
 	<p>At the same time, CloudFlare's code base started to show its age. Lee originally wrote the first lines of code for CloudFlare's beta in early 2009. At the time I asked Lee how long he thought the architecture would hold up. "Three to four years," he estimated. Turned out he was exactly right.</p>
-	<h3>We Can Rebuild Him, We Have the Technology</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-can-rebuild-him-we-have-the-technology">We Can Rebuild Him, We Have the Technology</h3>
+		<a href="https://blog.cloudflare.com/#we-can-rebuild-him-we-have-the-technology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This last year was our "refactoring" year. Rather than adding new data centers we upgraded our existing facilities – adding equipment and network redundancy. We rebuilt our entire DNS infrastructure from scratch in Go. We cleaned up and simplified the pipeline that processes every HTTP request through our network, standardizing around Lua for its speed and agility. And we created a <a href="https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf">new, fully customizable, rules-based WAF</a> to augment our original heuristics-based WAF.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -21,7 +28,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KYNdmWqLJfomrqtkULL3k/9cc258f6584dc053d81fb1b1ce882bef/image04_1.png" alt="" class="kg-image" width="600" height="444" loading="lazy">
 
 	</figure>
-	<h3>Stepping on the Gas in 2014</h3>
+	<div class="flex anchor relative">
+		<h3 id="stepping-on-the-gas-in-2014">Stepping on the Gas in 2014</h3>
+		<a href="https://blog.cloudflare.com/#stepping-on-the-gas-in-2014" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what's in store for 2014? If last year was about quietly working behind the scenes to refactor our existing systems, the coming year is about taking our new streamlined machine and stepping on the gas. Over the next 12 months we will significantly expand our data centers, adding facilities in regions we currently lack coverage: Latin America, the Middle East, Africa, and parts of Asia. China is our second largest market, Brazil is our third: in 2014 we’ll be significantly expanding our network to better serve these customers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -35,7 +49,14 @@
 
 	</figure>
 	<p>Finally, we've been deeply troubled by some of the disclosures around government surveillance that came to light in 2013. From a technical perspective, we're committed to making available state-of-the-art encryption technologies to protect our customers' data on our network. To that end, in 2014 we will be rolling out SSL with perfect forward secrecy support to all our customers, even those at the free tier. That is a significant challenge for a number of reasons but we believe it's disappointing that there are only about 2 million SSL-protected sites online today. One day in 2014 we plan to double that. We think it's one of the most important things we can do to further our mission of building a better web.</p>
-	<h3>Happy New Year!</h3>
+	<div class="flex anchor relative">
+		<h3 id="happy-new-year">Happy New Year!</h3>
+		<a href="https://blog.cloudflare.com/#happy-new-year" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We learned a lot in 2013. We learned what 10Gbps switches can (and cannot) keep up CloudFlare-scale traffic. We learned how to double, and then double again, the maximum number of requests per second a server on our network could handle. And we learned a lot about Brazilian import controls and customs regulations.</p>
 	<p>One of the things I think we've traditionally done well is share what we've learned. While it's been quiet on our blog, know that we’ve been heads down working hard to solve the challenges that arose throughout 2013. Now that we’ve done that, we're excited in the New Year to pull back the covers and share what we learned.</p>
 	<p>So, from everyone at the CloudFlare team, thanks for your support in 2013. Happy New Year! And stay tuned for an incredible 2014 ahead.</p>

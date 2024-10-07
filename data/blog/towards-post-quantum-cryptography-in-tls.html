@@ -12,13 +12,27 @@
 		<p><i>“There are several systems in use that could be broken by a quantum computer - public-key encryption and digital signatures, to take two examples - and we will need different solutions for each of those systems.”</i></p>
 	</blockquote>
 	<p>Initially, NIST selected 82 candidates for further consideration from all submitted algorithms. At the beginning of 2019, this process entered its second stage. Today, there are 26 algorithms still in contention.</p>
-	<h3>Post-quantum cryptography: what is it really and why do I need it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="post-quantum-cryptography-what-is-it-really-and-why-do-i-need-it">Post-quantum cryptography: what is it really and why do I need it?</h3>
+		<a href="https://blog.cloudflare.com/#post-quantum-cryptography-what-is-it-really-and-why-do-i-need-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 1994, Peter Shor made a significant <a href="https://arxiv.org/abs/quant-ph/9508027">discovery</a> in quantum computation. He found an algorithm for integer factorization and computing discrete logarithms, both believed to be hard to solve in classical settings. Since then it has become clear that the 'hard problems' on which cryptosystems like RSA and elliptic curve cryptography (ECC) rely – integer factoring and computing discrete logarithms, respectively – are efficiently solvable with quantum computing.</p>
 	<p>A quantum computer can help to solve some of the problems that are intractable on a classical computer. In theory, they could efficiently solve some <a href="https://www.quantamagazine.org/finally-a-problem-that-only-quantum-computers-will-ever-be-able-to-solve-20180621">fundamental problems</a> in mathematics. This amazing computing power would be highly beneficial, which is why companies are actually trying to build quantum computers. At first, Shor’s algorithm was merely a theoretical result – quantum computers powerful enough to execute it did not exist – but this is quickly changing. In March 2018, Google announced a 72-qubit universal quantum computer. While this is not enough to break say RSA-2048 (still <a href="https://arxiv.org/abs/1905.09749">more is needed</a>), many fundamental problems have already been solved.</p>
 	<p>In anticipation of wide-spread quantum computing, we must start the transition from classical public-key cryptography primitives to post-quantum (PQ) alternatives. It may be that consumers will never get to hold a quantum computer, but a few powerful attackers who will get one can still pose a serious threat. Moreover, under the assumption that current TLS handshakes and ciphertexts are being captured and stored, a future attacker could crack these stored individual session keys and use those results to decrypt the corresponding individual ciphertexts. Even strong security guarantees, like <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a>, do not help out much there.</p>
 	<p>In 2006, the academic research community launched a conference series dedicated to finding alternatives to RSA and ECC. This so-called <i>post-quantum cryptography</i> should run efficiently on a classical computer, but it should also be secure against attacks performed by a quantum computer. As a research field, it has grown substantially in popularity.</p>
 	<p>Several companies, including Google, Microsoft, Digicert and Thales, are already testing the impact of deploying PQ cryptography. Cloudflare is involved in some of this, but we want to be a company that leads in this direction. The first thing we need to do is understand the real costs of deploying PQ cryptography, and that’s not obvious at all.</p>
-	<h3>What options do we have?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-options-do-we-have">What options do we have?</h3>
+		<a href="https://blog.cloudflare.com/#what-options-do-we-have" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many submissions to the NIST project are still under study. Some are very new and little understood; others are more mature and already standardized as RFCs. Some have been broken or withdrawn from the process; others are more conservative or <a href="https://eprint.iacr.org/2017/351.pdf">illustrate</a> how far classical cryptography would need to be pushed so that a quantum computer could not crack it within a reasonable cost. Some are very slow and big; others are not. But most cryptographic schemes can be categorized into these families: <a href="https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf">lattice-based</a>, <a href="http://www.cryptosystem.net/hfe.pdf">multivariate</a>, <a href="https://link.springer.com/content/pdf/10.1007%2F0-387-34805-0_21.pdf">hash-based</a> (signatures only), <a href="https://ipnpr.jpl.nasa.gov/progress_report2/42-44/44N.PDF">code-based</a> and <a href="https://eprint.iacr.org/2011/506.pdf">isogeny-based</a>.</p>
 	<p>For some algorithms, nevertheless, there is a fear they may be too inconvenient to use with today’s Internet. We must also be able to integrate new cryptographic schemes with existing protocols, such as <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> or TLS. To do that, designers of PQ cryptosystems must consider these characteristics:</p>
 	<ul>
@@ -36,7 +50,15 @@
 		</li>
 	</ul>
 	<p>The work on post-quantum public key cryptosystems must be done in a full view of organizations, governments, cryptographers, and the public. Emerging ideas must be properly vetted by this community to ensure widespread support.</p>
-	<h3>Helping Build a Better Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">Helping Build a Better Internet</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oHEFoSgnIAeuq111tpnEw/be0a3db100bd430c620e7a8601ccc713/pasted-image-0-5.png" alt="" class="kg-image" width="1156" height="338" loading="lazy">
@@ -83,7 +105,14 @@
 	</table><!--kg-card-end: html-->
 	<p>Currently the most commonly used key exchange algorithm (according to Cloudflare’s data) is the non-quantum X25519. Its public keys are 32 bytes and BoringSSL can generate 49301.2 key pairs, and is able to perform 19628.6 key agreements every second on my Skylake CPU.</p>
 	<p>Note that HRSS-SXY shows a significant speed advantage, while SIKE has a size advantage. In our experiment, we will deploy these two algorithms on both the server side using Cloudflare’s infrastructure, and the client side using Chrome Canary; both sides will collect telemetry information about TLS handshakes using these two PQ algorithms to see how they perform in practice.</p>
-	<h3>What do we expect to find?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-do-we-expect-to-find">What do we expect to find?</h3>
+		<a href="https://blog.cloudflare.com/#what-do-we-expect-to-find" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2018, Adam Langley conducted an <a href="https://www.imperialviolet.org/2018/04/11/pqconftls.html">experiment</a> with the goal of evaluating the likely latency impact of a post-quantum key exchange in TLS. Chrome was augmented with the ability to include a dummy, arbitrarily-sized extension in the TLS ClientHello (fixed number of bytes of random noise). After taking into account the performance and key size offered by different types key-exchange schemes, he concluded that constructs based on structured lattices may be most suitable for future use in TLS.</p>
 	<p>However, Langley also observed a peculiar phenomenon; client connections measured at 95th percentile had much higher latency than the median. It means that in those cases, isogeny-based systems may be a better choice. In the "Dive into post-quantum cryptography", we describe the difference between isogeny-based SIKE and lattice-based NTRU cryptosystems.</p>
 	<p>In our experiment, we want to more thoroughly evaluate and ascribe root causes to these unexpected latency increases. We would particularly like to learn more about the characteristics of those networks: what causes increased latency? how does the performance cost of isogeny-based algorithms impact the TLS handshake? We want to answer key questions, like:</p>
@@ -98,7 +127,14 @@
 			<p>How do the different properties of client networks affect TLS performance with different PQ key exchanges? Can we identify specific autonomous systems, device configurations, or network configurations that favor one algorithm over another? How is performance affected in the long tail?</p>
 		</li>
 	</ul>
-	<h3>Experiment Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="experiment-design">Experiment Design</h3>
+		<a href="https://blog.cloudflare.com/#experiment-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our experiment will involve both server- and client-side performance statistics collection from real users around the world (all the data is anonymized). Cloudflare is operating the server-side TLS connections. We will enable the <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html">CECPQ2</a> (HRSS + X25519) and <a href="https://tools.ietf.org/html/draft-kiefer-tls-ecdhe-sidh-00">CECPQ2b</a> (SIKE + X25519) key-agreement algorithms on all TLS-terminating edge servers.</p>
 	<p>In this experiment, the ClientHello will contain a CECPQ2 or CECPQ2b public key (but never both). Additionally, Chrome will always include X25519 for servers that do not support post-quantum key exchange. The post-quantum key exchange will only be negotiated in TLS version 1.3 when both sides support it.</p>
 	<p>Since Cloudflare only measures the server side of the connection, it is impossible to determine the time it takes for a ClientHello sent from Chrome to reach Cloudflare’s edge servers; however, we can measure the time it takes for the TLS ServerHello message containing post-quantum key exchange, to reach the client and for the client to respond.</p>
@@ -113,13 +149,34 @@
 	</ul>
 	<p>Our high-level expectation is to get similar results as Langley’s original experiment in 2018 — slightly increased latency for the 50th percentile and higher latency for the 95th. Unfortunately, data collected purely from real users’ connections may not suffice for diagnosing the root causes of why some clients experience excessive slowdown. To this end, we will perform follow-up experiments based on per-client information we collect server-side.</p>
 	<p>Our primary hypothesis is that excessive slowdowns, like those Langley observed, are largely due to in-network events, such as middleboxes or bloated/lossy links. As a first-pass analysis, we will investigate whether the slowed-down clients share common network features, like common ASes, common transit networks, common link types, and so on. To determine this, we will run a traceroute from vantage points close to our servers back toward the clients (not overloading any particular links or hosts) and study whether some client locations are subject to slowdowns for all destinations or just for some.</p>
-	<h3>Dive into post-quantum cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="dive-into-post-quantum-cryptography">Dive into post-quantum cryptography</h3>
+		<a href="https://blog.cloudflare.com/#dive-into-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Be warned: the details of PQ cryptography may be quite complicated. In some cases it builds on classical cryptography, and in other cases it is completely different math. It would be rather hard to describe details in a single blog post. Instead, we are giving you an intuition of post-quantum cryptography, rather than provide deep academic-level descriptions. We’re skipping a lot of details for the sake of brevity. Nevertheless, settle in for a bit of an epic journey because we have a lot to cover.</p>
-	<h3>Key encapsulation mechanism</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-encapsulation-mechanism">Key encapsulation mechanism</h3>
+		<a href="https://blog.cloudflare.com/#key-encapsulation-mechanism" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NIST requires that all key-agreement algorithms have a form of key-encapsulation mechanism (KEM). The KEM is a simplified form of public key encryption (PKE). As PKE, it also allows agreement on a secret, but in a slightly different way. The idea is that the session key is an output of the encryption algorithm, conversely to public key encryption schemes where session key is an input to the algorithm. In a KEM, Alice generates a random key and uses the pre-generated public key from Bob to encrypt (encapsulate) it. This results in a ciphertext sent to Bob. Bob uses his private key to decrypt (decapsulate) the ciphertext and retrieve the random key. The idea was initially introduced by <a href="https://eprint.iacr.org/2001/108">Cramer and Shoup</a>. Experience shows that such constructs are easier to design, analyze, and implement as the scheme is limited to communicating a fixed-size session key. Leonardo Da Vinci said, “Simplicity is the ultimate sophistication,” which is very true in cryptography.</p>
 	<p>The key exchange (KEX) protocol, like <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman</a>, is yet a different construct: it allows two parties to agree on a shared secret that can be used as a symmetric encryption key. For example, Alice generates a key pair and sends a public key to Bob. Bob does the same and uses his own key pair with Alice’s public key to generate the shared secret. He then sends his public key to Alice who can now generate the same shared secret. What’s worth noticing is that both Alice and Bob perform exactly the same operations.</p>
 	<p>KEM construction can be converted to KEX. Alice performs key generation and sends the public key to Bob. Bob uses it to encapsulate a symmetric session key and sends it back to Alice. Alice decapsulates the ciphertext received from Bob and gets the symmetric key. This is actually what we do in our experiment to make integration with the TLS protocol less complicated.</p>
-	<h3>NTRU Lattice-based Encryption &nbsp;</h3>
+	<div class="flex anchor relative">
+		<h3 id="ntru-lattice-based-encryption">NTRU Lattice-based Encryption &nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#ntru-lattice-based-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will enable the CECPQ2 implemented by Adam Langley from Google on our servers. He described this implementation in detail <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html">here</a>. This key exchange uses the HRSS algorithm, which is based on the NTRU (<b>N</b>-Th Degree <b>TRU</b>ncated Polynomial Ring) algorithm. Foregoing too much detail, I am going to explain how NTRU works and give simplified examples, and finally, compare it to HRSS.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -159,9 +216,23 @@
 	<p>Step-by-step correctness of decryption procedure.</p>
 	<p>After obtaining \(pt\), the message \(m\) is recovered by inverting the conversion function.</p>
 	<p>The underlying hard assumption is that given two polynomials: \(f\) and \(g\) whose coefficients are short compared to the modulus \(q\), it is difficult to distinguish \(pk = \frac{f}{g} \) from a random element in the ring. It means that it’s hard to find \(f\) and \(g\) given only public key <i>pk</i>.</p>
-	<h3>Lattices</h3>
+	<div class="flex anchor relative">
+		<h3 id="lattices">Lattices</h3>
+		<a href="https://blog.cloudflare.com/#lattices" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NTRU cryptosystem is a grandfather of lattice-based encryption schemes. The idea of using &nbsp;difficult problems for cryptographic purposes was due to <a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=144BBB9F0E87EF0D471151F0EACC7DB8?doi=10.1.1.40.2489&amp;rep=rep1&amp;type=pdf">Ajtai</a>. His work evolved into a whole area of research with the goal of creating more practical, lattice-based cryptosystems.</p>
-	<h3>What is a lattice and why it can be used for post-quantum crypto?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-lattice-and-why-it-can-be-used-for-post-quantum-crypto">What is a lattice and why it can be used for post-quantum crypto?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-lattice-and-why-it-can-be-used-for-post-quantum-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The picture below visualizes lattice as points in a two-dimensional space. A lattice is defined by the origin \(O\) and base vectors \( \{ b_1 , b_2\} \). Every point on the lattice is represented as a linear combination of the base vectors, for example &nbsp;\(V = -2b_1+b_2\).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -178,7 +249,14 @@
 		</li>
 	</ol>
 	<p>In the graph above, it is easy for us to solve SVP and CVP by simple inspection. However, the lattices used in cryptography have higher dimensions, say above 1000, as well as highly non-orthogonal basis vectors. On these instances, the problems get extremely hard to solve. It’s even believed future quantum computers will have it tough.</p>
-	<h3>NTRU vs HRSS</h3>
+	<div class="flex anchor relative">
+		<h3 id="ntru-vs-hrss">NTRU vs HRSS</h3>
+		<a href="https://blog.cloudflare.com/#ntru-vs-hrss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HRSS, which we use in our experiment, is based on NTRU, but a slightly better instantiation. The main improvements are:</p>
 	<ul>
 		<li>
@@ -191,7 +269,14 @@
 			<p>HRSS is a key encapsulation mechanism.</p>
 		</li>
 	</ul>
-	<h3>CECPQ2b - Isogeny-based Post-Quantum TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="cecpq2b-isogeny-based-post-quantum-tls">CECPQ2b - Isogeny-based Post-Quantum TLS</h3>
+		<a href="https://blog.cloudflare.com/#cecpq2b-isogeny-based-post-quantum-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Following CECPQ2, we have integrated into BoringSSL another hybrid key exchange mechanism relying on SIKE. It is called CECPQ2b and we will use it in our experimentation in TLS 1.3. <a href="https://sike.org">SIKE</a> is a key encapsulation method based on Supersingular Isogeny Diffie-Hellman (SIDH). Read more about <a href="https://blog.cloudflare.com/sidh-go">SIDH</a> in our previous post. The math behind SIDH is related to elliptic curves. A comparison between SIDH and the classical Elliptic Curve Diffie-Hellman (ECDH) is given.</p>
 	<p>An elliptic curve is a set of points that satisfy a specific mathematical equation. The equation of an elliptic curve may have multiple forms, the standard form is called the <i>Weierstrass</i> equation $$ y^2 = x^3 +ax +b &nbsp;$$ and its shape can look like the red curve.</p>
 	<figure class="kg-card kg-image-card ">
@@ -210,7 +295,14 @@
 	<p>It turns out that carefully if choosing an elliptic curve "correctly", scalar multiplication is easy to compute but extremely hard to reverse. Meaning, given two points \(Q\) and \(P\) such that \(Q=k\cdot P\), finding the integer k is a difficult task known as the Elliptic Curve Discrete Logarithm problem (ECDLP). This problem is suitable for cryptographic purposes.</p>
 	<p>Alice and Bob agree on a secret key as follows. Alice generates a private key \( k_a\). Then, she uses some publicly known point \(P\) and calculates her public key as \( Q_a = k_a\cdot P\). Bob proceeds in similar fashion and gets \(k_b\) and \(Q_b = k_b\cdot P\). To agree on a shared secret, each party multiplies their private key with the public key of the other party. The result of this is the shared secret. Key agreement as described above, works thanks to the fact that scalars can commute:$$ &nbsp;\color{darkgreen}{k_a} \cdot Q_b = \color{darkgreen}{k_a} \cdot &nbsp;\color{darkred}{k_b} \cdot P \iff \color{darkred}{k_b} \cdot \color{darkgreen}{k_a} \cdot P = \color{darkred}{k_b} \cdot Q_a $$</p>
 	<p>There is a vast theory behind elliptic curves. An introduction to <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curve cryptography</a> was posted before and more details can be found in this <a href="https://doi.org/10.1007/b97644">book</a>. Now, lets describe SIDH and compare with ECDH.</p>
-	<h3>Isogenies on Elliptic Curves</h3>
+	<div class="flex anchor relative">
+		<h3 id="isogenies-on-elliptic-curves">Isogenies on Elliptic Curves</h3>
+		<a href="https://blog.cloudflare.com/#isogenies-on-elliptic-curves" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before explaining the details of SIDH key exchange, I’ll explain the 3 most important concepts, namely: <b><i>j-invariant, isogeny</i></b> and its <b><i>kernel.</i></b></p>
 	<p>Each curve has a number that can be associated to it. Let’s call this number a <b><i>j-invariant.</i></b> This number is not unique per curve, meaning many curves have the same value of <b><i>j-invariant</i></b>, but it can be viewed as a way to group multiple elliptic curves into disjoint sets. We say that two curves are <b><i>isomorphic</i></b> if they are in the same set, called the <i>isomorphism class</i>. The j-invariant is a simple criterion to determine whether two curves are isomorphic. The j-invariant of a curve \(E\) in Weierstrass form \( y^2 = x^3 + ax + b\) is given as $$ j(E) = 1728\frac{4a^3}{4a^3 +27b^2} $$</p>
 	<p>When it comes to <b><i>isogeny</i></b>, think about it as a map between two curves. Each point on some curve \( E \) is mapped by isogeny to the point on isogenous curve \( E' \). We denote mapping from curve \( E \) to \( E' \) by isogeny \( \phi \) as:</p>
@@ -230,7 +322,14 @@
 	</figure>
 	<p>There are two <b>isomorphism classes</b> on the picture above. Both curves \(E_1\) and \(E_2\) are <b>isomorphic</b> and have &nbsp;j-invariant = 6. As curves \(E_3\) and \(E_4\) have j-invariant=13, they are in a different isomorphism class. There exists an <b>isogeny</b> \(\phi_2\) between curve \(E_3\) and \(E_2\), so they both are <b>isogeneous</b>. Curves \( \phi_1 \) and \( E_2 \) are isomorphic and there is isogeny \( \phi_1 \) between them. Curves \( E_1\) and \(E_4\) are not isomorphic.</p>
 	<p>For brevity I’m skipping many important details, like details of the <i>finite field,</i> the fact that isogenies must be <i>separable</i> and that the kernel is <i>finite.</i> But curious readers can find a number of academic research papers available on the Internet.</p>
-	<h3>Big picture: similarities with ECDH</h3>
+	<div class="flex anchor relative">
+		<h3 id="big-picture-similarities-with-ecdh">Big picture: similarities with ECDH</h3>
+		<a href="https://blog.cloudflare.com/#big-picture-similarities-with-ecdh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s generalize the ECDH algorithm described above, so that we can swap some elements and try to use Supersingular Isogeny Diffie-Hellman.</p>
 	<p>Note that what actually happens during an ECDH key exchange is:</p>
 	<ul>
@@ -255,7 +354,14 @@
 			<p>Set <i>G</i> is a set of isogenies acting on elliptic curves and transforming, for example, the elliptic curve \(E_1\) into \(E_n\):</p>
 		</li>
 	</ul>
-	<h3>Random walk on supersingular graph</h3>
+	<div class="flex anchor relative">
+		<h3 id="random-walk-on-supersingular-graph">Random walk on supersingular graph</h3>
+		<a href="https://blog.cloudflare.com/#random-walk-on-supersingular-graph" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we talk about <i>Isogeny Based Cryptography</i>, as a topic distinct from <i>Elliptic Curve Cryptography</i>, we usually mean algorithms and protocols that rely fundamentally on the structure of isogeny graphs. An example of such a (small) graph is pictured below.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -277,7 +383,14 @@
 	<p>Thanks to formulas given by <a href="https://www.researchgate.net/publication/246557704_Isogenies_entre_courbes_elliptiques">Vélu</a> we can now use the point \( R_1 \) to compute the isogeny, the party will choose to move from a vertex to another one. After the isogeny \( \phi_{R_1} \) is calculated it is applied to \( E_0 \) &nbsp;which results in a new curve \( E_1 \):</p>
 	<p>$$ \phi_{R_1}: E_0 \rightarrow E_1 $$</p>
 	<p>Isogeny is also applied to points P and Q. Once on \( E_1 \) the process is repeated. This process is applied <i>n</i> times, and at the end a party ends up on some curve \( E_n \) which defines isomorphism class, so also j-invariant.</p>
-	<h3>Supersingular Isogeny Diffie-Hellman</h3>
+	<div class="flex anchor relative">
+		<h3 id="supersingular-isogeny-diffie-hellman">Supersingular Isogeny Diffie-Hellman</h3>
+		<a href="https://blog.cloudflare.com/#supersingular-isogeny-diffie-hellman" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The core idea in SIDH is to compose two random walks on an isogeny graph of elliptic curves in such a way that the end node of both ways of composing is the same.</p>
 	<p>In order to do it, scheme sets public parameters - starting curve \( E_0 \) and 2 pairs of base points on this curve <i>\( (PA,QA) \)</i> , <i>\( (PB,QB) \)</i>. Alice generates her random secret keys <i>m,</i> and calculates a secret isogeny \( \phi_q \) by performing a <i>random walk</i> as described above. The walk finishes with 3 values: elliptic curve \( E_a \) she has ended up with and pair of points \( \phi_a(PB) \) and \( \phi_a(QB) \) after pushing through Alice’s secret isogeny. Bob proceeds analogously which results in the triple \( {E_b, \phi_b(PA), \phi_b(QA)} \). The triple forms a public key which is exchanged between parties.</p>
 	<p>The picture below visualizes the operation. The black dots represent curves grouped in the same <i>isomorphism classes</i> represented by light blue circles. Alice takes the orange path ending up on a curve \( E_a \) in a separate isomorphism class than Bob after taking his dark blue path ending on \( E_b \). SIDH is parametrized in a way that Alice and Bob will always end up in different isomorphism classes.</p>
@@ -303,12 +416,26 @@
 	</figure>
 	<p>Comparison based on Craig Costello’ s <a href="http://www.craigcostello.com.au/wp-content/uploads/Craig-isogenies-tutorial.pdf">slide deck</a>.</p>
 	<p>In ECDH there is a secret key which is an integer scalar, in case of SIDH it is a secret isogeny, which also is generated from an integer scalar. In the case of ECDH one multiplies a point on a curve by a scalar, in the case of SIDH it is a random walk in an isogeny graph. In the case of ECDH, the public key is a point on a curve, in the case of SIDH, the public part is a curve itself and the image of some points after applying isogeny. The shared secret in the case of ECDH is a point on a curve, in the case of SIDH it is a j-invariant.</p>
-	<h3>SIKE: Supersingular Isogeny Key Encapsulation</h3>
+	<div class="flex anchor relative">
+		<h3 id="sike-supersingular-isogeny-key-encapsulation">SIKE: Supersingular Isogeny Key Encapsulation</h3>
+		<a href="https://blog.cloudflare.com/#sike-supersingular-isogeny-key-encapsulation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SIDH could potentially be used as a drop-in replacement of the ECDH protocol. We have actually implemented a proof-of-concept and added it to our implementation of TLS 1.3 in the <a href="https://github.com/cloudflare/tls-tris">tls-tris</a> library and described (together with Mozilla) implementation details in this <a href="https://tools.ietf.org/html/draft-kiefer-tls-ecdhe-sidh-00">draft</a>. Nevertheless, there is a problem with SIDH - the keys can be used only once. In 2016, a few researchers came up with an active <a href="https://eprint.iacr.org/2016/859">attack</a> on SIDH which works only when public keys are reused. In the context of TLS, it is not a big problem, because for each session a fresh key pair is generated (ephemeral keys), but it may not be true for other applications.</p>
 	<p>SIKE is an isogeny key encapsulation which solves this problem. Bob can generate SIKE keys, upload the public part somewhere in the Internet and then anybody can use it whenever he wants to communicate with Bob securely. SIKE reuses SIDH - internally both sides of the connection always perform SIDH key generation, SIDH key agreement and apply some other cryptographic primitives in order to convert SIDH to KEM. SIKE is implemented in a few variants - each variant corresponds to the security levels using 128-, 192- and 256-bit secret keys. Higher security level means longer running time. More details about SIKE can be found <a href="https://sike.org">here</a>.</p>
 	<p>SIKE is also one of the candidates in NIST post-quantum "<a href="https://csrc.nist.gov/Projects/Post-Quantum-Cryptography">competition</a>".</p>
 	<p>I’ve skipped many important details to give a brief description of how isogeny based crypto works. If you’re curious and hungry for details, look at either of these Cloudflare <a href="https://www.youtube.com/watch?v=ctP24WKusX0">meetups</a>, where Deirdre Connolly talked about isogeny-based cryptography or this <a href="https://videos.2017.pqcrypto.org/school/#martindale1">talk</a> by Chloe Martindale during PQ Crypto School 2017. And if you would like to know more about quantum attacks on this scheme, I highly recommend <a href="https://eprint.iacr.org/2019/103.pdf">this</a> work.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Quantum computers that can break meaningful cryptographic parameter settings do not exist, yet. They won't be built for at least the next few years. Nevertheless, they have already changed the way we look at current cryptographic deployments. There are at least two reasons it’s worth investing in PQ cryptography:</p>
 	<ul>
 		<li>

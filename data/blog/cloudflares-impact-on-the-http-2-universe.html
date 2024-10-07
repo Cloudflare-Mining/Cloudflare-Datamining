@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BZHl7qJnh894rQ2it40Pb/5bb38960b2c89a246173a508666642e2/cloudflares-impact-on-the-http-2-universe.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>CloudFlare <a href="https://blog.cloudflare.com/introducing-http2">released HTTP/2 support</a> for all customers on December 3rd, 2015. Now, two months later, it's time to take a look at the impact of this release on the HTTP/2 "universe" and also at what has changed from a HTTP/2 vs. SPDY vs. HTTP 1.1 traffic ratio perspective.</p>
-	<h3>HTTP/2 Usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-2-usage">HTTP/2 Usage</h3>
+		<a href="https://blog.cloudflare.com/#http-2-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Previously, we showcased browser market share data from our <a href="https://www.cloudflare.com">own website</a>. Using these numbers, we predicted the ratio of HTTP/2 traffic that we expected to see once enabled. Now, we can compare this original data set with updated data from the last 48 hours.</p>
 	<p>Below is the market share of HTTP/2 capable browsers that we saw on our website during a 48 hour period. The first one was before our HTTP/2 launch, the other one was last week. Both data sets were pulled from Google Analytics, and user agents were analyzed for HTTP/2 support.</p>
 	<p>HTTP/2 capable browser</p>
@@ -43,7 +50,14 @@
 	<p>Since November, the number of browsers visiting CloudFlare.com that support HTTP/2 has more than doubled. In particular, notice how the market share of Chrome and Firefox versions that support HTTP/2 increased dramatically within the last 2 months.</p>
 	<p>The reason for this is, that even with Auto-Update functionality in modern browsers, new versions are not adopted instantaneous. We had documented the <a href="https://blog.cloudflare.com/ios-9-how-did-the-launch-really-go">release of iOS 9</a>, which is an example for a quite swift adoption.Looking at the challenges around the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">SHA-1 deprecation</a>, we can see that some really old OS and browser version are still around.</p>
 	<p>Keep in mind that we still see a larger number of non-browsers that don’t fall into any of the above buckets on our edge network. This is due to bots, crawlers, scrapers, and the like. The numbers above represent typical website traffic after it has been sanitized by CloudFlare.</p>
-	<h3>Real-Life Numbers</h3>
+	<div class="flex anchor relative">
+		<h3 id="real-life-numbers">Real-Life Numbers</h3>
+		<a href="https://blog.cloudflare.com/#real-life-numbers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the promising browser market share data above, we can now compare the ratio of traffic served via the different HTTP versions on <a href="https://www.cloudflare.com">www.cloudflare.com</a>.</p>
 	<p>Again, contrast the data from around our release in December to the current data.</p>
 	<p>Protocol Version</p>
@@ -60,7 +74,14 @@
 	<p>52.93%</p>
 	<p>The great news: the HTTP/2 traffic ratio has indeed more than doubled on <a href="https://www.cloudflare.com">www.cloudflare.com</a> since we rolled out HTTP/2.</p>
 	<p>Nevertheless, we are still serving a large portion of traffic over SPDY, mostly due to older versions of Chrome.Therefore it was a good choice to keep supporting this protocol version.</p>
-	<h3>Number of HTTP/2-Powered Websites</h3>
+	<div class="flex anchor relative">
+		<h3 id="number-of-http-2-powered-websites">Number of HTTP/2-Powered Websites</h3>
+		<a href="https://blog.cloudflare.com/#number-of-http-2-powered-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far, we have looked at what an individual HTTP/2 enabled site on CloudFlare could expect to see with regards to traffic and different browser versions. Let’s shift gears a bit and have a look at how many websites we have actually enabled with HTTP/2 so far:</p>
 	<p>The website <a href="http://isthewebhttp2yet.com/about.html">isthewebhttp2yet.com</a> is a great tool for finding an answer to this question. It is created and maintained by researchers at <a href="http://tid.es">Telefónica Research</a>, <a href="http://www.case.edu">Case Western Reserve University</a>, and <a href="http://www.cmu.edu">Carnegie Mellon University</a>, and provides an overview of how many websites from the <a href="http://www.alexa.com">Alexa</a> 1M list are enabled with HTTP/2.</p>
 	<p>The website differentiates between:</p>
@@ -86,7 +107,14 @@
 	<p>You can see a sharp increase of domains with "True Support" in December 2015, bringing the number of domains with “True Support” from 14,017 (December 1st, 2015) to 75,288 (December 31st, 2015).</p>
 	<p>According to isthewebhttp2yet.com, 58,591 of these domains run through CloudFlare. That means CloudFlare more than quadrupled the number of HTTP/2 sites with the December 2015 release.</p>
 	<p>We’d like to give a big shout-out to the team of isthewebhttp2yet.com. They worked with our engineers to update their measurement method to include the <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication (SNI)</a> TLS extension when they probe sites for HTTP/2 support. By doing so, the site is able to identify all CloudFlare-powered sites. You can see this measurement change kicking in within the above graph at the sharp increase from 24,947 domains to 74,271 domains.</p>
-	<h3>HTTP/2 Market Position</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-2-market-position">HTTP/2 Market Position</h3>
+		<a href="https://blog.cloudflare.com/#http-2-market-position" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another website measuring the adoption of HTTP/2 on the server side is <a href="http://w3techs.com/about">W3 Techs</a>. While the graph generated by W3 Techs for <a href="http://w3techs.com/technologies/details/ce-http2/all/all">HTTP/2 adoption</a> is much more coarse grained on the time axis, the increase of HTTP/2 enabled websites due to CloudFlare is nevertheless clearly visible.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -102,7 +130,14 @@
 	</figure>
 	<p><a href="http://w3techs.com/technologies/details/ce-http2/all/all">Source</a></p>
 	<p>Want to help us grow our software engineering team and increase our protocol support? Check out our <a href="https://www.cloudflare.com/join-our-team">available roles</a>.</p>
-	<h3>Enabling HTTP/2</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-http-2">Enabling HTTP/2</h3>
+		<a href="https://blog.cloudflare.com/#enabling-http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a reminder, if you are a customer on the Free or Pro plan, there is no need to do anything at all. Both SPDY and HTTP/2 are already enabled for you. With this improvement, your website’s audience will always use the fastest protocol version when accessing your site over TLS/SSL.</p>
 	<p>Customers on Business and Enterprise plans can enable HTTP/2 within the "Network" application of the CloudFlare Dashboard. In the last two months, the web still hasn't exploded while running HTTP/2. With that in mind, it's probably safe for you to head over an enable HTTP/2 now. You will be in great company with many other sites.</p>
 	<figure class="kg-card kg-image-card ">

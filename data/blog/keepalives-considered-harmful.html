@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>This may sound like a weird title, but hear me out. You’d think keepalives would always be helpful, but turns out reality isn’t always what you expect it to be. It really helps if you read <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">Why does one NGINX worker take all the load?</a> first. This post is an adaptation of a rather old post on Cloudflare’s internal blog, so not all details are exactly as they are in production today but the lessons are still valid.</p>
 	<p>This is a story about how we were seeing some complaints about sporadic latency spikes, made some unconventional changes, and were able to slash the 99.9th latency percentile by 4x!</p>
-	<h3>Request flow on Cloudflare edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="request-flow-on-cloudflare-edge">Request flow on Cloudflare edge</h3>
+		<a href="https://blog.cloudflare.com/#request-flow-on-cloudflare-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I'm going to focus only on two parts of our edge stack: FL and SSL.</p>
 	<ul>
 		<li>
@@ -25,7 +32,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OI9zf8X8wBnNTaE0j94M2/36ba0c90984ad047ae0dd939d4d40ac3/Screen-Shot-2020-03-19-at-12.22.55.png" alt="" class="kg-image" width="1334" height="616" loading="lazy">
 
 	</figure>
-	<h3>Keepalives</h3>
+	<div class="flex anchor relative">
+		<h3 id="keepalives">Keepalives</h3>
+		<a href="https://blog.cloudflare.com/#keepalives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Requests come over connections that are reused for performance reasons, which is sometimes referred to as “keepalive”. It's generally expensive for a client to open a new TCP connection and our servers keep some memory pools associated with connections that need to be recycled. In fact, one of the range of mitigations we use for attack traffic is disabling keepalives for abusive clients, forcing them to reopen connections, which slows them down considerably.</p>
 	<p>To illustrate the usefulness of keepalives, here's me requesting <a href="http://example.com">http://example.com/</a> from curl over the same connection:</p>
 	<pre class="language-rust"><code class="language-rust">$ curl -s -w "Time to connect: %{time_connect} Time to first byte: %{time_starttransfer}\n" -o /dev/null http://example.com/ -o /dev/null http://example.com/
@@ -34,7 +48,14 @@ Time to connect: 0.012108 Time to first byte: 0.018724
 Time to connect: 0.000019 Time to first byte: 0.007391</code></pre>
 	<p>The first request took 18.7ms and out of them 12.1ms were used to establish a new connection, which is not even a TLS one. When I sent another request over the same connection, I didn't need to pay extra and it took just 7.3ms to service my request. That's a big win, which gets even bigger if you need to establish a brand new connection (especially if it’s not <a href="https://www.cloudflare.com/learning-resources/tls-1-3">TLSv1.3</a> or <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">QUIC</a>). DNS was also cached in the example above, but it may be another negative factor for domains with low TTL.</p>
 	<p>Keepalives tend to be used extensively, because they seem beneficial. Generally keepalives are enabled by default for this exact reason.</p>
-	<h3>Taking all the load</h3>
+	<div class="flex anchor relative">
+		<h3 id="taking-all-the-load">Taking all the load</h3>
+		<a href="https://blog.cloudflare.com/#taking-all-the-load" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Due to how Linux works (see the first link in this blog post), most of the load goes to a few workers out of the pool. When that worker is not able to accept() a pending connection because it's busy processing requests, that connection spills to another worker. The process cascades until some worker is ready to pick up.</p>
 	<p>This leaves us with a ladder of load spread between workers:</p>
 	<pre class="language-rust"><code class="language-rust">               CPU%                                       Runtime
@@ -72,7 +93,14 @@ nobody    4242 16.6  0.7 5537956 1038408 ?     R    Aug23 1278:40 nginx: worker 
 4243 867
 4242 884</code></pre>
 	<p>More load corresponds to more open sockets. More open sockets generate more load to serve these connections. It’s a vicious circle.</p>
-	<h3>The twist</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-twist">The twist</h3>
+		<a href="https://blog.cloudflare.com/#the-twist" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we have all these workers holding onto this connections, requests over these connections are also in a way pinned to workers:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -98,7 +126,14 @@ nobody    4242 16.6  0.7 5537956 1038408 ?     R    Aug23 1278:40 nginx: worker 
 		</li>
 	</ul>
 	<p>The former is the most important part.</p>
-	<h3>Validating the hypothesis</h3>
+	<div class="flex anchor relative">
+		<h3 id="validating-the-hypothesis">Validating the hypothesis</h3>
+		<a href="https://blog.cloudflare.com/#validating-the-hypothesis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To validate this assumption, I wrote the following program:</p>
 	<pre class="language-rust"><code class="language-rust">package main
  
@@ -214,7 +249,14 @@ func main() {
 2018/08/24 23:44:57 Request 9330 took 25ms
 2018/08/24 23:45:01 Request 9962 took 48ms</code></pre>
 	<p>If we close after every 5 requests, the number of slow responses almost doubles. This is counter-intuitive, keepalives are supposed to help with latency, not make it worse!</p>
-	<h3>Trying this in the wild</h3>
+	<div class="flex anchor relative">
+		<h3 id="trying-this-in-the-wild">Trying this in the wild</h3>
+		<a href="https://blog.cloudflare.com/#trying-this-in-the-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To see how this works out in the real world, we disabled keepalives between SSL and FL in one location, forcing SSL to send every request over a separate connection (remember: cheap local Unix socket). Here’s how our probes toward that location reacted to this:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -241,7 +283,14 @@ func main() {
 
 	</figure>
 	<p>We reduced unnecessary wait time due to an imbalance without increasing the CPU load, which directly translates into improved user experience and lower resource consumption for us.</p>
-	<h3>The downsides</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-downsides">The downsides</h3>
+		<a href="https://blog.cloudflare.com/#the-downsides" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There has to be a downside from this, right? The problem we introduced is that CPU imbalance between individual CPU cores went up:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -255,7 +304,14 @@ func main() {
 
 	</figure>
 	<p>We’ve tried different combinations and having both EPOLLROUNDROBIN with disabled keepalives worked best. Having just one of them is not as beneficial to lower latency.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We disabled keepalives between SSL and FL running on the same box and this greatly improved our tail latency caused by requests landing on non-optimal FL workers. This was an unexpected fix, but it worked and we are able to explain it.</p>
 	<p>This doesn’t mean that you should go and disable keepalives everywhere. Generally keepalives are great and should stay enabled, but in our case the latency of local connection establishment is much lower than the delay we can get from landing on a busy worker.</p>
 	<p>In reality this means that we can run our machines hotter and not see latency rise as much as it did before. Imagine moving the CPU cap from 50% to 80% with no effect on latency. The numbers are arbitrary, but the idea holds. Running hotter allows for fewer machines able to serve the same amount of traffic, reducing our overall footprint. ?</p>

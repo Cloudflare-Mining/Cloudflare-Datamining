@@ -7,7 +7,15 @@
 
 	</figure>
 	<p>In July 2021, I launched Miniflare 1.0, a fun, full-featured, fully-local simulator for Workers, on the <a href="https://discord.gg/cloudflaredev">Cloudflare Workers Discord server</a>. What began as a pull request to the <a href="https://github.com/gja/cloudflare-worker-local/pull/57"><code>cloudflare-worker-local</code></a> project has now become an official Cloudflare project and a core part of the Workers ecosystem, being integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>. Today, I'm thrilled to announce the release of the next major version: a more modular, lightweight, and accurate Miniflare 2.0. ?</p>
-	<h2><b>Background: Why Miniflare was created</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="background-why-miniflare-was-created">Background: Why Miniflare was created</h2>
+		<a href="https://blog.cloudflare.com/#background-why-miniflare-was-created" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aIIQnDFxercxfK9GYesIQ/f2164af344ecfe3306237daf6fcf72f7/image3-7.png" alt="image3-7" class="kg-image" width="1999" height="750" loading="lazy">
@@ -27,7 +35,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MmJ7lqEBt90UQrBLC1Zxm/1e47d11d08b44f69b3abd2da44a82d55/image5-5.png" alt="image5-5" class="kg-image" width="361" height="305" loading="lazy">
 
 	</figure>
-	<h2><b>The next iteration: What's new in version 2</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="the-next-iteration-whats-new-in-version-2">The next iteration: What's new in version 2</h2>
+		<a href="https://blog.cloudflare.com/#the-next-iteration-whats-new-in-version-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the relatively short time since the launch of Miniflare 1.0 in July, Workers as a platform has improved dramatically. Durable Objects now have <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three">input and output gates</a> for ensuring consistency without explicit transactions, Workers has <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">compatibility dates</a> allowing developers to opt-into backwards-incompatible fixes, and you can now write Workers using <a href="https://blog.cloudflare.com/workers-javascript-modules">JavaScript modules</a>.</p>
 	<p>Miniflare 2 supports all these features and has been completely redesigned with three primary design goals:</p>
 	<ol>
@@ -44,12 +59,26 @@
 	<p>It also adds a new <a href="https://miniflare.dev/developing/live-reload">live-reload feature</a> and first-class support for testing with Jest for an even more enjoyable developer experience.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 45.565217391304344%;"><iframe src="https://iframe.videodelivery.net/3c37cfa72152fef7e44de922f84b0920?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F3c37cfa72152fef7e44de922f84b0920%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23e97f07" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h2><b>Getting started with local development</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-local-development">Getting started with local development</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-local-development" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned in the introduction, Miniflare 2.0 is now integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, so you just need to run <code>npx wrangler@beta dev --local</code> to start a fully-local Worker development server or <code>npx wrangler@beta pages dev</code> to start a <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Cloudflare Pages Functions</a> server. Make sure you've got the <a href="https://nodejs.org">latest release of Node.js</a> installed.</p>
 	<p>However, if you're using Wrangler 1 or want to customize your local environment, you can install Miniflare standalone. If you've got an existing worker with a <code>wrangler.toml</code> file, just run <code>npx miniflare --live-reload</code> to start a live-reloading development server. Miniflare will automatically load configuration like KV namespaces or Durable Object bindings from your <code>wrangler.toml</code> file and secrets from a <code>.env</code> file.</p>
 	<p>Miniflare is highly configurable. For example, if you want to persist KV data between restarts, include the <code>--kv-persist</code> flag. See the <a href="https://miniflare.dev">Miniflare docs</a> or run <code>npx miniflare --help</code> for many more options, like running multiple workers or starting an HTTPS server.</p>
 	<p>If you've got a <code>scheduled</code> event handler, you can manually trigger it by visiting <code>http://localhost:8787/cdn-cgi/mf/scheduled</code> in your browser.</p>
-	<h2><b>Testing for Workers with Jest</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="testing-for-workers-with-jest">Testing for Workers with Jest</h2>
+		<a href="https://blog.cloudflare.com/#testing-for-workers-with-jest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://jestjs.io">Jest</a> is one of the most popular JavaScript testing frameworks, so it made sense to add first-class support for it. Miniflare 2.0 includes a <a href="https://jestjs.io/docs/configuration#testenvironment-string">custom test environment</a> that gives your tests access to <a href="https://developers.cloudflare.com/workers/runtime-apis">Workers runtime APIs</a>.</p>
 	<p>For example, suppose we have the following worker, written using JavaScript modules, that stores the number of times each URL is visited in Workers KV:</p>
 	<blockquote>
@@ -140,7 +169,14 @@ $ npm install -D jest jest-environment-miniflare
 $ NODE_OPTIONS=--experimental-vm-modules npx jest</code></pre>
 	<p>For more details about the custom test environment and isolated storage, see the <a href="https://miniflare.dev/testing/jest">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest">this example project</a> that also uses TypeScript and Durable Objects.</p>
 	<p>Not using Jest? Miniflare lets you write your own integration tests with vanilla Node.js or any other test framework. For an example using AVA, see the <a href="https://miniflare.dev/testing/ava">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-esbuild-ava">this repository</a>.</p>
-	<h2><b>How Miniflare works</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="how-miniflare-works">How Miniflare works</h2>
+		<a href="https://blog.cloudflare.com/#how-miniflare-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's now dig deeper into how some interesting parts of Miniflare work.</p>
 	<p>Miniflare is powered by Node.js, a JavaScript runtime built on Chrome's V8 JavaScript engine. V8 is the same engine that powers the Cloudflare Workers runtime, but Node and Workers implement different runtime APIs on top of it. To ensure Node's APIs aren't visible to users' worker code and to inject Workers' APIs, Miniflare uses the <a href="https://nodejs.org/api/vm.html">Node.js <code>vm</code> module</a>. This lets you run arbitrary code in a custom V8 context.</p>
 	<p>A core part of Workers are the <code>Request</code> and <code>Response</code> classes. Miniflare gets these from <a href="https://github.com/nodejs/undici"><code>undici</code></a>, a project written by the Node team to bring <code>fetch</code> to Node. For service workers, we also need a way to <code>addEventListener</code>s and dispatch events using the <code>EventTarget</code> API, which was added in Node 15.</p>
@@ -200,7 +236,16 @@ const event = new FetchEvent("fetch", { request });
 // Dispatch the event and log the response
 globalScope.dispatchEvent(event);
 console.log(await event.response.text()); // Hello mini-miniflare!</code></pre>
-	<h3><b>Plugins</b></h3>
+
+	<div class="flex anchor relative">
+		<h3 id="plugins">Plugins</h3>
+		<a href="https://blog.cloudflare.com/#plugins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qYQfyfQqHPj6BmnflgsJV/9327bb8a2514a9782c839aa20957ed50/image1-108.png" alt="image1-108" class="kg-image" width="1653" height="443" loading="lazy">
@@ -221,7 +266,15 @@ console.log(await event.response.text()); // Hello mini-miniflare!</code></pre>
   fromWrangler: (config) =&gt; config.kv_namespaces?.map(({ binding }) =&gt; binding),
 })
 kvNamespaces?: string[];</code></pre>
-	<h3><b>Durable Objects</b></h3>
+
+	<div class="flex anchor relative">
+		<h3 id="durable-objects">Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before input and output gates were added, you usually needed to use the <code>transaction()</code> method to ensure consistency:</p>
 	<pre class="language-js"><code class="language-js">async function incrementCount() {
   let value;
@@ -317,7 +370,14 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response
 }</code></pre>
 	<p>Now the input gate outside of <code>blockConcurrencyWhile</code> will be closed, so fetches to the Durable Object will be deferred, but the input gate inside the closure will be open, so the <code>fetch</code> can return.</p>
 	<p>This glosses over some details, but you can check out the <a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts">gates implementation</a> for additional context and comments. ?</p>
-	<h3><b>HTMLRewriter</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="htmlrewriter">HTMLRewriter</h3>
+		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>HTMLRewriter</code> is another novel class that allows parsing and transforming HTML streams. In the edge Workers runtime, it's powered by C-bindings to the <a href="https://github.com/cloudflare/lol-html">lol-html</a> Rust library. Luckily, <a href="https://blog.cloudflare.com/author/ivan-nikulin">Ivan Nikulin</a> built <a href="https://github.com/cloudflare/lol-html/issues/38">WebAssembly bindings</a> for this, so we're able to use the same library in Node.js.</p>
 	<p>However, these were missing support for <code>async</code> handlers that allow you to access external resources when rewriting:</p>
 	<pre class="language-js"><code class="language-js">class UserElementHandler {
@@ -354,7 +414,14 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2yhaL0yMZ6KwV2oKVvZEgd/1359a257e91507ea176d707c63fcd948/image4-4.png" alt="image4-4" class="kg-image" width="849" height="755" loading="lazy">
 
 	</figure>
-	<h2><b>The future of Miniflare</b></h2>
+	<div class="flex anchor relative">
+		<h2 id="the-future-of-miniflare">The future of Miniflare</h2>
+		<a href="https://blog.cloudflare.com/#the-future-of-miniflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned earlier, Miniflare is now included in wrangler 2.0. Try it out and let us know what you think!</p>
 	<p>I'd like to thank everyone on the Workers team at Cloudflare for building such an amazing platform and supportive community. Special thanks to anyone who's contributed to Miniflare, opened issues, given suggestions, or asked questions in the Discord server.</p>
 	<p>Maybe now I can finish off my original workers project... ?</p>

@@ -8,14 +8,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TP051FYzSbWGOge6PK7yP/4b662ef4b3bd65401f99da1ff72d634c/QW5UOd3lkcFNdLXw_hWA5R7PRwEUohA_aVgZxSPcB2D4RBZfJQ1l6MSwR_I2MDHTdMNnhUY_4G83YoWI2P0pV3VMzTXQDZy7pVXBfoBQ3EUvzC6H4RDGveTOqu55.png" alt="" class="kg-image" width="1198" height="1026" loading="lazy">
 
 	</figure>
-	<h2>Gathering the Data</h2>
+	<div class="flex anchor relative">
+		<h2 id="gathering-the-data">Gathering the Data</h2>
+		<a href="https://blog.cloudflare.com/#gathering-the-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So how can we determine if Internet usage patterns have changed from a geographical perspective?</p>
 	<p>In each <a href="https://www.cloudflare.com/network">Cloudflare</a> Point of Presence (in more than 200 cities worldwide) there's an edge router whose responsibility it is to switch Internet traffic to serve the requests of end users in the region.</p>
 	<p>These edge routers are the network's entry point and for monitoring and debugging purposes each router samples IP packet information regarding the traffic that traverses them. This data is collected as flow records and contains layer-3 related information, such as the source and destination IP address, port, packet size etc.</p>
 	<p>These statistical samples allow us to monitor aggregate traffic information, spot unusual activity, and verify that our connections to the greater Internet are working correctly.</p>
 	<p>By using a geolocation database like <a href="https://www.maxmind.com">Maxmind</a>, we can determine the rough location from which a flow emanates. If the geographic data is too imprecise it is excluded from our set to reduce noise.</p>
 	<p>By merging together information about flows that come from similar areas, we can infer a geospatial distribution of traffic volume across the globe.</p>
-	<h2>Visual Representation</h2>
+	<div class="flex anchor relative">
+		<h2 id="visual-representation">Visual Representation</h2>
+		<a href="https://blog.cloudflare.com/#visual-representation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This distribution of traffic volume is an indication of Internet usage patterns. By plotting a geospatial heatmap of the Internet traffic in New York City for two separate dates four weeks apart (February 19, 2020 and March 18, 2020), we can already notice an erosion of traffic volume from the city center dissipating into the surrounding areas.</p>
 	<p>All the charts in this blog post show day time traffic in each geography. &nbsp;This is done to show the difference working from home is having on Internet traffic.</p>
 	<figure class="kg-card kg-image-card ">
@@ -39,37 +53,83 @@
 	<p>This chart shows a diff of the “before” and “after” scenarios, highlighting only differences in volume between the two dates. The red color represents areas where Internet usage has <b>decreased</b> since February 19, and green where it has <b>increased</b>.</p>
 	<p>It strongly suggests a migration of Internet usage towards suburban and residential areas.</p>
 	<p>The data used is comparing working hours periods (1000 to 1600 local time) between two Wednesdays four weeks apart (February 19 and March 18).</p>
-	<h2>Cities</h2>
+	<div class="flex anchor relative">
+		<h2 id="cities">Cities</h2>
+		<a href="https://blog.cloudflare.com/#cities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We produced &nbsp;similar visual representations for other impacted locations around the world. All exhibit similar migration patterns.</p>
-	<h3>Seattle, US</h3>
+	<div class="flex anchor relative">
+		<h3 id="seattle-us">Seattle, US</h3>
+		<a href="https://blog.cloudflare.com/#seattle-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m2dwPxPQ0oBB3Ggew9zPi/09d01d8235d8a089c149d0390e0c3ea6/seattle.png" alt="" class="kg-image" width="1565" height="1317" loading="lazy">
 
 	</figure>
 	<p>Additional features can be picked out from the chart. The red dot in Silverdale, WA appears to be Internet access from the Kitsap Mall (which is currently closed). And Sea-Tac Airport is seen as a red area between Burien and Renton.</p>
-	<h3>San Francisco Bay Area, US</h3>
+	<div class="flex anchor relative">
+		<h3 id="san-francisco-bay-area-us">San Francisco Bay Area, US</h3>
+		<a href="https://blog.cloudflare.com/#san-francisco-bay-area-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21c6CzKAhzWe2DQhuDAZSq/c28ee5015a8014e48aea2af9aca9a640/bay-area.png" alt="" class="kg-image" width="1601" height="1219" loading="lazy">
 
 	</figure>
 	<p>Areas where large Silicon Valley businesses have sent employees home are clearly visible.</p>
-	<h3>Paris, France</h3>
+	<div class="flex anchor relative">
+		<h3 id="paris-france">Paris, France</h3>
+		<a href="https://blog.cloudflare.com/#paris-france" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsCIFOC4HctPCAAF3Aeyg/96680bd77913d1acb587013807356f3e/paris.png" alt="" class="kg-image" width="1601" height="1025" loading="lazy">
 
 	</figure>
 	<p>The red area in north east Paris appears to be the airport at Le Bourget and the surrounding industrial zone. To the west there’s another red area: Le Château de Versailles.</p>
-	<h3>Berlin, Germany</h3>
+	<div class="flex anchor relative">
+		<h3 id="berlin-germany">Berlin, Germany</h3>
+		<a href="https://blog.cloudflare.com/#berlin-germany" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/x9sY5Pvj9rnOGdjpzs6cv/762049ff99320f114cd570a6fa1abcfc/Berlin.png" alt="" class="kg-image" width="1601" height="927" loading="lazy">
 
 	</figure>
 	<p>In Berlin a red dot near the Tegeler See is Flughafen Berlin-Tegel likely resulting from fewer passengers passing through the airport.</p>
-	<h3>Network Impact</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-impact">Network Impact</h3>
+		<a href="https://blog.cloudflare.com/#network-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As shown above, geographical Internet usage changes are visible from Internet traffic exchanged between end users and Cloudflare at various locations around the globe.</p>
 	<p>Besides the geographical migration in various metropolitan areas, the overall volume of traffic in these locations has also <a href="https://blog.cloudflare.com/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">increased between 10% and 40%</a> in just a period of four weeks.</p>
 	<p>It’s interesting to reflect that the Internet was originally conceived as a communications network for humanity during a crisis, and it’s come a long way since then. But in this moment of crisis, it’s being put to use for that original purpose. The Internet was <a href="http://builtforthis.net">built for this</a>.</p>

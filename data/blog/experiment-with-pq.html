@@ -9,16 +9,51 @@
 	<p>Luckily, there is a solution: we can switch to so-called <i>post-quantum (</i><b><i>PQ</i></b><i>) cryptography</i>, which is designed to be secure against attacks of quantum computers. After a six-year worldwide selection process, in July 2022, NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">announced</a> they will standardize <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a>, a post-quantum key agreement scheme. The standard will be ready in 2024, but we want to help drive the adoption of post-quantum cryptography.</p>
 	<p>Today we have added support for the <i>X25519Kyber512Draft00</i> and <i>X25519Kyber768Draft00</i> hybrid post-quantum key agreements to a number of test domains, including <a href="https://pq.cloudflareresearch.com">pq.cloudflareresearch.com</a>.</p>
 	<p><i>Do you want to experiment with post-quantum on your test website for free? Mail</i> <a href="mailto:ask-research@cloudflare.com"><i>ask-research@cloudflare.com</i></a> <i>to enroll your test website, but read the fine-print below.</i></p>
-	<h2>What does it mean to enable post-quantum on your website?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-does-it-mean-to-enable-post-quantum-on-your-website">What does it mean to enable post-quantum on your website?</h2>
+		<a href="https://blog.cloudflare.com/#what-does-it-mean-to-enable-post-quantum-on-your-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you enroll your website to the post-quantum beta, we will add support for these two extra key agreements <b>alongside</b> the existing classical encryption schemes such as X25519. If your browser doesn’t support these post-quantum key agreements (and none at the time of writing do), then your browser will continue working with a classically secure, but not quantum-resistant, connection.</p>
-	<h3>Then how to test it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="then-how-to-test-it">Then how to test it?</h3>
+		<a href="https://blog.cloudflare.com/#then-how-to-test-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have open-sourced a fork of <a href="https://github.com/cloudflare/boringssl-pq">BoringSSL</a> and <a href="https://github.com/cloudflare/go">Go</a> that has support for these post-quantum key agreements. With those and an enrolled test domain, you can check how your application performs with post-quantum key exchanges. We are working on support for more libraries and languages.</p>
-	<h3>What to look for?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-to-look-for">What to look for?</h3>
+		<a href="https://blog.cloudflare.com/#what-to-look-for" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kyber and classical key agreements such as X25519 have different performance characteristics: Kyber requires less computation, but has bigger keys and requires a bit more RAM to compute. It could very well make the connection faster if used on its own.</p>
 	<p>We are not using Kyber on its own though, but are using <b>hybrids</b>. That means we are doing both an X25519 <i>and</i> Kyber key agreement such that the connection is still classically secure if either is broken. That also means that connections will be a bit slower. In our experiments, the difference is <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">very</a> <a href="https://blog.cloudflare.com/post-quantumify-cloudflare">small</a>, but it’s best to check for yourself.</p>
-	<h2>The fine-print</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-fine-print">The fine-print</h2>
+		<a href="https://blog.cloudflare.com/#the-fine-print" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s post-quantum cryptography support is a beta service for experimental use only. Enabling post-quantum on your website will subject the website to Cloudflare’s Beta Services terms and will impact other Cloudflare services on the website as described below.</p>
-	<h3>No stability or support guarantees</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-stability-or-support-guarantees">No stability or support guarantees</h3>
+		<a href="https://blog.cloudflare.com/#no-stability-or-support-guarantees" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the coming months, both Kyber and the way it’s integrated into <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a> will change for several reasons, including:</p>
 	<ol>
 		<li>
@@ -32,11 +67,33 @@
 		</li>
 	</ol>
 	<p>We will update our forks accordingly, but cannot guarantee any long-term stability or continued support. PQ support may become unavailable at any moment. We will post updates on <a href="https://pq.cloudflareresearch.com">pq.cloudflareresearch.com</a>.</p>
-	<h3>Features in enrolled domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="features-in-enrolled-domains">Features in enrolled domains</h3>
+		<a href="https://blog.cloudflare.com/#features-in-enrolled-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the moment, we are running enrolled zones on a slightly different infrastructure for which not all features, notably QUIC, are available.</p>
 	<p>With that out of the way, it’s…</p>
-	<h2>Demo time!</h2>
-	<h3>BoringSSL</h3>
+	<div class="flex anchor relative">
+		<h2 id="demo-time">Demo time!</h2>
+		<a href="https://blog.cloudflare.com/#demo-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="boringssl">BoringSSL</h3>
+		<a href="https://blog.cloudflare.com/#boringssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the following commands build our <a href="https://github.com/cloudflare/boringssl-pq">fork of BoringSSL</a> and create a TLS connection with pq.cloudflareresearch.com using the compiled <code>bssl</code> tool. Note that we do not enable the post-quantum key agreements by default, so you have to pass the <code>-curves</code> flag.</p>
 	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/cloudflare/boringssl-pq
 [snip]
@@ -60,7 +117,15 @@ Connected.
   Encrypted ClientHello: no
   Cert subject: CN = *.pq.cloudflareresearch.com
   Cert issuer: C = US, O = Let's Encrypt, CN = E1</code></pre>
-	<h3>Go</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="go">Go</h3>
+		<a href="https://blog.cloudflare.com/#go" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our <a href="https://github.com/cloudflare/go">Go fork</a> doesn’t enable the post-quantum key agreement by default. The following simple Go program enables PQ by default for the http package and GETs pq.cloudflareresearch.com.</p>
 	<pre class="language-go"><code class="language-go">package main
 
@@ -113,7 +178,15 @@ $ cd go/src &amp;&amp; ./all.bash
 [snip]
 $ ../bin/go run path/to/example.go
 Used X25519Kyber512Draft00</code></pre>
-	<h3>On the wire</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="on-the-wire">On the wire</h3>
+		<a href="https://blog.cloudflare.com/#on-the-wire" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what does this look like on the wire? With <a href="https://www.wireshark.org">Wireshark</a> we can capture the packet flow. First a non-post quantum HTTP/2 connection with X25519:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -128,7 +201,14 @@ Used X25519Kyber512Draft00</code></pre>
 
 	</figure>
 	<p>As you can see the ClientHello is a bit bigger, but still fits within a single packet. The response takes three packets now, instead of two, because of the larger server keyshare.</p>
-	<h2>Under the hood</h2>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">Under the hood</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Want to add client support yourself? We are using a <a href="https://www.ietf.org/archive/id/draft-ietf-tls-hybrid-design-04.txt">hybrid</a> of <a href="https://datatracker.ietf.org/doc/html/rfc7748">X25519</a> and Kyber <a href="https://pq-crystals.org/kyber/data/kyber-specification-round3-20210804.pdf">version 3.02</a>. We are writing out the details of the latter in <a href="https://github.com/bwesterb/draft-schwabe-cfrg-kyber">version 00 of this CRFG IETF draft</a>, hence the name. We are using TLS <a href="https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8">group identifiers</a> <code>0xfe30</code> and <code>0xfe31</code> for <i>X25519Kyber512Draft00</i> and <i>X25519Kyber768Draft00</i> respectively.</p>
 	<p>There are some differences between our Go and BoringSSL forks that are interesting to compare.</p>
 	<ul>
@@ -139,7 +219,14 @@ Used X25519Kyber512Draft00</code></pre>
 			<p>Our Go fork only sends one keyshare. If the server doesn’t support it, it will respond with a HelloRetryRequest message and the client will fallback to one the server does support. This adds a roundtrip.Our BoringSSL fork, on the other hand, will send two keyshares: the post-quantum hybrid and a classical one (if a classical key agreement is still enabled). If the server doesn’t recognize the first, it will be able to use the second. In this way we avoid a roundtrip if the server does not support the post-quantum key agreement.</p>
 		</li>
 	</ul>
-	<h2>Looking ahead</h2>
+	<div class="flex anchor relative">
+		<h2 id="looking-ahead">Looking ahead</h2>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The quantum future is here. In the coming years the Internet will move to post-quantum cryptography. Today we are offering our customers the tools to get a headstart and test post-quantum key agreements. We love to hear your feedback: e-mail it to <a href="mailto:ask-research@cloudflare.com">ask-research@cloudflare.com</a>.</p>
 	<p>This is just a small, but important first step. We will continue our efforts to move towards a secure and private quantum-secure Internet. Much more to come — watch this space.</p>
 </div>

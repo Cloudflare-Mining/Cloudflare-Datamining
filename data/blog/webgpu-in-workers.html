@@ -9,14 +9,28 @@
 	<p>Today, browsers can render web pages and run code that interfaces with an <a href="https://developer.mozilla.org/en-US/docs/Web/API">extensive catalog of modern Web APIs</a>. Things like networking, rendering accelerated graphics, or even accessing low-level hardware features like USB devices are all now possible within the browser sandbox.</p>
 	<p>One of the most exciting new browser APIs that browser vendors have been rolling out over the last months is WebGPU, a modern, low-level GPU programming interface designed for high-performance 2D and 3D graphics and general purpose GPU compute.</p>
 	<p>Today, we are introducing <a href="https://developer.chrome.com/blog/webgpu-release">WebGPU</a> support to Cloudflare Workers. This blog will explain why it's important, why we did it, how you can use it, and what comes next.</p>
-	<h3>The history of the GPU in the browser</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-history-of-the-gpu-in-the-browser">The history of the GPU in the browser</h3>
+		<a href="https://blog.cloudflare.com/#the-history-of-the-gpu-in-the-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand why WebGPU is a big deal, we must revisit history and see how browsers went from relying only on the CPU for everything in the early days to taking advantage of GPUs over the years.</p>
 	<p>In 2011, <a href="https://en.wikipedia.org/wiki/WebGL">WebGL 1</a>, a limited port of <a href="https://www.khronos.org/opengles">OpenGL ES 2.0</a>, was introduced, providing an API for fast, accelerated 3D graphics in the browser for the first time. By then, this was somewhat of a revolution in enabling gaming and 3D visualizations in the browser. Some of the most popular 3D animation frameworks, like <a href="https://threejs.org">Three.js</a>, launched in the same period. Who doesn't remember going to the (now defunct) <a href="https://en.wikipedia.org/wiki/Google_Chrome_Experiments">Google Chrome Experiments</a> page and spending hours in awe exploring the demos? Another option then was using the Flash Player, which was still dominant in the desktop environment, and their <a href="https://en.wikipedia.org/wiki/Stage3D">Stage 3D</a> API.</p>
 	<p>Later, in 2017, based on the learnings and shortcomings of its predecessor, WebGL 2 was a significant upgrade and brought more advanced GPU capabilities like shaders and more flexible textures and rendering.</p>
 	<p>WebGL, however, has proved to be a steep and complex learning curve for developers who want to take control of things, do low-level 3D graphics using the GPU, and not use 3rd party abstraction libraries.</p>
 	<p>Furthermore and more importantly, with the advent of <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> and cryptography, we discovered that GPUs are great not only at drawing graphics but can be used for other applications that can take advantage of things like high-speed data or blazing-fast matrix multiplications, and one can use them to perform general computation. This became known as <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">GPGPU</a>, short for general-purpose computing on graphics processing units.</p>
 	<p>With this in mind, in the native desktop and mobile operating system worlds, developers started using more advanced frameworks like <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a>, <a href="https://developer.apple.com/metal">Metal</a>, <a href="https://en.wikipedia.org/wiki/DirectX#DirectX_12">DirectX 12</a>, or <a href="https://www.vulkan.org/learn#key-resources">Vulkan</a>. WebGL stayed behind. To fill this void and bring the browser up to date, in 2017, companies like Google, Apple, Intel, Microsoft, Kronos, and Mozilla created the <a href="https://www.w3.org/community/gpu">GPU for Web Community Working Group</a> to collaboratively design the successor of WebGL and create the next modern 3D graphics and computation capabilities APIs for the Web.</p>
-	<h3>What is WebGPU</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-webgpu">What is WebGPU</h3>
+		<a href="https://blog.cloudflare.com/#what-is-webgpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebGPU was developed with the following advantages in mind:</p>
 	<ul>
 		<li>
@@ -46,7 +60,14 @@
 	</ul>
 	<p>The “too long didn't read” version is that WebGPU provides lower-level control over the GPU hardware with reduced overhead. It's safer, has multi-threading, is focused on compute, not just graphics, and has portability advantages compared to WebGL.</p>
 	<p>If these aren't reasons enough to get excited, developers are also looking at WebGPU as an option for native platforms, not just the Web. For instance, you can use this <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h">C API</a> that mimics the JavaScript specification. If you think about this and the power of WebAssembly, you can effectively have a truly platform-agnostic GPU hardware layer that you can use to <a href="https://developer.chrome.com/blog/webgpu-cross-platform">develop</a> platforms for any operating system or browser.</p>
-	<h3>More than just graphics</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-just-graphics">More than just graphics</h3>
+		<a href="https://blog.cloudflare.com/#more-than-just-graphics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As explained above, besides being a graphics API, WebGPU makes it possible to perform tasks such as:</p>
 	<ul>
 		<li>
@@ -60,13 +81,28 @@
 		</li>
 	</ul>
 	<p><a href="https://gpuweb.github.io/gpuweb/wgsl">WGSL</a>, the shader language for WebGPU, is what enables the general-purpose compute feature. Shaders, or more precisely, <a href="https://www.khronos.org/opengl/wiki/Compute_Shader">compute shaders</a>, have no user-defined inputs or outputs and are used for computing arbitrary information. Here are <a href="https://webgpufundamentals.org/webgpu/lessons/webgpu-compute-shaders.html">some examples</a> of simple WebGPU compute shaders if you want to learn more.</p>
-	<h3>WebGPU in Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="webgpu-in-workers">WebGPU in Workers</h3>
+		<a href="https://blog.cloudflare.com/#webgpu-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've been watching WebGPU since the API was published. Its general-purpose compute features perfectly fit our Workers' ecosystem and capabilities and align well with our vision of providing our customers multiple compute and hardware options and bringing GPU workloads to our global network, close to clients.</p>
 	<p>Cloudflare also has a track record of pioneering support for emerging web standards on our network and services, accelerating their adoption for our customers. Examples of these are <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto">Web Crypto API</a>, <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3</a>, <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a>, or <a href="https://blog.cloudflare.com/early-hints">Early hints</a>, but <a href="https://developers.cloudflare.com/workers/runtime-apis">there are more</a>.</p>
 	<p>Bringing WebGPU to Workers was both natural and timely. Today, we are announcing that we have released a version of <a href="https://github.com/cloudflare/workerd">workerd</a>, the open-sourced JavaScript / Wasm runtime that powers Cloudflare Workers, with <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu">WebGPU support</a>, that you can start playing and developing applications with, locally.</p>
 	<p>Starting today anyone can run this on their personal computer and experiment with WebGPU-enabled workers. Implementing local development first allows us to put this API in the hands of our customers and developers earlier and get feedback that will guide the development of this feature for production use.</p>
 	<p>But before we dig into code examples, let's explain how we built it.</p>
-	<h3>How we built WebGPU on top of Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-webgpu-on-top-of-workers">How we built WebGPU on top of Workers</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-webgpu-on-top-of-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2rem1ZyAcVa3LO7ue6OTC7/1cdf357066de018c67174488b5f32b4f/image2-22.png" alt="" class="kg-image" width="1540" height="1350" loading="lazy">
@@ -100,7 +136,14 @@
 		</li>
 	</ul>
 	<p>Using Durable Objects instead of regular Workers allow us to address both of these issues.</p>
-	<h3>The WebGPU Hello World in Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-webgpu-hello-world-in-workers">The WebGPU Hello World in Workers</h3>
+		<a href="https://blog.cloudflare.com/#the-webgpu-hello-world-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wrangler uses Miniflare 3, a <a href="https://blog.cloudflare.com/wrangler3">fully-local simulator for Workers</a>, which in turn is powered by workerd. This means you can start experimenting and doing WebGPU code locally on your machine right now before we prepare things in our production environment.</p>
 	<p>Let’s get coding then.</p>
 	<p>Since Workers doesn't render graphics yet, we started with implementing the general-purpose GPU (GPGPU) APIs in the <a href="https://www.w3.org/TR/webgpu">WebGPU specification</a>. In other words, we fully support the part of the API that the <a href="https://www.w3.org/TR/webgpu/#gpucomputepipeline">compute shaders and the compute pipeline</a> require, but we are not yet focused on fragment or vertex shaders used in rendering pipelines.</p>
@@ -187,7 +230,14 @@ await mappedBuffer.mapAsync(GPUMapMode.READ);
 console.log(new Float32Array(mappedBuffer.getMappedRange()));
 // [0, 1, 2, 3]</code></pre>
 	<p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
-	<h3>ONNX WebGPU demo</h3>
+	<div class="flex anchor relative">
+		<h3 id="onnx-webgpu-demo">ONNX WebGPU demo</h3>
+		<a href="https://blog.cloudflare.com/#onnx-webgpu-demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/microsoft/onnxruntime">ONNX runtime</a> is a popular open-source cross-platform, high performance machine learning inferencing accelerator. <a href="https://github.com/webonnx/wonnx">Wonnx</a> is a GPU-accelerated version of the same engine, written in Rust, that can be compiled to WebAssembly and take advantage of WebGPU in the browser. We are going to run it in Workers using a combination of <a href="https://github.com/cloudflare/workers-rs">workers-rs</a>, our Rust bindings for Cloudflare Workers, and the workerd WebGPU APIs.</p>
 	<p>For this demo, we are using <a href="https://www.kdnuggets.com/2016/09/deep-learning-reading-group-squeezenet.html">SqueezeNet</a>. This small image classification model can run under lower resources but still achieves similar levels of accuracy on the <a href="https://en.wikipedia.org/wiki/ImageNet">ImageNet</a> image classification validation dataset as larger models like <a href="https://en.wikipedia.org/wiki/AlexNet">AlexNet</a>.</p>
 	<p>In essence, our worker will receive any uploaded image and attempt to classify it according to the 1000 ImageNet classes. Once ONNX runs the machine learning model using the GPU, it will return the list of classes with the highest probability scores. Let’s go step by step.</p>
@@ -265,7 +315,14 @@ cd workers-wonnx</code></pre>
 	<pre class="language-curl"><code class="language-curl">&gt; curl -F "file=@images/pelican.jpeg" http://localhost:8787
 n02051845 pelican</code></pre>
 	<p>If everything goes according to plan the result of the curl command will be the most likely class of the image.</p>
-	<h3>Next steps and final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps-and-final-words">Next steps and final words</h3>
+		<a href="https://blog.cloudflare.com/#next-steps-and-final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the upcoming weeks, we will merge the workerd WebGPU code in the Cloudflare Workers production environment and make it available globally, on top of our growing GPU nodes fleet. We didn't do it earlier because that environment is subject to strict security and isolation requirements. For example, we can't break the <a href="https://developers.cloudflare.com/workers/learning/security-model">security model</a> of our process sandbox and have V8 talking to the GPU hardware directly, that would be a problem; we must create a configuration where another process is closer to the GPU and use IPC (inter-process communication) to talk to it. Other things like managing resource allocation and billing are being sorted out.</p>
 	<p>For now, we wanted to get the good news out that we will support WebGPU in Cloudflare Workers and ensure that you can start playing and coding with it today and learn from it. WebGPU and general-purpose computing on GPUs is still in its early days. We presented a machine-learning demo, but we can imagine other applications taking advantage of this new feature, and we hope you can show us some of them.</p>
 	<p>As usual, you can talk to us on our <a href="https://discord.cloudflare.com">Developers Discord</a> or the <a href="https://community.cloudflare.com/c/developers/39">Community forum</a>; the team will be listening. We are eager to hear from you and learn about what you're building.</p>

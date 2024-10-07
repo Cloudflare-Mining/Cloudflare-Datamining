@@ -19,7 +19,14 @@
 			<p><b>Zero-Downtime Failover</b>, which can automatically avert failures by retrying requests to origin.</p>
 		</li>
 	</ul>
-	<h3>Standalone Health Checks</h3>
+	<div class="flex anchor relative">
+		<h3 id="standalone-health-checks">Standalone Health Checks</h3>
+		<a href="https://blog.cloudflare.com/#standalone-health-checks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our first new tool is Standalone Health Checks, which will notify you as soon as we detect problems at your origin server -- without needing a Cloudflare Load Balancer.</p>
 	<p>A <i>Health Check</i> is a service that runs on our edge network to monitor whether your origin server is online. Health Checks are a key part of our load balancing service because they allow us to quickly and actively route traffic to origin servers that are live and ready to serve requests. Standalone Health Checks allow you to monitor the health of your origin even if you only have one origin or do not yet need to balance traffic across your infrastructure.</p>
 	<p>We’ve provided many dimensions for you to hone in on exactly what you’d like to check, including response code, protocol type, and interval. You can specify a particular path if your origin serves multiple applications, or you can check a larger subset of response codes for your staging environment. All of these options allow you to properly target your Health Check, giving you a precise picture of what is wrong with your origin.</p>
@@ -36,7 +43,14 @@
 
 	</figure>
 	<p><b>Users on the Pro, Business, or Enterprise plan will have access to Standalone Health Checks and Health Check Analytics</b> to promote top-tier application reliability and help maximize brand trust with their customers. You can access Standalone Health Checks and Health Check Analytics through the Traffic app in the dashboard.</p>
-	<h3>Passive Origin Monitoring</h3>
+	<div class="flex anchor relative">
+		<h3 id="passive-origin-monitoring">Passive Origin Monitoring</h3>
+		<a href="https://blog.cloudflare.com/#passive-origin-monitoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Standalone Health Checks are a super flexible way to understand what’s happening at your origin server. However, they require some forethought to configure before an outage happens. That’s why we’re excited to introduce <i>Passive</i> Origin Monitoring, which will automatically notify you when a problem occurs -- no configuration required.</p>
 	<p>Cloudflare knows when your origin is down, because we’re the ones trying to reach it to serve traffic! When we detect downtime lasting longer than a few minutes, we’ll send you an email.</p>
 	<p>Starting today, you can configure origin monitoring alerts to go to multiple email addresses. Origin Monitoring alerts are available in the new Notification Center (more on that below!) in the Cloudflare dashboard:</p>
@@ -46,7 +60,14 @@
 
 	</figure>
 	<p><b>Passive Origin Monitoring is available to customers on </b><a href="https://www.cloudflare.com/plans"><b>all Cloudflare plans</b></a><b>.</b></p>
-	<h3>Zero-Downtime Failover</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-downtime-failover">Zero-Downtime Failover</h3>
+		<a href="https://blog.cloudflare.com/#zero-downtime-failover" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What’s better than getting notified about downtime? Never having downtime in the first place! With Zero-Downtime Failover, we can automatically retry requests to origin, even before Load Balancing kicks in.</p>
 	<p>How does it work? If a request to your origin fails, and Cloudflare has another record for your origin server, we’ll just try another origin <i>within the same HTTP request</i>. The alternate record could be either an A/AAAA record configured via Cloudflare DNS, or another origin server in the same Load Balancing pool.</p>
 	<p>Consider an website, example.com, that has web servers at two different IP addresses: <code>203.0.113.1</code> and <code>203.0.113.2</code>. Before Zero-Downtime Failover, if <code>203.0.113.1</code> becomes unavailable, Cloudflare would attempt to connect, fail, and ultimately serve an error page to the user. With Zero-Downtime Failover, if <code>203.0.113.1</code> cannot be reached, then Cloudflare’s proxy will seamlessly attempt to connect to <code>203.0.113.2</code>. If the second server can respond, then Cloudflare can avert serving an error to example.com’s user.</p>
@@ -60,7 +81,14 @@
 	</figure>
 	<p>During a 30 minute time period, Zero-Downtime Failover improved overall availability from 99.53% to 99.98%, and prevented 140,000 HTTP requests from resulting in an error.</p>
 	<p>It’s important to note that we only attempt to retry requests that have failed during the TCP or TLS connection phase, which ensures that HTTP headers and payload have not been transmitted yet. Thanks to this safety mechanism, <b>we're able to make Zero-Downtime Failover Cloudflare's default behavior for Pro, Business, and Enterprise plans</b>. In other words, Zero-Downtime Failover makes connections to your origins more reliable with no configuration or action required.</p>
-	<h3>Coming soon: more notifications, more flexibility</h3>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon-more-notifications-more-flexibility">Coming soon: more notifications, more flexibility</h3>
+		<a href="https://blog.cloudflare.com/#coming-soon-more-notifications-more-flexibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our customers are always asking us for more insights into the health of their critical edge infrastructure. Health Checks and Passive Origin monitoring are a significant step towards Cloudflare taking a <b>proactive</b> instead of reactive approach to insights.</p>
 	<p>To support this work, today we’re announcing the <b>Notification Center</b> as the central place to manage notifications. This is available in the dashboard today, accessible from your Account Home.</p>
 	<p>From here, you can create new notifications, as well as view any existing notifications you’ve already set up. Today’s release allows you to configure &nbsp;Passive Origin Monitoring notifications, and set multiple email recipients.</p>

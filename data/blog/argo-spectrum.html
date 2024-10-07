@@ -6,15 +6,36 @@
 
 	</figure>
 	<p>Today we're excited to announce the general availability of Argo for Spectrum, a way to turbo-charge any TCP based application. With Argo for Spectrum, you can reduce latency, packet loss and improve connectivity for any TCP application, including common protocols like Minecraft, Remote Desktop Protocol and SFTP.</p>
-	<h3>The Internet — more than just a browser</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-internet-more-than-just-a-browser">The Internet — more than just a browser</h3>
+		<a href="https://blog.cloudflare.com/#the-internet-more-than-just-a-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When people think of the Internet, many of us think about using a browser to view websites. Of course, it’s so much more! We often use other ways to connect to each other and to the resources we need for work. For example, you may interact with servers for work using SSH File Transfer Protocol (SFTP), git or Remote Desktop software. At home, you might play a video game on the Internet with friends.</p>
 	<p>To help people that protect these services against DDoS attacks, Spectrum launched in 2018 and extends Cloudflare’s <a href="https://www.cloudflare.com/ddos">DDoS protection</a> to any TCP or UDP based protocol. Customers use it for a wide variety of use cases, including to protect video streaming (RTMP), gaming and internal IT systems. Spectrum also supports common VoIP protocols such as SIP and RTP, which have recently seen an <a href="https://blog.cloudflare.com/attacks-on-voip-providers">increase in DDoS ransomware attacks</a>. A lot of these applications are also highly sensitive to performance issues. No one likes waiting for a file to upload or dealing with a lagging video game.</p>
 	<p>Latency and throughput are the two metrics people generally discuss when talking about network performance. Latency refers to the amount of time a piece of data (a packet) takes to traverse between two systems. Throughput refers to the amount of bits you can actually send per second. This blog will discuss how these two interplay and how we improve them with Argo for Spectrum.</p>
-	<h3>Argo to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="argo-to-the-rescue">Argo to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#argo-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a number of factors that cause poor performance between two points on the Internet, including network congestion, the distance between the two points, and packet loss. This is a problem many of our customers have, even on web applications. To help, we launched <a href="https://blog.cloudflare.com/argo">Argo Smart Routing</a> in 2017, a way to reduce latency (or <i>time to first byte</i>, to be precise) for any HTTP request that goes to an origin.</p>
 	<p>That’s great for folks who run websites, but what if you’re working on an application that doesn’t speak HTTP? Up until now people had limited options for improving performance for these applications. That changes today with the general availability of Argo for Spectrum. Argo for Spectrum offers the same benefits as Argo Smart Routing for any TCP-based protocol.</p>
 	<p>Argo for Spectrum takes the same smarts from our network traffic and applies it to Spectrum. At time of writing, Cloudflare sits in front of approximately 20% of the Alexa top 10 million websites. That means that we see, in near real-time, which networks are congested, which are slow and which are dropping packets. We use that data and take action by provisioning faster routes, which sends packets through the Internet faster than normal routing. Argo for Spectrum works the exact same way, using the same intelligence and routing plane but extending it to any TCP based application.</p>
-	<h3>Performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance">Performance</h3>
+		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But what does this mean for real application performance? To find out, we ran a set of benchmarks on Catchpoint. Catchpoint is a service that allows you to set up <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">performance monitoring</a> from all over the world. Tests are repeated at intervals and aggregate results are reported. We wanted to use a third party such as Catchpoint to get objective results (as opposed to running themselves).</p>
 	<p>For our test case, we used a file server in the Netherlands as our origin. We provisioned various tests on Catchpoint to measure file transfer performance from various places in the world: Rabat, Tokyo, Los Angeles and Lima.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

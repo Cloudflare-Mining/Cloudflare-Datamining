@@ -9,11 +9,25 @@
 
 	</figure>
 	<p>Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack</p>
-	<h3>Automated DDoS mitigation with Cloudflare’s autonomous edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="automated-ddos-mitigation-with-cloudflares-autonomous-edge">Automated DDoS mitigation with Cloudflare’s autonomous edge</h3>
+		<a href="https://blog.cloudflare.com/#automated-ddos-mitigation-with-cloudflares-autonomous-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This attack, along with the additional attacks provided in the next sections, were automatically detected and mitigated by our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">autonomous edge DDoS protection systems</a>. The system is powered by our very own denial of service daemon (dosd). Dosd is a home-grown software-defined daemon. A unique dosd instance runs in every server in each one of our data centers around the world. Each dosd instance independently analyzes traffic samples out-of-path. Analyzing traffic out-of-path allows us to scan asynchronously for DDoS attacks without causing latency and impacting performance. DDoS findings are also shared between the various dosd instances within a data center, as a form of proactive threat intelligence sharing.</p>
 	<p>Once an attack is detected, our systems generate a mitigation rule with a real-time signature that matches the attack patterns. The rule is propagated to the most optimal location in the tech stack. As an example, a <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack">volumetric HTTP DDoS attack</a> may be blocked at L4 inside the Linux iptables firewall instead of at L7 inside the L7 reverse proxy which runs in the user space. Mitigating lower in the stack, e.g. dropping the packets at L4 instead of responding with a 403 error page in L7, is more cost-efficient. It reduces our edge CPU consumption and intra-data center bandwidth utilization — thus helping us mitigate large attacks at scale without impacting performance.</p>
 	<p>This autonomous approach, along with our network’s global scale and reliability, allow us to mitigate attacks that reach 68% of our average per-second-rate, and higher, without requiring any manual mitigation by Cloudflare personnel, nor causing any performance degradation.</p>
-	<h3>The resurgence of Mirai and new powerful botnets</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-resurgence-of-mirai-and-new-powerful-botnets">The resurgence of Mirai and new powerful botnets</h3>
+		<a href="https://blog.cloudflare.com/#the-resurgence-of-mirai-and-new-powerful-botnets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This attack was launched by a powerful <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnet</a>, targeting a Cloudflare customer in the financial industry. Within seconds, the botnet bombarded the Cloudflare edge with over 330 million attack requests.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -28,7 +42,14 @@
 
 	</figure>
 	<p>Distribution of the attack sources by top countries</p>
-	<h3>Volumetric attacks increase</h3>
+	<div class="flex anchor relative">
+		<h3 id="volumetric-attacks-increase">Volumetric attacks increase</h3>
+		<a href="https://blog.cloudflare.com/#volumetric-attacks-increase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This 17.2 million rps attack is the largest HTTP DDoS attack that Cloudflare has ever seen to date and almost three times the size of any other reported HTTP DDoS attack. This specific botnet, however, has been seen at least twice over the past few weeks. Just last week it also targeted a different Cloudflare customer, a hosting provider, with an HTTP DDoS attack that peaked just below 8 million rps.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -51,7 +72,14 @@
 
 	</figure>
 	<p>Graph of change in Mirai based DDoS attacks by month</p>
-	<h3>Back to the Mirai</h3>
+	<div class="flex anchor relative">
+		<h3 id="back-to-the-mirai">Back to the Mirai</h3>
+		<a href="https://blog.cloudflare.com/#back-to-the-mirai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Mirai</a>, which means ‘future’ in Japanese, is a codename for malware that was first discovered in 2016 by <a href="https://en.wikipedia.org/wiki/MalwareMustDie">MalwareMustDie</a>, a non-profit security research workgroup. The malware spreads by infecting Linux-operated devices such as security cameras and routers. It then self-propagates by searching for open Telnet ports 23 and 2323. Once found, it then attempts to gain access to vulnerable devices by <a href="https://www.cloudflare.com/learning/bots/brute-force-attack">brute forcing</a> known credentials such as factory default usernames and passwords. Later variants of Mirai also took advantage of zero-day exploits in routers and other devices. Once infected, the devices will monitor a Command &amp; Control (C2) server for instructions on which target to attack.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -59,10 +87,24 @@
 
 	</figure>
 	<p>Diagram of Botnet operator controlling the botnet to attack websites</p>
-	<h3>How to protect your home and business</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-protect-your-home-and-business">How to protect your home and business</h3>
+		<a href="https://blog.cloudflare.com/#how-to-protect-your-home-and-business" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the majority of attacks are small and short, we continue to see these types of volumetric attacks emerging more often. It’s important to note that these volumetric short burst attacks can be especially dangerous for legacy DDoS protection systems or organizations without active, always-on cloud-based protection.</p>
 	<p>Furthermore, while the short duration may say something about the botnet’s capability to deliver sustained levels of traffic over time, it can be challenging or impossible for humans to react to it in time. In such cases, the attack is over before a security engineer even has time to analyze the traffic or activate their stand-by DDoS protection system. These types of attacks highlight the need for automated, always-on protection.</p>
-	<h3>How to protect your business and Internet properties</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-protect-your-business-and-internet-properties">How to protect your business and Internet properties</h3>
+		<a href="https://blog.cloudflare.com/#how-to-protect-your-business-and-internet-properties" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p><a href="https://dash.cloudflare.com/sign-up">Onboard to Cloudflare</a> to protect your Internet properties.</p>
@@ -74,7 +116,14 @@
 			<p>Follow our <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">preventive best practices</a>, to ensure that both your Cloudflare settings and your origin server settings are optimized. As an example, make sure that you allow only traffic from <a href="https://www.cloudflare.com/ips">Cloudflare’s IP range</a>. Ideally, ask your upstream Internet Service Provider (ISP) to apply an access control list (ACL), otherwise, attackers may target your servers’ IP addresses directly and bypass your protection.</p>
 		</li>
 	</ol>
-	<h3>Recommendations on how to protect your home and IoT appliances</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations-on-how-to-protect-your-home-and-iot-appliances">Recommendations on how to protect your home and IoT appliances</h3>
+		<a href="https://blog.cloudflare.com/#recommendations-on-how-to-protect-your-home-and-iot-appliances" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Change the default username and password of any device that is connected to the Internet such as smart cameras and routers. This will reduce the risk that malware such as Mirai can gain access to your router and IoT devices.</p>

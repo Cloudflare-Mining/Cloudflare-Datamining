@@ -11,12 +11,26 @@
 	<p>Our goal at Cloudflare is to give our developers the tools to deploy applications faster than ever before. This means giving you tools to do everything from initializing your Workers project to having visibility into your application successfully serving production traffic.</p>
 	<p>Last year we introduced <a href="https://blog.cloudflare.com/introducing-workers-dashboard-logs"><code>wrangler tail</code></a>, letting you access a live stream of Workers logs to help pinpoint errors to debug your applications. Workers Trace Events Logpush (or just Workers Logpush for short) extends this functionality – you can use it to send Workers logs to an <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> destination or analytics platform of your choice.</p>
 	<p>Workers Logpush is now available to everyone on the Workers Paid plan! Read on to learn how to get started and about pricing information.</p>
-	<h3>Move fast and <i>don’t</i> break things</h3>
+	<div class="flex anchor relative">
+		<h3 id="move-fast-and">Move fast and </h3>
+		<a href="https://blog.cloudflare.com/#move-fast-and" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the rise of platforms like Cloudflare Workers over containers and VMs, it now takes just minutes to deploy applications. But, when building an application, any tech stack that you choose comes with its own set of trade-offs.</p>
 	<p>As a developer, choosing Workers means you don't need to worry about any of the underlying architecture. You just write code, and it works (hopefully!). A common criticism of this style of platform is that observability becomes more difficult.</p>
 	<p>We want to change that.</p>
 	<p>Over the years, we’ve made improvements to the testing and debugging tools that we offer — <a href="https://developers.cloudflare.com/workers/learning/debugging-workers/#local-testing-with-wrangler-dev"><code>wrangler dev</code></a>, <a href="https://miniflare.dev"><code>Miniflare</code></a> and most recently our open sourced runtime <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime"><code>workerd</code></a>. These improvements have made debugging locally and running unit tests much easier. However, there will always be edge cases or bugs that are only replicated in production environments.</p>
-	<h3>If something does break…enter Workers Logpush</h3>
+	<div class="flex anchor relative">
+		<h3 id="if-something-does-break-enter-workers-logpush">If something does break…enter Workers Logpush</h3>
+		<a href="https://blog.cloudflare.com/#if-something-does-break-enter-workers-logpush" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wrangler tail lets you view logs in real time, but we’ve heard from developers that you would also like to set up monitoring for your services and have a historical record to look back on. Workers Logpush includes metadata about requests, <code>console.log()</code> messages and any uncaught exceptions. To give you an idea of what it looks like, below is a sample log line:</p>
 	<pre class="language-bash"><code class="language-bash">{
    "AccountID":12345678,
@@ -46,9 +60,23 @@
       "ScriptName":"example-script"
    }</code></pre>
 	<p><a href="https://developers.cloudflare.com/logs">Logpush</a> has support for the most popular observability tools. Send logs to Datadog, New Relic or even R2 for storage and <a href="https://developers.cloudflare.com/logs/r2-log-retrieval">ad hoc querying</a>.</p>
-	<h3>Pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="pricing">Pricing</h3>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers Logpush is available to both customers on our Workers Paid and Enterprise plans. We wanted this to be very affordable for our developers. Workers Logpush is priced at $0.05 per million requests, and we only charge you for requests that result in logs delivered to an end destination after any filtering or sampling is applied. It also has an included usage of 10M requests each month.</p>
-	<h3>Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuration">Configuration</h3>
+		<a href="https://blog.cloudflare.com/#configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Logpush is incredibly simple to set up.</p>
 	<p>1. Create a Logpush job. The following example sends Workers logs to R2.</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/logpush/jobs' \
@@ -66,6 +94,13 @@
 	<pre class="language-bash"><code class="language-bash">"filter":"{\"where\": {\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"exception\"}}"</code></pre>
 	<p>2. Enable logging on your Workers script</p>
 	<p>You can do this by adding a new property, <code>logpush = true</code>, to your <code>wrangler.toml</code> file. This can be added either in the top level configuration or under an environment. Any new scripts with this property will automatically get picked up by the Logpush job.</p>
-	<h3>Get started today!</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today!</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Both customers on our Workers Paid Plan and Enterprise plan can get started with Workers Logpush now! The full guide on how to get started is <a href="https://developers.cloudflare.com/workers/platform/logpush">here</a>.</p>
 </div>

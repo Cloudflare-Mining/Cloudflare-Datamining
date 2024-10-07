@@ -9,18 +9,39 @@
 	</figure>
 	<p><b>D1 is now in open beta</b>, and the theme is “scale”: with higher per-database storage limits <i>and</i> the ability to create more databases, we’re unlocking the ability for developers to build production-scale applications on D1. Any developers with an existing paid Workers plan don’t need to lift a finger to benefit: we’ve retroactively applied this to all existing D1 databases.</p>
 	<p>If you missed the <a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">last D1 update</a> back during Developer Week, the <a href="https://developers.cloudflare.com/d1/changelog">multitude of updates in the changelog</a>, or are just new to D1 in general: read on.</p>
-	<h3>Remind me: D1? Databases?</h3>
+	<div class="flex anchor relative">
+		<h3 id="remind-me-d1-databases">Remind me: D1? Databases?</h3>
+		<a href="https://blog.cloudflare.com/#remind-me-d1-databases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>D1 our native serverless database, which we launched into alpha in November last year: the queryable database complement to <a href="https://developers.cloudflare.com/kv">Workers KV</a>, <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a> and <a href="https://developers.cloudflare.com/r2">R2</a>.</p>
 	<p>When we set out to build D1, we knew a few things for certain: it needed to be fast, it needed to be incredibly easy to create a database, and it needed to be SQL-based.</p>
 	<p>That last one was critical: so that developers could a) avoid learning another custom query language and b) make it easier for existing query buildings, ORM (object relational mapper) libraries and other tools to connect to D1 with minimal effort. From this, we’ve seen a huge number of projects build support in for D1: from support for D1 in the <a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md">Drizzle ORM</a> and <a href="https://developers.cloudflare.com/d1/platform/community-projects/#d1-adapter-for-kysely-orm">Kysely</a>, to the <a href="https://t4stack.com">T4 App</a>, a full-stack toolkit that uses D1 as its database.</p>
 	<p>We also knew that D1 couldn’t be the only way to query a database from Workers: for teams with existing databases and thousands of lines of SQL or existing ORM code, migrating across to D1 isn’t going to be an afternoon’s work. For those teams, we built <a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">Hyperdrive</a>, allowing you to connect to your existing databases and make them feel global. We think this gives teams flexibility: combine D1 and Workers for globally distributed apps, and use Hyperdrive for querying the databases you have in legacy clouds and just can’t get rid of overnight.</p>
-	<h3>Larger databases, and more of them</h3>
+	<div class="flex anchor relative">
+		<h3 id="larger-databases-and-more-of-them">Larger databases, and more of them</h3>
+		<a href="https://blog.cloudflare.com/#larger-databases-and-more-of-them" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This has been the biggest ask from the thousands of D1 users throughout the alpha: not just more databases, but also <i>bigger</i> databases.</p>
 	<p><b>Developers on the Workers paid plan will now be able to grow each database up to 2GB and create 50,000 databases (up from 500MB and 10). Yes, you read that right: 50,000 databases per account. This unlocks a whole raft of database-per-user use-cases and enables true isolation between customers, something that traditional relational database deployments can’t.</b></p>
 	<p>We’ll be continuing to work on unlocking even larger databases over the coming weeks and months: developers using the D1 beta will see automatic increases to these limits published on <a href="https://developers.cloudflare.com/d1/changelog">D1’s public changelog</a>.</p>
 	<p>One of the biggest impediments to double-digit-gigabyte databases is performance: we want to ensure that a database can load in and be ready <i>really</i> quickly — cold starts of seconds (or more) just aren’t acceptable. A 10GB or 20GB database that takes 15 seconds before it can answer a query ends up being pretty frustrating to use.</p>
 	<p>Users on the <a href="https://www.cloudflare.com/plans/free">Workers free plan</a> will keep the ten 500MB databases (<a href="https://developers.cloudflare.com/d1/changelog/#per-database-limit-now-500-mb">changelog</a>) forever: we want to give more developers the room to experiment with D1 and Workers before jumping in.</p>
-	<h3>Time Travel is here</h3>
+	<div class="flex anchor relative">
+		<h3 id="time-travel-is-here">Time Travel is here</h3>
+		<a href="https://blog.cloudflare.com/#time-travel-is-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/d1/learning/time-travel">Time Travel</a> allows you to roll your database back to a specific point in time: specifically, any minute in the last 30 days. And it’s enabled by default for every D1 database, doesn’t cost any more, and doesn’t count against your storage limit.</p>
 	<p>For those who have been keeping tabs: we originally announced Time Travel earlier this year, and made it <a href="https://developers.cloudflare.com/d1/changelog/#time-travel">available to all D1 users in July</a>. At its core, it’s deceptively simple: Time Travel introduces the concept of a “bookmark” to D1. A bookmark represents the state of a database at a specific point in time, and is effectively an append-only log. Time Travel can take a timestamp and turn it into a bookmark, or a bookmark directly: allowing you to restore back to that point. Even better: restoring doesn’t prevent you from going back further.</p>
 	<p>We think Time Travel works best with an example, so let’s make a change to a database: one with an Order table that stores every order made against our e-commerce store:</p>
@@ -63,7 +84,14 @@
 └──────────┘</code></pre>
 	<p>We think that Time Travel becomes even more powerful when you have many smaller databases, too: the downsides of any restore operation is reduced further and scoped to a single user or tenant.</p>
 	<p>This is also just the beginning for Time Travel: we’re working to support not just only restoring a database, but also the ability to fork from and overwrite existing databases. If you can fork a database with a single command and/or test migrations and schema changes against real data, you can de-risk a lot of the traditional challenges that working with databases has historically implied.</p>
-	<h3>Row-based pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="row-based-pricing">Row-based pricing</h3>
+		<a href="https://blog.cloudflare.com/#row-based-pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/d1-turning-it-up-to-11/#not-going-to-burn-a-hole-in-your-wallet">Back in May</a> we announced pricing for D1, to a lot of positive feedback around how much we’d included in our Free and Paid plans. In August, we published a new row-based model, replacing the prior byte-units, that makes it easier to predict and quantify your usage. Specifically, we moved to rows as it’s easier to reason about: if you’re writing a row, it doesn’t matter if it’s 1KB or 1MB. If your read query uses an indexed column to filter on, you’ll see not only performance benefits, but cost savings too.</p>
 	<p>Here’s D1’s pricing — almost everything has stayed the same, with the added benefit of charging based on rows:</p>
 	<figure class="kg-card kg-image-card ">
@@ -110,7 +138,14 @@
 ]</code></pre>
 	<p>The same query with an index on the ShippedDate column reads just 417 rows: not only it is faster (duration is in milliseconds!), but it costs us less: we could run this query 59 million times per month before we’d have to pay any more than what the $5 Workers plan gives us.</p>
 	<p>D1 also <a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics">exposes row counts</a> via both the Cloudflare dashboard and our GraphQL analytics API: so not only can you look at this per-query when you’re tuning performance, but also break down query patterns across all of your databases.</p>
-	<h3>D1 for Platforms</h3>
+	<div class="flex anchor relative">
+		<h3 id="d1-for-platforms">D1 for Platforms</h3>
+		<a href="https://blog.cloudflare.com/#d1-for-platforms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Throughout D1’s alpha period, we’ve both heard from and worked with teams who are excited about D1’s ability to scale out horizontally: the ability to deploy a database-per-customer (or user!) in order to keep data closer to where teams access it <i>and</i> more strongly isolate that data from their other users.</p>
 	<p>Teams building the next big thing on <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms">Workers for Platforms</a> — think of it as “Functions as a Service, as a Service” — can use D1 to deploy a <b>database per user</b> — keeping customer data strongly separated from each other.</p>
 	<p>For example, and as one of the early adopters of D1, <a href="https://twitter.com/roninapp">RONIN</a> is building an edge-first content &amp; data platform backed by a dedicated D1 database per customer, which allows customers to place data closer to users and provides each customer isolation from the queries of others.</p>
@@ -131,7 +166,14 @@
 		</li>
 	</ul>
 	<p>If you’re building the next big platform on top of Workers &amp; want to use D1 at scale — whether you’re part of the <a href="https://www.cloudflare.com/lp/workers-launchpad">Workers Launchpad program</a> or not — reach out.</p>
-	<h3>What’s next for D1?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-d1">What’s next for D1?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-d1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>We’re setting a clear goal: we want to make D1 “generally available” (GA) for production use-cases by early next year</b> <b>(Q1 2024)</b>. Although you can already use D1 without a waitlist or approval process, we understand that the GA label is an important one for many when it comes to a database (and as do we).</p>
 	<p>Between now and GA, we’re working on some really key parts of the D1 vision, with a continued focus on reliability and performance.</p>
 	<p>One of the biggest remaining pieces of that vision is global read replication, which we <a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">wrote about earlier this year</a>. Importantly, replication will be free, won’t multiply your storage consumption, and will still enable session consistency (read-your-writes). Part of D1’s mission is about getting data closer to where users are, and we’re excited to land it.</p>

@@ -1,6 +1,14 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/27BDYeG9Nvdm7QcIh0lIOr/3e1ad25a2ee68817730e86825684f465/alerts-observability.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>Introduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="introduction">Introduction</h3>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eGxy8JaWamWJ4cahiswIx/32c629fee9b9198ffacf2a2da2d00187/Screenshot-2024-01-18-at-10.49.47-PM.png" alt="" class="kg-image" width="2048" height="1104" loading="lazy">
@@ -16,14 +24,29 @@
 	<p>Being on-call can disrupt sleep patterns, impact social life, and hinder leisure activities, potentially leading to burnout. While burnout can be caused by several factors, one contributing factor can be excessively noisy alerts or receiving alerts that are neither important nor actionable. Analyzing alerts can help mitigate the risk of such burnout by reducing unnecessary interruptions and improving the overall efficiency of the on-call process. It involves periodic review and feedback to the system for improving alert quality. Unfortunately, only some companies or teams do alert analysis, even though it is essential information that every on-call or manager should have access to.</p>
 	<p>Alert analysis is useful for on-call personnel, enabling them to easily see which alerts have fired during their shift to help draft handover notes and not miss anything important. In addition, managers can generate reports from these stats to see the improvements over time, as well as helping assess on-call vulnerability to burnout. Alert analysis also helps with writing incident reports, to see if alerts were fired, or to determine when an incident started.</p>
 	<p>Let’s first understand the alerting stack and how we used open-source tools to gain greater visibility into it, which allowed us to analyze and optimize its effectiveness.</p>
-	<h3>Prometheus architecture at Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="prometheus-architecture-at-cloudflare">Prometheus architecture at Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#prometheus-architecture-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/B78dhbx9vkOS1axZyxHtJ/a1b0f4d9745eec0eccc084fbf0ed6b60/Untitled-2.png" alt="" class="kg-image" width="1352" height="1043" loading="lazy">
 
 	</figure>
 	<p>At Cloudflare, we <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale">rely heavily on Prometheus</a> for monitoring. We have data centers in more than 310 cities, and each has several <a href="https://prometheus.io/docs/introduction/faq/#:~:text=Apache%202.0%20license.-,What%20is%20the%20plural%20of%20Prometheus%3F,Prometheus%27%20is%20%27Prometheis%27">Prometheis</a>. In total, we have over 1100 Prometheus servers. All alerts are sent to a central <a href="https://prometheus.io/docs/alerting/latest/alertmanager">Alertmanager</a>, where we have various integrations to route them. Additionally, <a href="https://prometheus.io/docs/alerting/latest/configuration/#:~:text=The%20Alertmanager%20will%20send%20HTTP%20POST%20requests%20in%20the%20following%20JSON%20format%20to%20the%20configured%20endpoint%3A">using an alertmanager webhook</a>, we store all alerts in a datastore for analysis.</p>
-	<h3>Lifecycle of an alert</h3>
+	<div class="flex anchor relative">
+		<h3 id="lifecycle-of-an-alert">Lifecycle of an alert</h3>
+		<a href="https://blog.cloudflare.com/#lifecycle-of-an-alert" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prometheus collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when the alerting conditions are met. Once an alert goes into firing state, it will be sent to the alertmanager.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -45,7 +68,14 @@
 
 	</figure>
 	<p><i>Interfaces for providing information about alert states</i></p>
-	<h2>Solution</h2>
+	<div class="flex anchor relative">
+		<h2 id="solution">Solution</h2>
+		<a href="https://blog.cloudflare.com/#solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We opted to aggregate all states of the alerts (firing, silenced, inhibited, and resolved) into a datastore. Given that we're gathering data from two distinct sources (the webhook and API) each in varying formats and potentially representing different events, we correlate alerts from both sources using the fingerprint field. The <a href="https://github.com/prometheus/common/blob/main/model/alert.go#L48-L52">fingerprint</a> is a unique hash of the alert’s label set which enables us to match alerts across responses from the Alertmanager webhook and API.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -68,7 +98,15 @@
 
 	</figure>
 	<p>If we were to create individual columns for all the alert labels, the number of columns would grow exponentially with the addition of new alerts and unique labels. Instead, we decided to create individual columns for a few common labels like alert priority, instance, dashboard, alert-ref, alertname, etc., which helps us analyze the data in general and keep all other labels in a column of type <code>Map(String, String)</code>. This was done because we wanted to keep all the labels in the datastore with minimal resource usage and allow users to query specific labels or filter alerts based on particular labels. For example, we can select all Prometheus alerts using &nbsp;<code>labelsmap[‘service’’] = ‘Prometheus’</code>.</p>
-	<h2>Dashboards</h2>
+	<div class="flex anchor relative">
+		<h2 id="dashboards">Dashboards</h2>
+		<a href="https://blog.cloudflare.com/#dashboards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/14NoQxvbOYttnGrlFmIR3Z/306126391d05d2ade84e5ce1dddd38b0/Screenshot-2024-01-18-at-11.02.31-PM.png" alt="Outcome" class="kg-image" width="1600" height="672" loading="lazy">
@@ -95,30 +133,68 @@
 			<p><b>Silences overview</b>: To get insights into the Alertmanager silences.</p>
 		</li>
 	</ul>
-	<h3>Alerts overview</h3>
+	<div class="flex anchor relative">
+		<h3 id="alerts-overview">Alerts overview</h3>
+		<a href="https://blog.cloudflare.com/#alerts-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pclX6PtvC0zJRhX4ibl9U/061945892006fb80f645b110f5b159fa/Screenshot-2024-03-26-at-1.14.24-PM.png" alt="Collapsed alerts overview dashboard" class="kg-image" width="1217" height="642" loading="lazy">
 
 	</figure>
 	<p>The image is a screenshot of the collapsed alerts overview dashboard by receiver. This dashboard comprises general stats, components, services, and alertname breakdown. The dashboard also highlights the number of P1 / P2 alerts in the last one day / seven days / thirty days, top alerts for the current quarter, and quarter-to-quarter comparison.</p>
-	<h3>Component breakdown</h3>
+	<div class="flex anchor relative">
+		<h3 id="component-breakdown">Component breakdown</h3>
+		<a href="https://blog.cloudflare.com/#component-breakdown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RQfVZgBxphfO13f6AtBSA/be0793b4e46a7443d432d8c6927ba599/Screenshot-2024-01-19-at-3.47.38-PM.png" alt="Receiver component breakdown status history" class="kg-image" width="1600" height="505" loading="lazy">
 
 	</figure>
 	<p>We route alerts to teams and a team can have multiple services or components. This panel shows firing alerts component counts over time for a receiver. For example, the alerts are sent to the observability team, which owns multiple components like logging, metrics, traces, and errors. This panel gives an alerting component count over time, and provides a good idea about which component is noisy and at what time at a glance.</p>
-	<h3>Timeline of alerts</h3>
+	<div class="flex anchor relative">
+		<h3 id="timeline-of-alerts">Timeline of alerts</h3>
+		<a href="https://blog.cloudflare.com/#timeline-of-alerts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/cqVYUsyX4kospY8JWdjGd/20bf14d8ea88d410e129604145cdb8b7/Screenshot-2024-01-19-at-3.22.12-PM.png" alt="" class="kg-image" width="1600" height="794" loading="lazy">
 
 	</figure>
 	<p>We created this swimlane view using Grafana’s state timeline panel for the receivers. The panel shows how busy the on-call was and at what point. Red here means the alert started firing, orange represents the alert is active and green means it has resolved. It displays the start time, active duration, and resolution of an alert. This highlighted alert is changing state too frequently from firing to resolved - this looks like a flapping alert. Flapping occurs when an alert changes state too frequently. This can happen when alerts are not configured properly and need tweaking, such as adjusting the alert threshold or increasing the <code>for duration</code> period in the alerting rule. The <code>for duration</code> field in the alerting rules adds time tolerance before an alert starts firing. In other words, the alert won’t fire unless the condition is met for ‘X’ minutes.</p>
-	<h2>Findings</h2>
+	<div class="flex anchor relative">
+		<h2 id="findings">Findings</h2>
+		<a href="https://blog.cloudflare.com/#findings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There were a few interesting findings within our analysis. We found a few alerts that were firing and did not have a notify label set, which means the alerts were firing but were not being sent or routed to any team, creating unnecessary load on the Alertmanager. We also found a few components generating a lot of alerts, and when we dug in, we found that they were for a cluster that was decommissioned where the alerts were not removed. These dashboards gave us excellent visibility and cleanup opportunities.</p>
-	<h3>Alertmanager inhibitions</h3>
+	<div class="flex anchor relative">
+		<h3 id="alertmanager-inhibitions">Alertmanager inhibitions</h3>
+		<a href="https://blog.cloudflare.com/#alertmanager-inhibitions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alertmanager inhibition allows suppressing a set of alerts or notifications based on the presence of another set of alerts. We found that Alertmanager inhibitions were not working sometimes. Since there was no way to know about this, we only learned about it when a user reported getting alerted for inhibited alerts. Imagine a Venn diagram of firing and inhibited alerts to understand failed inhibitions. Ideally, there should be no overlap because the inhibited alerts shouldn’t be firing. But if there is an overlap, that means inhibited alerts are firing, and this overlap is considered a failed inhibition alert.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -170,18 +246,40 @@ GROUP BY t</code></pre>
 
 	</figure>
 	<p>Failed inhibitions can be avoided if alert inhibitions are configured carefully.</p>
-	<h3>Silences</h3>
+	<div class="flex anchor relative">
+		<h3 id="silences">Silences</h3>
+		<a href="https://blog.cloudflare.com/#silences" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4l3wAB9Q2jLts6e6oN23Se/4b5acaaed361d9852a39ee7eaec168b5/Screenshot-2024-03-26-at-1.15.09-PM.png" alt="Alertmanager silences" class="kg-image" width="1020" height="511" loading="lazy">
 
 	</figure>
 	<p>Alertmanager provides a mechanism to silence an alert while it is being worked on or during maintenance. Silence can mute the alerts for a given time and it can be configured based on matchers, which can be an exact match, a regex, an alert name, or any other label. The silence matcher doesn’t necessarily translate to the alertname. By doing alert analysis, we could map the alerts and the silence ID by doing a JOIN query on the alerts and silences tables. We also discovered a lot of stale silences, where silence was created for a long duration and is not relevant anymore.</p>
-	<h2>DIY Alert analysis</h2>
+	<div class="flex anchor relative">
+		<h2 id="diy-alert-analysis">DIY Alert analysis</h2>
+		<a href="https://blog.cloudflare.com/#diy-alert-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2024-03-alerts-observability">The directory</a> contains a basic demo for implementing alerts observability. Running `docker-compose up` spawns several containers, including Prometheus, Alertmanager, Vector, ClickHouse, and Grafana. The vector.dev container queries the Alertmanager alerts API and writes the data into ClickHouse after transforming it. The Grafana dashboard showcases a demo of Alerts and Silences overview.</p>
 	<p>Make sure you have docker installed and run <code>docker compose up</code> to get started.</p>
 	<p>Visit <a href="http://localhost:3000/dashboards">http://localhost:3000/dashboards</a> to explore the prebuilt demo dashboards.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of the observability team, we manage the Alertmanager, which is a multi-tenant system. It's crucial for us to have visibility to detect and address system misuse, ensuring proper alerting. The use of alert analysis tools has significantly enhanced the experience for on-call personnel and our team, offering swift access to the alert system. Alerts observability has facilitated the troubleshooting of events such as why an alert did not fire, why an inhibited alert fired, or which alert silenced / inhibited another alert, providing valuable insights for improving alert management.</p>
 	<p>Moreover, alerts overview dashboards facilitate rapid review and adjustment, streamlining operations. Teams use these dashboards in the weekly alert reviews to provide tangible evidence of how an on-call shift went, identify which alerts fire most frequently, becoming candidates for cleanup or aggregation thus curbing system misuse and bolstering overall alert management. Additionally, we can pinpoint services that may require particular attention. Alerts observability has also empowered some teams to make informed decisions about on-call configurations, such as transitioning to longer but less frequent shifts or integrating on-call and unplanned work shifts.</p>
 	<p>In conclusion, alert observability plays a crucial role in averting burnout by minimizing interruptions and enhancing on-call duties' efficiency. Offering alerts observability as a service benefits all teams by obviating the need for individual dashboard development and fostering a proactive monitoring culture.If you found this blog post interesting and want to work on observability, please check out our job openings – we’re hiring for <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Production+Engineering&amp;title=alerting">Alerting</a> and <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Production+Engineering&amp;title=logging">Logging</a>!</p>

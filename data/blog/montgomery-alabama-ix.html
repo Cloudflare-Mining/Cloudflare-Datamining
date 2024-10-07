@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Part of the magic of the Internet is in tens of thousands of networks connecting to each other all across the world in an effort to share information more efficiently. Cloudflare is a member of <a href="https://bgp.he.net/report/exchanges#_participants">279</a> Internet Exchanges (IX for short), but today we want to highlight one such dot on the global Internet map: the Montgomery, Alabama Internet Exchange, called MGMix. Thanks to the hard work of local leaders and the participation of dozens of networks (including Cloudflare), the Internet in Alabama works better today than it did before the IX launched.</p>
-	<h3>Understanding IXs</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-ixs">Understanding IXs</h3>
+		<a href="https://blog.cloudflare.com/#understanding-ixs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we talk more about Alabama in particular, let's take a step back to understand the critical role that Internet Exchanges play in our global Internet. In a simple model of exchanging Internet traffic, one person is on their laptop and requests content on a website, uses a video conferencing application, or wants to securely connect to their workplace from home. The person, or “client” in technical terms, is generally using a traditional Internet Service Provider, who they pay to access everything on the Internet. On the other hand, whatever the user is trying to reach – the website, API endpoint, or security service – or “server” in technical terms, is usually on a different network. How the data gets from the client’s network to the server’s network is not something Internet users think much about, but at Cloudflare, we think about it a lot.</p>
 	<p>One way that a network can reach another network is by paying a 3rd party network to deliver the traffic. This is called “transit” and it’s an appealing option because it’s simple. One “Tier 1” transit provider can reach the entire Internet. Of course, the tradeoff is that convenience comes at a cost – networks pay transit providers based on the quantity of traffic passed over the connection.</p>
 	<p>At the other end, larger networks often connect directly with what are called Private Network Interconnections (PNI). If one network is consistently sending large volumes of traffic to another network, it will be less expensive to use a PNI than to send the traffic over a transit provider. In this case, the two networks string a fiber cable across the ceiling of a data center where both networks have a presence, from one network’s cage to the other’s.</p>
@@ -16,7 +23,14 @@
 
 	</figure>
 	<p>Right in the Goldilocks zone between transit providers and PNIs are Internet Exchanges. An IX brings networks together in one place, and lets them freely exchange traffic. Sometimes they’re literally called “meeting rooms”. Once a network joins an IX, they might be able to reach hundreds of other networks without incurring 3rd party transit fees. Thriving IX communities are a power-up for the Internet: they reduce the cost of delivering Internet traffic, incentivizing more networks to join, while making the Internet faster through better interconnection.</p>
-	<h3>Montgomery Internet Exchange (MGMix)</h3>
+	<div class="flex anchor relative">
+		<h3 id="montgomery-internet-exchange-mgmix">Montgomery Internet Exchange (MGMix)</h3>
+		<a href="https://blog.cloudflare.com/#montgomery-internet-exchange-mgmix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back to Alabama. Unfortunately, Alabama, and the “Deep South” in general, has some of the worst performing Internet in the country. In Alabama, 15% of locations don’t have access to home Internet with download throughput of 25 Mbps and 3 Mbps upload according to the <a href="https://broadbandmap.fcc.gov/home">latest</a> FCC data. In Mississippi, it’s 20%. The national average is 7%. In terms of latency, which is how we measure the speed of the Internet, the Deep South is also well above average.</p>
 	<p><i>50th percentile TCP Connect Time (ms) to Major Content Delivery Networks</i></p>
 	<figure class="kg-card kg-image-card ">

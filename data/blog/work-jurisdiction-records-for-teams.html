@@ -10,7 +10,14 @@
 	</figure>
 	<p>In a lot of ways, it's gone better than expected. We're proud of helping provide technology solutions like Cloudflare for Teams that allow employees to work from anywhere and ensure they still have a <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">fast, secure connection to their corporate resources</a>. But increasingly we've been hearing from the heads of the finance, legal, and HR departments of our customers with a concern: "If I don't know where my employees are, I have no idea where I need to pay taxes."</p>
 	<p>Today we're announcing the beta of a new feature for Cloudflare for Teams to help solve this problem: Workplace Records. Cloudflare for Teams uses Access and Gateway logs to provide the state and country from which employees are working. Workplace Records can be used to help finance, legal, and HR departments determine where payroll taxes are due and provide a record to defend those decisions.</p>
-	<h3>Every location became a potential workplace</h3>
+	<div class="flex anchor relative">
+		<h3 id="every-location-became-a-potential-workplace">Every location became a potential workplace</h3>
+		<a href="https://blog.cloudflare.com/#every-location-became-a-potential-workplace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before 2020, employees who frequently traveled could manage tax jurisdiction reporting by gathering plane tickets or keeping manual logs of where they spent time. It was tedious, for employees and our payroll team, but manageable.</p>
 	<p>The COVID pandemic transformed that chore into a significant challenge for our finance, legal, and HR teams. Our entire organization was suddenly forced to work remotely. If we couldn't get comfortable that we knew where people were working, we worried we may be forced to impose somewhat draconian rules requiring employees to check-in. That didn't seem very Cloudflare-y.</p>
 	<p>The challenge impacts individual team members as well. Reporting mistakes can lead to tax penalties for employees or amendments during filing season. Our legal team started to field questions from employees stuck in new regions because of travel restrictions. Our payroll team prepared for a backlog of amendments.</p>
@@ -19,7 +26,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iLks5EvgwrxIDURV0oxNh/f6420c324f13a4f1ff9c307d3da31102/facebook-shared-image-2.png" alt="" class="kg-image" width="1200" height="630" loading="lazy">
 
 	</figure>
-	<h3>Logging jurisdiction without manual reporting</h3>
+	<div class="flex anchor relative">
+		<h3 id="logging-jurisdiction-without-manual-reporting">Logging jurisdiction without manual reporting</h3>
+		<a href="https://blog.cloudflare.com/#logging-jurisdiction-without-manual-reporting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When team members open their corporate laptops and start a workday, they log in to <a href="https://www.cloudflare.com/teams/access">Cloudflare Access</a> — our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> tool that protects applications and data. Cloudflare Access checks their identity and other signals like <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">multi-factor method</a>s to determine if they can proceed. Importantly, the process also logs their region so we can enforce country-specific rules.</p>
 	<p>Our finance, legal, and HR teams worked with our engineering teams to use that model to create Workplace Records. We now have the confidence to know we can meet our payroll tax obligations without imposing onerous limitations on team members. We’re able to prepare and adjust, in real-time, while confidentially supporting our employees as they work remotely for wherever is most comfortable and productive for them.</p>
 	<figure class="kg-card kg-image-card ">
@@ -27,10 +41,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BGwssXujsm48Sf8GCuRXJ/47c74e1eaefe79cc99c9cb8a06eaba27/image3-36.png" alt="" class="kg-image" width="1843" height="1126" loading="lazy">
 
 	</figure>
-	<h3>Respecting team member privacy</h3>
+	<div class="flex anchor relative">
+		<h3 id="respecting-team-member-privacy">Respecting team member privacy</h3>
+		<a href="https://blog.cloudflare.com/#respecting-team-member-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workplace Records only provides resolution within a taxable jurisdiction, not a specific address. The goal is to give only the information that finance, legal, and HR departments need to ensure they can meet their compliance obligations.</p>
 	<p>The system also generates these reports by capturing team member logins to work applications on corporate devices. We use the location of that login to determine “this was a workday from Texas”. If a corporate laptop is closed or stored away for the weekend, we aren’t capturing location logs. We’d rather team members enjoy time off without connecting.</p>
-	<h3>Two clicks to enforce regional compliance</h3>
+	<div class="flex anchor relative">
+		<h3 id="two-clicks-to-enforce-regional-compliance">Two clicks to enforce regional compliance</h3>
+		<a href="https://blog.cloudflare.com/#two-clicks-to-enforce-regional-compliance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workplace Records can also help ensure company policy compliance for a company's teams. For instance, companies may have policies about engineering teams only creating intellectual property in countries in which transfer agreements are in place. Workplace Records can help ensure that engineering work isn't being done in countries that may put the intellectual property at risk.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,7 +67,14 @@
 	</figure>
 	<p>Administrators can <a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance">build rules</a> in Cloudflare Access to require that team members connect to internal or <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">SaaS applications</a> only from countries where they operate. Cloudflare’s network will check every request both for identity and the region from which they’re connecting.</p>
 	<p>We also heard from our own accounting teams that some regions enforce strict tax penalties when employees work without an incorporated office or entity. In the same way that you can require users to work only from certain countries, you can also block users from connecting to your applications from specific regions.</p>
-	<h3>No deciphering required</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-deciphering-required">No deciphering required</h3>
+		<a href="https://blog.cloudflare.com/#no-deciphering-required" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we started planning Workplace Records, our payroll team asked us to please not send raw data that added more work on them to triage and sort.</p>
 	<p>Available today, you can view the country of each login to internal systems on a per-user basis. You can export this data to an external SIEM and you can build rules that <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">control access</a> to systems by country.</p>
 	<p>Launching today in beta is a new UI that summarizes the working days spent in specific regions for each user. Workplace Records will add a company-wide report early in Q1. The service is available as a report for free to all Cloudflare for Teams customers.</p>
@@ -49,7 +84,14 @@
 
 	</figure>
 	<p>Going forward, we plan to work with Human Capital Management (HCM), Human Resource Information Systems (HRIS), Human Resource Management Systems (HRMS), and Payroll providers to automatically integrate Workplace Records.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we know even after the pandemic we are going to be more tolerant of remote work than before. The more that we can allow our team to work remotely and ensure we are meeting our regulatory, compliance, and tax obligations, the more flexibility we will be able to provide.</p>
 	<p>Cloudflare for Teams with Workplace Records is helping solve a challenge for our finance, legal, and HR teams. Now with the launch of the beta, we hope we can help enable a more flexible and compliant work environment for all our Cloudflare for Teams customers.This feature will be available to all Cloudflare for Teams subscribers early next week. You can <a href="https://www.cloudflare.com/teams">start using</a> Cloudflare for Teams today at no cost for up to 50 users, including the Workplace Records feature.</p>
 	<figure class="kg-card kg-image-card ">

@@ -23,10 +23,24 @@
 
 	</figure>
 	<p>Before we get deep into how the integration works, let’s first recap Cloudflare’s Zero Trust Services.</p>
-	<h3>Cloudflare Access and Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-access-and-gateway">Cloudflare Access and Gateway</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-and-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare Access</a> determines if a user should be allowed access to an application or not. It uses our global network to check every request or connection for identity, device posture, location, multifactor method, and many more attributes to do so. Access also logs every request and connection — providing administrators with high-visibility. The upshot of all of this: it enables customers to deprecate their legacy VPNs.</p>
 	<p><a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a> protects users as they connect to the rest of the Internet. Instead of back hauling traffic to a centralized location, users connect to a nearby Cloudflare data center where we apply one or more layers of security, filtering, and logging, before accelerating their traffic to its final destination.</p>
-	<h3>Zero Trust Integration with CrowdStrike</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-integration-with-crowdstrike">Zero Trust Integration with CrowdStrike</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-integration-with-crowdstrike" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s customers can now build Access and Gateway policies based on the presence of a CrowdStrike agent at the endpoint. In conjunction with our Zero Trust client, we are able to leverage the enhanced telemetry that CrowdStrike provides surrounding a user’s device.</p>
 	<p>CrowdStrike’s Zero Trust Assessment (ZTA) delivers continuous real-time security posture assessments across all endpoints in an organization regardless of the location, network or user. The ZTA scores enable enforcement of conditional policies based on device health and compliance checks to mitigate risks. These policies are evaluated each time a connection request is made, making the conditional access adaptive to the evolving condition of the device.</p>
 	<p>With this integration, organizations can build on top of their existing Cloudflare Access and Gateway policies ensuring that a minimum ZTA score or version has been met before a user is granted access. Because these policies work across our entire Zero Trust platform, organizations can use these to build powerful rules invoking Browser Isolation, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control">tenant control</a>, antivirus or any part of their Cloudflare deployment.</p>
@@ -38,7 +52,14 @@
 	<blockquote>
 		<p>_"The CrowdStrike Falcon platform secures customers through verified access controls, helping customers reduce their attack surface and simplify, empower and accelerate their Zero Trust journey. By expanding our partnership with Cloudflare, we are making it easier for joint customers to strengthen their Zero Trust security posture across all endpoints and their entire corporate network."_- <b>Michael Sentonas</b>, Chief Technology Officer, CrowdStrike</p>
 	</blockquote>
-	<h3>How the integration works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-the-integration-works">How the integration works</h3>
+		<a href="https://blog.cloudflare.com/#how-the-integration-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers using our Zero Trust suite can add CrowdStrike as a device posture provider in the Cloudflare Zero Trust dashboard under Settings → Devices → Device Posture Providers. The details required from the CrowdStrike dashboard include: ClientID, Client Secret, REST API URL, and Customer ID.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -57,6 +78,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gwoBIcA58pmUqjhgvgxxr/fe3c9471dcad6565edb1e0216b4c69e5/pasted-image-0--5-.png" alt="Example Gateway Network policy showing use of ZTA score to allow access to 10.0.0.0/8 cidr" class="kg-image" width="1600" height="698" loading="lazy">
 
 	</figure>
-	<h2>What comes next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-comes-next">What comes next?</h2>
+		<a href="https://blog.cloudflare.com/#what-comes-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the coming months, we will be further strengthening our integrations with CrowdStrike by allowing customers to correlate their Cloudflare logs with Falcon telemetry, for timely detection and mitigation of sophisticated threats.If you’re using Cloudflare Zero Trust products today and are interested in using this integration with CrowdStrike, please visit our <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/crowdstrike">documentation</a> to learn about how you can enable it. If you want to learn more or have additional questions, please fill out the <a href="https://www.cloudflare.com/partners/technology-partners/crowdstrike">form</a> or get in touch with your Cloudflare CSM or AE, and we'll be happy to help you.</p>
 </div>

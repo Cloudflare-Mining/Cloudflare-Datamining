@@ -9,7 +9,14 @@
 	</figure>
 	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
 	<p>If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
-	<h3>Requesting Debug Info</h3>
+	<div class="flex anchor relative">
+		<h3 id="requesting-debug-info">Requesting Debug Info</h3>
+		<a href="https://blog.cloudflare.com/#requesting-debug-info" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I want my Worker to return debugging information whenever:</p>
 	<ul>
 		<li>
@@ -21,7 +28,14 @@
 	</ul>
 	<p>Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
 	<p>I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
-	<h3>Architecture</h3>
+	<div class="flex anchor relative">
+		<h3 id="architecture">Architecture</h3>
+		<a href="https://blog.cloudflare.com/#architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern">interceptor</a>.</p>
 	<p>Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
 	<pre class="language-typescript"><code class="language-typescript">/**
@@ -52,7 +66,14 @@ private postProcess(req: RequestContextBase, res: Response) {
 	}
 }</code></pre>
 	<p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
-	<h3>LogInterceptor</h3>
+	<div class="flex anchor relative">
+		<h3 id="loginterceptor">LogInterceptor</h3>
+		<a href="https://blog.cloudflare.com/#loginterceptor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
 	<pre class="language-typescript"><code class="language-typescript">export class Logger implements ILogger {
   public logLines: string[] = [];
@@ -113,7 +134,14 @@ export class LogInterceptor implements IInterceptor {
   }
 }</code></pre>
 	<p>Now it's up to the client to display.</p>
-	<h3>Decoding the result</h3>
+	<div class="flex anchor relative">
+		<h3 id="decoding-the-result">Decoding the result</h3>
+		<a href="https://blog.cloudflare.com/#decoding-the-result" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
 	<pre class="language-bash"><code class="language-bash">$ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }</code></pre>
 	<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell">StackOverflow</a></p>
@@ -147,7 +175,15 @@ ERROR: Error: boom
     at Object.next (worker.js:13:53)
 DEBUG: Evaluating request for logging
 DEBUG: Executing log interceptor</code></pre>
-	<h3>Summary</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we:</p>
 	<ul>
 		<li>

@@ -9,7 +9,14 @@
 	<p>We decided to create Zaraz around the end of March 2020. We were working on another product when we noticed everyone was asking us about the performance impact of having many third-parties on their website. Third-party content is an important part of the majority of websites today, powering analytics, chatbots, conversion pixels, widgets — you name it. The definition of third-party is an asset, often JavaScript, hosted outside the primary site-user relationship, that is not under the direct control of the site owner but is present with ‘approval’. <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">Yair wrote in detail about the process of measuring the impact of these third-party tools, and how we pivoted our startup</a>, but I wanted to write about how we built Zaraz and what it actually does behind the scenes.</p>
 	<p>Third parties are great in that they let you integrate already-made solutions with your website, and you barely need to do any coding. Analytics? Just drop this code snippet. Chat widget? Just add this one. Third-party vendors will usually instruct you on how to add their tool, and from that point on things should just be working. Right? But when you add third-party code, it usually fetches even more code from remote sources, meaning you have less and less control over whatever is happening in your visitors’ browsers. How can you guarantee that none of the multitude of third parties you have on your website wasn’t hacked, and started <a href="https://www.theregister.com/2018/12/12/ticketmaster_denies_fault_website_magecart_infection">stealing information</a>, <a href="https://www.wired.co.uk/article/browsealoud-ico-texthelp-cryptomining-how-cryptomining-work">mining cryptocurrencies</a> or logging key presses on your visitors' computers?</p>
 	<p>It doesn’t even have to be a deliberate hack. As we investigated more and more third-party tools, we noticed a pattern — sometimes it’s easier for a third-party vendor to collect everything, rather than being selective or careful about it. More often than not, user emails would find their way into a third-party tool, which could very easily put the website owner in trouble due to GDPR, CCPA, or similar.</p>
-	<h2>How third-party tools work today</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-third-party-tools-work-today">How third-party tools work today</h2>
+		<a href="https://blog.cloudflare.com/#how-third-party-tools-work-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Usually, when you add a third party to your page, you’re asked to add a piece of JavaScript code to the <code>&lt;head&gt;</code> of your HTML. Google Analytics is by far the most popular third-party, so let’s see how it’s done there:</p>
 	<pre class="language-html"><code class="language-html">&lt;!-- Google Analytics --&gt;
 &lt;script&gt;
@@ -31,7 +38,14 @@ ga('send', 'pageview');
 
 	</figure>
 	<p>That big blue circle is our website’s resources, and all other circles are third-party tools. You can see how the big green circle is actually a sub-request of the main Facebook pixel (fbevents.js), and how many tools, like LinkedIn on top right, are creating a redirect chain in order to sync some data, on the expense of forcing the browser to make more and more network requests.</p>
-	<h2>A new place to run a tag manager — the edge</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-new-place-to-run-a-tag-manager-the-edge">A new place to run a tag manager — the edge</h2>
+		<a href="https://blog.cloudflare.com/#a-new-place-to-run-a-tag-manager-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since we want to make third-parties faster, more secure, and private, we had to develop a fundamental new way of thinking about them and a new system for how they run. We came up with a plan: build a platform where third-parties can run code outside the browser, while still getting access to the information they need and being able to talk with the DOM when necessary. We don’t believe third parties are evil: they never intended to slow down the Internet for everyone, they just didn’t have another option. Being able to run code on the edge and run it fast opened up new possibilities and changed all that, but the transition is hard.</p>
 	<p>By moving third-party code to run outside the browser, we get multiple wins.</p>
 	<ul>
@@ -51,7 +65,14 @@ ga('send', 'pageview');
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FfeOuSS5KXe1m3JtPX8LB/9ba7ae677e861d6c3227def9f1246a02/BLOG-713---Pageload.png" alt="" class="kg-image" width="1800" height="1640" loading="lazy">
 
 	</figure>
-	<h2>Choosing Cloudflare Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="choosing-cloudflare-workers">Choosing Cloudflare Workers</h2>
+		<a href="https://blog.cloudflare.com/#choosing-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we set about coding Zaraz, we quickly understood that our infrastructure decisions would have a massive impact on our service. In fact, choosing the wrong one could mean we have no service at all. The most common alternative to Zaraz is traditional Tag Management software. They generally have no server-side component: whenever a user “publishes” a configuration, a JavaScript file is rendered and hosted as a static asset on a CDN. With Zaraz the idea is to move most of the evaluation of code out of the browser, and respond with a dynamically generated JavaScript code each time. We needed to find a solution that would allow us to have a server-side component, but would be as fast as a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>. Otherwise, there was a risk we might end up slowing down websites instead of making them faster.</p>
 	<p>We needed Zaraz to be served from a place close to the visiting user. Since setting up servers all around the world seemed like too big of a task for a very young startup, we looked at a few distributed serverless platforms. We approached this search with a small list of requirements:</p>
 	<ul>
@@ -92,10 +113,24 @@ async function handleRequest(request) {
 }</code></pre>
 	<p>It was a tiny example, but I remember calling Yair afterwards and saying “this could actually work!”. It proved the flexibility of Workers. We just created an endpoint that served a JavaScript file, this JavaScript file was dynamically generated, and the response time was less than 10ms. We could now put <code>&lt;script src="path/to/worker.js"&gt;</code> in our HTML and treat this Worker like a normal JavaScript file.</p>
 	<p>As we took a deeper look, we found Workers answering demand after demand from our list, and learned we could even do the most complicated things inside Workers. The Lambda function started doing less and less, and was eventually removed. Our little Node.js proof-of-concept was easily converted to Workers.</p>
-	<h2>Using the Cloudflare Workers platform: “standing on the shoulders of giants”</h2>
+	<div class="flex anchor relative">
+		<h2 id="using-the-cloudflare-workers-platform-standing-on-the-shoulders-of-giants">Using the Cloudflare Workers platform: “standing on the shoulders of giants”</h2>
+		<a href="https://blog.cloudflare.com/#using-the-cloudflare-workers-platform-standing-on-the-shoulders-of-giants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we raised our seed round we heard many questions like “if this can work, how come it wasn’t built before?” We often said that while the problem has been a long standing one, accessible edge computing is a new possibility. Later, on our first investors update after creating the prototype, we told them about the unbelievably fast response time we managed to achieve and got much praise for it — talk about “standing on the shoulders of giants”. Workers simply checked all our boxes. Running JavaScript and using the same V8 engine as the browser meant that we could keep the same environment when porting tools to run on the cloud (it also helped with hiring). It also opened the possibility of later on using WebAssembly for certain tasks. The fact that Workers are serverless and stateless by default was a selling point for our own trustworthiness: we told customers we couldn’t save their personal data even by mistake, which was true. The integration between webpack and Wrangler meant that we could write a full-blown application — with modules and external dependencies — to shift 100% of our logic into our Worker. And the performance helped us ace all our demos.</p>
 	<p>As we were building Zaraz, the Workers platform got more advanced. We ended up using Workers KV for storing user configuration, and Durable Objects for communicating between Workers. Our main Worker holds server-side implementations of more than 50 popular third-party tools, replacing hundreds of thousands of JavaScript lines of code that traditionally run inside browsers. It’s an ever growing list, and we recently also published an SDK that allows third-party vendors to build support for their tools by themselves. For the first time, they can do it in a secure, private, and fast environment.</p>
-	<h2>A new way to build third-parties</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-new-way-to-build-third-parties">A new way to build third-parties</h2>
+		<a href="https://blog.cloudflare.com/#a-new-way-to-build-third-parties" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most third-party tools do two fundamental things: First, they collect some information from the browser such as screen resolution, current URL, page title or cookie content. Second, they send it to their server. It is often simple, but when a website has tens of these tools, and each of them query for the information it needs and then sends its requests, it can cause a real slowdown. On Zaraz, this looks very different: Every tool provides a <code>run</code> function, and when Zaraz evaluates the user request and decides to load a tool, it executes this <code>run</code> function. This is how we built integrations for over 50 different tools, all from different categories, and this is how we’re inviting third-party vendors to write their own integrations into Zaraz.</p>
 	<pre class="language-javascript"><code class="language-javascript">run({system, utils}) { 
   // The `system` object includes information about the current page, browser, and more 
@@ -132,7 +167,14 @@ async function handleRequest(request) {
 	<p>In this example, we first check for the existence of a cookie that identifies the session, called “visitor-identifier”. If it exists, we read its value; if not, we generate a new UUID for it. Note that the power of Workers is all accessible here: we use <code>crypto.randomUUID()</code> just like we can use any other Workers functionality. We then collect all the information our example tool needs — user agent, current URL, page title, screen resolution, client IP address — and the content of the “visitor-identifier” cookie. We construct the final URL that the Worker needs to send a request to, and we then use <code>waitUntil</code> to make sure the request gets there. Zaraz’s version of fetch gives our tools automatic logging, data loss prevention and retries capabilities.</p>
 	<p>Lastly, we return the value of the <code>getCookieString</code> function. Whatever string is returned by the <code>run</code> function is passed to the visitor as browser-side JavaScript. In this case, <code>getCookieString</code> returns something like <code>document.cookie = 'visitor-identifier=5006e6fa-7ce6-45ef-8724-c846f1953369; Path=/; Max-age=31536000';</code>, causing the browser to create a first-party cookie. The next time a user loads a page, the <code>visitor-identifier</code> cookie should exist, causing Zaraz to reuse the UUID instead of creating a new one.</p>
 	<p>This system of <code>run</code> functions allows us to separate and isolate each tool to run independently of the rest of the system, while still providing it with all the required context and data coming from the browser, and the capabilities of Workers. We are inviting third-party vendors to work with us to build the future of secure, private and fast third-party tools.</p>
-	<h2>A new events system</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-new-events-system">A new events system</h2>
+		<a href="https://blog.cloudflare.com/#a-new-events-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many third-party tools need to collect behavioral information during a user visit. For example, you might want to place a conversation pixel right after a user clicked “submit” on the credit card form. Since we moved tools to the cloud, you can’t access their libraries from the browser context anymore. For that we created <code>zaraz.track()</code> — a method that allows you to call tools programmatically, and optionally provide them with more information:</p>
 	<pre class="language-javascript"><code class="language-javascript">document.getElementById("credit-card-form").addEventListener("submit", () =&gt; {
   zaraz.track("card-submission", {
@@ -149,7 +191,14 @@ async function handleRequest(request) {
 
 	</figure>
 	<p>You don’t have to be coder to use triggers. The Zaraz dashboard allows you to choose from a predefined set of templates like click listeners, scroll events and more, that you can attach to any element on your website without touching your code. When you combine <code>zaraz.track()</code> with the ability to program your own tools, what you get is essentially a one-liner integration of Workers into your website. You can write any backend code you want and Zaraz will take care of calling it exactly at the right time with the right parameters.</p>
-	<h2>Joining Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="joining-cloudflare">Joining Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#joining-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When new customers started using Zaraz, we noticed a pattern: the best teams we worked with chose Cloudflare, and some were also moving parts of their backend infrastructure to Workers. We figured we could further improve performance and integration for companies using Cloudflare as well. We could inline parts of the code inside the page and then further reduce the amount of network requests. Integration also allowed us to remove the time it takes to DNS resolve our script, because we could use Workers to proxy Zaraz into our customers' domains. Integrating with Cloudflare made our offering even more compelling.</p>
 	<p>Back when we were doing Y Combinator in Winter 2020 and realized how much third parties could affect a websites’ performance, we saw a grand mission ahead of us: creating a faster, private, and secure web by reducing the amount of third-party bloat. This mission remained the same to this day. As our conversations with Cloudflare got deeper, we were excited to realize that we’re talking with people who share the same vision. We are thrilled for the opportunity to scale our solutions to millions of websites on the Internet, making them faster and safer and even reducing carbon emissions.</p>
 	<p>If you would like to explore the free beta version, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fzaraz">please click here</a>. If you are an enterprise and have additional/custom requirements, please <a href="https://www.cloudflare.com/cloudflare-zaraz-third-party-tool-manager-waitlist">click here</a> to join the waitlist. To join our Discord channel, <a href="https://discord.gg/2TRr6nSxdd">click here</a>.</p>

@@ -16,14 +16,29 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/44hkcMdHbgfl5XZk42hRUv/86988ab51ca1c1cebb158a1a1102e512/image3-8.png" alt="" class="kg-image" width="1714" height="857" loading="lazy">
 
 	</figure>
-	<h2>How do I enable QUIC and HTTP/3 for my domain?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-do-i-enable-quic-and-http-3-for-my-domain">How do I enable QUIC and HTTP/3 for my domain?</h2>
+		<a href="https://blog.cloudflare.com/#how-do-i-enable-quic-and-http-3-for-my-domain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CC9znbBgFKJGTw6QN8YOL/75ee386991000bbc8a7dcb32d37b8d6b/image4-12.png" alt="" class="kg-image" width="1999" height="388" loading="lazy">
 
 	</figure>
 	<p>HTTP/3 and QUIC are controlled from the "Network" tab of your dashboard. Turn it on and start testing.</p>
-	<h2>But what does that actually do?</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-what-does-that-actually-do">But what does that actually do?</h2>
+		<a href="https://blog.cloudflare.com/#but-what-does-that-actually-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare servers sit and listen for QUIC traffic on UDP port 443. Clients send an Initial QUIC packet in a UDP datagram which kicks off the handshake process. The Initial packet contains a version identifier, which the server checks and selects from. The client also provides, via the TLS Application Layer Negotiation Protocol extension, a list of application protocols it speaks. Today Cloudflare supports clients that directly connect to us and attempt to speak QUIC version 1 using the ALPN identifier "h3".</p>
 	<p>Over the years, as the draft wire format of the protocol has changed, new version and ALPN identifiers have been coined, helping to ensure the client and server pick something they can agree on. RFC 9000 coins the version 0x00000001. Since it's so new, we expect clients to continue sending some of the old ones as it takes time to support. These look like 0xff00001d, 0xff00001c, and 0xff00001b, which mark draft 29, 28, and 27 respectively. Version identifiers are 32-bits, which is conspicuous because a lot of other fields use QUICs <i>variable-length integer encoding</i> (<a href="https://www.rfc-editor.org/rfc/rfc9000.html#name-variable-length-integer-enc">see here</a>).</p>
 	<p>Before a client can even send an Initial QUIC packet however, it needs to know we're sat here listening for them! In the old days, HTTP relied on the URL to determine which TCP port to speak to. By default, it picked 80 for an http scheme, 443 for an https scheme, or used the value supplied in the authority component e.g. <a href="https://example.com:1234">https://example.com:1234</a>. Nobody wanted to change the URL schemes to support QUIC; that would have added tremendous friction to deployment.</p>
@@ -37,7 +52,15 @@ alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400<
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40t2IICcOJjpNbYclJVm3N/86e1aa46445e58c5ffe4a58a88f0a1ba/image2-8.png" alt="" class="kg-image" width="773" height="635" loading="lazy">
 
 	</figure>
-	<h2>All powered by delicious Quiche!</h2>
+	<div class="flex anchor relative">
+		<h2 id="all-powered-by-delicious-quiche">All powered by delicious Quiche!</h2>
+		<a href="https://blog.cloudflare.com/#all-powered-by-delicious-quiche" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uiSku4MIBNz7VHzAR1H5B/3ef2cb1d4f9c9022ae51a56efb8f7c63/image5-5.png" alt="" class="kg-image" width="1638" height="446" loading="lazy">
@@ -58,9 +81,24 @@ alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400<
 [2021-05-28T18:59:30.537194566Z TRACE quiche] 5875ecd13154429e5c618eee35b6bbd9ecfe8c6b rx pkt Initial version=1 dcid=5875ecd13154429e5c618eee35b6bbd9ecfe8c6b scid=017022e8618952fd8c7177e863894eb0447b85f4 token= len=117 pn=0
 &lt;snip&gt;
 [2021-05-28T18:59:30.542581460Z TRACE quiche] 5875ecd13154429e5c618eee35b6bbd9ecfe8c6b connection established: proto=Ok("h3") cipher=Some(AES128_GCM) curve=Some("X25519") sigalg=Some("ecdsa_secp256r1_sha256") resumed=false TransportParams { original_destination_connection_id: Some(ed8de2d33a2e830279dfeaae8a7ad674), max_idle_timeout: 180000, stateless_reset_token: None, max_udp_payload_size: 65527, initial_max_data: 10485760, initial_max_stream_data_bidi_local: 0, initial_max_stream_data_bidi_remote: 1048576, initial_max_stream_data_uni: 1048576, initial_max_streams_bidi: 256, initial_max_streams_uni: 3, ack_delay_exponent: 3, max_ack_delay: 25, disable_active_migration: false, active_conn_id_limit: 2, initial_source_connection_id: Some(017022e8618952fd8c7177e863894eb0447b85f4), retry_source_connection_id: None, max_datagram_frame_size: None }</code></pre>
-	<h2>So if QUIC is done, what's next?</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="so-if-quic-is-done-whats-next">So if QUIC is done, what's next?</h2>
+		<a href="https://blog.cloudflare.com/#so-if-quic-is-done-whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The road has been long, and we should celebrate the success of the community's efforts over many years to dream big and deliver something. &nbsp;But as far as we're concerned, we're far from done. We've learned a lot from our early QUIC deployments - a big thank you to everyone in the wider Cloudflare team that supported the Protocols team getting here today. We'll continue to invest that back into our implementation and standardisation activities. <a href="https://blog.cloudflare.com/author/alessandro-ghedini">Alessandro</a>, <a href="https://blog.cloudflare.com/author/junho">Junho</a>, <a href="https://blog.cloudflare.com/author/lohith">Lohith</a> and I will continue to participate in our respective areas of expertise in the IETF. Speaking for myself, I'll be continuing to co-chair the QUIC Working Group and help guide it through a new chapter focused on maintenance, operations, extensibility and… QUIC version 2. And I'll be moonlighting in other places like the <a href="https://datatracker.ietf.org/wg/httpbis/about">HTTP</a> WG to push Prioritization over the line, and the <a href="https://datatracker.ietf.org/wg/masque/about">MASQUE</a> WG to help define how we can use <a href="https://datatracker.ietf.org/doc/html/draft-ietf-masque-h3-datagram-02">unreliable DATAGRAMS</a> to tunnel almost anything over QUIC and HTTP/3.</p>
-	<h2>A weekend riddle</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-weekend-riddle">A weekend riddle</h2>
+		<a href="https://blog.cloudflare.com/#a-weekend-riddle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you've made it this far, you are obviously very interested in QUIC. My colleague, Chris Wood, is like that too. He was very excited about the RFCs being shipped. So excited that he sent me this cryptic message:</p>
 	<p><i>"QUIC is finally here -- RFC </i><b><i>8999</i></b><i>, 9000, </i><b><i>9001</i></b><i>, and 9002. Are we and the rest of the Internet ready to turn it on? 0404d3f63f040214574904010a5735!</i></p>
 	<p>I have no clue what this means, can you help me out?</p>

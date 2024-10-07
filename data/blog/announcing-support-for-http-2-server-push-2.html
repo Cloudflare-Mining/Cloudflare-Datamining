@@ -7,10 +7,24 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg">image</a> by <a href="https://www.flickr.com/people/83555001@N00">Roger Price</a></p>
-	<h3>Incremental Improvements On SPDY</h3>
+	<div class="flex anchor relative">
+		<h3 id="incremental-improvements-on-spdy">Incremental Improvements On SPDY</h3>
+		<a href="https://blog.cloudflare.com/#incremental-improvements-on-spdy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP/2’s main benefit is multiplexing, which allows multiple HTTP requests to share a single TCP connection. This has a huge impact on performance compared to HTTP/1.1, but it’s nothing new—SPDY has been multiplexing TCP connections since at least 2012.</p>
 	<p>Some of the most important aspects of HTTP/2 have yet to be implemented by major web servers or edge networks. The real promise of HTTP/2 comes from brand new features like Header Compression and Server Push. Since February, we’ve been quietly testing and deploying HTTP/2 Header Compression, which resulted in an average 30% reduction in header size for all of our clients using HTTP/2. That's awesome. However, the real opportunity for a quantum leap in web performance comes from Server Push.</p>
-	<h3>Pushing Ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="pushing-ahead">Pushing Ahead</h3>
+		<a href="https://blog.cloudflare.com/#pushing-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -21,7 +35,14 @@
 	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
 	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
 	<p>The <code>PUSH_PROMISE</code> looks a lot like an HTTP/2 GET request, and the client attempts to match received push promises before sending outgoing requests.</p>
-	<h3>Enabling Server Push</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-server-push">Enabling Server Push</h3>
+		<a href="https://blog.cloudflare.com/#enabling-server-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
 	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
 	<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
@@ -31,7 +52,15 @@
 	<h4>Disabling Server Push</h4>
 	<p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
 	<pre class="language-bash"><code class="language-bash">Link: &lt;/dont/want/to/push/this.css&gt;; rel=preload; as=style; nopush</code></pre>
-	<h3>Is Server Push For Me?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="is-server-push-for-me">Is Server Push For Me?</h3>
+		<a href="https://blog.cloudflare.com/#is-server-push-for-me" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Server Push has the potential for tremendous performance gains. However, it’s not able to speed up every website, and it can even degrade the performance somewhat if you get overzealous. Generally, the downside of pushing assets that will end up unused is only the wasted bandwidth, while the upside is a speedup equivalent to one round trip from the client to our edge network.</p>
 	<p>Both the downside and the upside are mostly evident on slow, lossy connections, such as mobile networks. We suggest you profile the behavior of your individual website/API with and without Server Push to estimate the benefits. In our testing, we saw around a 45% performance gain when using Server Push on a mobile network.</p>
 	<p>Also note that because Server Push operates over a given HTTP/2 connection, it can only be used to push resources from <i>your</i> domain. If your website is bottlenecked on third-party assets, Server Push is unlikely to help you.</p>
@@ -47,7 +76,14 @@
 			<p>The most likely next page - If there is a link on the loaded page that is most likely clicked next (for example the most recent post in a blog) you could push both the HTML and all of that pages assets. When the user clicks the link, it will render almost instantly.</p>
 		</li>
 	</ul>
-	<h3>Profiling Server Push</h3>
+	<div class="flex anchor relative">
+		<h3 id="profiling-server-push">Profiling Server Push</h3>
+		<a href="https://blog.cloudflare.com/#profiling-server-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
 	<h4>Plain HTTP/2:</h4>
 	<figure class="kg-card kg-image-card ">
@@ -95,7 +131,14 @@
 	</figure>
 	<h4>Safari</h4>
 	<p>The Safari browser does not support Server Push at the moment, but support is expected in the near future.</p>
-	<h3>What’s Next For HTTP/2?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-http-2">What’s Next For HTTP/2?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the future, we plan to develop new tools to help our users to make more educated decisions in regards to Server Push. Over time, CloudFlare will even be able to predict the best assets to push automatically.</p>
 	<p>This feature is very new, and CloudFlare is the first major provider to deploy it at scale. We look forward to hearing from customers who make use of Server Push, now that we’ve made it available for experimentation.</p>
 	<p>We believe that Server Push is the most important upgrade to the web since SPDY. It has enormous potential to speed up the Internet since, for the first time, it gives website owners the power to <i>send</i> information to a web browser before the browser even asks for it.We’ll also be monitoring the still ongoing process of HTTP/2 development, especially efforts to make Server Push more aware of the client’s cache (thus reducing the number of redundant pushes).</p>

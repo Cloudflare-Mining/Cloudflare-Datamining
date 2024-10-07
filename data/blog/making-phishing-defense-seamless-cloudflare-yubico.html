@@ -10,21 +10,49 @@
 	<p>Hardware keys provide the best authentication security and are phish-proof. But customers ask us how to implement them and which security keys they should buy. Today we’re introducing an exclusive program for Cloudflare customers that makes hardware keys more accessible and economical than ever. This program is made possible through a new collaboration with Yubico, the industry’s leading hardware security key vendor and provides Cloudflare customers with exclusive “Good for the Internet” pricing.</p>
 	<p>Yubico Security Keys are available today for any Cloudflare customer, and they easily integrate with Cloudflare’s Zero Trust service. That service is open to organizations of any size from a family protecting a home network to the largest employers on the planet. Any Cloudflare customer can sign in to the Cloudflare dashboard today and order hardware security keys for as low as $10 per key.</p>
 	<p>In July 2022, Cloudflare <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">prevented a breach</a> by an SMS phishing attack that targeted more than 130 companies, due to the company’s use of Cloudflare Zero Trust paired with hardware security keys. Those keys were YubiKeys and this new collaboration with Yubico, the maker of YubiKeys, removes barriers for organizations of any size in deploying hardware keys.</p>
-	<h3>Why hardware security keys?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-hardware-security-keys">Why hardware security keys?</h3>
+		<a href="https://blog.cloudflare.com/#why-hardware-security-keys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations need to ensure that only the right users are connecting to their sensitive resources - whether those destinations are self-hosted web applications, SaaS tools, or services that rely on arbitrary TCP connections and UDP streams. Users traditionally proved their identity with a username and password but phishing attacks can deceive users to steal both of those pieces of information.</p>
 	<p>In response, teams began deploying <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication">multifactor authentication (MFA)</a> tools to add an additional layer of security. Users needed to input their username, password, and some additional value. For example, a user might have an application running on their device which generates random numbers, or they might enroll their phone number to receive a code via text message. While these MFA options do improve security, they are still vulnerable to phishing attacks. Phishing websites evolved and prompted the user to input MFA codes or attackers stole a user’s phone number in a SIM swap attack.</p>
 	<p>Hardware security keys provide organizations with an MFA option that cannot be phished. These keys use the <a href="https://www.yubico.com/authentication-standards/webauthn">WebAuthn standard</a> to present a certificate to the authentication service to validate the key in a cryptographically secured exchange, something a phishing website cannot obtain and later spoof.</p>
 	<p>Users enroll one or more keys with their identity provider and, in addition to presenting their username and password, the provider prompts for an MFA option that can include the hardware key. Every member of the team enjoys less friction by tapping on the key when they log in instead of fumbling for a code in an app. Meanwhile, security teams sleep better at night knowing their services are protected from phishing attacks.</p>
-	<h3>Extending hardware security keys with Cloudflare’s Zero Trust products</h3>
+	<div class="flex anchor relative">
+		<h3 id="extending-hardware-security-keys-with-cloudflares-zero-trust-products">Extending hardware security keys with Cloudflare’s Zero Trust products</h3>
+		<a href="https://blog.cloudflare.com/#extending-hardware-security-keys-with-cloudflares-zero-trust-products" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While most identity providers now allow users to enroll hardware keys as an MFA option, administrators still do not have control to require that hardware keys be used. Individual users can fallback to a less secure option, like an app-based code, if they fail to present the security key itself.</p>
 	<p>We ran into this when <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">we first deployed security keys</a> at Cloudflare. If users could fallback to a less secure and more easily phished option like an app-based code, then so could attackers. Along with more than 10,000 organizations, we use <a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare’s Zero Trust products</a> internally to, in part, secure how users connect to the resources and tools they need.</p>
 	<p>When any user needs to reach an internal application or service, Cloudflare’s network evaluates every request or connection for several signals like identity, <a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture">device posture</a>, and <a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance">country</a>. Administrators can build granular rules that only apply to certain destinations, as well. An internal administrator tool with the ability to read customer data could require a healthy corporate device, connecting from a certain country, and belonging to a user in a particular identity provider group. Meanwhile, a new marketing splash page being shared for feedback could just require identity. If we could obtain the presence of a security key, as opposed to a different, less secure MFA option, from the user’s authentication then we could enforce that signal as well.</p>
 	<p>Several years ago, identity providers, hardware vendors, and security companies partnered to develop a new standard, the Authentication Method Reference (AMR), to share exactly that type of data. With AMR, identity providers can share several details about the login attempt, including the type of MFA option in use. Shortly after that announcement, we introduced the ability to build rules in Cloudflare’s Zero Trust platform to look for and enforce that signal. Now, teams of any size can build resource-based rules that can ensure that team members always use their hardware key.</p>
-	<h3>What are the obstacles to deploying hardware security keys?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-obstacles-to-deploying-hardware-security-keys">What are the obstacles to deploying hardware security keys?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-obstacles-to-deploying-hardware-security-keys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The security of requiring something that you physically control is also the same reason that deploying hardware keys adds a layer of complexity - you need to find a way to put that physical key in the hands of your users, at scale, and make it possible for every member of your team to enroll them.</p>
 	<p>In every case, that deployment starts with purchasing hardware security keys. Compared to app-based codes, which can be free, security keys have a real cost. For some organizations, that cost is a deterrent, and they stay less secure due to that hurdle, but it is important to note that not all MFA is created equal.</p>
 	<p>For other teams, especially the organizations that are now partially or fully remote, providing those keys to end users who will never step foot in a physical office can be a challenge for IT departments. When we first deployed hardware keys at Cloudflare, we did it at our company-wide retreat. Many organizations no longer have that opportunity to physically hand out keys in a single venue or even in global offices.</p>
-	<h3>Collaborating with Yubico</h3>
+	<div class="flex anchor relative">
+		<h3 id="collaborating-with-yubico">Collaborating with Yubico</h3>
+		<a href="https://blog.cloudflare.com/#collaborating-with-yubico" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Birthday Week at Cloudflare has always been about removing the barriers and hurdles that keep users and teams from being more secure or faster on the Internet. As part of that goal, we’ve partnered with Yubico to continue to remove the friction in adopting a hardware key security model.</p>
 	<ul>
 		<li>
@@ -37,7 +65,14 @@
 			<p>Both Cloudflare and Yubico developer docs and support organizations will guide customers in setting up keys and integrating them with their Identity Providers and with Cloudflare’s Zero Trust service.</p>
 		</li>
 	</ul>
-	<h3>How to get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">How to get started</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can request your own hardware keys by navigating to the dashboard, and following the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fyubico-promotion">banner notification flow</a>. Yubico will then email you directly using the administrator email that you have provided in your Cloudflare account. For larger organizations looking to deploy YubiKeys at scale, you can explore Yubico’s YubiEnterprise Subscription and receive a 50% discount off the first year of a 3+year subscription.</p>
 	<p>Already have hardware security keys? If you have physical hardware keys you can begin building rules in Cloudflare Access to enforce their usage by enrolling them into an identity provider that supports AMR, like Okta or Azure AD.</p>
 	<p>Finally, if you are interested in our own journey deploying Yubikeys alongside our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> product, check out this <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">blog post</a> from our Director of Security, Evan Johnson, that recaps Cloudflare’s experience and what we recommend from the lessons we learned.</p>

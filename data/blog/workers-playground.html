@@ -7,10 +7,24 @@
 	</figure>
 	<p>Since the very <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">initial announcement</a> of Cloudflare Workers, we’ve provided a playground. The motivation behind that being a belief that users should have a convenient, low-commitment way to play around with and learn more about Workers.</p>
 	<p>Over the last few years, while <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a> and our <a href="https://www.cloudflare.com/developer-platform/products">Developer Platform</a> have changed and grown, the original playground has not. Today, we’re proud to announce a revamp of the playground that demonstrates the power of Workers, along with new development tooling, and the ability to share your playground code and deploy instantly to Cloudflare’s global network.</p>
-	<h3>A focus on origin Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-focus-on-origin-workers">A focus on origin Workers</h3>
+		<a href="https://blog.cloudflare.com/#a-focus-on-origin-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Workers was first introduced, many of the examples and use-cases centered around middleware, where a Worker intercepts a request to an origin and does something before returning a response. This includes things like: modifying headers, redirecting traffic, helping with A/B testing, or caching. Ultimately the Worker isn’t acting as an origin in these cases, it sits between the user and the destination.</p>
 	<p>While Workers are still great for these types of tasks, for the updated playground, we decided to focus on the Worker-as-origin use-case. This is where the Worker receives a request and is responsible for returning the full response. In this case, the Worker is the destination, not middle-ware. This is a great way for you to develop more complex use-cases like user interfaces or APIs.</p>
-	<h3>A new editor experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-editor-experience">A new editor experience</h3>
+		<a href="https://blog.cloudflare.com/#a-new-editor-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During Developer Week in May, we <a href="https://blog.cloudflare.com/improved-quick-edit">announced</a> a new, authenticated dashboard editor experience powered by VSCode. Now, this same experience is available to users in the playground.</p>
 	<p>Users now have a more robust IDE experience that supports: multi-module Workers, type-checking via JSDoc comments and the <a href="https://www.npmjs.com/package/@cloudflare/workers-types">`workers-types` package</a>, pretty error pages, and real previews that update as you edit code. The new editor only supports <a href="https://blog.cloudflare.com/workers-javascript-modules">Module syntax</a>, which is the preferred way for users to develop new Workers.</p>
 	<p>When the playground first loads, it looks like this:</p>
@@ -25,7 +39,14 @@
 	</div>
 	<p></p><!--kg-card-end: html-->
 	<p>You’re not limited to the starter demo. Feel free to edit and remove those files to create APIs, user interfaces, or any other application that you come up with.</p>
-	<h3>Updated developer tooling</h3>
+	<div class="flex anchor relative">
+		<h3 id="updated-developer-tooling">Updated developer tooling</h3>
+		<a href="https://blog.cloudflare.com/#updated-developer-tooling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Along with the updated editor, the new playground also contains numerous developer tools to help give you visibility into the Worker.</p>
 	<p>Playground users have access to the same Chrome DevTools technology that we use in the Wrangler CLI and the Dashboard. Within this view, you can: view logs, view network requests, and profile your Worker among other things.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -39,7 +60,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wjS7nrqnVdcfqVSk7DI0w/8e9d2bf185e0fcdd3ee320c5f9f80ee1/Screenshot-2023-09-12-at-4.08.49-PM.png" alt="" class="kg-image" width="1246" height="645" loading="lazy">
 
 	</figure>
-	<h3>Share what you create</h3>
+	<div class="flex anchor relative">
+		<h3 id="share-what-you-create">Share what you create</h3>
+		<a href="https://blog.cloudflare.com/#share-what-you-create" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With all these improvements, we haven’t forgotten the core use of a playground—to share Workers with other people! Whatever your use-case; whether you’re building a demo to showcase the power of Workers or sending someone an example of how to fix a specific issue, all you need to do is click “Copy Link” in the top right of the Playground then paste the URL in any URL bar.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -47,7 +75,14 @@
 
 	</figure>
 	<p>The unique URL will be shareable and deployable as long as you have it. This means that you could create quick demos by creating various Workers in the Playground, and bookmark them to share later. They won’t expire.</p>
-	<h3>Deploying to the Supercloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="deploying-to-the-supercloud">Deploying to the Supercloud</h3>
+		<a href="https://blog.cloudflare.com/#deploying-to-the-supercloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We also wanted to make it easier to go from writing a Worker in the Playground to deploying that Worker to Cloudflare’s global network. We’ve included a “Deploy” button that will help you quickly deploy the Worker you’ve just created.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -55,6 +90,13 @@
 
 	</figure>
 	<p>If you don’t already have a Cloudflare account, you will also be guided through the onboarding process.</p>
-	<h3>Try it out</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">Try it out</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is now available to all users in Region:Earth. Go to <a href="https://workers.cloudflare.com/playground">https://workers.cloudflare.com/playground</a> and give it a go!</p>
 </div>

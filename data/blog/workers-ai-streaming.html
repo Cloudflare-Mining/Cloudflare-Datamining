@@ -10,7 +10,14 @@
 	<p>Workers AI is our serverless GPU-powered inference platform running on top of Cloudflare’s global network. It provides a growing catalog of off-the-shelf models that run seamlessly with Workers and enable developers to build powerful and scalable AI applications in minutes. We’ve already seen developers doing amazing things with Workers AI, and we can’t wait to see what they do as we continue to expand the platform. To that end, today we’re excited to announce some of our most-requested new features: streaming responses for all <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">Large Language Models</a> (LLMs) on Workers AI, larger context and sequence windows, and a full-precision <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2</a> model variant.</p>
 	<p>If you’ve used ChatGPT before, then you’re familiar with the benefits of response streaming, where responses flow in token by token. LLMs work internally by generating responses sequentially using a process of repeated inference — the full output of a LLM model is essentially a sequence of hundreds or thousands of individual prediction tasks. For this reason, while it only takes a few milliseconds to generate a single token, generating the full response takes longer, on the order of seconds. The good news is we can start displaying the response as soon as the first tokens are generated, and append each additional token until the response is complete. This yields a much better experience for the end user — &nbsp;displaying text incrementally as it's generated not only provides instant responsiveness, but also gives the end-user time to read and interpret the text.</p>
 	<p>As of today, you can now use response streaming for any LLM model in our catalog, including the very popular <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2 model</a>. Here’s how it works.</p>
-	<h3>Server-sent events: a little gem in the browser API</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-sent-events-a-little-gem-in-the-browser-api">Server-sent events: a little gem in the browser API</h3>
+		<a href="https://blog.cloudflare.com/#server-sent-events-a-little-gem-in-the-browser-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server-sent events</a> are easy to use, simple to implement on the server side, standardized, and broadly available across many platforms natively or as a polyfill. Server-sent events fill a niche of handling a stream of updates from the server, removing the need for the boilerplate code that would otherwise be necessary to handle the event stream.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -153,7 +160,14 @@ source.onmessage = (event) =&gt; {
 	</figure>
 	<p>Workers AI supports streaming text responses for the <a href="https://developers.cloudflare.com/workers-ai/models/llm">Llama-2</a> model and any future LLM models we are adding to our catalog.</p>
 	<p>But this is not all.</p>
-	<h3>Higher precision, longer context and sequence lengths</h3>
+	<div class="flex anchor relative">
+		<h3 id="higher-precision-longer-context-and-sequence-lengths">Higher precision, longer context and sequence lengths</h3>
+		<a href="https://blog.cloudflare.com/#higher-precision-longer-context-and-sequence-lengths" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another top request we heard from our community after the launch of Workers AI was for longer questions and answers in our Llama-2 model. In LLM terminology, this translates to higher context length (the number of tokens the model takes as input before making the prediction) and higher sequence length (the number of tokens the model generates in the response.)</p>
 	<p>We’re listening, and in conjunction with streaming, today we are adding a higher 16-bit full-precision Llama-2 variant to the catalog, and increasing the context and sequence lengths for the existing 8-bit version.</p><!--kg-card-begin: html-->
 	<style type="text/css">

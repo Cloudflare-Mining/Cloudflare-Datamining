@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Infrastructure planning for a network serving more than 81 million requests at peak and which is globally distributed across <a href="https://www.cloudflare.com/network"><u>more than 330 cities in 120+ countries</u></a> is complex. The capacity planning team at Cloudflare ensures there is enough capacity in place all over the world so that our customers have one less thing to worry about - our infrastructure, which should just work. Through our processes, the team puts careful consideration into “what-ifs”. What if something unexpected happens and <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage"><u>one of our data centers fails</u></a>? What if one of our largest customers triples, or quadruples their request count?&nbsp; Across a gamut of scenarios like these, the team works to understand where traffic will be served from and how the Cloudflare customer experience may change.</p>
 	<p>This blog post gives a look behind the curtain of how these scenarios are modeled at Cloudflare, and why it's so critical for our customers.</p>
-	<h2>Scenario planning and our customers</h2>
+	<div class="flex anchor relative">
+		<h2 id="scenario-planning-and-our-customers">Scenario planning and our customers</h2>
+		<a href="https://blog.cloudflare.com/#scenario-planning-and-our-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare customers rely on the data centers that Cloudflare has deployed all over the world, placing us within 50 ms of approximately 95% of the Internet-connected population globally. But round-trip time to our end users means little if those data centers don’t have the capacity to serve requests. Cloudflare has invested deeply into systems that are working around the clock to optimize the requests flowing through our network because we know that failures happen all the time: the Internet can be a volatile place. See <a href="https://blog.cloudflare.com/backbone2024"><u>our blog post from August 2024</u></a> on how we handle this volatility in real time on our backbone, and our <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>blog post from late 2023</u></a> about how another system, Traffic Manager, actively works in and between data centers, moving traffic to optimize the customer experience around constraints in our data centers. Both of these systems do a fantastic job in real time, but there is still a gap — what about over the long term?&nbsp;&nbsp;</p>
 	<p>Most of the volatility that the above systems are built to manage is resolved within shorter time scales than which we build plans for. (There are, of course, some failures that are <a href="https://itweb.africa/content/O2rQGMAEyPGMd1ea"><u>exceptions</u></a>.) Most scenarios we model still need to take into account the state of our data centers in the future, as well as what actions systems like Traffic Manager will take during those periods.&nbsp; But before getting into those constraints, it’s important to note how capacity planning measures things: in units of CPU Time, defined as the time that each request takes in the CPU.&nbsp; This is done for the same reasons that <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>Traffic Manager</u></a> uses CPU Time, in that it enables the team to 1) use a common unit across different types of customer workloads and 2) speak a common language with other teams and systems (like Traffic Manager). The same reasoning the Traffic Manager team cited <a href="https://blog.cloudflare.com/meet-traffic-manager"><u>in their own blog post</u></a> is equally applicable for capacity planning:&nbsp;</p>
 	<blockquote>
@@ -10,7 +17,14 @@
 	</blockquote>
 	<p>This is important for customers for the same reason that the Traffic Manager team cited in their blog post as well: we can correlate CPU time to performance, specifically latency.</p>
 	<p>Now that we know our unit of measurement is CPU time, we need to set up our models with the new constraints associated with the change that we’re trying to model.&nbsp; Specifically, there are a subset of constraints that we are particularly interested in because we know that they have the ability to impact our customers by impacting the availability of CPU in a data center.&nbsp; These are split into two main inputs in our models: Supply and Demand.&nbsp; We can think of these as “what-if” questions, such as the following examples:</p>
-	<h3>Demand what-ifs</h3>
+	<div class="flex anchor relative">
+		<h3 id="demand-what-ifs">Demand what-ifs</h3>
+		<a href="https://blog.cloudflare.com/#demand-what-ifs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>What if a new customer onboards to Cloudflare with a significant volume of requests and/or bytes?&nbsp;&nbsp;</p>
@@ -28,7 +42,14 @@
 			<p>What if traffic egressing from Cloudflare to a last-mile network shifted from one location (such as Boston) to another (such as New York City) next week?</p>
 		</li>
 	</ul>
-	<h3>Supply what-ifs</h3>
+	<div class="flex anchor relative">
+		<h3 id="supply-what-ifs">Supply what-ifs</h3>
+		<a href="https://blog.cloudflare.com/#supply-what-ifs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>What if data center facility A lost some or all of its available servers two months from now?</p>
@@ -40,7 +61,14 @@
 			<p>What if some or all of our connectivity to other ASNs (<a href="https://www.cloudflare.com/network"><u>12,500 Networks/nearly 300 Tbps</u></a>) failed now?</p>
 		</li>
 	</ul>
-	<h3>Output</h3>
+	<div class="flex anchor relative">
+		<h3 id="output">Output</h3>
+		<a href="https://blog.cloudflare.com/#output" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For any one of these, or a combination of them, in our model’s output, we aim to provide answers to the following:&nbsp;</p>
 	<ul>
 		<li>
@@ -57,9 +85,23 @@
 		</li>
 	</ul>
 	<p>Given these sets of questions and outputs, manually creating a model to answer each of these questions, or a combination of these questions, quickly becomes an operational burden for any team.&nbsp; This is what led us to launch “Scenario Planner”.</p>
-	<h2>Scenario Planner</h2>
+	<div class="flex anchor relative">
+		<h2 id="scenario-planner">Scenario Planner</h2>
+		<a href="https://blog.cloudflare.com/#scenario-planner" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In August 2024, the infrastructure team finished building “Scenario Planner”, a system that enables anyone at Cloudflare to simulate “what-ifs”. This provides our team the opportunity to quickly model hypothetical changes to our demand and supply metrics across time and in any of Cloudflare’s data centers. The core functionality of the system has to do with the same questions we need to answer in the manual models discussed above.&nbsp; After we enter the changes we want to model, Scenario Planner converts from units that are commonly associated with each question to our common unit of measurement: CPU Time. These inputs are then used to model the updated capacity across all of our data centers, including how demand may be distributed in cases where capacity constraints may start impacting performance in a particular location.&nbsp; As we know, if that happens then it triggers Traffic Manager to serve some portion of those requests from a nearby location to minimize impact on customers and user experience.</p>
-	<h3>Updated demand questions with inputs</h3>
+	<div class="flex anchor relative">
+		<h3 id="updated-demand-questions-with-inputs">Updated demand questions with inputs</h3>
+		<a href="https://blog.cloudflare.com/#updated-demand-questions-with-inputs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Question:</b> What if a new customer onboards to Cloudflare with a significant volume of requests?&nbsp;&nbsp;</p>
@@ -116,7 +158,14 @@
 	<p>
 		<br>
 	</p>
-	<h3>Updated supply questions with inputs</h3>
+	<div class="flex anchor relative">
+		<h3 id="updated-supply-questions-with-inputs">Updated supply questions with inputs</h3>
+		<a href="https://blog.cloudflare.com/#updated-supply-questions-with-inputs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><b>Question:</b> What if data center facility A lost some or all of its available servers two months from now?</p>
@@ -146,7 +195,14 @@
 		<br>
 	</p>
 	<p>We made it simple for internal users to understand the impact of those changes because Scenario Planner outputs the same views that everyone who has seen our heatmaps and visual representations of our capacity status is familiar with. There are two main outputs the system provides: a heatmap and an “Expected Failovers” view. Below, we explore what these are, with some examples.</p>
-	<h3>Heatmap</h3>
+	<div class="flex anchor relative">
+		<h3 id="heatmap">Heatmap</h3>
+		<a href="https://blog.cloudflare.com/#heatmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Capacity planning evaluates its success on its ability to predict demand: we generally produce a weekly, monthly, and quarterly forecast of 12 months to three years worth of demand, and nearly all of our infrastructure decisions are based on the output of this forecast.&nbsp; Scenario Planner provides a view of the results of those forecasts that are implemented via a heatmap: it shows our current state, as well as future planned server additions that are scheduled based on the forecast.&nbsp;&nbsp;</p>
 	<p>Here is an example of our heatmap, showing some of our largest data centers in Eastern North America (ENAM). Ashburn is showing as yellow, briefly, because our capacity planning threshold for adding more server capacity to our data centers is 65% utilization (based on CPU time supply and demand): this gives the Cloudflare teams time to procure additional servers, ship them, install them, and bring them live <i>before</i> customers will be impacted and systems like Traffic Manager would begin triggering.&nbsp; The little cloud icons indicate planned upgrades of varying sizes to get ahead of forecasted future demand well ahead of time to avoid customer performance degradation.</p>
 	<figure class="kg-card kg-image-card">
@@ -175,7 +231,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iv8nxYdIXOJ626UHpUadI/c80eb38e5d05e85d14ae5b6bcf3e5325/Screenshot_2024-09-18_at_10.27.50_PM.png" alt="A bar chart with four months through December 2024, showing different colors representing locations where CPU time is redirected to.&nbsp; One is highlighted, showing 8588 CPU seconds being redirected to DFW (Dallas) in August 2024" class="kg-image" width="1414" height="854" loading="lazy">
 	</figure>
 	<p><b></b></p>
-	<h2>Planning with uncertainty</h2>
+	<div class="flex anchor relative">
+		<h2 id="planning-with-uncertainty">Planning with uncertainty</h2>
+		<a href="https://blog.cloudflare.com/#planning-with-uncertainty" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Capacity planning a large global network comes with plenty of uncertainties. Scenario Planner is one example of the work the Capacity Planning team is doing to ensure that the millions of web properties our customers entrust to Cloudflare can expect consistent, top tier performance all over the world.</p>
 	<p>The Capacity Planning team is hiring — check out the <a href="https://www.cloudflare.com/careers"><u>Cloudflare careers page</u></a> and <a href="https://www.cloudflare.com/careers/jobs/?title=capacity"><u>search for open roles on the Capacity Planning team</u></a>.</p>
 </div>

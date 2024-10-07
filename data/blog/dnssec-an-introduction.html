@@ -40,7 +40,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AbDNKjACFw1vhVp8Jd8tR/97c6ea9e39967eb0714c518f3c4d95b8/image04.jpg" alt="" class="kg-image" width="1600" height="984" loading="lazy">
 
 	</figure>
-	<h3>How DNS works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-dns-works">How DNS works</h3>
+		<a href="https://blog.cloudflare.com/#how-dns-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNS is a distributed key/value database. The values returned can in theory be anything but in practice need to fit into well known types, such as addresses, mail exchanges, sever lists, free format text records etc. The keys consist of a name, type, and class. The name space is hierarchical (see below) and DNS information is “published” by Authoritative Servers. DNS Resolvers will locate the information requested by asking the appropriate authoritative servers by following the naming hierarchy from one Authoritative DNS server to the next one. The ISP typically provides a Recursive Resolver that will perform resolution on behalf of customers. You can also use a public resolver like the ones provided by <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">Google</a> (8.8.8.8, 8.8.4.4) or OpenDNS (208.67.222.222, 208.67.220.220).</p>
 	<p>Web-enabled applications like browsers use something called a Stub Resolver to interact with the DNS. Once the application or browser has obtained the IP address of the website, they can access it using the HTTP or HTTPS protocols.</p>
 	<figure class="kg-card kg-image-card ">

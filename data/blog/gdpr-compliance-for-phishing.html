@@ -34,7 +34,14 @@ Date: 1 Sep 2020 16:19:07 +0700</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5VXVpm0mmjzWeIqtFFcNvb/3f5825e0f792c732913d869616bdcf40/image1-8.png" alt="" class="kg-image" width="1999" height="1498" loading="lazy">
 
 	</figure>
-	<h3>Analysis of Link</h3>
+	<div class="flex anchor relative">
+		<h3 id="analysis-of-link">Analysis of Link</h3>
+		<a href="https://blog.cloudflare.com/#analysis-of-link" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The malicious payload in this phish is a link to a credential harvester, located at hxxps://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=. The value of the “email” parameter in the URL will vary depending on the recipient, wherein the threat actor tailors each phishing message by setting this parameter equal to the target’s email address. The link opens up to a simple web page, hosted on a <a href="https://kinsta.com/blog/wordpress-security">compromised WordPress site</a>, as shown below.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -43,11 +50,25 @@ Date: 1 Sep 2020 16:19:07 +0700</code></pre>
 	</figure>
 	<p>The HTML form on the malicious webpage autopopulates the username field based on the email address found in the URL’s “email” parameter. After clicking “Next,” the page will prompt the user to enter a password. Based on Area 1 Security’s analysis, the page appears to return an error regardless of whether the victim enters a correct password. Stolen credentials are then sent to the attacker via a script located at, hxxps://www[.]techgaia[.]com//wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin[.]php.</p>
 	<p>Area 1 Security’s analysis revealed that www[.]techgaia[.]com is the older, now-defunct site for a revamped IT consulting services company. The site was running an outdated version of WordPress (version 4.9.7), making it susceptible to a number of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-2337/product_id-4096/version_id-257818/Wordpress-Wordpress-4.9.7.html">vulnerabilities</a>. Its content has since been removed, and navigating to the domain now results in an HTTP 301 redirect. The vulnerable nature of this site made it easy prey, providing the perfect opportunity for an attacker to insert themselves into the fray and leverage the historic legitimacy of the site to bypass detections. With the ease of compromising unmaintained, vulnerable WordPress sites, it will only take the attacker a matter of days (at most) to resume operations with a new, otherwise legitimate site. As a result, legacy vendors that rely on deny lists to block suspect messages will be one step behind the attacker.</p>
-	<h3>Recommendations</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For companies that deal with sensitive customer data, it is important to be knowledgeable in the latest data security and privacy regulations for the respective industry and region. New data privacy laws, such as the California Consumer Protection Act, are requiring businesses to ensure that consumers residing in California are able to opt out of data collection. All the while, GDPR currently remains the most stringent regulation in consumer data privacy. It is vital to communicate with all employees any updates regarding new protocols for handling Personally Identifiable Information (PII) to help ensure those in your organization do not fall victim to phishing attacks that rely on confusion from unclear or nonexistent communication regarding these regulations.</p>
 	<p>Additionally, it is imperative that employees understand the risks of clicking on unsolicited links and entering sensitive data into unauthorized login portals. However, current technology allows an attacker to easily create a phish that is a pixel-perfect forgery of a legitimate login page. Therefore, the safer, more secure option is to utilize a <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">dedicated security solution</a>; one that uses bleeding-edge technology to verify emails before they arrive in a user’s inbox, removing the risk of accidentally clicking a malicious link or file.</p>
 	<p>Area 1 Security’s advanced detection techniques, such as blind URL inspection, help stop phishing messages like those seen in this GDPR campaign from reaching customers’ inboxes. Our comprehensive <a href="https://www.cloudflare.com/zero-trust/products/email-security">anti-phishing solution</a> includes sophisticated pattern-matching algorithms that allow us to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3>Indicators of Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Credential Harvesters:</b></p>
 	<p><a href="about:blank">https://www[.]techgaia[.]com/wp-content/email/ID/sign_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/?email=</a></p>
 	<p><a href="https://www/[./]techgaia/[./]com//wp-content/email/ID/sign/_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin/[./]php">https://www\[.\]techgaia\[.\]com//wp-content/email/ID/sign\_in/dc0b80571c76818f4f5916ff6668eyrtsaaadaf8/completesrvr/verification/Src/l0gin\[.\]php</a></p>

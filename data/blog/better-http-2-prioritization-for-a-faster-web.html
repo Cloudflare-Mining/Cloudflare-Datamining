@@ -9,12 +9,26 @@
 	<p>HTTP/2 promised a much faster web and Cloudflare rolled out HTTP/2 access for all our customers long, long ago. But one feature of HTTP/2, Prioritization, didn’t live up to the hype. Not because it was fundamentally broken but because of the way browsers implemented it.</p>
 	<p>Today Cloudflare is pushing out a change to HTTP/2 Prioritization that gives our servers control of prioritization decisions that truly make the web much faster.</p>
 	<p>Historically the browser has been in control of deciding how and when web content is loaded. Today we are introducing a radical change to that model for all paid plans that puts control into the hands of the site owner directly. Customers can enable “Enhanced HTTP/2 Prioritization” in the Speed tab of the Cloudflare dashboard: this overrides the browser defaults with an improved scheduling scheme that results in a significantly faster visitor experience (we have seen 50% faster on multiple occasions). With <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a>, site owners can take this a step further and fully customize the experience to their specific needs.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Web pages are made up of <a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan">dozens (sometimes hundreds)</a> of separate resources that are loaded and assembled by the browser into the final displayed content. This includes the visible content the user interacts with (HTML, CSS, images) as well as the application logic (JavaScript) for the site itself, ads, analytics for tracking site usage and marketing tracking beacons. The sequencing of how those resources are loaded can have a significant impact on how long it takes for the user to see the content and interact with the page.</p>
 	<p>A browser is basically an HTML processing engine that goes through the HTML document and follows the instructions in order from the start of the HTML to the end, building the page as it goes along. References to stylesheets (CSS) tell the browser how to style the page content and the browser will delay displaying content until it has loaded the stylesheet (so it knows how to style the content it is going to display). Scripts referenced in the document can have several different behaviors. If the script is tagged as “async” or “defer” the browser can keep processing the document and just run the script code whenever the scripts are available. If the scripts are not tagged as async or defer then the browser <a href="https://html.spec.whatwg.org">MUST</a> stop processing the document until the script has downloaded and executed before continuing. These are referred to as “blocking” scripts because they block the browser from continuing to process the document until they have been loaded and executed.</p>
 	<p>The HTML document is split into two parts. The <code>&lt;head&gt;</code> of the document is at the beginning and contains stylesheets, scripts and other instructions for the browser that are needed to display the content. The <code>&lt;body&gt;</code> of the document comes after the head and contains the actual page content that is displayed in the browser window (though scripts and stylesheets are allowed to be in the body as well). Until the browser gets to the body of the document there is nothing to display to the user and the page will remain blank so getting through the head of the document as quickly as possible is important. “HTML5 rocks” has a <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork">great tutorial</a> on how browsers work if you want to dive deeper into the details.</p>
 	<p>The browser is generally in charge of determining the order of loading the different resources it needs to build the page and to continue processing the document. In the case of HTTP/1.x, the browser is limited in how many things it can request from any one server at a time (generally 6 connections and only one resource at a time per connection) so the ordering is strictly controlled by the browser by how things are requested. With HTTP/2 <a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1">things change pretty significantly</a>. The browser can request all of the resources at once (at least as soon as it knows about them) and it provides <a href="https://hpbn.co/http2/#stream-prioritization">detailed instructions</a> to the server for how the resources should be delivered.</p>
-	<h3>Optimal Resource Ordering</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimal-resource-ordering">Optimal Resource Ordering</h3>
+		<a href="https://blog.cloudflare.com/#optimal-resource-ordering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For most parts of the page loading cycle there is an optimal ordering of the resources that will result in the fastest user experience (and the difference between optimal and not can be significant - as much as a 50% improvement or more).</p>
 	<p>As described above, early in the page load cycle before the browser can render any content it is blocked on the CSS and blocking JavaScript in the <code>&lt;head&gt;</code> section of the HTML. During that part of the loading cycle it is best for 100% of the connection bandwidth to be used to download the blocking resources and for them to be downloaded one at a time in the order they are defined in the HTML. That lets the browser parse and execute each item while it is downloading the next blocking resource, allowing the download and execution to be pipelined.</p>
 	<figure class="kg-card kg-image-card ">
@@ -57,7 +71,14 @@
 		</li>
 	</ul>
 	<p>That way the content visible to the user is loaded as quickly as possible, the application logic is delayed as little as possible and the non-visible images are loaded in such a way that layout can be completed as quickly as possible.</p>
-	<h3>Example</h3>
+	<div class="flex anchor relative">
+		<h3 id="example">Example</h3>
+		<a href="https://blog.cloudflare.com/#example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For illustrative purposes, we will use a simplified product category page from a typical <a href="https://www.cloudflare.com/ecommerce">e-commerce site</a>. In this example the page has:</p>
 	<ul>
 		<li>
@@ -136,7 +157,14 @@
 			<p>For the final 8 seconds the rest of the product images load so they are ready for when the user scrolls.</p>
 		</li>
 	</ul>
-	<h3>Current Browser Prioritization</h3>
+	<div class="flex anchor relative">
+		<h3 id="current-browser-prioritization">Current Browser Prioritization</h3>
+		<a href="https://blog.cloudflare.com/#current-browser-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All of the current browser engines implement <a href="https://calendar.perfplanet.com/2018/http2-prioritization">different prioritization strategies</a>, none of which are optimal.</p>
 	<p><b>Microsoft Edge and Internet Explorer</b> <a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer">do not support prioritization</a> so everything falls back to the HTTP/2 default which is to load everything in parallel, splitting the bandwidth evenly among everything. Microsoft Edge is moving to use the Chromium browser engine in future Windows releases which will help improve the situation. In our example page this means that the browser is stuck in the head for the majority of the loading time since the images are slowing down the transfer of the blocking scripts and stylesheets.</p>
 	<figure class="kg-card kg-image-card ">
@@ -219,14 +247,28 @@
 			<p>After the visual part of the page is complete at 10 seconds (identical to the optimal case), the remaining 10 seconds are spent running the async scripts and loading the hidden images (just like with the optimal loading case).</p>
 		</li>
 	</ul>
-	<h3>Visual Comparison</h3>
+	<div class="flex anchor relative">
+		<h3 id="visual-comparison">Visual Comparison</h3>
+		<a href="https://blog.cloudflare.com/#visual-comparison" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Visually, the impact can be quite dramatic, even though they all take the same amount of time to technically load all of the content:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/67CSkIvoirmEfMIUAo4y07/5fbb6cb80d263106f157e27bdd53bd83/compare.gif" alt="Visual Comparison" class="kg-image" width="1000" height="600" loading="lazy">
 
 	</figure>
-	<h3>Server-Side Prioritization</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-side-prioritization">Server-Side Prioritization</h3>
+		<a href="https://blog.cloudflare.com/#server-side-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP/2 prioritization is requested by the client (browser) and it is up to the server to decide what to do based on the request. A <a href="https://github.com/andydavies/http2-prioritization-issues">good number of servers don’t support doing anything at all with the prioritization</a> but for those that do, they all honor the client’s request. Another option would be to decide on the best prioritization to use on the server-side, taking into account the client’s request.</p>
 	<p>Per the <a href="https://httpwg.org/specs/rfc9113.html#StreamPriority">specification</a>, HTTP/2 prioritization is a dependency tree that requires full knowledge of all of the in-flight requests to be able to prioritize resources against each other. That allows for incredibly complex strategies but is difficult to implement well on either the browser or server side (as evidenced by the different browser strategies and varying levels of server support). To make prioritization easier to manage we have developed a simpler prioritization scheme that still has all of the flexibility needed for optimal scheduling.</p>
 	<p>The Cloudflare prioritization scheme consists of 64 priority “levels” and within each priority level there are groups of resources that determine how the connection is shared between them:</p>
@@ -249,7 +291,14 @@
 		</li>
 	</ul>
 	<p>Practically speaking, the concurrency “0” group is useful for critical content that needs to be processed sequentially (scripts, CSS, etc). The concurrency “1” group is useful for less-important content that can share bandwidth with other resources but where the resources themselves still benefit from processing sequentially (async scripts, non-progressive images, etc). The concurrency “n” group is useful for resources that benefit from processing in parallel (progressive images, video, audio, etc).</p>
-	<h3>Cloudflare Default Prioritization</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-default-prioritization">Cloudflare Default Prioritization</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-default-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When enabled, the enhanced prioritization implements the “optimal” scheduling of resources described above. The specific prioritizations applied look like this:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -262,7 +311,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3br9uRCejjByZGW4mVxQyp/d32952b72cbdea6a675acbf4a5a9e100/filmstrip2.png" alt="Filmstrip Comparison" class="kg-image" width="1462" height="316" loading="lazy">
 
 	</figure>
-	<h3>Customizing Prioritization with Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="customizing-prioritization-with-workers">Customizing Prioritization with Workers</h3>
+		<a href="https://blog.cloudflare.com/#customizing-prioritization-with-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Faster-by-default is great but where things get really interesting is that the ability to configure the prioritization is also exposed to Cloudflare Workers so sites can override the default prioritization for resources or implement their own complete prioritization schemes.</p>
 	<p>If a Worker adds a “cf-priority” header to the response, Cloudflare edge servers will use the specified priority and concurrency for that response. The format of the header is <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so something like <code>response.headers.set('cf-priority', “30/0”);</code> would set the priority to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n.</p>
 	<p>With this level of flexibility a site can tweak resource prioritization to meet their needs. Boosting the priority of some critical async scripts for example or increasing the priority of hero images before the browser has identified that they are in the viewport.</p>
@@ -281,7 +337,14 @@
 			<p><b>group-weight</b>: HTTP/2 weight for the request group (only non-zero for Firefox).</p>
 		</li>
 	</ul>
-	<h3>This is Just the Beginning</h3>
+	<div class="flex anchor relative">
+		<h3 id="this-is-just-the-beginning">This is Just the Beginning</h3>
+		<a href="https://blog.cloudflare.com/#this-is-just-the-beginning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The ability to tune and control the prioritization of responses is the basic building block that a lot of future work will benefit from. We will be implementing our own <a href="https://www.cloudflare.com/application-services/products/website-optimization">advanced optimizations</a> on top of it but by exposing it in Workers we have also opened it up to sites and researchers to experiment with different prioritization strategies. With the Apps Marketplace it is also possible for companies to build new optimization services on top of the Workers platform and make it available to other sites to use.</p>
 	<p>If you are on a <a href="https://www.cloudflare.com/plans/pro">Pro plan</a> or above, head over to the speed tab in the Cloudflare dashboard and turn on “Enhanced HTTP/2 Prioritization” to accelerate your site.</p>
 	<figure class="kg-card kg-image-card ">

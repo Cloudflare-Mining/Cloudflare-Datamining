@@ -8,10 +8,24 @@
 	<p>In an era where visitors expect instant gratification and content on-demand, every millisecond counts. If you’re a web application developer, it’s an excellent time to be in this line of business, but with great power comes great responsibility. You’re tasked with creating an experience that is not only intuitive and delightful but also quick, reactive and responsive – sometimes with the two sides being at odds with each other. To add to this, if your business completely runs on the internet (say ecommerce), then your site’s Core Web Vitals could make or break your bottom line.</p>
 	<p>You don’t just need fast – you need <i>magic</i> fast. For the past two years, Cloudflare Pages has been serving up performant applications for users across the globe, but this week, we’re showing off our brand new, lightning fast architecture, decreasing the TTFB by up to 10X when serving assets.</p>
 	<p>And while a magician never reveals their secrets, this trick is too good to keep to ourselves. For all our application builders, we’re thrilled to share the juicy technical details on how we adopted Workers for Platforms — our extension of Workers to build SaaS businesses on top of — to make Pages one of the fastest ways to serve your sites.</p>
-	<h3>The problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problem">The problem</h3>
+		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we <a href="https://blog.cloudflare.com/cloudflare-pages-ga">launched Pages in 2021</a>, we didn’t anticipate the exponential growth we would experience for our platform in the months and years to come. As our users began to adopt Pages into their development workflows, usage of our platform began to skyrocket. However, while riding the high of Pages’ success, we began to notice a problem – a rather large one. As projects grew in size, with every deployment came a pinch more latency, slowly affecting the end users visiting the Pages site. Customers with tens of thousands of deployments were at risk of introducing latency to their site – a problem that needed to be solved.</p>
 	<p>Before we dive into our technical solution, let’s first explore further the setup of Pages and the relationship between number of deployments and the observed latency.</p>
-	<h3>How could this be?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-could-this-be">How could this be?</h3>
+		<a href="https://blog.cloudflare.com/#how-could-this-be" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Built on top of Cloudflare Workers, Pages serves static assets through a highly optimised Worker. We refer to this as the Asset Server Worker.</p>
 	<p>Users can also add dynamic content through Pages Functions which eventually get compiled into a separate Worker. Every single Pages deployment corresponds to unique instances of these Workers composed in a pipeline.</p>
 	<p>When a request hits Cloudflare we need to look up which pipeline to execute. As you’d expect, this is a function of the hostname in the URL.</p>
@@ -41,7 +55,14 @@
 	<p>It doesn’t end there though. After parsing this, it took 29ms to then iterate and test several regexes to find the one that matched the current request.</p>
 	<p>To summarise, every single request to this project would take 136ms to just pick the right pipeline to execute. While this was the median case for projects with 10,000 deployments on average, we’ve seen projects with <b>seconds</b> in added latency making them unusable after 50,000 deployments, punishing users for using our platform.</p>
 	<p>Given most web sites load more than one asset for a page, this leads to timeouts and breakage leading to an unstable and unacceptable user experience.</p>
-	<h3>The secret sauce is Workers for Platforms</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-secret-sauce-is-workers-for-platforms">The secret sauce is Workers for Platforms</h3>
+		<a href="https://blog.cloudflare.com/#the-secret-sauce-is-workers-for-platforms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We launched <a href="https://blog.cloudflare.com/workers-for-platforms">Workers for Platforms</a> last year as a way to build ambitious platforms on top of Workers. Workers for Platforms lets one build complex pipelines where a request may be served by a Worker built and maintained by you but could then dispatch to a Worker written by a user of your platform. This allows your platform’s users to write their own Worker like they’ve been used to but while you control how and when they are executed.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -50,7 +71,14 @@
 	</figure>
 	<p>This isn’t very different from what we do with Pages. Users write their Pages functions which compile into a Worker. Users also upload their own static assets which are then bound to our special Asset Server Worker in unique pipelines for each of their deployments. And we control how and when which Worker gets executed based on a hostname in their URL.</p>
 	<p>Runtime lookups shouldn’t be O(n) though but O(1). Because Workers for Platforms was designed to build entire platforms on top of, lookups when trying to dispatch to a user’s Worker were designed as O(1) ensuring latency wasn’t a function of number of Workers in an account.</p>
-	<h3>The solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-solution">The solution</h3>
+		<a href="https://blog.cloudflare.com/#the-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, Workers for Platforms hashes the name of the Worker with a secret and uses that for lookups at runtime. However, because we need to dispatch by hostname, we had a different idea. At deployment time, we could hash the pipeline for the deployment by its hostname — <a href="https://2b469e16.example.pages.dev/index.html">2b469e16.example.pages.dev</a>, for example.</p>
 	<p>When a request comes in, we hash the hostname from the URL with our predefined secret and then use that value to look up the pipeline to execute. This entirely removes the necessity to fetch, parse and traverse the routing table JSON from before, now making our lookup O(1).</p>
 	<p>Once we were happy with our new setup from internal testing we wanted to onboard a real user. Our <a href="https://developers.cloudflare.com">Developer Docs</a> have been <a href="https://blog.cloudflare.com/new-dev-docs">running on Pages</a> since the start of 2022 and during that time, we’ve dogfooded many different features and experiments. Due to the great relationship between our two teams and them being a sizable customer of ours we wanted to bring them onto our new Workers for Platform routing.</p>
@@ -68,7 +96,14 @@
 
 	</figure>
 	<p>The team was ecstatic about this especially given all of this happened under the hood with no downtime or required engineering team on their end. Not only is <a href="https://developers.cloudflare.com">https://developers.cloudflare.com/</a> faster, we’re using less compute to serve it to all of you.</p>
-	<h3>The big migration</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-big-migration">The big migration</h3>
+		<a href="https://blog.cloudflare.com/#the-big-migration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Migrating <a href="https://developers.cloudflare.com">developers.cloudflare.com</a> was a big milestone for us and meant our new infrastructure was capable of handling traffic at scale. But a goal we were very certain of was migrating every Pages deployment ever created. We didn’t want to leave any users behind.</p>
 	<p>Turns out, that wasn’t a small number. There’d been over 14 million deployments so far over the years. This was about to be one of the biggest migrations we’d done to runtime assets and the risk was that we’d take down someone’s site.</p>
 	<p>We approached this migration with some key goals:</p>
@@ -101,7 +136,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UKjjt2upheD8aALjmDMT4/8b3187022b3704e4ada8f99e7ccec09b/image--2-.png" alt="" class="kg-image" width="1368" height="608" loading="lazy">
 
 	</figure>
-	<h3>Feeding three birds with one scone</h3>
+	<div class="flex anchor relative">
+		<h3 id="feeding-three-birds-with-one-scone">Feeding three birds with one scone</h3>
+		<a href="https://blog.cloudflare.com/#feeding-three-birds-with-one-scone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Alongside the significant latency improvements for Pages projects, this change also gave improvements in other areas:</p>
 	<ul>
 		<li>
@@ -114,7 +156,14 @@
 			<p><b><b><b>Quicksilver storage reduction</b></b></b> - We also reduced the storage we take up with our routing tables by <b>92%</b>. This is a reduction of approximately 12 GiB on each of our hundreds of data centres.</p>
 		</li>
 	</ul>
-	<h3>We’re just getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-just-getting-started">We’re just getting started</h3>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pages is now the <a href="https://www.webpagetest.org/video/compare.php?tests=230323_BiDcFV_ABE%2C230323_BiDcMX_ABF">fastest way</a> to serve your sites across Netlify, <a href="https://www.webpagetest.org/video/compare.php?tests=230323_AiDc65_AFF%2C230323_BiDcGD_ABX">Vercel</a> and many others and we’re so proud.</p>
 	<p>But it’s going to get even faster. With projects like <a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">Flame</a>, we can’t wait to shave off many more milliseconds to every request a user makes to your site.</p>
 	<p>To a faster web for all of us.</p>

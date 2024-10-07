@@ -16,10 +16,24 @@
 		</li>
 	</ol>
 	<p>Standard DDoS Alerts are available to customers on all plans, including the <a href="https://www.cloudflare.com/plans/free">Free plan</a>. Advanced DDoS Alerts are part of Cloudflare’s Advanced DDoS service.</p>
-	<h3>Why alerts?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-alerts">Why alerts?</h3>
+		<a href="https://blog.cloudflare.com/#why-alerts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service attacks</a> are cyber attacks that aim to take down your Internet properties and make them unavailable for your users. As early as 2017, Cloudflare pioneered the <a href="https://blog.cloudflare.com/unmetered-mitigation">Unmetered DDoS Protection</a> to provide all customers with DDoS protection, without limits, to ensure that their Internet properties remain available. We’re able to provide this level of commitment to our customers thanks to our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">automated DDoS protection systems</a>. But if the systems operate automatically, why even be alerted?</p>
 	<p>Well, to put it plainly, when our DDoS <a href="https://www.cloudflare.com/ddos">protection systems</a> kick in, they insert ephemeral rules inline to mitigate the attack. Many of our customers operate business critical applications and services. When our systems make a decision to insert a rule, customers might want to be able to verify that all the malicious traffic is mitigated, and that legitimate user traffic is not. Our DDoS alerts begin firing as soon as our systems make a mitigation decision. Therefore, by informing our customers about a decision to insert a rule in real time, they can observe and verify that their Internet properties are both protected and available.</p>
-	<h3>Managing many Internet properties</h3>
+	<div class="flex anchor relative">
+		<h3 id="managing-many-internet-properties">Managing many Internet properties</h3>
+		<a href="https://blog.cloudflare.com/#managing-many-internet-properties" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <i>standard</i> DDoS Alerts alert you on DDoS attacks that target any and all of your Cloudflare-protected Internet properties. However, some of our customers may manage large numbers of Internet properties ranging from hundreds to hundreds of thousands. The <i>standard</i> DDoS Alerts would notify users every time one of those properties would come <a href="https://www.cloudflare.com/ddos/under-attack">under attack</a> — which could become very noisy.</p>
 	<p>The Advanced DDoS Alerts address this concern by allowing users to select the specific Internet properties that they want to be notified about; zones and hostnames for WAF/CDN customers, and IP prefixes for Magic Transit and Spectrum BYOIP customers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,7 +48,14 @@
 
 	</figure>
 	<p>Creating an Advanced L3/4 DDoS Attack Alert: selecting prefixes</p>
-	<h3>One (attack) size doesn’t fit all</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-attack-size-doesnt-fit-all">One (attack) size doesn’t fit all</h3>
+		<a href="https://blog.cloudflare.com/#one-attack-size-doesnt-fit-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <i>standard</i> DDoS Alerts alert you on DDoS attacks of any size. Well, almost any size. We implemented minimal alert thresholds to avoid spamming our customers’ email inboxes. Those limits are very small and not customer-configurable. As we’ve seen in the recent <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q2">DDoS trends report</a>, most of the attacks are very small — another reason why the <i>standard</i> DDoS Alert could become noisy for customers that only care about very large attacks. On the opposite end of the spectrum, choosing not to alert may become too quiet for customers that do want to be notified about smaller attacks.</p>
 	<p>The Advanced DDoS Alerts let customers choose their own alert threshold. WAF/CDN customers can define the minimum request-per-second rate of an HTTP DDoS attack alert. Magic Transit and Spectrum BYOIP customers can define the packet-per-second and Megabit-per-second rates of a L3/4 DDoS attack alert.</p>
 	<figure class="kg-card kg-image-card ">
@@ -49,7 +70,14 @@
 
 	</figure>
 	<p>Creating an Advanced L3/4 DDoS Attack Alert: defining packet/bit rate</p>
-	<h3>Not all protocols are created equal</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-all-protocols-are-created-equal">Not all protocols are created equal</h3>
+		<a href="https://blog.cloudflare.com/#not-all-protocols-are-created-equal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of the Advanced L3/4 DDoS Alerts, we also let our users define the protocols to be alerted on. If a Magic Transit customer manages mostly UDP applications, they may not care if TCP-based DDoS attacks target it. Similarly, if a Spectrum BYOIP customer only cares about HTTP/TCP traffic, other-protocol-based attacks could be of no concern to them.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -62,7 +90,14 @@
 
 	</figure>
 	<p>Creating an Advanced L3/4 DDoS Attack Alert: selecting the protocols</p>
-	<h3>Creating an Advanced DDoS Alert</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-an-advanced-ddos-alert">Creating an Advanced DDoS Alert</h3>
+		<a href="https://blog.cloudflare.com/#creating-an-advanced-ddos-alert" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll show here how to create an Advanced <i>HTTP</i> DDoS Alert, but the process to create a L3/4 alert is similar. You can view a more detailed guide on our <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">developers website</a>.</p>
 	<p>First, click <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fnotifications%2Fcreate">here</a> or log in to your Cloudflare account, navigate to <b>Notifications</b> and click <b>Add.</b> Then select the <b>Advanced HTTP DDoS Attack Alert</b> or <b>Advanced L3/4 DDoS Attack Alert</b> (based on your eligibility). Give your alert a name, an optional description, add your preferred delivery method (e.g., Webhook) and click <b>Next</b>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -78,11 +113,26 @@
 
 	</figure>
 	<p>Step 2: Defining the Advanced HTTP DDoS Attack Alert conditions</p>
-	<h3>Actionable alerts for making better decisions</h3>
+	<div class="flex anchor relative">
+		<h3 id="actionable-alerts-for-making-better-decisions">Actionable alerts for making better decisions</h3>
+		<a href="https://blog.cloudflare.com/#actionable-alerts-for-making-better-decisions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Advanced DDoS Alerts aim to provide our customers with configurable controls to make better decisions for their own environments. Customers can now be alerted on attacks based on which domain/prefix is being attacked, the size of the attack, and the protocol of the attack. We recognize that the power to configure and control DDoS attack alerts should ultimately be left up to our customers, and we are excited to announce the availability of this functionality.</p>
 	<p>Want to learn more about Advanced DDoS Alerts? Visit our <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts">developer site</a>.</p>
 	<p>Interested in upgrading to get Advanced DDoS Alerts? Contact your account team.</p>
 	<p>New to Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact">Speak to a Cloudflare expert</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/15a28a27c4f115533951f075b1fad6b5/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F15a28a27c4f115533951f075b1fad6b5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

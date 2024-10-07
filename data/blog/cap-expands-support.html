@@ -10,21 +10,63 @@
 	<p>Today, we are taking another step in helping to reduce the Internet’s reliance on CAPTCHAs to prove that you are not a robot. We are expanding the reach of our Cryptographic Attestation of Personhood experiment by adding support for a much wider range of devices. This includes biometric authenticators — like Apple's Face ID, Microsoft Hello, and Android Biometric Authentication. This will let you solve challenges in under five seconds with just a touch of your finger or a view of your face -- without sending this private biometric data to anyone.</p>
 	<p>You can try it out on our demo site <a href="https://cloudflarechallenge.com">cloudflarechallenge.com</a> and let us know your feedback.</p>
 	<p>In addition to support for hardware biometric authenticators, we are also announcing support for many more hardware tokens today in the Cryptographic Attestation of Personhood experiment. We support all USB and NFC keys that are both certified by the FIDO alliance and have no known security issues according to the FIDO Alliance Metadata service (<a href="https://fidoalliance.org/metadata">MDS 3.0</a>).</p>
-	<h2>Privacy First</h2>
+	<div class="flex anchor relative">
+		<h2 id="privacy-first">Privacy First</h2>
+		<a href="https://blog.cloudflare.com/#privacy-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Privacy is at the center of Cryptographic Attestation of Personhood. Information about your biometric data is never shared with, transmitted to, or processed by Cloudflare. We simply never see it, at all. All of your sensitive biometric data is processed on your device. While each operating system manufacturer has a slightly different process, they all rely on the idea of a Trusted Execution Environment (TEE) or Trusted Platform Module (TPM). TEEs and TPMs allow only your device to store and use your encrypted biometric information. Any apps or software running on the device never have access to your data, and can’t transmit it back to their systems. If you are interested in digging deeper into how each major operating system implements their biometric security, read the articles we have linked below:</p>
-	<h3>Apple (Face ID and Touch ID)</h3>
+	<div class="flex anchor relative">
+		<h3 id="apple-face-id-and-touch-id">Apple (Face ID and Touch ID)</h3>
+		<a href="https://blog.cloudflare.com/#apple-face-id-and-touch-id" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://support.apple.com/en-us/HT212036">Face ID and Touch ID Privacy</a><a href="https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web">Secure Enclave Overview</a></p>
-	<h3>Microsoft (Windows Hello)</h3>
+	<div class="flex anchor relative">
+		<h3 id="microsoft-windows-hello">Microsoft (Windows Hello)</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-windows-hello" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://support.microsoft.com/en-us/windows/windows-sign-in-options-and-account-protection-7b34d4cf-794f-f6bd-ddcc-e73cdf1a6fbf#ID0EBD=Windows_10">Windows Hello Overview</a><a href="https://docs.microsoft.com/en-us/windows/uwp/security/microsoft-passport">Windows Hello Technical Deep Dive</a></p>
-	<h3>Google (Android Biometric Authentication)</h3>
+	<div class="flex anchor relative">
+		<h3 id="google-android-biometric-authentication">Google (Android Biometric Authentication)</h3>
+		<a href="https://blog.cloudflare.com/#google-android-biometric-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://source.android.com/security/authentication">Biometric Authentication</a><a href="https://source.android.com/security/biometric/measure#strong-weak-unlocks">Measuring Biometric Unlock Security</a></p>
 	<p>Our commitment to privacy doesn’t just end at the device. The <a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn">WebAuthn API</a> also prevents the transmission of biometric information. If a user interacts with a biometric key (like Apple TouchID or Windows Hello), no third party -- such as Cloudflare -- can receive any of that biometric data: it remains on your device and is never transmitted by your browser. To get an even deeper understanding of how the Cryptographic Attestation of Personhood protects your private information, we encourage you to read our <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">initial announcement blog post</a>.</p>
-	<h2>Making a Great Privacy Story Even Better</h2>
+	<div class="flex anchor relative">
+		<h2 id="making-a-great-privacy-story-even-better">Making a Great Privacy Story Even Better</h2>
+		<a href="https://blog.cloudflare.com/#making-a-great-privacy-story-even-better" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While building out this technology, we have always been committed to providing the best possible privacy guarantees. The existing assurances are already quite strong: as described in our previous post, when using CAP, you may disclose a small amount of information about your authentication hardware -- at most, its make and model. By design, this information is not unique to you: the underlying standard requires that this be indistinguishable from thousands of others, which hides you in a crowd of identical hardware.</p>
 	<p>Even though this is a great start, we wanted to see if we could push things even farther. Could we learn just the one fact that we need -- that you have a valid security key -- without learning anything else?</p>
 	<p>We are excited to announce that we have made great strides on answering that question by using a form of the next generation of cryptography called Zero Knowledge Proofs (ZKP). ZKP prevents us from discovering anything from you, other than the fact that you have a device that can generate an approved certificate that proves that you are human.</p>
 	<p>If you are interested in learning more about Zero Knowledge Proofs, we highly recommend reading about it <a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware">here</a>.</p>
-	<h2>Driven by Speed, Ease of Use, and Bot Defense</h2>
+	<div class="flex anchor relative">
+		<h2 id="driven-by-speed-ease-of-use-and-bot-defense">Driven by Speed, Ease of Use, and Bot Defense</h2>
+		<a href="https://blog.cloudflare.com/#driven-by-speed-ease-of-use-and-bot-defense" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the start of this project we set out three goals:</p>
 	<ol>
 		<li>

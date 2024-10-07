@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>The Storage team here at Cloudflare shipped Workers KV, our global, low-latency, key-value store, <a href="https://blog.cloudflare.com/workers-kv-is-ga">earlier this year</a>. As people have started using it, we’ve gotten some feature requests, and have shipped some new features in response! In this post, we’ll talk about some of these use cases and how these new features enable them.</p>
-	<h2>New KV APIs</h2>
+	<div class="flex anchor relative">
+		<h2 id="new-kv-apis">New KV APIs</h2>
+		<a href="https://blog.cloudflare.com/#new-kv-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve shipped some new APIs, both via <code>api.cloudflare.com</code>, as well as inside of a Worker. The first one provides the ability to upload and delete more than one key/value pair at once. Given that Workers KV is great for read-heavy, write-light workloads, a common pattern when getting started with KV is to write a bunch of data via the API, and then read that data from within a Worker. You can now do these bulk uploads without needing a separate API call for every key/value pair. This feature is available via <code>api.cloudflare.com</code>, but is not yet available from within a Worker.</p>
 	<p>For example, say we’re using KV to redirect legacy URLs to their new homes. We have a list of URLs to redirect, and where they should redirect to. We can turn this list into JSON that looks like this:</p>
 	<pre class="language-json"><code class="language-json">[
@@ -79,11 +86,25 @@ const next_value = await NAMESPACE.list({"cursor": cursor})</code></pre>
 	<p>Or a list of all posts made in October of 2019:</p>
 	<pre class="language-javascript"><code class="language-javascript">const value = await NAMESPACE.list({"prefix": "2019-10"})</code></pre>
 	<p>These calls will only return keys with the given prefix, which in our case, corresponds to a date. This technique can let you group keys together in interesting ways. We’re looking forward to seeing what you all do with this new functionality!</p>
-	<h2>Relaxing limits</h2>
+	<div class="flex anchor relative">
+		<h2 id="relaxing-limits">Relaxing limits</h2>
+		<a href="https://blog.cloudflare.com/#relaxing-limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For various reasons, there are a few hard limits with what you can do with Workers KV. We’ve decided to raise some of these limits, which expands what you can do.</p>
 	<p>The first is the limit of the number of namespaces any account could have. This was previously set at 20, but some of you have made a lot of namespaces! We’ve decided to relax this limit to 100 instead. This means you can create five times the number of namespaces you previously could.</p>
 	<p>Additionally, we had a two megabyte maximum size for values. We’ve increased the limit for values to ten megabytes. With the release of Workers Sites, folks are keeping things like images inside of Workers KV, and two megabytes felt a bit cramped. While Workers KV is not a great fit for truly large values, ten megabytes gives you the ability to store larger images easily. As an example, a 4k monitor has a native resolution of 4096 x 2160 pixels. If we had an image at this resolution as a lossless PNG, for example, it would be just over five megabytes in size.</p>
-	<h2>KV browser</h2>
+	<div class="flex anchor relative">
+		<h2 id="kv-browser">KV browser</h2>
+		<a href="https://blog.cloudflare.com/#kv-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, you may have noticed that there’s now a KV browser in the dashboard! Needing to type out a cURL command just to see what’s in your namespace was a real pain, and so we’ve given you the ability to check out the contents of your namespaces right on the web. When you look at a namespace, you’ll also see a table of keys and values:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -115,7 +136,14 @@ const next_value = await NAMESPACE.list({"cursor": cursor})</code></pre>
 
 	</figure>
 	<p>As we ship new features in Workers KV, we’ll be expanding the browser to include them too.</p>
-	<h2>Wrangler integration</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrangler-integration">Wrangler integration</h2>
+		<a href="https://blog.cloudflare.com/#wrangler-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Workers Developer Experience team has also been shipping some features related to Workers KV. Specifically, you can fully interact with your namespaces and the key/value pairs inside of them.</p>
 	<p>For example, my personal website is running on Workers Sites. I have a Wrangler project named “website” to manage it. If I wanted to add another namespace, I could do this:</p>
 	<pre class="language-console"><code class="language-console">$ wrangler kv:namespace create new_namespace
@@ -137,6 +165,13 @@ Success</code></pre>
 	<pre class="language-console"><code class="language-console">&gt; wrangler kv:key get "hello" --binding new_namespace
 world</code></pre>
 	<p>If you’d like to learn more about the design of these features, <a href="https://blog.cloudflare.com/how-we-design-features-for-wrangler">“How we design features for Wrangler, the Cloudflare Workers CLI”</a> discusses them in depth.</p>
-	<h2>More to come</h2>
+	<div class="flex anchor relative">
+		<h2 id="more-to-come">More to come</h2>
+		<a href="https://blog.cloudflare.com/#more-to-come" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Storage team is working hard at improving Workers KV, and we’ll keep shipping new stuff every so often. Our updates will be more regular in the future. If there’s something you’d particularly like to see, please reach out!</p>
 </div>

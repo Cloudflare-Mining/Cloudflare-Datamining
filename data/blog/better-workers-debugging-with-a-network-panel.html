@@ -32,7 +32,14 @@
 	<p>This works somewhat better, but doesn't scale well, especially if you're trying to debug complex interactions between various requests on a page and subrequests coming from a worker. So we thought: how can we do better?</p>
 	<p>If you're familiar with Chrome DevTools, you might have noticed before that we were already offering its trimmed-down version in our UI with basic Console and Sources panels. The obvious solution is: why not expose the existing Network panel in addition to these? And we did just* that.</p>
 	<p>* Unfortunately, this is easier said than done. If you're already faimilar with the Network tab and are interested in the technical implementation details, feel free to <a href="https://blog.cloudflare.com/#how-did-we-do-this">skip the next section</a>.</p>
-	<h3>What can you do with the new panel?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-you-do-with-the-new-panel">What can you do with the new panel?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-you-do-with-the-new-panel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You should be able to use most of the things available in regular Chrome DevTools Network panel, but instead of inspecting the interaction between browser and Cloudflare (which is as much as browser devtools can give you), you are now able to peek into the interaction between your Worker and the origin as well.</p>
 	<p>This means you're able to view request and response headers, including both those internal to your worker and the ones provided by Cloudflare:</p>
 	<figure class="kg-card kg-image-card ">
@@ -77,7 +84,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SY6GsgFGCCv78EAB8NYyb/3859b260b07e5724879c12644ff37921/image-24.png" alt="" class="kg-image" width="1919" height="942" loading="lazy">
 
 	</figure>
-	<h3>How did we do this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-did-we-do-this">How did we do this?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-we-do-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we have been using a built-in mode of the inspector which was specifically designed with JavaScript-only targets in mind. This allows it to avoid loading most of the components that would require a real browser (Chromium-based) backend, and instead leaves just the core that can be integrated directly with V8 in any embedder, whether it's Node.js or, in our case, Cloudflare Workers.</p>
 	<p>Luckily, the DevTools Protocol itself is pretty well documented - <a href="https://chromedevtools.github.io/devtools-protocol">chromedevtools.github.io/devtools-protocol/</a> - to facilitate third-party implementors.</p>
 	<p>While this is commonly used from client-side (for editor integration), there are some third-party implementors of the server-side too, even for non-JavaScript targets like Lua, Go, ClojureScript and even system-wide network debugging both on desktop and mobile: <a href="https://github.com/ChromeDevTools/awesome-chrome-devtools">github.com/ChromeDevTools/awesome-chrome-devtools</a>.</p>

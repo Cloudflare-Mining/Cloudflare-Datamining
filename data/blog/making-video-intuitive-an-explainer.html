@@ -15,13 +15,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7EMewvsE1wQR8Zb7UuuY7f/0e8ad6c56bfbffa699e8ce3fe859983f/flipbook_2x.png" alt="" class="kg-image" width="593" height="530" loading="lazy">
 
 	</figure>
-	<h3>Frame rate</h3>
+	<div class="flex anchor relative">
+		<h3 id="frame-rate">Frame rate</h3>
+		<a href="https://blog.cloudflare.com/#frame-rate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not stuttering is covered by framerate, measured in frames-per-second (fps). fps is the number of individual pictures displayed in a single second; many videos are encoded at somewhere between 24 and 30fps. One way to describe fps is in terms of how long a frame is shown for—commonly called the frame time. At 24fps, each frame is shown for about 41 milliseconds. At 2fps, that jumps to 500ms. Lowering fps causes frames to trend rapidly towards persisting for the full second. Smooth motion mostly comes down to the single knob of fps. Mucking about with framerate isn’t a sporting way to achieve our goal. It’s extremely easy to tank the framerate and ruin the experience. Humans have a low tolerance for janky motion. To get the idea, here’s what our original clip reduced to 2fps looks like; 500ms per-frame is a long time.</p>
 	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -r 2 -c:v h264 -c:a copy 2fps.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="3500917ca1f756546103c86ca5a90348" preload="" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=3500917ca1f756546103c86ca5a90348"></script>
 	<br><!--kg-card-end: html-->
-	<h3>Resolution</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolution">Resolution</h3>
+		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Making tiny features distinguishable has many more knobs. Choices you can make include what codec, level, profile, bitrate, resolution, color space, or keyframe frequency, to name a few. Each of these also influences factors apart from perceived quality, such as how large the resulting file is plus what devices it is compatible with. There’s no universal right answer for what parameters to encode a video with. For the best experience while not wasting resources, the same video intended for a modern 4k display should be tailored differently for a 2007 iPod Nano. We’ll spend our time here focusing on what impacts a video’s crispness since that’s what largely determines the experience.</p>
 	<p>We’re going to use <a href="https://www.ffmpeg.org">FFmpeg</a> to make this happen. This is the sonic screwdriver of the video world; a near-universal command-line tool for converting and manipulating media. FFmpeg is almost two decades old, has hundreds of contributors, and can do essentially any digital video-related task. Its flexibility also makes it rather complex to work with. For each version of the video, we’ll show the command used to generate it as we go.</p>
 	<p>Let’s figure out exactly what we want to change about the video to make it a bad experience.</p>
@@ -58,9 +72,24 @@
 	<p>6.1MB</p>
 	<p>By the numbers, we find some curious results. We didn’t ask for a different bitrate from the source but our encoder gave us one that is roughly a third. Given that the number of pixels was dramatically reduced, the encoder had fewer buckets to put the information in our bitrate. Despite its best attempt at using the entire bitrate budget provided to it, our encoder filled all the buckets we provided. What did it do with the leftover information? Since it isn’t in the video, it tossed it.</p>
 	<p>This would probably be an acceptable experience on a 4in phone screen. You wouldn’t notice the sort-of grainy result on a small display. On a 40in TV, it’d be blocky and unpleasant. At 40in, 140 rows of pixels become individually distinguishable which doesn’t fool the brain and ruins the magic.</p>
-	<h3>Bitrate</h3>
+	<div class="flex anchor relative">
+		<h3 id="bitrate">Bitrate</h3>
+		<a href="https://blog.cloudflare.com/#bitrate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Bitrate is the density of information for a given period of time, typically a second. This interacts with framerate to give us a per frame bitrate budget. Our source having a bitrate of 7.5Mbps (millions of bits-per-second) and framerate of 24fps means we have an average of 7500Kbps / 24fps = 312.5Kb of information per frame.</p>
-	<h3>Different kinds of frames</h3>
+	<div class="flex anchor relative">
+		<h3 id="different-kinds-of-frames">Different kinds of frames</h3>
+		<a href="https://blog.cloudflare.com/#different-kinds-of-frames" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fYct9qhwwZwDraTn29gB7/4f03f852a8ee5fbe60df7c4dc7f67ee9/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="552" loading="lazy">
@@ -103,7 +132,14 @@
 	<p>We provided a bitrate budget of 100Kbps but the encoder doesn’t seem to have quite hit it. When we changed the resolution, we had a lower bitrate than we asked for, here we have a higher bitrate. Why would that be the case?</p>
 	<p>We have so many buckets that there’s some minimum amount the encoder wants in each. Since it can play with the bitrate, it ends up favoring slightly more full buckets since that’s easier. This is somewhat the reverse of why our previous experiment had a lower bitrate than expected.</p>
 	<p>We can influence how the encoder budgets bitrate using rate control modes. We’re going to stick with the default ‘Average-Bitrate’ mode to keep things easy. This mode is sub-optimal since it lets the encoder spend a bunch of budget up front to its detriment later. However, it's easy to reason about.</p>
-	<h3>Resolution + Bitrate</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolution-bitrate">Resolution + Bitrate</h3>
+		<a href="https://blog.cloudflare.com/#resolution-bitrate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Targeting a bitrate of 100Kbps got us an unpleasant video but not something completely unwatchable. We haven’t quite ruined our video yet. We might as well take bitrate down to an even further extreme of 20Kbps while keeping the resolution constant.</p>
 	<p><code>ffmpeg -v info -y -hide_banner -i source.mp4 -c:v h264 -b:v 20k -c:a copy bitrate-20k.mp4</code></p><!--kg-card-begin: html-->
 	<stream src="c6ae1836ec3505c9150429222e7f9bbb" preload="" controls=""></stream>

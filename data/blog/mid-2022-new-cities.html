@@ -1,9 +1,23 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/33wUq0G9ezNWerNvV7NZMX/db2ebef95e1ada701d6379ea728d40f3/mid-2022-new-cities.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>If you follow the Cloudflare blog, you know that we <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">love to</a> <a href="https://blog.cloudflare.com/ten-new-cities-four-new-countries">add cities</a> to our <a href="https://blog.cloudflare.com/expanding-to-25-plus-cities-in-brazil">global map</a>. With each new city we add, we help make the Internet faster, more reliable, and more secure. Today, we are announcing the addition of 18 new cities in Africa, South America, Asia, and the Middle East, bringing our network to over 270 cities globally. We’ll also look closely at how adding new cities improves Internet performance, such as our new locations in Israel, which reduced median response time (latency) from 86ms to 29ms (a 66% improvement) in a matter of weeks for subscribers of one Israeli Internet service provider (ISP).</p>
-	<h3>The Cities</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-cities">The Cities</h3>
+		<a href="https://blog.cloudflare.com/#the-cities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Without further ado, here are the 18 new cities in 10 countries we welcomed to our global network: <b>Accra</b>, Ghana; <b>Almaty</b>, Kazakhstan; <b>Bhubaneshwar</b>, India; <b>Chiang Mai</b>, Thailand; <b>Joinville</b>, Brazil; <b>Erbil</b>, Iraq; <b>Fukuoka</b>, Japan; <b>Goiânia</b>, Brazil; <b>Haifa</b>, Israel; <b>Harare</b>, Zimbabwe; <b>Juazeiro do Norte</b>, Brazil; <b>Kanpur</b>, India; <b>Manaus</b>, Brazil; <b>Naha</b>, Japan; <b>Patna</b>, India; <b>São José do Rio Preto</b>, Brazil; <b>Tashkent</b>, Uzbekistan; <b>Uberlândia</b>, Brazil.</p>
-	<h3>Cloudflare’s ISP Edge Partnership Program</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-isp-edge-partnership-program">Cloudflare’s ISP Edge Partnership Program</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-isp-edge-partnership-program" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But let’s take a step back and understand why and how adding new cities to our list helps make the Internet better. First, we should reintroduce the Cloudflare Edge Partnership Program. Cloudflare is used as a reverse proxy by nearly 20% of all Internet properties, which means the volume of ISP traffic trying to reach us can be significant. In some cases, as we’ll see in Israel, the distance data needs to travel can also be significant, adding to latency and reducing Internet performance for the user. Our solution is partnering with ISPs to embed our servers inside their network. Not only does the ISP avoid lots of back haul traffic, but their subscribers also get much better performance because the website is served on-net, and close to them geographically. It is a win-win-win.</p>
 	<p>Consider a large Israeli ISP we did not peer with locally in Tel Aviv. Last year, if a subscriber wanted to reach a website on the Cloudflare network, their request had to travel on the Internet backbone – the large carriers that connect networks together on behalf of smaller ISPs – from Israel to Europe before reaching Cloudflare and going back. The map below shows where they were able to find Cloudflare content before our deployment went live: 48% in Frankfurt, 33% in London, and 18% in Amsterdam. That’s a long way!</p>
 	<figure class="kg-card kg-image-card ">

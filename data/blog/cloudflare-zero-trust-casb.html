@@ -4,7 +4,14 @@
 	<p>Earlier today, Cloudflare <a href="https://www.cloudflare.com/press-releases/2022/cloudflare-acquires-vectrix">announced</a> that we have acquired Vectrix, a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">cloud-access security broker (CASB)</a> company focused on solving the problem of control and visibility in the SaaS applications and public cloud providers that your team uses.</p>
 	<p>We are excited to welcome the Vectrix team and their technology to the Cloudflare Zero Trust product group. We don’t believe a CASB should be a point solution. Instead, the features of a CASB should be one component of a comprehensive <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> deployment. Each piece of technology, CASB included, should work better together than they would as a standalone product.</p>
 	<p>We know that this migration is a journey for most customers. That’s true for our own team at Cloudflare, too. We’ve built our own <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust platform</a> to solve problems for customers at any stage of that journey.</p>
-	<h2>Start by defending the resources you control</h2>
+	<div class="flex anchor relative">
+		<h2 id="start-by-defending-the-resources-you-control">Start by defending the resources you control</h2>
+		<a href="https://blog.cloudflare.com/#start-by-defending-the-resources-you-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Several years ago, we protected the internal resources that Cloudflare employees needed by creating a private network with hardware appliances. We deployed applications in a data center and made them available to this network. Users inside the San Francisco office connected to a secure Wi-Fi network that placed them on the network.</p>
 	<p>For everyone else, we punched a hole in that private network and employees pretended they were in the office by using Virtual Private Network (VPN) clients on their device. We had created a castle-and-moat by attempting to extend the walls of the San Francisco office to the rest of the world.</p>
 	<p>Our Security team hated this. Once authenticated to the VPN client, a user could generally connect to any destination on our private network - the network trusted them by default. We lacked segmentation over who could reach what resource. Just as terrifying, we had almost no visibility into what was happening inside the network.</p>
@@ -17,7 +24,14 @@
 	</figure>
 	<p>This migration <a href="https://blog.cloudflare.com/dogfooding-from-home">changed our security model at Cloudflare</a>. We also <a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed">never had to compromise performance</a> thanks to Cloudflare’s global network and <a href="https://www.cloudflare.com/performance/accelerate-internet-applications/#:~:text=Cloudflare%20increases%20web%20application%20performance,congested%20path%2C%20and%20much%20more.">Application Performance</a> products. Decisions about who is allowed are made milliseconds away from the user in data centers in over 250+ cities around the world. For web applications, Cloudflare Access runs in-line with our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> and works out-of-the-box with our load balancers. Cloudflare’s network accelerates requests and packets, connecting users to the tools they need even faster.</p>
 	<p>Cloudflare Access let us and thousands of other teams deprecate the legacy VPN security model, but the rest of the Internet posed a different kind of challenge—how do we keep our users, and their devices and data, safe from attack?</p>
-	<h2>Next, protect your team from the rest of the Internet</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-protect-your-team-from-the-rest-of-the-internet">Next, protect your team from the rest of the Internet</h2>
+		<a href="https://blog.cloudflare.com/#next-protect-your-team-from-the-rest-of-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The public Internet allows just about anyone to connect either as a user or a host. That openness is both powerful and terrifying. When employees on corporate devices need to use the rest of the Internet, they run a risk of encountering phishing websites, malware hosts, and other attempts to steal data and compromise businesses.</p>
 	<p>Historically, organizations relied on a similar castle-and-moat approach. They backhauled user traffic to any destination on the Internet through a centralized data center. Inside that data center, IT departments installed and monitored physical appliances to provide security like network firewalls, proxies, and <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateways</a>.</p>
 	<p>This model worked fine when employees only needed to connect to the public Internet occasionally. Most work was performed on the desktop in front of the user. When companies began moving to SaaS applications hosted by other teams, and employees spent the majority of their day on the Internet, this security framework fell apart.</p>
@@ -30,7 +44,14 @@
 	<p><a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a> turns Cloudflare’s network in the other direction to protect users as they connect out to the rest of the Internet. Instead of backhauling traffic to a centralized location, users connect to a nearby Cloudflare data center where we apply one or more layers of security filtering and logging before accelerating their traffic to its final destination.</p>
 	<p>Customers can choose how they want to start this journey. Cloudflare operates the world’s fastest DNS resolver, on top of which <a href="https://blog.cloudflare.com/helping-keep-governments-safe-and-secure">we’ve built DNS filtering</a> powered by the intelligence we collect from handling so much of the Internet every day. Other customers decide to begin by ripping out their network firewall appliances and moving that functionality into Cloudflare’s network by connecting roaming users or entire offices and data centers to Cloudflare.</p>
 	<p>As threats become more advanced, Cloudflare’s Secure Web Gateway inspects HTTPS traffic for malware hiding in file downloads or the accidental loss of data to unapproved SaaS services. Cloudflare’s <a href="https://blog.cloudflare.com/phishing-protection-browser">Browser Isolation service adds another layer</a> of threat protection by running the browser in our network instead of on the user device. With Cloudflare Gateway and Browser Isolation, security teams also can apply granular data loss control to traffic as it flows through our network—from stopping file uploads to blocking copy-and-paste in the web page itself.</p>
-	<h2>Now, control the data and configurations in your SaaS applications</h2>
+	<div class="flex anchor relative">
+		<h2 id="now-control-the-data-and-configurations-in-your-saas-applications">Now, control the data and configurations in your SaaS applications</h2>
+		<a href="https://blog.cloudflare.com/#now-control-the-data-and-configurations-in-your-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point in a Zero Trust journey, your team can control how users access critical resources and how you keep those users and their data safe from external attack. Both of these require control of the network—inspecting traffic as it leaves devices in your organization or as it arrives in your infrastructure. That leaves one piece missing. As more of your data lives in SaaS applications outside your control, how do you maintain a consistent level of filtering, logging, and auditing?</p>
 	<p>The Cloudflare Zero Trust platform released many features in the last year to help customers solve this problem and the broader range of “CASB” challenges. First, we built a feature that allows your team to <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">force logins to your SaaS applications</a> through Cloudflare’s Secure Web Gateway where you can control rules and visibility. Next, we used the data from the Secure Web Gateway to provide your team with a <a href="https://blog.cloudflare.com/introducing-shadow-it-discovery">comprehensive Shadow IT report</a> to discover what applications your team is using and what they should be using.</p>
 	<p>Customers use the Shadow IT report in particular to begin building <a href="https://blog.cloudflare.com/gateway-app-policies">rules to block access to unapproved SaaS applications</a>, or to block actions like file uploads to specific unapproved SaaS applications, but the collaboration available in these tools becomes a risk to your organization.</p>
@@ -42,17 +63,52 @@
 
 	</figure>
 	<p>Vectrix scans the SaaS applications that your team uses to detect anomalies in configuration, permissions, and sharing. Each SaaS application is different - the risks vary from a Google Sheet that is made public to leaked secrets in GitHub - and Vectrix gives customers a single place to control and audit those types of events.</p>
-	<h2>Why Vectrix?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-vectrix">Why Vectrix?</h2>
+		<a href="https://blog.cloudflare.com/#why-vectrix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To solve this problem for our customers, we evaluated options including building our own API-driven CASB solution and talking to other companies in this space. Vectrix became the best option after evaluating them against the priorities we have for this group of products.</p>
-	<h3>The Vectrix team is customer obsessed</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-vectrix-team-is-customer-obsessed">The Vectrix team is customer obsessed</h3>
+		<a href="https://blog.cloudflare.com/#the-vectrix-team-is-customer-obsessed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Vectrix mission focuses on giving organizations of any size, including those without a large security team, “simple, straightforward security scans that anyone can use…” By <a href="https://www.cloudflare.com/application-services/solutions">making the solution accessible</a> and easy to use, Vectrix reduces the barrier to security.</p>
 	<p>We share that same goal. Cloudflare exists to help build a better Internet. That starts with an Internet made safer by making security tools accessible to anyone. From offering SSL certificates at no cost to any customer to making Zero Trust product group available at no cost to teams of up to 50 users, we are obsessed with helping our customers solve problems previously out of their reach.</p>
-	<h3>Their technology delivers value faster</h3>
+	<div class="flex anchor relative">
+		<h3 id="their-technology-delivers-value-faster">Their technology delivers value faster</h3>
+		<a href="https://blog.cloudflare.com/#their-technology-delivers-value-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the original pitches of Cloudflare’s Application Security and Performance products was set up that could be completed in less than five minutes. We know that the cost to deploy a new service, especially for smaller teams, can mean that organizations delay making security and performance improvements.</p>
 	<p>We don’t think that customers should have to compromise and neither does Vectrix. The Vectrix product focuses on delivering immediate value in less than five minutes after the two or three clicks required to configure the first scan of a SaaS application. Customers can begin to flag risks in their organization in a matter of minutes without the need for a complex deployment.</p>
-	<h3>1+1=3 in terms of value for our customers when used with our existing Zero Trust products</h3>
+	<div class="flex anchor relative">
+		<h3 id="1-1-3-in-terms-of-value-for-our-customers-when-used-with-our-existing-zero-trust-products">1+1=3 in terms of value for our customers when used with our existing Zero Trust products</h3>
+		<a href="https://blog.cloudflare.com/#1-1-3-in-terms-of-value-for-our-customers-when-used-with-our-existing-zero-trust-products" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Vectrix product will not be inserted as a point solution add-on. We’re making it a core part of our Zero Trust bundle because integrating features from products like our Secure Web Gateway give customers a comprehensive solution that works better together.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to welcome Vectrix to the Cloudflare team. You can learn more about why they decided to join Cloudflare in <a href="https://blog.cloudflare.com/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">this blog post</a> published today.</p>
 	<p>We have already started migrating their services to the Cloudflare global network and plan to open sign-ups for a beta in the next couple of months. If you are interested, please <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta">sign up here</a>. Don’t let the beta delay the start of your own journey with these products—we’ll be inviting users off of the waitlist based on when they first started deploying Cloudflare’s Zero Trust products.</p>
 </div>

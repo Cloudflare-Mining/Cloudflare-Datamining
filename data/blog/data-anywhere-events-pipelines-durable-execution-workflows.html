@@ -8,7 +8,14 @@
 	<p>Data is fundamental to any real-world application: the database storing your user data and inventory, the analytics tracking sales events and/or error rates, the object storage with your web assets and/or the Parquet files driving your data science team, and the vector database enabling semantic search or AI-powered recommendations for your users.</p>
 	<p>When we first announced Workers <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">back in 2017</a>, and then <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://www.cloudflare.com/developer-platform/r2">Cloudflare R2</a>, and <a href="https://blog.cloudflare.com/introducing-d1">D1</a>, it was obvious that the next big challenge to solve for developers would be in making it easier to ingest, store, and query the data needed to build scalable, full-stack applications.</p>
 	<p>To that end, as part of our quest to make building stateful, distributed-by-default applications even easier, we’re launching our new Event Notifications service; a preview of our upcoming streaming ingestion product, Pipelines; and a sneak peek into our take on durable execution, Workflows.</p>
-	<h3>Event-based architectures</h3>
+	<div class="flex anchor relative">
+		<h3 id="event-based-architectures">Event-based architectures</h3>
+		<a href="https://blog.cloudflare.com/#event-based-architectures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you’re writing data — whether that’s new data, changing existing data, or deleting old data — you often want to trigger other, asynchronous work to run in response. That could be processing user-driven uploads, updating search indexes as the underlying data changes, or removing associated rows in your SQL database when content is removed.</p>
 	<p>In order to make these event-driven workflows far easier to build across Cloudflare, we’re launching the first step towards a wider Event Notifications platform across Cloudflare, starting with notifications support in R2.</p>
 	<p>You can read more in the deep-dive on <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access">Event Notifications for R2</a>, but in a nutshell: you can configure changes to content in any R2 bucket to write directly to a <a href="https://developers.cloudflare.com/queues">Queue</a>, allowing you to reliably consume those events in a Worker or to <a href="https://developers.cloudflare.com/queues/reference/pull-consumers">pull from compute</a> in a legacy cloud.</p>
@@ -30,7 +37,14 @@
 		</li>
 	</ul>
 	<p>Consuming event notifications from a single Worker is just <i>one</i> approach, though. As you start to consume events, you may want to trigger multi-step <i>workflows</i> that execute reliably, resume from errors or exceptions, and ensure that previous steps aren’t duplicated or repeated unnecessarily. An event notification framework turns out to be just the thing needed to drive <a href="https://blog.cloudflare.com/#durable-exectution">a workflow engine that <i>executes durably</i>…</a></p>
-	<h3>Making it even easier to ingest data</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-it-even-easier-to-ingest-data">Making it even easier to ingest data</h3>
+		<a href="https://blog.cloudflare.com/#making-it-even-easier-to-ingest-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we launched <a href="https://developers.cloudflare.com/r2">Cloudflare R2</a>, our object storage service, we knew that supporting the de facto-standard <a href="https://developers.cloudflare.com/r2/api/s3/api">S3 API</a> was critical in order to allow developers to bring the tooling and services they already had over to R2. But the S3 API is designed to be simple: at its core, it provides APIs for upload, download, multipart and metadata operations, and many tools <i>don’t</i> support the S3 API.</p>
 	<p>What if you want to batch clickstream data from your web services so that it’s efficient (and cost-effective) to query by your analytics team? Or partition data by customer ID, merchant ID, or locale within a structured data format like JSON?</p>
 	<p>Well, we want to help solve this problem too, and so we’re announcing Pipelines, an upcoming streaming ingestion service designed to ingest data at scale, aggregate it, and write it directly to R2, without you having to manage infrastructure, partitions, runners, or worry about durability.</p>
@@ -81,7 +95,14 @@
 	</ul>
 	<p><b>We’ll be bringing Pipelines into open beta later in 2024</b>, and it will initially launch with support for HTTP ingestion and R2 as a destination (sink), but we’re already thinking bigger.</p>
 	<p>We’ll be sharing more as Pipelines gets closer to release. In the meantime, you can <a href="https://docs.google.com/forms/d/e/1FAIpQLSeuaQ5YZoXJej5h5KoEz6LNrVb7gASJ8msahJg8VmBeC0HEYQ/viewform?usp=sf_link">register your interest and share your use-case</a>, and we’ll reach out when Pipelines reaches open beta.</p>
-	<h3>Durable Execution</h3>
+	<div class="flex anchor relative">
+		<h3 id="durable-execution">Durable Execution</h3>
+		<a href="https://blog.cloudflare.com/#durable-execution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If the term “Durable Execution” is new to you, don’t worry: the term comes from the desire to run applications that can resume execution from where they left off, even if the underlying host or compute fails (where the “durable” part comes from).</p>
 	<p>As we’ve continued to build out our data and AI platforms, we’ve been acutely aware that developers need ways to create reliable, repeatable workflows that operate over that data, turn unstructured data into structured data, trigger on fresh data (or periodically), and automatically retry, restart, and export metrics for each step along the way. The industry calls this Durable Execution: we’re just calling it <i>Workflows</i>.</p>
 	<p>What makes Workflows different from other takes on Durable Execution is that we provide the underlying compute as part of the platform. You don’t have to bring-your-own compute, or worry about scaling it or provisioning it in the right locations. Workflows runs on top of <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> – you write the workflow, and we take care of the rest.</p>
@@ -205,7 +226,14 @@ export default class extends Workflow {
 	</ul>
 	<p>Each of these use cases model tasks that you want to run to completion, minimize redundant retries by persisting intermediate state, and (importantly) easily observe success and failure.</p>
 	<p><b>We’ll be sharing more about Workflows during the second quarter of 2024 as we work towards an open (public!) beta</b>. This includes how we’re thinking about idempotency and interactions with our storage, per-instance observability and metrics, local development, and templates to bootstrap common workflows.</p>
-	<h3>Putting it together</h3>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-together">Putting it together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve often thought of Cloudflare’s own network as one massively scalable parallel data processing cluster: <a href="https://www.cloudflare.com/network">data centers in 310+ cities</a>, with the ability to run compute close to users and/or <a href="https://smart-placement-demo.pages.dev">close to data</a>, keep it within the bounds of regulatory or compliance requirements, and most importantly, use our massive scale to enable our customers to scale as well.</p>
 	<p>Recapping, a fully-fledged data platform needs to enable three things:</p>
 	<ol>
@@ -229,6 +257,13 @@ export default class extends Workflow {
 	<p>Specifically, we have Pipelines (1) scaling out to ingest data, batch it, filter it, and then durably store it in R2 (2) in a format that’s ready and optimized for querying. Workflows, ClickHouse, Databricks, or the query engine of your choice can then query (3) that data as soon as it’s ready — with “ready” being automatically triggered by an Event Notification <i>as soon as the data is ingested and written to R2</i>.</p>
 	<p>There’s no need to poll, no need to batch after the fact, no need to have your query engine slow down on data that wasn’t pre-aggregated or filtered, and no need to manage and scale infrastructure in order to keep up with load or data jurisdiction requirements. Create a Pipeline, write your data directly to R2, and query directly from it.</p>
 	<p>If you’re also looking at this and wondering about the costs of moving this data around, then we’re holding to one important principle: zero egress fees across all of our data products. Just as we set the stage for this with <a href="https://blog.cloudflare.com/introducing-r2-object-storage">our R2 object storage</a>, we intend to apply this to every data product we’re building, Pipelines included.</p>
-	<h3>Start Building</h3>
+	<div class="flex anchor relative">
+		<h3 id="start-building">Start Building</h3>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve shared a lot of what we’re building so that developers have an opportunity to provide feedback (including via our <a href="https://discord.cloudflare.com">Developer Discord</a>), share use-cases, and think about how to build their <i>next</i> application on Cloudflare.</p>
 </div>

@@ -2,14 +2,28 @@
 <div class="post-content lh-copy gray1">
 	<p>The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
 	<p>The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
-	<h3>The Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problem">The Problem</h3>
+		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At some point in one of our cluster we started seeing errors like this (an NXDOMAIN for an existing domain on our internal DNS):</p>
 	<pre class="language-bash"><code class="language-bash">lookup some.existing.internal.host on 10.1.0.9:53: no such host</code></pre>
 	<p>This seemed very weird, since the domain did indeed exist. It was one of our internal domains! Engineers had mentioned that they'd seen this behaviour, so we decided to investigate deeper. Queries triggering this error were varied and ranged from dynamic SRV records managed by mesos-dns to external domains looked up from inside the cluster.</p>
 	<p>Our first naive attempt was to run the following in a loop:</p>
 	<pre class="language-bash"><code class="language-bash">while true; do dig some.existing.internal.host &gt; /tmp/dig.txt || break; done</code></pre>
 	<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
-	<h3>Into the rabbit hole</h3>
+	<div class="flex anchor relative">
+		<h3 id="into-the-rabbit-hole">Into the rabbit hole</h3>
+		<a href="https://blog.cloudflare.com/#into-the-rabbit-hole" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We used to run <a href="https://www.unbound.net">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
 	<pre class="language-bash"><code class="language-bash">package main
 
@@ -55,7 +69,14 @@ func main() {
 	</figure>
 	<p>To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>
 	<p>We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
-	<h3>The Missing</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-missing">The Missing</h3>
+		<a href="https://blog.cloudflare.com/#the-missing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To test the hypothesis that losing packets can lead to a “no such host” error, we first tried blocking outgoing traffic on port 53:</p>
 	<pre class="language-bash"><code class="language-bash">sudo iptables -A OUTPUT -p udp --dport 53 -j DROP</code></pre>
 	<p>In this case, dig and similar tools just time out, but don’t return “no such host”:</p>
@@ -84,7 +105,14 @@ sudo tcpdump -w /state/wtf.cap port 53</code></pre>
 05.00s A cloudflare.com
 10.00s A cloudflare.com.in.our.internal.domain</code></pre>
 	<p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
-	<h3>Bingo</h3>
+	<div class="flex anchor relative">
+		<h3 id="bingo">Bingo</h3>
+		<a href="https://blog.cloudflare.com/#bingo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s look at /etc/resolv.conf to understand more:</p>
 	<pre class="language-bash"><code class="language-bash">nameserver 10.1.0.9
 search in.our.internal.domain</code></pre>
@@ -138,7 +166,14 @@ func main() {
 	}
 }</code></pre>
 	<p>Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
-	<h3>Solutions</h3>
+	<div class="flex anchor relative">
+		<h3 id="solutions">Solutions</h3>
+		<a href="https://blog.cloudflare.com/#solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's think about how we can improve our client to better handle these transient network issues, making it more resilient. The man page for resolv.conf tells you that you have two knobs: the <code>timeout</code> and <code>retries</code> options. The default values are 5 and 2 respectively.</p>
 	<p>Unless you keep your DNS server very busy, it is very unlikely that it would take it more than 1 second to reply. In fact, if you happen to have a network device on the Moon, you can expect it to reply in 3 seconds. If your nameserver lives in the next rack and is reachable over a high-speed network, you can safely assume that if there is no reply after 1 second, your DNS server did not get your query. If you want to have less weird “no such domain” errors that make you scratch your head, you might as well increase retries. The more times you retry with transient packet loss, the less chance of failure. The more often you retry, the higher chances to finish faster.</p>
 	<p>Imagine that you have truly random 1% packet loss.</p>
@@ -152,7 +187,14 @@ func main() {
 	</ul>
 	<p>In real life, the distribution would be different due to the fact that packet loss is not random, but you can expect to wait much less for DNS to reply with this type of change.</p>
 	<p>As you know many system libraries that provide DNS resolution like glibc, nscd, systemd-resolved are not hardened to handle being on the internet or in a environment with packet losses. We have faced the challenge of creating a reliable and fast DNS resolution environment a number of times as we have grown, only to later discover that the solution is not perfect.</p>
-	<h3>Over to you</h3>
+	<div class="flex anchor relative">
+		<h3 id="over-to-you">Over to you</h3>
+		<a href="https://blog.cloudflare.com/#over-to-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given what you have read in this article about packet loss and split-DNS/private-namespace, how would you design a fast and reliable resolution setup? What software would you use and why? What tuning changes from standard configuration would you use?</p>
 	<p>We'd love to hear your ideas in the comments. And, if you like working on problems like send us your resume. We are <a href="https://www.cloudflare.com/join-our-team">hiring</a>.</p>
 </div>

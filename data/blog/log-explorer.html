@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>Today, we are excited to announce beta availability of <a href="https://developers.cloudflare.com/logs/log-explorer">Log Explorer</a>, which allows you to investigate your HTTP and Security Event logs directly from the Cloudflare Dashboard. Log Explorer is an extension of <a href="https://blog.cloudflare.com/security-analytics">Security Analytics</a>, giving you the ability to review related raw logs. You can analyze, investigate, and monitor for security attacks natively within the Cloudflare Dashboard, reducing time to resolution and overall cost of ownership by eliminating the need to forward logs to third party security analysis tools.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security Analytics enables you to analyze all of your HTTP traffic in one place, giving you the security lens you need to identify and act upon what matters most: potentially malicious traffic that has not been mitigated. Security Analytics includes built-in views such as top statistics and in-context quick filters on an intuitive page layout that enables rapid exploration and validation.</p>
 	<p>In order to power our rich analytics dashboards with fast query performance, we implemented <a href="https://developers.cloudflare.com/analytics/graphql-api/sampling">data sampling</a> using <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Adaptive Bit Rate</a> (ABR) analytics. This is a great fit for providing high level aggregate views of the data. However, we received feedback from many Security Analytics power users that sometimes they need access to a more granular view of the data — they need logs.</p>
 	<p>Logs provide critical visibility into the operations of today's computer systems. Engineers and SOC analysts rely on logs every day to troubleshoot issues, identify and investigate security incidents, and tune the performance, reliability, and <a href="https://www.cloudflare.com/application-services/solutions">security</a> of their applications and infrastructure. Traditional metrics or monitoring solutions provide aggregated or statistical data that can be used to identify trends. Metrics are wonderful at identifying THAT an issue happened, but lack the detailed events to help engineers uncover WHY it happened. Engineers and SOC Analysts rely on raw log data to answer questions such as:</p>
@@ -25,7 +32,14 @@
 	</ul>
 	<p>Traditionally, these engineers and analysts would stand up a collection of various monitoring tools in order to capture logs and get this visibility. With more organizations using multiple clouds, or a hybrid environment with both cloud and on-premise tools and architecture, it is crucial to have a unified platform to regain visibility into this increasingly complex environment. &nbsp;As more and more companies are moving towards a cloud native architecture, we see Cloudflare’s <a href="https://www.cloudflare.com/en-gb/learning/cloud/what-is-a-connectivity-cloud">connectivity cloud</a> as an integral part of their performance and security strategy.</p>
 	<p>Log Explorer provides a lower cost option for storing and exploring log data within Cloudflare. Until today, we have offered the ability to export logs to expensive third party tools, and now with Log Explorer, you can quickly and easily explore your log data without leaving the Cloudflare Dashboard.</p>
-	<h3>Log Explorer Features</h3>
+	<div class="flex anchor relative">
+		<h3 id="log-explorer-features">Log Explorer Features</h3>
+		<a href="https://blog.cloudflare.com/#log-explorer-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whether you're a SOC Engineer investigating potential incidents, or a Compliance Officer with specific log retention requirements, Log Explorer has you covered. It stores your Cloudflare logs for an uncapped and customizable period of time, making them accessible natively within the Cloudflare Dashboard. The supported features include:</p>
 	<ul>
 		<li>
@@ -47,7 +61,14 @@
 			<p>Finding the HTTP request records associated with a Ray ID</p>
 		</li>
 	</ul>
-	<h3>Narrow in on unmitigated traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="narrow-in-on-unmitigated-traffic">Narrow in on unmitigated traffic</h3>
+		<a href="https://blog.cloudflare.com/#narrow-in-on-unmitigated-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a SOC analyst, your job is to monitor and respond to threats and incidents within your organization’s network. Using Security Analytics, and now with Log Explorer, you can identify anomalies and conduct a forensic investigation all in one place.</p>
 	<p>Let’s walk through an example to see this in action:</p>
 	<p>On the Security Analytics dashboard, you can see in the Insights panel that there is some traffic that has been tagged as a likely attack, but not mitigated.</p>
@@ -92,7 +113,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TgN2aPwWTDo5niA95TGQx/26d0cb0b90f2c00359629c25c49e907f/No-logs-found.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
 
 	</figure>
-	<h3>Find and investigate false positives</h3>
+	<div class="flex anchor relative">
+		<h3 id="find-and-investigate-false-positives">Find and investigate false positives</h3>
+		<a href="https://blog.cloudflare.com/#find-and-investigate-false-positives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With access to the full logs via Log Explorer, you can now perform a search to find specific requests.</p>
 	<p>A 403 error occurs when a user’s request to a particular site is blocked. Cloudflare’s security products use things like <a href="https://blog.cloudflare.com/introducing-ip-lists">IP reputation</a> and <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">WAF attack scores</a> based on ML technologies in order to assess whether a given HTTP request is malicious. This is extremely effective, but sometimes requests are mistakenly flagged as malicious and blocked.</p>
 	<p>In these situations, we can now use Log Explorer to identify these requests and why they were blocked, and then adjust the relevant WAF rules accordingly.</p>
@@ -108,7 +136,15 @@
 
 	</figure>
 	<p>Note that the LIMIT clause is included in the query by default, but has no impact on RayID queries as RayID is unique and only one record would be returned when using the RayID filter field.</p>
-	<h3>How we built Log Explorer</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-log-explorer">How we built Log Explorer</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-log-explorer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pNBd5iSyVW7aqfJ0JfYDP/ae7f50f08b87f719f0073845764db67f/How-we-built-Log-Explorer.png" alt="" class="kg-image" width="1600" height="1191" loading="lazy">
@@ -119,10 +155,24 @@
 	<p>Under the hood, the datasets for each customer are stored as Delta tables in R2 buckets. A <i>Delta table</i> is a storage format that organizes Apache Parquet objects into directories using Hive's partitioning naming convention. Crucially, Delta tables pair these storage objects with an append-only, checkpointed transaction log. This design allows Log Explorer to support multiple writers with optimistic concurrency.</p>
 	<p>Many of the products Cloudflare builds are a direct result of the challenges our own team is looking to address. Log Explorer is a perfect example of this <a href="https://blog.cloudflare.com/tag/dogfooding">culture of dogfooding</a>. Optimistic concurrent writes require atomic updates in the underlying object store, and as a result of our needs, R2 added a PutIfAbsent operation with strong consistency. Thanks, R2! The atomic operation sets Log Explorer apart from Delta Lake solutions based on Amazon Web Services’ S3, which incur the operational burden of using an <a href="https://delta.io/blog/2022-05-18-multi-cluster-writes-to-delta-lake-storage-in-s3">external store</a> for synchronizing writes.</p>
 	<p>Log Explorer is written in the Rust programming language using open-source libraries, such as <a href="https://github.com/delta-io/delta-rs">delta-rs</a>, a native Rust implementation of the Delta Lake protocol, and <a href="https://arrow.apache.org/datafusion">Apache Arrow DataFusion</a>, a very fast, extensible query engine. At Cloudflare, Rust has emerged as a popular choice for new product development due to its safety and performance benefits.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We know that application security logs are only part of the puzzle in understanding what’s going on in your environment. Stay tuned for future developments including tighter, more seamless integration between Analytics and Log Explorer, the addition of more datasets including Zero Trust logs, the ability to define custom retention periods, and integrated custom alerting.</p>
 	<p>Please use the <a href="https://forms.gle/tvKQDdXmCk98zyV9A">feedback link</a> to let us know how Log Explorer is working for you and what else would help make your job easier.</p>
-	<h3>How to get it</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-it">How to get it</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’d love to hear from you! Let us know if you are interested in joining our Beta program by completing <a href="https://cloudflare.com/lp/log-explorer">this form</a> and a member of our team will contact you.</p>
 	<p>Pricing will be finalized prior to a General Availability (GA) launch.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">

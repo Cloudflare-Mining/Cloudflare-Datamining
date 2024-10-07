@@ -8,7 +8,14 @@
 	<p>Over the coming months, Cloudflare Workers will start to roll out built-in compatibility with Node.js core APIs as part of an effort to support increased compatibility across JavaScript runtimes.</p>
 	<p>We are happy to announce today that the first of these Node.js APIs – <code>AsyncLocalStorage</code>, <code>EventEmitter</code>, <code>Buffer</code>, <code>assert</code>, and parts of <code>util</code> – are now available for use. These APIs are provided directly by the <a href="https://github.com/cloudflare/workerd">open-source Cloudflare Workers runtime</a>, with no need to bundle polyfill implementations into your own code.</p>
 	<p>These new APIs are available today — start using them by enabling the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a> in your Workers.</p>
-	<h3>Async Context Tracking with the AsyncLocalStorage API</h3>
+	<div class="flex anchor relative">
+		<h3 id="async-context-tracking-with-the-asynclocalstorage-api">Async Context Tracking with the AsyncLocalStorage API</h3>
+		<a href="https://blog.cloudflare.com/#async-context-tracking-with-the-asynclocalstorage-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>AsyncLocalStorage</code> API provides a way to track context across asynchronous operations. It allows you to pass a value through your program, even across multiple layers of asynchronous code, without having to pass a context value between operations.</p>
 	<p>Consider an example where we want to add debug logging that works through multiple layers of an application, where each log contains the ID of the current request. Without AsyncLocalStorage, it would be necessary to explicitly pass the request ID down through every function call that might invoke the logging function:</p>
 	<pre class="language-javascript"><code class="language-javascript">function logWithId(id, state) {
@@ -144,7 +151,14 @@ resource2.doSomething();  // prints 321</code></pre>
 	<p>For more, refer to the <a href="https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage">Node.js documentation</a> about the <code>AsyncLocalStorage</code> API.</p>
 	<p>There is currently an effort underway to add a new <a href="https://github.com/tc39/proposal-async-context">AsyncContext</a> mechanism (inspired by <code>AsyncLocalStorage</code>) to the JavaScript language itself. While it is still early days for the TC-39 proposal, there is good reason to expect it to progress through the committee. Once it does, we look forward to being able to make it available in the Cloudflare Workers platform. We expect our implementation of <code>AsyncLocalStorage</code> to be compatible with this new API.</p>
 	<p>The proposal for AsyncContext provides an excellent set of examples and <a href="https://github.com/tc39/proposal-async-context#motivation">description of the motivation</a> of why async context tracking is useful.</p>
-	<h3>Events with EventEmitter</h3>
+	<div class="flex anchor relative">
+		<h3 id="events-with-eventemitter">Events with EventEmitter</h3>
+		<a href="https://blog.cloudflare.com/#events-with-eventemitter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The EventEmitter API is one of the most fundamental Node.js APIs and is critical to supporting many other higher level APIs, including streams, crypto, net, and more. An EventEmitter is an object that emits named events that cause listeners to be called.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { EventEmitter } from 'node:events';
 
@@ -163,7 +177,14 @@ emitter.on('error', (err) =&gt; {
   // the async promise rejection is emitted here!
 });</code></pre>
 	<p>Please refer to the Node.js documentation for more details on the use of the <code>EventEmitter</code> API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events">https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events</a>.</p>
-	<h3>Buffer</h3>
+	<div class="flex anchor relative">
+		<h3 id="buffer">Buffer</h3>
+		<a href="https://blog.cloudflare.com/#buffer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>Buffer</code> API in Node.js predates the introduction of the standard TypedArray and DataView APIs in JavaScript by many years and has persisted as one of the most commonly used Node.js APIs for manipulating binary data. Today, every Buffer instance extends from the standard Uint8Array class but adds a range of unique capabilities such as built-in base64 and hex encoding/decoding, byte-order manipulation, and encoding-aware substring searching.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { Buffer } from 'node:buffer';
 
@@ -180,7 +201,14 @@ console.log(buf.toString('base64'));
 const writer = writable.getWriter();
 writer.write(Buffer.from("hello world"));</code></pre>
 	<p>Please refer to the Node.js documentation for more details on the use of the Buffer API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html">https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html</a>.</p>
-	<h3>Assertions</h3>
+	<div class="flex anchor relative">
+		<h3 id="assertions">Assertions</h3>
+		<a href="https://blog.cloudflare.com/#assertions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The assert module in Node.js provides a number of useful assertions that are useful when building tests.</p>
 	<pre class="language-javascript"><code class="language-javascript">import {
   strictEqual,
@@ -202,7 +230,14 @@ await doesNotReject(async () =&gt; {}); // ok!
 await doesNotReject(async () =&gt; { throw new Error('boom') }); // fails! throws AssertionError</code></pre>
 	<p>In the Workers implementation of assert, all assertions run in what Node.js calls the "<a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html#strict-assertion-mode">strict assertion mode</a>", which means that non-strict methods behave like their corresponding strict methods. For instance, <code>deepEqual()</code> will behave like <code>deepStrictEqual()</code>.</p>
 	<p>Please refer to the Node.js documentation for more details on the use of the assertion API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html">https://nodejs.org/dist/latest-v19.x/docs/api/assert.html</a>.</p>
-	<h3>Promisify/Callbackify</h3>
+	<div class="flex anchor relative">
+		<h3 id="promisify-callbackify">Promisify/Callbackify</h3>
+		<a href="https://blog.cloudflare.com/#promisify-callbackify" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>promisify</code> and callbackify APIs in Node.js provide a means of bridging between a Promise-based programming model and a callback-based model.</p>
 	<p>The <code>promisify</code> method allows taking a Node.js-style callback function and converting it into a Promise-returning async function:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { promisify } from 'node:util';
@@ -232,7 +267,14 @@ callbackifiedFoo(args, (err, value) =&gt; {
 });</code></pre>
 	<p>Together these utilities make it easy to properly handle all of the generally tricky nuances involved with properly bridging between callbacks and promises.</p>
 	<p>Please refer to the Node.js documentation for more information on how to use these APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal</a>, <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal</a>.</p>
-	<h3>Type brand-checking with util.types</h3>
+	<div class="flex anchor relative">
+		<h3 id="type-brand-checking-with-util-types">Type brand-checking with util.types</h3>
+		<a href="https://blog.cloudflare.com/#type-brand-checking-with-util-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The util.types API provides a reliable and generally more efficient way of checking that values are instances of various built-in types.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { types } from 'node:util';
 
@@ -249,6 +291,13 @@ types.isAsyncFunction(function foo() {});  // Returns false
 types.isAsyncFunction(async function foo() {});  // Returns true
 // .. and so on</code></pre>
 	<p>Please refer to the Node.js documentation for more information on how to use the type check APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes</a>. The workers implementation currently does not provide implementations of the <code>util.types.isExternal()</code>, <code>util.types.isProxy()</code>, <code>util.types.isKeyObject()</code>, or <code>util.type.isWebAssemblyCompiledModule()</code> APIs.</p>
-	<h3>What's next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keep your eyes open for more Node.js core APIs coming to Cloudflare Workers soon! We currently have implementations of the string decoder, streams and crypto APIs in active development. These will be introduced into the workers runtime incrementally over time and any worker using the <code>nodejs_compat</code> compatibility flag will automatically pick up the new modules as they are added.</p>
 </div>

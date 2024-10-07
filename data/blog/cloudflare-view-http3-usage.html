@@ -60,14 +60,28 @@
 	<p>On May 28, 2021, we <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">enabled</a> QUIC version 1 and HTTP/3 for all Cloudflare customers, using the final "h3" identifier that matches RFC 9114. So although today's publication is an occasion to celebrate, for us nothing much has changed, and it's business as usual.</p>
 	<p><a href="https://caniuse.com/http3">Support for HTTP/3 in the stable release channels of major browsers</a> came in November 2020 for Google Chrome and Microsoft Edge and April 2021 for Mozilla Firefox. In Apple Safari, HTTP/3 support currently needs to be <a href="https://developer.apple.com/forums/thread/660516">enabled</a> in the “Experimental Features” developer menu in production releases.</p>
 	<p>A browser and web server typically automatically negotiate the highest HTTP version available. Thus, HTTP/3 takes precedence over HTTP/2. We looked back over the last year to understand HTTP/3 usage trends across the Cloudflare network, as well as analyzing HTTP versions used by traffic from leading browser families (Google Chrome, Mozilla Firefox, Microsoft Edge, and Apple Safari), major search engine indexing bots, and bots associated with some popular social media platforms. The graphs below are based on aggregate HTTP(S) traffic seen globally by the Cloudflare network, and include requests for website and application content across the Cloudflare customer base between May 7, 2021, and May 7, 2022. We used <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Cloudflare bot scores</a> to restrict analysis to “likely human” traffic for the browsers, and to “likely automated” and “automated” for the search and social bots.</p>
-	<h3>Traffic by HTTP version</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-by-http-version">Traffic by HTTP version</h3>
+		<a href="https://blog.cloudflare.com/#traffic-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Overall, HTTP/2 still comprises the majority of the request traffic for Cloudflare customer content, as clearly seen in the graph below. After remaining fairly consistent through 2021, HTTP/2 request volume increased by approximately 20% heading into 2022. HTTP/1.1 request traffic remained fairly flat over the year, aside from a slight drop in early December. And while HTTP/3 traffic initially trailed HTTP/1.1, it surpassed it in early July, growing steadily and &nbsp;roughly doubling in twelve months.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UKNCgWJPAocsCrvTmqKOG/3286991ce4a5bab0625ab0ded3937609/image13-1.png" alt="" class="kg-image" width="1108" height="600" loading="lazy">
 
 	</figure>
-	<h3>HTTP/3 traffic by browser</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-3-traffic-by-browser">HTTP/3 traffic by browser</h3>
+		<a href="https://blog.cloudflare.com/#http-3-traffic-by-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Digging into just HTTP/3 traffic, the graph below shows the trend in daily aggregate request volume over the last year for HTTP/3 requests made by the surveyed browser families. Google Chrome (orange line) is far and away the leading browser, with request volume far outpacing the others.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -114,7 +128,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dtxJLKq2N23CBwcZlEz8s/d49661e3dab5e5e8ed9653a3a3bb57a8/image11-2.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
-	<h3>Traffic by search indexing bot</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-by-search-indexing-bot">Traffic by search indexing bot</h3>
+		<a href="https://blog.cloudflare.com/#traffic-by-search-indexing-bot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in 2014, Google <a href="https://developers.google.com/search/blog/2014/08/https-as-ranking-signal">announced</a> that it would start to consider HTTPS usage as a ranking signal as it indexed websites. However, it does not appear that Google, or any of the other major search engines, currently consider support for the latest versions of HTTP as a ranking signal. (At least not directly – the performance improvements associated with newer versions of HTTP could theoretically influence rankings.) Given that, we wanted to understand which versions of HTTP the indexing bots themselves were using.</p>
 	<p>Despite leading the charge around the development of QUIC, and integrating HTTP/3 support into the Chrome browser early on, it appears that on the indexing/crawling side, Google still has quite a long way to go. The graph below shows that requests from GoogleBot are still predominantly being made over HTTP/1.1, although use of HTTP/2 has grown over the last six months, gradually approaching HTTP/1.1 request volume. (A <a href="https://developers.google.com/search/blog/2020/09/googlebot-will-soon-speak-http2">blog post</a> from Google provides some potential insights into this shift.) Unfortunately, the volume of requests from GoogleBot over HTTP/3 has remained extremely limited over the last year.</p>
 	<figure class="kg-card kg-image-card ">
@@ -128,7 +149,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/444sdNtnh5h0LNsGtUWmuV/c2ab15b50c7f01bf6281b3808804f26c/image10-5.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
-	<h3>Traffic by social media bot</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-by-social-media-bot">Traffic by social media bot</h3>
+		<a href="https://blog.cloudflare.com/#traffic-by-social-media-bot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Major social media platforms use custom bots to retrieve metadata for shared content, <a href="https://developers.facebook.com/docs/sharing/bot">improve language models for speech recognition technology</a>, or otherwise index website content. We also surveyed the HTTP version preferences of the bots deployed by three of the leading social media platforms.</p>
 	<p>Although <a href="https://http3check.net/?host=www.facebook.com">Facebook supports HTTP/3</a> on their main website (and presumably their mobile applications as well), their back-end FacebookBot crawler does not appear to support it. Over the last year, on the order of 60% of the requests from FacebookBot have been over HTTP/1.1, with the balance over HTTP/2. Heading into 2022, it appeared that HTTP/1.1 preference was trending lower, with request volume over the 25-year-old protocol dropping from near 80% to just under 50% during the fourth quarter. However, that trend was abruptly reversed, with HTTP/1.1 growing back to over 70% in early February. The reason for the reversal is unclear.</p>
 	<figure class="kg-card kg-image-card ">
@@ -148,11 +176,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ozCJpCXILw6ulzIAxDyXn/ffd06556935e26e2513ea713c074a86e/image5-23.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're happy that HTTP/3 has, at long last, been published as <a href="https://www.rfc-editor.org/rfc/rfc9114.html">RFC 9114</a>. More than that, we're super pleased to see that regardless of the wait, browsers have steadily been enabling support for the protocol by default. This allows end users to seamlessly gain the advantages of HTTP/3 whenever it is available. On Cloudflare's global network, we've seen continued growth in the share of traffic speaking HTTP/3, demonstrating continued interest from customers in enabling it for their sites and services. In contrast, we are disappointed to see bots from the major search and social platforms continuing to rely on aging versions of HTTP. We'd like to build a better understanding of how these platforms chose particular HTTP versions and welcome collaboration in exploring the advantages that HTTP/3, in particular, could provide.</p>
 	<p>Current statistics on HTTP/3 and QUIC adoption at a country and autonomous system (ASN) level can be found on <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
 	<p>Running HTTP/3 and QUIC on the edge for everyone has allowed us to monitor a wide range of aspects related to interoperability and performance across the Internet. Stay tuned for future blog posts that explore some of the technical developments we've been making.</p>
 	<p>And this certainly isn't the end of protocol innovation, as HTTP/3 and QUIC provide many exciting new opportunities. The IETF and wider community are already underway building new capabilities on top, such as <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a> and <a href="https://datatracker.ietf.org/wg/webtrans/documents">WebTransport</a>. Meanwhile, in the last year, the QUIC Working Group has adopted new work such as <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-v2">QUIC version 2</a>, and the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-multipath">Multipath Extension to QUIC</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 50.546780072904006%;"><iframe src="https://iframe.videodelivery.net/0d3f056ac5acfe4954a5845c3fc25d32?poster=https%3A%2F%2Fvideodelivery.net%2F0d3f056ac5acfe4954a5845c3fc25d32%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1m8s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

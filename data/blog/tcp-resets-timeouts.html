@@ -5,7 +5,14 @@
 	<p>This post explores those connections that, for various reasons, appear to our servers to have been halted unexpectedly before any useful data exchange occurs. Our work reveals that while connections are normally ended by clients, they can also be closed due to third-party interference. Today we’re excited to launch a new <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard</u></a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-tcp-resets-timeouts-summary"><u>API endpoint</u></a> on Cloudflare Radar that shows a near real-time view of TCP connections to Cloudflare’s network that terminate within the first 10 ingress packets due to resets or timeouts, which we’ll refer to as <i>anomalous</i> TCP connections in this post. Analyzing this anomalous behavior provides insights into scanning, connection tampering, DoS attacks, connectivity issues, and other behaviors.</p>
 	<p>Our ability to generate and share this data via Radar follows from a global investigation into <a href="https://blog.cloudflare.com/connection-tampering"><u>connection tampering</u></a>. Readers are invited to read the technical details in the peer-review <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>study</u></a>, or see its <a href="https://youtu.be/RD73IgzQMFo?si=OWvNnlNNLalbhygV&amp;t=2984"><u>corresponding presentation</u></a>. Read on for a primer on how to use and interpret the data, as well as how we designed and deployed our detection mechanisms so that others might replicate our approach.</p>
 	<p>To begin, let’s discuss our classification of normal vs anomalous TCP connections.</p>
-	<h2>TCP connections from establishment to close</h2>
+	<div class="flex anchor relative">
+		<h2 id="tcp-connections-from-establishment-to-close">TCP connections from establishment to close</h2>
+		<a href="https://blog.cloudflare.com/#tcp-connections-from-establishment-to-close" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Transmission Control Protocol (TCP) is a protocol for reliably transmitting data between two hosts on the Internet (<a href="https://datatracker.ietf.org/doc/rfc9293"><u>RFC 9293</u></a>). A TCP connection passes through several distinct stages, from connection establishment, to data transfer, to connection close.</p>
 	<p>A TCP connection is established with a 3-way handshake. The handshake begins when one party, called the client, sends a packet marked with the ‘SYN’ flag to initialize the connection process. The server responds with a “SYN+ACK” packet where the ‘ACK’ flag acknowledges the client’s initialization ‘SYN’. Additional synchronization information is included in both the initialization packet and its acknowledgement. . Finally, the client acknowledges the server’s SYN+ACK packet with a final ACK packet to complete the handshake.</p>
 	<p>The connection is then ready for data transmission. Typically, the client will set the PSH flag on the first data-containing packet to signal to the server’s TCP stack to forward the data immediately up to the application. Both parties continue to transfer data and acknowledge received data until the connection is no longer needed, at which point the connection is closed.</p>
@@ -27,7 +34,14 @@
 	<p><i><sub>A normal TCP connection starts with a 3-way handshake and ends with a FIN handshake</sub></i></p>
 	<p>Additionally, a TCP connection may be terminated by a <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die"><u>timeout</u></a> which specifies the maximum duration that a connection can be active without receiving data or acknowledgements. An inactive connection, for example, can be kept open with <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die"><u>keepalive</u></a> messages. Unless overridden, the global default duration specified in RFC 9293 is five minutes.</p>
 	<p>We consider TCP connections <i>anomalous</i> when they close via either a reset or timeout from the client side.</p>
-	<h2>Sources of anomalous connections</h2>
+	<div class="flex anchor relative">
+		<h2 id="sources-of-anomalous-connections">Sources of anomalous connections</h2>
+		<a href="https://blog.cloudflare.com/#sources-of-anomalous-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Anomalous TCP connections may not themselves be problematic but they can be a symptom of larger issues, especially when occurring at early (pre-data) stages of TCP connections. Below is a non-exhaustive list of potential reasons that we might observe resets or timeouts:</p>
 	<ul>
 		<li>
@@ -56,7 +70,14 @@
 	<p><b>Later (after multiple data packets)</b>: Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.</p>
 	<p><b>None</b>: All other connections.</p>
 	<p>To keep focus on legitimate connections, the dataset is constructed after connections are processed and filtered by Cloudflare’s attack mitigation systems.&nbsp; For more details on how we construct the dataset, see <a href="https://blog.cloudflare.com/#anomalousTCP"><u>below.</u></a></p>
-	<h3>Start with a self-evaluation</h3>
+	<div class="flex anchor relative">
+		<h3 id="start-with-a-self-evaluation">Start with a self-evaluation</h3>
+		<a href="https://blog.cloudflare.com/#start-with-a-self-evaluation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To start, we encourage readers to visit the <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard on Radar</u></a> to view the results worldwide, and for their own country and ISP.</p>
 	<p>Globally, as shown below, about 20% of new TCP connections to Cloudflare’s network are closed by a reset or timeout within the first 10 packets from the client. While this number seems astonishingly high, it is in-line with prior studies. As we’ll see, rates of resets and timeouts vary widely by country and network, and this variation is lost in the global averages.</p>
 	<figure class="kg-card kg-image-card">
@@ -90,10 +111,24 @@
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS15169?dateStart=2024-07-28&amp;dateEnd=2024-08-26#bot-vs-human"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>The new anomalous connections dataset, like most that appear on Radar, is passive – it only reports on observable events, not what causes them. In this spirit, the graphs above for Google’s network reinforce the reason for corroborating observations, as we discuss next.</p>
-	<h2>One view for a signal, more views for corroboration</h2>
+	<div class="flex anchor relative">
+		<h2 id="one-view-for-a-signal-more-views-for-corroboration">One view for a signal, more views for corroboration</h2>
+		<a href="https://blog.cloudflare.com/#one-view-for-a-signal-more-views-for-corroboration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our passive measurement approach works at Cloudflare scale. However, it does not identify root causes or ground truth on its own. There are many plausible explanations for why a connection closed in a particular stage, especially when the closure is due to reset packets and timeouts. Attempts to explain by relying solely on this data source can only lead to speculation.&nbsp;</p>
 	<p>However, this limitation can be overcome by combining with other data sources such as active measurements. For example, corroborating with reports from <a href="https://ooni.org"><u>OONI</u></a> or <a href="https://censoredplanet.org"><u>Censored Planet</u></a>, or with on-the-ground reports, can give a more complete story. Thus, one of the major use cases for the TCP resets and timeouts dataset is to understand the scale and impact of previously-documented phenomena.</p>
-	<h3>Corroborating Internet-scale measurement projects</h3>
+	<div class="flex anchor relative">
+		<h3 id="corroborating-internet-scale-measurement-projects">Corroborating Internet-scale measurement projects</h3>
+		<a href="https://blog.cloudflare.com/#corroborating-internet-scale-measurement-projects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at <a href="https://radar.cloudflare.com/as398324"><u>AS398324</u></a> would suggest something terribly wrong, with more than half of connections showing up as anomalous in the Post-SYN stage. However, this network turns out to be CENSYS-ARIN-01, from Internet scanning company <a href="https://censys.com"><u>Censys</u></a>. Post-SYN anomalies can be the result of network-layer scanning, where the scanner sends a single SYN packet to probe the server, but does not complete the TCP handshake. There are also high rates of Later anomalies, which could be indicative of application-layer scanning, as indicated by the near 100% proportion of connections being classified as automated.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -109,7 +144,14 @@
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/traffic/AS398324?dateStart=2024-07-28&amp;dateEnd=2024-08-26#bot-vs-human"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>So far, we’ve looked at networks that generate high volumes of scripted or automated traffic. It’s time to look further afield.</p>
-	<h3>Corroborating connection tampering</h3>
+	<div class="flex anchor relative">
+		<h3 id="corroborating-connection-tampering">Corroborating connection tampering</h3>
+		<a href="https://blog.cloudflare.com/#corroborating-connection-tampering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The starting point of this dataset was a research project to understand and detect active connection tampering, in a similar spirit to our work on <a href="https://blog.cloudflare.com/monsters-in-the-middleboxes"><u>HTTPS interception</u></a>. The reasons we set out to do are explained in detail in our <a href="https://blog.cloudflare.com/connection-tampering"><u>accompanying blog post</u></a>.</p>
 	<p>A <a href="https://go.gale.com/ps/anonymous?id=GALE%7CA175630128&amp;it=r&amp;linkaccess=abs&amp;issn=10727825"><u>well-documented</u></a> technique in the wild to force connections to close is <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/weav.pdf"><u>reset injection</u></a>. With reset injection, middleboxes on the path to the destination inspect data portions of packets. When the middlebox sees a packet to a forbidden domain name, it injects forged TCP Reset (RST) packets to one or both communicating parties to cause them to abort the connection. If the middlebox did not drop the forbidden packet first, then the server will receive both the client packet that triggered the middlebox tampering – perhaps containing a TLS Client Hello message with a <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-sni"><u>Server Name Indication (SNI)</u></a> field – followed soon afterwards by the forged RST packet.</p>
 	<p>In the TCP resets and timeouts dataset, a connection disrupted via reset injection would typically appear as a Post-ACK, Post-PSH, or Later anomaly (but, as a reminder, not all anomalies are due to reset injection).</p>
@@ -141,9 +183,23 @@
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS56046?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
 	<p>See our <a href="https://blog.cloudflare.com/connection-tampering"><u>deep-dive blog post</u></a> for more information about connection tampering.</p>
-	<h2>Sourcing new insights and targets for followup study</h2>
+	<div class="flex anchor relative">
+		<h2 id="sourcing-new-insights-and-targets-for-followup-study">Sourcing new insights and targets for followup study</h2>
+		<a href="https://blog.cloudflare.com/#sourcing-new-insights-and-targets-for-followup-study" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCP resets and timeouts dataset may also be a source for identifying new or previously understudied network behaviors, by helping to find networks that “stick out” and merit further investigation.</p>
-	<h3>Unattributable ZMap scanning</h3>
+	<div class="flex anchor relative">
+		<h3 id="unattributable-zmap-scanning">Unattributable ZMap scanning</h3>
+		<a href="https://blog.cloudflare.com/#unattributable-zmap-scanning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is one we’re unable to explain: Every day during the same 18-hour interval, over 10% of connections from UK clients never progress past the initial SYN packets, and just time out.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -158,7 +214,14 @@
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/AS396982?dateStart=2024-07-28&amp;dateEnd=2024-08-26#tcp-resets-and-timeouts"><sub><i>Cloudflare Radar</i></sub></a></p>
-	<h3>Zero-rating in mobile networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-rating-in-mobile-networks">Zero-rating in mobile networks</h3>
+		<a href="https://blog.cloudflare.com/#zero-rating-in-mobile-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A cursory look at anomaly rates at the country level reveals some interesting findings. For instance, looking at connections from <a href="https://radar.cloudflare.com/mx"><u>Mexico</u></a>, the rates of Post-ACK and Post-PSH anomalies often associated with connection tampering are higher than the global average. The profile for Mexico connections is also similar to others in the region. However, Mexico is a country with “<a href="https://freedomhouse.org/country/mexico/freedom-net/2023"><u>no documented evidence that the government or other actors block or filter internet content.</u></a>”</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -196,9 +259,23 @@
 
 	</figure>
 	<p><sub><i>via </i></sub><a href="https://radar.cloudflare.com/security-and-attacks/dz?dateStart=2024-06-06&amp;dateEnd=2024-06-19#tcp-resets-and-attacks"><sub><i>Cloudflare Radar</i></sub></a></p>
-	<h2>Changes over time, a longitudinal view</h2>
+	<div class="flex anchor relative">
+		<h2 id="changes-over-time-a-longitudinal-view">Changes over time, a longitudinal view</h2>
+		<a href="https://blog.cloudflare.com/#changes-over-time-a-longitudinal-view" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most powerful aspects of our continuous passive measurement is the ability to measure networks over longer periods of time.</p>
-	<h3>Internet shutdowns</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-shutdowns">Internet shutdowns</h3>
+		<a href="https://blog.cloudflare.com/#internet-shutdowns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our June 2024 blog post “<a href="https://blog.cloudflare.com/syria-iraq-algeria-exam-internet-shutdown"><u>Examining recent Internet shutdowns in Syria, Iraq, and Algeria</u></a>”, we shared the view of exam-related nationwide Internet shutdowns from the perspective of Cloudflare’s network. At that time we were preparing the TCP resets and timeouts dataset, which was helpful to confirm outside reports and get some insight into the specific techniques used for the shutdowns.</p>
 	<p>As examples of changing behavior, we can go “back in time” to observe exam-related blocking as it happened. In <a href="https://radar.cloudflare.com/sy"><u>Syria</u></a>, during the exam-related shutdowns we see spikes in the rate of Post-SYN anomalies. In reality, we see a <a href="https://radar.cloudflare.com/traffic/sy?dateStart=2024-05-20&amp;dateEnd=2024-06-19"><u>near-total drop in traffic</u></a> (including SYN packets) during these periods.</p>
 	<figure class="kg-card kg-image-card ">
@@ -245,7 +322,14 @@
 		</li>
 	</ol>
 	<p>These design choices keep encrypted packets safe and can be replicated anywhere, without needing access to the destination server.</p>
-	<h2>First, sample connections</h2>
+	<div class="flex anchor relative">
+		<h2 id="first-sample-connections">First, sample connections</h2>
+		<a href="https://blog.cloudflare.com/#first-sample-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our main goal was to design a mechanism that scales, and gives us broad visibility into all connections arriving at Cloudflare’s network. Running traffic captures on each client-facing server works, but does not scale. We would also need to know exactly where and when to look, making continuous insights hard to capture. Instead, we sample connections from all of Cloudflare’s servers and log them to a central location where we could perform offline analysis.</p>
 	<p>This is where we hit the first roadblock: existing packet logging pipelines used by Cloudflare’s analytics systems log individual packets, but a connection consists of many packets. To detect connection anomalies we needed to see all, or at least enough, packets in a given connection. Fortunately, we were able to leverage a flexible logging system built by Cloudflare’s DoS team for <a href="https://developers.cloudflare.com/ddos-protection/about/how-ddos-protection-works"><u>analyzing packets involved in DDoS attacks</u></a> in conjunction with a carefully crafted invocation of two <a href="https://manpages.debian.org/bookworm/iptables/iptables.8.en.html"><code><u>iptables</u></code></a> rules to achieve our goal.</p>
 	<p>The first <code>iptables</code> rule randomly selects and marks new connections for sampling. In our case, we settled on sampling one in every 10,000 ingress TCP connections. There’s nothing magical about this number, but at Cloudflare’s scale it strikes a balance between capturing enough without straining our data processing and analytics pipelines. The <code>iptables</code> rules only apply to packets after they have passed the DDoS mitigation system. As TCP connections can be long-lived, we sample only new TCP connections. Here is the <code>iptables</code> rule for marking connections to be sampled:</p>
@@ -265,7 +349,14 @@ comment --comment "Log the first 10 incoming packets of each sampled ingress con
 </code></pre>
 	<p></p>
 	<p>This rule is installed in the same chain as the previous rule. It matches only packets from sampled connections <code>(-m connlabel --label &lt;label&gt;)</code>, and only the first 10 packets from each connection (<code>-m connbytes ! --connbytes 11 --connbytes-dir original --connbytes-mode packets</code>). Matched packets are sent to NFLOG (<code>-j NFLOG --nflog-prefix "&lt;logging flags&gt;"</code>) where they’re picked up by the logging system and saved to a centralized location for offline analysis.</p>
-	<h2>Reconstructing connections from sampled packets</h2>
+	<div class="flex anchor relative">
+		<h2 id="reconstructing-connections-from-sampled-packets">Reconstructing connections from sampled packets</h2>
+		<a href="https://blog.cloudflare.com/#reconstructing-connections-from-sampled-packets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Packets logged on our servers are inserted into <a href="https://blog.cloudflare.com/tag/clickhouse"><u>ClickHouse</u></a> tables as part of our analytics pipeline. Each logged packet is stored in its own row in the database. The next challenge is to reassemble packets into the corresponding connections for further analysis. Before we go further, we need to define what a “connection” is for the purpose of this analysis.</p>
 	<p>We use the standard definition of a connection defined by the network 5-tuple of <code>protocol</code>, <code>source IP address</code>, <code>source port</code>, <code>destination IP address</code>, <code>destination port</code> with the following tweaks:</p>
 	<ul>
@@ -286,10 +377,24 @@ comment --comment "Log the first 10 incoming packets of each sampled ingress con
 		</li>
 	</ul>
 	<p>With the above conditions for how we define a connection, we’re now ready to describe our analysis pipeline in more detail.</p>
-	<h2>Mapping connection close events to stages</h2>
+	<div class="flex anchor relative">
+		<h2 id="mapping-connection-close-events-to-stages">Mapping connection close events to stages</h2>
+		<a href="https://blog.cloudflare.com/#mapping-connection-close-events-to-stages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCP connections transition through a series of stages from connection establishment through eventual close. The stage at which an anomalous connection closes provides clues as to <i>why</i> the anomaly occurred. Based on the packets that we receive at our servers, we place each incoming connection into one of four stages (Post-SYN, Post-ACK, Post-PSH, Later), described in more detail <a href="https://blog.cloudflare.com/#dataset"><u>above</u></a>.</p>
 	<p>The connection close stage alone provides useful insights into anomalous TCP connections from various networks, and this is what is shown today on Cloudflare Radar. However, in some cases we can provide deeper insights by matching connections against more specific signatures.</p>
-	<h2>Applying tags to describe more specific connection behaviors</h2>
+	<div class="flex anchor relative">
+		<h2 id="applying-tags-to-describe-more-specific-connection-behaviors">Applying tags to describe more specific connection behaviors</h2>
+		<a href="https://blog.cloudflare.com/#applying-tags-to-describe-more-specific-connection-behaviors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The grouping of connections into stages as described above is done solely based on the TCP flags of packets in the connection. Considering other factors such as packet inter-arrival timing, exact combinations of TCP flags, and other packet fields (IP identification, IP TTL, TCP sequence and acknowledgement numbers, TCP window size, etc.) can allow for more fine-grained matching to specific behaviors.</p>
 	<p>For example, the popular <a href="http://zmap.io"><u>ZMap</u></a> scanner software fixes the IP identification field to 54321 and the TCP window size to 65535 in SYN packets that it generates (<a href="https://github.com/zmap/zmap/blob/c88db2917612328c843561101495e5263ef7ac5b/src/probe_modules/packet.c"><u>source code</u></a>). When we see packets arriving to our network that have these exact fields set, it is likely that the packet was generated by a scanner using ZMap.</p>
 	<p>Tags can also be used to match connections against known signatures of tampering middleboxes. A large body of active measurements work (for instance, <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/weav.pdf"><u>Weaver, Sommer, and Paxson</u></a>) has found that some middleboxes deployments exhibit consistent behaviors when disrupting connections via reset injection, such as setting an IP TTL field that differs from other packets sent by the client, or sending both a RST packet and a RST+ACK packet. For more details on specific connection tampering signatures, see the <a href="https://blog.cloudflare.com/connection-tampering"><u>blog post</u></a> and the <a href="https://research.cloudflare.com/publications/SundaraRaman2023"><u>peer-reviewed paper</u></a>.</p>
@@ -340,7 +445,14 @@ comment --comment "Log the first 10 incoming packets of each sampled ingress con
 		</li>
 	</ul>
 	<p>Connection tags are not currently visible in the Radar <a href="https://radar.cloudflare.com/security-and-attacks#tcp-resets-and-timeouts"><u>dashboard</u></a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-tcp-resets-timeouts-summary"><u>API</u></a>, but we plan to release this additional functionality in the future.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s mission is to help build a better Internet, and we consider transparency and accountability to be a critical part of that mission. We hope that the insights and tools we are sharing help to shed light on anomalous network behaviors around the world.</p>
 	<p>While the current TCP resets and timeouts dataset should immediately prove useful to network operators, researchers, and Internet citizens as a whole, we’re not stopping here. There are several improvements we’d like to add in the future:</p>
 	<ul>

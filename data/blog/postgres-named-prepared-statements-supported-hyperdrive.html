@@ -7,10 +7,24 @@
 	</figure>
 	<p>Hyperdrive (Cloudflare’s globally distributed SQL connection pooler and cache) recently added support for Postgres protocol-level named prepared statements across pooled connections. Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements. Further, many popular drivers in the ecosystem use these by default, meaning that not having them is a bit of a footgun for developers. We are very excited that Hyperdrive’s users will now have access to better performance and a more seamless development experience, without needing to make any significant changes to their applications!</p>
 	<p>While we're not the first connection pooler to add this support (<a href="https://www.pgbouncer.org">PgBouncer</a> got to it in October 2023 in <a href="https://github.com/pgbouncer/pgbouncer/releases/tag/pgbouncer_1_21_0">version 1.21</a>, for example), there were some unique challenges in how we implemented it. To that end, we wanted to do a deep dive on what it took for us to deliver this.</p>
-	<h3>Hyper-what?</h3>
+	<div class="flex anchor relative">
+		<h3 id="hyper-what">Hyper-what?</h3>
+		<a href="https://blog.cloudflare.com/#hyper-what" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the classic problems of building on the web is that your users are everywhere, but your database tends to be in one spot. &nbsp;Combine that with pesky limitations like network routing, or the speed of light, and you can often run into situations where your users feel the pain of having your database so far away. This can look like slower queries, slower startup times, and connection exhaustion as everything takes longer to accomplish.</p>
 	<p><a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">Hyperdrive</a> is designed to make the centralized databases you already have feel like they’re global. We use our <a href="https://www.cloudflare.com/network">global network</a> to get faster routes to your database, keep connection pools primed, and cache your most frequently run queries as close to users as possible.</p>
-	<h3>Postgres Message Protocol</h3>
+	<div class="flex anchor relative">
+		<h3 id="postgres-message-protocol">Postgres Message Protocol</h3>
+		<a href="https://blog.cloudflare.com/#postgres-message-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand exactly what the challenge with prepared statements is, it's first necessary to dig in a bit to the <a href="https://www.postgresql.org/docs/current/protocol-flow.html">Postgres Message Protocol</a>. Specifically, we are going to take a look at the protocol for an “extended” query, which uses different message types and is a bit more complex than a “simple” query, but which is more powerful and thus more widely used.</p>
 	<p>A query using Hyperdrive might be coded something like this, but a lot goes on under the hood in order for Postgres to reliably return your response.</p>
 	<pre class="language-javascript"><code class="language-javascript">import postgres from "postgres";
@@ -48,18 +62,39 @@ let [{ a, b, c, id }] = await sql`SELECT a, b, c, id FROM hyper_test WHERE id = 
 	</figure>
 	<p>A <a href="https://www.postgresql.org/docs/current/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY">more complete description</a> and the <a href="https://www.postgresql.org/docs/current/protocol-message-formats.html">full structure of each message type</a> are well described in the Postgres documentation.</p>
 	<p>So, what's so hard about that?</p>
-	<h3>Buffering Messages</h3>
+	<div class="flex anchor relative">
+		<h3 id="buffering-messages">Buffering Messages</h3>
+		<a href="https://blog.cloudflare.com/#buffering-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first challenge that Hyperdrive must solve (that many other connection poolers don't have) is that it's also a cache.</p>
 	<p>The happiest path for a query on Hyperdrive never travels far, and we are quite proud of the low latency of our cache hits. However, this presents a particular challenge in the case of an extended protocol query. A <i>Parse</i> by itself is insufficient as a cache key, both because the parameter values in the <i>Bind</i> messages can alter the expected results, and because it might be followed up with either a <i>Describe</i> or an <i>Execute</i> message which will invoke drastically different responses.</p>
 	<p>So Hyperdrive cannot simply pass each message to the origin database, as we must buffer them in a message log until we have enough information to reliably distinguish between cache keys. It turns out that receiving a <i>Sync</i> is quite a natural point at which to check whether you have enough information to serve a response. For most scenarios, we buffer until we receive a <i>Sync</i>, and then (assuming the scenario is cacheable) we determine whether we can serve the response from cache or we need to take a connection to the origin database.</p>
-	<h3>Taking a Connection From the Pool</h3>
+	<div class="flex anchor relative">
+		<h3 id="taking-a-connection-from-the-pool">Taking a Connection From the Pool</h3>
+		<a href="https://blog.cloudflare.com/#taking-a-connection-from-the-pool" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Assuming we aren't serving a response from cache, for whatever reason, we'll need to take an origin connection from our pool. One of the key advantages any connection pooler offers is in allowing many client connections to share few database connections, so minimizing how often and for how long these connections are held is crucial to making Hyperdrive performant.</p>
 	<p>To this end, <a href="https://developers.cloudflare.com/hyperdrive/configuration/how-hyperdrive-works/#connection-pooling">Hyperdrive operates</a> in what is traditionally called “transaction mode”. This means that a connection taken from the pool for any given transaction is returned once that transaction concludes. This is in contrast to what is often called “session mode”, where once a connection is taken from the pool it is held by the client until the client disconnects.</p>
 	<p>For Hyperdrive, allowing any client to take any database connection is vital. This is because if we "pin" a client to a given database connection then we have one fewer available for every other possible client. You can run yourself out of database connections very quickly once you start down that path, especially when your clients are many small Workers spread around the world.</p>
 	<p>The challenge prepared statements present to this scenario is that they exist at the "session" scope, which is to say, at the scope of one connection. If a client prepares a statement on connection A, but tries to reuse it and gets assigned connection B, Postgres will naturally throw an error claiming the statement doesn't exist in the given session. No results will be returned, the client is unhappy, and all that's left is to retry with a <i>Parse</i> message included. This causes extra round-trips between client and server, defeating the whole purpose of what is meant to be an optimization.</p>
 	<p>One of the goals of a connection pooler is to be as transparent to the client and server as possible. There are limitations, as Postgres will let you do some powerful things to session state that cannot be reasonably shared across arbitrary client connections, but to the extent possible the endpoints should not have to know or care about any multiplexing happening between them.</p>
 	<p>This means that when a client sends a <i>Parse</i> message on its connection, it should expect that the statement will be available for reuse when it wants to send a <i>Bind-Execute-Sync</i> sequence later on. It also means that the server should not get <i>Bind</i> messages for statements that only exist on some other session. Maintaining this illusion is the crux of providing support for this feature.</p>
-	<h3>Putting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, what does the solution look like? If a client sends <i>Parse-Bind-Execute-Sync</i> with a named prepared statement, then later sends <i>Bind-Execute-Sync</i> to reuse it, how can we make sure that everything happens as expected? The solution, it turns out, needs just a few built-in Rust data structures for efficiently capturing what we need (a <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html">HashMap</a>, some <a href="https://docs.rs/lru/latest/lru/struct.LruCache.html"><i>LruCaches</i></a> and a <a href="https://doc.rust-lang.org/std/collections/struct.VecDeque.html">VecDeque</a>), and some straightforward business logic to keep track of when to intervene in the messages being passed back and forth.</p>
 	<p>Whenever a named <i>Parse</i> comes in, we store it in an in-memory <i>HashMap</i> on the server that handles message processing for that client’s connection. This persists until the client is disconnected. This means that whenever we see anything referencing the statement, we can go retrieve the complete message defining it. We'll come back to this in a moment.</p>
 	<p>Once we've buffered all the messages we can and gotten to the point where it's time to return results (let's say because the client sent a <i>Sync</i>), we need to start applying some logic. For the sake of brevity we're going to omit talking through error handling here, as it does add some significant complexity but is somewhat out of scope for this discussion.</p>
@@ -111,7 +146,14 @@ let [{ a, b, c, id }] = await sql`SELECT a, b, c, id FROM hyper_test WHERE id = 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lWQHcpash88r4sjmT3Thq/87b3d30e7c699da4f7fd3a656bbbfcc8/unnamed--4--1.png" alt="" class="kg-image" width="1326" height="1405" loading="lazy">
 
 	</figure>
-	<h3>Dénouement</h3>
+	<div class="flex anchor relative">
+		<h3 id="denouement">Dénouement</h3>
+		<a href="https://blog.cloudflare.com/#denouement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we've got a working solution, where all parties are functioning well, let's review! Our solution lets us share database connections across arbitrary clients with no "pinning", no custom handling on either client or server, and supports reuse of prepared statements to reduce CPU load on re-parsing queries and reduce network traffic on re-sending <i>Parse</i> messages. Engineering always involves tradeoffs, so the cost of this is that we will sometimes still need to sneak in a <i>Parse</i> because a client got assigned a different connection on reuse, and in those scenarios there is a small amount of additional memory overhead because the same statement is prepared on multiple connections.</p>
 	<p>And now, if you haven't already, go give <a href="https://developers.cloudflare.com/hyperdrive">Hyperdrive</a> a spin, and let us know what you think in the <a href="https://discord.com/channels/595317990191398933/1150557986239021106">Hyperdrive Discord channel</a>!</p>
 </div>

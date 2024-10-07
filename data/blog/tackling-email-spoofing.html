@@ -13,7 +13,14 @@
 
 	</figure>
 	<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing">email spoofing</a> and phishing.</p>
-	<h2>What is email spoofing and phishing?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-email-spoofing-and-phishing">What is email spoofing and phishing?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-email-spoofing-and-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Spoofing is the process of posing as someone else which can be used in order to gain some kind of illicit advantage. One example is <b>domain spoofing</b> where someone hosts a website like <code>mycoolwebpaqe.xyz</code> &nbsp;to trick users of <code>mycoolwebpage.xyz</code> to provide sensitive information without knowing they landed on a false website. When looking at the address bar side by side in a browser, it’s very hard to spot the difference.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -51,7 +58,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 
 	</figure>
 	<p>This clearly shows that email phishing is a serious problem causing Internet users a big headache. So let’s see what domain owners can do to stop bad actors from misusing their domain for email phishing.</p>
-	<h2>How can DNS help prevent this?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-dns-help-prevent-this">How can DNS help prevent this?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-dns-help-prevent-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Luckily, there are three anti-spoofing mechanisms already built into the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>:</p>
 	<ul>
 		<li>
@@ -65,7 +79,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</li>
 	</ul>
 	<p>However, it is not trivial to configure them correctly, especially for someone less experienced. In case your configuration is too strict, legitimate emails will be dropped or marked as spam. And if you keep your configuration too relaxed, your domain might be misused for email spoofing.</p>
-	<h3>Sender Policy Framework (SPF)</h3>
+	<div class="flex anchor relative">
+		<h3 id="sender-policy-framework-spf">Sender Policy Framework (SPF)</h3>
+		<a href="https://blog.cloudflare.com/#sender-policy-framework-spf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SPF is used to specify which IP addresses and domains are permitted to send email on behalf of your domain. An SPF policy is published as a TXT record on your domain, so everyone can access it via DNS. Let’s inspect the TXT record for <code>cloudflare.com</code>:</p>
 	<pre class="language-bash"><code class="language-bash">cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</code></pre>
 	<p>An SPF TXT record always needs to start with <code>v=spf1</code>. It usually contains a list of IP addresses of sending email servers using the <code>ip4</code> or <code>ip6</code> mechanism. The <code>include</code> mechanism is used to reference another SPF record on another domain. This is usually done if you are relying on other providers that need to send emails on our behalf. You can see a few examples in the SPF record of <code>cloudflare.com</code> above: we’re using Zendesk as customer support software and Mandrill for marketing and transactional emails.</p>
@@ -88,7 +109,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</li>
 	</ol>
 	<p>For a full list of all mechanisms and more details about SPF, refer to <a href="https://datatracker.ietf.org/doc/html/rfc7208">RFC7208</a>.</p>
-	<h3>DomainKeys Identified Mail (DKIM)</h3>
+	<div class="flex anchor relative">
+		<h3 id="domainkeys-identified-mail-dkim">DomainKeys Identified Mail (DKIM)</h3>
+		<a href="https://blog.cloudflare.com/#domainkeys-identified-mail-dkim" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Okay, with SPF we’ve ensured that only permitted IP addresses and domains can send emails on behalf of cloudflare.com. But what if one of the IPs changes owner without us noticing and updating the SPF record? Or what if someone else who is also using Google’s email server on the same IP tries to spoof emails coming from cloudflare.com?</p>
 	<p>This is where DKIM comes in. DKIM provides a mechanism to cryptographically sign parts of an email — usually the body and certain headers — using <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work">public key encryption</a>. Before we dive into how this works, let’s take a look at the DKIM record used for cloudflare.com:</p>
 	<pre class="language-bash"><code class="language-bash">google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</code></pre>
@@ -127,7 +155,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</li>
 	</ol>
 	<p>The full DKIM specification can be found in <a href="https://datatracker.ietf.org/doc/html/rfc4871">RFC4871</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5672">RFC5672</a>.</p>
-	<h3>Domain-based Message Authentication Reporting and Conformance (DMARC)</h3>
+	<div class="flex anchor relative">
+		<h3 id="domain-based-message-authentication-reporting-and-conformance-dmarc">Domain-based Message Authentication Reporting and Conformance (DMARC)</h3>
+		<a href="https://blog.cloudflare.com/#domain-based-message-authentication-reporting-and-conformance-dmarc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Domain-based Message Authentication Reporting and Conformance, that’s definitely a mouthful. Let’s focus on two words: <i>Reporting</i> and <i>Conformance</i>. DMARC provides exactly that. Regular reports let the email sender know how many emails are non-conforming and potentially spoofed. Conformance helps provide a clear signal to the email receiver how to treat non-conforming emails. Email receivers might impose their own policies for emails that fail SPF or DKIM checks even without a DMARC record. However, the policy configured on the DMARC record is an explicit instruction by the email sender, so it increases the confidence for email receivers what to do with non-conforming emails.</p>
 	<p>Here is the DMARC record for <code>cloudflare.com</code></p>
 	<pre class="language-bash"><code class="language-bash">_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</code></pre>
@@ -156,7 +191,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</li>
 	</ol>
 	<p>Other optional tags and the complete DMARC specification is described in <a href="https://datatracker.ietf.org/doc/html/rfc7489">RFC7489</a>.</p>
-	<h3>A few numbers on the current adoption</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-few-numbers-on-the-current-adoption">A few numbers on the current adoption</h3>
+		<a href="https://blog.cloudflare.com/#a-few-numbers-on-the-current-adoption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we’ve learned what the problem is and how to tackle it using SPF, DKIM, and DMARC, let’s see how widely they’re adopted.</p>
 	<p><a href="https://dmarc.org/stats/farsight/dmarc">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -267,7 +309,14 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>This shows us there is quite some room for improvement.</p>
-	<h3>Enter: Email Security DNS Wizard</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-email-security-dns-wizard">Enter: Email Security DNS Wizard</h3>
+		<a href="https://blog.cloudflare.com/#enter-email-security-dns-wizard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what are we doing to increase the adoption of SPF, DKIM, and DMARC and tackle email spoofing and phishing? Enter the new Cloudflare <i>Email Security DNS Wizard</i>.</p>
 	<p>Starting today, when you’re navigating to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">DNS tab</a> of the Cloudflare dashboard, you’ll see two new features:</p>
 	<ol>
@@ -309,10 +358,26 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 	<pre class="language-bash"><code class="language-bash">example.com			TXT	"v=spf1 -all"
 *._domainkey.example.com.	TXT	"v=DKIM1; p="
 _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</code></pre>
-	<h3>Help tackle email spoofing and phishing</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="help-tackle-email-spoofing-and-phishing">Help tackle email spoofing and phishing</h3>
+		<a href="https://blog.cloudflare.com/#help-tackle-email-spoofing-and-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Out you go and make sure your domain is secured against email spoofing and phishing. Just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">DNS tab</a> in the Cloudflare dashboard or if you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up">sign up for free</a> in just a few minutes on <a href="https://www.cloudflare.com">cloudflare.com</a>.</p>
 	<p>If you want to read more about SPF, DKIM and DMARC, go check out our <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record">new learning pages</a> about email related DNS records.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b994d925816888ee88bfd6a3e4984572?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

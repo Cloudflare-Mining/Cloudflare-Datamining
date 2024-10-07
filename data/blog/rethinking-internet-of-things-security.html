@@ -11,7 +11,14 @@
 	<p>But the exponential growth in devices has brought with it an explosion in risk. We’ve been defending against DDoS attacks from Internet of Things (IoT) driven botnets like <a href="https://blog.cloudflare.com/tag/mirai">Mirai</a> and <a href="https://blog.cloudflare.com/meris-botnet">Meris</a> for years now. They keep <a href="https://www.securityweek.com/cloudflare-mitigates-2-tbps-ddos-attack-launched-mirai-botnet">growing</a>, because securing IoT devices still remains challenging, and manufacturers are often not incentivized to secure them. This has driven NIST (the U.S. National Institute of Standards and Technology) <a href="https://csrc.nist.gov/publications/detail/nistir/8349/draft">to actively define requirements</a> to address the (lack of) IoT device security, and the EU isn’t far behind.</p>
 	<p>It’s also the type of problem that Cloudflare solves best.</p>
 	<p>Today, we’re excited to announce our Internet of Things platform: with the goal to provide a single pane-of-glass view over your IoT devices, provision connectivity for new devices, and critically, secure every device from the moment it powers on.</p>
-	<h3>Not just lightbulbs</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-just-lightbulbs">Not just lightbulbs</h3>
+		<a href="https://blog.cloudflare.com/#not-just-lightbulbs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s common to immediately think of lightbulbs or simple motion sensors when you read “IoT”, but that’s because we often don’t consider many of the devices we interact with on a daily basis as an IoT device.</p>
 	<p>Think about:</p>
 	<ul>
@@ -32,7 +39,14 @@
 	<p><b>Cloudflare’s IoT Platform will build in support for provisioning cellular connectivity at scale</b>: we’ll support ordering, provisioning and managing cellular connectivity for your devices. Every packet that leaves each IoT device can be inspected, approved or rejected by policies you create <i>before</i> it reaches the Internet, your cloud infrastructure, or your other devices.</p>
 	<p>Emerging standards like <a href="https://www.gsma.com/iot/iot-safe">IoT SAFE</a> will also allow us to use the SIM card as a root-of-trust, storing device secrets (and API keys) securely on the device, whilst raising the bar to compromise.</p>
 	<p>This also doesn’t mean we’re leaving the world of mutual TLS behind: we understand that not every device makes sense to connect over solely over a cellular network, be it due to per-device costs, lack of coverage, or the need to support an existing deployment that can’t just be re-deployed.</p>
-	<h3>Bringing Zero Trust security to IoT</h3>
+	<div class="flex anchor relative">
+		<h3 id="bringing-zero-trust-security-to-iot">Bringing Zero Trust security to IoT</h3>
+		<a href="https://blog.cloudflare.com/#bringing-zero-trust-security-to-iot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike humans, who need to be able to access a potentially unbounded number of destinations (websites), the endpoints that an IoT device needs to speak to are typically far more bounded. But in practice, there are often few controls in place (or available) to ensure that a device only speaks to your API backend, your storage bucket, and/or your telemetry endpoint.</p>
 	<p>Our Zero Trust platform, however, has a solution for this: <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Gateway</a>. You can create DNS, network or HTTP policies, and allow or deny traffic based not only on the source or destination, but on richer identity- and location- based controls. It seemed obvious that we could bring these same capabilities to IoT devices, and allow developers to better <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">restrict and control</a> what endpoints their devices talk to (so they don’t become part of a botnet).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -42,7 +56,14 @@
 	</figure>
 	<p>At the same time, we also identified ways to extend Gateway to be aware of IoT device specifics. For example, imagine you’ve provisioned 5,000 IoT devices, all connected over cellular directly into Cloudflare’s network. You can then choose to lock these devices to a specific geography if there’s no need for them to “travel”; ensure they can only speak to your API backend and/or metrics provider; and even ensure that if the SIM is lifted from the device it no longer functions by locking it to the IMEI (the serial of the modem).</p>
 	<p>Building these controls at the network layer raises the bar on IoT device security and reduces the risk that your fleet of devices becomes the tool of a bad actor.</p>
-	<h3>Get the compute off the device</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-the-compute-off-the-device">Get the compute off the device</h3>
+		<a href="https://blog.cloudflare.com/#get-the-compute-off-the-device" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve talked a lot about security, but what about compute and storage? A device can be extremely secure if it doesn’t have to do anything or communicate anywhere, but clearly that’s not practical.</p>
 	<p>Simultaneously, doing non-trivial amounts of compute “on-device” has a number of major challenges:</p>
 	<ul>
@@ -62,7 +83,14 @@
 	<p>We’ve heard other platforms talk about “edge compute”, but in practice they either mean “run the compute on the device” or “in a small handful of cloud regions” (introducing latency) — neither of which fully addresses the problems highlighted above.</p>
 	<p>Instead, by enabling secure access to <a href="https://workers.cloudflare.com">Cloudflare Workers</a> for compute, <a href="https://blog.cloudflare.com/workers-analytics-engine">Analytics Engine</a> for device telemetry, <a href="https://blog.cloudflare.com/introducing-d1">D1</a> as a SQL database, and <a href="https://developers.cloudflare.com/pub-sub">Pub/Sub</a> for massively scalable messaging — IoT developers can both keep the compute off the device, but still keep it <i>close</i> to the device thanks to our <a href="https://www.cloudflare.com/network">global network</a> (275+ cities and counting).</p>
 	<p>On top of that, developers can use modern tooling like <a href="https://developers.cloudflare.com/workers/wrangler/get-started">Wrangler</a> to both iterate more rapidly <i>and</i> deploy software more safely, avoiding the risk of bricking or otherwise breaking part of your IoT fleet.</p>
-	<h3>Where do I sign up?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-do-i-sign-up">Where do I sign up?</h3>
+		<a href="https://blog.cloudflare.com/#where-do-i-sign-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can <a href="https://www.cloudflare.com/register-for-our-iot-platform">register your interest in our IoT Platform today</a>: we’ll be reaching out over the coming weeks to better understand the problems teams are facing and working to get our closed beta into the hands of customers in the coming months. We’re especially interested in teams who are in the throes of figuring out how to deploy a new set of IoT devices and/or expand an existing fleet, no matter the use-case.</p>
 	<p>In the meantime, you can start building on <a href="https://developers.cloudflare.com/api-shield/security/mtls">API Shield</a> and <a href="https://developers.cloudflare.com/pub-sub">Pub/Sub</a> (MQTT) if you need to start securing IoT devices today.</p>
 </div>

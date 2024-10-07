@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>We’re excited to announce the availability of Network Analytics Logs. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> customers on the Enterprise plan can feed packet samples directly into storage services, network monitoring tools such as Kentik, or their <a href="https://www.cloudflare.com/learning/security/what-is-siem">Security Information Event Management (SIEM)</a> systems such as Splunk to gain near real-time visibility into network traffic and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>.</p>
-	<h2>What’s included in the logs</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-included-in-the-logs">What’s included in the logs</h2>
+		<a href="https://blog.cloudflare.com/#whats-included-in-the-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By creating a Network Analytics Logs job, Cloudflare will continuously push logs of packet samples directly to the HTTP endpoint of your choice, including Websockets. The logs arrive in JSON format which makes them easy to parse, transform, and aggregate. The logs include packet samples of traffic dropped and passed by the following systems:</p>
 	<ol>
 		<li>
@@ -108,7 +115,14 @@
 	<p>An example of a packet sample log:</p>
 	<pre class="language-bash"><code class="language-bash">{"AttackCampaignID":"","AttackID":"","ColoName":"bkk06","Datetime":1652295571783000000,"DestinationASN":13335,"Direction":"ingress","IPDestinationAddress":"(redacted)","IPDestinationSubnet":"/24","IPProtocol":17,"IPSourceAddress":"(redacted)","IPSourceSubnet":"/24","MitigationReason":"","MitigationScope":"","MitigationSystem":"magic-firewall","Outcome":"pass","ProtocolState":"","RuleID":"(redacted)","RulesetID":"(redacted)","RulesetOverrideID":"","SampleInterval":100,"SourceASN":38794,"Verdict":"drop"}</code></pre>
 	<p>All the available log fields are documented here: <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs">https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs/</a></p>
-	<h2>Setting up the logs</h2>
+	<div class="flex anchor relative">
+		<h2 id="setting-up-the-logs">Setting up the logs</h2>
+		<a href="https://blog.cloudflare.com/#setting-up-the-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this walkthrough, we will demonstrate how to feed the Network Analytics Logs into Splunk via <a href="https://www.postman.com">Postman</a>. At this time, it is only possible to set up Network Analytics Logs via API. Setting up the logs requires three main steps:</p>
 	<ol>
 		<li>
@@ -122,7 +136,14 @@
 		</li>
 	</ol>
 	<p>Let’s get started!</p>
-	<h3>1) Create a Cloudflare API token</h3>
+	<div class="flex anchor relative">
+		<h3 id="1-create-a-cloudflare-api-token">1) Create a Cloudflare API token</h3>
+		<a href="https://blog.cloudflare.com/#1-create-a-cloudflare-api-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Log in to your Cloudflare account and navigate to <b>My Profile.</b></p>
@@ -150,7 +171,14 @@
 
 	</figure>
 	<p>Read more about creating an API token on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/api/tokens/create">https://developers.cloudflare.com/api/tokens/create/</a></p>
-	<h3>2) Create a Splunk token for an HTTP Event Collector</h3>
+	<div class="flex anchor relative">
+		<h3 id="2-create-a-splunk-token-for-an-http-event-collector">2) Create a Splunk token for an HTTP Event Collector</h3>
+		<a href="https://blog.cloudflare.com/#2-create-a-splunk-token-for-an-http-event-collector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this walkthrough, we’re using a Splunk Cloud free trial, but <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations">you can use almost any service that can accept logs over HTTPS</a>. In some cases, if you’re using an on-premise SIEM solution, you may need to allowlist <a href="https://www.cloudflare.com/ips">Cloudflare IP address</a> in your firewall to be able to receive the logs.</p>
 	<ol>
 		<li>
@@ -176,7 +204,14 @@
 	</figure>
 	<p>Read more about using Splunk with Cloudflare Logpush on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/splunk">https://developers.cloudflare.com/logs/get-started/enable-destinations/splunk/</a></p>
 	<p>Read more about creating an HTTP Event Collector token on Splunk’s website: <a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector">https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector</a></p>
-	<h3>3) Create a Cloudflare Logpush job</h3>
+	<div class="flex anchor relative">
+		<h3 id="3-create-a-cloudflare-logpush-job">3) Create a Cloudflare Logpush job</h3>
+		<a href="https://blog.cloudflare.com/#3-create-a-cloudflare-logpush-job" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Creating and enabling a job is very straightforward. It requires only one API call to Cloudflare to create and enable a job.</p>
 	<p>To send the API calls I used <a href="https://www.postman.com">Postman</a>, which is a user-friendly API client that was recommended to me by a colleague. It allows you to save and customize API calls. You can also use Terminal/CMD or any other API client/script of your choice.</p>
 	<p>One thing to notice is Network Analytics Logs are <b>account</b>-scoped. The API endpoint is therefore a tad different from what you would normally use for zone-scoped datasets such as HTTP request logs and DNS logs.</p>
@@ -236,10 +271,24 @@
 
 	</figure>
 	<p>Read more about enabling Logpush on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl">https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl/</a></p>
-	<h2>Reduce costs with R2 storage</h2>
+	<div class="flex anchor relative">
+		<h2 id="reduce-costs-with-r2-storage">Reduce costs with R2 storage</h2>
+		<a href="https://blog.cloudflare.com/#reduce-costs-with-r2-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Depending on the amount of logs that you read and write, the cost of third party cloud storage can skyrocket — forcing you to decide between managing a tight budget and being able to properly investigate networking and security issues. However, we believe that you shouldn’t have to make those trade-offs. With <a href="https://blog.cloudflare.com/logs-r2">R2’s low costs</a>, we’re making this decision easier for our customers. Instead of feeding logs to a third party, you can reap the cost benefits of <a href="https://blog.cloudflare.com/logs-r2">storing them in R2</a>.</p>
 	<p>To learn more about the <a href="https://www.cloudflare.com/developer-platform/r2">R2 features and pricing</a>, check out the <a href="https://blog.cloudflare.com/r2-open-beta">full blog post</a>. To enable R2, contact your account team.</p>
-	<h2>Cloudflare logs for maximum visibility</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-logs-for-maximum-visibility">Cloudflare logs for maximum visibility</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-logs-for-maximum-visibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise</a> customers have access to detailed logs of the metadata generated by our products. These logs are helpful for troubleshooting, identifying network and configuration adjustments, and generating reports, especially when combined with logs from other sources, such as your servers, firewalls, routers, and other appliances.</p>
 	<p>Network Analytics Logs joins Cloudflare’s family of products on Logpush: <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs">DNS logs</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/firewall_events">Firewall events</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">HTTP requests</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/nel_reports">NEL reports</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/spectrum_events">Spectrum events</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/audit_logs">Audit logs</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_dns">Gateway DNS</a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_http">Gateway HTTP</a>, and <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_network">Gateway Network</a>.</p>
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a> with our Free and <a href="https://www.cloudflare.com/plans/pro">Pro plans</a> to protect your websites against DDoS attacks, or <a href="https://www.cloudflare.com/magic-transit">contact us</a> for comprehensive <a href="https://www.cloudflare.com/ddos">DDoS protection</a> and <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a> for your entire network.</p>

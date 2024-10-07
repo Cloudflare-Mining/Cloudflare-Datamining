@@ -8,7 +8,14 @@
 	<p>Phishing is the absolute worst.</p>
 	<p>Unfortunately, sometimes phishing campaigns use Cloudflare for the very convenient, free DNS. To be clear –– there’s a difference between a compromised server being leveraged to send phishing emails and an intentionally malicious website dedicated to this type of activity. The latter clearly violates our terms of service.</p>
 	<p>In the past, our Trust and Safety team would kick these intentional phishers off the platform, but now we have a new trick up our sleeve and a way for their malicious emails to mysteriously disappear into the ether.</p>
-	<h3>Background: How Email Works</h3>
+	<div class="flex anchor relative">
+		<h3 id="background-how-email-works">Background: How Email Works</h3>
+		<a href="https://blog.cloudflare.com/#background-how-email-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SMTP - the protocol used for sending email - was <a href="https://blog.cloudflare.com/the-history-of-email">finalized in 1982</a>, when it was just a <a href="https://blog.ted.com/what-the-internet-looked-like-in-1982-a-closer-look-at-danny-hillis-vintage-directory-of-users">small community</a> online. Many of them knew and trusted each other, and so the protocol was built entirely on trust. In an SMTP message, the MAIL FROM field can be arbitrarily defined. That means you could send an email from any email address, even one you don’t own.</p>
 	<p>This is great for phishers, and bad for everyone else.</p>
 	<p>The solution to <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">prevent email spoofing</a> was to create the Sender Policy Framework (SPF). SPF allows the domain owner to specify which servers are allowed to send email from that domain. That policy is stored in a DNS TXT record like this one from cloudflare.com:</p>
@@ -25,7 +32,14 @@
 	<pre class="language-bash"><code class="language-bash">$ dig txt _dmarc.cloudflare.com
 "v=DMARC1\; p=quarantine\; pct=100\; rua=mailto:rua@cloudflare.com, mailto:gjqhulld@ag.dmarcian.com"</code></pre>
 	<p>When an email server receives an email from <a href="mailto:someone@cloudflare.com">someone@cloudflare.com</a>, it first checks SPF, DKIM and DMARC records to know whether the email is valid, and if not, how to route it.</p>
-	<h3>Stopping Phishy Behavior</h3>
+	<div class="flex anchor relative">
+		<h3 id="stopping-phishy-behavior">Stopping Phishy Behavior</h3>
+		<a href="https://blog.cloudflare.com/#stopping-phishy-behavior" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For known phishing campaigns using the Cloudflare platform for evil, we have a DNS trick for getting their phishing campaigns to stop. If you remember, there are three DNS records required for sending email: SPF, DKIM and DMARC. The last one is the one that defines the overarching email policy for the domain.</p>
 	<p>What we do is rewrite the DMARC record so that the overarching email policy instructs email clients to reject all emails from that sender. We also remove the other DNS record types used for sending email.</p>
 	<pre class="language-bash"><code class="language-bash">"v=DMARC1; p=reject"</code></pre>
@@ -48,7 +62,14 @@ astronautrentals.com.	3600	IN	SOA	art.ns.cloudflare.com. dns.cloudflare.com. 202
 "v=DMARC1\; p=reject"</code></pre>
 	<p>If we try to send an email from @astronautrentals.com, the email never reaches the recipient because the receiving client sees the DMARC policy and rejects the email.</p>
 	<p>This DMARC alteration happens on the fly –– it's a computation we do at the moment when we answer the DNS query –– so the original DNS records are still shown to the domain owner in the Cloudflare DNS editor. This adds some mystery to why the phish attempts are failing to send.</p>
-	<h3>Using DNS To Combat Phishing</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-dns-to-combat-phishing">Using DNS To Combat Phishing</h3>
+		<a href="https://blog.cloudflare.com/#using-dns-to-combat-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Phishing is the absolute worst, and the problem is that it sometimes succeeds. Last year Verizon reported that <a href="https://www.prnewswire.com/news-releases/verizons-2016-data-breach-investigations-report-finds-cybercriminals-are-exploiting-human-nature-300258134.html">30% of phishing emails</a> are opened, and 13% of those opened end with the receiver clicking on the phishing link.</p>
 	<p>Keeping people safe on the internet means decreasing the number of successful phishing attempts. We're glad to be able to fight phish using the DNS.</p>
 </div>

@@ -8,7 +8,14 @@
 	<p>The second blog post in the series on HTML rewriters picks up the story in 2017 after the launch of the Cloudflare edge compute platform <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. It became clear that the developers using workers wanted the same HTML rewriting capabilities that we used internally, but accessible via a JavaScript API.</p>
 	<p>This blog post describes the building of a streaming HTML rewriter/parser with a CSS-selector based API in Rust. It is used as the back-end for the Cloudflare Workers <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">HTMLRewriter</a>. We have open-sourced the library (<a href="https://github.com/cloudflare/lol-html"><i>LOL HTML</i></a>) as it can also be used as a stand-alone HTML rewriting/parsing library.</p>
 	<p>The major change compared to <a href="https://github.com/cloudflare/lazyhtml">LazyHTML</a>, the previous rewriter, is the dual-parser architecture required to overcome the additional performance overhead of wrapping/unwrapping each token when propagating tokens to the workers runtime. The remainder of the post describes a CSS selector matching engine inspired by a Virtual Machine approach to regular expression matching.</p>
-	<h2>v2 : Give it to everyone and make it faster</h2>
+	<div class="flex anchor relative">
+		<h2 id="v2-give-it-to-everyone-and-make-it-faster">v2 : Give it to everyone and make it faster</h2>
+		<a href="https://blog.cloudflare.com/#v2-give-it-to-everyone-and-make-it-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2017, Cloudflare introduced an edge compute platform - <a href="https://workers.cloudflare.com">Cloudflare Workers</a>. It was no surprise that customers quickly required the same HTML rewriting capabilities that we were using internally. Our team was impressed with the platform and decided to migrate some of our features to Workers. The goal was to improve our developer experience working with modern JavaScript rather than statically linked NGINX modules implemented in C with a Lua API.</p>
 	<p>It is possible to rewrite HTML in Workers, though for that you needed a third party JavaScript package (such as <a href="http://cheerio.js.org">Cheerio</a>). These packages are not designed for HTML rewriting on the edge due to the latency, speed and memory considerations described in the previous post.</p>
 	<p>JavaScript is really fast but it still can’t always produce performance comparable to native code for some tasks - parsing being one of those. Customers typically needed to buffer the whole content of the page to do the rewriting resulting in considerable output latency and memory consumption that often exceeded the memory limits enforced by the Workers runtime.</p>
@@ -27,7 +34,14 @@
 
 	</figure>
 	<p>LazyHTML with V8</p>
-	<h3>LOL HTML</h3>
+	<div class="flex anchor relative">
+		<h3 id="lol-html">LOL HTML</h3>
+		<a href="https://blog.cloudflare.com/#lol-html" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We needed something new, designed with Workers requirements in mind, using a language with the native speed and safety guarantees (it’s incredibly easy to shoot yourself in the foot doing parsing). Rust was the obvious choice as it provides the native speed and the best guarantee of memory safety which minimises the attack surface of untrusted input. Wherever possible the Low Output Latency HTML rewriter (LOL HTML) uses all the previous optimizations developed for LazyHTML such as tag name hashing.</p>
 	<h4>Dual-parser architecture</h4>
 	<p>Most developers are familiar and prefer to use CSS selector-based APIs (as in Cheerio, jQuery or DOM itself) for HTML mutation tasks. We decided to base our API on CSS selectors as well. Although this meant additional implementation complexity, the decision created even more opportunities for parsing optimizations.</p>
@@ -223,7 +237,14 @@ body &gt; span a</code></pre>
 	<h5>[not] JIT-compilation</h5>
 	<p>For performance reasons compiled instructions are macro-instructions - they incorporate multiple basic VM instruction calls. This way the VM can execute only one macro instruction per input token. Each of the macro instructions compiled using the so-called “<a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust/#-not-jit-compilation">[not] JIT-compilation</a>” (the same approach to the compilation is used in our other Rust project - wirefilter).</p>
 	<p>Internally the macro instruction contains <code>expect</code> and following <code>jmp</code>, <code>hereditary_jmp</code> and <code>match</code> basic instructions. In that sense macro-instructions resemble <a href="https://en.wikipedia.org/wiki/Microcode">microcode</a> making it easy to suspend execution of a macro instruction if we need to request attributes information from the lexer.</p>
-	<h2>What’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is obviously not the end of the road, but hopefully, we’ve got a bit closer to it. There are still multiple bits of functionality that need to be implemented and certainly, there is a space for more optimizations.</p>
 	<p>If you are interested in the topic don’t hesitate to join us in development of <a href="https://github.com/cloudflare/lazyhtml">LazyHTML</a> and <a href="https://github.com/cloudflare/lol-html">LOL HTML</a> at GitHub and, of course, we are always happy to see people passionate about technology here at Cloudflare, so don’t hesitate to <a href="https://www.cloudflare.com/careers">contact us</a> if you are too :).</p>
 </div>

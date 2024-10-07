@@ -7,7 +7,14 @@
 	</figure>
 	<p>Recently we launched <a href="https://blog.cloudflare.com/announcing-firewall-rules">Firewall Rules</a>, a new feature that allows you to construct expressions that perform complex matching against HTTP requests and then choose how that traffic is handled. As a Firewall feature you can, of course, block traffic. The expressions we support within Firewall Rules along with powerful control over the order in which they are applied allows complex new behaviour.</p>
 	<p>In this blog post I tell the story of Cloudflare’s <a href="https://www.cloudflare.com/features-page-rules">Page Rules</a> mechanism and how Firewall Rules came to be. Along the way I’ll look at the technical choices that led to us building the new matching engine in Rust.</p>
-	<h3>The evolution of the Cloudflare Firewall</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-evolution-of-the-cloudflare-firewall">The evolution of the Cloudflare Firewall</h3>
+		<a href="https://blog.cloudflare.com/#the-evolution-of-the-cloudflare-firewall" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare offers two types of firewall for web applications, a managed firewall in the form of a <a href="https://en.wikipedia.org/wiki/Web_application_firewall">WAF</a> where we write and maintain the rules for you, and a configurable firewall where you write and maintain rules. In this article, we will focus on the configurable firewall.</p>
 	<p>One of the earliest Cloudflare firewall features was the IP Access Rule. It dates backs to the earliest versions of the Cloudflare Firewall and simply allows you to block traffic from specific IP addresses:</p>
 	<pre class="language-bash"><code class="language-bash">if request IP equals 203.0.113.1 then block the request</code></pre>
@@ -43,7 +50,14 @@
 	<p>Zone Lockdown allowed customers could to block access to a public website for all but a few IP addresses or IP ranges. For example, many customers wanted access to a staging website to only be available to their office IP addresses.</p>
 	<pre class="language-bash"><code class="language-bash">if request URI matches https://staging.example.com/ and request IP not in 203.0.113.0/24 then block the request</code></pre>
 	<p>Finally, an Enterprise customer could also contact Cloudflare and have a truly bespoke rule created for them within the WAF engine.</p>
-	<h3>Seeing the problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="seeing-the-problem">Seeing the problem</h3>
+		<a href="https://blog.cloudflare.com/#seeing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The firewall worked well for simple mitigation, but it didn’t fully meet the needs of our customers.</p>
 	<p>Each of the firewall features had targeted a single attribute, and the interfaces and implementations reflected that. Whilst the Cloudflare Firewall had evolved to solve a problem as each problem arose, these did not work together. In late 2017 you could sum up the firewall capabilities as:</p>
 	<p>You can block any attack traffic on any criteria, so long as you <b>only</b> pick <b>one</b> of:</p>
@@ -98,7 +112,14 @@ Value = block</code></pre>
 	<p>Yes, you read that correctly. Each Page Rule was appended to a single regular expression in the order of execution, and the naming group is used as an overload for the desired action.</p>
 	<p>This works surprisingly well as <a href="https://swtch.com/~rsc/regexp/regexp1.html">regular expression matching can be simple and fast</a> especially when the regular expression matches against a single value like the URI, but as soon as you want to match the URI plus an IP range it becomes less obvious how to extend this.</p>
 	<p>This is what we had, a set of features that worked really well providing you want to match a single property of a request. The implementation also meant that none of these features could be trivially extended to embrace multiple properties at a time. We needed something else, a fast way to compute if a request matches a rule that could contain multiple properties as well as pattern matching.</p>
-	<h3>A solution that works now and in the future</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-solution-that-works-now-and-in-the-future">A solution that works now and in the future</h3>
+		<a href="https://blog.cloudflare.com/#a-solution-that-works-now-and-in-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over time Cloudflare engineers authored internal posts exploring how a new matching engine might work. The first thing that occurred to every engineer was that the matching must be an expression. These ideas followed a similar approach which we would construct an expression within JSON as a DSL (Domain Specific Language) of our expression language. This DSL could describe matching a request and a UI could render this, and a backend could process it.</p>
 	<p>Early proposals looked like this:</p>
 	<pre class="language-bash"><code class="language-bash">{

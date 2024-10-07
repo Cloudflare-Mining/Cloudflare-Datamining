@@ -7,7 +7,14 @@
 	</figure>
 	<p>Delivering great user experiences with a global user base can be challenging. While serving requests quickly when you start out in a local market is straightforward, doing so for a global audience is much more difficult. Why? Even under optimal conditions, you cannot be faster than the speed of light, which brings single data center solutions to their performance limits.</p>
 	<p>In this post, we will cover how Picsart improved the performance of one of its most critical services by moving from a centralized architecture to a globally distributed service built on Cloudflare. Our serverless compute platform, <a href="https://developers.cloudflare.com/workers">Workers</a>, distributed throughout <a href="https://www.cloudflare.com/network">310+ cities</a> around the world, and our globally distributed <a href="https://developers.cloudflare.com/kv">Workers KV</a> storage allowed them to improve their performance significantly and drive real business impact.</p>
-	<h2>Success driven by data-driven insights</h2>
+	<div class="flex anchor relative">
+		<h2 id="success-driven-by-data-driven-insights">Success driven by data-driven insights</h2>
+		<a href="https://blog.cloudflare.com/#success-driven-by-data-driven-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://picsart.com">Picsart</a> is one of the world’s largest digital creation platforms and a long-standing Cloudflare partner. At its core, an advanced tech stack powers its comprehensive features, including AI-driven photo and video editing tools and community-driven content sharing. With its infrastructure spanning across multiple cloud environments and on-prem deployments, Picsart is engineered to handle billions of daily requests from its huge mobile and web user base and API integrations. For over a decade, Cloudflare has been integral to Picsart, providing support for performant content delivery and securing its digital ecosystem. &nbsp;</p>
 	<p>Similar to many other tech giants, Picsart approaches product development in a data-driven way. At the core of the innovation is Picsart's remote configuration and experimentation platform, which enables product managers, UX researchers, and others to segment their user base into different test groups. These test groups might get to see slightly different implementations of features or designs of the Picsart app. Users might also get early access to experimental features or see different in-app promotions. In combination with constant monitoring of relevant KPIs, this allows for informed product decisions based on user preference and business impact.</p>
 	<p>On each app start, the client device sends a request to the remote configuration service for the latest setup tailored to the user's session. The assignment of experiments relies on factors like the operating system and previous sessions, making each request unique and uncachable. Picsart's app showcases extensive remote configuration capabilities, enabling adjustments to nearly every element. This results in a response containing a 1.5 MB configuration file for mobile clients. While the long-term solution is to reduce the file size, which has grown over time as more teams adopted the powerful service, this is not possible in the near or mid-term as it requires a major rewrite of all clients.</p>
@@ -17,7 +24,14 @@
 
 	</figure>
 	<p>This setup request is blocking in the "hot path" during app start, as the results of this request will decide how the app itself looks and behaves. Hence, performance is critical. To ensure users are not waiting for too long, Picsart apps will wait for 1500ms on mobile for the request to complete – if it does not, the user will not be assigned a test group and the app will fallback to default settings.</p>
-	<h2>The clock is ticking</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-clock-is-ticking">The clock is ticking</h2>
+		<a href="https://blog.cloudflare.com/#the-clock-is-ticking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While a 1500ms round trip time seems like a sufficiently large time budget, the data suggested otherwise. Before the improvements were implemented, a staggering 50% of devices could not complete the requests in time. How come? In these 1.5 seconds the following steps need to complete:</p>
 	<ol>
 		<li>
@@ -36,7 +50,15 @@
 
 	</figure>
 	<p>Looking at the data, it was clear to the Picsart team that their backend service was already well-optimized, taking only 30 milliseconds, a tiny fraction of the available time budget, to process each of the billions of monthly requests. The bulk of the request time came from <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">network latency</a>. Especially with mobile devices, last mile performance can be very volatile, eating away a significant amount of the available time budget. Not only that, but the data was clear: users closer to the origin server had a much higher chance of making the round trip in time versus users out of region. It quickly became obvious that Picsart, fueled by its global success, had outgrown a single-region setup.</p>
-	<h2>To the drawing board</h2>
+	<div class="flex anchor relative">
+		<h2 id="to-the-drawing-board">To the drawing board</h2>
+		<a href="https://blog.cloudflare.com/#to-the-drawing-board" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XTH17l3JlPKoeV7i0MO5p/8b186063ac085fe4a75007efc2cf7ddd/image6.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
@@ -50,7 +72,14 @@
 
 	</figure>
 	<p>Workers and Workers KV seemed like the ideal solution. Both compute and data are globally distributed in <a href="https://www.cloudflare.com/network">310+ locations around the world</a>, resulting in a shorter distance between end users and the experimentation service. Not only that, but Cloudflare's global-by-default approach allows for deployment with minimal overhead, and in contrast to other considered solutions, no additional fees to distribute the data around the globe.</p>
-	<h2>No race without a clock</h2>
+	<div class="flex anchor relative">
+		<h2 id="no-race-without-a-clock">No race without a clock</h2>
+		<a href="https://blog.cloudflare.com/#no-race-without-a-clock" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The objective for the refactor of the experimentation service was to increase the share of devices that successfully receive experimentation configuration within the set time budget.</p>
 	<p>But how to measure success? While synthetic testing can be useful in many situations, Picsart opted to come up with another clever solution:</p>
 	<p>During development, the Picsart engineers had already added a testing endpoint to the web and mobile versions of their app that sends a duplicate request to the new endpoint, discarding the response and swallowing all potential errors. This allows them to collect timing data based on real-user metrics without impacting the app's performance and reliability.</p>
@@ -95,9 +124,23 @@ async function fetchDataFromBothEndpoints() {
 
 fetchDataFromBothEndpoints();</code></pre>
 	<p>Using existing data analytics tools, Picsart was able to analyze the performance of the new services from day one, starting with a dummy endpoint and a 'hello world' response. And with that a v0 was created that did not have the correct logic just yet, but simulated reading multiple values from KV and returning a response of a realistic size back to the end user.</p>
-	<h2>The need for a do-over</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-need-for-a-do-over">The need for a do-over</h2>
+		<a href="https://blog.cloudflare.com/#the-need-for-a-do-over" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the initial phase, outcomes fell short of expectations. Surprisingly, requests were slower despite the service's proximity to end users. What caused this setback? &nbsp;Subsequent investigation unveiled multiple culprits and design patterns in need for optimization.</p>
-	<h3>Data segmentation</h3>
+	<div class="flex anchor relative">
+		<h3 id="data-segmentation">Data segmentation</h3>
+		<a href="https://blog.cloudflare.com/#data-segmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous, stateful solution operated on a single massive "blob" of data exceeding 100MB in value. Loading this into memory incurred a few seconds of initial startup time, but once the VM completed the task, request handling was fast, benefiting from the readily available data in memory.</p>
 	<p>However, this approach doesn't seamlessly transition to the serverless realm. Unlike long-running VMs, Worker isolates have short lifespans. Repeatedly parsing large JSON objects led to prolonged compute durations. Simply parsing four KV entries of 25MB each (KV maximum value size is 25MB) on each request was not a feasible option.</p>
 	<p>The Picsart team went back to solution design and embarked on a journey to optimize their system's execution time, resulting in a series of impactful improvements.</p>
@@ -139,7 +182,14 @@ fetchDataFromBothEndpoints();</code></pre>
 			<p>Scalability and Flexibility: the granular segmentation of data enables effortless scaling of the service for new features or regional content. Adding support for new applications now only requires inserting new, standalone KV records in contrast to the previous solution where this would require increasing the size of the single record.</p>
 		</li>
 	</ul>
-	<h3>Immutable updates</h3>
+	<div class="flex anchor relative">
+		<h3 id="immutable-updates">Immutable updates</h3>
+		<a href="https://blog.cloudflare.com/#immutable-updates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that changes to the configuration were segmented by app, country, and platform, this also allowed for individual updates of the configuration in KV. KV storage showcases its best performance when records are updated infrequently but read very often. This pattern leverages <a href="https://developers.cloudflare.com/kv/reference/how-kv-works">KV's fundamental design</a> to cache values at edge locations upon reads, ensuring that subsequent queries for the same record are swiftly served by local caches rather than requiring a trip back to KV's centralized data centers. This architecture is fundamental for minimizing latency and maximizing the speed of data retrieval across a globally distributed platform.</p>
 	<p>A crucial requirement for Picsart’s experimentation system was the ability to propagate updates of remote configuration values immediately. Updating existing records would require very short cache TTLs and even the minimum KV cache TTL of 60 seconds was considered unacceptable for the dynamic nature of the feature flagging. Moreover, setting short <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl">TTLs</a> also impacts the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio">cache hit ratio</a> and the overall KV performance, specifically in regions with low traffic.</p>
 	<p>To reconcile the need for both rapid updates and efficient caching, Picsart adopted an innovative approach: making KV records immutable. Instead of modifying existing records, they opted to create new records with each configuration change. By appending the content hash to the KV key and writing new records after each update, Picsart ensured that each record was unique and immutable. This allowed them to leverage higher cache TTLs, as these records would never be updated.</p><!--kg-card-begin: html-->
@@ -168,7 +218,14 @@ fetchDataFromBothEndpoints();</code></pre>
 	</small><br><br><!--kg-card-end: html-->
 	<p>There was a catch, though. The service must now keep track of the correct KV keys to use. The Picsart team addressed this challenge by storing references to the latest KV keys in the environment variables of the Worker.</p>
 	<p>Each configuration change triggers a new KV pair to be written and the services' environment variables to be updated. As global Workers deployments take mere seconds, changes to the experimentation and configuration data are near-instantaneously globally available.</p>
-	<h3>JSON serialization &amp; alternatives</h3>
+	<div class="flex anchor relative">
+		<h3 id="json-serialization-alternatives">JSON serialization &amp; alternatives</h3>
+		<a href="https://blog.cloudflare.com/#json-serialization-alternatives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Following the previous improvements, the Picsart team made another significant discovery: only a small fraction of configuration data is needed to assign the experiments, while the remaining majority of the data comprises JSON values for the remote configuration payloads. While the service must deliver the latter in the response, the data is not required during the initial processing phase.</p>
 	<p>The initial implementation used <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs">KV's get()</a> method to retrieve the configuration data with the parameter type=<code>json</code>, which converts the KV value to an object. This process is very compute-intensive compared to using the <code>get()</code> method with parameter type= <code>text</code>, which simply returns the value as a string. In the context of Picsart's data, the bulk of the CPU cycles were wasted on serializing JSON data that is not needed to perform the required business logic.</p>
 	<p>What if the data structure and code could be changed in such a way that only the data needed to assign experiments was parsed as JSON, while the configuration values were treated as text? Picsart went ahead with a new approach: splitting the KV records into two, creating a small 300 KB record for the metadata, which can be quickly parsed to an object, and a 9.7 MB record of configuration values. The extracted configuration values are delimited by newline characters. The respective line number is used as reference in the metadata entry, so that the respective configuration value for an experiment can be merged back into the payload response later.</p><!--kg-card-begin: html-->
@@ -246,11 +303,25 @@ fetchDataFromBothEndpoints();</code></pre>
 	<p>After calculating the experiments and selecting the correct variants based solely on the small metadata entry, the service constructs a JSON string for the response containing placeholders for the actual values that reference the corresponding line numbers in the separate text file. To finalize the response, the server replaces the placeholders with the corresponding serialized JSON strings from the text file. This approach circumvents the need for parsing and re-serializing large JSON objects and helps to avoid a significant computational overhead.</p>
 	<p>Note that the process of parsing the metadata JSON and determining the correct experiments as well as the loading of the large file with configuration values are executed in parallel, saving additional milliseconds.</p>
 	<p>By minimizing the size of the JSON data that needed to be parsed and leveraging a more efficient method for constructing the final response, the Picsart team managed to not only reduce the response times but also optimize the compute resource usage. This approach reflects a broader principle applicable across the tech industry: that efficiency, particularly in serverless architectures, can often be dramatically improved by rethinking data structure and utilization.</p>
-	<h2>Getting a head start</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-a-head-start">Getting a head start</h2>
+		<a href="https://blog.cloudflare.com/#getting-a-head-start" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The changes on the server-side, moving from a single region setup to Cloudflare’s global architecture, paid off massively. Median response times globally dropped by more than 1 second, which was already a huge improvement for the team. However, in looking at the new data, two more paths for client-side optimizations were found.</p>
 	<p>As the web and mobile app would call the service at startup, most of the time no active connections to the servers were alive and establishing that connection at request time costs valuable milliseconds.</p>
 	<p>For the web version, setting a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect">pre-connect header</a> on initial page load showed a positive impact. For the mobile app version, the Picsart team took it a step further. Investigation showed that before the connection could be established, three modules had to complete initialization: the error tracker, the HTTP client, and the SDK. Reordering of the modules to initialize the HTTP client first allowed for connection establishment in parallel to the initialization of the SDK and error tracker, again saving time. This resulted in another 200ms improvement for end users.</p>
-	<h2>Setting a new personal best</h2>
+	<div class="flex anchor relative">
+		<h2 id="setting-a-new-personal-best">Setting a new personal best</h2>
+		<a href="https://blog.cloudflare.com/#setting-a-new-personal-best" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The day had come, and it was time for the phased rollout, web first and the mobile apps second. With suspense, the team looked at the dashboards, and were pleasantly surprised. The rollout was successful and billions of requests were handled with ease.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -259,9 +330,23 @@ fetchDataFromBothEndpoints();</code></pre>
 	</figure>
 	<p><i>Share of successfully delivered experiments</i></p>
 	<p>The result? The Picsart apps are loading faster than ever for millions of users worldwide, while the share of successfully delivered experiments increased from 50% to 85%. Median response time dropped from 1500 ms to 280 ms. The response time dropped to 70 ms on the web since the response size is smaller compared to mobile. This translates to a real business impact for Picsart as they can now deliver more personalized and data-driven experiences to even more of their users.</p>
-	<h2>A bright future ahead</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-bright-future-ahead">A bright future ahead</h2>
+		<a href="https://blog.cloudflare.com/#a-bright-future-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Picsart is already thinking of the next generation of experimentation. To integrate with Cloudflare even further, the plan is to use Durable Objects to store hundreds of millions of user data records in a decentralized fashion, enabling even more powerful experiments without impacting performance. This is possible thanks to Durable Objects' underlying architecture that stores the user data in-region, close to the respective end user device.</p>
 	<p>Beyond that, Picsart’s experimentation team is also planning to onboard external B2B customers to their experimentation platform as Cloudflare's developer platform provides them with the scale and global network to handle more traffic and data with ease.</p>
-	<h2>Get started yourself</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-started-yourself">Get started yourself</h2>
+		<a href="https://blog.cloudflare.com/#get-started-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re also working on or with an application that would benefit from Cloudflare’s speed and scale, check out our developer <a href="https://developers.cloudflare.com/workers">documentation</a> and <a href="https://developers.cloudflare.com/workers/tutorials">tutorials</a>, and join our developer <a href="https://discord.cloudflare.com">Discord</a> to get community support and inspiration.</p>
 </div>

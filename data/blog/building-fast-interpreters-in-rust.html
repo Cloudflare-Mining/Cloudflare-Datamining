@@ -10,7 +10,14 @@
 
 	</figure>
 	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didn’t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
-	<h3>Parsing Wireshark syntax</h3>
+	<div class="flex anchor relative">
+		<h3 id="parsing-wireshark-syntax">Parsing Wireshark syntax</h3>
+		<a href="https://blog.cloudflare.com/#parsing-wireshark-syntax" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When building a custom Domain Specific Language (DSL), the first thing we need to be able to do is parse it. This should result in an intermediate representation (usually called an Abstract Syntax Tree) that can be inspected, traversed, analysed and, potentially, serialised.</p>
 	<p>There are different ways to perform such conversion, such as:</p>
 	<ol>
@@ -125,7 +132,14 @@ let input = expect(input, ")")?;</code></pre>
    "lt" | "&lt;" =&gt; LessThan = LESS,
 });</code></pre>
 	<p>This gives an experience similar to parser generators, while still using native language syntax and keeping us in control of all the implementation details.</p>
-	<h3>Execution engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="execution-engine">Execution engine</h3>
+		<a href="https://blog.cloudflare.com/#execution-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because our grammar and operations are fairly simple, initially we used direct AST interpretation by requiring all nodes to implement a trait that includes an <code>execute</code> method.</p>
 	<pre class="language-rust"><code class="language-rust">trait Expr&lt;'s&gt; {
     fn execute(&amp;self, ctx: &amp;ExecutionContext&lt;'s&gt;) -&gt; bool;
@@ -306,7 +320,14 @@ match op {
 	</ul>
 	<p>The only obvious downside is that each level of AST requires a separate dynamically-dispatched call instead of a single inlined code for the entire expression, like you would have even with a basic template JIT.</p>
 	<p>Unfortunately, such output could be achieved only with real native code generation, and, for our case, the mentioned downsides and risks would outweigh runtime benefits, so we went with the safe &amp; flexible closure approach.</p>
-	<h3>Bonus: WebAssembly support</h3>
+	<div class="flex anchor relative">
+		<h3 id="bonus-webassembly-support">Bonus: WebAssembly support</h3>
+		<a href="https://blog.cloudflare.com/#bonus-webassembly-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As was mentioned earlier, we chose Rust as a safe high-level language that allows easy integration with other parts of our stack written in Go, C and Lua via C FFI. But Rust has one more target it invests in and supports exceptionally well: WebAssembly.</p>
 	<p>Why would we be interested in that? Apart from the parts of the stack where our rules would run, and the API that publishes them, we also have users who like to write their own rules. To do that, they use a UI editor that allows either writing raw expressions in Wireshark syntax or as a WYSIWYG builder.</p>
 	<p>We thought it would be great to expose the parser - the same one as we use on the backend - to the frontend JavaScript for a consistent real-time editing experience. And, honestly, we were just looking for an excuse to play with WASM support in Rust.</p>
@@ -334,7 +355,14 @@ impl Scheme {
 }</code></pre>
 	<p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
 	<p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but it’s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>
-	<h3>The future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future">The future</h3>
+		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The code in the current state is already doing its job well in production and we’re happy to share it with the open-source Rust community.</p>
 	<p>This is definitely not the end of the road though - we have many more fields to add, features to implement and planned optimisations to explore. If you find this sort of work interesting and would like to help us by working on firewalls, parsers or just any Rust projects at scale, give us a shout!</p>
 </div>

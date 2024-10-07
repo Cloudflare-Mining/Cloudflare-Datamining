@@ -13,7 +13,14 @@
 
 	</figure>
 	<p>DDoS attack peaking just below 2 Tbps‌‌</p>
-	<h3>Network-layer DDoS attacks increased by 44%</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-increased-by-44">Network-layer DDoS attacks increased by 44%</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-increased-by-44" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last quarter, we saw multiple terabit-strong DDoS attacks and this attack continues this trend of increased attack intensity. Another key finding from our <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2021-q3">Q3 DDoS Trends report</a> was that network-layer DDoS attacks actually increased by 44% quarter-over-quarter. While the fourth quarter is not over yet, we have, again, seen multiple terabit-strong attacks that targeted Cloudflare customers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -21,7 +28,14 @@
 
 	</figure>
 	<p>DDoS attacks peaking at 1-1.4 Tbps</p>
-	<h3>How did Cloudflare mitigate this attack?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-did-cloudflare-mitigate-this-attack">How did Cloudflare mitigate this attack?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-cloudflare-mitigate-this-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To begin with, our systems constantly analyze traffic samples “out-of-path” which allows us to asynchronously detect DDoS attacks without causing latency or impacting performance. Once the attack traffic was detected (within sub-seconds), our systems generated a real-time signature that surgically matched against the attack patterns to mitigate the attack without impacting legitimate traffic.</p>
 	<p>Once generated, the fingerprint is propagated as an ephemeral mitigation rule to the most optimal location in the Cloudflare edge for cost-efficient mitigation. In this specific case, as with most L3/4 DDoS attacks, the rule was pushed in-line into the Linux kernel <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">eXpress Data Path</a> (XDP) to drop the attack packet at wirespeed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -31,7 +45,14 @@
 	</figure>
 	<p>A conceptual diagram of Cloudflare’s DDoS protection systems</p>
 	<p>Read more about <a href="https://developers.cloudflare.com/ddos-protection">Cloudflare’s DDoS Protection systems</a>.</p>
-	<h3>Helping build a better Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">Helping build a better Internet</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s mission is to help build a better Internet — one that is secure, faster, and more reliable for everyone. The DDoS team’s vision is derived from this mission: our goal is to make the impact of DDoS attacks a thing of the past. Whether it's the <a href="https://blog.cloudflare.com/meris-botnet">Meris botnet</a> that launched some of the <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">largest HTTP DDoS attacks on record</a>, the recent <a href="https://blog.cloudflare.com/update-on-voip-attacks">attacks on VoIP providers</a> or this Mirai-variant that’s DDoSing Internet properties, Cloudflare’s network automatically detects and mitigates DDoS attacks. Cloudflare provides a secure, reliable, performant, and <a href="https://blog.cloudflare.com/http-ddos-managed-rules">customizable</a> platform for Internet properties of all types.</p>
 	<p>For more information about Cloudflare’s DDoS protection, <a href="https://www.cloudflare.com/enterprise">reach out to us</a> or have a go with a hands-on evaluation of <a href="https://www.cloudflare.com/plans/free">Cloudflare’s Free plan</a>.</p>
 </div>

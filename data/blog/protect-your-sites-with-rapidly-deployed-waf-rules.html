@@ -4,7 +4,14 @@
 	<p>An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.</p>
 	<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
 	<p>Since the deployment of the new WAF we’ve rolled out many global and customer-specific rules to protect websites from attacks. This blog post looks at a few of them and the process of getting a custom rule deployed.</p>
-	<h3>Custom Rules For Customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="custom-rules-for-customers">Custom Rules For Customers</h3>
+		<a href="https://blog.cloudflare.com/#custom-rules-for-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Commonly, a customer will complain of an attack that’s hitting their web site and will provide us with their web server logs showing the attack (or by giving us permission to examine the traffic going to their web site). The logs will often show a common pattern. For example, here’s an anonymized attack against a customer web site showing up in their logs:</p>
 	<p>12/30 01:42:32 23.75.345.200 example.com /index.php?2346354=-349087 WordPress/3.7.2
 		12/30 01:42:31 23.75.345.200 example.com /index.php?7231344=4454226 WordPress/3.3.1
@@ -44,12 +51,26 @@
 		REQUEST_URI is /q
 		deny</p>
 	<p>As simple as that looks, it took the load off the customer’s web server and in the first 12 hours after deployment was activated over 27 million times!</p>
-	<h3>Custom Global Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="custom-global-rules">Custom Global Rules</h3>
+		<a href="https://blog.cloudflare.com/#custom-global-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Other attacks are likely to be much more widespread and not focused on a single customer. These attacks are often directed at specific technologies such as WordPress, Joomla or other software.</p>
 	<p>Back in October a <a href="http://blog.whmcs.com/?t=79427">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
 	<p>Shortly after that, two new WHMCS vulnerabilities were found and we patched them as well by deploying or modifying WHMCS WAF rules.</p>
 	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="https://www.exploit-db.com/exploits/29290">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
 	<p>All those are on top of the generic protection offered by the 2,372 other rules that CloudFlare’s WAF runs to check every request.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewalls</a>.</p>
 </div>

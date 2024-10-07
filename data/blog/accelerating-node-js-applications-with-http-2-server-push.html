@@ -54,7 +54,15 @@ server.listen(port, hostname, function () {
   console.log('Server running at http://' + hostname + ':' + port+ '/');
 });</code></pre>
 	<p>See the <a href="https://www.npmjs.com/package/netjet">netjet documentation</a> for more information on the supported options.</p>
-	<h2>Seeing what’s pushed</h2>
+	<div class="flex anchor relative">
+		<h2 id="seeing-whats-pushed">Seeing what’s pushed</h2>
+		<a href="https://blog.cloudflare.com/#seeing-whats-pushed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qCaQEt8gl74hBdoZVEzBS/20aa6a0b137146be1420ab63e797e2d8/2016-08-02_10-49-33.png" alt="" class="kg-image" width="679" height="217" loading="lazy">
@@ -63,7 +71,14 @@ server.listen(port, hostname, function () {
 	<p>Chrome's Developer Tools makes it easy to verify that your site is using Server Push. The Network tab shows pushed assets with "Push" included as part of the initiator.</p>
 	<p>Unfortunately, Firefox's Developers Tools don't yet directly expose if the resource pushed. You can, however, check for the <code>cf-h2-pushed</code> header in the page's response headers, which contains a list of resources that CloudFlare offered browsers over Server Push.</p>
 	<p>Contributions to improve netjet or the documentation are greatly appreciated. I'm excited to hear where people are using netjet.</p>
-	<h2>Ghost and Server Push</h2>
+	<div class="flex anchor relative">
+		<h2 id="ghost-and-server-push">Ghost and Server Push</h2>
+		<a href="https://blog.cloudflare.com/#ghost-and-server-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ghost is one such exciting integration. With the aid of the Ghost team, I've integrated netjet, and it has been available as an opt-in beta since version 0.8.0.</p>
 	<p>If you are running a Ghost instance, you can enable Server Push by modifying the server's <code>config.js</code> file and add the <code>preloadHeaders</code> option to the <code>production</code> configuration block.</p>
 	<pre class="language-javascript"><code class="language-javascript">production: { 
@@ -72,7 +87,14 @@ server.listen(port, hostname, function () {
   // ... 
 }</code></pre>
 	<p>Ghost has put together <a href="http://support.ghost.org/preload-headers">a support article</a> for Ghost(Pro) customers.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With netjet, your Node.js applications can start to use browser preloading and, when used with CloudFlare, HTTP/2 Server Push today.</p>
 	<p>At CloudFlare, we're excited to make tools to help increase the performance of websites. If you find this interesting, we are <a href="https://www.cloudflare.com/join-our-team">hiring</a> in Austin, Texas; Champaign, Illinois; London; San Francisco; and Singapore.</p>
 </div>

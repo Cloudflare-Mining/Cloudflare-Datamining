@@ -7,7 +7,14 @@
 	</figure>
 	<p>Have you ever wanted to try a new email service but worried it might lead to you missing any emails? If you have, you’re definitely not alone. Some of us email ourselves to make sure it reaches the correct destination, others don’t rely on a new address for anything serious until they’ve seen it work for a few days. In any case, emails often contain important information, and we need to trust that our emails won’t get lost for any reason.</p>
 	<p>To help reduce these worries about whether emails are being received and forwarded - and for troubleshooting if needed - we are rolling out a new Overview page to Email Routing. On the Overview tab people now have full visibility into our service and can see exactly how we are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">routing emails</a> on their behalf.</p>
-	<h3>Routing Status and Metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="routing-status-and-metrics">Routing Status and Metrics</h3>
+		<a href="https://blog.cloudflare.com/#routing-status-and-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first thing you will see in the new tab is an at a glance view of the service. This includes the routing status (to know if the service is configured and running), whether the necessary DNS records are configured correctly, and the number of custom and destination addresses on the zone.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -20,7 +27,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5jo7olZgIdmRiAXoCieF01/1f621effbd8255f64a10e811d3590ab4/image2-13.png" alt="Email Routing metrics by action. Table and graph." class="kg-image" width="1043" height="588" loading="lazy">
 
 	</figure>
-	<h3>Activity Log</h3>
+	<div class="flex anchor relative">
+		<h3 id="activity-log">Activity Log</h3>
+		<a href="https://blog.cloudflare.com/#activity-log" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the Cloudflare Email Routing tab you'll also see the Activity Log, where you can drill deeper into specific behaviors. These logs show you details about the email messages that reached one of the custom addresses you have configured on your Cloudflare zone.</p>
 	<p>For each message the logs will show you the Message ID, Sender, Custom Address, when Cloudflare Email Routing received it, and the action that was taken. You can also expand the row to see the SPF, DMARC, and DKIM status of that message along with any relevant error messaging.</p>
 	<p>And we know looking at every message can be overwhelming, especially when you might be resorting to the logs for troubleshooting purposes, so you have a few options for filtering:</p>
@@ -40,7 +54,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMzDZKZfwXt5IjOoevIs2/645d76f78dc9f179f16f9e7b028bc662/image1-16.png" alt="Email Routing logs for troubleshooting. Table and filters." class="kg-image" width="1420" height="499" loading="lazy">
 
 	</figure>
-	<h3>Routes and Settings</h3>
+	<div class="flex anchor relative">
+		<h3 id="routes-and-settings">Routes and Settings</h3>
+		<a href="https://blog.cloudflare.com/#routes-and-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next to the Overview tab, you will find the Routes tab with the configuration UI that is likely already familiar to you. That’s where you create custom addresses, add and verify destination addresses, and create rules with the relationships between the custom and destination addresses.</p>
 	<figure class="kg-card kg-image-card ">
 

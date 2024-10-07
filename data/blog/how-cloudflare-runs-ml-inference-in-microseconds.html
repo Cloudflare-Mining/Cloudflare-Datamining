@@ -9,9 +9,23 @@
 	<p>Latency is a key metric on which <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> are evaluated. Just as we optimize network latency by provisioning servers in close proximity to end users, we also optimize processing latency - which is the time spent processing a request before serving a response from cache or passing the request forward to the customers’ servers. Due to the scale of our network and the diversity of use-cases we serve, our edge software is subject to demanding specifications, both in terms of throughput and latency.</p>
 	<p>Cloudflare's <a href="https://www.cloudflare.com/learning/bots/what-is-bot-management">bot management</a> module is one suite of security checks which executes during the hot path of request processing. This module calculates a variety of bot signals and integrates directly with our front line servers, allowing us to customize behavior based on those signals. This module evaluates every request for heuristics and behaviors indicative of bot traffic, and scores every request with several <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning models</a>.</p>
 	<p>To reduce processing latency, we've undertaken a project to rewrite our bot management technology, porting it from Lua to Rust, and applying a number of performance optimizations. This post focuses on optimizations applied to the machine-learning detections within the bot management module, which account for approximately 15% of the latency added by bot detection. By switching away from a garbage collected language, removing memory allocations, and optimizing our parsers, we reduce the P50 latency of the bot management module by 79μs - a 20% reduction.</p>
-	<h2>Engineering for zero allocations</h2>
+	<div class="flex anchor relative">
+		<h2 id="engineering-for-zero-allocations">Engineering for zero allocations</h2>
+		<a href="https://blog.cloudflare.com/#engineering-for-zero-allocations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Writing software without memory allocation poses several challenges. Indeed, high-level programming languages often trade memory management for productivity, abstracting away the details of memory management. But, in those details, are a number of algorithms to find contiguous regions of free memory, handle fragmentation, and call into the kernel to request new memory pages. Garbage collected languages incur additional costs throughout program execution to track when memory can be freed, plus pauses in program execution while the garbage collector executes. But, when performance is a critical requirement, languages should be evaluated for their ability to meet performance constraints.</p>
-	<h3>Stack allocation</h3>
+	<div class="flex anchor relative">
+		<h3 id="stack-allocation">Stack allocation</h3>
+		<a href="https://blog.cloudflare.com/#stack-allocation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the simplest ways to reduce memory allocations is to work with fixed-size buffers. Fixed-sized buffers can be placed on the stack, which eliminates the need to invoke heap allocation logic; the compiler simply reserves space in the current stack frame to hold local variables. Alternatively, the buffers can be heap-allocated outside the hot path (for example, at application startup), incurring a one-time cost.</p>
 	<p>Arrays can be stack allocated:</p>
 	<pre class="language-rust"><code class="language-rust">let mut buf = [0u8; BUFFER_SIZE];</code></pre>
@@ -31,14 +45,28 @@
 	buf == pat
 }</code></pre>
 	<p>Benchmarking the two code snippets, the first executes in ~40ns per iteration, the second in ~25ns. Changing only the memory allocation behavior, the second implementation is ~38% faster.</p>
-	<h3>Choice of algorithms</h3>
+	<div class="flex anchor relative">
+		<h3 id="choice-of-algorithms">Choice of algorithms</h3>
+		<a href="https://blog.cloudflare.com/#choice-of-algorithms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another strategy to reduce the number of memory allocations is to choose algorithms that operate on the data in-place and store any necessary state on the stack.</p>
 	<p>Returning to our string comparison function from above, let's rewrite it operate completely on the stack, and without copying data into a separate buffer:</p>
 	<pre class="language-rust"><code class="language-rust">fn case_insensitive_equality_buffer_iter(s: &amp;str, pat: &amp;str) -&gt; bool {
 	s.chars().map(|c| c.to_ascii_lowercase()).eq(pat.chars())
 }</code></pre>
 	<p>In addition to being the shortest, this function is also the fastest. This function benchmarks at ~13ns/iter, which is just slightly slower than the 11ns used to execute <code>eq_ignore_ascii_case</code> from the standard library. And the standard library implementation similarly avoids buffer allocation through use of iterators.</p>
-	<h3>Testing allocations</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing-allocations">Testing allocations</h3>
+		<a href="https://blog.cloudflare.com/#testing-allocations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Automated testing of memory allocation on the critical path prevents accidental use of functions or libraries which allocate memory. <code>dhat</code> is a crate in the Rust ecosystem that supports such testing. By setting a new global allocator, <code>dhat</code> is able to count the number of allocations, as well as the number of bytes allocated on a given code path.</p>
 	<pre class="language-rust"><code class="language-rust">/// Assert that the hot path logic performs zero allocations.
 #[test]
@@ -52,10 +80,24 @@ fn zero_allocations() {
 	dhat::assert_eq!(stats.total_bytes, 0);
 }</code></pre>
 	<p>It is important to note, <code>dhat</code> does have the limitation that it only detects allocations in Rust code. External libraries can still allocate memory without using the Rust allocator. FFI calls, such as those made to C, are one such place where memory allocations may slip past <code>dhat</code>'s measurements.</p>
-	<h2>Zero allocation decision trees</h2>
+	<div class="flex anchor relative">
+		<h2 id="zero-allocation-decision-trees">Zero allocation decision trees</h2>
+		<a href="https://blog.cloudflare.com/#zero-allocation-decision-trees" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CatBoost is an open-source machine learning library used within the bot management module. The core logic of CatBoost is implemented in C++, and the library exposes bindings to a number of other languages - such as C and Rust. The Lua-based implementation of the bot management module relied on FFI calls to the C API to execute our models.</p>
 	<p>By removing memory allocations and implementing buffer re-use, we optimize the execution duration of the sample model included in the CatBoost repository by 10%. Our production models see gains up to 15%.</p>
-	<h3>Optimize for single-document evaluation</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimize-for-single-document-evaluation">Optimize for single-document evaluation</h3>
+		<a href="https://blog.cloudflare.com/#optimize-for-single-document-evaluation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By optimizing CatBoost to evaluate a single set of features at a time, we reduce memory allocations and reduce latency. The CatBoost API has several functions which are optimized for evaluating multiple documents at a time, but this API does not benefit our application where requests are evaluated in the order they are received, and delaying processing to coalesce batches is undesirable. To support evaluation of a variable number of documents, the CatBoost implementation allocates vectors and iterates over the input documents, writing them into the vectors.</p>
 	<pre class="language-cpp"><code class="language-cpp">TVector&lt;TConstArrayRef&lt;float&gt;&gt; floatFeaturesVec(docCount);
 TVector&lt;TConstArrayRef&lt;int&gt;&gt; catFeaturesVec(docCount);
@@ -79,7 +121,15 @@ FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArra
    .collect::&lt;Vec&lt;_&gt;&gt;();</code></pre>
 	<p>But in the single-document case, we don't need the outer vector at all. We can simply pass the inner pointer value directly:</p>
 	<pre class="language-rust"><code class="language-rust">let float_features_ptr = float_features.as_ptr();</code></pre>
-	<h3>Reusing buffers</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="reusing-buffers">Reusing buffers</h3>
+		<a href="https://blog.cloudflare.com/#reusing-buffers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous API in the Rust bindings accepted owned <code>Vec</code>s as input. By taking ownership of a heap-allocated data structure, the function also takes responsibility for freeing the memory at the conclusion of its execution. This is undesirable as it forecloses the possibility of buffer reuse. Additionally, categorical features are passed as owned <code>String</code>s, which prevents us from passing references to bytes in the original request. Instead, we must allocate a temporary <code>String</code> on the heap and copy bytes into it.</p>
 	<pre class="language-rust"><code class="language-rust">pub fn calc_model_prediction(
 	&amp;self,
@@ -98,7 +148,15 @@ FULL_MODEL_PTR(modelHandle)-&gt;Calc(floatFeaturesArray, catFeaturesArray, TArra
 	float_features: &amp;[f32],
 	hashed_cat_features: &amp;[i32],
 ) -&gt; CatBoostResult&lt;f64&gt; { ... }</code></pre>
-	<h2>Summary</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By optimizing away unnecessary memory allocations in the bot management module, we reduced P50 latency from 388us to 309us (20%), and reduced P99 latency from 940us to 813us (14%). And, in many cases, the optimized code is shorter and easier to read than the unoptimized implementation.</p>
 	<p>These optimizations were targeted at model execution in the bot management module. To learn more about how we are porting bot management from Lua to Rust, check out <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">this blog post</a>.</p>
 </div>

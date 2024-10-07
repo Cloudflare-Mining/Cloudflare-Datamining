@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>At Cloudflare, we’re used to being the fastest in the world. However, for approximately 30 minutes last December, <a href="https://www.cloudflarestatus.com/incidents/qz5m74q8q0jl">Cloudflare was slow</a>. Between 20:10 and 20:40 UTC on December 16, 2021, web requests served by Cloudflare were artificially delayed by up to five seconds before being processed. This post tells the story of how a missing shell option called “pipefail” slowed Cloudflare down.</p>
-	<h2>Background</h2>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we can tell this story, we need to introduce you to some of its characters.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -22,7 +29,14 @@
 	</figure>
 	<p>One piece of configuration data that <code>dosd</code> needs comes from the <b>Addressing API</b>, which is our authoritative IP address management service. The addressing data it provides is important because <code>dosd</code> uses it to understand what kind of traffic is expected on particular IPs. Since addressing data doesn’t change very frequently, we use a simple <b>Kubernetes cron job</b> to query it at 10 minutes past each hour and write it into Quicksilver, allowing it to be efficiently accessed by <code>dosd</code>.</p>
 	<p>With this context, let’s walk through the change we made on December 16 that ultimately led to the slowdown.</p>
-	<h2>The Change</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-change">The Change</h2>
+		<a href="https://blog.cloudflare.com/#the-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Approximately once a week, all of our Bug Fixes and Performance Improvements to the Front Line codebase are released to the network. On December 16, the Front Line team released a fix for a subtle bug in how the code handled compression in the presence of a <code>Cache-Control: no-transform</code> header. Unfortunately, the team realized pretty quickly that this fix actually broke some customers who had started <i>depending</i> on that buggy behavior, so the team decided to roll back the release and work with those customers to correct the issue.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,13 +45,27 @@
 	</figure>
 	<p>Here’s a graph showing the progression of the rollback. While most releases and rollbacks are fully automated, this particular rollback needed to be performed manually due to its urgency. Since this was a manual rollback, SREs decided to perform it in two batches as a safety measure. The first batch went to our smaller tier 2 and 3 data centers, and the second batch went to our larger tier 1 data centers.</p>
 	<p>SREs started the first batch at 19:25 UTC, and it completed in about 30 minutes. Then, after verifying that there were no issues, they started the second batch at 20:10. That’s when the slowdown started.</p>
-	<h2>The Slowdown</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-slowdown">The Slowdown</h2>
+		<a href="https://blog.cloudflare.com/#the-slowdown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Within minutes of starting the second batch of rollbacks, alerts started firing. “Traffic levels are dropping.” “CPU utilization is dropping.” “A P0 incident has been automatically declared.” The timing could not be a coincidence. Somehow, a deployment of known-good code, which had been limited to a subset of the network and which had just been successfully performed 40 minutes earlier, appeared to be causing a global problem.</p>
 	<p>A P0 incident is an “all hands on deck” emergency, so dozens of Cloudflare engineers quickly began to assess impact to their services and test their theories about the root cause. The rollback was paused, but that did not fix the problem. Then, approximately 10 minutes after the start of the incident, my team – the DOS team – received a concerning alert: “<code>dosd</code> is not running on numerous servers.” Before that alert fired we had been investigating whether the slowdown was caused by an unmitigated attack, but this required our immediate attention.</p>
 	<p>Based on service logs, we were able to see that <code>dosd</code> was <a href="https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html">panicking</a> because the customer addressing data in Quicksilver was corrupted in some way. Remember: the data in this Quicksilver key is important. Without it, <code>dosd</code> could not make correct choices anymore, so it refused to continue.</p>
 	<p>Once we realized that the addressing data was corrupted, we had to figure out how it was corrupted so that we could fix it. The answer turned out to be pretty obvious: the Quicksilver key was completely empty.</p>
 	<p>Following the old adage – “did you try restarting it?” – we decided to manually re-run the Kubernetes cron job that populates this key and see what happened. At 20:40 UTC, the cron job was manually triggered. Seconds after it completed, <code>dosd</code> started running again, and traffic levels began returning to normal. We confirmed that the Quicksilver key was no longer empty, and the incident was over.</p>
-	<h2>The Aftermath</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-aftermath">The Aftermath</h2>
+		<a href="https://blog.cloudflare.com/#the-aftermath" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite fixing the problem, we still didn’t really understand what had just happened.</p><!--kg-card-begin: html-->
 	<h5>Why was the Quicksilver key empty?</h5><!--kg-card-end: html-->
 	<p>It was urgent that we quickly figure out how an empty value was written into that Quicksilver key, because for all we knew, it could happen again at any moment.</p>
@@ -73,7 +101,14 @@
 	<p>These two batches of rollbacks were performed by forcing servers to run a <a href="https://docs.saltproject.io/en/latest/ref/states/highstate.html">Salt highstate</a>. When each batch was executed, thousands of servers began running highstates at the same time. The highstate process involves, among other things, contacting the Addressing API in order to retrieve various bits of customer addressing information.</p>
 	<p>The first rollback started at 19:25 UTC, and the second rollback started 45 minutes later at 20:10. Remember how I mentioned that our Kubernetes cron job only runs on the 10th minute of every hour? At 21:10 – exactly the time that our cron job started executing – thousands of servers also began to highstate, flooding the Addressing API with requests. All of these requests were queued up and <i>eventually</i> served, but it took the Addressing API a few minutes to work through the backlog. This delay was long enough to cause our cron job to time out, and, due to the “pipefail” &nbsp;bug, inadvertently clobber the Quicksilver key that it was responsible for updating.</p>
 	<p>To trigger the “pipefail” bug, not only did we have to flood the Addressing API with requests, we also had to do it at exactly 10 minutes after the hour. If SREs had started the second batch of rollbacks a few minutes earlier or later, this bug would have continued to lay dormant.</p>
-	<h2>Lessons Learned</h2>
+	<div class="flex anchor relative">
+		<h2 id="lessons-learned">Lessons Learned</h2>
+		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was a unique incident where a chain of small or unlikely failures cascaded into a severe and painful outage that we deeply regret. In response, we have hardened each link in the chain:</p>
 	<ul>
 		<li>

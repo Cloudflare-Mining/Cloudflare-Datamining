@@ -13,7 +13,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IXWfOzxYVXqsvYi4r1VVe/c9e392cf45b4ca90149c84e14926021d/image5.png" alt="" class="kg-image" width="1801" height="376" loading="lazy">
 
 	</figure>
-	<h3>Step 1: starting a vulnerability disclosure program</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-1-starting-a-vulnerability-disclosure-program">Step 1: starting a vulnerability disclosure program</h3>
+		<a href="https://blog.cloudflare.com/#step-1-starting-a-vulnerability-disclosure-program" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2014, when the company had fewer than 100 employees, we created a responsible disclosure policy to provide a safe place for security researchers to submit potential vulnerabilities to our security team, with some established rules of engagement. A vulnerability disclosure policy is an important first step for a company to take because it is an invitation to researchers to look at company assets without fear of repercussions, provided the researchers follow certain guidelines intended to protect everyone involved. We still stand by that policy and welcome reports related to all of our services through that <a href="https://hackerone.com/cloudflare?type=team">program</a>.</p>
 	<p>Over the years, we received many great reports through that program which led to improvements in our products. However, one early challenge we faced was that researchers struggled to understand our infrastructure and products. Unlike most of the public programs of that era when we launched, our services were not made up primarily of public facing web applications or even mobile applications; our products were primarily <a href="https://www.cloudflare.com/learning/network-layer/network-security">network security</a> and performance solutions that operated as a proxy layer in front of customer resources.</p>
 	<p>Understanding where Cloudflare fits into the HTTP request/response pipeline can get very challenging with multiple products enabled. And because we did not provide much supporting documentation about how our products worked, and had scoped the program to broadly encompass everything, we left researchers to figure out our complicated products on their own. As a result, most of the reports we received over those early years came from people who saw something that seemed atypical to them, but in our view was not actually a vulnerability in need of repair. We dedicated a tremendous amount of time to triaging false positive reports and helping the researchers understand their errors.</p>
@@ -25,9 +32,23 @@
 
 	</figure>
 	<p>Leaving researchers to their own devices, and failing to invest in helping them understand how our product worked, led to a poor signal-to-noise ratio. At the time of writing, 1,197 reports have been submitted to our vulnerability disclosure program. Of those, only 158 resulted in points going to the researcher for a valid report. With only 13% of reports being valid, we needed to invest in improving the signal-to-noise ratio by helping our researchers before we could expand our program.</p>
-	<h3>Rewards: T-shirts?</h3>
+	<div class="flex anchor relative">
+		<h3 id="rewards-t-shirts">Rewards: T-shirts?</h3>
+		<a href="https://blog.cloudflare.com/#rewards-t-shirts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early on, we rewarded researchers with a unique “Cloudflare bug hunter” T-shirt after we validated a vulnerability report. We thought it was a nice gesture at a low cost for people who found security bugs. In practice, when we factored in shipping issues, passing through customs, and wrong sizes, it was a nightmare. Shipping turned out to be such a challenge that we sometimes resorted to hand delivering T-shirts to researchers when attending conferences. It was nice to meet the researchers in person, but not a scalable solution!</p>
-	<h3>Step 2: private bounty program</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-2-private-bounty-program">Step 2: private bounty program</h3>
+		<a href="https://blog.cloudflare.com/#step-2-private-bounty-program" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have always felt that rewarding good security research deserved more than a T-shirt. We also believed that financially supporting researchers would incentivize higher quality reports and deeper security research.</p>
 	<blockquote>
 		<p>Righhhhhhht. I think most of us would rather have the cash.</p>
@@ -92,11 +113,25 @@
 	<p>$500</p>
 	<p>Low</p>
 	<p>$250</p>
-	<h3>Lesson learned: making it easier for researchers with Cloudflare’s testing sandbox</h3>
+	<div class="flex anchor relative">
+		<h3 id="lesson-learned-making-it-easier-for-researchers-with-cloudflares-testing-sandbox">Lesson learned: making it easier for researchers with Cloudflare’s testing sandbox</h3>
+		<a href="https://blog.cloudflare.com/#lesson-learned-making-it-easier-for-researchers-with-cloudflares-testing-sandbox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because of how our services work, you need to have our products deployed in a test environment in order to explore their capabilities and limitations. And many of those products offer features that are not free to use. So, to make vulnerability research more accessible, we created <a href="https://cumulusfire.net">CumulusFire</a> to showcase Cloudflare features that typically require a paid level of service. We created this site for two reasons: to provide a standardized playground where researchers can test their exploits, and to make it easier for our teams to reproduce them while triaging.</p>
 	<p>CumulusFire has already helped us address the constant trickle of reports in which researchers would configure their origin server in an obviously insecure way, beyond default or expected settings, and then report that Cloudflare’s WAF does not block an attack. By policy, we will now only consider WAF bypasses a vulnerability if it is reproducible on CumulusFire.</p>
 	<p>As we expand our public program we will add additional services to the testing playground. Since we love dogfooding our own products, the entire sandbox is built on Cloudflare Workers.</p>
-	<h3>Next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Next steps</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just as we grew our private program, we will continue to evolve our public bug bounty program to provide the best experience for researchers. We aim to add more documentation, testing platforms and a way to interact with our security teams so that researchers can be confident that their submissions represent valid security issues.</p>
 	<p>Look forward to us sharing more of our learnings as we grow the program.</p>
 	<figure class="kg-card kg-image-card ">

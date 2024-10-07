@@ -7,7 +7,15 @@
 	</figure>
 	<p>Have you noticed something new in your Cloudflare analytics dashboard this morning? You can now see detailed DNS analytics for your domains on Cloudflare.</p>
 	<p>If you want to skip to the punch and start exploring, go check it out <a href="https://www.cloudflare.com/a/analytics">here</a>. Otherwise, hop on the DNS magic school bus - and let us show you all the neat stats in your now-available DNS analytics.</p>
-	<h3>DNS analytics dashboard: What does it know? Does it know things? Let’s find out.</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-analytics-dashboard-what-does-it-know-does-it-know-things-lets-find-out">DNS analytics dashboard: What does it know? Does it know things? Let’s find out.</h3>
+		<a href="https://blog.cloudflare.com/#dns-analytics-dashboard-what-does-it-know-does-it-know-things-lets-find-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2gayLtboo439PBfUSqfaYG/7ad10b1bb0257c37bf3b32141f846040/dns-analytics-cloudflare-queries-by-response-code.png" alt="" class="kg-image" width="889" height="535" loading="lazy">
@@ -39,9 +47,23 @@
 
 	</figure>
 	<p>If you like what you’re seeing and wish you could use the data to piece together your own dashboards? You can. We’ve developed a <a href="https://blog.cloudflare.com/grafana-plugin">Grafana plugin</a> you can use to build your own dashboards and an API you can use to create your own tools. Plus the API gives you some added neat information like the distribution of queries over IPv6 vs IPv4 and UDP vs TCP, as well as the distribution of answers by query and response size. (DNS people rejoice -- now you can finally see if there’s a difference in query size between IPv6 and IPv4, and what is the breaking point where Cloudflare DNS answers switch from UDP to TCP.)</p>
-	<h3>What about DNS Firewall and CNAME setup?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-about-dns-firewall-and-cname-setup">What about DNS Firewall and CNAME setup?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-dns-firewall-and-cname-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/dns/dns-firewall">DNS Firewall</a> customers, you’re next! Stay tuned! We have a really cool dashboard coming up for you that shows latency and errors on a per origin basis. We can’t wait for you to see it. In the meantime, you can see all your data through the <a href="https://blog.cloudflare.com/grafana-plugin">Grafana plugin</a> and <a href="https://api.cloudflare.com/#virtual-dns-analytics-users--properties">API</a>.</p>
 	<p>If you use Cloudflare but don’t see traffic in the DNS analytics dashboard, it’s because you use Cloudflare through a CNAME setup where your DNS is hosted outside of Cloudflare. Your DNS isn’t on us, so we can’t give you cool DNS analytics. If you’re interested in moving your <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> over to Cloudflare to try out DNS analytics and the newly announced Cloudflare <a href="https://www.cloudflare.com/load-balancing">Load Balancing</a>, <a href="https://support.cloudflare.com/hc/en-us/requests/new">give our team a holler</a>, they will swap your setup for you.</p>
-	<h3>Let’s get started!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-started">Let’s get started!</h3>
+		<a href="https://blog.cloudflare.com/#lets-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are excited for you to get started digging into your DNS traffic. Let us know what you think by sending your feedback to <a href="mailto:dns-analytics-feedback@cloudflare.com">dns-analytics-feedback@cloudflare.com</a>. Cloudflare DNS team eagerly awaits your feedback :). Now go on vacation, we’ll look after your DNS!</p>
 </div>

@@ -7,7 +7,14 @@
 	</figure>
 	<p>As the Internet becomes the new corporate network, traditional definitions within corporate networking are becoming blurry. Concepts of the corporate WAN, “north/south” and “east/west” traffic, and private versus public application access dissolve and shift their meaning as applications shift outside corporate data center walls and users can access them from anywhere. And security requirements for all of this traffic have become more stringent as new attack vectors continue to emerge.</p>
 	<p>The good news: Cloudflare’s got you covered! In this post, we’ll recap how definitions of corporate network traffic have shifted and how Cloudflare One provides protection for all traffic flows, regardless of source or destination.</p>
-	<h3>North, south, east, and west traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="north-south-east-and-west-traffic">North, south, east, and west traffic</h3>
+		<a href="https://blog.cloudflare.com/#north-south-east-and-west-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the traditional <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter security model</a>, IT and network teams defined a “trusted” private network made up of the LANs at corporate locations, and the WAN connecting them. Network architects described traffic flowing between the trusted network and another, untrusted one as “north/south,” because those traffic flows are typically depicted spatially on network diagrams like the one below.</p>
 	<p>Connected north/south networks could be private, such as one belonging to a partner company, or public like the Internet. Security teams made sure all north/south traffic flowed through one or a few central locations where they could enforce controls across all the “untrusted” traffic, making sure no malicious actors could get in, and no sensitive data could get out.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -18,7 +25,14 @@
 	<p><i>Network diagram depicting traditional corporate network architecture</i></p>
 	<p>Traffic on a single LAN, such as requests from a desktop computer to a printer in an office, was referred to as “east/west” and generally was not subject to the same level of security control. The “east/west” definition also sometimes expanded to include traffic between LANs in a small geographic area, such as multiple buildings on a large office campus. As organizations became more distributed and the need to share information between geographically dispersed locations grew, “east/west” also often included WAN traffic transferred over trusted private connections like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS links</a>.</p>
 	<p>As applications moved to the Internet and the cloud and users moved out of the office, clean definitions of north/south/east/west traffic started to dissolve. Traffic and data traditionally categorized as “private” and guarded within the boundaries of the corporate perimeter is now commonly transferred over the Internet, and organizations are shifting to cloud-first security models such as <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> which redefine where security controls are enforced across that traffic.</p>
-	<h3>How Cloudflare keeps you protected</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-keeps-you-protected">How Cloudflare keeps you protected</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-keeps-you-protected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s services can be used to secure and accelerate all of your traffic flows, regardless of whether your network architecture is fully cloud-based and Internet-native or more traditional and physically defined.</p>
 	<p>For “north/south” traffic from external users accessing your public applications, Cloudflare provides protection at all layers of the OSI stack and for a wide range of threats. Our <a href="https://www.cloudflare.com/application-security">application security</a> portfolio, including DDoS protection, Web Application Firewall, API security, Bot Management, and more includes all the tools you need to keep public facing apps safe from malicious actors outside your network; our <a href="https://www.cloudflare.com/network-services">network services</a> extend similar benefits to all your IP traffic. <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a> has you covered for the growing amount of north/south traffic from internal users - <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access">Zero Trust Network Access</a> provides access to corporate resources on the Internet without sacrificing security, and <a href="https://www.cloudflare.com/products/zero-trust/gateway">Secure Web Gateway</a> filters outgoing traffic to keep your data safe from malware, ransomware, phishing, command and control, and other threats.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -29,6 +43,13 @@
 	<p><i>Cloudflare protection for all your traffic flows</i></p>
 	<p>As customers adopt SASE and multicloud architectures, the amount of east/west traffic within a single location continues to decrease. Cloudflare One enables customers to use Cloudflare’s network as an extension of theirs for east/west traffic between locations with a variety of secure on-ramp options including a device client, application and network-layer tunnels, and direct connections, and apply Zero Trust policies to all traffic regardless of where it’s headed. Some customers choose to use Cloudflare One for filtering local traffic as well, which involves a quick hop out to the closest <a href="https://www.cloudflare.com/network">Cloudflare location</a> - less than 50ms from 95% of the world’s Internet-connected population - and enables security and IT teams to enforce consistent security policy across all traffic from a single control plane.</p>
 	<p>Because Cloudflare’s services are all delivered on every server in all locations across our network, customers can connect to us to get access to a full “service mesh” for any traffic. As we develop new capabilities, they can apply across any traffic flow regardless of source or destination. Watch out for some new product announcements coming later this week that enhance these integrations even further.</p>
-	<h3>Get started today</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As the Internet becomes the new corporate network, Cloudflare’s mission to help build a better Internet enables us to help you protect anything connected to it. Stay tuned for the rest of CIO Week for new capabilities to make all of your north, south, east, and west traffic faster, more secure, and more reliable, including updates on even more flexible application-layer capabilities for your private network traffic.</p>
 </div>

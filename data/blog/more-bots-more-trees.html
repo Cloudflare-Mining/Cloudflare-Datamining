@@ -9,18 +9,47 @@
 	</figure>
 	<p>Once a year, we pull data from our Bot Fight Mode to determine the number of trees we can donate to our partners at One Tree Planted. It's part of the <a href="https://blog.cloudflare.com/cleaning-up-bad-bots">commitment</a> we made in 2019 to deter malicious bots online by redirecting them to a challenge page that requires them to perform computationally intensive, but meaningless tasks. While we use these tasks to drive up the bill for bot operators, we account for the carbon cost by planting trees.</p>
 	<p>This year when we pulled the numbers, we saw something exciting. While the number of bot detections has gone significantly up, the time bots spend in the Bot Fight Mode challenge page has gone way down. We’ve observed that bot operators are giving up quickly, and moving on to other, unprotected targets. Bot Fight Mode is getting smarter at detecting bots and more efficient at deterring bot operators, and that’s a win for Cloudflare and the environment.</p>
-	<h3>What’s changed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-changed">What’s changed?</h3>
+		<a href="https://blog.cloudflare.com/#whats-changed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve seen two changes this year in the Bot Fight Mode results. First, the time attackers spend in Bot Fight Mode challenges has reduced by 166%. Many bot operators are disconnecting almost immediately now from Cloudflare challenge pages. We expect this is because they’ve noticed the sharp cost increase associated with our CPU intensive challenge and given up. Even though we’re seeing individual bot operators give up quickly, Bot Fight Mode is busier than ever. We’re issuing six times more CPU intensive challenges per day compared to last year, thanks to a new detection system written using Cloudflare’s ruleset engine, detailed below.</p>
-	<h3>How did we do this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-did-we-do-this">How did we do this?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-we-do-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Bot Fight Mode launched, we highlighted one of our core detection systems:</p>
 	<blockquote>
 		<p><i>“Handwritten rules for simple bots that, however simple, get used day in, day out.”</i></p>
 	</blockquote>
 	<p>Some of them are still very simple. We introduce new simple rules regularly when we detect new software libraries as they start to source a significant amount of traffic. However, we started to reach the limitations of this system. We knew there were sophisticated bots out there that we could identify easily, but they shared enough overlapping traits with good browser traffic that we couldn’t safely deploy new rules to block them safely without potentially impacting our customers’ good traffic as well.</p>
 	<p>To solve this problem, we built a new rules system written on the same highly performant Ruleset Engine that powers <a href="https://blog.cloudflare.com/new-waf-experience">the new WAF</a>, <a href="https://blog.cloudflare.com/transform-http-response-headers">Transform Rules</a>, and <a href="https://blog.cloudflare.com/introducing-cache-rules">Cache Rules</a>, rather than the old <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Gagarin heuristics engine</a> that was fast but inflexible. This new framework gives us the flexibility we need to write highly complex rules to catch more elusive bots without the risk of interfering with legitimate traffic. The data gathered by these new detections are then labeled and used to train our <a href="https://blog.cloudflare.com/machine-learning-mobile-traffic-bots">Machine Learning engine</a>, ensuring we will continue to catch these bots as their operators attempt to adapt.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve heard from Bot Fight Mode customers that they need more flexibility. Website operators now expect a significant percentage of their legitimate traffic to come from automated sources, like service to service APIs. These customers are waiting to enable Bot Fight Mode until they can tell us what parts of their website it can run on safely. In 2023, we will give everyone the ability to write their own flexible Bot Fight Mode rules, so that every Cloudflare customer can join the fight against bots!</p>
-	<h3>Update: Mangroves, Climate Change &amp; economic development</h3>
+	<div class="flex anchor relative">
+		<h3 id="update-mangroves-climate-change-economic-development">Update: Mangroves, Climate Change &amp; economic development</h3>
+		<a href="https://blog.cloudflare.com/#update-mangroves-climate-change-economic-development" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eTGp8yd0bXgNsWWZ9VOPm/a09f5ede0a0c78989e7c2f20a875c0dd/image1-29.png" alt="" class="kg-image" width="650" height="543" loading="lazy">
@@ -32,6 +61,13 @@
 	<p>The Sundarbans are located on the delta of the Ganges, Brahmaptura, and Meghna rivers on the Bay of Bengal, and are home to one of the world's largest mangrove forests. The forest is not only a <a href="https://whc.unesco.org/en/list/798">UNESCO World Heritage</a> site, but also home to 260 bird species as well as a number of threatened species like the Bengal tiger, the estuarine crocodile, and Indian python. According to <a href="https://onetreeplanted.org">One Tree Planted</a>, the Sundarbans are currently under threat from rising sea levels, increasing salinity in the water and soil, cyclonic storms, and flooding.</p>
 	<p>The Intergovernmental Panel on Climate Change (IPCC) has found that mangroves are critical to mitigating greenhouse gas (GHG) emissions and protecting coastal communities from extreme weather events caused by climate change. The Sundarbans mangrove forest is one of the world's largest carbon sinks (an area that absorbs more carbon than it emits). One <a href="https://www.nature.com/articles/s41598-022-11716-5#:~:text=Recent%20researchers%20have%20evaluated%20that,0.5%E2%80%933%20m%20depth17.">study</a> suggested that coastal mangrove forests sequester carbon at a rate of two to four times that of a mature tropical or subtropical forest region.</p>
 	<p>One of the most exciting parts of this project was its focus on hiring and empowering local women. According to One Tree Planted, 75 percent of those involved in the project were women, including 85 women employed to monitor and manage the planting site over a five-month period. Participants also received training in the seed collection process with the goal of helping local residents lead mangrove planting from start to finish in the future.</p>
-	<h3>More bots stopped, more trees planted!</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-bots-stopped-more-trees-planted">More bots stopped, more trees planted!</h3>
+		<a href="https://blog.cloudflare.com/#more-bots-stopped-more-trees-planted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thanks to every Cloudflare customer who’s enabled Bot Fight Mode so far. You’ve helped make the Internet a better place by stopping malicious bots, and you’ve helped make the planet a better place by reforesting the Earth on bot operators’ dime. The more domains that use Bot Fight Mode, the more trees we can plant, so <a href="https://dash.cloudflare.com/signup">sign up for Cloudflare</a> and <a href="https://developers.cloudflare.com/bots/get-started/free/#enable-bot-fight-mode">activate Bot Fight Mode</a> today!</p>
 </div>

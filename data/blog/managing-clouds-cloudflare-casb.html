@@ -8,27 +8,76 @@
 	</figure>
 	<p>Last month we introduced Cloudflare’s new API–driven <a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb">Cloud Access Security Broker (CASB)</a> via the acquisition of Vectrix. As a quick recap, Cloudflare’s CASB helps IT and security teams detect security issues in and across their SaaS applications. We look at both data and users in SaaS apps to alert teams to issues ranging from unauthorized user access and file exposure to misconfigurations and shadow IT.</p>
 	<p>I’m excited to share two updates since we announced the introduction of <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB functionality</a> to Cloudflare Zero Trust. First, we’ve heard from Cloudflare customers who cannot wait to deploy the CASB and want to use it in more depth. Today, we’re outlining what we’re building next, based on that feedback, to give you a preview of what you can expect. Second, we’re opening the sign-up for our beta, and I’m going to walk through what will be available to new users as they are invited from the waitlist.</p>
-	<h2>What’s next in Cloudflare CASB?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-in-cloudflare-casb">What’s next in Cloudflare CASB?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-in-cloudflare-casb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The vision for Cloudflare’s API–driven CASB is to provide IT and security owners an easy-to-use, one-stop shop to protect the security of their data and users across their fleet of SaaS tools. Our goal is to make sure any IT or security admin can go from <a href="https://dash.cloudflare.com/sign-up/teams">creating a Zero Trust account</a> for the first time to protecting what matters most in minutes.</p>
 	<p>Beyond that immediate level of visibility, we know the problems discovered by IT and security administrators still require time to find, understand, and resolve. We’re introducing three new features to the core CASB platform in the coming months to address each of those challenges.</p>
-	<h3>New integrations (with more yet to come)</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-integrations-with-more-yet-to-come">New integrations (with more yet to come)</h3>
+		<a href="https://blog.cloudflare.com/#new-integrations-with-more-yet-to-come" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, what are integrations? Integrations are what we call the method to grant permissions and connect SaaS applications (via API) to CASB for security scanning and management. Generally speaking, integrations are done following an OAuth 2.0 flow, however this varies between third-party SaaS apps. Aligning to our goal, we’ll always make sure that integration set up flows are as simple as possible and can be done in minutes.</p>
 	<p>As with most security strategies, protecting your most critical assets first becomes the priority. Integrations with Google Workspace and GitHub will be available in beta (<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta">request access here</a>). We’ll soon follow with integrations to Zoom, Slack, and Okta before adding services like Microsoft 365 and Salesforce later this year. Working closely with customers will drive which applications we integrate with next.</p>
-	<h3>SaaS asset management</h3>
+	<div class="flex anchor relative">
+		<h3 id="saas-asset-management">SaaS asset management</h3>
+		<a href="https://blog.cloudflare.com/#saas-asset-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On top of integrations, managing the various assets, or “digital nouns” like users, data, folders, repos, meetings, calendars, files, settings, recordings, etc. across services is tricky to say the least. Spreadsheets are hard to manage for tracking who has access to what or what files have been shared with whom.</p>
 	<p>This isn’t efficient and is ripe for human error. CASB SaaS asset management allows IT and security teams to view all of their data settings and user activity around said data from a single dashboard. Quickly being able to answer questions like; “did we disable the account for a user across these six services?” becomes a quick task instead of logging into each service and addressing individually.</p>
-	<h3>Remediation guides + automated workflows</h3>
+	<div class="flex anchor relative">
+		<h3 id="remediation-guides-automated-workflows">Remediation guides + automated workflows</h3>
+		<a href="https://blog.cloudflare.com/#remediation-guides-automated-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Detect, prevent, and fix. With detailed SaaS remediation guides, IT administrators can assign and tackle issues with the right team. By arming teams with what they need to know in context, it makes preventing issues from happening again seamless. In situations where action should be taken straight away, automated SaaS workflows provide the ability to solve SaaS security issues in one click. Need to remove sharing permissions from that file in OneDrive? A remediation button allows for action from anywhere, anytime.</p>
-	<h3>Cloudflare Gateway + CASB</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-gateway-casb">Cloudflare Gateway + CASB</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-gateway-casb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Combining products across the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> platform means solving complex problems through one seamless experience. Starting with the power of <a href="https://www.cloudflare.com/products/zero-trust/gateway">Gateway</a> and CASB, customers will be able to take immediate action to wrangle in <a href="https://blog.cloudflare.com/introducing-shadow-it-discovery">Shadow IT</a>. In just a few clicks, a detected unauthorized SaaS application from the Gateway shadow IT report can go from being the wild west to a sanctioned and secure one with a CASB integration. This is just one example to highlight the many solutions we’re excited about that can be solved with the <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust platform</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xUzXluYMtMoRh54FG6tHP/004c646b8f13e56b7b9a610bd9c80070/image2-63.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
 
 	</figure>
-	<h2>Launching the Cloudflare CASB beta and what you can expect</h2>
+	<div class="flex anchor relative">
+		<h2 id="launching-the-cloudflare-casb-beta-and-what-you-can-expect">Launching the Cloudflare CASB beta and what you can expect</h2>
+		<a href="https://blog.cloudflare.com/#launching-the-cloudflare-casb-beta-and-what-you-can-expect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the CASB beta you can deploy popular integrations like Google Workspace on day one. You’ll also get direct access to our Product team to help shape what comes next. We’re excited to work closely with a number of early customers to align on which integrations and features matter most to them.</p>
-	<h2>Getting started today with the Cloudflare CASB beta</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-today-with-the-cloudflare-casb-beta">Getting started today with the Cloudflare CASB beta</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-today-with-the-cloudflare-casb-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Right now we’re working on making the out-of-band CASB product a seamless part of the Zero Trust platform. We'll be sending out the first wave of beta invitations early next month – you can <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta">request access here</a>.</p>
 	<p>We have some big ideas of what the CASB product can and will do. While this post highlights some exciting things to come, you can get started right now with Cloudflare’s Zero Trust platform by <a href="https://dash.cloudflare.com/sign-up/teams">signing up here</a>.</p>
 </div>

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>We just rolled out an update to <a href="https://www.cloudflare.com/features-security">CloudFlare's Web Application Firewall (WAF)</a>. Previously, CloudFlare's WAF has <a href="http://www.slideshare.net/zeroscience/cloudflare-vs-incapsula-vs-modsecurity">received criticism from people who have tested</a> it and found that it didn't behave as traditional WAFs are expected to. That contrasted with the real world experience of users who saw our WAF virtually eliminate actual web threats. Seemingly paradoxically, all of the following are correct: the criticisms weren't wrong and CloudFlare's original WAF was working as designed. I'll explain below, but first some history.</p>
-	<h3>History</h3>
+	<div class="flex anchor relative">
+		<h3 id="history">History</h3>
+		<a href="https://blog.cloudflare.com/#history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I started working in the Internet security space in 1998. At the time, I was interested in the emerging problem of email spam. The state of the art technology in 1998 for battling spam was an <a href="http://spamassassin.apache.org/index.html">open source project called SpamAssassin</a>. SpamAssassin was a rules-based email filter engine. At a simplistic level, it had a list of things that were likely to appear in spam messages (e.g., the word "<i>viagra</i>"), each with a score. When a new message arrived, it was run through the engine, each hit incremented the score, and a message was considered "spam" if the score exceeded a certain threshold.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -15,7 +22,14 @@
 	</figure>
 	<p>This rules-based approach had at least two major flaws. First, it was very difficult to configure because every organization's needs were different. For instance, while "viagra" may have been an indication of spam in many cases, if you were setting up SpamAssassin for the Pfizer corporation (which manufactures the drug) then "viagra" may actually have been an indication of non-spamminess.</p>
 	<p>Second, the bad people had access to the same standard rule sets as the good people. That meant it was easy for them to craft messages that could bypass the filters. Remember spam messages that spelled "viagra" like "v1@6r@"? It turns out that there are <a href="http://cockeyed.com/lessons/viagra/viagra.html">1,300,925,111,156,286,160,896 different ways you can spell the word "viagra"</a>. Since the rules based approach to SpamAssassin was brittle, it was easy for attackers to get around the rules.</p>
-	<h3>Enter Heuristics</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-heuristics">Enter Heuristics</h3>
+		<a href="https://blog.cloudflare.com/#enter-heuristics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2002, before he started Y Combinator, Paul Graham wrote an influential essay called "<a href="http://www.paulgraham.com/spam.html">A Plan for Spam</a>." The essay suggested that the rules-based approach for email filtering was headed down the wrong path. Instead, Paul argued anti-spam systems should be based on heuristics. Specifically, he outlined a Bayesian statistics-based approach where spam filters could be self-learning based on a statistical calculation of "normal" adjusted for an individual user's feedback marking messages as "spam" and "not spam."</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,15 +38,36 @@
 	</figure>
 	<p>In 2003, after an overwhelming response to his essay, Paul organized the first <a href="http://static.usenix.org/publications/login/2003-06/openpdfs/spam.pdf">MIT Anti-Spam Conference</a>. From that conference, many of the companies that would go on to largely solve the email spam problem (at least from the perspective of end users) would emerge. Paul turned out to be right and whatever email program you're using today it is almost guaranteed that a heuristic engine is making the decision on what ends up in your spam folder.</p>
 	<p>I attended the MIT Anti-Spam Conference for several years and, in 2005, Paul invited me to give a talk on <a href="http://www.projecthoneypot.org">Project Honey Pot</a> which, in many ways, was the open source project that served as the initial inspiration for CloudFlare. The MIT Anti-Spam Conference was also where I first met <a href="http://www.jgc.org">John Graham-Cumming</a>, who now works on CloudFlare's team and was the&nbsp;principal&nbsp;architect behind our WAF update. More on that in a second, but first a bit about the state of traditional WAFs today.</p>
-	<h3>Traditional WAFs</h3>
+	<div class="flex anchor relative">
+		<h3 id="traditional-wafs">Traditional WAFs</h3>
+		<a href="https://blog.cloudflare.com/#traditional-wafs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A decade after the first MIT Spam Conference, the archetype of the traditional WAF is an open source project known as <a href="http://www.modsecurity.org">ModSecurity</a>. Most commercial WAFs are based around the same fundamental design. At a simplistic level, ModSecurity has a list of things that are likely to appear in different types of web-based attacks, each with a score. When a new web request arrives, it is run through the ModSecurity engine, each hit increments a score, and then the request is considered a threat if the score exceeds a certain threshold.</p>
 	<p>Sound familiar? It should, it's the same rules-based approach that SpamAssassin used. It also suffers from the same challenges. It is difficult to configure on a per-organization basis, partially explaining why the market for <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">traditional WAFs</a> has remained remarkably small. Moreover, bad people have access to the standard rule sets meaning they can <a href="http://www.nethemba.com/bypassing-waf.pdf">craft attacks that easily bypass them</a>.</p>
-	<h3>CloudFlare's WAF</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-waf">CloudFlare's WAF</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-waf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare, we thought we'd skip to the inevitable end of the story and build a WAF based on heuristics from the beginning. Rather than rely on brittle rules, CloudFlare was designed to look at the totality of traffic across all our customers' sites and then use that data to stop actual attacks. We also tailored the protection on a site-by-site basis. For example, a chunk of SQL posted to a site like Stack Exchange may not be a threat while a chunk of SQL posted to a cooking blog may be. At scale, if enough websites used our service, we knew we could provide an extremely high level of effective protection driven by data and heuristics.</p>
 	<p>That approach has worked. We have more than a million happy users who report that CloudFlare protects them from a wide range of attacks. However, over the last four years we've also realized there is a place for rules.</p>
 	<p>Some of this is purely marketing. Heuristic-based approaches are notoriously difficult to test. Sign up a new site for CloudFlare and start posting a laundry list of SQL injection attacks from a connection with browsing behavior across other CloudFlare sites that indicates it is not malicious and our systems will tend to come to the conclusion that this is a site covering SQL injection attacks and let the posts through. That actually isn't wrong, but it isn't very useful when you're trying to run a test to see that we <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">block actual attacks</a>. It also complicates tests for "check-the-box" security audits like <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI</a>.</p>
 	<p>Beyond mere testing, rules also can be good when applied appropriately. We've seen several instances where a new attack will emerge and we <a href="https://blog.cloudflare.com/apache-killer-killed-zero-day-exploit-zero-da">deploy a rule to quickly thwart it</a>. While we've had the ability to do that ourselves, we haven't previously allowed our customers, partners (e.g., hosting providers), or trusted security consultants to do the same.</p>
-	<h3>Everything Old Is New Again</h3>
+	<div class="flex anchor relative">
+		<h3 id="everything-old-is-new-again">Everything Old Is New Again</h3>
+		<a href="https://blog.cloudflare.com/#everything-old-is-new-again" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We spent the last 6 months building a traditional, rules-based WAF to augment CloudFlare's existing next generation, heuristics-based WAF. The new WAF is included by default with every Pro and better plan (<a href="https://www.cloudflare.com/plans">$20/month for the first site, $5/month for each additional site</a>). In the process, we also took the opportunity to rearchitect how some of our security systems work in order to provide more visibility and flexibility. You'll see that increasingly reflected in our UI over the next few months.</p>
 	<figure class="kg-card kg-image-card ">
 

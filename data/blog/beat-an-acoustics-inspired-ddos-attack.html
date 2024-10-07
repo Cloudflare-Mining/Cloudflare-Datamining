@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>On the week of Black Friday, Cloudflare automatically detected and mitigated a unique ACK DDoS attack, which we’ve codenamed “Beat”, that targeted a <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer. Usually, when attacks make headlines, it’s because of their size. However, in this case, it’s not the size that is unique but the method that appears to have been borrowed from the world of acoustics.</p>
-	<h3>Acoustic inspired attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="acoustic-inspired-attack">Acoustic inspired attack</h3>
+		<a href="https://blog.cloudflare.com/#acoustic-inspired-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As can be seen in the graph below, the attack’s packet rate follows a wave-shaped pattern for over 19 hours. It seems as though the attacker was inspired by an acoustics concept called <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29">beat</a>. In acoustics, a beat is a term that is used to describe an interference of two different wave frequencies. It is the superposition of the two waves. When the two waves are nearly 180 degrees <a href="https://en.wikipedia.org/wiki/Out_of_phase">out of phase</a>, they create the beating phenomenon. When the two waves merge they amplify the sound and when they are out of sync they cancel one another, creating the beating effect.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -21,7 +28,14 @@
 
 	</figure>
 	<p>Source: <a href="https://academo.org/demos/wave-interference-beat-frequency">https://academo.org/demos/wave-interference-beat-frequency/</a>&nbsp;</p>
-	<h3>Reverse engineering the attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="reverse-engineering-the-attack">Reverse engineering the attack</h3>
+		<a href="https://blog.cloudflare.com/#reverse-engineering-the-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It looks like the attacker launched a flood of packets where the rate of the packets is determined by the equation of the beat wave: y<sup>'</sup><sub>beat</sub>=y<sub>1</sub>+y<sub>2</sub>. The two equations y<sub>1</sub> and y<sub>2</sub> represent the two waves.</p>
 	<p>Each equation is expressed as</p>
 	<figure class="kg-card kg-image-card ">
@@ -57,10 +71,24 @@
 
 	</figure>
 	<p>In the screenshot below, g = f<sub>1</sub>. You can view this graph <a href="https://www.desmos.com/calculator/7j86q3x9xd">here</a>.</p>
-	<h3>Beating the drum</h3>
+	<div class="flex anchor relative">
+		<h3 id="beating-the-drum">Beating the drum</h3>
+		<a href="https://blog.cloudflare.com/#beating-the-drum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The attacker may have utilized this method in order to try and overcome our <a href="https://www.cloudflare.com/ddos">DDoS protection systems</a> (perhaps thinking that the rhythmic rise and fall of the attack would fool our systems). However, <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a>, our unidirectional TCP state tracking machine, detected it as being a flood of ACK packets that do not belong to any existing TCP connection. Therefore, flowtrackd automatically dropped the attack packets at Cloudflare’s edge.</p>
 	<p>The attacker was beating the drum for over 19 hours with an <a href="https://en.wikipedia.org/wiki/Amplitude">amplitude</a> of ~7 Mpps, a <a href="https://en.wikipedia.org/wiki/Wavelength">wavelength</a> of ~4 hours, and peaking at ~42 Mpps. During the two days in which the attack took place, Cloudflare systems automatically detected and mitigated over 700 DDoS attacks that targeted this customer. The attack traffic accumulated at almost 500 Terabytes out of a total of 3.6 Petabytes of attack traffic that targeted this single customer in November alone. During those two days, the attackers utilized mainly ACK floods, UDP floods, SYN floods, Christmas floods (where all of the TCP flags are ‘lit’), ICMP floods, and RST floods.</p>
-	<h3>The challenge of TCP based attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-challenge-of-tcp-based-attacks">The challenge of TCP based attacks</h3>
+		<a href="https://blog.cloudflare.com/#the-challenge-of-tcp-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCP is a stateful protocol, which means that in some cases, you’d need to keep track of a TCP connection’s state in order to know if a packet is legitimate or part of an attack, i.e. out of state. We were able to provide protection against out-of-state TCP packet attacks for our “classic” <a href="https://www.cloudflare.com/waf">WAF/CDN</a> service and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> service because in both cases Cloudflare serves as a reverse-proxy seeing both ingress and egress traffic.</p>
 	<figure class="kg-card kg-image-card ">
 

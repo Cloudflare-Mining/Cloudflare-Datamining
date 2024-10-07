@@ -24,7 +24,14 @@
 	<p>There’s another reason I wanted to do this: I like to use Cloudflare’s own products. I have a number of Cloudflare accounts that I pay for so that I see the true customer experience. I see the emails we send out and what it’s like to navigate our UI for real use. The Pi 400 gave me a chance to experience with Cloudflare Tunnel and Auditable Terminal.</p>
 	<p>Also this is really cool.</p>
 	<p>So… if you want to do this yourself, follow along as I take you through the steps I went through to hook a brand new Pi 400 up to Cloudflare and access it from anywhere.</p>
-	<h3>Stage 1: Prepare the Pi</h3>
+	<div class="flex anchor relative">
+		<h3 id="stage-1-prepare-the-pi">Stage 1: Prepare the Pi</h3>
+		<a href="https://blog.cloudflare.com/#stage-1-prepare-the-pi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I plugged the Pi 400 into my TV via HDMI, to the Internet via Ethernet and booted it. It comes with the OS pre-installed on an SD card so it only took seconds to be at a welcome screen:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +63,14 @@
 
 	</figure>
 	<p>With SSH access setup and the Pi 400 fully updated, the second step is to set up Cloudflare Tunnel.</p>
-	<h3>Stage 2: Cloudflare Tunnel</h3>
+	<div class="flex anchor relative">
+		<h3 id="stage-2-cloudflare-tunnel">Stage 2: Cloudflare Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#stage-2-cloudflare-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even with SSH setup on the Pi 400 it’s only accessible from inside my home network and I want to get access to it from anywhere. I could open a port in my home firewall, but I hate that idea.</p>
 	<p>The answer is <a href="https://blog.cloudflare.com/tunnel-for-everyone">Cloudflare Tunnel</a>. It’s a (free!) small daemon (called <code>cloudflared</code>) that will connect from the Pi 400 to multiple Cloudflare data centers and maintain connections to them. It’ll be authenticated to my Cloudflare account and once setup I’ll be able to use Cloudflare for Teams to connect to it via the web.</p>
 	<p>Setting it up is a doddle. I already had a domain name setup on Cloudflare, if I hadn’t I could have set one up quickly. The Cloudflare Tunnel documentation takes you through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation">installing it</a>.</p>
@@ -103,7 +117,14 @@
 
 	</figure>
 	<p>At this point the tunnel is set up but not running yet. So the Pi 400 is not yet connected to Cloudflare. I’ll come back to that. But the next step is setting up Cloudflare for Teams so that users can authenticate to the other end of the tunnel and get access.</p>
-	<h3>Stage 3: Cloudflare for Teams</h3>
+	<div class="flex anchor relative">
+		<h3 id="stage-3-cloudflare-for-teams">Stage 3: Cloudflare for Teams</h3>
+		<a href="https://blog.cloudflare.com/#stage-3-cloudflare-for-teams" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I didn’t have Cloudflare for Teams setup so the first step was to visit <a href="https://dash.teams.cloudflare.com">https://dash.teams.cloudflare.com/</a> and following the <a href="https://developers.cloudflare.com/cloudflare-one/setup">setup guide</a>. I chose the unoriginal team name <code>jgctesting</code> and entered it:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -153,7 +174,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ItWrD98OwYbP2vaY3TLPT/509b9c67d338b6d4366606d9bd56f083/image21-1.png" alt="" class="kg-image" width="1999" height="438" loading="lazy">
 
 	</figure>
-	<h3>Stage 4: Connecting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="stage-4-connecting-it-all-together">Stage 4: Connecting it all together</h3>
+		<a href="https://blog.cloudflare.com/#stage-4-connecting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this stage I had <code>cloudflared</code> setup and authorized on the Pi 400, Cloudflare for Teams setup so that anyone with an @jgc.org email could get a PIN to access Auditable Terminal on pi400.jgc.org (I’ve since reconfigured everything so going to that URL doesn’t do anything today).</p>
 	<p>But all these things need connecting together. That means: editing a config file on the Pi 400 and telling Cloudflare to route to the tunnel for pi400.jgc.org.</p>
 	<p>I started with the config file which was <code>/home/pi/.cloudflared/config.yml</code>. The first step was to get the tunnel ID.</p>
@@ -180,7 +208,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pIPdKNnP51fZprVhJZ84i/b0f3a7c1ce5f1a723d106c07241ebe1f/image16-1.png" alt="" class="kg-image" width="1999" height="87" loading="lazy">
 
 	</figure>
-	<h3>Stage 5: Try it!</h3>
+	<div class="flex anchor relative">
+		<h3 id="stage-5-try-it">Stage 5: Try it!</h3>
+		<a href="https://blog.cloudflare.com/#stage-5-try-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And then it was time to try it. I went back to my browser and browsed to pi400.jgc.org and was greeted with a login screen. Since I’d authorized any @jgc.org address I entered an @jgc.org email.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -212,7 +247,14 @@
 
 	</figure>
 	<p>The absolute last step was to make sure that <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/run-as-service">runs automatically</a> which was as simple as typing <code>sudo cloudflared --config .cloudflared/config.yml service install</code>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was pretty fast (especially factoring in my ignorance about all the details of configuring Cloudflare for Teams and Cloudflare Tunnel). Now I can log into that Pi 400 from anywhere in just a browser. So powerful.</p>
 	<p>But it’s still using username/password for SSH and that can be fixed with <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates">short-lived certificates</a>. And my authentication to access is using one-time PINs; for a real application it would be <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration">better to use SSO</a>.</p>
 </div>

@@ -7,10 +7,24 @@
 	</figure>
 	<p>At Cloudflare, we’re <a href="https://blog.cloudflare.com/making-the-waf-40-faster">constantly working on</a> improving the performance of our edge — and that was exactly what my internship this summer entailed. I’m excited to share some improvements we’ve made to our popular <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">Firewall Rules</a> product over the past few months.</p>
 	<p>Firewall Rules lets customers filter the traffic hitting their site. It’s built using our engine, Wirefilter, which takes powerful boolean expressions written by customers and matches incoming requests against them. Customers can then choose how to respond to traffic which matches these rules. We will discuss some in-depth optimizations we have recently made to Wirefilter, so you may wish to <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">get familiar</a> with how it works if you haven’t already.</p>
-	<h3>Minimizing CPU usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="minimizing-cpu-usage">Minimizing CPU usage</h3>
+		<a href="https://blog.cloudflare.com/#minimizing-cpu-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a new member of the Firewall team, I quickly learned that performance is important — even in our security products. We look for opportunities to make our customers’ Internet properties faster where it’s safe to do so, maximizing both security and performance.</p>
 	<p>Our engine is already heavily used, powering all of Firewall Rules. But we have bigger plans. More and more products like our <a href="https://support.cloudflare.com/hc/en-us/articles/200172016-Understanding-the-Cloudflare-Web-Application-Firewall-WAF">Web Application Firewall</a> (WAF) will be running behind our Wirefilter-based engine, and it will become responsible for eating up a sizable chunk of our total CPU usage before long.</p>
-	<h3>How to measure performance?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-measure-performance">How to measure performance?</h3>
+		<a href="https://blog.cloudflare.com/#how-to-measure-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Measuring performance is a notoriously tricky task, and as you can probably imagine trying to do this in a highly distributed environment (aka <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing">Cloudflare’s edge</a>) does not help. We’ve been surprised in the past by optimizations that look good on paper, but, when tested out in production, just don’t seem to do much.</p>
 	<p>Our solution? Performance measurement as a service — an isolated and reproducible benchmark for our Firewall engine and a framework for engineers to easily request runs and view results. It’s worth noting that we took a lot of inspiration from the fantastic <a href="https://perf.rust-lang.org">Rust Compiler benchmarks</a> to build this.</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,7 +33,14 @@
 
 	</figure>
 	<p>Our benchmarking framework, showing how performance during different stages of processing Wirefilter expressions has changed over time [1].</p>
-	<h3>What to measure?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-to-measure">What to measure?</h3>
+		<a href="https://blog.cloudflare.com/#what-to-measure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next challenge was to find some meaningful performance metrics. Some experimentation quickly uncovered that time was far too volatile a measure for meaningful comparisons, so we turned to <a href="https://en.wikipedia.org/wiki/Hardware_performance_counter">hardware counters</a> [2]. It’s not hard to find tools to measure these (<a href="https://perf.wiki.kernel.org/index.php/Main_Page">perf</a> and <a href="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html">VTune</a> are two such examples), although they (<a href="https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top/api-support/instrumentation-and-tracing-technology-apis/instrumentation-and-tracing-technology-api-reference/collection-control-api.html">mostly</a>) don’t allow control over which parts of the program are recorded. In our case, we wished to individually record measurements for different stages of filter processing — parsing, compilation, analysis, and execution.</p>
 	<p>Once again we took inspiration from the Rust compiler, and its <a href="https://blog.rust-lang.org/inside-rust/2020/02/25/intro-rustc-self-profile.html">self-profiling options</a>, using the <a href="https://www.man7.org/linux/man-pages/man2/perf_event_open.2.html">perf_event_open</a> API to record counters from <i>inside</i> our binary. We then output something like the following, which our framework can easily ingest and store for later visualization.</p>
 	<figure class="kg-card kg-image-card ">
@@ -30,7 +51,14 @@
 	<p>Output of our benchmarks in <a href="https://jsonlines.org">JSON Lines</a> format, showing a list of recordings for each combination of hardware counter and Wirefilter processing stage. We’ve used 10 repeats here for readability, but we use around 20, in addition to 5 warmup rounds, within our framework.</p>
 	<p>Whilst we mainly focussed on metrics relating to CPU usage, we also use a combination of <a href="https://man7.org/linux/man-pages/man2/getrusage.2.html"><code>getrusage</code></a> and <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=695f055936938c674473ea071ca7359a863551e7"><code>clear_refs</code></a> to find the maximum resident set size (RSS). This is useful to understand the memory impact of <a href="https://github.com/BurntSushi/aho-corasick">particular algorithms</a> in addition to CPU.</p>
 	<p>But the challenge was not over. Cloudflare’s standard CI agents use virtualization and sandboxing for security and convenience, but this makes accessing hardware counters virtually impossible. Running our benchmarks on a dedicated machine gave us access to these counters, and ensured more reproducible results.</p>
-	<h3>Speeding up the speed test</h3>
+	<div class="flex anchor relative">
+		<h3 id="speeding-up-the-speed-test">Speeding up the speed test</h3>
+		<a href="https://blog.cloudflare.com/#speeding-up-the-speed-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our benchmarks were designed from the outset to take an important place in our development process. For instance, we now perform a full benchmark run before releasing each new version to detect performance regressions.</p>
 	<p>But with our benchmarks in place, it quickly became clear that we had a problem. Our benchmarks simply weren’t fast enough — at least if we wanted to complete them in less than a few hours! The problem was we have a very large number &nbsp;of filters. Since our engine would never usually execute requests against this many filters at once it was proving incredibly costly. We came up with a few tricks to cut this down…</p>
 	<ul>
@@ -45,7 +73,14 @@
 		</li>
 	</ul>
 	<p>Most of these are trade-offs, but very necessary ones which allow us to run continual benchmarks without development speed grinding to a halt. At the time of writing, we’ve managed to get a benchmark run down to around 20 minutes using these ideas.</p>
-	<h3>Optimizing our engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimizing-our-engine">Optimizing our engine</h3>
+		<a href="https://blog.cloudflare.com/#optimizing-our-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a benchmarking framework in place, we were ready to begin testing optimizations. But how do you optimize an interpreter like Wirefilter? <a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">Just-in-time (JIT) compilation</a>, <a href="https://dl.acm.org/doi/10.1145/277652.277743">selective inlining</a> and <a href="http://www.complang.tuwien.ac.at/andi/papers/dotnet_06.pdf">replication</a> were some ideas floating around in the word of interpreters that seemed attractive. After all, we <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">previously wrote</a> about the cost of dynamic dispatch in Wirefilter. All of these techniques aim to reduce that effect.</p>
 	<p>However, running some real filters through a profiler tells a different story. Most execution time, around 65%, is spent not resolving dynamic dispatch calls but instead performing <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/operators/#comparison-operators">operations</a> like comparison and searches. Filters currently in production tend to be pretty light on functions, but throw in a few more of these and even less time would be spent on dynamic dispatch. We suspect that even a fair chunk of the remaining 35% is actually spent reading the memory of request fields.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -122,7 +157,14 @@
 		</tbody>
 	</table>
 	<figcaption>Breakdown of CPU time while executing a typical production filter.</figcaption><!--kg-card-end: html-->
-	<h3>An adventure in substring searching</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-adventure-in-substring-searching">An adventure in substring searching</h3>
+		<a href="https://blog.cloudflare.com/#an-adventure-in-substring-searching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By now, you shouldn’t be surprised that the <code>contains</code> operator was one of the first in line for optimization. If you’ve ever written a Firewall Rule, you’re probably already familiar with what it does — it checks whether a substring is present in the field you are matching against. For example, the following expression would match when the host is “example.com” or “<a href="http://www.example.xn--net-9o0a">www.example.net”</a>, but not when it is “cloudflare.com”. In <a href="https://en.wikipedia.org/wiki/String-searching_algorithm">string searching algorithms</a>, this is commonly referred to as finding a ‘needle’ (“example”) within a ‘haystack’ (“example.com”).</p>
 	<p><code>http.host contains “example”</code></p>
 	<p>How does this work under the hood? Ordinarily, we may have used Rust’s <a href="https://doc.rust-lang.org/std/string/struct.String.html#method.contains">`String::contains` function</a> but Wirefilter also allows raw byte expressions that don’t necessarily conform to UTF-8.</p>
@@ -223,7 +265,14 @@
 			<p>If not, we continue with the next part of our haystack and repeat until we’ve checked the entire thing.</p>
 		</li>
 	</ol>
-	<h3>When it goes wrong</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-it-goes-wrong">When it goes wrong</h3>
+		<a href="https://blog.cloudflare.com/#when-it-goes-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may be wondering what happens if our haystack doesn’t fit neatly into registers. In the original algorithm, nothing. It simply continues reading into the oblivion after the end of the haystack until the last register is full, and uses a bitmask to ignore potential false-positives from this additional region of memory.</p>
 	<p>As we mentioned, security is our priority when it comes to optimizations, so we could never deploy something with this kind of behaviour. We ended up porting Muła’s library to Rust (we’ve also <a href="https://crates.io/crates/sliceslice">open-sourced the crate</a>!) and performed an <a href="https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/coding-for-neon---part-2-dealing-with-leftovers">overlapping registers modification</a> found in ARM’s blog.</p>
 	<p>It’s best illustrated by example — notice the difference between how we would fill registers on an imaginary SIMD instruction-set with 4-byte registers.</p>
@@ -317,7 +366,14 @@
 		</tbody>
 	</table>
 	<figcaption>Register sizes in different SIMD instruction sets [3]. We did not consider AVX512 since support for this is not widespread enough.</figcaption><!--kg-card-end: html-->
-	<h3>Is it always fast?</h3>
+	<div class="flex anchor relative">
+		<h3 id="is-it-always-fast">Is it always fast?</h3>
+		<a href="https://blog.cloudflare.com/#is-it-always-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Choosing the first and last bytes of the needle to rule out potential matches is a great idea. It means that when it does come to performing a memcmp, we can ignore these, as we know they already match. Unfortunately, as Muła points out, this also makes the algorithm susceptible to a worst-case attack in some instances.</p>
 	<p>Let’s give an expression that a customer might write to illustrate this.</p>
 	<p><code>http.request.uri.path contains “/wp-admin/”</code></p>
@@ -412,7 +468,14 @@
 		</tbody>
 	</table>
 	<figcaption>Improvements in instruction count of using sse4-strstr and sliceslice over the memmem crate with Wirefilter.</figcaption><!--kg-card-end: html-->
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is only a small taste of the performance work we’ve been doing, and we have much more yet to come. Nevertheless, none of this would have been possible without the support of my manager Richard and my mentor Elie, who contributed a lot of these ideas. I’ve learned so much over the past few months, but most of all that Cloudflare is an amazing place to be an intern!</p>
 	<p>[1] Since our benchmarks are not run within a production environment, results in this post do not represent traffic on our edge.</p>
 	<p>[2] We found instruction counts to be a particularly stable measure, and CPU cycles a particularly unstable one.</p>

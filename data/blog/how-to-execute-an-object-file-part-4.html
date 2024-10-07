@@ -19,7 +19,14 @@
 		</li>
 	</ul>
 	<p>The initial posts are dedicated to the x86 architecture. Since then the fleet of our working machines has expanded to include a large and growing number of ARM CPUs. This time we’ll repeat this exercise for the aarch64 architecture. You can pause here to read the previous blog posts before proceeding with this one, or read through the brief summary below and reference the earlier posts for more detail. We might reiterate some theory as working with ELF files can be daunting, if it’s not your day-to-day routine. Also, please be mindful that for simplicity, these examples omit bounds and integrity checks. Let the journey begin!</p>
-	<h2>Introduction</h2>
+	<div class="flex anchor relative">
+		<h2 id="introduction">Introduction</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to obtain an object file or an executable binary from a high-level compiled programming language the code needs to be processed by three components: compiler, assembler and linker. The compiler generates an assembly listing. This assembly listing is picked up by the assembler and translated into an object file. All source files, if a program contains multiple, go through these two steps generating an object file for each source file. At the final step the linker unites all object files into one binary, additionally resolving references to the shared libraries (i.e. we don’t implement the <code>printf</code> function each time, rather we take it from a system library). Even though the approach is platform independent, the compiler output varies by platform as the assembly listing is closely tied to the CPU architecture.</p>
 	<p>GCC (GNU Compiler Collection) can run each step: compiler, assembler and linker separately for us:</p>
 	<p>main.c:</p>
@@ -53,10 +60,25 @@ $ file main
 main: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically
 linked, interpreter /lib/ld-linux-aarch64.so.1,
 BuildID[sha1]=d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4, for GNU/Linux 3.7.0, not stripped</code></pre>
-	<h2>The ELF File</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="the-elf-file">The ELF File</h2>
+		<a href="https://blog.cloudflare.com/#the-elf-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The central idea of this series of blog posts is to understand how to resolve dependencies from object files without directly involving the linker. For illustrative purposes we generated an object file based on some C-code and used it as a library for our main program. Before switching to the code, we need to understand the basics of the ELF structure.</p>
 	<p>Each ELF file is made up of one <i>ELF header</i>, followed by file data. The data can include: a <i>program header</i> table, a <i>section header</i> table, and the data which is referred to by the program or section header tables.</p>
-	<h3>The ELF Header</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-elf-header">The ELF Header</h3>
+		<a href="https://blog.cloudflare.com/#the-elf-header" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The ELF header provides some basic information about the file: what architecture the file is compiled for, the program entry point and the references to other tables.</p>
 	<p>The ELF Header:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf -h main
@@ -80,7 +102,15 @@ ELF Header:
   Size of section headers:           64 (bytes)
   Number of section headers:         29
   Section header string table index: 28</code></pre>
-	<h3>The ELF Program Header</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-elf-program-header">The ELF Program Header</h3>
+		<a href="https://blog.cloudflare.com/#the-elf-program-header" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <i>sections</i> with the same characteristics and located nearby are grouped into bigger blocks — <i>segments</i> — and placed in the <i>program header</i>. We can say that the <i>program header</i> summarizes the types of data that appear in the <i>section header</i>.</p>
 	<p>The ELF Program Header:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf -Wl main
@@ -113,7 +143,15 @@ Program Headers:
    06     .eh_frame_hdr 
    07     
    08     .init_array .fini_array .dynamic .got </code></pre>
-	<h3>The ELF Section Header</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="the-elf-section-header">The ELF Section Header</h3>
+		<a href="https://blog.cloudflare.com/#the-elf-section-header" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.</p>
 	<p>The ELF Section Header:</p>
 	<pre class="language-bash"><code class="language-bash">$ readelf -SW main
@@ -155,7 +193,15 @@ Key to Flags:
   L (link order), O (extra OS processing required), G (group), T (TLS),
   C (compressed), x (unknown), o (OS specific), E (exclude),
   D (mbind), p (processor specific)</code></pre>
-	<h2>Executing example from Part 1 on aarch64</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="executing-example-from-part-1-on-aarch64">Executing example from Part 1 on aarch64</h2>
+		<a href="https://blog.cloudflare.com/#executing-example-from-part-1-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Actually, our <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">initial code</a> from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">Part 1</a> works on aarch64 as is!</p>
 	<p>Let’s have a quick summary about what was done in the code:</p>
 	<ol>
@@ -170,7 +216,14 @@ Key to Flags:
 		</li>
 	</ol>
 	<p>There is one nuance: even though all the sections are in the section header, neither of them have a string name. Without the names we can’t identify them. However, having an additional character field for each section in the ELF structure would be inefficient for the space — it must be limited by some maximum length and those names which are shorter would leave the space unfilled. Instead, ELF provides an additional section, <code>.shstrtab</code>. This string table concatenates all the names where each name ends with a null terminated byte. We can iterate over the names and match with an offset held by other sections to reference their name. But how do we find <code>.shstrtab</code> itself if we don’t have a name? To solve this chicken and egg problem, the ELF program header provides a direct pointer to <code>.shstrtab</code>. The similar approach is applied to two other sections: <code>.symtab</code> and <code>.strtab</code>. Where <code>.symtab</code> contains all information about the symbols and <code>.strtab</code> holds the list of symbol names. In the code we work with these tables to resolve all their dependencies and find our functions.</p>
-	<h2>Executing example from Part 2 on aarch64</h2>
+	<div class="flex anchor relative">
+		<h2 id="executing-example-from-part-2-on-aarch64">Executing example from Part 2 on aarch64</h2>
+		<a href="https://blog.cloudflare.com/#executing-example-from-part-2-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the beginning of the second blog post on <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">how to execute an object file</a> we made the function <code>add10</code> depend on <code>add5</code> instead of being self-contained. This is the first time when we faced relocations. <i>Relocations</i> is the process of loading symbols defined outside the current scope. The relocated symbols can present global or thread-local variables, constant, functions, etc. We’ll start from checking assembly instructions which trigger relocations and uncovering how the ELF format handles them in a more general way.</p>
 	<p>After making <code>add10</code> depend on <code>add5</code> our aarch64 version stopped working as well, similarly to the x86. Let’s take a look at assembly listing:</p>
 	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text obj.o
@@ -450,7 +503,14 @@ Executing set_var(42)...
 Executing get_var again...
 get_var() = 42</code></pre>
 	<p>It works! The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/2">here</a>.</p>
-	<h2>Executing example from Part 3 on aarch64</h2>
+	<div class="flex anchor relative">
+		<h2 id="executing-example-from-part-3-on-aarch64">Executing example from Part 3 on aarch64</h2>
+		<a href="https://blog.cloudflare.com/#executing-example-from-part-3-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> is about resolving external dependencies. When we write code we don’t think much about how to allocate memory or print debug information to the console. Instead, we involve functions from the system libraries. But the code of system libraries needs to be passed through to our programs somehow. Additionally, for optimization purposes, it would be nice if this code would be stored in one place and shared between all programs. And another wish — we don’t want to resolve all the functions and global variables from the libraries, only those which we need and at those times when we need them. To solve these problems, ELF introduced two sections: PLT (the procedure linkage table) and GOT (the global offset table). The dynamic loader creates a list which contains all external functions and variables from the shared library, but doesn’t resolve them immediately; instead they are placed in the PLT section. Each external symbol is presented by a small function, a stub, e.g. <code>puts@plt</code>. When an external symbol is requested, the stub checks if it was resolved previously. If not, the stub searches for an absolute address of the symbol, returns to the requester and writes it in the GOT table. The next time, the address returns directly from the GOT table.</p>
 	<p>In <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> we implemented a simplified PLT/GOT resolution. Firstly, we added a new function <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/obj.c#L35"><code>say_hello</code></a> in the <code>obj.c</code>, which calls unresolved system library function <code>puts</code>. Further we added an optional wrapper <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L73"><code>my_puts</code></a> in the <code>loader.c</code>. The wrapper isn’t required, we could’ve resolved directly to a standard function, but it's a good example of how the implementation of some functions can be overwritten with custom code. In the next steps we added our PLT/GOT resolution:</p>
 	<ul>
@@ -583,6 +643,13 @@ Executing say_hello...
 my_puts executed
 Hello, world!</code></pre>
 	<p>The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/3">here</a>.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are several things we covered in this blog post. We gave a brief introduction on how the binary got executed on Linux and how all components are linked together. We saw a big difference between x86 and aarch64 assembly. We learned how we can hook into the code and change its behavior. But just as it was said in the first blog post of this series, the most important thing is to remember to always think about security first. Processing external inputs should always be done with great care. Bounds and integrity checks have been omitted for the purposes of keeping the examples short, so readers should be aware that the code is not production ready and is designed for educational purposes only.</p>
 </div>

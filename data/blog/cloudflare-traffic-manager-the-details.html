@@ -3,7 +3,14 @@
 	<p>Cloudflare's investment into building a large global network protects our customers from DDoS attacks, secures them with our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall</a> and Universal SSL, as well as improving performance through our CDN and the many network-level optimizations we're constantly iterating on.</p>
 	<p>Building on these products, we just introduced <a href="https://blog.cloudflare.com/cloudflare-traffic">Cloudflare Traffic</a>. To explain the benefits, we'll dive into the nitty-gritty details of how the monitoring and load-balancing features of Traffic Manager can be configured, and how we use it within our own website to reduce visitor latency, and improve redundancy across continents. We'll do a similar post on Traffic Control soon.</p>
 	<p>We're also kicking off the Early Access program for Traffic Manager, with details at the end of this post.</p>
-	<h3>The Details</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-details">The Details</h3>
+		<a href="https://blog.cloudflare.com/#the-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of our primary goals when building Traffic Manager was to make it available to everyone: from those with just two servers in a single region, to those with 400 scattered across the globe (and everything in between). We also wanted to solve some of the key limitations of existing products: slow failover times (measured in minutes), and a lack of granular decision making when failing over.</p>
 	<ul>
 		<li>
@@ -17,7 +24,14 @@
 		</li>
 	</ul>
 	<p>Existing solutions are often challenged with these requirements. On-premise load balancers are vulnerable to local network conditions, hard to scale out as you grow regionally, and at risk of expensive hardware failure. Existing cloud-based solutions have smaller network footprints (increasing latency) and a lack of effective DDoS mitigation, which we see as critical to running high-availability infrastructure.</p>
-	<h3>Flexible Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="flexible-configuration">Flexible Configuration</h3>
+		<a href="https://blog.cloudflare.com/#flexible-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traffic Manager is designed to be flexible, and we want to share some of the many supported use cases.</p>
 	<p>We had three primary scenarios in mind: load balancing, failover, and geo-steering. Underpinning these choices is our health checking functionality, which allows you to define what a healthy origin means to you. We can probe your origin web servers from every Cloudflare data center (or selected regions) over HTTP(S), check for status codes you define as healthy, parse the response body for specific text, and timeout as you see fit. We'll also send you email notifications as we detect availability changes, so you're able to pin down exactly when we saw that server fail.</p>
 	<p>Round robin configuration (“active-active”) load balancing, where load is distributed across all healthy servers. When a server is identified as unavailable through health checks, we'll seamlessly avoid routing traffic to it until it's available again.</p>
@@ -44,13 +58,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/71KUuY2XVsVN1MmyPkRgoe/867d34316e5afda7f6fa884e99333156/overview-map.png" alt="Combining approaches" class="kg-image" width="1620" height="806" loading="lazy">
 
 	</figure>
-	<h3>How We're Using It</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-were-using-it">How We're Using It</h3>
+		<a href="https://blog.cloudflare.com/#how-were-using-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In fact, we're currently combining the above ourselves: the new Cloudflare website combines both failover and geo-steering configurations so we can serve one half of the world from Europe, and the other half from the US.</p>
 	<p>We've associated each origin web server with their respective regions, and Traffic Manager then automatically directs neighboring regions to those origins without further configuration - e.g. users in Africa are steered to our EU origin, and similarly, users in Asia Pacific and South America are automatically geo-steered to our US origin.</p>
 	<p>When we add more origins globally, it will be a minor configuration change—with no interruption to traffic—to make that happen.</p>
 	<p>When our EU origin is taken out of production for maintenance or marked unhealthy, users on that side of the world are automatically steered to the healthy US origin, without us having to interfere manually.</p>
 	<p>Our own website is critical to our business, and we know our customers feel the same way about their own web properties. We trust Traffic Manager to keep our website available despite what the Internet might throw at us!</p>
-	<h3>Early Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="early-access">Early Access</h3>
+		<a href="https://blog.cloudflare.com/#early-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting right now, we are accepting participants in our Early Access program, before we bring this service to all Cloudflare customers. Early Access requires some additional technical savvy, at first, and a willingness to share your feedback with us. For the duration of the Early Access program, Traffic Manager is free to use, with no charges. When introduced generally later this year, Traffic Manager will be available to all customers on all plans, with usage-based charges.</p>
 	<p>Fit the criteria? Fill out the <a href="https://www.cloudflare.com/traffic-manager">Early Access form</a> and we'll reach out with the details. We're keen to show off what Traffic Manager can do.</p>
 </div>

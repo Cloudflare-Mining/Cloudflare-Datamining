@@ -8,14 +8,35 @@
 	<p>In May 2019, we launched <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a>, letting developers store key-value data and make that data globally accessible from Workers running in Cloudflare’s over 200 data centers.</p>
 	<p>Today, we’re announcing a Free Tier for Workers KV that opens up global, low-latency data storage to every developer on the Workers platform. Additionally, to expand Workers KV’s use cases even further, we’re also raising the maximum value size from 10 MB to 25 MB. You can now write an application that serves larger static files directly or JSON blobs directly from KV.</p>
 	<p>Together with our announcement of the <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects limited beta last month</a>, the Workers platform continues to move toward providing storage solutions for applications that are globally deployed as easily as an application running in a single data center today.</p>
-	<h3>What are the new free tier limits?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-new-free-tier-limits">What are the new free tier limits?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-new-free-tier-limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The free tier includes 100,000 read operations and 1,000 each of write, list and delete operations per day, resetting daily at UTC 00:00, with a maximum total storage size of 1 GB. Operations that exceed these limits will fail with an error.</p>
 	<p>Additional KV usage costs \$0.50 per million read operations, \$5.00 per million list, write and delete operations and \$0.50 per GB of stored data.</p>
 	<p>We intentionally chose these limits to prioritize use cases where KV works well - infrequently written data that may be frequently read around the globe.</p>
-	<h3>What is the new KV value size limit?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-new-kv-value-size-limit">What is the new KV value size limit?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-new-kv-value-size-limit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re raising the value size limit in Workers KV from 10 MB to 25 MB. Users frequently store static assets in Workers KV to then be served by Workers code. To make it as easy as possible to deploy your entire site on Workers, we’re raising the value size limit to handle even larger assets.</p>
 	<p>Since Workers Sites hosts your site from Workers KV, the increased size limit also means Workers Sites assets can now be as large as 25 MB.</p>
-	<h3>How does Workers KV work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-workers-kv-work">How does Workers KV work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-workers-kv-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers KV stores key-value pairs and caches hot keys in Cloudflare’s data centers around the world. When a request hits a Worker that uses KV, it retrieves the KV pair from Cloudflare’s local cache with low latency if the pair has been accessed recently.</p>
 	<p>While some programs running on the Workers platform are stateless, it is often necessary to distribute files or configuration data to running Workers. Workers KV allows you to persist data and access it across multiple Workers calls.</p>
 	<p>For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.</p>
@@ -57,7 +78,14 @@ async function handleEvent(event) {
 		</li>
 	</ul>
 	<p>While Workers KV provides low latency access across the globe, it may not return the most up-to-date data if updates to keys are happening more than once a minute or from multiple data centers simultaneously. For use cases that cannot tolerate stale data, Durable Objects is a better solution.</p>
-	<h3>Get started with Workers KV today, for free</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-with-workers-kv-today-for-free">Get started with Workers KV today, for free</h3>
+		<a href="https://blog.cloudflare.com/#get-started-with-workers-kv-today-for-free" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The free tier and increased limits are live now!</p>
 	<p>You can get started with Workers and Workers KV in the Cloudflare dash. To check out an example of how to use Workers KV, check out the <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app">tutorial</a> in the Workers documentation.</p>
 </div>

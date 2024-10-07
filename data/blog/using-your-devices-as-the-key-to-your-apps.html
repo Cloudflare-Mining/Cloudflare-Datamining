@@ -34,7 +34,14 @@
 		</li>
 	</ul>
 	<p><b>⏲️Time to complete: ~45 minutes</b></p>
-	<h2>Cloudflare Access</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-access">Cloudflare Access</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://teams.cloudflare.com/access/index.html">Cloudflare Access</a> is a bouncer that checks ID at the door. Any and every door.</p>
 	<p>Old models of security built on private networks operate like a guard at the front door of a large apartment building, except this apartment building does not have locks on any of the individual units. If you can walk through the front door, you could walk into any home. By default, private networks assume that a user on that network is trusted until proven malicious - you're free to roam the building until someone reports you. None of us want to live in that complex.</p>
 	<p>Access replaces that model with a bouncer in front of each apartment unit. Cloudflare checks every attempt to reach a protected app, machine, or remote desktop against rules that define who is allowed in.</p>
@@ -46,13 +53,27 @@
 	</figure>
 	<p>For this project, I want to limit not just <b>who</b> can reach the app, but also <b>what</b> can reach it. I want to only allow my particular iPhone to connect. Since my iPhone does not have its own GitHub account, I need to use a workflow that allows devices to authenticate: certificates, specifically mutual TLS (mTLS) certificate authentication.</p>
 	<p><b>? Please reach out.</b> Today, the mTLS feature in Access is only available to Enterprise plans. Are you on a self-serve plan and working on a project where you want to use mTLS? IoT, service-to-service, corporate security included. If so, please reach out to me at <code>srhea@cloudflare.com</code> and let's chat.</p>
-	<h2>mTLS and cfssl</h2>
+	<div class="flex anchor relative">
+		<h2 id="mtls-and-cfssl">mTLS and cfssl</h2>
+		<a href="https://blog.cloudflare.com/#mtls-and-cfssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Public key infrastructure (PKI) makes it possible for your browser to trust that this blog really is <code>blog.cloudflare.com</code>. When you visit this blog, the site presents a certificate to tell your browser that it is the real <code>blog.cloudflare.com</code>.</p>
 	<p>Your browser is skeptical. It keeps a short list of root certificates that it will trust. Your browser will only trust certificates signed by authorities in that list. Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/204151138-Understanding-Universal-SSL">offers free certificates</a> for hostnames using its reverse proxy. You can also get origin certificates from other services like Let's Encrypt. Either way, when you visit a web page with a certificate, you can ensure you are on the authentic site and that the traffic between you and the blog is encrypted.</p>
 	<p>For this project, I want to go the other direction. I want my device to present a certificate to Cloudflare Access demonstrating that it is my authentic iPhone. To do that, I need to create a chain that can issue a certificate to my device.</p>
 	<p>Cloudflare publishes an <a href="https://github.com/cloudflare/cfssl">open source</a> PKI toolkit, <code>cfssl</code>, which can solve that problem for me. <code>cfssl</code> lets me quickly create a Root CA and then use that root to generate a client certificate, which will ultimately live on my phone.</p>
 	<p>To begin, I'll follow the instructions <a href="https://github.com/cloudflare/cfssl#installation">here</a> to set up <code>cfssl</code> on my laptop. Once installed, I can start creating certificates.</p>
-	<h2>Generating a Root CA and an allegory about Texas</h2>
+	<div class="flex anchor relative">
+		<h2 id="generating-a-root-ca-and-an-allegory-about-texas">Generating a Root CA and an allegory about Texas</h2>
+		<a href="https://blog.cloudflare.com/#generating-a-root-ca-and-an-allegory-about-texas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, I need to create the Root CA. This root will give Access a basis for trusting client certificates. Think of the root as the Department of Motor Vehicles (DMV) in Texas. Only the State of Texas, through the DMV, can issue Texas driver licenses. Bouncers do not need to know about every driver license issued, but they do know to trust the State of Texas and how to validate Texas-issued licenses.</p>
 	<p>In this case, Access does not need to know about every client cert issued by this Root CA. The product only needs to know to trust this Root CA and how to validate if client certificates were issued by this root.</p>
 	<p>I'm going to start by creating a new directory, <code>cert-auth</code> to keep things organized. Inside of that directory, I'll create a folder, <code>root</code>, where I'll store the Root CA materials</p>
@@ -115,7 +136,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bEIhYcE8oLTrVEgpzT99d/8dfb655a97adf5a052e06e6c187da73b/dash-list-1.png" alt="" class="kg-image" width="1752" height="430" loading="lazy">
 
 	</figure>
-	<h2>Building an Access Policy</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-an-access-policy">Building an Access Policy</h2>
+		<a href="https://blog.cloudflare.com/#building-an-access-policy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before I deploy the budget app prototype to <code>money.samrhea.com</code>, I need to lock down that subdomain with an Access policy.</p>
 	<p>In the Cloudflare dashboard, I'll select the zone <code>samrhea.com</code> and navigate to the Access tab. Once there, I can click <code>Create Access Policy</code> in the <code>Access Policies</code> card. That card will launch an editor where I can build out the rule(s) for reaching this subdomain.</p>
 	<figure class="kg-card kg-image-card ">
@@ -126,7 +154,14 @@
 	<p>In the example above, the policy will be applied to just the subdomain <code>money.samrhea.com</code>. I could make it more granular with path-based rules, but I'll keep it simple for now.</p>
 	<p>In the <code>Policies</code> section, I'm going to create a rule to allow client certificates signed by the Root CA I generated to reach the application. In this case, I'll pick “Non Identity” from the <code>Decision</code> drop-down. I'll then choose “Valid Certificate” under the <code>Include</code> details.</p>
 	<p>This will allow any valid certificate signed by the “Money App Test” CA I uploaded earlier. I could also build a rule using Common Names, but I'll stick with valid cert for now. I'll hit <code>Save</code> and finish the certificate deployment.</p>
-	<h2>Issuing client certs and converting to PKCS #12</h2>
+	<div class="flex anchor relative">
+		<h2 id="issuing-client-certs-and-converting-to-pkcs-12">Issuing client certs and converting to PKCS #12</h2>
+		<a href="https://blog.cloudflare.com/#issuing-client-certs-and-converting-to-pkcs-12" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far, I have a Root CA and an Access policy that enforces mTLS with client certs issued by that Root CA. I've stationed a bouncer outside of my app and told them to only trust ID cards issued by The State of Texas. Now I need to issue a license in the form of a client certificate.</p>
 	<p>To avoid confusion, I'm going to create a new folder in the same directory as the <code>root</code> folder, this one called <code>client</code>. Inside of this directory, I'll create a new file: <code>client-csr.json</code> with the following <code>.json</code> blob:</p>
 	<pre class="language-json"><code class="language-json">{
@@ -168,7 +203,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MAG6HR9az3gjZpzAZYXEP/910581f83d12f6439e095ea12d591a71/convert-twelve.png" alt="" class="kg-image" width="1132" height="268" loading="lazy">
 
 	</figure>
-	<h2>Authenticating from my iPhone</h2>
+	<div class="flex anchor relative">
+		<h2 id="authenticating-from-my-iphone">Authenticating from my iPhone</h2>
+		<a href="https://blog.cloudflare.com/#authenticating-from-my-iphone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I now need to get the <code>.p12</code> file on my iPhone. In corporate environments, organizations distribute client certificates via mobile device management (MDM) programs or other tools. I'm just doing this for a personal test project, so I'm going to use AirDrop.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -194,7 +236,14 @@
 
 	</figure>
 	<p>Browsers can exhibit strange behavior when handling client certificate prompts. This should be the only time I need to confirm this profile should be used, but it might happen again.</p>
-	<h2>What's next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What's next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My prototype personal finance app now is only accessible from my iPhone. This also makes it easy to login through Access from my device.</p>
 	<p>Access policies can be pretty flexible. If I want to reach it from a different device, I could build a rule to allow logins through Google as an alternative. I can also create a policy to require <b>both</b> a certificate and SSO login.</p>
 	<p>Beyond just authentication, I can also build something with this client cert flow now. Cloudflare Access makes the details from the client cert, the ones I created earlier in this tutorial, <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers">available</a> to Cloudflare Workers. I can start to create routing rules or trigger actions based on the details about this client cert.</p>

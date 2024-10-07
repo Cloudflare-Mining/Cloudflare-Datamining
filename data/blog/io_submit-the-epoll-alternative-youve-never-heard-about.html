@@ -10,7 +10,14 @@
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/schill/6891085910">Photo</a> by <a href="https://www.flickr.com/photos/schill">Scott Schiller</a> CC/BY/2.0</p>
-	<h2>Introduction to Linux AIO</h2>
+	<div class="flex anchor relative">
+		<h2 id="introduction-to-linux-aio">Introduction to Linux AIO</h2>
+		<a href="https://blog.cloudflare.com/#introduction-to-linux-aio" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Linux AIO exposes asynchronous disk IO to userspace software.</p>
 	<p>Historically on Linux, all disk operations were blocking. Whether you did <code>open()</code>, <code>read()</code>, <code>write()</code> or <code>fsync()</code>, you could be sure your thread would stall if the needed data and meta-data was not ready in disk cache. This usually isn't a problem. If you do small amount of IO or have plenty of memory, the disk syscalls would gradually fill the cache and on average be rather fast.</p>
 	<p>The IO operation performance drops for IO-heavy workloads, like databases or caching web proxies. In such applications it would be tragic if a whole server stalled, just because some odd <code>read()</code> syscall had to wait for disk.</p>
@@ -23,7 +30,14 @@
 		<p>The Linux asynchronous I/O (AIO) layer tends to have many critics and few defenders, but most people at least expect it to actually be asynchronous. In truth, an AIO operation can block in the kernel for a number of reasons, making AIO difficult to use in situations where the calling thread truly cannot afford to block.</p>
 	</blockquote>
 	<p>Now that we know what Linux AIO API doesn't do well, let's see where it shines.</p>
-	<h2>Simplest Linux AIO program</h2>
+	<div class="flex anchor relative">
+		<h2 id="simplest-linux-aio-program">Simplest Linux AIO program</h2>
+		<a href="https://blog.cloudflare.com/#simplest-linux-aio-program" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To use Linux AIO you first need <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c">to define the 5 needed syscalls</a> - glibc doesn't provide wrapper functions. To use Linux AIO we need:</p>
 	<p>(1) First call <code>io_setup()</code> to setup the <code>aio_context</code> data structure. Kernel will hand us an opaque pointer.</p>
 	<p>(2) Then we can call <code>io_submit()</code> to submit a vector of "I/O control blocks" <code>struct iocb</code> for processing.</p>
@@ -94,7 +108,14 @@ io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824,
 
 	</figure>
 	<p><a href="https://commons.wikimedia.org/wiki/File:Network_card.jpg">Photo</a> by <a href="https://commons.wikimedia.org/wiki/User:Helix84">Helix84</a> CC/BY-SA/3.0</p>
-	<h2>Linux AIO with sockets - batching</h2>
+	<div class="flex anchor relative">
+		<h2 id="linux-aio-with-sockets-batching">Linux AIO with sockets - batching</h2>
+		<a href="https://blog.cloudflare.com/#linux-aio-with-sockets-batching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The implementation of <code>io_submit</code> is rather conservative. Unless the passed descriptor is O_DIRECT file, it will just block and perform the requested action. In case of network sockets it means:</p>
 	<ul>
 		<li>
@@ -139,7 +160,14 @@ while(1) {
 }</code></pre>
 	<p>This code submits two jobs to <code>io_submit</code>. First, request to write data to <code>sd2</code> then to read data from <code>sd1</code>. After the read is done, the code fixes up the write buffer size and loops again. The code does a cool trick - the first write is of size 0. We are doing so since we can fuse write+read in one io_submit (but not read+write). After a read is done we have to fix the write buffer size.</p>
 	<p>Is this code faster than the simple read/write version? Not yet. Both versions have two syscalls: read+write and io_submit+io_getevents. Fortunately, we can improve it.</p>
-	<h2>Getting rid of io_getevents</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-rid-of-io_getevents">Getting rid of io_getevents</h2>
+		<a href="https://blog.cloudflare.com/#getting-rid-of-io_getevents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When running <code>io_setup()</code>, the kernel allocates a couple of pages of memory for the process. This is how this memory block looks like in /proc//maps:</p>
 	<pre class="language-bash"><code class="language-bash">marek:~$ cat /proc/`pidof -s aio_passwd`/maps
 ...
@@ -191,7 +219,14 @@ do_syscall:
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/99279135@N05/16026681353">Photo</a> by <a href="https://www.flickr.com/photos/99279135@N05">Train Photos</a> CC/BY-SA/2.0</p>
-	<h2>Epoll alternative</h2>
+	<div class="flex anchor relative">
+		<h2 id="epoll-alternative">Epoll alternative</h2>
+		<a href="https://blog.cloudflare.com/#epoll-alternative" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the addition of IOCB_CMD_POLL in kernel 4.18, one could use <code>io_submit</code> also as select/poll/epoll equivalent. For example, here's some code waiting for data on a socket:</p>
 	<pre class="language-.c"><code class="language-.c">struct iocb cb = {.aio_fildes = sd,
                   .aio_lio_opcode = IOCB_CMD_POLL,
@@ -207,7 +242,14 @@ io_getevents(0x7fe44bddd000, 1, 1, [{data=0, obj=0x7ffef65c11a8, res=1, res2=0}]
     = 1 &lt;1.000377&gt;</code></pre>
 	<p>As you can see this time the "async" part worked fine, the <code>io_submit</code> finished instantly and the <code>io_getevents</code> successfully blocked for 1s while awaiting data. This is pretty powerful and can be used instead of the <code>epoll_wait()</code> syscall.</p>
 	<p>Furthermore, normally dealing with <code>epoll</code> requires juggling <code>epoll_ctl</code> syscalls. Application developers go to great lengths to avoid calling this syscall too often. <a href="http://man7.org/linux/man-pages/man7/epoll.7.html">Just read the man page</a> on EPOLLONESHOT and EPOLLET flags. Using <code>io_submit</code> for polling works around this whole complexity, and doesn't require any spurious syscalls. Just push your sockets to the iocb request vector, call <code>io_submit</code> exactly once and wait for completions. The API can't be simpler than this.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post we reviewed the Linux AIO API. While initially conceived to be a disk-only API, it seems to be working in the same way as normal read/write syscalls on network sockets. But as opposed to read/write <code>io_submit</code> allows syscall batching, potentially improving performance.</p>
 	<p>Since kernel 4.18 <code>io_submit</code> and <code>io_getevents</code> can be used to wait for events like POLLIN and POLLOUT on network sockets. This is great, and could be used as a replacement for <code>epoll()</code> in the event loop.</p>
 	<p>I can imagine a network server that could just be doing <code>io_submit</code> and <code>io_getevents</code> syscalls, as opposed to the usual mix of <code>read</code>, <code>write</code>, <code>epoll_ctl</code> and <code>epoll_wait</code>. With such design the syscall batching aspect of <code>io_submit</code> could really shine. Such a server would be meaningfully faster.</p>

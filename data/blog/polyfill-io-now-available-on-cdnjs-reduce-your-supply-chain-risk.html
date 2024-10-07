@@ -12,7 +12,14 @@
 	<p>The concerns are that any website embedding a link to the original polyfill.io domain, will now be relying on Funnull to maintain and secure the underlying project to avoid the risk of a supply chain attack. Such an attack would occur if the underlying third party is compromised or alters the code being served to end users in nefarious ways, causing, by consequence, all websites using the tool to be compromised.</p>
 	<p>Supply chain attacks, in the context of web applications, are a growing concern for security teams, and also led us to build a client side security product to detect and mitigate these attack vectors: <a href="https://developers.cloudflare.com/page-shield">Page Shield</a>.</p>
 	<p>Irrespective of the scenario described above, this is a timely reminder of the complexities and risks tied to modern web applications. As maintainers and contributors of <a href="https://cdnjs.com">cdnjs</a>, currently used by <a href="https://w3techs.com/technologies/overview/content_delivery">more than 12% of all sites</a>, this reinforces our commitment to help keep the Internet safe.</p>
-	<h3>polyfill.io on cdnjs</h3>
+	<div class="flex anchor relative">
+		<h3 id="polyfill-io-on-cdnjs">polyfill.io on cdnjs</h3>
+		<a href="https://blog.cloudflare.com/#polyfill-io-on-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full polyfill.io implementation has been deployed at the following URL:</p>
 	<p><a href="https://cdnjs.cloudflare.com/polyfill"><code>https://cdnjs.cloudflare.com/polyfill/</code></a></p>
 	<p>The underlying bundle link is:</p>
@@ -65,10 +72,24 @@ export default {
 };</code></pre>
 	<p>Instructions on how to deploy a worker can be found on our <a href="https://developers.cloudflare.com/workers/get-started">developer documentation</a>.</p>
 	<p>You can also test the Worker on your website without deploying the worker. You can find instructions on how to do this in <a href="https://blog.cloudflare.com/workers-and-webpagetest">another blog post we wrote in the past</a>.</p>
-	<h3>Implemented with Rust on Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="implemented-with-rust-on-cloudflare-workers">Implemented with Rust on Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#implemented-with-rust-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We were happy to discover that polyfill.io is a <a href="https://github.com/polyfillpolyfill/polyfill-service">Rust project</a>. As you might know, Rust has been a <a href="https://blog.cloudflare.com/workers-rust-sdk">first class citizen on Cloudflare Workers</a> from the start.</p>
 	<p>The polyfill.io service was hosted on Fastly and used their Rust library. We forked the project to add the compatibility for Cloudflare Workers, and plan to make the fork publicly accessible in the near future.</p>
-	<h3>Worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="worker">Worker</h3>
+		<a href="https://blog.cloudflare.com/#worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>https://cdnjs.cloudflare.com/polyfill/[...].js</code> endpoints are also implemented in a Cloudflare Worker that wraps our Polyfill.io fork. The wrapper uses <a href="https://github.com/cloudflare/workers-rs">Cloudflare’s Rust API</a> and looks like the following:</p>
 	<pre class="language-javascript"><code class="language-javascript">#[event(fetch)]
 async fn main(req: Request, env: Env, ctx: Context) -&gt; Result&lt;Response&gt; {
@@ -99,10 +120,24 @@ async fn main(req: Request, env: Env, ctx: Context) -&gt; Result&lt;Response&gt;
     res
 }</code></pre>
 	<p>The wrapper only sets up our internal <a href="https://developers.cloudflare.com/workers/observability/metrics-and-analytics">metrics</a> and <a href="https://developers.cloudflare.com/workers/observability/logging/logpush">logging</a> tools, so we can monitor uptime and performance of the underlying logic while calling the Polyfill.io entrypoint.</p>
-	<h3>Storage for the Polyfill files</h3>
+	<div class="flex anchor relative">
+		<h3 id="storage-for-the-polyfill-files">Storage for the Polyfill files</h3>
+		<a href="https://blog.cloudflare.com/#storage-for-the-polyfill-files" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All the polyfill files are stored in a key-value store powered by <a href="https://developers.cloudflare.com/d1">Cloudflare D1</a>. This allows us to fetch as many polyfill files as we need with a single SQL query, as opposed to the original implementation doing one KV get() per file.</p>
 	<p>For performance, we have one Cloudflare D1 instance per region and the SQL queries are routed to the nearest database.</p>
-	<h3>cdnjs for your JavaScript libraries</h3>
+	<div class="flex anchor relative">
+		<h3 id="cdnjs-for-your-javascript-libraries">cdnjs for your JavaScript libraries</h3>
+		<a href="https://blog.cloudflare.com/#cdnjs-for-your-javascript-libraries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>cdnjs is hosting over 6k JavaScript libraries as of today. We are looking for ways to improve the service and provide new content. We listen to community feedback and welcome suggestions on our <a href="https://community.cloudflare.com">community forum</a>, or <a href="https://github.com/cdnjs">cdnjs on GitHub</a>.</p>
 	<p><a href="https://developers.cloudflare.com/page-shield">Page Shield</a> is also available to all paid plans. Log in to turn it on with a single click to increase visibility and security for your third party assets.</p>
 </div>

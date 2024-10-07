@@ -14,7 +14,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rqxtwrgzS3N9UhobOEGAX/169f575b6aeac00b6aa610837ce01a82/Castle-and-Moat-to-Zero-Trust.png" alt="" class="kg-image" width="1920" height="668" loading="lazy">
 
 	</figure>
-	<h2>Generation 1: Castle and moat</h2>
+	<div class="flex anchor relative">
+		<h2 id="generation-1-castle-and-moat">Generation 1: Castle and moat</h2>
+		<a href="https://blog.cloudflare.com/#generation-1-castle-and-moat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For years, corporate networks looked like this:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -47,7 +54,14 @@
 	<p>Precision</p>
 	<p>⭐</p>
 	<p>Controls are primarily exercised at the network layer (e.g., IP ACLs). Accomplishing “allow only HR to access employee payment data” looks like: <code>IP in range X allowed to access IP in range Y</code> (and requires accompanying spreadsheet to track IP allocation).</p>
-	<h2>Applications and users left the castle</h2>
+	<div class="flex anchor relative">
+		<h2 id="applications-and-users-left-the-castle">Applications and users left the castle</h2>
+		<a href="https://blog.cloudflare.com/#applications-and-users-left-the-castle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what changed? In short, the Internet. Faster than anyone expected, the Internet became critical to how people communicate and get work done. The Internet introduced a radical shift in how organizations thought about their computing resources: if any computer can talk to any other computer, why would companies need to keep servers in the same building as employees’ desktops? And even more radical, why would they need to buy and maintain their own servers at all? From these questions, the cloud was born, enabling companies to rent space on other servers and host their applications while minimizing operational overhead. An entire new industry of Software-as-a-Service emerged to simplify things even further, allowing companies to completely abstract away questions of capacity planning, server reliability, and other operational struggles.</p>
 	<p>This golden, Internet-enabled future — cloud and SaaS everything — sounds great! But CIOs quickly ran into problems. Established corporate networks with castle-and-moat architecture can’t just go down for months or years during a large-scale transition, so most organizations are in a hybrid state, one foot still firmly in the world of data centers, hardware, and <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a>. And traffic to applications still needs to stay secure, so even if it’s no longer headed to a server in a company-owned data center, many companies have continued to send it there (backhauled through private lines) to flow through a stack of firewall boxes and other hardware before it’s set free.</p>
 	<p>As more applications moved to the Internet, the volume of traffic leaving branches — and being backhauled through MPLS lines through data centers for security — continued to increase. Many CIOs faced an unpleasant surprise in their bandwidth charges the month after adopting Office 365: with traditional network architecture, more traffic to the Internet meant more traffic over expensive private links.</p>
@@ -59,7 +73,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3HuKGUFxfzPONVYODAM82x/4bb14b9c8790d42f82d2ec88896f8417/unnamed--2-.png" alt="" class="kg-image" width="1600" height="881" loading="lazy">
 
 	</figure>
-	<h2>Generation 2: Smörgåsbord of point solutions</h2>
+	<div class="flex anchor relative">
+		<h2 id="generation-2-smorgasbord-of-point-solutions">Generation 2: Smörgåsbord of point solutions</h2>
+		<a href="https://blog.cloudflare.com/#generation-2-smorgasbord-of-point-solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lots of vendors have emerged to tackle the challenges introduced by these major shifts, often focusing on one or a handful of use cases. Some providers offer virtualized versions of hardware appliances, delivered over different cloud platforms; others have cloud-native approaches that address a specific problem like application access or <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering">web filtering</a>. But stitching together a patchwork of point solutions has caused even more headaches for CIOs and most products available focused only on shoring up identity, endpoint, and application security without truly addressing <a href="https://www.cloudflare.com/learning/network-layer/network-security">network security</a>.</p>
 	<h4><b>Gaps in visibility</b></h4>
 	<p>Compared to the castle and moat model, where traffic all flowed through a central stack of appliances, modern networks have extremely fragmented visibility. IT teams need to piece together information from multiple tools to understand what’s happening with their traffic. Often, a full picture is impossible to assemble, even with the support of tools including SIEM and SOAR applications that consolidate data from multiple sources. This makes troubleshooting issues challenging: IT support ticket queues are full of unsolved mysteries. How do you manage what you can’t see?</p>
@@ -97,9 +118,23 @@
 	<p>⭐⭐</p>
 	<p>Mix of controls exercised at network layer and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in group X allowed to access IP in range Y</code> (and accompanying spreadsheet to track IP allocation)</p>
 	<p>In summary — to reiterate where we started — modern CIOs have really hard jobs. But we believe there’s a better future ahead.</p>
-	<h2>Generation 3: The Internet as the new corporate network</h2>
+	<div class="flex anchor relative">
+		<h2 id="generation-3-the-internet-as-the-new-corporate-network">Generation 3: The Internet as the new corporate network</h2>
+		<a href="https://blog.cloudflare.com/#generation-3-the-internet-as-the-new-corporate-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next generation of corporate networks will be built on the Internet. This shift is already well underway, but CIOs need a platform that can help them get access to a <i>better</i> Internet — one that’s more secure, faster, more reliable, and preserves user privacy while navigating complex global data regulations.</p>
-	<h3>Zero Trust security at Internet scale</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-security-at-internet-scale">Zero Trust security at Internet scale</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-security-at-internet-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CIOs are hesitant to give up expensive forms of private connectivity because they feel more secure than the public Internet. But a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust approach</a>, delivered on the Internet, dramatically increases security versus the classic castle and moat model or a patchwork of appliances and point software solutions adopted to create “defense in depth.” Instead of trusting users once they’re on the corporate network and allowing lateral movement, Zero Trust dictates authenticating and authorizing every request into, out of, and between entities on your network, ensuring that visitors can only get to applications they’re explicitly allowed to access. And delivering this authentication and policy enforcement from an edge location close to the user enables radically better performance, rather than forcing traffic to backhaul through central data centers or traverse a huge stack of security tools.</p>
 	<p>In order to enable this new model, CIOs need a platform that can:</p>
 	<p><b>Connect all the entities on their corporate network.</b></p>
@@ -108,7 +143,14 @@
 	<p>CIOs need a solution that integrates tightly with their existing identity and endpoint security providers and provides Zero Trust protection at all layers of the OSI stack across traffic within their network. This includes end-to-end encryption, microsegmentation, sophisticated and precise filtering and inspection for traffic between entities on their network (“East/West”) and to/from the Internet (“North/South”), and protection from other threats like DDoS and <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack">bot attacks</a>.</p>
 	<p><b>Visualize and provide insight on traffic.</b></p>
 	<p>At a base level, CIOs need to understand the full picture of their traffic: who’s accessing what resources and what does performance (latency, jitter, packet loss) look like? But beyond providing the information necessary to answer basic questions about traffic flows and user access, next-generation visibility tools should help users understand trends and highlight potential problems proactively, and they should provide easy-to-use controls to respond to those potential problems. Imagine logging into one dashboard that provides a comprehensive view of <a href="https://www.cloudflare.com/application-services/products/securitycenter">your network’s attack surface</a>, user activity, and performance/traffic health, receiving customized suggestions to tighten security and optimize performance, and being able to act on those suggestions with a single click.</p>
-	<h3>Better quality of experience, everywhere in the world</h3>
+	<div class="flex anchor relative">
+		<h3 id="better-quality-of-experience-everywhere-in-the-world">Better quality of experience, everywhere in the world</h3>
+		<a href="https://blog.cloudflare.com/#better-quality-of-experience-everywhere-in-the-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More classic critiques of the public Internet: it’s slow, unreliable, and increasingly subject to complicated regulations that make operating on the Internet as a CIO of a globally distributed company exponentially challenging. The platform CIOs need will make intelligent decisions to optimize performance and ensure reliability, while offering flexibility to make compliance easy.</p>
 	<p><b>Fast, in the ways that matter most.</b></p>
 	<p>Traditional methods of measuring network performance, like speed tests, don’t tell the full story of actual user experience. Next-generation platforms will measure performance holistically and consider application-specific factors, along with using real-time data on Internet health, to optimize traffic end-to-end.</p>
@@ -116,7 +158,14 @@
 	<p>Scheduled downtime is a luxury of the past: today’s CIOs need to operate 24x7 networks with as close as possible to 100% uptime and reachability from everywhere in the world. They need a provider that’s resilient in its own services, but also has the capacity to handle massive attacks with grace and flexibility to route around issues with intermediary providers. Network teams should also not need to take action for their provider’s planned or unplanned data center outages, such as needing to manually configure new data center connections. And they should be able to onboard new locations at any time without waiting for vendors to provision additional capacity close to their network.</p>
 	<p><b>Localized and compliant with data privacy regulations.</b></p>
 	<p><a href="https://www.cloudflare.com/learning/privacy/what-is-data-sovereignty">Data sovereignty</a> laws are rapidly evolving. CIOs need to bet on a platform that will give them the flexibility to adapt as new protections are rolled out across the globe, with one interface to manage their data (not fractured solutions in different regions).</p>
-	<h3>A paradigm shift that’s possible starting today</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-paradigm-shift-thats-possible-starting-today">A paradigm shift that’s possible starting today</h3>
+		<a href="https://blog.cloudflare.com/#a-paradigm-shift-thats-possible-starting-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These changes sound radical and exciting. But they’re also intimidating — wouldn’t a shift this large be impossible to execute, or at least take an unmanageably long time, in complex modern networks? Our customers have proven this doesn’t have to be the case.</p>
 	<p><b>Meaningful change starting with just one flow</b></p>
 	<p>Generation 3 platforms should prioritize ease of use. It should be possible for companies to start their Zero Trust journey with just one traffic flow and grow momentum from there. There’s lots of potential angles to start with, but we think one of the easiest is configuring clientless Zero Trust access for one application. Anyone, from the smallest to the largest organizations, should be able to pick an app and prove the value of this approach within minutes.</p>
@@ -163,7 +212,14 @@
 	<p>Precision</p>
 	<p>⭐⭐⭐</p>
 	<p>Controls are exercised at the user and application layer. Accomplishing “allow only HR to access employee payment data” looks like: <code>Users in HR on trusted devices allowed to access employee payment data</code></p>
-	<h2>Cloudflare One is the first built-from-scratch, unified platform for next-generation networks</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-one-is-the-first-built-from-scratch-unified-platform-for-next-generation-networks">Cloudflare One is the first built-from-scratch, unified platform for next-generation networks</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-one-is-the-first-built-from-scratch-unified-platform-for-next-generation-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to achieve the ambitious vision we’ve laid out, CIOs need a platform that can combine Zero Trust and network services operating on a world-class global network. We believe Cloudflare One is the first platform to enable CIOs to fully realize this vision.</p>
 	<p>We built Cloudflare One, our combined Zero Trust network-as-a-service platform, on our <a href="https://www.cloudflare.com/network">global network</a> in software on commodity hardware. We initially started on this journey to serve the needs of our own IT and security teams and extended capabilities to our customers over time as we realized their potential to help other companies transform their networks. Every Cloudflare service runs on every server in over 250 cities with over 100 Tbps of capacity, providing unprecedented scale and performance. Our security services themselves are also faster — our DNS filtering runs on the world’s fastest public DNS resolver and identity checks run on Cloudflare Workers, the fastest serverless platform.</p>
 	<p>We leverage insights from over 28 million requests per second and 10,000+ interconnects to make smarter security and performance decisions for all of our customers. We provide both network connectivity and security services in a single platform with single-pass inspection and single-pane management to fill visibility gaps and deliver exponentially more value than the sum of point solutions could alone. We’re giving CIOs access to our globally distributed, blazing-fast, intelligent network to use as an extension of theirs.</p>

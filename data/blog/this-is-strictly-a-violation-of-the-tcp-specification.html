@@ -23,7 +23,15 @@ connect(3, {sa_family=AF_INET, sin_port=htons(5000), sin_addr=inet_addr("127.0.0
 ... 5 more ...</code></pre>
 	<p>Hold on. What just happened here?</p>
 	<p>Well, we called <code>connect()</code> to localhost and it timed out. The SYN packets went off over loopback to localhost but were never answered.</p>
-	<h3>Loopback congestion</h3>
+	<div class="flex anchor relative">
+		<h3 id="loopback-congestion">Loopback congestion</h3>
+		<a href="https://blog.cloudflare.com/#loopback-congestion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3bdZxdRdturLuABS6ep2WV/abd52274674ab751aba466ed9543cad2/26449341072_009ae28070_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
@@ -31,7 +39,14 @@ connect(3, {sa_family=AF_INET, sin_port=htons(5000), sin_addr=inet_addr("127.0.0
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/akj1706/26449341072">image</a> by akj1706</p>
 	<p>The first thought is about Internet stability. Maybe the SYN packets were lost? A little known fact is that it's not possible to have any packet loss or congestion on the loopback interface. The <a href="http://lxr.free-electrons.com/source/drivers/net/loopback.c">loopback works magically</a>: when an application sends packets to it, it immediately, still within the <code>send</code> syscall handling, gets delivered to the appropriate target. There is no buffering over loopback. Calling <code>send</code> over loopback triggers iptables, network stack delivery mechanisms and <i>delivers</i> the packet to the appropriate queue of the target application. Assuming the target application has some space in its buffers, packet loss over loopback is not possible.</p>
-	<h3>Maybe the listening application misbehaved?</h3>
+	<div class="flex anchor relative">
+		<h3 id="maybe-the-listening-application-misbehaved">Maybe the listening application misbehaved?</h3>
+		<a href="https://blog.cloudflare.com/#maybe-the-listening-application-misbehaved" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Under normal circumstances connections to localhost are not supposed to time out. There is one corner case when this may happen though - when the listening application does not call <code>accept()</code> fast enough.</p>
 	<p>When that happens, the default behavior is to drop the new SYN packets. If the listening socket has a full accept queue, then new SYN packets will be dropped. The intention is to cause push-back, to slow down the rate of incoming connections. The peers should eventually re-send SYN packets, and hopefully by that time the accept queue will be freed. This behavior is controlled by the <code>tcp_abort_on_overflow</code> <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt">sysctl</a>.</p>
 	<p>But this accept queue overflow did not happen in our case. Our listening application had an empty accept queue. We checked this with the <code>ss</code> command:</p>
@@ -39,7 +54,14 @@ connect(3, {sa_family=AF_INET, sin_port=htons(5000), sin_addr=inet_addr("127.0.0
 State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
 LISTEN     0      128                 *:5000               *:*</code></pre>
 	<p>The <code>Send-Q</code> column <a href="https://github.com/torvalds/linux/blob/c1e64e298b8cad309091b95d8436a0255c84f54a/net/ipv4/tcp_diag.c#L26">shows the backlog / accept queue size</a> given to <code>listen()</code> syscall - 128 in our case. The <code>Recv-Q</code> reports on the number of outstanding connections in the accept queue - zero.</p>
-	<h3>The problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problem">The problem</h3>
+		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To recap: we are establishing connections to localhost. Most of them work fine but sometimes the <code>connect()</code> syscall times out. The SYN packets are being sent over loopback. Because it's loopback they <i>are</i> being delivered to the listening socket. The listening socket accept queue is empty, but we see no SYN+ACKs.</p>
 	<p>Further investigation revealed something peculiar. We noticed hundreds of CLOSE_WAIT sockets:</p>
 	<pre class="language-bash"><code class="language-bash">$ ss -n4t | head
@@ -50,7 +72,16 @@ CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36154
 CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36412
 CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
 ...</code></pre>
-	<h3>What is CLOSE_WAIT anyway?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="what-is-close_wait-anyway">What is CLOSE_WAIT anyway?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-close_wait-anyway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ts0oIJkae9HpoHZtvZAsf/5e500506ea1797a4f0965a8bfd094201/20147524535_8c6ac1c853_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
@@ -66,7 +97,14 @@ CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
 	<pre class="language-bash"><code class="language-bash">$ ls /proc/` pidof listener `/fd | wc -l
 517</code></pre>
 	<p>517 file descriptors are comfortably far from the 1,024 file descriptor limit. Also, we earlier showed with <code>ss</code> that the accept queue is empty. So why did our connections time out?</p>
-	<h3>What really happens</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-really-happens">What really happens</h3>
+		<a href="https://blog.cloudflare.com/#what-really-happens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The root cause of the problem is definitely our application leaking sockets. The symptoms though, the connection timing out, are still unexplained.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -77,7 +115,14 @@ CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
 	<p>The listening application leaks sockets, they are stuck in CLOSE_WAIT TCP state forever. These sockets look like (127.0.0.1:5000, 127.0.0.1:some-port). The client socket at the other end of the connection is (127.0.0.1:some-port, 127.0.0.1:5000), and is properly closed and cleaned up.</p>
 	<p>When the client application quits, the (127.0.0.1:some-port, 127.0.0.1:5000) socket enters the FIN_WAIT_1 state and then quickly transitions to FIN_WAIT_2. The FIN_WAIT_2 state should move on to TIME_WAIT if the client received FIN packet, but this never happens. The FIN_WAIT_2 eventually times out. On Linux this is 60 seconds, controlled by <code>net.ipv4.tcp_fin_timeout</code> sysctl.</p>
 	<p>This is where the problem starts. The (127.0.0.1:5000, 127.0.0.1:some-port) socket is still in CLOSE_WAIT state, while (127.0.0.1:some-port, 127.0.0.1:5000) has been cleaned up and is ready to be reused. When this happens the result is a total mess. One part of the socket won't be able to advance from the SYN_SENT state, while the other part is stuck in CLOSE_WAIT. The SYN_SENT socket will eventually give up failing with ETIMEDOUT.</p>
-	<h3>How to reproduce</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-reproduce">How to reproduce</h3>
+		<a href="https://blog.cloudflare.com/#how-to-reproduce" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It all starts with a listening application that leaks sockets and forgets to call <code>close()</code>. This kind of bug does happen in complex applications. An example <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-08-time-out/listener.go">buggy code is available here</a>. When you run it nothing will happen initially. <code>ss</code> will show a usual listening socket:</p>
 	<pre class="language-bash"><code class="language-bash">$ go build listener.go &amp;&amp; ./listener &amp;
 $ ss -n4tpl 'sport = :5000'
@@ -116,7 +161,14 @@ nc: connect to localhost port 5000 (tcp) failed: Connection timed out</code></pr
 	<p>If you want to reproduce this weird scenario consider running this script. It will greatly increase the probability of netcat hitting the conflicted socket:</p>
 	<pre class="language-bash"><code class="language-bash">$ for i in `seq 500`; do nc -v -4 -s 127.0.0.1 localhost 5000 -w0; done</code></pre>
 	<p>A little known fact is that the source port automatically assigned by the kernel is incremental, unless you <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">select the source IP manually</a>. In such case the source port is random. This bash script will create a minefield of CLOSE_WAIT sockets randomly distributed across the ephemeral port range.</p>
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If there's a moral from the story it's to watch out for CLOSE_WAIT sockets. Their presence indicate leaking sockets, and with leaking sockets some incoming connections may time out. Presence of many FIN_WAIT_2 sockets says the problem is not on current machine but on the remote end of the connection.</p>
 	<p>Furthermore, this bug shows that it is possible for the states of the two ends of a TCP connection to be at odds, even if the connection is over the loopback interface.</p>
 	<p>It seems that the design decisions made by the BSD Socket API have unexpected long lasting consequences. If you think about it - why exactly the socket can automatically expire the FIN_WAIT state, but can't move off from CLOSE_WAIT after some grace time. This is very confusing... And it should be! The original TCP specification does not allow automatic state transition after FIN_WAIT_2 state! According to the spec FIN_WAIT_2 is supposed to stay running until the application on the other side cleans up.</p>

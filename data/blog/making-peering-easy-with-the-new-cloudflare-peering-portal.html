@@ -8,9 +8,23 @@
 	</figure>
 	<p>In 2018, we launched the <a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta">Cloudflare Peering Portal</a>, which allows network operators to see where your traffic is coming from and to identify the best possible places to interconnect with Cloudflare. We’re excited to announce that we’ve made it even easier to interconnect with Cloudflare through this portal by removing Cloudflare-specific logins and allowing users to request sessions in the portal itself!</p>
 	<p>We’re going to walk through the changes we’ve made to make peering easier, but before we do that, let’s talk a little about peering: what it is, why it’s important, and how Cloudflare is making peering easier.</p>
-	<h2>What is peering and why is it important?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-peering-and-why-is-it-important">What is peering and why is it important?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-peering-and-why-is-it-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Put succinctly, peering is the act of connecting two networks together. If networks are like towns, peering is the bridges, highways, and streets that connect the networks together. There are lots of different ways to connect networks together, but when networks connect, traffic between them flows to their destination faster. The reason for this is that peering reduces the number of Border Gateway Protocol (BGP) hops between networks.</p>
-	<h3>What is BGP?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-bgp">What is BGP?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-bgp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For a quick refresher, <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a> (or BGP for short) is a protocol that propagates instructions on how networks should forward packets so that traffic can get from its origin to its destination. BGP provides packets instructions on how to get from one network to another by indicating which networks the packets need to go through to get to the destination, prioritizing the paths with the smallest number of hops between origin and destination. BGP sees networks as Autonomous Systems (AS), and each AS has its own number. For example, Cloudflare’s ASN is 13335.</p>
 	<p>In the example below, AS 1 is trying to send packets to AS 3, but there are two possible paths the packets can go:</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,9 +34,23 @@
 	</figure>
 	<p>The BGP decision algorithm will select the path with the least number of hops, meaning that the path the packets will take is AS 1 → AS 2 → AS 3.</p>
 	<p>When two networks peer with each other, the number of networks needed to connect AS 1 and AS 3 is reduced to one, because AS 1 and AS 3 are directly connected with each other. But “connecting with” another network can be kind of vague, so let’s be more specific. In general, there are three ways that networks can connect with other networks: directly through Private Network Interconnects (PNI), at Internet Exchanges (IX), and through transit networks that connect with many networks.</p>
-	<h3>Private Network Interconnect</h3>
+	<div class="flex anchor relative">
+		<h3 id="private-network-interconnect">Private Network Interconnect</h3>
+		<a href="https://blog.cloudflare.com/#private-network-interconnect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A private network interconnect (PNI) sounds complicated, but it’s really simple at its core: it’s a cable connecting two networks to each other. If networks are in the same datacenter facility, it’s often easy for these two networks to connect and by doing so over a private connection, they can get dedicated bandwidth to each other as well as reliable uptime. Cloudflare has a product called <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">Cloudflare Network Interconnect (CNI)</a> that allows other networks to directly connect their networks to Cloudflare in this way.</p>
-	<h3>Internet Exchanges</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-exchanges">Internet Exchanges</h3>
+		<a href="https://blog.cloudflare.com/#internet-exchanges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp">Internet exchange</a> (IX) is a building that specifically houses many networks in the same place. Each network gets one or more ports, and plugs into what is essentially a shared switch so that every network has the potential to interconnect. These switches are massive and house hundreds, even thousands of networks. This is similar to a PNI, but instead of two networks directly connecting to each other, thousands of networks connect to the same device and establish BGP sessions through that device.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,10 +59,24 @@
 	</figure>
 	<p>Fabienne Serriere: An optical patch panel of the <a href="https://en.wikipedia.org/wiki/Amsterdam_Internet_Exchange">AMS-IX</a> Internet exchange point, in Amsterdam, Netherlands. <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></p>
 	<p>At Internet Exchanges, traffic is generally exchanged between networks free of charge, and it’s a great way to interconnect a network with other networks and save money on bandwidth between networks.</p>
-	<h3>Transit networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="transit-networks">Transit networks</h3>
+		<a href="https://blog.cloudflare.com/#transit-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Transit networks are networks that are specifically designed to carry packets between other networks. These networks peer at Internet Exchanges and directly with many other networks to provide connectivity for your network without having to get PNIs or IX presence with networks. This service comes at a price, and may impact network performance as the transit network is an intermediary hop between your network and the place your traffic is trying to reach. Transit networks aren’t peering, but they do peering on your behalf.</p>
 	<p>No matter how you may decide to connect your network to Cloudflare, we have an <a href="https://www.cloudflare.com/peering-policy">open peering policy</a>, and strongly encourage you to connect your networks directly to Cloudflare. If you’re interested, you can get started by going through the Cloudflare Peering Portal, which has now been made even easier. But let’s take a second to talk about why peering is so important.</p>
-	<h2>Why is peering important?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-is-peering-important">Why is peering important?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-peering-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Peering is important on the Internet for three reasons: it distributes traffic across many networks reducing single points of failure of the Internet, it often reduces bandwidth prices on the Internet making overall costs lower, and it improves performance by removing network hops. Let's talk about each of those benefits.</p>
 	<p>Peering improves the overall uptime of the Internet by distributing traffic across multiple networks, meaning that if one network goes down, traffic from your network will still be able to reach your users. Compare that to connecting to a transit network: if the transit network has an issue, your network will be unreachable because that network was the only thing connecting your network to the rest of the Internet (unless you decide to pay multiple transit providers). With peering, any individual network failure will not completely impact the ability for your users to reach your network.</p>
 	<p>Peering helps reduce your network bandwidth costs because it distributes the cost you pay an Internet Exchange for a port across all the networks you interconnect with at the IX. If you're paying \$1000/month for a port at an IX, and you're peered with 100 networks there, you're effectively paying \$10/network, as opposed to paying \$1000/month to connect to one transit network. Furthermore, many networks including Cloudflare have open peering policies and settlement free peering, which means we don't charge you to send traffic to us or the other way round, making peering even more economical.</p>
@@ -52,7 +94,14 @@
 
 	</figure>
 	<p>Fortunately for Janine, Cloudflare peers with over 10,000 networks in the world in over 275 locations, so high latency on the network is rare. And every time a new network peers with us, we help make user traffic even faster. So now let’s talk about how we’ve made peering even easier.</p>
-	<h2>Cloudflare Peering Portal supports PeeringDB login</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-peering-portal-supports-peeringdb-login">Cloudflare Peering Portal supports PeeringDB login</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-peering-portal-supports-peeringdb-login" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare, along with many other networks, rely on <a href="https://www.peeringdb.com">PeeringDB</a> as a source of truth for which networks are present on the Internet. PeeringDB is a community-maintained database of all the networks that are present on the Internet and what datacenter facilities and IXs they are present at, as well as what IPs are used for peering at each public location. Many networks, including Cloudflare, require you to have an account on PeeringDB before you can initiate a peering session with their network.</p>
 	<p>You can now use that same PeeringDB account to log into the Cloudflare Peering Portal directly, saving you the need to make a specific Cloudflare Peering Portal account.</p>
 	<p>When you log into the Cloudflare Peering Portal, simply click on the PeeringDB login button and enter your PeeringDB credentials. Cloudflare will then use this login information to determine what networks you are responsible for and automatically load data for those networks.</p>
@@ -62,7 +111,14 @@
 
 	</figure>
 	<p>From here you can see all the places your network exchanges traffic with Cloudflare. You can see all the places you currently have direct peering with us, as well as locations for potential peering: places you could peer with us but currently don’t. Wouldn’t it be great if you could just click a button and configure a peering session with Cloudflare directly from that view? Well now you can!</p>
-	<h2>Requesting sessions in the Peering Portal</h2>
+	<div class="flex anchor relative">
+		<h2 id="requesting-sessions-in-the-peering-portal">Requesting sessions in the Peering Portal</h2>
+		<a href="https://blog.cloudflare.com/#requesting-sessions-in-the-peering-portal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, you can now request peering sessions with Cloudflare at Internet Exchanges right from the peering portal, making it even easier to get connected with Cloudflare. When you’re looking at potential peering sessions in the portal, you’ll now see a button that will allow you to verify your peering information is correct, and if it is to proceed with a peering request:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -70,6 +126,13 @@
 
 	</figure>
 	<p>Once you click that button, a ticket will go immediately to our network team to configure a peering session with you using the details already provided in PeeringDB. Our network team looks at whether we already have existing connections with your network at that location, and also what the impact to your Internet traffic will be if we peer with you there. Once we’ve evaluated these variables, we’ll proceed to establish a BGP session with you at the location and inform you via email that you’ve already provided via PeeringDB. Then all you have to do is accept the BGP sessions, and you’ll be exchanging traffic with Cloudflare!</p>
-	<h2>Peer with Cloudflare today!</h2>
+	<div class="flex anchor relative">
+		<h2 id="peer-with-cloudflare-today">Peer with Cloudflare today!</h2>
+		<a href="https://blog.cloudflare.com/#peer-with-cloudflare-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It has never been easier to peer with Cloudflare, and our simplified peering portal will make it even easier to get connected. Visit our <a href="https://www.cloudflare.com/partners/peering-portal">peering portal</a> today and get started on the path of faster, cheaper connectivity to Cloudflare!</p>
 </div>

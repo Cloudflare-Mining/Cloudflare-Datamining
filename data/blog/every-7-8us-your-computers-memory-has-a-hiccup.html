@@ -23,7 +23,14 @@
 	<p>Source: <a href="https://lwn.net/Articles/250967">Ulrich Drepper's series about memory</a></p>
 	<p>I was particularly interested in one of the consequences of how dynamic RAM works. You see, each bit of data is stored by the charge (or lack of it) on a tiny capacitor within the RAM chip. But these capacitors gradually lose their charge over time. To avoid losing the stored data, they must regularly get refreshed to restore the charge (if present) to its original level. This <a href="https://en.wikipedia.org/wiki/Memory_refresh">refresh process</a> involves reading the value of every bit and then writing it back. During this "refresh" time, the memory is busy and it can't perform normal operations like loading or storing bits.</p>
 	<p>This has bothered me for quite some time and I wondered... is it possible to notice the refresh delay in software?</p>
-	<h2>Dynamic RAM refresh primer</h2>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-ram-refresh-primer">Dynamic RAM refresh primer</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-ram-refresh-primer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each DIMM module is composed of "cells" and "rows", "columns", "sides" and/or "ranks". This presentation from <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf">the University of Utah explains the nomenclature</a>. You can check the configuration of memory in your computer with <code>decode-dimms</code> command. Here's an example:</p>
 	<pre class="language-bash"><code class="language-bash">$ decode-dimms
 Size                                       4096 MB
@@ -51,7 +58,14 @@ Ranks                                      2</code></pre>
 	<p>When the memory is hot (&gt;85C) the memory retention time drops and the static refresh time halves to 32ms, and tREFI falls to 3906.25 ns.</p>
 	<p>A typical memory chip is busy with refreshes for a significant fraction of its running time - between 0.4% to 5%. Furthermore, memory chips are responsible for a nontrivial share of typical computer's power draw, and large chunk of that power is spent on performing the refreshes.</p>
 	<p>For the duration of the refresh action, the whole memory chip is blocked. This means each and every bit in memory is blocked for more than 75ns every 7812ns. Let's measure this.</p>
-	<h2>Preparing an experiment</h2>
+	<div class="flex anchor relative">
+		<h2 id="preparing-an-experiment">Preparing an experiment</h2>
+		<a href="https://blog.cloudflare.com/#preparing-an-experiment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To measure operations with nanosecond granularity we must write a tight loop, perhaps in C. It looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">    for (i = 0; i &lt; ...; i++) {
 		// Perform memory load. Any load instruction will do
@@ -84,7 +98,14 @@ Ranks                                      2</code></pre>
 3101897038,     137</code></pre>
 	<p>Typically I get ~140ns per loop, periodically the loop duration jumps to ~360ns. Sometimes I get odd readings longer than 3200ns.</p>
 	<p>Unfortunately, the data turns out to be very noisy. It's very hard to see if there is a noticeable delay related to the refresh cycles.</p>
-	<h2>Fast Fourier Transform</h2>
+	<div class="flex anchor relative">
+		<h2 id="fast-fourier-transform">Fast Fourier Transform</h2>
+		<a href="https://blog.cloudflare.com/#fast-fourier-transform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At some point it clicked. Since we want to find a fixed-interval event, we can feed the data into the FFT (fast fourier transform) algorithm, which deciphers the underlying frequencies.</p>
 	<p>I'm not the first one to think about this - Mark Seaborn of Rowhammer fame <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc">implemented this very technique</a> back in 2015. Even after peeking at Mark's code, getting FFT to work turned out to be harder than I anticipated. But finally I got all the pieces together.</p>
 	<p>First we need to prepare the data. FFT requires input data to be sampled with a constant sampling interval. We also want to crop the data to reduce noise. By trial and error I found the best results are when data is preprocessed:</p>
@@ -177,7 +198,14 @@ gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 383720Hz    7460
 511626Hz    7141</code></pre>
 	<p>I must admit the code is not perfectly stable. In case of trouble, consider disabling Turbo Boost, CPU frequency scaling and tuning for performance.</p>
-	<h2>Finale</h2>
+	<div class="flex anchor relative">
+		<h2 id="finale">Finale</h2>
+		<a href="https://blog.cloudflare.com/#finale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two major takeaways from this work.</p>
 	<p>We've seen that the low level data is pretty hard to analyze and seem to be pretty noisy. Instead of trying to figure something out with naked eye, we can always employ good old FFT. Some wishful thinking is needed when preparing the data.</p>
 	<p>Most importantly, we showed it's often possible to measure subtle hardware behaviours from a simple userspace process. This kind of thinking led to the discovery of <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html">the original Rowhammer</a> vulnerability, was used in Meltdown/Spectre attacks and showed again in <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections">recent ECC-defeating reincarnation of Rowhammer</a>.</p>

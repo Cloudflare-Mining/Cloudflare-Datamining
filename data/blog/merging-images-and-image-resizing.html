@@ -9,7 +9,14 @@
 	<p>All Image Resizing features will be available as part of the Cloudflare Images product. To let you calculate your monthly costs more accurately and reliably, we’re changing how we bill to resize images that aren’t stored at Cloudflare. Our new pricing model will cost $0.50 per 1,000 unique transformations.</p>
 	<p>For existing Image Resizing customers, you can continue to use the legacy version of Image Resizing. When the merge is live, then you can opt into the new pricing model for more predictable pricing.</p>
 	<p>In this post, we'll cover why we came to this decision, what's changing, and how these changes might impact you.</p>
-	<h3>Simplifying our products</h3>
+	<div class="flex anchor relative">
+		<h3 id="simplifying-our-products">Simplifying our products</h3>
+		<a href="https://blog.cloudflare.com/#simplifying-our-products" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you build an application with images, you need to think about three separate operations: storage, optimization, and delivery.</p>
 	<p>In 2019, we <a href="https://blog.cloudflare.com/announcing-cloudflare-image-resizing-simplifying-optimal-image-delivery">launched Image Resizing</a>, which can optimize and transform any publicly available image on the Internet based on a set of parameters. This enables our customers to deliver variants of a single image for each use case without creating and storing additional copies.</p>
 	<p>For example, an e-commerce platform for furniture retailers might use the same image of a lamp on both the individual product page and the gallery page for all lamps. They can use Image Resizing to optimize the image in its original aspect for a slider view, or manipulate and crop the image for a thumbnail view.</p>
@@ -21,14 +28,28 @@
 	<p>Two years later, we <a href="https://blog.cloudflare.com/announcing-cloudflare-images">released Images</a> to let developers build an end-to-end image management pipeline. Developers no longer need to use different vendors to handle storage, optimization, and delivery. With Images, customers can store and deliver their images from a single bucket at Cloudflare to streamline their workflow and <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">eliminate egress fees</a>.</p>
 	<p>Both products have overlapping features to optimize and manipulate images, which can be confusing for customers. Over the years, we've received numerous questions about which product is optimal for which use cases.</p>
 	<p>To simplify our products, we're merging Cloudflare Images and Image Resizing to let customers store, optimize, and deliver their images all from one product. Customers can continue to <a href="https://www.cloudflare.com/developer-platform/cloudflare-images">optimize their images</a> without using Cloudflare for storage or purchase storage to manage their entire image pipeline through Cloudflare.</p>
-	<h3>Transparent and predictable pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="transparent-and-predictable-pricing">Transparent and predictable pricing</h3>
+		<a href="https://blog.cloudflare.com/#transparent-and-predictable-pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Pricing can cause headaches for Image Resizing customers.</p>
 	<p>We often hear from customers seeking guidance for calculating how much Image Resizing will cost each month. Today, you are billed for Image Resizing by the number of uncached requests to transform an image. However, caching behavior is often unpredictable, and you can't guarantee how long a given image stays cached. This means that you can't reliably predict their costs.</p>
 	<p>If you make 1M total requests to Image Resizing each month, then you won't know whether you'll be billed for 10K or 100K of these requests because our pricing model relies on cache. Since assets can be ejected from cache for a variety of reasons, bills for Image Resizing are unpredictable month over month. In some cases, the monthly bills are inconsistent even when traffic remains constant. In other cases, the monthly bill is much higher than our customers expected.</p>
 	<p>With the new Cloudflare Images, you will be billed only once per 30 days for each unique request to transform an image stored outside of Cloudflare, whether or not the transformation is cached. Customers will be billed $0.50 per 1,000 unique transformations per month.</p>
 	<p>In other words, if you resize one image to 100x100, then our new pricing model guarantees that you will be billed only once per month, whether there are 10K or 100K uncached requests to deliver the image at this size. If you resize 200 images to 100x100, then you will be billed for only 200 unique transformations — one for each image at this size — each month.</p>
 	<p>This change aligns more closely with how our customers think about their usage, as well as ensures that our customers can accurately estimate their costs with confidence. You won't need to consider how your cache hit ratio will affect your bill. To estimate your costs, you'll need to know only the number of unique images and the number of different ways that you need to transform those images each month.</p>
-	<h3>Resize without storage with Cloudflare Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="resize-without-storage-with-cloudflare-images">Resize without storage with Cloudflare Images</h3>
+		<a href="https://blog.cloudflare.com/#resize-without-storage-with-cloudflare-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For developers who only want to resize and optimize images, Cloudflare Images now offers a zero-storage plan. This new plan enables you to transform images while keeping your existing storage and delivery solution unchanged (just like the current Image Resizing product does).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +58,14 @@
 	</figure>
 	<p>If you want to store your images with Cloudflare Images, then you can always upgrade your plan to purchase storage at any time.</p>
 	<p>Image Resizing is currently available only for accounts with a Pro or higher plan. The merged Cloudflare Images product will be available for all customers, with pricing plans that are tailored to meet specific use cases.</p>
-	<h3>Existing customers can opt into new pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="existing-customers-can-opt-into-new-pricing">Existing customers can opt into new pricing</h3>
+		<a href="https://blog.cloudflare.com/#existing-customers-can-opt-into-new-pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The new version of Cloudflare Images is available on November 15, 2023.</p>
 	<p>If you currently use Image Resizing, you will have the option to migrate to the new Cloudflare Images at no cost, or continue using Image Resizing.</p>
 	<p>The functionality and usability of the product will remain the same. You will still manage stored images under the Cloudflare Images tab and can enable transformations from the Speed tab.</p>

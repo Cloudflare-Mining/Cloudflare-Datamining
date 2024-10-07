@@ -7,9 +7,23 @@
 	</figure>
 	<p>Photo by <a href="https://unsplash.com/@minkmingle?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Mink Mingle</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></p>
 	<p>Cloudflare recently updated the authoritative DNS service to support nine new record types. Since these records are less commonly used than what we previously supported, we thought it would be a good idea to do a brief explanation of each record type and how it is used.</p>
-	<h3>DNSKEY and DS</h3>
+	<div class="flex anchor relative">
+		<h3 id="dnskey-and-ds">DNSKEY and DS</h3>
+		<a href="https://blog.cloudflare.com/#dnskey-and-ds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNSKEY and DS work together to allow you to enable DNSSEC on a child zone (subdomain) that you have delegated to another Nameserver. DS is useful if you are delegating DNS (through an NS record) for a child to a separate system and want to keep using DNSSEC for that child zone; without a DS entry in the parent, the child data will not be validated. We’ve blogged about the details of <a href="https://blog.cloudflare.com/introducing-universal-dnssec">Cloudflare’s DNSSEC</a> <a href="https://blog.cloudflare.com/tag/dnssec">implementation</a> and <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">why it is important</a> in the past, and this new feature allows for more flexible adoption for customers who need to delegate subdomains.</p>
-	<h3>Certificate Related Record Types</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-related-record-types">Certificate Related Record Types</h3>
+		<a href="https://blog.cloudflare.com/#certificate-related-record-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, there is no way to restrict which TLS (SSL) certificates are trusted to be served for a host. For example if an attacker were able to maliciously generate an SSL certificate for a host, they could use a on-path attacker attack to appear as the original site. With SSHFP, TLSA, SMIMEA, and CERT, a website owner can configure the exact certificate public key that is allowed to be used on the domain, stored inside the DNS and secured with DNSSEC, reducing the risk of these kinds of attacks working.</p>
 	<p><b>It is critically important that if you rely on these types of records that you enable and configure DNSSEC for your domain.</b></p>
 	<h4><a href="https://tools.ietf.org/html/rfc4255">SSHFP</a></h4>
@@ -60,7 +74,14 @@ DANE TLSA 3 1 1 ...149bc24849d1398da56fb242 matched EE certificate at depth 0</c
 	<p><a href="https://tools.ietf.org/html/rfc8162">SMIMEA</a> records function similar to TLSA but are specific to email addresses. The domain for these records should be prefixed by “_smimecert.” and specific formatting is required to attach a SMIMEA record to an email address. The local-part (username) of the email address must be treated in a specific format and SHA-256 hashed as detailed in the RFC. From the RFC example: “ For example, to request an SMIMEA resource record for a user whose email address is "<a href="mailto:hugh@example.com">hugh@example.com</a>", an SMIMEA query would be placed for the following QNAME: <code>c93f1e400f26708f98cb19d936620da35eec8f72e57f9eec01c1afd6._smimecert.example.com</code></p>
 	<h4><a href="https://tools.ietf.org/html/rfc4398">CERT</a></h4>
 	<p>CERT records are used for generically storing certificates within DNS and are most commonly used by systems for email encryption. To create a CERT record, you must specify the certificate type, the key tag, the algorithm, and then the certificate, which is either the certificate itself, the CRL, a URL of the certificate, or fingerprint and a URL.</p>
-	<h3>Other Newly Supported Record Types</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-newly-supported-record-types">Other Newly Supported Record Types</h3>
+		<a href="https://blog.cloudflare.com/#other-newly-supported-record-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>PTR</h4>
 	<p>PTR (Pointer) records are pointers to canonical names. They are similar to CNAME in structure, meaning they only contain one FQDN (fully qualified domain name) but the RFC dictates that subsequent lookups are not done for PTR records, the value should just be returned back to the requestor. This is different to a CNAME where a recursive resolver would follow the target of the canonical name. The most common use of a PTR record is in reverse DNS, where you can look up which domains are meant to exist at a given IP address. These are useful for outbound mailservers as well as authoritative DNS servers.</p>
 	<p>It is only possible to delegate the authority for IP addresses that you own from your Regional Internet Registry (RIR). Creating reverse zones and PTR records for IPs that you can not (or do not) delegate does not serve any practical purpose.</p>
@@ -142,7 +163,15 @@ example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:info@example.com!i" _sip.
 ;; ANSWER SECTION:
 _kerberos.hasvickygoneonholiday.com. 283	IN	URI	1 10 "krb5srv:m:tcp:kdc.hasbickygoneonholiday.com"
 _kerberos.hasvickygoneonholiday.com. 283	IN	URI	1 20 "krb5srv:m:udp:kdc.hasbickygoneonholiday.com:89"</code></pre>
-	<h3>Summary</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare now supports CERT, DNSKEY, DS, NAPTR, PTR, SMIMEA, SSHFP, and TLSA in our authoritative DNS products. We would love to hear if you have any interesting example use cases for the new record types and what other record types we should support in the future.</p>
 	<p>Our DNS engineering teams in London and San Francisco are both hiring if you would like to contribute to the fastest authoritative and recursive DNS services in the world.</p>
 	<p><a href="https://boards.greenhouse.io/cloudflare/jobs/1213352?gh_jid=1213352">Software Engineer</a></p>

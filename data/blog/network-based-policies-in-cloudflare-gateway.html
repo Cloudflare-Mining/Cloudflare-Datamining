@@ -4,11 +4,25 @@
 	<p>Today we’re excited to announce the ability for administrators to configure network-based policies in Cloudflare Gateway. Like DNS and HTTP policy enforcement, organizations can use network selectors like IP address and port to control access to any network origin.</p>
 	<p>Because Cloudflare for Teams integrates with your identity provider, it also gives you the ability to create <i>identity-based</i> network policies. This means you can now <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">control access</a> to non-HTTP resources on a per-user basis regardless of where they are or what device they’re accessing that resource from.</p>
 	<p>A major goal for <a href="https://blog.cloudflare.com/introducing-cloudflare-one">Cloudflare One</a> is to expand the number of on-ramps to Cloudflare — just send your traffic to our edge however you wish and we’ll make sure it gets to the destination as quickly and securely as possible. We released <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN and Magic Firewall</a> to let administrators replace <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS connections</a>, define routing decisions, and apply packet-based filtering rules on network traffic from entire sites. When coupled with Magic WAN, Gateway allows customers to define network-based rules that apply to traffic between whole sites, data centers, and that which is Internet-bound.</p>
-	<h3>Solving Zero Trust networking problems</h3>
+	<div class="flex anchor relative">
+		<h3 id="solving-zero-trust-networking-problems">Solving Zero Trust networking problems</h3>
+		<a href="https://blog.cloudflare.com/#solving-zero-trust-networking-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Until today, administrators could only create policies that filtered traffic at the DNS and HTTP layers. However, we know that organizations need to control the network-level traffic leaving their endpoints. We kept hearing two categories of problems from our users and we’re excited that today’s announcement addresses both.</p>
 	<p>First, organizations want to replace their legacy network firewall appliances. Those appliances are complex to manage, expensive to maintain, and force users to backhaul traffic. Security teams deploy those appliances in part to control the ports and IPs devices can use to send traffic. That level of security helps prevent devices from sending traffic over non-standard ports or to known malicious IPs, but customers had to deal with the downsides of on-premise security boxes.</p>
 	<p>Second, moving to a Zero Trust model for named resources is not enough. Cloudflare Access provides your team with Zero Trust controls over specific applications, including non-HTTP applications, but we know that customers who are migrating to this model want to bring that level of Zero Trust control to all of their network traffic.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Gateway, part of Cloudflare One, helps organizations replace legacy firewalls and upgrade to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust networking</a> by starting with the endpoint itself. Wherever your users do their work, they can connect to a private network running on Cloudflare or the public Internet without backhauling traffic.</p>
 	<p>First, administrators deploy the Cloudflare WARP agent on user devices, whether those devices are MacOS, Windows, iOS, Android and (soon) Linux. The WARP agent can operate in two modes:</p>
 	<ul>
@@ -36,7 +50,14 @@
 	</ul>
 	<p>Before allowing the packets to proceed to their destination, Cloudflare Gateway checks the organization’s rules to determine if they should be blocked. Rules can apply to all of an organization’s traffic or just specific users and directory groups. If the traffic is allowed, Cloudflare Gateway still logs the identity and criteria above.</p>
 	<p>Cloudflare Gateway accomplishes this without slowing down your team. The Gateway service runs in every Cloudflare data center in over 200 cities around the world, giving your team members an on-ramp to the Internet that does not backhaul or hairpin traffic. We enforce rules using Cloudflare’s <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">Rust-based</a> Wirefilter execution engine, taking what we’ve learned from applying IP-based rules in our reverse proxy firewall at scale and giving your team the performance benefits.</p>
-	<h3>Building a Zero Trust networking rule</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-a-zero-trust-networking-rule">Building a Zero Trust networking rule</h3>
+		<a href="https://blog.cloudflare.com/#building-a-zero-trust-networking-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> is a versatile protocol that allows users to connect to remote machines and even tunnel traffic from a local machine to a remote machine before reaching the intended destination. That’s great but it also leaves organizations with a gaping hole in their security posture. At first, an administrator could configure a rule that blocks all outbound SSH traffic across the organization.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +77,14 @@
 
 	</figure>
 	<p>It doesn’t matter which corporate device engineers are using or where they are located, they will be allowed to use SSH and all other users will be blocked.</p>
-	<h3>One more thing</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing">One more thing</h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last month, we announced the ability for customers to <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare">create private networks on Cloudflare</a>. Using Cloudflare Tunnel, organizations can connect environments they control using private IP space and route traffic between sites; better, WARP users can connect to those private networks wherever they’re located. No need for centralized VPN concentrators and complicated configurations--connect your environment to Cloudflare and configure routing.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +92,14 @@
 
 	</figure>
 	<p>Today’s announcement gives administrators the ability to <i>configure network access policies</i> to control traffic within those private networks. What if the engineer above wasn’t trying to SSH to an Internet-accessible resource but to something an organization deliberately wants to keep within an internal private network (e.g., a development server)? Again, not everyone in the organization should have access to that either. Now administrators can configure identity-based rules that apply to private networks built on Cloudflare.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re laser-focused on our Cloudflare One goal to secure organizations regardless of how their traffic gets to Cloudflare. Applying network policies to both WARP users and routing between private networks is part of that vision.</p>
 	<p>We’re excited to release these building blocks to Zero Trust Network Access policies to protect an organization’s users and data. We can’t wait to dig deeper into helping organizations secure applications that use private hostnames and IPs like they can today with their publicly facing applications.</p>
 	<p>We’re just getting started--follow <a href="https://www.cloudflare.com/teams">this link</a> so you can too.</p>

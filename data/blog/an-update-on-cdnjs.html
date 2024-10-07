@@ -1,7 +1,14 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kKcwNwDcT58jsT5iQXCr9/126402d6a97cd61a4d6254cf876db1c0/an-update-on-cdnjs.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>When you loaded this blog, a file was delivered to your browser called jquery-3.2.1.min.js. jQuery is a library which makes it easier to build websites, and was at one point included on as many as <a href="https://w3techs.com/technologies/details/js-jquery">74.1%</a> of all websites. A full eighteen million sites include jQuery and other libraries using one of the most popular tools on Earth: <a href="https://cdnjs.com">CDNJS</a>. Beginning about a month ago Cloudflare began to take a more active role in the operation of CDNJS. This post is here to tell you more about CDNJS’ history and explain why we are helping to manage CDNJS.</p>
-	<h2>What CDNJS Does</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-cdnjs-does">What CDNJS Does</h2>
+		<a href="https://blog.cloudflare.com/#what-cdnjs-does" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Virtually every site is composed of not just the code written by its developers, but also dozens or hundreds of libraries. These libraries make it possible for websites to extend what a web browser can do on its own. For example, libraries can allow a site to include powerful <a href="https://d3js.org">data visualizations</a>, respond to <a href="https://www.meteor.com">user input</a>, or even <a href="https://instant.page">get more performant</a>.</p>
 	<p>These libraries created wondrous and magical new capabilities for web browsers, but they can also cause the size of a site to explode. Particularly a decade ago, connections were not always fast enough to permit the use of many libraries while maintaining performance. But if so many websites are all including the same libraries, why was it necessary for each of them to load their own copy?</p>
 	<p>If we all load jQuery from the same place the browser can do a much better job of not actually needing to download it for every site. When the user visits the first jQuery-powered site it will have to be downloaded, but it will already be cached on the user's computer for any subsequent jQuery-powered site they might visit.</p>
@@ -39,7 +46,14 @@
 	</figure>
 	<p>Spikes can happen when a very large or popular site installs CDNJS, or when a misbehaving web crawler discovers a CDNJS link.</p>
 	<p>The future value of CDNJS is now in doubt, as web browsers are beginning to use a <a href="https://www.chromestatus.com/feature/5730772021411840">separate cache</a> for every website you visit. It is currently used on such a <a href="https://w3techs.com/technologies/overview/content_delivery">wide swath of the web</a>, however, it is unlikely it will be disappearing any time soon.</p>
-	<h2>How CDNJS Works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-cdnjs-works">How CDNJS Works</h2>
+		<a href="https://blog.cloudflare.com/#how-cdnjs-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CDNJS starts with a Github repo. That project contains every file served by CDNJS, at every version which it has ever offered. That’s 182 GB without the commit history, over five million files, and over 1.5 billion lines of code.</p>
 	<p>Given that it stores and delivers versioned code files, in many ways it was the Internet’s first JavaScript package manager. Unlike other package managers and even other CDNs everything CDNJS serves is publicly versioned. All 67,724 commits! This means you as a user can verify that you are being served files which haven’t been tampered with.</p>
 	<p>To make changes to CDNJS a commit has to be made. For new projects being added to CDNJS, or when projects change significantly, these commits are made by humans, and get reviewed by other humans. When projects just release new versions there is a bot made by <a href="https://twitter.com/PeterDaveHello">Peter</a> and maintained by <a href="https://github.com/xtuc">Sven</a> which sucks up changes from npm and automatically creates commits.</p>
@@ -49,7 +63,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/y6zjzefb5QVkla0fcCbUA/5d45f15be7a778e6d3b9de2754651ccf/1-with-arrow-v2-1.png" alt="" class="kg-image" width="1450" height="1014" loading="lazy">
 
 	</figure>
-	<h2>The Internet on a Shoestring Budget</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-internet-on-a-shoestring-budget">The Internet on a Shoestring Budget</h2>
+		<a href="https://blog.cloudflare.com/#the-internet-on-a-shoestring-budget" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The CDNJS project has always been administered independently of Cloudflare. In addition to the founders, the project has additionally been maintained by exceptionally hard-working caretakers like <a href="https://twitter.com/PeterDaveHello">Peter</a> and <a href="https://twitter.com/MattIPv4">Matt Cowley</a>. Maintaining a single repo of nearly every frontend project on Earth is no small task, and it has required a substantial amount of both manual work and bot development.</p>
 	<p>Unfortunately approximately thirty days ago one of those bots stopped working, preventing updated projects from appearing in CDNJS. The bot's open-source maintainer was not able to invest the time necessary to keep the bot running. After several weeks we were asked by the community and the CDNJS founders to take over maintenance of the CDNJS repo itself. This means the Cloudflare engineering team is taking responsibility for keeping the contents of <a href="https://github.com/cdnjs/cdnjs">github.com/cdnjs/cdnjs</a> up to date, in addition to ensuring it is correctly served on cdnjs.cloudflare.com.</p>
 	<p>We agreed to do this because we were, frankly, scared. Like so many open-source projects CDNJS was a critical part of our world, but wasn’t getting the attention it needed to survive. The Internet relies on CDNJS as much as on any other single project, losing it or allowing it to be commandeered would be catastrophic to millions of websites and their visitors. If it began to fail, some sites would adapt and update, others would be broken forever.</p>
@@ -59,7 +80,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RYsRv22prgSJsOzeUTFMG/23fadb148c039b863175bc32d10fdfda/pasted-image-0-1-1.png" alt="" class="kg-image" width="1600" height="254" loading="lazy">
 
 	</figure>
-	<h2>A Plan for the Future</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-plan-for-the-future">A Plan for the Future</h2>
+		<a href="https://blog.cloudflare.com/#a-plan-for-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One example of an area where we could use your help is in charting a path towards a CDNJS which requires less manual moderation. Nothing can replace the intelligence and creativity of a human (yet), but for a task like managing what resources go into a CDN, it is error prone and time consuming. At present a human has to review every new project to be included, and often has to take additional steps to include new versions of a project.</p>
 	<p>As a part of our analysis of the project we examined a snapshot of the still-open PRs made against CDNJS for several months:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

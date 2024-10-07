@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
 	<p>That tool is part of a small suite of command-line tools that can be handy when messing with data. Since a reader asked for them to be open sourced... here they are.</p>
-	<h3>mmhistogram</h3>
+	<div class="flex anchor relative">
+		<h3 id="mmhistogram">mmhistogram</h3>
+		<a href="https://blog.cloudflare.com/#mmhistogram" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Suppose you have the following CSV of the ages of major Star Wars characters at the time of Episode IV:</p>
 	<pre class="language-bash"><code class="language-bash">Anakin Skywalker (Darth Vader),42
 Boba Fett,32
@@ -42,7 +49,14 @@ Age:
    256 |                                                   0
    512 |                                      ************ 2</code></pre>
 	<p>Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
-	<h3>mmwatch</h3>
+	<div class="flex anchor relative">
+		<h3 id="mmwatch">mmwatch</h3>
+		<a href="https://blog.cloudflare.com/#mmwatch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <code>mmwatch</code> tool is handy if you want to look at output from a command-line tool that provides some snapshot of values, but need to have a rate.</p>
 	<p>For example, here's <code>df -H</code> on my machine:</p>
 	<pre class="language-bash"><code class="language-bash">$ df -H
@@ -61,7 +75,14 @@ map auto_home          0B     0B     0B   100%        0       0  100%   /home
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n0JNaLVIvtD7cqC9kfasI/b9ce4c583d7838d982c635e3469ce6a0/mmwatch.gif" alt="" class="kg-image" width="687" height="84" loading="lazy">
 
 	</figure>
-	<h3>mmsum</h3>
+	<div class="flex anchor relative">
+		<h3 id="mmsum">mmsum</h3>
+		<a href="https://blog.cloudflare.com/#mmsum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And the final tool is <code>mmsum</code> that simply sums a list of floating point numbers (one per line).</p>
 	<p>Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum

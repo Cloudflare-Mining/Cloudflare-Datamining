@@ -10,11 +10,25 @@
 	<p>Whilst RTT is a relatively good indicator of the quality of a network, it doesn’t necessarily tell you that much about how good it is at actually delivering actual websites to end users. For instance, what if the web server is really slow? A user might be very close to the data center that serves the traffic, but if it takes a long time to actually grab the asset from disk and serve it the result will still be a poor experience.</p>
 	<p>This is where TTFB comes in. It measures the time it takes between a request being sent from an end user until the very first byte of the response being received. This sounds great on paper! However it doesn’t capture how a webpage or web application loads, and what happens <i>after</i> the first byte is received.</p>
 	<p>In this blog we’ll cover what TTFB is a good indicator of, what it's not great for, and what you should be using instead.</p>
-	<h3>What is TTFB?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-ttfb">What is TTFB?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-ttfb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TTFB is a metric which reports the duration between sending the request from the client to a server for a given file, and the receipt of the first byte of said file. For example, if you were to download the Cloudflare logo from our website the TTFB would be how long it took to receive the first byte of that image. Similarly, if you were to measure the TTFB of a request to cloudflare.com the metric would return the TTFB of how long it took from request to receiving the first byte of the first HTTP response. Not how long it took for the image to be fully visible or for the web page to be loaded in a state that allowed a user to begin using it.</p>
 	<p>The simplest answer therefore is to look at the diametrically opposite measurement, Time to Last Byte (TTLB). TTLB, as you’d expect, measures how long it takes until the last byte of data is received from the server. For the Cloudflare logo file this would make sense, as until the image is fully downloaded it's not exactly useful. But what about for a webpage? Do you really need to wait until every single file is fully downloaded, even those images at the bottom of the page you can't immediately see? TTLB is fine for measuring how long it took to download a single file from a CDN / server. However for multi-faceted traffic, like web pages, it is too conservative, as it doesn’t tell you how long it took for the web page to be <i>usable.</i></p>
 	<p>As an analogy we can look at measuring how long it takes to process an incoming airplane full of passengers. What's important is to understand how long it takes for those passengers to disembark, pass through passport control, collect their baggage and leave the terminal, if no onward journeys. TTFB would measure success as how long it took to get the first passenger off of the airplane. TTLB would measure how long it took the last passenger to leave the terminal, even if this passenger remained in the terminal for hours afterwards due to passport issues or getting lost. Neither are a good measure of success for the airline.</p>
-	<h3>Why TTFB doesn't make sense</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-ttfb-doesnt-make-sense">Why TTFB doesn't make sense</h3>
+		<a href="https://blog.cloudflare.com/#why-ttfb-doesnt-make-sense" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TTFB is a widely-used metric because it is easy-to-understand and it is a great signal for connection setup time, server time and network latency. It can help website owners identify when performance issues originate from their server. But is TTFB a good signal for how real users experience the loading speed of a web page in a browser?</p>
 	<p>When a web page loads in a browser, the user’s perception of speed isn’t related to the moment the browser first receives bytes of data. It is related to when the user starts to see the page rendering on the screen.</p>
 	<p>The loading of a web page in a browser is a very complex process. Almost all of this process happens after TTFB is reported. After the first byte has been received, the browser still has to load the main HTML file. It also has to load fonts, stylesheets, javascript, images and other resources. Often these resources link to other resources that also must be downloaded. Often these resources entirely block the rendering of the page. Alongside all these downloads, the browser is also parsing the HTML, CSS and JavaScript. It is building data structures that represent the content of the web page as well as how it is styled. All of this is in preparation to start rendering the final page onto the screen for the user.</p>
@@ -44,16 +58,37 @@
 	<p>Source: <a href="https://addyosmani.com/blog/web-vitals-extension">https://addyosmani.com/blog/web-vitals-extension/</a>&nbsp;</p>
 	<p>LCP measures loading performance; typically how long it takes to load the largest image or text block visible in the browser. FID measures interactivity. For example, the time between when a user clicks or taps on a button to when the browser responds and starts doing something. Finally, CLS measures visual stability. A good, or bad example of CLS is when you go to a website on your mobile phone, tap on a link and the page moves at the last second meaning you tap something you didn't want to. That would be a lower CLS score as its poor user experience.</p>
 	<p>Looking at these metrics gives us a good idea of how the end user is truly experiencing your website (RUM) vs. how quickly the first byte of the file was retrieved from the nearest Cloudflare data center (TTFB).</p>
-	<h3>Good TTFB, bad user experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="good-ttfb-bad-user-experience">Good TTFB, bad user experience</h3>
+		<a href="https://blog.cloudflare.com/#good-ttfb-bad-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the “sub parts” that comprise LCP is TTFB. That means a poor TTFB is very likely to result in a poor LCP. If it takes you 20 seconds to retrieve the first byte of the first image, your user isn't going to have a good experience - regardless of your outlook on TTFB vs RUM.</p>
 	<p>Conversely, we found that a <a href="https://web.dev/ttfb/#what-is-a-good-ttfb-score">good TTFB</a> does not always mean a good LCP score, or FID or CLS. We ran a query to collect RUM metrics of web pages we served which had a good TTFB score. Good is defined as a TTFB as less than 800ms. This allowed us to ask the question: TTFB says these websites are good. Does the RUM data support that?</p>
 	<p>We took four distinct samples from our RUM data in June. Each sample had a different date-range and sample-rate combination. In each sample we queried for 200,000 page views. From these 200,000 page views we filtered for only the page views that reported a 'Good' TTFB. Across the samples, of all page views that have a good TTFB, about 21% of them did not have a <a href="https://web.dev/lcp/#what-is-a-good-lcp-score">“good” LCP score</a>. 46% of them did not have a <a href="https://web.dev/fid/#what-is-a-good-fid-score">“good” FID score</a>. And 57% of them did not have a good <a href="https://web.dev/cls/#what-is-a-good-cls-score">CLS</a> score.</p>
 	<p>This clearly shows the disparity between measuring the time it takes to receive the first byte of traffic, vs the time it takes for a webpage to become stable and interactive. In summary, LCP includes TTFB but also includes other parts of the loading experience. LCP is a more comprehensive, user-centric metric.</p>
-	<h3>TTFB is not all bad</h3>
+	<div class="flex anchor relative">
+		<h3 id="ttfb-is-not-all-bad">TTFB is not all bad</h3>
+		<a href="https://blog.cloudflare.com/#ttfb-is-not-all-bad" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Reading this post and others from Speed Week 2023 you may conclude we really don't like TTFB and you should stop using it. That isn't the case.</p>
 	<p>There are a few situations where TTFB does matter. For starters, there are many applications that aren’t websites. File servers, APIs and all sorts of streaming protocols don’t have the same semantics as web pages and the best way to objectively measure performance is to in fact look at exactly when the first byte is returned from a server.</p>
 	<p>To help optimize TTFB for these scenarios we are announcing <a href="https://blog.cloudflare.com/introducing-timing-insights">Timing Insights</a>, a new analytics tool to help you understand what is contributing to "Time to First Byte" (TTFB) of Cloudflare and your origin. Timing Insights breaks down TTFB from the perspective of our servers to help you understand what is slow, so that you can begin addressing it.</p>
-	<h3>Get started with RUM today</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-with-rum-today">Get started with RUM today</h3>
+		<a href="https://blog.cloudflare.com/#get-started-with-rum-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To help you understand the real user experience of your website we have today launched <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available"><b>Cloudflare Observatory</b></a> <b>-</b> the new home of performance at Cloudflare.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

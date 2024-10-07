@@ -6,11 +6,25 @@
 
 	</figure>
 	<p>Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We're passing the savings on to you for all your Unbound Workers.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers are often used to implement HTTP proxies, where JavaScript is used to rewrite an HTTP request before sending it on to an origin server, and then to rewrite the response before sending it back to the client. You can implement any kind of rewrite in a Worker, including both rewriting headers and bodies.</p>
 	<p>Many Workers, though, do not actually modify the response body, but instead simply allow the bytes to pass through from the origin to the client. In this case, the Worker's application code has finished executing as soon as the response headers are sent, before the body bytes have passed through. Historically, the Worker was nevertheless considered to be "in use" until the response body had fully finished streaming.</p>
 	<p>For billing purposes, under the Workers Unbound pricing model, we charge duration-memory (gigabyte-seconds) for the time in which the Worker is in use.</p>
-	<h3>The change</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-change">The change</h3>
+		<a href="https://blog.cloudflare.com/#the-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On December 15-16, we made a change to the way we handle requests that are streaming through the response without modifying the content. This change means that we can mark application code as “idle” as soon as the response headers are returned.</p>
 	<p>Since no further application code will execute on behalf of the request, the system does not need to keep the request state in memory – it only needs to track the low-level native sockets and pump the bytes through. So now, during this time, the Worker will be considered idle, and could even be evicted before the stream completes (though this would be unlikely unless the stream lasts for a very long time).</p>
 	<p>Visualized it looks something like this:</p>
@@ -21,7 +35,14 @@
 	</figure>
 	<p>As a result of this change, we've seen that the time a Worker is considered "in use" by any particular request has dropped by an average of 70%. Of course, this number varies a lot depending on the details of each Worker. Some may see no benefit, others may see an even larger benefit.</p>
 	<p>This change is totally invisible to the application. To any external observer, everything behaves as it did before. But, since the system now considers a Worker to be idle during response streaming, the response streaming time will no longer be billed. So, if you saw a drop in your bill, this is why!</p>
-	<h3>But it doesn’t stop there!</h3>
+	<div class="flex anchor relative">
+		<h3 id="but-it-doesnt-stop-there">But it doesn’t stop there!</h3>
+		<a href="https://blog.cloudflare.com/#but-it-doesnt-stop-there" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The change also applies to a few other frequently used scenarios, namely Websocket proxying, reading from the cache and streaming from KV.</p>
 	<p><b>WebSockets</b>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p>
 	<pre class="language-typescript"><code class="language-typescript">export default {
@@ -57,7 +78,15 @@ export default {
     }
   },
 }</code></pre>
-	<h3>Interested in Workers Unbound?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="interested-in-workers-unbound">Interested in Workers Unbound?</h3>
+		<a href="https://blog.cloudflare.com/#interested-in-workers-unbound" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are already using Unbound, your bill will have automatically dropped already.</p>
 	<p>Now is a great time to check out Unbound if you haven’t already, especially since recently, we’ve also <a href="https://blog.cloudflare.com/workers-now-even-more-unbound">removed the egress fees</a>. Unbound allows you to build more complex workloads on our platform and only pay for what you use.</p>
 	<p>We are always looking for opportunities to make Workers better. Often that improvement takes the form of powerful new features such as the soon-to-be released <a href="https://blog.cloudflare.com/introducing-worker-services">Service Bindings</a> and, of course, <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">performance enhancements</a>. This time, we are delighted to make Cloudflare Workers even cheaper than they already were.</p>

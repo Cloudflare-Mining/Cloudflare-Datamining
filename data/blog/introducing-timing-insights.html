@@ -8,13 +8,27 @@
 	<p>If you care about the performance of your website or APIs, it’s critical to understand why things are slow.</p>
 	<p>Today we're introducing new analytics tools to help you understand what is contributing to "Time to First Byte" (TTFB) of Cloudflare and your origin. TTFB is just a simple timer from when a client sends a request until it receives the first byte in response. Timing Insights breaks down TTFB from the perspective of our servers to help you understand <i>what</i> is slow, so that you can begin addressing it.</p>
 	<p>But wait – maybe you've heard that <a href="https://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles">you should stop worrying about TTFB</a>? Isn't Cloudflare <a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be">moving away</a> from TTFB as a metric? Read on to understand why there are still situations where TTFB matters.</p>
-	<h3>Why you may need to care about TTFB</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-you-may-need-to-care-about-ttfb">Why you may need to care about TTFB</h3>
+		<a href="https://blog.cloudflare.com/#why-you-may-need-to-care-about-ttfb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's true that TTFB on its own can be a misleading metric. When measuring web applications, metrics like <a href="https://web.dev/vitals">Web Vitals</a> provide a more holistic view into user experience. That's why we offer Web Analytics and Lighthouse within <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">Cloudflare Observatory</a>.</p>
 	<p>But there are two reasons why you still may need to pay attention to TTFB:</p>
 	<p><b>1. Not all applications are websites</b>More than half of Cloudflare traffic is for APIs, and many customers with API traffic don't control the environments where those endpoints are called. In those cases, there may not be anything you can <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitor</a> or improve besides TTFB.</p>
 	<p><b>2. Sometimes TTFB is the problem</b>Even if you are measuring Web Vitals metrics like LCP, sometimes the reason your site is slow is because TTFB is slow! And when that happens, you need to know why, and what you can do about it.</p>
 	<p>When you need to know why TTFB is slow, we’re here to help.</p>
-	<h3>How Timing Insights can help</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-timing-insights-can-help">How Timing Insights can help</h3>
+		<a href="https://blog.cloudflare.com/#how-timing-insights-can-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We now expose performance data through our <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL Analytics API</a> that will let you query TTFB performance, and start to drill into what contributes to TTFB.</p>
 	<p>Specifically, customers on our Pro, Business, and Enterprise plans can now query for the following fields in the <code>httpRequestsAdaptiveGroups</code> dataset:</p>
 	<p><b>Time to First Byte</b> (edgeTimeToFirstByteMs)</p>
@@ -25,7 +39,14 @@
 	<p>How long did it take to reach, and receive a response from your origin?</p>
 	<p>We are exposing each metric as an average, median, 95th, and 99th percentiles (i.e. P50 / P95 / P99).</p>
 	<p>The <code>httpRequestAdaptiveGroups</code> dataset powers the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fanalytics%2Ftraffic">Traffic</a> analytics page in our dashboard, and represents all of the HTTP requests that flow through our network. The upshot is that this dataset gives you the ability to filter and “group by” any aspect of the HTTP request.</p>
-	<h3>An example of how to use Timing Insights</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-example-of-how-to-use-timing-insights">An example of how to use Timing Insights</h3>
+		<a href="https://blog.cloudflare.com/#an-example-of-how-to-use-timing-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s walk through an example of how you’d actually use this data to pinpoint a problem.</p>
 	<p>To start with, I want to understand the lay of the land by querying TTFB at various quantiles:</p>
 	<pre class="language-bash"><code class="language-bash">query TTFBQuantiles($zoneTag: string) {
@@ -149,11 +170,26 @@ Response:
   }
 }</code></pre>
 	<p>According to this, most of the long TTFB values are actually due to resolving DNS! The good news is that’s something we can fix – for example, by setting longer TTLs with my DNS provider.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Coming soon, we’ll be bringing this to Cloudflare Observatory in the dashboard so that you can easily explore timing data via the UI.</p>
 	<p>And we’ll be adding even more granular metrics so you can see exactly which components are contributing to high TTFB. For example, we plan to separate out the difference between origin “connection time” (how long it took to establish a TCP and/or TLS connection) vs “application response time” (how long it took an HTTP server to respond).</p>
 	<p>We’ll also be making improvements to our GraphQL API to allow more flexible querying – for example, the ability to query arbitrary percentiles, not just 50th, 95th, or 99th.</p>
 	<p>Start using the <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL API</a> today to get Timing Insights, or hop on the discussion about our Analytics products in <a href="https://discord.com/channels/595317990191398933/1115387663982276648">Discord</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/52d1657849a6180daa52bd51f25a83f2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F52d1657849a6180daa52bd51f25a83f2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

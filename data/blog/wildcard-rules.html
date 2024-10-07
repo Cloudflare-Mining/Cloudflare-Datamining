@@ -9,10 +9,24 @@
 	<p>In September 2022, we announced and released <a href="https://blog.cloudflare.com/dynamic-redirect-rules"><u>Single Redirects</u></a> as a modern replacement for the <a href="https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding"><u>URL Forwarding</u></a> feature of Page Rules. Built on top of the Ruleset Engine, this new product offered a powerful syntax and enhanced performance.</p>
 	<p>Despite the <a href="https://blog.cloudflare.com/future-of-page-rules"><u>enhancements</u></a>, one of the most consistent pieces of feedback from our users was the need for wildcard matching and expansion, also known as <a href="https://github.com/begin/globbing"><u>globbing</u></a>. This feature is essential for creating dynamic and flexible URL patterns, allowing users to manage a broader range of scenarios with ease.</p>
 	<p>Today we are excited to announce that wildcard support is now available across our Ruleset Engine-based products, including <a href="https://developers.cloudflare.com/cache/how-to/cache-rules"><u>Cache Rules</u></a>, <a href="https://developers.cloudflare.com/rules/compression-rules"><u>Compression Rules</u></a>, <a href="https://developers.cloudflare.com/rules/configuration-rules"><u>Configuration Rules</u></a>, <a href="https://developers.cloudflare.com/rules/custom-error-responses"><u>Custom Errors</u></a>, <a href="https://developers.cloudflare.com/rules/origin-rules"><u>Origin Rules</u></a>, <a href="https://developers.cloudflare.com/rules/url-forwarding"><u>Redirect Rules</u></a>, <a href="https://developers.cloudflare.com/rules/snippets"><u>Snippets</u></a>, <a href="https://developers.cloudflare.com/rules/transform"><u>Transform Rules</u></a>, <a href="https://developers.cloudflare.com/waf"><u>Web Application Firewall (WAF)</u></a>, <a href="https://developers.cloudflare.com/waiting-room"><u>Waiting Room</u></a>, and more.</p>
-	<h3>Understanding wildcards</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-wildcards">Understanding wildcards</h3>
+		<a href="https://blog.cloudflare.com/#understanding-wildcards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wildcard pattern matching allows users to employ an asterisk <code>(*)</code> in a string to match certain patterns. For example, a single pattern like <code>https://example.com/*/t*st</code> can cover multiple URLs such as <code>https://example.com/en/test</code>, <code>https://example.com/images/toast</code>, and <code>https://example.com/blog/trust</code>.</p>
 	<p>Once a segment is captured, it can be used in another expression by referencing the matched wildcard with the <code>${&lt;X&gt;}</code> syntax, where <code>&lt;X&gt;</code> indicates the index of a matched pattern. This is particularly useful in URL forwarding. For instance, the URL pattern <code>https://example.com/*/t*st</code> can redirect to <code>https://${1}.example.com/t${2}st</code>, allowing dynamic and flexible URL redirection. This setup ensures that <code>https://example.com/uk/test</code> is forwarded to <code>https://uk.example.com/test</code>, <code>https://example.com/images/toast</code> to <code>https://images.example.com/toast</code>, and so on.</p>
-	<h3>Challenges with Single Redirects</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-with-single-redirects">Challenges with Single Redirects</h3>
+		<a href="https://blog.cloudflare.com/#challenges-with-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Page Rules, redirecting from an old URI path to a new one looked like this:</p>
 	<ul>
 		<li>
@@ -32,9 +46,23 @@
 		</li>
 	</ul>
 	<p>This complexity created unnecessary overhead and difficulty, especially for users without access to regular expressions (regex) or the technical expertise to come up with expressions that use nested functions.</p>
-	<h3>Wildcard support in Ruleset Engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="wildcard-support-in-ruleset-engine">Wildcard support in Ruleset Engine</h3>
+		<a href="https://blog.cloudflare.com/#wildcard-support-in-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the introduction of wildcard support across our Ruleset Engine-based products, users can now take advantage of the power and flexibility of the Ruleset Engine through simpler and more intuitive configurations. This enhancement ensures high performance while making it easier to create dynamic and flexible URL patterns and beyond.</p>
-	<h3>What’s new?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-new">What’s new?</h3>
+		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>1) Operators "wildcard" and "strict wildcard" in Ruleset Engine:</h4>
 	<ul>
 		<li>
@@ -63,7 +91,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1y72vKTVFZjDUglnTpC2Nl/126b0ae9d210f1a15da56bbb689496d8/2478-4.png" alt="2478-4" class="kg-image" width="1060" height="932" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>How we built it</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-it">How we built it</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Ruleset Engine powering Cloudflare Rules products is written in <a href="https://www.rust-lang.org"><u>Rust</u></a>. When adding wildcard support, we first explored existing <a href="https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html"><u>Rust crates</u></a> for wildcard matching.</p>
 	<p>We considered using the popular <a href="https://crates.io/crates/regex"><code><u>regex</u></code></a> crate, known for its robustness. However, it requires converting wildcard patterns into regular expressions (e.g., <code>*</code> to <code>.*</code>, and <code>?</code> to <code>.</code>) and escaping other characters that are special in regex patterns, which adds complexity.</p>
 	<p>We also looked at the <a href="https://crates.io/crates/wildmatch"><code><u>wildmatch</u></code></a> crate, which is designed specifically for wildcard matching and has a couple of advantages over <code>regex</code>. The most obvious one is that there is no need to convert wildcard patterns to regular expressions. More importantly, wildmatch can handle complex patterns efficiently: wildcard matching takes quadratic time – in the worst case the time is proportional to the length of the pattern multiplied by the length of the input string. To be more specific, the time complexity is <i>O(p + ℓ + s ⋅ ℓ)</i>, where <i>p</i> is the length of the wildcard pattern, <i>ℓ</i> the length of the input string, and <i>s</i> the number of asterisk metacharacters in the pattern. (If you are not familiar with <a href="https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/big-o-notation"><u>big O notation</u></a>, it is a way to express how an algorithm consumes a resource, in this case time, as the input size changes.) In the Ruleset Engine, we limit the number of asterisk metacharacters in the pattern to a maximum of 8. This ensures we will have good performance and limits the impact of a bad actor trying to consume too much CPU time by targeting extremely complicated patterns and input strings.</p>
@@ -78,7 +113,14 @@ http.request.full_uri,
 	<p>This means that in order to implement this function in the Ruleset Engine, we also need our wildcard matching implementation to capture the input substrings that match the wildcard’s metacharacters.</p>
 	<p>Given these requirements, we decided to build our own wildcard matching crate. The implementation is based on <a href="http://dodobyte.com/wildcard.html"><u>Kurt's 2016 iterative algorithm</u></a>, with optimizations from <a href="http://developforperformance.com/MatchingWildcards_AnImprovedAlgorithmForBigData.html"><u>Krauss’ 2014 algorithm</u></a>. (You can find more information about the algorithm <a href="https://github.com/cloudflare/wildcard/blob/v0.2.0/src/lib.rs#L555-L569"><u>here</u></a>). Our implementation supports byte-oriented matching, escape sequences, and capturing matched segments for further processing.</p>
 	<p>Cloudflare’s <a href="https://crates.io/crates/wildcard"><code><u>wildcard crate</u></code></a> is now available and is open-source. You can find the source repository <a href="https://github.com/cloudflare/wildcard"><u>here</u></a>. Contributions are welcome!</p>
-	<h3>FAQs and resources</h3>
+	<div class="flex anchor relative">
+		<h3 id="faqs-and-resources">FAQs and resources</h3>
+		<a href="https://blog.cloudflare.com/#faqs-and-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For more details on using wildcards in Rules products, please refer to our updated Ruleset Engine documentation:</p>
 	<ul>
 		<li>
@@ -90,7 +132,14 @@ http.request.full_uri,
 	</ul>
 	<p>We value your feedback and invite you to share your thoughts in our <a href="https://community.cloudflare.com/t/wildcard-support-in-ruleset-engine-products/692658"><u>community forums</u></a>. Your input directly influences our product and design decisions, helping us make Rules products even better.</p>
 	<p>Additionally, check out our <a href="https://crates.io/crates/wildcard"><code><u>wildcard crate</u></code></a> implementation and <a href="https://github.com/cloudflare/wildcard"><u>contribute to its development</u></a>.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The new wildcard functionality in Rules is available to all plans and is completely free. This feature is rolling out immediately, and no beta access registration required.&nbsp;</p>
 	<p>We are thrilled to offer this much-requested feature and look forward to seeing how you leverage wildcards in your Rules configurations. Try it now and experience the enhanced flexibility and performance. Your feedback is invaluable to us, so please let us know in <a href="https://community.cloudflare.com/t/wildcard-support-in-ruleset-engine-products/692658"><u>community</u></a> how this new feature works for you!</p>
 </div>

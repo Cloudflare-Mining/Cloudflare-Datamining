@@ -7,7 +7,14 @@
 	</figure>
 	<p>Configuration management is far from a solved problem. As organizations scale beyond a handful of administrators, having a secure, auditable, and self-service way of updating system settings becomes invaluable. Managing a Cloudflare account is no different. With <a href="https://www.cloudflare.com">dozens of products</a> and <a href="https://api.cloudflare.com">hundreds of API endpoints</a>, keeping track of current configuration and making bulk updates across multiple zones can be a challenge. While the Cloudflare Dashboard is great for analytics and feature exploration, any changes that could potentially impact users really should get a code review before being applied!</p>
 	<p>This is where <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Cloudflare's Terraform provider</a> can come in handy. Built as a layer on top of the <a href="https://github.com/cloudflare/cloudflare-go">cloudflare-go</a> library, the provider allows users to interface with the Cloudflare API using stateful <a href="https://developer.hashicorp.com/terraform">Terraform</a> resource declarations. Not only do we actively support this provider for customers, we make extensive use of it internally! In this post, we hope to provide some best practices we've learned about managing complex Cloudflare configurations in Terraform.</p>
-	<h2>Why Terraform</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-terraform">Why Terraform</h2>
+		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unsurprisingly, we find Cloudflare's products to be pretty useful for securing and enhancing the performance of services we deploy internally. We use <a href="https://www.cloudflare.com/dns">DNS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a>, <a href="https://www.cloudflare.com/products/zero-trust/email-security">Email Security</a>, <a href="https://www.cloudflare.com/developer-platform-hub">Workers</a>, and all manner of <a href="https://www.cloudflare.com/whats-new">experimental new features</a> throughout the company. This <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dog-fooding</a> allows us to battle-harden the services we provide to users and feed our desired features back to the product teams all while running the backend of Cloudflare. But, as Cloudflare grew, so did the complexity and importance of our configuration.</p>
 	<p>When we were a much smaller company, we only had a handful of accounts with designated administrators making changes on behalf of their colleagues. However, over time this handful of accounts grew into hundreds with each managed by separate teams. Independent accounts are useful in that they allow service-owners to make modifications that can't impact others, but it comes with overhead.</p>
 	<p>We faced the challenge of ensuring consistent security policies, up-to-date account memberships, and change visibility. While our &nbsp;accounts were still administered by kind human stewards, we had numerous instances of account members not being removed after they transferred to a different team. While this never became a security incident, it demonstrated the shortcomings of manually provisioning account memberships. In the case of a production service migration, the administrator executing the change would often hop on a video call and ask for others to triple-check an IP address, ruleset, or access policy update. It was an era of looking through the audit logs to see what broke a service.</p>
@@ -35,7 +42,14 @@
 			<p>We can use and iterate on our awesome provider and provide a better experience to other users (shoutout in particular to <a href="https://github.com/jacobbednarz">Jacob</a>!).</p>
 		</li>
 	</ul>
-	<h2>Terraform in CI/CD</h2>
+	<div class="flex anchor relative">
+		<h2 id="terraform-in-ci-cd">Terraform in CI/CD</h2>
+		<a href="https://blog.cloudflare.com/#terraform-in-ci-cd" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/hashicorp/terraform">Terraform</a> has a fairly mature open source ecosystem, built from years of running-in-production experience. Thus, there are a number of ways to make interacting with the system feel as comfortable to developers as git. One of these tools is <a href="https://www.runatlantis.io">Atlantis</a>.</p>
 	<p>Atlantis acts as <a href="https://en.wikipedia.org/wiki/CI/CD">continuous integration/continuous delivery (CI/CD)</a> for Terraform; fitting neatly into version control workflows, and giving visibility into the changes being deployed in each code change. We use Atlantis to display Terraform plans (effectively a diff in configuration) within pull requests and apply the changes after the pull request has been approved. Having all the output from the terraform provider in the comments of a pull request means there's no need to fiddle with the state locally or worry about where a state lock is coming from. Using Terraform CI/CD like this makes configuration management approachable to developers and non-technical folks alike.</p>
 	<p>In this example pull request, I'm adding a user to the cloudflare-cool-account (see the code in the next section). Once the PR is opened, Bitbucket posts a webhook to Atlantis, telling it to run a `terraform plan` using this branch. The resulting comment is placed in the pull request. Notice that this pull request can't be applied or merged yet as it doesn't have an approval! Once the pull request is approved, I would comment "atlantis apply", wait for Atlantis to post a comment containing the output of the command, and merge the pull request if that output looks correct.</p>
@@ -66,9 +80,23 @@
 	</figure>
 	<p>Easily one of my favorite new features</p>
 	<p>With this button, we're able to politely prevent manual changes to your Cloudflare account’s Zero Trust configuration without removing permissions from the set of users who can fix settings manually in a break-glass emergency scenario. <a href="https://api.cloudflare.com/#zero-trust-organization-update-your-zero-trust-organization">Check out how you can enable this setting in your Zero Trust organization</a>.</p>
-	<h2>Slick Snippets and Terraforming Recommendations</h2>
+	<div class="flex anchor relative">
+		<h2 id="slick-snippets-and-terraforming-recommendations">Slick Snippets and Terraforming Recommendations</h2>
+		<a href="https://blog.cloudflare.com/#slick-snippets-and-terraforming-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As our Terraform repository has matured, we've refined how we define Cloudflare resources in code. By finding a sweet spot between code reuse and readability, we've been able to minimize operational overhead and generally let users get their work done. Here's a couple of useful snippets that have been particularly valuable to us.</p>
-	<h3>Account Membership</h3>
+	<div class="flex anchor relative">
+		<h3 id="account-membership">Account Membership</h3>
+		<a href="https://blog.cloudflare.com/#account-membership" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This allows for defining a fairly straightforward mapping of user emails to account privileges without code duplication or complex modules. We pull the list of human-friendly names of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/account_roles">account roles</a> from the API to show <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">user</a> permission assignments at a glance. Note: <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member#status">status</a> is a new argument that allows for accounts to be added without sending an email to the user; perfect for when an organization is using SSO. (Thanks <a href="https://github.com/patrobinson">patrobinson</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1654">feature request</a> and <a href="https://github.com/markblackman">mblackman</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1920">PR</a>!)</p>
 	<pre class="language-hcl"><code class="language-hcl">variables.tf
 —-
@@ -113,7 +141,15 @@ resource "cloudflare_account_member" "account_member" {
   role_ids  	= each.value.roles
   status            = "accepted"
 }</code></pre>
-	<h3>Defining Auto-Refreshing Access Service Tokens</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="defining-auto-refreshing-access-service-tokens">Defining Auto-Refreshing Access Service Tokens</h3>
+		<a href="https://blog.cloudflare.com/#defining-auto-refreshing-access-service-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1866">GitHub issue</a> and <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1872">provider change</a> that enabled automatic Access service token refreshes actually came from a need inside Cloudflare. Here's how we ended up implementing it. We begin by defining a set of services that need to connect to our hostnames that are protected by Access. Each of these <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_service_token">tokens</a> are created and stored in a secret key value store. Next, we reference those access tokens by ID in the target <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy">Access policies</a>. Once this has run, the service owner or the service itself can retrieve the credentials from the data store. (Note: we're using Vault here, but any storage provider could be used in its place).</p>
 	<pre class="language-hcl"><code class="language-hcl">tokens.tf
 —
@@ -162,7 +198,15 @@ resource "cloudflare_access_policy" "super_cool_hostname_service_access" {
 	service_token = [cloudflare_access_service_token.token["room-service"].id]
   }
 }</code></pre>
-	<h3>mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="mtls-authenticated-origin-pulls-certificate-creation-and-rotation">mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
+		<a href="https://blog.cloudflare.com/#mtls-authenticated-origin-pulls-certificate-creation-and-rotation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To further defense-in-depth objectives, we've been rolling out mTLS throughout our internal systems. One of the places where we can take advantage of our Terraform provider is in defining <a href="https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls">AOP (Authenticated Origin Pulls)</a> certificates to lock down the Cloudflare-edge-to-origin connection. Anyone who has managed certificates of any kind can speak to the headaches they can cause. Having certificate configurations in Terraform takes out the manual work of rotation and expiration.</p>
 	<p>In this example we're defining <a href="https://api.cloudflare.com/#per-hostname-authenticated-origin-pull-properties">hostname-level AOP</a> as opposed to <a href="https://api.cloudflare.com/#zone-level-authenticated-origin-pulls-properties">zone-level AOP</a>. We start by cutting a certificate for each hostname. Once again we're using Vault for certificate creation, but other backends could be used just as well. This certificate is created with a (not-shown) 30 day expiration, but set to renew automatically. This means once the time-to-expiration is equal to <a href="https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_cert#min_seconds_remaining">min_seconds_remaining</a>, the resource will be automatically tainted and replaced on the next Terraform run. We like to give this automation plenty of room before expiration to take into account holiday seasons and avoid sending alerts to humans when the alerts hit seven days to expiration. For the rest of this snippet, the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls_certificate">certificate is uploaded to Cloudflare</a> and the ID from that upload is then <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/authenticated_origin_pulls">placed in the AOP configuration</a> for the given hostname. The <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy">create_before_destroy</a> meta-argument ensures that the replacement certificate is uploaded successfully before we remove the certificate that's currently in place.</p>
 	<pre class="language-hcl"><code class="language-hcl">locals {
@@ -201,7 +245,15 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
   hostname                           	= "${each.key}"
   enabled                            	= true
 }</code></pre>
-	<h3>Terraform recommendations</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="terraform-recommendations">Terraform recommendations</h3>
+		<a href="https://blog.cloudflare.com/#terraform-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The comfortable automation that we've achieved thus far did not come without some hair-pulling. Below are a few of the learnings that have allowed us to maintain the repository as a side project run by two engineers (shoutout <a href="https://github.com/dhaynespls">David</a>).</p>
 	<h4><b>Store your state somewhere safe</b></h4>
 	<p>It feels worth repeating that the tfstate <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data"><b>contains secrets</b></a> <b>including any API keys you're using with providers</b> and <b>the default location of the tfstate is in the current working directory.</b> It's very easy to accidentally commit this to source control. By defining a <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration">backend</a>, the state can be stored with a cloud storage provider, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/local">in a secure location on a filesystem</a>, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/pg">in a database</a>, or even <a href="https://mirio.dev/2022/09/18/implementing-a-terraform-state-backend">Cloudflare Workers</a>! Wherever the state is stored, make sure it is encrypted.</p>
@@ -215,6 +267,13 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<h5><b>Know when to use a Different tool</b></h5>
 	<p>Terraform isn't a panacea. We generally don't use Terraform to manage DNS records, for example. We use <a href="https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone">OctoDNS</a> which integrates more neatly into our infrastructure automation. DNS records can quickly add up to long state-rendering times and are often dynamically generated from systems that Terraform doesn't know about. To avoid conflicts, there should only ever be one system publishing changes to DNS records.</p>
 	<p>We also haven't figured out a maintainable way of managing Workers scripts in Terraform. When a .js script in the Terraform directory changes, Terraform isn't aware of it. This means a change needs to occur somewhere else in a .tf file before the plan diff is generated. It likely isn't an unsolvable issue, but doesn't seem particularly worth cramming into Terraform when there are better options for Worker management like <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a>.</p>
-	<h2>Looking forward</h2>
+	<div class="flex anchor relative">
+		<h2 id="looking-forward">Looking forward</h2>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're continuing to invest in the Cloudflare Terraforming experience both for our own use and for the benefit of our users. With the provider, we hope to offer a comfortable and scalable method of interacting with Cloudflare products. Hopefully this post has presented some useful suggestions to anyone interested in adopting Cloudflare-configuration-as-code. Don't hesitate to reach out on the <a href="https://github.com/cloudflare/terraform-provider-cloudflare">GitHub project</a> for troubleshooting, bug reports, or feature requests. For more in depth documentation on using Terraform to manage your Cloudflare account, <a href="https://developers.cloudflare.com/terraform">read on here</a>. And if you don't have a Cloudflare account already, <a href="https://dash.cloudflare.com/sign-up/teams">click here</a> to get started.</p>
 </div>

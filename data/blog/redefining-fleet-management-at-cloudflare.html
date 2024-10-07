@@ -8,7 +8,14 @@
 	<p>As Cloudflare continues to grow, we are constantly <a href="https://blog.cloudflare.com/automating-data-center-expansions-with-airflow">provisioning</a> new servers, data centers, and hardware all over the globe. With this increase in scale it became necessary to re-evaluate our approach to node and datacenter tooling. In this blog post, we explore an in-house infrastructure system we’ve built, called <i>Zinc, to</i> step up to the task. This system, built in Rust, has become an essential part of system engineering, platform management, and provisioning at Cloudflare, while providing user-friendly engineering tools and automations for Cloudflare employees to leverage.</p>
 	<p>The nature of Zinc is a rather simple system, providing first class data models for logical and physical infrastructure assets here at Cloudflare. Items such as servers (nodes), network devices, and data centers are all members of Zinc, modeled in a strongly-typed system. With these models, Zinc enables powerful APIs, integrations, and interfaces for efficient fleet management on top of this data. Tasks such as assigning workloads to nodes, scheduling any type of data center maintenance, querying data about our fleet, or even managing the repair cycle of faulty nodes are greatly simplified through Zinc and its integrations with other Cloudflare systems.</p>
 	<p>By providing Cloudflare engineers with a native web interface and command line tooling for interacting with Zinc’s data, a central pane of a glass has been created, where the ability to expand, build, and monitor our fleet has never been easier.</p>
-	<h3>Humble Beginnings</h3>
+	<div class="flex anchor relative">
+		<h3 id="humble-beginnings">Humble Beginnings</h3>
+		<a href="https://blog.cloudflare.com/#humble-beginnings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Several years ago, workload management and server provisioning was a tedious process. For our control plane data centers, we would define the workload for every node in massive source-controlled YAML files, sometimes as long as 80,000 lines. Each entry was a node, its name, its rack, and roles to be read by our configuration management software for assignment.</p>
 	<pre class="language-bash"><code class="language-bash">compute5545:
     rack: 219
@@ -36,9 +43,23 @@
 		</li>
 	</ul>
 	<p>These were the initial features Zinc offered to Cloudflare's SRE teams, but over time needs grew to expand the scope and start handling a variety of asset and operational data. Zinc has since started representing and managing more infrastructure related to network devices and datacenter management.</p>
-	<h3>System Blueprint</h3>
+	<div class="flex anchor relative">
+		<h3 id="system-blueprint">System Blueprint</h3>
+		<a href="https://blog.cloudflare.com/#system-blueprint" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, two critical systems, Zinc and <a href="https://github.com/netbox-community/netbox">Netbox</a>, play complementary roles in managing infrastructure. Zinc specializes in handling the logical infrastructure and operational configuration, while Netbox focuses on physical infrastructure. For those unfamiliar with Netbox, it plays the important role of acting as our Datacenter Inventory Management System (DCIM). Details such as hardware specifications, serial numbers, cable diagrams, and rack layouts are all stored in Netbox. These elements are the building blocks of the infrastructure that Zinc imports and relies on to create higher level abstractions, useful for a variety of systems on Cloudflare to depend on, without having to know the nitty-gritty specifics of our datacenter information.</p>
-	<h3>Supercharged Automations</h3>
+	<div class="flex anchor relative">
+		<h3 id="supercharged-automations">Supercharged Automations</h3>
+		<a href="https://blog.cloudflare.com/#supercharged-automations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Growing pains were inevitable given the sheer pace of Cloudflare’s growth. Processes around server provisioning, maintenance windows, repairs, and diagnostics reporting were reaching their limits. Luckily, the data available through Zinc made it a natural home for new and improved workflow automations aimed at removing toil across various touch points throughout a server’s lifecycle.</p>
 	<p><b>Repairs</b>Hardware failures are common at our scale. Issues such as disk failure, motherboard problems, or CPU voltage errors are just a few of the many common failures seen in production. While Cloudflare’s infrastructure is very fault tolerant, we want to quickly return hardware to production after a failure to increase capacity and optimize infrastructure costs. Prior to Zinc, engineers would have to manually collect and file tickets with information related to the hardware failure, tediously filling ticket details manually in order for data center technicians to service it. With Zinc, however, the process of collecting this data and generating repair tickets is entirely automated. As we continue developing Zinc, we will be able to manage this process all the way down to the individual hardware component level and enhance existing automation and diagnostic integrations, further optimizing the repair process. With just a few clicks (or driven by other automation), an accurate service ticket can be filed, enabling data center technicians to make repairs and get servers back into production as fast as possible.</p>
 	<p><b>Diagnostic Reports</b></p>
@@ -56,7 +77,14 @@
 	</figure>
 	<p>If you’ve ever wondered how the maintenance page on <a href="https://www.cloudflarestatus.com">Cloudflare Status</a> is populated, Zinc is the place of origin. As we are constantly doing hardware and network upgrades, it's important for Cloudflare to have a centralized view of what maintenance is happening, where it is happening, and the scale of all the systems and services that are or can be impacted by the maintenance. During maintenance, there are a variety of <a href="https://blog.cloudflare.com/meet-traffic-manager">automated systems</a> that ensure that Cloudflare sees no loss in quality of service, no matter where in the world the maintenance is happening. Zinc orchestrates and tracks these maintenance windows, and sends alerts to teams and Cloudflare customers when a disruptive, or even potentially disruptive, maintenance is scheduled in a region.</p>
 	<p><b>Reboots</b>Zinc provides an integration with a core system responsible for scheduling node reboots. When a node needs to be rebooted, such as to apply a new firmware upgrade or new Kernel version, there are systems at Cloudflare that schedule and safely manage this functionality. For example, it would be unsafe to reboot a production Clickhouse node with no prior warning, so these systems ensure traffic is properly routed away from this node prior to its reboot. Zinc provides an integration in its Web UI and CLI with this reboot management system to make the process of queuing and executing reboots much easier, as well as providing a place where we can add orchestration logic that leverages Zinc's operational management capabilities for server reboots.</p>
-	<h3>Engineer Productivity</h3>
+	<div class="flex anchor relative">
+		<h3 id="engineer-productivity">Engineer Productivity</h3>
+		<a href="https://blog.cloudflare.com/#engineer-productivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most valuable parts of Zinc is that it provides engineers the ability to quickly perform complex queries and apply changes to our assets in production. At the API layer, we ensure that any access or changes to our infrastructure are properly scoped and authenticated. From there, Zinc provides two interfaces for employees managing our fleet: a command-line interface built in Rust, and a web application built in <a href="https://react.dev">React</a>, both of which are built on the same Zinc API that can be directly called from scripts or other systems as integrations are built out to automate more of the management of our infrastructure.</p>
 	<p>Here are some common examples of the CLI tooling our engineers use:</p>
 	<pre class="language-bash"><code class="language-bash"># List all datacenters at Cloudflare 
@@ -77,7 +105,14 @@ compute1192  compute     V           36       pdx01      A203  10         kubern
 Total records: 1337</code></pre>
 	<p><b>Web UI</b>Despite being an internal tool, we felt it necessary to ensure that the UX of Zinc was intuitive and crisp. As it stands, hundreds of engineers at Cloudflare rely on Zinc’s web interface, so we found it essential to provide a fast, easy to use design. Built in React as a <a href="https://developer.mozilla.org/en-US/docs/Glossary/SPA">single page application</a>, we aim to optimize for ease of use wherever possible. Querying items such as assets in repair, nodes in a specific city or country, or even CPU model are all first-class searchable items in our UI.</p>
 	<p>As mentioned previously, Zinc also provides a user-friendly Change Request interface, similar to Git Pull Requests, which shows what asset data is changing and who is making the change, and ensures the change is approved by designated staff prior to being applied in production.</p>
-	<h2>Looking Ahead</h2>
+	<div class="flex anchor relative">
+		<h2 id="looking-ahead">Looking Ahead</h2>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Zinc represents a significant advancement in infrastructure management at Cloudflare. With our fleet growing faster than ever, especially with our new expansions to deliver <a href="https://blog.cloudflare.com/workers-ai">GPUs on the Edge</a> and Cloudflare’s <a href="https://blog.cloudflare.com/r2-ga">R2</a>, Zinc has stepped up to the plate, tackling the challenges of growth and providing invaluable support to our engineering teams. We hope this has been an insightful view of how Cloudflare is building to grow and scale well into the future.</p>
 	<p>There are still many wins to be had when it comes to infrastructure tooling here at Cloudflare. In the long term, Zinc will continue to be the backbone of infrastructure and asset data, with deeper automations and integrations to save our engineers time and toil and reduce manual errors as we continue to expand.</p>
 	<p>If managing and operating a fleet of servers as large as Cloudflare sounds like an exciting challenge to you, <a href="https://www.cloudflare.com/careers/jobs">we’re hiring</a>!</p>

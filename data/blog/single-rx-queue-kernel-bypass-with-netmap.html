@@ -7,7 +7,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232">image</a> by Binary Koala</p>
-	<h3>Our needs</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-needs">Our needs</h3>
+		<a href="https://blog.cloudflare.com/#our-needs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <i>right now</i>.</p>
 	<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
 	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
@@ -37,7 +44,14 @@
 			<p>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</p>
 		</li>
 	</ul>
-	<h3>Introducing the single RX queue mode</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-the-single-rx-queue-mode">Introducing the single RX queue mode</h3>
+		<a href="https://blog.cloudflare.com/#introducing-the-single-rx-queue-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Usually, when a network card goes into the Netmap mode, all the RX queues get disconnected from the kernel and are available to the Netmap applications.</p>
 	<p>We don't want that. We want to keep most of the RX queues back in the kernel mode, and enable Netmap mode only on selected RX queues. We call this functionality: "single RX queue mode".</p>
 	<p>The intention was to expose a minimal API which could:</p>

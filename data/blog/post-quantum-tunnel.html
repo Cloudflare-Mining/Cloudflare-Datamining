@@ -9,7 +9,14 @@
 	<p>Undoubtedly, one of the big themes in IT for the next decade will be <i>the migration</i> to <i>post-quantum cryptography</i>. From tech giants to small businesses: we will all have to make sure our hardware and software is updated so that our data is protected against the arrival of <a href="https://blog.cloudflare.com/the-quantum-menace">quantum computers</a>. It seems far away, but it’s not a problem for later: any encrypted data captured today (not protected by post-quantum cryptography) can be broken by a sufficiently powerful quantum computer in the future.</p>
 	<p>Luckily we’re almost there: after a tremendous worldwide effort by the cryptographic community, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise">we know</a> what will be the gold standard of post-quantum cryptography for the next decades. Release date: somewhere in 2024. Hopefully, for most, the transition will be a simple software update then, but it will not be that simple for everyone: not all software is maintained, and it could well be that hardware needs an upgrade as well. Taking a step back, many companies don’t even have a full list of all software running on their network.</p>
 	<p>For Cloudflare Tunnel customers, this migration will be much simpler: introducing <b>Post-Quantum</b> <b>Cloudflare Tunnel</b>. In this blog post, first we give an overview of how Cloudflare Tunnel works and explain how it can help you with your post-quantum migration. Then we’ll explain how to get started and finish with the nitty-gritty technical details.</p>
-	<h2>Cloudflare Tunnel</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a> you can securely expose a server sitting within an internal network to the Internet by running the <a href="https://github.com/cloudflare/cloudflared"><code>cloudflared</code></a> service next to it. For instance, after having installed <a href="https://github.com/cloudflare/cloudflared"><code>cloudflared</code></a> on your internal network, you can expose your on-prem webapp on the Internet under, say example.com, so that <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">remote workers</a> can access it from anywhere,</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -19,14 +26,28 @@
 	<p>Life of a Cloudflare Tunnel request.</p>
 	<p>How does it work? <code>cloudflared</code> creates long-running connections to two nearby Cloudflare data centers, for instance San Francisco (connection 3) and one other. When your employee visits your domain, they connect (1) to a Cloudflare server close to them, say in Frankfurt. That server knows that this is a Cloudflare Tunnel and that your <code>cloudflared</code> has a connection to a server in San Francisco, and thus it relays (2) the request to it. In turn, via the reverse connection, the request ends up at <code>cloudflared</code>, which passes it (4) to the webapp via your internal network.</p>
 	<p>In essence, Cloudflare Tunnel is a simple but convenient tool, but the magic is in what you can do on top with it: you get <a href="https://www.cloudflare.com/ddos">Cloudflare’s DDoS protection</a> for free; fine-grained access control with <a href="https://www.cloudflare.com/products/zero-trust/access">Cloudflare Access</a> (even if the application didn’t support it) and <a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs">request logs</a> just to name a few. And let’s not forget the matter at hand:</p>
-	<h2>Post-quantum tunnels</h2>
+	<div class="flex anchor relative">
+		<h2 id="post-quantum-tunnels">Post-quantum tunnels</h2>
+		<a href="https://blog.cloudflare.com/#post-quantum-tunnels" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our goal is to make it easy for everyone to have a fully post-quantum secure connection from users to origin. For this, Post-Quantum Cloudflare Tunnel is a powerful tool, because with it, your users can benefit from a post-quantum secure connection without upgrading your application (connection 4 in the diagram).</p>
 	<p>Today, we make two important steps towards this goal: <code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1">2022.9.1</a> adds the <code>--post-quantum</code> flag, that when given, makes the connection from <code>cloudflared</code> to our network (connection 3) post-quantum secure.</p>
 	<p>Also today, <a href="https://blog.cloudflare.com/post-quantum-for-all">we have announced</a> support for post-quantum browser connections (connection 1).</p>
 	<p>We aren’t there yet: browsers (and other HTTP clients) do not support the post-quantum security offered by our network, yet, and we still have to make the connections between our data centers (connection 2) post-quantum secure.</p>
 	<p>An attacker only needs to have access to one vulnerable connection, but attackers don’t have access everywhere: with every connection we make post-quantum secure, we remove one opportunity for compromise.</p>
 	<p>We are eager to make post-quantum tunnels the default, but for now it is a beta feature. The reason is that the cryptography used and its integration into the network protocol are not yet final. Making post-quantum the default now, would require users to update <code>cloudflared</code> more often than we can reasonably expect them to.</p>
-	<h2>Getting started</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Are frequent updates to <code>cloudflared</code> not a problem for you? Then please do give post-quantum Cloudflare Tunnel a try. Make sure you’re on at least <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1">2022.9.1</a> and simply run <code>cloudflared</code> with the <code>--post-quantum</code> flag:</p>
 	<pre class="language-bash"><code class="language-bash">$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
@@ -68,16 +89,37 @@ for known problems.
 
 2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]</code></pre>
 	<p>When the post-quantum flag is given, <code>cloudflared</code> will <i>not</i> fall back to a non post-quantum connection.</p>
-	<h3>What to look for</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-to-look-for">What to look for</h3>
+		<a href="https://blog.cloudflare.com/#what-to-look-for" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The setup phase is the crucial part: once established, the tunnel is the same as a normal tunnel. That means that performance and reliability should be identical once the tunnel is established.</p>
 	<p>The post-quantum cryptography we use is very fast, but requires roughly a kilobyte of extra data to be exchanged during the handshake. The difference will be hard to notice in practice.</p>
 	<p>Our biggest concern is that some network equipment/middleboxes might be confused by the bigger handshake. If the post-quantum Cloudflare Tunnel isn’t working for you, we’d love to hear about it. Contact us at <a href="mailto:ask-research@cloudflare.com">ask-research@cloudflare.com</a> and tell us which middleboxes or ISP you’re using.</p>
-	<h2>Under the hood</h2>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">Under the hood</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When the <code>--post-quantum</code> flag is given, <code>cloudflared</code> restricts itself to the QUIC transport for the tunnel connection to our network and will only allow the post-quantum hybrid key exchanges <code>X25519Kyber512Draft00</code> and <code>X25519Kyber768Draft00</code> with TLS identifiers <code>0xfe30</code> and <code>0xfe31</code> respectively. These are <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design">hybrid</a> key exchanges between the classical <a href="https://cr.yp.to/ecdh.html">X25519</a> and the post-quantum secure <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a>. Thus, on the off-chance that Kyber turns out to be insecure, we can still rely on the non-post quantum security of X25519. These are the same key exchanges <a href="https://blog.cloudflare.com/post-quantum-for-all">supported on our network</a>.</p>
 	<p><code>cloudflared</code> randomly picks one of these two key exchanges. The reason is that the latter usually requires two initial packets for the TLS <i>ClientHello</i> whereas the former only requires one. That allows us to test whether a fragmented <i>ClientHello</i> causes trouble.</p>
 	<p>When <code>cloudflared</code> fails to set up the post-quantum connection, it will report the attempted key exchange, <code>cloudflared</code> version and error to <a href="https://pqtunnels.cloudflareresearch.com">pqtunnels.cloudflareresearch.com</a> so that we have visibility into network issues. Have a look at that page for updates on our post-quantum tunnel deployment.</p>
 	<p>The control connection and authentication of the tunnel between <code>cloudflared</code> and our network are not post-quantum secure yet. This is less urgent than the <i>store-now-decrypt-later</i> issue of the data on the tunnel itself.</p>
 	<p>We have <a href="https://github.com/cloudflare/qtls-pq">open-sourced</a> support for these post-quantum QUIC key exchanges in Go.</p>
-	<h2>Outlook</h2>
+	<div class="flex anchor relative">
+		<h2 id="outlook">Outlook</h2>
+		<a href="https://blog.cloudflare.com/#outlook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the coming decade the industry will roll out post-quantum data protection. Some cases will be as simple as a software update and others will be much more difficult. Post-Quantum Cloudflare Tunnel will secure the connection between Cloudflare’s network and your origin in a simple and user-friendly way — an important step towards the Post-Quantum Internet, so that everyone may continue to enjoy a private and secure Internet.</p>
 </div>

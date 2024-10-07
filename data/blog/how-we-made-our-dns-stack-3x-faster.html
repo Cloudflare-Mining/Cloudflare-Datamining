@@ -16,7 +16,14 @@
 	<p>The rough architecture of the system can be seen above. We store customer DNS records and other origin server information in a central database, convert the raw data into a format usable by our edge in the middle, and then distribute it to our <a href="https://www.cloudflare.com/network">&gt;100 data centers</a> (we call them PoPs - Points of Presence) using a KV (key/value) store.</p>
 	<p>The queries are served by a custom DNS server, rrDNS, that we’ve been using and developing for several years. In the early days of Cloudflare, our DNS service was built on top of PowerDNS, but that was phased out and replaced by rrDNS in 2013.</p>
 	<p>The Cloudflare DNS team owns two elements of the data flow: the data pipeline itself and rrDNS. The first goal was to replace the data pipeline with something entirely new as the current software was starting to show its age; as any &gt;5 year old infrastructure would. The existing data pipeline was originally built for use with PowerDNS, and slowly evolved over time. It contained many warts and obscure features because it was built to translate our DNS records into the PowerDNS format.</p>
-	<h3>A New Data Model</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-data-model">A New Data Model</h3>
+		<a href="https://blog.cloudflare.com/#a-new-data-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the old system, the data model was fairly simple. We’d store the DNS records roughly in the same structure that they are represented in our UI or API: one entry per resource record (RR). This meant that the data pipeline only had to perform fairly rudimentary encoding tasks when generating the zone data to be distributed to the edge.</p>
 	<p>Zone metadata and RRs were encoded using a mix of JSON and Protocol Buffers, though we weren’t making particularly good use of the schematized nature of the protocols so the schemas were very bloated and the resulting data ended up being larger than necessary. Not to mention that as the number of total RRs in our database headed north of 100 million, these small differences in encoding made a significant difference in aggregate.</p>
 	<p>It’s worth remembering here that <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> doesn’t really operate on a per-RR basis when responding to queries. You query for a name and a type (e.g <code>example.com</code> and <code>AAAA</code>) and you’ll be given an RRSet which is a <i>collection</i> of RRs. The old data format had RRSets broken out into multiple RR entries (one key per record) which typically meant multiple roundtrips to our KV store to answer a single query. We wanted to change this and group data by RRSet so that a single request could be made to the KV store to retrieve all the data needed to answer a query. Because Cloudflare optimizes heavily for DNS performance, multiple KV lookups were limiting our ability to make rrDNS go as fast as possible.</p>
@@ -42,7 +49,14 @@
 
 	</figure>
 	<p>One unexpected surprise after switching to this new model was that we actually reduced the space required to store the data at the edge by around 9x, which was a significantly higher saving compared to our initial estimates. It just goes to show how much impact a bloated data model can have on a system.</p>
-	<h3>A New Data Pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-data-pipeline">A New Data Pipeline</h3>
+		<a href="https://blog.cloudflare.com/#a-new-data-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another very important feature of Cloudflare’s DNS is our ability to propagate zone changes around the globe in a matter of seconds, not minutes or hours. Our existing pipeline was struggling to keep up with the growing number of zones, and with changes to at least 5 zones each second, even at the quietest of times we needed something new.</p>
 	<h4>Global distribution is hard</h4>
 	<p>For a while now we’ve had this monitoring, and we are able to visualize propagation times across the globe. The graph below is taken from our end-to-end monitoring: it makes changes to DNS via our API and watches for the change from various probes around the world. Each dot on the graph represents a particular probe talking to one of our PoPs, and the delay is tracked as the time it took for a change made via our API to be visible externally.</p>

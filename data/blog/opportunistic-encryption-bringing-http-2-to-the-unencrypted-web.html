@@ -10,7 +10,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/53Z7Qo7rd4AQlJC0kikjXS/706b5e4d9f4092518d08aa24c7839208/Screen-Shot-2016-09-21-at-16.19.03.png" alt="" class="kg-image" width="968" height="242" loading="lazy">
 
 	</figure>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Opportunistic Encryption uses <a href="http://httpwg.org/http-extensions/alt-svc.html">HTTP Alternative Services</a>, a mechanism that allows servers to tell clients that the service they are accessing is available at another network location or over another protocol. When a supporting browser makes a request to a CloudFlare site with Opportunistic Encryption enabled, CloudFlare adds an Alternative Service header to indicate that the site is available over HTTP/2 (or SPDY) on port 443.</p>
 	<p>For customers with HTTP/2 enabled:<code>Alt-Svc: h2=”:443”; ma=60</code></p>
 	<p>For customers with HTTP/2 disabled:<code>Alt-Svc: spdy/3.1=”:443”; ma=60</code></p>
@@ -24,7 +31,14 @@
 	<p>When Firefox (or any other browser that supports Opportunistic Encryption) receives an “h2” Alt-Svc header, it knows that the site is available using HTTP/2 over TLS on port 443. For any subsequent HTTP requests to that domain, the browser will connect using TLS on port 443, where the server will present a certificate for the domain signed by a trusted certificate authority. The browser will then validate the certificate. If the connection succeeds, the browser will send the requests over that connection using HTTP/2.</p>
 	<p>Opportunistically encrypted requests will contain “http” in the <a href="https://http2.github.io/http2-spec/#HttpRequest"><code>:scheme</code> pseudo-header</a> instead of “https”. From a bit-on-the-wire perspective, this pseudo-header is the only difference between HTTP requests with Opportunistic Encryption over TLS and HTTPS. However, there is a big difference between how browsers treat assets fetched using HTTP vs. HTTPS URLs (as discussed below).</p>
 	<p>HTTP Alternative Services is a relatively new but widely used mechanism. For example, Alt-Svc is used by Google to advertise support for their experimental transport protocol, <a href="https://www.chromium.org/quic">QUIC</a>, to browsers in much the same way as we use it to advertise support for Opportunistic Encryption.</p>
-	<h2>Why not just use HTTPS?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-not-just-use-https">Why not just use HTTPS?</h2>
+		<a href="https://blog.cloudflare.com/#why-not-just-use-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare enables HTTPS by default for customers on <a href="https://www.cloudflare.com/plans">all plans</a> using Universal SSL. However, some sites choose to continue to allow access to their sites via unencrypted HTTP. The main reason for this is mixed content. If a site contains references to HTTP images, or makes requests to HTTP URLs via embedded scripts, browsers will present warnings or even block requests outright, often breaking the functionality of the site.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -34,10 +48,24 @@
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/blondinrikard/16467022408/in/photolist-r68N4s-wdqoLL-wL6trG-vTynKb-vTyjDm-wbh17E-wawCrA-vw2iz8-wbofNT-w8RLP5-wboR8p-wscuys-wbgUu9-wPHQUT-wtmaGV-wsdj2U-wbo7Fv-wbgW9m-wtm9RM-wbgfb3-wqyuDm-wboXM6-wbp7jX-wsTgrP-wbALUc-wujVgK-vea2uj-wscmum-veiEag-vea12j-veiFGV-wbgLWS-wbaXWX-veiH66-wqznYf-vea193-vTyvb1-wucvcL-AKwG91-wbaZmk-vTFwsg-vTynJC-wucAZE-wawzEJ-AKCQWi-wawoMm-wbaWhV-wbaVVH-wbb8hv-wujW96">image</a> by <a href="https://www.flickr.com/photos/blondinrikard">Blondinrikard Fröberg</a></p>
 	<p>Making sure a site can be fully migrated to HTTPS can be a manual and time-consuming process. It can require someone to manually inspect every page on a site or set up a <a href="https://content-security-policy.com">Content Security Policy (CSP)</a> reporting infrastructure, a complex task. Even after all this work, fixing mixed content issues may require changes in middleware or content management software that can’t be easily updated. Later this week, we’ll introduce Automatic HTTPS Rewrites, which helps fix mixed content for many sites, but not all. Some mixed content can’t be fixed because the included third party resources (such as ads) that are not available over HTTPS. Websites that can’t update fully to HTTPS will benefit most from Opportunistic Encryption.</p>
 	<p>With Opportunistic Encryption, supporting browsers can choose to access an HTTP site using HTTP/2 over an encrypted connection instead of HTTP/1.1 over plaintext (the default).</p>
-	<h2>Security Benefits</h2>
+	<div class="flex anchor relative">
+		<h2 id="security-benefits">Security Benefits</h2>
+		<a href="https://blog.cloudflare.com/#security-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s no secret that network operators have access to the data that travels through their equipment. This access can be used to modify data: ISPs have been caught injecting unwanted data (<a href="http://arstechnica.com/tech-policy/2013/04/how-a-banner-ad-for-hs-ok">such as advertisements</a> and <a href="http://www.theverge.com/2016/3/7/11173010/verizon-supercookie-fine-1-3-million-fcc">tracking cookies</a>) into unencrypted requests. Countries <a href="https://en.wikipedia.org/wiki/Internet_censorship_in_India">routinely filter content</a> by inspecting HTTP headers in unencrypted traffic, and <a href="https://citizenlab.org/2015/04/chinas-great-cannon">China’s Great Cannon</a> injected malicious code into unencrypted websites. Access to data in transit can also be used to perform dragnet surveillance, where vast swaths of data is collected and then <a href="https://www.theguardian.com/commentisfree/2013/jul/15/crux-nsa-collect-it-all">shipped to a central location for analysis</a>.</p>
 	<p>Opportunistic Encryption does not fully protect against attackers who can simply remove the header that signals support for Opportunistic Encryption to the browser. However, once an opportunistically encrypted connection is established all requests sent over the connection are encrypted and cannot be read (or modified) by prying eyes.</p>
-	<h2>Terminology is hard</h2>
+	<div class="flex anchor relative">
+		<h2 id="terminology-is-hard">Terminology is hard</h2>
+		<a href="https://blog.cloudflare.com/#terminology-is-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tim Berners-Lee initiated the development of HTTP in the late 1980s to facilitate the transfer of documents from servers to clients. Both websites and browsers were rudimentary compared to the today’s web ecosystem. The concept of web security was practically non-existent.</p>
 	<p>From <a href="https://www.w3.org/History/1989/proposal.html">the original 1989 paper</a>:</p>
 	<figure class="kg-card kg-image-card ">
@@ -69,7 +97,14 @@
 	<p>✔️</p>
 	<p>✔️</p>
 	<p>Opportunistic Encryption is the bottom left ✔️. While only HTTPS sites are treated as secure by the browser (as indicated by a green lock security indicator), encrypted HTTP is preferable to unencrypted HTTP.</p>
-	<h2>Browser support</h2>
+	<div class="flex anchor relative">
+		<h2 id="browser-support">Browser support</h2>
+		<a href="https://blog.cloudflare.com/#browser-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All versions of Firefox since Firefox 38 (May 2015) have supported Opportunistic Encryption in its original form (without certificate validation). Firefox has recently added support for certificate validation in Firefox Nightly and will support it in an upcoming official release. We believe that Opportunistic Encryption is a meaningful advance in web security. We hope that other browsers follow Firefox’s lead and enable Opportunistic Encryption.</p>
 	<p>To be clear, Opportunistic Encryption is not a replacement for HTTPS. HTTPS should always be used when both strong encryption and authentication are required. For sites that don’t have the resources to fully move to HTTPS, Opportunistic Encryption can help, providing both added security and performance. Every bit counts.</p>
 </div>

@@ -14,15 +14,36 @@
 			<p>The Barack Obama campaign website saw an 80% page load time boost resulted in a 14% increase in donations</p>
 		</li>
 	</ul>
-	<h3>What is caching?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-caching">What is caching?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare <a href="https://www.cloudflare.com/network">operates over 110 data centers around the world</a>. When a website implements Cloudflare, visitor requests for the site will proxy through the nearest Cloudflare data center instead of connecting directly to the webserver hosting the site (origin). This means Cloudflare can store content such as images, JavaScript, CSS and HTML on our servers, speeding up access to those resources for end-users.</p>
 	<p>Most ecommerce websites rely on a backend database containing product descriptions and metadata such as prices. Without caching, each visit to a product page might involve several database requests to pull all the required data, which can introduce added latency to page load time, particularly on a busy website. Serving the website's homepage and product pages from Cloudflare's cache not only eliminates these costly database calls, but also reduces the load on your origin infrastructure.</p>
 	<p>To make the most of Cloudflare and to help maximize the speed of your website, serve as much content as possible from the Cloudflare cache.</p>
-	<h3>How Cloudflare caching works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-caching-works">How Cloudflare caching works</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-caching-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, Cloudflare caches static content based on a <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Which-file-extensions-does-CloudFlare-cache-for-static-content-">fixed list of file extensions</a> which includes assets such as images, CSS files and PDFs.</p>
 	<p>The reason Cloudflare only caches static content out of the box (and does not cache HTML content by default) is to avoid the risk of inappropriate data being cached. For example, if the shopping cart page is cached, then the next visitor might receive the cached version and see a cart with the incorrect contents. Therefore, while enabling more caching will let you make the most of Cloudflare, it requires careful and considered implementation.</p>
 	<p>Additional caching on Cloudflare can be enabled in one of two ways - using Page Rules or by sending cache headers from your origin. These two methods are explained in more detail <a href="https://support.cloudflare.com/hc/en-us/articles/202775670-How-Do-I-Tell-CloudFlare-What-to-Cache-">here</a>. In this blog post we’ll use Page Rules, but keep in mind you can use headers from your origin too.</p>
-	<h3>Using caching on ecommerce sites</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-caching-on-ecommerce-sites">Using caching on ecommerce sites</h3>
+		<a href="https://blog.cloudflare.com/#using-caching-on-ecommerce-sites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A typical HTML page on an ecommerce website will contain static content (such as the product description) and dynamic content such as:</p>
 	<ul>
 		<li>
@@ -39,7 +60,14 @@
 	</figure>
 	<p>The user might have one or more session cookies to maintain these dynamic elements.</p>
 	<p>There are few ways to make the most of Cloudflare's caching, while taking into account the dynamic nature of ecommerce websites.</p>
-	<h3>Method 1: cache everything on Cloudflare but bypass the cache for private content</h3>
+	<div class="flex anchor relative">
+		<h3 id="method-1-cache-everything-on-cloudflare-but-bypass-the-cache-for-private-content">Method 1: cache everything on Cloudflare but bypass the cache for private content</h3>
+		<a href="https://blog.cloudflare.com/#method-1-cache-everything-on-cloudflare-but-bypass-the-cache-for-private-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>Note: the Bypass Cache on Cookie feature is only available on the Cloudflare Business and Enterprise </i><a href="https://www.cloudflare.com/plans"><i>plans</i></a></p>
 	<p>Many visitors to a site will be brand new, first time visitors - in other words, they won’t be logged in to the site and won’t have any items in their basket.</p>
 	<p>Serving their request from the Cloudflare cache means they can quickly view the page they’re looking for (whether the homepage or a specific product page). As they're a brand new visitor, the entire page can be served from the Cloudflare cache.</p>
@@ -53,7 +81,14 @@
 	</figure>
 	<p>In the above example, the Page Rule will cause all requests to the site to serve from cache, unless the web browser has sent a cookie named “loggedin” or “iteminbasket”.</p>
 	<p>Obviously every ecommerce platform is different, so always think through your settings and ensure you use the correct cookie values to ensure that there is no risk of private data (e.g. someone’s shopping basket) being served from cache and shown to another visitor.</p>
-	<h3>Method 2: Populating via JavaScript / AJAX</h3>
+	<div class="flex anchor relative">
+		<h3 id="method-2-populating-via-javascript-ajax">Method 2: Populating via JavaScript / AJAX</h3>
+		<a href="https://blog.cloudflare.com/#method-2-populating-via-javascript-ajax" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A better solution would be to serve the entirety of the page from cache, but populate the dynamic elements using JavaScript / AJAX.</p>
 	<p>This means Cloudflare will serve the bulk of the page content and only small requests will pass (via Cloudflare) direct to origin to populate dynamic elements such as the basket contents.</p>
 	<p>To configure this, use a Page Rule with Cache Level “Cache Everything” for the static content and another Page Rule with Cache Level “Bypass” for the dynamic (AJAX) requests.</p>
@@ -66,7 +101,14 @@
 	<p>Other requests, e.g. to <code>www.example.com/products/product_page</code> would not match the first Page Rule but would instead match the second “Cache Everything” Page Rule - thus the product page is served from the Cloudflare cache. Within that product page, the dynamic elements (such as the basket contents and the logged in state) are dynamically populated using the AJAX requests.</p>
 	<p>You should also consider introducing additional appropriate Page Rules for special pages such as the checkout pages - for example, you may wish to create a Page Rule that bypasses the cache for all the checkout pages.</p>
 	<p>Remember: only one Page Rule will execute for any given request, and Page Rules are processed in the order they exist in the Cloudflare control panel. Read over our <a href="https://support.cloudflare.com/hc/en-us/articles/200168306-Is-there-a-tutorial-for-Page-Rules-">Page Rules tutorial</a> to better understand how they work.</p>
-	<h3>Optimizing further: using Railgun</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimizing-further-using-railgun">Optimizing further: using Railgun</h3>
+		<a href="https://blog.cloudflare.com/#optimizing-further-using-railgun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>Note: the Railgun feature is only available on the Cloudflare Business and Enterprise </i><a href="https://www.cloudflare.com/plans"><i>plans</i></a></p>
 	<p>Cloudflare’s Railgun technology optimizes the connection between Cloudflare and the website origin, for accelerating dynamic HTML content - content that can't be served from the Cloudflare cache.</p>
 	<p>Railgun helps in two ways:</p>

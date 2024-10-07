@@ -14,7 +14,15 @@
 	</figure>
 	<p>Granted not all services work on all the addresses but rather on a subset of them, covering one or several network prefixes.</p>
 	<p>So how do you set up your network services to listen on hundreds of IP addresses without driving the network stack over the edge?Cloudflare engineers have had to ask themselves this question more than once over the years, and the answer has changed as our edge evolved. This evolution forced us to look for creative ways to work with the <a href="https://en.wikipedia.org/wiki/Berkeley_sockets">Berkeley sockets API</a>, a POSIX standard for assigning a network address and a port number to your application. It has been quite a journey, and we are not done yet.</p>
-	<h2>When life is simple - one address, one socket</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-life-is-simple-one-address-one-socket">When life is simple - one address, one socket</h2>
+		<a href="https://blog.cloudflare.com/#when-life-is-simple-one-address-one-socket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aVlT1BbslJwQRzC0HnF0p/e0780b95d283923f2e65b6a1de31b771/mapping_1_to_1-1.png" alt="mapping 1 to 1-1" class="kg-image" width="2000" height="842" loading="lazy">
 	</figure>
@@ -39,7 +47,15 @@
 	</figure>
 	<p>CC BY 2.0, Luca Nebuloni, <a href="https://flickr.com/photos/7897906@N06/20655224708">Flickr</a></p>
 	<p>The approach, while naive, has an advantage: when an IP from the range gets attacked with a UDP flood, the receive queues of sockets bound to the remaining IP addresses are not affected.</p>
-	<h2>Life can be easier - all addresses, one socket</h2>
+	<div class="flex anchor relative">
+		<h2 id="life-can-be-easier-all-addresses-one-socket">Life can be easier - all addresses, one socket</h2>
+		<a href="https://blog.cloudflare.com/#life-can-be-easier-all-addresses-one-socket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nfFyQt9C1FLIKO6wnmV4Q/52e892033415022d744bc16a9beb7812/mapping_inaddr_any-1.png" alt="mapping inaddr any-1" class="kg-image" width="2000" height="1173" loading="lazy">
 	</figure>
@@ -63,7 +79,14 @@ s.listen(16)</code></pre>
 bind(4, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EADDRINUSE (Address already in use)
 </code></pre>
 	<p>Unless your service is UDP-only, setting the <code>SO_REUSEADDR</code> socket option, will not help you overcome this restriction. The only way out is to turn to <code>SO_REUSEPORT</code>, normally used to construct a load-balancing socket group. And that is only if you are lucky enough to run the port-conflicting services as the same user (UID). That is a story for another post.Quick Quiz #3: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3">Jump to answer</a>.</p>
-	<h2>Life gets real - one port, two services</h2>
+	<div class="flex anchor relative">
+		<h2 id="life-gets-real-one-port-two-services">Life gets real - one port, two services</h2>
+		<a href="https://blog.cloudflare.com/#life-gets-real-one-port-two-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As it happens, at the Cloudflare edge we do host services that share the same port number but otherwise respond to requests on non-overlapping IP ranges. A prominent example of such port-sharing is our <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.1</a> recursive DNS resolver running side-by-side with the<a href="https://www.cloudflare.com/dns"> authoritative DNS service</a> that we offer to all customers.</p>
 	<p>Sadly the s<a href="http://man7.org/linux/man-pages/man2/bind.2.html">ockets API</a> doesn’t allow us to express a setup in which two services share a port and accept requests on disjoint IP ranges.</p>
 	<p>However, as Linux development history shows, any networking API limitation can be overcome by introducing a new <a href="https://github.com/torvalds/linux/blame/master/include/uapi/asm-generic/socket.h">socket option</a>, with sixty-something options available (and counting!).</p>
@@ -91,7 +114,14 @@ s2.bind(('0.0.0.0', 1234))
 s2.listen(1)
 </code></pre>
 	<p>This mechanism has served us well since then. Unfortunately, it didn’t get accepted upstream due to being too specific to our use-case. Having no better alternative we ended up maintaining patches in our kernel to this day.</p>
-	<h2>Life gets complicated - all ports, one service</h2>
+	<div class="flex anchor relative">
+		<h2 id="life-gets-complicated-all-ports-one-service">Life gets complicated - all ports, one service</h2>
+		<a href="https://blog.cloudflare.com/#life-gets-complicated-all-ports-one-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just when we thought we had things figured out, we were faced with a new challenge. How to build a service that accepts connections on any of the 65,535 ports? The ultimate reverse proxy, if you will, code named <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>.The <code>bind</code> syscall offers very little flexibility when it comes to mapping a socket to a port number. You can either specify the number you want or let the network stack pick an unused one for you. There is no counterpart of <code>INADDR_ANY</code>, a wildcard value to select all ports (<code>INPORT_ANY</code>?).To achieve what we wanted, we had to turn to <a href="https://blog.cloudflare.com/how-we-built-spectrum">TPROXY</a>, a <a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt">Netfilter / <code>iptables</code> extension</a> designed for intercepting remote-destined traffic on the forward path. However, we use it to steer local-destined packets, that is ones targeted to our host, to a catch-all-ports socket.</p>
 	<pre class="language-undefined"><code class="language-undefined">iptables -t mangle -I PREROUTING \
          -d 192.0.2.0/24 -p tcp \
@@ -113,7 +143,14 @@ s2.listen(1)
 		</li>
 	</ul>
 	<p>These are some of the questions we needed to answer, and after running it in production for a while now, we have a good idea of what the consequences of using TPROXY are.That said, it would not come as a shock, if tomorrow we’d discovered something new about TPROXY. Due to its complexity we’ve always considered using it to steer local-destined traffic a <a href="https://blog.cloudflare.com/how-we-built-spectrum">hack</a>, a use-case outside its intended application. No matter how well understood, a hack remains a hack.</p>
-	<h2>Can BPF make life easier?</h2>
+	<div class="flex anchor relative">
+		<h2 id="can-bpf-make-life-easier">Can BPF make life easier?</h2>
+		<a href="https://blog.cloudflare.com/#can-bpf-make-life-easier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite its complex nature TPROXY shows us something important. No matter what IP or port the listening socket is bound to, with a bit of support from the network stack, we can steer any connection to it. As long the application is ready to handle this situation, things work.</p>
 	<p>Quick Quiz #4: Are there really no problems with accepting any connection on any socket? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4">Jump to answer</a>.</p>
 	<p>This is a really powerful concept. With a bunch of TPROXY rules, we can configure any mapping between (address, port) tuples and listening sockets.</p>
@@ -129,7 +166,15 @@ s2.listen(1)
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zhLPX1wssfv3c4QvObgz9/784d2388e81f8885842ceef53204eb18/idea_program_socket_lookup_with_bpf-2.png" alt="idea program socket lookup with bpf-2" class="kg-image" width="2000" height="902" loading="lazy">
 	</figure>
 	<p>All packets coming on <code>192.0.2.0/24</code> prefix, port <code>53</code> are steered to socket <code>sk:2</code>, while traffic targeted at <code>203.0.113.1</code>, on any port number lands in socket <code>sk:4</code>.</p>
-	<h2>Welcome BPF inet_lookup</h2>
+	<div class="flex anchor relative">
+		<h2 id="welcome-bpf-inet_lookup">Welcome BPF inet_lookup</h2>
+		<a href="https://blog.cloudflare.com/#welcome-bpf-inet_lookup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Pg5Lou5IFLuZcFHbaY46O/efadae3751638b0f32e85e4e24de58dc/bpf_inet_lookup_hook-1.png" alt="bpf inet lookup hook-1" class="kg-image" width="2000" height="813" loading="lazy">
 	</figure>
@@ -152,10 +197,25 @@ s2.listen(1)
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ufZk0QnR4cOf061PvseTW/b8c50ffba83456f9363de3ba43d620d5/bpf_inet_lookup_socket_activation-1.png" alt="bpf inet lookup socket activation-1" class="kg-image" width="2000" height="867" loading="lazy">
 	</figure>
-	<h2>Demo time!</h2>
+	<div class="flex anchor relative">
+		<h2 id="demo-time">Demo time!</h2>
+		<a href="https://blog.cloudflare.com/#demo-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is not just a concept. We have already published a first working <a href="https://lore.kernel.org/bpf/20190828072250.29828-1-jakub@cloudflare.com">set of patches for the kernel</a> together with ancillary <a href="https://github.com/majek/inet-tool">user-space tooling</a> to configure the socket lookup to your needs.</p>
 	<p>If you would like to see it in action, you are in luck. We’ve put together a demo that shows just how easily you can bind a network service to (i) a single port, (ii) all ports, or (iii) a network prefix. On-the-fly, without having to restart the service! There is a port scan running to prove it.</p>
-	<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>[![asciicast](https://asciinema.org/a/266328.svg)](https://asciinema.org/a/266328)<h2>Summary</h2>
+	<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>[![asciicast](https://asciinema.org/a/266328.svg)](https://asciinema.org/a/266328)
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have gone over how the way we bind services to network addresses on the Cloudflare edge has evolved over time. Each approach has its pros and cons, summarized below. We are currently working on a new BPF-based mechanism for binding services to addresses, which is intended to address the shortcomings of existing solutions.</p>
 	<p><b>bind to one address and port
 		</b>? flood traffic on one address hits one socket, doesn’t affect the rest
@@ -179,8 +239,23 @@ s2.listen(1)
 		? needs cooperation from services or PID 1 to build a socket map</p>
 	<hr>
 	<p>Getting to this point has been a team effort. A special thank you to Lorenz Bauer and <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek Majkowski</a> who have contributed in an essential way to the BPF <code>inet_lookup</code> implementation. The <code>SO_BINDTOPREFIX</code> patches were authored by <a href="https://blog.cloudflare.com/author/gilberto-bertin">Gilberto Bertin</a>.Fancy joining the team? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog">Apply here!</a></p>
-	<h2>Quiz Answers</h2>
-	<h3>Quiz 1</h3>
+	<div class="flex anchor relative">
+		<h2 id="quiz-answers">Quiz Answers</h2>
+		<a href="https://blog.cloudflare.com/#quiz-answers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="quiz-1">Quiz 1</h3>
+		<a href="https://blog.cloudflare.com/#quiz-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Q: How many Cloudflare services can you name?</p>
 	<ol>
 		<li>
@@ -215,7 +290,14 @@ s2.listen(1)
 		</li>
 	</ol>
 	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-1-question">Go back</a></p>
-	<h3>Quiz 2</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-2">Quiz 2</h3>
+		<a href="https://blog.cloudflare.com/#quiz-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Q: Is there another way to bind a socket to all local addresses?Yes, there is - by not <code>bind()</code>’ing it at all. Calling <code>listen()</code> on an unbound socket is equivalent to binding it to <code>INADDR_ANY</code> and letting the kernel pick a free port.$ strace -e socket,bind,listen nc -l
 		socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
 		listen(3, 1) = 0
@@ -225,10 +307,24 @@ s2.listen(1)
 		State Recv-Q Send-Q Local Address:Port Peer Address:Port
 		LISTEN 0 1 *:42669 </p>
 	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-2-question">Go back</a></p>
-	<h3>Quiz 3</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-3">Quiz 3</h3>
+		<a href="https://blog.cloudflare.com/#quiz-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Q: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict?Yes. If two processes are racing to <code>bind</code> and <code>listen</code> on the same TCP port, on an overlapping IP, setting <code>SO_REUSEADDR</code> changes which syscall will report an error (<code>EADDRINUSE</code>). Without <code>SO_REUSEADDR</code> it will always be the second bind. With <code>SO_REUSEADDR</code> set there is a window of opportunity for a second <code>bind</code> to succeed but the subsequent <code>listen</code> to fail.</p>
 	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3-question">Go back</a></p>
-	<h3><b>Quiz 4</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-4">Quiz 4</h3>
+		<a href="https://blog.cloudflare.com/#quiz-4" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Q: Are there really no problems with accepting any connection on any socket?If the connection is destined for an address assigned to our host, i.e. a local address, there are no problems. However, for remote-destined connections, sending return traffic from a non-local address (i.e., one not present on any interface) will not get past the Linux network stack. The <code>IP_TRANSPARENT</code> socket option bypasses this protection mechanism known as <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88ef4a5a78e63420dd1dd770f1bd1dc198926b04">source address check</a> to lift this restriction.</p>
 	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4-question">Go back</a></p>
 </div>

@@ -13,27 +13,70 @@
 	<p>It seems obvious enough, but this policy has deep consequences. What if our API has a bug, and some deployed Workers accidentally depend on that bug? Then, seemingly, we can't fix the bug! That sounds… bad?</p>
 	<p>This post will dig deeper into our policy, explaining why Workers is different from traditional server stacks in this respect, and how we're now making backwards-incompatible changes possible by introducing "compatibility dates".</p>
 	<p><b>TL;DR:</b> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility date</a>.</p>
-	<h2>Serverless demands strict compatibility</h2>
+	<div class="flex anchor relative">
+		<h2 id="serverless-demands-strict-compatibility">Serverless demands strict compatibility</h2>
+		<a href="https://blog.cloudflare.com/#serverless-demands-strict-compatibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers is a serverless platform, which means we maintain the server stack for you. You do not have to manage the runtime version, you only manage your own code. This means that when we update the Workers Runtime, we update it for everyone. We do this at least once a week, sometimes more.</p>
 	<p>This means that if a runtime upgrade breaks someone's application, it's really bad. The developer didn't make any change, so won't be watching for problems. They may be asleep, or on vacation. If we want people to trust serverless, we can't let this happen.</p>
 	<p>This is very different from traditional server platforms, where the developer maintains their own stack. For example, when a developer maintains a traditional VM-based server running Node.js applications, then the developer must decide exactly when to upgrade to a new version of Node.js. Careful developers do not upgrade Node.js 14 to Node.js 16 in production without testing first. They typically verify that their application works in a staging environment before going to production. A developer who doesn't have time to spend testing each new version may instead choose to rely on a long-term support release, applying only low-risk security patches.</p>
 	<p>In the old world, if the Node.js maintainers decide to make a breaking change to an obscure API between releases, it's OK. Downstream developers are expected to test their code before upgrading, and address any breakages. But in the serverless world, it's not OK: developers have no control over when upgrades happen, therefore upgrades <i>must never break anything</i>.</p>
-	<h2>But sometimes we need to fix things</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-sometimes-we-need-to-fix-things">But sometimes we need to fix things</h2>
+		<a href="https://blog.cloudflare.com/#but-sometimes-we-need-to-fix-things" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes, we get things wrong, and we need to fix them. But sometimes, the fix would break people.</p>
 	<p>For example, in Workers, the <code>fetch()</code> function is used to make outgoing HTTP requests. Unfortunately, due to an oversight, our original implementation of <code>fetch()</code>, when given a non-HTTP URL, would silently interpret it as HTTP instead. For example, if you did fetch("ftp://example.com"), you'd get the same result as fetch("<a href="http://example.com">http://example.com</a>").</p>
 	<p>This is obviously not what we want and could lead to confusion or deeper bugs. Instead, <code>fetch()</code> should throw an exception in these cases. However, we couldn't simply fix the problem, because a surprising number of live Workers depended on the behavior. For whatever reason, some Workers fetch FTP URLs and expect to get a result back. Perhaps they are fetching from sites that support both FTP and HTTP, and they arbitrarily chose FTP and it worked. Perhaps the fetches aren't actually working, but changing a 404 error result into an exception would break things worse. When you have tens of thousands of new developers deploying applications every month, inevitably there's always someone relying on any bug. We can't "fix" the bug because it would break these applications.</p>
-	<h2>The obvious solutions don't work</h2>
-	<h3>Could we contact developers and ask them to fix their code?</h3>
+	<div class="flex anchor relative">
+		<h2 id="the-obvious-solutions-dont-work">The obvious solutions don't work</h2>
+		<a href="https://blog.cloudflare.com/#the-obvious-solutions-dont-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="could-we-contact-developers-and-ask-them-to-fix-their-code">Could we contact developers and ask them to fix their code?</h3>
+		<a href="https://blog.cloudflare.com/#could-we-contact-developers-and-ask-them-to-fix-their-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>No, because the problem is our fault, not the application developer's, and the developer may not have time to help us fix our problems.</p>
 	<p>The fact that a Worker is doing something "wrong" -- like using an FTP URL when they should be using HTTP -- doesn't necessarily mean the developer did anything wrong. Everyone writes code with bugs. Good developers rely on careful testing to make sure their code does what it is supposed to.</p>
 	<p>But what if the test only worked because of a bug in the underlying platform that caused it to do the right thing by accident? Well, that's the platform's fault. The developer did everything they could: they tested their code thoroughly, and it worked.</p>
 	<p>Developers are busy people. Nobody likes hearing that they need to drop whatever they are doing to fix a problem in code that they thought worked -- especially code that has been working fine for years without anyone touching it. We think developers have enough on their plates already, we shouldn't be adding more work.</p>
-	<h3>Could we run multiple versions of the Workers Runtime?</h3>
+	<div class="flex anchor relative">
+		<h3 id="could-we-run-multiple-versions-of-the-workers-runtime">Could we run multiple versions of the Workers Runtime?</h3>
+		<a href="https://blog.cloudflare.com/#could-we-run-multiple-versions-of-the-workers-runtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>No, for three reasons.</p>
 	<p>First, in order for edge computing to be effective, we need to be able to host a very large number of applications in each instance of the Workers Runtime. This is what allows us to run your code in hundreds of locations around the world at minimal cost. If we ran a separate copy of the runtime for each application, we'd need to charge a lot more, or deploy your code to far fewer locations. So, realistically it is infeasible for us to have different Workers asking for different versions of the runtime.</p>
 	<p>Second, part of the promise of serverless is that developers shouldn't have to worry about updating their stack. If we start letting people pin old versions, then we have to start telling people how long they are allowed to do so, alerting people about security updates, giving people documentation that differentiates versions, and so on. We don't want developers to have to think about any of that.</p>
 	<p>Third, this doesn't actually solve the real problem anyway. We can easily implement multiple behaviors within the same runtime binary. But how do we know which behavior to use for any particular Worker?</p>
-	<h2>Introducing Compatibility Dates</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-compatibility-dates">Introducing Compatibility Dates</h2>
+		<a href="https://blog.cloudflare.com/#introducing-compatibility-dates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Going forward, every Worker is assigned a "compatibility date", which must be a date in the past. The date is specified inside the project's metadata (for Wrangler projects, in wrangler.toml). This metadata is passed to the Cloudflare API along with the application code whenever it is updated and deployed. A compatibility date typically starts out as the date when the Worker was first created, but can be updated from time to time.</p>
 	<pre class="language-toml"><code class="language-toml"># wrangler.toml
 compatibility_date = "2021-09-20"</code></pre>
@@ -41,6 +84,13 @@ compatibility_date = "2021-09-20"</code></pre>
 	<p><a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">A page in our documentation</a> lists the history of breaking changes -- and only breaking changes. When you wish to update your Worker's compatibility date, you can refer to this page to quickly determine what might be affected, so that you can test for problems.</p>
 	<p>We will reserve the compatibility system strictly for changes which cannot be made without causing a breakage. We don't want to force people to update their compatibility date to get regular updates, including new features, non-breaking bug fixes, and so on.</p>
 	<p>If you'd prefer never to update your compatibility date, that's OK! Old compatibility dates are intended to be supported forever. However, if you are frequently updating your code, you should update your compatibility date along with it.</p>
-	<h2>Acknowledgement</h2>
+	<div class="flex anchor relative">
+		<h2 id="acknowledgement">Acknowledgement</h2>
+		<a href="https://blog.cloudflare.com/#acknowledgement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the details are a bit different, we were inspired by Stripe's API versioning, as well as the absolute promise of backwards compatibility maintained by both the Linux kernel system call API and the Web Platform implemented by browsers.</p>
 </div>

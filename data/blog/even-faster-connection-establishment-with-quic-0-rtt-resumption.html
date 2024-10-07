@@ -9,7 +9,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ni3h0ZnlDFEvNicARvJmV/47c9e02192ed7447144cdc45340aacd7/HTTP-request-over-TCP-_3x.png" alt="" class="kg-image" width="1569" height="1782" loading="lazy">
 
 	</figure>
-	<h3>Zero means zero</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-means-zero">Zero means zero</h3>
+		<a href="https://blog.cloudflare.com/#zero-means-zero" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a> goes a step further, and allows clients to send application data in the very first roundtrip of the connection, without requiring any other handshake to be completed beforehand.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -18,7 +25,14 @@
 	</figure>
 	<p>After all, QUIC already <a href="https://blog.cloudflare.com/the-road-to-quic/#builtinsecurityandperformance">shaved a full round-trip off of a typical connection’s handshake</a> by merging the transport and cryptographic handshakes into one. By reducing the handshake by an additional roundtrip, QUIC achieves real 0-RTT connection establishment.</p>
 	<p>It literally can’t get any faster!</p>
-	<h3>Attack of the clones</h3>
+	<div class="flex anchor relative">
+		<h3 id="attack-of-the-clones">Attack of the clones</h3>
+		<a href="https://blog.cloudflare.com/#attack-of-the-clones" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, 0-RTT connection resumption is not all smooth sailing, and it comes with caveats and risks, which is why <b>Cloudflare does not enable 0-RTT connection resumption by default</b>. Users should consider the risks involved and decide whether to use this feature or not.</p>
 	<p>For starters, 0-RTT connection resumption does not provide forward secrecy, meaning that a compromise of the secret parameters of a connection will trivially allow compromising the application data sent during the 0-RTT phase of new connections resumed from it. Data sent after the 0-RTT phase, meaning after the handshake has been completed, would still be safe though, as TLS 1.3 (and QUIC) will still perform the normal key exchange algorithm (which is forward secret) for data sent after the handshake completion.</p>
 	<p>More worryingly, application data sent during 0-RTT can be captured by an on-path attacker and then replayed multiple times to the same server. In many cases this is not a problem, as the attacker wouldn’t be able to decrypt the data, which is why 0-RTT connection resumption is useful, but in some cases this can be dangerous.</p>
@@ -38,7 +52,14 @@
 
 	</figure>
 	<p>This makes it possible for origins to allow 0-RTT requests for endpoints that are safe, such as a website’s index page which is where 0-RTT is most useful, as that is typically the first request a browser makes after establishing a connection, while still protecting other endpoints such as APIs and form submissions. But if an origin does not provide any of those non-idempotent endpoints, no action is required.</p>
-	<h3>One stop shop for all your 0-RTT needs</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-stop-shop-for-all-your-0-rtt-needs">One stop shop for all your 0-RTT needs</h3>
+		<a href="https://blog.cloudflare.com/#one-stop-shop-for-all-your-0-rtt-needs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just like we previously did for TLS 1.3, we now support 0-RTT resumption for QUIC as well. In honor of this event, we have dusted off the user-interface controls that allow Cloudflare users to enable this feature for their websites, and introduced a dedicated toggle to control whether 0-RTT connection resumption is enabled or not, which can be found under the “Network” tab on the Cloudflare dashboard:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

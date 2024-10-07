@@ -12,7 +12,14 @@
 	<p>Before today, SSL for SaaS was only available to Enterprise customers. Today, we are excited to announce that our SaaS solution is available to everyone. And to reflect the evolution of the product since it was first released, we’re changing the name: Cloudflare for SaaS.</p>
 	<p>The beta is available today — submit your request <a href="https://forms.gle/crARoXd4taCtoSti8">here</a> to try it out!</p>
 	<p>If you're starting a SaaS business, the value proposition is clear: <a href="https://www.cloudflare.com/saas">Cloudflare for SaaS</a> takes care of your underlying infrastructure, enabling you to keep your team lean and focused on building out your core solution. We’ve spent years investing in certificate issuance, building out our security and performance suite of products. Now we make it easy for you to extend all of the benefits we provide for your domain, to your end customers.</p>
-	<h2>It’s Technically Tricky to Build a SaaS Business</h2>
+	<div class="flex anchor relative">
+		<h2 id="its-technically-tricky-to-build-a-saas-business">It’s Technically Tricky to Build a SaaS Business</h2>
+		<a href="https://blog.cloudflare.com/#its-technically-tricky-to-build-a-saas-business" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We know first hand the many challenges of building a successful SaaS business. We are not going to tell you how to run your business, but we can share what we've learned about the core infrastructure requirements — and how Cloudflare is well-positioned to address them.</p>
 	<p>Today, the way many SaaS providers offer their services is by giving their customers a web application that’s hosted on their origin (or, often, on Cloudflare).</p>
 	<p>Suppose you’re building a SaaS service for building e-commerce sites. You can give your customers a dedicated subdomain, like myshop.example.com, but it’s likely that your customers will come back asking to run the application on myshopsactualname.com. To give customers a branded experience, SaaS providers are required to support vanity domains.</p>
@@ -25,19 +32,47 @@
 	<p>Once an application has been spun up, the next step is to provision TLS certificates for both the SaaS provider’s application and their customers. Developers may start looking into building out their homespun solution where they have to architect a whole pipeline around making API calls to a Certificate Authority. That means validating certificates, renewing them, and storing them. &nbsp;There are many states to account for in order to prevent certificate failures and uptime for your customers, which translates into a heavy engineering investment.</p>
 	<p>But here’s the thing: every hour of time you invest in doing this, is an hour that can’t be spent on engineering efforts to build out the core part of your business.</p>
 	<p>You don’t have to just take our word for it. In building SSL for SaaS, we got to learn from best-in-class engineering teams who were running into challenges managing complex certificate management systems. <a href="https://www.cloudflare.com/case-studies/hubspot">HubSpot</a>, for example, rolled out their in-house solution in 2015 where they deployed SSL certificates that were shared amongst their customers. This became a short-term solution when they began to run into scaling difficulties, resulting in slow certificate deployment, and leaving their customers with an unsatisfactory experience.</p>
-	<h3>Enter: SSL for SaaS</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-ssl-for-saas">Enter: SSL for SaaS</h3>
+		<a href="https://blog.cloudflare.com/#enter-ssl-for-saas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has been focused on certificate provisioning and management for many years — it’s at the core of our business. When we launched Universal SSL in 2014, we built our SSL pipeline to manage millions of certificates. We then decided to extend the benefits of our managed certificate issuance platform in 2017 to our SaaS provider customers, allowing them to secure their customer’s websites that they are responsible for managing.</p>
 	<p>This allowed customers like Hubspot to secure thousands of domains, without dedicating a big amount of engineering effort towards it. But while SSL for SaaS was originally built to handle certificate issuance, management, and renewals on behalf of our customers and their own customers, we’ve extended our solution far beyond just that.</p>
-	<h3>Beyond SSL</h3>
+	<div class="flex anchor relative">
+		<h3 id="beyond-ssl">Beyond SSL</h3>
+		<a href="https://blog.cloudflare.com/#beyond-ssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For SaaS providers, their customers’ businesses are reliant on them staying online, always being available, and being performant. When their customers sign up for their business, that’s the underlying promise that the SaaS provider is making.</p>
 	<p>Every day, the Internet sees attacks, malicious traffic, unexpected spikes in requests, and so on.</p>
 	<p>At Cloudflare, we’ve heavily invested in building out one of the largest, most resilient networks, with solutions that keep your applications and origins protected. This is one of our core value propositions for customers, and now SaaS-providers can extend it to their customers, too. With built-in DDoS mitigation, a resilient Web Application Firewall (WAF), and a Carrier-grade Bot Management solution, you can prevent costly disruptions and downtime for you and your customers, so that regardless of who attackers are targeting, you both stay online.</p>
 	<p>We not only take the burden off your engineering and support teams, but we make it easy for your end customers to inherit your security settings. Whatever benefits you set up for yourself, your customers will instantly assume them.</p>
-	<h3>Beyond Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="beyond-security">Beyond Security</h3>
+		<a href="https://blog.cloudflare.com/#beyond-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a business, you want to provide the best experience for your users. Speed plays a big part in how we perceive our online experiences.</p>
 	<p>For SaaS businesses, investing in performance is a must. When doing so, you need to keep in mind that your customers are global and their eyes are located worldwide, meaning that end users might not always be close to your origin server.</p>
 	<p>Cloudflare for SaaS allows you to take advantage of our performant Anycast network with data centers in more than 100 countries that, when coupled with our speed and performance features like caching and Argo Smart Routing, can improve performance by 30%. This means that, if you’re an e-commerce site and your origin server is in North America, your global customers in Asia will get the same lightning-fast load times that your US visitors get, giving every customer the best experience.</p>
-	<h2>Built for Giants … and Future Giants</h2>
+	<div class="flex anchor relative">
+		<h2 id="built-for-giants-and-future-giants">Built for Giants … and Future Giants</h2>
+		<a href="https://blog.cloudflare.com/#built-for-giants-and-future-giants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In January, we <a href="https://twitter.com/dinasaur_404/status/1351703331744321536">announced</a> on Twitter that we had an SSL for SaaS beta open. What we didn’t expect was that ~80% of our beta users were building their SaaS application on Workers. In retrospect, it makes total sense: in the same way that managing and scaling an SSL pipeline can take precious time and resources from building out the core business, managing and scaling infrastructure can be costly and time-consuming.</p>
 	<p>By marrying Cloudflare for SaaS with Workers, SaaS companies can unleash their developers — we’ll take care of not just certificate management, security, and performance, but also the burden of infrastructure.</p>
 	<p>You write the code, and we’ll take care of the rest.</p>
@@ -47,7 +82,14 @@
 
 	</figure>
 	<p>The best part of building for developers is getting to see what they build. Here, we’re going to showcase some of the amazing projects already built on our platform that have taken the path we’ve just described:</p>
-	<h3>Statusflare: A Status Page Platform</h3>
+	<div class="flex anchor relative">
+		<h3 id="statusflare-a-status-page-platform">Statusflare: A Status Page Platform</h3>
+		<a href="https://blog.cloudflare.com/#statusflare-a-status-page-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="http://statusflare.com">Statusflare</a> is a tool for monitoring your websites and applications because the only thing worse than downtime is not knowing about it. The Statusflare team has built out a solution that allows businesses to deploy global checks around the world to monitor uptime, metrics, and server response time. Beyond that, they allow their customers to deploy status pages, so their customers stay informed about the availability of their services.</p>
 	<p>When building out their status page product, the Statusflare team decided to use Workers as their deployment platform. This allowed them to spend all their time writing code and building out their API, and zero time worrying about deploying an origin server. Once the Statusflare team had finished building their application, they were ready to integrate it with their customers’ vanity domains, so that anyone could set up a status page for their website.</p>
 	<p>The challenge they then faced was getting their customers the latest version of their product. To start, they decided to open source their solution, give their customers the Workers script, and have their customers deploy it to get their status page up and running. But this makes updates complicated, and instead of giving their end-users the latest version, customers were now responsible for updates.</p>
@@ -56,21 +98,49 @@
 	<blockquote>
 		<p>With Cloudflare, our application scales on its own, it scales to infinity.- <b>Adam, founder of Statusflare</b>.</p>
 	</blockquote>
-	<h3>PLUMA: All-in-One Platform for Publishing Blogs and Podcasts</h3>
+	<div class="flex anchor relative">
+		<h3 id="pluma-all-in-one-platform-for-publishing-blogs-and-podcasts">PLUMA: All-in-One Platform for Publishing Blogs and Podcasts</h3>
+		<a href="https://blog.cloudflare.com/#pluma-all-in-one-platform-for-publishing-blogs-and-podcasts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://pluma.cloud">PLUMA</a> is an audio hosting service, a blogging platform, and a privacy-focused analytics service for websites and mobile apps that is currently in the making. It’s built on Workers, meaning the application fully runs on Cloudflare’s edge, with 0ms cold starts. With Workers KV, PLUMA is able to store all of its data, i.e. session data, static files, and logs, on Cloudflare’s edge, providing their end-users with a low latency service. One of the biggest requests from PLUMA users was for customers to be able to use their own branded domain, instead of one that PLUMA provides. With Cloudflare for SaaS, PLUMA can easily offer this experience to their end-users, with the extended benefit of keeping their customers’ sites secured with a TLS certificate.</p>
 	<blockquote>
 		<p>Cloudflare for SaaS makes it easy to integrate any number of domains with Workers. This makes Cloudflare a wonderful platform for building out low latency serverless applications.- <b>Pier Bover, founder of PLUMA</b></p>
 	</blockquote>
-	<h3>Plink: Smart Links for Podcasts</h3>
+	<div class="flex anchor relative">
+		<h3 id="plink-smart-links-for-podcasts">Plink: Smart Links for Podcasts</h3>
+		<a href="https://blog.cloudflare.com/#plink-smart-links-for-podcasts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Plink makes universal links for podcasts. One of the top feature requests from their customers has been to have their own custom domains. As an early-stage startup, Plink was looking for a cost-effective solution that would help them optimize their application, scale, and provide a customized experience for their users. With Workers and Workers KV, they were able to optimize their core scripts and functionality, without worrying about DevOps. This, coupled with Cloudflare for SaaS, allowed them to create a “custom-branded” experience of their service to external domains that were owned by their customers.</p>
 	<blockquote>
 		<p>Connecting Plink’s API with Cloudflare’s API has been a seamless experience. In general, building with Workers is amazing! I'm excited to provide a branded experience for Plink customers with Cloudflare for SaaS. - <b>Scott Mathson, Founder at Plink</b></p>
 	</blockquote>
-	<h2>Try out Cloudflare for SaaS Today!</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-out-cloudflare-for-saas-today">Try out Cloudflare for SaaS Today!</h2>
+		<a href="https://blog.cloudflare.com/#try-out-cloudflare-for-saas-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When developers are starting to build out their next SaaS application, there’s a long list of things they don’t want to worry about. Instead of allocating their engineering resources to work on their infrastructure, they should be dedicating their time building the next billion dollar business.</p>
 	<p>That’s what we’re enabling. And with our beta announced today, we’re doing it for everyone.</p>
 	<p>The end result: you can build the next groundbreaking SaaS business, and we’ll take care of the rest. To sign up for the beta, submit your request <a href="https://forms.gle/crARoXd4taCtoSti8">here</a>. We will be admitting customers on a rolling basis, and allotting 20 custom hostnames to each domain.</p>
 	<p>Request to join our beta <a href="https://forms.gle/crARoXd4taCtoSti8">here</a>!</p>
-	<h2>Enterprise customers, stay tuned</h2>
+	<div class="flex anchor relative">
+		<h2 id="enterprise-customers-stay-tuned">Enterprise customers, stay tuned</h2>
+		<a href="https://blog.cloudflare.com/#enterprise-customers-stay-tuned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we’re super excited about making Cloudflare for SaaS available to everyone, we know that our largest Enterprise customers have some demanding and specialized needs. We’ve been hard at work to build out new features to satisfy them. Stay tuned for an exciting announcement in the upcoming weeks!</p>
 </div>

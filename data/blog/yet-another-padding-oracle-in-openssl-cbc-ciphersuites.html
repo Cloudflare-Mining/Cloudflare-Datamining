@@ -4,7 +4,14 @@
 	<p>It was found by <a href="http://web-in-security.blogspot.co.uk/2016/05/curious-padding-oracle-in-openssl-cve.html">Juraj Somorovsky</a> using a tool he developed called <a href="https://github.com/RUB-NDS/TLS-Attacker">TLS-Attacker</a>. Like in the “old days”, it has no name except CVE-2016-2107. (I call it LuckyNegative20[^1])</p>
 	<p>It’s a wonderful example of a padding oracle in constant time code, so we’ll dive deep into it. But first, two quick background paragraphs. If you already know all about Lucky13 and how it's mitigated in OpenSSL <a href="https://blog.cloudflare.com/#offby20">jump to "Off by 20"</a> for the hot and new.</p>
 	<p>If, before reading, you want to check that your server is safe, you can do it <a href="https://filippo.io/CVE-2016-2107">with this one-click online test</a>.</p>
-	<h3>TLS, CBC, and Mac-then-Encrypt</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-cbc-and-mac-then-encrypt">TLS, CBC, and Mac-then-Encrypt</h3>
+		<a href="https://blog.cloudflare.com/#tls-cbc-and-mac-then-encrypt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Very long story short, the CBC cipher suites in TLS have a design flaw: they first compute the HMAC of the plaintext, then encrypt <code>plaintext || HMAC || padding || padding length</code> using CBC mode. The receiving end is then left with the uncomfortable task of decrypting the message and checking HMAC and padding <i>without revealing the padding length in any way</i>. If they do, we call that a <b>padding oracle</b>, and a MitM can use it to learn the value of the last byte of any block, and by iteration often the entire message.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">
@@ -13,7 +20,14 @@
 	</figure>
 	<p>In other words, the CBC mode cipher suites are doomed by <a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">The Cryptographic Doom Principle</a>. Sadly though, they are the only “safe” cipher suites to use with TLS prior to version 1.2, and they account for <b>26% of connections to the CloudFlare edge</b>, so attacks against them like this one are still very relevant.</p>
 	<p>My colleague Nick Sullivan explained CBC padding oracles and their history in much more detail <a href="https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites">on this very blog</a>. If you didn’t understand my coarse summary, please take the time to read his post as it’s needed to understand what goes wrong next.</p>
-	<h3>Constant time programming crash course</h3>
+	<div class="flex anchor relative">
+		<h3 id="constant-time-programming-crash-course">Constant time programming crash course</h3>
+		<a href="https://blog.cloudflare.com/#constant-time-programming-crash-course" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The “solution” for the problem of leaking information about the <i>padding length</i> value is to write the entire HMAC and padding check code to run in perfectly constant time. What I once heard Daniel J. Bernstein call “binding your hands behind your back and seeing what you can do with just your nose”. As you might imagine it’s not easy.</p>
 	<p>The idea is that you can’t use <code>if</code>s. So instead you store the results of your checks by doing bitwise <code>AND</code>s with a result variable which you set to 1 before you begin, and at which you only look at the end of the entire operation. If any of the checks returned 0, then the result will be 0, otherwise it will be 1. This way the attacker only learns “everything including padding and HMAC is good” or “nope”.</p>
 	<p>Not only that, but loop iterations can only depend on public data: if for example the message is 32 bytes long then the padding can be at most 32-1-20=11 bytes, so you have to check 20 (HMAC-SHA1) + 11 bytes. To ignore the bytes you don’t actually have to check, you use a <b>mask</b>: a value generated with constant time operations that will be <code>0xff</code> when the bytes are supposed to match and <code>0x00</code> when they are not. By <code>AND</code>ing the mask to the bitwise difference you get a value which is 0 when the values either match, or are not supposed to match.</p>
@@ -24,7 +38,14 @@
 	</figure>
 	<p>This technique is crucial to this vulnerability, as it’s exactly its constant time, no-complaints nature that made the mistake possible.</p>
 	<p>The <a href="https://github.com/openssl/openssl/blob/cba792a1e941788cba7dc700a2ef59420e7f2522/crypto/evp/e_aes_cbc_hmac_sha1.c#L739-L763">OpenSSL checking code</a> was written after the discovery of <a href="http://www.isg.rhul.ac.uk/tls/TLStiming.pdf">Lucky13</a>, and Adam Langley wrote <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html">a long blog post</a> explaining how the generic version works. I glossed over many details here, in particular the incredible pain that is generating the HMAC of a variable-length message in constant time (which is where Lucky13 and <a href="https://eprint.iacr.org/2015/1129.pdf">Lucky Microseconds</a> happened), so go read his incredible write-up to learn more.</p>
-	<h3>Off by 20</h3>
+	<div class="flex anchor relative">
+		<h3 id="off-by-20">Off by 20</h3>
+		<a href="https://blog.cloudflare.com/#off-by-20" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like any respectable vulnerability analysis, let’s start with <a href="https://github.com/openssl/openssl/commit/70428eada9bc4cf31424d723d1f992baffeb0dfb">the patch</a>. We’ll focus on the SHA1 part for simplicity, but the SHA256 one is exactly the same.</p>
 	<p>The patch for <i>LuckyMinus20</i> is one line in the OpenSSL function that performs AES-CBC decryption and checks HMAC and padding. All it is doing is flagging the check as failed if the padding length value is higher than the maximum it could possibly be.</p>
 	<pre class="language-patch"><code class="language-patch">              pad = plaintext[len - 1];
@@ -64,7 +85,14 @@
 	<p>In other words, the entire trick is making the computed payload length "negative" by at least <code>DIGEST_LENGTH</code> so that the computed position of the HMAC mask is fully "outside" the message and the MAC ends up not being checked at all.</p>
 	<p>By the way, the fact that the affected function is called <code>aesni_cbc_hmac_sha1_cipher</code> explains why only servers with <a href="https://en.wikipedia.org/wiki/AES_instruction_set">AES-NI instructions</a> are vulnerable.</p>
 	<p><i>You can find a standalone, simplified version of the vulnerable function </i><a href="https://gist.github.com/FiloSottile/064cae24c11e792a46af881dfd826f76"><i>here</i></a><i>, if you want to play with the debugger yourself.</i></p>
-	<h3>From there to decryption</h3>
+	<div class="flex anchor relative">
+		<h3 id="from-there-to-decryption">From there to decryption</h3>
+		<a href="https://blog.cloudflare.com/#from-there-to-decryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ok, we have a “capability”. But how do we go from there to decryption? The “classic” way involves focusing on one byte that we don’t know, preceded by bytes we control (in this case, a string of <code>31</code>). We then guess the unknown byte by XOR’ing the corresponding ciphertext byte in the previous block with a value <code>n</code>. We do this for many <code>n</code>. When the server replies “check passed”, we know that the mystery byte is <code>31 XOR n</code>.</p>
 	<p>Remember that this is CBC mode, so we can cut out any consecutive sequence of blocks and present it as its own ciphertext, and values XOR’d to a given ciphertext byte end up XOR’d to the corresponding plaintext byte in the next block. The diagram below should make this clearer.</p>
 	<p>In this scenario, we inject JavaScript in a plain-HTTP page the user has loaded in a different tab and send as many AJAX requests as we want to our target domain. Usually we use the <code>GET</code> path as the known controlled bytes and the headers as the decryption target.</p>
@@ -92,18 +120,40 @@
 	<p>We iterate this process, moving all bytes one position to the right (for example by making the POST path one character longer), and XOR’ing the first byte of the IV with our <code>n</code> guesses, and the second byte with the number we now know will turn it into a <code>31</code>.</p>
 	<p>And so on and so forth. This gets us to decrypt any 16 bytes that consistently appear just before a sequence of at least 31 attacker-controlled bytes and after a string of attacker-controlled length (for alignment).</p>
 	<p>It might be possible to extend the decryption to all blocks preceding the two controlled ones by carefully pausing the client request and using the early feedback, but I'm not sure it works. (Chances of me being wrong on full decryption capabilities are high, considering that an <a href="https://twitter.com/RichSalz/status/727527231686344705">OpenSSL team member said they are not aware of such a technique</a>.) UPDATE: we chatted a bit with Juraj, and no, it doesn't work.</p>
-	<h3>But no further</h3>
+	<div class="flex anchor relative">
+		<h3 id="but-no-further">But no further</h3>
+		<a href="https://blog.cloudflare.com/#but-no-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One might think that since this boils down to a MAC check bypass, we might use it to inject unauthenticated messages into the connection. However, since we rely on making <code>pad</code> higher than <code>maxpad + DIGEST_LENGTH</code>, we can't avoid making the payload length (<code>totlen - 1 - DIGEST_LENGTH - pad</code>) negative.</p>
 	<pre class="language-bash"><code class="language-bash">pad &gt; maxpad + DIGEST_LENGTH = (totlen - DIGEST_LENGTH - 1) + DIGEST_LENGTH = totlen - 1 &gt; totlen - 1 - DIGEST_LENGTH
 0 &gt; totlen - 1 - DIGEST_LENGTH - pad = payload_len</code></pre>
 	<p>Since <code>length</code> is stored as an unsigned integer, when it goes negative it wraps around to a very high number <a href="https://github.com/openssl/openssl/blob/9f2ccf1d718ab66c778a623f9aed3cddf17503a2/ssl/s3_pkt.c#L550-L554">and triggers the "payload too long" error</a>, which terminates the connection. Too bad... Good. I meant good :-)</p>
 	<p>This means, by the way, that successful attempts to exploit or test this vulnerability show up in OpenSSL logs as</p>
 	<pre class="language-bash"><code class="language-bash">SSL routines:SSL3_GET_RECORD:data length too long:s3_pkt.c:</code></pre>
-	<h3>Testing for the vulnerability</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="testing-for-the-vulnerability">Testing for the vulnerability</h3>
+		<a href="https://blog.cloudflare.com/#testing-for-the-vulnerability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Detecting a vulnerable server is as easy as sending an encrypted message which decrypts to <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code>, and checking if the TLS alert is <code>DATA_LENGTH_TOO_LONG</code> (vulnerable) or <code>BAD_RECORD_MAC</code> (not vulnerable).</p>
 	<p>It works because <code>A</code> is 65, which is more than 32 - 1.</p>
 	<p>There’s a simple implementation at <a href="https://github.com/FiloSottile/CVE-2016-2107">https://github.com/FiloSottile/CVE-2016-2107</a> and an online version at <a href="https://filippo.io/CVE-2016-2107">https://filippo.io/CVE-2016-2107/</a></p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To sum up the impact: when the connection uses AES-CBC (for example because the server or the client don’t support TLS 1.2 yet) and the server’s processor supports AES-NI, a skilled MitM attacker can recover at least 16 bytes of anything it can get the client to send repeatedly just before attacker-controlled data (like HTTP Cookies, using JavaScript cross-origin requests).</p>
 	<p>A more skilled attacker than me might also be able to decrypt more than 16 bytes, but no one has shown that it’s possible yet.</p>
 	<p>All CloudFlare websites are protected from this vulnerability. Connections from the CloudFlare edge to origins use TLS 1.2 and AES-GCM if the server supports it, so are safe in that case. Customers supporting only AES-CBC should upgrade as soon as possible.</p>

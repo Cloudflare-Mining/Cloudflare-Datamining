@@ -8,12 +8,26 @@
 	</figure>
 	<p>Whether you’re a software engineer deploying a new feature, network engineer updating routes, or a security engineer configuring a new firewall rule: You need visibility to know if your system is behaving as intended — and if it’s not, to know how to fix it.</p>
 	<p>Cloudflare is committed to helping our customers get visibility into the services they have protected behind Cloudflare. Being a single pane of glass for all network activity has always been one of Cloudflare’s goals. Today, we’re outlining the future vision for Cloudflare observability.</p>
-	<h3>What is observability?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-observability">What is observability?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-observability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Observability means gaining visibility into the internal state of a system. It’s used to <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">give users the tools</a> to figure out what’s happening, where it’s happening, and why.</p>
 	<p>At Cloudflare, we believe that observability has three core components: monitoring, analytics, and forensics. Monitoring measures the health of a system - it tells you when something is going wrong. Analytics give you the tools to visualize data to identify patterns and insights. Forensics helps you answer very specific questions about an event.</p>
 	<p>Observability becomes particularly important in the context of security to validate that any mitigating actions performed by our security products, such as Firewall or Bot Management, are not false positives. Was that request correctly classified as malicious? And if it wasn’t, which detection system classified it as such?</p>
 	<p>Cloudflare, additionally, has products to improve performance of applications and corporate networks and allow developers to write lightning fast code that runs on our global network. We want to be able to provide our customers with insights into every request, packet, and fetch that goes through Cloudflare’s network.</p>
-	<h3>Monitoring and Notifying</h3>
+	<div class="flex anchor relative">
+		<h3 id="monitoring-and-notifying">Monitoring and Notifying</h3>
+		<a href="https://blog.cloudflare.com/#monitoring-and-notifying" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Analytics are fantastic for summarizing data, but how do you know <i>when</i> to look at them? No one wants to sit on the dashboard clicking refresh over and over again just in case something looks off. That’s where notifications come in.</p>
 	<p>When we talk about something “looking off” on an analytics page, what we really mean is that there’s a significant change in your traffic or network which is reflected by spikes or drops in our analytics. Availability and performance directly affect end users, and our goal is to monitor and notify our customers as soon as we see things going wrong.</p>
 	<figure class="kg-card kg-image-card ">
@@ -23,7 +37,14 @@
 	</figure>
 	<p>Today, we have many different types of notifications from <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">Origin Error Rates</a>, <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">Security Events, and Advanced Security Events</a> to Usage Based Billing and <a href="https://blog.cloudflare.com/health-check-analytics-and-how-you-can-use-it">Health Checks</a>. We’re continuously adding more notification types to have them correspond with our awesome analytics. As our analytics get more customizable, our notifications will as well.</p>
 	<p>There’s tons of different algorithms that can be used to detect spikes, including using burn rates and z-scores. We’re continuing to iterate on the algorithms that we use for detections to offer more variations, make them smarter, and make sure that our notifications are both accurate and not too noisy.</p>
-	<h3>Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="analytics">Analytics</h3>
+		<a href="https://blog.cloudflare.com/#analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, you’ve received an alert from Cloudflare. What comes next?</p>
 	<p>Analytics can be used to get a birds eye view of traffic or focus on specific types of events by adding filters and time ranges. After you receive an alert, we want to show you exactly what’s been triggered through graphs, high level metrics, and top Ns on the Cloudflare dashboard.</p>
 	<p>Whether you’re a developer, security analyst, or network engineer, the Cloudflare dashboard should be the spot for you to see everything you need. We want to make the dashboard more customizable to serve the diverse use cases of our customers. Analyze data by specifying a timeframe and filter through dropdowns on the dashboard, or build your own metrics and graphs that work alongside the raw logs to give you a clear picture of what's happening.</p>
@@ -35,18 +56,39 @@
 
 	</figure>
 	<p>Analytics are a powerful tool to see high level patterns and identify anomalies that indicate that something unusual is happening. We’re working on new dashboards, customizations, and features that widen the use cases for our customers. Stay tuned!</p>
-	<h3>Logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="logs">Logs</h3>
+		<a href="https://blog.cloudflare.com/#logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Logs are used when you want to examine specific details about an event. They consist of a timestamp and fields that describe the event and are used to get visibility on a granular level when you need a play-by-play.</p>
 	<p>In each of our datasets, an event measures something different. For example, in HTTP request logs, an event is when an end user requests content from or sends content to a server. For Firewall logs, an event occurs when the Firewall takes an action on an HTTP request. There can be multiple Firewall events for each HTTP request.</p>
 	<p>Today, our customers access logs using Logpull, Logpush, or Instant Logs. Logpull and Logpush are great for customers that want to send their logs to third parties (like our <a href="https://www.cloudflare.com/partners/analytics">Analytics Partners</a>) to store, analyze, and correlate with other data sources. With Instant Logs, our customers can monitor and troubleshoot their traffic in real-time straight from the dashboard or CLI. We’re planning on building out more capabilities to dig into logs on Cloudflare. We’re hard at work on building <a href="https://blog.cloudflare.com/store-your-cloudflare-logs-on-r2">log storage on R2</a> - but what’s next?</p>
 	<p>We’ve heard from customers that the activity log on the Firewall analytics dashboard is incredibly useful. We want to continue to bring the power of logs to the dashboard by adding the same functionality across our products. For customers that will store their logs on Cloudflare R2, this means that we can minimize the use of sampled data.</p>
 	<p>If you’re looking for something very specific, querying logs is also important, which is where forensics comes in. The goal is to let you investigate from high level analytics all the way down to individual logs lines that make them up. Given a unique identifier, such as the ray ID, you should be able to look up a single request, and then correlate it with all other related activity. Find out the client IP of that ray ID and from there, use cases are plentiful: what other requests from this IP are malicious? What paths did the client follow?</p>
-	<h3>Tracing</h3>
+	<div class="flex anchor relative">
+		<h3 id="tracing">Tracing</h3>
+		<a href="https://blog.cloudflare.com/#tracing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Logs are really useful, but they don’t capture the context around a request. Traces show the end-to-end life cycle of a request from when a user requests a resource to each of the systems that are involved in its delivery. They’re another way of applying forensics to help you find something very specific.</p>
 	<p>These are used to differentiate each part of the application to identify where errors or bottlenecks are occurring. Let's say that you have a Worker that performs a fetch event to your origin and a third party API. Analytics can show you average execution times and error rates for your Worker, but it doesn’t give you visibility into each of these operations.</p>
 	<p>Using wrangler dev and console.log statements are really helpful ways to test and debug your code. They bring some of the visibility that’s needed, but it can be tedious to instrument your code like this.</p>
 	<p>As a developer, you should have the tools to understand what’s going on in your applications so you can deliver the best experience to your end users. We can help you answer questions like: Where is my Worker execution failing? Which operation is causing a spike in latency in my application?</p>
-	<h3>Putting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Notifications, analytics, logs, and tracing each have their distinct use cases, but together, these are powerful tools to provide analysts and developers visibility. Looking forward, we’re excited to bring more and more of these capabilities on the Cloudflare dashboard.</p>
 	<p>We would love to hear from you as we build these features out. If you’re interested in sharing use cases and helping shape our roadmap, contact your account team!</p>
 </div>

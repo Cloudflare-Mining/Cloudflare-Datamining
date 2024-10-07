@@ -10,7 +10,14 @@
 	<p>The landscape of <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security</a> is constantly changing. One aspect that remains consistent is the reliance of email as the beginning for the majority of threat campaigns. Attackers often start with a phishing campaign to gather employee credentials which, if successful, are used to exfiltrate data, siphon money, or perform other malicious activities. This threat remains ever present even as companies transition to moving their email to the cloud using providers like Microsoft 365 or Google Workspace.</p>
 	<p>In our pursuit to help build a better Internet and tackle online threats, Cloudflare offers email security via our Area 1 product to protect all types of email inboxes - from cloud to on premise. The Area 1 product analyzes every email an organization receives and uses our threat models to assess if the message poses risk to the customer. For messages that are deemed malicious, the Area 1 platform will even prevent the email from landing in the recipient's inbox, ensuring that there is no chance for the attempted attack to be successful.</p>
 	<p>We try to provide customers with the flexibility to deploy our <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">solution</a> in whatever way they find easiest. Continuing in this pursuit to make our solution as turnkey as possible, we are excited to announce our open beta for Microsoft 365 domain onboarding via the Microsoft Graph API. We know that domains onboarded via <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> offer quicker deployment times and more flexibility. This onboarding method is one of many, so customers can now deploy domains how they see fit without losing Area 1 protection.</p>
-	<h3>Onboarding Microsoft 365 Domains via API</h3>
+	<div class="flex anchor relative">
+		<h3 id="onboarding-microsoft-365-domains-via-api">Onboarding Microsoft 365 Domains via API</h3>
+		<a href="https://blog.cloudflare.com/#onboarding-microsoft-365-domains-via-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Area 1 provides customers with many <a href="https://developers.cloudflare.com/email-security/deployment">deployment options</a>. Whether it is Journaling + BCC (where customers send a copy of each email to Area 1), Inline/MX records (where another hop is added via MX records), or Secure Email Gateway Connectors (where Area 1 directly interacts with a SEG), Area 1 provides customers with flexibility with how they want to deploy our solution. However, we have always recommended customers to deploy using MX records.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -40,7 +47,14 @@
 
 	</figure>
 	<p>Ready to scan ‌‌</p>
-	<h3>Looking Ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="looking-ahead">Looking Ahead</h3>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This onboarding process is part of our continual efforts to provide customers with best of class email protection. With our API onboarding we provide customers with increased flexibility to deploy our solution. As we look forward, our Microsoft 365 API onboarding opens the door for other capabilities.</p>
 	<p>Our team is now looking to add the ability to retroactively scan emails that were sent before Area 1 was installed. This provides the opportunity for new customers to clean up any old emails that could still pose a risk for the organization. We are also looking to provide more levers for organizations who want to have more control on which mailboxes are scanned with Area 1. Soon customers will be able to designate within the UI which mailboxes will have their incoming email scanned by Area 1.</p>
 	<p>We also currently limit the deployment type of each domain to one type (i.e. a domain can either be onboarded using MX records or API). However, we are now looking at providing customers with the ability to do hybrid deployments, using both API + MX records. This combinatorial approach not only provides the greatest flexibility but also provides the maximum coverage.</p>

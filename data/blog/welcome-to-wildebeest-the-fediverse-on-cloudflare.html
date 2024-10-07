@@ -9,7 +9,14 @@
 	</figure>
 	<p><a href="https://en.wikipedia.org/wiki/Fediverse">The Fediverse</a> has been a hot topic of discussion lately, with thousands, if not <a href="https://bitcoinhackers.org/@mastodonusercount">millions</a>, of new users creating accounts on platforms like <a href="https://joinmastodon.org">Mastodon</a> to either move entirely to "the other side" or experiment and learn about this new social network.</p>
 	<p>Today we're introducing <a href="https://github.com/cloudflare/wildebeest">Wildebeest</a>, an open-source, easy-to-deploy ActivityPub and Mastodon-compatible server built entirely on top of Cloudflare's Supercloud. If you want to run your own spot in the Fediverse you can now do it entirely on Cloudflare.</p>
-	<h2>The Fediverse, built on Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-fediverse-built-on-cloudflare">The Fediverse, built on Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#the-fediverse-built-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today you're left with two options if you want to join the Mastodon federated network: either you join one of the <a href="https://joinmastodon.org/servers">existing servers</a> (servers are also called communities, and each one has its own infrastructure and rules), or you can run your self-hosted server.</p>
 	<p>There are a few reasons why you'd want to run your own server:</p>
 	<ul>
@@ -50,7 +57,14 @@
 			<p>You can edit your profile information, avatar, and header image.</p>
 		</li>
 	</ul>
-	<h2>How we built it</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-it">How we built it</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our implementation is built entirely on top of our <a href="https://www.cloudflare.com/cloudflare-product-portfolio">products</a> and <a href="https://developers.cloudflare.com">APIs</a>. Building Wildebeest was another excellent opportunity to showcase our technology stack's power and versatility and prove how anyone can also use Cloudflare to build larger applications that involve multiple systems and complex requirements.</p>
 	<p>Here's a birds-eye diagram of Wildebeest's architecture:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -59,7 +73,14 @@
 
 	</figure>
 	<p>Let's get into the details and get technical now.</p>
-	<h3>Cloudflare Pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-pages">Cloudflare Pages</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the core, Wildebeest is a <a href="https://pages.cloudflare.com">Cloudflare Pages</a> project running its code using <a href="https://developers.cloudflare.com/pages/platform/functions">Pages Functions</a>. Cloudflare Pages provides an excellent foundation for building and deploying your application and serving your bundled assets, Functions gives you full access to the Workers ecosystem, where you can run any code.</p>
 	<p>Functions has a built-in <a href="https://developers.cloudflare.com/pages/platform/functions/routing">file-based router</a>. The <a href="https://github.com/cloudflare/wildebeest/tree/main/functions">/functions</a> directory structure, which is uploaded by Wildebeest’s continuous deployment builds, defines your application routes and what files and code will process each HTTP endpoint request. This routing technique is similar to what other frameworks like Next.js <a href="https://nextjs.org/docs/routing/introduction">use</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -110,7 +131,14 @@ describe('Mastodon APIs', () =&gt; {
 	<p>Our frontend website code and static assets can be found under the <a href="https://github.com/cloudflare/wildebeest/tree/main/frontend">/frontend</a> directory. The application is handled by the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/%5B%5Bpath%5D%5D.ts">/functions/[[path]].js</a> dynamic route, which basically catches all the non-API requests, and then <a href="https://github.com/cloudflare/wildebeest/blob/main/frontend/src/entry.cloudflare-pages.tsx">invokes</a> Qwik’s own internal router, <a href="https://qwik.builder.io/qwikcity/routing/overview">Qwik City</a>, which takes over everything else after that.</p>
 	<p>The power and versatility of Pages and Functions routes make it possible to run both the backend APIs and a server-side-rendered dynamic client, effectively a full-stack app, under the same project.</p>
 	<p>Let's dig even deeper now, and understand how the server interacts with the other components in our architecture.</p>
-	<h3>D1</h3>
+	<div class="flex anchor relative">
+		<h3 id="d1">D1</h3>
+		<a href="https://blog.cloudflare.com/#d1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wildebeest uses <a href="https://developers.cloudflare.com/d1">D1</a>, Cloudflare’s first SQL database for the Workers platform built on top of SQLite, now open to everyone in <a href="https://blog.cloudflare.com/d1-open-alpha">alpha</a>, to store and query data. Here’s our schema:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -154,7 +182,14 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	<pre class="language-bash"><code class="language-bash">sqlite&gt; select strftime('%Y-%m-%d %H:%M:%f', 'NOW');
 2023-02-01 11:49:35.624</code></pre>
 	<p>See our <a href="https://github.com/cloudflare/wildebeest/blob/main/migrations/0000_initial.sql">initial SQL schema</a>, look for the <i>cdate</i> defaults.</p>
-	<h3>Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="images">Images</h3>
+		<a href="https://blog.cloudflare.com/#images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mastodon content has a lot of rich media. We don't need to reinvent the wheel and build an image pipeline; Cloudflare Images <a href="https://developers.cloudflare.com/images">provides APIs</a> to upload, transform, and serve optimized images from our global CDN, so it's the perfect fit for Wildebeest's requirements.</p>
 	<p>Things like posting content images, the profile avatar, or headers, all use the Images APIs. See <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/media/image.ts">/backend/src/media/image.ts</a> to understand how we interface with Images.</p>
 	<pre class="language-js"><code class="language-js">async function upload(file: File, config: Config): Promise&lt;UploadResult&gt; {
@@ -181,7 +216,14 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1A4gwBFdbSGDvS4DAJRyhR/d8d6f35274e1bbf66779b7c170f4e8cf/5b.png" alt="" class="kg-image" width="1600" height="1170" loading="lazy">
 
 	</figure>
-	<h3>Queues</h3>
+	<div class="flex anchor relative">
+		<h3 id="queues">Queues</h3>
+		<a href="https://blog.cloudflare.com/#queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://www.w3.org/TR/activitypub">ActivityPub</a> protocol is chatty by design. Depending on the size of your social graph, there might be a lot of back-and-forth HTTP traffic. We can’t have the clients blocked waiting for hundreds of Fediverse message deliveries every time someone posts something.</p>
 	<p>We needed a way to work asynchronously and launch background jobs to offload data processing away from the main app and keep the clients snappy. The official Mastodon server has a similar strategy using <a href="https://docs.joinmastodon.org/admin/scaling/#sidekiq">Sidekiq</a> to do background processing.</p>
 	<p>Fortunately, we don't need to worry about any of this complexity either. <a href="https://developers.cloudflare.com/queues">Cloudflare Queues</a> allows developers to send and receive messages with guaranteed delivery, and offload work from your Workers' requests, effectively providing you with asynchronous batch job capabilities.</p>
@@ -255,7 +297,14 @@ const actor = await actors.getPersonById(db, actorId)
 	},
 }</code></pre>
 	<p>If you want to get your hands dirty with Queues, here’s a simple example on <a href="https://developers.cloudflare.com/queues/examples/send-errors-to-r2">Using Queues to store data in R2</a>.</p>
-	<h3>Caching and Durable Objects</h3>
+	<div class="flex anchor relative">
+		<h3 id="caching-and-durable-objects">Caching and Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#caching-and-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Caching repetitive operations is yet another strategy for improving performance in complex applications that require data processing. A famous Netscape developer, Phil Karlton, once said: "There are only two hard things in Computer Science: <b>cache invalidation</b> and naming things."</p>
 	<p>Cloudflare obviously knows a lot about caching since <a href="https://developers.cloudflare.com/cache">it's a core feature</a> of our global CDN. We also provide <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">Workers KV</a> to our customers, a global, low-latency, key-value data store that anyone can use to cache data objects in our data centers and build fast websites and applications.</p>
 	<p>However, KV achieves its performance by being eventually consistent. While this is fine for many applications and use cases, it's not ideal for others.</p>
@@ -286,7 +335,14 @@ const actor = await actors.getPersonById(db, actorId)
 	}
 }</code></pre>
 	<p>Strong consistency it is. Let's move to user registration and authentication now.</p>
-	<h3>Zero Trust Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-access">Zero Trust Access</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The official Mastodon server <a href="https://docs.joinmastodon.org/user/signup">handles user registrations</a>, typically using email, before you can choose your local username and start using the service. Handling user registration and authentication can be daunting and time-consuming if we were to build it from scratch though.</p>
 	<p>Furthermore, people don't want to create new credentials for every new service they want to use and instead want more convenient OAuth-like authorization and authentication methods so that they can reuse their existing Apple, Google, or GitHub accounts.</p>
 	<p>We wanted to simplify things using Cloudflare’s built-in features. Needless to say, we have a product that handles user onboarding, authentication, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management">access policies</a> to any application behind Cloudflare; it's called <a href="https://developers.cloudflare.com/cloudflare-one">Zero Trust</a>. So we put Wildebeest behind it.</p>
@@ -307,7 +363,14 @@ const actor = await actors.getPersonById(db, actorId)
 	<p>Technically, Wildebeest implements the <a href="https://docs.joinmastodon.org/spec/oauth/#implementation">OAuth 2 specification</a>. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> protects the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/oauth/authorize.ts">/oauth/authorize</a> endpoint and issues a valid <a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json">JWT token</a> in the request headers when the user is authenticated. Wildebeest then reads and verifies the JWT and returns an authorization code in the URL redirect.</p>
 	<p>Once the client has an authorization code, it can use the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/oauth/token.ts">/oauth/token</a> endpoint to obtain an API access token. Subsequent API calls inject a bearer token in the Authorization header:</p>
 	<p><code>Authorization: Bearer access_token</code></p>
-	<h3>Deployment and Continuous Integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployment-and-continuous-integration">Deployment and Continuous Integration</h3>
+		<a href="https://blog.cloudflare.com/#deployment-and-continuous-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We didn't want to run a managed service for Mastodon as it would somewhat diminish the concepts of federation and data ownership. Also, we recognize that ActivityPub and Mastodon are emerging, fast-paced technologies that will evolve quickly and in ways that are difficult to predict just yet.</p>
 	<p>For these reasons, we thought the best way to help the ecosystem right now would be to provide an open-source software package that anyone could use, customize, improve, and deploy on top of our cloud. Cloudflare will obviously keep improving Wildebeest and support the community, but we want to give our Fediverse maintainers complete control and ownership of their instances and data.</p>
 	<p>The remaining question was, how do we distribute the Wildebeest bundle and make it easy to deploy into someone's account when it requires configuring so many Cloudflare features, and how do we facilitate updating the software over time?</p>
@@ -374,7 +437,14 @@ jobs:
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3UW6Qm1KE662wiFVgrWFPZ/681fa0298c988bf661dbe16c09cd4603/12b.png" alt="" class="kg-image" width="1600" height="600" loading="lazy">
 
 	</figure>
-	<h3>Protection, optimization and observability, naturally</h3>
+	<div class="flex anchor relative">
+		<h3 id="protection-optimization-and-observability-naturally">Protection, optimization and observability, naturally</h3>
+		<a href="https://blog.cloudflare.com/#protection-optimization-and-observability-naturally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once Wildebeest is up and running, you can protect it from bad traffic and malicious actors. Cloudflare offers you <a href="https://www.cloudflare.com/ddos">DDoS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, and <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> protection out of the box at a click's distance.</p>
 	<p>Likewise, you'll get instant network and content delivery optimizations from our products and <a href="https://www.cloudflare.com/analytics">analytics</a> on how your Wildebeest instance is performing and being used.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -382,7 +452,14 @@ jobs:
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EYUh9pE5NNPnpj9mwVSfz/7129f4607c971562e5b6aa4bf4ac96c9/13b.png" alt="" class="kg-image" width="1600" height="934" loading="lazy">
 
 	</figure>
-	<h3>ActivityPub, WebFinger, NodeInfo and Mastodon APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="activitypub-webfinger-nodeinfo-and-mastodon-apis">ActivityPub, WebFinger, NodeInfo and Mastodon APIs</h3>
+		<a href="https://blog.cloudflare.com/#activitypub-webfinger-nodeinfo-and-mastodon-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mastodon popularized the Fediverse concept, but many of the underlying technologies used have been around for quite a while. This is one of those rare moments when everything finally comes together to create a working platform that answers an actual use case for Internet users. Let's quickly go through the protocols that Wildebeest had to implement:</p>
 	<h4>ActivityPub</h4>
 	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> is a decentralized social networking protocol and has been around as a W3C recommendation since at least 2018. It defines client APIs for creating and manipulating content and server-to-server APIs for content exchange and notifications, also known as federation. ActivityPub uses <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams</a>, an even older W3C protocol, for its vocabulary.</p>
@@ -463,7 +540,14 @@ export async function addObjectInInbox(db, actor, obj) {
 }</code></pre>
 	<p>Wildebeest also implements <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/webpush">WebPush</a> for client notifications and <a href="https://github.com/cloudflare/wildebeest/tree/main/functions/nodeinfo">NodeInfo</a> for server information.</p>
 	<p>Other Mastodon-compatible servers had to implement all these protocols <a href="https://pleroma.social">too</a>; Wildebeest is one of them. The community is very active in discussing future enhancements; we will keep improving our compatibility and adding support to more features over time, ensuring that Wildebeest plays well with the Fediverse ecosystem of servers and clients emerging.</p>
-	<h3>Get started now</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-now">Get started now</h3>
+		<a href="https://blog.cloudflare.com/#get-started-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enough about technology; let's get you into the Fediverse. We tried to detail all the steps to deploy your server. To start using Wildebeest, head to the public GitHub repository and check our <a href="https://github.com/cloudflare/wildebeest/blob/main/README.md">Get Started tutorial</a>.</p>
 	<p>Most of Wildebeest's dependencies offer a generous free plan that allows you to try them for personal or hobby projects that aren't business-critical, however you will need to subscribe an <a href="https://www.cloudflare.com/products/cloudflare-images">Images</a> plan (the lowest tier should be enough for most needs) and, depending on your server load, <a href="https://developers.cloudflare.com/workers/platform/limits/#unbound-usage-model">Workers Unbound</a> (again, the minimum cost should be plenty for most use cases).</p>
 	<p>Following our dogfooding mantra, Cloudflare is also officially joining the Fediverse today. You can start following our Mastodon accounts and get the same experience of having regular updates from Cloudflare as you get from us on other social platforms, using your favorite Mastodon apps. These accounts are entirely running on top of a Wildebeest server:</p>
@@ -481,7 +565,14 @@ export async function addObjectInInbox(db, actor, obj) {
 
 	</figure>
 	<p>Wildebeest is compatible with most client apps; we are confirmed to work with the official Mastodon <a href="https://play.google.com/store/apps/details?id=org.joinmastodon.android">Android</a> and <a href="https://apps.apple.com/us/app/mastodon-for-iphone/id1571998974">iOS</a> apps, <a href="https://pinafore.social">Pinafore</a>, <a href="https://mastodon.social/@JPEGuin/109315609418460036">Mammoth</a>, and <a href="https://tooot.app">tooot</a>, and looking into others like <a href="https://tapbots.com/ivory">Ivory</a>. If your favorite isn’t working, please submit an <a href="https://github.com/cloudflare/wildebeest/issues">issue here</a>, we’ll do our best to help support it.</p>
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wildebeest was built entirely on top of our <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a> stack. It was one of the most complete and complex projects we have created that uses various Cloudflare products and features.</p>
 	<p>We hope this write-up inspires you to not only try deploying Wildebeest and joining the Fediverse, but also building your next application, however demanding it is, on top of Cloudflare.</p>
 	<p>Wildebeest is a minimally viable Mastodon-compatible server right now, but we will keep improving it with more features and supporting it over time; after all, we're using it for our official accounts. It is also open-sourced, meaning you are more than welcome to contribute with pull requests or feedback.</p>

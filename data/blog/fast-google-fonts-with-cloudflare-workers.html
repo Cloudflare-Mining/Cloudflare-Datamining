@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Google Fonts is one of the most common third-party resources on the web, but carries with it significant user-facing performance issues. Cloudflare Workers running at the edge is a great solution for fixing these performance issues, without having to modify the publishing system for every site using Google Fonts.</p>
 	<p>This post walks through the implementation details for how to fix the performance of Google Fonts with Cloudflare Workers. More importantly, it also provides code for doing high-performance content modification at the edge using Cloudflare Workers.</p>
-	<h3>Google fonts are SLOW</h3>
+	<div class="flex anchor relative">
+		<h3 id="google-fonts-are-slow">Google fonts are SLOW</h3>
+		<a href="https://blog.cloudflare.com/#google-fonts-are-slow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, some background. <a href="https://fonts.google.com">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
 	<pre class="language-html"><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab"
       rel="stylesheet"&gt;
@@ -42,7 +49,14 @@ h1 {
 
 	</figure>
 	<p>The text finally displays at 6.2 seconds into the page load.</p>
-	<h3>Fixing Google Fonts performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="fixing-google-fonts-performance">Fixing Google Fonts performance</h3>
+		<a href="https://blog.cloudflare.com/#fixing-google-fonts-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The paths to fixing performance issues and making fonts lightning-fast is different for the CSS and the font files themselves. We can reduce the total number of round trips to one:</p>
 	<ol>
 		<li>
@@ -102,7 +116,14 @@ h1 {
 	</figure>
 	<p>At 6.2 seconds the original page finally displays the text content.</p>
 	<p>One thing that I didn’t notice in the initial testing and only discovered when looking at the side-by-side video is that the fonts are only correctly styled in the optimized case. In the original case it took longer than Chrome’s 3-second timeout for the fonts to load and it fell back to the system fonts. Not only was the experience much faster; it was also styled correctly with the custom fonts right from the beginning.</p>
-	<h3>Optimizing Google fonts with a Cloudflare worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimizing-google-fonts-with-a-cloudflare-worker">Optimizing Google fonts with a Cloudflare worker</h3>
+		<a href="https://blog.cloudflare.com/#optimizing-google-fonts-with-a-cloudflare-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
 	<p>At a high level this code:</p>
 	<ul>
@@ -634,7 +655,15 @@ h1 {
  }
   return null;
 }</code></pre>
-	<h3>Profit!</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="profit">Profit!</h3>
+		<a href="https://blog.cloudflare.com/#profit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
 	<p>If you are a third-party content provider for sites, think about what you might be able to do to leverage workers for your content for sites that are served through Cloudflare.</p>
 	<p>I get excited thinking about the performance implications of something like a tag manager running entirely on the edge without the sites having to change their published pages and without browsers having to fetch heavy JavaScript to do the page modifications. It can be done dynamically for every request directly on the edge!</p>

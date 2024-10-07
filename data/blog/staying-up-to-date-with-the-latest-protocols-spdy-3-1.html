@@ -26,7 +26,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3s8Y75eF7NDiyE2Un8PpCU/1d504b734d09012ef7047225dc508adb/Screen_Shot_2014-02-18_at_07.48.33.png" alt="net-internals" class="kg-image" width="962" height="352" loading="lazy">
 
 	</figure>
-	<h3>What changed in SPDY/3 and SPDY/3.1</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-changed-in-spdy-3-and-spdy-3-1">What changed in SPDY/3 and SPDY/3.1</h3>
+		<a href="https://blog.cloudflare.com/#what-changed-in-spdy-3-and-spdy-3-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A key advantage of SPDY is its ability to multiplex many HTTP request streams onto a single TCP connection. In the past, various hacks (such as <a href="https://blog.cloudflare.com/using-cloudflare-to-mix-domain-sharding-and-spdy">domain sharding</a>) have been used to get around the fact that only sequential, synchronous requests were possible with HTTP over TCP. SPDY changed all that.</p>
 	<p><a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3">SPDY/3</a> introduced <a href="https://en.wikipedia.org/wiki/Flow_control_(data)">flow control</a> so that SPDY clients (and servers) could control the amount of data they receive on a SPDY connection. <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3-1">SPDY/3.1</a> extended flow control to individual SPDY streams (each SPDY connection handles multiple simultaneous streams of data). Flow control is important because different clients (think of the differences in available memory in laptops, desktops and mobile phones) will have varying limitations on how much data they can receive at any one time.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,7 +41,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/65Q11v5zJ1nBrsBJAYYl7x/7529f2ba9064de6dcbcb1a7ff58c7447/9739472905_4dd2992b6c_c.jpg" alt="QUIC" class="kg-image" width="800" height="600" loading="lazy">
 
 	</figure>
-	<h3>Protocols coming QUIC and fast</h3>
+	<div class="flex anchor relative">
+		<h3 id="protocols-coming-quic-and-fast">Protocols coming QUIC and fast</h3>
+		<a href="https://blog.cloudflare.com/#protocols-coming-quic-and-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Part of the service CloudFlare provides is being on top of the latest advances in Internet and web technologies. We've stayed on top of SPDY and will continue to roll out updates as the protocol evolves (and we'll support HTTP/2 just as soon as it is practical).</p>
 	<p>The most recent web protocol we've started experimenting with is QUIC. QUIC is radically different from HTTP or SPDY because it uses UDP as its underlying transport. Currently, we have an internal QUIC server running serving a static version of the CloudFlare home page. As our experiments with QUIC progress we'll make an alpha site available for people who, like us, are interested in experimenting with bleeding edge technologies.</p>
 	<p>If you're interested in playing with QUIC today you'll need to build the test <a href="https://code.google.com/p/chromium/codesearch#chromium/src/net/tools/quic/&amp;ct=rc&amp;cd=2&amp;q=quic&amp;sq=package:chromium">QUIC server and client</a> that are part of the <a href="http://www.chromium.org">Chromium</a> project, get <a href="https://www.google.co.uk/intl/en/chrome/browser/canary.html">Google Chrome Canary</a> and enable QUIC in <a href="chrome://flags">chrome://flags</a>. You'll probably also want the latest <a href="https://www.wireshark.org/download.html">Wireshark</a> (the development release) which is capable of decoding QUIC frames.</p>

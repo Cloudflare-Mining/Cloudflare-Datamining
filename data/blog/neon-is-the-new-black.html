@@ -23,19 +23,40 @@ sys     0m0.225s</code></pre>
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com">viZZZual.com</a></p>
-	<h3>What is NEON</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-neon">What is NEON</h3>
+		<a href="https://blog.cloudflare.com/#what-is-neon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NEON is the ARMv8 version of SIMD, Single Instruction Multiple Data instruction set, where a single operation performs (generally) the same operation on several operands.</p>
 	<p>NEON operates on 32 dedicated 128-bit registers, similarly to Intel SSE. It can perform operations on 32-bit and 64-bit floating point numbers, or 8-bit, 16-bit, 32-bit and 64-bit signed or unsigned integers.</p>
 	<p>As with <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a> you can program either in the assembly language, or in C using intrinsics. The intrinsics are usually easier to use, and depending on the application and the compiler can provide better performance, however intrinsics based code tends to be quite verbose.</p>
 	<p>If you opt to use the NEON intrinsics you have to include <code>&lt;arm_neon.h&gt;</code>. While SSE intrinsic use __m128i for all SIMD integer operations, the intrinsics for NEON have distinct type for each integer and float width. For example operations on signed 16-bit integers use the int16x8_t type, which we are going to use. Similarly there is a uint16x8_t type for unsigned integer, as well as int8x16_t, int32x4_t and int64x2_t and their uint derivatives, that are self explanatory.</p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Running perf tells me that the same two culprits are responsible for most of the CPU time spent:</p>
 	<pre class="language-bash"><code class="language-bash">perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg
 perf report
   71.24%  lt-jpegtran  libjpeg.so.9.1.0   [.] encode_mcu_AC_refine
   15.24%  lt-jpegtran  libjpeg.so.9.1.0   [.] encode_mcu_AC_first</code></pre>
 	<p>Aha, <code>encode_mcu_AC_refine</code> and <code>encode_mcu_AC_first</code>, my old nemeses!</p>
-	<h3>The straightforward approach</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-straightforward-approach">The straightforward approach</h3>
+		<a href="https://blog.cloudflare.com/#the-straightforward-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>encode_mcu_AC_refine</h4>
 	<p>Let's recoup the optimizations we applied to <code>encode_mcu_AC_refine</code> previously. The function has two loops, with the heavier loop performing the following operation:</p>
 	<pre class="language-c"><code class="language-c">for (k = cinfo-&gt;Ss; k &lt;= Se; k++) {
@@ -184,7 +205,14 @@ real    0m3.480s
 user    0m3.243s
 sys     0m0.241s</code></pre>
 	<p>Overall 2.5X speedup from the original C implementation, but still 1.5X slower than Xeon.</p>
-	<h3>Batch benchmark</h3>
+	<div class="flex anchor relative">
+		<h3 id="batch-benchmark">Batch benchmark</h3>
+		<a href="https://blog.cloudflare.com/#batch-benchmark" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the improvement for the single image was impressive, it is not necessarily representative of all jpeg files. To understand the impact on overall performance I ran jpegtran over a set of 34,159 actual images from one of our caches. The total size of those images was 3,325,253KB. The total size after jpegtran was 3,067,753KB, or 8% improvement on average.</p>
 	<p>Using one thread, the Intel Xeon managed to process all those images in 14 minutes and 43 seconds. The original jpegtran on our ARM server took 29 minutes and 34 seconds. The improved jpegtran took only 13 minutes and 52 seconds, slightly outperforming even the Xeon processor, despite losing on the test image.</p>
 	<figure class="kg-card kg-image-card ">
@@ -192,7 +220,14 @@ sys     0m0.241s</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/koIIgyZHWMqH2zFQlXE4Q/fd84f032a3743af2480c865e66a048fc/jpegtran.png" alt="jpegtran" class="kg-image" width="1628" height="1030" loading="lazy">
 
 	</figure>
-	<h3>Going deeper</h3>
+	<div class="flex anchor relative">
+		<h3 id="going-deeper">Going deeper</h3>
+		<a href="https://blog.cloudflare.com/#going-deeper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>3.48 seconds, down from 8.654 represents a respectful 2.5X speedup.</p>
 	<p>It definitely meets the goal of being at least 50% as fast as Xeon, and it is faster in the batch benchmark, but it still feels like it is slower than it could be.</p>
 	<p>While going over the ARMv8 NEON instruction set, I found several unique instructions, that have no equivalent in SSE.</p>
@@ -488,7 +523,15 @@ k += skip;</code></pre>
     mov x0, v6.d[0]
     mvn x0, x0
     ret</code></pre>
-	<h2>Final results and power</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="final-results-and-power">Final results and power</h2>
+		<a href="https://blog.cloudflare.com/#final-results-and-power" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The final version of our jpegtran managed to reduce the test image in 2.756 seconds. Or an extra 1.26X speedup, that gets it incredibly close to the performance of the Xeon on that image. As a bonus batch performance also improved!</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -502,11 +545,25 @@ k += skip;</code></pre>
 
 	</figure>
 	<p>With the new implementation Centriq outperforms the Xeon at batch reduction for every number of workers. We usually run Polish with four workers, for which Centriq is now 1.3 times faster while also 6.5 times more power efficient.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is evident that the Qualcomm Centriq is a powerful processor, that definitely provides a good bang for a buck. However, years of Intel leadership in the server and desktop space mean that a lot of software is better optimized for Intel processors.</p>
 	<p>For the most part writing optimizations for ARMv8 is not difficult, and we will be adjusting our software as needed, and publishing our efforts as we go.</p>
 	<p>You can find the updated code on our <a href="https://github.com/cloudflare/jpegtran">Github</a> page.</p>
-	<h3>Useful resources</h3>
+	<div class="flex anchor relative">
+		<h3 id="useful-resources">Useful resources</h3>
+		<a href="https://blog.cloudflare.com/#useful-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://developer.arm.com/docs/100069/latest">Arm Compiler armasm User Guide</a></p>

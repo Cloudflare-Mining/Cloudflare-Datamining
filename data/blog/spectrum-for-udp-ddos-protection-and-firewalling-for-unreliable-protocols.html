@@ -4,14 +4,28 @@
 	<p>Last year, we launched <a href="https://blog.cloudflare.com/spectrum">Spectrum</a>. Spectrum brought the power of our DDoS and firewall features to all TCP ports and services. Spectrum for TCP allows you to protect your SSH services, gaming protocols, and as of last month, even <a href="https://developers.cloudflare.com/spectrum/getting-started/ftp">FTP servers</a>. We’ve seen customers running all sorts of applications behind Spectrum, such as <a href="https://www.bitfly.at">Bitfly</a>, <a href="https://nicehash.com">Nicehash</a>, and <a href="https://hypixel.net">Hypixel</a>.</p>
 	<p>This is great if you're running TCP services, but plenty of our customers also have workloads running over UDP. As an example, many multiplayer games prefer the low cost and lighter weight of UDP and don't care about whether packets arrive or not.</p>
 	<p>UDP applications have historically been hard to protect and secure, which is why we built Spectrum for UDP. Spectrum for UDP allows you to protect standard UDP services (such as RDP over UDP), but can also protect any custom protocol you come up with! The only requirement is that it uses UDP as an underlying protocol.</p>
-	<h3>Configuring a UDP application on Spectrum</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuring-a-udp-application-on-spectrum">Configuring a UDP application on Spectrum</h3>
+		<a href="https://blog.cloudflare.com/#configuring-a-udp-application-on-spectrum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To configure on the dashboard, simply switch the application type from TCP to UDP:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mq0LQqGOJk7r1M8rwwC8P/963fe75b1bd7c0773e23ffed09fcabd4/image1.png" alt="" class="kg-image" width="1436" height="1602" loading="lazy">
 
 	</figure>
-	<h3>Retrieving client information</h3>
+	<div class="flex anchor relative">
+		<h3 id="retrieving-client-information">Retrieving client information</h3>
+		<a href="https://blog.cloudflare.com/#retrieving-client-information" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Spectrum, we terminate the connection and open a new one to your origin. But, what if you want to still see who's actually connecting to you? For TCP, there's <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt">Proxy Protocol</a>. Whilst initially introduced by HAProxy, it has since been adopted by more parties, such as <a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol">nginx</a>. We added <a href="https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol">support</a> late 2018, allowing you to easily read the client's IP and port from a header that precedes each data stream.</p>
 	<p>Unfortunately, there is no equivalent for UDP, so we're rolling our own. Due to the fact that UDP is connection-less, we can't get away with the Proxy Protocol approach for TCP, which prepends the entire stream with one header. Instead, we are forced to prepend each packet with a small header that specifies:</p>
 	<ul>
@@ -53,7 +67,14 @@
 |           Proxy Port          |          Payload...           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</code></pre>
 	<p>Simple Proxy Protocol is turned off by default, which means UDP packets will arrive at your origin as if they were sent from Spectrum. To enable, just enable it on your Spectrum app.</p>
-	<h3>Getting access to Spectrum for UDP</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-access-to-spectrum-for-udp">Getting access to Spectrum for UDP</h3>
+		<a href="https://blog.cloudflare.com/#getting-access-to-spectrum-for-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're excited about launching this and and even more excited to see what you'll build and protect with it. In fact, what if you could build serverless services on Spectrum, without actually having an origin running? Stay tuned for some cool announcements in the near future.</p>
 	<p>Spectrum for UDP is currently an Enterprise-only feature. To get UDP enabled for your account, please reach out to your account team and we’ll get you set up.</p>
 	<p>One more thing... if you’re at <a href="https://gdconf.com">GDC</a> this year, say hello at booth <a href="https://www.expocad.com/host/fx/ubm/gdc19/exfx.html#floorplan">P1639</a>! We’d love to talk more and learn about what you’d like to do with Spectrum.</p>

@@ -14,7 +14,14 @@
 	<p>And then you call it:</p>
 	<pre class="language-java"><code class="language-java">let three = await env.MY_SERVICE.sum(1, 2);</code></pre>
 	<p>No schemas. No routers. Just define methods of a class. Then call them. That's it.</p>
-	<h2>But that's not it</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-thats-not-it">But that's not it</h2>
+		<a href="https://blog.cloudflare.com/#but-thats-not-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This isn't just any old RPC. We've designed an RPC system so expressive that calling a remote service can feel like using a library – without any need to actually import a library! This is important not just for ease of use, but also security: fewer dependencies means fewer critical security updates and less exposure to supply-chain attacks.</p>
 	<p>To this end, here are some of the features of Workers RPC:</p>
 	<ul>
@@ -45,13 +52,27 @@
 	</ul>
 	<p>Workers RPC is a JavaScript-native RPC system. Under the hood, it is built on <a href="https://capnproto.org/rpc.html">Cap'n Proto</a>. However, unlike Cap'n Proto, Workers RPC does not require you to write a schema. (Of course, you can use TypeScript if you like, and we provide tools to help with this.)</p>
 	<p>In general, Workers RPC is designed to "just work" using idiomatic JavaScript code, so you shouldn't have to spend too much time looking at docs. We'll give you an overview in this blog post. But if you want to understand the full feature set, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc">check out the documentation</a>.</p>
-	<h2>Why RPC? (And what is RPC anyway?)</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-rpc-and-what-is-rpc-anyway">Why RPC? (And what is RPC anyway?)</h2>
+		<a href="https://blog.cloudflare.com/#why-rpc-and-what-is-rpc-anyway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST">REST</a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
 	<p>The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">fallacies of distributed computing</a>.</p>
 	<p>But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
 	<p>Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
 	<p>The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
-	<h2>Example: Authentication Service</h2>
+	<div class="flex anchor relative">
+		<h2 id="example-authentication-service">Example: Authentication Service</h2>
+		<a href="https://blog.cloudflare.com/#example-authentication-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here's a common scenario: You have one Worker that implements an application, and another Worker that is responsible for authenticating user credentials. The app Worker needs to call the auth Worker on each request to check the user's cookie.</p>
 	<p>This example uses a <b>Service Binding</b>, which is a way of configuring one Worker with a private channel to talk to another, without going through a public URL. Here, we have an application Worker that has been configured with a service binding to the Auth worker.</p>
 	<p>Before RPC, all communications between Workers needed to use HTTP. So, you might write code like this:</p>
@@ -164,7 +185,14 @@ export class AuthService extends WorkerEntrypoint {
   }
 }</code></pre>
 	<p>This is a pretty nice simplification… but we can do much more!</p>
-	<h3>Let's get fancy! Or should I say… classy?</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-fancy-or-should-i-say-classy">Let's get fancy! Or should I say… classy?</h3>
+		<a href="https://blog.cloudflare.com/#lets-get-fancy-or-should-i-say-classy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's say we want our auth service to do a little more. Instead of just checking cookies, it provides a whole API around user accounts. In particular, it should let you:</p>
 	<ul>
 		<li>
@@ -267,7 +295,15 @@ main = "./src/app.js"
 binding = "AUTH_SERVICE"    # name of the binding in `env`
 service = "auth-service"    # name of the worker in the dashboard
 entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
-	<h3>Wait, how?</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="wait-how">Wait, how?</h3>
+		<a href="https://blog.cloudflare.com/#wait-how" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What exactly happened here? The Server created an instance of the class User and returned it to the client. It has methods that the client can then just call? Are we somehow transferring code over the wire?</p>
 	<p>No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -277,13 +313,27 @@ entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
 	</figure>
 	<p>But then you might ask: how does the RPC stub know what methods are available? Is a list of methods passed over the wire?</p>
 	<p>In fact, no. The RPC stub is a special object called a "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>". It implements a "wildcard method", that is, it appears to have an infinite number of methods of every possible name. When you try to call a method, the name you called is sent to the server. If the original object has no such method, an exception is thrown.</p>
-	<h3>Did you spot the security?</h3>
+	<div class="flex anchor relative">
+		<h3 id="did-you-spot-the-security">Did you spot the security?</h3>
+		<a href="https://blog.cloudflare.com/#did-you-spot-the-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the above example, we see that RPC is easy to use. We made an object! We called it! It all just felt natural, like calling a local API! Hooray!</p>
 	<p>But there's another extremely important property that the AuthService API has which you may have missed: <b>As designed, you cannot perform any operation on a user without first checking the cookie.</b> This is true despite the fact that the individual method calls do not require sending the cookie again, and the User object itself doesn't store the cookie.</p>
 	<p>The trick is, the initial checkCookie() RPC is what returns a User object in the first place. The AuthService API does not provide any other way to obtain a User instance. The RPC client cannot create a User object out of thin air, and cannot call methods of an object without first explicitly receiving a reference to it.</p>
 	<p>This is called capability-based security: we say that the User reference received by the client is a "capability", because receiving it grants the client the ability to perform operations on the user. The getProfile() method grants this capability only when the client has presented the correct cookie.</p>
 	<p>Capability-based security is often like this: security can be woven naturally into your APIs, rather than feel like an additional concern bolted on top.</p>
-	<h3>More security: Named entrypoints</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-security-named-entrypoints">More security: Named entrypoints</h3>
+		<a href="https://blog.cloudflare.com/#more-security-named-entrypoints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another subtle but important detail to call out: in the above example, the auth service's RPC API is exported as a named class:</p>
 	<pre class="language-javascript"><code class="language-javascript">export class AuthService extends WorkerEntrypoint {</code></pre>
 	<p>And in our wrangler.toml for the calling worker, we had to specify an "entrypoint", matching the class name:</p>
@@ -291,7 +341,14 @@ entrypoint = "AuthService"  # name of the exported RPC class</code></pre>
 	<p>In the past, service bindings would bind to the "default" entrypoint, declared with export default {. But, the default entrypoint is also typically exposed to the Internet, e.g. automatically mapped to a hostname under workers.dev (unless you explicitly turn that off). It can be tricky to safely assume that requests arriving at this entrypoint are in any way trusted.</p>
 	<p>With named entrypoints, this all changes. A named entrypoint is only accessible to Workers which have explicitly declared a binding to it. By default, only Workers on your own account can declare such bindings. Moreover, the binding must be declared at deploy time; a Worker cannot create new service bindings at runtime.</p>
 	<p>Thus, you can trust that requests arriving at a named entrypoint can only have come from Workers on your account and for which you explicitly created a service binding. In the future, we plan to extend this pattern further with the ability to lock down entrypoints, audit which Workers have bindings to them, tell the callee information about who is calling at runtime, and so on. With these tools, there is no need to write code in your app itself to authenticate access to internal APIs; the system does it for you.</p>
-	<h3>What about type safety?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-about-type-safety">What about type safety?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-type-safety" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers RPC works in an entirely dynamically-typed way, just as JavaScript itself does. But just as you can apply TypeScript on top of JavaScript in general, you can apply it to Workers RPC.</p>
 	<p>The <a href="https://www.npmjs.com/package/@cloudflare/workers-types"><code>@cloudflare/workers-types package</code></a> defines the type <code>Service&lt;MyEntrypointType&gt;</code>, which describes the type of a service binding. <code>MyEntrypointType</code> is the type of your server-side interface. <code>Service&lt;MyEntrypointType&gt;</code> applies all the necessary transformations to turn this into a client-side type, such as converting all methods to async, replacing functions and <code>RpcTargets</code> with (properly-typed) stubs, and so on.</p>
 	<p>It is up to you to share the definition of <code>MyEntrypointType</code> between your server app and its clients. You might do this by defining the interface in a separate shared TypeScript file, or by extracting a <code>.d.ts</code> type declaration file from your server code using <a href="https://www.typescriptlang.org/tsconfig/#declaration"><code>tsc --declaration</code></a>.</p>
@@ -319,7 +376,15 @@ export default &lt;ExportedHandler&lt;Env&gt;&gt; {
     return new Response(result.toString());
   }
 }</code></pre>
-	<h2>RPC to Durable Objects</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="rpc-to-durable-objects">RPC to Durable Objects</h2>
+		<a href="https://blog.cloudflare.com/#rpc-to-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
 	<p>Previously, communications with a Durable Object had to take the form of HTTP requests and responses. With RPC, you can now just declare methods on your Durable Object class, and call them on the stub. One catch: to opt into RPC, you must declare your Durable Object class with extends DurableObject, like so:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { DurableObject } from "cloudflare:workers";
@@ -340,7 +405,15 @@ let value = await stub.increment();</code></pre>
 	<pre class="language-javascript"><code class="language-javascript">interface Env {
   COUNTER_NAMESPACE: DurableObjectNamespace&lt;Counter&gt;;
 }</code></pre>
-	<h3>Eliding awaits with speculative calls</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="eliding-awaits-with-speculative-calls">Eliding awaits with speculative calls</h3>
+		<a href="https://blog.cloudflare.com/#eliding-awaits-with-speculative-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When talking to a Durable Object, the object may be somewhere else in the world from the caller. RPCs must cross the network. This takes time: despite our best efforts, we still haven't figured out how to make information travel faster than the speed of light.</p>
 	<p>When you have a complex RPC interface where one call returns an object on which you wish to make further method calls, it's easy to end up with slow code that makes too many round trips over the network.</p>
 	<pre class="language-javascript"><code class="language-javascript">// Makes three round trips.
@@ -356,12 +429,26 @@ let corge = await baz.qux[3].corge();</code></pre>
 	<p>RPC methods do not return normal promises. Instead, they return special RPC promises. These objects are "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables">custom thenables</a>", which means you can use them in all the ways you'd use a regular Promise, like awaiting it or calling .then() on it.</p>
 	<p>But an RPC promise is more than just a thenable. It is also a proxy. Like an RPC stub, it has a wildcard property. You can use this to express speculative RPC calls on the eventual result, before it has actually resolved. These speculative calls will be sent to the server immediately, so that they can begin executing as soon as the first RPC has finished there, before the result has actually made its way back over the network to the client.</p>
 	<p>This feature is also known as "Promise Pipelining". Although it isn't explicitly a security feature, it is commonly provided by object-capability RPC systems like Cap'n Proto.</p>
-	<h2>The future: Custom Bindings Marketplace?</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-future-custom-bindings-marketplace">The future: Custom Bindings Marketplace?</h2>
+		<a href="https://blog.cloudflare.com/#the-future-custom-bindings-marketplace" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For now, Service Bindings and Durable Objects only allow communication between Workers running on the same account. So, RPC can only be used to talk between your own Workers.</p>
 	<p>But we'd like to take it further.</p>
 	<p>We have previously explained <a href="https://blog.cloudflare.com/workers-environment-live-object-bindings">why Workers environments contain live objects</a>, also known as "bindings". But today, only Cloudflare can add new binding types to the Workers platform – like Queues, KV, or D1. But what if <i>anyone</i> could invent their own binding type, and give it to other people?</p>
 	<p>Previously, we thought this would require creating a way to automatically load client libraries into the calling Workers. That seemed scary: it meant using someone's binding would require trusting their code to run inside your isolate. With RPC, there's no such trust. The binding only sees exactly what you explicitly pass to it. It cannot compromise the rest of your Worker.</p>
 	<p>Could Workers RPC provide the basis for a "bindings marketplace", where people can offer rich JavaScript APIs to each other in an easy and secure way? We're excited to explore and find out.</p>
-	<h2>Try it now</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">Try it now</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers RPC is available today for all Workers users. To get started, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc">check out the docs</a>.</p>
 </div>

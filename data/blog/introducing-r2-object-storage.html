@@ -9,7 +9,14 @@
 	<p>We’re excited to announce Cloudflare R2 Storage! By giving developers the ability to store large amounts of unstructured data, we’re expanding what’s possible with Cloudflare while slashing the <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress bandwidth fees</a> associated with typical <a href="https://www.cloudflare.com/learning/cloud/what-is-cloud-storage">cloud storage</a> services to zero.</p>
 	<p><a href="https://www.cloudflare.com/products/r2">Cloudflare R2 Storage</a> includes full S3 API compatibility, working with existing tools and applications as built.</p>
 	<p>Let’s get into the R2 details.</p>
-	<h3>R2 means “Really Requestable”</h3>
+	<div class="flex anchor relative">
+		<h3 id="r2-means-really-requestable">R2 means “Really Requestable”</h3>
+		<a href="https://blog.cloudflare.com/#r2-means-really-requestable" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">Object Storage</a>, sometimes referred to as <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage">blob storage</a>, stores arbitrarily large, unstructured files. Object storage is well suited to storing everything from media files or log files to application-specific metadata, all retrievable with consistent <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a>, high durability, and limitless capacity.</p>
 	<p>The most familiar API for Object Storage, and the API R2 implements, is Amazon’s Simple Storage Service (S3). When S3 launched in 2006, cloud storage services were a godsend for developers. It didn’t happen overnight, but over the last fifteen years, developers have embraced cloud storage and its promise of infinite storage space.</p>
 	<p>As transformative as cloud storage has been, a downside emerged: actually getting your data back. Over time, companies have amassed massive amounts of data on cloud provider networks. When they go to retrieve that data, they’re hit with <a href="https://blog.cloudflare.com/aws-egregious-egress">massive egress fees</a> that don’t correspond to any customer value — just a tax developers have grown accustomed to paying.</p>
@@ -26,7 +33,14 @@
 	<p>On the flip side, providers designed for infrequent access typically can’t scale to heavy usage.</p>
 	<p>R2 will zero-rate infrequent storage operations under a threshold — currently planned to be in the single digit requests per second range. Above this range, R2 will charge significantly less per-operation than the major providers. Our object storage will be extremely inexpensive for infrequent access and yet capable of and cheaper than major incumbent providers at scale.</p>
 	<p>This cheaper price doesn’t come with reduced scalability. Behind the scenes, R2 automatically and intelligently manages the tiering of data to drive both performance at peak load and low-cost for infrequently requested objects. &nbsp;We’ve gotten rid of complex, manual tiering policies in favor of what developers have always wanted out of object storage: limitless scale at the lowest possible cost.</p>
-	<h3>R2 means “Repositioning Records”</h3>
+	<div class="flex anchor relative">
+		<h3 id="r2-means-repositioning-records">R2 means “Repositioning Records”</h3>
+		<a href="https://blog.cloudflare.com/#r2-means-repositioning-records" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Zero egress means you can get objects out easily, but what about putting objects in? <a href="https://www.cloudflare.com/learning/cloud/what-is-data-migration">Migrating data</a> across cloud providers, even if they both support the complete S3 API, is error-prone and costly.</p>
 	<p>To make this easier for you, without requiring you to change any of your tooling, Cloudflare will offer a migration service from S3-compatible cloud storage services. The migrator will reduce the toil of manually uploading objects, by incrementally copying objects to R2 as they are requested. This <a href="https://www.cloudflare.com/learning/cloud/what-is-multicloud">multi-cloud architecture</a> allows you to start serving objects from R2 as they migrate, saving you money while offering the benefits of multi-cloud.</p>
 	<figure class="kg-card kg-image-card ">
@@ -35,18 +49,46 @@
 
 	</figure>
 	<p>Our vision for R2 includes multi-region storage that automatically replicates objects to the locations they’re frequently requested from. As with <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">Durable Objects</a>, we plan on introducing jurisdictional restrictions that allow developers to comply with complex <a href="https://www.cloudflare.com/learning/privacy/what-is-data-sovereignty">data sovereignty requirements</a> via a simple API.</p>
-	<h3>R2 means “Ridiculously Reliable”</h3>
+	<div class="flex anchor relative">
+		<h3 id="r2-means-ridiculously-reliable">R2 means “Ridiculously Reliable”</h3>
+		<a href="https://blog.cloudflare.com/#r2-means-ridiculously-reliable" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The core of what makes Object Storage great is reliability — we designed R2 for data durability and resilience at its core. R2 will provide 99.999999999% (eleven 9’s) of annual durability, which describes the likelihood of data loss. If you store 1,000,000 objects on R2, you can expect to lose one once every 100,000 years — the same level of durability as other major providers. R2 will be resistant to regional failures, replicating objects multiple times for high availability.</p>
 	<p>R2 is designed with redundancy across a large number of regions for reliability. We plan on starting from automatic global distribution and adding back region-specific controls for when data has to be stored locally, as described above.</p>
-	<h3>R2 means “Radically Reprogrammable”</h3>
+	<div class="flex anchor relative">
+		<h3 id="r2-means-radically-reprogrammable">R2 means “Radically Reprogrammable”</h3>
+		<a href="https://blog.cloudflare.com/#r2-means-radically-reprogrammable" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>R2 is fully integrated with the <a href="https://workers.cloudflare.com">Cloudflare Workers</a> serverless runtime. You can bind a Worker to a specific bucket, dynamically transforming objects as they are written to or read from storage buckets. The deep integration between Workers and R2 makes building data pipelines and manipulating objects incredibly easy.</p>
 	<p>Cloudflare R2 is designed to easily integrate with the rest of Cloudflare's products. As a few examples, our plan is to allow Durable Objects to be configured with R2 as a backup target, and provide automatic integration between R2 and Cloudflare cache to greatly extend cache lifetimes for infrequently changing objects.</p>
-	<h3>What will you be able to build with Cloudflare R2?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-will-you-be-able-to-build-with-cloudflare-r2">What will you be able to build with Cloudflare R2?</h3>
+		<a href="https://blog.cloudflare.com/#what-will-you-be-able-to-build-with-cloudflare-r2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There’s a lot you can do with long-term storage, especially with access to the Workers compute platform just alongside it.</p>
 	<p>For example, streaming data from a large number of IoT devices becomes a breeze with R2. Starting with a Worker to transform and manipulate the data, R2 can ingest large volumes of sensor data and store it at low cost. With no egress fees, it becomes simple to migrate volumes of data to multiple databases and analytics solutions as needed, dramatically reducing storage costs. With the ability to run a Worker on the outgoing data as well, the data pipeline itself is more flexible.</p>
 	<p>R2 is also a great place for CDN assets and large media files. For large files, R2 can significantly extend cache lifetimes while dramatically slashing egress bills. Combined with the Cache API and Workers, content can be dynamically cached for low-latency access around the globe.</p>
 	<p>More than anything, R2’s lack of egress bandwidth charges makes it ideal for storing content that’s accessed frequently. Today, R2 scales well to handle heavy request loads, dynamically tiering your objects to provide the best performance at the lowest cost. This dynamic tiering allows us to offer the lowest prices while supporting peak performance — with no user configuration required.</p>
-	<h3>Accessing Cloudflare R2</h3>
+	<div class="flex anchor relative">
+		<h3 id="accessing-cloudflare-r2">Accessing Cloudflare R2</h3>
+		<a href="https://blog.cloudflare.com/#accessing-cloudflare-r2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>R2 is currently under development — you can sign up <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fplans">here</a> to join the waitlist for access. We’re excited to work with a number of earlier users to refine and test the product. We’ll be <a href="https://blog.cloudflare.com/r2-open-beta">announcing an open beta</a> where any user will be able to sign up for the service soon.</p>
 	<p>We’re excited to continue to build the product and push towards open beta, and we have big ideas for what the future of storage at Cloudflare’s edge could look like. If you’re a distributed systems engineer who wants to help us build the future of state at the edge, <a href="https://www.cloudflare.com/careers/jobs/?department=Emerging+Technology+and+Incubation&amp;location=default">come work with us</a>!</p>
 </div>

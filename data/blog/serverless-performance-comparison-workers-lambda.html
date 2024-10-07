@@ -10,7 +10,14 @@
 	</figure>
 	<p>This is a chart showing what percentage of requests to each service were faster than a given number of ms. It is based on thousands of tests from all around the world, evenly sampled over the past 12 hours. <b>At the 95th percentile, Workers is 441% faster than a Lambda function, and 192% faster than Lambda@Edge.</b> &nbsp;<a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-comparison-workers-lambda%2F&amp;text=%22%40Cloudflare+Workers+is+441%25+faster+than+a+Lambda+function%2C+and+192%25+faster+than+Lambda%40Edge.%22&amp;hashtags=serverless"></a></p>
 	<p>The functions being tested simply return the current time. All three scripts are available on <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/time">Github</a>. The testing is being done by a service called <a href="http://www.catchpoint.com">Catchpoint</a> which has hundreds of testing locations around the world.</p>
-	<h3>The Gold Coast</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-gold-coast">The Gold Coast</h3>
+		<a href="https://blog.cloudflare.com/#the-gold-coast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is every test ran in the last hour, with results over 1500ms filtered out:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,7 +38,14 @@
 
 	</figure>
 	<p>The 50th percentile speed for Workers is 13ms, well faster than a packet could even get half way to Virginia. At the 95th percentile you're looking at 882ms for Lambda, 216ms for Lambda@Edge, and 40ms for Workers. A full 5% of your users will be waiting almost a second for the simplest possible Lambda response, making it impossible to build a responsive application.</p>
-	<h3>Hometurf</h3>
+	<div class="flex anchor relative">
+		<h3 id="hometurf">Hometurf</h3>
+		<a href="https://blog.cloudflare.com/#hometurf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we said, Workers has quite the advantage being deployed everywhere, as compared to Lambda which lives in a single region. (Lambda@Edge has less of an excuse). We believe Worker performance should be great everywhere though, so lets look a little closer to our Lambda instance. First all the tests in North America:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -57,7 +71,14 @@
 
 	</figure>
 	<p><b>With no geographic explanation the 95th percentile of Workers is 126% faster than Lambda and 65% faster than Lambda@Edge.</b> I find this incredible. Please feel free <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARU8-C-D-K3hmOjV28DtDEAA">play with the chart</a> yourself.</p>
-	<h3>How?!</h3>
+	<div class="flex anchor relative">
+		<h3 id="how">How?!</h3>
+		<a href="https://blog.cloudflare.com/#how" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How is this possible? I have some guesses. Workers is built on V8 isolates, which are significantly faster to spin up (under 5ms) than a full NodeJS process and have a tenth the memory overhead. The effect of having to wait for new processes start is very obvious when you look at the difference in speed for the first request which hits a new Lambda@Edge function:</p>
 	<figure class="kg-card kg-image-card ">
 

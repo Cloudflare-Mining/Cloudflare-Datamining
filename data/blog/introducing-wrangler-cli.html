@@ -8,16 +8,37 @@
 	<p>Wrangler is a CLI tool for building Rust WebAssembly Workers</p>
 	<p>Today, we're open sourcing and announcing <code>wrangler</code>, a CLI tool for building, previewing, and publishing Rust and WebAssembly Cloudflare Workers.</p>
 	<p>If that sounds like some word salad to you, that's a reasonable reaction. All three of the technologies involved are relatively new and upcoming: WebAssembly, Rust, and Cloudflare Workers.</p>
-	<h3>Why WebAssembly?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-webassembly">Why WebAssembly?</h3>
+		<a href="https://blog.cloudflare.com/#why-webassembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare's mission is to help build a better Internet. We see Workers as an extension of the already incredibly powerful Web Platform, where JavaScript has allowed users to go from building small bits of interactivity, to building full applications. Node.js first extended this from the client to the server- unifying web application development around a single language – JavaScript. By choosing to use V8 isolates (the technology that powers both Node.js and the most popular browser, Chrome), we sought to make its Workers product a fully compatible, new platform for the Web, eliding the distinction between server and client. By leveraging its large global network of servers, Workers allows users to run code as close as possible to end users, eliminating the latency associated server-side logic or large client-side bundles.</p>
 	<p>But not everyone wants to write JavaScript, and JavaScript is not well suited to express every application. WebAssembly emerged in 2017 as a way to further extend the Web Platform to applications, such as games and other high resource intensive programs, that were previously excluded by the limitations of JavaScript.</p>
 	<p>V8 isolates give us both JavaScript and WebAssembly. This means that you can leverage the prototyping power and extensive ecosystem of JavaScript, alongside the power of WebAssembly, which in addition to fast, predictable, performance, also opens up the wealth of libraries written in languages that can target WebAssembly, like C, C++, and Rust.</p>
 	<p>WebAssembly on Workers eliminates trade-offs that were originally considered irresolvable: low-latency, high-performing, and Web Platform compatible- pick three.</p>
-	<h3>Why Rust?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-rust">Why Rust?</h3>
+		<a href="https://blog.cloudflare.com/#why-rust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rust is a relatively new programming language with the goal of "empowering everyone to build reliable and efficient software". It's a systems level language that offers its users a high amount of control, while still seeking to offer an ergonomic, friendly and modern development experience.</p>
 	<p>The Rust-WebAssembly Working Group made incredible efforts last year to build out a suite of developer tools for WebAssembly. At Cloudflare, we're excited to support those efforts with paid developer hours and leverage those efforts to empower our users to start harnessing the power of WebAssembly on Workers now.</p>
 	<p>There are several other toolchains including Emscripten (C, C++) and AssemblyScript (TypeScript) that we're eager to support in the future. Rust is just the beginning (but we think it's a pretty great place to start!).</p>
-	<h3>Why now?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-now">Why now?</h3>
+		<a href="https://blog.cloudflare.com/#why-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When developing new, highly technical, products, it's easy to get caught up in the promise and vision- often to the detriment of getting the technology into the hands of the folks who will be using it every day in the future.</p>
 	<p>We want to broaden the community that has access at the early stages of this technology- who can bring their valuable perspectives and experience, and help us shape the future of these tools.</p>
 	<p>The first step to accomplishing that is building the tools that can <i>enable</i> folks to engage with the new platform. <code>wrangler</code> is a that enabling tool. It's just enough to unblock users who were previously unable to interact with the platform because there was no paved path.</p>

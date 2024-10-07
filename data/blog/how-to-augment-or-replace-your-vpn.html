@@ -13,7 +13,14 @@
 	<p>While there’s no universal answer, several of our customers have agreed that offloading key applications from their traditional VPN to a cloud-native <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access</a> (ZTNA) solution like Cloudflare Access is a great place to start—providing an approachable, meaningful upgrade for their business.</p>
 	<p>In fact, GartnerⓇ predicted that “by 2025, at least 70% of new remote access deployments will be served predominantly by ZTNA as opposed to VPN services, up from less than 10% at the end of 2021.”<sup>1</sup> By prioritizing a ZTNA project, IT and Security executives can better shield their business from attacks like ransomware while simultaneously improving their employees’ daily workflows. The trade-off between security and user experience is an outmoded view of the world; organizations can truly improve both if they go down the ZTNA route.</p>
 	<p>You can get started <a href="https://dash.cloudflare.com/sign-up/teams">here</a> with Cloudflare Access for free, and in this guide we’ll show you why, and how.</p>
-	<h3>Why nobody likes their VPN</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-nobody-likes-their-vpn">Why nobody likes their VPN</h3>
+		<a href="https://blog.cloudflare.com/#why-nobody-likes-their-vpn" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The network-level access and default trust granted by VPNs create avoidable security gaps by inviting the possibility of lateral movement within your network. Attackers may enter your network through a less-sensitive entry point after stealing credentials, and then traverse to find more business-critical information to exploit. In the face of rising attacks, the threat here is too real—and the path to mitigate is too within reach—to ignore.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -21,7 +28,14 @@
 
 	</figure>
 	<p>Meanwhile, VPN performance feels stuck in the 90s… and not in a fun, nostalgic way. Employees suffer through slow and unreliable connections that simply weren’t built for today’s scale of remote access. In the age of the “Great Reshuffle” and the current recruiting landscape, providing subpar experiences for teams based on legacy tech doesn’t have a great ROI. And when IT/security practitioners have plenty of other job opportunities readily available, they may not want to put up with manual, avoidable tasks born from an outdated technology stack. From both <a href="https://www.cloudflare.com/learning/access-management/what-is-remote-access-security">security</a> and usability angles, moving toward <a href="https://www.cloudflare.com/products/zero-trust/vpn-replacement">VPN replacement</a> is well worth the pursuit.</p>
-	<h3>Make least-privilege access the default</h3>
+	<div class="flex anchor relative">
+		<h3 id="make-least-privilege-access-the-default">Make least-privilege access the default</h3>
+		<a href="https://blog.cloudflare.com/#make-least-privilege-access-the-default" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Instead of authenticating a user and providing access to everything on your corporate network, a <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">ZTNA implementation</a> or “<a href="https://www.cloudflare.com/learning/access-management/software-defined-perimeter">software-defined perimeter</a>” authorizes access per resource, effectively eliminating the potential for lateral movement. Each access attempt is evaluated against Zero Trust rules based on identity, device posture, geolocation, and other contextual information. Users are continuously re-evaluated as context changes, and all events are logged to help improve visibility across all types of applications.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -30,11 +44,25 @@
 	</figure>
 	<p>As co-founder of <a href="https://www.cloudflare.com/case-studies/udaan-access">Udaan</a>, Amod Malviya, noted, “VPNs are frustrating and lead to countless wasted cycles for employees and the IT staff supporting them. Furthermore, conventional VPNs can lull people into a false sense of security. With Cloudflare Access, we have a far more reliable, intuitive, secure solution that operates on a per user, per access basis. I think of it as Authentication 2.0 — even 3.0".</p>
 	<p>Better security <i>and</i> user experience haven’t always co-existed, but the fundamental architecture of ZTNA really does improve both compared to legacy VPNs. Whether your users are accessing Office 365 or your custom, on-prem HR app, every login experience is treated the same. With Zero Trust rules being checked behind the scenes, suddenly every app feels like a SaaS app to your end users. Like our friends at <a href="https://www.cloudflare.com/case-studies/onetrust">OneTrust</a> said when they implemented ZTNA, “employees can connect to the tools they need, so simply teams don’t even know Cloudflare is powering the backend. It just works.”</p>
-	<h3>Assembling a ZTNA project plan</h3>
+	<div class="flex anchor relative">
+		<h3 id="assembling-a-ztna-project-plan">Assembling a ZTNA project plan</h3>
+		<a href="https://blog.cloudflare.com/#assembling-a-ztna-project-plan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>VPNs are so entrenched in an organization’s infrastructure that fully replacing one may take a considerable amount of time, depending on the total number of users and applications served. However, there still is significant business value in making incremental progress. You can migrate away from your VPN at your own pace and let ZTNA and your VPN co-exist for some time, but it is important to at least get started.</p>
 	<p>Consider which one or two applications behind your VPN would be most valuable for a ZTNA pilot, like one with known complaints or numerous IT support tickets associated with it. Otherwise, consider internal apps that are heavily used or are visited by particularly critical or high-risk users. If you have any upcoming hardware upgrades or license renewals planned for your VPN(s), apps behind the accompanying infrastructure may also be a sensible fit for a modernization pilot.</p>
 	<p>As you start to plan your project, it’s important to involve the right stakeholders. For your ZTNA pilot, your core team should at minimum involve an identity admin and/or admin who manages internal apps used by employees, plus a network admin who understands your organization's traffic flow as it relates to your VPN. These perspectives will help to holistically consider the implications of your project rollout, especially if the scope feels dynamic.</p>
-	<h3>Executing a transition plan for a pilot app</h3>
+	<div class="flex anchor relative">
+		<h3 id="executing-a-transition-plan-for-a-pilot-app">Executing a transition plan for a pilot app</h3>
+		<a href="https://blog.cloudflare.com/#executing-a-transition-plan-for-a-pilot-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Step 1: Connect your internal app to Cloudflare’s network</b>The Zero Trust dashboard guides you through a <a href="https://blog.cloudflare.com/ridiculously-easy-to-use-tunnels">few simple steps</a> to set up our app connector, no virtual machines required. Within minutes, you can create a tunnel for your application traffic and route it based on public hostnames or your private network routes. The dashboard will provide a string of commands to copy and paste into your command line to facilitate initial routing configurations. From there, Cloudflare will manage your configuration automatically.</p>
 	<p>A pilot web app may be the most straightforward place to start here, but you can also extend to <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>, VNC, RDP, or internal IPs and hostnames through the same workflow. With your tunnel up and running, you’ve created the means through which your users will securely access your resources and have essentially eliminated the potential for lateral movement within your network. Your application is not visible to the public Internet, significantly reducing your <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a>.</p>
 	<p><b>Step 2: Integrate identity and endpoint protection</b>Cloudflare Access acts as an aggregation layer for your existing security tools. With support for over a dozen identity providers (IdPs) like Okta, Microsoft Azure AD, Ping Identity, or OneLogin, you can link multiple simultaneous IdPs or separate tenants from one IdP. This can be particularly useful for companies undergoing mergers or acquisitions or perhaps going through compliance updates, e.g. incorporating a separate FedRAMP tenant.</p>
@@ -51,15 +79,36 @@
 
 	</figure>
 	<p>At this stage for the pilot app, you are up and running with ZTNA! Top priority apps can be offloaded from your VPN one at a time at any pace that feels comfortable to help modernize your access security. Still, augmenting and fully replacing a VPN are two very different things.</p>
-	<h3>Moving toward full VPN replacement</h3>
+	<div class="flex anchor relative">
+		<h3 id="moving-toward-full-vpn-replacement">Moving toward full VPN replacement</h3>
+		<a href="https://blog.cloudflare.com/#moving-toward-full-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While a few top resource candidates for VPN offloading might be clear for your company, the total scope could be overwhelming, with potentially thousands of internal IPs and domains to consider. You can configure the local domain fallback entries within Cloudflare Access to point to your internal DNS resolver for selected <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/private-hostnames-ips">internal hostnames</a>. This can help you more efficiently disseminate access to resources made available over your Intranet.</p>
 	<p>It can also be difficult for admins to granularly understand the full reach of their current VPN usage. Potential visibility issues aside, the full scope of applications and users may be in dynamic flux especially at large organizations. You can use the <a href="https://blog.cloudflare.com/introducing-network-discovery">private network discovery</a> report within Cloudflare Access to passively vet the state of traffic on your network over time. For discovered apps requiring more protection, Access workflows help you tighten Zero Trust rules as needed.</p>
 	<p>Both of these capabilities can help reduce anxiety around fully retiring a VPN. By starting to build your private network on top of Cloudflare’s network, you’re bringing your organization closer to achieving Zero Trust security.</p>
-	<h3>The business impact our customers are seeing</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-business-impact-our-customers-are-seeing">The business impact our customers are seeing</h3>
+		<a href="https://blog.cloudflare.com/#the-business-impact-our-customers-are-seeing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Offloading applications from your VPN and moving toward ZTNA can have measurable benefits for your business even in the short term. Many of our customers speak to improvements in their IT team’s efficiency, onboarding new employees faster and spending less time on access-related help tickets. For example, after implementing Cloudflare Access, <a href="https://www.cloudflare.com/case-studies/eteacher-group">eTeacher Group</a> reduced its employee onboarding time by 60%, helping all teams get up to speed faster.</p>
 	<p>Even if you plan to co-exist with your VPN alongside a slower modernization cadence, you can still track IT tickets for the specific apps you’ve transitioned to ZTNA to help quantify the impact. Are overall ticket numbers down? Did time to resolve decrease? Over time, you can also partner with HR for qualitative feedback through employee engagement surveys. Are employees feeling empowered with their current toolset? Do they feel their productivity has improved or complaints have been addressed?</p>
 	<p>Of course, improvements to security posture also help mitigate the risk of expensive data breaches and their lingering, damaging effects to brand reputation. Pinpointing narrow cause-and-effect relationships for the cost benefits of each small improvement may feel more art than science here, with too many variables to count. Still, reducing reliance on your VPN is a great step toward reducing your attack surface and contributes to your macro return on investment, however long your full Zero Trust journey may last.</p>
-	<h3>Start the clock toward replacing your VPN</h3>
+	<div class="flex anchor relative">
+		<h3 id="start-the-clock-toward-replacing-your-vpn">Start the clock toward replacing your VPN</h3>
+		<a href="https://blog.cloudflare.com/#start-the-clock-toward-replacing-your-vpn" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our obsession with product simplicity has helped many of our customers sunset their VPNs already, and we can’t wait to do more.</p>
 	<p>You can get started <a href="https://dash.cloudflare.com/sign-up/teams">here</a> with Cloudflare Access for free to begin augmenting your VPN. Follow the steps outlined above with your prioritized ZTNA test cases, and for a sense of broader timing you can create your own <a href="https://zerotrustroadmap.org">Zero Trust roadmap</a> as well to figure out what project should come next.</p>
 	<p>For a full summary of Cloudflare One Week and what’s new, tune in to our <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog">recap webinar</a>.</p>

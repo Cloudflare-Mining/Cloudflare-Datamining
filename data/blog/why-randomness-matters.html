@@ -3,7 +3,14 @@
 	<p>If you've been following recent news about technical spying by the US National Security Agency and the UK's Government Communications Headquarters you may have come across a claim that the NSA was involved in weakening a random number generator. The obvious question to ask is... why mess with random number generation?</p>
 	<p>The answer is rather simple: good random numbers are fundemental to almost all secure computer systems. Without them everything from Second World War ciphers like <a href="https://en.wikipedia.org/wiki/Lorenz_cipher">Lorenz</a> to the SSL your browser uses to secure web traffic are in serious trouble.</p>
 	<p>To understand why, and the threat that bad random numbers pose, it's necessary to understand a little about random numbers themselves (such as "what is a good random number anyway?") and how they are used in secure systems.</p>
-	<h3>A Hacker News Hack</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-hacker-news-hack">A Hacker News Hack</h3>
+		<a href="https://blog.cloudflare.com/#a-hacker-news-hack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As an example of how random numbers go wrong I'll begin with a hack of the popular programming and technology web site <a href="http://news.ycombinator.com">Hacker News</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -13,7 +20,14 @@
 	<p>Four years ago I <a href="https://news.ycombinator.com/item?id=596126">mentioned</a> on the site that its random number generator was vulnerable to being used to attack the site. Not long after, and entirely independently, another contributor to the site actually <a href="https://news.ycombinator.com/item?id=639976">carried out the attack</a> with the permission of the site owner.</p>
 	<p>Here's how it worked. When you log into a web site you are typically assigned a unique ID for that session (the period you are logged in). That unique ID needs to be unique to you and not guessable by someone else. If someone else can guess it they can impersonate you.</p>
 	<p>In the case of Hacker News, the unique ID is a string of randomcharacters such as lBGn0tWMcx7380gZyrUO9B. Each logged in user has adifferent string and the strings should be very, very difficult toguess or figure out.</p>
-	<h3>Pseudo-randomness</h3>
+	<div class="flex anchor relative">
+		<h3 id="pseudo-randomness">Pseudo-randomness</h3>
+		<a href="https://blog.cloudflare.com/#pseudo-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IDs are generated internally using a pseudo-random numbergenerator. That's a mathematical function that can be calledrepeatedly to get apparently random numbers. I say apparently because, as the great mathematician John von Neumann said: "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin." The computer scientist Donald Knuth tells a story of inventing a pseudo-random number generator himself only to be shocked at how poor it was.</p>
 	<p>Although pseudo-random number generators can generate a sequence of apparently random numbers they have weaknesses.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,13 +48,27 @@
 	<p>This particular pseudo-random number has long since been replaced by better ones such as the <a href="https://en.wikipedia.org/wiki/Mersenne_twister">Mersenne Twister</a> whose output is harder to predict. The middle square method is trivial to predict: the next number it generates is entirely determined by the number it last produced. The Mersenne Twister on the other hand is much harder to predict because it has internal state that it uses to produce random numbers.</p>
 	<p>In the world of cryptography there are <a href="https://en.wikipedia.org/wiki/CSPRNG">cryptographically secure pseudo-random number generators</a> which are designed to be unpredictable no matter how many random cnumbers you ask it to generate. (The Mersenne Twister isn't cryptographically secure because it can be predicted if enough of the random numbers it generates are observed.)</p>
 	<p>For secure systems it's vital that the random number generator be unpredictable.</p>
-	<h3>Starting With A Seed</h3>
+	<div class="flex anchor relative">
+		<h3 id="starting-with-a-seed">Starting With A Seed</h3>
+		<a href="https://blog.cloudflare.com/#starting-with-a-seed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And all pseudo-random number generators need to start somewhere; they need to be seeded and that's where Hacker News failed. The random number generator was seeded with the time in milliseconds when the Hacker News software was last started. By some careful work, the attacker managed to make Hacker News crash and could then predict when it restarted within a window of about one minute. From it he was able to predict the unique IDs assigned to users as they logged in and could, therefore, impersonate them. (Similar random number problems enabled one group of people to cheat at <a href="http://www.cigital.com/papers/download/developer_gambling.php">online poker</a>.)</p>
 	<p>The full details of how the Hacker News Hack worked are <a href="https://news.ycombinator.com/item?id=639976">here</a>. The attack worked because once Hacker News crashed the attacker would wait for it to start and note the current time. Amusingly, the Hacker News server was willing to give out that information. The attacker then had 60s worth of possible seeds (60,000 seeds since the seed was in milliseconds).</p>
 	<p>So, the attacker would log in and look at their own unique ID. It had been generated by random numbers inside Hacker News's software. He then tried out each of the 60,000 seeds and ran the random number generation algorithm used by Hacker News until he found a match with his own unique ID. That told him which seed had been used, and it let him keep generating further unique IDs by generating the same sequence of random numbers that Hacker News was using. From that he could predict the unique IDs given out to users as they logged in and he could then impersonate them.</p>
 	<p>The Hacker News code was changed to use the Linux /dev/urandom source of random numbers which means that today unique IDs are generated with a good random number generator and without the weak seed previously used.</p>
 	<p>So, there are two ways in which pseudo-random number generation canfail: the seed could be bad or the algorithm itself could be weak and predictable.</p>
-	<h3>Random Numbers Everywhere</h3>
+	<div class="flex anchor relative">
+		<h3 id="random-numbers-everywhere">Random Numbers Everywhere</h3>
+		<a href="https://blog.cloudflare.com/#random-numbers-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Hacker News example isn't about cryptography itself, but random numbers are vital to cryptographic schemes. For example, any HTTPS session starts as follows:</p>
 	<ol>
 		<li>
@@ -71,7 +99,14 @@
 
 	</figure>
 	<p>And the Achilles' Heel of the only completely secure cryptosystem, the <a href="https://en.wikipedia.org/wiki/One_time_pad">one-time pad</a> is that the pad itself must be completely randomly generated. Any predictability or non-uniformity in the random numbers used can lead to breaking of a one-time pad. (The other problem with one-time pads is reuse: they must be used <a href="https://en.wikipedia.org/wiki/VENONA#Breakthrough">only once</a>.)</p>
-	<h3>CloudFlare's Random Number Source</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-random-number-source">CloudFlare's Random Number Source</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-random-number-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At CloudFlare we need lots of random numbers for cryptographic purposes: we need them to secure SSL connections, <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>, generating public/private key pairs, and authentication systems. They are an important part of <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> which we've rolled out for all our customers.</p>
 	<p>We currently obtain most of our random numbers from either OpenSSL's random number generation system or from the Linux kernel. Both seed their random number generators from a variety of sources to make them as unpredictable as possible. Sources include things like network data, or the seek time of disks. But we think we can improve on them by adding some truly random data into the system, and, as a result, improve security for our customers.</p>
 	<figure class="kg-card kg-image-card ">

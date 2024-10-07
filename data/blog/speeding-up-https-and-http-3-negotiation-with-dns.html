@@ -5,7 +5,14 @@
 	<p>This blog post explains what this new record type does and its significance, but there’s also a deeper story: Cloudflare customers get automatic support for new protocols like this.</p>
 	<p>That means that today if you’ve enabled HTTP/3 on an Apple device running iOS 14, when it needs to talk to a Cloudflare customer (say you browse to a Cloudflare-protected website, or use an app whose API is on Cloudflare) it can find the best way of making that connection automatically.</p>
 	<p>And if you’re a Cloudflare customer you have to do… absolutely nothing… to give Apple users the best connection to your Internet property.</p>
-	<h3>Negotiating HTTP security and performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="negotiating-http-security-and-performance">Negotiating HTTP security and performance</h3>
+		<a href="https://blog.cloudflare.com/#negotiating-http-security-and-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whenever a user types a URL in the browser box without specifying a scheme (like “https://” or “http://”), the browser cannot assume, without prior knowledge such as a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security (HSTS)</a> cache or preload list entry, whether the requested website supports HTTPS or not. The browser will first try to fetch the resources using plaintext HTTP, and only if the website redirects to an HTTPS URL, or if it specifies an HSTS policy in the initial HTTP response, the browser will then fetch the resource again over a secure connection.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -22,7 +29,14 @@
 	<p>The fundamental problem comes from the fact that negotiation of HTTP-related parameters (such as whether HTTPS or HTTP/3 can be used) is done through HTTP itself (either via a redirect, HSTS and/or Alt-Svc headers). This leads to a chicken and egg problem where the client needs to use the most basic HTTP configuration that has the best chance of succeeding for the initial request. In most cases this means using plaintext HTTP/1.1. Only after it learns of parameters can it change its configuration for the following requests.</p>
 	<p>But before the browser can even attempt to connect to the website, it first needs to resolve the website’s domain to an IP address via DNS. This presents an opportunity: what if additional information required to establish a connection could be provided, in addition to IP addresses, with DNS?</p>
 	<p>That’s what we’re excited to be announcing today: Cloudflare has rolled out initial support for HTTPS records to our edge network. Cloudflare’s DNS servers will now automatically generate HTTPS records on the fly to advertise whether a particular zone supports HTTP/3 and/or HTTP/2, based on whether those features are enabled on the zone.</p>
-	<h3>Service Bindings via DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="service-bindings-via-dns">Service Bindings via DNS</h3>
+		<a href="https://blog.cloudflare.com/#service-bindings-via-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://tools.ietf.org/html/draft-ietf-dnsop-svcb-https-01">The new proposal</a>, currently discussed by the Internet Engineering Task Force (IETF) defines a family of DNS resource record types (“SVCB”) that can be used to negotiate parameters for a variety of application protocols.</p>
 	<p>The generic DNS record “SVCB” can be instantiated into records specific to different protocols. The draft specification defines one such instance called “HTTPS”, specific to the HTTP protocol, which can be used not only to signal to the client that it can connect in over a secure connection (skipping the initial unsecured request), but also to advertise the different HTTP versions supported by the website. In the future, potentially even more features could be advertised.</p>
 	<pre class="language-bash"><code class="language-bash">example.com 3600 IN HTTPS 1 . alpn=”h3,h2”</code></pre>
@@ -36,7 +50,14 @@
 example.com 3600 IN HTTPS 2 example.org alpn=”h2”</code></pre>
 	<p>In this case the “example.com” HTTPS service can be provided by both “example.net” (which supports both HTTP/3 and HTTP/2, in addition to HTTP/1.x) as well as “example.org” (which only supports HTTP/2 and HTTP/1.x). The client will first need to fetch A and AAAA records for “example.net” or “example.org” before being able to connect, which might increase the connection latency, but the service operator can make use of the IP hint parameters discussed above in this case as well, to reduce the amount of required DNS lookups the client needs to perform.</p>
 	<p>This means that SVCB and HTTPS records might finally provide a way for SRV-like functionality to be supported by popular browsers and other clients that have historically not supported SRV records.</p>
-	<h3>There is always room at the top apex</h3>
+	<div class="flex anchor relative">
+		<h3 id="there-is-always-room-at-the-top-apex">There is always room at the top apex</h3>
+		<a href="https://blog.cloudflare.com/#there-is-always-room-at-the-top-apex" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When setting up a website on the Internet, it’s common practice to use a “www” subdomain (like in “<a href="https://www.cloudflare.com">www.cloudflare.com</a>”) to identify the site, as well as the “apex” (or “root”) of the domain (in this case, “cloudflare.com”). In order to avoid duplicating the DNS configuration for both domains, the “www” subdomain can typically be configured as a <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/#cnamesforthewin">CNAME (Canonical Name) record</a>, that is, a record that maps to a different DNS record.</p>
 	<pre class="language-bash"><code class="language-bash">cloudflare.com.   3600 IN A 192.0.2.1
 cloudflare.com.   3600 IN AAAA 2001:db8::1
@@ -47,7 +68,14 @@ www               3600 IN CNAME cloudflare.com.</code></pre>
 	<p>But what does this all have to do with SVCB and HTTPS records? Well, it turns out that those records can also solve this problem, by defining an alternative format called “alias form” that behaves in the same manner as a CNAME in all the useful ways, but without the annoying historical baggage. A domain operator will be able to define a record such as:</p>
 	<pre class="language-bash"><code class="language-bash">example.com. 3600 IN HTTPS example.org.</code></pre>
 	<p>and expect it to work as if a CNAME was defined, but without the subtle side-effects.</p>
-	<h3>One more thing</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing">One more thing</h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/encrypted-sni">Encrypted SNI</a> is an extension to TLS intended to improve privacy of users on the Internet. You might remember how it makes use of a custom DNS record to advertise the server’s public key share used by clients to then derive the secret key necessary to actually encrypt the SNI. In newer revisions of the specification (which is now called “Encrypted ClientHello” or “ECH”) the custom TXT record used previously is simply replaced by a new parameter, called “echconfig”, for the SVCB and HTTPS records.</p>
 	<p>This means that SVCB/HTTPS are a requirement to support newer revisions of Encrypted SNI/Encrypted ClientHello. More on this later this year.</p>
 	<figure class="kg-card kg-image-card ">
@@ -55,7 +83,14 @@ www               3600 IN CNAME cloudflare.com.</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EBQrn9Y1mOFSs0PtAWtri/bcffce047ef4619f823dd8151eaabc39/image1-28.png" alt="" class="kg-image" width="1999" height="852" loading="lazy">
 
 	</figure>
-	<h3>What now?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-now">What now?</h3>
+		<a href="https://blog.cloudflare.com/#what-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This all sounds great, but what does it actually mean for Cloudflare customers? As mentioned earlier, we have enabled initial support for HTTPS records across our edge network. Cloudflare’s DNS servers will automatically generate HTTPS records on the fly to advertise whether a particular zone supports HTTP/3 and/or HTTP/2, based on whether those features are enabled on the zone, and we will later also add Encrypted ClientHello support.</p>
 	<p>Thanks to Cloudflare’s large network that spans millions of web properties (<a href="https://w3techs.com/technologies/history_overview/dns_server">we happen to be one of the most popular DNS providers</a>), serving these records on our customers' behalf will help build a more secure and performant Internet for anyone that is using a supporting client.</p>
 	<p>Adopting new protocols requires cooperation between multiple parties. We have been working with various browsers and clients to increase the support and adoption of HTTPS records. Over the last few weeks, Apple’s iOS 14 release has included <a href="https://mailarchive.ietf.org/arch/msg/dnsop/eeP4H9fli712JPWnEMvDg1sLEfg">client support for HTTPS records</a>, allowing connections to be upgraded to QUIC when the HTTP/3 parameter is returned in the DNS record. Apple has reported that so far, of the population that has manually enabled HTTP/3 on iOS 14, 8% of the QUIC connections had the HTTPS record response.</p>

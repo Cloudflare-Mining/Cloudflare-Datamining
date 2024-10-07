@@ -11,7 +11,15 @@
 	<p>We have organized the trends we observed around three different topic areas: <a href="https://radar.cloudflare.com/year-in-review/2022#traffic">Traffic</a>, <a href="https://radar.cloudflare.com/year-in-review/2022#adoption">Adoption</a>, and <a href="https://radar.cloudflare.com/year-in-review/2022#security">Security</a>. The content covered within each of these areas is described in more detail in their respective sections below. Building on the <a href="https://radar.cloudflare.com/year-in-review-2021">2021 Year In Review</a>, we have incorporated several additional metrics this year, and have also improved the underlying methodology. (As such, the charts are not directly comparable to develop insights into year-over-year changes.)</p>
 	<p>Website visualizations shown at a weekly granularity cover the period from January 2 through November 26, 2022 (the start of the first full week of the year through the end of the last full week of November). We plan to update the underlying data sets through the end of the year in early 2023. Trends for nearly 200 locations are available on the website, with some smaller or less populated locations excluded due to insufficient data.</p>
 	<p>Before we jump in, we urge anyone who prefers to see the headline stats up front and to explore the data themselves to go ahead and visit <a href="https://radar.cloudflare.com/year-in-review/2022">the website</a>. Anyone who wants a more lengthy, but curated set of observations should continue reading below. Regardless, we encourage you to consider how the trends presented within this post and the website’s various sections impact your business or organization, and to think about how these insights can inform actions that you can take to improve user experience or enhance your security posture.</p>
-	<h2>Traffic</h2>
+	<div class="flex anchor relative">
+		<h2 id="traffic">Traffic</h2>
+		<a href="https://blog.cloudflare.com/#traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lu0ehrdzMAdQRQTB1GjG3/2d72a2206363afe2598b038969f32eaf/image1-56.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
@@ -20,7 +28,14 @@
 	<p>Anyone following recent technology headlines might assume that the Internet's decades-long trend of incredible growth would have finally begun to falter. In times like these, data is key. Our data indicates that global Internet traffic, which grew at 23% this year, is as robust as ever.</p><!--kg-card-begin: html--><a id="trafficgrowth"></a>To determine the traffic trends over time, we first established a baseline, calculated as the average daily traffic volume (excluding bot traffic) over the second full calendar week (January 9-15) of 2022. We chose the second calendar week to allow time for people to get back into their “normal” routines (school, work, etc.) after the winter holidays and New Year’s Day. The percent change shown on the trend lines in our charts are calculated relative to the baseline value, and represents a seven-day trailing average — it does not represent absolute traffic volume for a location. The seven-day averaging is done to smooth the sharp changes seen with a daily granularity.
 	<p></p><!--kg-card-end: html-->
 	<p>In addition to calculating traffic growth, our <a href="https://1.1.1.1/dns">1.1.1.1 public DNS resolver</a> and broad global customer base enables us to have a unique view into online activity. This includes insights into the most popular types of Internet content and the most popular Internet services in general and across specific categories, as well as the impact of bots. Of course, none of this matters if connectivity is unavailable, so we also drill down into major Internet disruptions observed in 2022.</p>
-	<h3>Traffic trends</h3>
+	<div class="flex anchor relative">
+		<h3 id="traffic-trends">Traffic trends</h3>
+		<a href="https://blog.cloudflare.com/#traffic-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After an initial dip, <a href="https://radar.cloudflare.com/year-in-review/2022#traffic-growth">worldwide Internet traffic</a> saw nominal growth coinciding with the 2022 Olympic Winter Games in Beijing, but slipped again in the weeks after their conclusion. After a couple of months of slight growth, traffic again dipped below baseline heading into July. However, after reaching that nadir, Internet traffic experienced a fairly consistent rate of growth through the back part of the year. An upwards inflection at the end of November is visible in the worldwide traffic graph as well as the traffic graphs of a number of locations. Traffic analysis showed that this increase resulted from the convergence of early holiday shopping traffic (to <a href="https://www.cloudflare.com/ecommerce">e-commerce sites</a>) with the run-up to and early days of FIFA World Cup Qatar 2022.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -50,7 +65,14 @@
 	<p>In sharp contrast to other Asian countries, in <a href="https://radar.cloudflare.com/year-in-review/2022/kr#traffic-category-popularity">South Korea</a>, Internet Communication was consistently the second most popular category during the year. Elsewhere, Internet Communication was occasionally among the top five, but usually within the top 10. Internet Communication was followed closely by Entertainment and Business &amp; Economy. The former saw multiple periods of increased traffic through the year, in contrast to other categories, which saw traffic share remain fairly consistent over time.</p>
 	<p>Traffic distribution in <a href="https://radar.cloudflare.com/year-in-review/2022/tr#traffic-category-popularity">Turkey</a> represented a rare departure from most other locations around the world. Although Technology started the year as the most popular category, its popularity waned during the back half of the year, ending below Shopping &amp; Auctions and Society &amp; Lifestyle. These latter two saw gradual growth starting in September, and posted larger increases in November. Business &amp; Economy and Entertainment sites were comparatively less popular here, in contrast to many other locations.</p>
 	<p><a href="https://yir.radar-frontend.pages.dev/year-in-review/2022/am#traffic-category-popularity">Armenia’s</a> traffic distribution also ran counter to that seen in most other locations. Entertainment was the most popular category for nearly the entire year, except for the final week of November. Technology was generally the second most popular category, although it was surpassed by Gambling several times throughout the year. However, Gambling saw its popularity fall significantly in November, as it was surpassed by the Shopping &amp; Auctions and Business &amp; Economy categories.</p>
-	<h3>Most popular Internet services</h3>
+	<div class="flex anchor relative">
+		<h3 id="most-popular-internet-services">Most popular Internet services</h3>
+		<a href="https://blog.cloudflare.com/#most-popular-internet-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The luxury of being a popular Internet service is that the service’s brand becomes very recognizable, so it will be no surprise that Google was #1 in our General ranking.</p>
 	<p><b>Top 10 — General, late 2022 ranking</b>1. Google2. Facebook3. Apple, TikTok (tie)5. YouTube6. Microsoft7. Amazon Web Services8. Instagram9. Amazon10. iCloud, Netflix, Twitter, Yahoo (tie)</p><!--kg-card-begin: html--><a id="internetservices"></a>Last year TikTok was at the top of our ranking. However, the results between the two years aren’t comparable. As part of our launch of <a href="https://blog.cloudflare.com/radar2">Radar 2.0</a>, we introduced improvements to our <a href="https://blog.cloudflare.com/radar-domain-rankings">domain ranking algorithms</a>, and this year’s rankings are based on those new algorithms. In addition, this year we have grouped domains that all belong to a single Internet service. For example, Google operates google.com, google.pt, and mail.google.com among others, so we aggregated the popularity of each domain under a single “Google” Internet service for simplicity. However, while Meta operates both Facebook and Instagram, consumers typically perceive those brands as distinct, so we decided to group domains associated with those services separately.
 	<p></p><!--kg-card-end: html-->
@@ -124,7 +146,15 @@
 
 	</figure>
 	<p>The war in Ukraine is now ten months old, and throughout the time it has been going on, multiple networks across the country have experienced outages. In <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">March</a>, we observed outages in Mariupol and other cities where fighting was taking place. In late <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine">May</a>, an extended Internet disruption began in Kherson, coincident with <a href="https://radar.cloudflare.com/asn/47598">AS47598 (Khersontelecom)</a> starting to route traffic through Russian network provider <a href="https://radar.cloudflare.com/asn/201776">AS201776 (MIranda)</a>, rather than a Ukrainian upstream. And in <a href="https://twitter.com/CloudflareRadar/status/1579397119898660864">October</a>, widespread power outages disrupted Internet connectivity in Kharkiv, Lviv, Kyiv, Poltova Oblast, and Zhytomyr. These outages and others were covered in more detail in the <a href="https://blog.cloudflare.com/searchresults/#q=internet%20disruptions%20overview&amp;sort=date%20descending&amp;f:@customer_facing_source=[Blog]">quarterly Internet disruption overview blog posts</a>, as well as several other <a href="https://blog.cloudflare.com/tag/ukraine">Ukraine-specific blog posts</a>.</p>
-	<h2>Adoption</h2>
+	<div class="flex anchor relative">
+		<h2 id="adoption">Adoption</h2>
+		<a href="https://blog.cloudflare.com/#adoption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TcYEgwC24NJqyzaBo917I/f3fde85f1480f59c484f6097c81ca2a7/image20.png" alt="" class="kg-image" width="1800" height="406" loading="lazy">
@@ -173,7 +203,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7awTC8tOedP4bS8z4U397F/e8432b1c56741e596356b490ea478ec5/20.png" alt="" class="kg-image" width="1600" height="706" loading="lazy">
 
 	</figure>
-	<h3>IPv6 adoption</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-adoption">IPv6 adoption</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-adoption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although IPv6 has been around <a href="https://www.rfc-editor.org/rfc/rfc2460">for nearly a quarter-century</a>, adoption has been relatively slow over that time. However, with the <a href="https://ipv4.potaroo.net">exhaustion of available IPv4 address space</a> and the <a href="https://www.statista.com/statistics/1183457/iot-connected-devices-worldwide">growth in connected and mobile devices</a>, IPv6 plays a critical role in the future of the Internet. Cloudflare has enabled customers to deliver content over IPv6 <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">since our first birthday</a>, back in 2011, and we have evolved support in <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">several</a> <a href="https://blog.cloudflare.com/always-on-ipv6">ways</a> since that time. Analysis of traffic to the Cloudflare network provides us with insights into IPv6 adoption across the Internet.</p>
 	<p>On a <a href="https://radar.cloudflare.com/year-in-review/2022#ipv6-adoption">global basis</a>, IPv6 adoption hovered around the 35% mark throughout the year, with nominal growth evident in the trend line shown in the graph. While it is encouraging to see one of every three requests for dual stacked content being made over IPv6, this adoption rate demonstrates a clear opportunity for improvement.</p><!--kg-card-begin: html--><a id="ipv6"></a>To calculate IPv6 adoption for each location, we identified the set of customer zones that had IPv6 enabled (were “dual stacked”) during 2022, and then divided the daily request count for the zones over IPv6 by the daily sum of IPv4 and IPv6 requests for the zones, filtering out bot traffic in both cases. The line shown in the trends graph represents a seven-day trailing average. For the top 10 chart, we calculated the average IPv6 adoption level on a monthly basis per location, and then ranked the locations by percentage. The chart illustrates the ranking by month, and how those rankings change across the year.
 	<p></p><!--kg-card-end: html-->
@@ -197,12 +234,27 @@
 
 	</figure>
 	<p>As noted above, India had the highest level of IPv6 adoption through 2022. In looking at the remainder of the top 10 list, <a href="https://radar.cloudflare.com/year-in-review/2022/sa#ipv6-adoption">Saudi Arabia</a> and <a href="https://radar.cloudflare.com/year-in-review/2022/my#ipv6-adoption">Malaysia</a> traded places several times during the year as the locations with the second and third-highest adoption rates, at just under 60% and around 55% respectively. The <a href="https://radar.cloudflare.com/year-in-review/2022/us#ipv6-adoption">United States</a> appeared towards the bottom of the top 10 list during the first quarter, but ranked lower for the remainder of the year. <a href="https://radar.cloudflare.com/year-in-review/2022/be#ipv6-adoption">Belgium</a> proved to be the most consistent, holding the fourth-place spot from March through November, with around 55% IPv6 adoption. Overall, a total of 14 locations appeared among the top 10 at some point during the year.</p>
-	<h3>Mobile device usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="mobile-device-usage">Mobile device usage</h3>
+		<a href="https://blog.cloudflare.com/#mobile-device-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each year, mobile devices become more and more powerful, and are increasingly being used as the primary onramp to the Internet in many places. In fact, in some parts of the world, so-called “desktop” devices (which includes laptop form factors) are the exception for Internet access, not the rule.</p><!--kg-card-begin: html--><a id="mobile"></a>Analysis of the information included with each content request enables us to classify the type of device (mobile or desktop) used to make the request. To calculate the percentage of mobile device usage by location, we divided the number of requests made by mobile devices over the course of a week by the total number of requests seen that week, filtering out bot traffic in both cases. For the top 10 chart, we ranked the locations by the calculated percentage. The chart illustrates the ranking by month, and how those rankings change across the year.
 	<p></p><!--kg-card-end: html-->
 	<p>In looking at the <a href="https://radar.cloudflare.com/year-in-review/2022#mobile-device-usage">top 10 chart</a>, we note that Iran and Sudan held the top two slots for much of the year, bookended by Yemen in January and Mauritania in November. Below the top two spots, however, significant volatility is clear throughout the year within the rest of the top 10. However, this movement was actually concentrated across a relatively small percentage range, with just five to ten percentage points separating the top and bottom ranked locations, depending on the week. The top ranked locations generally saw 80-85% of traffic from mobile devices, while the bottom ranked locations saw 75-80% of traffic from mobile devices.</p>
 	<p>This analysis reinforces the importance of mobile connectivity in Iran, and underscores why mobile network providers were targeted for Internet shutdowns in September and October, as discussed above. (And the shutdowns subsequently explain why Iran disappears from the top 10 list after September.)</p>
-	<h2>Security</h2>
+	<div class="flex anchor relative">
+		<h2 id="security">Security</h2>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eOxA1vP4M0BQMHmcNVES2/94de5bdfe052b6249088f006bb04967d/image27-1.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
@@ -262,7 +314,14 @@
 	<h3><a id="phishing"></a>Phishing email sources</h3><!--kg-card-end: html-->
 	<p>Phishing emails are ultimately intended to trick users into providing attackers with login credentials for important websites and applications. At a consumer level, this could include an e-commerce site or banking application, while for businesses, this could include code repositories or employee information systems. For customers protected by <a href="https://www.cloudflare.com/products/zero-trust/email-security">Cloudflare Area 1 Email Security</a>, we can identify the location that these phishing emails are being sent from. IP address geolocation is used to identify origination location, and the aggregate email counts apply to emails processed by Area 1 only. For the top 10 chart, we aggregated the number of phishing emails seen on a weekly basis per location, and then ranked the locations by phishing email volume. The chart illustrates the ranking by week, and how those rankings change across the year.</p>
 	<p>Reviewing the <a href="https://radar.cloudflare.com/year-in-review/2022#top-phishing-email-source-locations">top 10 list</a>, we find that the United States was the top source of phishing emails observed by Area 1 during 2022. It held the top spot for nearly the entire year, ceding it only once to Germany in November. The balance of the top 10 saw a significant amount of volatility over time, with a total of 23 locations holding a spot in the rankings for at least one month during the year. These locations were well-distributed geographically across the Americas, Europe, and Asia, highlighting that no one region of the world is a greater threat than others. Obviously, distrusting or rejecting all email originating from these locations is not a particularly practical response, but applying additional scrutiny can help keep your organization, and the Internet, safer.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attempting to concisely summarize our “year in review” observations is challenging, especially as we only looked at trends in this blog post across a small fraction of the nearly 200 locations included in the website’s visualizations. Having said that, we will leave you with the following brief thoughts:</p>
 	<ul>
 		<li>
@@ -277,9 +336,24 @@
 	</ul>
 	<p>As we said in the introduction, we encourage you to visit the full <a href="https://radar.cloudflare.com/year-in-review/2022">Cloudflare Radar 2022 Year In Review website</a> and explore the trends relevant to locations and industries of interest, and to consider how they impact your organization so that you are appropriately prepared for 2023.</p>
 	<p>If you have any questions, you can contact the Cloudflare Radar team at <a href="mailto:radar@cloudflare.com">radar@cloudflare.com</a> or on Twitter at <a href="https://twitter.com/cloudflareradar">@CloudflareRadar</a>.</p>
-	<h2>Acknowledgements</h2>
+	<div class="flex anchor relative">
+		<h2 id="acknowledgements">Acknowledgements</h2>
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It truly took a village to produce the Cloudflare Radar 2022 Year In Review, and we would be remiss if we didn’t acknowledge the contributions of colleagues that were instrumental in making this project possible. Thank you to: Sabina Zejnilovic, Carlos Azevedo, Jorge Pacheco (Data Science); Ricardo Baeta, Syeef Karim (Design); Nuno Pereira, Tiago Dias, Junior Dias de Oliveira (Front End Development); João Tomé (Most popular Internet services); and Davide Marquês, Paula Tavares, Celso Martinho (Project/Engineering Management).</p>
-	<h2>Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/9a4ed6bc4b4a8979b44c8ca34691e537/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F9a4ed6bc4b4a8979b44c8ca34691e537%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

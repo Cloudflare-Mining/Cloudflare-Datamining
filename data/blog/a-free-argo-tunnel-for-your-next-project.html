@@ -3,7 +3,14 @@
 	<p><a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> lets you expose a server to the Internet without opening any ports. The service runs a lightweight process on your server that creates outbound tunnels to the Cloudflare network. Instead of managing DNS, network, and firewall complexity, Argo Tunnel helps administrators serve traffic from their origin through Cloudflare with a single command.</p>
 	<p>We built Argo Tunnel to remove the burden of securing and connecting servers to the Internet. This new model makes it easier to run a service in multi-cloud and hybrid deployments by replacing manual and error-prone work with a process that adds intelligence to the last-mile between Cloudflare and your origins or clusters. However, the service was previously only available to users with Cloudflare accounts. We want to make Argo Tunnel more accessible for any project.</p>
 	<p>Starting today, any user, even those without a Cloudflare account, can try this new method of connecting their server to the Internet. Argo Tunnel can now be used in a free model that will create a new URL, known only to you, that will proxy traffic to your server. We’re excited to make connecting a server to the Internet more accessible for everyone.</p>
-	<h3>What is Argo Tunnel?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-argo-tunnel">What is Argo Tunnel?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-argo-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo Tunnel replaces legacy models of connecting a server to the Internet with a secure, persistent connection to Cloudflare. Since Cloudflare first launched in 2010, customers have added their site to our platform by changing their name servers at their domain’s <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> to ones managed by Cloudflare. Administrators then create a DNS record in our dashboard that points visitors to their domain to their origin server.</p>
 	<p>When requests are made for those domains, the queries hit our data centers first. We’re able to use that position to block malicious traffic like DDoS attacks. However, if attackers discovered that origin IP, they could bypass Cloudflare’s security features and attack the server directly. Adding additional protections against that risk introduced more hassle and configuration.</p>
 	<figure class="kg-card kg-image-card ">
@@ -13,7 +20,14 @@
 	</figure>
 	<p><a href="https://blog.cloudflare.com/argo-tunnel">One year ago</a>, Cloudflare launched Argo Tunnel to solve those problems. Argo Tunnel connects your origin server to the Cloudflare network by running a lightweight daemon on your machine that only makes outbound calls. The process generates DNS records in the dashboard for you, removing the need to manually configure records and origin IP addresses.</p>
 	<p>Most importantly, Argo Tunnel helps shield your origin by simplifying the firewall rules you need to configure. Argo Tunnel makes outbound calls to the Cloudflare network and proxies requests back to your server. You can then disable all ingress to the machine and ensure that Cloudflare’s security features always stand between your server and the rest of the Internet. In addition to secure, we made it fast. The connection uses our Argo Smart Routing technology to find the most performant path from your visitors to your origin.</p>
-	<h3>How can I use the free version?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-use-the-free-version">How can I use the free version?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-the-free-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo Tunnel is now available to all users without a Cloudflare account. All that is needed is the Cloudflare daemon, <code>cloudflared</code>, running on your machine. With a single command, <code>cloudflared</code> will generate a random subdomain of “trycloudflare.com” and begin proxying traffic to your server.</p>
 	<ol>
 		<li>
@@ -35,7 +49,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Ns3XubJnw6Bz0fnZ6l3eO/78e67d649de898adb3e632f5576e33eb/Screen-Shot-2019-06-11-at-9.58.58-AM-1.png" alt="" class="kg-image" width="1138" height="690" loading="lazy">
 
 	</figure>
-	<h3>How can I use it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-use-it">How can I use it?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Run a web server on your laptop to share a project with collaborates on different networks</p>
@@ -47,9 +68,23 @@
 			<p>Perform speed tests from different regions</p>
 		</li>
 	</ul>
-	<h3>Why is it free?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-it-free">Why is it free?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-it-free" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want more users to experience the speed and security improvements of Argo Tunnel (and Argo Smart Routing). We hope you’ll feel the same way about those benefits after testing it with the free version and that you’ll start using it for your production sites.</p>
 	<p>We also don’t guarantee any SLA or up-time of the free service - we plan to test new Argo Tunnel features and improvements on these free tunnels. This provides us with a group of connections to test before we deploy to production customers. Free tunnels are meant to be used for testing and development, not for deploying a production website.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can read our guide <a href="https://developers.cloudflare.com/argo-tunnel/trycloudflare">here</a> to start using the free version of Argo Tunnel. Got feedback? Please send it <a href="https://community.cloudflare.com/t/trycloudflare-free-argo-tunnel-tool/74871">here</a>.</p>
 </div>

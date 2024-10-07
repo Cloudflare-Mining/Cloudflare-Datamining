@@ -16,7 +16,14 @@
 	</figure>
 	<p>According to Ukraine’s <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664">vice Prime-Minister</a>, Mykhailo Fedorov, and also the <a href="https://www.facebook.com/dsszzi/posts/306820328295777">State Service of Special Communications and Information Protection</a>, on Wednesday morning, May 4, “the communication cut off by the occupiers in Kherson and Kherson region was restored” using “backup power channels”. The reasons presented for the lack of communication “were interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”.</p>
 	<p>Yuriy Shchyhol, head of the organization, also said during a briefing that the occupiers had connected Ukrainian Internet users to the Russian network by switching fiber-optic lines and communication stations. “This is a gross violation of international law. We have already appealed to the International Telecommunication Union to impose sanctions on the Russian Federation”, he <a href="https://www.facebook.com/dsszzi/posts/306820328295777">explained</a>.</p>
-	<h3>Shift in routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="shift-in-routing">Shift in routing</h3>
+		<a href="https://blog.cloudflare.com/#shift-in-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Around the time that the outage referenced above began, we also observed a shift in routing for the <a href="https://bgpview.io/prefix/91.206.110.0/23">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213">AS35213</a>. However, a day later, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en">the largest digital services provider in Russia</a>”. This aligns with the claims noted above about connecting Ukrainian Internet users to the Russian network.</p>
 	<p>Peer AS</p>
 	<p>Last Update</p>
@@ -43,7 +50,14 @@
 	<p>AS1273 (CW Vodafone Group PLC)</p>
 	<p>5/4/2022 03:11:25</p>
 	<p>1273 12389 201776 47598</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we saw, not only was there an Internet outage in the Kherson region, but there was also a shift in routing at least in one Kherson network that, for a few days, left traffic passing through Russian networks (along with all the restrictions and limitations, such as content blocking, such an arrangement <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">could potentially have</a>).</p>
 	<p>Availability of and control over physical resources have always been a key focus of war, but it is now clear that Internet resources now hold similar importance during times of conflict. This is also demonstrated by what happened to the Internet in Crimea after the <a href="https://en.wikipedia.org/wiki/Annexation_of_Crimea_by_the_Russian_Federation">annexation of 2014</a>, as explained <a href="https://hal.archives-ouvertes.fr/hal-03100247/document">in-depth in this 2020 study</a>.</p>
 	<p>You can follow Internet trends (including details about <a href="https://blog.cloudflare.com/asn-on-radar">ASNs</a>) on <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, and also on <a href="https://twitter.com/CloudflareRadar">Radar’s Twitter account</a>.</p>

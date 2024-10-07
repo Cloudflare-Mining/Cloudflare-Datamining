@@ -12,11 +12,25 @@
 	<p>— <a href="https://blog.cloudflare.com/1111-warp-better-vpn">We operate WARP</a> — our Wireguard protocol based tunneling service — which uses UDP under the hood.</p>
 	<p>— We have a lot of generic UDP traffic going through <a href="https://www.cloudflare.com/products/cloudflare-spectrum">our Spectrum service</a>.</p>
 	<p>Although UDP is simple in principle, there is a lot of domain knowledge needed to run things at scale. In this blog post we'll cover the basics: all you need to know about UDP servers to get started.</p>
-	<h3>Connected vs unconnected</h3>
+	<div class="flex anchor relative">
+		<h3 id="connected-vs-unconnected">Connected vs unconnected</h3>
+		<a href="https://blog.cloudflare.com/#connected-vs-unconnected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How do you "accept" connections on a UDP server? If you are using unconnected sockets, you generally don't.</p>
 	<p>But let's start with the basics. UDP sockets can be "connected" (or "established") or "unconnected". Connected sockets have a full 4-tuple associated {source ip, source port, destination ip, destination port}, unconnected sockets have 2-tuple {bind ip, bind port}.</p>
 	<p>Traditionally the connected sockets were mostly used for outgoing flows, while unconnected for inbound "server" side connections.</p>
-	<h3>UDP client</h3>
+	<div class="flex anchor relative">
+		<h3 id="udp-client">UDP client</h3>
+		<a href="https://blog.cloudflare.com/#udp-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we'll learn today, these can be mixed. It is possible to use connected sockets for ingress handling, and unconnected for egress. To illustrate the latter, consider these two snippets. They do the same thing — send a packet to the DNS resolver. First snippet is using a connected socket:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -33,7 +47,14 @@
 	<p>Generally speaking for outbound traffic it's preferable to use connected UDP sockets.</p>
 	<p>Connected sockets can save route lookup on each packet by employing a clever optimization — Linux can save a route lookup result on <a href="https://elixir.bootlin.com/linux/v5.15.4/source/include/net/sock.h#L434">a connection struct</a>. Depending on the specifics of the setup this might save some CPU cycles.</p>
 	<p>For completeness, it is possible to roll a new source port and reuse a socket descriptor with an obscure trick called "dissolving of the socket association". It can be done with <code>connect(AF_UNSPEC)</code>, but this is rather advanced Linux magic.</p>
-	<h3>UDP server</h3>
+	<div class="flex anchor relative">
+		<h3 id="udp-server">UDP server</h3>
+		<a href="https://blog.cloudflare.com/#udp-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally on the server side UDP requires unconnected sockets. Using them requires a bit of finesse. To illustrate this, let's write an UDP echo server. In practice, you probably shouldn't write such a server, due to a risk of becoming a DoS reflection vector. <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">Among other protections</a>, like rate limiting, UDP services should always respond with a strictly smaller amount of data than was sent in the initial packet. But let's not digress, the naive UDP echo server might look like:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -45,7 +66,14 @@
 	<p>— It's totally possible for the received packet to have an empty payload.</p>
 	<p>— What about inbound ICMP errors?</p>
 	<p>These problems are specific to UDP, they don't happen in the TCP world. TCP can transparently deal with MTU / fragmentation and ICMP errors. Depending on the specific protocol, a UDP service might need to be more complex and pay extra care to such corner cases.</p>
-	<h3>Sourcing packets from a wildcard socket</h3>
+	<div class="flex anchor relative">
+		<h3 id="sourcing-packets-from-a-wildcard-socket">Sourcing packets from a wildcard socket</h3>
+		<a href="https://blog.cloudflare.com/#sourcing-packets-from-a-wildcard-socket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p>
 	<pre class="language-bash"><code class="language-bash">marek@mrprec:~$ sudo tcpdump -ni lo port 1234 -t
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
@@ -71,11 +99,25 @@ IP6 ::1.1234 &gt; ::1.41879: UDP, length 2</code></pre>
 
 	</figure>
 	<p>We can find here the IP address and interface number of the packet target. Notice, there's no place for a port number.</p>
-	<h3>Graceful server restart</h3>
+	<div class="flex anchor relative">
+		<h3 id="graceful-server-restart">Graceful server restart</h3>
+		<a href="https://blog.cloudflare.com/#graceful-server-restart" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many traditional UDP protocols, like DNS, are request-response based. Since there is no state associated with a higher level "connection", the server can restart, to upgrade or change configuration, without any problems. Ideally, sockets should be managed with the usual <a href="http://0pointer.de/blog/projects/socket-activation.html">systemd socket activation</a> to avoid the short time window where the socket is down.</p>
 	<p>Modern protocols are often connection-based. For such servers, on restart, it's beneficial to keep the old connections directed to the old server process, while the new server instance is available for handling the new connections. The old connections will eventually die off, and the old server process will be able to terminate. This is a common and easy practice in the TCP world where each connection has its own file descriptor. The old server process stops accept()-ing new connections and just waits for the old connections to gradually go away. <a href="http://nginx.org/en/docs/control.html#upgrade">NGINX has a good documentation</a> on the subject.</p>
 	<p>Sadly, in UDP you can't <code>accept()</code> new connections. Doing graceful server restarts for UDP is surprisingly hard.</p>
-	<h3>Established-over-unconnected technique</h3>
+	<div class="flex anchor relative">
+		<h3 id="established-over-unconnected-technique">Established-over-unconnected technique</h3>
+		<a href="https://blog.cloudflare.com/#established-over-unconnected-technique" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For some services we are using a technique which we call "established-over-unconnected". This comes from a realization that on Linux it's possible to create a connected socket *over* an unconnected one. Consider this code:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -97,7 +139,14 @@ ESTAB     0         0                    [::1]:44592              [::1]:1234    
 	<p>While this trick is nice, it's not without drawbacks — it's racy in two places. First, it's possible that the client will send more than one packet to the unconnected socket before the connected socket is created. The application code should work around it — if a packet received from the server socket belongs to an already existing connected flow, it shall be handed over to the right place. Then, during the creation of the connected socket, in the short window after <code>bind()</code> before <code>connect()</code> we might receive unexpected packets belonging to the unconnected socket! We don't want these packets here. It is necessary to filter the source IP/port when receiving early packets on the connected socket.</p>
 	<p>Is this approach worth the extra complexity? It depends on the use case. For a relatively small number of long-lived flows, it might be ok. For a high number of short-lived flows (especially DNS or NTP) it's an overkill.</p>
 	<p>Keeping old flows stable during service restarts is particularly hard in UDP. The established-over-unconnected technique is just one of the simpler ways of handling it. We'll leave another technique, based on SO_REUSEPORT ebpf, for a future blog post.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique.</p>
 	<p>Socket type</p>
 	<p>Created with</p>

@@ -6,27 +6,69 @@
 
 	</figure>
 	<p>Music is flowing through your headphones. Your hands are flying across the keyboard. You’re stringing together a masterpiece of code. The momentum is building up as you put on the finishing touches of your project. And at last, it’s ready for the world to see. Heart pounding with excitement and the feeling of victory, you push changes to the main branch…. only to end up waiting for the build to execute each step and spit out the build logs.</p>
-	<h2>Starting afresh</h2>
+	<div class="flex anchor relative">
+		<h2 id="starting-afresh">Starting afresh</h2>
+		<a href="https://blog.cloudflare.com/#starting-afresh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the launch of Cloudflare Pages, there is no doubt that the build experience has been its biggest source of criticism. From the amount of waiting to inflexibility of CI workflow, Pages had a lot of opportunity for growth and improvement. With Pages, our North Star has always been designing a developer platform that fits right into your workflow and oozes simplicity. User pain points have been and always will be our priority, which is why today we are thrilled to share a list of exciting updates to our build times, logs and settings!</p>
 	<p>Over the last three quarters, we implemented a new build infrastructure that speeds up Pages builds, so you can iterate quickly and efficiently. In February, we soft released the Pages Fast Builds Beta, allowing you to opt in to this new infrastructure on a per-project basis. This not only allowed us to test our implementation, but also gave our community the opportunity to try it out and give us direct feedback in <a href="https://discord.gg/cloudflaredev">Discord</a>. Today we are excited to announce the new build infrastructure is now generally available and automatically enabled for all existing and new projects!</p>
-	<h2>Faster build times</h2>
+	<div class="flex anchor relative">
+		<h2 id="faster-build-times">Faster build times</h2>
+		<a href="https://blog.cloudflare.com/#faster-build-times" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a developer, your time is extremely valuable, and we realize Pages builds were slow. It was obvious that creating an infrastructure that built projects faster and smarter was one of our top requirements.</p>
 	<p>Looking at a Pages build, there are four main steps: (1) initializing the build environment, (2) cloning your git repository, (3) building the application, and (4) deploying to Cloudflare’s global network. Each of these steps is a crucial part of the build process, and upon investigating areas suitable for optimization, we directed our efforts to cutting down on build initialization time.</p>
 	<p>In our old infrastructure, every time a build job was submitted, we created a new virtual machine to run that build, costing our users precious dev time. In our new infrastructure, we start jobs on machines that are ready and waiting to be used, taking a major chunk of time away from the build initialization step. This step previously ran for 2+ minutes, but with our new infrastructure update, projects are expected to see a build initialization time cut down to <b>2-3 SECONDS</b>.</p>
 	<p>This means less time waiting and more time iterating on your code.</p>
-	<h3>Fast and secure</h3>
+	<div class="flex anchor relative">
+		<h3 id="fast-and-secure">Fast and secure</h3>
+		<a href="https://blog.cloudflare.com/#fast-and-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our old build infrastructure, because we spun up a new virtual machine (VM) for every build, it would take several minutes to boot up and initialize with the Pages build image needed to execute the build. Alternatively, one could reuse a collection of VMs, assigning a new build to the next available VM, but containers share a kernel with the host operating system, making them far less isolated, posing a huge security risk. This could allow a malicious actor to perform a "container escape" to break out of their sandbox. We wanted the best of both worlds: the speed of a container with the isolation of a virtual machine.</p>
 	<p>Enter <a href="https://gvisor.dev">gVisor</a>, a container sandboxing technology that drastically limits the attack surface of a host. In the new infrastructure, each container running with gVisor is given its own independent application "kernel,” instead of directly sharing the kernel with its host. Then, to address the speed, we keep a cluster of virtual machines warm and ready to execute builds so that when a new Pages deployment is triggered, it takes just a few seconds for a new gVisor container to start up and begin executing meaningful work in a secure sandbox with near native performance.</p>
-	<h2>Stream your build logs</h2>
+	<div class="flex anchor relative">
+		<h2 id="stream-your-build-logs">Stream your build logs</h2>
+		<a href="https://blog.cloudflare.com/#stream-your-build-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After we solidified a fast and secure build, we wanted to enhance the user facing build experience. Because a build may not be successful every time, providing you with the tools you need to debug and access that information as fast as possible is crucial. While we have a long list of future improvements for a better logging experience, today we are starting by enabling you to stream your build logs.</p>
 	<p>Prior to today, with the aforementioned build steps required to complete a Pages build, you were required to wait until the build completed in order to view the resulting build logs. Easily addressable issues like incorrectly inputting the build command or specifying an environment variable would have required waiting for the entire build to finish before understanding the problem.</p>
 	<p>Today, we’re giving you the power to understand your build issues as soon as they happen. Spend less time waiting for your logs and start debugging the events of your builds within a second or less after they happen!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 62.708333333333336%;"><iframe src="https://iframe.videodelivery.net/ae1acc04a2c82cee4e0e905f6557c0bf?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fae1acc04a2c82cee4e0e905f6557c0bf%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h2>Control Branch Builds</h2>
+	<div class="flex anchor relative">
+		<h2 id="control-branch-builds">Control Branch Builds</h2>
+		<a href="https://blog.cloudflare.com/#control-branch-builds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, the build experience does not just include the events during execution but everything leading up to the trigger of a build. For our final trick, we’re enabling our users to have full control of the precise branches they’d like to include and exclude for automatic deployments.</p>
 	<p>Before today, Pages submitted builds for every commit in both production and preview environments, which led to queued builds and even more waiting if you exceeded your concurrent build limit. We wanted to provide even more flexibility to control your CI workflow. Now you can configure your build settings to specify branches to build, as well as skip ad hoc commits.</p>
-	<h3>Specify branches to build</h3>
+	<div class="flex anchor relative">
+		<h3 id="specify-branches-to-build">Specify branches to build</h3>
+		<a href="https://blog.cloudflare.com/#specify-branches-to-build" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While “unlimited staging” is one of Pages’ greatest advantages, depending on your setup, sometimes automatic deployments to the preview environment can cause extra noise.</p>
 	<p>In the Pages build configuration setting, you can specify automatic deployments to be turned off for the production environment, the preview environment, or specific preview branches. In a more extreme case, you can even pause all deployments so that any commit sent to your git source will not trigger a new Pages build.</p>
 	<p>Additionally, in your project’s settings, you can now configure the specific Preview branches you would like to include and exclude for automatic deployments. To make this configuration an even more powerful tool, you can use wildcard syntax to set rules for existing branches as well as any newly created preview branches.</p>
@@ -36,7 +78,14 @@
 
 	</figure>
 	<p><a href="https://developers.cloudflare.com/pages/platform/branch-build-controls">Read more in our Pages docs</a> on how to get started with configuring automatic deployments with Wildcard Syntax.</p>
-	<h3>Using CI Skip</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-ci-skip">Using CI Skip</h3>
+		<a href="https://blog.cloudflare.com/#using-ci-skip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes commits need to be skipped on an ad hoc basis. A small update to copy or a set of changes within a small timespan don’t always require an entire site rebuild. That’s why we also implemented a CI Skip command for your commit message, signaling to Pages that the update should be skipped by our builder.</p>
 	<p>With both CI Skip and configured build rules, you can keep track of your site changes in Pages’ deployment history.</p>
 	<figure class="kg-card kg-image-card ">
@@ -44,16 +93,58 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Nm9Zxx2FDkDz1OAvBq3OE/69270a511c514cdc5e56efe4f3cae3e1/image2-10.png" alt="skipped deployment" class="kg-image" width="1870" height="364" loading="lazy">
 
 	</figure>
-	<h2>Where we’re going</h2>
+	<div class="flex anchor relative">
+		<h2 id="where-were-going">Where we’re going</h2>
+		<a href="https://blog.cloudflare.com/#where-were-going" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re extremely excited to bring these updates to you today, but of course, this is only the beginning of improving our build experience. Over the next few quarters, we will be bringing more to the build experience to create a seamless developer journey from site inception to launch.</p>
-	<h3>Incremental builds and caching</h3>
+	<div class="flex anchor relative">
+		<h3 id="incremental-builds-and-caching">Incremental builds and caching</h3>
+		<a href="https://blog.cloudflare.com/#incremental-builds-and-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From beta testing, we noticed that our new infrastructure can be less impactful on larger projects that use heavier frameworks such as Gatsby. We believe that every user on our developer platform, regardless of their use case, has the right to fast builds. Up next, we will be implementing incremental builds to help Pages identify only the deltas between commits and rebuild only files that were directly updated. We will also be implementing other caching strategies such as caching external dependencies to save time on subsequent builds.</p>
-	<h3>Build image updates</h3>
+	<div class="flex anchor relative">
+		<h3 id="build-image-updates">Build image updates</h3>
+		<a href="https://blog.cloudflare.com/#build-image-updates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because we’ve been using the same build image we launched Pages with back in 2021, we are going to make some major updates. Languages release new versions all the time, and we want to make sure we update and maintain the latest versions. An updated build image will mean faster builds, more security and of course supporting all the latest versions of languages and tools we provide. With new build image versions being released, we will allow users to opt in to the updated builds in order to maintain compatibility with all existing projects.</p>
-	<h3>Productive error messaging</h3>
+	<div class="flex anchor relative">
+		<h3 id="productive-error-messaging">Productive error messaging</h3>
+		<a href="https://blog.cloudflare.com/#productive-error-messaging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lastly, while streaming build logs helps you to identify those easily addressable issues, the infamous “Internal error occurred” is sometimes a little more cryptic to decipher depending on the failure. While we recently published a “<a href="https://developers.cloudflare.com/pages/platform/debugging-pages">Debugging Cloudflare Pages</a>” guide, in the future we’d like to provide the error feedback in a more productive manner, so you can easily identify the issue.</p>
-	<h2>Have feedback?</h2>
+	<div class="flex anchor relative">
+		<h2 id="have-feedback">Have feedback?</h2>
+		<a href="https://blog.cloudflare.com/#have-feedback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As always, your feedback defines our roadmap. With all the updates we’ve made to our build experience, it’s important we hear from you! You can get in touch with our team directly through <a href="https://discord.gg/cloudflaredev">Discord</a>. Navigate to our Pages specific section and check out our various channels specific to different parts of the product!</p>
-	<h3>Join us at Cloudflare Connect!</h3>
+	<div class="flex anchor relative">
+		<h3 id="join-us-at-cloudflare-connect">Join us at Cloudflare Connect!</h3>
+		<a href="https://blog.cloudflare.com/#join-us-at-cloudflare-connect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Interested in learning more about building with Cloudflare Pages? If you’re based in the New York City area, join us on Thursday, May 12th for a series of workshops on how to build a full stack application on Pages! Follow along with a fully hands-on lab, featuring Pages in conjunction with other products like Workers, Images and Cloudflare Gateway, and hear directly from our product managers. <a href="https://events.www.cloudflare.com/flow/cloudflare/connect2022nyc/landing/page/page">Register now</a>!</p>
 </div>

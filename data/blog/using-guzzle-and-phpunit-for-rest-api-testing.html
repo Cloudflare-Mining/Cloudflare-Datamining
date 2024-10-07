@@ -8,7 +8,14 @@
 	<p>APIs are increasingly becoming the backbone of the modern internet - whether you're ordering food from an app on your phone or browsing a blog using a modern JavaScript framework, chances are those requests are flowing through an API. Given the need for APIs to evolve through refactoring and extension, having great automated tests allows you to develop fast without needing to slow down to run manual tests to work out what’s broken. Additionally, by having tests in place you’re able to firmly identify the requirements that your API should meet, your API tests effectively form a tangible and executable specification. API Testing offers an end-to-end mechanism of testing the behaviour of your API which has advantages in both reliability and also development productivity.</p>
 	<p>In this post I'll be demonstrating how you can test RESTful APIs in an automated fashion using PHP, by building a testing framework through creative use of two packages - Guzzle and PHPUnit. The resulting tests will be something you can run outside of your API as part of your deployment or CI (Continuous Integration) process.</p>
 	<p>Guzzle acts as a powerful HTTP client which we can use to simulate HTTP Requests against our API. Though PHPUnit acts as a Unit Test framework (based on XUnit), in this case we will be using this powerful testing framework to test the HTTP responses we get back from our APIs using Guzzle.</p>
-	<h2>Preparing our Environment</h2>
+	<div class="flex anchor relative">
+		<h2 id="preparing-our-environment">Preparing our Environment</h2>
+		<a href="https://blog.cloudflare.com/#preparing-our-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to pull in the required packages, we’ll be using Composer - a dependency manager for PHP. Inside our Composer project, we can simply require the dependencies we’re after:</p>
 	<pre class="language-sh"><code class="language-sh">$ composer require phpunit/phpunit
 $ composer require guzzlehttp/guzzle
@@ -34,7 +41,15 @@ $ composer update</code></pre>
 	<pre class="language-json"><code class="language-json">  "scripts": {
     "test": "./vendor/bin/phpunit"
   }</code></pre>
-	<h2>Writing our Tests</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="writing-our-tests">Writing our Tests</h2>
+		<a href="https://blog.cloudflare.com/#writing-our-tests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As an example, I’ll be writing tests against an endpoint at httpbin.org. The first test I’ll write will be against the <code>/user-agent</code> endpoint, so I’ll create a file called <code>UserAgentTest.php</code>, be sure to extend the <code>PHPUnit_Framework_TestCase</code> class:</p>
 	<pre class="language-php"><code class="language-php">&lt;?php
 
@@ -85,7 +100,14 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6vHnEkW9LJGUDKdYPJKFpC/3b383fd37e4a91074c0f63f402b31c16/Screen-Shot-2016-12-28-at-08.36.57.png" alt="Running composer test, terminal indicating that 2 tests have been run with 4 assertions" class="kg-image" width="1688" height="1232" loading="lazy">
 
 	</figure>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>That’s all there is to this simple approach to API testing. If you want some insight into the overall code, feel free to review the project files in the <a href="https://github.com/IcyApril/Test-the-REST">Github repository</a>.</p>
 	<p>If you find yourself using this testing set-up, be sure to review the <a href="http://docs.guzzlephp.org/en/latest/request-options.html">Guzzle Request Options</a> to learn what kind of HTTP requests you can run with Guzzle and also check out the <a href="https://phpunit.de/manual/current/en/appendixes.assertions.html">types of assertions</a> of you can run with PHPUnit.</p>
 </div>

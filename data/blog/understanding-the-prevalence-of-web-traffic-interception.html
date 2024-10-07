@@ -24,7 +24,15 @@
 			<p><b>What are the security implications of intercepting HTTPS traffic?</b> This part discusses why interception, even when not malicious, most often puts users at risk by weakening the encryption used to secure communications.</p>
 		</li>
 	</ul>
-	<h3>How is encrypted web traffic intercepted?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-is-encrypted-web-traffic-intercepted">How is encrypted web traffic intercepted?</h3>
+		<a href="https://blog.cloudflare.com/#how-is-encrypted-web-traffic-intercepted" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1eUq8UG8YmvyI7upBvIGPD/6bf0ec806ea17547cd75bf65ff358593/Artboard-9.png" alt="" class="kg-image" width="8870" height="1596" loading="lazy">
@@ -53,7 +61,14 @@
 	</figure>
 	<p>This raises the question of how HTTPS interceptors are able to produce valid certificates for all websites if they are designed to be unforgeable. The answer to this question lies in how browsers determine whether a certificate is valid. At a high level, this determination is made by checking whether the certificate was signed by a CA (certificate authority). When a new connection is established, the browser verifies whether the certificate presented by the server is valid by checking if is signed by one of these CAs. CA certificates are stored locally on the computer in a <a href="https://technet.microsoft.com/en-us/library/cc754841.aspx">trusted store</a>, which means that any CA certificate added to this store can be used to issue a valid certificate for any website.</p>
 	<p>This is why the easiest way for interceptors to forge certificates is not through some elaborate cryptographic attack but by simply adding their own “root” certificate to the computer trust store. That way, the browser will trust any certificate signed by the interceptor. This behavior is not a vulnerability because adding a certificate is of course only possible if the interceptor has access to the computer file system or if the computer administrator has installed it.</p>
-	<h3>How prevalent is HTTPS interception?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-prevalent-is-https-interception">How prevalent is HTTPS interception?</h3>
+		<a href="https://blog.cloudflare.com/#how-prevalent-is-https-interception" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Measuring interception is not an easy task, as interceptors don’t advertise themselves (obviously). This is why, to detect whether a connection was intercepted, we used a refined version of the network fingerprint technique known as TLS fingerprinting, which allows us to determine which software is making the connection (interceptor or browser). This technique works by looking at how the TLS client’s hello packet is constructed (e.g., ciphersuites and TLS options) and comparing it to a database of known fingerprints. These fingerprints proved very reliable in particular when contrasted with the user-agent advertised in the HTTP request.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -73,7 +88,14 @@
 
 	</figure>
 	<p>The Firefox interception breakdown exhibits a completely different distribution, with most of the interceptions coming from mobile carrier providers, as shown in the chart above. A partial explanation for such a drastic difference is that Firefox on desktop uses a separate store for its SSL root certificates, which makes it less likely to be intercepted than other browsers.</p>
-	<h3>Who is intercepting web communication and why?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-is-intercepting-web-communication-and-why">Who is intercepting web communication and why?</h3>
+		<a href="https://blog.cloudflare.com/#who-is-intercepting-web-communication-and-why" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Contrary to popular belief, traffic interception is not necessarily malicious. According to our study and as summarized in the chart above, web traffic is primarily intercepted for two diametrically opposed reasons:</p>
 	<ul>
 		<li>
@@ -89,7 +111,14 @@
 
 	</figure>
 	<p>By fingerprinting known security products, we were able to attribute quite a few interceptions to them, as reported in the chart above. For example, Avast is responsible for 9.1% of Cloudflare interceptions and 10.8% of e-commerce interceptions. That being said, we have quite a few unknown fingerprints, which are likely a result of malware.</p>
-	<h3>What are the security implications of intercepting HTTPS traffic?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-security-implications-of-intercepting-https-traffic">What are the security implications of intercepting HTTPS traffic?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-security-implications-of-intercepting-https-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If the interception is not malicious in itself, then one may wonder why intercepting traffic most often weakens online security.</p>
 	<figure class="kg-card kg-image-card ">
 

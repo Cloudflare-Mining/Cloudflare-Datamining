@@ -11,12 +11,34 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NiPyQci9FTy0Xh3cM0sIu/2a35eb3e2496af741ea390fc9838809f/image3-2.gif" alt="" class="kg-image" width="1254" height="738" loading="lazy">
 
 	</figure>
-	<h3>Where are Cron Triggers going to be run?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-are-cron-triggers-going-to-be-run">Where are Cron Triggers going to be run?</h3>
+		<a href="https://blog.cloudflare.com/#where-are-cron-triggers-going-to-be-run" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cron Triggers are executed from the edge. At Cloudflare, we believe strongly in edge computing and wanted our new feature to get all of the performance and reliability benefits of running on our edge. Thus, we wrote a service in core that is responsible for distributing schedules to a new edge service through Quicksilver which will then trigger the Workers themselves.</p>
-	<h3>What’s happening under the hood?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-happening-under-the-hood">What’s happening under the hood?</h3>
+		<a href="https://blog.cloudflare.com/#whats-happening-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At a high level, schedules created through our API create records in our database with the information necessary to execute the Worker and the given cron schedule. These records are then picked up by another service which continuously evaluates the state of our edge and distributes the schedules between cities.</p>
 	<p>Once the schedules have been distributed to the edge, a service running in the edge node polls for changes to the schedules and makes sure they get sent to our runtime at the appropriate time.</p>
-	<h3>New Event Type</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-event-type">New Event Type</h3>
+		<a href="https://blog.cloudflare.com/#new-event-type" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ZdWbGDdAZ3FHVSNlmHNWT/70d757a84af990c63cf9e3086d3eb31c/image1-23.png" alt="" class="kg-image" width="1999" height="717" loading="lazy">
@@ -33,7 +55,14 @@
   scheduledTime: int; // milliseconds since the Unix epoch
 }</code></pre>
 	<p>As long as your Worker has a handler for this new event type, you’ll be able to give it a schedule.</p>
-	<h3>New APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-apis">New APIs</h3>
+		<a href="https://blog.cloudflare.com/#new-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h5><b>PUT</b> /client/v4**/accounts/:account_identifier/workers/scripts/:name**</h5>
 	<p>The script upload API remains the same, but during script validation we now detect and return the registered event handlers.</p>
 	<h5><b>PUT</b> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
@@ -57,10 +86,24 @@
 }</code></pre>
 	<p>The Scheduler service is responsible for reading the schedules from Postgres and generating per-node schedules to place into Quicksilver. For now, the service simply avoids trying to execute your Worker on an edge node that may be disabled for some reason, but such an approach also gives us a lot of flexibility in deciding where your Worker executes.</p>
 	<p>In addition to edge node availability, we could optimize for compute cost, bandwidth, or even latency in the future!</p>
-	<h3>What’s actually executing these schedules?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-actually-executing-these-schedules">What’s actually executing these schedules?</h3>
+		<a href="https://blog.cloudflare.com/#whats-actually-executing-these-schedules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To consume the schedules and actually trigger the Worker, we built a new service in Rust and deployed to our edge using HashiCorp <a href="https://blog.cloudflare.com/how-we-use-hashicorp-nomad">Nomad</a>. Nomad ensures that the schedule runner remains running in the edge node and can move it between machines as necessary. Rust was the best choice for this service since it needed to be fast with high availability and Cap’n Proto RPC support for calling into the runtime. With Tokio, Anyhow, Clap, and Serde, it was easy to quickly get the service up and running without having to really worry about async, error handling, or configuration.</p>
 	<p>On top of that, due to our specific needs for cron parsing, we built a specialized cron parser using nom that allowed us to quickly parse and compile expressions into values that check against a given time to determine if we should run a schedule.</p>
 	<p>Once the schedule runner has the schedules, it checks the time and selects the Workers that need to be run. To let the runtime know it’s time to run, we send a <a href="https://capnproto.org">Cap'n Proto</a> RPC message. The runtime then does its thing, calling the new ‘scheduled’ event handler instead of ‘fetch’.</p>
-	<h3>How can I try this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-i-try-this">How can I try this?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-i-try-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As of today, the Cron Triggers feature is live! Please try it out by creating a Worker and finding the Triggers tab - we’re excited to see what you build with it!</p>
 </div>

@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>We just got word from the <i>Wall Street Journal</i> that CloudFlare was named the <a href="http://online.wsj.com/article/SB10000872396390444024204578046911546099812.html?mod=googlenews_wsj">Most Innovative Internet &amp; Networking Company of 2012</a>. This is the second year in a row that <a href="https://blog.cloudflare.com/wall-street-journal-cloudflare-the-most-innov">CloudFlare has won this award</a>. Given the pace of development of new technologies on the Internet, that is high praise for the innovations our team has brought to market over the last year.</p>
 	<p>In announcing the award, the <i>WSJ</i> specifically called out three technologies we launched over the last year: Rocket Loader, Railgun, and the Automatic IPv6 Gateway.</p>
-	<h3>Rocket Loader</h3>
+	<div class="flex anchor relative">
+		<h3 id="rocket-loader">Rocket Loader</h3>
+		<a href="https://blog.cloudflare.com/#rocket-loader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Rocket Loader helps ensure that scripts and other resources don't slow down page load times. Too often, third party scripts like buttons, widgets, and ads can block a page from loading. These problems are exacerbated on mobile devices. Since mobile bandwidth is limited, and connections are fickle, needing to open connections to multiple third party services can seriously degrade mobile performance.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -18,7 +25,14 @@ Row" class="kg-image" width="500" height="216" loading="lazy">
 
 	</figure>
 	<p>Rocket Loader is <a href="https://www.cloudflare.com/features-optimizer">available to all CloudFlare customers for free</a>. We've found it often improves page load performance an additional 30% over the other benefits delivered by CloudFlare's systems, with the biggest performance gains seen on mobile devices.</p>
-	<h3>Railgun</h3>
+	<div class="flex anchor relative">
+		<h3 id="railgun">Railgun</h3>
+		<a href="https://blog.cloudflare.com/#railgun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The caching model for the Internet is based on files. CloudFlare caches static files (images, CSS, Javascript) at our edge and, in doing so, saves approximately 70% of the average websites' bandwidth and requests. While CloudFlare works well with dynamic content, since the file changes it is impossible for it to be cached.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -36,7 +50,14 @@ Row" class="kg-image" width="500" height="166" loading="lazy">
 
 	</figure>
 	<p>Railgun was inspired by CloudFlare's continued <a href="https://www.cloudflare.com/network-map">expansion of data centers</a>. As CloudFlare's network grew to include 23 data centers, the latency from a browser to our network shrank. However, the latency from our network back to our customers' web servers grew. Business and Enterprise customers, as well as customers on CloudFlare <a href="https://www.cloudflare.com/hosting-partners">Optimized Hosting Partners</a>, can use Railgun to achieve a 99.6% compression ratio when sending data to our network. That means what used to take 200 packets can now be sent in a single packet and, more practically, even highly dynamic sites can, for the first time, be as fast as if the data center were next door regardless of where a visitor is surfing from.</p>
-	<h3>Automatic IPv6 Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="automatic-ipv6-gateway">Automatic IPv6 Gateway</h3>
+		<a href="https://blog.cloudflare.com/#automatic-ipv6-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most vexing challenges the Internet faces is the move from IPv4 to IPv6. The IPv4 protocol was designed to only accommodate approximately 4 billion devices simultaneously connected to the network at any given time. As we close in on this theoretical limit we are literally running out of addresses. While it's hard to imagine, that means the seemingly limitless Internet is running out of space.</p>
 	<p>The solution is a new protocol — IPv6 — which can support a vastly larger number of connected devices. Unfortunately, IPv6 networks cannot interoperate with IPv4 networks meaning the Internet has been faced with a giant chicken-or-egg problem. Web surfers are reluctant to upgrade to IPv6 because there's no IPv6 web content, and web publishers are reluctant to switch because there are not IPv6 web surfers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -48,7 +69,14 @@ Row" class="kg-image" width="454" height="80" loading="lazy">
 	</figure>
 	<p>CloudFlare realized we could help solve this problem by providing our <a href="https://blog.cloudflare.com/ipv6-challenge-to-the-web">Automatic IPv6 Gateway</a>. The free service allows anyone to maintain their existing IPv4 infrastructure and be available on the IPv6 web just by signing up for CloudFlare. While that is great for existing customers, the bigger opportunity is actually with new entrants to the Internet. As it becomes more expensive to launch an IPv4 infrastructure, CloudFlare will allow new Internet publishers to put their content on IPv6 but still reach legacy IPv4 surfers.</p>
 	<p>CloudFlare's Automatic IPv6 Gateway was so successful that CloudFlare doubled the number of IPv6 websites available the day we launched the product. Today, CloudFlare provides IPv6 connectivity to more websites than any other provider.</p>
-	<h3>Not Slowing Down</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-slowing-down">Not Slowing Down</h3>
+		<a href="https://blog.cloudflare.com/#not-slowing-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare's team comes to work every day excited to invent the future of the Internet. Our goal is nothing short of rebuilding a faster, safer, smarter web. We are honored to be recognized by the <i>Wall Street Journal</i> for the <a href="https://blog.cloudflare.com/wall-street-journal-cloudflare-the-most-innov">second year in a row</a> as one of the world's most innovative companies. And we're hard at work on the next technologies in our continuing efforts to build a better Internet.</p>
 	<p>You can read more about CloudFlare's award on the <a href="http://online.wsj.com/article/SB10000872396390444024204578046911546099812.html">Wall Street Journal's website</a>.</p>
 </div>

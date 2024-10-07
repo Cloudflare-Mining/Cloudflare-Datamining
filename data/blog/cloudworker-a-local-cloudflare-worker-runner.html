@@ -13,7 +13,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KAjedX2yltNd2BMOJ55Lk/2a8136e70a62234e3a415519a815754f/1_YEL9Jja5BmeS0mUrQyzsEQ.png" alt="" class="kg-image" width="1600" height="344" loading="lazy">
 
 	</figure>
-	<h3>Cloudworker</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudworker">Cloudworker</h3>
+		<a href="https://blog.cloudflare.com/#cloudworker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a> is a local Cloudflare Worker runtime. With it, you can run Cloudflare Worker scripts locally (or anywhere you can run a Docker image). Our primary goal with Cloudworker is to be as compatible with Cloudflare Workers as possible, simulating features where we can and stubbing out features otherwise.</p>
 	<h4>Getting Started</h4>
 	<p>To use Cloudworker, install it using npm.</p>
@@ -41,7 +48,15 @@
   const value = await Store.get('hello')    
   event.respondWith(new Response(value)) // Responds with 'world'
 })</code></pre>
-	<h3>Closing Thoughts</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="closing-thoughts">Closing Thoughts</h3>
+		<a href="https://blog.cloudflare.com/#closing-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since its initial release, Cloudworker has become an integral part of our Cloudflare Worker development workflow. We use it to develop our edge router locally as well as use it within our <a href="https://engineering.dollarshaveclub.com/qa-environments-on-demand-with-kubernetes-5a571b4e273c">on-demand QA environments</a>. Additionally, we’ve used Cloudworker as a platform for an internal proxy used to reduce the footprint of our QA environments. We’re truly excited about Cloudworker and hope you find it as useful as we have!</p>
 	<hr>
 	<p><i>Cloudflare editor's note: We love seeing all of the projects the Cloudflare Workers community creates! While we can't post about everything on the blog, it helps others out when you share what you've built on </i><a href="https://community.cloudflare.com"><i>community.cloudflare.com</i></a><i> and Twitter. Some examples of other community projects are:</i></p>

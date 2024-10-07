@@ -6,11 +6,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LzOzlg7mmUmt62U2SepS2/85c38ac42125c8a73f962a873e21cb5d/BLOG-1226-Global-Latency-1.png" alt="Cloudflare outage on June 21, 2022" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
-	<h3>Introduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="introduction">Introduction</h3>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, June 21, 2022, Cloudflare suffered an outage that affected traffic in 19 of our data centers. Unfortunately, these 19 locations handle a significant proportion of our global traffic. This outage was caused by a change that was part of a long-running project to increase resilience in our busiest locations. A change to the network configuration in those locations caused an outage which started at 06:27 UTC. At 06:58 UTC the first data center was brought back online and by 07:42 UTC all data centers were online and working correctly.</p>
 	<p>Depending on your location in the world you may have been unable to access websites and services that rely on Cloudflare. In other locations, Cloudflare continued to operate normally.</p>
 	<p>We are very sorry for this outage. This was our error and not the result of an attack or malicious activity.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the last 18 months, Cloudflare has been working to convert all of our busiest locations to a more flexible and resilient architecture. In this time, we’ve converted 19 of our data centers to this architecture, internally called Multi-Colo PoP (MCP): Amsterdam, Atlanta, Ashburn, Chicago, Frankfurt, London, Los Angeles, Madrid, Manchester, Miami, Milan, Mumbai, Newark, Osaka, São Paulo, San Jose, Singapore, Sydney, Tokyo.</p>
 	<p>A critical part of this new architecture, which is designed as a <a href="https://en.wikipedia.org/wiki/Clos_network">Clos network</a>, is an added layer of routing that creates a mesh of connections. This mesh allows us to easily disable and enable parts of the internal network in a data center for maintenance or to deal with a problem. This layer is represented by the spines in the following diagram.</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,7 +33,14 @@
 
 	</figure>
 	<p>This new architecture has provided us with significant reliability improvements, as well as allowing us to run maintenance in these locations without disrupting customer traffic. As these locations also carry a significant proportion of the Cloudflare traffic, any problem here can have a very wide impact, and unfortunately, that’s what happened today.</p>
-	<h3>Incident timeline and impact</h3>
+	<div class="flex anchor relative">
+		<h3 id="incident-timeline-and-impact">Incident timeline and impact</h3>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to be reachable on the Internet, networks like Cloudflare make use of a protocol called <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp">BGP</a>. As part of this protocol, operators define policies which decide which prefixes (a collection of adjacent IP addresses) are advertised to peers (the other networks they connect to), or accepted from peers.</p>
 	<p>These policies have individual components, which are evaluated sequentially. The end result is that any given prefixes will either be advertised or not advertised. A change in policy can mean a previously advertised prefix is no longer advertised, known as being "withdrawn", and those IP addresses will no longer be reachable on the Internet.</p>
 	<figure class="kg-card kg-image-card ">
@@ -42,7 +63,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4gWQTaPkyGxypCw4LBdZML/0cd0849c92627c3ec030b29abc4d4f46/image6-11.png" alt="" class="kg-image" width="1999" height="1182" loading="lazy">
 
 	</figure>
-	<h3>Technical description of the error and how it happened</h3>
+	<div class="flex anchor relative">
+		<h3 id="technical-description-of-the-error-and-how-it-happened">Technical description of the error and how it happened</h3>
+		<a href="https://blog.cloudflare.com/#technical-description-of-the-error-and-how-it-happened" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of our continued effort to standardize our infrastructure configuration, we were rolling out a change to standardize the BGP communities we attach to a subset of the prefixes we advertise. Specifically, we were adding informational communities to our site-local prefixes.</p>
 	<p>These prefixes allow our metals to communicate with each other, as well as connect to customer origins. As part of the change procedure at Cloudflare, a Change Request ticket was created, which includes a dry-run of the change, as well as a stepped rollout procedure. Before it was allowed to go out, it was also peer reviewed by multiple engineers. Unfortunately, in this case, the steps weren’t small enough to catch the error before it hit all of our spines.</p>
 	<p>The change looked like this on one of the routers:</p>
@@ -106,12 +134,26 @@ community delete NO-EXPORT { ... }
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jBcPxvumdeOx5Ffojnwuw/d1caaa01185ec49893168c81b8c8557d/image4-15.png" alt="" class="kg-image" width="1999" height="1180" loading="lazy">
 
 	</figure>
-	<h3>Remediation and follow-up steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="remediation-and-follow-up-steps">Remediation and follow-up steps</h3>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This incident had widespread impact, and we take availability very seriously. We have identified several areas of improvement and will continue to work on uncovering any other gaps that could cause a recurrence.</p>
 	<p>Here is what we are working on immediately:</p>
 	<p><b>Process</b>: While the MCP program was designed to improve availability, a procedural gap in how we updated these data centers ultimately caused a broader impact in MCP locations specifically. While we did use a stagger procedure for this change, the stagger policy did not include an MCP data center until the final step. Change procedures and automation need to include MCP-specific test and deploy procedures to ensure there are no unintended consequences.</p>
 	<p><b>Architecture</b>: The incorrect router configuration prevented the proper routes from being announced, preventing traffic from flowing properly to our infrastructure. Ultimately the policy statement that caused the incorrect routing advertisement will be redesigned to prevent an unintentional incorrect ordering.</p>
 	<p><b>Automation</b>: There are several opportunities in our automation suite that would mitigate some or all of the impact seen from this event. Primarily, we will be concentrating on automation improvements that enforce an improved stagger policy for rollouts of network configuration and provide an automated “commit-confirm” rollback. The former enhancement would have significantly lessened the overall impact, and the latter would have greatly reduced the Time-to-Resolve during the incident.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although Cloudflare has invested significantly in our MCP design to improve service availability, we clearly fell short of our customer expectations with this very painful incident. We are deeply sorry for the disruption to our customers and to all the users who were unable to access Internet properties during the outage. We have already started working on the changes outlined above and will continue our diligence to ensure this cannot happen again.</p>
 </div>

@@ -6,15 +6,36 @@
 
 	</figure>
 	<p>Every day, close to 1 billion people watch video through Cloudflare. That’s 100 petabytes of video every month. Last year, <a href="https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html#_Toc484813971">video made up 73%</a> of all internet traffic, which is why earlier today we announced <a href="https://blog.cloudflare.com/introducing-cloudflare-stream">Cloudflare Stream</a>, an end to end video solution designed to bring instant video to any device and network connection. Here’s how Stream works to optimize video upload, encoding and delivery.</p>
-	<h3>Uploads</h3>
+	<div class="flex anchor relative">
+		<h3 id="uploads">Uploads</h3>
+		<a href="https://blog.cloudflare.com/#uploads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using Cloudflare Stream starts with a call to the Stream API to <code>/upload</code> a video.</p>
 	<p>HTTP does not by default provide a reliable upload mechanism for large files, which can make it tricky to upload large media content like high quality video. If there’s any latency in the network connection, a timeout can cancel the entire upload and require the client to start over.</p>
 	<p>We use an open source upload protocol called <a href="https://tus.io/protocols/resumable-upload.html">Tus</a> which allows for resumable uploads where the upload previously failed. Tus does this by splitting the download into manageable chunks and tracking completed chunks on the server.</p>
-	<h3>Encodes</h3>
+	<div class="flex anchor relative">
+		<h3 id="encodes">Encodes</h3>
+		<a href="https://blog.cloudflare.com/#encodes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Video files are containers that hold the video file, the audio track, and some metadata. The video file is compressed by a codec. The codec is a compression algorithm for encoding video streams. Browsers use codecs to determine how they should decode and decompress the video for playing. Common container formats include MPEG, AVI, OGG and MP4. (You can usually tell the container format by the file extension.) Common codecs include H.264, HEVC (which Apple just announced support for as part of iOS 11), and VP9.</p>
 	<p>Different <a href="https://en.wikipedia.org/wiki/HTML5_Video#Browser_support">browsers support different codecs</a> so in order to run the best quality video on all browsers and devices, video providers need to encode a single video to multiple formats. For example, Netflix uses HEVC/H.265 to get <a href="https://medium.com/netflix-techblog/a-large-scale-comparison-of-x264-x265-and-libvpx-a-sneak-peek-2e81e88f8b0f">50% bitrate savings</a> over its predecessor, but that format is only supported on the newest version of <a href="http://caniuse.com/#feat=hevc">Safari on the latest Mac and iOS</a> operating systems, so they fall back when streaming on other browsers and devices. Likewise, <a href="https://youtube-eng.googleblog.com/2015/04/vp9-faster-better-buffer-free-youtube.html">YouTube uses VP9</a> to deliver 4K video at half the bandwidth, but it isn’t supported on <a href="http://caniuse.com/#search=vp9">Safari, IE or Opera</a> so they use other formats on those browsers.</p>
 	<p>Once you upload a video to Cloudflare Stream, Cloudflare immediately starts encoding the video and storing each encoded version. Today we encode to H.264, which is supported by <a href="http://caniuse.com/#feat=mpeg4">all modern browsers</a> and is known for supporting high quality video including 4K, and to MP4 for legacy support. We’re adding more optimized codecs like VP9 and HEVC next.</p>
-	<h3>Delivery: Streaming</h3>
+	<div class="flex anchor relative">
+		<h3 id="delivery-streaming">Delivery: Streaming</h3>
+		<a href="https://blog.cloudflare.com/#delivery-streaming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With normal HTTP streaming, the client pulls down the video while the user watches it at the same time. That means for video to play without buffering, the bitrate needs to be below that of the bandwidth available on the connection. As more clients are watching video from their phones, the bandwidth connection is often lower and this method sacrifices video quality.</p>
 	<p>Instead, we use progressive downloads, also called pseudo streaming, in which the video is streamed from the HTTP server and then cached on the client, where it is played from the hard drive or from memory. This allows us to encode at higher bitrates, preserving quality.</p>
 	<p>Alongside progressive downloads, we use a technology called adaptive streaming in which the server offers multiple bitrate streams and the client switches between them based on the current network connectivity. To accomplish this, the video is chunked, and the client can switch between profiles in between the video chunks by downloading the following chunk from a different bitrate stream. You might have seen this in action when watching a video where the image quality changes in response to your network connection.</p>
@@ -44,7 +65,14 @@ http://media.cloudflarestream.com/segment2.avc
 http://media.cloudflarestream.com/segment3.avc
 #EXT-X-ENDLIST</code></pre>
 	<p>Cloudflare uses two standards for adaptive streaming: HLS and MPEG-DASH. The standards both work in essentially the same way - they contain small differences like MPEG-DASH uses smaller chunk sizes by default (2-4 seconds versus 10 seconds) so switching channels is faster. MPEG-DASH also has better support for ad insertion. HLS, Apple HTTP Live Streaming, on the other hand, is ideal for streaming to Apple products because it is natively supported by Apple devices and software.</p>
-	<h3>Delivery: Where in the world</h3>
+	<div class="flex anchor relative">
+		<h3 id="delivery-where-in-the-world">Delivery: Where in the world</h3>
+		<a href="https://blog.cloudflare.com/#delivery-where-in-the-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare runs a global network in over 115 PoPs. In every one of our data centers we have a large number of servers connected to the Internet. Traffic to these data centers rises and falls depending on the time of day. Since each data center serves visitors in the region, when it's the middle of the night and people in the region are asleep, traffic drops. You can see this in the bandwidth graphs to data centers around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -54,7 +82,14 @@ http://media.cloudflarestream.com/segment3.avc
 	<p>We are billed for bandwidth based on our peak usage in any 30-day period. That means that if we use more bandwidth during the troughs in any data center's day we don't incur any additional cost. Similarly, what we pay for the servers that run in these data centers is a fixed cost. Every minute we're not fully utilizing a server we are, effectively, underutilizing a resource we've already paid for.</p>
 	<p>Video delivery, it turns out, is the perfect task to fill these underutilized resources. To be fast, only the first few bytes need to come from the closest data center to the video viewer. The rest have a little bit of buffer time while the first few seconds of the video are being watched to reach the client and can come from whatever data center currently has excess resources.</p>
 	<p>How we accomplish this is by dynamically assigning data centers IP ranges based on which are currently being underutilized. Then videos are loaded alongside a manifest file, pointing the player to where they can locate the different chunks of the video for each bitrate. (As we described earlier, this is how adaptive streaming works: the player uses this manifest file to quickly locate different bitrate formats and switch between them as network latency changes). That manifest file is dynamically generated to point to the closest data center using Cloudflare’s default Anycast IP for the first chunk, then to the underutilized data centers for subsequent chunks. The final result is that the first segment is fast, with low cost subsequent segments. This allows us to offer a video solution that is at the best price, because let's face it, enabling video today is really expensive and unpredictable and it doesn't have to be.</p>
-	<h3>It’s a bird! It’s a plane! It’s a Cloudflare App! ?</h3>
+	<div class="flex anchor relative">
+		<h3 id="its-a-bird-its-a-plane-its-a-cloudflare-app">It’s a bird! It’s a plane! It’s a Cloudflare App! ?</h3>
+		<a href="https://blog.cloudflare.com/#its-a-bird-its-a-plane-its-a-cloudflare-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Three months ago we launched the next generation of Cloudflare Apps, an open platform that lets developers reach over 6 million customers. The Apps platform allows developers to build tools that use all of Cloudflare, which is why’ve built the Stream app:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -62,7 +97,14 @@ http://media.cloudflarestream.com/segment3.avc
 
 	</figure>
 	<p>Developers will soon be able to add video uploaders to their apps, making the Stream API accessible to all non-technical users.</p>
-	<h3>We’re Taking Advanced Sign Ups</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-taking-advanced-sign-ups">We’re Taking Advanced Sign Ups</h3>
+		<a href="https://blog.cloudflare.com/#were-taking-advanced-sign-ups" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s 10 years after Opera demoed the first implementation of the <code>&lt;video&gt;</code> element in 2007 and we’re excited about making video streaming easy, instant and cost effective. We’re going to open up a beta soon and we’re taking advance sign ups in the meantime. You can reserve your spot <a href="https://cloudflare.com/products/cloudflare-stream">here</a>.</p>
 	<p>If bringing instant streaming to 7M applications sounds like a fun challenge for you, we're <a href="https://boards.greenhouse.io/cloudflare/jobs/863247#.WcrXlhNSzGJ">growing a video team in Austin</a>, and we want to meet you.</p>
 </div>

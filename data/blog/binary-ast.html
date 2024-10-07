@@ -5,7 +5,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/727G0893W2KHaVXQ5CIp8M/b99fd585717ae6a496c6550bfef491cd/binary-ast.png" alt="" class="kg-image" width="1432" height="1468" loading="lazy">
 
 	</figure>
-	<h3>JavaScript Cold starts</h3>
+	<div class="flex anchor relative">
+		<h3 id="javascript-cold-starts">JavaScript Cold starts</h3>
+		<a href="https://blog.cloudflare.com/#javascript-cold-starts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://www.cloudflare.com/application-services/products">performance of applications</a> on the web platform is becoming increasingly bottlenecked by the startup (load) time. Large amounts of JavaScript code are required to create rich web experiences that we’ve become used to. When we look at the total size of JavaScript requested on mobile devices from <a href="https://httparchive.org/reports/state-of-javascript#bytesJs">HTTPArchive</a>, we see that an average page loads 350KB of JavaScript, while 10% of pages go over the 1MB threshold. The rise of more complex applications can push these numbers even higher.</p>
 	<p>While caching helps, popular websites regularly release new code, which makes cold start (first load) times particularly important. With browsers moving to separate caches for different domains to <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html">prevent cross-site leaks</a>, the importance of cold starts is growing even for popular subresources served from CDNs, as they can no longer be safely shared.</p>
 	<p>Usually, when talking about the cold start performance, the primary factor considered is a raw download speed. However, on modern interactive pages one of the other big contributors to cold starts is JavaScript parsing time. This might seem surprising at first, but makes sense - before starting to execute the code, the engine has to first parse the fetched JavaScript, make sure it doesn’t contain any syntax errors and then compile it to the initial bytecode. As networks become faster, parsing and compilation of JavaScript could become the dominant factor.</p>
@@ -22,14 +29,28 @@
 	<p>The device capability (CPU or memory performance) is the most important factor in the variance of JavaScript parsing times and correspondingly the time to application start. A 1MB JavaScript file <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization">will take an order</a> of a 100 ms to parse on a modern desktop or high-end mobile device but can take over a second on an average phone &nbsp;(Moto G4).</p>
 	<p><a href="https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4">A more detailed post</a> on the overall cost of parsing, compiling and execution of JavaScript shows how the JavaScript boot time can vary on different mobile devices. For example, in the case of <a href="https://news.google.com">news.google.com</a>, it can range from 4s on a Pixel 2 to 28s on a low-end device.</p>
 	<p>While engines continuously improve raw parsing performance, with V8 in particular <a href="https://twitter.com/mathias/status/1125096214641254400">doubling it</a> over the past year, as well as moving more things off the main thread, parsers still have to do lots of potentially unnecessary work that consumes memory, battery and might delay the processing of the useful resources.</p>
-	<h3>The “BinaryAST” Proposal</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-binaryast-proposal">The “BinaryAST” Proposal</h3>
+		<a href="https://blog.cloudflare.com/#the-binaryast-proposal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is where BinaryAST comes in. BinaryAST is a new over-the-wire format for JavaScript proposed and actively developed by Mozilla that aims to speed up parsing while keeping the semantics of the original JavaScript intact. It does so by using an efficient binary representation for code and data structures, as well as by storing and providing extra information to guide the parser ahead of time.</p>
 	<p>The name comes from the fact that the format stores the JavaScript source as an AST encoded into a binary file. The specification lives at <a href="https://tc39.github.io/proposal-binary-ast">tc39.github.io/proposal-binary-ast</a> and is being worked on by engineers from Mozilla, Facebook, Bloomberg and Cloudflare.</p>
 	<blockquote>
 		<p>“Making sure that web applications start quickly is one of the most important, but also one of the most challenging parts of web development. We know that BinaryAST can radically reduce startup time, but we need to collect real-world data to demonstrate its impact. Cloudflare's work on enabling use of BinaryAST with Cloudflare Workers is an important step towards gathering this data at scale.”</p>
 		<p>Till Schneidereit, Senior Engineering Manager, Developer TechnologiesMozilla</p>
 	</blockquote>
-	<h3>Parsing JavaScript</h3>
+	<div class="flex anchor relative">
+		<h3 id="parsing-javascript">Parsing JavaScript</h3>
+		<a href="https://blog.cloudflare.com/#parsing-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For regular JavaScript code to execute in a browser the source is parsed into an intermediate representation known as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a> that describes the syntactic structure of the code. This representation can then be compiled into a byte code or a native machine code for execution.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -72,7 +93,14 @@
 
 	</figure>
 	<p>This post will now describe some of the challenges of parsing JavaScript in more detail, explain how the proposed format addressed them, and how we made it possible to run its encoder in Workers.</p>
-	<h3>Hoisting</h3>
+	<div class="flex anchor relative">
+		<h3 id="hoisting">Hoisting</h3>
+		<a href="https://blog.cloudflare.com/#hoisting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JavaScript relies on hoisting for all declarations - variables, functions, classes. Hoisting is a property of the language that allows you to declare items after the point they’re syntactically used.</p>
 	<p>Let's take the following example:</p>
 	<pre class="language-javascript"><code class="language-javascript">function f() {
@@ -95,7 +123,14 @@ function g() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/73zazZkCUkmjWppTBdWMIq/488a214a5b20900ee9132ed3fdd9dcb4/1T5U7zKHwc_PuZ7heYpDuQ5HMTQpFiqO-wmz6Vncm7ycWNe65Xvm3PvlFKAtj89vqesgymqj-H9_6-kohc6TLrRkyLwJ5PNIAEOIZSypZpQGAFWFpAIHjsAhLegG.png" alt="" class="kg-image" width="1459" height="601" loading="lazy">
 
 	</figure>
-	<h3>Lazy parsing</h3>
+	<div class="flex anchor relative">
+		<h3 id="lazy-parsing">Lazy parsing</h3>
+		<a href="https://blog.cloudflare.com/#lazy-parsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One common technique used by modern engines to improve parsing times is lazy parsing. It utilises the fact that lots of websites include more JavaScript than they actually need, especially for the start-up.</p>
 	<p>Working around this involves a set of heuristics that try to guess when any given function body in the code can be safely skipped by the parser initially and delayed for later. A common example of such heuristic is immediately running the full parser for any function that is wrapped into parentheses:</p>
 	<pre class="language-javascript"><code class="language-javascript">(function(...</code></pre>
@@ -110,7 +145,14 @@ function g() {
 	<p>Because BinaryAST is meant to be an output format of other tools such as Babel, TypeScript and bundlers such as Webpack, the browser parser can rely on the JavaScript being already analysed and verified by the initial parser. This allows it to skip function bodies completely, making lazy parsing essentially free.</p>
 	<p>It reduces the cost of a completely unused code - while including it is still a problem in terms of the network bandwidth (don’t do this!), at least it’s not affecting parsing times anymore. These benefits apply equally to the code that is used later in the page lifecycle (for example, invoked in response to user actions), but is not required during the startup.</p>
 	<p>Last but not least important benefit of such approach is that BinaryAST encodes lazy annotations as part of the format, giving tools and developers direct and full control over the heuristics. For example, a tool targeting the Web platform or a framework CLI can use its domain-specific knowledge to mark some event handlers as lazy or eager depending on the context and the event type.</p>
-	<h3>Avoiding ambiguity in parsing</h3>
+	<div class="flex anchor relative">
+		<h3 id="avoiding-ambiguity-in-parsing">Avoiding ambiguity in parsing</h3>
+		<a href="https://blog.cloudflare.com/#avoiding-ambiguity-in-parsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using a text format for a programming language is great for readability and debugging, but it's not the most efficient representation for parsing and execution.</p>
 	<p>For example, parsing low-level types like numbers, booleans and even strings from text requires extra analysis and computation, which is unnecessary when you can just store and read them as native binary-encoded values in the first place and read directly on the other side.</p>
 	<p>Another problem is an ambiguity in the grammar itself. It was already an issue in the ES5 world, but could usually be resolved with some extra bookkeeping based on the previously seen tokens. However, in ES6+ there are productions that can be ambiguous all the way through until they’re parsed completely.</p>
@@ -123,7 +165,14 @@ function g() {
 	<p>Both representations are perfectly valid, but have completely different semantics, and you can’t know which one you’re dealing with until you see the final token.</p>
 	<p>To work around this, parsers usually have to either backtrack, which can easily get exponentially slow, or to parse contents into intermediate node types that are capable of holding both expressions and patterns, with following conversion. The latter approach preserves linear performance, but makes the implementation more complicated and requires preserving more state.</p>
 	<p>In the BinaryAST format this issue doesn't exist in the first place because the parser sees the type of each node before it even starts parsing its contents.</p>
-	<h3>Cloudflare Implementation</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-implementation">Cloudflare Implementation</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Currently, the format is still in flux, but the very first version of the client-side implementation was released under a flag in Firefox Nightly several months ago. Keep in mind this is only an initial unoptimised prototype, and there are already several experiments changing the format to provide improvements to both size and parsing performance.</p>
 	<p>On the producer side, the reference implementation lives at <a href="https://github.com/binast/binjs-ref">github.com/binast/binjs-ref</a>. Our goal was to take this reference implementation and consider how we would deploy it at Cloudflare scale.</p>
 	<p>If you dig into the codebase, you will notice that it currently consists of two parts.</p>
@@ -137,7 +186,14 @@ function g() {
 	<p>Unfortunately, there is currently no battle-tested native JavaScript parser with an open API, let alone implemented in Rust. There have been a few attempts, but, given the complexity of JavaScript grammar, it’s better to wait a bit and make sure they’re well-tested before incorporating it into the production encoder.</p>
 	<p>On the other hand, over the last few years the JavaScript ecosystem grew to extensively rely on developer tools implemented in JavaScript itself. In particular, this gave a push to rigorous parser development and testing. There are several JavaScript parser implementations that have been proven to work on thousands of real-world projects.</p>
 	<p>With that in mind, it makes sense that the BinaryAST implementation chose to use one of them - in particular, <a href="https://shift-ast.org">Shift</a> - and integrated it with the Rust encoder, instead of attempting to use a native parser.</p>
-	<h3>Connecting Rust and JavaScript</h3>
+	<div class="flex anchor relative">
+		<h3 id="connecting-rust-and-javascript">Connecting Rust and JavaScript</h3>
+		<a href="https://blog.cloudflare.com/#connecting-rust-and-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Integration is where things get interesting.</p>
 	<p>Rust is a native language that can compile to an executable binary, but JavaScript requires a separate engine to be executed. To connect them, we need some way to transfer data between the two without sharing the memory.</p>
 	<p>Initially, the reference implementation generated JavaScript code with an embedded input on the fly, passed it to Node.js and then read the output when the process had finished. That code contained a call to the Shift parser with an inlined input string and produced the AST back in a JSON format.</p>
@@ -147,7 +203,14 @@ function g() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rCs07kw5ldmfRx8zpvgHM/505cbfc1886cbbf99fac449ac7557bb5/Connecting-rust-java_2x.png" alt="" class="kg-image" width="2560" height="668" loading="lazy">
 
 	</figure>
-	<h3>Running in the cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-in-the-cloud">Running in the cloud</h3>
+		<a href="https://blog.cloudflare.com/#running-in-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the Node.js solution worked fairly well after these optimisations, shipping both a Node.js instance and a native bundle to production requires some effort. It's also potentially risky and requires manual sandboxing of both processes to make sure we don’t accidentally start executing malicious code.</p>
 	<p>On the other hand, the only thing we needed from Node.js is the ability to run the JavaScript parser code. And we already have an isolated JavaScript engine running in the cloud - <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a>! By additionally compiling the native Rust encoder to Wasm (which is quite easy with the native toolchain and <a href="https://rustwasm.github.io/docs/wasm-bindgen">wasm-bindgen</a>), we can even run both parts of the code in the same process, making cold starts and communication much faster than in a previous model.</p>
 	<figure class="kg-card kg-image-card ">
@@ -155,7 +218,14 @@ function g() {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dMlhjj8rPxs3pjUScdbFJ/991829d5f26f58e56fa6f88cb3fb4f7e/V8-isolate-01_2x.png" alt="" class="kg-image" width="2560" height="1460" loading="lazy">
 
 	</figure>
-	<h3>Optimising data transfer</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimising-data-transfer">Optimising data transfer</h3>
+		<a href="https://blog.cloudflare.com/#optimising-data-transfer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next logical step is to reduce the overhead of data transfer. JSON worked fine for communication between separate processes, but with a single process we should be able to retrieve the required bits directly from the JavaScript-based AST.</p>
 	<p>To attempt this, first of all, we needed to move away from the direct JSON usage to something more generic that would allow us to support various import formats. The Rust ecosystem already has an amazing serialisation framework for that - <a href="https://serde.rs">Serde</a>.</p>
 	<p>Aside from allowing us to be more flexible in regard to the inputs, rewriting to Serde helped an existing native use case too. Now, instead of parsing JSON into an intermediate representation and then walking through it, all the native typed AST structures can be deserialized directly from the stdout pipe of the Node.js process in a streaming manner. This significantly improved both the CPU usage and memory pressure.</p>
@@ -173,7 +243,14 @@ function g() {
 	<p>Luckily, because our deserializer doesn’t have to be compatible with JSON anymore, we can use our knowledge of Rust types and cache all the serialized property names as JavaScript value handles just once, and then keep reusing them for further property accesses.</p>
 	<p>This, combined with some changes to wasm-bindgen which we have upstreamed, allows our deserializer to be up to 3.5x faster in benchmarks than the original Serde support in wasm-bindgen, while saving ~33% off the resulting code size. Note that for string-heavy data structures it might still be slower than the current JSON-based integration, but situation is expected to improve over time when <a href="https://github.com/WebAssembly/reference-types">reference types</a> proposal lands natively in Wasm.</p>
 	<p>After implementing and integrating this deserializer, we used the <a href="https://github.com/wasm-tool/wasm-pack-plugin">wasm-pack plugin for Webpack</a> to build a Worker with both Rust and JavaScript parts combined and shipped it to some test zones.</p>
-	<h3>Show me the numbers</h3>
+	<div class="flex anchor relative">
+		<h3 id="show-me-the-numbers">Show me the numbers</h3>
+		<a href="https://blog.cloudflare.com/#show-me-the-numbers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keep in mind that this proposal is in very early stages, and current benchmarks and demos are not representative of the final outcome (which should improve numbers much further).</p>
 	<p>As mentioned earlier, BinaryAST can mark functions that should be parsed lazily ahead of time. By using different levels of lazification in the encoder (<a href="https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43">https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43</a>) and running tests against some popular JavaScript libraries, we found following speed-ups.</p>
 	<h4>Level 0 (no functions are lazified)</h4>
@@ -279,7 +356,14 @@ function g() {
 
 	</figure>
 	<p>Next step is to start gathering data on real-world websites, while improving the underlying format.</p>
-	<h3>How do I test BinaryAST on my website?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-test-binaryast-on-my-website">How do I test BinaryAST on my website?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-test-binaryast-on-my-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve open-sourced our Worker so that it could be installed on any Cloudflare zone: <a href="https://github.com/binast/binjs-ref/tree/cf-wasm">https://github.com/binast/binjs-ref/tree/cf-wasm</a>.</p>
 	<p>One thing to be currently wary of is that, even though the result gets stored in the cache, the initial encoding is still an expensive process, and might easily hit CPU limits on any non-trivial JavaScript files and fall back to the unencoded variant. We are working to improve this situation by releasing BinaryAST encoder as a separate feature with more relaxed limits in the following few days.</p>
 	<p>Meanwhile, if you want to play with BinaryAST on larger real-world scripts, an alternative option is to use a static <code>binjs_encode</code> tool from <a href="https://github.com/binast/binjs-ref">https://github.com/binast/binjs-ref</a> to pre-encode JavaScript files ahead of time. Then, you can use a Worker from <a href="https://github.com/cloudflare/binast-cf-worker">https://github.com/cloudflare/binast-cf-worker</a> to serve the resulting BinaryAST assets when supported and requested by the browser.</p>
@@ -290,7 +374,14 @@ function g() {
 
 	</figure>
 	<p>Now, when opening a website with either of the Workers installed, Firefox will get BinaryAST instead of JavaScript automatically.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The amount of JavaScript in modern apps is presenting performance challenges for all consumers. Engine vendors are experimenting with different ways to improve the situation - some are focusing on raw decoding performance, some on parallelizing operations to reduce overall latency, some are researching new optimised formats for data representation, and some are inventing and improving protocols for the network delivery.</p>
 	<p>No matter which one it is, we all have a shared goal of making the Web better and faster. On Cloudflare's side, we're always excited about collaborating with all the vendors and combining various approaches to make that goal closer with every step.</p>
 </div>

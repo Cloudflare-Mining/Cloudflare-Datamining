@@ -9,7 +9,14 @@
 	<p>A URL redirect is a mapping from one location on the Internet to another, effectively telling the visitor's browser that the location of the page has changed, and where they can now find it. This is achieved by providing a virtual ‘link’ between the content’s original and new location.</p>
 	<p>URL Redirects have typically been implemented as Page Rules within Cloudflare, however Page Rules only match on the URL, rather than other elements such as the visitor's source country or preferred language. This limitation meant customers with a need for more dynamic URL redirects had to implement alternative solutions such Cloudflare Workers to achieve their goals.</p>
 	<p>To simplify the management of these more complex use cases we have created <b>Dynamic Redirects.</b> With Dynamic Redirects, users can redirect visitors to another webpage or website based upon hundreds of options such as the visitor's country of origin or language, without having to write a single line of code.</p>
-	<h3>More than a URL</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-a-url">More than a URL</h3>
+		<a href="https://blog.cloudflare.com/#more-than-a-url" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For nine years users were limited to 125 URL redirects per zone. This limitation meant those with a need for more URL redirects had to implement alternative solutions such <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to achieve their goals.</p>
 	<p>In December 2021, we launched <a href="https://blog.cloudflare.com/maximum-redirects-minimum-effort-announcing-bulk-redirects">Bulk Redirects</a>, allowing up to 100,000 URL redirects per account at the time. In April 2022 we increased this maximum number to <b>over six million</b> URL redirects per account. However, there is still a gap in the ‘URL redirect’ product unfulfilled. Until now.</p>
 	<p>Bulk Redirects, much like the ‘Forwarding URL’ Page Rule, are prescriptive URL redirects. You tell us what URL to look for, and where to redirect the user to when they visit it. We can support this use case at a huge scale.</p><!--kg-card-begin: html-->
@@ -63,7 +70,14 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>We can further simplify this use case in the future by adding hostname lists, allowing users to add URLs to a list and reference it from within the rule expression, similar to IP Lists. This allows an expression like (http.request.full_uri in $vanity_urls), for example.</p>
-	<h3>A dedicated quota, just for U(RL)</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-dedicated-quota-just-for-u-rl">A dedicated quota, just for U(RL)</h3>
+		<a href="https://blog.cloudflare.com/#a-dedicated-quota-just-for-u-rl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Page Rules are used to set everything from configuration and caching behaviour to header modification and also URL redirection (Forwarding URL). This means that users tend to run out of available rules quickly.</p>
 	<p>To address this, we’re matching the Page Rule quota in each of the four new products that are being announced today. This means where in Page Rules an Enterprise customer would get 125 Page Rules to share amongst the aforementioned functions, in Dynamic Redirects they have 125 rules just for redirects. This number can be increased for Enterprise customers, also.</p>
 	<p>We’re also increasing the quota for free plans; where today free plans get three Page Rules, they will now get 10 rules for dynamic redirects, along with each of the other three products (cache, origin, config rules). That's a net increase of 37 additional rules!</p><!--kg-card-begin: html-->
@@ -99,7 +113,14 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Users can now get more out of their Cloudflare setup, being more specific about when traffic is redirected, optimizing cache and adjusting which settings are and aren't applied - without having to trade off between these areas due to a limit in rules quota.</p>
-	<h3>Localized redirects</h3>
+	<div class="flex anchor relative">
+		<h3 id="localized-redirects">Localized redirects</h3>
+		<a href="https://blog.cloudflare.com/#localized-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the examples covered earlier is being able to redirect visitors to localized content depending on their preferred language.</p>
 	<p>This can be done by analyzing the ‘Accept-Language’ header sent by the browser, which is stored as an array in the field http.request.accepted_languages[]. This field is an array of the values received by Cloudflare within the Accept-Language HTTP request header, sorted in descending weight order. This header is calculated based on the preferences set by the visitor in the ‘Language’ section of their web browser.</p>
 	<p>For example, if the visitors browser sends an 'Accept-Language' header containing "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5", then the field http.request.accepted_languages[0] would contain "en", with http.request.accepted_languages[1] containing "fr" and so forth.</p>
@@ -110,7 +131,14 @@
 
 	</figure>
 	<p>With this rule in place, traffic from visitors with a preferred language of English (en) will be redirected to <a href="http://www.example.com/en/shop"><code>www.example.com/en/shop</code></a>. The rule can be duplicated for other languages also, ensuring those with a preferred language of French (fr) will be redirected to <a href="http://www.example.com/fr/shop"><code>www.example.com/fr/shop</code></a>.</p>
-	<h3>Mobile redirects, cookie redirects, …</h3>
+	<div class="flex anchor relative">
+		<h3 id="mobile-redirects-cookie-redirects">Mobile redirects, cookie redirects, …</h3>
+		<a href="https://blog.cloudflare.com/#mobile-redirects-cookie-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are so many use cases for Dynamic Redirects we couldn't fit them all in this blog.</p>
 	<p>Other possible use cases include mobile redirects, redirects based on cookies, redirects to different endpoints based on request headers for live testing. The potential list is huge, and we can't wait to hear what you come up with. Try it <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">today</a>!</p>
 </div>

@@ -7,7 +7,14 @@ Image Loading" class="kg-image" width="500" height="375" loading="lazy">
 
 	</figure>
 	<p>Yesterday, we <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">announced Polish</a>, which helps to automatically optimize the images on your site to decrease their size and thereby increase performance. Today we're releasing something more ambitious: a system to automatically manage the loading of images in order to maximize your site's performance which we call Mirage.</p>
-	<h3><b>Impact of Images</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="impact-of-images">Impact of Images</h3>
+		<a href="https://blog.cloudflare.com/#impact-of-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Images are more than 50% of the data that makes up a typical website. A tool like CloudFlare's Polish substantially reduces the size of images. What would be even better than reducing image sizes would be not loading image data that isn't needed for the page. That's what Mirage does automatically.</p>
 	<p>To understand this, imagine a typical blog. A blog is usually a long page with a series of stories, the most recent of which are on top. Your browser window is a certain size, which is known as the viewport. When you load a page, you can only see the images within that window. However, most browsers happily download all the images on the page before the page is ready. This not only slows down page performance, but if you never scroll down the page then it also wastes bandwidth downloading images that will never be seen.</p>
 	<figure class="kg-card kg-image-card ">
@@ -19,10 +26,24 @@ Image Loading" class="kg-image" width="500" height="361" loading="lazy">
 	<h4><b>Responsive Design: Lazy Loading and Auto Resizing</b></h4>
 	<p>CloudFlare Mirage is aware of the images on your page, the size of a visitor's viewport, and the type of device and network connection their device has. It then automatically optimizes image loading to only deliver the images that are necessary. Mirage prioritizes the loading of the images that are in the viewport. It then loads the other images as they are needed or as there are spare network resources available. You can see Mirage in action, loading images as a visitor scrolls down the page, in this video.</p>
 	<p>In addition to lazy loading, Mirage can also automatically optimize images to the size and resolution that is best for the page and device. One of the biggest wastes on the web is that people will upload a large image and then resize it down to a thumbnail or smaller size within HTML. Mirage detects cases like this and instructs the CloudFlare CDN to do the image resizing at the server. This means that if have a 1000px x 1000px image that you're only displaying at 100px x 100px then we deliver it to your visitors at the appropriate size and without wasting unnecessary bandwidth.</p>
-	<h3><b>Mobile, Mobile, Mobile, Mobile, Mobile</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="mobile-mobile-mobile-mobile-mobile">Mobile, Mobile, Mobile, Mobile, Mobile</h3>
+		<a href="https://blog.cloudflare.com/#mobile-mobile-mobile-mobile-mobile" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mirage significantly improves mobile performance in multiple ways. It automatically detects if a visitor is connecting over a mobile operator's network (where bandwidth is limited) or over a wifi conncetion (where bandwidth is less of a concern) and adjusts its image loading algorithm appropriately. So, for example, it will only load images as a visitor scrolls them into the viewport if you're on a 3G connection, where it will lazy load the all images in the background, prioritized based on where they appear on the page, if you're on wifi.</p>
 	<p>Mirage's dynamic sizing also takes into account the size of the viewport on a mobile device. A background image that is 2,000 pixels wide is wasted on an iPhone visitor's screen that is only 960-by-640-pixels. Mirage can automatically downsize the image so that you're never delivering more pixels than the device in question can display. Less data delivered to a mobile device not only improves a site's performance, but also helps your visitors with limited data plans not saturate their caps.</p>
-	<h3><b>Automatic Responsive Web Design</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="automatic-responsive-web-design">Automatic Responsive Web Design</h3>
+		<a href="https://blog.cloudflare.com/#automatic-responsive-web-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Responsive web design is the principle that your site's layout should respond to the environment. Usually this requires significant code changes to your underlying site, which many existing sites have difficulty retrofitting into their current stack. CloudFlare's Mirage automatically enables some of the biggest wins from responsive web design without you having to change a single line of HTML.</p>
 	<figure class="kg-card kg-image-card ">
 

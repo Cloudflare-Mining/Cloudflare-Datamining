@@ -9,7 +9,14 @@
 	<p>In today's digital landscape, it is easy to find code optimizations on the Internet including our own <a href="https://developers.cloudflare.com/workers/examples/103-early-hints">developers documentation</a> to improve the performance of your website or web applications. However, implementing these changes without knowing the impact they’ll have can be daunting. It could also cause an outage, taking websites or applications offline entirely, leaving admins scrambling to remove the offending code and get the business back online.</p>
 	<p>Users need a way to see the impact of these improvements on their websites without impacting uptime. They want to understand “If I enabled this, what performance boost should I expect to get?”.</p>
 	<p>Today, we are excited to announce Performance Experiments in Cloudflare Observatory. Performance Experiments gives users a safe place to experiment and determine what the best setup is to improve their website performance before pushing it live for all visitors to benefit from. Cloudflare users will be able to simply enter the desired code, run our Observatory testing suite and view the impact it would have on their Lighthouse score. If they are satisfied with the results they can push the experiment live. With the click of a button.</p>
-	<h3>Experimenting within Observatory</h3>
+	<div class="flex anchor relative">
+		<h3 id="experimenting-within-observatory">Experimenting within Observatory</h3>
+		<a href="https://blog.cloudflare.com/#experimenting-within-observatory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Observatory, announced today, allows users to <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">easily &nbsp;monitor website performance</a> by integrating Real-User Monitoring (RUM) data and synthetic tests in one location.. This allows users to easily identify areas for optimization and leverage Cloudflare's features to address performance issues.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -22,13 +29,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3rwkPP32qk8u5cvYWSwWhh/b7073660a29211d95faebdd12eb3594d/image2-11.png" alt="" class="kg-image" width="1147" height="924" loading="lazy">
 
 	</figure>
-	<h3>Fine tuning with Experiments</h3>
+	<div class="flex anchor relative">
+		<h3 id="fine-tuning-with-experiments">Fine tuning with Experiments</h3>
+		<a href="https://blog.cloudflare.com/#fine-tuning-with-experiments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s Observatory allows customers to easily enable recommended Cloudflare settings. However, &nbsp;through the medium of Cloudflare Workers web performance advocates have been able to create and share JavaScript examples of how to improve and optimize a website.</p>
 	<p>A great example of this is <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers">Fast Fonts</a>. Google Fonts are slow due to how they are served. When using Google Fonts on your website, you include a stylesheet URL that contains the font styles you want to use. The CSS file is hosted on one domain (fonts.googleapis.com), while the font files are on another domain (fonts.gstatic.com). This separation means that each resource requires at least four round trips to the server for DNS lookup, establishing the socket connection, negotiating TLS encryption (for https), and making the request itself.</p>
 	<p>These requests cannot be done in parallel because the fonts are not known until after the CSS is downloaded and applied to the page. In the best-case scenario, this leads to eight round trips before the text can be displayed. On a slower 3G connection with a 300ms round-trip time, this delay can add up to 2.4 seconds. To fix this issue Cloudflare Workers can be used to reduce the performance penalties of serving Google Fonts directly from Google by 81%.</p>
 	<p>Another issue is resource prioritization. When all requests come from the same domain on the same HTTP/2 connection, critical resources like CSS and fonts can be prioritized and delivered before lower priority resources like images. However, since Google Fonts (and most third-party resources) are served from a different domain than the main page resources, they cannot be prioritized and end up competing with each other for download bandwidth. This competition can result in significantly longer fetch times than the best-case scenario of eight round trips.</p>
 	<p>To implement this Worker first create a Cloudflare Worker, implement the code from the <a href="https://github.com/cloudflare/workers-sdk/tree/main/templates">GitHub repository</a> using Wrangler and then run manual tests to see if performance has been improved and that there are no issues or problems with the website loading. Users can choose to implement the Cloudflare Worker on a test path that may not be a true reflection of production or complicate the Cloudflare Worker further by implementing an <a href="https://developers.cloudflare.com/workers/examples/ab-testing">A/B test</a> that could still have an impact on your end users. So how can users test code on their website to easily see if the code will improve the performance of their website and not have any adverse impact on end users?</p>
-	<h3>Introducing Performance Experiments</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-performance-experiments">Introducing Performance Experiments</h3>
+		<a href="https://blog.cloudflare.com/#introducing-performance-experiments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last year we announced <a href="https://blog.cloudflare.com/snippets-announcement">Cloudflare Snippets</a>. Snippets is a platform for running discrete pieces of JavaScript code on Cloudflare before your website is served to the user. They provide a convenient way to customize and enhance your website's functionality. If you are already familiar with Cloudflare Workers, our developer platform, you'll find Snippets to be a familiar and welcome addition to your toolkit. With Snippets, you can easily execute small pieces of user-created JavaScript code to modify the behavior of your website and improve performance, security, and user experience.</p>
 	<p>Combining Snippets with Observatory lets users easily run experiments and get instant feedback on the performance impact. Users will be able to find a piece of JavaScript, insert it into the Experiments window and hit test. Observatory will then automatically run multiple Lighthouse tests with the experiment disabled and then enabled. The results will show the before and after scores allowing users to determine the impact of the experiment e.g. “If I put this JavaScript on my website, my Lighthouse score would improve by 15 points”.</p>
 	<p>This allows users to understand if the JavaScript has had a positive performance impact on their website. Users can then deploy this JavaScript, via Snippets, against all requests or on a specific subset of traffic. For example, if I only wanted it run on traffic from the UK or my office IPs I would use the rule below:</p>
@@ -38,9 +59,24 @@
 
 	</figure>
 	<p>Alternatively, if the results impact performance customers negatively users can safely discard the experiment or try another example. All without real visitors to the website being impacted or ever at risk.</p>
-	<h3>Accessing Performance Experiments</h3>
+	<div class="flex anchor relative">
+		<h3 id="accessing-performance-experiments">Accessing Performance Experiments</h3>
+		<a href="https://blog.cloudflare.com/#accessing-performance-experiments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Performance Experiments are currently under development — you can sign up <a href="https://www.cloudflare.com/lp/performance-experiments">here</a> to join the waitlist for access.</p>
 	<p>We hope to begin admitting users later in the year, with an open beta to follow.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/82e86af124f132c4e9ecf84c8894074c/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F82e86af124f132c4e9ecf84c8894074c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

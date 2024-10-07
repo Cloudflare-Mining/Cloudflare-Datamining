@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Workers Analytics Engine (or for short, Analytics Engine) is a new way for developers to store and analyze time series analytics about anything using Cloudflare Workers, and it’s now in open beta! Analytics Engine is really good at gathering time-series data for really high cardinality and high-volume data sets from Cloudflare Workers. At Cloudflare, we use Analytics Engine to provide insight into how our customers use Cloudflare products.</p>
-	<h3>Log, log, logging!</h3>
+	<div class="flex anchor relative">
+		<h3 id="log-log-logging">Log, log, logging!</h3>
+		<a href="https://blog.cloudflare.com/#log-log-logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As an example, Analytics Engine is used to observe the backend that powers <a href="https://developers.cloudflare.com/logs/instant-logs">Instant Logs</a>. Instant Logs allows Cloudflare customers to stream a live session of the HTTP logs for their domain to the Cloudflare dashboard. The backend for Instant Logs is built on Cloudflare Workers.</p>
 	<p>Briefly, the <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs backend works</a> by receiving requests from each Cloudflare server that processes a customer's HTTP traffic. These requests contain the HTTP logs for the customer’s HTTP traffic. The Instant Logs backend then forwards these HTTP logs to the customer’s browser via a WebSocket.</p>
 	<p>In order to ensure that the HTTP logs are being delivered smoothly to a customer's browser, we need to track the request rates across all active Instant Logs sessions. We also need to track the request rates across all Cloudflare data centers, since Instant Logs is built on Cloudflare Workers, and Cloudflare Workers is built on Cloudflare’s massive <a href="https://www.cloudflare.com/network">network</a>. As a result, the data set for the Instant Logs backend has really massive cardinality!</p>
@@ -15,21 +22,49 @@
 	<p>Using the Analytics Engine API (which has a SQL interface), we can visualize the Instant Logs backend request rates for the top sessions and top data centers over the previous month. “Zooming in” to an interesting period is also really fast. We’ve designed Analytics Engine so that queries always respond within the window of interactivity (more on this later). This makes it well-suited for interactive debugging with a dashboard tool (in this case we’re using Grafana).</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/04622c18290a721de8f19979c35fb580/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F04622c18290a721de8f19979c35fb580%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h3>What we learned in closed beta</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-learned-in-closed-beta">What we learned in closed beta</h3>
+		<a href="https://blog.cloudflare.com/#what-we-learned-in-closed-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We received a lot of great feedback during the closed beta. Developers were excited about the SQL API, ease of integration with Workers, the ability to query data in Grafana (with more integrations in future), and our simple pricing model (free!). However, there were a number of things that we needed to fix before moving on to the open beta phase.</p>
 	<p>Developers were supportive of our choice to use SQL (the world’s language for data) as the interface for the Analytics Engine API. However, when developers used the Analytics Engine API, they found that the error messages were opaque and difficult to debug. For the open beta, we have rewritten the API from the ground-up to provide much improved error messaging.</p>
 	<p><i>Before:</i><code>&gt; SELECT column_that_does_not_exist FROM your_dataset FORMAT JSONSorry, we were unable to evaluate your query</code></p>
 	<p><i>After:</i><code>&gt; SELECT column_that_does_not_exist FROM your_dataset FORMAT JSONcannot select unknown column: "column_that_does_not_exist"</code></p>
 	<p>In addition to understanding what went wrong, developers also wanted to understand what the API is capable of doing. For the open beta, we’ve written a comprehensive SQL reference for Analytics Engine. We also have a few “How To” guides, including information on how to <a href="https://developers.cloudflare.com/analytics/analytics-engine">hook up the API to Grafana</a>.</p>
-	<h3>ABR and Analytics Engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="abr-and-analytics-engine">ABR and Analytics Engine</h3>
+		<a href="https://blog.cloudflare.com/#abr-and-analytics-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Analytics Engine uses <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Cloudflare’s ABR technology</a> to make queries fast. This means that every query is satisfied by a resolution of the data that matches the query. For example, if we are looking at data for the last month, we might use a lower resolution version of the Analytics Engine data than if we are looking at the last hour. The lower resolution data will provide the correct answer, but will respond within the window of interactivity. By using multiple, different resolutions of the same data, ABR provides consistent response times.</p>
 	<p>To account for the different resolutions of data, each event carries with it information about the resolution of data that the event comes from. This information is encoded in the <code>_sample_interval</code> column. For example, if an event comes from a resolution of the data which is 1% of the original data, its <code>_sample_interval</code> will be set to 100. To reconstruct the number of events in the original data, we can use the query:</p>
 	<p><code>SELECT sum(_sample_interval) AS count FROM dataset</code></p>
 	<p>For the open beta, we are exposing <code>_sample_interval</code> directly to developers. In the future, we’ll make it easier to work with this field by providing convenience functions which automatically take into account varying resolutions of the data. We also want to provide the ability to understand the confidence level of the estimates that these functions return.</p>
-	<h3>Coming soon</h3>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon">Coming soon</h3>
+		<a href="https://blog.cloudflare.com/#coming-soon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is just the beginning for Workers Analytics Engine. Internally, there has been high demand for the ability to define alerts based on the data captured by Analytics Engine. This is also something that we want developers to be able to do.</p>
 	<p>As in the closed beta, fields are accessed via names that have 1-based indexing (blob1, blob2, double1, double2, etc.). In the future, we will allow developers to attach names to fields, and these names will be available to use to retrieve data via the SQL API.</p>
 	<p>Something we want to provide is a rich UX in the Cloudflare dashboard (imagine something like Grafana in the Cloudflare dashboard). Ultimately, we don’t want developers to have to set up their own infrastructure for exploring data captured with Analytics Engine.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fanalytics-engine">Try Workers Analytics Engine today</a>! Please let us know if you have any ideas or more advanced use cases that aren’t supported. We’re discussing everything about the Analytics Engine in our <a href="https://discord.gg/mkTRayHntk">discord channel</a> too - join the conversation!</p>
 </div>

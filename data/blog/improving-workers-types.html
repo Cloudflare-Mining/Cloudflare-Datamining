@@ -8,7 +8,14 @@
 	</figure>
 	<p><a href="https://www.typescriptlang.org">TypeScript</a> makes it easy for developers to write code that doesn’t crash, by catching type errors before your program runs. We want developers to take advantage of this tooling, which is why one year ago, we <a href="https://blog.cloudflare.com/automatically-generated-types">built a system to automatically generate TypeScript types</a> for the Cloudflare Workers runtime. This enabled developers to see code completions in their IDEs for Workers APIs, and to type check code before deploying. Each week, <a href="https://github.com/cloudflare/workers-types/pull/210">a new version of the types would be published</a>, reflecting the most recent changes.</p>
 	<p>Over the past year, we’ve received lots of feedback from customers and internal teams on how we could improve our types. With the switch to the Bazel build system in <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">preparation for open-sourcing the runtime</a>, we saw an opportunity to rebuild our types to be more accurate, easier to use, and simpler to generate. Today, we’re excited to announce the next major release of <code>@cloudflare/workers-types</code> with a bunch of new features, and the open-sourcing of the <a href="https://github.com/cloudflare/workerd/tree/main/types">fully-rewritten automatic generation scripts</a>.</p>
-	<h3>How to use TypeScript with Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-typescript-with-workers">How to use TypeScript with Workers</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-typescript-with-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Setting up TypeScript in Workers is easy! If you’re just getting started with Workers, install <a href="https://nodejs.org">Node.js</a>, then run <code>npx wrangler init</code> in your terminal to generate a new project. If you have an existing Workers project and want to take advantage of our improved typings, install the latest versions of TypeScript and <code>@cloudflare/workers-types</code> with <code>npm install --save-dev typescript @cloudflare/workers-types@latest</code>, then create a <code>tsconfig.json</code> file with the following contents:</p>
 	<pre class="language-json"><code class="language-json">{
   "compilerOptions": {
@@ -25,14 +32,28 @@
 
 	</figure>
 	<p>Editor highlighting incorrect use of <code>set</code> instead of <code>put</code>, and providing code completions</p>
-	<h3>Improved interoperability with standard types</h3>
+	<div class="flex anchor relative">
+		<h3 id="improved-interoperability-with-standard-types">Improved interoperability with standard types</h3>
+		<a href="https://blog.cloudflare.com/#improved-interoperability-with-standard-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers implement many of the same runtime APIs as browsers, and we’re working to improve our standards compliance even more with the <a href="https://blog.cloudflare.com/introducing-the-wintercg">WinterCG</a>. However, there will always be fundamental differences between what browsers and Workers can do. For example, browsers can play audio files, whereas Workers have direct access to Cloudflare’s network for storing globally-distributed data. This mismatch means that the runtime APIs and types provided by each platform are different, which in turn makes it difficult to use Workers types with frameworks, like <a href="https://remix.run">Remix</a>, that run the same files on the Cloudflare network and in the browser. These files need to be type-checked against <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts"><code>lib.dom.d.ts</code></a>, which is incompatible with our types.</p>
 	<p>To solve this problem, we now generate a separate version of our types that can be selectively imported, without having to include <code>@cloudflare/workers-types</code> in your <code>tsconfig.json</code>’s <code>types</code> field. Here’s an example of what this looks like:</p>
 	<pre class="language-ts"><code class="language-ts">import type { KVNamespace } from "@cloudflare/workers-types";
 
 declare const USERS_NAMESPACE: KVNamespace;</code></pre>
 	<p>In addition, we automatically generate a diff of our types against TypeScript’s <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.webworker.d.ts"><code>lib.webworker.d.ts</code></a>. Going forward, we’ll use this to identify areas where we can further improve our spec-compliance.</p>
-	<h3>Improved compatibility with compatibility dates</h3>
+	<div class="flex anchor relative">
+		<h3 id="improved-compatibility-with-compatibility-dates">Improved compatibility with compatibility dates</h3>
+		<a href="https://blog.cloudflare.com/#improved-compatibility-with-compatibility-dates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare maintains strong backwards compatibility promises for all the APIs we provide. We use <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flags and dates</a> to make breaking changes in a backwards-compatible way. Sometimes these compatibility flags change the types. For example, the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator"><code>global_navigator</code></a> flag adds a new <code>navigator</code> global, and the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation"><code>url_standard</code></a> flag changes the <code>URLSearchParams</code> constructor signature.</p>
 	<p>We now allow you to select the version of the types that matches your compatibility date, so you can be sure you’re not using features that won’t be supported at runtime.</p>
 	<pre class="language-ts"><code class="language-ts">{
@@ -41,7 +62,15 @@ declare const USERS_NAMESPACE: KVNamespace;</code></pre>
     "types": ["@cloudflare/workers-types/2022-08-04"]
   }
 }</code></pre>
-	<h3>Improved integration with Wrangler</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="improved-integration-with-wrangler">Improved integration with Wrangler</h3>
+		<a href="https://blog.cloudflare.com/#improved-integration-with-wrangler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to compatibility dates, your Worker environment configuration also impacts the runtime and type API surface. If you have bindings such as <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces">KV namespaces</a> or <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets">R2 buckets</a> configured in your <code>wrangler.toml</code>, these need to be reflected in TypeScript types. Similarly, <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#bundling">custom text, data and WebAssembly module rules</a> need to be declared so TypeScript knows the types of exports. Previously, it was up to you to create a separate ambient TypeScript file containing these declarations.</p>
 	<p>To keep <code>wrangler.toml</code> as the single source of truth, you can now run <code>npx wrangler types</code> to generate this file automatically.</p>
 	<p>For example, the following <code>wrangler.toml</code>…</p>
@@ -55,7 +84,15 @@ declare module "*.txt" {
   const value: string;
   export default value;
 }</code></pre>
-	<h3>Improved integrated documentation and changelogs</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="improved-integrated-documentation-and-changelogs">Improved integrated documentation and changelogs</h3>
+		<a href="https://blog.cloudflare.com/#improved-integrated-documentation-and-changelogs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Code completions provide a great way for developers new to the Workers platform to explore the API surface. We now include the documentation for standard APIs from TypeScript’s official types in our types. We’re also starting the process of bringing <a href="https://developers.cloudflare.com/workers/runtime-apis">docs for Cloudflare specific APIs</a> into them too.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -63,7 +100,14 @@ declare module "*.txt" {
 
 	</figure>
 	<p>For developers already using the Workers platform, it can be difficult to see how types are changing with each release of <code>@cloudflare/workers-types</code>. To avoid type errors and highlight new features, we now generate a detailed changelog with each release that <a href="https://github.com/cloudflare/workers-types/pull/291#issuecomment-1274541965">splits out new, changed and removed definitions</a>.</p>
-	<h3>How does type generation work under the hood?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-type-generation-work-under-the-hood">How does type generation work under the hood?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-type-generation-work-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned earlier, we’ve completely rebuilt the <a href="https://github.com/cloudflare/workerd/tree/main/types">automatic type generation scripts</a> to be more reliable, extensible and maintainable. This means developers will get improved types as soon as new versions of the runtime are published. Our system now uses <code>workerd</code>’s new <a href="https://github.com/cloudflare/workerd/blob/200ded3d8469371f9ece6a00d4012e26637e5abc/src/workerd/jsg/rtti.h">runtime-type-information (RTTI) system</a> to query types of Workers runtime APIs, rather than attempting to extract this information from parsed C++ ASTs.</p>
 	<pre class="language-cpp"><code class="language-cpp">// Encode the KV namespace type without any compatibility flags enabled
 CompatibilityFlags::Reader flags = {};
@@ -138,6 +182,13 @@ console.log(output); // interface KVNamespace { get(key: string): Promise&lt;str
 		</li>
 	</ul>
 	<p>Previously, these overrides were defined in separate TypeScript files to the C++ declarations they were overriding. This meant they often fell out-of-sync with the original declarations. In the new system, overrides are defined alongside the originals with C++ macros, meaning they can be reviewed alongside runtime implementation changes. See the <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/jsg/README.md#typescript">README for <code>workerd</code>’s JavaScript glue code</a> for many more details and examples.</p>
-	<h3>Try typing with workers-types today!</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-typing-with-workers-types-today">Try typing with workers-types today!</h3>
+		<a href="https://blog.cloudflare.com/#try-typing-with-workers-types-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We encourage you to upgrade to the latest version of <code>@cloudflare/workers-types</code> with <code>npm install --save-dev @cloudflare/workers-types@latest</code>, and try out the new <code>wrangler types</code> command. We’ll be publishing a new version of the types with each <code>workerd</code> release. Let us know what you think on the <a href="https://discord.gg/cloudflaredev">Cloudflare Developers Discord</a>, and please <a href="https://github.com/cloudflare/workerd/issues/new">open a GitHub issue</a> if you find any types that could be improved.</p>
 </div>

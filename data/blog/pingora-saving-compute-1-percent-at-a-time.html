@@ -4,7 +4,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uwVNobeSBws457ad5SoNY/90450804dbb882c9fe7f9b5f6d467c1e/2442-1-hero.png" alt="2442-1-hero" class="kg-image" width="1800" height="1013" loading="lazy">
 	</figure>
 	<p>Cloudflare’s global network handles <i>a lot</i> of HTTP requests – over 60 million per second on average. That in and of itself is not news, but it is the starting point to an adventure that started a few months ago and ends with the announcement of a new <a href="https://github.com/cloudflare/trie-hard"><u>open-source Rust crate</u></a> that we are using to reduce our CPU utilization, enabling our CDN to handle even more of the world’s ever-increasing Web traffic.&nbsp;</p>
-	<h2>Motivation</h2>
+	<div class="flex anchor relative">
+		<h2 id="motivation">Motivation</h2>
+		<a href="https://blog.cloudflare.com/#motivation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s start at the beginning. You may recall a few months ago we released <a href="https://blog.cloudflare.com/pingora-open-source"><u>Pingora</u></a> (the heart of our Rust-based proxy services) as an <a href="https://github.com/cloudflare/pingora"><u>open-source project on GitHub</u></a>. I work on the team that maintains the Pingora framework, as well as Cloudflare’s production services built upon it. One of those services is responsible for the final step in transmitting users’ (non-cached) requests to their true destination. Internally, we call the request’s destination server its “origin”, so our service has the (unimaginative) name of “pingora-origin”.</p>
 	<p>One of the many responsibilities of pingora-origin is to ensure that when a request leaves our infrastructure, it has been cleaned to remove the internal information we use to route, measure, and optimize traffic for our customers. This has to be done for every request that leaves Cloudflare, and as I mentioned above, it’s <i>a lot</i> of requests. At the time of writing, the rate of requests leaving pingora-origin (globally) is 35 million requests per second. Any code that has to be run per-request is in the hottest of hot paths, and it’s in this path that we find this code and comment:</p>
 	<pre class="language-RUST"><code class="language-RUST">// PERF: heavy function: 1.7% CPU time
@@ -15,9 +22,23 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 }</code></pre>
 	<p></p>
 	<p>This small and pleasantly-readable function consumes more than 1.7% of pingora-origin’s total cpu time. To put that in perspective, the total cpu time consumed by pingora-origin is 40,000 compute-seconds per second. You can think of this as 40,000 saturated CPU cores fully dedicated to running pingora-origin. Of those 40,000, 1.7% (680) are only dedicated to evaluating <code>clear_internal_headers</code>. The function’s heavy usage and simplicity make it seem like a great place to start optimizing.</p>
-	<h2>Benchmarking</h2>
+	<div class="flex anchor relative">
+		<h2 id="benchmarking">Benchmarking</h2>
+		<a href="https://blog.cloudflare.com/#benchmarking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Benchmarking the function shown above is straightforward because we can use the wonderful <a href="https://crates.io/crates/criterion"><u>criterion</u></a> Rust crate. Criterion provides an api for timing rust code down to the nanosecond by aggregating multiple isolated executions. It also provides feedback on how the performance improves or regresses over time. The input for the benchmark is a large set of synthesized requests with a random number of headers with a uniform distribution of internal vs. non-internal headers. With our tooling and test data we find that our original <code>clear_internal_headers</code> function runs in an average of <b>3.65µs</b>. Now for each new method of clearing headers, we can measure against the same set of requests and get a relative performance difference.&nbsp;</p>
-	<h2>Reducing Reads</h2>
+	<div class="flex anchor relative">
+		<h2 id="reducing-reads">Reducing Reads</h2>
+		<a href="https://blog.cloudflare.com/#reducing-reads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One potentially quick win is to invert how we find the headers that need to be removed from requests. If you look at the original code, you can see that we are evaluating <code>request_header.remove_header(h)</code> for each header in our list of internal headers, so 100+ times. Diagrammatically, it looks like this:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7y2qHbNfBQeoGRc8PqjBcp/8836800cb4a9e980665fb35ef8c8db24/2442-2.png" alt="2442-2" class="kg-image" width="568" height="244" loading="lazy">
@@ -29,7 +50,14 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 	</figure>
 	<p></p>
 	<p>Using our benchmarking tool, we can measure the impact of this small change, and surprisingly this is already a substantial improvement. The runtime improves from <b>3.65µs</b> to <b>1.53µs</b>. That’s a 2.39x speed improvement for our function. We can calculate the theoretical CPU percentage by multiplying the starting utilization by the ratio of the new and old times: 1.71% * 1.53 / 3.65 = 0.717%. Unfortunately, if we subtract that from the original 1.71% that only equates to saving 1.71% - 0.717% = <i>0.993%</i> of the total CPU time. We should be able to do better.&nbsp;</p>
-	<h2>Searching Data Structures</h2>
+	<div class="flex anchor relative">
+		<h2 id="searching-data-structures">Searching Data Structures</h2>
+		<a href="https://blog.cloudflare.com/#searching-data-structures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we have reorganized our function to search a static set of internal headers instead of the actual request, we have the freedom to choose what data structure we store our header name in simply by changing the type of <code>INTERNAL_HEADER_SET</code>.</p>
 	<pre class="language-RUST"><code class="language-RUST">pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
    let to_remove = request_header
@@ -47,14 +75,28 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 	<p>There are a few common data structures that provide for reads that have read behavior that meets our criteria. Sorted sets like <code>BTreeSet</code> use comparisons for searching, and that makes them logarithmic over key length <b>O(log(L))</b>, but they are also logarithmic in size too. The net effect is that even very fast sorted sets like <a href="https://crates.io/crates/fst"><u>FST</u></a> work out to be a little (50 ns) slower in our benchmarks than the standard hashmap.</p>
 	<p>State machines like parsers and regex are another common tool for searching for strings, though it’s hard to consider them data structures. These systems work by accepting input one unit at a time and determining on each step whether or not to keep evaluating. Being able to make these determinations at every step means state machines are very fast to identify negative cases (i.e. when a string is not valid or not a match). This is perfect for us because only one or two headers per request on average will be internal. In fact, benchmarking an implementation of <code>clear_internal_headers</code> using regular expressions clocks in as taking about twice as long as the hashmap-based solution. This is impressively fast given that regexes, while powerful, aren't known for their raw speed. This approach feels promising – we just need something in between a data structure and a state machine. </p>
 	<p>That’s where the trie comes in.</p>
-	<h2>Don’t Just Trie</h2>
+	<div class="flex anchor relative">
+		<h2 id="dont-just-trie">Don’t Just Trie</h2>
+		<a href="https://blog.cloudflare.com/#dont-just-trie" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A <a href="https://en.wikipedia.org/wiki/Trie"><u>trie</u></a> (pronounced like “try” or “tree”) is a type of <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)"><u>tree data structure</u></a> normally used for prefix searches or auto-complete systems over a known set of strings. The structure of the trie lends itself to this because each node in the trie represents a substring of characters found in the initial set. The connections between the nodes represent the characters that can follow a prefix. Here is a small example of a trie built from the words: “and”, “ant”, “dad”, “do”, &amp; “dot”.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wy48j3XNs9awxRNvjLljC/62bdf276359d1cf5b8377e13ad2a0017/2442-4.png" alt="2442-4" class="kg-image" width="519" height="291" loading="lazy">
 	</figure>
 	<p>The root node represents an empty string prefix, so the two lettered edges directed out of it are the only letters that can appear as the first letter in the list of strings, “a” and “d”. Subsequent nodes have increasingly longer prefixes until the final valid words are reached. This layout should make it easy to see how a trie could be useful for quickly identifying strings that are not contained. Even at the root node, we can eliminate any strings that are presented that do not start with “a” or “d”. This paring down of the search space on every step gives reading from a trie the <b>O(log(L))</b> we were looking for … but only for misses. Hits within a trie are still <b>O(L)</b>, but that’s okay, because we are getting misses over 90% of the time.</p>
 	<p>Benchmarking a few trie implementations from <a href="https://crates.io/search?q=trie"><u>crates.io</u></a> was disheartening. Remember, most tries are used in response to keyboard events, so optimizing them to run in the hot path of tens of millions of requests per second is not a priority. The fastest existing implementation we found was <a href="https://crates.io/crates/radix_trie"><u>radix_trie</u></a>, but it still clocked in at a full microsecond slower than hashmap. The only thing left to do was write our own implementation of a trie that was optimized for our use case.</p>
-	<h2>Trie Hard</h2>
+	<div class="flex anchor relative">
+		<h2 id="trie-hard">Trie Hard</h2>
+		<a href="https://blog.cloudflare.com/#trie-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And we did! Today we are announcing <a href="https://github.com/cloudflare/trie-hard"><u>trie-hard</u></a>. The repository gives a full description of how it works, but the big takeaway is that it gets its speed from storing node relationships in the bits of unsigned integers and keeping the entire tree in a contiguous chunk of memory. In our benchmarks, we found that trie-hard reduced the average runtime for <code>clear_internal_headers</code> to under a microsecond (0.93µs). We can reuse the same formula from above to calculate the expected CPU utilization for trie-hard to be 1.71% * 3.65 / 0.93 = 0.43% That means we have finally achieved and surpassed our goal by reducing the compute utilization of pingora-origin by 1.71% - 0.43% =&nbsp; <b>1.28%</b>!&nbsp;</p>
 	<p>Up until now we have been working only in theory and local benchmarking. What really matters is whether our benchmarking reflects real-life behavior. Trie-hard has been running in production since July 2024, and over the course of this project we have been collecting performance metrics from the running production of pingora-origin using a statistical sampling of its stack trace over time. Using this technique, the CPU utilization percentage of a function is estimated by the percent of samples in which the function appears. If we compare the sampled performance of the different versions of <code>clear_internal_headers</code>, we can see that the results from the performance sampling closely match what our benchmarks predicted.</p>
 	<table>
@@ -117,6 +159,13 @@ pub fn clear_internal_headers(request_header: &amp;mut RequestHeader) {
 			</tr>
 		</tbody>
 	</table>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Optimizing functions and writing new data structures is cool, but the real conclusion for this post is that knowing where your code is slow and by how much is more important than how you go about optimizing it. Take a moment to thank your observability team (if you're lucky enough to have one), and make use of flame graphs or any other profiling and benchmarking tool you can. Optimizing operations that are already measured in microseconds may seem a little silly, but these small improvements add up.</p>
 </div>

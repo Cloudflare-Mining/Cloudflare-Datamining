@@ -10,7 +10,14 @@
 	<p>My connection above used a symmetric cipher (RC4_128) with a 128-bitkey and an asymmetric cipher (ECDHE_RSA) with a 2,048-bit key.</p>
 	<p>You might also have seen other key lengths in use. For example, when I connect to the British Government portal <a href="https://www.gov.uk">gov.uk</a> I get a TLS connection that uses AES_256_CBC (with a 256-bit key) set up using RSA with a 2,048-bit key. It's not uncommon to see RSA with a 1,024-bit key as well.</p>
 	<p>To understand these key lengths it's necessary to understand a little about the actual encryption schemes they are used with.</p>
-	<h3>Symmetric Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="symmetric-cryptography">Symmetric Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#symmetric-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The RC4_128 and AES_256_CBC schemes mentioned above are <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">symmetric cryptographic schemes</a>. Symmetric simply means that the same key is used to encipher and decipher the encrypted web traffic. In one case, a 128-bit key is used, in another a 256-bit key.</p>
 	<p>Symmetric cryptography is the oldest form there is. When children use a <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Cipher</a> (shifting each letter in the alphabet some fixed number of places) they are performing symmetric cryptography. In that case, the key is the number of places to shift letters and there are 26 possible keys (which is roughly like saying the Caesar Cipher has a roughly 5-bit key).</p>
 	<p>Here's a Caesar Shift with a key of 7 (each letter is moved up in the alphabet 7 places):</p>
@@ -50,7 +57,14 @@
 		23: SCDRO LOCDD RKDMY BZYBK VLYLL ICRKP DYOMK XNYYX CRYBD XYDSM O
 		24: RBCQN KNBCC QJCLX AYXAJ UKXKK HBQJO CXNLJ WMXXW BQXAC WXCRL N
 		25: QABPM JMABB PIBKW ZXWZI TJWJJ GAPIN BWMKI VLWWV APWZB VWBQK M</p>
-	<h3>How long?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-long">How long?</h3>
+		<a href="https://blog.cloudflare.com/#how-long" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The goal of modern symmetric cryptography is to make this sort of'trying out all the possible keys' the only approach to breaking a symmetric cipher. Algorithms like <a href="https://en.wikipedia.org/wiki/RC4">RC4</a> and <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> scramble data based on a key. The key itself is, ideally, randomly chosen from the set of all possible keys.</p>
 	<p>On a side note, there are now <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">serious problems with RC4</a> and as better replacements come along (such as ciphersuites based on AES) CloudFlare will update the ciphersuites it uses to provide the best level of protection.</p>
 	<p>That said the basic idea is that the only way to break into a connection secured with a symmetric cipher is to try out all the keys. Which brings us to 128-bit and 256-bit keys.</p>
@@ -66,7 +80,14 @@
 	<p>Image (c) BBC TV</p>
 	<p>So, breaking 128-bit keys by brute force just isn't practical. And breaking 256-bit is even less possible. So, for symmetric ciphers, keys of these lengths make sense.</p>
 	<p>But that's not the case for asymmetric cryptography.</p>
-	<h3>Asymmetric Key Lengths</h3>
+	<div class="flex anchor relative">
+		<h3 id="asymmetric-key-lengths">Asymmetric Key Lengths</h3>
+		<a href="https://blog.cloudflare.com/#asymmetric-key-lengths" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Asymmetric cryptography</a> works by having two different keys, one for encryption and one for decryption. It's also often called 'public key cryptography' because it's possible to make one key public (allowing someone to encrypt a message) while keeping the other private (only the holder of the private key can decrypt the message encrypted with its related public key).</p>
 	<p>In order to have these special properties the public and private keys are related by some mathematical process. Aside: in the symmetric examples there's only one key and it's just any value of the right number of bits. This randomness of a symmetric key means it can be relatively short as we saw.</p>
 	<p>For example, in the popular RSA scheme used with SSL/TLS the public and private keys consist in part of the product of two large prime numbers. Making an RSA key starts with picking two random prime numbers. The security of RSA relies (in part) on the fact that it's easy to choose two random prime numbers, but it's very hard to discover what they are when just given the product of them.</p>
@@ -86,7 +107,14 @@
 	<p>RSA keys have a distinctive pattern: they are the product of two prime numbers. That provides the chink; today that chink is best exploited by the General Number Field Sieve. In the symmetric key case there are no such patterns: the keys are just large randomly-chosen numbers. (Of course, if you don't pick your symmetric key randomly you might actually be helping an attacker find a way to break your encrypted messages.)</p>
 	<p>A few years ago the 512-bit RSA key used to sign software for TIcalculators was broken by <a href="https://en.wikipedia.org/wiki/Texas_Instruments_signing_key_controversy">an individual</a> using a PC that ran for 73 days using the open source <a href="http://www.boo.net/~jasonp/qs.html">msieve and ggnfs</a> prorgrams.</p>
 	<p>So, asymmetric keys have to be much larger than symmetric keys because there are less of them for a given number of bits, and because there are patterns within the keys themselves.</p>
-	<h3>Recommendations</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommendations">Recommendations</h3>
+		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://www.keylength.com/en/3">ECRYPT II recommendations</a> on key length say that a 128-bit symmetric key provides the same strength of protection as a 3,248-bit asymmetric key. And that those key lengths provide long term protection of data encrypted with them.</p>
 	<p>The length of time a key is good for is also important. Over time computers get faster and techniques for breaking encryption schemes (particuarly techniques for breaking asymmetric encryption) get better. That 512-bit key used for TI calculators probably looked pretty safe when it was first chosen. And in 1999 a key of that length took a <a href="https://en.wikipedia.org/wiki/Cray_C90">supercomputer</a> to break.</p>
 	<figure class="kg-card kg-image-card ">
@@ -96,7 +124,14 @@
 	</figure>
 	<p>We keep an eye on these reports when choosing ciphers and key lengths to secure our and our customers' communications.</p>
 	<p>Because of the importance of protecting our customers' communications CloudFlare has also opted to roll out <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> for our SSL/TLS connections. That means that the public/private keys used for connections are generated freshly each time. That prevents bulk attacks where a single public/private key (such as the one used in simple RSA-based certificates) is broken revealing all of the symmetric keys used to secure HTTPS for a web site.</p>
-	<h3>Forward Secrecy and Elliptic Curves</h3>
+	<div class="flex anchor relative">
+		<h3 id="forward-secrecy-and-elliptic-curves">Forward Secrecy and Elliptic Curves</h3>
+		<a href="https://blog.cloudflare.com/#forward-secrecy-and-elliptic-curves" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Returning to the HTTPS connection I made to CloudFlare at the start, the key negotiation was done using ECDHE_RSA. That's the ephemeral version of the Diffie-Hellman key exchange mechanism that uses elliptic curves and RSA for authentication. That's quite amouthful. It breaks down like this:</p>
 	<ol>
 		<li>

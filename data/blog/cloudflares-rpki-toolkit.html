@@ -2,12 +2,26 @@
 <div class="post-content lh-copy gray1">
 	<p>A few months ago, we made a <a href="https://blog.cloudflare.com/rpki">first</a> then a <a href="https://blog.cloudflare.com/rpki-details">second</a> announcement about Cloudflare’s involvement in Resource Public Key Infrastructure (RPKI), and our desire to make BGP Internet routing more secure. Our mission is to build a safer Internet. We want to make it easier for network operators to deploy RPKI.</p>
 	<p>Today’s article is going to cover our experience and the tools we are using. As a brief reminder, RPKI is a framework that allows networks to deploy route filtering using cryptography-validated information. Picture TLS certificates for IP addresses and Autonomous System Numbers (ASNs)</p>
-	<h3>What it means for you:</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-it-means-for-you">What it means for you:</h3>
+		<a href="https://blog.cloudflare.com/#what-it-means-for-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We validate our IP routes. This means, as a 1.1.1.1 DNS resolver user, you are less likely to be victim of cache poisoning. We signed our IP routes. This means a user browsing the websites on Cloudflare’s network are unlikely to experience route hijacks.</p>
 	<p>All our Points of Presence which have a router compatible with <a href="https://tools.ietf.org/html/rfc8210">The Resource Public Key Infrastructure (RPKI) to Router Protocol</a> (RTR protocol) are connected to our custom software called <a href="https://github.com/cloudflare/gortr">GoRTR</a> and are now filtering invalid routes. The deployment amounts to around 70% of our network.</p>
 	<p>We received many questions regarding the amount of invalid traffic. Our estimates go from 100Mbps to 2Gbps. The spread remains high due to the difficulty of accounting the traffic that would go towards an invalid route. At our scale, it is a drop in the ocean of packets.</p>
 	<p>It is worth mentioning that one provider experienced a substantial traffic shift due to many regional IPs announced as smaller subnets and not included in the Route Origin Attestation (ROA), a key resource of the RPKI environment. We noticed many important networks announcing invalids on Internet Exchange Points. We emailed Network Operating Centers and were happy to see the records got corrected in a matter of days.</p>
-	<h3>Let’s talk about tooling!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-talk-about-tooling">Let’s talk about tooling!</h3>
+		<a href="https://blog.cloudflare.com/#lets-talk-about-tooling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two components: <b>GoRTR</b> and <b>OctoRPKI.</b> The big picture of our setup.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -15,11 +29,26 @@
 
 	</figure>
 	<p>OctoRPKI and GoRTR ecosystem diagram</p>
-	<h3><a href="https://github.com/cloudflare/gortr">GoRTR</a></h3>
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As our network keeps growing, we needed a scalable solution to send the list of validated ROAs to our edge. Ideally using our CDN for caching the resources. We created <a href="https://github.com/cloudflare/gortr">GoRTR</a>, a small Go application which will fetch a JSON file using a format used by RPKI Validators. We made sure that it could be used with various servers and implemented cryptographic checks to ensure an untampered distribution. By default, it will fetch the list of prefixes available at <a href="https://rpki.cloudflare.com/rpki.json">rpki.cloudflare.com/rpki.json</a>.</p>
 	<p>You do not need to run your own validation software, just plug your RPKI-enabled router to GoRTR and start filtering. GoRTR will also expose a web server and Prometheus-type metrics. Nonetheless, if you want to run your own validation software, keep reading because OctoRPKI might be the solution for you. You can start GoRTR with Docker and plug your router to the port 8282 to receive a RTR feed:</p>
 	<pre class="language-bash"><code class="language-bash">$ docker run -ti -p 8282:8282 cloudflare/gortr</code></pre>
-	<h3><a href="https://github.com/cloudflare/cfrpki">OctoRPKI</a></h3>
+
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you want to control the validation of routes, we got you covered!</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -27,11 +56,25 @@
 
 	</figure>
 	<p>After a few months work, we released OctoRPKI. Behind an octopus logo, there is a RPKI Relying Party written in Go.</p>
-	<h3>Why did we build a validator?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-did-we-build-a-validator">Why did we build a validator?</h3>
+		<a href="https://blog.cloudflare.com/#why-did-we-build-a-validator" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The current ecosystem did not bring us joy, we needed RPKI Repository Delta Protocol (RRDP), a fully-fledged monitored validator subsystem and the ability to push only the final computed data to our storage cluster. We decided to build it in Go for multiple reasons. In exchange of a slightly increased overhead, we gained flexibility. There is a great amount of cryptographic resources and libraries for the Go language. And we are hoping this would benefit an already important community.</p>
 	<p>The <a href="https://github.com/cloudflare/cfrpki">repository</a> contains OctoRPKI plus a library to decode certificates, ROAs, manifests, etc. The code can start a synchronization with rsync and/or RRDP.</p>
 	<p>Similarly to GoRTR, it embeds an API to get the latest results of the synchronization and a Prometheus metrics endpoint to deploy alerting. Internally, we monitor the state of the validation using Prometheus. It is also providing data for a GraphQL API that will be released soon.</p>
-	<h3>You can start it with Docker.</h3>
+	<div class="flex anchor relative">
+		<h3 id="you-can-start-it-with-docker">You can start it with Docker.</h3>
+		<a href="https://blog.cloudflare.com/#you-can-start-it-with-docker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The docker image provides a way to instantly run OctoRPKI and comes complete with four of the five Trust Anchor Locator (TAL) files needed to operate (AFRINIC, APNIC, LACNIC, and RIPE). The fifth is the ARIN TAL, so don’t forget to add the TAL from ARIN. You can start the process of downloading it at the following address: <a href="https://www.arin.net/resources/rpki/tal.html">www.arin.net/resources/rpki/tal.html</a>.</p>
 	<pre class="language-bash"><code class="language-bash">$ docker run -ti \
      -p 8080:8080 \

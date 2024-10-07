@@ -9,14 +9,37 @@
 	<pre class="language-txt"><code class="language-txt">/developer-docs/*
   X-Hiring: Looking for a job? We're hiring engineers
 (https://www.cloudflare.com/careers/jobs)</code></pre>
-	<h2>What can you set with custom headers?</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="what-can-you-set-with-custom-headers">What can you set with custom headers?</h2>
+		<a href="https://blog.cloudflare.com/#what-can-you-set-with-custom-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Being able to set custom headers is useful for a variety of reasons — let’s explore some of your most popular use cases.</p>
-	<h3>Search Engine Optimization (SEO)</h3>
+	<div class="flex anchor relative">
+		<h3 id="search-engine-optimization-seo">Search Engine Optimization (SEO)</h3>
+		<a href="https://blog.cloudflare.com/#search-engine-optimization-seo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you create a Pages project, a <code>pages.dev</code> deployment is created for your project which enables you to <a href="https://developers.cloudflare.com/pages/get-started">get started immediately</a> and easily <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">preview changes</a> as you iterate. However, we realize this poses an issue — publishing multiple copies of your website can harm your rankings in search engine results. One way to solve this is by disabling indexing on all <code>pages.dev</code> subdomains, but we see many using their <code>pages.dev</code> subdomain as their primary domain. With today’s announcement you can attach headers such as <a href="https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#xrobotstag"><code>X-Robots-Tag</code></a> to hint to Google and other search engines how you'd like your deployment to be indexed.</p>
 	<p>For example, to prevent your <code>pages.dev</code> deployment from being indexed, you can add the following to your <code>_headers</code> file:</p>
 	<pre class="language-txt"><code class="language-txt">https://:project.pages.dev/*
   X-Robots-Tag: noindex</code></pre>
-	<h3>Security</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="security">Security</h3>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customizing headers doesn’t just help with your site’s search result ranking — a number of browser security features can be configured with headers. A few headers that can enhance your site’s security are:</p>
 	<ul>
 		<li>
@@ -42,7 +65,15 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
   Content-Security-Policy: script-src 'self'; frame-ancestors 'none';</code></pre>
-	<h3>CORS</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="cors">CORS</h3>
+		<a href="https://blog.cloudflare.com/#cors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Modern browsers implement a security protection called <i>CORS</i> or Cross-Origin Resource Sharing. This prevents one domain from being able to force a user's action on another. Without CORS, a malicious site owner might be able to do things like make requests to unsuspecting visitors' banks and initiate a transfer on their behalf. However, with CORS, requests are prevented from one origin to another to stop the malicious activity.</p>
 	<p>There are, however, some cases where it is safe to allow these cross-origin requests. So-called, "<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests">simple requests</a>" (such as linking to an image hosted on a different domain) are permitted by the browser. Fetching these resources dynamically is often where the difficulty arises, and the browser is sometimes overzealous in its protection. Simple static assets on Pages are safe to serve to any domain, since the request takes no action and there is no visitor session. Because of this, a domain owner can attach CORS headers to specify exactly which requests can be allowed in the <code>_headers</code> file for fine-grained and explicit control.</p>
 	<p>For example, the use of the asterisk will enable any origin to request any asset from your Pages deployment:</p>
@@ -51,16 +82,46 @@
 	<p>To be more restrictive and limit requests to only be allowed from a 'staging' subdomain, we can do the following:</p>
 	<pre class="language-txt"><code class="language-txt">https://:project.pages.dev/*
   Access-Control-Allow-Origin: https://staging.:project.pages.dev</code></pre>
-	<h2>How we built support for custom headers</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-support-for-custom-headers">How we built support for custom headers</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-support-for-custom-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To support all these use cases for custom headers, we had to build a new engine to determine which rules to apply for each incoming request. Backed, of course, by Workers, this engine supports splats and placeholders, and allows you to include those matched values in your headers.</p>
 	<p>Although we don't support all of its features, we've modeled this matching engine after the <a href="https://wicg.github.io/urlpattern">URLPattern specification</a> which was recently shipped with Chrome 95. We plan to be able to fully implement this specification for custom headers once URLPattern lands in the Workers runtime, and there should hopefully be no breaking changes to migrate.</p>
-	<h2>Enhanced support for redirects</h2>
+	<div class="flex anchor relative">
+		<h2 id="enhanced-support-for-redirects">Enhanced support for redirects</h2>
+		<a href="https://blog.cloudflare.com/#enhanced-support-for-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With this same engine, we’re bringing these features to your <code>_redirects</code> file as well. You can now configure your redirects with splats, placeholders and status codes as shown in the example below:</p>
 	<pre class="language-txt"><code class="language-txt">/blog/* https://blog.example.com/:splat 301
 /products/:code/:name /products?name=:name&amp;code=:code
 /submit-form https://static-form.example.com/submit 307</code></pre>
-	<h2>Get started</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="get-started">Get started</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Custom <a href="https://developers.cloudflare.com/pages/platform/headers">headers</a> and <a href="https://developers.cloudflare.com/pages/platform/redirects">redirects</a> for Cloudflare Pages can be configured today. Check out <a href="https://developers.cloudflare.com/pages/platform">our documentation</a> to get started, and let us know how you're using it in <a href="https://discord.gg/cloudflaredev">our Discord server</a>. We'd love to hear about what this unlocks for your projects!</p>
-	<h2>Coming up...</h2>
+	<div class="flex anchor relative">
+		<h2 id="coming-up">Coming up...</h2>
+		<a href="https://blog.cloudflare.com/#coming-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And finally, if a <code>_headers</code> file and enhanced support for <code>_redirects</code> just isn't enough for you, we also have something <i>big</i> coming very soon which will give you the power to build even more powerful projects. Stay tuned!</p>
 </div>

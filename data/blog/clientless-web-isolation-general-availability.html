@@ -7,24 +7,59 @@
 	</figure>
 	<p>Today, we’re excited to announce that Clientless Web Isolation is generally available. A new on-ramp for Browser Isolation that natively integrates <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access (ZTNA)</a> with the zero-day, phishing and data-loss protection benefits of <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browsing</a> for users on any device browsing any website, internal app or SaaS application. All without needing to install any software or configure any certificates on the endpoint device.</p>
 	<p>Cloudflare’s clientless web isolation simplifies connections to remote browsers through a hyperlink (e.g.: <code><i>https://&lt;your-auth-domain&gt;.cloudflareaccess.com/browser</i></code>). We explored use cases in detail in our <a href="https://blog.cloudflare.com/introducing-clientless-web-isolation-beta">beta announcement post</a>, but here’s a quick refresher on the use cases that clientless isolated browsing enables:</p>
-	<h3>Share secure browsing across the entire team on any device</h3>
+	<div class="flex anchor relative">
+		<h3 id="share-secure-browsing-across-the-entire-team-on-any-device">Share secure browsing across the entire team on any device</h3>
+		<a href="https://blog.cloudflare.com/#share-secure-browsing-across-the-entire-team-on-any-device" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Simply navigating to Clientless Web Isolation will land your user such as an analyst, or researcher in a remote browser, ready to securely conduct their research or investigation without exposing their public IP or device to potentially malicious code on the target website.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sJbqtKReRhveJAvlYVOm4/7b2ee5550a553800f40025bb8f316032/image1-66.png" alt="Screenshot of clientless web isolation landing page" class="kg-image" width="1999" height="1516" loading="lazy">
 
 	</figure>
-	<h3>Deep link into isolated browsing</h3>
+	<div class="flex anchor relative">
+		<h3 id="deep-link-into-isolated-browsing">Deep link into isolated browsing</h3>
+		<a href="https://blog.cloudflare.com/#deep-link-into-isolated-browsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Suspicious hyperlinks and PDF documents from sensitive applications can be opened in a remote browser by rewriting the link with the clientless endpoint. For example:</p>
 	<p><code>https://&lt;authdomain&gt;.cloudflareaccess.com/browser/https://www.example.com/suspiciouslink</code></p>
 	<p>This is powerful when integrated into a security incident monitoring tool, help desk or any tool where users are clicking unknown or untrusted hyperlinks.</p>
-	<h3>Integrate Browser Isolation with a third-party secure web gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="integrate-browser-isolation-with-a-third-party-secure-web-gateway">Integrate Browser Isolation with a third-party secure web gateway</h3>
+		<a href="https://blog.cloudflare.com/#integrate-browser-isolation-with-a-third-party-secure-web-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Browser Isolation can be integrated with a legacy <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway</a> through the use of a redirecting custom block page. Integrating Browser Isolation with your existing secure web gateway enables safe browsing without the support burden of micromanaging block lists.</p>
 	<p>See our <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/clientless-browser-isolation">developer documentation</a> for example block pages.</p>
-	<h3>Securely access sensitive data on BYOD devices endpoints</h3>
+	<div class="flex anchor relative">
+		<h3 id="securely-access-sensitive-data-on-byod-devices-endpoints">Securely access sensitive data on BYOD devices endpoints</h3>
+		<a href="https://blog.cloudflare.com/#securely-access-sensitive-data-on-byod-devices-endpoints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In an ideal world, users would always access sensitive data from corporate devices. Unfortunately it’s not possible or feasible: contractors, by definition, rely on non-corporate devices. Employees may not be able to take their device home, it is unavailable due to a disaster or travel to high risk areas without their managed machine.</p>
 	<p>Historically IT departments have worked around this by adopting legacy Virtual Desktop Infrastructure (VDI). This made sense a decade ago when most business applications were desktop applications. Today this architecture makes little sense when most business applications live in the browser. VDI is a tremendously expensive method to deliver BYOD support and still requires complex network administration to connect with DNS filtering and Secure Web Gateways.</p>
 	<p>All traffic from Browser Isolation to the Internet or an Access protected application is secured and inspected by the Secure Web Gateway out of the box. It only takes a few clicks to <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/require-swg">require Gateway</a> device posture checks for users connecting over Clientless Web Isolation.</p>
-	<h3>Get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Clientless web isolation is available as a capability for all Cloudflare Zero Trust subscribers who have added Browser Isolation to their plan. If you are interested in learning more about use cases see the <a href="https://blog.cloudflare.com/introducing-clientless-web-isolation-beta">beta announcement post</a> and our <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/clientless-browser-isolation">developer documentation</a>.</p>
 </div>

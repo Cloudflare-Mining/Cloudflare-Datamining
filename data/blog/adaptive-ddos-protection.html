@@ -17,13 +17,27 @@
 			<p><b>L3/4 Adaptive DDoS Protection</b> - available to Magic Transit and Spectrum customers on an Enterprise plan.</p>
 		</li>
 	</ul>
-	<h3>Adaptive DDoS Protection learns your traffic patterns</h3>
+	<div class="flex anchor relative">
+		<h3 id="adaptive-ddos-protection-learns-your-traffic-patterns">Adaptive DDoS Protection learns your traffic patterns</h3>
+		<a href="https://blog.cloudflare.com/#adaptive-ddos-protection-learns-your-traffic-patterns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Adaptive DDoS Protection system creates a traffic profile by looking at a customer’s maximal rates of traffic every day, for the past seven days. The profiles are recalculated every day using the past seven-day history. We then store the maximal traffic rates seen for every predefined dimension value. Every profile uses one dimension and these dimensions include the source country of the request, the country where the Cloudflare data center that received the IP packet is located, user agent, IP protocol, destination ports and more.</p>
 	<p>So, for example, for the <a href="https://blog.cloudflare.com/location-aware-ddos-protection">profile that uses the source country as a dimension</a>, the system will log the maximal traffic rates seen per country. e.g. 2,000 requests per second (rps) for Germany, 3,000 rps for France, 10,000 rps for Brazil, and so on. This example is for HTTP traffic, but Adaptive DDoS protection also profiles L3/4 traffic for our Magic Transit and Spectrum Enterprise customers.</p>
 	<p>Another note on the maximal rates is that we use the 95th percentile rates. This means that we take a look at the maximal rates and discard the top 5% of the highest rates. The purpose of this is to eliminate outliers from the calculations.</p>
 	<p>Calculating traffic profiles is done asynchronously — meaning that it does not induce any latency to our customers’ traffic. The system &nbsp;then distributes a compact profile representation across our network that can be consumed by our <a href="https://www.cloudflare.com/ddos">DDoS protection systems</a> to be used to detect and mitigate DDoS attacks in a much more cost-efficient manner.</p>
 	<p>In addition to the traffic profiles, the Adaptive DDoS Protection also leverages Cloudflare’s <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning">Machine Learning</a> generated <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Bot Scores</a> as an additional signal to differentiate between user and automated traffic. The purpose of using these scores is to differentiate between legitimate spikes in user traffic that deviates from the traffic profile, and a spike of automated and potentially malicious traffic.</p>
-	<h3>Out of the box and easy to use</h3>
+	<div class="flex anchor relative">
+		<h3 id="out-of-the-box-and-easy-to-use">Out of the box and easy to use</h3>
+		<a href="https://blog.cloudflare.com/#out-of-the-box-and-easy-to-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Adaptive DDoS Protection just works out of the box. It automatically creates the profiles, and then customers can tweak and tune the settings as they need via <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets">DDoS Managed Rules</a>. Customers can change the sensitivity level, leverage expression fields to create overrides (e.g. exclude <i>this</i> type of traffic), and change the mitigation action to tailor the behavior of the system to their specific needs and traffic patterns.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -31,7 +45,14 @@
 
 	</figure>
 	<p>Adaptive DDoS Protection complements the existing DDoS protection systems which leverages dynamic fingerprinting to detect and mitigate DDoS attacks. The two work in tandem to protect our customers from DDoS attacks. When Cloudflare customers onboard a new Internet property to Cloudflare, the dynamic fingerprinting protects them automatically and out of the box — without requiring any user action. Once the Adaptive DDoS Protection learns their legitimate traffic patterns and creates a profile, users can turn it on to provide an extra layer of protection.</p>
-	<h3>Rules included as part of the Adaptive DDoS Protection</h3>
+	<div class="flex anchor relative">
+		<h3 id="rules-included-as-part-of-the-adaptive-ddos-protection">Rules included as part of the Adaptive DDoS Protection</h3>
+		<a href="https://blog.cloudflare.com/#rules-included-as-part-of-the-adaptive-ddos-protection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of this release, we’re pleased to announce the following capabilities as part of Cloudflare’s Adaptive DDoS Protection:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -117,12 +138,27 @@
 	</table><!--kg-card-end: html-->
 	<p>*The User-Agent-aware feature analyzes, learns and profiles all the top user agents that we see across the Cloudflare network. This feature helps us identify DDoS attacks that leverage legacy or wrongly configured user agents.</p>
 	<p>Excluding UA-aware DDoS Protection, Adaptive DDoS Protection rules are deployed in Log mode. Customers can observe the traffic that’s flagged, tweak the sensitivity if needed, and then deploy the rules in mitigation mode. You can follow the steps outlined in <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive">this guide</a> to do so.</p>
-	<h3>Making the impact of DDoS attacks a thing of the past</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-the-impact-of-ddos-attacks-a-thing-of-the-past">Making the impact of DDoS attacks a thing of the past</h3>
+		<a href="https://blog.cloudflare.com/#making-the-impact-of-ddos-attacks-a-thing-of-the-past" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our mission at Cloudflare is to help build a better Internet. The DDoS Protection team’s vision is derived from this mission: our goal is to make the impact of DDoS attacks a thing of the past. Cloudflare’s Adaptive DDoS Protection takes us one step closer to achieving that vision: making Cloudflare’s DDoS protection even more intelligent, sophisticated, and tailored to our customer’s unique traffic patterns and individual needs.</p>
 	<p>Want to learn more about Cloudflare’s Adaptive DDoS Protection? Visit our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection">developer site</a>.</p>
 	<p>Interested in upgrading to get access to Adaptive DDoS Protection? Contact your account team.</p>
 	<p>New to Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact">Speak to a Cloudflare expert</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/15a28a27c4f115533951f075b1fad6b5/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F15a28a27c4f115533951f075b1fad6b5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

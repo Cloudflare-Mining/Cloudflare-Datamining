@@ -3,7 +3,14 @@
 	<p>Today’s Internet requires stronger protection within its core routing system and as we have already said: it's high time to stop BGP route leaks and hijacks by deploying operationally-excellent RPKI!</p>
 	<p>Luckily, over the last year plus a lot of good work has happened in this arena. If you’ve been following the growth of RPKI’s validation data, then you’ll know that more and more networks are signing their routes and creating ROA’s or Route Origin Authorizations. These are cryptographically-signed assertions of the validity of an announced IP block and contribute to the further securing of the global routing table that makes for a safer Internet.</p>
 	<p>The protocol that we have not written much about is RTR. The Resource Public Key Infrastructure (RPKI) to Router Protocol - or RTR Protocol for short. Today we’re fixing that.</p>
-	<h2>RPKI rewind</h2>
+	<div class="flex anchor relative">
+		<h2 id="rpki-rewind">RPKI rewind</h2>
+		<a href="https://blog.cloudflare.com/#rpki-rewind" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have written a few times about RPKI (<a href="https://blog.cloudflare.com/rpki">here</a> and <a href="https://blog.cloudflare.com/rpki-details">here</a>). We have written about how Cloudflare both signs its announced routes and filters its routing inbound from other networks (both transits and peers) using RPKI data. We also added our efforts in the open-source software space with the release of the <a href="https://blog.cloudflare.com/cloudflares-rpki-toolkit">Cloudflare RPKI Toolkit</a>.</p>
 	<p>The primary part of the RPKI (Resource Public Key Infrastructure) system is a cryptographically-signed database which is read and processed by a RPKI validator. The validator works with the published ROAs to build a list of validated routes. A ROA consists of an IP address block plus an ASN (Autonomous System Number) that together define who can announce which IP block.</p>
 	<figure class="kg-card kg-image-card ">
@@ -12,7 +19,14 @@
 
 	</figure>
 	<p>After that step, it is then the job of that validator (or some associated software module) to communicate its list of valid routes to an Internet router. That’s where the RTR protocol (the RPKI to Router Protocol) comes in. Its job is to communicate between the validator and device in charge of allowing or rejecting routes in its table.</p>
-	<h2>RTR</h2>
+	<div class="flex anchor relative">
+		<h2 id="rtr">RTR</h2>
+		<a href="https://blog.cloudflare.com/#rtr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IETF defines the RTR protocol in <a href="https://tools.ietf.org/html/rfc8210">RFC 8210</a>. This blog post focuses on version 1 and ignores previous versions.</p>
 	<blockquote>
 		<p><i>In order to verifiably validate the origin Autonomous Systems and Autonomous System Paths of BGP announcements, routers need a simple but reliable mechanism to receive Resource Public Key Infrastructure (RFC 6480) prefix origin data and router keys from a trusted cache. This document describes a protocol to deliver them.</i></p>
@@ -52,7 +66,14 @@
 		</li>
 	</ul>
 	<p>Each of these open source software packages has its own specific database model and operational methods. Because GoRTR reads a somewhat common JSON file format, you can mix and match between different validators and GoRTR’s code.</p>
-	<h2>The RTR protocol</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-rtr-protocol">The RTR protocol</h2>
+		<a href="https://blog.cloudflare.com/#the-rtr-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The protocol's core is all about synchronizing a database between a validator and a router. This is done using serial-numbers and session-ids.</p>
 	<p>It’s kicked off with a router setting up a TCP connection towards a backend RTR server followed by a series of serial-number exchanges and data records exchanges such that a cache on the validator (or RTR server) can be synced fully with a cache on the router. As mentioned, the lightweight protocol is void of all the cryptographic data that RPKI is built upon and simply deals with the validated routing list, which consists of CIDRs, ASNs and maybe a MaxLength parameter.</p>
 	<p>Here’s a simple Cisco configuration for enabling RTR on a router:</p>
@@ -69,7 +90,14 @@
 
 	</figure>
 	<p>Being specified as a lightweight protocol, RTR allows the data to be transferred quickly. With a session-id created by the RTR cache server plus serial-numbers exchanged between cache servers and routers, there’s the solid ability for route authentication data on the router to be kept fresh with a minimum amount of actual data being transferred. Remember, as we said above, the router has much better things to do with its control plane processor like running the BGP convergence algorithm, or SRv6, or ISIS, or any of the protocols needed to manage routing tables.</p>
-	<h2>Is RTR a weak link in the RPKI story?</h2>
+	<div class="flex anchor relative">
+		<h2 id="is-rtr-a-weak-link-in-the-rpki-story">Is RTR a weak link in the RPKI story?</h2>
+		<a href="https://blog.cloudflare.com/#is-rtr-a-weak-link-in-the-rpki-story" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All aspects of RPKI data processing are built around solid cryptographic principles. The five RIRs each hold a root key called a Trust Anchor (TA). Each publishes data fully signed up/down so that every piece of information can be proven to be correct and without tampering. A validators job is to do that processing and spit out (or store) a list of valid ROAs (Route Origin Authorizations) that are assertions traceable back to a known source. If you want to study this protocol, you can start with <a href="https://tools.ietf.org/html/rfc6480">RFC6480</a> and work forward through all the other relevant RFCs (Hint: It’s at least thirty more RFCs from RFC6483 thru RFC8210 and counting).</p>
 	<p>However, RTR does not carry that trust through to the Internet router. All that complexity (and hence assertions) are stripped away before a router sees anything. It is 100% up to the network operator to build a reliable and secure path between validator or RTR cache and router so that this lightweight transfer is still trusted.</p>
 	<p>RTR helps somewhat in this space. It provides more than one way to communicate between cache server and router. The RFC defines various methods to communicate.</p>
@@ -103,7 +131,14 @@
 	</blockquote>
 	<p>Then the RFC continues with enough information to secure the connection fully. If implemented correctly, then security is correctly provided between RTR cache and router such that no MITM attack can take place.</p>
 	<p>Assuming that these operational issues are handled fully then the RTR protocol is a perfect protocol for operationally implementing RPKI’s final linkage into the routers.</p>
-	<h2>Testing the RTR protocol and open-source rpki-rtr-client</h2>
+	<div class="flex anchor relative">
+		<h2 id="testing-the-rtr-protocol-and-open-source-rpki-rtr-client">Testing the RTR protocol and open-source rpki-rtr-client</h2>
+		<a href="https://blog.cloudflare.com/#testing-the-rtr-protocol-and-open-source-rpki-rtr-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A modern router software stack can be configured to run RTR against a cache. If you have a test lab (as most modern networks do); then you have all you need to see RPKI route filtering (and the dropping of invalid routes).</p>
 	<p>However, if you are without a router and want to see RTR in action, Cloudflare has just placed <a href="https://github.com/cloudflare/rpki-rtr-client">rpki-rtr-client</a> on GitHub. This software, written in Python, performs the router portion of the RTR protocol and comes with enough debug output that it can also be used to help write new RTR caches, or test existing code bases. The code was written directly from the RFC and then tested against a public RTR cache that Cloudflare operates.</p>
 	<pre class="language-bash"><code class="language-bash">$ pip3 install netaddr
@@ -149,7 +184,14 @@ $</code></pre>
 $</code></pre>
 	<p>The code can also dump the raw binary protocol and then replay that data to debug the protocol.</p>
 	<p>As the code is on GitHub, any protocol developer can feel free to expand on the code.</p>
-	<h2>Future of RTR protocol</h2>
+	<div class="flex anchor relative">
+		<h2 id="future-of-rtr-protocol">Future of RTR protocol</h2>
+		<a href="https://blog.cloudflare.com/#future-of-rtr-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The present RFC defines version 1 of the protocol and it is expected that this lightweight protocol will progress to also include additional functions, but stay lightweight. RPKI is a Route Origin Validation protocol (i.e. mapping an IP route or CIDR to an ASN). It does not provide support for validating the AS-PATH. Neither does it provide any support for IRR databases (which are non-cryptographically-signed routing definitions). Presently IRR data is the primary method used for filtering routing on the global Internet. Today that is done by building massive filter lists within a router's configuration file and not via a lightweight protocol like RTR.</p>
 	<p>At the present time there’s an IETF proposal for RTR version 2. This is <a href="https://tools.ietf.org/html/draft-ymbk-8210bis-00">draft</a>, work alongside the ASPA (Autonomous System Provider Authorization) <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-verification-03">draft</a> and <a href="https://tools.ietf.org/html/draft-azimov-sidrops-aspa-profile-01">draft</a> work. These draft documents from Alexander Azimov et al. define ASPA extending the RPKI data structures to handle BGP path information. The version 2 of RTR protocol should provide the required messaging in order to move ASPA data into the router.</p>
 	<figure class="kg-card kg-image-card ">
@@ -158,7 +200,14 @@ $</code></pre>
 
 	</figure>
 	<p>Additionally, RPKI is going to potentially further expand, at some point, from today's singular data type (the ROA object). Just like with the ASPA draft, RTR will need to advance in lock-step. Hopefully the open-source code we have published will help this effort.</p>
-	<h2>Some final thoughts on RTR and RPKI</h2>
+	<div class="flex anchor relative">
+		<h2 id="some-final-thoughts-on-rtr-and-rpki">Some final thoughts on RTR and RPKI</h2>
+		<a href="https://blog.cloudflare.com/#some-final-thoughts-on-rtr-and-rpki" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If RPKI is to become ubiquitous, then RTR support in all BGP speaking Internet routers is going to be required. Vendors need to complete their RTR software delivery and additionally support some of the more secure transport definitions from the RFC. Additionally, should the protocol advance, then timely support for the new version will be needed.</p>
 	<p>Cloudflare continues to be committed to a secure Internet; so should you also have the same thoughts and you like what you’ve read here or elsewhere on our blog; then please take a look at our <a href="https://www.cloudflare.com/careers">jobs page</a>. We have software and network engineering open roles in many of our offices around the world.</p>
 </div>

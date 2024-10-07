@@ -8,7 +8,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/53326337@N00/4877664667">image</a> by <a href="https://www.flickr.com/photos/quinnanya">Quinn Dombrowski</a></p>
-	<h3>Recap</h3>
+	<div class="flex anchor relative">
+		<h3 id="recap">Recap</h3>
+		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Two years ago, we previewed the <a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world">relative cost of bandwidth</a> that we see in different parts of the world. Bandwidth is the largest recurring cost of providing our service. Compared with Europe and North America, there were considerably higher Internet costs in Australia, Asia and Latin America. Even while bandwidth costs tend to <a href="https://www.telegeography.com/press/press-releases/2015/09/09/ip-transit-prices-continue-falling-major-discrepancies-remain/index.html">trend down over time</a>, driven by competition and decreases in the costs of underlying hardware, we thought it might be interesting to provide an update.</p>
 	<p>Since August 2014, we have tripled the number of our data centers from 28 to 86, with more to come. CloudFlare hardware is also deployed in new regions such as the Middle East and Africa. Our network spans multiple countries in each continent, and, sometimes, multiple cities in each country.</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,7 +27,15 @@
 	<p>There are approximately thirteen networks called “Tier 1 networks” (e.g., Telia, GTT, Tata, Cogent) who sell “transit” to access any of thousands of other networks on the Internet using their global backbones, including networks who are not their customers. We connect to networks by either purchasing transit from a global <a href="http://research.dyn.com/2016/04/a-bakers-dozen-2015-edition">"Tier 1 network"</a> (or major regional network), or by exchanging traffic directly with a carrier or ISP using “peering”. Typically, peered traffic is exchanged without settlement between the peered parties.</p>
 	<p>We try to make it as easy as possible for networks to interconnect with us. CloudFlare has an “open peering” policy, and participates at nearly <a href="http://bgp.he.net/report/exchanges#_participants">150 internet exchanges</a>, more than any other company.</p>
 	<p>As a benchmark, <b>let's assume the cost of transit in Europe and North America is 10 units</b> (per Mbps). With that benchmark in place, without disclosing exact pricing, we can compare regions by transit cost, percentage of peering, and their effective blended cost (transit + peering).</p>
-	<h3>Europe</h3>
+	<div class="flex anchor relative">
+		<h3 id="europe">Europe</h3>
+		<a href="https://blog.cloudflare.com/#europe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6o9Xr6nVnzB9niOIjvOTvp/11f1ec3e5e3be314df510be001187923/Europe_graph.png" alt="" class="kg-image" width="1053" height="274" loading="lazy">
@@ -29,7 +44,15 @@
 	<p><i>Europe Transit vs Peering (Last 30 Days)</i></p>
 	<p>Based on our benchmark, the transit cost is 10 units. The region has a large number of Internet exchanges, typically non-profit, where we peer around 60% of our traffic. This makes for an effective regional cost of 4 units.</p>
 	<p>With perhaps the notable exception of the incumbent in Germany, many networks are supportive of open interconnection. CloudFlare already participates at <a href="https://www.peeringdb.com/net/4224">40 European internet exchanges</a>, and is in the process of joining at least five more.</p>
-	<h3>North America</h3>
+	<div class="flex anchor relative">
+		<h3 id="north-america">North America</h3>
+		<a href="https://blog.cloudflare.com/#north-america" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dBfSCjq3AVR6heZETWLHw/b2dacdef6b9ac93a1cc96c0f5017617c/NAM.png" alt="" class="kg-image" width="1063" height="269" loading="lazy">
@@ -39,7 +62,15 @@
 	<p>The cost of transit in North America is equal to the cost in Europe, or 10 units. We peer around 40% of our traffic, resulting in an effective regional cost of 6 units.</p>
 	<p>The level of peering in North America is less than in Europe, but a significant improvement over two years ago. The share of peered traffic is expected to grow. Some material changes have occurred and are occurring in the North American market, such as <a href="https://internet.frontier.com/fios-network-acquisition">Frontier acquiring Verizon FiOS customers</a> in three U.S. States and <a href="http://ir.charter.com/phoenix.zhtml?c=112298&amp;p=irol-newsArticle&amp;ID=2053012">Charter preparing to merge with Time Warner Cable</a>. We can see these changes making an impact to the <a href="http://arstechnica.com/tech-policy/2016/04/doj-fcc-chairman-ok-chartertime-warner-cable-deal-with-a-few-caveats">regional interconnection landscape</a>.</p>
 	<p>Notably, our peering has particularly grown in smaller regional locations, closer to the end visitor, leading to an improvement in performance. This could be through private peering, or via an interconnection point such as the <a href="http://www.micemn.net">Midwest Internet Cooperative Exchange (MICE)</a> in Minneapolis.</p>
-	<h3>Africa</h3>
+	<div class="flex anchor relative">
+		<h3 id="africa">Africa</h3>
+		<a href="https://blog.cloudflare.com/#africa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48liYaMhlYUrjcgZHctoOE/9c25cbc82182ae39a22895b238e5fd3b/Africa.jpg" alt="" class="kg-image" width="997" height="272" loading="lazy">
@@ -48,7 +79,15 @@
 	<p><i>Africa Transit vs Peering (Last 30 Days)</i></p>
 	<p>Transit prices in Africa are amongst the highest in the world at 14 times the benchmark or 140 units, with notable variance across the continent, from <a href="https://blog.cloudflare.com/cairo">Cairo</a> to <a href="https://blog.cloudflare.com/mombasa-kenya-cloudflares-43rd-data-center">Mombasa</a> to <a href="https://blog.cloudflare.com/johannesburg-cloudflares-30th-data-center">Johannesburg</a>. Fortunately, of the traffic that we are currently able to serve locally in Africa, we manage to peer about 90% (with a mix of carriers and ISPs), making for an effective cost of 14 units.</p>
 	<p>Our African deployments help us avoid the significant latency of serving websites from London, Paris or Marseille. A particularly promising but challenging region where we hope to deploy a CloudFlare data center is West Africa - specifically Nigeria, which is already at just under <a href="http://qz.com/658762/there-arent-as-many-nigerians-on-the-mobile-internet-as-we-thought">100 million Internet users</a>.</p>
-	<h3>Middle East</h3>
+	<div class="flex anchor relative">
+		<h3 id="middle-east">Middle East</h3>
+		<a href="https://blog.cloudflare.com/#middle-east" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GDZqjNHYbH6G2AOj00VDl/687cd65fd53c31039177d08952be055b/MiddleEast.jpg" alt="" class="kg-image" width="986" height="265" loading="lazy">
@@ -57,7 +96,15 @@
 	<p><i>Middle East Transit vs Peering (Last 30 Days)</i></p>
 	<p>CloudFlare currently has four data centers in the Middle East, each of which are cache deployments with <a href="https://blog.cloudflare.com/middle-east-expansion">strategic ISP partners</a> to serve their respective customers. We are able to peer all the traffic currently served from these data centers. While these collectively provide significant coverage, there is additional traffic (reaching Europe) that we would like to localize in the region. We hope that the remaining ISPs, such as Saudi Telecom Company, deploy similar caches, and enhance the performance of their customers.</p>
 	<p>Because we can peer 100% of our traffic in the Middle East, our effective pricing for bandwidth in the region is 0 units. There are, of course, other costs to delivering our service beyond bandwidth. However, by driving up peering rates in the Middle East we’ve been able to make our service in the Middle East extremely cost competitive.</p>
-	<h3>Asia</h3>
+	<div class="flex anchor relative">
+		<h3 id="asia">Asia</h3>
+		<a href="https://blog.cloudflare.com/#asia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4E2MimCjn7URfsa8wVNUBs/8b927959292751a492fa40cc4cc1c56a/Asia_graph.png" alt="" class="kg-image" width="1052" height="275" loading="lazy">
@@ -69,7 +116,15 @@
 	<p>Two Asian locations stand out as being especially expensive: Seoul and Taipei. In these markets, with powerful incumbents (Korea Telecom and HiNet), transit costs 15x as much as in Europe or North America, or 150 units.</p>
 	<p>South Korea is perhaps the only country in the world where bandwidth costs are going up. This may be driven by new regulations from the <a href="http://english.msip.go.kr">Ministry of Science, ICT and Future Planning</a>, which mandate the commercial terms of domestic interconnection, based on predetermined “Tiers” of participating networks. This is contrary to the model in most parts of the world, where networks self-regulate, and often peer without settlement. The government even prescribes the rate at which prices should decrease per year (-7.5%), which is significantly slower than the annual drop in unit bandwidth costs elsewhere in the world. We are only able to peer 2% of our traffic in South Korea.</p>
 	<p>If you include HiNet and Korea Telecom in our blended bandwidth pricing, and take into account peering, our effective price is 28 units. If you exclude HiNet and Korea Telecom, our effective price is 14 units.</p>
-	<h3>South America</h3>
+	<div class="flex anchor relative">
+		<h3 id="south-america">South America</h3>
+		<a href="https://blog.cloudflare.com/#south-america" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/481zW7oJoCQaQfqbKQMFrR/5f35f7ea2f3df607fcc048a8f103dbf3/SAM.png" alt="" class="kg-image" width="1064" height="272" loading="lazy">
@@ -80,7 +135,15 @@
 	<p>One of the reasons that transit prices are high is that the Tier 1 networks which are newer entrants to this region have yet to pick up significant market share. While markets such as Brazil are less expensive and have greater peering, costs are highest in countries such as Peru and Argentina where, in each, a single incumbent provider, respectively Telefonica and Telecom Argentina, controls access for the last mile delivery of content to the majority of Internet users.</p>
 	<p>As we try to increase our share of peered traffic, one of the challenges we face is that many Internet exchanges (e.g., NAP Colombia) only permit domestically incorporated and licensed networks to publicly peer, or in another case, require a unanimous vote of all members on an IX to permit a new participant, effectively creating a separation between “international content” and “domestic content”.</p>
 	<p>If you include Telecom Argentina and Telefonica, our blended cost of bandwidth in South America is 68 units. If you exclude these two providers then our blended cost is 17 units.</p>
-	<h3>Oceania</h3>
+	<div class="flex anchor relative">
+		<h3 id="oceania">Oceania</h3>
+		<a href="https://blog.cloudflare.com/#oceania" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RYaoeDxxQ4MQ7CEHiNUDj/f47edb37cc78408296129a3e0c12ae9c/Oceania.png" alt="" class="kg-image" width="1054" height="271" loading="lazy">
@@ -89,7 +152,15 @@
 	<p><i>Oceania Transit vs Peering (Last 30 Days)</i></p>
 	<p>Transit prices in Oceania (Australia and New Zealand) are lower than they used to be, but continue to be extremely high in relative terms, costing 17 times the benchmark from Europe, or 170 units. We peer 50% of our traffic, resulting in an effective cost of 85 units.</p>
 	<p>If you exclude Optus and Telstra, then the price falls to 17 units — because we peer with nearly everyone else.</p>
-	<h3>Six Expensive Networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="six-expensive-networks">Six Expensive Networks</h3>
+		<a href="https://blog.cloudflare.com/#six-expensive-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/25n1Nj92sEeS37m8YWeVqC/37af3a16fb683db0537461cbee35e674/CloudFlare_Relative_Cost_of_Bandwidth.png" alt="alt" class="kg-image" width="722" height="417" loading="lazy">

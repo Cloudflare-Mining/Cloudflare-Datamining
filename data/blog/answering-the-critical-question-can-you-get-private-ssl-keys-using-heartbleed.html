@@ -5,7 +5,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oh7BBKVsYazrO00r5nb30/35c4e8bf9ef76e34df7d703c83f3a82c/heartbleed.png" alt="Heartbleed" class="kg-image" width="341" height="413" loading="lazy">
 
 	</figure>
-	<h3>Update:</h3>
+	<div class="flex anchor relative">
+		<h3 id="update">Update:</h3>
+		<a href="https://blog.cloudflare.com/#update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>Below is what we thought as of 12:27pm UTC. To verify our belief we crowd sourced the investigation. It turns out we were wrong. While it takes effort, it is possible to extract private SSL keys. The challenge was solved by Software Engineer </i><a href="https://twitter.com/indutny"><i>Fedor Indutny</i></a><i> and Ilkka Mattila at NCSC-FI roughly 9 hours after the challenge was first published. Fedor sent 2.5 million requests over the course of the day and Ilkka sent around 100K requests. Our recommendation based on this finding is that everyone reissue and revoke their private keys. CloudFlare has accelerated this effort on behalf of the customers whose SSL keys we manage. </i><a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge"><i>You can read more here</i></a><i>.</i></p>
 	<p>The widely-used open source library OpenSSL revealed on Monday it had a major bug, now known as “heartbleed". By sending a specially crafted packet to a vulnerable server running an unpatched version of OpenSSL, an attacker can get up to 64kB of the server’s working memory. This is the result of a classic implementation bug known as a <a href="https://www.owasp.org/index.php/Buffer_over-read">Buffer over-read</a></p>
 	<p>There has been speculation that this vulnerability could expose server certificate private keys, making those sites vulnerable to impersonation. This would be the disaster scenario, requiring virtually every service to reissue and revoke its SSL certificates. Note that simply reissuing certificates is not enough, you must revoke them as well.</p>
@@ -17,7 +24,14 @@
 	<p>This site was created by CloudFlare engineers to be intentionally vulnerable to heartbleed. It is not running behind CloudFlare’s network. We encourage everyone to attempt to get the private key from this website. If someone is able to steal the private key from this site using heartbleed, we will post the full details here.</p>
 	<p>While we believe it is unlikely that private key data was exposed, we are proceeding with an abundance of caution. We’ve begun the process of reissuing and revoking the keys CloudFlare manages on behalf of our customers. In order to ensure that we don’t overburden the certificate authority resources, we are staging this process. We expect that it will be complete by early next week.</p>
 	<p>In the meantime, we’re hopeful we can get more assurance that SSL keys are safe through our crowd-sourced effort to hack them. To get everyone started, we wanted to outline the process we’ve embarked on to date in order to attempt to hack them.</p>
-	<h3>The bug</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-bug">The bug</h3>
+		<a href="https://blog.cloudflare.com/#the-bug" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A heartbeat is a message that is sent to the server just so the server can send it back. This lets a client know that the server is still connected and listening. The heartbleed bug was a mistake in the implementation of the response to a heartbeat message.</p>
 	<p>Here is the offending code</p>
 	<p>p = &amp;s-&gt;s3-&gt;rrec.data[0]</p>
@@ -39,7 +53,14 @@
 	</figure>
 	<p>When processing a request that contains a longer length than the request payload, some of this unknown data is copied into the response and sent back to the client. This extra data can contain sensitive information like session cookies and passwords, as we describe in the next section.</p>
 	<p>The fix for this bug is simple: check that the length of the message actually matches the length of the incoming request. If it is too long, return nothing. That’s exactly what the OpenSSL patch does.</p>
-	<h3>Malloc and the Heap</h3>
+	<div class="flex anchor relative">
+		<h3 id="malloc-and-the-heap">Malloc and the Heap</h3>
+		<a href="https://blog.cloudflare.com/#malloc-and-the-heap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what sort of data can live past the end of the request? The technical answer is “heap data,” but the more realistic answer is that it’s platform dependent.</p>
 	<p>On most computer systems, each process has its own set of working memory. Typically this is split into two data structures: the stack and the heap. This is the case on Linux, the operating system that CloudFlare runs on its servers.</p>
 	<p>The memory address with the highest value is where the stack data lives. This includes local working variables and non-persistent data storage for running a program. The lowest portion of the address space typically contains the program’s code, followed by static data needed by the program. Right above that is the heap, where all dynamically allocated data lives.</p>
@@ -52,7 +73,14 @@
 	<p>Every new allocation needs some unused space from the heap. Typically this is chosen to be at the lowest possible address that has enough room for the new allocation. A heap typically grows upwards; later allocations get higher addresses. If a block of data is allocated early it gets a low address and later allocations will get higher addresses, unless a big early block is freed.</p>
 	<p>This is of direct relevance because both the incoming message request (<code>s-&gt;s3-&gt;rrec.data</code>) and the certificate private key are allocated on the heap with <code>malloc</code>. The exploit reads data from the address of the incoming message. For previous requests that were allocated and freed, their data (including passwords and cookies) may still be in memory. If they are stored less than 65,536 bytes higher in the address space than the current request, the details can be revealed to an attacker.</p>
 	<p>Requests come and go, recycling memory at around the top of the heap. This makes extracting previous request data very likely from this attack. This is a important in understanding what you can and cannot get at using the vulnerability. Previous requests could contain password data, cookies or other exploitable data. Private keys are a different story; due to the way the heap is structured. The good news is this means that it is much less likely private SSL keys would be exposed.</p>
-	<h3>Read up, not down</h3>
+	<div class="flex anchor relative">
+		<h3 id="read-up-not-down">Read up, not down</h3>
+		<a href="https://blog.cloudflare.com/#read-up-not-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In NGINX, the keys are loaded immediately when the process is started, which puts the keys very low in the memory space. This makes it unlikely that incoming requests will be allocated with a lower address space. We tested this experimentally.</p>
 	<p>We modified our test version of NGINX to print out the location in memory of each request (<code>s-&gt;s3-&gt;rrec.data</code>), whenever there was an incoming heartbeat. We compared this to the location in memory where the private key is stored and found that we could never get a request to be at a lower address than our private keys regardless of the number of requests we sent. Since the exploit only reads higher addresses, it could not be used to obtain private keys.</p>
 	<p>Here is a video of what searching for private keys looks like:</p>
@@ -68,7 +96,14 @@
 	</figure>
 	<p>](<a href="https://blog.cloudflare.com/content/images/heartbleed_1.png">/content/images/heartbleed_1.png</a>)</p>
 	<p>Eagle-eyed readers will have noticed a block of memory that was allocated at a lower memory location than the private key. That's true. We looked into it and it is not being used to store the heartbleed (or other) TLS packet data. And it is much more than 64k away from the private key.</p>
-	<h3>What can you get?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-you-get">What can you get?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-you-get" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We said above that it's possible to get sensitive data from HTTP and TLS requests that the server has handled, even if the private key looks inaccessible.</p>
 	<p>Here, for example, is a dump showing some HTTP headers from a previous request to a running NGINX server. These headers would have been transmitted securely over HTTPS but Heartbleed means that an attacker can read them. That’s a big problem because the headers might contain login credentials or a cookie.</p>
 	<figure class="kg-card kg-image-card ">
@@ -85,7 +120,14 @@
 	<p>We have not fully ruled out the possibility, albeit slim, that some early elements of the heap get reused when NGINX is restarted. In theory, the old memory of the previous process might be available to a newly restarted NGINX. However, after extensive testing, we have not been able to reproduce this situation with an NGINX server on Linux. If a private key is available, it is most likely only available on the first request after restart. After that the chance that the memory is still available is extremely low.</p>
 	<p>There have been <a href="https://twitter.com/kennwhite/status/453944475459805184">reports of a private key being stolen</a> from Apache servers, but only on the first request. This fits with our hypothesis that restarting a server may cause the key to be revealed briefly. Apache also creates some special data structures in order to load private keys that are encrypted with a passphrase which may make it more likely for private keys to appear in the vulnerable portion of the stack.</p>
 	<p>At CloudFlare we do not restart our NGINX instances very often, so the likelihood that an attacker had hit our server with this exploit on the first request after restart is extremely low. Even if they did, the likelihood of seeing private key material on that request is very low. Moreover, NGINX, which is what CloudFlare’s system is based on, does not create the same special structures for HTTPS processing, making it less likely keys would ever appear in a vulnerable portion of the stack.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We think the stealing private keys on most NGINX servers is at least extremely hard and, likely, impossible. Even with Apache, which we think may be slightly more vulnerable, and we do not use at CloudFlare, we believe the likelihood of private SSL keys being revealed with the Heartbleed vulnerability is very low. That’s about the only good news of the last week.</p>
 	<p>We want others to test our results so we created the <a href="https://www.cloudflarechallenge.com/heartbleed">Heartbleed Challenge</a>. Aristotle struggled with the problem of disproving the existence of something that doesn’t exist. You can’t prove the negative, so through experimental results we will never be absolutely sure there’s not a condition we haven’t tested. However, the more eyes we get on the problem, the more confident we will be that, in spite of a number of other ways the Heartbleed vulnerability was extremely bad, we may have gotten lucky and been spared the worst of the potential consequences.</p>
 	<p>That said, we’re proceeding assuming the worst. With respect to private keys held by CloudFlare, we patched the vulnerability before the public had knowledge of the vulnerability, making it unlikely that attackers were able to obtain private keys. Still, to be safe, as outlined at the beginning of this post, we are executing on a plan to reissue and revoke potentially affected certificates, including the cloudflare.com certificate.</p>

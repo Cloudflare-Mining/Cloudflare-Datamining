@@ -18,11 +18,25 @@
 	<p>We’ve run a series of tests comparing our <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access</a> product against Zscaler and Netskope’s comparable products.</p>
 	<p>For each of these tests, we used 95th percentile Time to First Byte and Response tests, which measure the time it takes for a user to make a request, and get the start of the response (Time to First Byte), and the end of the response (Response). These tests were designed with the goal of trying to measure performance from an end-user perspective.</p>
 	<p>In this blog we’re going to talk about why performance matters and do a deep dive on what we’re measuring to show that we’re faster.</p>
-	<h2>Why does performance matter?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-does-performance-matter">Why does performance matter?</h2>
+		<a href="https://blog.cloudflare.com/#why-does-performance-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Performance matters because it impacts your employees' experience and their ability to get their job done. For example, if Anna is connecting to a hosted, protected application like Salesforce to complete some work, she doesn’t want to be waiting constantly for pages to load or to authenticate her requests. In an access-controlled application, the first thing you do when you connect is you log in. If that login takes a long time, you may get distracted with a random message from a coworker and even when you get authenticated, you still want your normal application experience to be snappy and smooth: users should never notice Zero Trust when it’s at its best.</p>
 	<p>If these products or experiences are slow, then something worse might happen than your users complaining: they may find ways to turn off the products or bypass them, which puts your company at risk. A Zero Trust product suite is completely ineffective if no one is using it because it’s slow.</p>
 	<p>Ensuring Zero Trust is fast is critical to the effectiveness of a Zero Trust solution: employees won’t want to turn it off and put themselves at risk if they barely know it’s there at all. Services like Zscaler or Netskope may outperform many older, antiquated solutions, but their network still fails to measure up to a highly performant, optimized network like Cloudflare’s.</p>
-	<h2>Cloudflare Access: the fastest Zero Trust proxy</h2>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-access-the-fastest-zero-trust-proxy">Cloudflare Access: the fastest Zero Trust proxy</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-the-fastest-zero-trust-proxy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Access control needs to be seamless and transparent to the user: the best compliment for a Zero Trust solution is employees barely notice it’s there. Services like Cloudflare Access and Zscaler Private Access (ZPA) allow users to cache authentication information on the provider network, ensuring applications can be accessed securely and quickly to give users that seamless experience they want. So having a network that minimizes the number of logins required while also reducing the <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> of your application requests by delivering the service closer to the user will help keep your Internet experience snappy and reactive.</p>
 	<p>For these tests, Cloudflare contracted Miercom, a third party who performed a set of tests that was intended to replicate an end-user connecting to a resource protected by Cloudflare, Zscaler and Netskope. Miercom set up application instances in 14 locations around the world, and devised a test that would log into the application through various Zero Trust providers to access certain content. The test methodology is described as follows, but you can look at the full report from Miercom detailing their test methodology <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler">here</a>:</p>
 	<ul>
@@ -41,7 +55,15 @@
 	</ul>
 	<p>In this test we evaluated Cloudflare against Zscaler and Netskope accessing applications hosted in two specific regions (Brazil and the US south-west). We tested the response time for an existing session, when a user has already been authenticated and that authentication information can be cached.</p>
 	<p>Here’s how this data looks for each of the 10 countries we tested across LATAM:</p>
-	<h3>Argentina</h3>
+	<div class="flex anchor relative">
+		<h3 id="argentina">Argentina</h3>
+		<a href="https://blog.cloudflare.com/#argentina" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rFSVERD8l3GWtijerANdQ/57ec905cd8700788f324f52c964039b7/argentina.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
@@ -214,7 +236,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Brazil</h3>
+	<div class="flex anchor relative">
+		<h3 id="brazil">Brazil</h3>
+		<a href="https://blog.cloudflare.com/#brazil" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NNAPqdvbrxcj4F1Pbm8is/c154403363a327a0d6a9ef96f51102a2/unnamed-1.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
@@ -387,7 +417,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Chile</h3>
+	<div class="flex anchor relative">
+		<h3 id="chile">Chile</h3>
+		<a href="https://blog.cloudflare.com/#chile" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5UBlnPf5Xx0Td2KkHNfnGc/c9531976bc7ef9ca7b0c649dafa96090/chile.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -560,7 +598,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Colombia</h3>
+	<div class="flex anchor relative">
+		<h3 id="colombia">Colombia</h3>
+		<a href="https://blog.cloudflare.com/#colombia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zj7Rsnv9G3WmVvVkD33LA/a03b3f2a77833ef7932caab378dc0962/colombia.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -733,7 +779,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Costa Rica</h3>
+	<div class="flex anchor relative">
+		<h3 id="costa-rica">Costa Rica</h3>
+		<a href="https://blog.cloudflare.com/#costa-rica" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oxuXU2nWpiKbbDkzHkbir/3ea70793ae37aace43e56626bacdd6fd/costa-rica.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -906,7 +960,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Ecuador</h3>
+	<div class="flex anchor relative">
+		<h3 id="ecuador">Ecuador</h3>
+		<a href="https://blog.cloudflare.com/#ecuador" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YNFC1QgpXPQjsYHKnBgDF/d9268e0843afa30c8a1b14d732310f2e/ecuador-1.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -1079,7 +1141,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Mexico</h3>
+	<div class="flex anchor relative">
+		<h3 id="mexico">Mexico</h3>
+		<a href="https://blog.cloudflare.com/#mexico" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vBOzokWOjI9SuYJWGXmff/abe06160d704a4e352cd75d8954a41b8/mexico.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -1252,7 +1322,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Peru</h3>
+	<div class="flex anchor relative">
+		<h3 id="peru">Peru</h3>
+		<a href="https://blog.cloudflare.com/#peru" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pezxzfIZ2qYpoJA8bteQZ/8c676a78250d58fee7c761e10e342da4/peru.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -1425,7 +1503,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Uruguay</h3>
+	<div class="flex anchor relative">
+		<h3 id="uruguay">Uruguay</h3>
+		<a href="https://blog.cloudflare.com/#uruguay" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zx4wWykqGxSyPNnSak3Wd/000df87cfa314819a80d99dd12d38318/uruguay.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
@@ -1598,7 +1684,15 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Venezuela</h3>
+	<div class="flex anchor relative">
+		<h3 id="venezuela">Venezuela</h3>
+		<a href="https://blog.cloudflare.com/#venezuela" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5h3Ij6UN9jFkMmeF01RqNE/270c8c421751cc8bfcf85078b1039476/venezuela.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">

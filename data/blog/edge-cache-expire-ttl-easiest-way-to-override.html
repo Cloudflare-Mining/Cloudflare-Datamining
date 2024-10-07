@@ -9,7 +9,14 @@ headers" class="kg-image" width="299" height="320" loading="lazy">
 	<p>CloudFlare makes caching easy. Our service automatically determines what files to cache based on file extensions. Performance benefits kick in automatically.</p>
 	<p>For customers that want advanced caching, beyond the defaults, we have <a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache Everything</a> available as Page Rules. Designate a URL and CloudFlare will cache everything, including HTML, out at the edges of our global network.</p>
 	<p>With Cache Everything, we respect all headers. If there is any header in place from the server or a CMS solution like WordPress, we will respect it. However, we got many requests from customers who wanted an easy way to override any existing headers. Today, we are releasing a new feature called 'Edge cache expire TTL' that does just that.</p>
-	<h3>What is Edge Cache Expire TTL?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-edge-cache-expire-ttl">What is Edge Cache Expire TTL?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-edge-cache-expire-ttl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Edge cache expire TTL is the setting that controls how long CloudFlare's edge servers will cache a resource before requesting a fresh copy from your server. When you create a Cache Everything Page Rule, you now may choose whether to respect all existing headers or to override any headers that are in place from your server. By overwriting the headers, CloudFlare will cache more content at the CloudFlare edge network, decreasing load to your server.</p>
 	<p>Common situations where you may choose to overwrite existing headers:</p>
 	<ul>

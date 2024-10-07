@@ -7,10 +7,24 @@ Closed" class="kg-image" width="267" height="189" loading="lazy">
 
 	</figure>
 	<p>This has been a rough week in the security industry with big attacks and compromises reported at companies from Facebook to Apple. We're therefore happy to end the week with some good news: the web's open resolvers, one of the sources of the biggest DDoS attacks, are getting closed.</p>
-	<h3>Sad State of Affairs</h3>
+	<div class="flex anchor relative">
+		<h3 id="sad-state-of-affairs">Sad State of Affairs</h3>
+		<a href="https://blog.cloudflare.com/#sad-state-of-affairs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last October, we wrote a <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">blog post about DDoS amplification attacks</a>. This type of attack makes up some of the largest DDoSs CloudFlare sees, sometimes exceeding 100 gigabits per second (100Gbps). The attacks use DNS resolvers that haven't been properly secured in order to "amplify" the resources of the attacker. An attacker can achieve more than a 50x amplification, meaning that for every byte they are able to generate themselves they can pummel a victim with 50 bytes of garbage data.</p>
 	<p>The problem stems from misconfigured DNS resolver software (e.g., BIND) that is setup to respond to a query from any IP address. Since DNS requests typically are sent over UDP, which, unlike TCP, does not require a handshake, an attacker can spoof a victim's IP address as the source address in a packet and a misconfigured DNS resolver will happily bombard the victim with responses.</p>
-	<h3>Closing the Open Resolvers</h3>
+	<div class="flex anchor relative">
+		<h3 id="closing-the-open-resolvers">Closing the Open Resolvers</h3>
+		<a href="https://blog.cloudflare.com/#closing-the-open-resolvers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While CloudFlare's network is very good at absorbing even these large attacks, the long term solution for the web is for providers to clean up the open resolvers running on their networks. We wanted to help with that so we engaged in a bit of name-and-shame at the end of the last blog post, listing the networks with the largest number of open resolvers. The good news is it worked: almost four months later our tests show that the number of open resolvers across the Internet is down more than 30%. The chart below shows the progress individual networks have made in cleaning up the problem.</p>
 	<p><b>ASN</b></p>
 	<p><b>Network</b></p>
@@ -167,7 +181,14 @@ Closed" class="kg-image" width="267" height="189" loading="lazy">
 	<p>390</p>
 	<p>262</p>
 	<p>-33%</p>
-	<h3>Kudos</h3>
+	<div class="flex anchor relative">
+		<h3 id="kudos">Kudos</h3>
+		<a href="https://blog.cloudflare.com/#kudos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A few other organizations deserve a special shout out for helping with this effort. The great folks at <a href="http://teamcymru.com">Team Cymru</a> have been tracking open resolvers and other badness online since before CloudFlare was even an idea. Their consistent efforts in this area have been awesome and we're in the process of partnering with them to help get the word out.</p>
 	<p>In addition, SoftLayer has been especially vocal and active in spearheading clean up efforts on its network. As they <a href="http://blog.softlayer.com/2012/the-trouble-with-open-dns-resolvers">pointed out in a great blog post</a>, because of the size and nature of their network, it's often difficult for them to police the configuration of software their customers run. Even so, they are actively reaching out to customers to educate them about the dangers of running open resolvers on their networks.</p>
 	<p>We greatly appreciate country CERTs/CSIRTs and various Information Sharing and Analysis Centers (ISACs) reaching out to us offering to get in touch with some of the less responsive network providers.</p>

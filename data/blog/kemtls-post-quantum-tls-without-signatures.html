@@ -9,7 +9,15 @@
 	<p>TLS is the main protocol that protects the connections we use everyday. It’s everywhere: we use it when we buy products online, when we register for a newsletter — when we access any kind of website, IoT device, API for mobile apps and more, really. But with the imminent threat of the arrival of <a href="https://blog.cloudflare.com/securing-the-post-quantum-world">quantum computers</a> (a threat that seems to be getting closer and closer), we need to reconsider the future of TLS once again. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">A wide-scale post-quantum experiment</a> was carried out by Cloudflare and Google: two post-quantum key exchanges were integrated into our TLS stack and deployed at our edge servers as well as in Chrome Canary clients. The goal of that experiment was to evaluate the performance and feasibility of deployment of two post-quantum key exchanges in TLS.</p>
 	<p>Similar experiments have been proposed for introducing post-quantum algorithms into the TLS handshake itself. Unfortunately, it seems infeasible to replace both the key exchange and signature with post-quantum primitives, because post-quantum cryptographic primitives are bigger, or slower (or both), than their predecessors. The proposed algorithms under consideration in the <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/round-3-submissions">NIST post-quantum standardization process</a> use mathematical objects that are larger than the ones used for elliptic curves, traditional Diffie-Hellman, or RSA. As a result, the overall size of public keys, signatures and key exchange material is much bigger than those from elliptic curves, Diffie-Hellman, or RSA.</p>
 	<p>How can we solve this problem? How can we use post-quantum algorithms as part of the TLS handshake without making the material too big to be transmitted? In this blogpost, we will introduce a new mechanism for making this happen. We’ll explain how it can be integrated into the handshake and we’ll cover implementation details. The key observation in this mechanism is that, while post-quantum algorithms have bigger communication size than their predecessors, post-quantum <i>key exchanges</i> have somewhat smaller sizes than post-quantum <i>signatures</i>, so we can try to replace signatures with key exchanges in some places to save space. &nbsp;We will only focus on the TLS 1.3 handshake as it is the TLS version that should be currently used.</p>
-	<h3>Past experiments: making the TLS 1.3 handshake post-quantum</h3>
+	<div class="flex anchor relative">
+		<h3 id="past-experiments-making-the-tls-1-3-handshake-post-quantum">Past experiments: making the TLS 1.3 handshake post-quantum</h3>
+		<a href="https://blog.cloudflare.com/#past-experiments-making-the-tls-1-3-handshake-post-quantum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/589KMSU0NPVnVGNPCiWIXg/28c63436ed1d656c2df64f28675988c4/image2-5.png" alt="" class="kg-image" width="456" height="404" loading="lazy">
@@ -24,7 +32,14 @@
 	<p>Most of the above ideas only provide what is often defined as ‘transitional security’, because its main focus is to provide quantum-resistant confidentiality, and not to take quantum-resistant authentication into account. It is possible to use post-quantum signatures for TLS authentication, but the post-quantum signatures are larger than traditional ones. Furthermore, it is <a href="https://csrc.nist.gov/Presentations/2019/the-2nd-round-of-the-nist-pqc-standardization-proc">worth noting</a> that using post-quantum signatures is much more expensive than using post-quantum KEMs.</p>
 	<p>We can estimate the impact of such a replacement on network traffic by simply looking at the sum of the cryptographic objects that are transmitted during the handshake. A typical TLS 1.3 handshake using elliptic curve X25519 and RSA-2048 would transmit 1,376 bytes, which would correspond to the public keys for key exchange, the certificate, the signature of the handshake, and the certificate chain. If we were to replace X25519 by the post-quantum KEM <a href="https://pq-crystals.org/kyber">Kyber512</a> and RSA by the post-quantum signature <a href="https://pq-crystals.org/dilithium">Dilithium II</a>, two of the more efficient proposals, the size transmitted data would increase to 10,036 bytes[4]. The increase is mostly due to the size of the post-quantum signature algorithm.</p>
 	<p>The question then is: how can we achieve full post-quantum security and give a handshake that is efficient to be used?</p>
-	<h3>A more efficient proposal: KEMTLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-more-efficient-proposal-kemtls">A more efficient proposal: KEMTLS</h3>
+		<a href="https://blog.cloudflare.com/#a-more-efficient-proposal-kemtls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is a long history of other mechanisms, besides signatures, being used for authentication. Modern protocols, such as the Signal protocol, the Noise framework, or WireGuard, rely on key exchange mechanisms for authentication; but they are unsuitable for the TLS 1.3 case as they expect the long-term key material to be known in advance by the interested parties.</p>
 	<p>The <a href="https://eprint.iacr.org/2015/978.pdf">OPTLS proposal</a> by Krawczyk and Wee authenticates the TLS handshake without signatures by using a non-interactive key exchange (NIKE). However, the only somewhat efficient construction for a post-quantum NIKE is CSIDH, the security of which is the subject of an ongoing debate. But we can build on this idea, and use KEMs for authentication. KEMTLS, the current proposed experiment, replaces the handshake signature by a post-quantum KEM key exchange. It was designed and introduced by Peter Schwabe, Douglas Stebila and Thom Wiggers in the publication <a href="https://thomwiggers.nl/publication/kemtls/kemtls.pdf">‘Post-Quantum TLS Without Handshake Signatures’</a>.</p>
 	<p>KEMTLS, therefore, achieves the same goals as TLS 1.3 (authentication, confidentiality and integrity) in the face of quantum computers. But there’s one small difference compared to the TLS 1.3 handshake. KEMTLS allows the client to send encrypted application data in the second client-to-server TLS message flow when client authentication is not required, and in the third client-to-server TLS message flow when mutual authentication is required. Note that with TLS 1.3, the server is able to send encrypted and authenticated application data in its first response message (although, in most uses of TLS 1.3, this feature is not actually used). With KEMTLS, when client authentication is not required, the client is able to send its first encrypted application data after the same number of handshake round trips as in TLS 1.3.</p>
@@ -37,7 +52,14 @@
 	</figure>
 	<p>By replacing the handshake signature by a KEM key exchange, we reduce the size of the data transmitted in the example handshake to 8,344 bytes, using Kyber512 and Dilithium II — a significant reduction. We can reduce the handshake size even for algorithms such as the NTRU-assumption based KEM NTRU and signature algorithm Falcon, which have a less-pronounced size gap. Typically, KEM operations are computationally much lighter than signing operations, which makes the reduction even more significant.</p>
 	<p>KEMTLS was presented at ACM CCS 2020. You can read more about its details in <a href="https://thomwiggers.nl/publication/kemtls/kemtls.pdf">the paper</a>. It was initially <a href="https://github.com/thomwiggers/kemtls-experiment">implemented in the RustTLS library</a> by Thom Wiggers using optimized C/assembly implementations of the post-quantum algorithms provided by the <a href="https://github.com/PQClean/PQClean">PQClean</a> and <a href="https://openquantumsafe.org">Open Quantum Safe</a> projects.</p>
-	<h3>Cloudflare and KEMTLS: the implementation</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-and-kemtls-the-implementation">Cloudflare and KEMTLS: the implementation</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-and-kemtls-the-implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of our effort to show that TLS can be completely post-quantum safe, we implemented the full KEMTLS handshake in Golang’s TLS 1.3 suite. The implementation was done in several steps:</p>
 	<ol>
 		<li>
@@ -97,9 +119,23 @@
 }</code></pre>
 	<p>We had to interrupt the process when the server sends the Certificate (<code>sendServerCertificate()</code>) in order to send the KEMTLS specific messages. In the same way, we had to add the appropriate KEM TLS messages to the client’s handshake. And, as we didn’t want to change so much the way Golang handles TLS 1.3, we only added one new constant to the configuration that can be used by a server in order to ask for the Client’s Certificate (the constant is <code>serverConfig.ClientAuth = RequestClientKEMCert</code>).</p>
 	<p>The implementation is easy to work with: if a delegated credential or a certificate has a public key of a supported post-quantum KEM algorithm, the handshake will proceed with KEMTLS. If the server requests a Client KEMTLS Certificate, the handshake will use client KEMTLS authentication.</p>
-	<h3>Running the Experiment</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-the-experiment">Running the Experiment</h3>
+		<a href="https://blog.cloudflare.com/#running-the-experiment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, what’s next? We’ll take the code we have produced and run it on actual Cloudflare infrastructure to measure how efficiently it works.</p>
-	<h3>Thanks</h3>
+	<div class="flex anchor relative">
+		<h3 id="thanks">Thanks</h3>
+		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many thanks to everyone involved in the project: Chris Wood, Armando Faz-Hernández, Thom Wiggers, Bas Westerbaan, Peter Wu, Peter Schwabe, Goutam Tamvada, Douglas Stebila, Thibault Meunier, and the whole Cloudflare Research team.</p>
 	<p><sup>1</sup>It is worth noting that the RSA key transport in TLS ≤1.2 has the server only authenticated by RSA public key encryption, although the server's RSA public key is certified using RSA signatures by Certificate Authorities.</p>
 	<p><sup>2</sup>An extension used by the client to indicate which named groups -Elliptic Curve Groups, Finite Field Groups- it supports for key exchange.</p>

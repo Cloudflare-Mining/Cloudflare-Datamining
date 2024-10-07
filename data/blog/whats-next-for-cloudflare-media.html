@@ -21,17 +21,38 @@
 			<p>Cloudflare Images lets you crop and resize images of people at scale with automatic face cropping</p>
 		</li>
 	</ul>
-	<h3>Build real-time video and audio applications with Cloudflare Calls</h3>
+	<div class="flex anchor relative">
+		<h3 id="build-real-time-video-and-audio-applications-with-cloudflare-calls">Build real-time video and audio applications with Cloudflare Calls</h3>
+		<a href="https://blog.cloudflare.com/#build-real-time-video-and-audio-applications-with-cloudflare-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Calls is now in open beta, and you can activate it from your dashboard. Your usage will be free until May 15, 2024. Starting May 15, 2024, customers with a Calls subscription will receive the first terabyte each month for free, with any usage beyond that charged at $0.05 per real-time gigabyte. Additionally, there are no charges for inbound traffic to Cloudflare.</p>
 	<p>To get started, read the <a href="https://developers.cloudflare.com/calls">developer documentation for Cloudflare Calls</a>.</p>
-	<h3>Live Instant Clipping: create clips from live streams and recordings</h3>
+	<div class="flex anchor relative">
+		<h3 id="live-instant-clipping-create-clips-from-live-streams-and-recordings">Live Instant Clipping: create clips from live streams and recordings</h3>
+		<a href="https://blog.cloudflare.com/#live-instant-clipping-create-clips-from-live-streams-and-recordings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Live broadcasts often include short bursts of highly engaging content within a longer stream. Creators and viewers alike enjoy being able to make a “clip” of these moments to share across multiple channels. Being able to generate that clip rapidly enables our customers to offer instant replays, showcase key pieces of recordings, and build audiences on social media in real-time.</p>
 	<p>Today, <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a> is launching Live Instant Clipping in open beta for all customers. With the new Live Clipping API, you can let your viewers instantly clip and share moments from an ongoing stream - without re-encoding the video.</p>
 	<p>When planning this feature, we considered a typical user flow for generating clips from live events. Consider users watching a stream of a video game: something wild happens and users want to save and share a clip of it to social media. What will they do?</p>
 	<p>First, they’ll need to be able to review the preceding few minutes of the broadcast, so they know what to clip. Next, they need to select a start time and clip duration or end time, possibly as a visualization on a timeline or by scrubbing the video player. Finally, the clip must be available quickly in a way that can be replayed or shared across multiple platforms, even after the original broadcast has ended.</p>
 	<p>That ideal user flow implies some heavy lifting in the background. We now offer a manifest to preview recent live content in a rolling window, and we provide the timing information in that response to determine the start and end times of the requested clip relative to the whole broadcast. Finally, on request, we will generate on-the-fly that clip as a standalone video file for easy sharing as well as an HLS manifest for embedding into players.</p>
 	<p>Live Instant Clipping is available in beta to all customers starting today! Live clips are free to make; they do not count toward storage quotas, and playback is billed just like minutes of video delivered. To get started, check out the <a href="https://developers.cloudflare.com/stream/stream-live/live-instant-clipping">Live Clipping API in developer documentation</a>.</p>
-	<h3>Integrate Cloudflare Images into your application with only a few lines of code</h3>
+	<div class="flex anchor relative">
+		<h3 id="integrate-cloudflare-images-into-your-application-with-only-a-few-lines-of-code">Integrate Cloudflare Images into your application with only a few lines of code</h3>
+		<a href="https://blog.cloudflare.com/#integrate-cloudflare-images-into-your-application-with-only-a-few-lines-of-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building applications with user-uploaded images is even easier with the upload widget, a pre-built, interactive UI that lets users upload images directly into your Cloudflare Images account.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -42,7 +63,14 @@
 	<p>But building an application can take time. Our team saw a huge opportunity to take away as much extra work as possible, and we wanted to provide off-the-shelf integration to speed up the development process.</p>
 	<p>With the upload widget, you can seamlessly integrate Cloudflare Images into your application within minutes. The widget can be integrated in two ways: by embedding a script into a static HTML page or by installing a package that works with your favorite framework. We provide a ready-made Worker template that you can deploy directly to your account to connect your frontend application with Cloudflare Images and authorize users to upload through the widget.</p>
 	<p>To try out the upload widget, <a href="https://forms.gle/vBu47y3638k8fkGF8">sign up for our closed beta</a>.</p>
-	<h3>Optimize images of people with automatic face cropping for Cloudflare Images</h3>
+	<div class="flex anchor relative">
+		<h3 id="optimize-images-of-people-with-automatic-face-cropping-for-cloudflare-images">Optimize images of people with automatic face cropping for Cloudflare Images</h3>
+		<a href="https://blog.cloudflare.com/#optimize-images-of-people-with-automatic-face-cropping-for-cloudflare-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Images lets you dynamically manipulate images in different aspect ratios and dimensions for various use cases. With face cropping for Cloudflare Images, you can now crop and resize images of people’s faces at scale. For example, if you’re building a social media application, you can apply automatic face cropping to generate profile picture thumbnails from user-uploaded images.</p>
 	<p>Our existing gravity parameter uses saliency detection to set the focal point of an image based on the most visually interesting pixels, which determines how the image will be cropped. We expanded this feature by using a machine learning model called RetinaFace, which classifies images that have human faces. We’re also introducing a new zoom parameter that you can combine with face cropping to specify how closely an image should be cropped toward the face.</p>
 	<p>To apply face cropping to your image optimization, <a href="https://forms.gle/2bPbuijRoqGi6Qn36">sign up for our closed beta</a>.</p>
@@ -53,6 +81,14 @@
 	</figure>
 	<p><i>Photo by</i> <a href="https://unsplash.com/@eyeforebony?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash"><i>Eye for Ebony</i></a> <i>on</i> <a href="https://unsplash.com/photos/photo-of-woman-wearing-purple-lipstick-and-black-crew-neck-shirt-vYpbBtkDhNE?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash"><i>Unsplash</i></a></p>
 	<pre class="language-html"><code class="language-html">https://example.com/cdn-cgi/image/fit=crop,width=500,height=500,gravity=face,zoom=0.6/https://example.com/images/picture.jpg</code></pre>
-	<h3>Meet the Media team over Discord</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="meet-the-media-team-over-discord">Meet the Media team over Discord</h3>
+		<a href="https://blog.cloudflare.com/#meet-the-media-team-over-discord" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we’re working to build the next set of media tools, we’d love to hear what you’re building for your users. Come <a href="https://discord.gg/cloudflaredev">say hi to us on Discord</a>. You can also learn more by visiting our developer documentation for <a href="https://developers.cloudflare.com/calls">Calls</a>, <a href="https://developers.cloudflare.com/stream">Stream</a>, and <a href="https://developers.cloudflare.com/images">Images</a>.</p>
 </div>

@@ -13,7 +13,14 @@
 	<p>The new regions include some of our most requested areas and specifications:</p>
 	<p>Austria, Brazil, Cloudflare Green Energy, Exclusive of Hong Kong and Macau, Exclusive of Russia and Belarus, France, Hong Kong, Italy, NATO, the Netherlands, Russia, Saudi Arabia, South Africa, Spain, Switzerland, and Taiwan.</p>
 	<p>A full list of our Regional Services offerings can be found <a href="https://developers.cloudflare.com/data-localization/region-support">here.</a></p>
-	<h3>A note on our framework for data localization going forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-note-on-our-framework-for-data-localization-going-forward">A note on our framework for data localization going forward</h3>
+		<a href="https://blog.cloudflare.com/#a-note-on-our-framework-for-data-localization-going-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the course of the next year, you are going to see new and exciting ways to use Cloudflare products to help keep your data local. But doesn’t this contradict the whole premise of Cloudflare? Aren't we a global anycast network that believes in Region Earth?</p>
 	<p>We don’t believe these have to be an either/or conversation. While we continue to believe that data localization should not be a proxy for privacy and that restrictions on cross border data transfers are <a href="https://itif.org/publications/2021/07/19/how-barriers-cross-border-data-flows-are-spreading-globally-what-they-cost">harmful to global commerce</a>, we remain committed to supporting those of you who need data localization solutions to address your legal obligations and risk tolerance.</p>
 	<p>Unfortunately, many different cloud providers have decided that the best way to meet the compliance needs of their customers is to create fixed infrastructure deployments called sovereign clouds. The trouble with these infrastructure deployments is that you have to commit all of your traffic to be regionalized, regardless of whether all of that traffic actually needs to be confined to a specific data center in a specific region.</p>
@@ -22,7 +29,14 @@
 	<p>We call this approach software defined regionalization (SDR) &nbsp;and we believe that it is the future of data localization. Using our global network as the foundation, SDR allows our customers to make exceptionally granular choices about what traffic to regionalize and where to regionalize it. This empowers you to build applications that are fast, reliable, and compliant without having to deploy new physical infrastructure or have multiple cloud deployments for the same application.</p>
 	<p>Taking it a step further, SDR allows you to shape Cloudflare to meet both current and future needs. It gives you the flexibility to quickly respond to new challenges in a rapidly changing world. By making localization choices in software, you are not bound by the physical constraints of your existing network geography or the locations of your cloud deployments.</p>
 	<p>We believe that software defined regionalization is the future of data localization, and we are excited to be on the forefront of its development.</p>
-	<h3>How Regional Services ensures your data is processed in the correct region</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-regional-services-ensures-your-data-is-processed-in-the-correct-region">How Regional Services ensures your data is processed in the correct region</h3>
+		<a href="https://blog.cloudflare.com/#how-regional-services-ensures-your-data-is-processed-in-the-correct-region" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Complying with data localization requirements isn't possible without strong encryption; otherwise, anyone could snoop on your customers' data, regardless of where it's stored. Strong encryption is the foundation of Regional Services.</p>
 	<p>Data is often described as being "in transit" and "at rest". It's critically important that both are encrypted. Data "in transit" refers to just that – data while it's moving about on the wire, whether a local network or the public Internet. "At rest" generally means stored on a disk somewhere, whether a spinning hard disk or a modern solid state disk.</p>
 	<p>In transit, Cloudflare can enforce that all traffic uses modern <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a> and gets the highest level of encryption possible. We can also enforce that all traffic back to customers' origin servers is always encrypted. Communication between all of our edge and core data centers is always encrypted.</p>

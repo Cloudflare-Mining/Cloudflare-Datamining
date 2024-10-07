@@ -6,15 +6,37 @@
 
 	</figure>
 	<p>We announced <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a> yesterday to an overwhelmingly positive response. We read through the comments on this blog, <a href="http://www.reddit.com/r/programming/comments/2grd1d/cloudflare_annouces_keyless_ssl">Reddit</a>, <a href="https://news.ycombinator.com/item?id=8334933">Hacker News</a>, and people seem interested in knowing more and getting deeper into the technical details. In this blog post we go into extraordinary detail to answer questions about how Keyless SSL was designed, how it works, and why it’s secure. Before we do so, we need some background about how encryption works on the Internet. If you’re already familiar, feel free to <a href="https://blog.cloudflare.com/#makingitkeyless">skip ahead</a>.</p>
-	<h3>TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls">TLS</h3>
+		<a href="https://blog.cloudflare.com/#tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Transport Layer Security (TLS) is the workhorse of web security. It lets websites prove their identity to web browsers, and protects all information exchanged from prying eyes using encryption. The TLS protocol has been around for years, but it’s still mysterious to even hardcore tech enthusiasts. Understanding the fundamentals of TLS is the key to understanding Keyless SSL.</p>
-	<h3>Dual goals</h3>
+	<div class="flex anchor relative">
+		<h3 id="dual-goals">Dual goals</h3>
+		<a href="https://blog.cloudflare.com/#dual-goals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS has two main goals: confidentiality and authentication. Both are critically important to securely communicating on the Internet.</p>
 	<p>Communication is considered confidential when two parties are confident that nobody else can understand their conversation. Confidentiality can be achieved using symmetric encryption: use a key known only to the two parties involved to encrypt messages before sending them. In TLS, this symmetric encryption is typically done using a strong block cipher like <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a>. Older browsers and platforms might use a cipher like <a href="https://en.wikipedia.org/wiki/Triple_DES">Triple DES</a> or the stream cipher <a href="https://en.wikipedia.org/wiki/RC4">RC4</a>, <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">which is now considered insecure</a>.</p>
 	<p>The other crucial goal of TLS is authentication. Authentication is a way to ensure the person on the other end is who they say they are. This is accomplished with public keys. Websites use certificates and public key cryptography to prove their identity to web browsers. And browsers need two things to trust a certificate: proof that the other party is the owner of the certificate, and proof that the certificate is trusted.</p>
 	<p>A website certificate contains a public key, and if the website can prove that it controls the associated private key, that’s proof that they are the owner of the certificate. A browser considers a certificate trusted if the certificate was granted by a trusted certificate authority, and contains the site’s domain name. More technical details of how trust works with web certificates is described in <a href="https://blog.cloudflare.com/introducing-cfssl">a previous blog post</a> about our open source SSL toolkit, CFSSL.</p>
 	<p>In the context of the web, confidentiality and authentication are achieved through the process of establishing a shared key and proving ownership of a certificate. TLS does this through a series of messages called a “handshake”.</p>
-	<h3>What’s in a handshake?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-in-a-handshake">What’s in a handshake?</h3>
+		<a href="https://blog.cloudflare.com/#whats-in-a-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zkUI687fju7i7jdQhW7hb/193d875786f3766778c2d4b5ee3a3a9e/handshake1.jpg" alt="Cheesy handshake stock photo" class="kg-image" width="1200" height="800" loading="lazy">
@@ -30,7 +52,14 @@
 	<p>The RSA and DH handshakes both have their advantages and disadvantages. The RSA handshake only uses one public key algorithm operation, RSA. A DH handshake with an RSA certificate requires the same RSA operation, but with an additional DH operation. Given that the certificate is RSA, the RSA handshake is faster to compute. Public key algorithms like RSA and DH use a lot of CPU and are the slowest part of the TLS handshake. A laptop can only perform a couple hundred RSA encryptions a second versus around ten million per second of the symmetric cipher AES.</p>
 	<p>The DH handshake requires two algorithms to run, but the advantage it brings is that it allows key establishment to happen independently of the server’s private key. This gives the connection <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a>, a useful property that protects conversations from being decrypted after the fact if the private key is somehow exposed. The DH version of the handshake also opens up the possibility of using non-RSA certificates that can improve performance, including <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA keys</a>. Elliptic curves provide the same security with less computational overhead. A DH handshake with and elliptic curve DSA certificate and elliptic curve Diffie-Hellman key agreement can be faster than a one-operation RSA handshake.</p>
 	<p>CloudFlare supports both handshakes, but, as we will describe later, the type of handshake used is chosen by the server. CloudFlare will choose a DH handshake whenever we can.</p>
-	<h3>TLS Glossary</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-glossary">TLS Glossary</h3>
+		<a href="https://blog.cloudflare.com/#tls-glossary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we walk through the steps of the handshake, here are a couple definitions.</p>
 	<p><b>1. Session key</b>This is the end result of a handshake. It’s a key for a symmetric cipher, and allows the client and server to encrypt messages to each other.</p>
 	<p><b>2. Client random</b>This is a sequence of 32 bytes created by the client. It’s unique for each connection, and is supposed to contain a four-byte timestamp followed by 28 random bytes. Recently, Google Chrome switched to using 32 bytes of random in order to prevent client fingerprinting. These random values are often called a <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a>.</p>
@@ -82,7 +111,14 @@
 		</li>
 	</ul>
 	<p>With these definitions in hand, let’s walk through an RSA handshake.</p>
-	<h3>RSA handshake</h3>
+	<div class="flex anchor relative">
+		<h3 id="rsa-handshake">RSA handshake</h3>
+		<a href="https://blog.cloudflare.com/#rsa-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Note that none of the messages in the handshake are encrypted with a session key; they are all sent in the clear.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -100,7 +136,15 @@
 	<p>The handshake is officially complete when the client and server exchange “Finished” messages. The actual text is literally: “client finished” or “server finished” encrypted with the session key. Any subsequent communication between the two parties are encrypted with the session key.</p>
 	<p>This handshake is elegant because it combines key exchange and authentication in one step. The logic is that if the server can correctly derive the session key, then they must have access to the private key, and, therefore, be the owner of the certificate.</p>
 	<p>The downside of this handshake is that the messages secured by it are only as safe as the private key. Suppose a third party has recorded the handshake and the subsequent communication. If that party gets access to the private key in the future, they will be able to decrypt the pre-main secret and derive the session key. With that they can decrypt the entire message. This is true even if the certificate is expired or revoked. This leads us to another form of handshake that can provide confidentiality even if the private key is compromised.</p>
-	<h3>Ephemeral Diffie-Hellman handshake</h3>
+	<div class="flex anchor relative">
+		<h3 id="ephemeral-diffie-hellman-handshake">Ephemeral Diffie-Hellman handshake</h3>
+		<a href="https://blog.cloudflare.com/#ephemeral-diffie-hellman-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4piTy8g3Q4Gd4x846uqptM/42ee9558eaecb3bf20c87296971063ce/diffiehellman.gif" alt="Diffie-Hellman GIF" class="kg-image" width="272" height="393" loading="lazy">
@@ -145,7 +189,14 @@
 	<p>After validating that the certificate is trusted, and belongs to the site they are trying to reach, the client validates the digital signature sent from the server. They also send the client half of the Diffie-Hellman handshake (corresponding to g<sup>b</sup> above).</p>
 	<p>At this point, both sides can compute the pre-main secret from the Diffie-Hellman parameters (corresponding to g<sup>ab</sup> above). With the pre-main secret and both client and server randoms, they can derive the same session key. They then exchange a short message to indicate that they the next message they send will be encrypted.</p>
 	<p>Just like in the RSA handshake, this handshake is officially complete when the client and server exchange “Finished” messages. Any subsequent communication between the two parties are encrypted with the session key.</p>
-	<h3>Making it keyless</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-it-keyless">Making it keyless</h3>
+		<a href="https://blog.cloudflare.com/#making-it-keyless" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yesterday we announced <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a>, CloudFlare’s solution that allows sites to use CloudFlare without requiring them to give up custody of their private keys.</p>
 	<p>One takeaway from the handshake diagrams above is that the private key is only used once in each handshake. This allows us to split the TLS handshake geographically, with most of the handshake happening at CloudFlare’s edge while moving the private key operations to a remote key server. This key server can be put on the customer’s infrastructure, giving them exclusive access to the private key.</p>
 	<p>Once the secure tunnel is established, the RSA handshake looks like this:</p>
@@ -164,7 +215,15 @@
 	<p>The key server can run on Linux (packaged for Red Hat/CentOS, Debian and Ubuntu, and others), other UNIX operating systems (including FreeBSD), and Microsoft Windows Server. Customers also get access to a <a href="https://github.com/cloudflare/keyless">reference implementation</a> written in C, so they can build their own compatible key server.</p>
 	<p>The key server will soon be integrated with hardware security module (HSM) vendors and key management solutions (such as Venafi) to provide customers with additional ways to control how the keys are managed in their infrastructure.</p>
 	<p>Keyless SSL supports multiple key servers for the same certificate. Key servers are stateless, allowing customers to use off-the-shelf hardware and scale the deployment of key servers linearly with traffic. By running multiple key servers and load balancing via DNS, the customer’s site can be kept highly available.</p>
-	<h3>Protecting the oracle</h3>
+	<div class="flex anchor relative">
+		<h3 id="protecting-the-oracle">Protecting the oracle</h3>
+		<a href="https://blog.cloudflare.com/#protecting-the-oracle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KAt3u8z3Y77B0DZmIseyl/7b8cc75853fc8e88aa3083e501ca7abb/oracle2.JPG.jpeg" alt="Protecting the Oracle" class="kg-image" width="853" height="356" loading="lazy">
@@ -183,10 +242,24 @@
 		</li>
 	</ul>
 	<p>These are two of the strongest ciphers available in OpenSSL and guarantee the connection between CloudFlare and the keyserver has perfect forward secrecy.</p>
-	<h3>Other security considerations</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-security-considerations">Other security considerations</h3>
+		<a href="https://blog.cloudflare.com/#other-security-considerations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The key server itself can be modified to work with hardware security module (HSM), providing additional hardware security for customers who want to protect the key server from undiscovered software vulnerabilities similar to <a href="https://blog.cloudflare.com/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys">Heartbleed</a>.</p>
 	<p>The key server is not subject to padding oracle attacks like that of <a href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack">Bleichenbacher</a> because it uses constant size responses. Side-channel attacks such as timing attacks are ineffective as long as the underlying cryptographic library used on the key server is immune. We use OpenSSL in our reference implementation which has been hardened against such attacks.</p>
-	<h3>Performance enhancements</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-enhancements">Performance enhancements</h3>
+		<a href="https://blog.cloudflare.com/#performance-enhancements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare is designed to make sites faster: it should take less time to connect to a site on CloudFlare than the same site off CloudFlare. This is also the case with Keyless SSL. Connecting to a site with Keyless SSL should be faster than connecting to the same site with CloudFlare disabled. People have asked how can that be, given that the Keyless SSL requires an additional connection to the key server. The answer lies in geography.</p>
 	<p>CloudFlare’s data centers are geographically distributed in 20 countries around the world and are located within less than 20ms of 95% of the Internet’s active population. This allows visitors to communicate with a CloudFlare server that is closest to them on the network. Messages sent between visitor and CloudFlare don’t have to travel far, so the connection latency is smaller. This proximity effect is one of the ways that CloudFlare accelerates websites.</p>
 	<p>In the Keyless SSL diagrams above, all the messages except one are traveling over the short link between CloudFlare and the visitor. The only long round trip is the one to the key server.</p>
@@ -197,13 +270,27 @@
 	</figure>
 	<p>Consider the scenario where a visitor in San Francisco wants to visit a site hosted in London over TLS. Without CloudFlare, the TLS handshake requires two round-trips from San Francisco to London. With Keyless SSL and a keyserver hosted in London, the visitor will end up in CloudFlare’s nearby <a href="https://blog.cloudflare.com/and-then-there-were-threecloudflares-new-data">San Jose</a> data center. In this scenario, only one of the messages has to travel to London and back. Messages have to travel a shorter distance, resulting in a faster handshake.</p>
 	<p>The reason we only require one round-trip to the key server is persistent connections. Once CloudFlare has connected to a key server, it keeps the connection ready for any new visitors to the site. The first connection to a Keyless SSL powered site is fast, but the major performance improvement comes when a visitor returns to the site.</p>
-	<h3>Abbreviated handshake</h3>
+	<div class="flex anchor relative">
+		<h3 id="abbreviated-handshake">Abbreviated handshake</h3>
+		<a href="https://blog.cloudflare.com/#abbreviated-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS provides an excellent performance feature called “session resumption”. If a client has previously established a session with the server, and is trying to connect again, they can use an abbreviated handshake. There are two mechanisms to do so: session IDs and session tickets.</p>
 	<p>Session IDs require the server to keep the session state (i.e. the session key) ready in case a previous session needs to be resumed. In the case of session tickets, the server sends a session ticket (consisting of the session key encrypted with a ticket key) to the client during the initial handshake. When resuming a session, the client sends the encrypted key back to the server who decrypts it and resumes the session. There is no need to use the private key for session resumption.</p>
 	<p>Firefox and Chrome are the major browsers that support session tickets. All other modern browsers support resumption via session IDs. One of the challenges faced when using these techniques at scale is load balancing. In order for a server to resume a connection, it needs to have the previously established session key. If the visitor tries to resume a connection with a new server, that server needs to get the original session key somehow.</p>
 	<p>The main problem with session resumption is that is was not meant to scale to load-balanced servers. If a client starts a session on one server, it cannot resume that session on another server. This is not a failing of the protocol, just a missing feature in open source web servers.</p>
 	<p>With Keyless SSL, we are introducing advanced session resumption capabilities to solve this problem. This includes worldwide session resumption via session tickets and session resumption within a data center via session IDs. Session resumption allows repeat visitors to have lightning fast connection times because there is no need to go back to the key server to resume a connection.</p>
-	<h3>Session ticket resumption</h3>
+	<div class="flex anchor relative">
+		<h3 id="session-ticket-resumption">Session ticket resumption</h3>
+		<a href="https://blog.cloudflare.com/#session-ticket-resumption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With session tickets, we can resume a session from any machine on our network. This required significant engineering work that we are opening up to the community.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -212,7 +299,14 @@
 	</figure>
 	<p>Twitter <a href="https://blog.twitter.com/2013/forward-secrecy-at-twitter">recently announced</a> that they are using session ticket keys rotated every 12 hours. We are upping the ante by rotating session ticket keys every hour. We built a centralized session ticket key generator that issues new keys every hour for distribution across our global network. Each key persists for a user-configurable amount of time (defaulting to 96 hours), after which it is permanently deleted. To distribute the keys, we added a TLS layer to the key-value store <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">Kyoto Tycoon</a> so that replication is fully encrypted with mutually authenticated TLS and pinned to CloudFlare’s CA. With Kyoto Tycoon, ticket keys are replicated globally within seconds to every one of our edge machines. In keeping with our <a href="https://blog.cloudflare.com/keeping-our-open-source-promise">open source philosophy</a>, we plan on open sourcing our changes to Kyoto Tycoon. With the ticket keys available on every server, we can resume any connection on any machine in our entire network.</p>
 	<p>The rotation of ticket keys helps us maintain perfect forward secrecy for our customers while reducing latency for returning visitors using Firefox and Chrome.</p>
-	<h3>Session ID resumption</h3>
+	<div class="flex anchor relative">
+		<h3 id="session-id-resumption">Session ID resumption</h3>
+		<a href="https://blog.cloudflare.com/#session-id-resumption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can also resume sessions across multiple machines with a session ID. Unlike with session tickets, we can only resume sessions within a datacenter. This turns out to be good enough for 99.99% of users because CloudFlare’s Anycast network directs requests to the nearest data center. Browsers don’t typically move between cities very often, so most resumption requests end up in the same place. And, in the worst case, such as if you access a site from your phone in one city and then fly to another, your client will simply setup a new session.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -221,13 +315,27 @@
 	</figure>
 	<p>We can resume sessions using an ID by caching session keys within a datacenter. For each new connection, we cache an encrypted versions of the session key in a centralized location, indexed by session ID. If a new request come in with a session ID that has been seen before, we look it up in the central store that can be accessed from all the servers in any data center. These session keys do not leave the datacenter and persist for a user-configurable amount of time, again defaulting to 96 hours. Session ID caching lets us use an abbreviated handshake for almost all resumed connection attempts in browsers other than Chrome or Firefox.</p>
 	<p>Other technically sophisticated organizations also use session resumption. Google, for instance, uses a similar technique to resume sessions across its infrastructure. <b>Note:</b> <i>All CloudFlare customers with SSL enabled now get the benefits of this advanced session resumption, even if they are not using Keyless SSL.</i></p>
-	<h3>Open Source</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-source">Open Source</h3>
+		<a href="https://blog.cloudflare.com/#open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare developed a lot of code when building Keyless SSL and have contributed major portions of it back to the community:</p>
 	<p><b>Strict SSL:</b> this code allows upstream connections from NGINX to validate TLS connections, needed for validating the identity of the key server. <a href="http://mailman.nginx.org/pipermail/nginx-announce/2014.txt">This change</a> was merged into NGINX.</p>
 	<p><b>Session tickets:</b> we added support for session ticket in NGINX. <a href="http://mailman.nginx.org/pipermail/nginx-devel/2013-October/004370.html">This change</a> was merged into NGINX.</p>
 	<p><b>CFSSL:</b> we recently open sourced the tool we use for our internal certificate authority. It is available on <a href="https://blog.cloudflare.com/introducing-cfssl">GitHub</a>.</p>
 	<p><b>Kyoto Tycoon:</b> we are soon open sourcing our changes to Kyoto Tycoon, a high performance key value store we use extensively, to allow mutually authenticated replication.</p>
 	<p><b>Key Server:</b> The reference implementation of the Keyless SSL key server is now available on <a href="https://github.com/cloudflare/keyless">Github</a>.</p>
-	<h3>Why it matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-it-matters">Why it matters</h3>
+		<a href="https://blog.cloudflare.com/#why-it-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keyless SSL is a big advancement allowing website owners to use a service like CloudFlare to make their website faster and more secure, while retaining control of their private keys. As we said in the <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">previous post announcing it</a>, Sebastien was able to build the initial Keyless SSL prototype overnight. Making sure it was secure, fast, and could scale is what took us two years of engineering. Now, with persistent connections and advanced session resumption techniques, using Keyless SSL is not only safe, it’s blazing fast!</p>
 </div>

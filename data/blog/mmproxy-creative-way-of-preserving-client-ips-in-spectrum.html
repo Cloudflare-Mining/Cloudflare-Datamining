@@ -38,7 +38,14 @@
 	<p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
 	<pre class="language-bash"><code class="language-bash">PROXY TCP4 192.0.2.123 104.16.112.25 19235 80\r\n</code></pre>
 	<p>As you can see, the PROXY protocol is rather trivial to implement, and is generally sufficient for most use cases. However, it requires application support. The PROXY protocol (v1) is supported by Cloudflare Spectrum, and we highly encourage using it over other methods of keeping client source IP addresses.</p>
-	<h3>Mmproxy to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="mmproxy-to-the-rescue">Mmproxy to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#mmproxy-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But sometimes adding PROXY protocol support to the application isn't an option. This can be the case when the application isn’t open source, or when it's hard to edit. A good example is "sshd" - it doesn't support PROXY protocol and adding the support would be far from trivial. For such applications it may just be impossible to use any application level load balancer whatsoever. This is very unfortunate.</p>
 	<p>Fortunately we think we found a workaround.</p>
 	<figure class="kg-card kg-image-card ">
@@ -73,7 +80,14 @@
 			<p><code>mmproxy</code> needs root or <code>CAP_NET_RAW</code> permissions to set the <code>IP_TRANSPARENT</code> socket option. Once started, it jails itself with <code>seccomp-bpf</code> for a bit of added security.</p>
 		</li>
 	</ul>
-	<h3>How to run mmproxy</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-run-mmproxy">How to run mmproxy</h3>
+		<a href="https://blog.cloudflare.com/#how-to-run-mmproxy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To run <code>mmproxy</code>, first download the <a href="https://github.com/cloudflare/mmproxy">source</a> and compile it:</p>
 	<pre class="language-bash"><code class="language-bash">git clone https://github.com/cloudflare/mmproxy.git --recursive
 cd mmproxy
@@ -122,7 +136,14 @@ ip -6 route add local ::/0 dev lo table 100     # [+] VERIFIED
 
 	</figure>
 	<p>With Spectrum we are forwarding TCP/22 on domain "ssh.example.org", to our origin at 192.0.2.1, port 2222. We’ve enabled the PROXY protocol toggle.</p>
-	<h3>mmproxy in action</h3>
+	<div class="flex anchor relative">
+		<h3 id="mmproxy-in-action">mmproxy in action</h3>
+		<a href="https://blog.cloudflare.com/#mmproxy-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we can see if it works. My testing VPS has IP address 79.1.2.3. Let's see if the whole setup behaves:</p>
 	<pre class="language-bash"><code class="language-bash">vps$ nc ssh.example.org 22
 SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.1</code></pre>
@@ -134,7 +155,14 @@ SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.1</code></pre>
 Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
         string from 79.1.2.3</code></pre>
 	<p>Hurray! All works! sshd recorded the real client IP address, and with <code>mmproxy</code>’s help we never saw that it's actually traffic flowing through Cloudflare Spectrum.</p>
-	<h3>Under the hood</h3>
+	<div class="flex anchor relative">
+		<h3 id="under-the-hood">Under the hood</h3>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Under the hood <code>mmproxy</code> relies on two hacks.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -145,7 +173,14 @@ Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
 	<p>Normally, it's only possible to set a valid source IP that is actually handled by a local machine. We can override this by using the <code>IP_TRANSPARENT</code> socket option. With it set, we can select arbitrary source IP addresses before establishing a legitimate connection handled by kernel. For example, we can have a localhost socket between, say 8.8.8.8 and 127.0.0.1, even though 8.8.8.8 may not be explicitly assigned to our server.</p>
 	<p>It's worth saying that <code>IP_TRANSPARENT</code> was not created for this use case. This socket option was specifically added as support <a href="https://blog.cloudflare.com/how-we-built-spectrum">for TPROXY module</a>.</p>
 	<p>The second hack is about routing. Normally, response packets coming from the application are routed to the Internet - via a default gateway. We must prevent that from happening, and instead direct these packets towards the loopback interface. To achieve this, we rely on <code>CONNMARK</code> and an additional routing table selected by <code>fwmark</code>. <code>mmproxy</code> sets a MARK value of 123 (by default) on packets it sends, which is preserved at the <code>CONNMARK</code> layer, and restored for the return packets. Then we route the packets with MARK == 123 to a specific routing table (number 100 by default), which force-routes everything back to the loopback interface. We do this by totally <a href="https://blog.cloudflare.com/how-we-built-spectrum">abusing the AnyIP trick</a> and assigning 0.0.0.0/0 to "local" - meaning that entire internet shall be treated as belonging to our machine.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>mmproxy</code> is not the only tool that uses this IP spoofing technique to preserve real client IP addresses. One example is <a href="https://man.openbsd.org/relayd.conf.5">OpenBSD's <code>relayd</code></a> "transparent" mode. Another is the <a href="https://github.com/UlricE/pen/wiki/Transparent-Reverse-Proxy"><code>pen</code> load balancer</a>. Compared to <code>mmproxy</code>, these tools look heavyweight and require more complex routing.</p>
 	<p><code>mmproxy</code> is the first daemon to do just one thing: unwrap the PROXY protocol and spoof the client IP address on locally running connections going to the application process. While it requires some firewall and routing setup, it's small enough to make an <code>mmproxy</code> deployment acceptable in many situations.</p>
 	<p>We hope that <code>mmproxy</code>, while a gigantic hack, could help some of our customers with onboarding onto Cloudflare Spectrum.</p>

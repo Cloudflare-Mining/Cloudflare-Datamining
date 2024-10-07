@@ -13,7 +13,14 @@
 	<p>The team has been working hard to enhance Email Routing over the last few months. <b>Today Email Routing leaves beta.</b></p>
 	<p>Also, we feel that this could be a good time to give you an update on all the new things we've been adding to the service, including behind-the-scenes and not-so-visible improvements.</p>
 	<p>Let’s get started.</p>
-	<h3>Public API and Terraform</h3>
+	<div class="flex anchor relative">
+		<h3 id="public-api-and-terraform">Public API and Terraform</h3>
+		<a href="https://blog.cloudflare.com/#public-api-and-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has a strong API-first philosophy. All of our services expose their primitives in our vast API catalog and gateway, which we then “dogfood” extensively. For instance, our customer's configuration dashboard is built entirely on top of these APIs.</p>
 	<p>The Email Routing APIs didn't quite make it to this catalog on day one and were kept private and undocumented for a while. This summer we made those APIs <a href="https://api.cloudflare.com/#email-routing-destination-addresses-properties">available</a> on the public Cloudflare API catalog. You can programmatically use them to manage your destination emails, rules, and other Email Routing settings. The methods' definitions and parameters are documented, and we provide <a href="https://curl.se">curl</a> examples if you want to get your hands dirty quickly.</p>
 	<p>Even better, if you're an infrastructure as code type of user and use Terraform to configure your systems automatically, we have you covered too. The latest releases of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare">Cloudflare's Terraform provider</a> now <a href="https://github.com/cloudflare/terraform-provider-cloudflare/tree/master/internal/provider">incorporate</a> the Email Routing API resources, which you can use with <a href="https://www.terraform.io/language/syntax/configuration">HCL</a>.</p>
@@ -22,7 +29,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oPdbQSpCrGdInWwSmc3Gz/d1acad454c7fa496c87829dbdacd0a3e/image4-11.png" alt="" class="kg-image" width="1978" height="1558" loading="lazy">
 
 	</figure>
-	<h3>IPv6 egress</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-egress">IPv6 egress</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-egress" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IPv6 adoption is on a <a href="https://radar.cloudflare.com/reports/ipv6">sustained growth</a> path. Our latest IPv6 adoption report shows that we're nearing the 30% penetration figure globally, with some countries, where mobile usage is prevalent, exceeding the 50% mark. Cloudflare has offered full IPv6 support <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">since 2011</a> as it aligns entirely with our mission to help build a better Internet.</p>
 	<p>We are IPv6-ready across the board in our network and our products, and Email Routing has had IPv6 ingress support since day one.</p>
 	<pre class="language-bash"><code class="language-bash">➜  ~ dig celso.io MX +noall +answer
@@ -48,7 +62,14 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fpqLS2x7AzUJBHUfBd1Vw/e6cec23b17565237fa0612a0a960e661/image1-22.png" alt="" class="kg-image" width="1999" height="1012" loading="lazy">
 
 	</figure>
-	<h3>Observability</h3>
+	<div class="flex anchor relative">
+		<h3 id="observability">Observability</h3>
+		<a href="https://blog.cloudflare.com/#observability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Email Routing is effectively another system that sits in the middle of the life of an email message. No one likes to navigate blindly, especially when using and depending on critical services like email, so it's our responsibility to provide as much observability as possible about what's going on when messages are transiting through our network.</p>
 	<p>End to end email deliverability is a complex topic and often challenging to troubleshoot due to the nature of the protocol and the number of systems and hops involved. We added two widgets, Analytics and Detailed Logs, which will hopefully provide the needed <a href="https://blog.cloudflare.com/email-routing-insights">insights</a> and help increase visibility.</p>
 	<p>The Analytics section of Email Routing shows general statistics about the number of emails received during the selected timeframe, how they got handled to the upstream destination addresses, and a convenient time-series chart.</p>
@@ -64,7 +85,14 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wyT0gd7l6GHjl7LVFjCUR/a72215fe0aa5b2edfda59390f358c094/image8-4.png" alt="" class="kg-image" width="1043" height="524" loading="lazy">
 
 	</figure>
-	<h3>Audit Logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="audit-logs">Audit Logs</h3>
+		<a href="https://blog.cloudflare.com/#audit-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/fundamentals/account-and-billing/account-security/review-audit-logs">Audit Logs</a> are available on all plan types and summarize the history of events, like login and logout actions, or zone configuration changes, made within your Cloudflare account. Accounts with multiple members or companies that must comply with regulatory obligations rely on Audit logs for tracking and evidence reasons.</p>
 	<p>Email Routing now integrates with Audit Logs and records all configuration changes, like adding a new address, changing a rule, or editing the catch-all address. You can find the Audit Logs on the dashboard under "Manage Account" or use our API to download the list.</p>
 	<figure class="kg-card kg-image-card ">
@@ -72,14 +100,28 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/15USXKo9itSQkX8h8JS0kE/4c45b8fde7a7f0ce4291c0ae89bc5507/image6-7.png" alt="" class="kg-image" width="1999" height="1165" loading="lazy">
 
 	</figure>
-	<h3>Anti-spam</h3>
+	<div class="flex anchor relative">
+		<h3 id="anti-spam">Anti-spam</h3>
+		<a href="https://blog.cloudflare.com/#anti-spam" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unsolicited and malicious messages plague the world of email and are a big problem for end users. They affect the user experience and efficiency of email, and often carry security risks that can lead to scams, identity theft, and manipulation.</p>
 	<p>Since day one, we have supported and validated <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record">SPF</a> (Sender Policy Framework) records, &nbsp;<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record">DKIM</a> (DomainKeys Identified Mail) signatures, and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record">DMARC</a> (Domain-based Message Authentication) policies in incoming messages. These steps are important and mitigate some risks associated with authenticating the origin of an email from a specific legitimate domain, but they don't solve the problem completely. You can still have bad actors generating spam or <a href="https://www.cloudflare.com/learning/email-security/how-to-identify-a-phishing-email">phishing</a> Attacks from other domains who ignore SPF or DKIM completely.</p>
 	<p>Anti-spam techniques today are often based on blocking emails whose origin (the IP address of the client trying to deliver the message) confidence score isn't great. This is commonly known in the industry as IP reputation. Other companies specialize in maintaining reputation lists for IPs and email domains, also known as <a href="https://en.wikipedia.org/wiki/Domain_Name_System-based_blocklist">RBL</a> lists, which are then shared across providers and used widely.</p>
 	<p>Simply put, an IP or a domain gets a bad reputation when it starts sending unsolicited or malicious emails. If your IP or domain has a bad reputation, you'll have a hard time delivering Emails from them to any major email provider. A bad reputation goes away when the IP or domain stops acting bad.</p>
 	<p>Cloudflare is a security company that knows a few things about IP <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/#field-cf-threat_score">threat scores</a> and reputation. Working with the Area1 team and learning from them, we added support to flag and block emails received from what we consider bad IPs at the SMTP level. Our approach uses a combination of heuristics and reputation databases, including some RBL lists, which we constantly update.</p>
 	<p>This measure benefits not only those customers that receive a lot of spam, who will now get another layer of <a href="https://www.cloudflare.com/learning/dns/dns-records/protect-domains-without-email">protection</a> and filtering, but also everyone else using Email Routing. The reputation of our own IP space and forwarding domain, which we use to deliver messages to other email providers, will improve, and with it, so will our deliverability success rate.</p>
-	<h3>IDN support</h3>
+	<div class="flex anchor relative">
+		<h3 id="idn-support">IDN support</h3>
+		<a href="https://blog.cloudflare.com/#idn-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://datatracker.ietf.org/doc/html/rfc5891">Internationalized domain names</a>, or IDNs for short, are domains that contain at least one non-ASCII character. To accommodate backward compatibility with older Internet protocols and applications, the IETF approved the IDNA protocol (Internationalized Domain Names in Applications), which was then adopted by <a href="https://chromium.googlesource.com/chromium/src/+/main/docs/idn.md">many browsers</a>, top-level domain registrars and other service providers.</p>
 	<p>Cloudflare was <a href="https://blog.cloudflare.com/non-latinutf8-domains-now-fully-supported">one of the first</a> platforms to adopt IDNs back in 2012. &nbsp;Supporting internationalized domain names on email, though, is challenging. Email uses DNS, SMTP, and other standards (like TLS and DKIM signatures) stacked on top of each other. IDNA conversions need to work end to end, or something will break.</p>
 	<p>Email Routing didn’t support IDNs until now. Starting today, Email Routing can be used with IDNs and everything will work end to end as expected.</p>
@@ -88,7 +130,14 @@ gmail-smtp-in.l.google.com. 116	IN	AAAA	2a00:1450:400c:c03::1a</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2w5ochqMtILwVjTYbA0Pb/e0cefc44b813ae66f0b1d6a4493f16d1/image3-10.png" alt="" class="kg-image" width="1041" height="846" loading="lazy">
 
 	</figure>
-	<h3>8-bit MIME transport</h3>
+	<div class="flex anchor relative">
+		<h3 id="8-bit-mime-transport">8-bit MIME transport</h3>
+		<a href="https://blog.cloudflare.com/#8-bit-mime-transport" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The SMTP protocol supports extensions since the <a href="https://www.rfc-editor.org/rfc/rfc2821">RFC 2821</a> revision. When an email client connects to an SMTP server, it announces its capabilities on the EHLO command.</p>
 	<pre class="language-bash"><code class="language-bash">➜  ~ telnet linda.mx.cloudflare.net 25
 Trying 162.159.205.24...
@@ -103,7 +152,14 @@ EHLO celso.io
 	<p>This tells our client that we support the <a href="https://www.ietf.org/rfc/rfc3207.txt">Secure SMTP</a> over TLS, <a href="https://www.rfc-editor.org/rfc/rfc2034.html">Enhanced Error Codes</a>, and the <a href="https://www.rfc-editor.org/rfc/rfc6152">8-bit MIME Transport</a>, our latest addition.</p>
 	<p>Most modern clients and servers support the 8BITMIME extension, making transmitting binary files easier and more efficient without additional conversions to and from 7-bit.</p>
 	<p>Email Routing now supports transmitting 8BITMIME SMTP messages end to end and handles DKIM signatures accordingly.</p>
-	<h3>Other fixes</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-fixes">Other fixes</h3>
+		<a href="https://blog.cloudflare.com/#other-fixes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve been making other smaller improvements to Email Routing too:</p>
 	<ul>
 		<li>
@@ -116,7 +172,14 @@ EHLO celso.io
 			<p>When a destination address domain has multiple MX records, we now try them all in their preference value order, as described in the <a href="https://datatracker.ietf.org/doc/html/rfc974">RFC</a>, until we get a good delivery, or we fail.</p>
 		</li>
 	</ul>
-	<h3>Route to Workers update</h3>
+	<div class="flex anchor relative">
+		<h3 id="route-to-workers-update">Route to Workers update</h3>
+		<a href="https://blog.cloudflare.com/#route-to-workers-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We announced <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a> in May this year. Route to Workers enables everyone to programmatically process their emails and use them as triggers for any other action. In other words, you can choose to process any incoming email with a Cloudflare Worker script and then implement any logic you wish before you deliver it to a destination address or drop it. Think about it as programmable email.</p>
 	<p>The good news, though, is that we're near completing the project. The APIs, the dashboard configuration screens, the SMTP service, and the necessary <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/io/worker-interface.capnp">Cap'n Proto interface</a> to Workers are mostly complete, and "all" we have left now is adding the Email Workers primitives to the runtime and testing the hell out of everything before we ship.</p>
 	<p>Thousands of users are waiting for Email Workers to start creating advanced email processing workflows, and we're excited about the possibilities this will open. We promise we're working hard to open the public beta as soon as possible.</p>
@@ -125,7 +188,14 @@ EHLO celso.io
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xNqMMpydzI8i8kWisriPT/b58213a80962930860284a34ec2f5c04/image7-4.png" alt="" class="kg-image" width="1281" height="1104" loading="lazy">
 
 	</figure>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We keep looking at ways to improve email and will add more features and support to emerging protocols and extensions. Two examples are <a href="https://en.wikipedia.org/wiki/Authenticated_Received_Chain">ARC</a> (Authenticated Received Chain), a new signature-based authentication system designed with email forwarding services in mind, and <a href="https://datatracker.ietf.org/doc/html/rfc4952">EAI</a> (Email Address Internationalization), which we will be supporting soon.</p>
 	<p>In the meantime, you can start using Email Routing with your own domain if you haven't yet, it only <a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">takes a few minutes</a> to set up, and it's free. Our <a href="https://developers.cloudflare.com/email-routing">Developers Documentation page</a> has details on how to get started, troubleshooting, and technical information.</p>
 	<p>Ping us on our <a href="https://discord.com/invite/cloudflaredev">Discord server</a>, <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">community forum</a>, or <a href="https://twitter.com/cloudflare">Twitter</a> if you have suggestions or questions, the team is listening.</p>

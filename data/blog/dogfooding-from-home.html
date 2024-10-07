@@ -16,7 +16,14 @@
 	</figure>
 	<p>But for three of our engineers enough was enough. Why was a cloud network security company relying on clunky on-premise hardware?</p>
 	<p>And thus, Cloudflare Access was born.</p>
-	<h2>A Culture of Dogfooding</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-culture-of-dogfooding">A Culture of Dogfooding</h2>
+		<a href="https://blog.cloudflare.com/#a-culture-of-dogfooding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many of the products Cloudflare builds are a direct result of the challenges our own team is looking to address, and Access is a perfect example. Development on Access originally began in 2015, when the project was known internally as EdgeAuth.</p>
 	<p>Initially, just one application was put behind Access. Engineers who received a notification on their phones could tap a link and, after authenticating via their browser, they would immediately have access to the key details of the alert in Grafana. We liked it a lot — enough to get excited about what we were building.</p>
 	<p>Access solved a variety of issues for our security team as well. Using our identity provider of choice, we were able to restrict access to internal applications at L7 using Access policies. This once onerous process of managing access control at the network layer with a VPN was replaced with a few clicks in the Cloudflare dashboard.</p>
@@ -34,7 +41,14 @@
 	<p>It didn’t take long for more and more of Cloudflare’s internal applications to make their way behind Access. As soon as people started working with the new authentication flow, they wanted it everywhere. Eventually our security team mandated that we move our apps behind Access, but for a long time it was totally organic: teams were eager to use it.</p>
 	<p>Incidentally, this highlights a perk of utilizing Access: you can start by protecting and streamlining the authentication flows for your most popular internal tools — but there’s no need for a wholesale rip-and-replace. For organizations that are experiencing limits on their hardware-based VPNs, it can be an immediate salve that is up and running after just one setup call with a Cloudflare onboarding expert (<a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">you can schedule a time here).</a></p>
 	<p>That said, there are some upsides to securing everything with Access.</p>
-	<h2>Supporting a Global Team</h2>
+	<div class="flex anchor relative">
+		<h2 id="supporting-a-global-team">Supporting a Global Team</h2>
+		<a href="https://blog.cloudflare.com/#supporting-a-global-team" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>VPNs are notorious for bogging down Internet connections, and the one we were using was no exception. When connecting to internal applications, having all of our employees’ Internet connections pass through a standalone VPN was a serious performance bottleneck and single point of failure.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,13 +58,27 @@
 	<p>Cloudflare Access is a much saner approach. Authentication occurs at our network edge, which extends to 200 cities in over 90 countries globally. Rather than having all of our employees route their network traffic through a single network appliance, employees connecting to internal apps are connecting to a data center just down the road instead.</p>
 	<p>As we support a globally-distributed workforce, our security team is committed to protecting our internal applications with the most secure and usable authentication mechanisms.</p>
 	<p>With Cloudflare Access we’re able to rely on the strong two-factor authentication mechanisms of our identity provider, which was much more difficult to do with our legacy VPN.</p>
-	<h2>On-Boarding and Off-Boarding with Confidence</h2>
+	<div class="flex anchor relative">
+		<h2 id="on-boarding-and-off-boarding-with-confidence">On-Boarding and Off-Boarding with Confidence</h2>
+		<a href="https://blog.cloudflare.com/#on-boarding-and-off-boarding-with-confidence" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the trickiest things for any company is ensuring everyone has access to the tools and data they need — but no more than that. That’s a challenge that becomes all the more difficult as a team scales. As employees and contractors leave, it is similarly essential to ensure that their permissions are swiftly revoked.</p>
 	<p>Managing these access controls is a real challenge for IT organizations around the world — and it’s greatly exacerbated when each employee has multiple accounts strewn across different tools in different environments. Before using Access, our team had to put in a lot of time to make sure every box was checked.</p>
 	<p>Now that Cloudflare’s internal applications are secured with Access, on- and offboarding is much smoother. Each new employee and contractor is quickly granted rights to the applications they need, and they can reach them via a launchpad that makes them readily accessible. When someone leaves the team, one configuration change gets applied to every application, so there isn’t any guesswork.</p>
 	<p>Access is also a big win for network visibility. With a VPN, you get minimal insight into the activity of users on the network – you know their username and IP address. but that’s about it. If someone manages to get in, it’s difficult to retrace their steps.</p>
 	<p>Cloudflare Access is based on a zero-trust model, which means that every packet is authenticated. It allows us to assign granular permissions via Access Groups to employees and contractors. And it gives our security team the ability to detect unusual activity across any of our applications, with extensive logging to support analysis. Put simply: it makes us more confident in the security of our internal applications.</p>
-	<h2>But It’s Not Just for Us</h2>
+	<div class="flex anchor relative">
+		<h2 id="but-its-not-just-for-us">But It’s Not Just for Us</h2>
+		<a href="https://blog.cloudflare.com/#but-its-not-just-for-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the massive transition to a <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">remote work model</a> for many organizations, Cloudflare Access can make you more confident in the security of your internal applications — while also driving increased productivity in your remote employees. Whether you rely on Jira, Confluence, SAP or custom-built applications, it can secure those applications and it can be live in minutes.</p>
 	<p>Cloudflare has made the decision to make Access completely free to all organizations, all around the world, through September 1. If you’d like to get started, follow our quick start guide here:Or, if you’d prefer to onboard with one of our specialists, schedule a 30 minute call at this link: <a href="https://calendly.com/cloudflare-for-teams/onboarding?month=2020-03">calendly.com/cloudflare-for-teams/onboarding?month=2020-03</a></p>
 </div>

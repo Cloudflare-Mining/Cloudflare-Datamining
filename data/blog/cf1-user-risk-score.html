@@ -10,11 +10,25 @@
 	<p>Cloudflare One, our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">secure access service edge (SASE)</a> platform, is introducing new capabilities to detect risk based on user behavior so that you can improve security posture across your organization.</p>
 	<p>Traditionally, security and IT teams spend a lot of time, labor, and money analyzing log data to track how risk is changing within their business and to stay on top of threats. Sifting through such large volumes of data – the majority of which may well be benign user activity – can feel like finding a needle in a haystack.</p>
 	<p>Cloudflare’s approach simplifies this process with user risk scoring. With AI/machine learning techniques, we analyze the real-time telemetry of user activities and behaviors that pass through our network to identify abnormal behavior and potential indicators of compromises that could lead to danger for your organization, so your security teams can lock down suspicious activity and adapt your security posture in the face of changing risk factors and sophisticated threats.</p>
-	<h3>User risk scoring</h3>
+	<div class="flex anchor relative">
+		<h3 id="user-risk-scoring">User risk scoring</h3>
+		<a href="https://blog.cloudflare.com/#user-risk-scoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The concept of trust in cybersecurity has evolved dramatically. The old model of "trust but verify" has given way to a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust approach</a>, where trust is never assumed and verification is continuous, as each network request is scrutinized. This form of continuous evaluation enables administrators to grant access based not just on the contents of a request and its metadata, but on its <i>context</i> — such as whether the user typically logs in at that time or location.</p>
 	<p>Previously, this kind of contextual risk assessment was time-consuming and required expertise to parse through log data. Now, we're excited to introduce <b>Zero Trust user risk scoring</b> which does this automatically, allowing administrators to specify behavioral rules — like monitoring for anomalous “impossible travel” and custom <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">Data Loss Prevention</a> (DLP) triggers, and use these to generate dynamic user risk scores.</p>
 	<p>Zero Trust user risk scoring detects user activity and behaviors that could introduce risk to your organizations, systems, and data and assigns a score of Low, Medium, or High to the user involved. This approach is sometimes referred to as <a href="https://www.cloudflare.com/learning/security/what-is-ueba">user and entity behavior analytics (UEBA)</a> and enables teams to detect and remediate possible account compromise, company policy violations, and other risky activity.</p>
-	<h3>How risk scoring works and detecting user risk</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-risk-scoring-works-and-detecting-user-risk">How risk scoring works and detecting user risk</h3>
+		<a href="https://blog.cloudflare.com/#how-risk-scoring-works-and-detecting-user-risk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>User risk scoring is built to examine behaviors. Behaviors are actions taken or completed by a user and observed by Cloudflare One, our SASE platform that <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">helps organizations implement Zero Trust</a>.</p>
 	<p>Once tracking for a particular behavior is enabled, the Zero Trust risk scoring engine immediately starts to review <a href="https://developers.cloudflare.com/logs/reference/log-fields/account">existing logs</a> generated within your Zero Trust account. Then, after a user in your account performs a behavior that matches one of the enabled risk behaviors based on observed log data, Cloudflare assigns a risk score — Low, Medium, or High — to the user who performed the behavior.</p>
 	<p>Behaviors are built using log data from within your Cloudflare account. No additional user data is being collected, tracked or stored beyond what is already available in the existing Zero Trust logs (which adhere to the <a href="https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention">log retention</a> timeframes).</p>
@@ -26,7 +40,14 @@
 
 	</figure>
 	<p><i>Zero Trust user risk scoring detecting impossible travel and flagging a user as high risk</i></p>
-	<h3>Enabling predefined risk behaviors</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-predefined-risk-behaviors">Enabling predefined risk behaviors</h3>
+		<a href="https://blog.cloudflare.com/#enabling-predefined-risk-behaviors" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Behaviors can be enabled and disabled at any time, but are disabled by default. Therefore, users will not be assigned risk scores until you have decided what is considered a risk to your organization and how urgent that risk is.</p>
 	<p>To start detecting a given risk behavior, an administrator must first ensure the <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#predefined-risk-behaviors">behavior requirements</a> are met (for instance, to detect whether a user has triggered a high number of DLP policies, you’ll need to first set up a DLP profile). From there, simply <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#enable-risk-behaviors">enable the behavior</a> in the <a href="https://one.dash.cloudflare.com">Zero Trust dashboard</a>.</p>
 	<p>After a behavior has been enabled, Cloudflare will start analyzing behaviors to flag users with the corresponding risk when detected. The risk level of any <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#change-risk-behavior-risk-levels">behavior can be changed</a> by an administrator. You have the freedom to enable behaviors that are relevant to your security posture as well as adjust the default risk score (Low, Medium, or High) from an out-of-the-box assignment.</p>
@@ -37,7 +58,14 @@
 
 	</figure>
 	<p><b>Zero Trust user risk scoring behaviors can be enabled in seconds</b></p>
-	<h3>How do I get started?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-get-started">How do I get started?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>User risk scoring and DLP are part of <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One,</a> which converges <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> security and network connectivity services on one unified platform and global control plane.</p>
 	<p>To get access via Cloudflare One, <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise">reach out for a consultation</a>, or contact your account manager.</p>
 </div>

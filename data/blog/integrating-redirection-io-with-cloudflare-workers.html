@@ -1,10 +1,24 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Iuge2F8aQRmCIDvci80Lu/887f8825d4df01ce64f687184d283004/integrating-redirection-io-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p><i>The following is a guest post by </i><a href="https://twitter.com/xavierlacot"><i>Xavier Lacot</i></a><i>, a developer at </i><a href="https://redirection.io"><i>redirection.io</i></a><i> and founder at </i><a href="https://jolicode.com"><i>JoliCode</i></a><i>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</i></p>
-	<h3>What is redirection.io</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-redirection-io">What is redirection.io</h3>
+		<a href="https://blog.cloudflare.com/#what-is-redirection-io" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.</p>
 	<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
-	<h3>Here come Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="here-come-cloudflare-workers">Here come Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#here-come-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers">Workers</a> product, a smart way of running code <i>on the edge</i> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
 	<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes">examples and code ideas</a> to help you build your own Worker.</p>
 	<p>Here is a very basic Cloudflare Worker:</p>
@@ -119,7 +133,15 @@ return new Response('', {
         // do nothing, does not matter if some logs are lost
     }
 }</code></pre>
-	<h3>Impacts and performance concerns</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="impacts-and-performance-concerns">Impacts and performance concerns</h3>
+		<a href="https://blog.cloudflare.com/#impacts-and-performance-concerns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare workers run <i>very fast</i>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
 	<p>The stack behind redirection.io is also very efficient, able to manage a similar level of traffic without any latency nor slowdown. However, there can be an occasional network slowdown, which could hurt the perceived performance of your web application. There are several ways to mitigate this possible impact.</p>
 	<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a url of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>

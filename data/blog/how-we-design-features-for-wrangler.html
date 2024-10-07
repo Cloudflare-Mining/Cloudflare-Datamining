@@ -12,10 +12,24 @@
 		<p>— avery harnish (@SmoothAsSkippy) <a href="https://twitter.com/SmoothAsSkippy/status/1166842441711980546?ref_src=twsrc%5Etfw">August 28, 2019</a></p>
 	</blockquote>
 	<p>… it brings design challenges that many of us have never encountered. To overcome these challenges successfully requires deep empathy for users across the entire team, as well as the ability to address ambiguous questions related to how developers write Workers.</p>
-	<h2>Wrangler, meet Workers KV</h2>
+	<div class="flex anchor relative">
+		<h2 id="wrangler-meet-workers-kv">Wrangler, meet Workers KV</h2>
+		<a href="https://blog.cloudflare.com/#wrangler-meet-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our new KV functionality introduced a host of new features, from creating KV namespaces to bulk uploading key-value pairs for use within a Worker. This new functionality primarily consisted of logic for interacting with the Workers KV API, meaning that the technical work under “the hood” was relatively straightforward. Figuring out how to cleanly represent these new features to Wrangler users, however, became the fundamental question of this release.</p>
 	<p>Designing the invocations for new KV functionality unsurprisingly required multiple iterations, and taught us a lot about usability along the way!</p>
-	<h2>Attempt 1</h2>
+	<div class="flex anchor relative">
+		<h2 id="attempt-1">Attempt 1</h2>
+		<a href="https://blog.cloudflare.com/#attempt-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For our initial pass, the path originally seemed so obvious. (Narrator: It really, really wasn’t). We hypothesized that having Wrangler support familiar commands — like ls and rm — would be a reasonable mapping of familiar command line tools to Workers KV, and ended up with the following set of invocations below:</p>
 	<pre class="language-sh"><code class="language-sh"># creates a new KV Namespace
 $ wrangler kv add myNamespace									
@@ -44,7 +58,14 @@ $ wrangler kv rm -r myNamespace</code></pre>
 	<p>This draft also surfaced use cases we needed to support: namely, we needed support for actions like easy bulk uploads from a file. This draft required users to enter every KV pair in the command line instead of reading from a file of key-value pairs; this was also a non-starter.</p>
 	<p>Finally, these KV subcommands caused confusion about actions to different resources. For example, the command for listing your Workers KV namespaces looked a lot like the command for listing keys within a namespace.</p>
 	<p>Going forward, we needed to meet these newly identified needs.</p>
-	<h2>Attempt 2</h2>
+	<div class="flex anchor relative">
+		<h2 id="attempt-2">Attempt 2</h2>
+		<a href="https://blog.cloudflare.com/#attempt-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next attempt shed the shell utilities in favor of simple, declarative subcommands like <code>create</code>, <code>list</code>, and <code>delete</code>. It also addressed the need for easy-to-use bulk uploads by allowing users to pass a JSON file of keys and values to Wrangler.</p>
 	<pre class="language-sh"><code class="language-sh"># create a namespace
 $ wrangler kv create namespace &lt;title&gt;
@@ -78,7 +99,14 @@ $ wrangler kv delete bulk ./path/to/assets</code></pre>
 	<p>Designing invocations with taxonomies became a crucial part of our development process going forward, and gave us a clear look at the “big picture” of our new KV features.</p>
 	<p>This approach was closer to what we wanted. It offered bulk put and bulk delete operations that would read multiple key-value pairs from a JSON file. After specifying an action subcommand (e.g. <code>delete</code>), users now explicitly stated which resource an action applied to (<code>namespace</code> , <code>key</code>, <code>bulk</code>) and reduced confusion about which action applied to which KV component.</p>
 	<p>This draft, however, was still not as explicit as we wanted it to be. The distinction between operations on <code>namespaces</code> versus <code>keys</code> was not as obvious as we wanted, and we still feared the possibility of different <code>delete</code> operations accidentally producing unwanted deletes (a possibly disastrous outcome!)</p>
-	<h2>Attempt 3</h2>
+	<div class="flex anchor relative">
+		<h2 id="attempt-3">Attempt 3</h2>
+		<a href="https://blog.cloudflare.com/#attempt-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We really wanted to help differentiate where in the hierarchy of structs a user was operating at any given time. Were they operating on <code>namespaces</code>, <code>keys</code>, or <code>bulk</code> sets of keys in a given operation, and how could we make that as clear as possible? We looked around, comparing the ways CLIs from kubectl to Heroku’s handled commands affecting different objects. We landed on a pleasing pattern inspired by Heroku’s CLI: colon-delimited command namespacing:</p>
 	<pre class="language-sh"><code class="language-sh">plugins:install PLUGIN    # installs a plugin into the CLI
 plugins:link [PATH]       # links a local plugin to the CLI for development
@@ -114,7 +142,14 @@ $ wrangler kv:bulk delete &lt;binding&gt; ./path/to/data.json [--env]</code></pr
 	<p>We also decided to take advantage of this <code>wrangler.toml</code> field to allow users to specify a KV binding name instead of a KV namespace id. Upon providing a KV binding name, Wrangler could look up the associated <code>id</code> in <code>wrangler.toml</code> and use that for Workers KV API calls.</p>
 	<p>Wrangler users performing actions on KV namespaces could simply provide <code>--binding TEST_NAMESPACE</code> for their KV calls let Wrangler retrieve its ID from <code>wrangler.toml</code>. Users can still specify <code>--namespace-id</code> directly if they do not have namespaces specified in their <code>wrangler.toml</code>.</p>
 	<p>Finally, we reached our happy point: Wrangler’s new KV subcommands were explicit, offered functionality for both individual and bulk actions with Workers KV, and felt ergonomic for Wrangler users to integrate into their day-to-day operations.</p>
-	<h2>Lessons Learned</h2>
+	<div class="flex anchor relative">
+		<h2 id="lessons-learned">Lessons Learned</h2>
+		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Throughout this design process, we identified the following takeaways to carry into future Wrangler work:</p>
 	<ol>
 		<li>

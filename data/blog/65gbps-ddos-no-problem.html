@@ -7,7 +7,14 @@ One" class="kg-image" width="500" height="417" loading="lazy">
 
 	</figure>
 	<p>Yesterday I posted a post mortem on an outage we had Saturday. The outage was caused when we applied an overly aggressive rate limit to traffic on our network while battling a determined DDoS attacker. In the process of writing it I mentioned that we'd seen a 65Gbps DDoS earlier on Saturday. I've received several questions since that all go something like: "65Gbps DDoS!? Who launches such an attack and how do you defend yourself against it?!" So I thought I'd give a bit more detail.</p>
-	<h3>What Constitutes a Big DDoS?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-constitutes-a-big-ddos">What Constitutes a Big DDoS?</h3>
+		<a href="https://blog.cloudflare.com/#what-constitutes-a-big-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A 65Gbps DDoS is a big attack, easily in the top 5% of the biggest attacks we see. The graph below shows the volume of the attack hitting our EU data centers (the green line represents inbound traffic). When an attack is 65Gbps that means every second 65 Gigabits of data is sent to our network. That's the equivalent data volume of watching 3,400 HD TV channels all at the same time. It's a ton of data. Most network connections are measured in 100Mbps, 1Gbps or 10Gbps so attacks like this would quickly saturate even a large Internet connection.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -16,11 +23,25 @@ One" class="kg-image" width="120" height="192" loading="lazy">
 
 	</figure>
 	<p>At CloudFlare, an attack needs to get over about 5Gbps to set off alarms with our ops team. Even then, our automated network defenses usually stop attacks without the need of any manual intervention. When an attack gets up in the tens of Gigabits of data per second, our ops team starts monitoring the attack: applying filters and shifting traffic to ensure the attacked customer's site stays online and none of the rest of our network is affected.</p>
-	<h3>So You Want to Launch a DDoS</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-you-want-to-launch-a-ddos">So You Want to Launch a DDoS</h3>
+		<a href="https://blog.cloudflare.com/#so-you-want-to-launch-a-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So how does an attacker generate 65Gbps of traffic? It is highly unlikely that the attacker has a single machine with a big enough Internet connection to generate that much traffic on its own. One way to generate that much traffic is through a botnet. A botnet is a collection of PCs that have been compromised with a virus and can be controlled by what is known as a botnet herder.</p>
 	<p>Botnet herders will often rent out access to their botnets, often billing in 15 minute increments (just like lawyers). Rental prices depend on the size of the botnets. Traditionally, email spammers purchased time on botnets in order to send their messages to appear to come from a large number of sources. As email spam has become less profitable with the rise of better spam filters, botnet herders have increasingly turned to renting out their networks of compromised machines to attackers wanting to launch a DDoS attack.</p>
 	<p>To launch a 65Gbps attack, you'd need a botnet with at least 65,000 compromised machines each capable of sending 1Mbps of upstream data. Given that many of these compromised computers are in the developing world where connections are slower, and many of the machines that make up part of a botnet may not be online at any given time, the actual size of the botnet necessary to launch that attack would likely need to be at least 10x that size. While by no means unheard of, that's a large botnetand using all its resources to launch a DDoS risks ISPs detecting many of the compromised machines and taking them offline.</p>
-	<h3>Amplifying the Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="amplifying-the-attacks">Amplifying the Attacks</h3>
+		<a href="https://blog.cloudflare.com/#amplifying-the-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since renting a large botnet can be expensive and unwieldy, attackers typically look for additional ways to amplify the size of their attacks. The attack on Saturday used one such amplification technique called DNS reflection. To understand how these work, you need to understand a bit about <a href="https://www.cloudflare.com/learning/dns/what-is-dns">how DNS works</a>.</p>
 	<p>When you first sign up for an Internet connection, your ISP will provide you with a recursive DNS server, also known as a DNS resolver. When you click on a link, your computer sends a lookup to your ISP's DNS resolver. The lookup is asking a question, like: what is the IP address of the server for cloudflare.com? If the DNS resolver you query knows the answer, because someone has already asked it recently and the answer is cached, it responds. If it doesn't, it passes the request on to the authoritative DNS for the domain.</p>
 	<p>Typically, an ISP's DNS resolvers are setup to only answer requests from the ISP's clients. Unfortunately, there are a <a href="http://dns.measurement-factory.com/surveys/openresolvers/ASN-reports/latest.html">large number of misconfigured DNS resolvers</a> that will accept queries from anyone on the Internet. These are known as "open resolvers" and they are a sort of latent landmine on the Internet just waiting to explode when misused.</p>
@@ -32,7 +53,14 @@ One" class="kg-image" width="500" height="281" loading="lazy">
 
 	</figure>
 	<p>To amplify an attack, the attacker asks a question that will result in a very large response. For example, the attacker may request all the DNS records for a particular zone. Or they may request the DNSSEC records which, often, are extremely large. Since resolvers typically have relatively high bandwidth connections to the Internet, they have no problem pumping out tons of bytes. In other words, the attacker can send a relatively small UDP request and use open resolvers to fire back at an intended target with a crippling amount of traffic.</p>
-	<h3>Mitigating DNS Reflection Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="mitigating-dns-reflection-attacks">Mitigating DNS Reflection Attacks</h3>
+		<a href="https://blog.cloudflare.com/#mitigating-dns-reflection-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the great ironies when we deal with these attacks is we'll often get an email from the owner of the network where an open resolver is running asking us to shut down the attack our network is launching against them. They're seeing a large number of UDP packets with one of our IPs as the source coming in to their network and assume we're the ones launching it. In fact, it is actually their network which is being used to launch an attack against us. What's great is that we can safely respond and ask them to block all DNS requests originating from our network since our IPs should never originate a DNS request to a resolver. Not only does that solve their problem, but it means there's a smaller pool of open resolvers that can be used to target sites onCloudFlare's network.</p>
 	<p>There have been a <a href="http://dns.measurement-factory.com/surveys/openresolvers.html">number of efforts to clean up open resolvers</a> that are currently active. Unfortunately, it is slow going and the default installation of many DNS clients still has them open by default. While we actively reach out to the worst offenders to protect our network, to protect the Internet generally there will need to be a concerted effort to clean up open DNS resolvers.</p>
 	<figure class="kg-card kg-image-card ">

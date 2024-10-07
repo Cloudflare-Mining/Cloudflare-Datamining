@@ -8,9 +8,23 @@
 	<p>We announced <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">support for HTTP/3</a>, the successor to HTTP/2 during Cloudflare’s <a href="https://blog.cloudflare.com/birthday-week-2019">birthday week</a> last year. Our goal is and has always been to help build a better Internet. Collaborating on standards is a big part of that, and we're very fortunate to do that here.</p>
 	<p>Even though <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> is still in draft status, we've seen a lot of interest from our users. So far, over 113,000 zones have activated HTTP/3 and, if you are using an experimental browser those zones can be accessed using the new protocol! It's been great seeing so many people enable HTTP/3: having real websites accessible through HTTP/3 means browsers have more diverse properties to test against.</p>
 	<p>When we <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">launched support</a> for HTTP/3, we did so in partnership with Google, who simultaneously launched experimental support in Google Chrome. Since then, we've seen more browsers add experimental support: Firefox to their nightly <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581637">builds</a>, other Chromium-based browsers such as Opera and Microsoft Edge through the underlying Chrome browser engine, and Safari via their <a href="https://developer.apple.com/safari/technology-preview/release-notes">technology preview</a>. We closely follow these developments and partner wherever we can help; having a large network with many sites that have HTTP/3 enabled gives browser implementers an excellent testbed against which to try out code.</p>
-	<h3>So, what's the status and where are we now?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-whats-the-status-and-where-are-we-now">So, what's the status and where are we now?</h3>
+		<a href="https://blog.cloudflare.com/#so-whats-the-status-and-where-are-we-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IETF standardization process develops protocols as a series of document draft versions with the ultimate aim of producing a final draft version that is ready to be marked as an RFC. The members of the QUIC Working Group collaborate on analyzing, implementing and interoperating the specification in order to find things that don't work quite right. We launched with support for <a href="https://tools.ietf.org/html/draft-ietf-quic-http-23">Draft-23 for HTTP/3</a> and have since kept up with each new draft, with <a href="https://tools.ietf.org/html/draft-ietf-quic-http-27">27</a> being the latest at time of writing. With each draft the group improves the quality of the QUIC definition and gets closer to "rough consensus" about how it behaves. In order to avoid a perpetual state of analysis paralysis and endless tweaking, the bar for proposing changes to the specification has been increasing with each new draft. This means that changes between versions are smaller, and that a final RFC should closely match the protocol that we've been running in production.</p>
-	<h3>Benefits</h3>
+	<div class="flex anchor relative">
+		<h3 id="benefits">Benefits</h3>
+		<a href="https://blog.cloudflare.com/#benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main touted advantages of HTTP/3 is increased performance, specifically around fetching multiple objects simultaneously. With HTTP/2, any interruption (packet loss) in the TCP connection blocks all streams (Head of line blocking). Because HTTP/3 is UDP-based, if a packet gets dropped that only interrupts that one stream, not all of them.</p>
 	<p>In addition, HTTP/3 offers <a href="https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption">0-RTT</a> support, which means that subsequent connections can start up much faster by eliminating the TLS acknowledgement from the server when setting up the connection. This means the client can start requesting data much faster than with a full TLS negotiation, meaning the website starts loading earlier.</p>
 	<p>The following illustrates the packet loss and its impact: HTTP/2 multiplexing two requests . A request comes over HTTP/2 from the client to the server requesting two resources (we’ve colored the requests and their associated responses green and yellow). The responses are broken up into multiple packets and, alas, a packet is lost so both requests are held up.</p>
@@ -60,7 +74,14 @@
 
 	</figure>
 	<p>As you can see, HTTP/3 performance still trails HTTP/2 performance, by about 1-4% on average in North America and similar results are seen in Europe, Asia and South America. We suspect this could be due to the difference in congestion algorithms: HTTP/2 on BBR v1 vs. HTTP/3 on CUBIC. In the future, we’ll work to support the same congestion algorithm on both to get a more accurate apples-to-apples comparison.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Overall, we’re very excited to be allowed to help push this standard forward. Our implementation is holding up well, offering better performance in some cases and at worst similar to HTTP/2. As the standard finalizes, we’re looking forward to seeing browsers add support for HTTP/3 in mainstream versions. As for us, we continue to support the latest drafts while at the same time looking for more ways to leverage HTTP/3 to get even better performance, be it congestion tuning, <a href="https://blog.cloudflare.com/adopting-a-new-approach-to-http-prioritization">prioritization</a> or system capacity (CPU and raw network throughput).</p>
 	<p>In the meantime, if you’d like to try it out, just enable HTTP/3 on our dashboard and download a nightly version of one of the major browsers. Instructions on how to enable HTTP/3 can be found on our <a href="https://developers.cloudflare.com/http3/intro">developer documentation</a>.</p>
 </div>

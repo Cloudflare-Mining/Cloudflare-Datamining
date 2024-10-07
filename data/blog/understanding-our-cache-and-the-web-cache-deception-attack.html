@@ -1,7 +1,14 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3IUnaw1pw2LBCYW75IBVm7/00cbf720db23e2d565e597b40822d4ad/understanding-our-cache-and-the-web-cache-deception-attack.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>About a month ago, security researcher <a href="https://twitter.com/omer_gil">Omer Gil</a> published <a href="https://omergil.blogspot.co.il/2017/02/web-cache-deception-attack.html">the details</a> of an attack that he calls the Web Cache Deception attack. It works against sites that sit behind a reverse proxy (like Cloudflare) and are misconfigured in a particular way. Unfortunately, the definition of "misconfigured" for the purposes of this attack changes depending on how the cache works. In this post, we're going to explain the attack and then describe the algorithm that our cache uses to decide whether or not to cache a given piece of content so that customers can be sure that they are secure against this attack.</p>
-	<h3>The Attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-attack">The Attack</h3>
+		<a href="https://blog.cloudflare.com/#the-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, we'll explain the basics of the Web Cache Deception attack. For those who want a more in-depth explanation, Omer's <a href="https://omergil.blogspot.co.il/2017/02/web-cache-deception-attack.html">original post</a> is a great resource.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +31,14 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 		<p>Hey, check out this cool link! <a href="https://example.com/newsfeed/foo.jpg">https://example.com/newsfeed/foo.jpg</a></p>
 	</blockquote>
 	<p>If the recipient of the message clicks on the link, they will be taken to their newsfeed. But when the request passes through Cloudflare, since the path ends in `.jpg`, we will cache it. Then the attacker can visit the same URL themselves and their request will be served from our cache, exposing your user's sensitive content.</p>
-	<h3>Defending Against the Web Cache Deception Attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="defending-against-the-web-cache-deception-attack">Defending Against the Web Cache Deception Attack</h3>
+		<a href="https://blog.cloudflare.com/#defending-against-the-web-cache-deception-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The best way to defend against this attack is to ensure that your website isn't so permissive, and never treats requests to nonexistent paths (say, <code>/x/y/z</code>) as equivalent to requests to valid parent paths (say, <code>/x</code>). In the example above, that would mean that requests to <code>/newsfeed/foo</code> or <code>/newsfeed/foo.jpg</code> wouldn't be treated as equivalent to requests to <code>/newsfeed</code>, but would instead result in some kind of error or a redirect to a legitimate page. If we wanted to modify the Django example from above, we could add a <code>$</code> to the end of the regular expression to ensure only exact matches (in this case, a request to <code>/newsfeed/foo</code> will <a href="https://docs.djangoproject.com/en/1.10/topics/http/urls/#error-handling">result in a 404</a>):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -32,7 +46,14 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 
 	</figure>
 	<p>We provide many settings that allow you to customize the way our cache will treat requests to your website. For example, if you have a Page Rule enabled for <code>/newsfeed</code> with the Cache Everything setting enabled (it's off by default), then we'll cache requests to <code>/newsfeed</code>, which could be bad. Thus, the best way to ensure that your website is secure is to understand the rules that our cache uses to determine whether or not a request should be cached.</p>
-	<h3>How Our Cache Works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-our-cache-works">How Our Cache Works</h3>
+		<a href="https://blog.cloudflare.com/#how-our-cache-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a request comes in to our network, we perform two phases of processing in order to determine whether or not to cache the origin's response to that request:</p>
 	<ul>
 		<li>
@@ -49,7 +70,14 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 	</figure>
 	<p>_Configuring caching via a Page Rule_</p>
 	<p>Note that site-wide settings or Page Rules can affect this logic. Below, when we say "a setting applies" or "the setting is," we mean that either a global setting exists which applies to all requests or a Page Rule with the setting exists that applies to the given request (e.g., a Page Rule for <code>/foo/*</code> applies to requests to <code>/foo/bar</code>, <code>/foo/baz</code>, <code>/foo/bar/baz</code>, etc). Page Rules override global rules if both apply to a given request.</p>
-	<h3>Eligibility Phase</h3>
+	<div class="flex anchor relative">
+		<h3 id="eligibility-phase">Eligibility Phase</h3>
+		<a href="https://blog.cloudflare.com/#eligibility-phase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <i>eligibility phase</i>, we use characteristics of the request from the client to determine whether or not the request is eligible to be cached. If the request is not eligible, then it will not be cached. If the request is eligible, then we will perform more processing later in the disqualification phase.</p>
 	<p>The rules for eligibility are as follows:</p>
 	<ul>
@@ -80,7 +108,14 @@ patterns = [url(r'^newsfeed/', ...)]</code></pre>
 			<p>If the Bypass Cache on Cookie setting is enabled and the configured cookie <i>is</i> present in a <code>Cookie</code> header, then the request is not eligible to be cached.</p>
 		</li>
 	</ul>
-	<h3>Disqualification Phase</h3>
+	<div class="flex anchor relative">
+		<h3 id="disqualification-phase">Disqualification Phase</h3>
+		<a href="https://blog.cloudflare.com/#disqualification-phase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <i>disqualification phase</i>, which only occurs if a request has been marked as eligible, characteristics of the response from the origin web server can disqualify a request. If a request is disqualified, then the response will not be cached. If a request is not disqualified, then the response will be cached.</p>
 	<p>The rules for disqualification are as follows:</p>
 	<ul>

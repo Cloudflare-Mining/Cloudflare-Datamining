@@ -8,11 +8,25 @@
 	</figure>
 	<p><i>Dingle Dangle! by </i><a href="https://www.flickr.com/photos/grant_subaru/14175646490"><i>Grant C.</i></a><i> (CC-BY 2.0)</i></p>
 	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip">github</a> &nbsp;and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip">documentation on godoc</a>.</p>
-	<h3>The basics</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-basics">The basics</h3>
+		<a href="https://blog.cloudflare.com/#the-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what does it mean for a process to perform a graceful upgrade? Let’s use a web server as an example: we want to be able to fire HTTP requests at it, and never see an error because a graceful upgrade is happening.</p>
 	<p>We know that HTTP uses TCP under the hood, and that we interface with TCP using the BSD socket API. We have told the OS that we’d like to receive connections on port 80, and the OS has given us a listening socket, on which we call <code>Accept()</code> to wait for new clients.</p>
 	<p>A new client will be refused if the OS doesn’t know of a listening socket for port 80, or nothing is calling <code>Accept()</code> on it. The trick of a graceful upgrade is to make sure that neither of these two things occur while we somehow restart our service. Let’s look at the all the ways we could achieve this, from simple to complex.</p>
-	<h3>Just <code>Exec()</code></h3>
+	<div class="flex anchor relative">
+		<h3 id="just">Just </h3>
+		<a href="https://blog.cloudflare.com/#just" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ok, how hard can it be. Let’s just <code>Exec()</code> the new binary (without doing a fork first). This does exactly what we want, by replacing the currently running code with the new code from disk.</p>
 	<pre class="language-go"><code class="language-go">// The following is pseudo-Go.
 
@@ -39,7 +53,14 @@ func main() {
 	</figure>
 	<p><i>New connections may be dropped if </i><code><i>Accept()</i></code><i> is not called regularly enough</i></p>
 	<p>Specifically, the new binary is going to spend some time after <code>Exec()</code> to initialise, which delays calls to &nbsp;<code>Accept()</code>. This means the backlog of new connections grows until some are dropped. Plain exec is out of the game.</p>
-	<h3><code>Listen()</code> all the things</h3>
+	<div class="flex anchor relative">
+		<h3 id="listen">Listen()</h3>
+		<a href="https://blog.cloudflare.com/#listen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since just using exec is out of the question, we can try the next best thing. Lets fork and exec a new process which then goes through its usual start up routine. At some point it will create a few sockets by listening on some addresses, except that won’t work out of the box due to errno 48, otherwise known as Address Already In Use. The kernel is preventing us from listening on the address and port combination used by the old process.</p>
 	<p>Of course, there is a flag to fix that: <code>SO_REUSEPORT</code>. This tells the kernel to ignore the fact that there is already a listening socket for a given address and port, and just allocate a new one.</p>
 	<pre class="language-go"><code class="language-go">func main() {
@@ -57,7 +78,14 @@ func main() {
 	<p>Now both processes have working listening sockets and the upgrade works. Right?</p>
 	<p><code>SO_REUSEPORT</code> is a little bit peculiar in what it does inside the kernel. As systems programmers, we tend to think of a socket as the file descriptor that is returned by the socket call. The kernel however makes a distinction between the data structure of a socket, and one or more file descriptors pointing at it. It creates a separate socket structure if you bind using <code>SO_REUSEPORT</code>, not just another file descriptor. The old and the new process are thus referring to two separate sockets, which happen to share the same address. This leads to an unavoidable race condition: new-but-not-yet-accepted connections on the socket used by the old process will be orphaned and terminated by the kernel. GitHub wrote <a href="https://githubengineering.com/glb-part-2-haproxy-zero-downtime-zero-delay-reloads-with-multibinder/#haproxy-almost-safe-reloads">an excellent blog post about this problem</a>.</p>
 	<p>The engineers at GitHub solved the problems with <code>SO_REUSEPORT</code> by using an obscure feature of the sendmsg syscall <a href="http://man7.org/linux/man-pages/man0/sys_socket.h.0p.html">called ancilliary data</a>. It turns out that ancillary data can include file descriptors. Using this API made sense for GitHub, since it allowed them to integrate elegantly with HAProxy. Since we have the luxury of changing the program we can use simpler alternatives.</p>
-	<h3>NGINX: share sockets via fork and exec</h3>
+	<div class="flex anchor relative">
+		<h3 id="nginx-share-sockets-via-fork-and-exec">NGINX: share sockets via fork and exec</h3>
+		<a href="https://blog.cloudflare.com/#nginx-share-sockets-via-fork-and-exec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>NGINX is the tried and trusted workhorse of the Internet, and happens to support graceful upgrades. As a bonus we also use it at Cloudflare, so we were confident in its implementation.</p>
 	<p>It is written in a process-per-core model, which means that instead of spawning a bunch of threads NGINX runs a process per logical CPU core. Additionally, there is a primary process which orchestrates graceful upgrades.</p>
 	<p>The primary is responsible for creating all listen sockets used by NGINX and sharing them with the workers. This is fairly straightforward: first, the <code>FD_CLOEXEC</code> bit is cleared on all listen sockets. This means that they are not closed when the <code>exec()</code> syscall is made. The primary then does the customary <code>fork()</code> / <code>exec()</code> dance to spawn the workers, passing the file descriptor numbers as an environment variable.</p>
@@ -97,7 +125,14 @@ func main() {
 	<p>This process is rather fickle, so NGINX has a safeguard in place. Try requesting a second upgrade while the first hasn’t finished, and you’ll find the following message in the error log:</p>
 	<pre class="language-bash"><code class="language-bash">[crit] 1176#1176: the changing binary signal is ignored: you should shutdown or terminate before either old or new binary's process</code></pre>
 	<p>This is very sensible, there is no good reason why there should be more than two processes at any given point in time. In the best case, we also want this behaviour from our Go solution.</p>
-	<h3>Graceful upgrade wishlist</h3>
+	<div class="flex anchor relative">
+		<h3 id="graceful-upgrade-wishlist">Graceful upgrade wishlist</h3>
+		<a href="https://blog.cloudflare.com/#graceful-upgrade-wishlist" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The way NGINX has implemented graceful upgrades is very nice. There is a clear life cycle which determines valid actions at any point in time:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -132,7 +167,14 @@ func main() {
 		</li>
 	</ul>
 	<p>just to name a few. Each of them is different in its implementation and trade offs, but none of them ticked all of our boxes. The most common problem is that they are designed to gracefully upgrade an http.Server. This makes their API much nicer, but removes flexibility that we need to support other socket based protocols. So really, there was absolutely no choice but to write our own library, called tableflip. Having fun was not part of the equation.</p>
-	<h3>tableflip</h3>
+	<div class="flex anchor relative">
+		<h3 id="tableflip">tableflip</h3>
+		<a href="https://blog.cloudflare.com/#tableflip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>tableflip is a Go library for NGINX-style graceful upgrades. Here is what using it looks like:</p>
 	<pre class="language-go"><code class="language-go">upg, _ := tableflip.New(tableflip.Options{})
 defer upg.Stop()

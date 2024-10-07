@@ -12,7 +12,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/DGYSP79QBrRnCHw7xsLFz/4a54f74dbf3a7a06a79546656c8387ba/image4-4.png" alt="" class="kg-image" width="1999" height="1462" loading="lazy">
 
 	</figure>
-	<h3>How we generate the Trending Domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-generate-the-trending-domains">How we generate the Trending Domains</h3>
+		<a href="https://blog.cloudflare.com/#how-we-generate-the-trending-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we started looking at the best way to generate a list of trending domains, we needed to answer the following questions:</p>
 	<ul>
 		<li>
@@ -30,7 +37,14 @@
 	<p>To select the baseline for calculating the increase in popularity, we analyzed the volatility of the <a href="https://blog.cloudflare.com/radar-domain-rankings">Radar Domain Ranking</a> list for different top list sizes. The advantage of starting with the Radar Ranking lists is that they <b>already incorporate a good popularity metric that quantifies the estimated relative size of the user population that accesses a domain over some period of time</b>. You can read more about how we define popularity in our “Goodbye, Alexa. Hello, Cloudflare Radar Domain Rankings” <a href="https://blog.cloudflare.com/radar-domain-rankings">blog</a>.</p>
 	<p>As expected, smaller list sizes were more stable, meaning the percentage of domains in the top 100 that changed the ranking from one day to the next was much lower than the percentage of domains that changed in the top 10,000. Hence, to have a dynamic daily list of trending domains, we had to look beyond the top 100 most popular domains.</p>
 	<p>However, we did not want to go all the way to the long tail of the list, as we already know that the ranks there are based on “significantly smaller and hence less reliable numbers” (see the paper "<a href="https://arxiv.org/abs/1805.11506">A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists</a>"). Hence, we selected an appropriate list size for each location, based on the distribution of the number of DNS queries per domain. For example, for the Worldwide trending list we analyzed the top 20,000 most popular domains, for Brazil we looked at the top 10,000, Angola 5,000 and for the Faroe Islands top 500.</p>
-	<h3>Trending Today</h3>
+	<div class="flex anchor relative">
+		<h3 id="trending-today">Trending Today</h3>
+		<a href="https://blog.cloudflare.com/#trending-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We then evaluated how much the domains change rank from one day to the next.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -40,7 +54,14 @@
 	<p>We saw that on average, the biggest changes in the top lists, from one day to the next, happen from Fridays to Saturdays and from Sundays to Mondays, and hence on Saturdays and Mondays the lists have the least overlap with the lists of the previous day. We also compared the rank changes from one day to the next corresponding weekday, say from one Monday to the next and saw that on average, rankings on Mondays typically have more overlap with the rankings of the previous Mondays, than with the rankings of Sunday. From this we decided that in order to capture which domains are trending due to the weekend effect, we needed to compare the domain's daily rank to the rank of the previous day(s), and not of the corresponding weekday.</p>
 	<p>However, we also did not want to show as trending those domains that highly oscillate in the rankings, jumping up and down from one day to the next, showing up as trending every few days. Hence, we could not simply compare the daily rank with the rank from the day before. Instead, as a compromise between capturing the most recent trends, including the weekend trends, but still filtering out the domains whose ranking oscillates over a short period of time, we decided to compare the domain's daily rank with its best rank of the previous four days.</p>
 	<p>Then, to calculate the increase in popularity, we simply calculate the percentage change in the current rank compared to the best rank of the previous four days.</p>
-	<h3>Trending This Week</h3>
+	<div class="flex anchor relative">
+		<h3 id="trending-this-week">Trending This Week</h3>
+		<a href="https://blog.cloudflare.com/#trending-this-week" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For calculating the domains steadily growing over the week, we used a slightly different approach.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -48,7 +69,14 @@
 
 	</figure>
 	<p>We want to highlight domains that keep improving their rank day by day and especially those that have been really trending in the most recent days. Therefore, we decided not to directly compare the current rank with the best rank during the previous week. Instead, we looked at the weighted average per day rank improvement and compared it with the best rank of the previous six days, with more recent days being given more weight.</p>
-	<h3>Example trending domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-trending-domains">Example trending domains</h3>
+		<a href="https://blog.cloudflare.com/#example-trending-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What do these lists look like at the end? We compiled the lists for the eventful days of June 21 to 24.</p>
 	<p>On June 22, nba.com was trending in 28 locations, shown in the table below, the United States, as expected, but also Austria, Australia and Japan, to name a few, reflecting the interest in the events of <a href="https://en.wikipedia.org/wiki/2023_NBA_draft">NBA Draft 2023</a>.</p>
 	<p><b>Trending Today</b> data from Friday, June 23, 2023:</p><!--kg-card-begin: html-->
@@ -601,7 +629,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Final words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Both <b>Trending Today</b> and <b>Trending This Week</b> top 10 lists are now available on Radar starting today and on <a href="https://developers.cloudflare.com/api/operations/radar-get-ranking-top-domains">Radar API</a>. Feel free to explore them and see what is trending on the Internet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

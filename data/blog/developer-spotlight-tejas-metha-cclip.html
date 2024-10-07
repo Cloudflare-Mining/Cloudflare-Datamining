@@ -11,11 +11,25 @@
 	<p>What is so interesting about cClip though is that it is a fully serverless application built on top of Workers and KV, but not exclusively. It uses Firebase for authentication, RevenueCat for a consolidated view over the Apple and Google Play store, and Stripe for all other billing related work.</p>
 	<p>This is a peek into the future of application development. This is a future where we will be “importing” other SaaS applications as easily as we currently import a package from a package manager. And not only unidirectional by calling APIs on that external application, but bi-directional communication through events with Webhooks.</p>
 	<p>Here is Tejas telling his story.</p>
-	<h2>The origins of cClip</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-origins-of-cclip">The origins of cClip</h2>
+		<a href="https://blog.cloudflare.com/#the-origins-of-cclip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The abrupt transition to virtual schooling last year led to all my school communications and assignments transitioning online. With a MacBook laptop and an Android phone, submitting my precalculus homework meant I had to take a picture of each page, email each picture to myself, access the email on my computer, and finally upload each file to the submission portal. Doing this once or twice? It was no issue. Doing this every day for the rest of my sophomore and junior years? Just the thought of that got on my nerves.</p>
 	<p>This led me to make cClip, a simple transfer tool that sends images and links from my phone to my laptop. After a few friends saw it, they wanted it too, and that was when I realized it could bring enhanced productivity and platform-agnostic fluidity to a multitude of virtual workspaces.</p>
 	<p>After adding in end-to-end encryption, live-time updates, and a subscription model, I debuted cClip to the public.</p>
-	<h2>Architecture</h2>
+	<div class="flex anchor relative">
+		<h2 id="architecture">Architecture</h2>
+		<a href="https://blog.cloudflare.com/#architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Erwin mentioned, the architecture for cClip isn’t just Workers, but it integrates with a few other SaaS products as well. I use <a href="https://www.revenuecat.com">RevenueCat</a> to easily integrate with the mobile app stores and Stripe via Webhooks. Firebase is used for both authentication and messaging, and, lastly, B2 for cloud storage. (At least until R2 is available!)</p>
 	<p>And of course we need clients for every single platform.</p>
 	<p>In a diagram it looks something like this:</p>
@@ -24,7 +38,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YmrCkc9RMowQMOhhUI9rE/6a867f460fc618ffa5171cfe70f0ebdb/image1-54.png" alt="" class="kg-image" width="1200" height="925" loading="lazy">
 
 	</figure>
-	<h3>The Clients</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-clients">The Clients</h3>
+		<a href="https://blog.cloudflare.com/#the-clients" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the major challenges was to create clients for every single OS and platform out there. At a minimum, we would need both an iOS and Android app, a Windows, Mac, and a web application.</p>
 	<h4>Flutter to the rescue</h4>
 	<p><a href="https://flutter.dev">Flutter</a> is a cross-platform application development framework. It allowed me to have a single codebase for the UI and a majority of the logic, while allowing some specific portions, like encryption, to be able to interface with the platform-specific libraries.</p>
@@ -32,27 +53,77 @@
 	<p>Additionally, using Flutter Web allowed me to create an Electron app for Windows or Linux Users if they desired a native app for cClip instead of accessing the website.</p>
 	<h4><b>macOS</b></h4>
 	<p>macOS has its own application, written in Swift, which was built before the web one and further maintained for its performance benefits. The macOS and iOS applications share code for password hashing, file uploads and downloads, and encryption.</p>
-	<h3>Backend</h3>
+	<div class="flex anchor relative">
+		<h3 id="backend">Backend</h3>
+		<a href="https://blog.cloudflare.com/#backend" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>cClip uses five main backend technologies: Backblaze B2, Firebase Auth, Firebase Database, RevenueCat, and Cloudflare Workers. Workers acts as the main bridge between all backend services, whether in the contexts of access control or subscription management.</p>
 	<h4><b>Authentication and Authorization</b></h4>
 	<p>The authentication flow starts by using Firebase Authentication to validate a user’s identity through a sign in with Google, Apple, or Email/Password and uses Workers for all sensitive API calls. Workers validates the identity of the caller using the ‘idToken’ provided by Firebase, which is a JWT that contains the user’s UID when decoded successfully. Each sensitive operation, such as upload/download file, subscribe/unsubscribe, etc., is put behind Workers, which validates the JWT provided as a ‘Token’ header in the correlating API call before performing the operation itself.</p>
 	<p>Workers handles all access control after a user has been authenticated, such as ensuring the user can access a file at a given location or updating a user’s subscription status when notified by RevenueCat.</p>
 	<p>Workers acts as a gatekeeper for a user’s upload or download authorizations. When the request is sent, Workers verifies the user’s identity, checks the requested location, and the user’s subscription status. If all three check out, Workers authorize the requested action with B2 and return the corresponding information.</p>
-	<h3>Storage and Messaging</h3>
+	<div class="flex anchor relative">
+		<h3 id="storage-and-messaging">Storage and Messaging</h3>
+		<a href="https://blog.cloudflare.com/#storage-and-messaging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because files could be larger than 25MB, it wasn’t practical to store them in Workers KV, so I chose B2 Cloud Storage. B2 Cloud Storage is part of the Bandwidth Alliance with Cloudflare, which meant I wouldn’t be paying any egress fees for those files, which is a nice bonus.</p>
 	<p>As mentioned above, the Worker in front of B2 does all the authentication and authorization for both uploads, downloads, and any other B2 operation.</p>
 	<p>Firebase is used for real-time communication with all clients. Subscription information is stored there, for example, and we use the Cloud Messaging APIs to send notifications to different clients when necessary.</p>
-	<h3>Subscription Management</h3>
+	<div class="flex anchor relative">
+		<h3 id="subscription-management">Subscription Management</h3>
+		<a href="https://blog.cloudflare.com/#subscription-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course a large part of any SaaS application is spent dealing with billing and subscriptions. Luckily, RevenueCat simplifies that a lot and gives you one place for all information related to the mobile app stores and Stripe.</p>
 	<p>That meant I only had to implement one set of Webhooks to receive events from all three providers, and all received events followed the same format.</p>
 	<p>Most of the outgoing subscription API calls also go through RevenueCat, but there are a few edge-cases where we need a direct connection to Stripe and the Google Play Store.</p>
-	<h2>Biggest Challenges</h2>
-	<h3>Cross-platform subscriptions</h3>
+	<div class="flex anchor relative">
+		<h2 id="biggest-challenges">Biggest Challenges</h2>
+		<a href="https://blog.cloudflare.com/#biggest-challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="cross-platform-subscriptions">Cross-platform subscriptions</h3>
+		<a href="https://blog.cloudflare.com/#cross-platform-subscriptions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cross-platform subscriptions, or the synchronization of a user’s subscription across every platform, were a HUGE challenge. Everything had to be integrated perfectly, from ensuring double subscriptions don’t occur to live-time changes for status. RevenueCat simplified the process substantially, but I still had to manage cross-platform cancellations and updates. I managed this by storing the status in Firebase Database and having the user listen for updates on their end. The information was write-locked to allow only the verified Worker update to modify statuses to prevent any status spoofs.</p>
-	<h3>File Quotas</h3>
+	<div class="flex anchor relative">
+		<h3 id="file-quotas">File Quotas</h3>
+		<a href="https://blog.cloudflare.com/#file-quotas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another tough challenge was file storage tracking. In my initial planning, I learned B2’s API doesn’t support any getters for a directory’s storage total and needs to sum up all file values returned with the ‘b2_list_file_names’ API. This was costly, in terms of time and money, as the API is classed as one of the more expensive operations. On top of that, the API would’ve been called each time a user uploads or deletes a file. As a result I created a counter that synchronizes with B2 on different file modifications (uploads or deletion), which is stored in Firebase's Database by the Worker to allow for real-time updates on a user’s device through Firebase’s SDK change listeners.</p>
 	<p>However, I wanted to ensure &nbsp;users couldn’t modify their used storage count and that every upload operation was valid to verify users had enough storage available for the file. The app interacts with Workers first, and upon determining that the user has enough storage, returns an authorization for upload.</p>
-	<h2>Overall experience</h2>
+	<div class="flex anchor relative">
+		<h2 id="overall-experience">Overall experience</h2>
+		<a href="https://blog.cloudflare.com/#overall-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers &amp; KV acted as a core solution to save on costly API calls and provide a completely serverless backend for cClip. On top of the quick nature of the platform, testing changes was extremely easy and needed just a quick preview or staging environment to test the newest changes to my API.</p>
 	<p>My biggest challenge with Workers was the lack of a Stripe library, as the node.js Stripe isn’t Workers compatible yet, but I used the Stripe API endpoints directly with fetch which worked without any issues. It is great, however, to see that Stripe launched their Workers-compatible SDK earlier today!</p>
 	<p>I am currently working on a revamped implementation of cClip Direct, the peer-to-peer transfer protocol that allows you to share any file across devices. Using Workers to manage notifications and signaling, the initial handshake process has been reworked, and I am looking to move the real-time communication from Firebase to Durable Objects and WebSockets. And of course, I can’t wait to try out R2 when that becomes available.</p>

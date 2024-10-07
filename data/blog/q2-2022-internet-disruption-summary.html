@@ -7,9 +7,23 @@
 
 	</figure>
 	<p>Cloudflare operates in <a href="https://www.cloudflare.com/network">more than 270 cities in over 100 countries</a>, where we interconnect with over 10,000 network providers in order to provide a broad range of services to millions of customers. The breadth of both our network and our customer base provides us with a unique perspective on Internet resilience, enabling us to observe the impact of Internet disruptions. In many cases, these disruptions can be attributed to a physical event, while in other cases, they are due to an intentional government-directed shutdown. In this post, we review selected Internet disruptions observed by Cloudflare during the second quarter of 2022, supported by traffic graphs from <a href="https://radar.cloudflare.com">Cloudflare Radar</a> and other internal Cloudflare tools, and grouped by associated cause or common geography.</p>
-	<h2>Optic outages</h2>
+	<div class="flex anchor relative">
+		<h2 id="optic-outages">Optic outages</h2>
+		<a href="https://blog.cloudflare.com/#optic-outages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This quarter, we saw the usual complement of damage to both terrestrial and submarine fiber-optic cables, including one that impacted multiple countries across thousands of miles, and another more localized outage that was due to an errant rodent.</p>
-	<h3>Comcast</h3>
+	<div class="flex anchor relative">
+		<h3 id="comcast">Comcast</h3>
+		<a href="https://blog.cloudflare.com/#comcast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On April 25, Comcast subscribers in nearly 20 southwestern Florida cities <a href="https://twitter.com/CloudflareRadar/status/1518705241801338881">experienced an outage</a>, <a href="https://web.archive.org/web/20220427120613/https://capecorallocalnews.com/2022/04/news/fiber-cut-causes-major-southwest-florida-xfinity-outage">reportedly</a> due to a fiber cut. The traffic impact of this cut is clearly visible in the graph below, with Cloudflare traffic for these cities dropping to zero between 1915–2050 UTC (1515–1850 local time).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -27,7 +41,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZsN7mefkI4brcn5Ri7QNB/9e28a7faad0b7861a4f88ade6842cb7e/image26.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>South Africa</h3>
+	<div class="flex anchor relative">
+		<h3 id="south-africa">South Africa</h3>
+		<a href="https://blog.cloudflare.com/#south-africa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the morning of May 17, Telkom SA, a South African telecommunications provider, <a href="https://twitter.com/TelkomZA/status/1526496275750866945">tweeted an “important notice” to customers</a>, noting that “<i>Damage to a Fibre cable was detected on the Telkom network around 8:00am on Tuesday, 17 May 2022.</i>” and outlining the impacted services and geographies. The graphs below show the impact to Cloudflare traffic from the Telkom autonomous system in three South African provinces. The top graph shows the impact to traffic in Gauteng, while the lower graph shows the impact in Limpopo and North West. Across all three, traffic falls at 0600 UTC (0800 local time), recovering around 1300 UTC (1500 local time). Telkom SA did not provide any additional information on where the fiber cut occurred or what caused it.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -39,14 +60,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5EExV8K6hcnVIlxC2j6M6i/43b7a033cf7adb0d277cecccafc734dc/image35.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
 
 	</figure>
-	<h3>Venezuela</h3>
+	<div class="flex anchor relative">
+		<h3 id="venezuela">Venezuela</h3>
+		<a href="https://blog.cloudflare.com/#venezuela" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although unconfirmed, <a href="https://eldiario.com/2022/05/19/cantv-reportan-caida-de-internet-en-venezuela">a fiber cut was suspected</a> to be the cause of an Internet disruption experienced by <a href="https://radar.cloudflare.com/asn/8048?date_filter=last_7_days">CANTV</a> subscribers in Venezuela on May 19, the latest of several such incidents affecting that provider. Although the fiber cut reportedly impacted subscribers in multiple states, the most significant impact was measured in Falcón, as shown in the graph below. In this state, traffic dropped precipitously at 1800 UTC (1400 local time), finally recovering approximately 24 hours later.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69mgJANn7PeJtxxDzpt7SB/2dc9284b4689963ff534d1b6edc715be/image20.png" alt="" class="kg-image" width="1030" height="360" loading="lazy">
 
 	</figure>
-	<h3>AAE-1 &amp; SMW-5</h3>
+	<div class="flex anchor relative">
+		<h3 id="aae-1-smw-5">AAE-1 &amp; SMW-5</h3>
+		<a href="https://blog.cloudflare.com/#aae-1-smw-5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just after 1200 UTC on Tuesday, June 7, the <a href="https://www.submarinecablemap.com/submarine-cable/asia-africa-europe-1-aae-1">Africa-Asia-Europe-1 (AAE-1)</a> and <a href="https://www.submarinecablemap.com/submarine-cable/seamewe-5">SEA-ME-WE-5 (SMW-5)</a> submarine cables suffered cable cuts, impacting Internet connectivity for millions of Internet users across multiple countries in the Middle East and Africa, as well as thousands of miles away in Asia. Although specific details are sparse, the cable damage reportedly occurred in Egypt – both of the impacted cables land in <a href="https://www.submarinecablemap.com/landing-point/abu-talat-egypt">Abu Talat</a> and <a href="https://www.submarinecablemap.com/landing-point/zafarana-egypt">Zafarana</a>, which also serve as landing points for a number of other submarine cables.</p>
 	<p>The <a href="https://radar.cloudflare.com">Cloudflare Radar</a> graphs below illustrate the impact of these cable cuts across Africa, Asia, and the Middle East. Given that the associated traffic disruption only lasted several hours, the damage to these cables likely occurred on land, after they came ashore. More details on this event can be found in the <a href="https://blog.cloudflare.com/aae-1-smw5-cable-cuts"><i>“AAE-1 &amp; SMW5 cable cuts impact millions of users across multiple countries</i>” blog post</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -84,14 +119,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oppUH3qpiFyJ7Mi4bAngg/2d609a3abc5819cd02ceed0b945ef0c2/image37.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Castor canadensis</h3>
+	<div class="flex anchor relative">
+		<h3 id="castor-canadensis">Castor canadensis</h3>
+		<a href="https://blog.cloudflare.com/#castor-canadensis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, on June 13, a beaver was responsible for an outage that impacted Internet users in British Columbia, Canada. According to a <a href="https://www.datacenterdynamics.com/en/news/british-columbia-internet-outage-caused-by-beaver">published report</a>, a beaver gnawed its way through a tree, causing it to fall on both power lines and a Telus fiber optic cable. The damage to the fiber optic cable affected connectivity customers in over a dozen communities across British Columbia, including those using <a href="https://radar.cloudflare.com/asn/18988">CityWest (AS18988)</a>, a utility company that uses the Telus cable. In the graph below, the impact of the damage to the fiber optic cable is clearly visible, with no traffic to Cloudflare from CityWest subscribers in British Columbia between 1800 UTC on June 7 until 0310 UTC on June 8 (1100–2010 local time).</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GZT9Rqm4JCt1yyoV1jzRq/b37f97758aa533a2d85286dcfa5c1bbb/image34.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
 
 	</figure>
-	<h2>School’s in, Internet’s out</h2>
+	<div class="flex anchor relative">
+		<h2 id="schools-in-internets-out">School’s in, Internet’s out</h2>
+		<a href="https://blog.cloudflare.com/#schools-in-internets-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Nationwide Internet shutdowns have, unfortunately, become a popular approach taken by authoritarian regimes over the past half dozen years to prevent cheating on secondary school exams. It is not clear that this heavy-handed tactic is actually effective in preventing cheating, but the <a href="https://smex.org/the-cost-of-internet-shutdowns">associated damage to the national economies</a> has been estimated to be in the tens to hundreds of millions of US dollars, depending on the duration and frequency of the shutdowns.</p>
 	<p>This year, governments in Sudan and Syria implemented a number of multi-hour shutdowns in late May into June, while Algeria’s government appears to have resorted to more targeted content blocking. Additional details on these Internet disruptions can be found in the recent <a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown"><i>“Exam time means Internet disruptions in Syria, Sudan and Algeria”</i> blog post</a>.</p>
 	<p>Starting on May 30, Syria implemented the first of four nationwide Internet shutdowns, the last of which occurred on June 12, as seen in the graph below. Interestingly, we have observed that these shutdowns tend to be “<a href="https://twitter.com/CloudflareRadar/status/1532349153090600961">asymmetric</a>” in nature — that is, inbound traffic (into the country) is disabled, but egress traffic (from the country) remains. One effect of this is visible as spikes in the DNS graph below. During three of the four shutdowns, requests to Cloudflare’s <a href="https://1.1.1.1/dns">1.1.1.1</a> resolver from clients in Syria increased because DNS queries were able to exit the country, but responses couldn’t return, leading to retry floods.</p>
@@ -123,7 +172,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bUdbQSnzEgwZvn5XT2Mp1/b360f017bc35a46bbfe1afa65530ca99/image7.png" alt="" class="kg-image" width="1020" height="360" loading="lazy">
 
 	</figure>
-	<h2>Government-guided</h2>
+	<div class="flex anchor relative">
+		<h2 id="government-guided">Government-guided</h2>
+		<a href="https://blog.cloudflare.com/#government-guided" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to shutting down the Internet to prevent cheating on exams, governments have also been known to use shutdowns as a tool to limit or control communication around elections, rallies, protests, etc. During the second quarter, we observed several such shutdowns of note.</p>
 	<p>On April 10, following the blocking of social networks, VPN providers, and cloud platforms, the government of Turkmenistan implemented a <a href="https://twitter.com/CloudflareRadar/status/1513510448762695687">near complete Internet shutdown</a>, starting at 1400 UTC. Apparently related to <a href="https://www.scoop.co.nz/stories/WO2204/S00107/keepiton-turkmenistan-rips-a-page-from-the-authoritarian-playbook-digitally-disconnects-the-nation.htm">criticism over the recent presidential election</a>, the disruption lasted nearly 40 hours, as <a href="https://twitter.com/CloudflareRadar/status/1513907409579876360">traffic started to return</a> around 0700 UTC on April 12. The graphs below show the impact of the shutdown at a country level, as well as at two major network providers within the country, <a href="https://radar.cloudflare.com/asn/51495">Telephone Network of Ashgabat CJSC (AS51495)</a> and <a href="https://radar.cloudflare.com/asn/20661">TurkmenTelecom (AS20661)</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -191,7 +247,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MKuoDo8BRDa60puPIDvRe/d873362871e969a503003244eceeecf1/image13.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h2>Infrastructure issues</h2>
+	<div class="flex anchor relative">
+		<h2 id="infrastructure-issues">Infrastructure issues</h2>
+		<a href="https://blog.cloudflare.com/#infrastructure-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to fiber/cable cuts, as discussed above, problems with other infrastructure, whether due to fires, electrical issues, or maintenance, can also disrupt Internet services.</p>
 	<p>Around 2030 local time on April 6 (0030 UTC on April 7), <a href="https://apnews.com/article/business-caribbean-puerto-rico-san-juan-power-outages-58b8a7a059b3a1f0c65fe25083d949cd">a fire erupted at the Costa Sur generation plant, one of the largest power plants in Puerto Rico</a>, resulting in a widespread power outage across the island territory. This island-wide outage caused a significant interruption to Internet services, clearly visible in Cloudflare traffic data. The graph below shows that as the power failed, traffic from Puerto Rico immediately fell by more than half. The regular diurnal pattern remained in place, albeit at lower levels, over the next three days, with traffic returning to “normal levels” three days later. By April 10, Luma Energy reported that it had <a href="https://twitter.com/CloudflareRadar/status/1513318978717982730">restored electrical power to 99.7% of its 1.5M customers</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -216,7 +279,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lPTccDTro1U6Gzyl70Eay/dc4b5bd0dbbcce3c89d6b4131a6be84c/image32.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h2>Iran</h2>
+	<div class="flex anchor relative">
+		<h2 id="iran">Iran</h2>
+		<a href="https://blog.cloudflare.com/#iran" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Iran has a history of both <a href="https://en.wikipedia.org/wiki/2019_Internet_blackout_in_Iran">nationwide</a> and <a href="https://freedomhouse.org/country/iran/freedom-net/2021">regional</a> Internet shutdowns, as well as connectivity disruptions due to <a href="https://twitter.com/CloudflareRadar/status/1499733340760559620">infrastructure damage</a>.</p>
 	<p>On May 6, the government disrupted Internet connectivity in <a href="https://twitter.com/CloudflareRadar/status/1523051860265148418">Khuzestan</a> province, reportedly in response to mass protests around shortages of bread and water. It was <a href="http://may">reported</a> that mobile data had been cut off locally, and that fixed connectivity speeds were significantly reduced. To this end, we observed a drop in traffic for <a href="https://radar.cloudflare.com/asn/44244">Irancell (AS44244)</a> (a mobile network provider) in Khuzestan starting around 1000 UTC as seen in the graph below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -242,7 +312,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2en8743IbYIXXr4v3o9cmV/3b395b3d8cdff84f6a5e6f185ccfea26/image6.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h2>Ukraine</h2>
+	<div class="flex anchor relative">
+		<h2 id="ukraine">Ukraine</h2>
+		<a href="https://blog.cloudflare.com/#ukraine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now more than four months into the war in Ukraine, the Internet continues to be an active battlefield, with ongoing Internet outages in multiple cities and across multiple networks. However, we want to highlight here two similar events observed during the second quarter.</p>
 	<p>The Russian-occupied city of Kherson experienced a near-complete Internet outage between 1600 UTC (1900 local time) on April 30 and 0430 UTC (0730 local time) on May 4. According to social media posts from <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664">Ukraine’s vice Prime-Minister Mykhailo Fedorov</a> and the <a href="https://www.facebook.com/dsszzi/posts/306820328295777">State Service of Special Communications and Information Protection</a>, the outage was caused by “interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”. The graph below shows effectively no traffic for Kherson for approximately 24 hours after the disruption began, followed by a nominal amount of traffic for the next several days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -286,10 +363,25 @@
 	<p>AS9002 (RETN-AS)</p>
 	<p>5/30/2022 09:58:16</p>
 	<p>9002 3326 47598</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This post is by no means an exhaustive review of the Internet outages, shutdowns, and disruptions that have occurred throughout the second quarter. Some were extremely brief or limited in scope, while others were observed but had no known or publicly conjectured underlying cause. Having said that, it is important to bring increased visibility to these events so that the community can share information on what is happening, why it happened, and what the impact was — human, financial, or otherwise.</p>
 	<p>Follow <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> on Twitter for updates on Internet disruptions as they occur, and find up-to-date information on Internet trends using <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

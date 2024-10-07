@@ -7,12 +7,26 @@
 	</figure>
 	<p>A huge storm rolled across the eastern United States last night, topping trees and knocking out power. Amazon Web Services (AWS) had one of their primary data centers in Virginia lose power. While data centers typically have backup generators for when they lose power from the grid, it appears something in the backup systems failed and AWS's EC2 Northern Virginia region went offline. That took down much of Netflix, Pinterest, Instagram, and other services that rely on Amazon's cloud hosting service.</p>
 	<p>My favorite comment on the incident came from Phil Kaplan (<a href="https://twitter.com/pud">@pud</a>) who <a href="https://twitter.com/pud/status/218952182182064128">tweeted</a>: "The cloud is no match for the clouds." It got me thinking about the different types of "cloud" services, their different sensitivities to failure, and how they can be made more resilient.</p>
-	<h3>Cumulus, Stratus, Cirrus, Nimbus</h3>
+	<div class="flex anchor relative">
+		<h3 id="cumulus-stratus-cirrus-nimbus">Cumulus, Stratus, Cirrus, Nimbus</h3>
+		<a href="https://blog.cloudflare.com/#cumulus-stratus-cirrus-nimbus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a lot of different products that call themselves "cloud" services. What that means, however, is very different from one service to another. For example, Salesforce.com was among the first to trumpet the benefits of the cloud. In their case, they were comparing themselves against traditional customer relationship management (CRM) systems that required you to run your own database and maintain your own hardware. In Salesforce.com's case, "cloud" means you can run a specialized application (CRM) on someone else's equipment and pay for it as a service.</p>
 	<p>For their core CRM product, Salesforce.com runs their own hardware in multiple locations around the world. However, Salesforce.com purchased another "cloud" service provider called Heroku. Heroku was originally built as a platform to run applications written for the Ruby programming language. It has expanded over time to provide support for other languages including Java, Node.js, Scala, Clojure and Python. Where Salesforce.com's original cloud service allowed you to run their CRM application as a service, Heroku lets you run any application you want from their managed platform.</p>
 	<p>Salesforce.com runs on the company's own servers, but Heroku runs atop Amazon's AWS service. In other words, Heroku provides a cloud service that makes it easier to write and deploy your own applications, but they use someone else's infrastructure to deploy it. Before everyone started calling all these "cloud" services, the analysts gave them more specific names that started with a letter and always ended with "aaS." Salesforce.com was Software as a Service (SaaS), Heroku was Platform as a Service (PaaS), and AWS was Infrastructure as a Service (IaaS).</p>
 	<p>I'd add a further distinction: the three cloud services I've mentioned so far are all what I'd call Data &amp; Application (D&amp;A) cloud service. In one way or another, they let you store data and process without having to think about the underlying hardware. They may all be cloud services, but they are very different from what we're building at CloudFlare (more on that in a bit).</p>
-	<h3>Servers All the Way Down</h3>
+	<div class="flex anchor relative">
+		<h3 id="servers-all-the-way-down">Servers All the Way Down</h3>
+		<a href="https://blog.cloudflare.com/#servers-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Hindu mythology, there story that talks about how the world is supported on the back of a giant turtle. Steven Hawking's book <i>A Brief History of Time</i> included an anecdote about a scientist giving a lecture to the public on the structure of the universe:</p>
 	<blockquote>
 		<p>At the end of the lecture, a little old lady at the back of the room got up and said: "What you have told us is rubbish. The world is really a flat plate supported on the back of a giant tortoise." The scientist gave a superior smile before replying, "What is the tortoise standing on?" "You're very clever, young man, very clever," said the old lady. "But it's turtles all the way down!"</p>
@@ -23,7 +37,14 @@
 
 	</figure>
 	<p>While it's easy to forget with the abstractions provided by these services, under all these clouds are servers, switches, and routers. If you're using Salesforce.com for CRM and your company adds a large number of new customers, you don't need to think about adding more drives or servers to scale up. Instead, Salesforce.com handles the process of adding capacity across its hardware. If you're developing on top of a cloud service like AWS's EC2, as your application scales you can "spin up" new instances to provide more computational power. These instances are fractions of the capacity on a physical server which may be shared with other EC2 users. Because each EC2 customer only uses whatever isnecessary for their application, the utilization rates across the servers is very high.</p>
-	<h3>When Clouds Go Boom</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-clouds-go-boom">When Clouds Go Boom</h3>
+		<a href="https://blog.cloudflare.com/#when-clouds-go-boom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is inevitable that the hardware that makes up these clouds will, from time to time, fail. Spinning hard drives crash, memory goes bad, CPUs overheat, routers flake out, or someone disconnects the wrong power circuit bringing a whole rack of equipment offline. When those pieces of hardware fail, different cloud services will react in different ways.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -33,7 +54,14 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	</figure>
 	<p>Salesforce.com runs their own hardware and their own software. They have created systems that replicate the application itself across multiple hardware systems. If one system fails, a load balancer switches to a different hardware system to process the request. Customers' data stored with Salesforce.com is also replicated by the software. While I don't know the explicit details of Salesforce.com's redundancy strategy, it's a safe bet that they use RAID to replicate data between multiple disks that are part of a storage array and backup to some long term storage in case of a major failure. They also likely replicate data betweenmultiple storage arrays within a particular data center and, maybe, replicate the data between data centers.</p>
 	<p>Replicating data is relatively easy. Replicating data and keeping it in sync is hard. The problem becomes harder if the locations are geographically separated. The speed of light is very fast, but it still takes a photon of light traveling under perfect conditions nearly <a href="http://www.wolframalpha.com/input/?i=2+*+%28distance+from+Amsterdam+to+san+francisco+in+kilometers+%2F+%28speed+of+light+in+kilometers+per+millisecond%29%29">60ms to roundtrip from San Francisco to Amsterdam</a>. It's slower through the actual fiber and copper cables that make up the Internet, and much, much slower when you take into account the <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">real world performance of the Internet</a>. If two people change the same piece of data in two locations during the latency window between updates, very unpredictable bad things can happen.</p>
-	<h3>The Challenge of Being in Sync</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-challenge-of-being-in-sync">The Challenge of Being in Sync</h3>
+		<a href="https://blog.cloudflare.com/#the-challenge-of-being-in-sync" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For certain systems, replicating data is easier than others. Compare Google and Twitter. If you're running a search on Google you'll hit one of the company's many geographically distributed data centers and get aset of results. Someone else running a different search hitting adifferent data center may get slightly different results. Google doesn't promise that everyone will see the same search results. As a result, they have a relatively straight forward data replication problem. The data that makes up Google's index will be "eventually consistent" across all their facilities, but that doesn't harm the underlying application.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -42,11 +70,25 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	</figure>
 	<p>Twitter, on the other hand, promises that you'll see real time updates from the people you follow. This creates a much more difficult data replication problem and explains why Twitter has a much more centralized infrastructure and continues to experience many more scaling pains. Facebook provides an interesting case study as well. As Facebook has scaled, they have deemphasized real time updates to timeline in order to make it easier to scale their infrastructure.</p>
 	<p>Twitter, Facebook, Google (with their new emphasis on products that require more data synchronization), and a lot of other smart people are working ways to mitigate the problem of data replication and synchronization but the speed of light is only so fast and at some level you'll always bump into the laws of physics. What is key, however, is that choosing to host in the cloud alone is not sufficient to ensure your application is fault tolerant. The data and application layer remain difficult to scale, and even with a service like AWS creating resiliency still requires programmers to make their application servers redundant and replicate their data to the extent possible and practical.</p>
-	<h3>Front End Layer Scaling</h3>
+	<div class="flex anchor relative">
+		<h3 id="front-end-layer-scaling">Front End Layer Scaling</h3>
+		<a href="https://blog.cloudflare.com/#front-end-layer-scaling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While data synchronization makes geographic scaling of the Data &amp; Application layer difficult, there is a part of the web application stack that is a natural candidate for massively distributed scaling: the Front End layer. All web services have a front end. It is the part of the service that receives the requests and hands it off to the application to begin churning. The front end layer also returns the response from the application and databases back to the user that requested it.</p>
 	<p>Unlike the Data &amp; Application layer, the Front End layer doesn't need specific knowledge about the application. This means it can be distributed geographically without special application logic or a need for complex data replication strategies. The Front End layer can help tune the response from the Data &amp; Application layer depending on the characteristics of the user. For example, rather than the Data &amp; Application layer changing the presentation of a response based on whether someone is on an iPad or Internet Explorer on a desktop PC, the Front End layer can handle the response.</p>
 	<p>The Front End layer can also shield the Data &amp; Application layer from potential threats and attacks. In fact, if you use a protocol like Anycast to route requests geographically, you can isolate attacks or any network problems to only impact a small part of the overall system.</p>
-	<h3>Front End In the Cloud FTW</h3>
+	<div class="flex anchor relative">
+		<h3 id="front-end-in-the-cloud-ftw">Front End In the Cloud FTW</h3>
+		<a href="https://blog.cloudflare.com/#front-end-in-the-cloud-ftw" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While there remains hesitation in some quarters to turn over the Data &amp; Application layer to the cloud, moving the Front End layer to the cloud is a no-brainer. That, of course, is exactly what we've built at CloudFlare: a scalable front end layer that can run in front of any web application to help it better scale. What's powerful is that any web site or application can provision CloudFlare simply by making a DNS change. Since the Front End layer doesn't need to synchronize data, CloudFlare can begin working to accelerate and protect web traffic immediately and without any changes to the Data &amp; Application layer.</p>
 	<figure class="kg-card kg-image-card ">
 

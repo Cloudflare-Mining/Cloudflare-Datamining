@@ -7,10 +7,24 @@
 	</figure>
 	<p>Global organizations have always strived to provide a consistent app experience for their Internet users all over the world. Cloudflare has helped in this endeavor with our mission to help build a better Internet. In 2021, we announced <a href="https://blog.cloudflare.com/upgrading-the-cloudflare-china-network">an upgraded Cloudflare China Network</a>, in partnership with JD Cloud to help improve performance for users in China. With this option, Cloudflare customers can serve cached content locally within China without all requests having to go to a data center outside of China. This results in significant performance benefits for end users, but requests to the origin still need to travel overseas.</p>
 	<p>We wanted to go a step further to solve this problem. In early 2023, we launched <a href="https://blog.cloudflare.com/china-express">China Express</a>, a suite of connectivity and performance offerings in partnership with China Mobile International (CMI), CBC Tech and Niaoyun. One of the services available through China Express is Private Link, which is an optimized, high-quality circuit for overseas connectivity. Offered by our local partners, a more reliable and high performance connection from China to the global internet.</p>
-	<h3>A real world example</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-real-world-example">A real world example</h3>
+		<a href="https://blog.cloudflare.com/#a-real-world-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>“Acme Corp” is a global Online Shopping Platform business that serves lots of direct to consumer brands, transacting primarily over <a href="https://www.cloudflare.com/ecommerce">e-commerce channels</a>. Web performance for them directly translates to customer engagement and suppliers and revenue. With 90% of their suppliers in mainland China and online stores serving the consumers out of China, Acme Corp had enabled the Cloudflare China Network to help <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">accelerate performance</a> and improve suppliers’ experience of Store Backend systems with the suppliers. While their suppliers had a great experience with static content, they still had challenges with dynamic content. They experienced performance bottlenecks and high packet loss on their origin requests. This manifested as an intermittent timeout issue on their origin pull requests.</p>
 	<p>This is an expected issue with cross-border network congestion and the vagaries of ISP routing in and out of China. Coming out of the pandemic, the business needed to rapidly evolve and direct suppliers’ dynamic content to global consumers, which meant they couldn’t cache as much content statically within the country. This led to increasing user experience issues and increased the administrative burden on the IT teams.</p>
-	<h3>China Express to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="china-express-to-the-rescue">China Express to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#china-express-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The organization wanted a solution that would improve cross-border performance and reduce the number of timeouts experienced during origin pull requests. They wanted to avoid the administrative complexity of using a private line through a third-party vendor which had the potential to increase the chance for human error.</p>
 	<p>The organization chose a private link service through Cloudflare’s local partner CMI. The preliminary design looked like this.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -136,6 +150,13 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>China Express is a great solution for global organizations looking to improve stability and performance for users in mainland China. In conjunction with our in-country China Network data centers, this can make measurable improvements in app stability and performance and reduce the administrative burden for IT teams. If you’d like to learn more, <a href="https://www.cloudflare.com/china-network">talk to one of our experts</a> who can discuss your specific needs and propose a tailored solution.</p>
 </div>

@@ -22,7 +22,14 @@
 	<p>The source code for tubular is at <a href="https://github.com/cloudflare/tubular">https://github.com/cloudflare/tubular</a>, and it allows you to do all the things mentioned above. Maybe the most interesting feature is that you can change the addresses of a service on the fly:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60%;"><iframe src="https://iframe.videodelivery.net/0c8aa9ba9144bbbb313fb9c865376e4e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F0c8aa9ba9144bbbb313fb9c865376e4e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D48s%26height%3D600&amp;primaryColor=%23f7b018" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
-	<h2>How tubular works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-tubular-works">How tubular works</h2>
+		<a href="https://blog.cloudflare.com/#how-tubular-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>tubular</code> sits at a critical point in the Cloudflare stack, since it has to inspect every connection terminated by a server and decide which application should receive it.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -42,7 +49,14 @@
 		</li>
 	</ul>
 	<p>In the past we had built a proof-of-concept control plane for sk_lookup called <a href="https://github.com/majek/inet-tool">inet-tool</a>, which proved that we could get away without a persistent service managing the eBPF. Similarly, tubular has <code>tubectl</code>: short-lived invocations make the necessary changes and persisting state is handled by the kernel in the form of <a href="https://www.kernel.org/doc/html/latest/bpf/maps.html">eBPF maps</a>. Following this design gave us crash resiliency by default, but left us with the task of mapping the user interface we wanted to the tools available in the eBPF ecosystem.</p>
-	<h2>The tubular user interface</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-tubular-user-interface">The tubular user interface</h2>
+		<a href="https://blog.cloudflare.com/#the-tubular-user-interface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>tubular consists of a BPF program that attaches to the sk_lookup hook in the kernel and userspace Go code which manages the BPF program. The <code>tubectl</code> command wraps both in a way that is easy to distribute.</p>
 	<p><code>tubectl</code> manages two kinds of objects: bindings and sockets. A binding encodes a rule against which an incoming packet is matched. A socket is a reference to a TCP or UDP socket that can accept new connections or packets.</p>
 	<p>Bindings and sockets are "glued" together via arbitrary strings called labels. Conceptually, a binding assigns a label to some traffic. The label is then used to find the correct socket.</p>
@@ -51,7 +65,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3G1ZM7iKvkGurKMBYqonW5/366a80886304676336f4473fbae866db/unnamed--2-.png" alt="" class="kg-image" width="1130" height="185" loading="lazy">
 
 	</figure>
-	<h3>Adding bindings</h3>
+	<div class="flex anchor relative">
+		<h3 id="adding-bindings">Adding bindings</h3>
+		<a href="https://blog.cloudflare.com/#adding-bindings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To create a binding that steers port 80 (aka HTTP) traffic destined for 127.0.0.1 to the label “foo” we use <code>tubectl bind</code>:</p>
 	<pre class="language-bash"><code class="language-bash">$ sudo tubectl bind "foo" tcp 127.0.0.1 80</code></pre>
 	<p>Due to the power of sk_lookup we can have much more powerful constructs than the BSD API. For example, we can redirect connections to all IPs in 127.0.0.0/24 to a single socket:</p>
@@ -69,7 +90,14 @@
 		</li>
 	</ol>
 	<p>Applying this to our example, HTTP traffic to all IPs in 127.0.0.0/24 will be directed to bar, except for 127.0.0.1 which goes to foo.</p>
-	<h3>Getting ahold of sockets</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-ahold-of-sockets">Getting ahold of sockets</h3>
+		<a href="https://blog.cloudflare.com/#getting-ahold-of-sockets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>sk_lookup</code> needs a reference to a TCP or a UDP socket to redirect traffic to it. However, a socket is usually accessible only by the process which created it with the socket syscall. For example, an HTTP server creates a TCP listening socket bound to port 80. How can we gain access to the listening socket?</p>
 	<p>A fairly well known solution is to make processes cooperate by passing socket file descriptors via <a href="https://blog.cloudflare.com/know-your-scm_rights">SCM_RIGHTS</a> messages to a tubular daemon. That daemon can then take the necessary steps to hook up the socket with <code>sk_lookup</code>. This approach has several drawbacks:</p>
 	<ol>
@@ -99,7 +127,15 @@ ExecStart=tubectl register "foo"</code></pre>
 Type=forking # or notify
 ExecStart=/path/to/some/command
 ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080</code></pre>
-	<h2>Storing state in eBPF maps</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="storing-state-in-ebpf-maps">Storing state in eBPF maps</h2>
+		<a href="https://blog.cloudflare.com/#storing-state-in-ebpf-maps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned previously, tubular relies on the kernel to store state, using <a href="https://prototype-kernel.readthedocs.io/en/latest/bpf/ebpf_maps.html">BPF key / value data structures also known as maps</a>. Using the <a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html">BPF_OBJ_PIN syscall</a> we can persist them in /sys/fs/bpf:</p>
 	<pre class="language-bash"><code class="language-bash">/sys/fs/bpf/4026532024_dispatcher
 ├── bindings
@@ -120,7 +156,14 @@ ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FJXwiooeaLRbRriCrETia/941a8987d9d36bcdeb5d414696ba5928/unnamed--3-.png" alt="" class="kg-image" width="1119" height="662" loading="lazy">
 
 	</figure>
-	<h2>Encoding the precedence of bindings</h2>
+	<div class="flex anchor relative">
+		<h2 id="encoding-the-precedence-of-bindings">Encoding the precedence of bindings</h2>
+		<a href="https://blog.cloudflare.com/#encoding-the-precedence-of-bindings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As discussed, bindings have a precedence associated with them. To repeat the earlier example:</p>
 	<pre class="language-bash"><code class="language-bash">1: tcp 127.0.0.1/32 80 -&gt; "foo"
 2: tcp 127.0.0.0/24 80 -&gt; "bar"</code></pre>
@@ -164,7 +207,14 @@ result: "bar"
 
 n = byte doesn't match</code></pre>
 	<p>In this case "foo" is discarded since the last byte doesn't match the input. However, "bar" is returned since its last byte is unspecified and therefore considered to be a valid match.</p>
-	<h2>Observability with minimal privileges</h2>
+	<div class="flex anchor relative">
+		<h2 id="observability-with-minimal-privileges">Observability with minimal privileges</h2>
+		<a href="https://blog.cloudflare.com/#observability-with-minimal-privileges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Linux has the powerful ss tool (part of iproute2) available to inspect socket state:</p>
 	<pre class="language-bash"><code class="language-bash">$ ss -tl src 127.0.0.1
 State      Recv-Q      Send-Q           Local Address:Port           Peer Address:Port
@@ -196,7 +246,14 @@ mode of '/sys/fs/bpf' changed from 0700 (rwx------) to 0701 (rwx-----x)</code></
 Listening on 127.0.0.1:8080
 ^C</code></pre>
 	<p>There is a caveat, unfortunately: truly unprivileged access requires unprivileged BPF to be enabled. Many distros have taken to disabling it via the unprivileged_bpf_disabled sysctl, in which case scraping metrics does require CAP_BPF.</p>
-	<h2>Safe releases</h2>
+	<div class="flex anchor relative">
+		<h2 id="safe-releases">Safe releases</h2>
+		<a href="https://blog.cloudflare.com/#safe-releases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>tubular is distributed as a single binary, but really consists of two pieces of code with widely differing lifetimes. The BPF program is loaded into the kernel once and then may be active for weeks or months, until it is explicitly replaced. In fact, a reference to the program (and link, see below) is persisted into /sys/fs/bpf:</p>
 	<pre class="language-bash"><code class="language-bash">/sys/fs/bpf/4026532024_dispatcher
 ├── link
@@ -224,7 +281,14 @@ bound foo#tcp:[127.0.0.1/32]:80</code></pre>
 ├── program-upgrade
 └── ...</code></pre>
 	<p>Once the link is updated we <a href="https://www.man7.org/linux/man-pages/man2/rename.2.html">atomically rename</a> program-upgrade to replace program. In the future we may be able to <a href="https://lkml.kernel.org/netdev/20211028094724.59043-5-lmb@cloudflare.com/t">use RENAME_EXCHANGE</a> to make upgrades even safer.</p>
-	<h2>Preventing state corruption</h2>
+	<div class="flex anchor relative">
+		<h2 id="preventing-state-corruption">Preventing state corruption</h2>
+		<a href="https://blog.cloudflare.com/#preventing-state-corruption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we’ve completely neglected the fact that multiple invocations of <code>tubectl</code> could modify the state in /sys/fs/bpf at the same time. It’s very hard to reason about what would happen in this case, so in general it’s best to prevent this from ever occurring. A common solution to this is <a href="https://gavv.github.io/articles/file-locks/#differing-features">advisory file locks</a>. Unfortunately it seems like BPF maps don't support locking.</p>
 	<pre class="language-bash"><code class="language-bash">$ sudo flock /sys/fs/bpf/4026532024_dispatcher/bindings echo works!
 flock: cannot open lock file /sys/fs/bpf/4026532024_dispatcher/bindings: Input/output error</code></pre>
@@ -232,7 +296,14 @@ flock: cannot open lock file /sys/fs/bpf/4026532024_dispatcher/bindings: Input/o
 	<pre class="language-bash"><code class="language-bash">$ sudo flock --exclusive /sys/fs/bpf/foo echo works!
 works!</code></pre>
 	<p>Each <code>tubectl</code> invocation likewise invokes <a href="https://www.man7.org/linux/man-pages//man2/flock.2.html"><code>flock()</code></a>, thereby guaranteeing that only ever a single process is making changes.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>tubular is in production at Cloudflare today and has simplified the deployment of <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> and our <a href="https://www.cloudflare.com/dns">authoritative DNS</a>. It allowed us to leave behind limitations of the BSD socket API. However, its most powerful feature is that <a href="https://research.cloudflare.com/publications/Fayed2021">the addresses a service is available on can be changed on the fly</a>. In fact, we have built tooling that automates this process across our global network. Need to listen on another million IPs on thousands of machines? No problem, it’s just an HTTP POST away.</p>
 	<p><i>Interested in working on tubular and our L4 load balancer</i> <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><i>unimog</i></a><i>? We are</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/3232234?gh_jid=3232234"><i>hiring in our European offices</i></a><i>.</i></p>
 </div>

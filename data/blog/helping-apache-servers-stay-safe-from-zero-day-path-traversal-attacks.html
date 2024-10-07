@@ -22,7 +22,14 @@
 	<p>The rules can also be identified by the following descriptions:</p>
 	<p><code>Rule message: Anomaly:URL:Query String - Multiple Slashes, Relative Paths, CR, LF or NULL</code> and &nbsp;<code>Anomaly:URL:Path - Multiple Slashes, Relative Paths, CR, LF or NULL</code></p>
 	<p>Given the nature of the vulnerability, attackers would normally try to access sensitive files (for example <code>/etc/passwd</code>), and as such, many other Cloudflare Managed Rule signatures are also effective at stopping exploit attempts depending on the file being accessed.</p>
-	<h3>How the vulnerability works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-the-vulnerability-works">How the vulnerability works</h3>
+		<a href="https://blog.cloudflare.com/#how-the-vulnerability-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The vulnerability leverages missing path normalization logic. If the Apache server is not configured with a <code>require all denied</code> directive for files outside the document root, attackers can craft special URLs to read any file on the file system accessible by the Apache process. Additionally, this flaw could also leak the source of interpreted files like CGI scripts and, in some cases, also allow the attacker to take over the web server <a href="https://twitter.com/hackerfantastic/status/1445523524555186189">by executing shell scripts</a>.</p>
 	<p>For example, the following path:</p>
 	<p><code>$hostname/cgi-bin/../../../etc/passwd</code></p>
@@ -32,7 +39,14 @@
 	<p><code>$hostname/cgi-bin/.%2e/%2e%2e/%2e%2e/etc/passwd</code></p>
 	<p>as the characters <code>%2e</code> represent the percent encoded version of dot “.”. Not taking this properly into account was the cause of the vulnerability.</p>
 	<p><a href="https://packetstormsecurity.com/files/164418/Apache-HTTP-Server-2.4.49-Path-Traversal.html">The PoC for this vulnerability</a> is straightforward and simply relies on attempting to access sensitive files on vulnerable Apache web servers.</p>
-	<h3>Exploit Attempts</h3>
+	<div class="flex anchor relative">
+		<h3 id="exploit-attempts">Exploit Attempts</h3>
+		<a href="https://blog.cloudflare.com/#exploit-attempts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has seen a sharp increase in attempts to exploit and find vulnerable servers since October 5.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,7 +58,15 @@
 /cgi-bin/.%2e/app/etc/local.xml
 /cgi-bin/.%2e/app/etc/env.php
 /cgi-bin/.%2e/%2e%2e/%2e%2e/etc/passwd</code></pre>
-	<h3>Conclusion</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keeping web environments safe is not an easy task. Attackers will normally gain access and try to exploit vulnerabilities even before PoCs become widely available — we reported such a case not too long ago with <a href="https://blog.cloudflare.com/how-cloudflare-helped-mitigate-the-atlassian-confluence-ognl-vulnerability-before-the-poc-was-released">Atlassian’s Confluence OGNL vulnerability</a>.</p>
 	<p>It is vital to employ all security measures available. Cloudflare features such as our <a href="https://developers.cloudflare.com/rules/normalization">URL normalization</a> and the <a href="https://www.cloudflare.com/waf">WAF</a>, are easy to implement and can buy time to deploy any relevant patches offered by the affected software vendors.</p>
 </div>

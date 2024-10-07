@@ -11,7 +11,14 @@
 	<p>Finding one prime is enough to break the private SSL key.</p>
 	<p>The question we wanted to answer was: "Why was it apparently so easy to find prime numbers in Heartbleed results?" To get to the answer I instrumented a vulnerable version of OpenSSL (1.0.1f) and began the search for the primes and where they end up in memory. Strangely, it seemed that OpenSSL was set up to cleanse memory of primes (and other sensitive values) when they were no longer being used. So, what was going on?</p>
 	<p>But first a detour into the RSA algorithm and how it is implemented efficiently.</p>
-	<h3>RSA and the Montgomery Reduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="rsa-and-the-montgomery-reduction">RSA and the Montgomery Reduction</h3>
+		<a href="https://blog.cloudflare.com/#rsa-and-the-montgomery-reduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The full details of the RSA cryptographic scheme can be read <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">here</a>, but, the short version is that two large prime numbers (almost always called p and q) are chosen and kept secret. The product of those two numbers is referred to as the modulus, typically called N (N = p x q).</p>
 	<p>It's safe to make N public (it is part of what's called the public key) because it is believed (by mathematicians and computer scientists) that working out p and q from N is difficult (i.e. it is believed that factoring N is hard as long as p and q are very large).</p>
 	<p>So, when a brower connects to a site that's using SSL it obtains the public key from the site and the site keeps p and q secret. But the site needs p and q to encrypt data and so they are typically (but not always) held in memory of the server handling the web site.</p>
@@ -47,7 +54,14 @@
 		39 Added 1 x 29
 		3 Divided by 10</p>
 	<p>The answer, 3, is in the accumulator. What's important here is that only 'easy' calculations were performed: small multiplications by a single digit and division by 10. In the computer implementation all of this is done in binary with division by 2 instead of 10. Division by 2 is very, very easy to implement on a computer.</p>
-	<h3>Under the hood of OpenSSL</h3>
+	<div class="flex anchor relative">
+		<h3 id="under-the-hood-of-openssl">Under the hood of OpenSSL</h3>
+		<a href="https://blog.cloudflare.com/#under-the-hood-of-openssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand how primes are used inside OpenSSL I instrumented the code to output information about all the memory allocated by OpenSSL and to highlight blocks of memory used for prime numbers. I then processed this information using a small program to produce a picture of memory.</p>
 	<p>Here's the state of the memory used by OpenSSL when running inside NGINX 1.5.13 just after it has started up. Green blocks are memory in use, black areas are unused and the two red bars are the two primes number p and q that form part of the RSA key.</p>
 	<p>Each row of the picture is 1,024 bytes. The picture shows a total of about 280KB of memory in use. The primes are being stored in a single location (delving into the source of OpenSSL this is the location of the primes when loaded in the function <code>ssl_set_pkey</code> in <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_rsa.c#L190">ssl_rsa.c</a>).</p>
@@ -82,7 +96,14 @@
 
 	</figure>
 	<p>And therein lies the heart of Heartbleed: there are two copies of the primes that never move (the original location where they are loaded and the location of the Montgomery reduction copy) and lots of temporary copies of the primes all over OpenSSL's memory.</p>
-	<h3>OpenSSL patches</h3>
+	<div class="flex anchor relative">
+		<h3 id="openssl-patches">OpenSSL patches</h3>
+		<a href="https://blog.cloudflare.com/#openssl-patches" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's possible to clean up OpenSSL's memory so that copies of primes are not left in memory by applying the following patch:</p>
 	<p>diff -ur openssl-1.0.1g/crypto/bn/bn_lib.c openssl-1.0.1g-sanitise/crypto/bn/bn_lib.c
 		--- openssl-1.0.1g/crypto/bn/bn_lib.c 2014-03-17 09:14:20.000000000 -0700
@@ -154,7 +175,14 @@
 		</li>
 	</ul>
 	<p>Finally, there's always the possibility that the original location the primes were in might get exposed in a Heartbleed message. To protect against that it would be necessary to change the way OpenSSL memory is allocated so that memory allocated for sensitive data (like private keys) is kept far away from the memory buffers used for messages. A <a href="https://marc.info/?l=openssl-dev&amp;m=139800505608917&amp;w=2">patch for this</a> has been submitted to OpenSSL.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A more radical solution is to not store the private keys inside OpenSSL at all. If the private key is not stored in the same process as OpenSSL it will not be accessible via a fault like Heartbleed.</p>
 	<p>CloudFlare is already testing that configuration. More on that in another blog post.</p>
 	<p>PS I am very grateful for <a href="http://matthewarcus.wordpress.com/about">Matthew Arcus</a> for corresponding with me about this and checking some of my assertions. It was Matthew who first pointed out that the Montgomery Reduction was another source of leaked primes.</p>

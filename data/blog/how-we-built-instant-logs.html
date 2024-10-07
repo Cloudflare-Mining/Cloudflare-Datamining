@@ -8,7 +8,14 @@
 	<p>As a developer, you may be all too familiar with the stress of responding to a major service outage, becoming aware of an ongoing security breach, or simply dealing with the frustration of setting up a new service for the first time. When confronted with these situations, you want a real-time view into the events flowing through your network, so you can receive, process, and act on information as quickly as possible.</p>
 	<p>If you have a UNIX mindset, you’ll be familiar with tailing web service logs and searching for patterns using grep. With distributed systems like Cloudflare’s edge network, this task becomes much more complex because you’ll either need to log in to thousands of servers, or ship all the logs to a single place.</p>
 	<p>This is why we built Instant Logs. Instant Logs removes all barriers to accessing your Cloudflare logs, giving you a complete platform to view your HTTP logs in real time, with just a single click, right from within Cloudflare’s dashboard. Powerful filters then let you drill into specific events or search for patterns, and act on them instantly.</p>
-	<h2>The Challenge</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-challenge">The Challenge</h2>
+		<a href="https://blog.cloudflare.com/#the-challenge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Cloudflare’s Logpush product already gives customers the ability to ship their logs to a third-party analytics or storage provider of their choosing. While this system is already exceptionally fast, delivering logs in about 15s on average, it is optimized for completeness and the utmost certainty that your data is reliably making it to its destination. It is the ideal solution for after things have settled down, and you want to perform a forensic deep dive or retrospective.</p>
 	<p>We originally aimed to extend this system to provide our real-time logging capabilities, but we soon realized the objectives were inherently at odds with each other. In order to get all of your data, to a single place, all the time, the laws of the universe require that latencies be introduced into the system. We needed a complementary solution, with its own unique set of objectives.</p>
 	<p>This ultimately boiled down to the following</p>
@@ -26,11 +33,25 @@
 			<p>The pipeline must support a broad set of user-definable filters that are applied before any sampling occurs, such that a user can target and receive exactly what they want.</p>
 		</li>
 	</ol>
-	<h2>Workers and Durable Objects</h2>
+	<div class="flex anchor relative">
+		<h2 id="workers-and-durable-objects">Workers and Durable Objects</h2>
+		<a href="https://blog.cloudflare.com/#workers-and-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our existing Logpush pipeline relies heavily on Kafka to provide sharding, buffering, and aggregation at a single, central location. While we’ve had excellent results using Kafka for these pipelines, the clusters are optimized to run only within our core data centers. Using Kafka would require extra hops to far away data centers, adding a latency penalty we were not willing to incur.</p>
 	<p>In order to keep the data plane running on the edge, we needed primitives that would allow us to perform some of the same key functions we needed out of <a href="https://blog.cloudflare.com/squeezing-the-firehose">Kafka</a>. This is where Workers and the recently released Durable Objects come in. Workers provide an incredibly simple to use, highly elastic, edge-native, compute platform we can use to receive events, and perform transformations. Durable Objects, through their global uniqueness, allow us to coordinate messages streaming from thousands of servers and route them to a singular object. This is where aggregation and buffering are performed, before finally pushing to a client over a thin WebSocket. We get all of this, without ever having to leave the edge!</p>
 	<p>Let’s walk through what this looks like in practice.</p>
-	<h3>A Simple Start</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-simple-start">A Simple Start</h3>
+		<a href="https://blog.cloudflare.com/#a-simple-start" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Imagine a simple scenario in which we have a single web server which produces log messages, and a single client which wants to consume them. This can be implemented by creating a Durable Object, which we will refer to as a Durable Session, that serves as the point of coordination between the server and client. In this case, the client initiates a WebSocket connection with the Durable Object, and the server sends messages to the Durable Object over HTTP, which are then forwarded directly to the client.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,14 +65,28 @@
 
 	</figure>
 	<p>Durable Objects are inherently single threaded. As the number of servers in our simple example increases, the Durable Object will eventually saturate its CPU time and will eventually start to reject incoming requests. And even if it didn’t, as data volumes increase, we risk overwhelming a client’s ability to download and render log lines. We’ll handle this in a few different ways.</p>
-	<h3>Honing in on specific events</h3>
+	<div class="flex anchor relative">
+		<h3 id="honing-in-on-specific-events">Honing in on specific events</h3>
+		<a href="https://blog.cloudflare.com/#honing-in-on-specific-events" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Filtering is the most simple and obvious way to reduce data volume before it reaches the client. If we can filter out the noise, and stream only the events of interest, we can substantially reduce volume. Performing this transformation in the Durable Object itself will provide no relief from CPU saturation concerns. Instead, we can push this filtering out to an invoking Worker, which will run many filter operations in parallel, as it elastically scales to process all the incoming requests to the Durable Object. At this point, our architecture starts to look a lot like the MapReduce pattern!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k0GQ5U5eqoppXsxYR15km/53fef238bef5a9a150926bbbfbbdda2d/image6-2.png" alt="Multiple Web Servers can send messages to an equal number of Filter Workers. The Filters Workers reduce the log volume before sending messages to a single Durable Session, which maintains a single WebSocket with the Client" class="kg-image" width="1372" height="478" loading="lazy">
 
 	</figure>
-	<h3>Scaling up with shards</h3>
+	<div class="flex anchor relative">
+		<h3 id="scaling-up-with-shards">Scaling up with shards</h3>
+		<a href="https://blog.cloudflare.com/#scaling-up-with-shards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ok, so filtering may be great in some situations, but it’s not going to save us under all scenarios. We still need a solution to help us coordinate between potentially thousands of servers that are sending events every single second. Durable Objects will come to the rescue, yet again. We can implement a sharding layer consisting of Durable Objects, we will call them Durable Shards, that effectively allow us to reduce the number of requests being sent to our primary object.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -59,7 +94,14 @@
 
 	</figure>
 	<p>But how do we implement this layer if Durable Objects are globally unique? We first need to decide on a shard key, which is used to determine which Durable Object a given message should first be routed to. When the Worker processes a message, the key will be added to the name of the downstream Durable Object. Assuming our keys are well-balanced, this should effectively reduce the load on the primary Durable Object by approximately 1/N.</p>
-	<h3>Reaching the moon by sampling</h3>
+	<div class="flex anchor relative">
+		<h3 id="reaching-the-moon-by-sampling">Reaching the moon by sampling</h3>
+		<a href="https://blog.cloudflare.com/#reaching-the-moon-by-sampling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But wait, there’s more to do. Going back to our original product requirements, “<i>The pipeline needs to provide sensible results on properties of all sizes, ranging from a few requests per day to hundreds of thousands of requests per second</i>.” With the system as designed so far, we have the technical headroom to process an almost arbitrary number of logs. However, we’ve done nothing to reduce the absolute volume of messages that need to be processed and sent to the client, and at high log volumes, clients would quickly be overwhelmed. To deliver the interactive, instant user experience customers expect, we need to roll up our sleeves one more time.</p>
 	<p>This is where our final trick, sampling, comes into play.</p>
 	<p>Up to this point, when our pipeline saturates, it still makes forward progress by dropping excess data as the Durable Object starts to refuse connections. However, this form of ‘uncontrolled shedding’ is dangerous because it causes us to lose information. When we drop data in this way, we can’t keep a record of the data we dropped, and we cannot infer things about the original shape of the traffic from the messages that we do receive. Instead, we implement a form of ‘controlled’ sampling, which still preserves the statistics, and information about the original traffic.</p>
@@ -70,13 +112,36 @@
 
 	</figure>
 	<p>Information about the original traffic shape is preserved by assigning a sample interval to each line, which is equivalent to the number of samples that were dropped for this given sample to make it through, or 1/probability. The actual number of requests can then be calculated by taking the sum of all sample intervals within a time window. This technique adds a slight amount of latency to the pipeline to account for buffering, but enables us to point an event source of nearly any size at the pipeline, and we can expect it will be handled in a sensible, controlled way.</p>
-	<h3>Putting it all together</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 101.5625%;"><iframe src="https://iframe.videodelivery.net/23cdee536a73d1136c191c95bf4bec95?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>What we are left with is a pipeline that sensibly handles wildly different volumes of traffic, from single digits to hundreds of thousands of requests a second. It allows the user to pinpoint an exact event in a sea of millions, or calculate summaries over every single one. It delivers insight within seconds, all without ever having to do more than click a button.</p>
 	<p>Best of all? Workers and Durable Objects handle this workload with aplomb and no tuning, and the available developer tooling allowed me to be productive from my first day writing code targeting the Workers ecosystem.</p>
-	<h3>How to get involved?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-involved">How to get involved?</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-involved" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll be starting our Beta for Instant Logs in a couple of weeks. <a href="https://www.cloudflare.com/instant-logs-beta">Join the waitlist</a> to get notified about when you can get access!</p>
 	<p>If you want to be part of building the future of data at Cloudflare, we’re <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918">hiring engineers</a> for our data team in Lisbon, London, Austin, and San Francisco!</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/782150a52d01cee52a0579e44ac31798?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

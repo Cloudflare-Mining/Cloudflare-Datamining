@@ -7,13 +7,27 @@
 	</figure>
 	<p>We <a href="https://blog.cloudflare.com/cloudflare-registrar">announced</a> Cloudflare Registrar in September. We launched the product by making it available in waves to our existing customers. During that time we gathered feedback and continued making improvements to the product while also adding more TLDs.</p>
 	<p>Staring today, we’re excited to make <a href="https://www.cloudflare.com/products/registrar">Cloudflare Registrar</a> available to all of our customers. Cloudflare Registrar only charges you what we pay to the registry for your domain and any user can now rely on that at-cost pricing to manage their domain. As part of this announcement, we’d like to share some insights and data about domain registration that we learned during the early access period.</p>
-	<h3>One-click DNS security makes a difference</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-click-dns-security-makes-a-difference">One-click DNS security makes a difference</h3>
+		<a href="https://blog.cloudflare.com/#one-click-dns-security-makes-a-difference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you launch your domain to the world, you rely on the Domain Name System (DNS) to direct your users to the address for your site. However, DNS cannot guarantee that your visitors reach your content because DNS, in its basic form, lacks authentication. If someone was able to poison the DNS responses for your site, they could hijack your visitors' DNS requests.</p>
 	<p>The Domain Name System Security Extensions (DNSSEC) can help prevent that type of attack by adding a chain of trust to DNS queries. When you enable DNSSEC for your site, you can ensure that the DNS response your users receive is the authentic IP address of your domain.</p>
 	<p>Across the industry, adoption of DNSSEC is abysmal. According to Verisign, 1% of .com domains use DNSSEC; less than 0.8% of .net domains do. Why is adoption so low? It’s inconvenient to enable DNSSEC for a site. Additionally, some registrars charge for the feature. APNIC <a href="https://blog.apnic.net/2017/12/06/dnssec-deployment-remains-low">observed</a> that registrars who charge for DNSSEC see significantly lower adoption.</p>
 	<p>Cloudflare has made DNSSEC available for free for years, but we could not address the convenience factor until we launched our registrar. While we can create DS records, your registrar has to post them to the registry. Now that Cloudflare is a registrar, in addition to an authoritative DNS provider, we can make it one-click. We <a href="https://blog.cloudflare.com/one-click-dnssec-with-cloudflare-registrar">announced</a> that feature in January. Since launching, 25% of domains on Cloudflare Registrar now use DNSSEC.</p>
 	<p>We’re going to keep working to make it even easier to enable for your domains. We want to help our customers reach 100% DNSSEC enablement by removing the need for even a single click.</p>
-	<h3>Users do not want to wait for transfers</h3>
+	<div class="flex anchor relative">
+		<h3 id="users-do-not-want-to-wait-for-transfers">Users do not want to wait for transfers</h3>
+		<a href="https://blog.cloudflare.com/#users-do-not-want-to-wait-for-transfers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you begin a domain transfer to Cloudflare, we ask that you input an auth code that your current registrar provides and that is unique to each domain that you transfer. We use that auth code to send your request to the registry, who manages all domain names for given TLD. The registry confirms that the code is valid and then tells your current registrar to release the domain.</p>
 	<p>Once your current registrar receives that request, you have two options: manually approve the transfer or wait five days. If you wait five days and do nothing, the transfer will complete. While that might feel easier, we’ve been surprised to see that 62% of transfers were completed by manual approval.</p>
 	<figure class="kg-card kg-image-card ">
@@ -21,12 +35,33 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/50cXIZ5PqBNt12b0aRUZ5v/16b75b9db86511201fabcbe86cdeb4f4/Elli3ybddHONVtZykyguKNYyj4BbduVRhzrLq4LJV5H0-TC3U20m6Qhu16eU8I5jJTMxfuwu1X6I6c1KxJZwEBJE_6p8PIp3QrQlB-d1GMdNQJ5XrK3f1oMr-xue.png" alt="" class="kg-image" width="1600" height="1055" loading="lazy">
 
 	</figure>
-	<h3>gTLDs continue to dominate registrations</h3>
+	<div class="flex anchor relative">
+		<h3 id="gtlds-continue-to-dominate-registrations">gTLDs continue to dominate registrations</h3>
+		<a href="https://blog.cloudflare.com/#gtlds-continue-to-dominate-registrations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, domains used either country-code TLDs (ccTLDs) or generic TLDs (gTLDs). The generic ones include the 4 extensions behind the world’s most popular domains: .com, .net, .org and .info. In 2005, ICANN <a href="https://newgtlds.icann.org/en/about/program">began</a> considering adding new top-level domain extensions. In 2012, ICANN started accepting applications from registries, current and prospective, who wanted to manage TLDs. They received 1,930.</p>
 	<p>Of those 1,930 applications, 1,232 <a href="https://newgtlds.icann.org/en/program-status/statistics">became</a> supported extensions and were classified as new gTLDs (ngTLDs). Today, Cloudflare Registrar supports all 4 legacy gTLDs, 1 ccTLD and 241 ngTLDs. gTLDs continue to represent the vast majority of domains registered with Cloudflare. That distribution is consistent with <a href="https://www.verisign.com/en_GB/domain-names/dnib/index.xhtml">trends</a> in the domain name industry. We expect that to change a bit as we expand into more ccTLDs.</p>
-	<h3>A world of TLDs and we want to support them</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-world-of-tlds-and-we-want-to-support-them">A world of TLDs and we want to support them</h3>
+		<a href="https://blog.cloudflare.com/#a-world-of-tlds-and-we-want-to-support-them" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>2,081 different TLDs are represented on Cloudflare and use our authoritative DNS. I imagine that number has grown in the time it took to publish this post. We <a href="https://www.cloudflare.com/tld-policies">support 246 TLDs</a> on Registrar today. We know that many of you have domains you want to transfer that use TLDs we do not support currently, particularly amongst ccTLDs. From massive ccTLDs like .uk, to more obscure ngTLDs like .boutique, we’ve received a lot of requests to expand the list. For a reason I don’t understand yet, members of the Cloudflare engineering team own over 2% of all active .horse domains in the world and use them for internal testing projects. We’re working on that one, too, so we can make <a href="https://doescloudflaresupport.horse">this page built on</a> Workers return a Yes.</p>
 	<p>We’re working on it. Most ccTLDs require a unique accreditation and validation flow. We’re working every day to add to that list of supported TLDs, starting with the largest ones on Cloudflare.</p>
-	<h3>Available to all users</h3>
+	<div class="flex anchor relative">
+		<h3 id="available-to-all-users">Available to all users</h3>
+		<a href="https://blog.cloudflare.com/#available-to-all-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Registrar is now available to all users. You can start transferring your domains by following this link <a href="https://dash.cloudflare.com/domains">here</a>. Have questions? Instructions are available <a href="https://developers.cloudflare.com/registrar">here</a>.</p>
 </div>

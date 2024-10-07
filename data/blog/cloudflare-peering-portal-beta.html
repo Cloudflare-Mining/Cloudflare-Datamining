@@ -8,7 +8,14 @@
 	<p>It can be a big deal for Internet users when Cloudflare rolls into town. After our recent <a href="https://blog.cloudflare.com/mongolia">Mongolia launch</a>, we received lots of feedback from happy customers that all of a sudden, Internet performance noticeably improved.</p>
 	<p>As a result, it's not a surprising that we regularly receive requests from all over the world to either peer with our network, or to host a node. However, potential partners are always keen to know just how much traffic will be served over that link. What performance benefits can end-users expect? How much upstream traffic will the ISP save? What new bandwidth will they have available for traffic management?</p>
 	<p>Starting today, ISPs and hosting providers can request a login to the Cloudflare Peering Portal to find the answers to these questions. After validating ownership of your ASN, the Cloudflare network team will provide a login to the newly launched Peering Portal - Beta. You can find more information at: <a href="https://cloudflare.com/partners/peering-portal">cloudflare.com/partners/peering-portal/</a></p>
-	<h3>What problem does peering solve?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-problem-does-peering-solve">What problem does peering solve?</h3>
+		<a href="https://blog.cloudflare.com/#what-problem-does-peering-solve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're new to the core infrastructure of the Internet, the best way to understand peering is to frame the problems it solves:</p>
 	<ol>
 		<li>
@@ -40,9 +47,23 @@
 		</li>
 	</ul>
 	<p>As Cloudflare continues to grow, we represent an ever-increasing share of the Internet's traffic. A Network Administrator reviewing his or her network, will see this represented as an increasing cost of bandwidth, of slower than optimal request times and of bandwidth not able to be allocated for other competing traffic.</p>
-	<h3>What is Peering?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-peering">What is Peering?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-peering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To address these problems, large networks, hosting providers and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> will peer with each other. That is, to <b>interconnect their networks</b> directly. Put another way, cut out the middleman. If I request a site on Cloudflare and my ISP is already directly connected to the Cloudflare network, the packet will traverse fewer hops, my website will load faster, my ISP will pay less to their transit provider and they can allocate that bandwidth for other sites.</p>
-	<h3>How does Peering work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-peering-work">How does Peering work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-peering-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a few different types of peering. The simplest way to conceptualize is plugging in a dedicated cable to exchange data directly between two networks. Practically, there a few ways it happens:</p>
 	<h4>Scenario 1: Private Network Interconnect (PNI)</h4>
 	<p>If Cloudflare and the potential peering partner have equipment in the same data center, we can setup a "Private Network Interconnect", which involves dedicated cabling and network configuration.</p>
@@ -73,7 +94,14 @@
 	<p>This is especially true for hosting nodes. In addition to the configuration and contractual agreements, there is the logistical effort of receiving and configuring equipment.</p>
 	<h4>So when should networks peer with Cloudflare?</h4>
 	<p>The Peering Portal - Beta, released today, allows any ASN (Autonomous System Number) network to view detailed statistics on transit data between it and Cloudflare. Existing partners can use it to review existing session data and statistics and prospective partners can use it to estimate potential transit cost savings, performance improvements and the freeing up of upstream bandwidth to use for other traffic.</p>
-	<h3>Welcome to the Peering Portal - Beta</h3>
+	<div class="flex anchor relative">
+		<h3 id="welcome-to-the-peering-portal-beta">Welcome to the Peering Portal - Beta</h3>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-peering-portal-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Peering Portal allows both existing and prospective partners to see:</p>
 	<h4>Time Series Traffic Statistics</h4>
 	<p>This view shows both growth over time, and the relative traffic for each location.</p>

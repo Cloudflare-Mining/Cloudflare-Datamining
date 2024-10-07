@@ -15,7 +15,14 @@
 
 	</figure>
 	<p><i>Customers can now have a single WAF deployment for all their enterprise domains.</i>&nbsp;</p>
-	<h3>Welcome to the simpler world of Account WAF</h3>
+	<div class="flex anchor relative">
+		<h3 id="welcome-to-the-simpler-world-of-account-waf">Welcome to the simpler world of Account WAF</h3>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-simpler-world-of-account-waf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You might wonder why an organization might have thousands of domains, but this is actually very common.</p>
 	<p>For example, an <a href="https://www.cloudflare.com/ecommerce">e-commerce business</a> can have tens of marketing domains for all its brands localized in different countries, they’ll have APIs that power their e-commerce sites and mobile applications, applications integrated with partners, logistics services or payment systems, domains used by employees, and so on and so forth. The structure of these accounts can be very complex.</p>
 	<p>Now, let’s imagine that you need to deal with the simple use case of deploying Cloudflare Managed ruleset across all your production domains.</p>
@@ -23,14 +30,36 @@
 	<p>With Account WAF, you can now deploy a managed ruleset just once while providing the list of hostnames where you want it on. With <i>deploying</i> here we refer to writing a filter that defines what requests we should run (or execute) the ruleset on. The filter works like a normal WAF Custom Rule, where you can take advantage of the power of the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language">Wirefilter syntax</a> and use any parameter of the HTTP request, metadata and computed values, such as Bot Score or our new WAF Attack Score. For example, you can run a ruleset only on traffic with a specific User Agent, or only on your API traffic.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 79.6875%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/0aed83b35c605cbe92406f2197510a80/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F0aed83b35c605cbe92406f2197510a80%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D32s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>You can deploy these rulesets multiple times on your account, so you can have different settings for different groups of domains. For example, you might want to deploy OWASP with different sensitivity levels for your staging domains versus your production domains, or enforce a minimum level of security across all zones (e.g. for legal protection or compliance), before tailoring the security posture of the most sensitive domains. Furthermore, if in the future you are going to add a new domain to your production environment, you can simply add it to the rule filter, and we will start protecting these requests too.</p>
-	<h3>It works for all WAF features</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-works-for-all-waf-features">It works for all WAF features</h3>
+		<a href="https://blog.cloudflare.com/#it-works-for-all-waf-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can follow a similar flow if you want to deploy WAF Custom or Rate Limiting rules. However, in this case, to simplify management of large numbers of rules, we introduced the concept of Custom Rulesets. Like with managed rules, a ruleset is a group of rules, this time they are user defined. Like in the example above, you can deploy a custom ruleset on a user-defined filter to scope on what portion of your traffic you want to run these rules.</p>
 	<p>For example, consider the situation where you want to create two rules for all your domains: one that blocks traffic from a set of countries and then one rule to only allow requests with a non-malicious WAF Attack Score. You will create a custom ruleset with these two rules and then deploy it across your entire account.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 58.4375%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/be754338b633a78d85146ce7f421e2db/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fbe754338b633a78d85146ce7f421e2db%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D53s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>One thing to note is that Account WAF rulesets (Managed, Custom and Rate Limiting) can be deployed on traffic to domains on Enterprise plans. You won’t be able to run rulesets on traffic of Free, Pro or Biz domains. This condition is enforced by the UI when writing a deployment filter.</p>
 	<p>Finally, you can follow the same flow to deploy custom rulesets that contain rate limiting rules. Custom rulesets are designed to contain either custom or rate limiting rules, at this stage these rules cannot be combined in the same ruleset. Please note that the Rate Limiting section will be available in October.</p>
-	<h3>Who gets it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-gets-it">Who gets it?</h3>
+		<a href="https://blog.cloudflare.com/#who-gets-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Account WAF is an Enterprise only feature. If you are an Enterprise customer on our new Advanced plan, you will get access to the new feature automatically this week. If you are not on our Advanced plan, please reach out to your account team to learn more.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/15a28a27c4f115533951f075b1fad6b5/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F15a28a27c4f115533951f075b1fad6b5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

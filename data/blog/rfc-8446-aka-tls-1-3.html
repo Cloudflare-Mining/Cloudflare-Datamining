@@ -1,7 +1,14 @@
 <div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5kgspiFm8DIElEEVJ44EAZ/318755d05a52b011203a9c31b707f025/rfc-8446-aka-tls-1-3.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>For the last five years, the Internet Engineering Task Force (IETF), the standards body that defines internet protocols, has been working on standardizing the latest version of one of its most important security protocols: Transport Layer Security (TLS). TLS is used to secure the web (and much more!), providing encryption and ensuring the authenticity of every HTTPS website and API. The latest version of TLS, TLS 1.3 (<a href="https://www.rfc-editor.org/rfc/pdfrfc/rfc8446.txt.pdf">RFC 8446</a>) was published today. It is the first major overhaul of the protocol, bringing significant security and performance improvements. This article provides a deep dive into the changes introduced in TLS 1.3 and its impact on the future of internet security.</p>
-	<h3>An evolution</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-evolution">An evolution</h3>
+		<a href="https://blog.cloudflare.com/#an-evolution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One major way Cloudflare provides <a href="https://www.cloudflare.com/application-services/solutions/api-security">security</a> is by supporting HTTPS for websites and web services such as APIs. With HTTPS (the “S” stands for secure) the communication between your browser and the server travels over an encrypted and authenticated channel. Serving your content over HTTPS instead of HTTP provides confidence to the visitor that the content they see is presented by the legitimate content owner and that the communication is safe from eavesdropping. This is a big deal in a world where online privacy is more important than ever.</p>
 	<p>The machinery under the hood that makes HTTPS secure is a protocol called TLS. It has its roots in a protocol called Secure Sockets Layer (SSL) developed in the mid-nineties at Netscape. By the end of the 1990s, Netscape handed SSL over to the IETF, who renamed it TLS and have been the stewards of the protocol ever since. Many people still refer to web encryption as SSL, even though the vast majority of services have switched over to supporting TLS only. The term SSL continues to have popular appeal and Cloudflare has kept the term alive through product names like <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> and <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -10,7 +17,15 @@
 
 	</figure>
 	<p>In the IETF, protocols are called RFCs. TLS 1.0 was RFC 2246, TLS 1.1 was RFC 4346, and TLS 1.2 was RFC 5246. Today, TLS 1.3 was published as RFC 8446. RFCs are generally published in order, keeping 46 as part of the RFC number is a nice touch.</p>
-	<h3>TLS 1.2 wears parachute pants and shoulder pads</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-1-2-wears-parachute-pants-and-shoulder-pads">TLS 1.2 wears parachute pants and shoulder pads</h3>
+		<a href="https://blog.cloudflare.com/#tls-1-2-wears-parachute-pants-and-shoulder-pads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5p8wOtJF3L8LEprZDoO0z7/88d6da2f8bda13ac0fc69e543cf7f348/image11.jpg" alt="MC Hammer" class="kg-image" width="379" height="600" loading="lazy">
@@ -20,10 +35,24 @@
 	<p>Over the last few years, TLS has seen its fair share of problems. First of all, there have been problems with the code that implements TLS, including <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">Heartbleed</a>, <a href="https://www.imperialviolet.org/2014/09/26/pkcs1.html">BERserk</a>, <a href="https://gotofail.com">goto fail;</a>, and more. These issues are not fundamental to the protocol and mostly resulted from a lack of testing. Tools like <a href="https://github.com/RUB-NDS/TLS-Attacker">TLS Attacker</a> and <a href="https://security.googleblog.com/2016/12/project-wycheproof.html">Project Wycheproof</a> have helped improve the robustness of TLS implementation, but the more challenging problems faced by TLS have had to do with the protocol itself.</p>
 	<p>TLS was designed by engineers using tools from mathematicians. Many of the early design decisions from the days of SSL were made using heuristics and an incomplete understanding of how to design robust security protocols. That said, this isn’t the fault of the protocol designers (Paul Kocher, Phil Karlton, Alan Freier, Tim Dierks, Christopher Allen and others), as the entire industry was still learning how to do this properly. When TLS was designed, formal papers on the design of secure authentication protocols like Hugo Krawczyk’s landmark <a href="http://webee.technion.ac.il/~hugo/sigma-pdf.pdf">SIGMA</a> paper were still years away. TLS was 90s crypto: It meant well and seemed cool at the time, but the modern cryptographer’s design palette has moved on.</p>
 	<p>Many of the design flaws were discovered using <a href="https://en.wikipedia.org/wiki/Formal_verification">formal verification</a>. Academics attempted to prove certain security properties of TLS, but instead found counter-examples that were turned into real vulnerabilities. These weaknesses range from the purely theoretical (<a href="https://access.redhat.com/articles/2112261">SLOTH</a> and <a href="https://eprint.iacr.org/2018/298.pdf">CurveSwap</a>), to feasible for highly resourced attackers (<a href="https://weakdh.org/imperfect-forward-secrecy-ccs15.pdf">WeakDH</a>, <a href="https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained">LogJam</a>, <a href="https://censys.io/blog/freak">FREAK</a>, <a href="https://nakedsecurity.sophos.com/2016/08/25/anatomy-of-a-cryptographic-collision-the-sweet32-attack">SWEET32</a>), to practical and dangerous (<a href="https://en.wikipedia.org/wiki/POODLE">POODLE</a>, <a href="https://robotattack.org">ROBOT</a>).</p>
-	<h3>TLS 1.2 is slow</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-1-2-is-slow">TLS 1.2 is slow</h3>
+		<a href="https://blog.cloudflare.com/#tls-1-2-is-slow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Encryption has always been important online, but historically it was only used for things like logging in or sending credit card information, leaving most other data exposed. There has been a major trend in the last few years towards using HTTPS for all traffic on the Internet. This has the positive effect of protecting more of what we do online from eavesdroppers and <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">injection attacks</a>, but has the downside that new connections get a bit slower.</p>
 	<p>For a browser and web server to agree on a key, they need to exchange cryptographic data. The exchange, called the “handshake” in TLS, has remained largely unchanged since TLS was standardized in 1999. The handshake requires two additional round-trips between the browser and the server before encrypted data can be sent (or one when resuming a previous connection). The additional cost of the TLS handshake for HTTPS results in a noticeable hit to latency compared to an HTTP alone. This additional delay can negatively impact performance-focused applications.</p>
-	<h3>Defining TLS 1.3</h3>
+	<div class="flex anchor relative">
+		<h3 id="defining-tls-1-3">Defining TLS 1.3</h3>
+		<a href="https://blog.cloudflare.com/#defining-tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unsatisfied with the outdated design of TLS 1.2 and two-round-trip overhead, the IETF set about defining a new version of TLS. In August 2013, Eric Rescorla laid out a wishlist of features for the new protocol:<a href="https://www.ietf.org/proceedings/87/slides/slides-87-tls-5.pdf">https://www.ietf.org/proceedings/87/slides/slides-87-tls-5.pdf</a></p>
 	<p>After <a href="https://www.ietf.org/mail-archive/web/tls/current/msg20938.html">some debate</a>, it was decided that this new version of TLS was to be called TLS 1.3. The main issues that drove the design of TLS 1.3 were mostly the same as those presented five years ago:</p>
 	<ul>
@@ -42,7 +71,15 @@
 	</ul>
 	<p>The specification was shaped by volunteers through an open design process, and after four years of diligent work and vigorous debate, TLS 1.3 is now in its final form: RFC 8446. As adoption increases, the new protocol will make the internet both faster and more secure.</p>
 	<p>In this blog post I will focus on the two main advantages TLS 1.3 has over previous versions: security and performance.</p>
-	<h3>Trimming the hedges</h3>
+	<div class="flex anchor relative">
+		<h3 id="trimming-the-hedges">Trimming the hedges</h3>
+		<a href="https://blog.cloudflare.com/#trimming-the-hedges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57PQK3ofbneOYgOmlwNm4Y/d9c43eb9f289a3971450d80e6f9ae06a/image10.jpg" alt="hedge" class="kg-image" width="1024" height="768" loading="lazy">
@@ -75,7 +112,14 @@
 	<p>The LogJam and WeakDH attacks of 2015 showed that many TLS servers could be tricked into using small numbers for Diffie-Hellman, allowing an attacker to break the security of the protocol and decrypt conversations.</p>
 	<p>Diffie-Hellman also requires the parameters to have certain other mathematical properties. In 2016, Antonio Sanso found an <a href="http://arstechnica.com/security/2016/01/high-severity-bug-in-openssl-allows-attackers-to-decrypt-https-traffic">issue in OpenSSL</a> where parameters were chosen that lacked the right mathematical properties, resulting in another vulnerability.</p>
 	<p>TLS 1.3 takes the opinionated route, restricting the Diffie-Hellman parameters to ones that are known to be secure. However, it still leaves several options; permitting only one option makes it difficult to update TLS in case these parameters are found to be insecure some time in the future.</p>
-	<h3>Fixing ciphers</h3>
+	<div class="flex anchor relative">
+		<h3 id="fixing-ciphers">Fixing ciphers</h3>
+		<a href="https://blog.cloudflare.com/#fixing-ciphers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other half of a hybrid crypto scheme is the actual encryption of data. This is done by combining an authentication code and a symmetric cipher for which each party knows the key. As I’ll describe, there are many ways to encrypt data, most of which are wrong.</p>
 	<h4>CBC mode ciphers</h4>
 	<p>In the last section we described TLS as a hybrid encryption scheme, with a public key part and a symmetric key part. The public key part is not the only one that has caused trouble over the years. The symmetric key portion has also had its fair share of issues. In any secure communication scheme, you need both encryption (to keep things private) and integrity (to make sure people don’t modify, add, or delete pieces of the conversation). Symmetric key encryption is used to provide both encryption and integrity, but in TLS 1.2 and earlier, these two pieces were combined in the wrong way, leading to security vulnerabilities.</p>
@@ -103,7 +147,14 @@
 	</figure>
 	<p>AEAD Mode</p>
 	<p>In TLS 1.3, all the troublesome ciphers and cipher modes have been removed. You can no longer use CBC-mode ciphers or insecure stream ciphers such as RC4. The only type of symmetric crypto allowed in TLS 1.3 is a new construction called <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">AEAD (authenticated encryption with additional data)</a>, which combines encryption and integrity into one seamless operation.</p>
-	<h3>Fixing digital signatures</h3>
+	<div class="flex anchor relative">
+		<h3 id="fixing-digital-signatures">Fixing digital signatures</h3>
+		<a href="https://blog.cloudflare.com/#fixing-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another important part of TLS is authentication. In every connection, the server authenticates itself to the client using a digital certificate, which has a public key. In RSA-encryption mode, the server proves its ownership of the private key by decrypting the pre-main secret and computing a MAC over the transcript of the conversation. In Diffie-Hellman mode, the server proves ownership of the private key using a digital signature. If you’ve been following this blog post so far, it should be easy to guess that this was done incorrectly too.</p>
 	<h4>PKCS#1v1.5</h4>
 	<p>Daniel Bleichenbacher has made a living identifying problems with RSA in TLS. In 2006, he devised a pen-and-paper attack against RSA signatures as used in TLS. It was later discovered that major TLS implemenations including those of NSS and OpenSSL <a href="https://www.ietf.org/mail-archive/web/openpgp/current/msg00999.html">were vulnerable to this attack</a>. This issue again had to do with how difficult it is to implement padding correctly, in this case, the PKCS#1 v1.5 padding used in RSA signatures. In TLS 1.3, PKCS#1 v1.5 is removed in favor of the newer design <a href="https://en.wikipedia.org/wiki/Probabilistic_signature_scheme">RSA-PSS</a>.</p>
@@ -135,7 +186,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/P4S0oZBnuJvkG23ljrAmN/6278b19181d1830a79d99dc2c60ca6c5/image14.png" alt="signed transcript" class="kg-image" width="508" height="593" loading="lazy">
 
 	</figure>
-	<h3>Better living through simplification</h3>
+	<div class="flex anchor relative">
+		<h3 id="better-living-through-simplification">Better living through simplification</h3>
+		<a href="https://blog.cloudflare.com/#better-living-through-simplification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 is a much more elegant and secure protocol with the removal of the insecure features listed above. This hedge-trimming allowed the protocol to be simplified in ways that make it easier to understand, and faster.</p>
 	<h4>No more take-out menu</h4>
 	<p>In previous versions of TLS, the main negotiation mechanism was the ciphersuite. A ciphersuite encompassed almost everything that could be negotiated about a connection:</p>
@@ -191,9 +249,23 @@
 
 	</figure>
 	<p>This simplified cipher suite negotiation and radically reduced set of negotiation parameters opens up a new possibility. This possibility enables the TLS 1.3 handshake latency to drop from two round-trips to only one round-trip, providing the performance boost that will ensure that TLS 1.3 will be popular and widely adopted.</p>
-	<h3>Performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance">Performance</h3>
+		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When establishing a new connection to a server that you haven’t seen before, it takes two <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips</a> before data can be sent on the connection. This is not particularly noticeable in locations where the server and client are geographically close to each other, but it can make a big difference on mobile networks where latency can be as high as 200ms, an amount that is noticeable for humans.</p>
-	<h3>1-RTT mode</h3>
+	<div class="flex anchor relative">
+		<h3 id="1-rtt-mode">1-RTT mode</h3>
+		<a href="https://blog.cloudflare.com/#1-rtt-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 now has a radically simpler cipher negotiation model and a reduced set of key agreement options (no RSA, no user-defined DH parameters). This means that every connection will use a DH-based key agreement and the parameters supported by the server are likely easy to guess (ECDHE with X25519 or P-256). Because of this limited set of choices, the client can simply choose to send DH key shares in the first message instead of waiting until the server has confirmed which key shares it is willing to support. That way, the server can learn the shared secret and send encrypted data one round trip earlier. Chrome’s implementation of TLS 1.3, for example, sends an X25519 keyshare in the first message to the server.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -207,11 +279,25 @@
 
 	</figure>
 	<p>In the rare situation that the server does not support one of the key shares sent by the client, the server can send a new message, the HelloRetryRequest, to let the client know which groups it supports. Because the list has been trimmed down so much, this is not expected to be a common occurrence.</p>
-	<h3>0-RTT resumption</h3>
+	<div class="flex anchor relative">
+		<h3 id="0-rtt-resumption">0-RTT resumption</h3>
+		<a href="https://blog.cloudflare.com/#0-rtt-resumption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A further optimization was inspired by the <a href="https://docs.google.com/document/u/1/d/1g5nIXAIkN_Y-7XJW5K45IblHd_L2f5LTaDUDwvZ5L6g/edit">QUIC protocol</a>. It lets clients send encrypted data in their first message to the server, resulting in no additional latency cost compared to unencrypted HTTP. This is a big deal, and once TLS 1.3 is widely deployed, the encrypted web is sure to feel much snappier than before.</p>
 	<p>In TLS 1.2, there are two ways to resume a connection, <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">session ids and session tickets</a>. In TLS 1.3 these are combined to form a new mode called PSK (pre-shared key) resumption. The idea is that after a session is established, the client and server can derive a shared secret called the “resumption main secret”. This can either be stored on the server with an id (session id style) or encrypted by a key known only to the server (session ticket style). This session ticket is sent to the client and redeemed when resuming a connection.</p>
 	<p>For resumed connections, both parties share a resumption main secret so key exchange is not necessary except for providing forward secrecy. The next time the client connects to the server, it can take the secret from the previous session and use it to encrypt application data to send to the server, along with the session ticket. Something as amazing as sending encrypted data on the first flight does come with its downfalls.</p>
-	<h3>Replayability</h3>
+	<div class="flex anchor relative">
+		<h3 id="replayability">Replayability</h3>
+		<a href="https://blog.cloudflare.com/#replayability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is no interactivity in 0-RTT data. It’s sent by the client, and consumed by the server without any interactions. This is great for performance, but comes at a cost: replayability. If an attacker captures a 0-RTT packet that was sent to server, they can replay it and there’s a chance that the server will accept it as valid. This can have interesting negative consequences.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -222,10 +308,24 @@
 	<p>As a client, you can try to protect against this by only putting “safe” requests into the 0-RTT data. In this context, “safe” means that the request won’t change server state. In HTTP, different methods are supposed to have different semantics. HTTP GET requests are supposed to be safe, so a browser can usually protect HTTPS servers against replay attacks by only sending GET requests in 0-RTT. Since most page loads start with a GET of “/” this results in faster page load time.</p>
 	<p>Problems start to happen when data sent in 0-RTT are used for state-changing requests. To help prevent against this failure case, TLS 1.3 also includes the time elapsed value in the session ticket. If this diverges too much, the client is either approaching the speed of light, or the value has been replayed. In either case, it’s prudent for the server to reject the 0-RTT data.</p>
 	<p>For more details about <a href="https://blog.cloudflare.com/introducing-0-rtt">0-RTT, and the improvements to session resumption</a> in TLS 1.3, check out this previous blog post.</p>
-	<h3>Deployability</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployability">Deployability</h3>
+		<a href="https://blog.cloudflare.com/#deployability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 was a radical departure from TLS 1.2 and earlier, but in order to be deployed widely, it has to be backwards compatible with existing software. One of the reasons TLS 1.3 has taken so long to go from draft to final publication was the fact that some existing software (namely middleboxes) wasn’t playing nicely with the new changes. Even minor changes to the TLS 1.3 protocol that were visible on the wire (such as eliminating the redundant ChangeCipherSpec message, bumping the version from 0x0303 to 0x0304) ended up causing connection issues for some people.</p>
 	<p>Despite the fact that future flexibility was built into the TLS spec, some implementations made incorrect assumptions about how to handle future TLS versions. The phenomenon responsible for this change is called <i>ossification</i> and I explore it more fully in the context of TLS in my previous post about <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">why TLS 1.3 isn’t deployed yet</a>. To accommodate these changes, TLS 1.3 was modified to look a lot like TLS 1.2 session resumption (at least on the wire). This resulted in a much more functional, but less aesthetically pleasing protocol. This is the price you pay for upgrading one of the most widely deployed protocols online.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 is a modern security protocol built with modern tools like <a href="http://tls13tamarin.github.io/TLS13Tamarin">formal</a> <a href="https://eprint.iacr.org/2016/081">analysis</a> that retains its backwards compatibility. It has been tested widely and iterated upon using real world deployment data. It’s a cleaner, faster, and more secure protocol ready to become the de facto two-party encryption protocol online. Draft 28 of TLS 1.3 is enabled by default for <a href="https://blog.cloudflare.com/you-get-tls-1-3-you-get-tls-1-3-everyone-gets-tls-1-3">all Cloudflare customers</a>, and we will be rolling out the final version soon.</p>
 	<p>Publishing TLS 1.3 is a huge accomplishment. It is one the best recent examples of how it is possible to take 20 years of deployed legacy code and change it on the fly, resulting in a better internet for everyone. TLS 1.3 has been debated and analyzed for the last three years and it’s now ready for prime time. Welcome, RFC 8446.</p>
 </div>

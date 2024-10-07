@@ -26,7 +26,15 @@ ECDSA Verify           146,991 ns/op      3,086,282 ns/op     21.0X
 RSA2048:
 Sign                 3,733,747 ns/op      7,979,705 ns/op      2.1X
 Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
-	<h3>AES-GCM in a brief</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="aes-gcm-in-a-brief">AES-GCM in a brief</h3>
+		<a href="https://blog.cloudflare.com/#aes-gcm-in-a-brief" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what is AES-GCM and why do we care? Well, it is an AEAD - Authenticated Encryption with Associated Data. Specifically AEAD is a special combination of a cipher and a MAC (Message Authentication Code) algorithm into a single robust algorithm, using a single key. This is different from the other method of performing authenticated encryption "encrypt-then-MAC" (or as TLS does it with CBC-SHAx, "MAC-then-encrypt"), where you can use any combination of cipher and MAC.</p>
 	<p>Using a dedicated AEAD reduces the dangers of bad combinations of ciphers and MACs, and other mistakes, such as using related keys for encryption and authentication.</p>
 	<p>Given the <i>many</i> vulnerabilities related to the use of AES-CBC with HMAC, and the weakness of RC4, AES-GCM is the de-facto secure standard on the web right now, as the only IETF-approved AEAD to use with TLS at the moment.</p>
@@ -38,7 +46,14 @@ Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/319/2564482934/in/photolist-5FYmSD-7zvQwN-6ATEuo-4VgpgZ-kUSNp3-6wAN3r-c3LXyY-c3LXpW-4S2DaR-4UBDr1-4UxqxR-82A7UM-4VgH6r-6cXGRY">image</a> by <a href="https://www.flickr.com/photos/319">3:19</a></p>
-	<h3>AES-GCM as an AEAD</h3>
+	<div class="flex anchor relative">
+		<h3 id="aes-gcm-as-an-aead">AES-GCM as an AEAD</h3>
+		<a href="https://blog.cloudflare.com/#aes-gcm-as-an-aead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As I mentioned AEAD is a special combination of a cipher and a MAC. In the case of AES-GCM the cipher is the AES block cipher in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29">Counter Mode</a> (AES-CTR). For the MAC it uses a universal hash called <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode#Encryption_and_authentication">GHASH</a>, encrypted with AES-CTR.</p>
 	<p>The inputs to the AES-GCM AEAD encryption are as follows:</p>
 	<ul>
@@ -58,6 +73,13 @@ Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
 	<p>The operation outputs the ciphertext (C) and the authentication tag (T). The length of C is identical to that of P, and the length of T is 128 bits (although some applications allow for shorter tags). The tag T is computed over A and C, so if even a single bit of either of them is changed, the decryption process will detect the tampering attempt and refuse to use the data. In TLS, the tag T is attached at the end of the ciphertext C.</p>
 	<p>When decrypting the data, the function will receive A, C and T and compute the authentication tag of the received A and C. It will compare the resulting value to T, and only if both are equal it will output the plaintext P.</p>
 	<p>By supporting the two state of the art AEADs - AES-GCM and ChaCha20-Poly1305, together with ECDSA and ECDH algorithms, CloudFlare is able to provide the fastest, most flexible and most secure TLS experience possible to date on all platforms, be it a PC or a mobile phone.</p>
-	<h3>Bottom line</h3>
+	<div class="flex anchor relative">
+		<h3 id="bottom-line">Bottom line</h3>
+		<a href="https://blog.cloudflare.com/#bottom-line" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Go is a very easy to learn and fun to use, yet it is one of the most powerful languages for system programming. It allows us to deliver robust web-scale software in short time frames. With the performance improvements CloudFlare brings to its crypto stack, Go can now be used for high performance TLS servers as well!</p>
 </div>

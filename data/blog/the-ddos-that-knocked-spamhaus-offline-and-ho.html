@@ -1,7 +1,14 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jqrD3Oai4j6rowgEmCtqW/121cb1f4e7abbad76cafd861338c074d/the-ddos-that-knocked-spamhaus-offline-and-ho.jpg" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At CloudFlare, we deal with large DDoS attacks every day. Usually, these attacks are directed at large companies or organizations that are reluctant to talk about their details. It's fun, therefore, whenever we have a customer that is willing to let us tell the story of an attack they saw and how we mitigated it. This is one of those stories.</p>
-	<h3>Spamhaus</h3>
+	<div class="flex anchor relative">
+		<h3 id="spamhaus">Spamhaus</h3>
+		<a href="https://blog.cloudflare.com/#spamhaus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yesterday, Tuesday, March 19, 2013, CloudFlare was contacted by the non-profit anti-spam organization <a href="http://www.spamhaus.org">Spamhaus</a>. They were suffering a large DDoS attack against their website and asked if we could help mitigate the attack.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +33,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kvAKu7knFauQdp1nGcImO/d12a56df650a624a02d7a32792004935/spamhaus_ddos_attack.png.scaled500.png" alt="The DDoS That Knocked Spamhaus Offline (And How We Mitigated It)" class="kg-image" width="500" height="159" loading="lazy">
 
 	</figure>
-	<h3>How to Generate a 75Gbps DDoS</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-generate-a-75gbps-ddos">How to Generate a 75Gbps DDoS</h3>
+		<a href="https://blog.cloudflare.com/#how-to-generate-a-75gbps-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The largest source of attack traffic against Spamhaus came from DNS reflection. I've <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">written about these attacks before</a> and in the last year they have become the source of the largest Layer 3 DDoS attacks we see (sometimes well exceeding 100Gbps). Open DNS resolvers are quickly becoming the scourge of the Internet and the size of these attacks will only continue to rise until all providers make a <a href="https://blog.cloudflare.com/good-news-open-dns-resolvers-are-getting-clos">concerted effort to close them</a>. (It also makes sense to implement <a href="http://tools.ietf.org/html/bcp38">BCP-38</a>, but that's a topic for another post another time.)</p>
 	<p>The basic technique of a DNS reflection attack is to send a request for a large DNS zone file with the source IP address spoofed to be the intended victim to a large number of open DNS resolvers. The resolvers then respond to the request, sending the large DNS zone answer to the intended victim. The attackers' requests themselves are only a fraction of the size of the responses, meaning the attacker can effectively amplify their attack to many times the size of the bandwidth resources they themselves control.</p>
 	<p>In the Spamhaus case, the attacker was sending requests for the DNS zone file for ripe.net to open DNS resolvers. The attacker spoofed the CloudFlare IPs we'd issued for Spamhaus as the source in their DNS requests. The open resolvers responded with DNS zone file, generating collectively approximately 75Gbps of attack traffic. The requests were likely approximately 36 bytes long (e.g. dig ANY ripe.net @X.X.X.X+edns=0 +bufsize=4096, where X.X.X.X is replaced with the IP address of an open DNS resolver) and the response was approximately 3,000 bytes, translating to a 100x amplification factor.</p>
@@ -36,15 +50,36 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5R2fmKkhGJ7YBYFQaiwk0U/25153b6b0112291ed45013dbcd501989/im_under_attack.jpg.scaled500.jpg" alt="The DDoS That Knocked Spamhaus Offline (And How We Mitigated It)" class="kg-image" width="500" height="213" loading="lazy">
 
 	</figure>
-	<h3>How You Mitigate a 75Gbps DDoS</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-you-mitigate-a-75gbps-ddos">How You Mitigate a 75Gbps DDoS</h3>
+		<a href="https://blog.cloudflare.com/#how-you-mitigate-a-75gbps-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While large Layer 3 attacks are difficult for an on-premise DDoS solution to mitigate, CloudFlare's network was specifically designed from the beginning to stop these types of attacks. We make heavy use of Anycast. That means the same IP address is announced from every one of our 23 worldwide data centers. The network itself <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">load balances requests</a> to the nearest facility. Under normal circumstances, this helps us ensure a visitor is routed to the nearest data center on our network.</p>
 	<p>When there's an attack, Anycast serves to effectively dilute it by spreading it across our facilities. Since every data center announces the same IP address for any CloudFlare customer, traffic cannot be concentrated in any one location. Instead of the attack being many-to-one, it becomes many-to-many with no single point on the network acting as a bottleneck.</p>
 	<p>Once diluted, the attack becomes relatively easy to stop at each of our data centers. Because CloudFlare acts as a virtual shield in front of our customers sites, with Layer 3 attacks none of the attack traffic reaches the customer's servers. Traffic to Spamhaus's network dropped to below the levels when the attack started as soon as they signed up for our service.</p>
-	<h3>Other Noise</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-noise">Other Noise</h3>
+		<a href="https://blog.cloudflare.com/#other-noise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the majority of the traffic involved in the attack was DNS reflection, the attacker threw in a few other attack methods as well. One was a so-called ACK reflection attack. When a TCP connection is established there is a handshake. The server initiating the TCP session first sends a SYN (for synchronize) request to the receiving server. The receiving server responds with an ACK (for acknowledge). After that handshake, data can be exchanged.</p>
 	<p>In an ACK reflection, the attacker sends a number of SYN packets to servers with a spoofed source IP address pointing to the intended victim. The servers then respond to the victim's IP with an ACK. Like the DNS reflection attack, this disguises the source of the attack, making it appear to come from legitimate servers. However, unlike the DNS reflection attack, there is no amplification factor: the bandwidth from the ACKs is symmetrical to the bandwidth the attacker has to generate the SYNs. CloudFlare is configured to drop unmatched ACKs, which mitigates these types of attacks.</p>
 	<p>Whenever we see one of these large attacks, network operators will write to us upset that we are attacking their infrastructure with abusive DNS queries or SYN floods. In fact, it is their infrastructure that is being used to reflect an attack at us. By working with and educating network operators, they clean up their network which helps to solve the root cause of these large attacks.</p>
-	<h3>History Repeats Itself</h3>
+	<div class="flex anchor relative">
+		<h3 id="history-repeats-itself">History Repeats Itself</h3>
+		<a href="https://blog.cloudflare.com/#history-repeats-itself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, it's worth noting how similar this battle against DDoS attacks and open DNS relays is with Spamhaus's original fight. If DDoS is the network scourge of tomorrow, spam was its clear predecessor. Paul Vixie, <a href="https://en.wikipedia.org/wiki/DNSBL">the father of the DNSBL</a>, set out in 1997 to use DNS to help shut down the spam source of the day: open email relays. These relays were being used to disguise the origin of spam messages, making them more difficult to block. What was needed was a list of mail relays that mail serves could query against and decide whether to accept messages.</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>I wrote a <a href="https://blog.cloudflare.com/robust-free-dns">blog post</a> the other day about CloudFlare's <a href="https://www.cloudflare.com/dns">globally distributed DNS</a> infrastructure and how each ninja name server we give you when you signup doesn't represent just one machine, but instead a whole cluster of machines in each of the <a href="https://www.cloudflare.com/network-map">data centers we operate</a> worldwide. Several people in the comments wondered how that was possible since each name server URL maps to an IP address. The answer is Anycast, but I wanted to take some more time to explain exactly what that means.</p>
-	<h3>Unicast: One Machine, One IP</h3>
+	<div class="flex anchor relative">
+		<h3 id="unicast-one-machine-one-ip">Unicast: One Machine, One IP</h3>
+		<a href="https://blog.cloudflare.com/#unicast-one-machine-one-ip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the Internet works via a routing scheme called Unicast. Under Unicast, every node on the network gets an IP address which is unique to it. You may have connected to a wireless network and gotten a notice that your IP address is already in use, this happens when two computers on the same Unicast network try and use the same IP. In most cases, that isn't allowed.</p>
 	<p>Routers keep a map of the world's IP addresses and maintain a sense of the shortest path to get from one node to another. One router will hand a packet off to another router that is closer to the final destination until the packet finally arrives at the address it was sent to. You can see these handoffs if you run a traceroute (instructions for <a href="https://support.cloudflare.com/kb/troubleshooting/how-do-i-run-a-traceroute-with-a-mac">Mac</a> and <a href="https://support.cloudflare.com/kb/troubleshooting/how-do-i-run-a-traceroute-in-windows">Windows</a>) to any site. Take, for example, the popular arts, culture, and technology blog <a href="http://laughingsquid.com">laughingsquid.com</a>. If I do a traceroute to their origin server then I get something like this.</p>
 	<figure class="kg-card kg-image-card ">
@@ -16,7 +23,14 @@
 	</figure>
 	<p>Each of those lines, known as a "hop," represents a router that the packets carrying my request are passing through. Often there are clues in the names of the routers as to where they are located. In this case, it looks like the origin is running on a Rackspace server somewhere in or around Dallas (line 13 and knowing that DFW is the airport code for the Dallas-Ft. Worth airport gives it away). No matter where in the world you do a traceroute from, you will eventually get to the same server running in Dallas because it is using the Unicast routing scheme.</p>
 	<p>Numbers on each line. Those are three samples of the time, in milliseconds, it takes for a packet to do a round-trip to the particular router. The last line is typically the most important because it is an estimate of the real-world network latency between you and the server. In this case for me, about 50 milliseconds (which is pretty good).</p>
-	<h3>Anycast: Many Machines, One IP</h3>
+	<div class="flex anchor relative">
+		<h3 id="anycast-many-machines-one-ip">Anycast: Many Machines, One IP</h3>
+		<a href="https://blog.cloudflare.com/#anycast-many-machines-one-ip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While Unicast is the easiest way to run a network, it isn't the only way. At CloudFlare, we make extensive use of another routing scheme called Anycast. With Anycast, multiple machines can share the same IP address. When a request is sent to an Anycasted IP address, routers will direct it to the machine on the network that is closest.</p>
 	<p>Return to our friends at laughingsquid.com. They are CloudFlare users so if you request their website you get back one or more CloudFlare IP addresses. Under normal circumstances, it doesn't matter where you are in the world, you will get the same IP addresses. However, there are machines in 12 data centers all listening on those IPs. As a result, the network itself will direct traffic to the nearest CloudFlare data center to where you are making the request from. Check out the following traceroute.</p>
 	<figure class="kg-card kg-image-card ">
@@ -25,7 +39,14 @@
 
 	</figure>
 	<p>I'm running this traceroute from Northern California. The nearest CloudFlare data center is in San Jose. And, if you look closely, hops #11 - #13 all show routers in "SJC" which is the airport code for SanJose. If you run this same traceroute to laughingsquid.com from somewhere else in the world, you'll see the requests hitting whatever data center is closest to you.</p>
-	<h3>Speed, Resiliency &amp; Attack Mitigation</h3>
+	<div class="flex anchor relative">
+		<h3 id="speed-resiliency-attack-mitigation">Speed, Resiliency &amp; Attack Mitigation</h3>
+		<a href="https://blog.cloudflare.com/#speed-resiliency-attack-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Anycast is not trivial to implement, but if you do it has a number of key benefits. The first is speed. Note the latency on the last hop of about 9.5 milliseconds. Since CloudFlare answers typically 75% of requests from its edge without having to hit the origin, we're able to save significant network latency. We also pick core IBX data centers through which your packet would have likely traveled anyway, which means even when we have to go back to the origin there's little if any additional latency introduced.</p>
 	<p>In addition to speed, using Anycast means the network can be extremely resilient. Because traffic will find the best path, we can take an entire data center offline and traffic will automatically flow to the next closest data center.</p>
 	<p>The last benefit of Anycast is that it can help with attack mitigation. In most DDoS attacks, many compromised "zombie" computers are used to form what is known as a botnet. These machines can be scattered around the web and generate so much traffic that they can overwhelm a typical Unicast connected machine. The nature of CloudFlare's Anycasted network is that we inherently increase the surface area to absorb such an attack. A distributed botnet will have a portion of its denial of service traffic absorbed by each of our data centers. As a result, as we continue to grow our network and expanding into more data centers, it will get harder and harder to launch an effective DDoS against any of our users.</p>

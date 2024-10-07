@@ -9,7 +9,14 @@
 	</figure>
 	<p>Border Gateway Protocol (BGP) route leaks and hijacks can ruin your day — BGP is <a href="https://blog.cloudflare.com/is-bgp-safe-yet-rpki-routing-security-initiative">insecure by design</a>, and incorrect routing information spreading across the Internet can be incredibly disruptive and dangerous to the normal functioning of customer networks, and the Internet at large. Today, we're excited to announce Route Leak Detection, a new network alerting feature that tells customers when a prefix they own that is onboarded to Cloudflare is being leaked, i.e., advertised by an unauthorized party. Route Leak Detection helps protect your routes on the Internet: it tells you when your traffic is going places it’s not supposed to go, which is an indicator of a possible attack, and reduces time to mitigate leaks by arming you with timely information.</p>
 	<p>In this blog, we will explain what route leaks are, how Cloudflare Route Leak Detection works, and what we are doing to help protect the Internet from route leaks.</p>
-	<h2>What are route leaks, and why should I care?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-are-route-leaks-and-why-should-i-care">What are route leaks, and why should I care?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-route-leaks-and-why-should-i-care" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A route leak occurs when a network on the Internet tells the rest of the world to route traffic through their network, when the traffic isn’t supposed to go there normally. <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">A great example</a> of this and the impact it can cause was an incident in June 2019, where a small ISP in Pennsylvania started advertising routes for part of the Internet including Cloudflare, Amazon, and Linode. A significant portion of traffic destined for those networks was incorrectly routed to the network, leaking Cloudflare, Amazon, and Linode’s prefixes, and causing congestion and unreachable network errors for end users. Route leaks tend to happen because of a misconfigured peering session or customer router, a software bug in a customer or third party router, a man-in-the-middle attack, or a malicious customer or third party.</p>
 	<p>Some route leaks are innocuous. But some route leaks can be malicious, and can have very real security impact. An attacker can advertise specific routes for the express purpose of directing users to their network to do things like <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">steal cryptocurrencies</a> and other important data, or attempt to issue SSL/TLS certificates that can be used to impersonate domains. By advertising more specific routes, an attacker can trick you into accessing a site that you don’t intend to, and if it looks exactly like the site you expect, you may unwittingly enter in personal data and be at risk for an attack. Here’s a diagram representing traffic without a route leak:</p>
 	<figure class="kg-card kg-image-card ">
@@ -25,8 +32,23 @@
 	</figure>
 	<p>So in addition to making users unhappy because a lot of Internet traffic is going through paths that can’t handle it, route leaks can have very real data leak implications.</p>
 	<p>Cloudflare’s Route Leak Detection allows you to get notified quickly when your routes are leaking so that you know when a potential attack is happening.</p>
-	<h2>How does Cloudflare Route Leak Detection protect my network?</h2>
-	<h3>How to configure Route Leak Detection</h3>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-route-leak-detection-protect-my-network">How does Cloudflare Route Leak Detection protect my network?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-route-leak-detection-protect-my-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="how-to-configure-route-leak-detection">How to configure Route Leak Detection</h3>
+		<a href="https://blog.cloudflare.com/#how-to-configure-route-leak-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to configure Route Leak Detection, you must be a Cloudflare customer who has <a href="https://developers.cloudflare.com/byoip">“brought your own IP” (BYOIP)</a> addresses—this includes Magic Transit (L3), Spectrum (L4), and WAF (L7) customers. Only prefixes advertised by Cloudflare qualify for Route Leak Detection.</p>
 	<p>Configuring Route Leak Detection can be done by setting up a message in the Notifications tab in your account.</p>
 	<figure class="kg-card kg-image-card ">
@@ -36,7 +58,14 @@
 	</figure>
 	<p>Cloudflare will then begin monitoring all of your onboarded prefixes for leaks and hijacks and will send you alerts when they occur via <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare">email or specialized on call tools like PagerDuty</a>.</p>
 	<p>Cloudflare’s alert notification system supports webhooks, email, and PagerDuty, so your teams are kept up to date across their desired medium with changes in network routes and so that they can respond and take corrective action when necessary.</p>
-	<h3>An example attack scenario</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-example-attack-scenario">An example attack scenario</h3>
+		<a href="https://blog.cloudflare.com/#an-example-attack-scenario" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A malicious party attempting to use routes to gain access to customer data starts advertising a subnet of onboarded prefixes for one of our Magic Transit customers. This attack, if not found and remediated quickly, could have serious impact on the customer. When the attacker begins to advertise the prefix without the customer’s knowledge, BGP updates and route changes start occurring rapidly in the global routing table—typically within 60 seconds.</p>
 	<p>Let’s walk through how a customer might deploy Route Leak Detection. Customer Acme Corp. owns the IP prefix 203.0.113.0/24. Acme has onboarded 203.0.113.0/24 to Cloudflare, and Cloudflare tells the rest of the Internet that this prefix is reachable through Cloudflare’s network.</p>
 	<p>Once Acme has enabled Route Leak Detection, Cloudflare continuously monitors routing information on the Internet for 203.0.113.0/24. Our goal is to detect leaks within five minutes of the erroneous routing information propagating on the Internet.</p>
@@ -49,9 +78,23 @@
 	</figure>
 	<p>The alert includes all of the ASNs that are seeing the prefix being advertised by the potentially malicious party. Acme is able to warn their users that they may be at risk of a data exfiltration attack, and they should be on the lookout for suspicious behavior.</p>
 	<p>Acme is also able to quickly contact the service providers listed in the alert to stop honoring the smaller routes. Currently, the process of mitigating a route leak is a highly manual process, requiring contacting service providers directly using contact information published in <a href="https://www.peeringdb.com">public databases</a>. In the future, we plan to build features to automate this outreach and mitigation process to further drive downtime to mitigation for route leak events that may impact our customers.</p>
-	<h2>How does Cloudflare detect route leaks?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-detect-route-leaks">How does Cloudflare detect route leaks?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-detect-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare uses several sources of routing data to create a synthesis of how the Internet sees routes to our BYOIP customers. Cloudflare then watches these views to track any sudden changes that occur on the Internet. If we can correlate those changes to actions we have taken, then we know the change is benign, and it’s business as usual. However, if we haven’t made any changes, we quickly take action to tell you that your routes and your users may be at risk.</p>
-	<h3>Cloudflare’s outside-in ingestion pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-outside-in-ingestion-pipeline">Cloudflare’s outside-in ingestion pipeline</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-outside-in-ingestion-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s main source of data is from externally maintained repositories such as <a href="https://ris-live.ripe.net">RIPE’s RIS feed</a>, <a href="http://www.routeviews.org">RouteViews</a>, and <a href="https://bgpstream.caida.org/data#!caida-bmp">Caida’s public BMP feed</a>. It is important to use multiple external views of the Internet routing table to be as accurate as possible when making inferences about the state of the Internet. Cloudflare makes API calls to those sources to ingest data and analyze changes in BGP routes. These feeds allow us to ingest routing data for the whole Internet. Cloudflare filters all of that down to your prefixes that you have previously onboarded to Cloudflare.</p>
 	<p>Once this data is ingested and filtered, Cloudflare begins cross-referencing updates to the global routing table with metrics that indicate possible hijacks, such as the number of ASNs that directly see your routes, the number of BGP updates that occur over short periods of time, and how many subnets are being advertised. If the number of ASNs that directly see your routes or the number of updates change drastically, it could mean that your prefixes are being leaked. If a subnet of the prefixes you are advertising are seeing drastic amounts of change in the global routing table, it’s likely that your prefixes are being leaked somewhere.</p>
 	<p>Cloudflare already has this configured on our own prefixes today. Here’s an example of what we see when our system determines that something is wrong:</p>
@@ -61,7 +104,14 @@
 
 	</figure>
 	<p>Cloudflare owns the prefix range 2606:4700:50::/44, as it is a subnet of one of the ranges <a href="https://www.cloudflare.com/ips">listed on our site here</a>. For a period of an hour, we noticed that someone tried to advertise a subnet of that range to 38 other networks. Fortunately, because we have <a href="https://blog.cloudflare.com/rpki-details">deployed RPKI</a>, we know that most networks will reject rather than honor these route advertisements from attackers.</p>
-	<h2>What can I do to prevent route leaks in the future?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-can-i-do-to-prevent-route-leaks-in-the-future">What can I do to prevent route leaks in the future?</h2>
+		<a href="https://blog.cloudflare.com/#what-can-i-do-to-prevent-route-leaks-in-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The best way to prevent route leaks is to deploy <a href="https://blog.cloudflare.com/rpki-details">RPKI</a> in your network, and urge your Internet providers to do so as well. RPKI allows you and your providers to sign routes that you advertise to the Internet, so that no one else can steal them. If someone is advertising your RPKI routes, any providers that support RPKI will not forward those routes to other customers, ensuring that the attempted leak is contained as close to the attacker as possible.</p>
 	<p>Cloudflare’s <a href="https://isbgpsafeyet.com">continued advocacy</a> for RPKI has yielded fruits in the past three months alone. Providers such as Amazon, Google, Telstra, Cogent, and even Netflix have started supporting RPKI and are filtering and dropping invalid prefixes. In fact, over 50% of the top Internet providers now support RPKI in some fashion:</p>
 	<figure class="kg-card kg-image-card ">

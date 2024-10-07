@@ -7,7 +7,14 @@
 	</figure>
 	<p><i>Photo by </i><a href="https://unsplash.com/@aronunsplash?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><i>Aron</i></a><i> / </i><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><i>Unsplash</i></a></p>
 	<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
-	<h3>Timing with cURL</h3>
+	<div class="flex anchor relative">
+		<h3 id="timing-with-curl">Timing with cURL</h3>
+		<a href="https://blog.cloudflare.com/#timing-with-curl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://curl.haxx.se">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website <a href="http://www.zasag.mn">www.zasag.mn</a> (the Mongolian government), and measure how long a request to its home page takes:</p>
 	<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
 	<pre class="language-bash"><code class="language-bash">$ cat .curlrc
@@ -40,7 +47,14 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 			<p><b>time_total</b> is just after the client has sent the FIN connection tear down.</p>
 		</li>
 	</ul>
-	<h3>Timing with Chrome</h3>
+	<div class="flex anchor relative">
+		<h3 id="timing-with-chrome">Timing with Chrome</h3>
+		<a href="https://blog.cloudflare.com/#timing-with-chrome" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -67,6 +81,13 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 			<p>Similarly to cURL, if we subtract the TCP handshake time from TTFB, we can guess the amount of time the server really spent processing (again, we don't have an exact RTT timing, so this is a approximation).</p>
 		</li>
 	</ul>
-	<h3>What are we looking for again?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-we-looking-for-again">What are we looking for again?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-we-looking-for-again" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These measurements, including TTFB, can be helpful in diagnosing problems, and might help you to delve into a specific problem, but do they actually tell you about how well a website is performing? Ultimately, if you are looking to measure the experience of users, the time it takes for the first byte of some HTML to return isn’t effective. A web page might contain hundreds of images, it might have JavaScript and styles that need to load before you can interact. To reflect real user experience, you need to time how long until the web page becomes useful, and to take those measurements from representative sample of where your users are accessing the site from. And that's a topic for another day :)</p>
 </div>

@@ -15,7 +15,14 @@
 	</figure>
 	<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
 	<p>In order to help those looking to contribute or build upon this library, I write this blog post to explain some of the design decisions made in putting this together.</p>
-	<h3>Exclusively for PHP 7</h3>
+	<div class="flex anchor relative">
+		<h3 id="exclusively-for-php-7">Exclusively for PHP 7</h3>
+		<a href="https://blog.cloudflare.com/#exclusively-for-php-7" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>PHP 5 initially introduced the ability for type hinting on the basis of classes and interfaces, this opened up (albeit seldom used) parametric polymorphic behaviour in PHP. Type hinting on the basis of interfaces made it easier for those developing in PHP to follow the Gang of Four's famous guidance: "Program to an 'interface', not an 'implementation'."</p>
 	<p>Type hinting has slowly developed in PHP, in PHP 7.0 the ability for Scalar Type Hinting was released after a few rounds of RFCs. Additionally PHP 7.0 introduced Return Type Declarations, allowing return values to be type hinted in a similar way to argument type hinting. In this library we extensively use Scalar Type Hinting and Return Type Declarations thereby restricting the backward compatibility that's available with PHP 5.</p>
 	<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
@@ -24,7 +31,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RJX9jaiMJuc3J7e8OBCor/f9e00ec43acab7ccd54a210706d09303/php-support.png" alt="PHP version history" class="kg-image" width="1890" height="462" loading="lazy">
 
 	</figure>
-	<h3>Object Composition</h3>
+	<div class="flex anchor relative">
+		<h3 id="object-composition">Object Composition</h3>
+		<a href="https://blog.cloudflare.com/#object-composition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html">Martin Fowler</a></p>
 	</blockquote>
@@ -72,7 +86,14 @@ $pageRulesConfig-&gt;setCacheLevel('bypass');
 $pageRules = new \Cloudflare\API\Endpoints\PageRules($adapter);
 $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);</code></pre>
 	<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
-	<h3>Testing/Mocking HTTP Requests</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing-mocking-http-requests">Testing/Mocking HTTP Requests</h3>
+		<a href="https://blog.cloudflare.com/#testing-mocking-http-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're interesting in helping contribute to this repository; there are two key ways you can help:</p>
 	<ol>
 		<li>
@@ -101,7 +122,14 @@ $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true,
    $this-&gt;assertObjectHasAttribute("ipv6_cidrs", $ips);
 }</code></pre>
 	<p>We are able to build a simple mock of our <code>Adapter</code> interface by using the standardised PSR-7 response format, when we do so we are able to define what parameters PHPUnit expects to be passed to this mock. With a mock <code>Adapter</code> class in place we are able to test the <code>IPs</code> Endpoint class as any if it was using a real HTTP client.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Through building on modern versions of PHP, using good Object-Oriented Programming theory and allowing for effective testing we hope our PHP API binding provides a developer experience that is pleasant to build upon.</p>
 	<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
 	<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys">London</a>.</p>

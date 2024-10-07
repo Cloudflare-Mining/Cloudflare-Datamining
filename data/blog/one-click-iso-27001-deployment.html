@@ -8,11 +8,25 @@
 
 	</figure>
 	<p>Today, we’re very happy to announce the general availability of a new region for Regional Services that allows you to limit your traffic to only <a href="https://www.iso.org/isoiec-27001-information-security.html">ISO 27001</a> certified data centers inside the EU. This helps customers that have very strict requirements surrounding which data centers are allowed to decrypt and service traffic. Enabling this feature is a one-click operation right on the Cloudflare dashboard.</p>
-	<h3>Regional Services - a recap</h3>
+	<div class="flex anchor relative">
+		<h3 id="regional-services-a-recap">Regional Services - a recap</h3>
+		<a href="https://blog.cloudflare.com/#regional-services-a-recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2020, we saw an increase in prospects asking about data localization. Specifically, increased regulatory pressure limited them from using vendors that operated at global scale. We launched <a href="https://blog.cloudflare.com/introducing-regional-services">Regional Services</a>, a new way for customers to use the Cloudflare network. With Regional Services, we put customers back in control over which data centers are used to service traffic. Regional Services operates by limiting exactly which data centers are used to decrypt and service HTTPS traffic. For example, a customer may want to use only data centers inside the European Union to service traffic. Regional Services operates by leveraging our global network for DDoS protection but only decrypting traffic and applying Layer 7 products inside data centers that are located inside the European Union.</p>
 	<p>We later followed up with the <a href="https://www.cloudflare.com/data-localization">Data Localization Suite</a> and additional regions: <a href="https://blog.cloudflare.com/regional-services-comes-to-apac">India, Japan, and Australia</a>.</p>
 	<p>With Regional Services, customers get the best of both worlds: we empower them to use our global network for volumetric DDoS protection whilst limiting where traffic is serviced. We do that by accepting the raw TCP connection at the closest data center but forwarding it on to a data center in-region for decryption. That means that only machines of the customer’s choosing actually see the raw HTTP request, which could contain sensitive data such as a customer’s bank account or medical information.</p>
-	<h3>A new region and a new UI</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-new-region-and-a-new-ui">A new region and a new UI</h3>
+		<a href="https://blog.cloudflare.com/#a-new-region-and-a-new-ui" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally we’ve seen requests for data localization largely center around countries or geographic areas. Many types of regulations require companies to make promises about working only with vendors that are capable of restricting where their traffic is serviced geographically. Organizations can have many reasons for being limited in their choices, but they generally fall into two buckets: compliance and contractual commitments.</p>
 	<p>More recently, we are seeing that more and more companies are asking about security requirements. An often asked question about security in IT is: how do you ensure that something is safe? For instance, for a data center you might be wondering how physical access is managed. Or how often security policies are reviewed and updated. This is where certifications come in. A common certification in IT is the <a href="https://en.wikipedia.org/wiki/ISO/IEC_27001">ISO 27001 certification</a>:</p>
 	<p>Per the <a href="https://www.iso.org/isoiec-27001-information-security.html">ISO.org</a>:</p>

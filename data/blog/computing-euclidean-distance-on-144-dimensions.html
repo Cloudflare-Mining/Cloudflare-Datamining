@@ -12,7 +12,14 @@
 5612442030d14a4ce82c623f4e224733 1dd84436734e4a5d6e25332e507a8218
 6e3b89174e30372d</code></pre>
 	<p>The hash is designed to be used in a fuzzy matching algorithm that can find "nearby", related images. The specific algorithm is well defined, but making it fast is left to the programmer — and at Cloudflare we need the matching to be done super fast. We want to match thousands of hashes per second, of images passing through our network, against a database of millions of known images. To make this work, we need to seriously optimize the matching algorithm.</p>
-	<h3>Naive quadratic algorithm</h3>
+	<div class="flex anchor relative">
+		<h3 id="naive-quadratic-algorithm">Naive quadratic algorithm</h3>
+		<a href="https://blog.cloudflare.com/#naive-quadratic-algorithm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first algorithm that comes to mind has <code>O(K*N)</code> complexity: for each query, go through every hash in the database. In naive implementation, this creates a lot of work. But how much work exactly?</p>
 	<p>First, we need to explain how fuzzy matching works.</p>
 	<p>Given a query hash, the fuzzy match is the "closest" hash in a database. This requires us to define a distance. We treat each hash as a vector containing 144 numbers, identifying a point in a 144-dimensional space. Given two such points, we can calculate the distance using the standard Euclidean formula.</p>
@@ -49,7 +56,14 @@
 &lt; test-vector.txt ./mmdist-naive &gt; test-vector.tmp
 Total: 85261.833ms, 1536 items, avg 55.509ms per query, 18.015 qps</code></pre>
 	<p>We matched 1,536 test hashes against a database of 1 million random vectors in 85 seconds. It took 55ms of CPU time on average to find the closest neighbour. This is rather slow for our needs.</p>
-	<h3>SIMD for help</h3>
+	<div class="flex anchor relative">
+		<h3 id="simd-for-help">SIMD for help</h3>
+		<a href="https://blog.cloudflare.com/#simd-for-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An obvious improvement is to use more complex SIMD instructions. SIMD is a way to instruct the CPU to process multiple data points using one instruction. This is a perfect strategy when dealing with vector problems — as is the case for our task.</p>
 	<p>We settled on using AVX2, with 256 bit vectors. We did this for a simple reason — newer AVX versions are not supported by our AMD CPUs. Additionally, in the past, we were <a href="https://blog.cloudflare.com/on-the-dangers-of-intels-frequency-scaling">not thrilled by the AVX-512 frequency scaling</a>.</p>
 	<p>Using AVX2 is easier said than done. There is no single instruction to count Euclidean distance between two uint8 vectors! The fastest way of counting the full distance of two 144-byte vectors <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c#L13-L36">with AVX2 we could find is authored</a> by <a href="https://twitter.com/thecomp1ler">Vlad</a>:</p>
@@ -62,15 +76,36 @@ Total: 85261.833ms, 1536 items, avg 55.509ms per query, 18.015 qps</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ make naive-avx2 
 Total: 25911.126ms, 1536 items, avg 16.869ms per query, 59.280 qps</code></pre>
 	<p>We measured 17ms per item, which is still below our expectations. Unfortunately, we can't push it much further without major changes. The problem is that this code is limited by memory bandwidth. The measurements come from my Intel i7-5557U CPU, which has the max theoretical memory bandwidth of just 25GB/s. The database of 1 million entries takes 137MiB, so it takes at least 5ms to feed the database to my CPU. With this naive algorithm we won't be able to go below that.</p>
-	<h3>Vantage Point Tree algorithm</h3>
+	<div class="flex anchor relative">
+		<h3 id="vantage-point-tree-algorithm">Vantage Point Tree algorithm</h3>
+		<a href="https://blog.cloudflare.com/#vantage-point-tree-algorithm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the naive brute force approach failed, we tried using more sophisticated algorithms. My colleague <a href="https://github.com/kornelski/vpsearch">Kornel Lesiński implemented</a> a super cool <a href="https://en.wikipedia.org/wiki/Vantage-point_tree">Vantage Point algorithm</a>. After a few ups and downs, optimizations and rewrites, we gave up. Our problem turned out to be unusually hard for this kind of algorithm.</p>
 	<p>We observed <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">"the curse of dimensionality"</a>. Space partitioning algorithms don't work well in problems with large dimensionality — and in our case, we have an enormous number of 144 dimensions. K-D trees are doomed. Locality-sensitive hashing is also doomed. It's a bizarre situation in which the space is unimaginably vast, but everything is close together. The volume of the space is a 347-digit-long number, but the maximum distance between points is just 3060 - sqrt(255*255*144).</p>
 	<p>Space partitioning algorithms are fast, because they gradually narrow the search space as they get closer to finding the closest point. But in our case, the common query is never close to any point in the set, so the search space can’t be narrowed to a meaningful degree.</p>
 	<p>A VP-tree was a promising candidate, because it operates only on distances, subdividing space into near and far partitions, like a binary tree. When it has a close match, it can be very fast, and doesn't need to visit more than <code>O(log(N))</code> nodes. For non-matches, its speed drops dramatically. The algorithm ends up visiting nearly half of the nodes in the tree. Everything is close together in 144 dimensions! Even though the algorithm avoided visiting more than half of the nodes in the tree, the cost of visiting remaining nodes was higher, so the search ended up being slower overall.</p>
-	<h3>Smarter brute force?</h3>
+	<div class="flex anchor relative">
+		<h3 id="smarter-brute-force">Smarter brute force?</h3>
+		<a href="https://blog.cloudflare.com/#smarter-brute-force" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This experience got us thinking. Since space partitioning algorithms can't narrow down the search, and still need to go over a very large number of items, maybe we should focus on going over all the hashes, extremely quickly. We must be smarter about memory bandwidth though — it was the limiting factor in the naive brute force approach before.</p>
 	<p>Perhaps we don't need to fetch all the data from memory.</p>
-	<h3>Short distance</h3>
+	<div class="flex anchor relative">
+		<h3 id="short-distance">Short distance</h3>
+		<a href="https://blog.cloudflare.com/#short-distance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The breakthrough came from the realization that we don't need to count the full distance between hashes. Instead, we can compute only a subset of dimensions, say 32 out of the total of 144. If this distance is already large, then there is no need to compute the full one! Computing more points is not going to reduce the Euclidean distance.</p>
 	<p>The proposed algorithm works as follows:</p>
 	<p>1. Take the query hash and extract a 32-byte short hash from it</p>
@@ -82,7 +117,16 @@ Total: 25911.126ms, 1536 items, avg 16.869ms per query, 59.280 qps</code></pre>
 	<p>It's sufficient for our algorithm to prove that no neighbour exists within a predefined distance threshold. Let's assume we are not interested in hashes more distant than, say, 220, which squared is 48,400. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-avx2.c">This makes our short-distance algorithm variation</a> work much better:</p>
 	<pre class="language-bash"><code class="language-bash">$ make short-avx2-threshold
 Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps</code></pre>
-	<h3>Origin distance variation</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="origin-distance-variation">Origin distance variation</h3>
+		<a href="https://blog.cloudflare.com/#origin-distance-variation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/rp4oarmXrL2JtieXZ4VWB/f12ad4eac6d47ede0d9018c74e8b7730/image6-11.png" alt="" class="kg-image" width="1081" height="375" loading="lazy">
@@ -90,7 +134,14 @@ Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps</code></pre>
 	</figure>
 	<p>At some point, John noted that the threshold allows additional optimization. We can order the hashes by their distance from some origin point. Given a query hash which has origin distance of A, we can inspect only hashes which are distant between |A-threshold| and |A+threshold| from the origin. This is pretty much how each level of Vantage Point Tree works, just simplified. This optimization — ordering items in the database by their distance from origin point — is relatively simple and can help save us a bit of work.</p>
 	<p>While great on paper, this method doesn't introduce much gain in practice, as the vectors are not grouped in clusters — they are pretty much random! For the threshold values we are interested in, the origin distance algorithm variation gives us ~20% speed boost, which is okay but not breathtaking. This change might bring more benefits if we ever decide to reduce the threshold value, so it might be worth doing for production implementation. However, it doesn't work well with query batching.</p>
-	<h3>Transposing data for better AVX</h3>
+	<div class="flex anchor relative">
+		<h3 id="transposing-data-for-better-avx">Transposing data for better AVX</h3>
+		<a href="https://blog.cloudflare.com/#transposing-data-for-better-avx" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But we're not done with AVX optimizations! The usual problem with AVX is that the instructions don't normally fit a specific problem. Some serious mind twisting is required to adapt the right instruction to the problem, or to reverse the problem so that a specific instruction can be used. AVX2 doesn't have useful "horizontal" uint16 subtract, multiply and add operations. For example, <code>_mm_hadd_epi16</code> exists, but it's slow and cumbersome.</p>
 	<p>Instead, we can twist the problem to make use of fast available uint16 operands. For example we can use:</p>
 	<ol>
@@ -157,7 +208,14 @@ Total: 1118.669ms, 1536 items, avg 0.728ms per query, 1373.062 qps</code></pre>
 	<p>Roofline model from Denis Bakhvalov's book‌‌</p>
 	<p>If you are interested in architectural tuning such as this, take a look at <a href="https://book.easyperf.net/perf_book">the new performance book by Denis Bakhvalov</a>. It discusses roofline model analysis, which is pretty much what we did here.</p>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2020-12-mmdist">Do take a look at our code</a> and tell us if we missed some optimization!</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What an optimization journey! We jumped between memory and ALU bottlenecked code. We discussed more sophisticated algorithms, but in the end, a brute force algorithm — although tuned — gave us the best results.</p>
 	<p>To get even better numbers, I experimented with Nvidia GPU using CUDA. The CUDA intrinsics like <code>vabsdiff4</code> and <code>dp4a</code> fit the problem perfectly. The V100 gave us some amazing numbers, but I wasn't fully satisfied with it. Considering how many AMD Ryzen cores with AVX2 we can get for the cost of a single server-grade GPU, we leaned towards general purpose computing for this particular problem.</p>
 	<p>This is a great example of the type of complexities we deal with every day. Making even the best technologies work “at Cloudflare scale” requires thinking outside the box. Sometimes we rewrite the solution dozens of times before we find the optimal one. And sometimes we settle on a brute-force algorithm, just very very optimized.</p>

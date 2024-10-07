@@ -8,7 +8,14 @@ CloudFlare" class="kg-image" width="450" height="299" loading="lazy">
 	</figure>
 	<p>For some time, the vast majority of the web has been vulnerable to the so-called BEAST SSL attack. The attack was <a href="http://www.theregister.co.uk/2011/09/27/beast_attacks_paypay">first demonstrated in 2011</a>, and more than 90% of the Internet including large sites like Google.com remain vulnerable to their SSL sessions being decrypted. But, as of today, anyone with CloudFlare account with SSL need no longer fear the BEAST.</p>
 	<p>The solution to BEAST is implementing TLS 1.1 and 1.2 as well as prioritizing the RC4 cypher suites. We just rolled out support for these across our network. Along with this, we've looked over the SSL cyphers we support. We've added some additional stronger cyphers, removed some of the weakest cyphers, and prioritized them to optimize both security and SSL performance.</p>
-	<h3>Faster &amp; More Secure</h3>
+	<div class="flex anchor relative">
+		<h3 id="faster-more-secure">Faster &amp; More Secure</h3>
+		<a href="https://blog.cloudflare.com/#faster-more-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is one of those great updates where we can report that security has improved and performance is also faster. In fact, this update makes our overall SSL performance about 30% faster. Sites behind CloudFlare now receive a <a href="https://www.ssllabs.com/ssltest/analyze.html?d=www.cloudflare.com">90 (A) score</a> from SSLLabs. That's higher than the scores achieved by sites like <a href="https://www.ssllabs.com/ssltest/analyze.html?d=google.com">Google.com</a> and <a href="https://www.ssllabs.com/ssltest/analyze.html?d=facebook.com">Facebook.com</a>, and the highest score we think we can get without sacrificing performance. If you have SSL enabled, you can <a href="https://www.ssllabs.com/ssltest/index.html">test yours yourself</a>.</p>
 	<p>All paid CloudFlare plans include SSL by default. If you don't yet have SSL, <a href="https://www.cloudflare.com/plans">upgrade to a paid plan</a> today to make sure all the visitors to your site can surf on a secure, encrypted connection. It's now not only the easiest SSL on the web, but also among the fastest and the safest.</p>
 </div>

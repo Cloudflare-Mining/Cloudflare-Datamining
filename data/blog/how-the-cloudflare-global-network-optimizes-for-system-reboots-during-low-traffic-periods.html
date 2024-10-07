@@ -10,7 +10,14 @@
 	<p>We take our customer experience very seriously, and hence we have several mechanisms to ensure that disruption to customer traffic does not occur. One example is <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>, our in-house load balancer that spreads load across the servers in a data center, ensuring that there is no disruption when a server is taken out for routine maintenance.</p>
 	<p>The SRE team decided to further reduce risk by only allowing reboots in a data center when the customer traffic is at the lowest. We also needed to automate the existing manual process for determining the window - eliminating toil.</p>
 	<p>In this post, we’ll discuss how the team improved this manual process and automated the determination of these windows using a trigonometric function - sinusoidal wave fitting.</p>
-	<h2>When is the best time to reboot?</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-is-the-best-time-to-reboot">When is the best time to reboot?</h2>
+		<a href="https://blog.cloudflare.com/#when-is-the-best-time-to-reboot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thanks to <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">how efficient our load-balancing framework is</a> within a data center, technically we could proceed to schedule reboots throughout the day with zero impact to traffic flowing through the data center. However, operationally the management is simplified by requiring reboots take place between certain times for each data center. It both acts as a rate-limiter to avoid rebooting all servers in our larger data centers in a single day, and makes remediating any unforeseen issues that arise during the reboots more straightforward, as issues can be caught within the first batch of reboots.</p>
 	<p>One of the first steps is to determine the time window during which we are going to allow these reboots to take place; choosing the relative low-traffic period for a data center makes the most sense for obvious reasons. In the past, these low-traffic windows were found manually by humans reviewing historical traffic trends present in our metrics; it was SRE who were responsible for creating and maintaining the definition of these windows, which became particularly toilsome:</p>
 	<ol>
@@ -27,7 +34,14 @@
 			<p>This responsibility became SRE toil as it was repetitive, process-based work that could and should be automated.</p>
 		</li>
 	</ol>
-	<h2>Time to be more efficient</h2>
+	<div class="flex anchor relative">
+		<h2 id="time-to-be-more-efficient">Time to be more efficient</h2>
+		<a href="https://blog.cloudflare.com/#time-to-be-more-efficient" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We quickly realized that we needed to make this process more efficient using automation. An ideal solution would be one that was accurate, easy to maintain, re-usable, and could be consumed by other teams.</p>
 	<p>A theoretical solution to this was <b>sine-fitting</b> on the CPU pattern of the data center over a configurable period. e.g. two weeks. This method is a way to transform the pattern into a theoretical sinusoidal wave as shown in the image below.</p>
 	<figure class="kg-card kg-image-card ">
@@ -36,7 +50,14 @@
 
 	</figure>
 	<p>With a sine wave, the most common troughs can be determined. The periods where these troughs occur are then used as options for the maintenance window.</p>
-	<h2>Sinusoidal wave theory - the secret sauce</h2>
+	<div class="flex anchor relative">
+		<h2 id="sinusoidal-wave-theory-the-secret-sauce">Sinusoidal wave theory - the secret sauce</h2>
+		<a href="https://blog.cloudflare.com/#sinusoidal-wave-theory-the-secret-sauce" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We think math is fun and were excited to see how this held up in practice. To implement the logic and tests, we needed to understand the theory. This section details the important bits for anyone that is interested in implementing this for their maintenance cycles as well.</p>
 	<p>The image below shows a theoretical representation of a sine wave. It is represented by the mathematical function y(t) = Asin(2πft + φ) where A = Amplitude, f = Frequency, t = Time and φ = Phase.</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,7 +85,15 @@ def sinfunc(timestamps, amplitude, frequency, phase, offset):
 amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
     sinfunc, timestamps, cpu, p0=guess, maxfev=2000
 )</code></pre>
-	<h2>Applying the theory</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="applying-the-theory">Applying the theory</h2>
+		<a href="https://blog.cloudflare.com/#applying-the-theory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the theory understood, we implemented this logic in our reboot system. To determine the window, the reboot system queries <a href="https://blog.cloudflare.com/tag/prometheus">Prometheus</a> for the data center CPU over a configurable period and attempts to fit a curve on the resultant pattern.</p>
 	<p>If there’s an accurate enough fit, the window is cached in Consul along with other metadata. Otherwise, fallback logic is implemented. For various reasons, some data centers might not have enough data for a fit at that moment. For example, a data center which was only recently provisioned and hasn’t served enough traffic yet.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -77,7 +106,14 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
 	<p><b>Caching</b>: Calculation of the window should only be done over a pre-decided validity period. To achieve this we store the information in a Consul KV, along with a session lock that expires after the validity period. We <a href="https://blog.cloudflare.com/how-we-use-hashicorp-nomad">have mentioned in the past</a> that we use Consul as a service-discovery and key-value storage mechanism. This is an example of the latter.</p>
 	<p><b>Pre-fetch</b>: In practice, it makes sense to control when this computation happens. There are several options but the most efficient was to implement a pre-fetch of this window on startup of the reboot system.</p>
 	<p><b>Observability</b>: We exported a couple of metrics to Prometheus, which help us understand the decisions being made and any errors we need to address. We also export the maintenance window itself for consumption by other automated systems and teams.</p>
-	<h2>How accurate is this fit?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-accurate-is-this-fit">How accurate is this fit?</h2>
+		<a href="https://blog.cloudflare.com/#how-accurate-is-this-fit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most load patterns fit into the sine wave, but there are some edge cases occasionally. e.g. a smaller data center that has a constant CPU. In those cases we have fallback mechanisms, but it also got us thinking about how to determine the accuracy of each fit.</p>
 	<p>With accuracy data we can make smarter decisions about accepting the automatic window, track regressions and unearth data centers with unexpected patterns. The theoretical solution here is referred to as the <b>goodness of fit</b>.</p>
 	<p><a href="https://youtu.be/Jl-Ye38qkRc">Curve fitting in Python with curve_fit</a> describes curve fitting and calculating the chi-squared value. The formula for a goodness of fit chi-squared test in the image below:</p>
@@ -97,29 +133,64 @@ amplitude, frequency, phase, offset, _ = scipy.optimize.curve_fit(
     return ((n - chisq) / n) * 100</code></pre>
 	<p>The observed result of this is that the smaller the chi-squared, the more accurate the fit and vice versa. Hence we can provide a fit percentage of the difference between the length and the chi-squared.</p>
 	<p>There are three main types of fit, as shown in the images below.</p>
-	<h3>Bad Fit</h3>
+	<div class="flex anchor relative">
+		<h3 id="bad-fit">Bad Fit</h3>
+		<a href="https://blog.cloudflare.com/#bad-fit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These data centers do not exhibit a sinusoidal pattern and the maintenance window can only be determined arbitrarily. This is common in test data centers which do not handle customer traffic. In these cases, it makes sense to turn off load-based reboots and use an arbitrary window. In these cases, it is common to require faster reboots on a different schedule to catch any potential issues early.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d7CxZfSQkvubSUdK8DlQA/682fddb7cedac5c4a70532d6cf9c28ef/bgw05.png" alt="This data center has no low-traffic periods." class="kg-image" width="1600" height="1201" loading="lazy">
 
 	</figure>
-	<h3>Skewed Fit</h3>
+	<div class="flex anchor relative">
+		<h3 id="skewed-fit">Skewed Fit</h3>
+		<a href="https://blog.cloudflare.com/#skewed-fit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These data centers exhibit sinusoidal traffic patterns but are a bit skewed, with some smaller troughs within the wave cycle. The troughs (and hence the windows) are still correct, but the accuracy of fit is reduced.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Kh1ulRPX7V1vWq9BufT8r/9f24476544dbe930c75f4184dc14dfaa/alg01.png" alt="This data center has low-traffic periods, but has multiple troughs resulting in a skewed fit. " class="kg-image" width="1402" height="1048" loading="lazy">
 
 	</figure>
-	<h3>Great Fit</h3>
+	<div class="flex anchor relative">
+		<h3 id="great-fit">Great Fit</h3>
+		<a href="https://blog.cloudflare.com/#great-fit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These are data centers with very clear patterns and great fits. This is the ideal scenario and most fall into this category.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37lKmcTlLr9hdMP59WNlDJ/d80c9b9509e6442a5ff46309317183bc/blr02.png" alt="This data center fits perfectly on the sine curve. It has a high accuracy of it." class="kg-image" width="1400" height="1052" loading="lazy">
 
 	</figure>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will continue to iterate on this to make it more accurate, and provide more ways to consume the information. We have a variety of maintenance use-cases that cut across multiple organizations, and it’s exciting to see the information used more widely besides reboots. For example, teams can use maintenance windows to make automated decisions in downstream services such as running compute-intensive background tasks only in those periods.</p>
-	<h2>I want to do this type of work</h2>
+	<div class="flex anchor relative">
+		<h2 id="i-want-to-do-this-type-of-work">I want to do this type of work</h2>
+		<a href="https://blog.cloudflare.com/#i-want-to-do-this-type-of-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you found this post very interesting and want to contribute, take a look at our <a href="https://www.cloudflare.com/en-gb/careers">careers page</a> for open positions! We’d love to have a conversation with you.</p>
 </div>

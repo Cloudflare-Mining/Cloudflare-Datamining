@@ -8,18 +8,46 @@
 	<p>Stream Live lets users easily scale their live-streaming apps and websites to millions of creators and concurrent viewers while focusing on the content rather than the infrastructure — Stream manages codecs, protocols, and bit rate automatically.</p>
 	<p>For <a href="https://blog.cloudflare.com/recapping-speed-week-2023">Speed Week</a> this year, we introduced a <a href="https://blog.cloudflare.com/low-latency-hls-support-for-cloudflare-stream">closed beta of Low-Latency HTTP Live Streaming</a> (LL-HLS), which builds upon the high-quality, feature-rich HTTP Live Streaming (HLS) protocol. Lower latency brings creators even closer to their viewers, empowering customers to build more interactive features like chat and enabling the use of live-streaming in more time-sensitive applications like live e-learning, sports, gaming, and events.</p>
 	<p>Today, in celebration of Birthday Week, we’re opening this beta to all customers with even lower latency. With LL-HLS, you can deliver video to your audience faster, reducing the latency a viewer may experience on their player to as little as three seconds. <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">Low Latency streaming</a> is priced the same way, too: $1 per 1,000 minutes delivered, with zero extra charges for encoding or bandwidth.</p>
-	<h3>Broadcast with latency as low as three seconds.</h3>
+	<div class="flex anchor relative">
+		<h3 id="broadcast-with-latency-as-low-as-three-seconds">Broadcast with latency as low as three seconds.</h3>
+		<a href="https://blog.cloudflare.com/#broadcast-with-latency-as-low-as-three-seconds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>LL-HLS is an extension of the <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming">HLS standard</a> that allows us to reduce glass-to-glass latency — the time between something happening on the broadcast end and a user seeing it on their screen. That includes factors like network conditions and transcoding for HLS and adaptive bitrates. We also include client-side buffering in our understanding of latency because we know the experience is driven by what a user sees, not when a byte is delivered into a buffer. Depending on encoder and player settings, broadcasters' content can be playing on viewers' screens in less than three seconds.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5022148109decd31bca6a2c062564ea0/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5022148109decd31bca6a2c062564ea0%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div><!--kg-card-end: html-->
 	<p><i>On the left,</i> <a href="https://obsproject.com"><i>OBS Studio</i></a> <i>broadcasting from my personal computer to Cloudflare Stream. On the right, watching this livestream using our own built-in player playing LL-HLS with three second latency!</i></p>
-	<h3>Same pricing, lower latency. Encoding is always free.</h3>
+	<div class="flex anchor relative">
+		<h3 id="same-pricing-lower-latency-encoding-is-always-free">Same pricing, lower latency. Encoding is always free.</h3>
+		<a href="https://blog.cloudflare.com/#same-pricing-lower-latency-encoding-is-always-free" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our addition of LL-HLS support builds on all the best parts of Stream including simple, predictable pricing. You never have to pay for ingress (broadcasting to us), compute (encoding), or egress. This allows you to stream with peace of mind, knowing there are no surprise fees and no need to trade quality for cost. Regardless of bitrate or resolution, Stream costs \$1 per 1,000 minutes of video delivered and \$5 per 1,000 minutes of video stored, billed monthly.</p>
 	<p>Stream also provides both a built-in web player or HLS/DASH manifests to use in a compatible player of your choosing. This enables you or your users to go live using the same protocols and tools that broadcasters big and small use to go live to YouTube or Twitch, but gives you full control over access and presentation of live streams. We also provide access control with signed URLs and hotlinking prevention measures to protect your content.</p>
-	<h3>Powered by the strength of the network</h3>
+	<div class="flex anchor relative">
+		<h3 id="powered-by-the-strength-of-the-network">Powered by the strength of the network</h3>
+		<a href="https://blog.cloudflare.com/#powered-by-the-strength-of-the-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And of course, Stream is powered by Cloudflare's global network for fast delivery worldwide, with points of presence within 50ms of 95% of the Internet connected population, a key factor in our quest to slash latency. We ingest live video close to broadcasters and move it rapidly through Cloudflare’s network. We run encoders on-demand and generate player manifests as close to viewers as possible.</p>
-	<h3>Getting started with LL-HLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-ll-hls">Getting started with LL-HLS</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-ll-hls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Getting started with Stream Live only takes a few minutes, and by using Live <i>Outputs</i> for restreaming, you can even test it without changing your existing infrastructure. First, create or update a Live Input in the Cloudflare dashboard. While in beta, Live Inputs will have an option to enable LL-HLS called “Low-Latency HLS Support.” Activate this toggle to enable the new pipeline.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -50,6 +78,13 @@
 	</figure>
 	<p>During the beta, our built-in player will automatically attempt to use low-latency for any enabled Live Input, falling back to regular HLS otherwise. If LL-HLS is being used, you’ll see “Low Latency” noted in the player.</p>
 	<p>During this phase of the beta, we are most closely focused on using <a href="https://obsproject.com">OBS</a> to broadcast and Stream’s built-in player to watch. However, you may test the LL-HLS manifest in a player of your own by appending <code>?protocol=llhls</code> to the end of the HLS manifest URL. This flag may change in the future and is not yet ready for production usage; <a href="https://developers.cloudflare.com/stream/changelog">watch for changes in DevDocs</a>.</p>
-	<h3>Sign up today</h3>
+	<div class="flex anchor relative">
+		<h3 id="sign-up-today">Sign up today</h3>
+		<a href="https://blog.cloudflare.com/#sign-up-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Low-Latency HLS is Stream Live’s latest tool to bring your creators and audiences together. All new and existing Stream subscriptions are eligible for the LL-HLS open beta today, with no pricing changes or contract requirements --- all part of building the fastest, simplest serverless live-streaming platform. Join our beta to start test-driving Low-Latency HLS!</p>
 </div>

@@ -8,10 +8,24 @@
 	<p>When we originally <a href="https://blog.cloudflare.com/announcing-warp-plus">announced</a> WARP, we knew we were launching a product that was different from other VPNs. Cloudflare has not only hundreds more <a href="https://www.cloudflare.com/network">data centers</a> than your typical VPN provider, but also a unique purview into the adoption of open <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">Internet standards</a>. The confluence of these two factors have led us to today’s announcement: support for MASQUE, a cutting-edge new protocol for the beta version of our consumer WARP iOS app.</p>
 	<p><a href="https://datatracker.ietf.org/wg/masque/about">MASQUE</a> is a set of mechanisms that extend HTTP/3 and leverage the <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">unique properties</a> of the QUIC transport protocol to efficiently proxy IP and UDP traffic. Most importantly, it will make your Internet browsing experience faster and more stable without sacrificing privacy.</p>
 	<p>Like many products at Cloudflare, we’re offering this first as a free, consumer offering. Once we’ve had an opportunity to learn from what it’s like to operate MASQUE on mobile devices, at scale, we plan to integrate it into our <a href="https://www.cloudflare.com/zero-trust">Zero Trust</a> enterprise product suite.</p>
-	<h3>We’re not saying goodbye to WireGuard</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-not-saying-goodbye-to-wireguard">We’re not saying goodbye to WireGuard</h3>
+		<a href="https://blog.cloudflare.com/#were-not-saying-goodbye-to-wireguard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we first built WARP we chose to go with WireGuard for many reasons – among them, simplicity. This is where WireGuard shines: ~4,000 lines of code that use public-key cryptography to create an encrypted tunnel between one computer and another. The cryptographic parts – encapsulation and decapsulation – &nbsp;are fast, simple, and secure. This simplicity has allowed us to implement it cross-platform without much effort; today, we support <a href="https://developers.cloudflare.com/warp-client">WireGuard clients</a> on iOS, Android, macOS, Windows, and Linux.</p>
 	<p>That being said, the protocol is not without its issues. Like many tradeoffs in technology, WireGuard’s strengths are also its drawbacks. While simple, it is also rigid: it’s not possible to extend it easily, for example, for session management, congestion control, or to recover more quickly from error-state behaviors we’re familiar with. Finally, neither the protocol nor the cryptography it uses are standards-based, making it difficult to keep up with the strongest known cryptography (<a href="https://blog.cloudflare.com/post-quantum-for-all">post-quantum crypto</a>, for example).</p>
-	<h3>We want to move QUIC-ly</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-want-to-move-quic-ly">We want to move QUIC-ly</h3>
+		<a href="https://blog.cloudflare.com/#we-want-to-move-quic-ly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited about MASQUE because it fits into the way the Internet is evolving. According to this year’s <a href="https://blog.cloudflare.com/http3-usage-one-year-on">usage report from our Radar team</a>, HTTP/2 is currently the standard in use by the majority of Internet traffic, but HTTP/3 occupies a growing share – 28% as of June 2023. Cloudflare has always been dedicated towards adopting the cutting edge when it comes to standards: when RFC 9000 (the QUIC transport protocol) was published, we enabled it for all Cloudflare customers <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare">the very next day</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -23,7 +37,14 @@
 	<p>No more <a href="https://calendar.perfplanet.com/2020/head-of-line-blocking-in-quic-and-http-3-the-details">head of line blocking</a>: when one packet of information does not make it to its destination, it will no longer block all streams of information.</p>
 	<p>Agility and evolution: QUIC has strong extension and version negotiation mechanisms. And because it encrypts all but a few bits of its wire image, deploying new transport features is easier and more practical. In contrast, TCP evolution was hampered by middleboxes that failed to keep up with the times.</p>
 	<p>Naturally, we’d want the proxying protocol we use for so many people’s everyday browsing to take advantage of these benefits. For example, the QUIC unreliable datagram extension doesn't help much for standard web traffic but it's ideal for tunneling UDP or IP packets that expect an unreliable substrate beneath them. Without the unreliable aspect, the protocols on top can get upset and start to perform badly. Datagrams help <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">unlock QUIC's proxying potential</a>.</p>
-	<h3>MASQUE: A new era for VPN performance and flexibility</h3>
+	<div class="flex anchor relative">
+		<h3 id="masque-a-new-era-for-vpn-performance-and-flexibility">MASQUE: A new era for VPN performance and flexibility</h3>
+		<a href="https://blog.cloudflare.com/#masque-a-new-era-for-vpn-performance-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may have heard of HTTP GET, POST, and PUT, but what about CONNECT? HTTP-CONNECT is a method that opens up a tunnel between servers and proxies traffic between them. For a deeper dive, check out our <a href="https://blog.cloudflare.com/a-primer-on-proxies">Primer on Proxies</a>. Many Cloudflare services use this method like so:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -46,7 +67,14 @@
 	<p>From a protocol perspective, we also think that MASQUE will prove to be resilient over time. As you can see above, connections are made through port 443, which for both TCP and UDP blends in well with general HTTP/3 traffic and is less susceptible than WireGuard to blocking.</p>
 	<p>Finally, because MASQUE is an IETF standard, innovations via extensions are already underway. One we’re particularly excited about is <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-multipath">Multipath QUIC</a>, an extension whose implementation would allow us to use multiple concurrent network interfaces for a single logical QUIC connection. For example, using both LTE and WiFi on a single mobile device could allow for seamless switching between the two, helping to avoid pesky disruptions when you’re coming to and from work or home.</p>
 	<p>The magic of supporting MASQUE is that it combines some pretty cool (and very Cloudflare-y!) elements: a standards-based proxying protocol that provides real user-facing performance benefits, built upon Cloudflare’s widely available Anycast network, and encryption of that last-mile between that network and your phone.</p>
-	<h3>So how can I use it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-how-can-i-use-it">So how can I use it?</h3>
+		<a href="https://blog.cloudflare.com/#so-how-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’d like to join the waitlist for our beta tester program for MASQUE, you can <a href="https://www.cloudflare.com/lp/masque-building-a-new-protocol-into-cloudflare-warp">sign up here</a>.</p>
 	<p>You’ll first need to download <a href="https://testflight.apple.com">Testflight</a> on a valid iOS device. We will be sending out invites to download the app via Testflight first come, first served, as early as next week. Once you’ve downloaded the app, MASQUE will be available as the default connection in our beta iOS version, only available in iOS 17 (and up).</p>
 	<p>To toggle between WireGuard and MASQUE, go to Settings &gt; Personalization &gt; Protocol:</p>
@@ -55,6 +83,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7znX2d4cNvCtyP1ZJkGcXp/45531d6cea872a6a2f1ea0663450868a/Screenshot-2023-06-22-at-11.55.53.png" alt="" class="kg-image" width="1612" height="734" loading="lazy">
 
 	</figure>
-	<h3>Protocols come and go, but our privacy promise remains the same</h3>
+	<div class="flex anchor relative">
+		<h3 id="protocols-come-and-go-but-our-privacy-promise-remains-the-same">Protocols come and go, but our privacy promise remains the same</h3>
+		<a href="https://blog.cloudflare.com/#protocols-come-and-go-but-our-privacy-promise-remains-the-same" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the protocols that dominate the Internet may change, our promise to consumers remains the same – a more private Internet, free of cost. When using WARP, we still route all DNS queries through 1.1.1.1, our privacy-respecting DNS resolver; we will never write user-identifiable log data to disk; we will never sell your browsing data or use it in any way to target you with advertising data; and you can still use WARP without providing any personal information like your name, phone number, or email address.</p>
 </div>

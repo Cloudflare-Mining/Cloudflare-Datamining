@@ -10,7 +10,14 @@
 	<p>A little over two months ago, <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">we shared extensive benchmarking results</a> of last mile networks all around the world. The results showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on a range of measurements (p95, mean), that Cloudflare was the fastest provider in 49% of networks around the world. Since then, we’ve worked to continuously improve performance until we’re the fastest everywhere. <a href="https://blog.cloudflare.com/two-weeks-later-finding-and-eliminating-long-tail-latencies">We set a goal</a> to grow the number of networks where we’re the fastest by 10% every Innovation Week. We met that goal during <a href="https://blog.cloudflare.com/tag/birthday-week">Birthday Week</a> (September 2021).</p>
 	<p>Today, we’re proud to report we blew the goal away for <a href="https://blog.cloudflare.com/tag/full-stack-week">Full Stack Week</a> (November 2021). Cloudflare measured our performance against the top 1,000 networks in the world (by number of IPv4 addresses advertised). Out of those, Cloudflare has become the fastest provider in 79 new networks, an increase of 14% of these 1,000 networks. Of course, we’re not done yet, but we wanted to share the latest results and explain how we did it.</p>
 	<p>However, before we go into more detail on our network performance, we wanted to share new performance metrics on our Workers platform (given it’s Full Stack Week!). We’ve crunched the numbers of Cloudflare Workers vs Fastly’s Compute@Edge, and the results are in: Workers is 196% faster.</p>
-	<h3>Faster Network Means Faster Stack</h3>
+	<div class="flex anchor relative">
+		<h3 id="faster-network-means-faster-stack">Faster Network Means Faster Stack</h3>
+		<a href="https://blog.cloudflare.com/#faster-network-means-faster-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A few months ago, we also discussed the performance of Cloudflare Workers, as compared to other similar offerings out there. We <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">compared our performance</a> to Lambda and Lambda@Edge, where Cloudflare Workers outperformed at 210% and 298% respectively.</p>
 	<p>At the time, we wanted to see how we measured up against all comparable offerings, but not all offerings were generally available. As a result, we weren’t able to report on how Workers compared to another solution: Fastly’s Compute@Edge.</p>
 	<p>Today, we’re excited to report that <b>Cloudflare Workers is 196% faster than Fastly’s Compute@Edge based on the time to first byte from the tests we ran on 50 nodes using Catchpoint’s data from across the world.</b></p>
@@ -44,7 +51,14 @@ async function handleRequest(event) {
 	<p>If you want to explore the results on your own, here is a <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARTO-C-D-K396AjZokq1JMAA">link to the data</a>.</p>
 	<p>By building on our global network that we’re constantly accelerating, leveraging isolates, and <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">driving cold starts to zero</a>, we’re able to offer our customers ludicrously fast speeds across the board.</p>
 	<p>Now, let’s move on to an update on how Cloudflare’s broader network performance has continued to improve!</p>
-	<h3>Measuring What Matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-what-matters">Measuring What Matters</h3>
+		<a href="https://blog.cloudflare.com/#measuring-what-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To quantify network performance, we have to get enough data from around the world across all manner of different networks comparing ourselves with other providers. We used Real User Measurements (RUM) to fetch a 100kb file from several different providers. Users around the world report the performance of different providers. &nbsp;The more users who report the data, the higher fidelity the signal is. &nbsp;The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">original Speed Week blog post here</a>.</p>
 	<p>In the process of quantifying network performance, it became clear where we were not the fastest everywhere. After Birthday Week, we found 601 country/network pairs where we were more than 100ms behind the leading provider (where a country/network pair is defined as the performance of a network within a particular country).</p>
 	<p>We are constantly going through the process of figuring out <i>why</i> we were slow — and then improve. The challenges we faced were unique to each network and highlighted a variety of different issues that are prevalent on the Internet. We’re going to deep dive into a couple of networks, and show how we diagnosed and then improved performance.</p>
@@ -63,7 +77,14 @@ async function handleRequest(event) {
 
 	</figure>
 	<p>Now that we’ve talked about how we’ve improved, let’s share our stories about chasing peak performance across the world -- each with a different set of challenges.</p>
-	<h3>Placing Traffic Properly in Peru</h3>
+	<div class="flex anchor relative">
+		<h3 id="placing-traffic-properly-in-peru">Placing Traffic Properly in Peru</h3>
+		<a href="https://blog.cloudflare.com/#placing-traffic-properly-in-peru" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our first stop for improving network performance was in Peru. We observed that a lot of users in Lima were actually getting sent to Chile to be served. Cloudflare has multiple locations in Peru, so this shouldn’t have happened. Sending traffic to Chile caused us to be ranked fourth on that particular network in the country. Our engineers knew that the best way to get to number one was to ensure that all the Lima traffic stayed within the country, so we decided to look at why so much of our traffic was getting routed outside the country.</p>
 	<p>The reason that so much traffic was being routed outside the country was due to the network provider distributing traffic to Cloudflare unevenly, and too many users were sent to one specific location. Our network has a series of checks and fail-safes that allow us to ensure that even if this happens, our users will continue to see a good experience. The checks were being engaged here because of the uneven distribution of traffic to our locations in Lima; however, the traffic was being sent out of the country.</p>
 	<p>To fix the situation in the short term, we decided to do a bit of manual load balancing across our locations in Lima while building automation to remove the need for manual actions in the future. We took one of the locations that was seeing the most traffic and stopped advertising some prefixes from that location. The hypothesis we had was that the traffic would simply flow to the other Lima locations instead of Chile, and everything would balance out, improving the TCP connect time for everyone while keeping the traffic in the country. We started to make the change on a small portion of our free traffic, and our hypothesis &nbsp;proved correct. &nbsp;At that point, we deployed the change in a larger scope, and the P90 Client TCP <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> dropped from 240ms to 60ms.</p>
@@ -73,7 +94,14 @@ async function handleRequest(event) {
 
 	</figure>
 	<p>As a result, Cloudflare is now number one in network performance in Peru.</p>
-	<h3>Slimming Down Latencies in Sri Lanka</h3>
+	<div class="flex anchor relative">
+		<h3 id="slimming-down-latencies-in-sri-lanka">Slimming Down Latencies in Sri Lanka</h3>
+		<a href="https://blog.cloudflare.com/#slimming-down-latencies-in-sri-lanka" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next example takes us halfway around the world to Sri Lanka, where we found a network provider who was routing requests from their users to Newark.</p>
 	<pre class="language-bash"><code class="language-bash">1 * * *
 2 100.85.0.1 3.061ms 2.522ms 2.728ms
@@ -99,7 +127,14 @@ async function handleRequest(event) {
 	</figure>
 	<p>However, even though we were advertising all of our ranges through Colombo and our performance in aggregate improved, this provider was still sending traffic for some Cloudflare prefixes to Newark. We reached out to the provider and let them know about this user-impacting change they made.</p>
 	<p>After doing all of these things, Cloudflare moved from fourth in Sri Lanka to number one.</p>
-	<h3>Update on Birthday Week</h3>
+	<div class="flex anchor relative">
+		<h3 id="update-on-birthday-week">Update on Birthday Week</h3>
+		<a href="https://blog.cloudflare.com/#update-on-birthday-week" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All of these network changes and more have allowed Cloudflare to become number one in network performance in more networks than before. During Birthday Week, we announced that we were faster in more networks than our competitors. Out of the top 1,000 networks in the world (by number of IPv4 addresses advertised), here’s how Cloudflare performed during Birthday Week (September 2021):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -136,7 +171,14 @@ async function handleRequest(event) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7tw94JKYOc0WiLW2n5d85s/d214998f4e5b68bb4298dafa50bca165/image2-24.png" alt="" class="kg-image" width="1779" height="910" loading="lazy">
 
 	</figure>
-	<h3>Long Tail Latency</h3>
+	<div class="flex anchor relative">
+		<h3 id="long-tail-latency">Long Tail Latency</h3>
+		<a href="https://blog.cloudflare.com/#long-tail-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The running theme of these performance updates has always been the long tail of issues to solve. Ironing out these kinks on our network is critical to ensure that we provide premiere performance as we grow.</p>
 	<p>Our team has put in a lot of effort and yielded some great results, but we’re constantly trying to be faster. We’ve automated the discovery of performance issues like these, and we’re looking to build automation that will detect and remediate different classes of these issues to stay on top of network performance in the future.</p>
 	<p>Tracking performance like this doesn’t just make one number faster; it helps improve the performance of your entire stack, making everything lightning-fast.</p>

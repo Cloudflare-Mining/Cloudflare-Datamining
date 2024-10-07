@@ -7,13 +7,27 @@
 	</figure>
 	<p>At Cloudflare, we reuse existing core systems to power multiple products and testing of these core systems is essential. In particular, we require being able to have a wide and thorough visibility of our live APIs’ behaviors. We want to be able to detect regressions, prevent incidents and maintain healthy APIs. That is why we built Scout.</p>
 	<p>Scout is an automated system periodically running Python tests verifying the end to end behavior of our APIs. Scout allows us to evaluate APIs in production-like environments and thus ensures we can green light a production deployment while also monitoring the behavior of APIs in production.</p>
-	<h2>Why Scout?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-scout">Why Scout?</h2>
+		<a href="https://blog.cloudflare.com/#why-scout" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before Scout, we were using an automated test system leveraging the Robot Framework. This older system was limiting our testing capabilities. In fact, we could not easily match json responses against keys we were looking for. We would abandon covering different behaviors of our APIs as it was impossible to decide on which resources a given test suite would run. Two different test suites would create false negatives as they were running on the same account.</p>
 	<p>Regarding schema validation, only API responses were validated against a json schema and tests would not fail if the response did not match the schema. Moreover, It was impossible to validate API requests.</p>
 	<p>Test suites were run in a queue, making the delay to a new feature assessment dependent on the number of test suites to run. The queue would as well potentially make newer test suites run the following day. Hence we often ended up with a mismatch between tests and APIs versions. Test steps could not be run in parallel either.</p>
 	<p>We could not split test suites between different environments. If a new API feature was being developed it was impossible to write a test without first needing the actual feature to be released to production.</p>
 	<p>We built Scout to overcome all these difficulties. We wanted the developer experience to be easy and we wanted Scout to be fast and reliable while spotting any live API issue.</p>
-	<h3>A Scout test example</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-scout-test-example">A Scout test example</h3>
+		<a href="https://blog.cloudflare.com/#a-scout-test-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Scout is built in Python and leverages the functionalities of Pytest. Before diving into the exact capabilities of Scout and its architecture, let’s have a quick look at how to use it!</p>
 	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about">here</a>):</p>
 	<pre class="language-python"><code class="language-python">from scout import requires, validate, Account, Zone
@@ -94,7 +108,14 @@ class TestZone:
 
 	</figure>
 	<p>Scout is run in separate environments such as production-like and production environments. It is part of our deployment process to verify Scout is <i>green</i> in our production-like environment prior to deploying to production where Scout is also used for monitoring purposes.</p>
-	<h2>How we built it</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-it">How we built it</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The core of Scout is written in Python and it is a combination of three components interacting together:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -112,7 +133,14 @@ class TestZone:
 			<p><b>The Scout Worker</b>: a collector and presenter of test reports</p>
 		</li>
 	</ul>
-	<h3>The Scout plugin</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-scout-plugin">The Scout plugin</h3>
+		<a href="https://blog.cloudflare.com/#the-scout-plugin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is the core component of the Scout system. It allows us to write self explanatory tests while ensuring a high level of compliance against OpenAPI schemas and verifying the APIs’ behaviors.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -132,7 +160,14 @@ class TestZone:
 	<p>Any failure on expectation or validation and any exceptions are recorded in the stash. The stash is shared across all runners. As such, when a test setup, run or cleanup is processed, the timeline of execution and potential retries are logged in the stash. The stash contents are later used for building the test suite reports.</p>
 	<p>Scout is able to run multiple test steps in parallel. Actually, each resource couple (Account Runner, Zone Runner) is associated with a Pytest-xdist worker which runs test steps independently. There can be as many workers as there are resource couples. An extra “default” runner is provided for reaching our different APIs and/or URLs with or without authentication.</p>
 	<p>Testing a test system was not the easiest part. We have been required to build a fake API and assert the Scout plugin would behave as it should in different situations. We reached and maintained a test coverage confidence which was considered good (close to 90%) for using the Scout plugin permanently.</p>
-	<h3>The Scout service</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-scout-service">The Scout service</h3>
+		<a href="https://blog.cloudflare.com/#the-scout-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Scout service is meant to schedule test suites periodically. It is a configurable scheduler providing a reporting harness for the test suites as well as multiple metrics. It was a design decision to build a scheduler instead of using cron jobs.</p>
 	<p>We wanted to be aware of any scheduling issue as well as run issues. For this we used Prometheus metrics. The problem is that the Prometheus default configuration is to scrape metrics advertised by services. This scraping happens periodically and we were concerned about the eventuality of missing metrics if a cron job was to finish prior to the next Prometheus metrics scraping. As such we decided a small scheduler was better suited for overall observability of the test runs. Among the metrics the Scout service provides are network failures, general test failures, reporting failures, tests lagging and more.</p>
 	<figure class="kg-card kg-image-card ">
@@ -145,7 +180,14 @@ class TestZone:
 	<p>As a fallback, if there are any thread failure, test failure or reporting failure we are alerted based on the Prometheus metrics being updated across the service execution. The logs of the Scout service as well as the logs of each Pytest-Scout plugin execution provide the last resort information if no metrics are available and reporting is failing.</p>
 	<p>The service can be deployed with a minimal YAML configuration and be set up for different environments. We can for example decide to run different test suites based on the environment, publish or not to Cloudflare Workers, set different periods and retry mechanisms and so on.</p>
 	<p>We keep the tests as part of our code base alongside the configuration of the Scout service, and that’s about it, the Scout service is a separate entity.</p>
-	<h3>The Scout Worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-scout-worker">The Scout Worker</h3>
+		<a href="https://blog.cloudflare.com/#the-scout-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is a Cloudflare worker in charge of fetching the most recent Worker KVs and displaying them in an eye pleasing manner. The Scout service publishes a test report as JSON, thus the Scout worker parses the report and displays its content based on the status of the test suite run.</p>
 	<p>For example, we present below an authentication failure during a test which resulted in such a display in the worker:</p>
 	<figure class="kg-card kg-image-card ">
@@ -153,7 +195,14 @@ class TestZone:
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42dMShTD7SrsgASIKbpCcZ/43cef5d1d45aefa38d271261e3e79563/image5.png" alt="" class="kg-image" width="1380" height="1654" loading="lazy">
 
 	</figure>
-	<h2>What does Scout let us do</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-does-scout-let-us-do">What does Scout let us do</h2>
+		<a href="https://blog.cloudflare.com/#what-does-scout-let-us-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Through leveraging the capabilities of Pytest and Cloudflare Workers, we have been able to build a configurable, robust and reliable system which allows us to easily write self explanatory tests for our APIs.</p>
 	<p>We can validate requests and responses against OpenAPI schemas and test behaviors over specific resources while getting alerted through multiple means if something goes wrong.</p>
 	<p>For specific use cases, we can write a test verifying the API behaves as it should, the configuration to be pushed at the edge is valid and a given zone will react as it should to security threats. Thus going beyond an end-to-end API test.</p>

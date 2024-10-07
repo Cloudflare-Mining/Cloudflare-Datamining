@@ -11,7 +11,14 @@
 	<p>Personally, one of my proudest moments at Cloudflare came on our birthday in 2014 when we made <a href="https://blog.cloudflare.com/introducing-universal-ssl">HTTPS support free for all our users</a>. At the time, people called us crazy — literally and repeatedly. Frankly, internally we had significant debates about whether we were crazy since encryption was the primary reason why people upgraded from a free account to a paid account.</p>
 	<p>But it was the right thing to do. The fact that encryption wasn't built into the web from the beginning was, in our mind, a bug. Today, almost exactly four years later, the web is nearly 80% encrypted thanks to leadership from great projects like Let's Encrypt, the browser teams at Google, Apple, Microsoft, and Mozilla, and the fact that more and more hosting and SaaS providers have built in support for HTTPS at no cost. I'm proud of the fact that we were a leader in helping start that trend.</p>
 	<p>Today is another day I expect to look back on and be proud of because today we hope to help start a new trend to make the encrypted web more private and secure. To understand that, you have to understand a bit about why the encrypted web as exists today still leaks a lot of your browsing history.</p>
-	<h2>How Private Is Your Browsing History?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-private-is-your-browsing-history">How Private Is Your Browsing History?</h2>
+		<a href="https://blog.cloudflare.com/#how-private-is-your-browsing-history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The expectation when you visit a site over HTTPS is that no one listening on the line between you and where your connection terminates can see what you're doing. And to some extent, that's true. If you visit your bank's website, HTTPS is effective at keeping the contents sent to or from the site (for example, your username and password or the balance of your bank account) from being leaked to your ISP or anyone else monitoring your network connection.</p>
 	<p>While the contents sent to or received from a HTTPS site are protected, the fact that you visited the site can be observed easily in a couple of ways. Traditionally, one of these has been via <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>. DNS queries are, by default, unencrypted so your ISP or anyone else can see where you're going online. That's why last April, we launched <a href="https://one.one.one.one">1.1.1.1</a> — a free (and <a href="https://www.dnsperf.com/#!dns-resolvers">screaming fast</a>) public DNS resolver with support for DNS over TLS and DNS over HTTPS.</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,12 +27,26 @@
 
 	</figure>
 	<p><a href="https://one.one.one.one">1.1.1.1</a> has been a huge success and we've significantly increased the percentage of DNS queries sent over an encrypted connection. Critics, however, rightly pointed out that the identity of the sites that you visit still can leak in other ways. The most problematic is something called the Server Name Indication (SNI) extension.</p>
-	<h2>Why SNI?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-sni">Why SNI?</h2>
+		<a href="https://blog.cloudflare.com/#why-sni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fundamentally, SNI exists in order to allow you to host multiple encrypted websites on a single IP address. Early browsers didn't include the SNI extension. As a result, when a request was made to establish a HTTPS connection the web server didn't have much information to go on and could only hand back a single SSL certificate per IP address the web server was listening on.</p>
 	<p>One solution to this problem was to create certificates with multiple Subject Alternative Names (SANs). These certificates would encrypt traffic for multiple domains that could all be hosted on the same IP. This is how Cloudflare handles HTTPS traffic from older browsers that don't support SNI. We limit that feature to our paying customers, however, for the same reason that SANs aren't a great solution: they're a hack, a pain to manage, and can slow down performance if they include too many domains.</p>
 	<p>The more scalable solution was SNI. The analogy that makes sense to me is to think of a postal mail envelope. The contents inside the envelope are protected and can't be seen by the postal carrier. However, outside the envelope is the street address which the postal carrier uses to bring the envelope to the right building. On the Internet, a web server's IP address is the equivalent of the street address.</p>
 	<p>However, if you live in a multi-unit building, a street address alone isn't enough to get the envelope to the right recipient. To supplement the street address you include an apartment number or recipient's name. That's the equivalent of SNI. If a web server hosts multiple domains, SNI ensures that a request is routed to the correct site so that the right SSL certificate can be returned to be able to encrypt and decrypt any content.</p>
-	<h2>Nosey Networks</h2>
+	<div class="flex anchor relative">
+		<h2 id="nosey-networks">Nosey Networks</h2>
+		<a href="https://blog.cloudflare.com/#nosey-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The specification for SNI was introduced by the IETF in 2003 and browsers rolled out support over the next few years. At the time, it seemed like an acceptable tradeoff. The vast majority of Internet traffic was unencrypted. Adding a TLS extension that made it easier to support encryption seemed like a great trade even if that extension itself wasn't encrypted.</p>
 	<p>But, today, as HTTPS covers nearly 80% of all web traffic, the fact that SNI leaks every site you go to online to your ISP and anyone else listening on the line has become a glaring privacy hole. Knowing what sites you visit can build a very accurate picture of who you are, creating both privacy and security risks.</p>
 	<figure class="kg-card kg-image-card ">
@@ -34,7 +55,14 @@
 
 	</figure>
 	<p>In the United States, ISPs were briefly restricted in their ability to gather customer browsing data under FCC rules passed at the end of the Obama administration. ISPs, however, lobbied Congress and, in April 2017, President Trump signed a Congressional Resolution repealing those protections. As ISPs increasingly <a href="https://arstechnica.com/information-technology/2017/06/oath-verizon-completes-4-5-billion-buy-of-yahoo-and-merges-it-with-aol">acquire media companies</a> and <a href="https://www.appnexus.com/company/pressroom/att-to-acquire-appnexus">ad targeting businesses</a>, being able to mine the data flowing through their pipes is an increasingly attractive business for them and an increasingly troubling privacy threat to all of us.</p>
-	<h2>Closing the SNI Privacy Hole</h2>
+	<div class="flex anchor relative">
+		<h2 id="closing-the-sni-privacy-hole">Closing the SNI Privacy Hole</h2>
+		<a href="https://blog.cloudflare.com/#closing-the-sni-privacy-hole" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On May 3, about a month after we launched <a href="https://one.one.one.one">1.1.1.1</a>, I was reading a review of our new service. While the article praised the fact that <a href="https://one.one.one.one">1.1.1.1</a> was privacy-oriented, it somewhat nihilistically concluded that it was all for naught because ISPs could still spy on you by monitoring SNI. Frustrated, I dashed off an email to some of Cloudflare's engineers and the senior team at Mozilla, who we'd been working on a project to help encrypt DNS. I concluded my email:</p>
 	<blockquote>
 		<p>My simple PRD: if Firefox connects to a Cloudflare IP then we'd give you a public key to use to encrypt the SNI entry before sending it to us. How does it scale to other providers? Dunno, but we have to start somewhere. Rough consensus and running code, right?</p>
@@ -45,7 +73,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6m8eyH5dCGo5BQfLPfexbz/fbc38c697b5891f5d1be4f29e3b7b1f5/Cloudflare_https_with_secure_dns_tls13_encrytped_sni-1.png" alt="" class="kg-image" width="1993" height="1215" loading="lazy">
 
 	</figure>
-	<h2>Hoping to Start Another Trend</h2>
+	<div class="flex anchor relative">
+		<h2 id="hoping-to-start-another-trend">Hoping to Start Another Trend</h2>
+		<a href="https://blog.cloudflare.com/#hoping-to-start-another-trend" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we're the first to support ESNI, we haven't done this alone. We worked on ESNI with great teams from Apple, Fastly, Mozilla, and others across the industry who, like us, are concerned about Internet privacy. While Cloudflare is the first content network to support ESNI, this isn't a proprietary protocol. It's being worked on as an <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni/?include_text=1">IETF Draft RFC</a> and we are hopeful others will help us formalize the draft and implement the standard as well. If you're curious about the technical details behind ESNI, you can learn more from the <a href="https://blog.cloudflare.com/encrypted-sni">great blog post just published by my colleague Alessandro Ghedini</a>. Finally, when browser support starts to launch later this week you can test this from our <a href="https://encryptedsni.com">handy ESNI testing tool</a>.</p>
 	<figure class="kg-card kg-image-card ">
 

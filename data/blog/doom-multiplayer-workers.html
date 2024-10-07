@@ -36,7 +36,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ocpe3WmkxWK6eBo7I4yov/ecd5343aede14fce514ffbfae08b50b0/image8-1.png" alt="" class="kg-image" width="1502" height="591" loading="lazy">
 
 	</figure>
-	<h2>Keeping it simple</h2>
+	<div class="flex anchor relative">
+		<h2 id="keeping-it-simple">Keeping it simple</h2>
+		<a href="https://blog.cloudflare.com/#keeping-it-simple" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We wanted this demo to be as simple as possible, to run in the browser, end to end, with no downloads or native binaries required. This meant one first task: porting Doom to compile to <a href="https://webassembly.org">WebAssembly</a>, an open standard that defines a portable binary-code format for executable programs and enables high-performance applications in multiple environments, including web pages on modern browsers.</p>
 	<p>We looked around for other Wasm Doom ports <b>that included the network layer</b> but didn't find any. It was time to get our hands dirty and do it ourselves. How hard could it be?</p>
 	<p>Enter the world of <a href="https://emscripten.org">Emscripten</a>, “a complete compiler toolchain to WebAssembly, using LLVM” that provides Web support for popular portable APIs such as SDL, effectively allowing ports of complex applications such as Doom.</p>
@@ -48,7 +55,14 @@
 
 	</figure>
 	<p>It cost us a few head bangs on the wall, but we learned a lot in the process. Here's a few things I think you’ll find interesting:</p>
-	<h3>No main() loop</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-main-loop">No main() loop</h3>
+		<a href="https://blog.cloudflare.com/#no-main-loop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike many C/C++ graphical apps, like games, you can't have an infinite loop running on a page. The browser environment is <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">event-driven</a>. When an event is processed, it then needs to return control to the browser so that the next event gets its turn.</p>
 	<p>Emscripten provides a function to solve this problem. With <a href="https://emscripten.org/docs/api_reference/emscripten.h.html#c.emscripten_set_main_loop"><code>emscripten_set_main_loop()</code></a>, you can have your infinite loop running at, say, 60 frames per second, but the other browser functions can still run between iterations without hanging the page.</p>
 	<p>In <a href="https://github.com/chocolate-doom/chocolate-doom/blob/master/src/doom/d_main.c#L499"><code>d_main.c</code></a></p>
@@ -58,11 +72,26 @@
 }</code></pre>
 	<p>Became:</p>
 	<pre class="language-js"><code class="language-js">emscripten_set_main_loop(D_RunFrame, 0, 0);</code></pre>
-	<h3>No UDP</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="no-udp">No UDP</h3>
+		<a href="https://blog.cloudflare.com/#no-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The original MS-DOS Doom used the <a href="https://en.wikipedia.org/wiki/IPX/SPX">IPX</a> networking protocol from Novell NetWare. Later versions and current ports migrated to UDP (though some still maintain compatibility with IPX, because why not?). There's a good reason why action games use UDP (instead of TCP) for their multiplayer protocols. UDP is simple, fast, and non-blocking. However, you need to deal with packet loss or out-of-order packets at the application level. You're basically trading responsiveness, low latency, and speed for guarantees and reliability.</p>
 	<p>Emscripten has some <a href="https://emscripten.org/docs/porting/networking.html">wrappers</a> to emulate POSIX TCP sockets over WebSockets, but not UDP. Also, we don't want UDP; we want to use WebSockets, which in turn use TCP.</p>
 	<p>It became evident that we'd have to write a new Chocolate Doom network module to use TCP and WebSockets instead of UDP while working to mitigate the problems mentioned above.</p>
-	<h3>Enter the net_websockets.c driver</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-the-net_websockets-c-driver">Enter the net_websockets.c driver</h3>
+		<a href="https://blog.cloudflare.com/#enter-the-net_websockets-c-driver" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We had to deal with a few challenges to make the WebSockets module work the way we wanted. The first was the network topology:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -146,7 +175,14 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 	</figure>
 	<p>We also added a few options to the original Chocolate Doom code base, like choosing your name from the command line, and support for multiple keys for the same action.</p>
 	<p>The open-sourced code and instructions to compile and run Wasm Doom locally can be found in <a href="https://github.com/cloudflare/doom-wasm">this repo</a>.</p>
-	<h2>The Message Router</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-message-router">The Message Router</h2>
+		<a href="https://blog.cloudflare.com/#the-message-router" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The message router runs on Cloudflare edge and handles the incoming and outgoing messages between the clients and the server. It has the following requirements:</p>
 	<ul>
 		<li>
@@ -222,7 +258,14 @@ if (this.sessions.map(c =&gt; c.from).indexOf(from) == -1) {
 i = this.sessions.map(c =&gt; c.from).indexOf(to)
 if (i != -1) this.sessions[i].ws.send(data.slice(4))</code></pre>
 	<p>You can check the full source code and setup instructions for the message router in our GitHub repo <a href="https://github.com/cloudflare/doom-wasm">here</a>. We also provide a simplified NodeJS implementation to facilitate local development.</p>
-	<h2>The Website</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-website">The Website</h2>
+		<a href="https://blog.cloudflare.com/#the-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The cherry on top of our little pet project is the website, the thing that glues everything together. We will, of course, be using <a href="https://pages.cloudflare.com">Cloudflare Pages</a> for this.</p>
 	<p>The website needs to do a couple of things:</p>
 	<ul>
@@ -239,7 +282,14 @@ if (i != -1) this.sessions[i].ws.send(data.slice(4))</code></pre>
 			<p>Have that retro feeling 90s dark look.</p>
 		</li>
 	</ul>
-	<h3>Running Wasm Doom</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-wasm-doom">Running Wasm Doom</h3>
+		<a href="https://blog.cloudflare.com/#running-wasm-doom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Emscripten Wasm binaries use <a href="https://emscripten.org/docs/api_reference/module.html">Module</a>, a global JavaScript object, as their environment configuration. When the app starts, it looks at the Module's definitions and applies them during the different execution stages.</p>
 	<p>Module allows you to define things like the input arguments (like the ones you'd pass to a command-line app), code to run before the Wasm starts, the function to handle stdout, and many other parameters.</p>
 	<p>For instance, we use <a href="https://emscripten.org/docs/api_reference/module.html#Module.preRun">PreRun</a> to make sure we load two files, <code>doom1.wad</code> and <code>default.cfg</code> into Emscripten’s <a href="https://emscripten.org/docs/api_reference/Filesystem-API.html">virtual file-system</a> before Doom starts. Without them, the app wouldn’t start.</p>
@@ -261,7 +311,15 @@ doom: 2, connected to %s
 doom: 3, we're out of client addresses</code></pre>
 	<p>And this is all we have to do in Doom’s C source code:</p>
 	<pre class="language-c"><code class="language-c">net_websockets.c: printf("doom: 2, connected to %s\n", attr.url);</code></pre>
-	<h2>Game setup</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="game-setup">Game setup</h2>
+		<a href="https://blog.cloudflare.com/#game-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The game setup is as easy as it can be. You go to <a href="https://silentspacemarine.com">silentspacemarine.com</a>, start a multiplayer game, get a unique game permalink, share it with your friends online, wait for them to join, and start playing. The person who starts the game becomes "the server" in the network, but we handle that for you; there's no need to worry about technical details.</p>
 	<p>If you receive one of these permalink invites, all you need to do is click on it, choose your name, wait for your host to start the game, and that's it.</p>
 	<figure class="kg-card kg-image-card ">
@@ -270,7 +328,14 @@ doom: 3, we're out of client addresses</code></pre>
 
 	</figure>
 	<p>The source and Worker Pages wrangler configuration for the <a href="https://silentspacemarine.com">silentspacemarine.com</a> website can be found in this <a href="https://github.com/cloudflare/doom-workers">repo</a>.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can play our demo at <a href="https://silentspacemarine.com">https://silentspacemarine.com/</a>.</p>
 	<p>Our Wasm Doom with WebSockets implementation runs in the browser, supports mouse, sound and fullscreen (press F during the game), works on the desktop and mobile phones (using virtual gamepads) and supports real-time networked multiplayer (up to four players) on top of the Cloudflare edge.</p>
 	<p>There is certainly room for improvement in this project. For instance, we don't handle reconnects or disconnects very well if players drop off abruptly (ex: close their web browser window). We're also not using <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects#transactional-storage-api">storage</a> in our Durable Object to persist a session over an unlikely but possible <a href="https://developers.cloudflare.com/workers/learning/how-workers-works">isolate</a> termination.</p>
@@ -279,7 +344,15 @@ doom: 3, we're out of client addresses</code></pre>
 	<p>However, as John put it, we wanted to showcase a paradigm shift and the opportunity to build real-time networked applications, now made possible because new and powerful technologies and features are available on our edge computing platform.</p>
 	<p>Having said this, the source code for <a href="https://github.com/cloudflare/doom-wasm">Wasm Doom</a>, <a href="https://github.com/cloudflare/doom-workers">Message Router</a>, and website is all open-sourced and available in our GitHub, and you can start playing with it. Comments, issues, or even PRs are welcome. We tried to package everything together so that you can run things locally or deploy your version in Cloudflare.</p>
 	<p>Edge Doom (or Durable Objects Offer Multiplayer, as we like to call it) was a fun project to put together. We hope you found this tech write-up interesting and inspiring to do other things with our edge computing components, and we can't wait to see what you come up with.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fdd394c53bf9df1d244eefead56c2031?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 </div>

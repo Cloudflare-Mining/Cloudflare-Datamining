@@ -8,14 +8,28 @@
 	</figure>
 	<p>Network-layer DDoS attacks are <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q4-2020">on the rise</a>, prompting security teams to rethink their L3 DDoS mitigation strategies to prevent business impact. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> protects customers’ entire networks from DDoS attacks by placing our network in front of theirs, either always on or on demand. Today, we’re announcing new functionality to improve the experience for on-demand Magic Transit customers: flow-based monitoring. Flow-based monitoring allows us to detect threats and notify customers when they’re <a href="https://www.cloudflare.com/ddos/under-attack">under attack</a> so they can activate Magic Transit for protection.</p>
 	<p>Magic Transit is Cloudflare’s solution to secure and accelerate your network at the IP layer. With Magic Transit, you get <a href="https://www.cloudflare.com/ddos">DDoS protection</a>, traffic acceleration, and other network functions delivered as a service from every Cloudflare data center. With Cloudflare’s global network (59 Tbps capacity across 200+ cities) and &lt;3sec time to mitigate at the edge, you’re covered from even the largest and most sophisticated attacks without compromising performance. Learn more about Magic Transit <a href="https://blog.cloudflare.com/magic-transit">here</a>.</p>
-	<h3>Using Magic Transit on demand</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-magic-transit-on-demand">Using Magic Transit on demand</h3>
+		<a href="https://blog.cloudflare.com/#using-magic-transit-on-demand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Magic Transit, Cloudflare <a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip">advertises customers’ IP prefixes</a> to the Internet with BGP in order to attract traffic to our network for DDoS protection. Customers can choose to use Magic Transit always on or on demand. With always on, we advertise their IPs and mitigate attacks all the time; for on demand, customers activate advertisement only when their networks are under active attack. But there’s a problem with on demand: if your traffic isn’t routed through Cloudflare’s network, by the time you notice you’re being targeted by an attack and activate Magic Transit to mitigate it, the attack may have already caused impact to your business.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AwonbMEE0lcPsDBIDxiyM/7f9e63bbb9d8dd48ddd7e8c722a29809/2-1.png" alt="" class="kg-image" width="827" height="424" loading="lazy">
 
 	</figure>
-	<h3>On demand with flow-based monitoring</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-demand-with-flow-based-monitoring">On demand with flow-based monitoring</h3>
+		<a href="https://blog.cloudflare.com/#on-demand-with-flow-based-monitoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Flow-based monitoring solves the problem with on-demand by enabling Cloudflare to detect and notify you about attacks based on traffic flows from your data centers. You can configure your routers to continuously send NetFlow or sFlow (coming soon) to Cloudflare. We’ll ingest your flow data and analyze it for volumetric DDoS attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -38,7 +52,14 @@
 	</figure>
 	<p>Activate Magic Transit for DDoS protection</p>
 	<p>Using flow-based monitoring with Magic Transit on demand will provide your team peace of mind. Rather than acting in response to an attack after it impacts your business, you can complete a simple one-time setup and rest assured that Cloudflare will notify you (and/or start protecting your network automatically) when you’re under attack. And once Magic Transit is activated, Cloudflare’s global network and industry-leading DDoS mitigation has you covered: your users can continue business as usual with <a href="https://assets.ctfassets.net/slt3lc6tev37/5TjO2f5Y0mBd1DZLA7yRdf/68c34acc375b1443f91518ffde9421d2/Magic_Transit_protects_networks_while_also_improving_performance.pdf">no impact to performance</a>.</p>
-	<h3>Example flow-based monitoring workflow: faster time to mitigate for Acme Corp</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-flow-based-monitoring-workflow-faster-time-to-mitigate-for-acme-corp">Example flow-based monitoring workflow: faster time to mitigate for Acme Corp</h3>
+		<a href="https://blog.cloudflare.com/#example-flow-based-monitoring-workflow-faster-time-to-mitigate-for-acme-corp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s walk through an example customer deployment and workflow with Magic Transit on demand and flow-based monitoring. Acme Corp’s network was hit by a large <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">ransom DDoS attack</a> recently, which caused downtime for both external-facing and internal applications. To make sure they’re not impacted again, the Acme network team chose to set up on-demand Magic Transit. They authorize Cloudflare to advertise their IP space to the Internet in case of an attack, and set up <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">Anycast GRE tunnels</a> to receive clean traffic from Cloudflare back to their network. Finally, they configure their routers at each data center to send NetFlow data to a Cloudflare Anycast IP.</p>
 	<p>Cloudflare receives Acme’s NetFlow data at a location close to the data center sending it (thanks, Anycast!) and analyzes it for DDoS attacks. When traffic exceeds attack thresholds, Cloudflare triggers an automatic <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare">PagerDuty incident</a> for Acme’s NOC team and starts advertising Acme’s IP prefixes to the Internet with BGP. Acme’s traffic, including the attack, starts flowing through Cloudflare within minutes, and the attack is <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">blocked at the edge</a>. Clean traffic is routed back to Acme through their GRE tunnels, causing no disruption to end users - they’ll never even know Acme was attacked. When the attack has subsided, Acme’s team can withdraw their prefixes from Cloudflare with one click, returning their traffic to its normal path.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,9 +68,24 @@
 
 	</figure>
 	<p>When the attack subsides, withdraw your prefixes from Cloudflare to return to normal</p>
-	<h3>Get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To learn more about Magic Transit and flow-based monitoring, <a href="https://www.cloudflare.com/plans/enterprise/contact">contact us</a> today.</p>
-	<h3>Watch it on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-it-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/3b840b53f73804fc8dddd38cb99a0495?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 </div>

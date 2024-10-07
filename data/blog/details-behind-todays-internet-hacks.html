@@ -5,12 +5,26 @@
 		<p>— Rajiv Pant (@rajivpant) <a href="https://twitter.com/rajivpant/statuses/372511042477502464">August 28, 2013</a></p>
 	</blockquote>
 	<p>At 1:19pm (PDT) today, a researcher <a href="https://twitter.com/mattblaze/status/372450278705860608">noticed</a> that the New York Times' website wasn't loading. We know the New York Times tech team, so we sent an email to check in. A few minutes later, the CTO of the NYT called us back. Since then, a handful of the CloudFlare team has been holed up in a conference room playing a small part in cleaning up this hack.</p>
-	<h3>Registrars and Registries</h3>
+	<div class="flex anchor relative">
+		<h3 id="registrars-and-registries">Registrars and Registries</h3>
+		<a href="https://blog.cloudflare.com/#registrars-and-registries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand the attack, it's important to understand three key entities on the Internet: 1) registries; 2) registrars; and 3) recursive DNS providers. NYTimes.com is under the .com top level domain (TLD). The registry for that TLD is Verisign. When you buy a domain what you are fundamentally buying is the right to set the name servers within a TLD's registry.</p>
 	<p>You purchase and manage domains through organizations known as <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a>. NYTimes.com is managed by a registrar known as MelbourneIT. MelbourneIT has traditionally been known as one of the more secure registrars. In addition to the New York Times, they are also used by large web organizations including Twitter and the Huffington Post.</p>
 	<p>When you visit NYTimes.com your browser looks up the domain against the Internet's DNS network. The first step in that request is a query to a recursive DNS provider. Most ISPs provide a recursive DNS (it's the two IP addresses often entered when setting up your wifi access point). There are also public services from companies like OpenDNS and <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">Google</a> that provide globally distributed recursive DNS services used by millions of people.</p>
 	<p>Recursive DNS providers follow the DNS chain, starting at the root, then the TLD registry, then ultimately to whatever is listed as the authoritative name server for the domain. In order to lighten the load upstream, recursive DNS providers cache results for a limited period of time known as a TTL. Compromising any step in the DNS chain would allow an attacker to take over some or all traffic destined for a site. That's exactly what happened today.</p>
-	<h3>Registrar Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="registrar-compromise">Registrar Compromise</h3>
+		<a href="https://blog.cloudflare.com/#registrar-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The New York Times has <a href="http://www.nytimes.com/2013/08/28/business/media/hacking-attack-is-suspected-on-times-web-site.html">confirmed publicly</a> that their registrar was hacked, allegedly by the Syrian Electronic Army. While we've been in contact with MelbourneIT, we don't yet have details on how the attack was accomplished. We do know that the attacker was able to update the name servers for NYTimes.com without authorization, effectively hijacking the site.</p>
 	<p>The bad records entered by the hackers at MelbourneIT were pushed from the registrar up to the registry, Verisign, which manages the .com TLD. In particular, the NYTimes.com site had its name servers at the registry listed as ns5.boxsecured.com and ns6.boxsecured.com. The correct name servers should have been DNS.EWR1.NYTIMES.COM and DNS.SEA1.NYTIMES.COM. Troublingly, MelbourneIT initially appeared unable to correct the bad entries at the registry.</p>
 	<figure class="kg-card kg-image-card ">
@@ -21,10 +35,24 @@
 	<p>From screen shots that the Syrian Electronic Army has subsequently posted to its Twitter feed, it appears that the hackers gained access to MelbourneIT's administrative control panel.</p>
 	<p>While NYT worked on getting the bad records corrected with MelbourneIT, we reached out to two of the largest recursive DNS providers: OpenDNS and Google. Technical teams from CloudFlare, OpenDNS and Google jumped on a conference call and discovered the site to which the NYTimes.com site was redirected was in internet space (the IP addresses) full of phishing and possible malware, although no malware distribution was witnessed. (Earlier, this read: "...discovered what appeared to be malware on the site to which the NYTimes.com site was redirected." The confusion was that the IP range contained malware and phishing according to scans run by OpenDNS. I misinterpreted that to mean that there was malware on the site itself.) OpenDNS and Google's DNS team worked to correct the hacked records for the customers of their recursive DNS services.</p>
 	<p>The OpenDNS team was also able to look for other domains that had been updated recently to name servers controlled by the Syrian Electronic Army. We discovered several domains that had been updated, including several belonging to Twitter and the Huffington Post. As mentioned above, these organizations also used MelbourneIT, suggesting that the compromise was more than just the NYT's account.</p>
-	<h3>Cleaning Up the Mess</h3>
+	<div class="flex anchor relative">
+		<h3 id="cleaning-up-the-mess">Cleaning Up the Mess</h3>
+		<a href="https://blog.cloudflare.com/#cleaning-up-the-mess" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the registry, Verisign rolled back changes to the name servers and added a so-called registry lock to NYTimes.com. This prevented further changes even if initiated by the registrar. While quick action by OpenDNS and Google limited the impact on their customers, web surfers using other recursive DNS providers continued to be served hacked results. Unfortunately, because recursive DNS servers cache results for a period of time, even after the records were corrected, many name servers were still pointing to the incorrect locations for affected domains.</p>
 	<p>The registrar of the primary domain the Syrian Electronic Army was using as a name server for the domains they hacked revoked the domain's registration this afternoon. Since the cache TTL on the domain was relatively short, shortly after the domain was revoked traffic largely stopped flowing to the malware infected sites. That did not mean all hacked sites came back online. In some places, DNS recursors continue to have the cached bad records. They will expire over the next 24 hours and traffic to sites will return to normal.</p>
-	<h3>How to Protect Yourself</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-protect-yourself">How to Protect Yourself</h3>
+		<a href="https://blog.cloudflare.com/#how-to-protect-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This was a very spooky attack. MelbourneIT is known for having higher security than most registrars. We are hopeful that they will post the details of the attack as they are discovered so organizations can understand the threat and how to better protect themselves.</p>
 	<figure class="kg-card kg-image-card ">
 

@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/orange-clouding-with-secondary-dns">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/orange-clouding-with-secondary-dns">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/KROHAH5RMUlWh94S3qY8G/4ddeff90ada363b6077ffbdbae19700f/orange-clouding-with-secondary-dns.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>What is secondary DNS?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-secondary-dns">What is secondary DNS?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-secondary-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a traditional sense, secondary DNS servers act as a backup to the primary authoritative DNS server. &nbsp;When a change is made to the records on the primary server, a zone transfer occurs, synchronizing the secondary DNS servers with the primary server. The secondary servers can then serve the records as if they were the primary server, however changes can only be made by the primary server, not the secondary servers. This creates redundancy across many different servers that can be distributed as necessary.</p>
 	<p>There are many common ways to take advantage of Secondary DNS, some of which are:</p>
 	<ol>
@@ -15,7 +22,14 @@
 			<p>Secondary DNS with a hidden primary - The nameserver records at the registrar point towards the secondary servers only, essentially treating them as the primary nameservers.</p>
 		</li>
 	</ol>
-	<h3>What is secondary DNS Override?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-secondary-dns-override">What is secondary DNS Override?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-secondary-dns-override" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/network">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works.</p>
 	<p>Consider the following example:</p>
 	<p>example.com Cloudflare IP - 192.0.2.0example.com origin IP - 203.0.113.0</p>
@@ -42,7 +56,14 @@
 	</figure>
 	<p>Figure 2: Secondary DNS with a hidden primary nameserver</p>
 	<p>Figure 2 shows the resolver always querying the Cloudflare Secondary DNS server.</p>
-	<h3>How Does Secondary DNS Override work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-secondary-dns-override-work">How Does Secondary DNS Override work</h3>
+		<a href="https://blog.cloudflare.com/#how-does-secondary-dns-override-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Secondary DNS Override UI looks similar to the primary UI, the only difference is that records cannot be edited.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -61,12 +82,26 @@
 		</li>
 	</ol>
 	<p>This means if you have several A and several AAAA records all with the name “example.com”, if one of them is proxied, all of them will be proxied. The UI helps abstract the idea that we are storing additional override records through the “orange cloud” button, which when clicked, will create an override record which applies to all A/AAAA or CNAME records with that name.</p>
-	<h3>CNAME at the Apex</h3>
+	<div class="flex anchor relative">
+		<h3 id="cname-at-the-apex">CNAME at the Apex</h3>
+		<a href="https://blog.cloudflare.com/#cname-at-the-apex" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Normally, putting a CNAME at the apex of a zone is not allowed. For example:</p>
 	<p><code>example.com CNAME other-domain.com</code></p>
 	<p>Is not allowed because this means that there will be at least one other SOA record and one other NS record with the same name, disobeying RFC 1912 as mentioned above. Cloudflare can overcome this through the use of <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root">CNAME Flattening</a>, which is a common technique used within the primary DNS product today. CNAME flattening allows us to return address records instead of the CNAME record when a query comes into our authoritative server.</p>
 	<p>Contrary to what was said above regarding the prevention of editing records through the Secondary DNS Override UI, the CNAME at the apex is the one exception to this rule. Users are able to create a CNAME at the apex in addition to the regular secondary DNS records, however the same rules defined in RFC 1912 also apply here. What this means is that the CNAME at the apex record can be treated as a regular DNS record or a proxied record, depending on what the user decides. Regardless of the proxy status of the CNAME at the apex record, it will override any other A/AAAA records that have been transferred from the primary DNS server.</p>
-	<h3>Merging Secondary, Override and CNAME at Apex Records</h3>
+	<div class="flex anchor relative">
+		<h3 id="merging-secondary-override-and-cname-at-apex-records">Merging Secondary, Override and CNAME at Apex Records</h3>
+		<a href="https://blog.cloudflare.com/#merging-secondary-override-and-cname-at-apex-records" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At record edit time we do all of the merging of the secondary, override and CNAME at the apex records. This means that when a DNS request comes in to our authoritative server at the edge, we can still return the records in <a href="https://www.dnsperf.com">blazing fast times</a>. The workflow is shown in figure 4.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -86,7 +121,14 @@
 			<p>Leave all other secondary records as is.</p>
 		</li>
 	</ol>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Secondary DNS Override is a great option for any users that want to take advantage of the Cloudflare network, without transferring all of their zones to Cloudflare DNS as a primary provider. Security and access control can be managed on the primary side, without worrying about unauthorized edits of information on the Cloudflare side.</p>
 	<p>Secondary DNS Override is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS Override, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360042169091-Understanding-Secondary-DNS-Override#:~:text=Secondary%20Override%20allows%20customers%20to,record%20at%20the%20root%20domain.">support article</a>.</p>
 </div>

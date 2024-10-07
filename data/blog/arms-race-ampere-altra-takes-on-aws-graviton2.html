@@ -143,7 +143,15 @@
 
 	</figure>
 	<p>Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores</p>
-	<h2>System Specifications</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="system-specifications">System Specifications</h2>
+		<a href="https://blog.cloudflare.com/#system-specifications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<center>
 		<table>
 			<thead>
@@ -206,11 +214,25 @@ CPU part	: 0xd0c</code></pre>
 	<p>Ampere backported various features into the Ampere Altra notably, <a href="https://developer.arm.com/support/arm-security-updates/speculative-processor-vulnerability">speculative side-channel attack mitigations</a> that include Meltdown and Spectre (variants 1 and 2) from the ARMv8.5 instruction set architecture, giving Altra the “+” designation in their ISA (ARMv8.2+).</p>
 	<p>The Ampere Altra consists of 25% more physical cores and 20% higher operating frequency than the AWS Graviton2. Because of Altra’s higher core-count and frequency, we should expect the Ampere Altra to perform up to 50% better than the AWS Graviton2 in compute-bound workloads.</p>
 	<p>Both Ampere and AWS decided to implement 1MiB of L2 cache per core, but only 32MiB of L3 or System Level Cache, although the CMN-600 specification allows up to 256MiB. This leaves the Ampere Altra with a lower L3 cache-per-core ratio than the AWS Graviton2 and places Altra at a potential disadvantage in situations where the <a href="https://blog.cloudflare.com/impact-of-cache-locality">application’s working set does not fit within the L3 cache</a>.</p>
-	<h2>Methodology</h2>
+	<div class="flex anchor relative">
+		<h2 id="methodology">Methodology</h2>
+		<a href="https://blog.cloudflare.com/#methodology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We imaged both systems with Debian Buster and downloaded our open-source benchmark suite, <a href="https://github.com/cloudflare/cf_benchmark">cf_benchmark</a>. This benchmark suite executes 49 different workloads over approximately 15 to 30 minutes. Each workload utilizes a library that has either been used in our stack or considered at one point or another. Due to the relatively short duration of the benchmark and the libraries called by the workloads, we run cf_benchmark as our smoke test on any new system brought in for evaluation. We recommend cf_benchmark to our technology partners when we discuss new hardware, primarily processors, to ensure these workloads can compile and run successfully.</p>
 	<p>We ran cf_benchmark multiple times and observed no significant run-to-run variations. Similar to industry standard benchmarks, we calculated the overall score using geometric mean to provide a more conservative result than arithmetic mean across all 49 workloads and category scores using their respective subset of workloads.</p>
 	<p>In single-core scenarios, cf_benchmark will spawn a single application thread, occupying a single hardware thread. In multi-core scenarios, cf_benchmark will spawn as many application threads as needed until all hardware threads on the processor are occupied. Neither processors implemented <a href="https://en.wikipedia.org/wiki/Simultaneous_multithreading">simultaneous multithreading</a>, so each physical core can only execute one hardware thread at a time.</p>
-	<h2>Overall Performance Results</h2>
+	<div class="flex anchor relative">
+		<h2 id="overall-performance-results">Overall Performance Results</h2>
+		<a href="https://blog.cloudflare.com/#overall-performance-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given Altra’s advantage in both operating frequency and sheer core-count, the Ampere Altra took the lead across single and multi-core performance.</p>
 	<p>In single-core performance, the Ampere Altra outperformed the AWS Graviton2 by 16%. The differences in operating frequencies between the two processors gave the Ampere Altra a proportional advantage of up to 20% in more than half of our single-core workloads.</p>
 	<p>In multi-core performance, the Ampere Altra continued to maintain its edge over the AWS Graviton2 by 31%. We expected the Ampere Altra to attain a theoretical advantage between 20% to 50% due to Altra’s higher operating frequency and core count while taking inherent overheads associated with increasing core count into consideration, primarily scaling out the mesh network. We observed that the majority of our multi-core workloads fell within this 20% to 50% range.</p>
@@ -219,7 +241,14 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hR6z2vf42BIvNqGDe7Fzo/5cafaf286f01c2df5a201a561eea4ead/image27.png" alt="" class="kg-image" width="716" height="335" loading="lazy">
 
 	</figure>
-	<h2>Categorized Results</h2>
+	<div class="flex anchor relative">
+		<h2 id="categorized-results">Categorized Results</h2>
+		<a href="https://blog.cloudflare.com/#categorized-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In OpenSSL and LuaJIT, the Ampere Altra scaled proportionally with its operating frequency in single-core performance and continued to scale out with its core count in multi-core performance. The Ampere Altra maintained its lead in the vast majority of compression and Golang workloads with the exception of Brotli level 9 compression and some Golang multi-core workloads that were not able to keep the two processors busy at 100% CPU utilization.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -231,9 +260,24 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Xk9KE86pFwyLKTumNkXG6/79f5d87faf25657bbaac756f83deeb42/image29.png" alt="" class="kg-image" width="716" height="337" loading="lazy">
 
 	</figure>
-	<h2>OpenSSL</h2>
+	<div class="flex anchor relative">
+		<h2 id="openssl">OpenSSL</h2>
+		<a href="https://blog.cloudflare.com/#openssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As described <a href="https://blog.cloudflare.com/arm-takes-wing">previously</a>, we use a fork of OpenSSL, named BoringSSL, in places such as for <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> handling. The original OpenSSL comes with a built-in benchmark called `speed` that measures single and multi-core performance. The asymmetric and <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">symmetric</a> crypto workloads found here saturated the processors at 100% CPU utilization. Altra’s performance aligned with our expectations throughout this entire category by maintaining a consistent 20% advantage over the AWS Graviton2 in single-core and continued to scale with its core count and performed, on average, 47% better in multi-core performance.</p>
-	<h3>Public Key Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="public-key-cryptography">Public Key Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#public-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WTE3GQC2F1PJGKCOJlIBn/89ebea52ed66e005264374759b8ecaf1/image4-9.png" alt="" class="kg-image" width="711" height="324" loading="lazy">
@@ -244,7 +288,15 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/WyA8y24VhaTVc6KSGMwgA/f4fe297f923591c3de7296a65e808da9/image6-4.png" alt="" class="kg-image" width="712" height="324" loading="lazy">
 
 	</figure>
-	<h3>Symmetric Key Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="symmetric-key-cryptography">Symmetric Key Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#symmetric-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/IAWDbmAmeDB398TEqlFz7/a7d81a42cd6b6623a6822b823b135b65/image3-10.png" alt="" class="kg-image" width="717" height="345" loading="lazy">
@@ -255,7 +307,14 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Vjjz0U0no96OWEUoPOyrL/aa7f46720b468ee8176db4a51d28a9c5/image28.png" alt="" class="kg-image" width="717" height="343" loading="lazy">
 
 	</figure>
-	<h2>LuaJIT</h2>
+	<div class="flex anchor relative">
+		<h2 id="luajit">LuaJIT</h2>
+		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We commonly describe LuaJIT as the <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">glue that holds Cloudflare together</a>. LuaJIT has a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">long history</a> here at Cloudflare for the same reason it is widely used in the videogame industry, where performance and responsiveness are non-negotiable requirements.</p>
 	<p>Although we have been transitioning from LuaJIT <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">to Rust</a>, we welcomed the <a href="https://developer.arm.com/documentation/100616/0400/functional-description/level-1-memory-system/cache-behavior/instruction-cache-coherency?lang=en">instruction cache coherency</a> implemented into the Ampere Altra. The instruction cache coherency aims to address the <a href="https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/caches-and-self-modifying-code">drawbacks associated with LuaJIT</a>, such as its self-modifying properties, where the next instruction that needs to be fetched is not in the instruction cache, but rather the data cache. With this feature enabled, the instruction cache becomes coherent or made aware of changes made in the data cache. The L2 cache becomes inclusive of the L1 instruction cache, meaning any cache lines found in the L1 instruction cache should also be present in the L2 cache. Furthermore, L2 cache intercepts any invalidations or stores made to any of the L2’s cache lines and propagates those changes up to the L1 instruction cache.</p>
 	<p>The Ampere Altra performed well within single-core performance except for fasta where both processors stalled at the front-end of the pipeline. In the multi-core version of fasta, Altra did not spend as many cycles stalled in the front-end likely due to Ampere's implementation of the instruction cache coherency. All other workloads continued to scale in multi-core workloads with binary trees coming in at 73%. Spectral was omitted since the multi-core variant failed to run on both servers.</p>
@@ -269,9 +328,24 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1v8ZAjMln1cgNxC74M6rFH/b6c7f8db515a351ed9fb7695d9147110/image18-1.png" alt="" class="kg-image" width="712" height="323" loading="lazy">
 
 	</figure>
-	<h2>Compression</h2>
+	<div class="flex anchor relative">
+		<h2 id="compression">Compression</h2>
+		<a href="https://blog.cloudflare.com/#compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/results-experimenting-brotli">Brotli and Gzip</a> are the two primary types of compression we use at Cloudflare. We find value in highly efficient compression algorithms as it helps us find a balance between spending more resources on a faster processor or having a larger storage capacity in addition to being able to transfer contents faster. The Ampere Altra performed well on both compression types with the exception of Brotli level 9 and Gzip level 4 multi-core performance.</p>
-	<h3>Brotli</h3>
+	<div class="flex anchor relative">
+		<h3 id="brotli">Brotli</h3>
+		<a href="https://blog.cloudflare.com/#brotli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XaMt4Zk04Sci4xEwYbEfZ/16326d2db4b8cf6da10f30e6edd3061e/image2-6.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
@@ -295,7 +369,15 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DKo7g8rI17OWj0EYTaajg/159b52cd7120d7d28f0d2d2249e3193c/image16-1.png" alt="" class="kg-image" width="726" height="383" loading="lazy">
 
 	</figure>
-	<h3>Gzip</h3>
+	<div class="flex anchor relative">
+		<h3 id="gzip">Gzip</h3>
+		<a href="https://blog.cloudflare.com/#gzip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Ysrj5aCW6xRAhfvaAU18x/a2c924fc4a9536441b92fd0cd3c6bd91/image1-12.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
@@ -306,14 +388,29 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Kq3MvWAn8SU4x6aMtXB70/92cb83e9e79d30ad05f5334423b73b06/image19-1.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
 
 	</figure>
-	<h2>Golang</h2>
+	<div class="flex anchor relative">
+		<h2 id="golang">Golang</h2>
+		<a href="https://blog.cloudflare.com/#golang" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>LuaJIT, Rust, C++, and Go are some of our <a href="https://blog.cloudflare.com/go-at-cloudflare">primary languages</a>; the Golang workloads found here include <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">cryptography</a>, compression, regular expression, and string manipulation. The Ampere Altra performed proportionally to its operating frequency against the AWS Graviton2 in the vast majority of single-core performance. In multi-core performance, the workloads that could not saturate the processors to 100% CPU utilization did not scale proportionally to the two processor’s respective operating frequencies and core count.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/57IXPa7WCSeZKgL1uxFnwZ/64b1fda7f60bef4f6b74e64f79e20ec8/image11-1.png" alt="" class="kg-image" width="993" height="386" loading="lazy">
 
 	</figure>
-	<h3>Go Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-cryptography">Go Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#go-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sFiAVlYH3Yf7HRMHcs4lD/0411723273c97a08d839610b84853dbb/image8-3.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
@@ -334,7 +431,15 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q4pFSFuq2vIdFqXRZTDuc/387679f1fa895d246ef3d57d42d7a6db/image21-6.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
 
 	</figure>
-	<h3>Go Compression &amp; String</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-compression-string">Go Compression &amp; String</h3>
+		<a href="https://blog.cloudflare.com/#go-compression-string" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eO7U4KLBUdakYPkZAMDEm/1a8014fb0509e63fdb22a99b37567610/image24.png" alt="" class="kg-image" width="719" height="337" loading="lazy">
@@ -345,7 +450,15 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jfNL4hgXTgikqd1xxKGS/75e5b1bc9057560399fbe4cbd31acbdc/image10-3.png" alt="" class="kg-image" width="719" height="337" loading="lazy">
 
 	</figure>
-	<h3>Go Regex</h3>
+	<div class="flex anchor relative">
+		<h3 id="go-regex">Go Regex</h3>
+		<a href="https://blog.cloudflare.com/#go-regex" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hmpFGmyyhgx9cnCkTtbeJ/72fd69ea006df8a4ac60f86bf61f4d1f/image12-1.png" alt="" class="kg-image" width="714" height="342" loading="lazy">
@@ -356,7 +469,14 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NNwnydydlXjw9iTomiML6/76ce1bf9747015727d9757b4ada53cd4/image20.png" alt="" class="kg-image" width="715" height="342" loading="lazy">
 
 	</figure>
-	<h2>Frequency, Power &amp; Thermals</h2>
+	<div class="flex anchor relative">
+		<h2 id="frequency-power-thermals">Frequency, Power &amp; Thermals</h2>
+		<a href="https://blog.cloudflare.com/#frequency-power-thermals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We were unable to collect any telemetry on the AWS Graviton2. Power would have been an interesting data point on the AWS Graviton2, but the EC2 instance did not expose either frequency or power sensors. The Ampere model we tested was the Altra Q80-30, rated with an operating frequency of 3.0GHz and a thermal design power (TDP) of 210W.</p>
 	<p>The Ampere Altra maintained a sustained operating frequency throughout cf_benchmark while Altra’s dynamic voltage and frequency scaling (DVFS) mechanism occasionally lowered its operating frequency in between workloads as needed to reduce power consumption. Package power varied depending on the workload, but Altra never consumed anywhere near its rated TDP while the default fan curve maintained the temperature below 70C. At the system level, by simply querying the baseboard management controller over <a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface">IPMI</a>, we observed that the Ampere server consumed no more than 300W. More power-efficient servers directly translates to more <a href="https://blog.cloudflare.com/an-introduction-to-three-phase-power-and-pdus">flexibility over how we can populate our racks</a> and we hope this trend will continue in production.</p>
 	<figure class="kg-card kg-image-card ">
@@ -369,7 +489,14 @@ CPU part	: 0xd0c</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12tiKqNAFC8IK9o76MiJ6F/0b31a530ca12f1c90a73a4a97eee3ac3/image5-10.png" alt="" class="kg-image" width="681" height="254" loading="lazy">
 
 	</figure>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In our top-down evaluation, the Ampere Altra largely performed as we had expected throughout our benchmarking suite. We regularly observed the two Neoverse N1 processors perform to their respective operating frequency and core count, with the Ampere Altra coming on top in these key areas over the AWS Graviton2. The Ampere Altra yielded a better single-core performance due to higher operating frequency and multiplied its impact even further by scaling out with a higher core count in multi-core performance against the AWS Graviton2. We also found our Ampere evaluation server consuming less power than we had anticipated and hope this trend will continue in production.</p>
 	<p>Throughout this initial set of testing and learning more about the underlying architecture, there were many parts we found interesting when compared against contemporary x86 counterparts such as the absence of simultaneous multithreading or dynamic frequency boost. We look forward to seeing which design philosophy makes more sense for the cloud. We are currently assessing Altra’s performance against our fleet of servers and collaborating with Ampere to define an ARM edge server based on Altra that could be deployed at scale.</p>
 </div>

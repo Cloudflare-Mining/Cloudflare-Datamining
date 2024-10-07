@@ -2,21 +2,56 @@
 <div class="post-content lh-copy gray1">
 	<p>Last fall, the United States FBI <a href="https://www.ic3.gov/media/2018/180927.aspx">warned</a> organizations of an increase in attacks that exploit vulnerabilities in the Remote Desktop Protocol (RDP). Attackers stole sensitive data and compromised networks by taking advantage of desktops left unprotected. Like legacy VPNs, RDP configurations made work outside of the office corporate network possible by opening a hole in it.</p>
 	<p>Starting today, you can use Cloudflare Access to connect over RDP without sacrificing security or performance. Access enables your team to lock down remote desktops like you do physical ones while using your SSO credentials to authenticate each connection request.</p>
-	<h3>Stronger passwords with identity provider integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="stronger-passwords-with-identity-provider-integration">Stronger passwords with identity provider integration</h3>
+		<a href="https://blog.cloudflare.com/#stronger-passwords-with-identity-provider-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The FBI cited weak passwords and unrestricted port access to RDP ports as serious risks that led to the rise in RDP-based attacks. Cloudflare Access addresses those vulnerabilities by removing them altogether.</p>
 	<p>When users connect over RDP, they enter a local password to login to the target machine. However, organizations rarely manage these credentials. Instead, users set and save these passwords on an ad-hoc basis outside of the single sign-on credentials used for other services. That oversight leads to outdated, reused, and ultimately weak passwords.</p>
 	<p>Cloudflare Access integrates with the identity credentials your team already uses. Whether your organization uses Okta, or Azure AD, or another <a href="https://developers.cloudflare.com/access/configuring-identity-providers">provider</a>, your users will be prompted to authenticate with those credentials before starting any RDP sessions. Your team can enforce the same password strength and rotation requirements for RDP connections that you do for all of your critical tools. Need to revoke access? You can do it in a single location instead of chasing down who has credentials for every remote desktop.</p>
-	<h3>Closed ports with Argo Tunnel</h3>
+	<div class="flex anchor relative">
+		<h3 id="closed-ports-with-argo-tunnel">Closed ports with Argo Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#closed-ports-with-argo-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another problem is the ubiquity of the RDP port. Most RDP connections listen on port 3389. Attackers can reasonably guess that number and attempt to reach desktops with misconfigured or overlooked firewall rules. Without those complex rules, remote desktops become as dangerous as a laptop left out on the street.</p>
 	<p>Cloudflare Access secures RDP ports and connections by relying on Argo Tunnel to lock down any attempts to reach the desktop. Argo Tunnel connects your machine to the Cloudflare network without the need for custom firewall or ACL configurations. Instead, Argo Tunnel ensures that all requests to that remote desktop route through Cloudflare. Once on the Cloudflare network, Access enforces the rules you need to lock down remote desktops.</p>
-	<h3>Protecting your remote desktop</h3>
+	<div class="flex anchor relative">
+		<h3 id="protecting-your-remote-desktop">Protecting your remote desktop</h3>
+		<a href="https://blog.cloudflare.com/#protecting-your-remote-desktop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To begin, <a href="https://developers.cloudflare.com/access/rdp/protecting-rdp-machine">configure Argo Tunnel</a> on the machine you need to secure by using <code>cloudflared</code>. <code>cloudflared</code> serves as an agent on the machine to open a secure connection from the desktop to the Cloudflare network. Once installed, you can run the following command to associate that connection to a hostname in your Cloudflare account:</p>
 	<p><code>$ cloudflared tunnel --hostname rdp.example.com --url rdp://localhost:3389</code></p>
 	<p>That command will create a proxy to forward traffic to the hostname through port 3389. You can then create <a href="https://developers.cloudflare.com/access/setting-up-access/configuring-access-policies">rules</a> about who can reach this hostname in the Access tab of the Cloudflare dashboard.</p>
-	<h3>Connecting over RDP</h3>
+	<div class="flex anchor relative">
+		<h3 id="connecting-over-rdp">Connecting over RDP</h3>
+		<a href="https://blog.cloudflare.com/#connecting-over-rdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To reach a desktop behind Cloudflare Access, you’ll need the same <code>cloudflared</code> tool. First, install <code>cloudflared</code> on your device with the instructions <a href="https://developers.cloudflare.com/access/rdp/connect-rdp">here</a>. You can then initiate an RDP connection with the following command:</p>
 	<p><code>$ cloudflared access rdp --hostname rdp.example.com --url rdp://localhost:3389</code></p>
 	<p>Running that command will initiate an RDP connection through a proxy to reach the hostname of the machine you configured with Argo Tunnel. <code>cloudflared</code> will open a browser window where you can login with your team’s identity provider credentials. Once logged in, Access will return a token scoped to your user and the target application and store it on your device. You can then configure your RDP client to point to localhost:3389 and reach the protected desktop.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, all Access customers can start using RDP over Access by following this <a href="https://developers.cloudflare.com/access/rdp">guide</a>. Every Cloudflare plan includes five free Access seats; follow the link <a href="https://developers.cloudflare.com/access/about">here</a> to get started.</p>
 </div>

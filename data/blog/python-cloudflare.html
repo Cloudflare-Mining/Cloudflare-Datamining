@@ -1,10 +1,24 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GOesLC2I4qEGSXJPmJFLx/999e64ffba2c987b97fba27b05749c33/python-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>Using the CloudFlare API via Python</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-the-cloudflare-api-via-python">Using the CloudFlare API via Python</h3>
+		<a href="https://blog.cloudflare.com/#using-the-cloudflare-api-via-python" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services. Over time that API has matured and improved. We are now on v4 of that API.</p>
 	<p>The current CloudFlare API is documented <a href="https://api.cloudflare.com">here</a> and it’s used by both the CloudFlare control panel and directly by umpteen customers every minute of every day. The new API is designed with a clean naming structure and consistent data representation for data. It’s also extensible.</p>
 	<p>This blog entry introduces <a href="https://github.com/cloudflare/python-cloudflare">python-cloudflare</a>, a Python wrapper providing full access to the CloudFlare v4 API.</p>
-	<h3>An example</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-example">An example</h3>
+		<a href="https://blog.cloudflare.com/#an-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s get right into the thick-of-it with the simplest coding example available to show python-cloudflare in action. This example lists all your domains (zones) and also checks some basic features for each zone.</p>
 	<pre class="language-py"><code class="language-py">#!/usr/bin/env python
 import CloudFlare
@@ -58,13 +72,28 @@ if __name__ == '__main__':
         except CloudFlare.CloudFlareAPIError as e:
             exit('/zones.dns_records.post %s - %d %s' % (record['name'], e, e))</code></pre>
 	<p>There’s a whole folder of example code available on the GitHub repository.</p>
-	<h2>All on GitHub for anyone to use</h2>
+	<div class="flex anchor relative">
+		<h2 id="all-on-github-for-anyone-to-use">All on GitHub for anyone to use</h2>
+		<a href="https://blog.cloudflare.com/#all-on-github-for-anyone-to-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we stated above (and as CloudFlare has done many times before) we have placed this code up on <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a> for anyone to download and use. We welcome contributions and will review any pull requests. To install it, just clone it and follow the README instructions. For those that just want to get going right now; here’s the tl;dr install:</p>
 	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/cloudflare/python-cloudflare
 $ cd python-cloudflare
 $ ./setup.py build
 $ sudo ./setup.py install</code></pre>
-	<h2>But wait; there’s more!</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="but-wait-theres-more">But wait; there’s more!</h2>
+		<a href="https://blog.cloudflare.com/#but-wait-theres-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not only do you get the python API calls, you also get a fully functioning CLI (command line interface) that allows quick creation of scripts that interface with CloudFlare.</p>
 	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
 	<pre class="language-bash"><code class="language-bash">$ cli4 name=example.com /zones | jq -c '.[]|{"name_servers":.name_servers}'
@@ -100,7 +129,14 @@ $</code></pre>
 {"status":"pending"}
 $</code></pre>
 	<p>There are plenty more examples available within the GitHub repo.</p>
-	<h3>CloudFlare API via other languages also available</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-api-via-other-languages-also-available">CloudFlare API via other languages also available</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-api-via-other-languages-also-available" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com">API</a> spec is online and ready for you to code up.</p>
 	<p>If you like what you read here today and are interested in joining one of CloudFlare’s software teams, then checkout our <a href="https://www.cloudflare.com/join-our-team">Join Our Team</a> page.</p>
 </div>

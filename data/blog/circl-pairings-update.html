@@ -47,7 +47,14 @@
 	<p>Note that the discrete logarithm to be solved was moved from \(\mathbb{G}_1\) to \(\mathbb{G}_T\). So an attacker must ensure that the discrete logarithm is easier to solve in \(\mathbb{G}_T\), and surprisingly, for some curves this is the case.</p>
 	<p>Fortunately, pairings do not present a threat for standard curves (such as the NIST curves or Curve25519) because these curves are constructed in such a way that \(\mathbb{G}_T\) gets very large, which makes the pairing operation not efficient anymore.</p>
 	<p>This attacking strategy was one of the first applications of pairings in cryptanalysis as a tool to solve the discrete logarithm. Later, more people noticed that the properties of pairings are so useful, and can be used constructively to do cryptography. One of the fascinating truisms of cryptography is that one person's sledgehammer is another person's brick: while pairings yield a generic attack strategy for the ECDLP problem, it can also be used as a building block in a ton of useful applications.</p>
-	<h3>Applications of Pairings</h3>
+	<div class="flex anchor relative">
+		<h3 id="applications-of-pairings">Applications of Pairings</h3>
+		<a href="https://blog.cloudflare.com/#applications-of-pairings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the 2000s decade, a large wave of research works were developed aimed at applying pairings to many practical problems. An iconic pairing-based system was created by Antoine Joux, who constructed a <a href="https://link.springer.com/chapter/10.1007/10722028_23">one-round Diffie-Hellman</a> key exchange for three parties.</p>
 	<p>Let’s see first how a three-party Diffie-Hellman is done without pairings. Alice, Bob and Charlie want to agree on a shared key, so they compute, respectively, \(aP\), \(bP\) and \(cP\) for a public point P. Then, they send to each other the points they computed. So Alice receives \(cP\) from Charlie and sends \(aP\) to Bob, who can then send \(baP\) to Charlie and get \(acP\) from Alice and so on. After all this is done, they can all compute \(k=abcP\). Can this be performed in a single round trip?</p>
 	<figure class="kg-card kg-image-card ">
@@ -70,7 +77,14 @@
 	<p>A solution to this problem came some years later, in 2001, and is the Identity-based Encryption (IBE) scheme proposed by <a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf">Boneh and Franklin</a>, which uses bilinear pairings as the main tool.</p>
 	<p>Nowadays, pairings are used for the <a href="https://eprint.iacr.org/2012/215">zk-SNARKS</a> that make Zcash an anonymous currency, and are also used in <a href="https://developers.cloudflare.com/randomness-beacon/about">drand</a> to generate public-verifiable randomness. Pairings and the compact, aggregatable BLS signatures are used in Ethereum. We have used pairings to build Geo Key Manager: pairings let us implement a compact broadcast and negative broadcast scheme that together make <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">Geo Key Manager</a> work.</p>
 	<p>In order to make these schemes, we have to implement pairings, and to do that we need to understand the mathematics behind them.</p>
-	<h3>Where do pairings come from?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-do-pairings-come-from">Where do pairings come from?</h3>
+		<a href="https://blog.cloudflare.com/#where-do-pairings-come-from" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to deeply understand pairings we must understand the interplay of geometry and arithmetic, and the origins of the group’s law. The starting point is the concept of a <i>divisor</i>, a formal combination of points on the curve.</p>
 	<p>\( D = \sum n_i P_i \)</p>
 	<p>The sum of all the coefficients \(n_i\) is the degree of the divisor. If we have a function on the curve that has poles and zeros, we can count them with multiplicity to get a <i>principal divisor</i>. Poles are counted as negative, while zeros as positive. For example if we take the projective line, the function \(x\) has the divisor \((0)-(\infty)\).</p>
@@ -88,13 +102,27 @@
 	<p>\(e_r(S,T)=\frac{g(X+S)}{g(X)}\).</p>
 	<p>The auxiliary point \(X\) is any point that makes the numerator and denominator defined.</p>
 	<p>In practice, the pairing we have defined above, the Weil pairing, is little used. It was historically the first pairing and is extremely important in the mathematics of elliptic curves, but faster alternatives based on more complicated underlying mathematics are used today. These faster pairings have different \(\mathbb{G}_1\) and \(\mathbb{G}_2\), while the Weil pairing made them the same.</p>
-	<h3>Shift in parameters</h3>
+	<div class="flex anchor relative">
+		<h3 id="shift-in-parameters">Shift in parameters</h3>
+		<a href="https://blog.cloudflare.com/#shift-in-parameters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we saw earlier, the discrete logarithm problem can be attacked either on the group of elliptic curve points or on the third group (an extension of a prime field) whichever is weaker. This is why the parameters that define a pairing must balance the security of the three groups.</p>
 	<p>Before 2015 a good balance between the extension degree, the size of the prime field, and the security of the scheme was achieved by the family of <a href="https://eprint.iacr.org/2005/133.pdf">Barreto-Naehrig</a> (BN) curves. For 128 bits of security, BN curves use an extension of degree 12, and have a prime of size 256 bits; as a result they are an efficient choice for implementation.</p>
 	<p>A breakthrough for pairings occurred in 2015 when Kim and Barbescu <a href="https://ia.cr/2015/1027">published a result</a> that accelerated the attacks in finite fields. This resulted in increasing the size of fields to comply with standard security levels. Just as short hashes like MD5 got depreciated as they became insecure and \(2^{64}\) was no longer enough, and RSA-1024 was replaced with RSA-2048, we regularly change parameters to deal with improved attacks.</p>
 	<p>For pairings this implied the use of larger primes for all the groups. Roughly speaking, the previous 192-bit security level becomes the new 128-bit level after this attack. Also, this shift in parameters brings the family of <a href="https://eprint.iacr.org/2002/088.pdf">Barreto-Lynn-Scott</a> (BLS) curves to the stage because pairings on BLS curves are faster than BN in this new setting. Hence, currently BLS curves using an extension of degree 12, and primes of around 384 bits provide the equivalent to 128 bit security.</p>
 	<p>The IETF draft (currently in preparation) <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-pairing-friendly-curves">draft-irtf-cfrg-pairing-friendly-curves</a> specifies secure pairing-friendly elliptic curves. It includes parameters for BN and BLS families of curves. It also targets different security levels to provide crypto agility for some applications relying on pairing-based cryptography.</p>
-	<h2>Implementing Pairings in Go</h2>
+	<div class="flex anchor relative">
+		<h2 id="implementing-pairings-in-go">Implementing Pairings in Go</h2>
+		<a href="https://blog.cloudflare.com/#implementing-pairings-in-go" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, notable examples of software libraries implementing pairings include <a href="https://crypto.stanford.edu/pbc">PBC</a> by Ben Lynn, <a href="https://github.com/miracl/core">Miracl</a> by Michael Scott, and <a href="https://github.com/relic-toolkit/relic">Relic</a> by Diego Aranha. All of them are written in C/C++ and some ports and wrappers to other languages exist.</p>
 	<p>In the Go standard library we can find the <a href="https://pkg.go.dev/golang.org/x/crypto/bn256">golang.org/x/crypto/bn256</a> package by Adam Langley, an implementation of a pairing using a BN curve with 256-bit prime. Our colleague Brendan McMillion built <a href="https://github.com/cloudflare/bn256">github.com/cloudflare/bn256</a> that dramatically improves the speed of pairing operations for that curve. See the <a href="https://youtu.be/eHqIq1kFJJo?t=791">RWC-2018</a> talk to see our use case of pairing-based cryptography. This time we want to go one step further, and we started looking for alternative pairing implementations.</p>
 	<p>Although one can find many libraries that implement pairings, our goal is to rely on one that is efficient, includes protection against side channels, and exposes a flexible API oriented towards applications that permit generality, while avoiding common security pitfalls. This motivated us to include pairings in <a href="https://github.com/cloudflare/circl/tree/master/ecc/bls12381">CIRCL</a>. We followed best practices on secure code development and we want to share with you some details about the implementation.</p>
@@ -135,11 +163,25 @@
 	</div>
 	<!--kg-card-end: html-->
 	<p>We applied several optimizations that allowed us to improve on performance and security of the implementation. In fact, as the parameters of the curve are fixed, some other optimizations become easier to apply; for example, the code for prime field arithmetic and the towering construction for extension fields as we detail next.</p>
-	<h3>Formally-verified arithmetic using fiat-crypto</h3>
+	<div class="flex anchor relative">
+		<h3 id="formally-verified-arithmetic-using-fiat-crypto">Formally-verified arithmetic using fiat-crypto</h3>
+		<a href="https://blog.cloudflare.com/#formally-verified-arithmetic-using-fiat-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the more difficult parts of a cryptography library to implement correctly is the prime field arithmetic. Typically people specialize it for speed, but there are many tedious constraints on what the inputs to operations can be to ensure correctness. Vulnerabilities have happened when people get it wrong, across many libraries. However, this code is perfect for machines to write and check. One such tool is <a href="https://github.com/mit-plv/fiat-crypto">fiat-crypto</a>.</p>
 	<p>Using fiat-crypto to generate the prime field arithmetic means that we have a formal verification that the code does what we need. The fiat-crypto tool is <a href="https://github.com/cloudflare/circl/blob/5115a7384c00c16f684872cd8019e82a7b385f30/ecc/bls12381/ff/gen.go">invoked in this script</a>, and produces Go code for addition, subtraction, multiplication, and squaring over the 381-bit prime field used in the BLS12-381 curve. Other operations are not covered, but those are much easier to check and analyze by hand.</p>
 	<p>Another advantage is that it avoids relying on the generic <a href="https://golang.org/pkg/math/big/#Int">big.Int</a> package, which is slow, frequently spills variables to the heap causing dynamic memory allocations, and most importantly, does not run in constant-time. Instead, the code produced is straight-line code, no branches at all, and relies on the <a href="https://golang.org/pkg/math/bits">math/bits</a> package for accessing machine-level instructions. Automated code generation also means that it’s easier to apply new techniques to all primitives.</p>
-	<h3>Tower Field Arithmetic</h3>
+	<div class="flex anchor relative">
+		<h3 id="tower-field-arithmetic">Tower Field Arithmetic</h3>
+		<a href="https://blog.cloudflare.com/#tower-field-arithmetic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to prime field arithmetic, say integers modulo a prime number p, a pairing also requires high-level arithmetic operations over extension fields.</p>
 	<p>To better understand what an extension field is, think of the analogous case of going from the reals to the complex numbers: the operations are referred as usual, there exist addition, multiplication and division \((+, -, \times, /)\), however they are computed quite differently.</p>
 	<p>The complex numbers are a quadratic extension over the reals, so imagine a two-level house. The first floor is where the real numbers live, however, they cannot access the second floor by themselves. On the other hand, the complex numbers can access the entire house through the use of a staircase. The equation \(f(x)=x^2+1\) was not solvable over the reals, but is solvable over the complex numbers, since they have the number \(i^2=1\). And because they have the number \(i\), they also have to have numbers like \(3i\) and \(5+i\) that solve other equations that weren’t solvable over the reals either. This second story has given the roots of the polynomials a place to live.</p>
@@ -164,24 +206,52 @@
 	<p>The portals here are the polynomials used as modulus, as they allow us to move from one extension to the other.</p>
 	<p>Different constructions for higher extensions have an impact on the number of operations performed. Thus, we implemented the latter tower field for \(\mathbb{F}_{p^{12}}\) as it results in a lower number of operations. The arithmetic operations are quite easy to implement and manually verify, so at this level formal verification is not as effective as in the case of prime field arithmetic. However, having an automated tool that generates code for this arithmetic would be useful for developers not familiar with the internals of field towering. The fiat-crypto tool keeps track of this idea [<a href="https://github.com/mit-plv/fiat-crypto/issues/904">Issue 904</a>, <a href="https://github.com/mit-plv/fiat-crypto/issues/851">Issue 851</a>].</p>
 	<p>Now, we describe more details about the main core operations of a bilinear pairing.</p>
-	<h3>The Miller loop and the final exponentiation</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-miller-loop-and-the-final-exponentiation">The Miller loop and the final exponentiation</h3>
+		<a href="https://blog.cloudflare.com/#the-miller-loop-and-the-final-exponentiation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The pairing function we implemented is the <a href="https://eprint.iacr.org/2008/096">optimal r-ate</a> pairing, which is defined as:</p>
 	<p>\( e(P,Q) = f_Q(P)^{\text{exp}} \)</p>
 	<p>That is the construction of a function \(f\) based on \(Q\), then evaluated on a point \(P\), and the result of that is raised to a specific power. The efficient function evaluation is performed using “the Miller loop”, which is an algorithm devised by <a href="https://crypto.stanford.edu/miller/miller.pdf">Victor Miller</a> and has a similar structure to a double-and-add algorithm for scalar multiplication.</p>
 	<p>After having computed \(f_Q(P)\) this value is an element of \(\mathbb{F}_{p^{12}}\), however it is not yet an \(r\)-root of unity; in order to do so, the final exponentiation accomplishes this task. Since the exponent is constant for each curve, special algorithms can be tuned for it.</p>
 	<p>One interesting acceleration opportunity presents itself: in the Miller loop the elements of \(\mathbb{F}_{p^{12}}\) that we have to multiply by are special — as polynomials, they have no linear term and their constant term lives in \(\mathbb{F}_{p^{2}}\). We created a specialized multiplication that avoids multiplications where the input has to be zero. This specialization accelerated the pairing computation by 12%.</p>
 	<p>So far, we have described how the internal operations of a pairing are performed. There are still some other functions floating around regarding the use of pairings in cryptographic protocols. It is also important to optimize these functions and now we will discuss some of them.</p>
-	<h3>Product of Pairings</h3>
+	<div class="flex anchor relative">
+		<h3 id="product-of-pairings">Product of Pairings</h3>
+		<a href="https://blog.cloudflare.com/#product-of-pairings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Often protocols will want to evaluate a product of pairings, rather than a single pairing. This is the case if we’re evaluating multiple signatures, or if the protocol uses cancellation between different equations to ensure security, as in the <i>dual system encoding</i> approach to designing protocols. If each pairing was evaluated individually, this would require multiple evaluations of the final exponentiation. However, we can evaluate the product first, and then evaluate the final exponentiation once. This requires a different interface that can take vectors of points.</p>
 	<p>Occasionally, there is a sign or an exponent in the factors of the product. It’s very easy to deal with a sign explicitly by negating one of the input points, almost for free. General exponents are more complicated, especially when considering the need for side channel protection. But since we expose the interface, later work on the library will accelerate it without changing applications.</p>
 	<p>Regarding API exposure, one of the trickiest and most error prone aspects of software engineering is input validation. So we must check that raw binary inputs decode correctly as the points used for a pairing. Part of this verification includes subgroup membership testing which is the topic we discuss next.</p>
-	<h3>Subgroup Membership Testing</h3>
+	<div class="flex anchor relative">
+		<h3 id="subgroup-membership-testing">Subgroup Membership Testing</h3>
+		<a href="https://blog.cloudflare.com/#subgroup-membership-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Checking that a point is on the curve is easy, but checking that it has the right order is not: the classical way to do this is an entire expensive scalar multiplication. But implementing pairings involves the use of many clever tricks that help to make things run faster.</p>
 	<p>One example is <i>twisting</i>: the \(\mathbb{G}_2\) group are points with coordinates in \(\mathbb{F}_{p^{12}}\), however, one can use a smaller field to reduce the number of operations. The trick here is using an associated curve \(E’\), which is a twist of the original curve \(E\). This allows us to work on the subfield \(\mathbb{F}_{p^{2}}\) that has cheaper operations.</p>
 	<p>Additionally, twisting the curve over \(\mathbb{G}_2\) carries some efficiently computable endomorphisms coming from the field structure. For the cost of two field multiplications, we can compute an additional endomorphism, dramatically decreasing the cost of scalar multiplication.</p>
 	<p>By searching for the smallest combination of scalars that could zero out the \(r\)-torsion points, <a href="https://eprint.iacr.org/2019/814">Sean Bowe</a> came up with a much more efficient way to do subgroup checks. We implement his trick, with a big reduction in the complexity of some applications.</p>
 	<p>As can be seen, implementing a pairing is full of subtleties. We just saw that point validation in the pairing setting is a bit more challenging than in the conventional case of elliptic curve cryptography. This kind of reformulation also applies to other operations that require special care on their implementation. One another example is how to encode binary strings as elements of the group \(\mathbb{G}_1\) (or \(\mathbb{G}_2\)). Although this operation might sound simple, implementing it securely needs to take into consideration several aspects; thus we expand more on this topic.</p>
-	<h3>Hash to Curve</h3>
+	<div class="flex anchor relative">
+		<h3 id="hash-to-curve">Hash to Curve</h3>
+		<a href="https://blog.cloudflare.com/#hash-to-curve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An important piece on the <a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf">Boneh-Franklin</a> Identity-based Encryption scheme is a special hash function that maps an arbitrary string — the identity, e.g., an email address — to a point on an elliptic curve, and that still behaves as a conventional cryptographic hash function (such as SHA-256) that is hard to invert and collision-resistant. This operation is commonly known as <i>hashing to curve</i>.</p>
 	<p>Boneh and Franklin found a particular way to perform hashing to curve: apply a conventional hash function to the input bitstring, and interpret the result as the \(y\)-coordinate of a point, then from the curve equation \(y^2=x^3+b\), find the \(x\)-coordinate as \(x=\sqrt[3]{y^2-b}\). The cubic root always exists on fields of characteristic \(p\equiv 2 \bmod{3}\). But this algorithm does not apply to other fields in general restricting the parameters to be used.</p>
 	<p>Another popular algorithm, but since now we need to remark it is an insecure way for performing hash to curve is the following. Let the hash of the input be the \(x\)-coordinate, and from it find the \(y\)-coordinate by computing a square root \(y= \sqrt{x^3+b}\). Note that not all \(x\)-coordinates lead that the square root exists, which means the algorithm may fail; thus, it’s a probabilistic algorithm. To make sure it works always, a counter can be added to \(x\) and increased each time the square root is not found. Although this algorithm always finds a point on the curve, this also makes the algorithm run in variable time i.e., it's a non-constant time algorithm. The lack of this property on implementations of cryptographic algorithms makes them susceptible to timing attacks. The <a href="https://wpa3.mathyvanhoef.com">DragonBlood</a> attack is an example of how a non-constant time hashing algorithm resulted in a full key recovery of WPA3 Wi-Fi passwords.</p>
@@ -189,7 +259,14 @@
 	<p>Fortunately, several researchers have addressed most of these problems and some other researchers have been involved in efforts to define a concrete specification for secure algorithms for hashing to curves, by extending the sort of geometric trick that worked for the Boneh-Franklin curve. We have participated in the Crypto Forum Research Group (CFRG) at IETF on the work-in-progress Internet <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve">draft-irtf-cfrg-hash-to-curve</a>. This document specifies secure algorithms for hashing targeting several elliptic curves including the BLS12-381 curve. At Cloudflare, we are actively collaborating in several working groups of IETF, see Jonathan Hoyland’s <a href="https://blog.cloudflare.com/cloudflare-and-the-ietf">post</a> to know more about it.</p>
 	<p>Our implementation complies with the recommendations given in the hash to curve draft and also includes many implementation techniques and tricks derived from a vast number of academic research articles in pairing-based cryptography. A good compilation of most of these tricks is delightfully explained by <a href="https://www.craigcostello.com.au/s/PairingsForBeginners.pdf">Craig Costello</a>.</p>
 	<p>We hope this post helps you to shed some light and guidance on the development of pairing-based cryptography, as it has become much more relevant these days. We will share with you soon an interesting use case in which the application of pairing-based cryptography helps us to harden the security of our infrastructure.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We invite you to use our <a href="https://github.com/cloudflare/circl">CIRCL</a> library, now equipped with bilinear pairings. But there is more: look at other primitives already available such as <a href="https://github.com/cloudflare/circl/tree/master/hpke">HPKE</a>, <a href="https://github.com/cloudflare/circl/tree/master/oprf">VOPRF</a>, and <a href="https://github.com/cloudflare/circl/tree/master/kem">Post-Quantum</a> algorithms. On our side, we will continue improving the performance and security of our library, and let us know if any of your projects uses CIRCL, we would like to know your use case. Reach us at <a href="https://research.cloudflare.com">research.cloudflare.com</a>.</p>
 	<p>You’ll soon hear more about how we’re using CIRCL across Cloudflare.</p>
 </div>

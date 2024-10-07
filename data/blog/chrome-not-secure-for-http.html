@@ -25,7 +25,14 @@
 	</figure>
 	<p>If you were to ask the operators of these sites why they don’t protect themselves and their visitors with HTTPS, the responses you’d get could be bucketed into the following three groups: "I don’t need it", "it’s difficult to do", or "it’s slow".</p>
 	<p>None of these are legitimate answers, but they’re common misconceptions so let’s take each in turn.</p>
-	<h3>Myth #1: "HTTPS is difficult to deploy"</h3>
+	<div class="flex anchor relative">
+		<h3 id="myth-1-https-is-difficult-to-deploy">Myth #1: "HTTPS is difficult to deploy"</h3>
+		<a href="https://blog.cloudflare.com/#myth-1-https-is-difficult-to-deploy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>For Individual Sites</h4>
 	<p>This was true.. in the mid 1990s, when I placed my first SSL certificate order. All that has changed.</p>
 	<p>Back then, I was a high school student writing software for my friend’s mom’s company. We were getting ready to launch her website and I learned that we needed something called an "SSL certificate" to transact securely online, but I had no idea how to get one.</p>
@@ -35,12 +42,26 @@
 	<p>While the "it’s difficult" excuse rings hollow for individual site operators, things do get a bit more challenging when you’re dealing with issuing (and regularly renewing) hundreds, thousands, or even millions of certificates. Such is the case for SaaS providers who write and deploy software on another company’s domain, e.g., <a href="https://blog.example.com">https://blog.example.com</a> or <a href="https://mystore.example">https://mystore.example</a>.</p>
 	<p>The reason that it can seem difficult to manage SSL certificates on behalf of other companies (putting aside performance and scale for a second), is that Certificate Authorities are only supposed to give out SSL certificates for hostnames where the requestor has "demonstrated control". Fortunately, methods such as HTTP-based validation, i.e., placing a random token on a well-defined path that the CA can access, have reduced the burden on the end-customer to a single step.</p>
 	<p>For those that want the benefits of having an edge provider like Cloudflare in front of their servers for acceleration and protection, our <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a> product reduces this process to a single API call. Alternatively, those that wish to to handle their own issuance, renewal, certificate hosting, and DDoS protection, the HTTP validation method or <a href="https://github.com/ietf-wg-acme/acme">ACME protocol</a> can be used.</p>
-	<h3>Myth #2: "I don’t need HTTPS"</h3>
+	<div class="flex anchor relative">
+		<h3 id="myth-2-i-dont-need-https">Myth #2: "I don’t need HTTPS"</h3>
+		<a href="https://blog.cloudflare.com/#myth-2-i-dont-need-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This argument is the most puzzling to me, especially <a href="http://this.how/googleAndHttp">when spouted</a> by people who should know better. Even if you don’t care about performance—see myth #3 below—surely you care about the safety and privacy of those visiting your site.</p>
 	<p>Without HTTPS, anyone in the path between your visitor’s browser and your site or API can snoop on (or modify) your content without your consent. This includes <a href="https://en.wikipedia.org/wiki/Internet_censorship_and_surveillance_by_country">governments</a>, employers, and even especially <a href="https://arstechnica.com/tech-policy/2013/04/how-a-banner-ad-for-hs-ok">internet</a> <a href="http://forums.xfinity.com/t5/Customer-Service/Are-you-aware/td-p/3009551">service</a> <a href="https://thehackernews.com/2016/02/china-hacker-malware.html">providers</a>.</p>
 	<p>If you care about your users receiving your content unmodified and being safe from maliciously injected advertisements or malware, you care about—and must use—HTTPS.</p>
 	<p>Besides safety, there are additional benefits such as <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">SEO</a> and access to new web features: increasingly, the major browser vendors such as Apple, Google, Mozilla, and Microsoft, are <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1072859">restricting functionality</a> to only work over HTTPS. As for mobile apps, Google will soon block <a href="https://android-developers.googleblog.com/2018/03/previewing-android-p.html">unencrypted connections</a> by default, in their upcoming version of Android. Apple also <a href="https://developer.apple.com/videos/play/wwdc2016/706">announced</a> (and will soon hopefully follow through on their requirement) that apps must use HTTPS.</p>
-	<h3>Myth #3: "HTTPS is slow"</h3>
+	<div class="flex anchor relative">
+		<h3 id="myth-3-https-is-slow">Myth #3: "HTTPS is slow"</h3>
+		<a href="https://blog.cloudflare.com/#myth-3-https-is-slow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Lastly, the other common myth about HTTPS is that it’s “slow”. This belief is a holdover from an era when SSL/TLS could actually have a negative performance impact on a site, but that's <a href="https://istlsfastyet.com/#cdn-paas">no longer the case</a> today. In fact, HTTPS is required to enable and enjoy the performance benefits of HTTP/2.</p>
 	<figure class="kg-card kg-image-card ">
 		<a href="https://blog.cloudflare.com/content/images/2018/06/is-tls-fast-yet.png">

@@ -13,16 +13,44 @@
 	</figure>
 	<p>Because we use Anycast GRE, every server across Cloudflare’s 200+ locations globally can send GRE traffic to customers. Every server needs to know the status of every tunnel, and every location has completely different network routes to customers. Where to start?</p>
 	<p>In this post, I’ll break down my work to improve the Magic Transit GRE tunnel health check system, creating a more stable experience for customers and dramatically reducing CPU and memory usage at Cloudflare’s edge.</p>
-	<h2>Everybody has their own weather station</h2>
+	<div class="flex anchor relative">
+		<h2 id="everybody-has-their-own-weather-station">Everybody has their own weather station</h2>
+		<a href="https://blog.cloudflare.com/#everybody-has-their-own-weather-station" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To decide where to send traffic, Cloudflare edge servers need to periodically send <a href="https://developers.cloudflare.com/magic-transit/about/health-checks">health checks</a> to each customer tunnel endpoint.</p>
 	<p>When Magic Transit was first launched, every server sent a health check to every tunnel once per minute. This naive, “shared-nothing” approach was simple to implement and served customers well, but would occasionally deliver less than optimal health check behavior in two specific ways.</p>
-	<h3>Way #1: Inconsistent weather reports</h3>
+	<div class="flex anchor relative">
+		<h3 id="way-1-inconsistent-weather-reports">Way #1: Inconsistent weather reports</h3>
+		<a href="https://blog.cloudflare.com/#way-1-inconsistent-weather-reports" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes a server just runs into bad luck, and a check randomly fails. From there, the server would mark the tunnel as degraded and immediately start shifting traffic towards a fallback tunnel. Imagine you and I were standing right next to each other under a clear sky, and I felt a single drop of water and declared, “It’s raining!” whereas you felt no raindrops and declared, “It’s all clear!”</p>
 	<p>With relatively minimal data per server, it means that health determinations can be imprecise. It also means that individual servers could overreact to individual failures. From a customer’s point of view, it’s like Cloudflare detected a problem with the primary tunnel. But, in reality, the server just got a bad weather forecast and made a different judgement call.</p>
-	<h3>Way #2: Slow to respond to storms</h3>
+	<div class="flex anchor relative">
+		<h3 id="way-2-slow-to-respond-to-storms">Way #2: Slow to respond to storms</h3>
+		<a href="https://blog.cloudflare.com/#way-2-slow-to-respond-to-storms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even when tunnel states are consistent across servers, they can be slow to respond. In this case, if a server runs a health check which succeeds, but a second later the tunnel goes down, the next health check won't happen for another 59 seconds. Until that next health check fails, the server has no idea anything is wrong, so it keeps sending traffic over unhealthy tunnels, leading to packet loss and latency for the customer.</p>
 	<p>Much like how a live, up-to-the-minute rain forecast helps you decide when to leave to avoid the rain, servers that send tunnel checks more frequently get a finer view of the Internet weather and can respond faster to localized storms. But if every server across Cloudflare’s edge sent health checks too frequently, we would very quickly start to overwhelm our customers’ networks.</p>
-	<h2>All of the weather stations nearby start sharing observations</h2>
+	<div class="flex anchor relative">
+		<h2 id="all-of-the-weather-stations-nearby-start-sharing-observations">All of the weather stations nearby start sharing observations</h2>
+		<a href="https://blog.cloudflare.com/#all-of-the-weather-stations-nearby-start-sharing-observations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Clearly, we needed to hammer out some kinks. We wanted servers in the same location to come to the same conclusions about where to send traffic, and we wanted faster detection of issues without increasing the frequency of tunnel checks.</p>
 	<p>Health checks sent from servers in the same data center take the same route across the Internet. Why not share the results among them?</p>
 	<p>Instead of a single raindrop causing me to declare that it’s raining, I’d tell you about the raindrop I felt, and you’d tell me about the clear sky you’re looking at. Together, we come to the same conclusion: there isn’t enough rain to open an umbrella.</p>
@@ -37,14 +65,28 @@
 	<p>This second version of tunnel health checks resulted in more consistent &nbsp;tunnel health determinations by servers in the same data center. It also resulted in faster response times—especially in large data centers where servers receive updates from their peers very rapidly.</p>
 	<p>However, we started seeing scaling problems. As we added more customers, we added more tunnel endpoints where we need to check the weather. In some of our larger data centers, each server was receiving close to half a billion messages per minute.</p>
 	<p>Imagine it's not just you and me telling each other about the weather above us. You’re in a crowd of hundreds of people, and now everyone is shouting the weather updates for thousands of cities around the world!</p>
-	<h2>One weather station to rule them all</h2>
+	<div class="flex anchor relative">
+		<h2 id="one-weather-station-to-rule-them-all">One weather station to rule them all</h2>
+		<a href="https://blog.cloudflare.com/#one-weather-station-to-rule-them-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As an engineering intern on the Magic Transit team, my project this summer has been developing a third approach. Rather than having every server <i>infrequently</i> check the weather for <i>every</i> tunnel and shouting the <i>observation</i> to everyone else, now every server tunnel can <i>frequently</i> check the weather for <i>a few</i> tunnels. With this new approach, servers would then only tell the others about the overall weather report—not every individual measurement.</p>
 	<p>That scenario sounds more efficient, but we need to distribute the task of sending tunnel health checks across all the servers in a location so one server doesn’t get an overwhelming amount of work. So how can we assign tunnels to servers in a way that doesn’t require a centralized orchestrator or shared database? Enter <a href="https://www.toptal.com/big-data/consistent-hashing">consistent hashing</a>, the single coolest distributed computing concept I got to apply this summer.</p>
 	<p>Every server sends a multicast “heartbeat” every few seconds. Then, by listening for multicast heartbeats, each server can construct a list of the IP addresses of peers known to be alive, including its own address, sorted by taking the hash of each address. Every server in a data center has the same list of peers in the same order.</p>
 	<p>When a server needs to decide which tunnels it is responsible for sending health checks to, the server simply hashes each tunnel to an integer and searches through the list of peer addresses to find the peer with the smallest hash greater than the tunnel’s hash, wrapping around to the first peer if no peer is found. The server is responsible for sending health checks to the tunnel when the assigned peer’s address equals the server’s address.</p>
 	<p>If a server stops sending messages for a long enough period of time, the server gets removed from the known peers list. As a consequence, the next time another server tries to hash a tunnel the removed peer was previously assigned, the tunnel simply gets reassigned to the next peer in the list.</p>
 	<p>And like magic, we have devised a scheme to consistently assign tunnels to servers in a way that is resilient to server failures and does not require any extra coordination between servers beyond heartbeats. Now, the assigned server can send health checks way more frequently, compose more precise weather forecasts, and share those forecasts without being drowned out by the crowd.</p>
-	<h2>Results</h2>
+	<div class="flex anchor relative">
+		<h2 id="results">Results</h2>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Releasing the new health check system globally reduced Magic Transit’s CPU usage by over 70% and memory usage by nearly 85%.</p>
 	<p>Memory usage (measured in terabytes):</p>
 	<figure class="kg-card kg-image-card ">

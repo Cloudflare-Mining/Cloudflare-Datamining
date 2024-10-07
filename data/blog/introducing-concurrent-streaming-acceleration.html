@@ -8,7 +8,14 @@
 	</figure>
 	<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery">Stream Delivery</a>.</p>
 	<p>Let’s dig into live-streaming latency, why it’s important, and what folks have done to improve it.</p>
-	<h3>How “live” is “live” video?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-live-is-live-video">How “live” is “live” video?</h3>
+		<a href="https://blog.cloudflare.com/#how-live-is-live-video" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Live streaming makes up an increasing share of video on the web. Whether it’s a TV broadcast, a live game show, or an online classroom, users expect video to arrive quickly and smoothly. And the promise of “live” is that the user is seeing events as they happen. But just how close to “real-time” is “live” Internet video?</p>
 	<p>Delivering live video on the Internet is still <i>hard</i> and adds lots of latency:</p>
 	<ol>
@@ -31,7 +38,14 @@
 
 	</figure>
 	<p>And all of this is under a time constraint — the whole process need to happen in a few seconds, or video experiences will suffer. We call the total delay between when the video was shot, and when it can be viewed on an end-user’s device, as “end-to-end latency” (think of it as the time from the camera lens to your phone’s screen).</p>
-	<h3>Traditional segmented delivery</h3>
+	<div class="flex anchor relative">
+		<h3 id="traditional-segmented-delivery">Traditional segmented delivery</h3>
+		<a href="https://blog.cloudflare.com/#traditional-segmented-delivery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Video formats like DASH, HLS, and CMAF work by splitting video into small files, called “segments”. A typical segment duration is 6 seconds.</p>
 	<p>If a client player needs to wait for a whole 6s segment to be encoded, sent through a CDN, and then decoded, it can be a long wait! It takes even longer if you want the client to build up a buffer of segments to protect against any interruptions in delivery. A typical player buffer for HLS is 3 segments:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -41,7 +55,14 @@
 	</figure>
 	<p>_Clients may have to buffer three 6-second chunks, introducing at least 18s of latency_‌‌</p>
 	<p>When you consider encoding delays, it’s easy to see why live streaming latency on the Internet has typically been about 20-30 seconds. We can do better.</p>
-	<h3>Reduced latency with chunked transfer encoding</h3>
+	<div class="flex anchor relative">
+		<h3 id="reduced-latency-with-chunked-transfer-encoding">Reduced latency with chunked transfer encoding</h3>
+		<a href="https://blog.cloudflare.com/#reduced-latency-with-chunked-transfer-encoding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A natural way to solve this problem is to enable client players to start playing the chunks while they’re downloading, or even while they’re still being created. Making this possible requires a clever bit of cooperation to encode and deliver the files in a particular way, known as “chunked encoding.” This involves splitting up segments into smaller, bite-sized pieces, or “chunks”. Chunked encoding can typically bring live latency down to 5 or 10 seconds.</p>
 	<p>Confusingly, the word “chunk” is overloaded to mean two different things:</p>
 	<ol>
@@ -60,7 +81,14 @@
 	<p><i>Chunked Encoding splits segments into shorter chunks</i></p>
 	<p>HTTP chunks are important because web clients have limited ability to process streams of data. Most clients can only work with data once they’ve received the full HTTP response, or at least a complete HTTP chunk. By using HTTP chunked transfer encoding, we enable video players to start parsing and decoding video sooner.</p>
 	<p>CMAF chunks are important so that decoders can actually <i>play</i> the bits that are in the HTTP chunks. Without encoding video in a careful way, decoders would have random bits of a video file that can’t be played.</p>
-	<h3>CDNs can introduce additional buffering</h3>
+	<div class="flex anchor relative">
+		<h3 id="cdns-can-introduce-additional-buffering">CDNs can introduce additional buffering</h3>
+		<a href="https://blog.cloudflare.com/#cdns-can-introduce-additional-buffering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Chunked encoding with HLS and CMAF is growing in use across the web today. Part of what makes this technique great is that HTTP chunked encoding is widely supported by CDNs – it’s been part of the HTTP spec for 20 years.</p>
 	<p>CDN support is critical because it allows low-latency live video to scale up and reach audiences of thousands or millions of concurrent viewers – something that’s currently very difficult to do with other, non-HTTP based protocols.</p>
 	<p>Unfortunately, even if you enable chunking to optimise delivery, your CDN may be working against you by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
@@ -96,7 +124,14 @@
 			<p>Some CDNs neutralize the benefits of chunked encoding by <b>buffering entire files inside the CDN</b> before they can be delivered to clients</p>
 		</li>
 	</ul>
-	<h3>Cloudflare’s solution: Concurrent Streaming Acceleration</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-solution-concurrent-streaming-acceleration">Cloudflare’s solution: Concurrent Streaming Acceleration</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-solution-concurrent-streaming-acceleration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you may have guessed, we think we can do better. Put simply, we now have the ability to deliver un-cached files to <b>multiple clients simultaneously</b> while we pull the file once from the origin server.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -112,7 +147,14 @@
 
 	</figure>
 	<p>This directly translates into a 1.5-second improvement in end-to-end latency. Live video just got more live!</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>New techniques like chunked encoding have revolutionized live delivery, enabling publishers to deliver low-latency live video at scale. Concurrent Streaming Acceleration helps you unlock the power of this technique at your CDN, potentially shaving precious seconds of end-to-end latency.</p>
 	<p>If you’re interested in using Cloudflare for live video delivery, <a href="https://www.cloudflare.com/plans/enterprise/contact">contact our enterprise sales team</a>.</p>
 	<p>And if you’re interested in working on projects like this and helping us improve live video delivery for the entire Internet, join our <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">engineering team</a>!</p>

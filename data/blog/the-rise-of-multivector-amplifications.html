@@ -1,7 +1,14 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RHVtyjcC2Y3odEDnepL0T/acbeed5ca030bd01bde6fba35b7fa14d/the-rise-of-multivector-amplifications.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>It's been a while since we last wrote about <a href="https://blog.cloudflare.com/reflections-on-reflections">Layer 3/4 DDoS attacks on this blog</a>. This is a good news - we've been quietly handling the daily onslaught of DDoS attacks. Since our last write-up, a handful of interesting L3/4 attacks have happened. Let's review them.</p>
-	<h2>Gigantic SYN</h2>
+	<div class="flex anchor relative">
+		<h2 id="gigantic-syn">Gigantic SYN</h2>
+		<a href="https://blog.cloudflare.com/#gigantic-syn" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In April, <a href="https://twitter.com/jgrahamc/status/983278388059058181">John tweeted about a gigantic 942Gbps SYN flood</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +31,14 @@
 	<p>Thirdly, the attack seem to be partially spoofed. While our analysis was not conclusive, we saw random, spoofed source IP addresses in the largest internet exchanges. The above <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a> shows the source IP distribution in AMS-IX. As you can see we even saw the 127.0.0.0/8 block attacking us!</p>
 	<p>Lastly, it was a one-off. We have seen a couple of smaller SYN floods with similar characteristics before, but not after this event.</p>
 	<p>We believe the traffic was caused by <a href="https://en.wikipedia.org/wiki/Xor_DDoS">Xor.DDoS malware</a>. Others have <a href="https://www.yumpu.com/en/document/view/54673736/the-linux-xor-ddos-botnets">investigated this</a> botnet <a href="https://blogs.akamai.com/2015/09/xor-ddos-threat-advisory.html">in the past</a>.</p>
-	<h2>SYN landscape</h2>
+	<div class="flex anchor relative">
+		<h2 id="syn-landscape">SYN landscape</h2>
+		<a href="https://blog.cloudflare.com/#syn-landscape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Apart from the gigantic one-off SYN floods, we are, as usual, the target of more common SYN floods coming mainly from Asia. Here is a chart from two days some time ago:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -33,7 +47,14 @@
 	</figure>
 	<p>These kind of SYN floods, reaching 600-650 Gbps, we consider a normal part of operating in the internet.</p>
 	<p>Apart from SYN floods we regularly see amplification attacks. The specific techniques come into and go out of fashion. We're happy to report that both SSDP and memcached reflections seem to be on their way out.</p>
-	<h2>The fall of SSDP</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-fall-of-ssdp">The fall of SSDP</h2>
+		<a href="https://blog.cloudflare.com/#the-fall-of-ssdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last year we were worried about rising volumes of SSDP amplification attacks:</p>
 	<ul>
 		<li>
@@ -52,7 +73,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/JN7Pnvpp34WV9zz3F2Aet/66a84424a92b1ab76bcb316b04dcb295/ssdp-30-days-ips-1.png" alt="ssdp-30-days-ips-1" class="kg-image" width="2000" height="693" loading="lazy">
 
 	</figure>
-	<h2>The fall of memcached</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-fall-of-memcached">The fall of memcached</h2>
+		<a href="https://blog.cloudflare.com/#the-fall-of-memcached" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Similarly, in late February we blogged about memcached-based amplification attacks:</p>
 	<ul>
 		<li>
@@ -65,7 +93,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ypEYQgJt0L1ShN5t6b60e/fb9bc4656850460c5fc142e29fc461b1/memcached.png" alt="memcached" class="kg-image" width="1972" height="552" loading="lazy">
 
 	</figure>
-	<h2>Multivector amplifications</h2>
+	<div class="flex anchor relative">
+		<h2 id="multivector-amplifications">Multivector amplifications</h2>
+		<a href="https://blog.cloudflare.com/#multivector-amplifications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>About two months ago, we started observing a new interesting trend. Instead of trying to do much damage using one amplification type - like SSDP or memcached, attackers started pooling them. We saw attacks employing many different amplification categories hitting us all at once.</p>
 	<p>The industry calls this "multivector attacks", and while it's rather standard and has existed for years, we haven't seen it on this scale before. For example, here is one such an attack reaching a combined 800Gbps:</p>
 	<figure class="kg-card kg-image-card ">
@@ -98,7 +133,14 @@
 		</li>
 	</ul>
 	<p>We almost forgot about SNMP and Portmap amplifications - but there they are, together they compose a large part of the generated traffic.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's important to keep a perspective on the Layer 3/Layer 4 attacks. About three years ago direct DNS attacks (like random prefix attacks) were a daily occurance. Attackers changed their techniques and today we don't see DNS spikes too often.</p>
 	<p>Two years ago, SYN floods were on the rise. Starting with about the Olympic Games in Rio in 2016, the frequency and volume decreased. For about a year after that, it was rather quiet. Recently major SYN floods started happening again and we are watching them carefully.</p>
 	<p>In the past we've described SSDP and memcached amplifications as significant threats. They still happen, but seem to be decreasing. Recently, we noticed that "multivector" amplifications had become more common. This is a sign that the attackers need to pool the techniques in order to generate substantial traffic.</p>

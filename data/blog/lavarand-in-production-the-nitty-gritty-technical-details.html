@@ -6,22 +6,57 @@
 
 	</figure>
 	<p>Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a></p>
-	<h2>Introduction</h2>
+	<div class="flex anchor relative">
+		<h2 id="introduction">Introduction</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As some of you may know, <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps">there's a wall of lava lamps</a> in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works in technical detail. This post assumes a technical background. For a higher-level discussion that requires no technical background, see <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">Randomness 101: LavaRand in Production</a>.</p>
-	<h2>Background</h2>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we’ve <a href="https://blog.cloudflare.com/why-randomness-matters">discussed in the past</a>, cryptography relies on the ability to generate random numbers that are both unpredictable and kept secret from any adversary. In this post, we’re going to go into fairly deep technical detail, so there is some background that we’ll need to ensure that everybody is on the same page.</p>
-	<h3>True Randomness vs Pseudorandomness</h3>
+	<div class="flex anchor relative">
+		<h3 id="true-randomness-vs-pseudorandomness">True Randomness vs Pseudorandomness</h3>
+		<a href="https://blog.cloudflare.com/#true-randomness-vs-pseudorandomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In cryptography, the term <i>random</i> means <i>unpredictable</i>. That is, a process for generating random bits is secure if an attacker is unable to predict the next bit with greater than 50% accuracy (in other words, no better than random chance).</p>
 	<p>We can obtain randomness that is unpredictable using one of two approaches. The first produces <i>true randomness</i>, while the second produces <i>pseudorandomness</i>.</p>
 	<p>True randomness is any information learned through the measurement of a physical process. Its unpredictability relies either on the inherent unpredictability of the physical process being measured (e.g., the unpredictability of radioactive decay), or on the inaccuracy inherent in taking precise physical measurements (e.g., the inaccuracy of the least significant digits of some physical measurement such as the measurement of a CPU’s temperature or the timing of keystrokes on a keyboard). Random values obtained in this manner are unpredictable even to the person measuring them (the person performing the measurement can’t predict what the value will be before they have performed the measurement), and thus are just as unpredictable to an external attacker. All randomness used in cryptographic algorithms begins life as true randomness obtained through physical measurements.</p>
 	<p>However, obtaining true random values is usually expensive and slow, so using them directly in cryptographic algorithms is impractical. Instead, we use pseudorandomness. Pseudorandomness is generated through the use of a deterministic algorithm that takes as input some other random value called a <i>seed</i> and produces a larger amount of random output (these algorithms are called <i>cryptographically secure pseudorandom number generators</i>, or CSPRNGs). A CSPRNG has two key properties: First, if an attacker is unable to predict the value of the seed, then that attacker will be similarly unable to predict the output of the CSPRNG (and even if the attacker is shown the output up to a certain point - say the first 10 bits - the rest of the output - bits 11, 12, etc - will still be completely unpredictable). Second, since the algorithm is deterministic, running the algorithm twice with the same seed as input will produce identical output.</p>
 	<p>The CSPRNGs used in modern cryptography are both very fast and also capable of securely producing an effectively infinite amount of output<sup>1</sup> given a relatively small seed (on the order of a few hundred bits). Thus, in order to efficiently generate a lot of secure randomness, true randomness is obtained from some physical process (this is slow), and fed into a CSPRNG which in turn produces as much randomness as is required by the application (this is fast). In this way, randomness can be obtained which is both secure (since it comes from a truly random source that cannot be predicted by an attacker) and cheap (since a CSPRNG is used to turn the truly random seed into a much larger stream of pseudorandom output).</p>
-	<h3>Running Out of Randomness</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-out-of-randomness">Running Out of Randomness</h3>
+		<a href="https://blog.cloudflare.com/#running-out-of-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common misconception is that a CSPRNG, if used for long enough, can “run out” of randomness. This is an understandable belief since, as we’ll discuss in the next section, operating systems often re-seed their CSPRNGs with new randomness to hedge against attackers discovering internal state, broken CSPRNGs, and other maladies.</p>
 	<p>But if an algorithm is a true CSPRNG in the <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator#Definitions">technical sense</a>, then the only way for it to run out of randomness is for somebody to consume far more values from it than could ever be consumed in practice (think consuming values from a CSPRNG as fast as possible for thousands of years or more).<sup>2</sup></p>
 	<p>However, none of the fast CSPRNGs that we use in practice are proven to be true CSPRNGs. They’re just <i>strongly believed</i> to be true CSPRNGs, or something close to it. They’ve withstood the test of academic analysis, years of being used in production, attacks by resourced adversaries, and so on. But that doesn’t mean that they are without flaws. For example, SHA-1, long considered to be a cryptographically-secure collision-resistant hash function (a building block that can be used to construct a CSPRNG) was eventually discovered to be insecure. Today, it can be broken for $110,000’s worth of cloud computing resources.<sup>3</sup></p>
 	<p>Thus, even though we aren’t concerned with running out of randomness in a true CSPRNG, we also aren’t sure that what we’re using in practice are true CSPRNGs. As a result, to hedge against the possibility that an attacker has figured out how to break our CSPRNGs, designers of cryptographic systems often choose to re-seed CSPRNGs with fresh, newly-acquired true randomness just in case.</p>
-	<h3>Randomness in the Operating System</h3>
+	<div class="flex anchor relative">
+		<h3 id="randomness-in-the-operating-system">Randomness in the Operating System</h3>
+		<a href="https://blog.cloudflare.com/#randomness-in-the-operating-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In most computer systems, one of the responsibilities of the operating system is to provide cryptographically-secure pseudorandomness for use in various security applications. Since the operating system cannot know ahead of time which applications will require pseudorandomness (or how much they will require), most systems simply keep an _entropy pool_<sup>4</sup> - a collection of randomness that is believed to be secure - that is used to seed a CSPRNG (e.g., <code>/dev/urandom</code> on Linux) which serves requests for randomness. The system then takes on the responsibility of not only seeding this entropy pool when the system first boots, but also of periodically updating the pool (and re-seeding the CSPRNG) with new randomness from whatever sources of true randomness are available to the system in order to hedge against broken CSPRNGs or attackers having compromised the entropy pool through other non-cryptographic attacks.</p>
 	<p>For brevity, and since Cloudflare’s production system’s run Linux, we will refer to the system’s pseudorandomness provider simply as <code>/dev/urandom</code>, although note that everything in this discussion is true of other operating systems as well.</p>
 	<p>Given this setup of an entropy pool and CSPRNG, there are a few situations that could compromise the security of <code>/dev/urandom</code>:</p>
@@ -36,9 +71,24 @@
 			<p>An attacker could have the ability to modify the sources of true randomness, thus being able to influence the values obtained from these sources and thus predict the output of <code>/dev/urandom</code>.</p>
 		</li>
 	</ul>
-	<h3>Randomness Mixing</h3>
+	<div class="flex anchor relative">
+		<h3 id="randomness-mixing">Randomness Mixing</h3>
+		<a href="https://blog.cloudflare.com/#randomness-mixing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common approach to addressing these security issues is to mix multiple sources of randomness together in the system’s entropy pool, the idea being that so long as some of the sources remain uncompromised, the system remains secure. For example, if sources <i>X</i>, <i>Y</i>, and <i>Z</i>, when queried for random outputs, provide values <i>x</i>, <i>y</i>, and <i>z</i>, we might seed our entropy pool with <i>H(x, y, z)</i>, where <i>H</i> is a cryptographically-secure collision-resistant hash function. Even if we assume that two of these sources - say, <i>X</i> and <i>Y</i> - are malicious, so long as the attackers in control of them are not able to observe <i>Z</i>’s output,<sup>5</sup> then no matter what values of <i>x</i> and <i>y</i> they produce, <i>H(x, y, z)</i> will still be unpredictable to them.</p>
-	<h2>LavaRand</h2>
+	<div class="flex anchor relative">
+		<h2 id="lavarand">LavaRand</h2>
+		<a href="https://blog.cloudflare.com/#lavarand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1thY8qByl6CmiTCI9tIgOG/723baf5bd956552a67c9346b335e86ad/lava-lamps-camera.jpg" alt="" class="kg-image" width="2160" height="2602" loading="lazy">
@@ -50,7 +100,15 @@
 	<p>In short, LavaRand is a system that provides an additional entropy source to our production machines. In the lobby of our San Francisco office, we have a wall of lava lamps (pictured above). A video feed of this wall is used to generate entropy that is made available to our production fleet.</p>
 	<p>We're not the first ones to do this. Our LavaRand system was inspired by a similar system first <a href="https://en.wikipedia.org/wiki/Lavarand">proposed and built</a> by Silicon Graphics and <a href="https://www.google.com/patents/US5732138">patented</a> in 1996 (the patent has since expired).</p>
 	<p>The flow of the “lava” in a lava lamp is very unpredictable,6 and so the entropy in those lamps is incredibly high. Even if we conservatively assume that the camera has a resolution of 100x100 pixels (of course it’s actually much higher) and that an attacker can guess the value of any pixel of that image to within one bit of precision (e.g., they know that a particular pixel has a red value of either 123 or 124, but they aren’t sure which it is), then the total amount of entropy produced by the image is 100x100x3 = 30,000 bits (the x3 is because each pixel comprises three values - a red, a green, and a blue channel). This is orders of magnitude more entropy than we need.</p>
-	<h3>Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="design">Design</h3>
+		<a href="https://blog.cloudflare.com/#design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HQnazwt1tj0ywVtjZ0HTX/aa58a86187744f53e0684dbbf6c1a5df/Screen-Shot-2017-10-31-at-3.57.19-PM.png" alt="" class="kg-image" width="1274" height="478" loading="lazy">
@@ -62,7 +120,14 @@
 	<p>In the lobby, a camera is pointed at the wall. It obtains entropy from both the visual input from the lava lamps and also from random noise in the individual photoreceptors.</p>
 	<p>In the office, there’s a server which connects to the camera. The server has its own entropy system, and the output of that entropy system is mixed with the entropy from the camera to produce a new entropy feed.</p>
 	<p>In one of our production data centers, there’s a service which connects to the server in the office and consumes its entropy feed. That service combines this entropy feed with output from its own local entropy system to produce yet another entropy feed. This feed is made available for any production service to consume.</p>
-	<h3>Security of the LavaRand Service</h3>
+	<div class="flex anchor relative">
+		<h3 id="security-of-the-lavarand-service">Security of the LavaRand Service</h3>
+		<a href="https://blog.cloudflare.com/#security-of-the-lavarand-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We might conceive of a number of attacks that could be leveraged against this system:</p>
 	<ul>
 		<li>
@@ -82,15 +147,36 @@
 		</li>
 	</ul>
 	<p>Only one of these attacks would be fatal if successfully carried out: running code on the production service which produces the final entropy feed. In every other case, the malicious entropy feed controlled by the attacker is mixed with a non-malicious feed that the attacker can neither observe nor modify.<sup>7</sup> As we discussed in a previous section, as long as the attacker is unable to predict the output of these non-malicious feeds, they will be unable to predict the output of the entropy feed generated by mixing their malicious feed with the non-malicious feed.</p>
-	<h3>Using LavaRand</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-lavarand">Using LavaRand</h3>
+		<a href="https://blog.cloudflare.com/#using-lavarand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having a secure entropy source is only half of the story - the other half is actually using it!</p>
 	<p>The goal of LavaRand is to ensure that our production machines have access to secure randomness <i>even if their local entropy sources are compromised</i>. Just after boot, each of our production machines contacts LavaRand over TLS to obtain a fixed-size chunk of fresh entropy called a “beacon.” It mixes this beacon into the entropy system (on Linux, by writing the beacon to <code>/dev/random</code>). After this point, in order to predict or control the output of <code>/dev/urandom</code>, an attacker would need to compromise both the machine’s local entropy sources <i>and</i> the LavaRand beacon.</p>
-	<h3>Bootstrapping TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="bootstrapping-tls">Bootstrapping TLS</h3>
+		<a href="https://blog.cloudflare.com/#bootstrapping-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately, the reality isn’t quite that simple. We’ve gotten ourselves into something of a chicken-and-egg problem here: we’re trying to hedge against bad entropy from our local entropy sources, so we have to assume those might be compromised. But TLS, like many cryptographic protocols, requires secure entropy in order to operate. And we require TLS to request a LavaRand beacon. So in order to ensure secure entropy, we have to have secure entropy…</p>
 	<p>We solve this problem by introducing a second special-purpose CSPRNG, and seeding it in a very particular way. Every machine in Cloudflare’s production fleet has its own permanent store of secrets that it uses just after boot to prove its identity to the rest of the fleet in order to bootstrap the rest of the boot process. We piggyback on that system by storing an extra random seed - unique for each machine - that we use for that first TLS connection to LavaRand.</p>
 	<p>There’s a simple but very useful result from cryptography theory that says that an HMAC - a hash-based message authentication code - when combined with a random, unpredictable seed, behaves (from the perspective of an attacker) like a random oracle. That’s a lot of crypto jargon, but it basically means that if you have a secret, randomly-generated seed, <i>s</i>, then an attacker will be completely unable to guess the output of <i>HMAC(s, x)</i> <i>regardless of the value of x</i> - even if <i>x</i> is completely predictable! Thus, you can use <i>HMAC(s, x)</i> as the seed to a CSPRNG, and the output of the CSPRNG will be unpredictable. Note, though, that if you need to do this multiple times, you will have to pick different values for <i>x</i>! Remember that while CSPRNGs are secure if used with unpredictable seeds, they’re also deterministic. Thus, if the same value is used for <i>x</i> more than once, then the CSPRNG will end up producing the same stream of “random” values more than once, which in cryptography is often very insecure!</p>
 	<p>This means that we can combine those unique, secret seeds that we store on each machine with an HMAC and produce a secure random value. We use the current time with nanosecond precision as the input to ensure that the same value is never used twice on the same machine. We use the resulting value to seed a CSPRNG, and we use that CSPRNG for the TLS connection to LavaRand. That way, even if the system’s entropy sources are compromised, we’ll still be able to make a secure connection to LavaRand, obtain a new, secure beacon, and bootstrap the system’s entropy back to a secure state!</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Hopefully we’ll never need LavaRand. Hopefully, the primary entropy sources used by our production machines will remain secure, and LavaRand will serve little purpose beyond adding some flair to our office. But if it turns out that we’re wrong, and that our randomness sources in production are actually flawed, then hopefully LavaRand will be our hedge, making it just a little bit harder to hack Cloudflare.</p>
 	<hr>
 	<p><sup>1</sup> Some CSPRNGs exist with constraints on how much output can be consumed securely, but those are not the sort that we are concerned with in this post.</p>

@@ -9,11 +9,25 @@
 	<p>Time flies. The <a href="https://blog.cloudflare.com/tag/heartbleed">Heartbleed</a> vulnerability was discovered just over five and a half years ago. Heartbleed became a household name not only because it was one of the first bugs with its own <a href="http://heartbleed.com">web page</a> and <a href="http://heartbleed.com/heartbleed.png">logo</a>, but because of what it revealed about the fragility of the Internet as a whole. With Heartbleed, one tiny bug in a cryptography library exposed the personal data of the users of almost every website online.</p>
 	<p>Heartbleed is an example of an underappreciated class of bugs: remote memory disclosure vulnerabilities. High profile examples other than <a href="https://blog.cloudflare.com/tag/heartbleed">Heartbleed</a> include <a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug">Cloudbleed</a> and most recently <a href="https://arxiv.org/abs/1807.10535">NetSpectre</a>. These vulnerabilities allow attackers to extract secrets from servers by simply sending them specially-crafted packets. Cloudflare recently completed a multi-year project to make our platform more resilient against this category of bug.</p>
 	<p>For the last five years, the industry has been dealing with the consequences of the design that led to Heartbleed being so impactful. In this blog post we’ll dig into memory safety, and how we re-designed Cloudflare’s main product to protect private keys from the next Heartbleed.</p>
-	<h2>Memory Disclosure</h2>
+	<div class="flex anchor relative">
+		<h2 id="memory-disclosure">Memory Disclosure</h2>
+		<a href="https://blog.cloudflare.com/#memory-disclosure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Perfect security is not possible for businesses with an online component. History has shown us that no matter how robust their security program, an unexpected exploit can leave a company exposed. One of the more famous recent incidents of this sort is Heartbleed, a vulnerability in a commonly used cryptography library called OpenSSL that exposed the inner details of millions of web servers to anyone with a connection to the Internet. Heartbleed made international news, caused millions of dollars of damage, and <a href="https://blog.malwarebytes.com/exploits-and-vulnerabilities/2019/09/everything-you-need-to-know-about-the-heartbleed-vulnerability">still hasn’t been fully resolved</a>.</p>
 	<p>Typical web services only return data via well-defined public-facing interfaces called APIs. Clients don’t typically get to see what’s going on under the hood inside the server, that would be a huge privacy and security risk. Heartbleed broke that paradigm: it enabled anyone on the Internet to get access to take a peek at the operating memory used by web servers, revealing privileged data usually not exposed via the API. Heartbleed could be used to extract the result of previous data sent to the server, including passwords and credit cards. It could also reveal the inner workings and cryptographic secrets used inside the server, including TLS <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge">certificate private keys</a>.</p>
 	<p>Heartbleed let attackers peek behind the curtain, but not too far. Sensitive data could be extracted, but not everything on the server was at risk. For example, Heartbleed did not enable attackers to steal the content of databases held on the server. You may ask: why was some data at risk but not others? The reason has to do with how modern operating systems are built.</p>
-	<h2>A simplified view of process isolation</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-simplified-view-of-process-isolation">A simplified view of process isolation</h2>
+		<a href="https://blog.cloudflare.com/#a-simplified-view-of-process-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most modern operating systems are split into multiple layers. These layers are analogous to security clearance levels. So-called user-space applications (like your browser) typically live in a low-security layer called user space. They only have access to computing resources (memory, CPU, networking) if the lower, more credentialed layers let them.</p>
 	<p>User-space applications need resources to function. For example, they need memory to store their code and working memory to do computations. However, it would be risky to give an application direct access to the physical RAM of the computer they’re running on. Instead, the raw computing elements are restricted to a lower layer called the operating system kernel. The kernel only runs specially-designed applications designed to safely manage these resources and mediate access to them for user-space applications.</p>
 	<p>When a new user space application process is launched, the kernel gives it a virtual memory space. This virtual memory space acts like real memory to the application but is actually a safely guarded translation layer the kernel uses to protect the real memory. Each application’s virtual memory space is like a parallel universe dedicated to that application. This makes it impossible for one process to view or modify another’s, the other applications are simply not addressable.</p>
@@ -22,7 +36,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/46WR5JrLwEtc94VDZ7YZJK/0becc514b20a531038674d4e02d506e9/image9-3.png" alt="" class="kg-image" width="1132" height="956" loading="lazy">
 
 	</figure>
-	<h2>Heartbleed, Cloudbleed and the process boundary</h2>
+	<div class="flex anchor relative">
+		<h2 id="heartbleed-cloudbleed-and-the-process-boundary">Heartbleed, Cloudbleed and the process boundary</h2>
+		<a href="https://blog.cloudflare.com/#heartbleed-cloudbleed-and-the-process-boundary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Heartbleed was a vulnerability in the OpenSSL library, which was part of many web server applications. These web servers run in user space, like any common applications. This vulnerability caused the web server to return up to 2 kilobytes of its memory in response to a specially-crafted inbound request.</p>
 	<p>Cloudbleed was also a memory disclosure bug, albeit one specific to Cloudflare, that got its name because it was so similar to Heartbleed. With Cloudbleed, the vulnerability was not in OpenSSL, but instead in a secondary web server application used for HTML parsing. When this code parsed a certain sequence of HTML, it ended up inserting some process memory into the web page it was serving.</p>
 	<figure class="kg-card kg-image-card ">
@@ -38,7 +59,14 @@
 
 	</figure>
 	<p>The fact that the HTML parser and the web server were different applications saved us from having to revoke and re-issue our customers’ TLS certificates. However, if another memory disclosure vulnerability is discovered in the web server, these keys are again at risk.</p>
-	<h2>Moving keys out of Internet-facing processes</h2>
+	<div class="flex anchor relative">
+		<h2 id="moving-keys-out-of-internet-facing-processes">Moving keys out of Internet-facing processes</h2>
+		<a href="https://blog.cloudflare.com/#moving-keys-out-of-internet-facing-processes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not all web servers keep private keys in memory. In some deployments, private keys are held in a separate machine called a Hardware Security Module (HSM). HSMs are built to withstand physical intrusion and tampering and are often built to comply with stringent compliance requirements. They can often be bulky and expensive. Web servers designed to take advantage of keys in an HSM connect to them over a physical cable and communicate with a specialized protocol called PKCS#11. This allows the web server to serve encrypted content while being physically separated from the private key.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -58,12 +86,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/jFMg99U9Aiq8yNh43fx1l/69c827b59a5dbfaa018dd23bb5c942f3/image7-2.png" alt="" class="kg-image" width="840" height="348" loading="lazy">
 
 	</figure>
-	<h2>Keyless SSL is coming from inside the house</h2>
+	<div class="flex anchor relative">
+		<h2 id="keyless-ssl-is-coming-from-inside-the-house">Keyless SSL is coming from inside the house</h2>
+		<a href="https://blog.cloudflare.com/#keyless-ssl-is-coming-from-inside-the-house" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Repurposing Keyless SSL for Cloudflare-held private keys was easy to conceptualize, but the path from ideation to live in production wasn't so straightforward. The core functionality of Keyless SSL comes from the open source <a href="https://github.com/cloudflare/gokeyless">gokeyless</a> which customers run on their infrastructure, but internally we use it as a library and have replaced the main package with an implementation suited to our requirements (we've creatively dubbed it gokeyless-internal).</p>
 	<p>As with all major architecture changes, it’s prudent to start with testing out the model with something new and low risk. In our case, the test bed was our experimental <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> implementation. In order to quickly iterate through draft versions of the TLS specification and push releases without affecting the majority of Cloudflare customers, we <a href="https://blog.cloudflare.com/introducing-tls-1-3">re-wrote our custom nginx web server in Go</a> and deployed it in parallel to our existing infrastructure. This server was designed to never hold private keys from the start and only leverage gokeyless-internal. At this time there was only a small amount of TLS 1.3 traffic and it was all coming from the beta versions of browsers, which allowed us to work through the initial kinks of gokeyless-internal without exposing the majority of visitors to security risks or outages due to gokeyless-internal.</p>
 	<p>The first step towards making TLS 1.3 fully keyless was identifying and implementing the new functionality we needed to add to gokeyless-internal. Keyless SSL was designed to run on customer infrastructure, with the expectation of supporting only a handful of private keys. But our edge must simultaneously support millions of private keys, so we implemented the same <a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">lazy loading</a> logic we use in our web server, nginx. Furthermore, a typical customer deployment would put key servers behind a network load balancer, so they could be taken out of service for upgrades or other maintenance. Contrast this with our edge, where it’s important to maximize our resources by serving traffic during software upgrades. This problem is solved by the excellent <a href="https://blog.cloudflare.com/graceful-upgrades-in-go">tableflip package</a> we use elsewhere at Cloudflare.</p>
 	<p>The next project to go Keyless was <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>, which launched with default support for gokeyless-internal. With these small victories in hand, we had the confidence necessary to attempt the big challenge, which was porting our existing nginx infrastructure to a fully keyless model. After implementing the new functionality, and being satisfied with our integration tests, all that’s left is to turn this on in production and call it a day, right? Anyone with experience with large distributed systems knows how far "working in dev" is from "done," and this story is no different. Thankfully we were anticipating problems, and built a fallback into nginx to complete the handshake itself if any problems were encountered with the gokeyless-internal path. This allowed us to expose gokeyless-internal to production traffic without risking downtime in the event that our reimplementation of the nginx logic was not 100% bug-free.</p>
-	<h2>When rolling back the code doesn’t roll back the problem</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-rolling-back-the-code-doesnt-roll-back-the-problem">When rolling back the code doesn’t roll back the problem</h2>
+		<a href="https://blog.cloudflare.com/#when-rolling-back-the-code-doesnt-roll-back-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our deployment plan was to enable Keyless Everywhere, find the most common causes of fallbacks, and then fix them. We could then repeat this process until all sources of fallbacks had been eliminated, after which we could remove access to private keys (and therefore the fallback) from nginx. One of the early causes of fallbacks was gokeyless-internal returning ErrKeyNotFound, indicating that it couldn’t find the requested private key in storage. This should not have been possible, since nginx only makes a request to gokeyless-internal after first finding the certificate and key pair in storage, and we always write the private key and certificate together. It turned out that in addition to returning the error for the intended case of the key truly not found, we were also returning it when transient errors like timeouts were encountered. To resolve this, we updated those transient error conditions to return ErrInternal, and deployed to our <a href="https://en.wikipedia.org/wiki/Sentinel_species">canary datacenters</a>. Strangely, we found that a handful of instances in a single datacenter started encountering high rates of fallbacks, and the logs from nginx indicated it was due to a timeout between nginx and gokeyless-internal. The timeouts didn’t occur right away, but once a system started logging some timeouts it never stopped. Even after we rolled back the release, the fallbacks continued with the old version of the software! Furthermore, while nginx was complaining about timeouts, gokeyless-internal seemed perfectly healthy and was reporting reasonable performance metrics (sub-millisecond median request latency).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -93,7 +135,14 @@
 			<p>Most significantly, nginx must not throw away all requests multiplexed on a connection if any single one of them encounters an error, since a single connection no longer represents a single customer.</p>
 		</li>
 	</ul>
-	<h2>Implementations matter</h2>
+	<div class="flex anchor relative">
+		<h2 id="implementations-matter">Implementations matter</h2>
+		<a href="https://blog.cloudflare.com/#implementations-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CPU at the edge is one of our most precious assets, and it’s closely guarded by our performance team (aka CPU police). Soon after turning on Keyless Everywhere in one of our canary datacenters, they noticed gokeyless using ~50% of a core per instance. We were shifting the sign operations from nginx to gokeyless, so of course it would be using more CPU now. But nginx should have seen a commensurate reduction in CPU usage, right?</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -102,11 +151,25 @@
 	</figure>
 	<p>Wrong. Elliptic curve operations are very fast in Go, but it’s known that <a href="https://github.com/golang/go/issues/21525">RSA operations are much slower than their BoringSSL counterparts</a>.</p>
 	<p>Although Go 1.11 includes optimizations for RSA math operations, we needed more speed. Well-tuned assembly code is required to match the performance of BoringSSL, so Armando Faz from our Crypto team helped claw back some of the lost CPU by reimplementing parts of the <a href="https://golang.org/pkg/math/big">math/big</a> package with platform-dependent assembly in an internal fork of Go. The recent <a href="https://github.com/golang/go/wiki/AssemblyPolicy">assembly policy</a> of Go prefers the use of Go portable code instead of assembly, so these optimizations were not upstreamed. There is still room for more optimizations, and for that reason we’re still evaluating moving to cgo + BoringSSL for sign operations, despite <a href="https://dave.cheney.net/2016/01/18/cgo-is-not-go">cgo’s many downsides</a>.</p>
-	<h2>Changing our tooling</h2>
+	<div class="flex anchor relative">
+		<h2 id="changing-our-tooling">Changing our tooling</h2>
+		<a href="https://blog.cloudflare.com/#changing-our-tooling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Process isolation is a powerful tool for protecting secrets in memory. Our move to Keyless Everywhere demonstrates that this is not a simple tool to leverage. Re-architecting an existing system such as nginx to use process isolation to protect secrets was time-consuming and difficult. Another approach to memory safety is to use a memory-safe language such as Rust.</p>
 	<p>Rust was originally developed by Mozilla but is starting <a href="https://www.infoq.com/articles/programming-language-trends-2019">to be used much more widely</a>. The main advantage that Rust has over C/C++ is that it has memory safety features without a garbage collector.</p>
 	<p>Re-writing an existing application in a new language such as Rust is a daunting task. That said, many new Cloudflare features, from the powerful <a href="https://blog.cloudflare.com/announcing-firewall-rules">Firewall Rules</a> feature to our <a href="https://blog.cloudflare.com/announcing-warp-plus">1.1.1.1 with WARP</a> app, have been written in Rust to take advantage of its powerful memory-safety properties. We’re really happy with Rust so far and plan on using it even more in the future.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The harrowing aftermath of Heartbleed taught the industry a lesson that should have been obvious in retrospect: keeping important secrets in applications that can be accessed remotely via the Internet is a risky security practice. In the following years, with a lot of work, we leveraged process separation and Keyless SSL to ensure that the next Heartbleed wouldn’t put customer keys at risk.</p>
 	<p>However, this is not the end of the road. Recently memory disclosure vulnerabilities such as <a href="https://arxiv.org/abs/1807.10535">NetSpectre</a> have been discovered which are able to bypass application process boundaries, so we continue to actively explore new ways to keep keys secure.</p>
 	<figure class="kg-card kg-image-card ">

@@ -11,7 +11,14 @@
 	<p>On September 30, 2024, Let’s Encrypt’s certificate chain cross-signed with IdenTrust will <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html">expire</a>. After the cross-sign expires, servers will no longer be able to serve certificates signed by the cross-signed chain. Instead, all Let’s Encrypt certificates will use the ISRG Root X1 CA.</p>
 	<p>Most devices and browser versions released after 2016 will not experience any issues as a result of the change since the ISRG Root X1 will already be installed in those clients’ trust stores. That's because these modern browsers and operating systems were built to be agile and flexible, with upgradeable trust stores that can be updated to include new certificate authorities.</p>
 	<p>The change in the certificate chain will impact legacy devices and systems, such as devices running Android version 7.1.1 (released in 2016) or older, as those exclusively rely on the cross-signed chain and lack the ISRG X1 root in their trust store. These clients will encounter TLS errors or warnings when accessing domains secured by a Let’s Encrypt certificate. We took a look at the data ourselves and found that, of all Android requests, 2.96% of them come from devices that will be affected by the change. That’s a substantial portion of traffic that will lose access to the Internet. We’re committed to keeping those users online and will modify our certificate pipeline so that we can continue to serve users on older devices without requiring any manual modifications from our customers.</p>
-	<h3>A better Internet, for everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-better-internet-for-everyone">A better Internet, for everyone</h3>
+		<a href="https://blog.cloudflare.com/#a-better-internet-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the past, we invested in efforts like <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">“No Browsers Left Behind”</a> to help ensure that we could continue to support clients as SHA-1 based algorithms were being deprecated. Now, we’re applying the same approach for the upcoming Let’s Encrypt change.</p>
 	<p>We have made the decision to remove Let’s Encrypt as a certificate authority from all flows where Cloudflare dictates the CA, impacting Universal SSL customers and those using SSL for SaaS with the “default CA” choice.</p>
 	<p>Starting in June 2024, one certificate lifecycle (90 days) before the cross-sign chain expires, we’ll begin migrating Let’s Encrypt certificates that are up for renewal to use a different CA, one that ensures compatibility with older devices affected by the change. That means that going forward, customers will only receive Let’s Encrypt certificates if they explicitly request Let’s Encrypt as the CA.</p>
@@ -19,7 +26,14 @@
 	<p>However, we’ve observed <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">changes like this in the past</a> and while they push the adoption of new standards, they disproportionately impact users in economically disadvantaged regions, where access to new technology is limited.</p>
 	<p>Our mission is to help build a better Internet and that means supporting users worldwide. We previously published a <a href="https://blog.cloudflare.com/upcoming-lets-encrypt-certificate-chain-change-and-impact-for-cloudflare-customers">blog post about the Let’s Encrypt change</a>, asking customers to switch their certificate authority if they expected any impact. However, determining the impact of the change is challenging. Error rates due to trust store incompatibility are primarily logged on clients, reducing the visibility that domain owners have. In addition, while there might be no requests incoming from incompatible devices today, it doesn’t guarantee uninterrupted access for a user tomorrow.</p>
 	<p>Cloudflare’s certificate pipeline has evolved over the years to be resilient and flexible, allowing us to seamlessly adapt to changes like this without any negative impact to our customers. &nbsp;</p>
-	<h3>How Cloudflare has built a robust TLS certificate pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-has-built-a-robust-tls-certificate-pipeline">How Cloudflare has built a robust TLS certificate pipeline</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-has-built-a-robust-tls-certificate-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Cloudflare manages tens of millions of certificates on behalf of customers. For us, a successful pipeline means:</p>
 	<ol>
 		<li>
@@ -39,7 +53,14 @@
 		</li>
 	</ol>
 	<p>Every year, we introduce new optimizations into our certificate pipeline to maintain the highest level of service. Here’s how we do it…</p>
-	<h3>Ensuring customers can always obtain a TLS certificate for their domain</h3>
+	<div class="flex anchor relative">
+		<h3 id="ensuring-customers-can-always-obtain-a-tls-certificate-for-their-domain">Ensuring customers can always obtain a TLS certificate for their domain</h3>
+		<a href="https://blog.cloudflare.com/#ensuring-customers-can-always-obtain-a-tls-certificate-for-their-domain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the launch of Universal SSL in 2014, Cloudflare has been responsible for issuing and serving a TLS certificate for every domain that’s protected by our network. That might seem trivial, but there are a few steps that have to successfully execute in order for a domain to receive a certificate:</p>
 	<ol>
 		<li>
@@ -74,7 +95,14 @@
 	<h4>Supporting all clients — legacy and modern</h4>
 	<p>The upcoming Let’s Encrypt change will prevent legacy devices from making requests to domains or applications that are protected by a Let’s Encrypt certificate. We don’t want to cut off Internet access from any part of the world, which means that we’re going to continue to provide the best device compatibility to our customers, despite the change.</p>
 	<p>Because of all the recent enhancements, we are able to reduce our reliance on Let’s Encrypt without impacting the reliability or quality of service of our certificate pipeline. One certificate lifecycle (90 days) before the change, we are going to start shifting certificates to use a different CA, one that’s compatible with the devices that will be impacted. By doing this, we’ll mitigate any impact without any action required from our customers. The only customers that will continue to use Let’s Encrypt are ones that have specifically chosen Let’s Encrypt as the CA.</p>
-	<h3>What to expect of the upcoming Let’s Encrypt change</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-to-expect-of-the-upcoming-lets-encrypt-change">What to expect of the upcoming Let’s Encrypt change</h3>
+		<a href="https://blog.cloudflare.com/#what-to-expect-of-the-upcoming-lets-encrypt-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s Encrypt’s cross-signed chain will <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html">expire</a> on September 30th, 2024. Although Let’s Encrypt plans to stop issuing certificates from this chain on June 6th, 2024, Cloudflare will continue to serve the cross-signed chain for all Let’s Encrypt certificates until September 9th, 2024.</p>
 	<p>90 days or one certificate lifecycle before the change, we are going to start shifting Let’s Encrypt certificates to use a different certificate authority. We’ll make this change for all products where Cloudflare is responsible for the CA selection, meaning this will be automatically done for customers using Universal SSL and SSL for SaaS with the “default CA” choice.</p>
 	<p>Any customers that have specifically chosen Let’s Encrypt as their CA will receive an email notification with a list of their Let’s Encrypt certificates and information on whether or not we’re seeing requests on those hostnames coming from legacy devices.</p>
@@ -91,7 +119,14 @@
 	<h4>Custom Certificates</h4>
 	<p>If you directly integrate with Let’s Encrypt and use <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom Certificates</a> to upload your Let’s Encrypt certs to Cloudflare then your certificates will be bundled with the cross-signed chain, as long as you choose the bundle method “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#compatible">compatible</a>” or “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#modern">modern</a>” and upload those certificates before September 9th, 2024. After September 9th, we will bundle all Let’s Encrypt certificates with the ISRG Root X1 chain. With the “<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#user-defined">user-defined</a>” bundle method, we always serve the chain that’s uploaded to Cloudflare. If you upload Let’s Encrypt certificates using this method, you will need to ensure that certificates uploaded after September 30th, 2024, the date of the CA expiration, contain the right certificate chain.</p>
 	<p>In addition, if you control the clients that are connecting to your application, we recommend updating the trust store to include the <a href="https://letsencrypt.org/certificates/#root-certificates">ISRG Root X1</a>. If you use certificate pinning, remove or update your pin. In general, we discourage all customers from pinning their certificates, as this usually leads to issues during certificate renewals or CA changes.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internet standards will continue to evolve and improve. As we support and embrace those changes, we also need to recognize that it’s our responsibility to keep users online and to maintain Internet access in the parts of the world where new technology is not readily available. By using Cloudflare, you always have the option to choose the setup that’s best for your application.</p>
 	<p>For additional information regarding the change, please refer to our <a href="https://developers.cloudflare.com/ssl/reference/migration-guides/lets-encrypt-chain">developer documentation</a>.</p>
 </div>

@@ -3,10 +3,24 @@
 	<p>In October of last year we announced the launch of Cloudflare Workers. Workers allows you to run JavaScript from 150+ of Cloudflare’s data centers. This means that from the moment a request hits the Cloudflare network, you have full control over its destiny. One of the benefits of using Workers in combination with Cloudflare’s cache is that Workers allow you to have programmatic, and thus very granular control over the Cloudflare cache.</p>
 	<p>You can choose what to cache, how long to cache it for, the source it should be cached from, and you can even modify the cached result after it is retrieved from the cache.</p>
 	<p>We have seen many of our existing customers use Workers to enhance their usage of the Cloudflare cache, and we have seen many new customers join Cloudflare to take advantage of these unique benefits.</p>
-	<h2>(Re-)Introducing the Cache API</h2>
+	<div class="flex anchor relative">
+		<h2 id="re-introducing-the-cache-api">(Re-)Introducing the Cache API</h2>
+		<a href="https://blog.cloudflare.com/#re-introducing-the-cache-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can always have more control, so today we are announcing support for the Cache API! As some of you may know, Cloudflare Workers are built against the existing Service Worker APIs. One of the reasons we originally chose to model Cloudflare Workers after Service Workers was due to the existing familiarity and audience of Service Workers, as well as documentation.</p>
 	<p>We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
-	<h2>So what can you do with the Cache API?</h2>
+	<div class="flex anchor relative">
+		<h2 id="so-what-can-you-do-with-the-cache-api">So what can you do with the Cache API?</h2>
+		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-the-cache-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Cache Worker output</h4>
 	<p>Workers allow you to fully customize and manipulate a response before it is sent back to the user. Whether you are modifying the response from your origin, or assembling a response based on calls to multiple APIs, you can use the Cache API to cache the output and serve it directly on future similar requests.</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(event) {
@@ -60,7 +74,14 @@ async function handleRequest(event) {
   return response
 }</code></pre>
 	<p>These are just simple examples to get started, and we’ll be publishing many more in the coming weeks. We’re excited to see what everyone builds with the Cache API!</p>
-	<h2>How to get access</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-access">How to get access</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are super excited for you to start playing with the Cache API. <b>You can find </b><a href="https://developers.cloudflare.com/workers/reference/cache-api"><b>documentation here</b></a><b>, and feel free to start using the APIs.</b></p>
 	<p>We want to hear about all the cool ways you are using this. We also want to hear if you are having trouble or running into any issues.</p>
 	<p>Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com">cacheapibeta@cloudflare.com</a></p>

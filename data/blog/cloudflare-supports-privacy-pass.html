@@ -5,13 +5,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vA4PjhsAUXab0yreDk1Mu/064445261f3acf63ae18f733de266b25/DONF9cRWsAE3OZf-1-2.jpg" alt="" class="kg-image" width="440" height="131" loading="lazy">
 
 	</figure>
-	<h3>Enabling anonymous access to the web with privacy-preserving cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-anonymous-access-to-the-web-with-privacy-preserving-cryptography">Enabling anonymous access to the web with privacy-preserving cryptography</h3>
+		<a href="https://blog.cloudflare.com/#enabling-anonymous-access-to-the-web-with-privacy-preserving-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare supports Privacy Pass, a <a href="https://medium.com/@alxdavids/privacy-pass-6f0acf075288">recently-announced</a> privacy-preserving protocol developed in collaboration <a href="https://privacypass.github.io">with researchers from Royal Holloway and the University of Waterloo</a>. Privacy Pass leverages an idea from cryptography — zero-knowledge proofs — to let users prove their identity across multiple sites anonymously without enabling tracking. Users can now use the Privacy Pass browser extension to reduce the number of challenge pages presented by Cloudflare. We are happy to support this protocol and believe that it will help improve the browsing experience for some of the Internet’s least privileged users.</p>
 	<p>The Privacy Pass extension is available for both <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>. When people use anonymity services or shared IPs, it makes it more difficult for <a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website">website protection services</a> like Cloudflare to identify their requests as coming from legitimate users and not bots. Privacy Pass helps reduce the friction for these users—which include some of the most vulnerable users online—by providing them a way to prove that they are a human across multiple sites on the Cloudflare network. This is done without revealing their identity, and without exposing Cloudflare customers to additional threats from malicious bots. As the first service to support Privacy Pass, we hope to help demonstrate its usefulness and encourage more Internet services to adopt it.</p>
 	<p>Adding support for Privacy Pass is part of a broader initiative to help make the Internet accessible to as many people as possible. Because Privacy Pass will only be used by a small subset of users, we are also working on other improvements to our network in service of this goal. For example, we are making improvements in our request categorization logic to better identify bots and to improve the web experience for legitimate users who are negatively affected by Cloudflare’s current bot protection algorithms. As this system improves, users should see fewer challenges and site operators should see fewer requests from unwanted bots. We consider Privacy Pass a piece of this puzzle.</p>
 	<p>Privacy Pass is fully open source under a BSD license and the code is available <a href="https://github.com/privacypass/challenge-bypass-extension">on GitHub</a>. We encourage anyone who is interested to download the source code, play around with the implementations and contribute to the project. The Pass Team have also open sourced a <a href="https://github.com/privacypass/challenge-bypass-server">reference implementation of the server</a> in Go if you want to test both sides of the system. Privacy Pass support at Cloudflare is currently in beta. If you find a bug, please let the team know by creating an issue on GitHub.</p>
 	<p>In this blog post I'll be going into depth about the problems that motivated our support for this project and how you can use it to reduce the annoyance factor of CAPTCHAs and other user challenges online.</p>
-	<h3>Enabling universal access to content</h3>
+	<div class="flex anchor relative">
+		<h3 id="enabling-universal-access-to-content">Enabling universal access to content</h3>
+		<a href="https://blog.cloudflare.com/#enabling-universal-access-to-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare believes that the <a href="https://blog.cloudflare.com/ensuring-that-the-web-is-for-everyone">web is for everyone</a>. This includes people who are accessing the web anonymously or through shared infrastructure. Tools like VPNs are useful for protecting your identity online, and people using these tools should have the same access as everyone else. We believe the vast collection of information and services that make up the Internet should be available to every person.</p>
 	<p>In a <a href="https://blog.cloudflare.com/the-trouble-with-tor">blog post last year</a>, our CEO, Matthew Prince, spoke about the tension between security, anonymity, and convenience on the Internet. He posited that in order to secure a website or service while still allowing anonymous visitors, you have to sacrifice a bit of convenience for these users. This tradeoff is something that every website or web service has to make.</p>
 	<figure class="kg-card kg-image-card ">
@@ -22,7 +36,15 @@
 	<p>The Internet is full of bad actors. The frequency and severity of online attacks is <a href="http://techspective.net/2017/08/12/latest-ddos-trends-learning-experts">rising every year</a>. This turbulent environment not only threatens websites and web services with attacks, it threatens their ability to stay online. As smaller and more diverse sites become targets of anonymous threats, a greater percentage of the Internet will choose to sacrifice user convenience in order to stay secure and universally accessible.</p>
 	<p>The average Internet user visits dozens of sites and services every day. Jumping through a hoop or two when trying to access a single website is not that big of a problem for people. Having to do that for every site you visit every day can be exhausting. This is the problem that Privacy Pass is perfectly designed to solve.</p>
 	<p>Privacy Pass doesn’t completely eliminate this inconvenience. Matthew’s trilemma still applies: anonymous users are still inconvenienced for sites that want security. What Privacy Pass does is to notably reduce that inconvenience for users with access to a browser. Instead of having to be inconvenienced thirty times to visit thirty different domains, you only have to be inconvenienced once to gain access to thirty domains on the Cloudflare network. Crucially, unlike unauthorized services like <a href="https://addons.mozilla.org/firefox/addon/cloudhole">CloudHole</a>, Privacy Pass is designed to respect user privacy and anonymity. This is done using privacy-preserving cryptography, which prevents Cloudflare or anyone else from tracking a user’s browsing across sites. Before we go into how this works, let’s take a step back and take a look at why this is necessary.</p>
-	<h3>Am I a bot or not?</h3>
+	<div class="flex anchor relative">
+		<h3 id="am-i-a-bot-or-not">Am I a bot or not?</h3>
+		<a href="https://blog.cloudflare.com/#am-i-a-bot-or-not" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43zt4JxSv0HW37HA0mfbpj/6c113a2add9a93d90b6df2f2f19d5547/image2.jpg" alt="" class="kg-image" width="1999" height="1500" loading="lazy">
@@ -32,7 +54,14 @@
 	<p>Without explicit information about the identity of a user, a web server has to rely on fuzzy signals to guess which request is from a bot and which is from a human. For example, bots often use automated scripts instead of web browsers to do their crawling. The way in which scripts make web requests is often different than how web browsers would make the same request in subtle ways.</p>
 	<p>A simple way for a user to prove they are not a bot to a website is by logging in. By providing valid authentication credentials tied to a long-term identity, a user is exchanging their anonymity for convenience. Having valid authentication credentials is a strong signal that a request is not from a bot. Typically, if you authenticate yourself to a website (say by entering your username and password) the website sets what’s called a “cookie”. A cookie is just a piece of data with an expiration date that’s stored by the browser. As long as the cookie hasn’t expired, the browser includes it as part of the subsequent requests to the server that set it. Authentication cookies are what websites use to know whether you’re logged in or not. Cookies are only sent on the domain that set them. A cookie set by site1.com is not sent for requests to site2.com. This prevents identity leakage from one site to another.</p>
 	<p>A request with an authentication cookie is usually not from a bot, so bot detection is much easier for sites that require authentication. Authentication is by definition de-anonymizing, so putting this in terms of Matthew’s trilemma, these sites can have security and convenience because they provide no anonymous access. The web would be a very different place if every website required authentication to display content, so this signal can only be used for a small set of sites. The question for the rest of the Internet becomes: without authentication cookies, what else can be used as a signal that a user is a person and not a bot?</p>
-	<h3>The Turing Test</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-turing-test">The Turing Test</h3>
+		<a href="https://blog.cloudflare.com/#the-turing-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One thing that can be used is a user challenge: a task that the server asks the user to do before showing content. User challenges can come in many forms, from a <a href="https://en.wikipedia.org/wiki/Proof-of-work_system">proof-of-work</a> to a <a href="https://en.wikipedia.org/w/index.php?title=Guided_tour_puzzle_protocol">guided tour puzzle</a> to the classic CAPTCHA. A CAPTCHA (an acronym for "Completely Automated Public Turing test to tell Computers and Humans Apart") is a test to see if the user is a human or not. It often involves reading some scrambled letters or identifying certain slightly obscured objects — tasks that humans are generally better at than automated programs. The goal of a user challenge is not only to deter bots, but to gain confidence that a visitor is a person. Cloudflare uses a combination of different techniques as user challenges.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -62,7 +91,14 @@
 		</li>
 	</ol>
 	<p>Site visitors who are able to solve a challenge are much more likely to be people than bots, the harder the challenge, the more likely the visitor is a person. The presence of a valid <code>CF_CLEARANCE</code> cookie is a strong positive signal that a request is from a legitimate person.</p>
-	<h3>How Privacy Pass protects your privacy: a voting analogy</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-privacy-pass-protects-your-privacy-a-voting-analogy">How Privacy Pass protects your privacy: a voting analogy</h3>
+		<a href="https://blog.cloudflare.com/#how-privacy-pass-protects-your-privacy-a-voting-analogy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can use cryptography to prove that you have solved a challenge of a certain difficulty without revealing which challenge you solved. The technique that enables this is something called a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">Zero-knowledge proof</a>. This may sound scary, so let’s use a real-world scenario, vote certification, to explain the idea.</p>
 	<p>In some voting systems the operators of the voting center certify every ballot before sending them to be counted. This is to prevent people from adding fraudulent ballots while the ballots are being transferred from where the vote takes place to where the vote is counted.</p>
 	<p>An obvious mechanism would be to have the certifier sign every ballot that a voter submits. However, this would mean that the certifier, having just seen the person that handed them a ballot, would know how each person voted. Instead, we can use a better mechanism that preserves voters’ privacy using an envelope and some carbon paper.</p>
@@ -117,7 +153,14 @@
 		<p>Every time the Privacy Pass plugin needs a new set of privacy passes, it creates a set of thirty random numbers <code>t1</code> to <code>t30</code>, hashes them into a curve (P-256 in our case), blinds them with a value <code>b</code> and sends them along with a challenge solution. The server returns the set of points multiplied by its private key and a batch discrete logarithm equivalence proof. Each pair <code>tn, HMAC(n,M)</code> constitutes a Privacy Pass and can be redeemed to solve a subsequent challenge. Voila!</p>
 	</blockquote>
 	<p>If none of these words make sense to you and you want to know more, check out the Privacy Pass team’s [protocol design document](<a href="https://privacypass.github.io/protocol">https://privacypass.github.io/protocol/</a>).</p>
-	<h3>Making it work in the browser</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-it-work-in-the-browser">Making it work in the browser</h3>
+		<a href="https://blog.cloudflare.com/#making-it-work-in-the-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It takes more than a nice security protocol based on solid cryptography to make something useful in the real world. To bring the advantages of this protocol to users, the Privacy Pass team built a client in JavaScript and packaged it using <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/What_are_WebExtensions">WebExtensions</a>, a cross-browser framework for developing applications that run in the browser and modify website behavior. This standard is compatible with both Chrome and Firefox. A reference implementation of the server side of the protocol was <a href="https://github.com/privacypass/challenge-bypass-server">also implemented in Go</a>.</p>
 	<p>If you’re a web user and are annoyed by CAPTCHAs, you can download the Privacy Pass extension for Chrome <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">here</a> and for Firefox <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">here</a>. It will significantly improve your web browsing experience. Once it is installed, you’ll see a small icon on your browser with a number under it. The number is how many unused privacy passes you have. If you are running low on passes, simply click on the icon and select “Get More Passes,” which will load a CAPTCHA you can solve in exchange for thirty passes. Every time you visit a domain that requires a user challenge page to view, Privacy Pass will “spend” a pass and the content will load transparently. Note that you may see more than one pass spent up when you load a site for the first time if the site has subresources from multiple domains.</p>
 	<figure class="kg-card kg-image-card ">
@@ -127,7 +170,14 @@
 	</figure>
 	<p>The Privacy Pass extension works by hooking into the browser and looking for HTTP responses that have a specific header that indicates support for the Privacy Pass protocol. When a challenge page is returned, the extension will either try to issue new privacy passes or redeem existing privacy passes. The cryptographic operations in the plugin were built on top of <a href="https://github.com/bitwiseshiftleft/sjcl">SJCL</a>.</p>
 	<p>If you’re a Cloudflare customer and want to opt out from supporting Privacy Pass, please <a href="https://support.cloudflare.com">contact our support team</a> and they will disable it for you. We are soon adding a toggle for Privacy Pass in the Firewall app in the Cloudflare dashboard.</p>
-	<h3>The web is for everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-web-is-for-everyone">The web is for everyone</h3>
+		<a href="https://blog.cloudflare.com/#the-web-is-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The technology behind Privacy Pass is free for anyone to use. We see a bright future for this technology and think it will benefit from community involvement. The protocol is currently only deployed at Cloudflare, but it could easily be used across different organizations. It’s easy to imagine obtaining a Privacy Pass that proves that you have a Twitter or Facebook identity and using it to access other services on the Internet without revealing your identity, for example. There are a wide variety of applications of this technology that extend well beyond our current use cases.</p>
 	<p>If this technology is intriguing to you and you want to collaborate, please reach out to the Privacy Pass team on <a href="https://github.com/privacypass">GitHub</a>.</p>
 </div>

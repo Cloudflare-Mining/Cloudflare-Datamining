@@ -10,7 +10,14 @@
 	<p>Trust on the Internet is underpinned by the Public Key Infrastructure (PKI). PKI grants servers the ability to securely serve websites by issuing digital certificates, providing the foundation for encrypted and authentic communication.</p>
 	<p>Certificates make HTTPS encryption possible by using the public key in the certificate to verify server identity. HTTPS is especially important for websites that transmit sensitive data, such as banking credentials or private messages. Thankfully, modern browsers, such as Google Chrome, flag websites not secured using HTTPS by marking them “Not secure,” allowing users to be more security conscious of the websites they visit.</p>
 	<p>This blog post introduces a new, free tool Cloudflare offers to CAs so they can further secure certificate issuance. But before we dive in too deep, let’s talk about where certificates come from.</p>
-	<h3>Certificate Authorities</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-authorities">Certificate Authorities</h3>
+		<a href="https://blog.cloudflare.com/#certificate-authorities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Certificate Authorities (CAs) are the institutions responsible for issuing certificates.</p>
 	<p>When issuing a certificate for any given domain, they use Domain Control Validation (DCV) to verify that the entity requesting a certificate for the domain is the legitimate owner of the domain. With DCV the domain owner:</p>
 	<ol>
@@ -27,9 +34,23 @@
 	<p>The DCV process prevents adversaries from obtaining private-key and certificate pairs for domains not owned by the requestor. &nbsp;</p>
 	<p>Preventing adversaries from acquiring this pair is critical: if an incorrectly issued certificate and private-key pair wind up in an adversary’s hands, they could pose as the victim’s domain and serve sensitive HTTPS traffic. This violates our existing trust of the Internet, and compromises private data on a potentially massive scale.</p>
 	<p>For example, an adversary that tricks a CA into mis-issuing a certificate for gmail.com could then perform TLS handshakes while pretending to be Google, and exfiltrate cookies and login information to gain access to the victim’s Gmail account. The risks of certificate mis-issuance are clearly severe.</p>
-	<h3>Domain Control Validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="domain-control-validation">Domain Control Validation</h3>
+		<a href="https://blog.cloudflare.com/#domain-control-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To prevent attacks like this, CAs only issue a certificate after performing DCV. One way of validating domain ownership is through HTTP validation, done by uploading a text file to a specific HTTP endpoint on the webserver they want to secure. &nbsp;Another DCV method is done using email verification, where an email with a validation code link is sent to the administrative contact for the domain.</p>
-	<h3>HTTP Validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-validation">HTTP Validation</h3>
+		<a href="https://blog.cloudflare.com/#http-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Suppose Alice buys the domain name aliceswonderland.com and wants to get a dedicated certificate for this domain. Alice chooses to use Let’s Encrypt as their certificate authority. First, Alice must generate their own private key and create a certificate signing request (CSR). She sends the CSR to Let’s Encrypt, but the CA won’t issue a certificate for that CSR and private key until they know Alice owns aliceswonderland.com. Alice can then choose to prove that she owns this domain through HTTP validation.</p>
 	<p>When Let’s Encrypt performs DCV over HTTP, they require Alice to place a randomly named file in the <code>/.well-known/acme-challenge</code> path for her website. The CA must retrieve the text file by sending an HTTP <code>GET</code> request to <code>http://aliceswonderland.com/.well-known/acme-challenge/&lt;random_filename&gt;</code>. An expected value must be present on this endpoint for DCV to succeed.</p>
 	<p>For HTTP validation, Alice would upload a file to <code>http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz</code></p>
@@ -44,16 +65,37 @@ Content-Type: application/octet-stream
 
 YnV0dHNz.TEST_CLIENT_KEY</code></pre>
 	<p>The CA instructs them to use the Base64 token <code>YnV0dHNz</code>. <code>TEST_CLIENT_KEY</code> in an account-linked key that only the certificate requestor and the CA know. The CA uses this field combination to verify that the certificate requestor actually owns the domain. Afterwards, Alice can get her certificate for her website!</p>
-	<h3>DNS Validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-validation">DNS Validation</h3>
+		<a href="https://blog.cloudflare.com/#dns-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another way users can validate domain ownership is to add a DNS TXT record containing a verification string or <i>token</i> from the CA to their domain’s resource records. For example, here’s a domain for an enterprise validating itself towards Google:</p>
 	<pre class="language-bash"><code class="language-bash">$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"</code></pre>
 	<p>Here, Alice chooses to create a TXT DNS resource record with a specific token value. A Google CA can verify the presence of this token to validate that Alice actually owns her website.</p>
-	<h3>Types of BGP Hijacking Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="types-of-bgp-hijacking-attacks">Types of BGP Hijacking Attacks</h3>
+		<a href="https://blog.cloudflare.com/#types-of-bgp-hijacking-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Certificate issuance is required for servers to securely communicate with clients. This is why it’s so important that the process responsible for issuing certificates is also secure. Unfortunately, this is not always the case.</p>
 	<p>Researchers at Princeton University recently discovered that common DCV methods are vulnerable to attacks executed by network-level adversaries. If Border Gateway Protocol (BGP) is the “postal service” of the Internet responsible for delivering data through the most efficient routes, then Autonomous Systems (AS) are individual post office branches that represent an Internet network run by a single organization. Sometimes network-level adversaries advertise false routes over BGP to steal traffic, especially if that traffic contains something important, like a domain’s certificate.</p>
 	<p><a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf"><i>Bamboozling Certificate Authorities with BGP</i></a> highlights five types of attacks that can be orchestrated during the DCV process to obtain a certificate for a domain the adversary does not own. After implementing these attacks, the authors were able to (ethically) obtain certificates for domains they did not own from the top five CAs: Let’s Encrypt, GoDaddy, Comodo, Symantec, and GlobalSign. But how did they do it?</p>
-	<h3>Attacking the Domain Control Validation Process</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacking-the-domain-control-validation-process">Attacking the Domain Control Validation Process</h3>
+		<a href="https://blog.cloudflare.com/#attacking-the-domain-control-validation-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two main approaches to attacking the DCV process with BGP hijacking:</p>
 	<ol>
 		<li>
@@ -87,7 +129,14 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	</figure>
 	<p>There are more advanced attacks that are covered in more depth in the paper. They are fundamentally similar attacks but are more stealthy.</p>
 	<p>Once an attacker has successfully obtained a bogus certificate for a domain that they do not own, they can perform a convincing attack where they pose as the victim’s domain and are able to decrypt and intercept the victim’s TLS traffic. The ability to decrypt the TLS traffic allows the adversary to completely Monster-in-the-Middle (MITM) encrypted TLS traffic and reroute Internet traffic destined for the victim’s domain to the adversary. To increase the stealthiness of the attack, the adversary will continue to forward traffic through the victim’s domain to perform the attack in an undetected manner.</p>
-	<h3>DNS Spoofing</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-spoofing">DNS Spoofing</h3>
+		<a href="https://blog.cloudflare.com/#dns-spoofing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another way an adversary can gain control of a domain is by spoofing DNS traffic by using a source IP address that belongs to a DNS nameserver. Because anyone can modify their packets’ outbound IP addresses, an adversary can fake the IP address of any DNS nameserver involved in resolving the victim’s domain, and impersonate a nameserver when responding to a CA.</p>
 	<p>This attack is more sophisticated than simply spamming a CA with falsified DNS responses. Because each <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS query</a> has its own randomized query identifiers and source port, a fake DNS response must match the DNS query’s identifiers to be convincing. Because these query identifiers are random, making a spoofed response with the correct identifiers is extremely difficult.</p>
 	<p>Adversaries can fragment User Datagram Protocol (UDP) DNS packets so that identifying DNS response information (like the random DNS query identifier) is delivered in one packet, while the actual answer section follows in another packet. This way, the adversary spoofs the DNS response to a legitimate DNS query.</p>
@@ -98,7 +147,14 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LqZ3us0OcigAJXbwPyIbf/10ce6ec5d2ce010c7d963ba62dd89d88/DNS-Spoofing_3x.png" alt="" class="kg-image" width="3147" height="2990" loading="lazy">
 
 	</figure>
-	<h3>Solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="solution">Solution</h3>
+		<a href="https://blog.cloudflare.com/#solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At first glance, one could think a Certificate Transparency log could expose a mis-issued certificate and allow a CA to quickly revoke it. CT logs, however, can take up to 24 hours to include newly issued certificates, and certificate revocation can be inconsistently followed among different browsers. We need a solution that allows CAs to proactively prevent this attacks, not retroactively address them.</p>
 	<p>We’re excited to announce that Cloudflare provides CAs a free API to leverage our global network to perform DCV from multiple vantage points around the world. This API bolsters the DCV process against BGP hijacking and off-path DNS attacks.</p>
 	<p>Given that Cloudflare runs 175+ datacenters around the world, we are in a unique position to perform DCV from multiple vantage points. Each datacenter has a unique path to DNS nameservers or HTTP endpoints, which means that successful hijacking of a BGP route can only affect a subset of DCV requests, further hampering BGP hijacks. And since we use RPKI, we actually sign and verify BGP routes.</p>
@@ -126,11 +182,25 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 		<p>“Our analysis shows that domain validation from multiple vantage points significantly mitigates the impact of localized BGP attacks. We recommend that all certificate authorities adopt this approach to enhance web security. A particularly attractive feature of Cloudflare’s implementation of this defense is that Cloudflare has access to a vast number of vantage points on the Internet, which significantly enhances the robustness of domain control validation.”</p>
 	</blockquote>
 	<p>Our DCV checker follows our belief that trust on the Internet must be distributed, and vetted through third-party analysis (like that provided by Cloudflare) to ensure consistency and security. This tool joins our <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">pre-existing Certificate Transparency monitor</a> as a set of services CAs are welcome to use in improving the accountability of certificate issuance.</p>
-	<h3>An Opportunity to Dogfood</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-opportunity-to-dogfood">An Opportunity to Dogfood</h3>
+		<a href="https://blog.cloudflare.com/#an-opportunity-to-dogfood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building our multipath DCV checker also allowed us to <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food"><i>dogfood</i></a> multiple Cloudflare products.</p>
 	<p>The DCV orchestrator as a simple fetcher and aggregator was a fantastic candidate for <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>. We <a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects">implemented the orchestrator in TypeScript</a> using this post as a guide, and created a typed, reliable orchestrator service that was easy to deploy and iterate on. Hooray that we don’t have to maintain our own <code>dcv-orchestrator</code> &nbsp;server!</p>
 	<p>We use <a href="https://developers.cloudflare.com/argo-tunnel">Argo Tunnel</a> to allow Cloudflare Workers to contact DCV agents. Argo Tunnel allows us to easily and securely expose our DCV agents to the Workers environment. Since Cloudflare has approximately 175 datacenters running DCV agents, we expose many services through Argo Tunnel, and have had the opportunity to load test Argo Tunnel as a power user with a wide variety of origins. Argo Tunnel readily handled this influx of new origins!</p>
-	<h3>Getting Access to the Multipath DCV Checker</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-access-to-the-multipath-dcv-checker">Getting Access to the Multipath DCV Checker</h3>
+		<a href="https://blog.cloudflare.com/#getting-access-to-the-multipath-dcv-checker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you and/or your organization are interested in trying our DCV checker, email <a href="mailto:dcv@cloudflare.com">dcv@cloudflare.com</a> and let us know! We’d love to hear more about how multipath querying and validation bolsters the security of your certificate issuance.</p>
 	<p>As a new class of BGP and IP spoofing attacks threaten to undermine PKI fundamentals, it’s important that website owners advocate for multipath validation when they are issued certificates. We encourage all CAs to use multipath validation, whether it is Cloudflare’s or their own. Jacob Hoffman-Andrews, Tech Lead, Let’s Encrypt, wrote:</p>
 	<blockquote>

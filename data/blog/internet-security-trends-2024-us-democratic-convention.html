@@ -6,14 +6,28 @@
 	<p>The 2024 <a href="https://en.wikipedia.org/wiki/2024_Democratic_National_Convention">Democratic National Convention</a> (DNC) wrapped up on Thursday, August 22, in Chicago, Illinois. Since our blog post about Internet trends during the <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">first presidential debate</a> between President Joe Biden and former President Donald Trump on June 27, the presidential race has fundamentally changed. We experienced the <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention">attempted assassination of Trump, the Republican National Convention (RNC)</a>, Biden’s late July withdrawal from the race, and Vice President Kamala Harris being selected as the Democratic nominee and participating in her party’s convention this week. Here, we’ll examine trends more focused on DNS traffic to news and candidate-related sites, cyberattacks targeting politically-related organizations, and spam and malicious emails mentioning the candidates’ names.</p>
 	<p>Over 60 more national elections are scheduled to take place across the world this year, and we have been monitoring them as they occur. Our goal is to provide a neutral analysis of their impact on Internet behavior, which often mirrors human activities. Significant events, such as the <a href="https://blog.cloudflare.com/total-eclipse-internet-traffic-impacts-mexico-us-canada">total eclipse in Mexico, the United States, and Canada</a>, and the <a href="https://blog.cloudflare.com/paris-2024-olympics-recap">Paris 2024 Olympics</a>, have had an impact on Internet traffic. Our ongoing <a href="https://radar.cloudflare.com/reports/elections-2024">election report on Cloudflare Radar</a> includes updates from recent elections in the <a href="https://blog.cloudflare.com/exploring-the-2024-eu-election-internet-traffic-trends-and-cybersecurity-insights">European Union</a>, France, and the United Kingdom.</p>
 	<p>Let’s start with an Internet traffic perspective on the Chicago area, where the Democratic National Convention took place from August 19 through August 22, 2024.</p>
-	<h2>Internet traffic trends in Chicago</h2>
+	<div class="flex anchor relative">
+		<h2 id="internet-traffic-trends-in-chicago">Internet traffic trends in Chicago</h2>
+		<a href="https://blog.cloudflare.com/#internet-traffic-trends-in-chicago" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internet traffic shifts during major events like elections – and there have been <a href="https://radar.cloudflare.com/reports/elections-2024">several this year</a> – are typically more impactful than those from a single political party’s event. During the DNC in Chicago, Illinois, we didn’t observe an obvious pattern change, similar to the RNC that took place in <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention">Milwaukee, Wisconsin</a> in June.</p>
 	<p>Throughout the convention, although we didn’t notice any significant drops or spikes in Chicago’s Internet traffic, there was a rise in traffic starting on August 15 and continuing through the first three days of the convention. Notably, traffic was 10% to 20% higher after midnight compared to the previous week.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KS5p3ywSq9P5yeZzQLqSy/9380927b1126a33670e7a74bfb1a5fc6/1000-2.png" alt="1000-2" class="kg-image" width="2164" height="592" loading="lazy">
 	</figure>
 	<p></p>
-	<h2>DNS trends: Kamala Harris-related sites see accelerated growth</h2>
+	<div class="flex anchor relative">
+		<h2 id="dns-trends-kamala-harris-related-sites-see-accelerated-growth">DNS trends: Kamala Harris-related sites see accelerated growth</h2>
+		<a href="https://blog.cloudflare.com/#dns-trends-kamala-harris-related-sites-see-accelerated-growth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Shifting our focus to domain trends, our <a href="http://1.1.1.1">1.1.1.1</a> resolver data highlights a more targeted impact from the DNC and preceding weeks. This analysis now includes Kamala Harris-related insights, as our earlier reports on the Biden-Trump <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">debate</a> and the <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention">Republican National Convention</a> predated her selection as the Democratic nominee.</p>
 	<p>Kamala Harris’s official website, initially redirecting to Joe Biden’s website, became an independent dedicated site after July 21, following Biden’s announcement of his withdrawal and endorsement of Harris. Since then, aggregated daily DNS traffic to Kamala Harris-related domains has seen significant growth, particularly after June 29.</p>
 	<figure class="kg-card kg-image-card">
@@ -41,20 +55,41 @@
 			<p>Day 4, August 22: Peak at 23:00 EDT with a 71% increase around the time of Vice President Kamala Harris’s speech.</p>
 		</li>
 	</ul>
-	<h3>Increase in DNS traffic to fundraising domains on day 4 of the DNC</h3>
+	<div class="flex anchor relative">
+		<h3 id="increase-in-dns-traffic-to-fundraising-domains-on-day-4-of-the-dnc">Increase in DNS traffic to fundraising domains on day 4 of the DNC</h3>
+		<a href="https://blog.cloudflare.com/#increase-in-dns-traffic-to-fundraising-domains-on-day-4-of-the-dnc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During the DNC, we observed a rise in DNS traffic for Harris/Democrats fundraising domains. The main spike occurred on day 4 of the DNC, August 22, at around 21:00 EDT, with a 493% increase compared to the previous week. On that day, daily traffic increased by 92% compared to the previous week.​</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/J6HKlHk1ZuyNf9TnAN2Tt/1865de2d7c476077f378a479d1f9cf8c/1000-5.png" alt="1000-5" class="kg-image" width="2008" height="628" loading="lazy">
 	</figure>
 	<p></p>
-	<h3>News: increased traffic during the DNC</h3>
+	<div class="flex anchor relative">
+		<h3 id="news-increased-traffic-during-the-dnc">News: increased traffic during the DNC</h3>
+		<a href="https://blog.cloudflare.com/#news-increased-traffic-during-the-dnc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like the <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention">RNC before it</a>, the DNC sparked significant interest in US news organizations, resulting in an uptick in aggregated DNS traffic to general US news sites. This increase typically occurred just after the final speaker of the evening.</p>
 	<p>On day 1 of the DNC, traffic to US news organizations was 11% higher compared to the previous week at 23:00 EDT, coinciding with President Biden’s appearance. On day 2, when President Obama concluded the evening, DNS traffic to US news sites increased by 10%, continuing to rise thereafter. On day 3, during the hour when Vice Presidential candidate Tim Walz spoke, DNS traffic to US news sites spiked by 21% at 23:00 EDT. The final day (day 4) saw a 28% increase at 23:00 EDT, around Vice President Kamala Harris’s speech.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OKrAEiiVW463Xrg9knugd/a77f5e254d546c0d96874e60ae8ede2f/1000-6.png" alt="1000-6" class="kg-image" width="1990" height="638" loading="lazy">
 	</figure>
 	<p></p>
-	<h2>Attacks targeting politically-related websites</h2>
+	<div class="flex anchor relative">
+		<h2 id="attacks-targeting-politically-related-websites">Attacks targeting politically-related websites</h2>
+		<a href="https://blog.cloudflare.com/#attacks-targeting-politically-related-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attacks on political parties have remained a significant threat in an election-filled 2024. In Europe, we’ve seen political parties and associated websites targeted around <a href="https://blog.cloudflare.com/tag/election-security">elections</a>. We previously reported on DDoS attacks around the <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention">Republican National Convention</a>, and these types of attacks continued during the weeks ahead of the Democratic National Convention.</p>
 	<p>Since July 21, 2024, Cloudflare has blocked DDoS attacks targeting three US politically-related organizations. A site associated with one of the major parties (represented by the blue line on the chart) was attacked on July 23, and again just before the DNC.</p>
 	<figure class="kg-card kg-image-card">
@@ -77,7 +112,14 @@
 	</figure>
 	<p></p>
 	<p>As highlighted in our <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q2">Q2 DDoS report</a>, most DDoS attacks are short-lived, as exemplified by the two mentioned attacks. Also, 81% of HTTP DDoS attacks peak at under 50,000 requests per second (rps), and only 7% reach between 100,000 and 250,000 rps. While a 24,000 rps attack might seem minor to Cloudflare, it can be devastating for websites not equipped to handle such high levels of traffic.</p>
-	<h2>Email trends: candidate-related spam and malicious messages</h2>
+	<div class="flex anchor relative">
+		<h2 id="email-trends-candidate-related-spam-and-malicious-messages">Email trends: candidate-related spam and malicious messages</h2>
+		<a href="https://blog.cloudflare.com/#email-trends-candidate-related-spam-and-malicious-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From another cybersecurity angle, trending <a href="https://blog.cloudflare.com/paris-2024-olympics-recap">events</a>, topics and individuals often attract malicious, phishing, and spam messages, and also more emails in general. Our <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">earlier analysis</a> covered email trends involving “Joe Biden” or “Donald Trump” since January, concluding just after the Biden-Trump <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">debate</a> in late June. From June 1, 2024, through August 21, <a href="https://www.cloudflare.com/zero-trust/products/email-security">Cloudflare’s Cloud Email Security</a> service processed around 14 million emails that included the names “Donald Trump”, “Joe Biden”, or “Kamala Harris” in the subject, with 7.4 million referencing Trump.</p>
 	<p>The next chart highlights a surge in emails mentioning Trump in mid-July, contrasting with a drop of emails mentioning Biden in the subject, who saw a brief uptick on July 22-23 following his withdrawal from the race, and on August 20, the day after his DNC speech.</p>
 	<figure class="kg-card kg-image-card">
@@ -98,7 +140,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hV9KPjdHaeliYvafhi6KK/701da651e88a0e912fb96f4a76effd2a/1000-11.png" alt="1000-11" class="kg-image" width="1772" height="606" loading="lazy">
 	</figure>
 	<p></p>
-	<h2>Conclusion: high intensity election year</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion-high-intensity-election-year">Conclusion: high intensity election year</h2>
+		<a href="https://blog.cloudflare.com/#conclusion-high-intensity-election-year" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this analysis of the Democratic National Convention, we’ve observed trends similar to those seen during the Republican National Convention. However, with Kamala Harris becoming the Democratic presidential candidate recently, there has been a noticeable increase in DNS traffic to both Kamala Harris-related domains and Democrats’ fundraising domains.</p>
 	<p>We have also noted that DDoS attacks targeting US politically-related organizations continue, and emails mentioning the candidates in the subject (including spam and malicious emails) have increased.</p>
 	<p>If you’re interested in more trends and insights about the Internet and elections, check out <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, specifically our <a href="https://radar.cloudflare.com/reports/elections-2024">2024 Elections Insights</a> report. It will be updated throughout the year as elections (or election-related events) occur.</p>

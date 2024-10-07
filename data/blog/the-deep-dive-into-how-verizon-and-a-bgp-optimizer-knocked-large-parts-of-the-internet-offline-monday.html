@@ -1,6 +1,13 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2zAphdeHNCvCgl7b0j8TsK/88ef49ca1be0dc866d0a18783a6dd932/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monday.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>A recap on what happened Monday</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-recap-on-what-happened-monday">A recap on what happened Monday</h3>
+		<a href="https://blog.cloudflare.com/#a-recap-on-what-happened-monday" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On Monday we <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">wrote</a> about a painful Internet wide route leak. We wrote that this should never have happened because Verizon should never have forwarded those routes to the rest of the Internet. That blog entry came out around 19:58 UTC, just over seven hours after the route leak finished (which will we see below was around 12:39 UTC). Today we will dive into the archived routing data and analyze it. The format of the code below is meant to use simple shell commands so that any reader can follow along and, more importantly, do their own investigations on the routing tables.</p>
 	<p>This was a very public BGP route leak event. It was both reported online via many news outlets and the event’s BGP data was reported via social media as it was happening. Andree Toonk tweeted a quick list of 2,400 ASNs that were affected.</p>
 	<blockquote>
@@ -8,14 +15,28 @@
 		<p>— Andree Toonk (@atoonk) <a href="https://twitter.com/atoonk/status/1143143943531454464?ref_src=twsrc%5Etfw">June 24, 2019</a></p>
 	</blockquote>
 	<p>This blog contains a large number of acronyms and those are explained at the end of the blog.</p>
-	<h3>Using RIPE NCC archived data</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-ripe-ncc-archived-data">Using RIPE NCC archived data</h3>
+		<a href="https://blog.cloudflare.com/#using-ripe-ncc-archived-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7GNF7gEDv0Q7yA6eYomf00/328fd663523f7a3a6acd603d942f1a23/396531-bgplay-3.png" alt="" class="kg-image" width="1386" height="1043" loading="lazy">
 
 	</figure>
-	<h3>Dumping the RIPEstat data for this event</h3>
+	<div class="flex anchor relative">
+		<h3 id="dumping-the-ripestat-data-for-this-event">Dumping the RIPEstat data for this event</h3>
+		<a href="https://blog.cloudflare.com/#dumping-the-ripestat-data-for-this-event" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Presently, the RIPEstat data gets ingested around eight to twelve hours after real-time. It’s not meant to be a real-time service. The data can be queried in many ways, including a full web interface and an API. We are using the API to extract the data in a JSON format.</p>
 	<p>We are going to focus only on the Cloudflare routes that were leaked. Many other ASNs were leaked (see the tweet above); however, we want to deal with a finite data set and focus on what happened to Cloudflare’s routing. All the commands below can be run with ease on many systems. Both the scripts and the raw data file are now available on <a href="https://github.com/cloudflare/the-deep-dive-into-how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-monda">GitHub</a>. The following was done on MacBook Pro running macOS Mojave.</p>
 	<p>First we collect 24 hours of route announcements and AS-PATH data that RIPEstat sees coming from AS13335 (Cloudflare).</p>
@@ -114,7 +135,14 @@ Path:         rsync://rpki.arin.net/repository/arin-rpki-ta/5e4a23ea-...</code><
     confederation itself).</code></pre>
 	<p>The use of the NO_EXPORT community is very common within BGP enabled networks and is a community tag that would have helped alleviate this route leak immensely.</p>
 	<p>How BGP route optimization systems work (or don’t work in this case) can be a subject for a whole other blog entry.</p>
-	<h3>Timing of the route leak</h3>
+	<div class="flex anchor relative">
+		<h3 id="timing-of-the-route-leak">Timing of the route leak</h3>
+		<a href="https://blog.cloudflare.com/#timing-of-the-route-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we saved away the timestamps in the JSON file and in the text files, we can confirm the time for every route in the route leak by looking at the first and the last timestamp of a route in the data. We saved data from 00:00:00 UTC until 00:00:00 the next day, so we know we have covered the period of the route leak. We write a script that checks the first and last entry for every route and report the information sorted by start time:</p>
 	<pre class="language-bash"><code class="language-bash">$ # Extract the timing of the route leak
 $ while read cidr
@@ -161,7 +189,14 @@ $</code></pre>
 	</figure>
 	<p>Clearly between 10:30 UTC and 12:40 UTC there’s a lot of route activity - far more than normal.</p>
 	<p>Note that as we mentioned above, RIPEstat doesn’t get a full view of Verizon’s network routing and hence some of the propagated routes won’t show up.</p>
-	<h3>Drilling down on the AS-PATH part of the data</h3>
+	<div class="flex anchor relative">
+		<h3 id="drilling-down-on-the-as-path-part-of-the-data">Drilling down on the AS-PATH part of the data</h3>
+		<a href="https://blog.cloudflare.com/#drilling-down-on-the-as-path-part-of-the-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having the routes is useful, but now we want to look at the paths of these leaked routes to see which ASNs are involved. We knew the offending ASNs during the route leak on Monday. Now we want to dig deeper using the archived data. This allows us to see the extent and reach of this route leak.</p>
 	<pre class="language-bash"><code class="language-bash">$ # Extract the AS-PATH of the route leak
 $ # Use the list of routes to extract the full AS-PATH
@@ -206,7 +241,14 @@ $</code></pre>
 		<p>— Job Snijders (@JobSnijders) <a href="https://twitter.com/JobSnijders/status/1094976832267522048?ref_src=twsrc%5Etfw">February 11, 2019</a></p>
 	</blockquote>
 	<p>That all said, keep in mind we are still talking about routes that Cloudflare didn't announce. They all came from the route optimizer.</p>
-	<h3>What should 701 Verizon network accept from their customer 396531?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-should-701-verizon-network-accept-from-their-customer-396531">What should 701 Verizon network accept from their customer 396531?</h3>
+		<a href="https://blog.cloudflare.com/#what-should-701-verizon-network-accept-from-their-customer-396531" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a great question to ask. Normally we would look at the IRR (Internet Routing Registries) to see what policy an ASN wants for it’s routes.</p>
 	<pre class="language-bash"><code class="language-bash">$ whois -h whois.radb.net AS396531 ; the Verizon customer
 %  No entries found for the selected source(s).
@@ -255,7 +297,14 @@ $</code></pre>
 	</figure>
 	<p>This shows that there’s nowhere else we need to check. AS-DQECUST is the as-set macro that controls (or should control) filtering for any transit provider of their network.</p>
 	<p>The summary of all the investigation is a solid statement that no Cloudflare routes or ASNs are listed anywhere within the routing registry data for the customer of Verizon. As there were 2,300 ASNs listed in the tweet above, we can conclusively state no filtering was in place and hence this route leak went on its way unabated.</p>
-	<h3>IPv6? Where is the IPv6 route leak?</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-where-is-the-ipv6-route-leak">IPv6? Where is the IPv6 route leak?</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-where-is-the-ipv6-route-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In what could be considered the only plus from Monday’s route leak, we can confirm that there was no route leak within IPv6 space. Why?</p>
 	<p>It turns out that 396531 (Allegheny Technologies Inc) is a network without IPv6 enabled. Normally you would hear Cloudflare chastise anyone that’s yet to enable IPv6, however, in this case we are quite happy that one of the two protocol families survived. IPv6 was stable during this route leak, which now can be called an IPv4-only route leak.</p>
 	<p>Yet that’s not really the whole story. Let’s look at the percentage of traffic Cloudflare sends Verizon that’s IPv6 (vs IPv4). Normally the IPv4/IPv6 percentage holds steady.</p>
@@ -267,7 +316,14 @@ $</code></pre>
 	<p>This uptick in IPv6 traffic could be the direct result of Happy Eyeballs on mobile handsets picking a working IPv6 path into Cloudflare vs a non-working IPv4 path. Happy Eyeballs is meant to protect against IPv6 failure, however in this case it’s doing a wonderful job in protecting from an IPv4 failure. Yet we have to be careful with this graph because after further thought and investigation the percentage only increased because IPv4 reduces. Sometimes graphs can be misinterpreted, yet Happy Eyeballs still did a good job even as end users were being affected.</p>
 	<p>Happy Eyeballs, described in <a href="https://tools.ietf.org/html/rfc8305">RFC8305</a>, is a mechanism where a client (lets say a mobile device) tries to connect to a website both on IPv4 and IPv6 simultaneously. IPv6 is sometimes given a head-start. The theory is that, should a failure exist on one of the paths (sadly IPv6 is the norm), then IPv4 will save the day. Monday was a day of opposites for Verizon.</p>
 	<p>In fact, enabling IPv6 for mobile users is the one area where we can praise the Verizon network this week (or at least the Verizon mobile network), unlike the residential Verizon networks where IPv6 is almost non-existent.</p>
-	<h3>Using bandwidth graphs to confirm routing leaks and stability.</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-bandwidth-graphs-to-confirm-routing-leaks-and-stability">Using bandwidth graphs to confirm routing leaks and stability.</h3>
+		<a href="https://blog.cloudflare.com/#using-bandwidth-graphs-to-confirm-routing-leaks-and-stability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we have already stated,Verizon had impacted their own users/customers. Let’s start with their bandwidth graph:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -289,14 +345,28 @@ $</code></pre>
 
 	</figure>
 	<p>We will be asking Telecom Italia to improve their route filtering as we now have this data.</p>
-	<h3>Future work that could have helped on Monday</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-work-that-could-have-helped-on-monday">Future work that could have helped on Monday</h3>
+		<a href="https://blog.cloudflare.com/#future-work-that-could-have-helped-on-monday" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IETF is doing work in the area of BGP path protection within the <a href="https://datatracker.ietf.org/wg/sidrops/about">Secure Inter-Domain Routing Operations Working Group</a> (sidrops) area. The charter of this IETF group is:</p>
 	<blockquote>
 		<p>The SIDR Operations Working Group (sidrops) develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.</p>
 	</blockquote>
 	<p>One new effort from this group should be called out to show how important the issue of route leaks like today’s event is. The draft document from Alexander Azimov et al named <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-profile-00">draft-ietf-sidrops-aspa-profile</a> (ASPA stands for Autonomous System Provider Authorization) extends the RPKI data structures to handle BGP path information. This in ongoing work and Cloudflare and other companies are clearly interested in seeing it progress further.</p>
 	<p>However, as we said in Monday’s blog and something we should reiterate again and again: Cloudflare encourages all network operators to <a href="https://blog.cloudflare.com/rpki-details">deploy RPKI</a> now!</p>
-	<h3>Acronyms used in the blog</h3>
+	<div class="flex anchor relative">
+		<h3 id="acronyms-used-in-the-blog">Acronyms used in the blog</h3>
+		<a href="https://blog.cloudflare.com/#acronyms-used-in-the-blog" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>API - Application Programming Interface</p>

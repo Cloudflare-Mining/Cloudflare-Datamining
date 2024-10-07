@@ -7,7 +7,14 @@ Logs" class="kg-image" width="500" height="332" loading="lazy">
 
 	</figure>
 	<p>Over the last few weeks, we've had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a <a href="https://www.cloudflare.com/security-policy">Privacy Policy</a> that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies.</p>
-	<h3>What CloudFlare Logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-cloudflare-logs">What CloudFlare Logs</h3>
+		<a href="https://blog.cloudflare.com/#what-cloudflare-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you visit a site on CloudFlare's network, we record information about that visit. If you run a web server you'll be familiar with these logs as they're similar to an Apache access log. We log data for two reasons: 1) to help us identify security threats and attacks hitting our customers in order to mitigate them; and 2) in order to identify performance bottlenecks and errors on our system.</p>
 	<p>It's somewhat hard to fathom the scale of the log data that we generate. Every minute of every day we generate more than 20GB (compressed) of log data. That translates, at our current volume, to more than 10 Petabytes of storage needed to store a year's worth of logs, and, due to our continued growth, that volume that has been doubling every 4 months or so. Today, even if we wanted to, we don't have the ability to retain all the logs we generate. This means that, for most customers, we discard access logs within 4 hours of them being recorded.</p>
 	<figure class="kg-card kg-image-card ">

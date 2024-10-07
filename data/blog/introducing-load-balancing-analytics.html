@@ -23,7 +23,14 @@
 		</li>
 	</ul>
 	<p>In this blog post, we’ll discuss the traffic flow distribution and the latency map.</p>
-	<h2>Traffic Flow Overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="traffic-flow-overview">Traffic Flow Overview</h2>
+		<a href="https://blog.cloudflare.com/#traffic-flow-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our users want a detailed view into where their traffic is going, why it is going there, and insights into what changes may optimize their infrastructure. With Load Balancing Analytics, users can graphically view traffic demands on load balancers, pools, and origins over variable time ranges.</p>
 	<p>Understanding how traffic flow is distributed informs the process of creating new origin pools, adapting to peak traffic demands, and observing failover response during origin pool failures.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -33,7 +40,14 @@
 	</figure>
 	<p>Figure 1</p>
 	<p>In Figure 1, we can see an overview of traffic for a given domain. On Tuesday, the 24th, the red pool was created and added to the load balancer. In the following 36 hours, as the red pool handled more traffic, the blue and green pool both saw a reduced workload. In this scenario, the traffic distribution graph did provide the customer with new insights. First, it demonstrated that traffic was being steered to the new red pool. It also allowed the customer to understand the new level of traffic distribution across their network. Finally, it allowed the customer to confirm whether traffic decreased in the expected pools. Over time, these graphs can be used to better manage capacity and plan for upcoming infrastructure needs.</p>
-	<h2>Latency Map</h2>
+	<div class="flex anchor relative">
+		<h2 id="latency-map">Latency Map</h2>
+		<a href="https://blog.cloudflare.com/#latency-map" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The traffic distribution overview is only one part of the puzzle. Another essential component is understanding request performance around the world. This is useful because customers can ensure user requests are handled as fast as possible, regardless of where in the world the request originates.</p>
 	<p>The standard Load Balancing configuration contains monitors that probe the health of customer origins. These monitors can be configured to run from a particular region(s) or, for Enterprise customers, from <a href="https://www.cloudflare.com/network">all Cloudflare locations</a>. They collect useful information, such as round-trip time, that can be aggregated to create the latency map.</p>
 	<p>The map provides a summary of how responsive origins are from around the world, so customers can see regions where requests are underperforming and may need further investigation. A common metric used to identify performance is request latency. We found that the p90 latency for all Load Balancing origins being monitored is 300 milliseconds, which means that 90% of all monitors’ health checks had a round trip time faster than 300 milliseconds. We used this value to identify locations where latency was slower than the p90 latency seen by other Load Balancing customers.</p>
@@ -51,7 +65,14 @@
 	</figure>
 	<p>Figure 3</p>
 	<p>Tied with the traffic flow metrics from the Overview page, the latency map arms users with insights to optimize their internal systems, reduce their costs, and increase their application availability.</p>
-	<h2>GraphQL Analytics API</h2>
+	<div class="flex anchor relative">
+		<h2 id="graphql-analytics-api">GraphQL Analytics API</h2>
+		<a href="https://blog.cloudflare.com/#graphql-analytics-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Behind the scenes, Load Balancing Analytics is powered by the GraphQL Analytics API. As you’ll learn later this week, GraphQL provides many benefits to us at Cloudflare. Customers now only need to learn a single API format that will allow them to extract only the data they require. For internal development, GraphQL eliminates the need for customized analytics APIs for each service, reduces query cost by increasing cache hits, and reduces developer fatigue by using a straightforward query language with standardized input and output formats. Very soon, all Load Balancing customers on paid plans will be given the opportunity to extract insights from the GraphQL API. &nbsp;Let’s walk through some examples of how you can utilize the GraphQL API to understand your Load Balancing logs.</p>
 	<p>Suppose you want to understand the number of requests the pools for a load balancer are seeing from the different locations in Cloudflare’s global network. The query in Figure 4 counts the number of unique (location, pool ID) combinations every fifteen minutes over the course of a week.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -68,6 +89,13 @@
 	</figure>
 	<p>Figure 5</p>
 	<p>Notice how the query in Figure 4 uses the loadBalancingRequestsGroups schema, whereas the query in Figure 5 uses the loadBalancingRequests schema. loadBalancingRequestsGroups queries aggregate data over the requested query interval, whereas loadBalancingRequests provides granular information on individual requests. For those ready to get started, Cloudflare has written a helpful <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started">guide</a>. The <a href="https://graphql.org/learn">GraphQL website</a> is also a great resource. We recommend you use an IDE like <a href="https://electronjs.org/apps/graphiql">GraphiQL</a> to make your queries. GraphiQL embeds the schema documentation into the IDE, autocompletes, saves your queries, and manages your custom headers, all of which help make the developer experience smoother.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that the Load Balancing Analytics solution is live and available to all Pro, Business, Enterprise customers, we’re excited for you to start using it! We’ve attached a survey to the Traffic overview page, and we’d love to hear your feedback.</p>
 </div>

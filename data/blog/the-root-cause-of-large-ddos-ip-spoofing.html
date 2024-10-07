@@ -10,7 +10,15 @@
 		</li>
 	</ul>
 	<p>Let's take a deep breath and discuss why such large DDoS attacks are even possible on the modern internet.</p>
-	<h3>Large attacks use IP spoofing</h3>
+	<div class="flex anchor relative">
+		<h3 id="large-attacks-use-ip-spoofing">Large attacks use IP spoofing</h3>
+		<a href="https://blog.cloudflare.com/#large-attacks-use-ip-spoofing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3b8jURO2bONlcO2WGnhlMM/f375e70491260d88ea4cc95e2dd69c29/8426525097_cf3ed2db55_z.jpg" alt="8426525097_cf3ed2db55_z" class="kg-image" width="640" height="538" loading="lazy">
@@ -40,7 +48,15 @@
 
 	</figure>
 	<p>Spoofing source IP addresses is not technically challenging. Every machine connected to the internet can transmit any bytes of their choosing - including setting arbitrary values in the source IP address field. It's just that such packets can do a great deal of damage when they are permitted onto the wide internet.</p>
-	<h3>Direct attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="direct-attacks">Direct attacks</h3>
+		<a href="https://blog.cloudflare.com/#direct-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2RLRuWep9G88grfxQjIZQ/2920f2fd0fcba400d2b79c7394105abe/sp-direct2.png" alt="sp-direct2" class="kg-image" width="1498" height="410" loading="lazy">
@@ -86,7 +102,15 @@
 		</a>
 	</figure>
 	<p>We've seen many more exciting spoofed IP source patterns. The take away is: during direct attacks, you can't trust the source IPs! Attackers can set them to values of their choosing. Using source IPs in mitigations might not work, drawing them on geographical map makes no sense.</p>
-	<h3>Amplification attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="amplification-attacks">Amplification attacks</h3>
+		<a href="https://blog.cloudflare.com/#amplification-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/77rMR7zOrvsFO2P0PudoH7/7997f1c154b10917f87400ee6d7cdb6b/sp-amplification.png" alt="all" class="kg-image" width="1508" height="870" loading="lazy">
@@ -107,7 +131,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5V6l37ozbptHDZ9qin6CSB/3a06f419fa8d5c2cc91699e723cfa1ab/sp-ips-per-pop.png" alt="sp-ips-per-pop" class="kg-image" width="2056" height="1118" loading="lazy">
 
 	</figure>
-	<h3>Why is IP Spoofing a thing?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-ip-spoofing-a-thing">Why is IP Spoofing a thing?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-ip-spoofing-a-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The attacks discussed so far rely on IP spoofing. But why is IP spoofing even possible?</p>
 	<p>It's a side effect of the design of the internet.</p>
 	<p>There are three properties of the internet that make it impossible to verify if the packet is legitimate on the receiving side.</p>
@@ -123,7 +154,15 @@
 		</li>
 	</ul>
 	<p>Effective filtering preventing IP spoofing can only be done on the edge of the network - at the last-mile ISPs. Even doing this is hard. If I haven't convinced you yet, here's a more concrete example illustrating the problem.</p>
-	<h3>FooCorp example</h3>
+	<div class="flex anchor relative">
+		<h3 id="foocorp-example">FooCorp example</h3>
+		<a href="https://blog.cloudflare.com/#foocorp-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pbmNmF6McJmL1eSuqZzwd/fe8baab616a312c5023a153ed008ae4a/sp-foocorp-a.png" alt="sp-foocorp-a" class="kg-image" width="763" height="230" loading="lazy">
@@ -148,7 +187,14 @@
 
 	</figure>
 	<p>To add insult to injury, UtahCom's IP filtering logic is also not banal. While it definitely should not allow FooCorp to send traffic from arbitary source IPs, it can't really filter the packets from IPs 192.0.2.0/24, 2001:db8::/48 coming from other providers. For example, what if UtahCom and IdahoCom are interconnected, they could totally exchange 192.0.2.0/24, 2001:db8::/48 traffic between themselves!</p>
-	<h3>Solving the problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="solving-the-problem">Solving the problem</h3>
+		<a href="https://blog.cloudflare.com/#solving-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Solving IP spoofing is hard and must be done in the last mile (as close to the source of the traffic as possible). The internet community understood that years ago and wrote down the famous BCP38:</p>
 	<ul>
 		<li>
@@ -177,7 +223,14 @@ done</code></pre>
 	<h4>You</h4>
 	<p>Finally, everyone else can help the <a href="https://www.caida.org/projects/spoofer">"Spoofer" project</a> run by <a href="http://www.caida.org/home">caida.org</a>. "Spoofer" assesses networks by running an agent on your laptop, periodically probing the network.</p>
 	<p>Users, especially heavy travelers, might consider installing the agent software to help Caida to get greater coverage of end-user ISPs.</p>
-	<h3>Final thoughts</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-thoughts">Final thoughts</h3>
+		<a href="https://blog.cloudflare.com/#final-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the past, the industry has struggled with DNS and NTP protocols being vulnerable to amplification attacks. These days we are fighting SSDP, CLDAP and Memcached amplifications. I'm certain in future there will be many more broken UDP protocols that could be used for amplification.</p>
 	<p>The lasting solution to the problem is to focus on fighting IP spoofing itself. Without IP spoofing, the internet would be a much calmer place.</p>
 	<p>As for now, attackers doing IP spoofing are invincible. Normal internet participants have no tools to track them. Without attribution it's hard to respond to malicious activity, for example with legal measures. The war is very much asymmetric in favor of the spoofers. To change that we must start actively fighting the spoofing problem.</p>

@@ -7,15 +7,43 @@
 	</figure>
 	<p><i>The following is a guest post from Manuel Meurer, Berlin based web developer, entrepreneur, and Ruby on Rails enthusiast. In 2010, he founded </i><a href="https://www.krautcomputing.com"><i>Kraut Computing</i></a><i> as a one-man web dev shop and launched </i><a href="https://uplink.tech"><i>Uplink</i></a><i>, a network for IT experts in Germany, in 2015.</i></p>
 	<p><a href="https://rubydocs.org">RubyDocs</a> is an <a href="https://github.com/krautcomputing/rubydocs">open-source</a> service that generates and hosts “fancy docs for any Ruby project”, most notably for the Ruby language itself and for Rails, the most popular Ruby framework. The nifty thing about it is that the docs can be generated for any version of a project — so let’s say you’re working on an old Rails app that still uses version 3.2.22 (<a href="https://rubygems.org/gems/rails/versions">released June 16, 2015</a>), then you can really benefit from having access to the docs of that specific version, since a lot of the methods, classes, and concepts of the current Rails version (5.2.1 at the time of writing) don’t exist in that old version.</p>
-	<h3>Scratching an itch</h3>
+	<div class="flex anchor relative">
+		<h3 id="scratching-an-itch">Scratching an itch</h3>
+		<a href="https://blog.cloudflare.com/#scratching-an-itch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I built RubyDocs back in 2013 to scratch my own itch — a few similar services that I had used over the years had disappeared or hadn’t been regularly updated. After the initial work to get RubyDocs up and running, I continued improving a few small things over the years, such as updating dependencies and adding new projects that were submitted by users. But by and large, the site was (and is) running on autopilot, updating the list of versions for each project automatically from GitHub tags and generating new docs as users request them. One thing I had always wanted to do was to move the hosted docs from a subdomain (docs.rubydocs.org) to a subpath on the main domain (e.g., rubydocs.org/docs). I had put them on the subdomain to be able to use a CDN with long expiration times, since the docs are mostly static HTML and CSS with a bit of JavaScript sprinkled in. But for SEO reasons (AFAIK it’s still better to have everything on the main domain), and for a more coherent experience when using the site, I wanted everything on one domain. But I could never figure out how to run the RubyDocs app itself (built with Rails, of course) on rubydocs.org and still get all the advantages of a CDN for a subpath…</p>
-	<h3>Enter Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-cloudflare">Enter Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#enter-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fast forward to September 2017 when I read about <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Cloudflare Workers</a> for the first time. I was already a heavy user of Cloudflare for their DNS, CDN and DDoS mitigation and was always astonished by the amount of high-quality services they were offering for free. And now they basically added a <a href="https://martinfowler.com/articles/serverless.html">serverless</a> platform on top of that for $5 per month? You really have to admire their dedication to making their stuff available to as many people as possible for as low a price as possible.</p>
 	<p>For a few months, I kept thinking about what I could use the Workers for until it hit me — they could be the perfect tool to proxy requests from a subpath to a subdomain! I wouldn’t have to change the RubyDocs server/CDN setup at all, just add a Worker that does the proxying and a <a href="https://www.cloudflare.com/features-page-rules">Page Rule</a> to redirect all traffic from the subdomain to the new subpath. I got in touch with Cloudflare support to confirm that this was indeed possible (and a proper use of their Workers) and since RubyDocs is open-source, they even offered to sponsor the workers!</p>
-	<h3>Let’s get to work!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-to-work">Let’s get to work!</h3>
+		<a href="https://blog.cloudflare.com/#lets-get-to-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While I was working on the Worker (no pun intended), an <a href="https://github.com/krautcomputing/rubydocs/issues/8">issue in the RubyDocs GitHub repo</a> popped up — it turned out I had inadvertently broken a few URLs with a faulty regex, which was quickly fixed (Worker scripts can be edited in the Cloudflare backend and when saved, the live site is updated within seconds). But the author of the issue also mentioned that someone had apparently created a <a href="https://duckduckgo.com/bang">DuckDuckGo bang</a> for RubyDocs. Sweet, I didn’t even know they existed!</p>
 	<p>For this bang to really be useful, it was necessary to have a URL that always points to the latest version of a project’s docs, i.e. something like <a href="https://rubydocs.org/d/ruby-latest">rubydocs.org/d/ruby-latest/</a> (which now works), and update automatically when a new version is released. Well, I thought to myself, if that isn’t another perfect use case for a Worker! But wait, how does the Worker know which version is the latest? We could include the data in the Worker script and update it periodically, but as the number of projects on RubyDocs grows, the script would grow as well — probably not to an unmanageable size, but it still didn’t feel like a clean solution. The Worker could also make a quick subrequest to ask the main RubyDocs Rails app for the latest version when a request is processed, but that would mean setting up an API and monitoring the performance of the endpoint, and it would most likely severely slow down these ‘latest’ requests.</p>
-	<h3>Enter Cloudflare, again</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-cloudflare-again">Enter Cloudflare, again</h3>
+		<a href="https://blog.cloudflare.com/#enter-cloudflare-again" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And as if someone at Cloudflare had been waiting for me to ponder this problem, they <a href="https://blog.cloudflare.com/introducing-workers-kv">launched Cloudflare KV</a>, a key-value store that can be written to via the Cloudflare API and read from within a Worker. I was dumbfounded by the coincidence. It was very obviously the best way to solve my problem — store the latest version of each project from the RubyDocs Rails app every time a new version is detected, and read it from the Worker script when a ‘latest’ request comes in.</p>
 	<p>Long story short: here is the resulting Worker script (also on <a href="https://github.com/krautcomputing/rubydocs/blob/master/lib/cloudflare_worker.js">GitHub</a>) and after a bit of fiddling (mostly due to my inexperience with JavaScript), everything is working smoothly.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {

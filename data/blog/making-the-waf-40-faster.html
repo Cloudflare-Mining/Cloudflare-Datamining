@@ -4,13 +4,27 @@
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
 	<p>As with all <a href="https://www.cloudflare.com/security">Cloudflare security products</a>, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
 	<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">how a Web Application Firewall (WAF) works</a>.</p>
-	<h2>Transitioning from PCRE to RE2</h2>
+	<div class="flex anchor relative">
+		<h2 id="transitioning-from-pcre-to-re2">Transitioning from PCRE to RE2</h2>
+		<a href="https://blog.cloudflare.com/#transitioning-from-pcre-to-re2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in July 2019, the WAF transitioned from using a regular expression engine based on <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions">PCRE</a> to <a href="https://github.com/rust-lang/regex">one inspired by RE2</a>, which is based around using a <a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton">deterministic finite automaton (DFA)</a> instead of backtracking algorithms. This change came as a result of an outage where an update added a regular expression which backtracked enormously on certain HTTP requests, resulting in exponential execution time.</p>
 	<p>After the migration was finished, we saw no measurable difference in CPU consumption at the edge, but noticed execution time outliers in the 95th and 99th percentiles decreased, something we expected given RE2's guarantees of a linear time execution with the size of the input.</p>
 	<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
 	<p>These changes, along with others outlined in the <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">postmortem blog post</a>, helped us improve reliability and safety at the edge and have the confidence to explore further performance improvements.</p>
 	<p>But while we’ve highlighted regular expressions, they are only one of the many capabilities of the WAF engine.</p>
-	<h2>Matching Stages</h2>
+	<div class="flex anchor relative">
+		<h2 id="matching-stages">Matching Stages</h2>
+		<a href="https://blog.cloudflare.com/#matching-stages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4">watch this old presentation</a>.</p>
 	<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
 	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org">ModSecurity</a> syntax, this is what a rule might look like:</p>
@@ -33,7 +47,14 @@ and
 rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	<p>Since most requests don’t match any rule and these checks are quick to execute, overall we aren’t doing more operations by adding them.</p>
 	<p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
-	<h2>Memoization</h2>
+	<div class="flex anchor relative">
+		<h2 id="memoization">Memoization</h2>
+		<a href="https://blog.cloudflare.com/#memoization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Which brings us to <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> - caching the output of a function call to reuse it in future calls.</p>
 	<p>Let’s say we have the following expressions:</p>
 	<pre class="language-bash"><code class="language-bash">1. rx( "\x00+evil", lowercase( url_decode( body ) ) )
@@ -50,7 +71,14 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	</figure>
 	<p>Execution time per rule</p>
 	<p>The WAF engine implements memoization and the rules take advantage of it, but there’s always room to increase cache hits.</p>
-	<h2>Rewriting Rules and Results</h2>
+	<div class="flex anchor relative">
+		<h2 id="rewriting-rules-and-results">Rewriting Rules and Results</h2>
+		<a href="https://blog.cloudflare.com/#rewriting-rules-and-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
 	<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time">wall-clock time</a> to execute using some of our performance metrics:</p>
 	<figure class="kg-card kg-image-card ">
@@ -95,7 +123,14 @@ Candidates:
 	<p>WAF Request Processing - Time Average</p>
 	<p>A comparable decrease was also observed for the 95th and 99th percentiles.</p>
 	<p>Finally, we saw a drop of CPU consumption at the edge of around <b>4.3%</b>.</p>
-	<h2>Next Steps</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-steps">Next Steps</h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the Lua WAF has served us well throughout all these years, we are currently porting it to use the same engine powering Firewall Rules. It is based on our open-sourced <a href="https://github.com/cloudflare/wirefilter">wirefilter</a> execution engine, which uses a filter syntax inspired by Wireshark®. In addition to allowing more flexible filter expressions, it provides better performance and safety.</p>
 	<p>The rule optimizations we've described in this blog post are not lost when moving to the new engine, however, as the changes were deliberately not specific to the current Lua engine’s implementation. And while we're routinely profiling, benchmarking and making complex optimizations to the Firewall stack, sometimes just relatively simple changes can have a surprisingly huge effect.</p>
 </div>

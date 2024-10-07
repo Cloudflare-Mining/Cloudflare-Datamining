@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Web pages typically have <a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan">a large number</a> of embedded subresources (e.g., JavaScript, CSS, image files, ads, beacons) that are fetched by a browser on page loads. Requests for these subresources can prompt browsers to perform further DNS lookups, TCP connections, and TLS handshakes, which can have a significant impact on how long it takes for the user to see the content and interact with the page. Further, each additional request exposes metadata (such as plaintext DNS queries, or unencrypted SNI in TLS handshake) which can have potential privacy implications for the user. With these factors in mind, we carried out a measurement study to understand how we can leverage <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">Connection Coalescing</a> (aka <a href="https://datatracker.ietf.org/doc/html/rfc7540#section-9.1.1">Connection Reuse</a>) to address such concerns, and study its feasibility.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://blog.cloudflare.com/http-3-from-root-to-tip">web has come a long way</a> and initially consisted of very simple protocols. One of them was HTTP/1.0, which required browsers to make a separate connection for every subresource on the page. This design was quickly recognized as having significant performance bottlenecks and was extended with HTTP pipelining and persistent connections in <a href="https://datatracker.ietf.org/doc/html/rfc2616">HTTP/1.1 revision</a>, which allowed HTTP requests to reuse the same TCP connection. But, yet again, this was no silver bullet: while multiple requests could share the same connection, they still had to be serialized one after the other, so a client and server could only execute a single request/response exchange at any given time for each connection. As time passed, websites became more complex in structure and dynamic in nature, and HTTP/1.1 was identified as a major bottleneck. The only way to gain concurrency at the network layer was to use multiple TCP connections to the same origin in parallel, but this meant losing most benefits of persistent connections and ended up overloading the origin servers which were unable to meet the concurrency demand.</p>
 	<p>To address these performance limitations, the SPDY protocol was introduced over a decade later. SPDY supported stream multiplexing, where requests to and responses from the server used a single interleaved TCP connection, and allowed browsers to prioritize requests for critical subresources first — that were blocking page rendering. A modified variant of SPDY was standardized by the IETF as HTTP/2 in 2012 and published as <a href="https://datatracker.ietf.org/doc/html/rfc7540">RFC 7540</a> in 2015.</p>
 	<p>HTTP/2 and onwards retained this new standard for connection reuse. More specifically, all subresources on the same domain were able to reuse the same TCP/TLS (or UDP/QUIC) connection without any <a href="https://en.wikipedia.org/wiki/Head-of-line_blocking">head-of-line blocking</a> (at least on the application layer). This resulted in a single connection for all the subresources — reducing extraneous requests on page loads — potentially speeding up some websites and applications.</p>
@@ -17,7 +24,14 @@
 
 	</figure>
 	<p>Connection Coalescing allows reusing a TLS connection across different domains</p>
-	<h3>Connection Coalescing</h3>
+	<div class="flex anchor relative">
+		<h3 id="connection-coalescing">Connection Coalescing</h3>
+		<a href="https://blog.cloudflare.com/#connection-coalescing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <i>technique</i> is often referred to as <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">Connection Coalescing</a> and, to put it simply, is a way to access resources from <i>different hostnames that are accessible from the same web server</i>.</p>
 	<p>There are several reasons for why a single server could handle requests for different hosts, ranging from low-cost virtual hosting to the usage of <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> and cloud providers (including Cloudflare, that acts as a reverse proxy for approximately <a href="https://www.cloudflare.com/learning/what-is-cloudflare">25 million Internet properties</a>). Before going into the technical conditions required to enable connection coalescing, we should take a look at some benefits such a strategy can provide.</p>
 	<ul>
@@ -43,7 +57,14 @@
 
 	</figure>
 	<p>Requests to Experiment Group Zones and cdnjs being coalesced on the same TLS connection</p>
-	<h3>Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="results">Results</h3>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started noticing evidence of real-world coalescing from the day our experiment was launched. The following graph shows that approximately 50% of requests to cdnjs from our experiment group sites are coalesced (i.e., their TLS SNI does not equal cdnjs) as compared to 0% of requests from the control group sites.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -68,7 +89,14 @@
 
 	</figure>
 	<p>Page load times for control and experiment group sites. Each site was loaded once, and the “<i>fullyLoaded</i>” metric from WebPageTest is reported</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We consider our experimentation successful in determining the feasibility of connection coalescing and highlighting its potential benefits in terms of privacy and performance. More specifically, we observed the privacy benefits of coalescing in more than 50% of requests to cdnjs from real-world traffic. In addition, our active testing demonstrated that browsers create fewer TLS connections with coalescing enabled. Interestingly, our results also revealed that the benefits might not always occur (i.e., CORS-enabled requests, Firefox creating additional TLS connections despite coalescing). Finally, we did not find any evidence that coalescing can cause harm to real-world users’ experience on the Internet.</p>
 	<p>Some future directions we would like to explore include:</p>
 	<ul>

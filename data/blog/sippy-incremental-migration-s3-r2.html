@@ -10,7 +10,14 @@
 	<p>Earlier in 2023, we announced <a href="https://blog.cloudflare.com/r2-super-slurper-ga">Super Slurper</a>, a data migration tool that makes it easy to copy large amounts of data to <a href="https://developers.cloudflare.com/r2">R2</a> from other cloud object storage providers. Since the announcement, developers have used Super Slurper to run thousands of successful migrations to R2!</p>
 	<p>While Super Slurper is perfect for cases where you want to move all of your data to R2 at once, there are scenarios where you may want to migrate your data incrementally over time. Maybe you want to avoid the one time upfront <a href="https://www.cloudflare.com/learning/cloud/what-is-aws-data-transfer-pricing">AWS data transfer bill</a>? Or perhaps you have legacy data that may never be accessed, and you only want to migrate what’s required?</p>
 	<p>Today, we’re announcing the open beta of <a href="https://developers.cloudflare.com/r2/data-migration/sippy">Sippy</a>, an incremental migration service that copies data from S3 (other cloud providers coming soon!) to R2 as it’s requested, without paying unnecessary cloud egress fees typically associated with moving large amounts of data. On top of addressing <a href="https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in">vendor lock-in</a>, Sippy makes stressful, time-consuming migrations a thing of the past. All you need to do is replace the S3 endpoint in your application or attach your domain to your new R2 bucket and data will start getting copied over.</p>
-	<h2>How does it work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">How does it work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sippy is an incremental migration service built directly into your R2 bucket. Migration-specific <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a> are reduced by leveraging requests within the flow of your application where you’d already be paying egress fees to simultaneously copy objects to R2. Here is how it works:</p>
 	<p>When an object is requested from <a href="https://developers.cloudflare.com/r2/api/workers">Workers</a>, <a href="https://developers.cloudflare.com/r2/api/s3">S3 API</a>, or <a href="https://developers.cloudflare.com/r2/buckets/public-buckets">public bucket</a>, it is served from your R2 bucket if it is found.</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,8 +33,23 @@
 
 	</figure>
 	<p>That means after objects are copied, subsequent requests will be served from R2, and you’ll begin saving on egress fees immediately.</p>
-	<h2>Start incrementally migrating data from S3 to R2</h2>
-	<h3>Create an R2 bucket</h3>
+	<div class="flex anchor relative">
+		<h2 id="start-incrementally-migrating-data-from-s3-to-r2">Start incrementally migrating data from S3 to R2</h2>
+		<a href="https://blog.cloudflare.com/#start-incrementally-migrating-data-from-s3-to-r2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="create-an-r2-bucket">Create an R2 bucket</h3>
+		<a href="https://blog.cloudflare.com/#create-an-r2-bucket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get started with incremental migration, you’ll first need to create an R2 bucket if you don’t already have one. To create a new R2 bucket from the Cloudflare dashboard:</p>
 	<ol>
 		<li>
@@ -41,15 +63,36 @@
 		</li>
 	</ol>
 	<p>​​To learn more about other ways to create R2 buckets refer to the documentation on <a href="https://developers.cloudflare.com/r2/buckets/create-buckets">creating buckets</a>.</p>
-	<h3>Enable Sippy on your R2 bucket</h3>
+	<div class="flex anchor relative">
+		<h3 id="enable-sippy-on-your-r2-bucket">Enable Sippy on your R2 bucket</h3>
+		<a href="https://blog.cloudflare.com/#enable-sippy-on-your-r2-bucket" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next, you’ll enable Sippy for the R2 bucket you created. During the beta, you can do this by using the API. Here’s an example of how to enable Sippy for an R2 bucket with cURL:</p>
 	<pre class="language-curl"><code class="language-curl">curl -X PUT https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets/{bucket_name}/sippy \
 --header "Authorization: Bearer &lt;API_TOKEN&gt;" \
 --data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</code></pre>
 	<p>For more information on getting started, please refer to the <a href="https://developers.cloudflare.com/r2/data-migration/sippy">documentation</a>. Once enabled, requests to your bucket will now start copying data over from S3 if it’s not already present in your R2 bucket.</p>
-	<h3>Finish your migration with Super Slurper</h3>
+	<div class="flex anchor relative">
+		<h3 id="finish-your-migration-with-super-slurper">Finish your migration with Super Slurper</h3>
+		<a href="https://blog.cloudflare.com/#finish-your-migration-with-super-slurper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can run your incremental migration for as long as you want, but eventually you may want to complete the migration to R2. To do this, you can pair Sippy with <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper">Super Slurper</a> to easily migrate your remaining data that hasn’t been accessed to R2.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited about open beta, but it’s only the starting point. Next, we plan on making incremental migration configurable from the Cloudflare dashboard, complete with analytics that show you the progress of your migration and how much you are saving by not paying egress fees for objects that have been copied over so far.</p>
 	<p>If you are looking to start incrementally migrating your data to R2 and have any questions or feedback on what we should build next, we encourage you to join our <a href="https://discord.com/invite/cloudflaredev">Discord community</a> to share!</p>
 	<figure class="kg-card kg-image-card ">

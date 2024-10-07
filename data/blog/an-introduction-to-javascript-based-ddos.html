@@ -9,7 +9,14 @@
 	<p>In recent years, DDoS techniques have become more diversified: attackers are tricking unsuspecting computers into participating in attacks in new and interesting ways. Last year, we saw what was likely the <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">largest attack in history (&gt;400Gbps)</a> performed using <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">NTP reflection</a>. In this attack, the unsuspecting participants were misconfigured NTP servers worldwide. This year, we’re seeing a disturbing new trend: attackers are using malicious JavaScript to trick unsuspecting web users into participating in DDoS attacks.</p>
 	<p>The total damage that can be caused by a <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">NTP</a> or <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">DNS reflection attack</a> is limited by the number of vulnerable servers. Over time, this number decreases as networks patch their servers, and the maximum size of the attack is capped at the outbound capacity of all the vulnerable servers. For JavaScript-based DDoS, any computer with a browser can be enrolled in the attack, making the potential attack volume nearly unlimited.</p>
 	<p>In this blog post, we’ll go over how attackers have been using malicious sites, server hijacking, and man-in-the-middle attacks to launch DDoS attacks. We’ll also describe how to protect your site from being used in these attacks by using HTTPS and an upcoming web technology called Subresource Integrity (SRI).</p>
-	<h2>How JavaScript DDoS Works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-javascript-ddos-works">How JavaScript DDoS Works</h2>
+		<a href="https://blog.cloudflare.com/#how-javascript-ddos-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the interactivity in modern websites comes from JavaScript. Sites include interactive elements by adding JavaScript directly into HTML, or by loading JavaScript from a remote location via the <code>&lt;script src=""&gt;</code> HTML element. Browsers fetch the code pointed to by <code>src</code> and run it in the context of the website.</p>
 	<p>The fundamental concept that fueled the Web 2.0 boom of the mid-2000s was the ability for sites to load content asynchronously from JavaScript. Web pages became more interactive once new content could be loaded without having to follow links or load new pages. While the ability to make HTTP(S) requests from JavaScript can be used to make websites more fun to use, it can also be used to turn the browser into a weapon.</p>
 	<p>For example, the following (slightly modified) script was found to be sending floods of requests to a victim website:</p>
@@ -28,7 +35,14 @@ setInterval(imgflood, 10)</code></pre>
 
 	</figure>
 	<p>If an attacker sets up a site with this JavaScript embedded in the page, site visitors become DDoS participants. The higher-traffic the site, the bigger the DDoS. Since purpose-built attack sites typically don’t have many visitors, the attack volume is typically low. Performing a truly massive DDoS attack with this technique requires some more creativity.</p>
-	<h2>Shared JavaScript Compromise</h2>
+	<div class="flex anchor relative">
+		<h2 id="shared-javascript-compromise">Shared JavaScript Compromise</h2>
+		<a href="https://blog.cloudflare.com/#shared-javascript-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many websites are built using a common set of JavaScript libraries. In order to save bandwidth and improve performance, many sites end up using JavaScript libraries hosted by a third party. The most popular JavaScript library on the Web is jQuery, with <a href="http://blog.jquery.com/2014/01/13/the-state-of-jquery-2014">around 30% of all websites using some version of it as of 2014</a>. Other popular scripts included on many websites include the <a href="https://developers.facebook.com/docs/plugins/like-button">Facebook SDK</a>, and <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs">Google Analytics</a>.</p>
 	<p>If a website has a script tag that points to a third-party hosted JavaScript file, all visitors to that site will download the JavaScript and execute it. If an attacker is able to compromise a server that is hosting a popular JavaScript file and add DDoS code to it, the visitors of all the sites that reference that script become part of the DDoS.</p>
 	<figure class="kg-card kg-image-card ">
@@ -37,7 +51,14 @@ setInterval(imgflood, 10)</code></pre>
 
 	</figure>
 	<p>In September 2014, RiskIQ reported that <a href="http://www.riskiq.com/blog/business#/post/jquerycom-malware-attack-puts-privileged-enterprise-it-accounts-at-risk">jQuery.com’s website was compromised</a>, which hosts a very popular JavaScript library that could have easily been replaced with a malicious one. The threat of attackers injecting malicious JavaScript into millions of sites is no longer theoretical.</p>
-	<h2>An Aside: Introducing Subresource Integrity</h2>
+	<div class="flex anchor relative">
+		<h2 id="an-aside-introducing-subresource-integrity">An Aside: Introducing Subresource Integrity</h2>
+		<a href="https://blog.cloudflare.com/#an-aside-introducing-subresource-integrity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The problem of third party assets being compromised is an old one. There are no mechanisms in HTTP to allow a website to block a script from running if it has been tampered with. To solve this problem, the W3C has proposed a new feature called <a href="http://www.w3.org/TR/SRI">Subresource Integrity (SRI)</a>. This feature allows a website to tell the browser to only run a script if it matches what the site expects.</p>
 	<p>Take the following script tag:<code>&lt;script src="https://code.jquery.com/jquery-1.10.2.min.js"&gt;</code></p>
 	<p>The browser will download the <code>.js</code> file and run it no matter what the content of the file is. If someone were to compromise the hosting site’s servers and replace the file with a malicious script, the browser would run it without question.</p>
@@ -49,7 +70,14 @@ setInterval(imgflood, 10)</code></pre>
 	<p><i>UPDATE: The </i><code><i>crossorigin</i></code><i> attribute and </i><a href="https://en.m.wikipedia.org/wiki/Cross-origin_resource_sharing"><i>Cross-Origin Resource Sharing (CORS)</i></a><i> headers are required for scripts with SRI in order to ensure the proper enforcement of the browser same-origin policy and </i><a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks"><i>prevent Cross-Site Scripting (XSS) attacks</i></a><i>.</i></p>
 	<p>This feature is not currently supported by many browsers, but it is under development for <a href="https://code.google.com/p/chromium/issues/detail?id=355467">Chrome</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=992096">Firefox</a>.</p>
 	<p>Server compromises are often detected and fixed quickly, so attackers have turned to other ways to insert malicious JavaScript into websites. The newest way they are doing this is a technique we’ve discussed previously: a <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">man-in-the-middle attack</a>.</p>
-	<h2>Man-in-the-middle</h2>
+	<div class="flex anchor relative">
+		<h2 id="man-in-the-middle">Man-in-the-middle</h2>
+		<a href="https://blog.cloudflare.com/#man-in-the-middle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Websites get to your browser from a web server by traversing the networks of the Internet and hopping from machine to machine. Any one of the machines that sits between your browser and the server is able to modify the data in any manner, including changing the content of HTML or JavaScript. If the computer sitting in the middle of a communication does something malicious, like adding bad JavaScript to a webpage, this is called a man-in-the-middle attack.</p>
 	<p>Modifying websites in transit is common monetization technique for ISPs and WiFi providers. This is how some <a href="http://techcrunch.com/2012/04/06/now-you-know-hotels-inject-banner-ads-into-the-wi-fi-they-charge-you-for">hotel networks</a>, <a href="http://www.nytimes.com/2015/01/26/technology/verizons-mobile-supercookies-seen-as-threat-to-privacy.html">cellular networks</a> and others inject ads and tracking cookies into websites. Self-respecting businesses typically don’t inject attack code into websites, but as part of the Internet they have the capability of doing so.</p>
 	<p>If an attacker gains a privileged network position similar to an ISP —like a network interconnect or peering exchange— they can also inject JavaScript into websites that pass through their network. If the injected JavaScript contains a DDoS script, all the visitors to the website become DDoS participants. This can happen to any website or web asset that passes through the rogue network.</p>
@@ -65,6 +93,13 @@ setInterval(imgflood, 10)</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/eE12jqnY1u955nYNqhmuN/54fffee532eae96ba3afc83f97512596/illustration-js-ddos-blog-4.png" alt="Protection from man-in-the-middle using HTTPS" class="kg-image" width="900" height="769" loading="lazy">
 
 	</figure>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>JavaScript-based DDoS attacks are a growing problem on the Internet. CloudFlare sees, and routinely blocks, these attacks for the millions of websites that use our service, and we learn from every attack we see. JavaScript-based DDoS can be launched at any time, so prevent your site from being part of the problem by going HTTPS-only. CloudFlare provides HTTPS and the <a href="https://blog.cloudflare.com/enforce-web-policy-with-hypertext-strict-transport-security-hsts">ability to go HTTPS-only</a> to all customers including those on the free plan.</p>
 </div>

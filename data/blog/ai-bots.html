@@ -8,14 +8,28 @@
 	<p>Today, we’re excited to announce that any Cloudflare user, on any plan, can choose specific categories of bots that they want to allow or block, including <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> crawlers.</p>
 	<p>As the popularity of <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI</a> has grown, content creators and policymakers around the world have started to ask questions about what data AI companies are using to train their models without permission. As with all new innovative technologies, laws will likely need to evolve to address different parties' interests and what’s best for society at large. While we don’t know how it will shake out, we believe that website operators should have an easy way to block unwanted AI crawlers and to also let AI bots know when they are permitted to crawl their websites.</p>
 	<p>The good news is that Cloudflare already automatically stops scraper bots today. But we want to make it even easier for customers to be sure they are protected, see how frequently AI scrapers might be visiting their sites, and respond to them in more targeted ways. We also recognize that not all AI crawlers are the same and that some AI companies are looking for clear instructions for when they should not crawl a public website.</p>
-	<h3>Crawler bots are nothing new. Cloudflare already protects you from scraping today.</h3>
+	<div class="flex anchor relative">
+		<h3 id="crawler-bots-are-nothing-new-cloudflare-already-protects-you-from-scraping-today">Crawler bots are nothing new. Cloudflare already protects you from scraping today.</h3>
+		<a href="https://blog.cloudflare.com/#crawler-bots-are-nothing-new-cloudflare-already-protects-you-from-scraping-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Web crawlers have been around for a long time. The first, called <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer">World Wide Web Wanderer</a>, was developed back in 1993 to measure the size of the web by counting the total number of accessible web pages. This technique led directly to the creation of the first popular search engine, WebCrawler, in 1994.</p>
 	<p>And still today, the most common use of a web crawler is for a search engine: Google’s <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot">GoogleBot</a>. To provide the most relevant results for searches, crawlers like GoogleBot typically start by visiting web pages and retrieving the HTML content. Search engine operators predefine how much of the crawled HTML files is necessary for indexing, and then the files will be parsed to extract components like text, images, metadata, and links. This extracted data will then be stored in a structured format back on Google’s servers. Extracted links (URLs) are the key to how the crawlers discover new websites. The links that were present in the HTML files are added to a queue of URLs for the crawlers to visit and parse. And URLs are pretty easily spread around the Internet making it easy for crawlers to discover new sites. It can even be a URL that appeared in a referrer header that was stored and published by another web server. This process of following links, parsing, and storing data is recursively repeated allowing search engines to map out the web. All this collected data is then indexed to allow for efficient searching and retrieval of information.</p>
 	<p>While search engine crawler operations are generally beneficial for a site owner to get their site discovered, there are bot operators that use similar techniques for more malicious purposes such as price scraping to undercut competitor pricing or theft of copyrighted material such as images.</p>
 	<p>The techniques deployed by AI crawlers are no different. Just like a search engine crawler, they’ll parse HTML content and follow extracted URLs to gather available information. But instead of using it to index the web, this content will be applied as training data for their ML models.</p>
 	<p>Cloudflare identifies both <a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots">good and bad crawlers</a> using various systems such as <a href="https://developers.cloudflare.com/bots/concepts/ja3-fingerprint/?cf_target_id=9041B93FDE83945830F665F442EB4F38">attack signature matching</a>, heuristics, <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">machine learning</a>, and behavioral analysis. <b><i>All Cloudflare customers using Bot Fight Mode,</i></b> <a href="https://blog.cloudflare.com/configurable-super-bot-fight-mode"><b><i>Super Bot Fight Mode</i></b></a><b><i>, or Bot Management are already protected from malicious crawlers</i></b><i>.</i></p>
 	<p>Along with our bot detection tools, we also have a <a href="https://radar.cloudflare.com/traffic/verified-bots">Verified Bot directory</a> that allows responsible and necessary bots, like GoogleBot, to register to be segmented into their own separate detections (<a href="https://developers.cloudflare.com/bots/reference/verified-bots-policy/#:~:text=To%20submit%20a%20verified%20bot,bot%20requests%20to%20be%20evaluated.">fill out a request here</a> if you have a bot you think should be added). We’ve added new functionality to that directory to give our customers more control.</p>
-	<h3>Available now: segment known bots with flexibility and precision</h3>
+	<div class="flex anchor relative">
+		<h3 id="available-now-segment-known-bots-with-flexibility-and-precision">Available now: segment known bots with flexibility and precision</h3>
+		<a href="https://blog.cloudflare.com/#available-now-segment-known-bots-with-flexibility-and-precision" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our new Verified Bot categories are now available in the Cloudflare Rules Engine and Workers. With this granular bot categorization, Cloudflare users get better bot segmentation, and can choose specific responses to specific types of bots. To take advantage of these new bot categories, simply <a href="https://dash.cloudflare.com">log in to the Cloudflare dash</a>, go to the WAF tab, create a rule, and choose one of the Verified Bot sub categories as the <code>Field</code>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -75,7 +89,14 @@
 		</li>
 	</ol>
 	<p>Above all, these new categories give you, the website owner, complete, granular control over not only whether bots can visit your site, but what specific types of bots can and can’t do. For those of you that simply don’t want any bots, no problem, you don’t have to make any changes. Your existing rules that reference bot score or our Verified bots change will not be impacted at all.</p>
-	<h3>More than just blocking, encouraging good behavior to make the Internet better</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-just-blocking-encouraging-good-behavior-to-make-the-internet-better">More than just blocking, encouraging good behavior to make the Internet better</h3>
+		<a href="https://blog.cloudflare.com/#more-than-just-blocking-encouraging-good-behavior-to-make-the-internet-better" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we have a history of working with good bot operators (like GoogleBot), who respect Internet norms and best practices, to access the websites that want to allow them. We want to encourage good behavior by AI crawlers as well, so we have developed a set of criteria that will allow us to tag respectful AI bots differently. In order to be tagged as a respectful AI bot, AI crawler must take the following steps to show they are acting in good faith:</p>
 	<p>Maintain a public web page committing to respect robots.txt.</p>
 	<ol>
@@ -94,12 +115,26 @@
 	</ol>
 	<p>These steps are an expansion of our existing Verified Bots policy which you can <a href="https://developers.cloudflare.com/bots/reference/verified-bots-policy">see here</a>. When a bot creator has performed the steps above, we perform additional evaluation to confirm we’ve seen no suspicious activity from the bot. We check the bot's documentation, check internal dashboards to ensure traffic is appropriately distributed across the sites we protect, and check whether the bot hits suspicious endpoints like logins, or has exhibited other malicious activity.</p>
 	<p>While new AI bots can be scary, this industry is evolving incredibly quickly, and you may want to handle different bots differently in the future. We think it's important to distinguish between bot operators that are being respectful and those that are trying to be deceptive.</p>
-	<h3>It should be easy for everyone to deal with AI crawlers, not just Cloudflare customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-should-be-easy-for-everyone-to-deal-with-ai-crawlers-not-just-cloudflare-customers">It should be easy for everyone to deal with AI crawlers, not just Cloudflare customers</h3>
+		<a href="https://blog.cloudflare.com/#it-should-be-easy-for-everyone-to-deal-with-ai-crawlers-not-just-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we’re glad we’ve made it easy for Cloudflare customers to manage AI Crawlers, not everyone uses Cloudflare. We want the Internet to be better for everyone. So we think that the industry should adopt a new protocol specifically for handling AI crawlers.</p>
 	<p>In the long run, AI bots respecting a new exclusion protocol gives website operators the most flexibility to change how they want to handle them over time. We think the key is to make it easier for customers to block these bots, or to allow them in some cases if they choose on their entire website or only on specific pages.</p>
 	<p>You’ll be hearing more about this from us in the next few months, so stay tuned.</p>
 	<p>But we didn’t want to wait to make sure our customers are protected, so we're making our new bot categories available today!</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first and most important step for us was to make it clear to every Cloudflare customer that <b><i>you are already protected from AI crawlers you don’t want</i></b>. Second, we wanted to give you granular control and make it easy to allow those crawlers, or other bots, that you deem useful for your site.</p>
 	<p>We encourage everyone to try out our new Verified Bot categories today. <a href="https://dash.cloudflare.com">Log in to the Cloudflare dash</a>, go to the WAF tab, create a rule, and choose one of the Verified Bot sub categories as the `Field`. And remember, this functionality is available to all Cloudflare customers, even on <a href="https://www.cloudflare.com/plans/free">free plans</a>.</p>
 	<p>Having launched Verified Bot categories, in the next few months we’ll be adding more detailed reporting based on the bot category, to better help you visualize the frequency at which different categories of bots are visiting your site over time. As AI continues to evolve at a breakneck pace, AI Crawlers are only going to become a larger part of the Internet. As that evolution happens, Cloudflare will be there every step of the way to help you evolve the way you deal with them.</p>

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>On Tuesday, May 9, Imran Khan, former Prime Minister of Pakistan was <a href="https://www.bbc.com/news/world-asia-65541518">arrested on corruption charges</a>. Following the arrest, <a href="https://www.aljazeera.com/news/2023/5/9/pakistan-blocks-social-media-platforms-restricts-internet">violent protests</a> erupted in several cities, leading the government of Pakistan to order the <a href="https://www.theguardian.com/world/2023/may/09/pakistan-former-pm-imran-khan-arrested-in-islamabad">shutdown of mobile Internet services</a>, as well as the <a href="https://www.aljazeera.com/news/2023/5/9/pakistan-blocks-social-media-platforms-restricts-internet">blocking of several social media platforms</a>. Below, we examine the impact of these shutdowns at a national and local level, as seen through Cloudflare traffic data. In addition, we illustrate how Pakistanis appear to be turning to Cloudflare’s 1.1.1.1 resolver in an attempt to maintain access to the open Internet.</p>
-	<h2>General traffic trends</h2>
+	<div class="flex anchor relative">
+		<h2 id="general-traffic-trends">General traffic trends</h2>
+		<a href="https://blog.cloudflare.com/#general-traffic-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since Tuesday, May 9, peak traffic levels aggregated at a country level (as measured by HTTP request volume) have been declining, down nearly 30% during the first several days of the mobile Internet shutdowns. The lowest traffic levels (nadirs of the graph) have also declined, dropping by as much as one-third as well. In the sections below, we drill down into this traffic loss, looking at outages at a network level, and the impact of those outages at an <a href="https://en.wikipedia.org/wiki/Administrative_units_of_Pakistan">administrative unit</a> and city level.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -30,7 +37,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rs8jr0mRcikCB0uMGsDpE/7c6b05cea3d262966933239346966d23/image24.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
 
 	</figure>
-	<h2>Mobile network shutdowns</h2>
+	<div class="flex anchor relative">
+		<h2 id="mobile-network-shutdowns">Mobile network shutdowns</h2>
+		<a href="https://blog.cloudflare.com/#mobile-network-shutdowns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On Wednesday, May 10, the <a href="https://www.pta.gov.pk/en">Pakistan Telecommunication Authority (PTA)</a> announced that Internet services would remain suspended across the country for an <a href="https://www.pakistantoday.com.pk/2023/05/10/internet-shutdown-is-for-indefinite-period-says-regulator">“indefinite” period</a>, responding to a directive from the Ministry of the Interior to block mobile broadband services. As a result of the shutdowns associated with this directive, Cloudflare observed outages on the <a href="https://www.pta.gov.pk/en/industry-support/home/wireless/cellular-mobile">four major mobile providers</a> within the country:</p>
 	<ul>
 		<li>
@@ -95,7 +109,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QsgJ1iew4rfNBOzY25gen/c1cd0a5ba39ca39de8ad5c8a9930d75b/13.png" alt="" class="kg-image" width="1514" height="596" loading="lazy">
 
 	</figure>
-	<h2>Administrative unit-level disruptions</h2>
+	<div class="flex anchor relative">
+		<h2 id="administrative-unit-level-disruptions">Administrative unit-level disruptions</h2>
+		<a href="https://blog.cloudflare.com/#administrative-unit-level-disruptions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because the mobile network providers that were affected by the shutdown directive provide services nationwide, we also observed an impact to traffic across multiple administrative units within the country. None of these locations has experienced a complete outage, but peak traffic levels have clearly been declining in comparison to previous days.</p>
 	<p>Gilgit-Baltistan experienced the largest loss, where peak traffic has fallen nearly 60%. In Sindh, peak traffic is down around 35%, followed by Khyber Pakhtunkhwa, where it is down 30%. Islamabad and Azad Jammu and Kashmir have seen peak traffic declines of ~20%.</p>
 	<figure class="kg-card kg-image-card ">
@@ -123,7 +144,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3D6pABWW67zBpNWOruSs3u/b20610696b2168ca95b74656a0b5cdc9/image3-3.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
 
 	</figure>
-	<h2>City-level disruptions</h2>
+	<div class="flex anchor relative">
+		<h2 id="city-level-disruptions">City-level disruptions</h2>
+		<a href="https://blog.cloudflare.com/#city-level-disruptions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The impact of the mobile network shutdowns is also visible at a more local level, with lower peak traffic levels clearly visible in four cities. The significant traffic loss has been in Peshawar (Khyber Pakhtunkhwa), which has dropped nearly 55% from prior days. Faisalabad (Punjab), Karachi (Sindh), and Multan (Punjab) have all seen peak traffic drop approximately 40%.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -145,7 +173,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6h22UQ7s6KbcmZsADapnqm/c3d318f4005003d5115fee978f1abf4f/21.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
 
 	</figure>
-	<h2>Content blocking</h2>
+	<div class="flex anchor relative">
+		<h2 id="content-blocking">Content blocking</h2>
+		<a href="https://blog.cloudflare.com/#content-blocking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to the government-directed mobile network shutdowns, Pakistan’s authorities have also ordered Internet service providers to <a href="https://www.aljazeera.com/news/2023/5/9/pakistan-blocks-social-media-platforms-restricts-internet">block access to social media platforms</a> including Facebook, Instagram, YouTube, and Twitter. Testing by the Open Observatory for Network Interference (OONI), an Internet censorship measurement organization, <a href="https://twitter.com/OpenObservatory/status/1656417838221934592">suggests that this blocking is using a combination of TLS-level interference and DNS-based blocking</a>. When the latter occurs in a country, Cloudflare’s <a href="https://1.1.1.1">1.1.1.1</a> DNS resolver often sees an increase in request volume from the country as users seek ways to continue to access the open Internet.</p>
 	<p>Over the last several days, as expected, 1.1.1.1 request volume from Pakistan has increased, up approximately 40%. Peak request volume for the blocked social media platforms has also increased. Traffic for facebook.com saw a significant increase starting around 14:00 UTC (19:00 local time) on May 9, with peak request volume more than doubling. Request volume for instagram.com, also owned by Facebook parent Meta, also began to increase around the same time, and has grown nearly 50%. Requests for twitter.com began to spike around 08:00 UTC (13:00 local time) on May 9, growing as much as 150% that afternoon. Request volume for youtube.com also spiked on May 9, increasing by approximately 40%. And like twitter.com, request volume on May 10 was higher than earlier in the week, but lower than the spike seen the previous day.</p>
 	<figure class="kg-card kg-image-card ">
@@ -173,7 +208,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6QSStNKV52wCy4bfwuWA2F/596a4eae30880964096f53852049173a/26.png" alt="" class="kg-image" width="1040" height="450" loading="lazy">
 
 	</figure>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because of the ubiquity of Internet connectivity and social media tools in everyday life, Internet shutdowns and website blocking ultimately come with a <a href="https://profit.pakistantoday.com.pk/2023/05/11/digital-pakistan-in-a-coma-what-is-the-cost-of-the-broadband-shut-down">significant human and financial cost</a>. The mobile network shutdowns in Pakistan have impacted tens of thousands of “gig workers” and freelancers that depend on mobile connectivity. Many point-of-sale terminals in the country also depend on mobile connectivity, with transactions through Pakistan’s main digital payment systems fell by around 50% after the shutdowns were put into place. Telecommunications operators within Pakistan have estimated the extent of the financial damage thus far to be Rs. 820 million (approximately $2.8 million USD).</p>
 	<p>Use <a href="https://radar.cloudflare.com">Cloudflare Radar</a> to monitor the impact of such government-directed Internet disruptions, and follow <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> on Twitter or <a href="https://noc.social/@cloudflareradar">https://noc.social/@cloudflareradar</a> on Mastodon, for updates on Internet disruptions as they occur.</p>
 </div>

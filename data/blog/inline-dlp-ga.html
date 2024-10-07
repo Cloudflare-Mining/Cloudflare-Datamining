@@ -7,22 +7,50 @@
 
 	</figure>
 	<p>In July 2022, we <a href="https://blog.cloudflare.com/inline-data-loss-prevention">announced</a> beta access to our newest Zero Trust product, Data Loss Prevention (DLP). Today, we are even more excited to announce that DLP is Generally Available to customers! Any customer can now get visibility and control of sensitive data moving into, out of, and around their corporate network. If you are interested, check out the bottom of this post.</p>
-	<h3>What is DLP?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-dlp">What is DLP?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-dlp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-dlp">Data Loss Prevention</a> helps you overcome one of their biggest challenges: identifying and protecting sensitive data. The migration to the cloud has made tracking and controlling sensitive information more difficult than ever. Employees are using an ever-growing list of tools to manipulate a vast amount of data. Meanwhile, IT and security managers struggle to identify who should have access to sensitive data, how that data is stored, and where that data is allowed to go.</p>
 	<p>Data Loss Prevention enables you to protect your data based on its characteristics, such as keywords or patterns. As traffic moves into and out of corporate infrastructure, the traffic is inspected for indicators of sensitive data. If the indicators are found, the traffic is allowed or blocked based on the customers’ rules.</p>
 	<p>The most common use for DLP is the protection of Personally Identifiable Information (PII), but many customers are interested in protecting intellectual property, source code, corporate financial information, or any other information vital to the business. Proper data usage can include who used the data, where the data was sent, and how the data is stored.</p>
-	<h3>How does DLP see my corporate traffic?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-dlp-see-my-corporate-traffic">How does DLP see my corporate traffic?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-dlp-see-my-corporate-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> <a href="https://www.cloudflare.com/learning/network-layer/network-as-a-service-naas">network-as-a-service</a> platform that connects users to enterprise resources. Cloudflare One runs traffic from data centers, offices, and remote users, through the Cloudflare network. This offers a wide variety of opportunities to secure the traffic, including validating identity and device posture, filtering corporate traffic to protect from malware and phishing, checking the configurations on SaaS applications, and using Browser Isolation to make web surfing safer for employees. All of this is done with the performance of our global network and managed with one control plane.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/69LEhrzNB3qO19DcQSDxIC/e24c95ca2b8cc09b4902ae01c8e00e53/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
-	<h3>How does it work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">How does it work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DLP leverages the HTTP filtering abilities of Cloudflare One. As your traffic runs through our network, you can apply rules and route traffic based on information in the HTTP request. There are a wide variety of options for filtering, such as domain, URL, application, HTTP method, and many more. You can use these options to segment the traffic you wish to DLP inspect.</p>
 	<p>When DLP is applied, the relevant HTTP requests are decompressed, decoded, and scanned for regex matches. Numeric regex matches are then algorithmically validated when possible, such as with checksum calculations or <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn’s algorithm</a>. However, some numeric detections do not adhere to algorithmic validation, such as US Social Security numbers.</p>
 	<p>If sensitive data is identified by the detection, the data transfer can be allowed or blocked according to the customer’s ruleset.</p>
-	<h3>How do I use it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-use-it">How do I use it?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s dive further in to see how this all actually comes to life. To use DLP in the Zero Trust Dashboard, navigate to the DLP Profiles tab under Gateway:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -48,7 +76,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5es1X7XImRbyrAgxm7jaOW/20601c0b4cff402a670b003acee46072/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
 
 	</figure>
-	<h3>Holistic data protection with Cloudflare Zero Trust</h3>
+	<div class="flex anchor relative">
+		<h3 id="holistic-data-protection-with-cloudflare-zero-trust">Holistic data protection with Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#holistic-data-protection-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Inspecting HTTP traffic for the presence of sensitive data with DLP is one critical way organizations can reduce the risk of data exfiltration, strengthen regulatory compliance, and improve overall data governance.</p>
 	<p>Implementing DLP is just one step towards a more holistic approach to securing data.</p>
 	<p>To that end, our <a href="https://www.cloudflare.com/products/zero-trust">Cloudflare Zero Trust</a> platform offers more comprehensive controls over how any user on any device accesses and interacts with data – all from a single management interface:</p>
@@ -64,6 +99,13 @@
 		</li>
 	</ul>
 	<p>We have architected our DLP service to work seamlessly with these ZTNA, SWG, CASB, and other security services. As we continue to deepen our DLP capabilities, this platform approach uniquely equips us to address our customers’ needs with flexibility.</p>
-	<h3>Get Access to Data Loss Prevention</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-access-to-data-loss-prevention">Get Access to Data Loss Prevention</h3>
+		<a href="https://blog.cloudflare.com/#get-access-to-data-loss-prevention" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get access to DLP, reach out for a <a href="https://www.cloudflare.com/cloudflare-one">consultation</a>, or contact your account manager.</p>
 </div>

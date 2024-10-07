@@ -2,7 +2,15 @@
 <div class="post-content lh-copy gray1">
 	<p>Continuing our commitment to high quality open-source software, we’re happy to announce release 1.2 of CFSSL, our TLS/PKI Swiss Army knife. We haven’t written much about CFSSL here since we <a href="https://blog.cloudflare.com/introducing-cfssl">originally open sourced the project</a> in 2014, so we thought we’d provide an update. In the last 20 months, we have added a ton of great features, and CFSSL has attracted an active community of users and <a href="https://github.com/cloudflare/cfssl/graphs/contributors">contributors</a>. Users range from large SaaS providers (Heroku) to game companies (Riot Games) and the newest Certificate Authority (Let’s Encrypt). For them and for CloudFlare, CFSSL has become a core tool for automating certificates and TLS configurations. With added support for configuration scanning, automated provisioning via the transport package, revocation, certificate transparency and PKCS#11, CFSSL is now even more powerful.</p>
 	<p>We’re also happy to announce CFSSL’s new home: <a href="http://cfssl.org">cfssl.org</a>. From there you can try out CFSSL’s user interface, download binaries, and test some of its features.</p>
-	<h3>Motivation</h3>
+	<div class="flex anchor relative">
+		<h3 id="motivation">Motivation</h3>
+		<a href="https://blog.cloudflare.com/#motivation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dDeCSuAPv9TzI9o5urty5/cf5facd86b88e5d32e0eab33ffb0a71d/image_0.jpg" alt="current efforts - google" class="kg-image" width="538" height="404" loading="lazy">
@@ -16,7 +24,14 @@
 	</blockquote>
 	<p>With this in mind we started tackling the harder problem of how to manage the encryption keys for these services. To tackle the issue of service-to-service encryption, <a href="https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure">we built our own public key infrastructure</a> using CFSSL. Much of the new features we’re introducing in this post came about from our effort to make this system robust.</p>
 	<p>We have also made an effort to use standards-compliant and interoperable technology. By incorporating support for <a href="http://www.certificate-transparency.org">certificate transparency</a>, <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">OSCP</a>, and <a href="https://en.wikipedia.org/wiki/Revocation_list">CRL</a>, the standards used by the public Internet can now be used in your private infrastructure. Now, on to the new features.</p>
-	<h3>Scan</h3>
+	<div class="flex anchor relative">
+		<h3 id="scan">Scan</h3>
+		<a href="https://blog.cloudflare.com/#scan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CFSSL now has a full-featured TLS endpoint scanner.</p>
 	<p>Just because a server uses encryption, it doesn’t mean that it is secure. There have been a <a href="https://www.youtube.com/watch?v=oovK9YkJ8Co">series of vulnerabilities</a> in TLS that only affect some configurations. To keep your server and its visitors protected against the nearly monthly new attacks you need to pick the right configuration. Staying secure requires testing your configuration against the latest vulnerabilities, and keeping your configuration updated against new threats.</p>
 	<figure class="kg-card kg-image-card ">
@@ -109,7 +124,14 @@
   }
 }</code></pre>
 	<p>CFSSL Scan also accessible as part of the new <a href="https://cfssl.org/scan">CFSSL UI</a>.</p>
-	<h3>Transport Package</h3>
+	<div class="flex anchor relative">
+		<h3 id="transport-package">Transport Package</h3>
+		<a href="https://blog.cloudflare.com/#transport-package" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An important design pattern in security engineering is secure defaults. Developers want to write secure software and aren’t always security experts, let alone crypto gurus. The two trickiest parts of deploying an application that speaks TLS are:</p>
 	<ol>
 		<li>
@@ -168,7 +190,15 @@ if err != nil {
 }</code></pre>
 	<p>You can start playing around with the transport package with some examples from Github:</p>
 	<p><a href="https://github.com/cloudflare/cfssl/tree/master/transport/example">https://github.com/cloudflare/cfssl/tree/master/transport/example</a></p>
-	<h3>Revocation and PostgreSQL support</h3>
+	<div class="flex anchor relative">
+		<h3 id="revocation-and-postgresql-support">Revocation and PostgreSQL support</h3>
+		<a href="https://blog.cloudflare.com/#revocation-and-postgresql-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SozAa3OGRFEYvvIIf2AYd/a5a0fd237661b4ddaf283042e23cd6a8/image_7-1.png" alt="PostgreSQL" class="kg-image" width="300" height="424" loading="lazy">
@@ -187,14 +217,35 @@ if err != nil {
 
 	</figure>
 	<p>In CFSSL, you can now programmatically create CRLs and OCSP responses for certificates issued by your CA. Using standards-compatible revocation mechanisms allows these certificates to be shared outside of our infrastructure and to work with most software that implements TLS.</p>
-	<h3>Certificate Transparency</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-transparency">Certificate Transparency</h3>
+		<a href="https://blog.cloudflare.com/#certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another exciting new PKI standard is Certificate Transparency (CT). It helps provide (as the name implies) transparency into the workings of a certificate authority by providing an append-only log of issued certificates.</p>
 	<p>You can think of CT as a public ledger of all certificates issued. Any certificate on the list (even if issued for use on a private network) is made public and can be checked to see if it was issued according to the rules of the CA/Browser forum. If you encounter a certificate that is not on the ledger, then it may have been created fraudulently. Google Chrome <a href="https://www.certificate-transparency.org/ev-ct-plan">currently requires</a> all Extended Validation certificates used by websites to be in the CT log.</p>
 	<p>CFSSL now allows you to submit certificates to a CT log at issuance time and automatically embed the proof that it has been logged into the certificate. Running a CT log inside your internal infrastructure is a nice way to audit your CA and catch mis-issuances.</p>
-	<h3>PKCS #11</h3>
+	<div class="flex anchor relative">
+		<h3 id="pkcs-11">PKCS #11</h3>
+		<a href="https://blog.cloudflare.com/#pkcs-11" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CFSSL is great for software deployments, as you can spin it up anywhere and run it on any platform that Go supports. You can even use our convenient Dockerfiles to deploy it in a containerized environment. However, in some situations (like running a publicly-trusted CA), keeping a private key in software is not secure enough. For these situations, hardware-based protection is needed.</p>
 	<p>The industry standard protocol for working with cryptographic hardware is called <a href="https://en.wikipedia.org/wiki/PKCS_11">PKCS#11</a>. With help from Richard Barnes of Mozilla and others we were able to add support for PKCS#11 into CFSSL. This feature is can be enabled in programs that use the <a href="https://github.com/cloudflare/cfssl/tree/master/signer/local">signer/local package</a> and the <a href="https://github.com/letsencrypt/pkcs11key">pkcs11key package</a>. We also have plans to add command line support using the <a href="https://tools.ietf.org/html/rfc7512">PKCS#11 URI specification</a>. If you have a PKCS#11 interface to your HSM, certificate creation using that key is fully supported by the <code>cfssl/signer</code> package. Power users including Let’s Encrypt use CFSSL to run their publicly trusted CA while keeping the private key in a FIPS 140-2 certified HSM.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Open source is hard. Different people have different needs, and as a project maintainer you have to be respectful of these needs while honoring the spirit of the project. CloudFlare’s needs for CFSSL are not identical to the needs of its other users. We have attempted to strike a balance between building a tool for our own specific use cases and building a great general-purpose toolkit for PKI/TLS. We are grateful to the open source community for their valuable contributions to this project and are proud to be part of the tradition of free and open source software.</p>
 	<p>I’d like to thank one of the largest contributors to CFSSL over the last year: the Let’s Encrypt project. They have contributed code reviews and useful features while integrating CFSSL into Boulder, the software that manages their certificate authority. I’d also like to thank the Open Academy participants from Cornell and UCSD who worked on the project for a semester, and everyone else who helped contribute to this release. The core CFSSL team is Kyle Isom, Zi Lin, Jacob Haven, and Nick Sullivan.</p>
 </div>

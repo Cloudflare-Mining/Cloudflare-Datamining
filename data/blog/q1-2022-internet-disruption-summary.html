@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Cloudflare operates in more than 250 cities in over 100 countries, where we interconnect with over 10,000 network providers in order to provide a broad range of services to millions of customers. The breadth of both our network and our customer base provides us with a unique perspective on Internet resilience, enabling us to observe the impact of Internet disruptions. In many cases, these disruptions can be attributed to a physical event, while in other cases, they are due to an intentional government-directed shutdown. In this post, we review selected Internet disruptions observed by Cloudflare during the first quarter of 2022, supported by traffic graphs from <a href="https://radar.cloudflare.com">Cloudflare Radar</a> and other internal Cloudflare tools, and grouped by associated cause.</p>
-	<h3>Plate tectonics</h3>
+	<div class="flex anchor relative">
+		<h3 id="plate-tectonics">Plate tectonics</h3>
+		<a href="https://blog.cloudflare.com/#plate-tectonics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internet outages caused by “earth movers” are more frequently caused by errant <a href="http://www.catb.org/jargon/html/F/fiber-seeking-backhoe.html">backhoes</a>. However, two Internet disruptions in the first quarter were caused by more significant earth movement — a volcanic eruption and an earthquake.</p>
 	<p>The first impacted connectivity on the island nation of <a href="https://radar.cloudflare.com/to">Tonga</a>, when the Hunga Tonga–Hunga Ha'apai volcanic eruption damaged <a href="https://www.submarinecablemap.com/submarine-cable/tonga-cable">the submarine cable connecting Tonga to Fiji</a>, resulting in a <a href="https://blog.cloudflare.com/internet-is-back-in-tonga-after-38-days-of-outage">38 day Internet outage</a>. After the January 14 eruption, only minimal Internet traffic (via satellite services) was seen from Tonga. On February 22, Digicel <a href="https://www.digicelgroup.com/to/en/news/2022/Feb/22nd/data-services-fully-restored.html">announced</a> that the main island was back online after initial submarine cable repairs were completed – the immediate return of traffic is clearly visible in the figure below. However, it was estimated that repairs to the domestic cable, connecting outlying islands, could take an additional six to nine months.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -21,7 +28,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KQ33azzZMtM7Nz0VVStUE/5a5c3be14a2723fe0b772a8983c92891/image3-4.png" alt="" class="kg-image" width="997" height="358" loading="lazy">
 
 	</figure>
-	<h3>Infrastructure damage</h3>
+	<div class="flex anchor relative">
+		<h3 id="infrastructure-damage">Infrastructure damage</h3>
+		<a href="https://blog.cloudflare.com/#infrastructure-damage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internet resilience is, of course, heavily dependent on the resilience of the underlying physical infrastructure, including data centers, terrestrial fiber, and submarine cables. Damage to this infrastructure often disrupts Internet connectivity.</p>
 	<p>Early in the morning of January 5, <a href="https://radar.cloudflare.com/gm">the Gambia</a> was <a href="https://blog.cloudflare.com/the-gambia-without-internet">completely isolated from the global Internet</a>. As evident in the figure below, the incident lasted over eight hours, between 0117 and 0945 UTC. According to a <a href="https://twitter.com/Gamtel/status/1478670244067651587">press release</a> from <a href="https://radar.cloudflare.com/asn/25250?date_filter=last_7_days">GAMTEL</a>, after the failure of the primary link (damage to the <a href="https://www.submarinecablemap.com/submarine-cable/africa-coast-to-europe-ace">ACE</a> submarine cable), traffic was routed onto two backup links through Senegal. However, these backup links also failed because they converged in a location that was ultimately identified as a single point of failure.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -71,7 +85,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1cvFY5zVZWhNjLJ8tKRDPV/875e370b64fb0796f741e0f69f96e4d3/image13.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
 
 	</figure>
-	<h3>Power outages</h3>
+	<div class="flex anchor relative">
+		<h3 id="power-outages">Power outages</h3>
+		<a href="https://blog.cloudflare.com/#power-outages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to the physical infrastructure, reliable electrical power is also critical for resilient Internet connectivity. At a provider level, loss of power can take key data centers and routers offline, impacting connectivity for customers and other connected networks. Consumer power outages can take home/business routers and connected devices offline, forcing users onto mobile connectivity, assuming that is/remains available.</p>
 	<p>The interconnected electrical grids of <a href="https://radar.cloudflare.com/kz">Kazakhstan</a>, <a href="https://radar.cloudflare.com/uz">Uzbekistan</a>, and <a href="https://radar.cloudflare.com/kg">Kyrgyzstan</a> all suffered outages on January 24 after Kazakhstan's North-South power line was disconnected <a href="https://www.reuters.com/world/asia-pacific/power-blackout-hits-kazakhstan-kyrgyzstan-uzbekistan-2022-01-25">due to "emergency imbalances"</a>. These power outages caused multi-hour <a href="https://twitter.com/dbelson/status/1485965578112319501">Internet disruptions across all three countries</a> starting around 0600 UTC, as the figures below show. The impact to traffic in Kazakhstan appeared to be fairly minor, while traffic declined significantly in Uzbekistan and Kyrgyzstan and took longer to recover.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -106,7 +127,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tpvYQdFUeYcMg9dpDDiak/49023bef2aaca9e3afbe37153e06d813/image24.png" alt="" class="kg-image" width="1280" height="486" loading="lazy">
 
 	</figure>
-	<h3>DDoS attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="ddos-attack">DDoS attack</h3>
+		<a href="https://blog.cloudflare.com/#ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although distributed denial of service (DDoS) attacks often target web or application servers in an attempt to knock a given website or application offline, such attacks that target network infrastructure can have more widespread impact, not only restricting access to sites and applications hosted within that network, but also disrupting connectivity for users attached to the network.</p>
 	<p><a href="https://twitter.com/CloudflareRadar/status/1503470338436382726">Such a DDoS attack</a> targeted <a href="https://radar.cloudflare.com/asn/8867">AS8867</a> (E-Gov - Tehila Project) in <a href="https://radar.cloudflare.com/il">Israel</a> on March 14. The figure below shows that Internet traffic to that ASN began to decline just before 1530 UTC. A <a href="https://www.haaretz.com/israel-news/.premium-israeli-government-sites-crash-in-cyberattack-1.10674433">published report</a> notes that the websites of the interior, health, justice and welfare ministries, as well as that of the Prime Minister's office, were all taken offline as a result of the attack.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -114,7 +142,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/21eLICe9HWJbEDI4aaKsQd/9effa415e9896ad0299aaaab0560cd17/image11.png" alt="" class="kg-image" width="1999" height="707" loading="lazy">
 
 	</figure>
-	<h3>Unspecified technical causes</h3>
+	<div class="flex anchor relative">
+		<h3 id="unspecified-technical-causes">Unspecified technical causes</h3>
+		<a href="https://blog.cloudflare.com/#unspecified-technical-causes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As discussed above, the underlying technical or physical causes of Internet disruptions are often easily identified, frequently thanks to social media or other communications from the impacted network providers. However, sometimes disruptions are observed that are correlated with a real-world (often political) event with no specified technical or physical cause, while other times disruptions are observed but are both uncorrelated and unattributed.</p>
 	<p>In Kazakhstan, an Internet disruption began on January 5 <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">amid mass protests against sudden increases in energy prices</a>. Starting around 1030 UTC, traffic from Kazakhstan dropped to near zero. The figure below shows that traffic returned to a regular diurnal pattern on January 11, but several apparent restorations of connectivity are also visible during the six-day disruption. These brief periods of connectivity appeared to align with televised speeches or announcements from the Zazakh president.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -139,7 +174,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mtVbGJ74gZuA8iGL6teh8/76435b555a4b5f2fe0502d9df6efb823/image22.png" alt="" class="kg-image" width="1999" height="706" loading="lazy">
 
 	</figure>
-	<h3>Russian invasion of Ukraine</h3>
+	<div class="flex anchor relative">
+		<h3 id="russian-invasion-of-ukraine">Russian invasion of Ukraine</h3>
+		<a href="https://blog.cloudflare.com/#russian-invasion-of-ukraine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Russian invasion of Ukraine has now been going on for over a month. In some cases, Internet connectivity has been collateral damage from the kinetic military action, while in other cases, targeted attacks on network providers and power outages have disrupted connectivity. Technicians from Ukrainian service providers have been <a href="https://www.forbes.com/sites/thomasbrewster/2022/03/22/while-russians-bombs-fall-around-them-ukraines-engineers-battle-to-keep-the-internet-running">risking their lives to keep the country online</a>, and have been largely successful – Cloudflare Radar traffic data for <a href="https://radar.cloudflare.com/ua">Ukraine</a> shows that as of the end of March, peak traffic levels are at 85-90% of pre-invasion peaks. An <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">earlier blog post</a> provides additional details about Internet traffic patterns observed in Ukraine during the first week after the conflict began.</p>
 	<p>Below we highlight just a few significant disruptions observed on major Ukrainian network providers in March.</p>
 	<p>Two brief outages were observed at <a href="https://radar.cloudflare.com/asn/6849">Ukrtelecom</a> during the second week of March, shown in the figure below. The first, on March 8, lasted for just over two hours, while the second one, on March 10, lasted for approximately 40 minutes. No root cause has been reported for these disruptions.</p>
@@ -160,10 +202,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/34UTfI7xD14UThJ2PTgARm/e67770d4bf1900ab9c21bd6b2bf27795/image21.jpg" alt="" class="kg-image" width="972" height="331" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite occasional connectivity disruptions, the Internet remains remarkably resilient. This resiliency is increasingly critical as the Internet finds its way into more and more areas of everyday life around the world. In addition to providing a <a href="https://www.cloudflare.com/about-overview">suite of solutions</a> that support that resiliency, we use the data exhaust from these solutions to monitor Internet reliability, availability, security, and performance.</p>
 	<p>Follow <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> on Twitter for updates on Internet disruptions as they occur, and find up-to-date information on Internet trends using <a href="https://radar.cloudflare.com">Cloudflare Radar</a>.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 53.56371490280778%;"><iframe src="https://iframe.videodelivery.net/420bcb700b8bd0388edcf02c6d9abd76?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F420bcb700b8bd0388edcf02c6d9abd76%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

@@ -10,7 +10,14 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048">image</a> by <a href="https://www.flickr.com/photos/jonicdao">jojo nicdao</a></p>
 	<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
-	<h3>Failing downloads</h3>
+	<div class="flex anchor relative">
+		<h3 id="failing-downloads">Failing downloads</h3>
+		<a href="https://blog.cloudflare.com/#failing-downloads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Two things caught our attention in the bug report. First, only users on mobile phones were experiencing the problem. Second, the asset causing issues—a binary file—was pretty large, at around 30MB.</p>
 	<p>After a fruitful session with <code>tcpdump</code> one of our engineers was able to prepare a test case that reproduced the problem. As so often happens, once you know what you are looking for reproducing a problem is easy. In this case setting up a large file on a test domain and using the <code>--limit-rate</code> option to <code>curl</code> was enough:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -v http://example.com/large.bin --limit-rate 10k &gt; /dev/null
@@ -23,7 +30,14 @@ curl: (56) Recv failure: Connection reset by peer</code></pre>
 00:01:00 IP 1.2.3.4.80 &gt; 192.168.1.10.50112: Flags [R.], seq 1579198, ack 88, win 342, options [nop,nop,TS val 143675137 ecr 143675135], length 0
 </code></pre>
 	<p>Clearly our server was doing something wrong. The RST packet coming from CloudFlare server is just bad. The client behaves, sends ACK packets politely, consumes the data at its own pace, and then we just abruptly cut the conversation.</p>
-	<h3>Not our problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-our-problem">Not our problem</h3>
+		<a href="https://blog.cloudflare.com/#not-our-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are a heavy users of NGINX. In order to isolate the problem we set up a basic off-the-shelf NGINX server. The issue was easily <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx.conf">reproducible locally</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ curl --limit-rate 10k  localhost:8080/large.bin &gt; /dev/null
 * Closing connection #0
@@ -39,7 +53,14 @@ curl: (56) Recv failure: Connection reset by peer</code></pre>
      ...</code></pre>
 	<p>The <code>send_timeout</code> option is used by NGINX to ensure that all connections will eventually drain. It controls the time allowed between successive <code>send</code>/<code>sendfile</code> calls on each connection. Generally speaking it's not fine for a single connection to use precious server resources for too long. If the download is going on too long or is plain stuck, it's okay for the HTTP server to be upset.</p>
 	<p>But there was more to it than that.</p>
-	<h3>Not an NGINX problem either</h3>
+	<div class="flex anchor relative">
+		<h3 id="not-an-nginx-problem-either">Not an NGINX problem either</h3>
+		<a href="https://blog.cloudflare.com/#not-an-nginx-problem-either" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Armed with <code>strace</code> we investigated what NGINX actually did:</p>
 	<pre class="language-bash"><code class="language-bash">04:54:05 accept4(4, ...) = 5
 04:54:05 sendfile(5, 9, [0], 51773484) = 5325752
@@ -55,7 +76,14 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432</code></pre>
 08:30:07 sendfile(5, 9, [9560836], 42212648) = 1768041
 ...</code></pre>
 	<p>After the first large push of data, <code>sendfile</code> is called more times. Between each successive call it transfers about 1.7 MB. Between these syscalls, about every 180 seconds, the socket was constantly being drained by the slow <code>curl</code>, so why didn't NGINX refill it constantly?</p>
-	<h3>The asymmetry</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-asymmetry">The asymmetry</h3>
+		<a href="https://blog.cloudflare.com/#the-asymmetry" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A motto of Unix design is "everything is a file". I prefer to think about this as: "in Unix everything can be readable and writeable when given to <code>poll</code>". But what exactly does "being readable" mean? Let's discuss the behavior of network sockets on Linux.</p>
 	<p>The semantics of reading from a socket are simple:</p>
 	<ul>
@@ -76,7 +104,14 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432</code></pre>
 		</li>
 	</ul>
 	<p>Surprisingly, the last point is <i>not</i> true.</p>
-	<h3>Different code paths</h3>
+	<div class="flex anchor relative">
+		<h3 id="different-code-paths">Different code paths</h3>
+		<a href="https://blog.cloudflare.com/#different-code-paths" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's very important to realize that in the Linux Kernel, there are two separate code paths: one for sending data and another one for checking if a socket is writeable.</p>
 	<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L1167"><code>send()</code></a> to succeed two conditions must be met:</p>
 	<ul>
@@ -104,7 +139,14 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432</code></pre>
 	<pre class="language-bash"><code class="language-bash">08:24:21 sendfile(5, 9, [6024754], 45748730) = 1768041</code></pre>
 	<p>The call succeeded in sending 1.7 MiB of data. This is close to 33% of 5 MiB, our default <code>wmem</code> send buffer size.</p>
 	<p>I presume this threshold was implemented in Linux in order to avoid refilling the buffers too often. It is undesirable to wake up the sending program after each byte of the data was acknowledged by the client.</p>
-	<h3>The solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-solution">The solution</h3>
+		<a href="https://blog.cloudflare.com/#the-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With full understanding of the problem we can decisively say when it happens:</p>
 	<ol>
 		<li>
@@ -122,7 +164,14 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432</code></pre>
 	<p>Another choice is to reduce the <code>tcp_wmem</code> send buffers sizes.</p>
 	<p>The final option is to patch NGINX to react differently on timeout. Instead of closing the connection, we could inspect the amount of data remaining in the send buffer. We can do that with <code>ioctl(TIOCOUTQ)</code>. With this information we know exactly how quickly the connection is being drained. If it's above some configurable threshold, we could decide to grant the connection some more time.</p>
 	<p>My colleague Chris Branch prepared <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx_send_minimum_rate.patch">a Linux specific patch to NGINX</a>. It implements a <code>send_minimum_rate</code> option, which is used to specify the minimum permitted client throughput.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
 	<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
 	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>

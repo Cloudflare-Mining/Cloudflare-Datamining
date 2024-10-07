@@ -6,11 +6,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/LmKHJUdaCDC1pO03FHrel/fc04415a557607fea2cb798a0c0cc91a/image3-2.png" alt="" class="kg-image" width="1999" height="1024" loading="lazy">
 
 	</figure>
-	<h3>Introduction</h3>
+	<div class="flex anchor relative">
+		<h3 id="introduction">Introduction</h3>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building <a href="https://www.cloudflare.com/application-services/products/bot-management">Cloudflare Bot Management platform</a> is an exhilarating experience. It blends Distributed Systems, Web Development, Machine Learning, Security and Research (and every discipline in between) while fighting ever-adaptive and motivated adversaries at the same time.</p>
 	<p>This is the ongoing story of Bot Management at Cloudflare and also an introduction to a series of blog posts about the detection mechanisms powering it. I’ll start with several definitions from the Bot Management world, then introduce the product and technical requirements, leading to an overview of the platform we’ve built. Finally, I’ll share details about the detection mechanisms powering our platform.</p>
 	<p>Let’s start with Bot Management’s nomenclature.</p>
-	<h3>Some Definitions</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-definitions">Some Definitions</h3>
+		<a href="https://blog.cloudflare.com/#some-definitions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/bots/what-is-a-bot"><b>Bot</b></a> - an autonomous program on a network that can interact with computer systems or users, imitating or replacing a human user's behavior, performing repetitive tasks much faster than human users could.</p>
 	<p><b>Good bots</b> - bots which are useful to businesses they interact with, e.g. <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler">search engine bots</a> like Googlebot, Bingbot or bots that operate on social media platforms like Facebook Bot.</p>
 	<p><b>Bad bots</b> - bots which are designed to perform malicious actions, ultimately hurting businesses, e.g. <a href="https://www.cloudflare.com/learning/bots/what-is-credential-stuffing">credential stuffing</a> bots, <a href="https://www.cloudflare.com/learning/bots/what-is-data-scraping">third-party scraping</a> bots, <a href="https://www.cloudflare.com/learning/bots/what-is-a-spambot">spam</a> bots and sneakerbots.</p>
@@ -21,7 +35,14 @@
 	</figure>
 	<p><a href="https://www.cloudflare.com/learning/bots/what-is-bot-management"><b>Bot Management</b></a> - blocking undesired or malicious Internet bot traffic while still allowing useful bots to access web properties by detecting bot activity, discerning between desirable and undesirable bot behavior, and identifying the sources of the undesirable activity.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf"><b>WAF</b></a> - a security system that monitors and controls network traffic based on a set of security rules.</p>
-	<h3>Gathering requirements</h3>
+	<div class="flex anchor relative">
+		<h3 id="gathering-requirements">Gathering requirements</h3>
+		<a href="https://blog.cloudflare.com/#gathering-requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has been stopping malicious bots from accessing websites or misusing <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> from the very <a href="https://blog.cloudflare.com/cloudflare-uses-intelligent-caching-to-avoid">beginning</a>, at the same time <a href="https://blog.cloudflare.com/cleaning-up-bad-bots">helping the climate</a> by offsetting the carbon costs from the bots. Over time it became clear that we needed a dedicated platform which would unite different bot fighting techniques and streamline the customer experience. In designing this new platform, we tried to fulfill the following key requirements.</p>
 	<ul>
 		<li>
@@ -46,7 +67,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5z0o8rXLkecZWUhx1UDRHF/e5f3c58241d3fc2f7f1e62509fdc612c/image8.png" alt="" class="kg-image" width="1999" height="1015" loading="lazy">
 
 	</figure>
-	<h3>Technical requirements</h3>
+	<div class="flex anchor relative">
+		<h3 id="technical-requirements">Technical requirements</h3>
+		<a href="https://blog.cloudflare.com/#technical-requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Additionally, to the product requirements above, we engineers had a list of must-haves for the new Bot Management platform. The most critical were:</p>
 	<ul>
 		<li>
@@ -69,7 +97,14 @@
 		</li>
 	</ul>
 	<p>Equipped with these requirements, back in 2018, our small team of engineers got to work to design and build the next generation of Cloudflare Bot Management.</p>
-	<h3>Meet the Score</h3>
+	<div class="flex anchor relative">
+		<h3 id="meet-the-score">Meet the Score</h3>
+		<a href="https://blog.cloudflare.com/#meet-the-score" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>“Simplicity is the ultimate sophistication.”- Leonardo Da Vinci</i></p>
 	</blockquote>
@@ -87,14 +122,28 @@
 	<p>Fortunately, around the same time we started worked on this system , our colleagues from the Firewall team had <a href="https://blog.cloudflare.com/announcing-firewall-rules">just announced Firewall Rules</a>. This new capability provided customers the ability to control requests in a flexible and intuitive way, inspired by the widely known Wireshark® &nbsp;language. Firewall rules supported a variety of request fields, and we thought - why not have the score be one of these fields? Customers could then write granular rules to block very specific attack types. That’s how the <code>cf.bot_management.score</code> field was born.</p>
 	<p>Having a score in the heart of Cloudflare Bot Management addressed multiple product and technical requirements with one strike - it’s simple, flexible, configurable, and it provides customers with telemetry about bots on a per request basis. Customers can adjust the score threshold in firewall rules, depending on their sensitivity to false positives/negatives. Additionally, this intuitive score allows us to extend our detection capabilities under the hood without customers needing to adjust any configuration.</p>
 	<p>So how can we produce this score and how hard is it? Let’s explore it in the following section.</p>
-	<h3>Architecture overview</h3>
+	<div class="flex anchor relative">
+		<h3 id="architecture-overview">Architecture overview</h3>
+		<a href="https://blog.cloudflare.com/#architecture-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What is powering the Bot Management score? The short answer is a set of <a href="https://www.cloudflare.com/learning/serverless/glossary/serverless-microservice">microservices</a>. Building this platform we tried to re-use as many pipelines, databases and components as we could, however many services had to be built from scratch. Let’s have a look at overall architecture (this overly simplified version contains Bot Management related services):</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OSC0Ty0XKfbmw651kO9bQ/278b37c182f0f84e22f2f9142a13f4a8/image13.png" alt="" class="kg-image" width="1121" height="507" loading="lazy">
 
 	</figure>
-	<h3>Core Bot Management services</h3>
+	<div class="flex anchor relative">
+		<h3 id="core-bot-management-services">Core Bot Management services</h3>
+		<a href="https://blog.cloudflare.com/#core-bot-management-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a nutshell our systems process data received from the edge data centers, produce and store data required for bot detection mechanisms using the following technologies:</p>
 	<ul>
 		<li>
@@ -111,14 +160,28 @@
 		</li>
 	</ul>
 	<p>Each of these services is built with resilience, performance, observability and security in mind.</p>
-	<h3>Edge Bot Management module</h3>
+	<div class="flex anchor relative">
+		<h3 id="edge-bot-management-module">Edge Bot Management module</h3>
+		<a href="https://blog.cloudflare.com/#edge-bot-management-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All bot detection mechanisms are applied on every request in real-time during the request processing stage in the Bot Management module running on every machine at Cloudflare’s edge locations. When a request comes in we extract and transform the required request attributes and feed them to our detection mechanisms. The Bot Management module produces the following output:</p>
 	<p><b>Firewall fields</b> - <a href="https://support.cloudflare.com/hc/en-us/articles/360027519452-Understanding-Cloudflare-Bot-Management">Bot Management fields</a>- <b>cf.bot_management.score</b> - an integer indicating the likelihood between 0 and 100 whether a request originated from an automated program (low score) to a human (high score).- <b>cf.bot_management.verified_bot</b> - a boolean indicating whether such request comes from a Cloudflare allowlisted bot.- <b>cf.bot_management.static_resource</b> - a boolean indicating whether request matches file extensions for many types of static resources.</p>
 	<p><b>Cookies</b> - most notably it produces <a href="https://community.cloudflare.com/t/cf-bm-cookie/56696"><b>cf_bm</b></a>, which helps manage incoming traffic that matches criteria associated with bots.</p>
 	<p><b>JS challenges</b> - for some of our detections and customers we inject into invisible JavaScript challenges, providing us with more signals for bot detection.</p>
 	<p><b>Detection logs</b> - we log through our data pipelines to ClickHouse details about each applied detection, used features and flags, some of which are used for analytics and customer logs, while others are used to debug and improve our models.</p>
 	<p>Once the Bot Management module has produced the required fields, the Firewall takes over the actual bot mitigation.</p>
-	<h3>Firewall integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="firewall-integration">Firewall integration</h3>
+		<a href="https://blog.cloudflare.com/#firewall-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Cloudflare Firewall's intuitive dashboard enables users to build powerful rules through easy clicks and also provides Terraform integration. Every request to the firewall is inspected against the rule engine. Suspicious requests can be blocked, challenged or logged as per the needs of the user while legitimate requests are routed to the destination, based on the score produced by the Bot Management module and the configured threshold.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -147,7 +210,14 @@
 		</li>
 	</ul>
 	<p>Our <a href="https://blog.cloudflare.com/updates-to-firewall-analytics">Firewall Analytics</a> tool, powered by ClickHouse and <a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place">GraphQL API</a>, enables customers to quickly identify and investigate security threats using an intuitive interface. In addition to analytics, we provide detailed logs on all bots-related activity using either the <a href="https://developers.cloudflare.com/logs/logpull-api">Logpull API</a> and/or <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage">LogPush</a>, which provides the easy way to get your logs to your cloud storage.</p>
-	<h3>Cloudflare Workers integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-workers-integration">Cloudflare Workers integration</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-workers-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In case a customer wants more flexibility on what to do with the requests based on the score, e.g. they might want to inject new, or change existing, HTML page content, or serve incorrect data to the bots, or stall certain requests, <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a> provide an option to do that. For example, using this small code-snippet, we can pass the score back to the origin server for more advanced real-time analysis or mitigation:</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -161,7 +231,15 @@ async function handleRequest(request) {
   return fetch(request);
 }</code></pre>
 	<p>Now let’s have a look into how a single score is produced using multiple detection mechanisms.</p>
-	<h3>Detection mechanisms</h3>
+	<div class="flex anchor relative">
+		<h3 id="detection-mechanisms">Detection mechanisms</h3>
+		<a href="https://blog.cloudflare.com/#detection-mechanisms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3avrETqHNSco30pzXKi2Bi/15ee0bffdf627a26f0ed7d6a67f31b40/image10.png" alt="" class="kg-image" width="1950" height="816" loading="lazy">
@@ -205,7 +283,14 @@ async function handleRequest(request) {
 
 	</figure>
 	<p>Let’s dive into specific detection mechanisms in chronological order of their integration with Cloudflare Bot Management.</p>
-	<h3>Machine learning</h3>
+	<div class="flex anchor relative">
+		<h3 id="machine-learning">Machine learning</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The majority of decisions about the score are made using our machine learning models. These were also the first detection mechanisms to produce a score and to on-board customers back in 2018. The successful application of <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> requires data high in <a href="https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning">Quantity, Diversity, and Quality</a>, and thanks to both free and paid customers, Cloudflare has all three, enabling continuous learning and improvement of our models for all of our customers.</p>
 	<p>At the core of the machine learning detection mechanism is CatBoost &nbsp;- a high-performance open source library for gradient boosting on decision trees. The choice of CatBoost was driven by the library’s outstanding capabilities:</p>
 	<ul>
@@ -225,7 +310,14 @@ async function handleRequest(request) {
 	<p>There are multiple CatBoost models run on Cloudflare’s Edge in the <a href="https://christophergs.com/machine%20learning/2019/03/30/deploying-machine-learning-applications-in-shadow-mode/#what">shadow mode</a> on <i>every request on every machine</i>. One of the models is run in active mode, which influences the final score going to Firewall. All ML detection results and features are logged and recorded in ClickHouse for further analysis, model improvement, analytics and customer facing logs. We feed both categorical and numerical features into our models, extracted from request attributes and inter-request features built using those attributes, calculated and delivered by the <i>Gagarin</i> inter-requests features platform.</p>
 	<p>We’re able to deploy new ML models in a matter of seconds using an extremely reliable and performant <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> configuration database. The same mechanism can be used to configure which version of an ML model should be run in active mode for a specific customer.</p>
 	<p>A deep dive into our machine learning detection mechanism deserves a blog post of its own and it will cover how do we train and validate our models on trillions of requests using GPUs, how model feature delivery and extraction works, and how we explain and debug model predictions both internally and externally.</p>
-	<h3>Heuristics engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="heuristics-engine">Heuristics engine</h3>
+		<a href="https://blog.cloudflare.com/#heuristics-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not all problems in the world are the best solved with machine learning. We can tweak the ML models in various ways, but in certain cases they will likely underperform basic heuristics. Often the problems machine learning is trying to solve are not entirely new. When building the Bot Management solution it became apparent that sometimes a single attribute of the request could give a bot away. This means that we can create a bunch of simple rules capturing bots in a straightforward way, while also ensuring lowest false positives.</p>
 	<p>The heuristics engine was the second detection mechanism integrated into the Cloudflare Bot Management platform in 2019 and it’s also applied on every request. We have multiple heuristic types and hundreds of specific rules based on certain attributes of the request, some of which are very hard to spoof. When any of the requests matches any of the heuristics - we assign the lowest possible score of 1.</p>
 	<p>The engine has the following properties:</p>
@@ -247,7 +339,14 @@ async function handleRequest(request) {
 		</li>
 	</ul>
 	<p>So heuristics gave us <a href="https://developers.google.com/machine-learning/guides/rules-of-ml#rule_7_turn_heuristics_into_features_or_handle_them_externally">a lift when tweaked with machine learning</a> and they contained a lot of the intuition about the bots, which helped to advance the Cloudflare Bot Management platform and allowed us to onboard more customers.</p>
-	<h3>Behavioral analysis</h3>
+	<div class="flex anchor relative">
+		<h3 id="behavioral-analysis">Behavioral analysis</h3>
+		<a href="https://blog.cloudflare.com/#behavioral-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Machine learning and heuristics detections provide tremendous value, but both of them require human input on the labels, or basically a teacher to distinguish between right and wrong. While our supervised ML models can generalize well enough even on novel threats similar to what we taught them on, we decided to go further. What if there was an approach which doesn’t require a teacher, but rather can learn to distinguish bad behavior from the normal behavior?</p>
 	<p>Enter the behavioral analysis detection mechanism, initially developed in 2018 and integrated with the Bot Management platform in 2019. This is an unsupervised machine learning approach, which has the following properties:</p>
 	<ul>
@@ -262,7 +361,14 @@ async function handleRequest(request) {
 		</li>
 	</ul>
 	<p>Please stay tuned for a more detailed blog about behavioral analysis models and the platform powering this incredible detection mechanism, protecting many of our customers from unseen attacks.</p>
-	<h3>Verified bots</h3>
+	<div class="flex anchor relative">
+		<h3 id="verified-bots">Verified bots</h3>
+		<a href="https://blog.cloudflare.com/#verified-bots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we’ve discussed how to detect bad bots and humans. What about good bots, some of which are extremely useful for the customer website? Is there a need for a dedicated detection mechanism or is there something we could use from previously described detection mechanisms? While the majority of good bot requests (e.g. Googlebot, Bingbot, LinkedInbot) already have low score produced by other detection mechanisms, we also need a way to avoid accidental blocks of useful bots. That’s how the Firewall field <i>cf.bot_management.verified_bot</i> came into existence in 2019, allowing customers to decide for themselves whether they want to let all of the good bots through or restrict access to certain parts of the website.</p>
 	<p>The actual platform calculating Verified Bot flag deserves a detailed blog on its own, but in the nutshell it has the following properties:</p>
 	<ul>
@@ -292,12 +398,26 @@ async function handleRequest(request) {
 	</figure>
 	<p>Bots directory UI sample‌‌</p>
 	<p>Using multiple validation methods listed above, the Verified Bots detection mechanism identifies hundreds of unique good bot identities, belonging to different companies and categories.</p>
-	<h3>JS fingerprinting</h3>
+	<div class="flex anchor relative">
+		<h3 id="js-fingerprinting">JS fingerprinting</h3>
+		<a href="https://blog.cloudflare.com/#js-fingerprinting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When it comes to Bot Management detection quality it’s all about the signal quality and quantity. All previously described detections use request attributes sent over the network and analyzed on the server side using different techniques. Are there more signals available, which can be extracted from the client to improve our detections?</p>
 	<p>As a matter of fact there are plenty, as every browser has unique implementation quirks. Every web browser graphics output such as canvas depends on multiple layers such as hardware (GPU) and software (drivers, operating system rendering). This highly unique output allows precise differentiation between different browser/device types. Moreover, this is achievable without sacrificing website visitor privacy as it’s not a supercookie, and it cannot be used to track and identify individual users, but only to confirm that request’s user agent matches other telemetry gathered through browser canvas API.</p>
 	<p>This detection mechanism is implemented as a challenge-response system with challenge injected into the webpage on Cloudflare’s edge. The challenge is then rendered in the background using provided graphic instructions and the result sent back to Cloudflare for validation and further action such as &nbsp;producing the score. There is a lot going on behind the scenes to make sure we get reliable results without sacrificing users’ privacy while being tamper resistant to replay attacks. The system is currently in private beta and being evaluated for its effectiveness and we already see very promising results. Stay tuned for this new detection mechanism becoming widely available and the blog on how we’ve built it.</p>
 	<p>This concludes an overview of the five detection mechanisms we’ve built so far. It’s time to sum it all up!</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has the unique ability to collect data from trillions of requests flowing through its network every week. With this data, Cloudflare is able to identify likely bot activity with Machine Learning, Heuristics, Behavioral Analysis, and other detection mechanisms. Cloudflare Bot Management integrates seamlessly with other Cloudflare products, such as WAF &nbsp;and Workers.</p>
 	<figure class="kg-card kg-image-card ">
 

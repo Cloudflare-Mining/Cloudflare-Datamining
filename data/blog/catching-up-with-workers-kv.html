@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>The Workers Distributed Data team has been hard at work since <a href="https://blog.cloudflare.com/whats-new-with-workers-kv">we gave you an update last November</a>. Today, we’d like to share with you some of the stuff that has recently shipped in Workers KV: a new feature and an internal change that should significantly improve latency in some cases. Let’s dig in!</p>
-	<h3>KV Metadata</h3>
+	<div class="flex anchor relative">
+		<h3 id="kv-metadata">KV Metadata</h3>
+		<a href="https://blog.cloudflare.com/#kv-metadata" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers KV has a fairly straightforward interface: you can put keys and values into KV, and then fetch the value back out by key:</p>
 	<pre class="language-javascript"><code class="language-javascript">await contents.put(“index.html”, someHtmlContent);
 await contents.put(“index.css”, someCssContent);
@@ -29,7 +36,14 @@ await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/j
 	<pre class="language-javascript"><code class="language-javascript">let {value, metadata} = await contents.getWithMetadata(“index.js”);</code></pre>
 	<p>Here, <code>value</code> would have the contents, like before. But <code>metadata</code> contains the JSON of the metadata that was stored: <code>metadata[“Content-Type”]</code>would return <code>“text/javascript”</code>. You’ll also see this metadata come back when you make a list request as well.</p>
 	<p>Given that you can store arbitrary JSON, it’s useful for more than just content types: we’ve had folks <a href="https://community.cloudflare.com/t/etag-and-content-type-support-in-kv-storage/150331?u=sklabnik">post to the forums asking about etags</a>, for example. We’re excited to see what you do with this new capability!</p>
-	<h3>Significantly faster writes</h3>
+	<div class="flex anchor relative">
+		<h3 id="significantly-faster-writes">Significantly faster writes</h3>
+		<a href="https://blog.cloudflare.com/#significantly-faster-writes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our documentation states:</p>
 	<p><i>Very infrequently read values are stored centrally, while more popular values are maintained in all of our data centers around the world.</i></p>
 	<p>This is why Workers KV is optimized for higher read volumes than writes. We distribute popular data across the globe, close to users wherever they are. However, for infrequently accessed data, we store the data in a central location until access is requested. Each write (and delete) must go back to the central data store, as do reads on less popular values. The central store was located in the United States, and so the speed for writes would be variable. In the US, it would be much faster than say, in Europe or Asia.</p>
@@ -48,6 +62,13 @@ await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/j
 
 	</figure>
 	<p>The long tail has been significantly shortened. (We’ve redacted the exact numbers, but you can still see the magnitude of the changes.)</p>
-	<h3>More to come</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-to-come">More to come</h3>
+		<a href="https://blog.cloudflare.com/#more-to-come" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The distributed data team has been working on some additional things, but we’re not quite ready to share them with you yet! We hope that you’ll find these changes make Workers KV even better for you, and we’ll be sharing more updates on the blog as we ship.</p>
 </div>

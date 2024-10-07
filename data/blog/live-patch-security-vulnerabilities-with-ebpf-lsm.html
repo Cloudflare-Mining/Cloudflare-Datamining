@@ -8,7 +8,14 @@
 	</figure>
 	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html">Linux Security Modules</a> (LSM) is a hook-based framework for implementing security policies and Mandatory Access Control in the Linux kernel. Until recently users looking to implement a security policy had just two options. Configure an existing LSM module such as AppArmor or SELinux, or write a custom kernel module.</p>
 	<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7">Linux 5.7</a> introduced a third way: <a href="https://docs.kernel.org/bpf/prog_lsm.html">LSM extended Berkeley Packet Filters (eBPF)</a> (LSM BPF for short). LSM BPF allows developers to write granular policies without configuration or loading a kernel module. LSM BPF programs are verified on load, and then executed when an LSM hook is reached in a call path.</p>
-	<h2>Let’s solve a real-world problem</h2>
+	<div class="flex anchor relative">
+		<h2 id="lets-solve-a-real-world-problem">Let’s solve a real-world problem</h2>
+		<a href="https://blog.cloudflare.com/#lets-solve-a-real-world-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Modern operating systems provide facilities allowing "partitioning" of kernel resources. For example FreeBSD has "jails", Solaris has "zones". Linux is different - it provides a set of seemingly independent facilities each allowing isolation of a specific resource. These are called "namespaces" and have been growing in the kernel for years. They are the base of popular tools like Docker, lxc or firejail. Many of the namespaces are uncontroversial, like the UTS namespace which allows the host system to hide its hostname and time. Others are complex but straightforward - NET and NS (mount) namespaces are known to be hard to wrap your head around. Finally, there is this very special very curious USER namespace.</p>
 	<p>USER namespace is special, since it allows the owner to operate as "root" inside it. How it works is beyond the scope of this blog post, however, suffice to say it's a foundation to having tools like Docker to not operate as true root, and things like rootless containers.</p>
 	<p>Due to its nature, allowing unpriviledged users access to USER namespace always carried a great security risk. &nbsp;One such risk is privilege escalation.</p>
@@ -23,9 +30,23 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 	<p>In most cases using unshare is harmless, and is intended to run with lower privileges. However, this syscall has been known to be used to <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492">escalate privileges</a>.</p>
 	<p>Syscalls <i>clone</i> and <i>clone3</i> are worth looking into as they also have the ability to <i>CLONE_NEWUSER</i>. However, for this post we’re going to focus on unshare.</p>
 	<p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch">"add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
-	<h2>Our solution - LSM BPF</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-solution-lsm-bpf">Our solution - LSM BPF</h2>
+		<a href="https://blog.cloudflare.com/#our-solution-lsm-bpf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since upstreaming code that restricts USER namespace seem to not be an option, we decided to use LSM BPF to circumvent these issues. This requires no modifications to the kernel and allows us to express complex rules guarding the access.</p>
-	<h3>Track down an appropriate hook candidate</h3>
+	<div class="flex anchor relative">
+		<h3 id="track-down-an-appropriate-hook-candidate">Track down an appropriate hook candidate</h3>
+		<a href="https://blog.cloudflare.com/#track-down-an-appropriate-hook-candidate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608"><i>include/linux/syscalls.h</i></a> file. From there, it’s not as obvious to track down, but the line:</p>
 	<pre class="language-c"><code class="language-c">/* kernel/fork.c */</code></pre>
 	<p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201"><i>kernel/fork.c</i></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082"><i>ksys_unshare()</i></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129"><i>unshare_userns()</i></a>. This looks promising.</p>
@@ -34,7 +55,14 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 rc = call_int_hook(cred_prepare, 0, new, old, gfp);
 …</code></pre>
 	<p>Without going much further down this rabbithole, we know this is a good hook to use because <i>prepare_creds()</i> is called right before <i>create_user_ns()</i> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181"><i>unshare_userns()</i></a> which is the operation we’re trying to block.</p>
-	<h3>LSM BPF solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="lsm-bpf-solution">LSM BPF solution</h3>
+		<a href="https://blog.cloudflare.com/#lsm-bpf-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re going to compile with the <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions">eBPF compile once-run everywhere (CO-RE)</a> approach. This allows us to compile on one architecture and load on another. But we’re going to target x86_64 specifically. LSM BPF for ARM64 is still in development, and the following code will not run on that architecture. Watch the <a href="https://lore.kernel.org/bpf">BPF mailing list</a> to follow the progress.</p>
 	<p>This solution was tested on kernel versions &gt;= 5.15 configured with the following:</p>
 	<pre class="language-bash"><code class="language-bash">BPF_EVENTS
@@ -216,7 +244,15 @@ deny_unshare: deny_unshare.c deny_unshare.skel.h
 	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)
 
 .DELETE_ON_ERROR:</code></pre>
-	<h3>Result</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="result">Result</h3>
+		<a href="https://blog.cloudflare.com/#result" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a new terminal window run:</p>
 	<pre class="language-sh"><code class="language-sh">$ make run
 …
@@ -231,7 +267,14 @@ uid=1000(fred) gid=1000(fred) groups=1000(fred) …</code></pre>
 # id
 uid=0(root) gid=0(root) groups=0(root)</code></pre>
 	<p>In the unprivileged case the syscall early aborts. What is the performance impact in the privileged case?</p>
-	<h3>Measure performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="measure-performance">Measure performance</h3>
+		<a href="https://blog.cloudflare.com/#measure-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p>
 	<pre class="language-sh"><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"</code></pre>
 	<p>With a resolution of CPU cycles for syscall unshare enter/exit, we’ll measure the following as root user:</p>
@@ -277,7 +320,14 @@ uid=0(root) gid=0(root) groups=0(root)</code></pre>
 	<p>unshare-92014 used 63294 cycles.unshare-92019 used 70138 cycles.</p>
 	<p>We have a 6,844 (~10%) cycle penalty between the two measurements. Not bad!</p>
 	<p>These numbers are for a single syscall, and add up the more frequently the code is called. Unshare is typically called at task creation, and not repeatedly during normal execution of a program. Careful consideration and measurement is needed for your use case.</p>
-	<h2>Outro</h2>
+	<div class="flex anchor relative">
+		<h2 id="outro">Outro</h2>
+		<a href="https://blog.cloudflare.com/#outro" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We learned a bit about what LSM BPF is, how unshare is used to map a user to root, and how to solve a real-world problem by implementing a solution in eBPF. Tracking down the appropriate hook is not an easy task, and requires a bit of playing and a lot of kernel code. Fortunately, that’s the hard part. Because a policy is written in C, we can granularly tweak the policy to our problem. This means one may extend this policy with an allow-list to allow certain programs or users to continue to use an unprivileged unshare. Finally, we looked at the performance impact of this program, and saw the overhead is worth blocking the attack vector.</p>
 	<p>“Cannot allocate memory” is not a clear error message for denying permissions. We proposed a <a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com">patch</a> to propagate error codes from the <i>cred_prepare</i> hook up the call stack. Ultimately we came to the conclusion that a new hook is better suited to this problem. Stay tuned!</p>
 </div>

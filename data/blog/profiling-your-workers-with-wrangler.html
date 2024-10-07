@@ -7,7 +7,14 @@
 	</figure>
 	<p>In the year since Cloudflare’s launch of Workers Unbound, developers have unlocked the ability to run computationally intensive workloads on the Cloudflare edge network — like image processing, game logic, and other complex algorithms. With all that additional computing power comes a host of questions around performance. Our customers often ask us how they can profile or monitor their Workers to see where they spend the most CPU time, or to see whether their changes improve performance.</p>
 	<p>Here at Cloudflare, we not only want to build the fastest, most affordable, and most flexible compute platform at the edge; we also want to make the lives of our developers easier in building their applications. To do this, Cloudflare has begun to integrate with existing tools — places our developers feel comfortable and efficient in their day-to-day work. To help measure performance of our customers’ Workers, we’re beginning to integrate with the Chrome DevTools protocol. Just like you can use chrome://inspect to debug your Node backend, you can also use it to profile your Cloudflare Workers.</p>
-	<h3>Introducing Chrome DevTools Integration (Beta)</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-chrome-devtools-integration-beta">Introducing Chrome DevTools Integration (Beta)</h3>
+		<a href="https://blog.cloudflare.com/#introducing-chrome-devtools-integration-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re starting off this integration with beta support for local CPU profiling, using Wrangler. To show off how to use this feature, I’m going to be optimizing a simple JavaScript program which outputs the first thousand integers separated by a space. Let’s start by installing the latest version of <a href="https://github.com/cloudflare/wrangler/#installation">Wrangler</a>. We’ll also need a Worker cloned down to your local machine. I’ll be using <a href="https://github.com/kabirsikand/workers-profiling-example/blob/main/slow-worker.js">Workers Profiling Example</a>, but feel free to use any CPU intensive Worker for this tutorial.</p>
 	<p>For reference, my sample code is below. You’ll notice this code is intentionally performing a computation that will slow down our Worker.</p>
 	<pre class="language-js"><code class="language-js">addEventListener("fetch", event =&gt; {
@@ -56,9 +63,23 @@ async function handleRequest(request) {
 
 	</figure>
 	<p>In particular, it shows that, unsurprisingly, most of the time is being spent on memory allocations in the body of the loop. Note that the profiler is not always accurate with regard to exact timing, but does paint a picture of your largest bottlenecks.</p>
-	<h3>Understanding the Profile</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-the-profile">Understanding the Profile</h3>
+		<a href="https://blog.cloudflare.com/#understanding-the-profile" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The profiler works by gathering a stack trace of your program at a sampled rate, so remember that the profile is an approximation of where your code tends to spend the majority of its execution time, and is not meant to be perfectly accurate. In fact, functions that execute in less than 100 microseconds have a chance to not appear in the profile at all.</p>
-	<h3>What’s Next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s Next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the Workers platform, we’re striving to build in the observability our users expect out of a robust compute platform. We’d love to hear more from the community about ways we can improve visibility into the code you’re writing on the edge. If you haven’t already, please join the Cloudflare Workers Discord community at <a href="https://discord.gg/PX8s2TmJ7s">https://discord.gg/PX8s2TmJ7s</a>. Happy building!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/f11809a382160334e9be9a2aedf13d1d?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

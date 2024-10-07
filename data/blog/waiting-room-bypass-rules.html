@@ -17,7 +17,14 @@
 	<p>As part of the simple, no-coding-necessary process for deploying a waiting room, customers specify a hostname and path combination, which defines <a href="https://developers.cloudflare.com/waiting-room/get-started/#location">the location</a> of their waiting room on their site. When a site visitor makes a preliminary request to that hostname and path or any of its subpaths, they will be issued a waiting room cookie and placed in the queue if the waiting room is queuing at that time.</p>
 	<p>The hostname and path approach to defining the placement of a waiting room is intuitive and makes it easy to deploy a waiting room to a site. But, many customers needed more granular control over what traffic and parts of their site their waiting room did or did not cover under a waiting room’s configured hostname and path. Use cases for allowing specific traffic to bypass a waiting room were varied.</p>
 	<p>Examples included allowing internal administrators site access at all times, never blocking internal user agents performing operations like synthetic monitoring, not applying waiting room to specific subpaths or query strings, or queuing only traffic from certain countries. Given the diversity of our customers’ requests to exclude traffic from a waiting room’s coverage, we built a bypass feature that gave customers the versatility necessary to deploy waiting rooms aligned with their existing site architecture and use cases. With the release of Event Scheduling, Waiting Room customers could queue <i>when</i> they wanted to; now, we are excited to announce that customers now have more flexibility to queue <i>who</i> and <i>where</i> they want to with Waiting Room Bypass Rules.</p>
-	<h2>Who gets queued is up to you</h2>
+	<div class="flex anchor relative">
+		<h2 id="who-gets-queued-is-up-to-you">Who gets queued is up to you</h2>
+		<a href="https://blog.cloudflare.com/#who-gets-queued-is-up-to-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Waiting Room Bypass Rules allow customers to write expressions that define what traffic should bypass their waiting room. A waiting room will not apply to incoming requests matching conditions based on one or more <a href="https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules">available fields</a>, like IP address, URI path, query string, and country. Bypass rules supersede all Waiting Room features; even in <a href="https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#queue-all-visitors">Queue-all mode</a>, event pre-queuing, or any other waiting room state, traffic matching your enabled rules’ expressions will never be queued or issued a waiting room cookie. Waiting Room rules are created via the Waiting Room API or the Waiting Room dashboard using a familiar rule management interface found throughout the Cloudflare dashboard. Waiting Room rules are managed at the individual waiting room level for precise control over each waiting room’s traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -31,15 +38,36 @@
 
 	</figure>
 	<p>Manage bypass rules at the individual waiting room level for precise control over each waiting room’s traffic coverage.</p>
-	<h2>Built with the Ruleset Engine</h2>
+	<div class="flex anchor relative">
+		<h2 id="built-with-the-ruleset-engine">Built with the Ruleset Engine</h2>
+		<a href="https://blog.cloudflare.com/#built-with-the-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We love building Cloudflare products on top of Cloudflare products; we knew that the versatility we wanted to offer to our customers with regard to what traffic a waiting room should apply to would best be achieved by integrating with Cloudflare’s powerful <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a>. The Ruleset Engine provides the infrastructure for many of our highly customizable products, such as the new <a href="https://developers.cloudflare.com/rules/origin-rules">Origin Rules</a> feature and our <a href="https://developers.cloudflare.com/waf/managed-rulesets">WAF Managed Rulesets</a>, by providing a unified way to represent the concept of “rules” and an easy-to-integrate software library for consistently executing those rules. This allows all sorts of Cloudflare products to provide extremely similar rules capabilities, with the same language for defining conditions (which can grow quite complex!) and very similar APIs.</p>
 	<p>We’ve even found that some of Waiting Room’s product functionality can be best implemented on top of the Ruleset Engine; earlier this year we migrated some select core Waiting Room logic into the Ruleset Engine, implemented as rulesets that we now transparently deploy to every zone with a waiting room. This newly migrated implementation has been running for months, and the flexibility of the Ruleset Engine will make certain future Waiting Room features easier than ever to build.</p>
 	<p>The Ruleset Engine works on two major concepts: rulesets and rules. A ruleset is a list of rules that the engine executes in order. A rule consists of a condition and an action, with the action being executed if the condition evaluates to “true”.</p>
 	<p>Under the hood, when you create the first rule for a waiting room, we create a hidden ruleset attached to that waiting room. We put together a ruleset of our own which runs on every request to your zone, dispatching to your custom ruleset if a request matches the attached waiting room. This all sounds somewhat complicated, but don’t worry. You simply manage rules at the individual waiting room level, while we abstract away the complexity of the underlying rulesets.</p>
 	<p>The Waiting Room Bypass action’s core implementation is quite simple: when the condition on one of your bypass rules is true for a request, the bypass action simply clears the flag on the request that would have told the waiting room code to kick in. This way, the bypass action ensures that Waiting Room doesn’t touch your request and the request doesn’t affect your waiting room’s statistics or queuing.</p>
-	<h2>Bypass rules in action</h2>
+	<div class="flex anchor relative">
+		<h2 id="bypass-rules-in-action">Bypass rules in action</h2>
+		<a href="https://blog.cloudflare.com/#bypass-rules-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Creating a bypass rule is easy and requires no coding or application changes. Let's walk through a couple of real-world scenarios to demonstrate how easy it is to deploy a bypass rule from the Waiting Room dashboard or API.</p>
-	<h3>Set up an Administrative IP Bypass Rule via the Waiting Room Dashboard</h3>
+	<div class="flex anchor relative">
+		<h3 id="set-up-an-administrative-ip-bypass-rule-via-the-waiting-room-dashboard">Set up an Administrative IP Bypass Rule via the Waiting Room Dashboard</h3>
+		<a href="https://blog.cloudflare.com/#set-up-an-administrative-ip-bypass-rule-via-the-waiting-room-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned before, many customers wanted to ensure that their site administrators and other internal employees–which they identify by IP address–could access their site at all times, regardless of a waiting room's queueing status. Allowing unrestricted access to specific internal employees is especially important before online events when customers pre-queue early site visitors ahead of an event's start time. Without the ability to bypass the waiting room before the event starts, internal employees could not review their event pages in a production environment, adding friction and uncertainty to their review process. Let's see how we can fix that with a Waiting Room bypass rule.</p>
 	<p>Before setting up your administrator bypass rule, you can <a href="https://developers.cloudflare.com/firewall/cf-dashboard/rules-lists/manage-items">create an IP</a> list if you have more than a handful of IPs you'd like to bypass your waiting room. Then, you will need to <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room">configure a waiting room</a> from the Waiting Room dashboard. From that waiting room's expanded view, navigate to Manage rules, where you can create, disable, and delete rules for a waiting room.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -69,7 +97,14 @@
 
 	</figure>
 	<p>Easily glean which waiting rooms have bypass rules active from the Waiting Room table.</p>
-	<h2>Bypass rules via the Waiting Room API - path bypass example</h2>
+	<div class="flex anchor relative">
+		<h2 id="bypass-rules-via-the-waiting-room-api-path-bypass-example">Bypass rules via the Waiting Room API - path bypass example</h2>
+		<a href="https://blog.cloudflare.com/#bypass-rules-via-the-waiting-room-api-path-bypass-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another common customer request now achievable using Waiting Room Bypass Rules is path exclusions. As mentioned previously, a waiting room applies to all requests hitting the hostname and path combination of the configured waiting room and any URLs under that path. For many Waiting Room customers, there were specific URLs, paths, or query strings that they did not want a waiting room to apply to under their configured hostname and path. There are various reasons why a customer would want to make exceptions like this but let's consider the following use case to illustrate the utility of bypassing specific parts of a site or application.</p>
 	<p>Consider a movie ticketing platform that wants to protect its ticketing web application from purchasing surges due to blockbuster releases. They create a waiting room to cover their ticketing web app by placing it at ticketing.example.com/. After tickets are purchased, the ticketing platform sends movie-goers an email or a text which links back to a URL under ticketing.example.com/. The URL the user receives via text or email is: ticketing.example.com/myaccount/mobiletickets/userverified?ticketid=</p>
 	<p>This link opens a page in the user’s mobile browser containing a QR code that the movie theater will scan in place of a physical ticket. They want to ensure that the waiting room does not apply to customers trying to open their mobile tickets.</p>

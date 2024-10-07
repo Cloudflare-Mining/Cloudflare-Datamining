@@ -8,7 +8,14 @@
 
 	</figure>
 	<p>Starting today, we’re adding support on all zone plans to add custom comments on your DNS records. Users on the Pro, Business and Enterprise plan will also be able to tag DNS records.</p>
-	<h3>DNS records are important</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-records-are-important">DNS records are important</h3>
+		<a href="https://blog.cloudflare.com/#dns-records-are-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/dns/dns-records">DNS records</a> play an essential role when it comes to operating a website or a web application. In general, they are used to mapping human-readable hostnames to machine-readable information, most commonly IP addresses. Besides mapping hostnames to IP addresses they also fulfill many other use cases like:</p>
 	<ul>
 		<li>
@@ -31,7 +38,14 @@
 		</li>
 	</ul>
 	<p>With all these different use cases, it is easy to forget what a particular DNS record is for, and it is not always possible to derive the purpose from the name, type and content of a record. Validation TXT records tend to be on seemingly arbitrary names with rather cryptic content. When you then also throw multiple people or teams into the mix who have access to the same domain, all creating and updating DNS records, it can quickly happen that someone modifies or even deletes a record causing the on-call person to get paged in the middle of the night.</p>
-	<h3>Enter: DNS record comments &amp; tags</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-dns-record-comments-tags">Enter: DNS record comments &amp; tags</h3>
+		<a href="https://blog.cloudflare.com/#enter-dns-record-comments-tags" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, everyone with a zone on Cloudflare can add custom comments on each of their DNS records <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-create-dns-record">via the API</a> and through the Cloudflare dashboard.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -59,7 +73,15 @@ mycoolwebpage.xyz.       1      IN  MX   2 mailserver2.example.
 ;; TXT Records
 mycoolwebpage.xyz.       86400	IN  TXT  "v=spf1 ip4:192.0.2.0/24 -all" ; cf_tags=important,team:EMAIL
 sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record for service XYZ. cf_tags=team:API</code></pre>
-	<h3>New filters</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="new-filters">New filters</h3>
+		<a href="https://blog.cloudflare.com/#new-filters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It might be that your zone has hundreds or thousands of DNS records, so how on earth would you find all the records that belong to the same team or that are needed for one particular application?</p>
 	<p>For this we created a new filter option in the dashboard. This allows you to not only filter for comments or tags but also for other record data like name, type, content, or proxy status. The general search bar for a quick and broader search will still be available, but it cannot (yet) be used in conjunction with the new filters.</p>
 	<figure class="kg-card kg-image-card ">
@@ -69,13 +91,27 @@ sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record fo
 	</figure>
 	<p>By clicking on the “Add filter” button, you can select individual filters that are connected with a logical AND. So if I wanted to only look at TXT records that are tagged as important, I would add these filters:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.720411663807894%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ffa4ddd6c2f1b11a0eb8e26fc7aee3a9/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fffa4ddd6c2f1b11a0eb8e26fc7aee3a9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<h3>One more thing (or two)</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing-or-two">One more thing (or two)</h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing-or-two" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another change we made is to replace the Advanced button with two individual actions: Import and Export, and Dashboard Display Settings.</p>
 	<p>You can find them in the top right corner under DNS management. When you click on Import and Export you have the option to either export all existing DNS records (including their comments and tags) into a zone file or import new DNS records to your zone by uploading a zone file.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 54.29553264604811%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c0c71c7a3a4e67fa0388410ddb9335fd/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc0c71c7a3a4e67fa0388410ddb9335fd%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>The action Dashboard Display Settings allows you to select which special record types are shown in the UI. And there is an option to toggle showing the record tags inline under the respective DNS record or just showing an icon if there are tags present on the record.</p>
 	<p>And last but not least, we increased the width of the DNS record table as part of this release. The new table makes better use of the existing horizontal space and allows you to see more details of your DNS records, especially if you have longer subdomain names or content.</p>
-	<h3>Try it now</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-now">Try it now</h3>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNS record comments and tags are available today. Just navigate to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns">DNS tab</a> of your zone in the Cloudflare dashboard and create your first comment or tag. If you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up">sign up for free</a> in just a few minutes.</p>
 	<p>Learn more about DNS record comments and tags on our <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes">developer documentation</a>.</p>
 </div>

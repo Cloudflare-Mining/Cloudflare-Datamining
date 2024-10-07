@@ -7,7 +7,14 @@
 	</figure>
 	<p>Today, we’re excited to announce our solution for arguably the biggest issue affecting Accelerated Mobile Pages (AMP): the inability to use real origin URLs when serving AMP-cached content. To allow AMP caches to serve content under its origin URL, we implemented HTTP signed exchanges, which extend authenticity and integrity to content cached and served on behalf of a publisher. This logic lives on <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, meaning that adding HTTP signed exchanges to your content is just a simple Workers application away. Publishers on Cloudflare can now take advantage of AMP performance and have AMP caches serve content with their origin URLs. We're thrilled to use Workers as a core component of this solution.</p>
 	<p>HTTP signed exchanges are a crucial component of the emerging Web Packaging standard, a set of protocols used to package websites for distribution through optimized delivery systems like Google AMP. This announcement comes just in time for Chrome Dev Summit 2018, where our colleague Rustam Lalkaka spoke about our efforts to advance the Web Packaging standard.</p>
-	<h3>What is Web Packaging and Why Does it Matter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-web-packaging-and-why-does-it-matter">What is Web Packaging and Why Does it Matter?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-web-packaging-and-why-does-it-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may already see the need for Web Packaging on a daily basis. On your smartphone, perhaps you’ve searched for Christmas greens, visited 1-800-Flowers directly from Google, and have been surprised to see content served under the URL <a href="https://google.com/amp/1800flowers.com/blog/flower-facts/types-of-christmas-greens/amp">https://google.com/amp/1800flowers.com/blog/flower-facts/types-of-christmas-greens/amp</a>. This is an instance of AMP in action, where Google serves cached content so your desired web page loads faster.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -19,7 +26,14 @@
 	<p>The inability to use original content URLs with AMP posed some serious issues. First, the google.com/amp URL prefix can strip URLs of their meaning. To the frustration of publishers, their content is no longer directly attributed to them by a URL (let alone a certificate). The publisher can no longer prove the integrity and authenticity of content served on their behalf.</p>
 	<p>Second, for web browsers the lack of a publisher’s URL can call the integrity and authenticity of a cached webpage into question. Namely, there’s no clear way to prove that this response is a cached version of an actual page published by 1-800-Flowers. Additionally, cookies are managed by third-party providers like Google instead of the publisher.</p>
 	<p>Enter Web Packaging, a <a href="https://github.com/WICG/webpackage">collection of specifications</a> for “packaging” website content with information like certificates and their validity. The <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">HTTP signed exchanges specification</a> allows third-party caches to cache and service HTTPS requests with proof of integrity and authenticity.</p>
-	<h3>HTTP Signed Exchanges: Extending Trust with Cryptography</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-signed-exchanges-extending-trust-with-cryptography">HTTP Signed Exchanges: Extending Trust with Cryptography</h3>
+		<a href="https://blog.cloudflare.com/#http-signed-exchanges-extending-trust-with-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the pre-AMP days, people expected to find a webpage’s content at one definitive URL. The publisher, who owns the domain of the definitive URL, would present a visitor with a certificate that corresponds to this domain and contains a public key.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -52,7 +66,14 @@
 	</figure>
 	<p>HTTP signed exchanges directly address the problem of extending publisher signatures to services like AMP. This <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html">IETF draft</a> specifies how publishers may sign an HTTP request/response pair (an exchange). With a signed exchange, the publisher can assure the integrity and authenticity of a response to a specific request even before the client makes the request. Given a signed exchange, the publisher authorizes intermediates (like Google’s AMP Cache) to forward the exchanges; the intermediate responds to a given request with the corresponding response in the signed HTTP request/response pair. A browser can then verify the exchange signature to assert the intermediate response’s integrity and authenticity.</p>
 	<p>This is like handing out an answer key to a quiz signed by the instructor. Having a signed answer sheet is just as good as getting the answer from the teacher in real time.</p>
-	<h3>The Technical Details</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-technical-details">The Technical Details</h3>
+		<a href="https://blog.cloudflare.com/#the-technical-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An HTTP signed exchange is generated by the following steps.First, the publisher uses <a href="https://tools.ietf.org/id/draft-thomson-http-mice-03.txt">MICE</a> (Merkle Integrity Content Encoding) to provide a concise proof of integrity for the response included in the exchange. To start, the response is split into blocks of some record size bits long. Take, for example, a message ABCD, which is divided into record-size blocks A, B, C, and D. The first step to constructing a proof of integrity is to take the last block, D, and compute the following:</p>
 	<pre class="language-bash"><code class="language-bash">proof(D) = SHA-256(D || 0x0)</code></pre>
 	<p>This produces proof(D). Then, all consequent proof values for blocks are computed as follows:</p>
@@ -94,7 +115,14 @@ date=1511128380; expires=1511733180</code></pre>
 	</figure>
 	<p>When this signature is included in an AMP-cached response, a browser can verify the legitimacy of this response. First, the browser confirms that the certificate provided in cert-url corresponds to the request’s domain and is still valid. It next uses the certificate’s public key, as well as the headers and body values of request/response pair, to check the authenticity of the signature, sig. The browser then checks the integrity of the response using the given integrity algorithm, digest/mi-sha256 (aka MICE), and the contents of the Digest header. Now the browser can confirm that a response provided by a third party has the integrity and authenticity of the content’s original publisher.</p>
 	<p>After all this behind-the-scenes work, the browser can now present the original URL of the content instead of one prefixed by google.com/amp. Yippee to solving one of AMP’s most substantial pain points!</p>
-	<h3>Generating HTTP Signed Exchanges with Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="generating-http-signed-exchanges-with-workers">Generating HTTP Signed Exchanges with Workers</h3>
+		<a href="https://blog.cloudflare.com/#generating-http-signed-exchanges-with-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the overview above, the process of generating an HTTP signed exchange is clearly involved. What if there were a way to automate the generation of HTTP signed exchanges and have services like AMP automatically pick them up? With Cloudflare Workers… we found a way you could have your HTTP origin exchange cake and eat it too!</p>
 	<p>We have already implemented HTTP signed exchanges for one of our customers, <a href="https://www.1800flowers.com">1-800-Flowers</a>. Code deployed in a Cloudflare Worker is responsible for fetching and generating information necessary to create this HTTP signed exchange.</p>
 	<p>This Worker works with Google AMP’s automatic caching. When Google’s search crawler crawls a site, it will ask for a signed exchange from the same URL if it initially responds with Vary: AMP-Cache-Transform. Our HTTP signed exchange Worker checks if we can generate a signed exchange and if the current document is valid AMP. If it is, that Vary header is returned. After Google’s crawler sees this Vary header in the response, it will send another request with the following two headers:</p>
@@ -123,10 +151,24 @@ Accept: application/signed-exchange;v=b2</code></pre>
 
 	</figure>
 	<p>Visiting 1-800 Flowers through AMP with HTTP signed exchange</p>
-	<h3>The Future: Deploying HTTP Signed Exchanges as a Worker App</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future-deploying-http-signed-exchanges-as-a-worker-app">The Future: Deploying HTTP Signed Exchanges as a Worker App</h3>
+		<a href="https://blog.cloudflare.com/#the-future-deploying-http-signed-exchanges-as-a-worker-app" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Phew. There’s clearly a lot of infrastructure for publishers to build for distributing AMP content. Thankfully Cloudflare has <a href="https://www.cloudflare.com/network">one of the largest networks in the world</a>, and we now have the ability to execute JavaScript at the edge with <a href="https://www.cloudflare.com/network">Cloudflare Workers</a>. We have developed a prototype Worker that generates these exchanges, on the fly, for any domain. If you’d like to start experimenting with signed exchanges, <a href="https://www.cloudflare.com/website-optimization/ampersand">we’d love to talk</a>!</p>
 	<p>Soon, we will release this as a Cloudflare Worker application to our AMP customers. We’re excited to bring a better AMP experience to internet users and advance the Web Packaging standard. Stay tuned!</p>
-	<h3>The Big Picture</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-big-picture">The Big Picture</h3>
+		<a href="https://blog.cloudflare.com/#the-big-picture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Web Packaging is not simply a technology that helps fix the URL for AMP pages, it’s a fundamental shift in the way that publishing works online. For the entire history of the web up until this point, publishers have relied on transport layer security (TLS) to ensure that the content that they send to readers is authentic. TLS is great for protecting communication from attackers but it does not provide any public verifiability. This means that if a website serves a specific piece of content to a specific user, that user has no way of proving that to the outside world. This is problematic when it comes to efforts to archive the web.</p>
 	<p>Services like the Internet Archive crawl websites and keep a copy of what the website returns, but who’s to say they haven’t modified it? And who’s to say that the site didn’t serve a different version of the site to the crawler than it did to a set of readers? Web Packaging fixes this issue by allowing sites to digitally sign the actual content, not just the cryptographic keys used to transport data. This subtle change enables a profoundly new ability that we never knew we needed: the ability to record and archive content on the Internet in a trustworthy way. This ability is something that is lacking in the field of online publishing. If Web Packaging takes off as a general technology, it could be the first step in creating a trusted digital record for future generations to look back on.</p>
 	<p>Excited about the future of Web Packaging and AMP? Check out <a href="https://www.cloudflare.com/website-optimization/ampersand">Cloudflare Ampersand</a> to see how we're implementing this future.</p>

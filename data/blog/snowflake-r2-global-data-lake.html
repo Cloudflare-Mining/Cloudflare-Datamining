@@ -8,10 +8,32 @@
 	<p>R2 is the ideal <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> platform to build data lakes. It’s infinitely scalable, highly durable (eleven 9's of annual durability), and has no <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">egress fees</a>. Zero egress fees mean zero <a href="https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in">vendor lock-in</a>. You are free to use the tools you want to get the maximum value from your data.</p>
 	<p>Today we’re excited to announce our partnership with Snowflake so that you can use <a href="https://www.snowflake.com">Snowflake</a> to <a href="https://docs.snowflake.com/en/user-guide/querying-stage">query data</a> stored in your R2 data lake and <a href="https://docs.snowflake.com/en/user-guide/data-load-overview">load data</a> from R2 into Snowflake. Organizations use Snowflake's Data Cloud to unite siloed data, discover, and securely share data, and execute diverse analytic workloads across multiple clouds.</p>
 	<p>One challenge of loading data into Snowflake database tables and querying external data lakes is the cost of data transfer. If your data is coming from a different cloud or even different region within the same cloud, this typically means you are paying an additional tax for each byte going into Snowflake. Pairing R2 and Snowflake lets you focus on getting valuable insights from your data, without having to worry about egress fees piling up.</p>
-	<h2>Getting started</h2>
-	<h3>Sign up for R2 and create an API token</h3>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="sign-up-for-r2-and-create-an-api-token">Sign up for R2 and create an API token</h3>
+		<a href="https://blog.cloudflare.com/#sign-up-for-r2-and-create-an-api-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you haven’t already, you’ll need to <a href="https://dash.cloudflare.com/sign-up">sign up</a> for R2 and <a href="https://developers.cloudflare.com/r2/buckets/create-buckets">create a bucket</a>. You’ll also need to create R2 security credentials for Snowflake following the steps below.</p>
-	<h3>Generate an R2 token</h3>
+	<div class="flex anchor relative">
+		<h3 id="generate-an-r2-token">Generate an R2 token</h3>
+		<a href="https://blog.cloudflare.com/#generate-an-r2-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>1. In the Cloudflare dashboard, select <b>R2</b>.</p>
 	<p>2. Select <b>Manage R2 API Tokens</b> on the right side of the dashboard.</p>
 	<p>3. Select <b>Create API token</b>.</p>
@@ -34,19 +56,40 @@
 
 	</figure>
 	<p>You’ll need the Secret <b>Access Key</b> and <b>Access Key ID</b> to create an external stage in Snowflake.</p>
-	<h3>Creating external stages in Snowflake</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-external-stages-in-snowflake">Creating external stages in Snowflake</h3>
+		<a href="https://blog.cloudflare.com/#creating-external-stages-in-snowflake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Snowflake, stages refer to the location of data files in object storage. To create an <a href="https://docs.snowflake.com/en/user-guide/data-load-overview.html#label-data-load-overview-external-stages">external stage</a>, you’ll need your bucket name and R2 credentials. Find your <a href="https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/find-account-and-zone-ids">Cloudflare account ID in the dashboard</a>.</p>
 	<pre class="language-bash"><code class="language-bash">CREATE STAGE my_r2_stage
   URL = 's3compat://my_bucket/files/'
   ENDPOINT = 'cloudflare_account_id.r2.cloudflarestorage.com'
   CREDENTIALS = (AWS_KEY_ID = '1a2b3c...' AWS_SECRET_KEY = '4x5y6z...')</code></pre>
 	<p>Note: You may need to contact your Snowflake account team to enable S3-compatible endpoints in Snowflake. Get more information <a href="https://docs.snowflake.com/en/user-guide/tables-external-s3-compatible">here</a>.</p>
-	<h3>Loading data into Snowflake</h3>
+	<div class="flex anchor relative">
+		<h3 id="loading-data-into-snowflake">Loading data into Snowflake</h3>
+		<a href="https://blog.cloudflare.com/#loading-data-into-snowflake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To load data from your R2 data lake into Snowflake, use the <a href="https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html">COPY INTO </a> command.</p>
 	<pre class="language-bash"><code class="language-bash">COPY INTO t1
   FROM @my_r2_stage/load/;</code></pre>
 	<p>You can flip the table and external stage parameters in the example above to unload data from Snowflake into R2.</p>
-	<h3>Querying data in R2 with Snowflake</h3>
+	<div class="flex anchor relative">
+		<h3 id="querying-data-in-r2-with-snowflake">Querying data in R2 with Snowflake</h3>
+		<a href="https://blog.cloudflare.com/#querying-data-in-r2-with-snowflake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You’ll first need to <a href="https://docs.snowflake.com/en/user-guide/tables-external-s3-compatible#creating-external-tables">create an external table</a> in Snowflake. Once you’ve done that you’ll be able to query your data stored in R2.</p>
 	<pre class="language-bash"><code class="language-bash">SELECT * FROM external_table;</code></pre>
 	<p>For more information on how to use R2 and Snowflake together, refer to documentation <a href="https://docs.snowflake.com/en/user-guide/tables-external-s3-compatible">here</a>.</p>
@@ -58,9 +101,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UDRzvX4xvqdqbrQarqqOz/31ff651ec446644663560744e8cea09e/Screenshot-2023-05-16-at-12.57.57.png" alt="" class="kg-image" width="1392" height="114" loading="lazy">
 
 	</figure>
-	<h2>Have any feedback?</h2>
+	<div class="flex anchor relative">
+		<h2 id="have-any-feedback">Have any feedback?</h2>
+		<a href="https://blog.cloudflare.com/#have-any-feedback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want to hear from you! If you have any feedback on the integration between Cloudflare R2 and Snowflake, please let us know by filling <a href="https://forms.gle/vJc5yjCLEbT7ybWi9">this form</a>.</p>
 	<p>Be sure to check our <a href="https://discord.com/invite/cloudflaredev">Discord server</a> to discuss everything R2!</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bbe9a8f52d74d8b1d83f536a256b94c8/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbbe9a8f52d74d8b1d83f536a256b94c8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

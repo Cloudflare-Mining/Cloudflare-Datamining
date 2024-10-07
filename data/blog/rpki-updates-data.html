@@ -7,7 +7,14 @@
 	</figure>
 	<p>The <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a> (BGP) is the glue that keeps the entire Internet together. However, despite its vital function, BGP wasn't originally designed to protect against malicious actors or routing mishaps. It has since been updated to account for this shortcoming with the <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure">Resource Public Key Infrastructure</a> (RPKI) framework, but can we declare it to be safe yet?</p>
 	<p>If the question needs asking, you might suspect we can't. There is a shortage of reliable data on how much of the Internet is protected from preventable routing problems. Today, we’re releasing a new method to measure exactly that: what percentage of Internet users are protected by their Internet Service Provider from these issues. We find that there is a long way to go before the Internet is protected from routing problems, though it varies dramatically by country.</p>
-	<h3>Why RPKI is necessary to secure Internet routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-rpki-is-necessary-to-secure-internet-routing">Why RPKI is necessary to secure Internet routing</h3>
+		<a href="https://blog.cloudflare.com/#why-rpki-is-necessary-to-secure-internet-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is a network of independently-managed networks, called <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">Autonomous Systems (ASes)</a>. To achieve global reachability, ASes interconnect with each other and determine the feasible paths to a given destination IP address by exchanging routing information using BGP. BGP enables routers with only local network visibility to construct end-to-end paths based on the arbitrary preferences of each administrative entity that operates that equipment. Typically, Internet traffic between a user and a destination traverses multiple AS networks using paths constructed by BGP routers.</p>
 	<p>BGP, however, lacks built-in security mechanisms to protect the integrity of the exchanged routing information and to provide authentication and authorization of the advertised IP address space. Because of this, AS operators must implicitly trust that the routing information exchanged through BGP is accurate. As a result, the Internet is vulnerable to the injection of bogus routing information, which cannot be mitigated by security measures at the client or server level of the network.</p>
 	<p>An adversary with access to a BGP router can inject fraudulent routes into the routing system, which can be used to execute an array of attacks, including:</p>
@@ -27,14 +34,28 @@
 	<p>Traffic misdirections like these, either unintentional or intentional, are not uncommon. The Internet Society’s <a href="https://www.manrs.org">MANRS</a> (Mutually Agreed Norms for Routing Security) initiative estimated that in 2020 alone there were <a href="https://www.manrs.org/2021/03/a-regional-look-into-bgp-incidents-in-2020">over 3,000 route leaks and hijacks</a>, and new occurrences can be <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">observed every day through Cloudflare Radar.</a></p>
 	<p>The most prominent proposals to secure BGP routing, standardized by the <a href="https://www.ietf.org/about/introduction">IETF</a> focus on validating the origin of the advertised routes using <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure">Resource Public Key Infrastructure</a> (RPKI) and verifying the integrity of the paths with <a href="https://en.wikipedia.org/wiki/BGPsec">BGPsec</a>. Specifically, RPKI (defined in <a href="https://www.rfc-editor.org/rfc/rfc7115.html">RFC 7115</a>) relies on a <a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">Public Key Infrastructure</a> to validate that an AS advertising a route to a destination (an IP address space) is the legitimate owner of those IP addresses.</p>
 	<p>RPKI has been defined for a long time but lacks adoption. It requires network operators to cryptographically sign their prefixes, and routing networks to perform an RPKI Route Origin Validation (ROV) on their routers. This is a two-step operation that requires coordination and participation from many actors to be effective.</p>
-	<h3>The two phases of RPKI adoption: signing origins and validating origins</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-two-phases-of-rpki-adoption-signing-origins-and-validating-origins">The two phases of RPKI adoption: signing origins and validating origins</h3>
+		<a href="https://blog.cloudflare.com/#the-two-phases-of-rpki-adoption-signing-origins-and-validating-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>RPKI has two phases of deployment: first, an AS that wants to protect its own IP prefixes can cryptographically sign Route Origin Authorization (ROA) records thereby attesting to be the legitimate origin of that signed IP space. Second, an AS can avoid selecting invalid routes by performing Route Origin Validation (ROV, defined in <a href="https://www.rfc-editor.org/rfc/rfc6483">RFC 6483</a>).</p>
 	<p>With ROV, a BGP route received by a neighbor is validated against the available RPKI records. A route that is valid or missing from RPKI is selected, while a route with RPKI records found to be invalid is typically rejected, thus preventing the use and propagation of hijacked and misconfigured routes.</p>
 	<p>One issue with RPKI is the fact that implementing ROA is meaningful only if other ASes implement ROV, and vice versa. Therefore, securing BGP routing requires a united effort and a lack of broader adoption disincentivizes ASes from commiting the resources to validate their own routes. Conversely, increasing RPKI adoption can lead to network effects and accelerate RPKI deployment. Projects like MANRS and Cloudflare’s <a href="https://isbgpsafeyet.com">isbgpsafeyet.com</a> are promoting good Internet citizenship among network operators, and make the benefits of RPKI deployment known to the Internet. You can check whether your own ISP is being a good Internet citizen by testing it on <a href="https://isbgpsafeyet.com">isbgpsafeyet.com</a>.</p>
 	<p>Measuring the extent to which both ROA (signing of addresses by the network that controls them) and ROV (filtering of invalid routes by ISPs) have been implemented is important to evaluating the impact of these initiatives, developing situational awareness, and predicting the impact of future misconfigurations or attacks.</p>
 	<p>Measuring ROAs is straightforward since ROA data is <a href="https://ftp.ripe.net/rpki">readily available</a> from RPKI repositories. Querying RPKI repositories for publicly routed IP prefixes (e.g. prefixes visible in the <a href="http://www.routeviews.org">RouteViews</a> and <a href="https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris">RIPE RIS</a> routing tables) allows us to estimate the percentage of addresses covered by ROA objects. Currently, there are 393,344 IPv4 and 86,306 IPv6 ROAs in the global RPKI system, covering about 40% of the globally routed prefix-AS origin pairs<sup>1</sup>.</p>
 	<p>Measuring ROV, however, is significantly more challenging given it is configured inside the BGP routers of each AS, not accessible by anyone other than each router’s administrator.</p>
-	<h3>Measuring ROV deployment</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-rov-deployment">Measuring ROV deployment</h3>
+		<a href="https://blog.cloudflare.com/#measuring-rov-deployment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although we do not have direct access to the configuration of everyone’s BGP routers, it is possible to infer the use of ROV by comparing the reachability of RPKI-valid and RPKI-invalid prefixes from measurement points within an AS<sup>2</sup>.</p>
 	<p>Consider the following toy topology as an example, where an RPKI-invalid origin is advertised through AS0 to AS1 and AS2. If AS1 filters and rejects RPKI-invalid routes, a user behind AS1 would not be able to connect to that origin. By contrast, if AS2 does not reject RPKI invalids, a user behind AS2 would be able to connect to that origin.</p>
 	<p>While occasionally a user may be unable to access an origin due to transient network issues, if multiple users act as vantage points for a measurement system, we would be able to collect a large number of data points to infer which ASes deploy ROV.</p>
@@ -53,7 +74,14 @@
 	<p>The measurement technique described here is the one implemented by Cloudflare’s <a href="https://isbgpsafeyet.com">isbgpsafeyet.com</a> website, allowing end users to assess whether or not their ISPs have deployed BGP ROV.</p>
 	<p>The <a href="https://isbgpsafeyet.com">isbgpsafeyet.com</a> website itself doesn't submit any data back to Cloudflare, but recently we started measuring whether end users’ browsers can successfully connect to invalid RPKI origins when ROV is present. We use the same mechanism as is used for <a href="https://blog.cloudflare.com/network-performance-update-developer-week">global performance data</a><sup>4</sup>. In particular, every measurement session (an individual end user at some point in time) attempts a request to both valid.rpki.cloudflare.com, which should always succeed as it’s RPKI-valid, and invalid.rpki.cloudflare.com, which is RPKI-invalid and should fail when the user’s ISP uses ROV.</p>
 	<p>This allows us to have continuous and up-to-date measurements from hundreds of thousands of browsers on a daily basis, and develop a greater understanding of the state of ROV deployment.</p>
-	<h3>The state of global ROV deployment</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-state-of-global-rov-deployment">The state of global ROV deployment</h3>
+		<a href="https://blog.cloudflare.com/#the-state-of-global-rov-deployment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The figure below shows the raw number of ROV probe requests per hour during October 2022 to <i>valid.rpki.cloudflare.com</i> and <i>invalid.rpki.cloudflare.com</i>. In total, we observed 69.7 million successful probes from 41,531 ASNs.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -115,7 +143,14 @@
 
 	</figure>
 	<p>112 million Internet users are protected by 111 ASes from the United States with comprehensive ROV deployments. Conversely, more than twice as many ASes from countries making up the European Union have fully deployed ROV, but end up covering only half as many users. This can be reasonably explained by end user ASes being more likely to operate within a single country rather than span multiple countries.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Probe requests were performed from end user browsers and very few measurements were collected from transit providers (which have few end users, if any). Also, paths between end user ASes and Cloudflare are often very short (a nice outcome of our extensive peering) and don't traverse upper-tier networks that they would otherwise use to reach the rest of the Internet.</p>
 	<p>In other words, the methodology used focuses on ROV adoption by <b>end user networks</b> (e.g. ISPs) and isn’t meant to reflect the eventual effect of indirect validation from (perhaps validating) upper-tier transit networks. While indirect validation may limit the "blast radius" of (malicious or accidental) route leaks, it still leaves non-validating ASes vulnerable to leaks coming from their peers.</p>
 	<p>As with indirect validation, an AS remains vulnerable until its ROV deployment reaches a sufficient level of completion. We chose to only consider AS deployments above 95% as truly comprehensive, and <a href="https://radar.cloudflare.com">Cloudflare Radar</a> will soon begin using this threshold to track ROV adoption worldwide, as part of our mission to help build a better Internet.</p>

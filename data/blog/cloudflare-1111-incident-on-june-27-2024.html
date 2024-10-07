@@ -7,15 +7,36 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kBrAZxRvJnPmEMCYY9KuL/60ecadc9598cf7064e8d839927ccd4e4/image2-4.png" alt="Cloudflare 1.1.1.1 incident on June 27, 2024" class="kg-image" width="1999" height="1125" loading="lazy">
 
 	</figure>
-	<h2>Introduction</h2>
+	<div class="flex anchor relative">
+		<h2 id="introduction">Introduction</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On June 27, 2024, a small number of users globally may have noticed that 1.1.1.1 was unreachable or degraded. The root cause was a mix of BGP (Border Gateway Protocol) <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking">hijacking</a> and a route leak.</p>
 	<p>Cloudflare was an <a href="https://blog.cloudflare.com/rpki-and-the-rtr-protocol">early adopter</a> of Resource Public Key Infrastructure (RPKI) for route origin validation (ROV). With RPKI, IP prefix owners can store and share ownership information securely, and other operators can validate BGP announcements by comparing received BGP routes with what is stored in the form of Route Origin Authorizations (ROAs). When Route Origin Validation is enforced by networks properly and prefixes are signed via ROA, the impact of a BGP hijack is greatly limited. Despite increased adoption of RPKI over the past several years and 1.1.1.0/24 being a <a href="https://rpki.cloudflare.com/?view=explorer&amp;prefix=1.1.1.0%2F24">signed resource</a>, during the incident 1.1.1.1/32 was originated by ELETRONET S.A. (AS267613) and accepted by multiple networks, including at least one <a href="https://en.wikipedia.org/wiki/Tier_1_network">Tier 1 provider</a> who accepted 1.1.1.1/32 as a <a href="https://datatracker.ietf.org/doc/html/rfc3882">blackhole route</a>.</p>
 	<p>This caused immediate unreachability for the DNS resolver address from over 300 networks in 70 countries, although the impact on the overall percentage of users was quite low (less than 1% of users in the UK and Germany, for example), and in some countries no users noticed an impact.</p>
 	<p>Route leaks are something Cloudflare <a href="https://blog.cloudflare.com/route-leak-incident-on-october-2-2014">has written and talked about before</a>, and unfortunately there are only best-effort safeguards in wide deployment today, such as IRR (Internet Routing Registry) prefix-list filtering by providers. During the same period of time as the 1.1.1.1/32 hijack, 1.1.1.0/24 was erroneously leaked upstream by Nova Rede de Telecomunicações Ltda (AS262504). The leak was further and widely propagated by Peer-1 Global Internet Exchange (AS1031), which also contributed to the impact felt by customers during the incident.</p>
 	<p>We apologize for the impact felt by users of 1.1.1.1, and take the operation of the service very seriously. Although the root cause of the impact was external to Cloudflare, we will continue to improve the detection methods in place to yield quicker response times, and will use our stance within the Internet community to further encourage adoption of RPKI-based hijack and leak prevention mechanisms such as Route Origin Validation (ROV) and Autonomous Systems Provider Authorization (<a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification">ASPA</a>) objects for BGP.</p>
-	<h2>Background</h2>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare <a href="https://blog.cloudflare.com/announcing-1111">introduced</a> the <a href="https://one.one.one.one">1.1.1.1</a> public DNS resolver service in 2018. Since the announcement, 1.1.1.1 has become one of the most popular resolver IP addresses that is free-to-use by anyone. Along with the popularity and easily recognized IP address comes some operational difficulties. The difficulties stem from <a href="https://youtu.be/vR4GbRMAWj8?si=HTH8nvxVvyLYYjF2">historical use of 1.1.1.1 by networks in labs or as a testing IP address</a>, resulting in some residual unexpected traffic or blackholed routing behavior. Because of this, Cloudflare is no stranger to dealing with the effects of BGP misrouting traffic, two of which are covered below.</p>
-	<h3>BGP hijacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="bgp-hijacks">BGP hijacks</h3>
+		<a href="https://blog.cloudflare.com/#bgp-hijacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some of the difficulty comes from potential <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking">routing hijacks</a> of 1.1.1.1. For example, if some fictitious FooBar Networks assigns 1.1.1.1/32 to one of their routers and shares this prefix within their internal network, their customers will have difficulty routing to the 1.1.1.1 DNS service. If they advertise the 1.1.1.1/32 prefix outside their immediate network, the impact can be even greater. The reason 1.1.1.1/32 would be selected instead of the 1.1.1.0/24 BGP-announced by Cloudflare is due to <a href="https://en.wikipedia.org/wiki/Longest_prefix_match">Longest Prefix Matching (LPM)</a>. While many prefixes in a route table could match the 1.1.1.1 address, such as 1.1.1.0/24, 1.1.1.0/29, and 1.1.1.1/32, 1.1.1.1/32 is considered the “longest match” by the LPM algorithm because it has the highest number of identical bits and longest <a href="https://en.wikipedia.org/wiki/Subnet">subnet</a> mask while matching the 1.1.1.1 address. In simple terms, we would call 1.1.1.1/32 the “most specific” route available to 1.1.1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -23,7 +44,14 @@
 
 	</figure>
 	<p>Instead of traffic toward 1.1.1.1 routing to Cloudflare via anycast and landing on one of our servers globally, it will instead land somewhere on a device within FooBar Networks where 1.1.1.1 is terminated, and a legitimate response will fail to be served back to clients. This would be considered a hijack of requests to 1.1.1.1, either done purposefully or accidentally by network operators within FooBar Networks.</p>
-	<h3>BGP route leaks</h3>
+	<div class="flex anchor relative">
+		<h3 id="bgp-route-leaks">BGP route leaks</h3>
+		<a href="https://blog.cloudflare.com/#bgp-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another source of impact we sometimes face for 1.1.1.1 is BGP route leaks. A route leak occurs when a network becomes an upstream, in terms of BGP announcement, for a network it shouldn’t be an upstream provider for.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -35,7 +63,14 @@
 	<p>To explain why this happens, it helps to think of BGP as a business policy engine along with the routing protocol for the Internet. A transit provider has customers who pay them to transport their data, so logically they assign a higher BGP local-preference than connections with either private or Internet Exchange (IX) peers, so the connection being paid for is most utilized. Think of local-preference as a way of influencing priority of which outgoing connection to send traffic to. Different networks also may choose to prefer Private Network Interconnects (PNIs) over Internet Exchange (IX) received routes. Part of the reason for this is reliability, as a private connection can be viewed as a point-to-point connection between two networks with no third-party managed fabric in between to worry about. Another reason could be cost efficiency, as if you’ve gone to the trouble to allocate a router port and purchase a cross connect between yourself and another peer, you’d like to make use of it to get the best return on your investment.</p>
 	<p>It is worth noting that both BGP hijacks and route leaks can happen to any IP and prefix on the Internet, not just 1.1.1.1. But as mentioned earlier, 1.1.1.1 is such a recognizable and historically misappropriated address that it tends to be more prone to accidental hijacks or leaks than other IP resources.</p>
 	<p>During the Cloudflare 1.1.1.1 incident that happened on June 27, 2024, we ended up fighting the impact caused by a combination of both BGP hijacking and a route leak.</p>
-	<h2>Incident timeline and impact</h2>
+	<div class="flex anchor relative">
+		<h2 id="incident-timeline-and-impact">Incident timeline and impact</h2>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All timestamps are in UTC.</p>
 	<p><b>2024-06-27 18:51:00</b> AS267613 (Eletronet) begins announcing 1.1.1.1/32 to peers, providers, and customers. 1.1.1.1/32 is announced with the AS267613 origin AS</p>
 	<p><b>2024-06-27 18:52:00</b> AS262504 (Nova) leaks 1.1.1.0/24, also received from AS267613, upstream to AS1031 (PEER 1 Global Internet Exchange) with AS path “1031 262504 267613 13335”</p>
@@ -66,7 +101,14 @@
 
 	</figure>
 	<p>Looking at the graphs, requests to 1.1.1.1 were landing in Brazilian data centers. The gaps between the spikes are when 1.1.1.1 requests were blackholed prior to or within AS267613, and the spikes themselves are when traffic was delivered to Cloudflare with high latency invoked on the request and response. The brief spikes of traffic successfully carried to the Cloudflare peering location with AS267613 could be explained by the 1.1.1.1/32 route flapping within their network, occasionally letting traffic through to Cloudflare instead of it dropping somewhere in the intermediate path.</p>
-	<h2>Technical description of the error and how it happened</h2>
+	<div class="flex anchor relative">
+		<h2 id="technical-description-of-the-error-and-how-it-happened">Technical description of the error and how it happened</h2>
+		<a href="https://blog.cloudflare.com/#technical-description-of-the-error-and-how-it-happened" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Normally, a request to 1.1.1.1 from users routes to the nearest data center via BGP anycast. During the incident, AS267613 (Eletronet) advertised 1.1.1.1/32 to their peers and upstream providers, and AS262504 leaked 1.1.1.0/24 upstream, changing the normal path of BGP anycast for multiple eyeball networks drastically.</p>
 	<p>With public route collectors and the <a href="https://github.com/bgpkit/monocle">monocle tool</a>, we can search for the rogue BGP updates.</p>
 	<pre class="language-bash"><code class="language-bash">monocle search --start-ts 2024-06-27T18:51:00Z --end-ts 2024-06-27T18:55:00Z --prefix '1.1.1.1/32'
@@ -100,7 +142,14 @@ A|1719519096.059558|190.15.124.18|61568|1.1.1.0/24|61568 262504 267613 13335|IGP
 –
 A|1719519128.843415|190.15.124.18|61568|1.1.1.0/24|61568 262504 267613 13335|IGP|190.15.124.18|0|0|1031:1031 1031:4209 1031:6045 1031:7019 1031:8010|false|13335|162.158.177.1|route-views3</code></pre>
 	<p>Here we pay attention to the AS path again. This time, AS13335 is the origin AS at the very end of the announcements. This BGP announcement is RPKI <b>Valid</b>, because the origin is correctly AS13335, but this is a route leak of 1.1.1.0/24 because the path itself is invalid.</p>
-	<h3>How do we know it’s a route leak?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-we-know-its-a-route-leak">How do we know it’s a route leak?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-we-know-its-a-route-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at an example path, “199524 1031 262504 267613 13335”, AS267613 is functionally a peer of AS13335 and should not share the 1.1.1.0/24 announcement with their peers or upstreams, only their customers (<a href="https://www.manrs.org/wp-content/uploads/2021/11/AS-Cones-MANRS.pdf">AS Cone</a>). AS262504 is a customer of AS267613 and the next adjacent ASN in the path, so that particular announcement is fine up until this point. Where the 1.1.1.0/24 goes wrong is AS262504, when they announce the prefix to their upstream AS1031. Furthermore, AS1031 redistributed the advertisement to their peers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -110,24 +159,75 @@ A|1719519128.843415|190.15.124.18|61568|1.1.1.0/24|61568 262504 267613 13335|IGP
 	<p>This means AS262504 is the leaking network. AS1031 accepted the leak from their customer, AS262504, and caused wide impact by distributing the route in multiple peering locations globally. AS1031 (Peer-1 Global Internet Exchange) advertises themselves as a global peering exchange. Cloudflare is not a customer of AS1031, so 1.1.1.0/24 should have never been redistributed to peers, route-servers, or upstreams of AS1031. It appears that AS1031 does not perform any extensive filtering for customer BGP sessions, and instead just matches on adjacency (in this case, AS262504) and redistributes everything that meets this criteria. Unfortunately, this is irresponsible of AS1031 and causes direct impact to 1.1.1.1 and potentially other services that fall victim to the unguarded route propagation. While the original leaking network was AS262504, impact was greatly amplified by AS1031 and others when they accepted the hijack or leak and further distributed the announcements.</p>
 	<p>During the majority of the incident, the leak by AS262504 eventually landed requests within AS267613, which was discarding 1.1.1.1/32 traffic somewhere in their network. To that end, AS262504 really just amplified the impact in terms of 1.1.1.1 unreachability by leaking routes upstream.</p>
 	<p>To limit impact of the route leak, Cloudflare disabled peering in multiple locations with AS267613. The problem did not completely go away, as AS262504 was still leaking a stale path pointing to São Paulo. Requests landing in São Paulo were able to be served, albeit with a high round-trip time back to users. Cloudflare has been engaging with all networks mentioned throughout this post in regard to the leak and future prevention mechanisms, as well as at least one <a href="https://en.wikipedia.org/wiki/Tier_1_network">Tier 1 transit provider</a> who accepted 1.1.1.1/32 from AS267613 as a blackhole route that was unauthorized by Cloudflare and caused widespread impact.</p>
-	<h2>Remediation and follow-up steps</h2>
-	<h3>BGP hijacks</h3>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">Remediation and follow-up steps</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="bgp-hijacks">BGP hijacks</h3>
+		<a href="https://blog.cloudflare.com/#bgp-hijacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>RPKI origin validation</b>RPKI has recently reached a major milestone at 50% deployment in terms of prefixes signed by Route Origin Authorization (ROA). While RPKI certainly helps limit the spread of a hijacked BGP prefix throughout the Internet, we need all networks to do their part, especially major networks with a large sum of downstream Autonomous Systems (AS’s). During the hijack of 1.1.1.1/32, multiple networks accepted and used the route announced by AS267613 for traffic forwarding.</p>
 	<p><b>RPKI and Remote-Triggered Blackholing (RTBH)</b>A significant amount of the impact caused during this incident was due to a Tier 1 provider accepting 1.1.1.1/32 as a blackhole route from a third party that is not Cloudflare. This in itself is a hijack of 1.1.1.1, and a very dangerous one. RTBH is a useful tool used by many networks when desperate for a mitigation against large DDoS attacks. The problem is the BGP filtering used for RTBH is loose in nature, relying often only on <a href="https://www.apnic.net/manage-ip/using-whois/guide/as-set">AS-SET</a> objects found in Internet Routing Registries. Relying on Route Origin Authorization (ROA) would be infeasible for RTBH filtering, as that would require thousands of potential ROAs be created for the network the size of Cloudflare. Not only this, but creating specific /32 entries opens up the potential for an individual address such as 1.1.1.1/32 being announced by someone pretending to be AS13335, becoming the best route to 1.1.1.1 on the Internet and causing severe impact.</p>
 	<p>AS-SET filtering is not representative of authority to blackhole a route, such as 1.1.1.1/32. Only Cloudflare should be able to blackhole a destination it has the rights to operate. A potential way to fix the lenient filtering of providers on RTBH sessions would again be leveraging an RPKI. Using an example from the IETF, the expired <a href="https://datatracker.ietf.org/doc/draft-spaghetti-sidrops-rpki-doa">draft-spaghetti-sidrops-rpki-doa-00</a> proposal specified a Discard Origin Authorization (DOA) object that would be used to authorize only specific origins to authorize a blackhole action for a prefix. If such an object was signed, and RTBH requests validated against the object, the unauthorized blackhole attempt of 1.1.1.1/32 by AS267613 would have been invalid instead of accepted by the Tier 1 provider.</p>
 	<p><b>BGP best practices</b>Simply following BGP best practices laid out by <a href="https://manrs.org/netops/guide">MANRS</a>, and rejecting IPv4 prefixes that are longer than a /24 in the Default-Free Zone (DFZ) would have reduced impact to 1.1.1.1. Rejecting invalid prefix lengths within the wider Internet should be part of a standard BGP policy for all networks.</p>
-	<h2>BGP route leaks</h2>
-	<h3>Route leak detection</h3>
+	<div class="flex anchor relative">
+		<h2 id="bgp-route-leaks">BGP route leaks</h2>
+		<a href="https://blog.cloudflare.com/#bgp-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="route-leak-detection">Route leak detection</h3>
+		<a href="https://blog.cloudflare.com/#route-leak-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While route leaks are not unavoidable for Cloudflare today, because the Internet inherently relies on trust for interconnection, there are some steps we will take to limit impact.</p>
 	<p>We have expanded data sources to use for our <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">route leak detection system</a> to cover more networks and are in the process of incorporating real-time data into the detection system to allow more timely response toward similar events in the future.</p>
-	<h3>ASPA for BGP</h3>
+	<div class="flex anchor relative">
+		<h3 id="aspa-for-bgp">ASPA for BGP</h3>
+		<a href="https://blog.cloudflare.com/#aspa-for-bgp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will continue advocating for the adoption of RPKI into AS Path based route leak prevention. Autonomous System Provider Authorization (ASPA) objects are similar to ROAs, except instead of signing prefixes with an authorized origin AS, the AS itself is signed with a list of provider networks that are allowed to propagate their routes. So, in the case of Cloudflare, only valid upstream transit providers would be signed as authorized to advertise AS13335 prefixes such as 1.1.1.0/24 upstream.</p>
 	<p>In the route leak example where AS262504 (customer of AS267613) shared 1.1.1.0/24 upstream, BGP ASPA would see this leak if AS267613 had signed their authorized providers and AS1031 had validated paths against that list. Similar to RPKI origin validation, however, this will be a long-term effort and dependent on networks, especially large providers, rejecting invalid AS paths as based on ASPA objects.</p>
-	<h3>Other potential approaches</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-potential-approaches">Other potential approaches</h3>
+		<a href="https://blog.cloudflare.com/#other-potential-approaches" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are alternative approaches to ASPA that do exist, in various stages of adoption that may be worth noting. There is no guarantee that the following make it to a stage of wide Internet deployment, however.</p>
 	<p><a href="https://rfc.hashnode.dev/rfc9234-observed-in-the-wild">RFC9234</a>, for example, uses a concept of peer roles within BGP capabilities and attributes, and depending on the configuration of routers along a path for updates, an “Only-To-Customer” (OTC) attribute can be added to prefixes that will prevent the upstream spread of a prefix such as 1.1.1.0/24 along a leaked path. The downside is BGP configuration needs to be completed to assign the various roles to each peering session, and vendor adoption still has to be fully ironed out to make this feasible for actual use in production with positive results.</p>
 	<p>Like all approaches to solving route leaks, cooperation amongst network operators on the Internet is required for success.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s 1.1.1.1 DNS resolver service fell victim to a simultaneous BGP hijack and BGP route leak event. While the actions of external networks are outside of Cloudflare’s direct control, we intend to take every step within both the Internet community and internally at Cloudflare to detect impact more quickly and lessen impact to our users.</p>
 	<p>Long term, Cloudflare continues to support adoption of RPKI-based origin validation, as well as AS path validation. The former exists with deployment across a wide array of the world’s largest networks, and the latter is still in draft phase at the IETF (Internet Engineering Task Force). In the meantime, to check if your ISP is enforcing RPKI origin validation, you can always visit <a href="http://isbgpsafeyet.com">isbgpsafeyet.com</a> and <i>Test Your ISP</i>.</p>
 </div>

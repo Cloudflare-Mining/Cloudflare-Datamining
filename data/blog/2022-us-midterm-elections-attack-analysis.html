@@ -9,7 +9,14 @@
 	<p>However, the weeks ahead of the elections, and Election Day itself, were not entirely devoid of attacks. Using data from <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, which showcases global Internet traffic, attack, and technology trends and insights, we can explore traffic patterns, attack types, and top attack sources associated with both Athenian Project and Cloudflare for Campaigns participants.</p>
 	<p>For both programs, overall traffic volume unsurprisingly ramped up as Election Day approached. SQL Injection (SQLi) and HTTP Anomaly attacks were the two largest categories of attacks mitigated by Cloudflare’s Web Application Firewall (WAF), and the United States was the largest source of observed attacks — see more on this last point below.</p>
 	<p>Below, we explore the trends seen across both customer sets from October 1, 2022, through Election Day on November 8.</p>
-	<h3>Athenian Project</h3>
+	<div class="flex anchor relative">
+		<h3 id="athenian-project">Athenian Project</h3>
+		<a href="https://blog.cloudflare.com/#athenian-project" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Throughout October, daily peak traffic volumes effectively doubled over the course of the month, with a weekday/weekend pattern also clearly visible. However, significant traffic growth is visible on Monday, November 7, and Tuesday, November 8 (Election Day), with Monday’s peak just under 2x October’s peaks, while Tuesday saw two peaks, one just under 4x higher than October peaks, while the other was just over 4x higher. Zooming in, the first peak was at 1300 UTC (0800 Eastern time, 0500 Pacific time), while the second was at 0400 UTC (2300 Eastern time, 2000 Pacific time). The first one appears to be aligned with the polls opening on the East Coast, while the second appears to be aligned with the time that the polls closed on the West Coast.</p>
 	<p>However, aggregating the traffic here presents a somewhat misleading picture. While both spikes were due to increased traffic across multiple customer sites, the second one was exacerbated by a massive increase in traffic for a single customer. Regardless, the increased traffic clearly shows that voters turned to local government sites around Election Day.</p>
 	<figure class="kg-card kg-image-card ">
@@ -47,7 +54,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2DGbAaLbgc6l4ER78ptzhc/7703ad2f827f8df4a874ae3adf449f01/athenian---waf-mitigated-by-client-country.png" alt="" class="kg-image" width="1600" height="586" loading="lazy">
 
 	</figure>
-	<h3>Cloudflare for Campaigns</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-for-campaigns">Cloudflare for Campaigns</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-for-campaigns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In contrast to Athenian Project participants, traffic to candidate sites that are participants in Cloudflare for Campaigns began to grow several weeks ahead of Election Day. The graph below shows a noticeable increase (~50%) in peak traffic volumes starting on October 12, with an additional growth (50-100%) starting a week later. Traffic to these sites appeared to quiet a bit toward the end of October, but saw significant growth again heading into, and during, Election Day.</p>
 	<p>However, once again, this aggregate traffic data presents something of a misleading picture, as one candidate site saw multiple times more traffic than the other participating sites. While those other sites saw similar shifts in traffic as well, they were dwarfed by those experienced by the outlier site.</p>
 	<figure class="kg-card kg-image-card ">
@@ -73,7 +87,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b4alazopeWB0ZtPdJfbYN/d9304c4a3b0728b6291cdae6302a553a/campaigns---waf-mitigated-by-client-country.png" alt="" class="kg-image" width="1600" height="570" loading="lazy">
 
 	</figure>
-	<h3>Improving security with data</h3>
+	<div class="flex anchor relative">
+		<h3 id="improving-security-with-data">Improving security with data</h3>
+		<a href="https://blog.cloudflare.com/#improving-security-with-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are proud to be trusted by local governments, campaigns, state parties, and voting rights organizations to protect their websites and provide uninterrupted access to information and trusted election results. Sharing information about the threats facing these websites helps us further support their valuable work by enabling them, and other participants in the election space, to take proactive steps to improve site security.</p>
 	<p>Learn more about <a href="https://www.cloudflare.com/athenian">how to apply to the Athenian Project</a>, and check out <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for real-time insights into Internet traffic, attack trends, and more.</p>
 </div>

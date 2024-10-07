@@ -46,7 +46,14 @@
 	</figure>
 	<p>The core of <i>FrodoKEM</i> is a public-key encryption scheme called <i>FrodoPKE</i>, whose security is based on the hardness of the “Learning with Errors” (LWE) problem over lattices. Let us look now at the first doll of a KEM.</p>
 	<p><b>Note to the reader:</b> Some mathematics is coming in the next sections, but do not worry, we will guide you through it.</p>
-	<h3>The Learning With Errors Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-learning-with-errors-problem">The Learning With Errors Problem</h3>
+		<a href="https://blog.cloudflare.com/#the-learning-with-errors-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The security (and mathematical foundation) of <i>FrodoKEM</i> relies on the hardness of the Learning With Errors (LWE) problem, a generalization of the classic Learning Parities with Noise <a href="https://cims.nyu.edu/~regev/papers/qcrypto.pdf">problem, first defined by Regev</a>.</p>
 	<p>In cryptography, specifically in the mathematics underlying it, we often use sets to define our operations. A set is a collection of any element, in this case, we will refer to collections of numbers. In cryptography textbooks and articles, one can often read:</p>
 	<p>Let $Z_q$ denote the set of integers $\{0, …, q-1\}$ where $(q &gt; 2)$,</p>
@@ -111,7 +118,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/51MCMCJSxznDdeKsLjSs5j/4e0b7879fec2129a64cf7b91a2c9186f/image6-7.png" alt="" class="kg-image" width="1200" height="500" loading="lazy">
 
 	</figure>
-	<h3>Public Key Encryption: FrodoPKE</h3>
+	<div class="flex anchor relative">
+		<h3 id="public-key-encryption-frodopke">Public Key Encryption: FrodoPKE</h3>
+		<a href="https://blog.cloudflare.com/#public-key-encryption-frodopke" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second doll of the Matryoshka is using a mathematical base to build a Public Key Encryption algorithm from it. Let’s look at <i>FrodoPKE</i>. <i>FrodoPKE</i> is a public-key encryption scheme which is the building block for <i>FrodoKEM</i>. It is made up of three components: <a href="https://www.esat.kuleuven.be/cosic/blog/introduction-to-lattice-based-cryptography-part-2-lwe-encryption">key generation, encryption, and decryption</a>. Let’s say again that Persephone wants to communicate with Demeter. They will run the following operations:</p>
 	<ol>
 		<li>
@@ -146,7 +160,14 @@
 	</blockquote>
 	<p>IND-CPA security is not enough for all secure communication on the Internet. Adversaries can not only passively eavesdrop, but also mount <i>chosen-ciphertext attacks</i> (<i>CCA</i>): they can actively modify messages in transit and trick the communicating parties into decrypting these modified messages, thereby obtaining a <i>decryption oracle</i>. They can use this decryption oracle to gain information about a desired ciphertext, and so compromise confidentiality. Such attacks are practical and all that an attacker has to do is, for example, ​​send several million test ciphertexts to a decryption oracle, see <a href="https://medium.com/@c0D3M/bleichenbacher-attack-explained-bc630f88ff25">Bleichenbacher’s attack</a> and the <a href="https://www.robotattack.org">ROBOT attack</a>, for example.</p>
 	<p>Without CCA security, in the case of Demeter and Persephone, what this security means is that Hades can generate and send several million test ciphertexts to the decryption oracle and eventually reveal the content of a valid ciphertext that Hades did not generate. Demeter and Persephone then might not want to use this scheme.</p>
-	<h3>Key Encapsulation Mechanisms: FrodoKEM</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-encapsulation-mechanisms-frodokem">Key Encapsulation Mechanisms: FrodoKEM</h3>
+		<a href="https://blog.cloudflare.com/#key-encapsulation-mechanisms-frodokem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The last figure of the Matryoshka doll is taking a secure-against-CPA scheme and making it secure against CCA. A secure-against-CCA scheme must not leak information about its private key, even when decrypting arbitrarily chosen ciphertexts. It must also be the case that an adversary cannot craft valid ciphertexts without knowing what the plaintext message is; suppose, again, that the adversary knows the messages encrypted could only be either <i>m0</i> or <i>m1</i>. If the attacker can craft another valid ciphertext, for example, by flipping a bit of the ciphertext in transit, they can send this modified ciphertext, and see whether a message close to <i>m1</i> or <i>m0</i> is returned.</p>
 	<p>To make a CPA scheme secure against CCA, one can use the <a href="https://eprint.iacr.org/2017/604.pdf">Hofheinz, Hovelmanns, and Kiltz (HHK) transformations</a> (see this <a href="https://hss-opus.ub.ruhr-uni-bochum.de/opus4/frontdoor/deliver/index/docId/7758/file/diss.pdf">thesis</a> for more information). The HHK transformation constructs an IND-CCA-secure KEM from both an IND-CPA PKE and three hash functions. In the case of the algorithm we are exploring, FrodoKEM, it uses a slightly tweaked version of the HHK transform. It has, again, three functions (some parts of this description are simplified):</p>
 	<p><i>Generation</i>:</p>
@@ -220,7 +241,14 @@
 	</ol>
 	<p>What this algorithm achieves is the generation of a shared secret and ciphertext which can be used to establish a secure channel. It also means that no matter how many ciphertexts Hades sends to the decryption oracle, they will never reveal the content of a valid ciphertext that Hades himself did not generate. This is ensured when we run the encryption process again in <i>Decapsulate</i> to check if the ciphertext was computed correctly, which ensures that an adversary cannot craft valid ciphertexts simply by modifying them.</p>
 	<p>With this last doll, the algorithm has been created, and it is safe in the face of a quantum adversary.</p>
-	<h3>Other KEMs beyond Frodo</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-kems-beyond-frodo">Other KEMs beyond Frodo</h3>
+		<a href="https://blog.cloudflare.com/#other-kems-beyond-frodo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the <a href="https://en.wikipedia.org/wiki/Frodo_Baggins">ring bearer,</a> Frodo, wanders around and transforms, he was not alone in his journey. &nbsp;FrodoKEM is currently designated as an alternative candidate for standardization as part of the post-quantum NIST process. But, there are others:</p>
 	<ul>
 		<li>
@@ -232,7 +260,14 @@
 	</ul>
 	<p>The lattice-based variants have the advantage of being fast, while producing relatively small keys and ciphertexts. There are concerns about <a href="https://www.youtube.com/watch?v=iAjkEF0x5qw&amp;ab_channel=SimonsInstitute">their</a> <a href="https://www.youtube.com/watch?v=K5Apl_qCnDA&amp;ab_channel=SimonsInstitute">security</a>, which need to be properly verified, however. More confidence is found in the security of the Classic McEliece scheme, as its underlying problem has been studied for longer (It is only one year older than RSA!). It has a disadvantage: it produces extremely large public keys. Classic-McEliece-348864 for example, produces public keys of size 261,120 bytes, whereas Kyber512, which claims comparable security, produces public keys of size 800 bytes.</p>
 	<p>They are all Matryoshka dolls (including sometimes non-post-quantum ones). They are all algorithms that are placed one inside the other. They all start with a small but powerful idea: a mathematical problem whose solution is hard to find in an efficient time. They then take the algorithm approach and achieve one cryptographic security. And, by the magic of hashes and length preservation, they achieve more cryptographic security. This just goes to show that cryptographic algorithms are not perfect in themselves; they stack on top of each other to get the best of each one. Facing quantum adversaries with them is the same, not a process of isolation but rather a process of stacking and creating the big picture from the smallest one.</p>
-	<h3>References:</h3>
+	<div class="flex anchor relative">
+		<h3 id="references">References:</h3>
+		<a href="https://blog.cloudflare.com/#references" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>NIST Post-Quantum Cryptography process FAQ: <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs">https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs</a></p>

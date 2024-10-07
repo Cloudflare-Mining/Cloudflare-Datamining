@@ -17,7 +17,14 @@
 		</li>
 	</ul>
 	<p>Ooooh... so exciting.</p>
-	<h3>The Rig</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-rig">The Rig</h3>
+		<a href="https://blog.cloudflare.com/#the-rig" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -47,7 +54,14 @@ pi@raspberrypi:~ $ </code></pre>
 	<pre class="language-bash"><code class="language-bash">pi@raspberrypi:~ $ cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
 a22082</code></pre>
 	<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
-	<h3>Internet connectivity</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-connectivity">Internet connectivity</h3>
+		<a href="https://blog.cloudflare.com/#internet-connectivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
 	<pre class="language-bash"><code class="language-bash">pi@raspberrypi:~$ $ curl -I https://www.cloudflare.com
 HTTP/2 200
@@ -66,7 +80,14 @@ expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi
 server: cloudflare
 cf-ray: 3febc2914beb7f06-SFO-DOG</code></pre>
 	<p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <b>in</b> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
-	<h3>Install the Agent</h3>
+	<div class="flex anchor relative">
+		<h3 id="install-the-agent">Install the Agent</h3>
+		<a href="https://blog.cloudflare.com/#install-the-agent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
 	<pre class="language-bash"><code class="language-bash">$ wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 Resolving bin.equinox.io (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.19.252.69, ...
@@ -159,7 +180,14 @@ INFO[0615] 200 OK  CF-RAY=4067701b598e8184-LAX</code></pre>
 		</li>
 	</ol>
 	<p>I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
-	<h3>More than hello world</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-than-hello-world">More than hello world</h3>
+		<a href="https://blog.cloudflare.com/#more-than-hello-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
 	<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust">/r/rust</a> like <a href="https://gotham.rs">gotham</a>. Let's do it.</p>
 	<p>First, install rust using <a href="https://www.rustup.rs">rustup</a>.</p>
@@ -187,7 +215,14 @@ Listening for requests at http://127.0.0.1:7878</code></pre>
 	<p>We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
 	<p><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
 	<p>Type <b>gotham.pacman.wiki</b> into your web browser and you'll see those glorious words, "Hello, world".</p>
-	<h2>Wait, this post was meant to be <i>more</i> than hello world.</h2>
+	<div class="flex anchor relative">
+		<h2 id="wait-this-post-was-meant-to-be">Wait, this post was meant to be </h2>
+		<a href="https://blog.cloudflare.com/#wait-this-post-was-meant-to-be" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
 	<pre class="language-bash"><code class="language-bash">$ cd examples/hello_world/src/
 $ nano src/main.rs </code></pre>
@@ -207,7 +242,14 @@ Listening for requests at http://127.0.0.1:7878</code></pre>
 
 	</figure>
 	<p>And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>
-	<h3>Are we done?</h3>
+	<div class="flex anchor relative">
+		<h3 id="are-we-done">Are we done?</h3>
+		<a href="https://blog.cloudflare.com/#are-we-done" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We should probably auto start both the agent and the web server on boot so they don't die when we end our ssh session.</p>
 	<pre class="language-bash"><code class="language-bash">$ sudo ./cloudflared service install
 INFO[0000] Failed to copy user configuration. Before running the service, 

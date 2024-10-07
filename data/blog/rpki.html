@@ -11,7 +11,14 @@
 	<p><a href="https://www.flickr.com/photos/30478819@N08/33673974352">photo</a> by <a href="https://www.flickr.com/photos/30478819@N08">Marco Verch</a> by/2.0</p>
 	<p>Nothing specific triggered today’s writing except the fact that Cloudflare has decided that it's high-time we took a leadership role to finally secure BGP routing. We believe that each and every network needs to change its mindset towards BGP security both on a day-by-day and a long-term basis.</p>
 	<p>It's time to stop BGP route leaks and hijacks by deploying operationally-excellent RPKI!</p>
-	<h3>Cloudflare commits to RPKI</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-commits-to-rpki">Cloudflare commits to RPKI</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-commits-to-rpki" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Resource Public Key Infrastructure (RPKI) is a cryptographic method of signing records that associate a BGP route announcement with the correct originating AS number. RPKI is defined in <a href="https://tools.ietf.org/html/rfc6480">RFC6480</a> (An Infrastructure to Support Secure Internet Routing). Cloudflare commits to RPKI.</p>
 	<p>Because any route can be originated and announced by any random network, independent of its rights to announce that route, there needs to be an out-of-band method to help BGP manage which network can announce which route. That system exists today. It's part of the <a href="http://www.irr.net">IRR</a> (Internet Routing Registry) system. Many registries exist, some run by networks, some by RIRs (Regional Internet Registries) and the grand daddy of IRRs, Merit's <a href="https://radb.net">RADB</a> service. This service provides a collective method to allow one network to filter another networks routes.</p>
 	<p>This works somewhat. An invalid announcement is normally squashed near-instantly as the route crosses an ASN boundary because one network is meant to filter the other network (based on rules created from the IRR database). This of course doesn’t happen perfectly - in fact, far from it. Route leaks or route hijacks happen more often than they should. A fact that is well documented. Here’s the highlights:</p>
@@ -32,19 +39,47 @@
 	<p>That’s just a partial list! Each route leak or hijack exposes a lack of route filtering by the network that peers or transits the offending network.</p>
 	<p>RPKI comes into the picture because the existing IRR system lacks any form of cryptographic signing for its data. In fact, today the IRR databases contain plenty of invalid data (both stale data and typo’ed data). There's very little control over the creation of invalid data.</p>
 	<p>Implementing RPKI is just the first step in better BGP route security because RPKI only secures the route origin; it doesn't secure the path. (Sadly the same is true for IRR data). When we want to secure the path; we are going to need something else; but that comes later.</p>
-	<h3>The RPKI TL;DR</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-rpki-tl-dr">The RPKI TL;DR</h3>
+		<a href="https://blog.cloudflare.com/#the-rpki-tl-dr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>BGP routing isn’t secure. Its main hope, RPKI, uses a certificate system that’s akin to secure web browsing (or at-least its early days). While secure web browsing has moved on and is far more secure and is somewhat the <a href="https://blog.cloudflare.com/today-chrome-takes-another-step-forward-in-addressing-the-design-flaw-that-is-an-unencrypted-web">default</a> these days, the state of BGP route validation has not moved forward. To secure BGP routing, all networks would need to be embrace RPKI (and more). Cloudflare proposes to plot a course to improve BGP routing-security globally by setting an example and implementing best practices, installing operationally excellent software and promoting its RPKI effort worldwide. RPKI is one of our focuses in 2018 and beyond!</p>
-	<h3>The simplest introduction to BGP possible</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-simplest-introduction-to-bgp-possible">The simplest introduction to BGP possible</h3>
+		<a href="https://blog.cloudflare.com/#the-simplest-introduction-to-bgp-possible" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>BGP isn’t simple. BGP on the global Internet doubly-so. This fact should not deter either the casual reader or the seasoned network engineer. What is important is to place the limit around what is worth knowing about and discarding all the minor items that make up the very complex world of BGP networking. In fact, to operate a BGP enabled network connected to a telco or ISP isn’t that complicated. It turns out that in the world of BGP, security is an afterthought.</p>
 	<p>Lets begin.</p>
 	<p>I’m going to pick a hypothetical example. The configuration of a single university within a country that operates an NREN (National Research &amp; Education Network) for all it's universities. This is not uncommon. The university in this case is connected via a single telecommunications link and (using BGP terminology) has a single upstream. The NREN provides all the connectivity to the local and global Internet for its countries universities, along with connectivity to other NRENs in other countries.</p>
 	<p>We start with some basics. BGP is about numbers. First off is a unique number called the Autonomous System Number or ASN. This number comes from a range of numbers that are managed by the RIRs (Regional Internet Registries). For example, Cloudflare has the AS number 13335 allocated for its network. ASNs were just 16-bit numbers, but are now 32-bit numbers (because the internet grew to the point of running out of the 65,536 or 2^16 initial allocation). For our university, we will use 65099 as our example ASN. This is from the reserved block of ASNs and used here for documentation reasons only.</p>
 	<p>The second number is the IP addresses allocated to the university. Most reader are familiar with IP addresses; however in the BGP world we use IP blocks called CIDRs (Classless Inter-Domain Routing). This is a range of IP addresses that are sequential and bonded on binary boundaries. Within Cloudflare, we have quite a few IP blocks allocated by the RIRs. For our example, we will assume the university has two blocks allocated. 10.0.0.0/8 and 2001:db8::/32 . Both these are private or documentation addresses and later-on you’ll see these show up again in a different manner when we talk about filtering.</p>
 	<p>This is enough for us to get this university ready to connect to the NREN. Or maybe not.</p>
-	<h3>Ready to connect</h3>
+	<div class="flex anchor relative">
+		<h3 id="ready-to-connect">Ready to connect</h3>
+		<a href="https://blog.cloudflare.com/#ready-to-connect" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Hold on a second - there’s paperwork to fill-in. Not actual paper; but close enough. While the internet is build on the concept of <a href="https://www.ietf.org/blog/2013/05/permissionless-innovation">permissionless innovation</a>, there’s still good practices that still need to be adhered too.</p>
 	<p>Before you can announce a route via your BGP speaking router, you need to setup either an IRR route object or an RPKI ROA (or both).</p>
-	<h3>Internet Routing Registries</h3>
+	<div class="flex anchor relative">
+		<h3 id="internet-routing-registries">Internet Routing Registries</h3>
+		<a href="https://blog.cloudflare.com/#internet-routing-registries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IRR (Internet Routing Registries) is used to record a route that will be announced on the Internet and associate it with the ASN that will announce it. In this example we will use the private or documentation ranges of 10.0.0.0/8 and 2001:db8::/32 along with ASN 65099. The simplest IRR routing record looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">route:	10.0.0.0/8
 origin:	AS65099</code></pre>
@@ -58,7 +93,14 @@ notify:	person@example.com
 changed:	person@example.com 20180101
 source:	RADB</code></pre>
 	<p>That last line reflects where you store your IRR routing record.</p>
-	<h3>IRR for your ASN</h3>
+	<div class="flex anchor relative">
+		<h3 id="irr-for-your-asn">IRR for your ASN</h3>
+		<a href="https://blog.cloudflare.com/#irr-for-your-asn" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just like your IP network blocks, its also good to place a record for your ASN in the IRR. When you networking gets more complex, this will be solidly needed. It doesn’t hurt to add it now.</p>
 	<pre class="language-bash"><code class="language-bash">aut-num:    AS65099
 as-name:    UNIVERSITY-OF-BLOGGING-AS
@@ -81,7 +123,14 @@ notify:     person@example.edu
 changed:    person@example.edu 20180101
 source:     RADB</code></pre>
 	<p>The members area of this as-set provides a list of ASNs that are announced by the upstream (the ASN). We have not defined the upstreams ASN yet, so lets pretend they are ASN 65001 (this ASN is still from the documentation range).</p>
-	<h3>Getting the university online</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-the-university-online">Getting the university online</h3>
+		<a href="https://blog.cloudflare.com/#getting-the-university-online" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>BGP (like everything in networking) needs some configuration setup. This configuration would exist on a network router at the edge of your network, or whatever device is being used to connect the local network to the upstream (the NREN). We are using a very simple router config here to show the minimum configuration needed. Your configuration language could be different.</p>
 	<pre class="language-bash"><code class="language-bash">router bgp 65099
 neighbor 192.168.0.2 remote-as 65001
@@ -89,7 +138,14 @@ neighbor 192.168.0.2 prefix-list as65001-listen in
 neighbor 192.168.0.2 route-map as65001-listen in</code></pre>
 	<p>This is a very trivial example (it’s missing a complete filter configuration that’s normally required). The key point is that the router doesn’t contain any code or language regarding the IRR entries shown above. That’s because the IRR entries are out-of-band. They exist outside of the BGP protocol. In other words, it takes more than just configuring a BGP session in order to actually connect to the global Internet.</p>
 	<p>The key filtering comes into play on the upstream (the NREN in this example). It’s the job of that network to confirm everything heard from its customer.</p>
-	<h3>RPKI vs IRR - why is it so important?</h3>
+	<div class="flex anchor relative">
+		<h3 id="rpki-vs-irr-why-is-it-so-important">RPKI vs IRR - why is it so important?</h3>
+		<a href="https://blog.cloudflare.com/#rpki-vs-irr-why-is-it-so-important" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Two global databases are being discussed today. IRR &amp; RPKI. While IRR is clearly in use today; it’s not the primary focus herein. However, it’s the de-facto bridging option for route filtering today.</p>
 	<p>As stated above, Internet Routing Registries (IRRs) have a very loose security model. This has been known for a long time. Records exist within IRRs that are both clearly wrong and/or are clearly missing. There’s no cryptographic signing of records. There are multiple suppliers of IRR data; some better than others. IRR still has some proponents that want to clean up its operational data (including the author of this blog). Efforts like <a href="https://github.com/irrdnet/irrd4">IRRD4</a> (by Job Snijders @ NTT) could help clean-up IRR usage. IRR is not the main focus herein.</p>
 	<p>Resource Public Key Infrastructure (RPKI) is a cryptographic method of signing records that associate a route with an originating AS number. Presently the five RIRs (AFRINIC, APNIC, ARIN, LACNIC &amp; RIPE) provide a method for members to take an IP/ASN pair and sign a ROA (Route Origin Authorization) record. The ROA record is what we need to focus on.</p>
@@ -104,12 +160,33 @@ neighbor 192.168.0.2 route-map as65001-listen in</code></pre>
 		<p>define attestation:&nbsp;... the action of bearing witness&nbsp;... something which bears witness, confirms or authenticates</p>
 	</blockquote>
 	<p>The existence of routing information (an IP block plus the matching ASN) within a valid certificate (i.e. something that can be validated against the RIRs authoritative data cryptographically) is the missing part of the BGP security system and something that the IRR system can't provide. You really know who should be doing what with a BGP route.</p>
-	<h3>Where are the certificates if they are not in the BGP protocol?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-are-the-certificates-if-they-are-not-in-the-bgp-protocol">Where are the certificates if they are not in the BGP protocol?</h3>
+		<a href="https://blog.cloudflare.com/#where-are-the-certificates-if-they-are-not-in-the-bgp-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Good question. As we said above, the routing databases are outside of the BGP protocol. Both IRR and RPKI use a third-party entities to hold the database information. The difference is that with RPKI the same entity that allocated or assigned a numeric resource (like an IP address or ASN) also holds the CA (Certificate Authority) used to validate the ROAs record.</p>
 	<p>In the RPKI world; CAs are called TAs, or Trust Anchors. However, if you are familiar with the web security model, then you are familiar with what a TA is.</p>
-	<h3>Who could operate a TA?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-could-operate-a-ta">Who could operate a TA?</h3>
+		<a href="https://blog.cloudflare.com/#who-could-operate-a-ta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today the five RIRs are the TAs for RPKI. This makes sense. Only the RIRs know who is an owner of IP space (and ASs). The present day RPKI systems operate in conjunction with existing RIR login credentials. Once you can login to a portal and control your IP allocations and ASN allocations; then you can also create, edit, modify, and delete RPKI data in the forms of ROAs. This is the basis of how RPKI separates itself from the IRR. You can only sign your own resources. You can’t just randomly create data. If you lose your RIR allocation, then you lose the RPKI data.From a policy point of view, there are some interesting issues that become apparent pretty quickly. First off, an ISP with an allocation needs to keep its RIR membership up to date (i.e. pay its dues). Second, it needs to be aware that the RIR and the ISP could be legal entities based in different countries and hence international law plays a role in any dispute between the ISP and RIR or in fact any third party that gets involved in an IP address dispute. This has been a concern within the RIPE (Europe, the Middle East and parts of Central Asia) region as RIPE is based in The Netherlands. Similarly, ARIN (North America and parts of the Caribbean) is a US entity.</p>
-	<h3>Which RIR for which IP address?</h3>
+	<div class="flex anchor relative">
+		<h3 id="which-rir-for-which-ip-address">Which RIR for which IP address?</h3>
+		<a href="https://blog.cloudflare.com/#which-rir-for-which-ip-address" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Presently, because of the large amount of IP address transfers occurring between some RIR regions, the RIRs changed their TA root certificates so that each RIR includes every available IP address (0.0.0.0/0 &amp; ::/0) and every available AS number (0-4,294,967,295). IP numeric space and ASN numeric space are well defined as follows:</p>
 	<pre class="language-bash"><code class="language-bash">IPv4: 0.0.0.0 - 255.255.255.255
 IPv6: 0000:0000:0000:0000:0000:0000:0000:0000 - ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
@@ -130,16 +207,37 @@ ASN:  1 - 4,294,967,295 (AS 0 is unused)</code></pre>
 2c00:0000::/12 AFRINIC     2006-10-03 whois.afrinic.net  ALLOCATED
 ...</code></pre>
 	<p>As stated above; each RIR holds a root key (a TA, or Trust Anchor) that provides them the ability to create signed records below their root. Below that TA there is a certificate that covers the exact space allocated or assigned to the specific RIR. This allows the TA to be somewhat static (or stable) and the RIR to update the underlying records as-needed.</p>
-	<h3>Who is implementing RPKI today?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-is-implementing-rpki-today">Who is implementing RPKI today?</h3>
+		<a href="https://blog.cloudflare.com/#who-is-implementing-rpki-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sadly not enough people or networks. While each RIR is supporting RPKI for its members; the toolset for successfully operating a network with RPKI enabled route filtering is still very limited.</p>
 	<p>It turns out that IXP (Internet Exchange Points) have started to realize that filtering using RPKI is a valid option for their route-servers.</p>
 	<p>In addition, a handful of networks are also participating in both signing IP routes and verifying IP routes via RPKI. This isn’t quite enough to secure the global Internet yet.</p>
 	<p>Then there's the Dutch!</p>
 	<p>In early September, the NLNOG technical meeting featured a non-trivial number of RPKI-related talks. It seems that local Dutch operators and software developers are taking RPKI seriously and it’s possible that The Netherlands may contain some of the more forward-thinking RPKI networks around. Read more <a href="https://nlnog.net/nlnog-day-2018">here</a>.</p>
-	<h3>Mutually Agreed Norms for Routing Security (MANRS)</h3>
+	<div class="flex anchor relative">
+		<h3 id="mutually-agreed-norms-for-routing-security-manrs">Mutually Agreed Norms for Routing Security (MANRS)</h3>
+		<a href="https://blog.cloudflare.com/#mutually-agreed-norms-for-routing-security-manrs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet Society (Cloudflare is a strong supporter of this organization) has pushed an initiative called <a href="https://www.internetsociety.org/issues/manrs">MANRS</a> (Mutually Agreed Norms for Routing Security) in order to convince the network operator community to implement routing security. It focuses on Filtering, Anti-spoofing, Coordination, and Global Validation. The Internet Society is doing a good job in educating networks on the importance of better routing security. While they do educate networks about various aspects of running a healthy BGP environment; it's not an effort that creates any of the required new technologies. MANRS simply promotes best-practices, which is a good start and something Cloudflare can collaborate on. That all said, we think it’s simply too-polite an effort as it doesn’t have enough teeth to quickly change how networks behave.</p>
 	<p>Cloudflare also wants to move the BGP community further along the RPKI path. Our operational efforts can, and should, coexist with The Internet Society’s MANRS initiative; however, we're focusing on operationally viable solutions that help move the global network community much further along.</p>
-	<h3>How is RPKI deployed in a real operational network</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-is-rpki-deployed-in-a-real-operational-network">How is RPKI deployed in a real operational network</h3>
+		<a href="https://blog.cloudflare.com/#how-is-rpki-deployed-in-a-real-operational-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As network operators don’t want to run an cryptographic software on the control plane of a router (or even have RPKI data anywhere near the control plane), the normal deployment is to pair routers with a server.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -150,7 +248,14 @@ ASN:  1 - 4,294,967,295 (AS 0 is unused)</code></pre>
 	<p>Present implementations include <a href="https://github.com/rtrlib/rtrlib">https://github.com/rtrlib/rtrlib</a> (in ‘C’) and NIST’s package <a href="https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype">https://www.nist.gov/services-resources/software/bgp-secure-routing-extension-bgp-srx-prototype</a> which is based on quagga; hence not usable in production.</p>
 	<p>Operationally, neither are fully usable within production environments.The RIPE validator <a href="https://github.com/RIPE-NCC/rpki-validator-3">https://github.com/RIPE-NCC/rpki-validator-3</a> (written in Java) can produce filter sets similar to IRR tools and seems to be the most prevalent tool for the limited number of RPKI setups found in networks today. There's recently a software release from NLnet Labs research group which is Rust-based. Their RPKI validator is called <a href="https://github.com/NLnetLabs/routinator">Routinator 3000</a>.</p>
 	<p>The industry still needs some more operationally-focused software!</p>
-	<h3>Can everyone participate in RPKI routing filtering?</h3>
+	<div class="flex anchor relative">
+		<h3 id="can-everyone-participate-in-rpki-routing-filtering">Can everyone participate in RPKI routing filtering?</h3>
+		<a href="https://blog.cloudflare.com/#can-everyone-participate-in-rpki-routing-filtering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Yes. No. Maybe. Ask your lawyers.</p>
 	<p>For many years there’s been a solid discussion about the role of the RIRs as holders of the private key of the CA at the top of their tree. Five trees. IANA was meant to run a single root above them (similar to how DNSSEC works with one key held at the DNS root - or dot); but that didn’t happen for many reasons including the fact that IANA/ICANN was essentially reporting to the US government back when this was all being setup. The RIR setup has stuck and at this point no-one expects IANA to ever hold a single root certificate, plus it’s all historic at this point and not worth rehashing here.</p>
 	<p>This is not a major operational issue; however it does have some slight consequences. While having five roots could be considered a messy setup, it actually matches the web space CA model.</p>
@@ -164,12 +269,26 @@ ASN:  1 - 4,294,967,295 (AS 0 is unused)</code></pre>
 		</li>
 	</ul>
 	<p>The legal issues aren’t the focus of this blog entry; but it will be obvious later when implementing RPKI as-to-why the legal issues become an impediment to successful global RPKI deployment.</p>
-	<h3>IRR - legacy or bridging solution?</h3>
+	<div class="flex anchor relative">
+		<h3 id="irr-legacy-or-bridging-solution">IRR - legacy or bridging solution?</h3>
+		<a href="https://blog.cloudflare.com/#irr-legacy-or-bridging-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Everyone assumes that IRR will ultimately go away; however, that’s a long long way out. There’s efforts underway to make IRR data cleaner, and in some cases, to (finally) link the underlying RPKI &amp; IRR data together. They are very similar data; but with different security models.</p>
 	<p>This blog post was written with RPKI as the go-forward methodology in mind and hence does not need to address all the subtle issues around IRR brokenness. It would be a whole fresh blog post to address the legacy issues within IRR. That said, it’s clear that RPKI isn’t today a complete substitute for all the IRR data (and RPSL/RPSLng data) that exists today. The good news is that there’s work within the IETF and drafts in-flight to cover that. RPKI is a good protocol to base route filtering on and Cloudflare will be rolling out full support for RPKI enabled filtering and route announcements within its global network.</p>
 	<p>If you look back at the examples above of the university and its NREN, then realize that in the RPKI world the same information is being stored; however, the validity and attestation of the data increases n-fold once RPKI becomes the universal mechanism of choice.</p>
 	<p>Cloudflare wants to see this happen and will push for RPKI to become mainstream within the BGP world. We want to squash the existence of BGP route leaks and hijacks forever!</p>
-	<h3>Next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Next steps</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Read the <a href="https://blog.cloudflare.com/rpki-details">RPKI and BGP: securing our part of the Internet</a> blog entry to follow what we are doing on the technical side for Cloudflare’s RPKI implementation.</p>
 	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on our announcements.</i></p>
 	<figure class="kg-card kg-image-card ">

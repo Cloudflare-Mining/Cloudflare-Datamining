@@ -14,7 +14,14 @@
 	</figure>
 	<p>This is an experimental feature, and therefore subject to change.</p>
 	<p>If you're just looking for a live demo, click <a href="https://blog.cloudflare.com/#demo">here</a>.</p>
-	<h3>The cost of latency</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-cost-of-latency">The cost of latency</h3>
+		<a href="https://blog.cloudflare.com/#the-cost-of-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A big component of web performance is transmission latency. Simply put, transmission latency is the amount of time it takes for a message to get from one party to another over a network. Lower latency means snappier web pages and more responsive APIs; when it comes to responsiveness, every millisecond counts.</p>
 	<p>The diagram below comes from a recent latency test of Cloudflare’s network using the RIPE Atlas project. In the experiment, hundreds of probes from around the world sent a single <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">“ping”</a> message to Cloudflare and measured the time it took to get an answer in reply. This time is a good approximation of how long it takes for data to make the round trip from the probe to the server and back, so-called <i>round-trip latency</i>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -38,7 +45,14 @@
 
 	</figure>
 	<p>Round-trip latency makes an especially big difference for HTTPS. When making a secure connection to a server, there is an additional set-up phase that can require up to three messages to make the round trip between the client and the server before the first request can even be sent. For a visitor 250ms away, this can result in an excruciating one second (1000ms) delay before a site starts loading. During this time Usain Bolt has run 10 meters and you’re still waiting for a web page. TLS 1.3 and 0-RTT can’t reduce the round trip latency of a transmission, but it can reduce the number of round trips required for setting up an HTTPS connection.</p>
-	<h3>HTTPS round trips</h3>
+	<div class="flex anchor relative">
+		<h3 id="https-round-trips">HTTPS round trips</h3>
+		<a href="https://blog.cloudflare.com/#https-round-trips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For a browser to download a web page over HTTPS, there is a some setup that goes on behind the scenes. Here are the 4 phases that need to happen the first time your browser tries to access a site.</p>
 	<h4>Phase 1: DNS Lookup</h4>
 	<p>Your browser needs to convert the hostname of the website (say blog.cloudflare.com) into an Internet IP address (like 2400:cb00:2048:1::6813:c166 or 104.19.193.102) before it can connect to it. DNS resolvers operated by your ISP usually cache the IP address for popular domains, and latency to your ISP is fairly low, so this step often takes a negligible amount of time.</p>
@@ -58,7 +72,14 @@
 			<p>Resumed Connection: 3 RTT + DNS</p>
 		</li>
 	</ul>
-	<h3>How do TLS 1.3 and 0-RTT improve connection times?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-tls-1-3-and-0-rtt-improve-connection-times">How do TLS 1.3 and 0-RTT improve connection times?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-tls-1-3-and-0-rtt-improve-connection-times" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the biggest advantages of TLS 1.3 over earlier versions is that it only requires one round trip to set up the connection, resumed or not. This provides a significant speed up for new connections, but none for resumed connections. Our measurements show that around 40% of HTTPS connections are resumptions (either via session IDs or session tickets). With 0-RTT, a round trip can be eliminated for most of that 40%.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -95,7 +116,14 @@
 		</li>
 	</ul>
 	<p>The performance gains are huge.</p>
-	<h3>0-RTT in action</h3>
+	<div class="flex anchor relative">
+		<h3 id="0-rtt-in-action">0-RTT in action</h3>
+		<a href="https://blog.cloudflare.com/#0-rtt-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Both <a href="https://www.mozilla.org/en-US/firefox/channel/desktop">Firefox Beta</a> and <a href="https://www.google.com/chrome/browser/beta.html">Chrome Beta</a> have TLS 1.3 enabled by default. The stable versions of Chrome and Firefox also ship with TLS 1.3 support, but it has to be enabled manually for now. The only browsers which supports 0-RTT as of March 2017 are Firefox Nightly and Aurora. To enable it, do the following:</p>
 	<ul>
 		<li>
@@ -127,7 +155,14 @@
 		</a>
 	</figure>
 	<p>In the top image, you can see that the blue “Waiting” bar is around 250ms shorter than it is for the second image. This 250ms represents the time it took for the extra round trip between the browser and the server. If you’re in San Francisco, 0-RTT enables the image to load 1.5 bolts faster than it would have otherwise.</p>
-	<h3>What’s the catch?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-the-catch">What’s the catch?</h3>
+		<a href="https://blog.cloudflare.com/#whats-the-catch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>0-RTT is cutting edge protocol technology. With it, encrypted HTTPS requests become just as fast as an unencrypted HTTP requests. This sort of breakthrough comes at a cost. This cost is that the security properties that TLS provides to 0-RTT request are slightly weaker than those it provides to regular requests. However, this weakness is manageable, and applications and websites that follow HTTP semantics shouldn’t have anything to worry about. The weakness has to do with replays.</p>
 	<p>Unlike any other requests sent over TLS, requests sent as part of 0-RTT resumption are vulnerable to what’s called a replay attack. If an attacker has access to your encrypted connection, they can take a copy of the encrypted 0-RTT data (containing your first request) and send it to the server again pretending to be you. This can result in the server seeing repeated requests from you when you only sent one.</p>
 	<p>This doesn’t sound like a big deal until you consider that HTTP requests are used for more than just downloading web pages. For example, HTTP requests can trigger transfers of money. If someone makes a request to their bank to “pay $1000 to Craig” and that request is replayed, it could cause Craig to be paid multiple times. A good deal if you’re Craig.</p>
@@ -143,6 +178,13 @@
 	<pre class="language-bash"><code class="language-bash">Cf-0rtt-Unique: 37033bcb6b42d2bcf08af3b8dbae305a</code></pre>
 	<p>The hexadecimal value is derived from a piece of data called a <a href="https://tlswg.github.io/tls13-spec/#pre-shared-key-extension">PSK binder</a>, which is unique per 0-RTT request.</p>
 	<p>Generally speaking, 0-RTT is safe for most web sites and applications. If your web application does strange things and you’re concerned about its replay safety, consider not using 0-RTT until you can be certain that there are no negative effects.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TLS 1.3 is a big step forward for web performance and security. By combining TLS 1.3 with 0-RTT, the performance gains are even more dramatic. Combine this with HTTP/2 and the encrypted web has never been faster, especially on mobile networks. Cloudflare is happy to be the first to introduce this feature on a wide scale.</p>
 </div>

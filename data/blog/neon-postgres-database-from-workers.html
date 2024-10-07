@@ -7,7 +7,14 @@
 	</figure>
 	<p>It’s no wonder that Postgres is one of the world’s favorite databases. It’s easy to learn, a pleasure to use, and can scale all the way up from your first database in an early-stage startup to the system of record for giant organizations. Postgres has been an integral part of Cloudflare’s journey, so we know this fact well. But when it comes to connecting to Postgres from environments like Cloudflare Workers, there are unfortunately a bunch of challenges, as we mentioned in our <a href="https://blog.cloudflare.com/relational-database-connectors">Relational Database Connector post</a>.</p>
 	<p>Neon.tech not only solves these problems; it also has other cool features such as <a href="https://neon.tech/docs/conceptual-guides/branching">branching databases</a> — being able to branch your database in exactly the same way you branch your code: instant, cheap and completely isolated.</p>
-	<h3>How to use it</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-it">How to use it</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s easy to get started. Neon’s client library <code>@neondatabase/serverless</code> is a drop-in replacement for <a href="https://node-postgres.com">node-postgres</a>, the npm <code>pg</code> package with which you may already be familiar. After going through the <a href="https://neon.tech/docs/get-started-with-neon/signing-up">getting started</a> process to set up your Neon database, you can easily create a Worker to ask Postgres for the current time like so:</p>
 	<ol>
 		<li>
@@ -69,7 +76,14 @@ const { rows } = await client.query(`
 ]</code></pre>
 	<p>For even lower latencies, we could cache these results at a slightly coarser geographical resolution — rounding, say, to one sixtieth of a degree (one <a href="https://en.wikipedia.org/wiki/Minute_and_second_of_arc">arc minute</a>) of longitude and latitude, which is a little under a mile.</p>
 	<p><a href="https://console.neon.tech/?invite=serverless">Sign up to Neon</a> using the invite code <i>serverless</i> and try the @neondatabase/serverless driver with Cloudflare Workers.</p>
-	<h3>Why we did it</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-we-did-it">Why we did it</h3>
+		<a href="https://blog.cloudflare.com/#why-we-did-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers has enormous potential to improve back-end development and deployment. It’s cost-effective, admin-free, and radically scalable.</p>
 	<p>The use of V8 isolates means Workers are now fast and lightweight enough for nearly any use case. But it has a key drawback: Cloudflare Workers don’t yet support raw TCP communication, which has made database connections a challenge.</p>
 	<p>Even when Workers eventually support raw TCP communication, we will not have fully solved our problem, because database connections are expensive to set up and also have quite a bit of memory overhead.</p>

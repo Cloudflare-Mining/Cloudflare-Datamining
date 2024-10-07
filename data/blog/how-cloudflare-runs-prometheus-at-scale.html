@@ -14,7 +14,14 @@
 	</figure>
 	<p>That’s an average of around 5 million time series per instance, but in reality we have a mixture of very tiny and very large instances, with the biggest instances storing around 30 million time series each.</p>
 	<p>Operating such a large Prometheus deployment doesn’t come without challenges. In this blog post we’ll cover some of the issues one might encounter when trying to collect many millions of time series per Prometheus instance.</p>
-	<h2>Metrics cardinality</h2>
+	<div class="flex anchor relative">
+		<h2 id="metrics-cardinality">Metrics cardinality</h2>
+		<a href="https://blog.cloudflare.com/#metrics-cardinality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the first problems you’re likely to hear about when you start running your own Prometheus instances is <a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a>, with the most dramatic cases of this problem being referred to as “cardinality explosion”.</p>
 	<p>So let’s start by looking at what cardinality means from Prometheus' perspective, when it can be a problem and some of the ways to deal with it.</p>
 	<p>Let’s say we have an application which we want to <a href="https://prometheus.io/docs/instrumenting/clientlibs">instrument</a>, which means add some observable properties in the form of <a href="https://prometheus.io/docs/concepts/metric_types">metrics</a> that Prometheus can read from our application. A metric can be anything that you can express as a number, for example:</p>
@@ -67,7 +74,14 @@ mugs_of_beverage_total{content="coffee", temperature="cold"} 1
 mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>As we can see we have an entry for each unique combination of labels.</p>
 	<p>And this brings us to the definition of cardinality in the context of metrics. Cardinality is the <b>number of unique combinations of all labels</b>. The more labels you have and the more values each label can take, the more unique combinations you can create and the higher the cardinality.</p>
-	<h3>Metrics vs samples vs time series</h3>
+	<div class="flex anchor relative">
+		<h3 id="metrics-vs-samples-vs-time-series">Metrics vs samples vs time series</h3>
+		<a href="https://blog.cloudflare.com/#metrics-vs-samples-vs-time-series" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now we should pause to make an important distinction between <i>metrics</i> and <i>time series</i>.</p>
 	<p>A metric is an observable property with some defined dimensions (labels). In our example case it’s a Counter class object.</p>
 	<p>A time series is an instance of that metric, with a unique combination of all the dimensions (labels), plus a series of timestamp &amp; value pairs - hence the name “time series”. Names and labels tell us what is being observed, while timestamp &amp; value pairs tell us how that observable property changed over time, allowing us to plot graphs using this data.</p>
@@ -96,14 +110,35 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lTDb6LR4pGWmpAC2mrug2/62349f14eb923fe832bb1655ab68dbc8/blog-4.png" alt="" class="kg-image" width="1600" height="1446" loading="lazy">
 
 	</figure>
-	<h3>Cardinality related problems</h3>
+	<div class="flex anchor relative">
+		<h3 id="cardinality-related-problems">Cardinality related problems</h3>
+		<a href="https://blog.cloudflare.com/#cardinality-related-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each time series will cost us resources since it needs to be kept in memory, so the more time series we have, the more resources metrics will consume. This is true both for client libraries and Prometheus server, but it’s more of an issue for Prometheus itself, since a single Prometheus server usually collects metrics from many applications, while an application only keeps its own metrics.</p>
 	<p>Since we know that the more labels we have the more time series we end up with, you can see when this can become a problem. Simply adding a label with two distinct values to all our metrics might double the number of time series we have to deal with. Which in turn will double the memory usage of our Prometheus server. If we let Prometheus consume more memory than it can physically use then it will crash.</p>
 	<p>This scenario is often described as “cardinality explosion” - some metric suddenly adds a huge number of distinct label values, creates a huge number of time series, causes Prometheus to run out of memory and you lose all observability as a result.</p>
-	<h2>How is Prometheus using memory?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-is-prometheus-using-memory">How is Prometheus using memory?</h2>
+		<a href="https://blog.cloudflare.com/#how-is-prometheus-using-memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To better handle problems with cardinality it’s best if we first get a better understanding of how Prometheus works and how time series consume memory.</p>
 	<p>For that let’s follow all the steps in the life of a time series inside Prometheus.</p>
-	<h3>Step one - HTTP scrape</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-one-http-scrape">Step one - HTTP scrape</h3>
+		<a href="https://blog.cloudflare.com/#step-one-http-scrape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The process of sending HTTP requests from Prometheus to our application is called “scraping”. Inside the Prometheus configuration file we define a <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config">“scrape config”</a> that tells Prometheus where to send the HTTP request, how often and, optionally, to apply extra processing to both requests and responses.</p>
 	<p>It will record the time it sends HTTP requests and use that later as the timestamp for all collected time series.</p>
 	<p>After sending a request it will parse the response looking for all the samples exposed there.</p>
@@ -112,7 +147,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2g84l6ioJCxTsF64iZoHr8/64dd9a939ab65af69a4b2b946eb3d780/blog-1.png" alt="" class="kg-image" width="1282" height="775" loading="lazy">
 
 	</figure>
-	<h3>Step two - new time series or an update?</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-two-new-time-series-or-an-update">Step two - new time series or an update?</h3>
+		<a href="https://blog.cloudflare.com/#step-two-new-time-series-or-an-update" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once Prometheus has a list of samples collected from our application it will save it into <a href="https://pkg.go.dev/github.com/prometheus/prometheus/tsdb">TSDB</a> - Time Series DataBase - the database in which Prometheus keeps all the time series.</p>
 	<p>But before doing that it needs to first check which of the samples belong to the time series that are already present inside TSDB and which are for completely new time series.</p>
 	<p>As we mentioned before a time series is generated from metrics. There is a single time series for each unique combination of metrics labels.</p>
@@ -126,7 +168,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 
 	</figure>
 	<p>Knowing that it can quickly check if there are any time series already stored inside TSDB that have the same hashed value. Basically our labels hash is used as a primary key inside TSDB.</p>
-	<h3>Step three - appending to TSDB</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-three-appending-to-tsdb">Step three - appending to TSDB</h3>
+		<a href="https://blog.cloudflare.com/#step-three-appending-to-tsdb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once TSDB knows if it has to insert new time series or update existing ones it can start the real work.</p>
 	<p>Internally all time series are stored <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1604-L1616">inside a map</a> on a structure called <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L65">Head</a>. That map uses labels hashes as keys and a structure called <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1827">memSeries</a> as values. Those memSeries objects are storing all the time series information. The struct definition for memSeries is fairly big, but all we really need to know is that it has a copy of all the <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1831">time series labels</a> and <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1843-L1844">chunks</a> that hold all the samples (timestamp &amp; value pairs).</p>
 	<p>Labels are stored once per each memSeries instance.</p>
@@ -149,7 +198,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>Since the default Prometheus scrape interval is one minute it would take two hours to reach 120 samples.</p>
 	<p>What this means is that using Prometheus defaults each memSeries should have a single chunk with 120 samples on it for every two hours of data.</p>
 	<p>Going back to our time series - at this point Prometheus either creates a new memSeries instance or uses already existing memSeries. Once it has a memSeries instance to work with it will append our sample to the Head Chunk. This might require Prometheus to create a new chunk if needed.</p>
-	<h3>Step four - memory-mapping old chunks</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-four-memory-mapping-old-chunks">Step four - memory-mapping old chunks</h3>
+		<a href="https://blog.cloudflare.com/#step-four-memory-mapping-old-chunks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After a few hours of Prometheus running and scraping metrics we will likely have more than one chunk on our time series:</p>
 	<ul>
 		<li>
@@ -161,7 +217,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	</ul>
 	<p>Since all these chunks are stored in memory Prometheus will try to reduce memory usage by writing them to disk and memory-mapping. The advantage of doing this is that memory-mapped chunks don’t use memory unless TSDB needs to read them.</p>
 	<p>The Head Chunk is never memory-mapped, it’s always stored in memory.</p>
-	<h3>Step five - writing blocks to disk</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-five-writing-blocks-to-disk">Step five - writing blocks to disk</h3>
+		<a href="https://blog.cloudflare.com/#step-five-writing-blocks-to-disk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Up until now all time series are stored entirely in memory and the more time series you have, the higher Prometheus memory usage you’ll see. The only exception are memory-mapped chunks which are offloaded to disk, but will be read into memory if needed by queries.</p>
 	<p>This allows Prometheus to scrape and store thousands of samples per second, our biggest instances are appending 550k samples per second, while also allowing us to query all the metrics simultaneously.</p>
 	<p>But you can’t keep everything in memory forever, even with memory-mapping parts of data.</p>
@@ -197,7 +260,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	</figure>
 	<p>Once a chunk is written into a block it is removed from memSeries and thus from memory. Prometheus will keep each block on disk for the configured retention period.</p>
 	<p>Blocks will eventually be “compacted”, which means that Prometheus will take multiple blocks and merge them together to form a single block that covers a bigger time range. This process helps to reduce disk usage since each block has an index taking a good chunk of disk space. By merging multiple blocks together, big portions of that index can be reused, allowing Prometheus to store more data using the same amount of storage space.</p>
-	<h3>Step six - garbage collection</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-six-garbage-collection">Step six - garbage collection</h3>
+		<a href="https://blog.cloudflare.com/#step-six-garbage-collection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After a chunk was written into a block and removed from memSeries we might end up with an instance of memSeries that has no chunks. This would happen if any time series was no longer being exposed by any application and therefore there was no scrape that would try to append more samples to it.</p>
 	<p>A common pattern is to export software versions as a build_info metric, Prometheus itself does this too:</p>
 	<pre class="language-python"><code class="language-python">prometheus_build_info{version="2.42.0"} 1</code></pre>
@@ -207,7 +277,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	<p>Once the last chunk for this time series is written into a block and removed from the memSeries instance we have no chunks left. This means that our memSeries still consumes some memory (mostly labels) but doesn’t really do anything.</p>
 	<p>To get rid of such time series Prometheus will run “head garbage collection” (remember that Head is the structure holding all memSeries) right after writing a block. This garbage collection, among other things, will look for any <a href="https://github.com/prometheus/prometheus/blob/v2.42.0/tsdb/head.go#L1642-L1648">time series without a single chunk</a> and remove it from memory.</p>
 	<p>Since this happens after writing a block, and writing a block happens in the middle of the chunk window (two hour slices aligned to the wall clock) the only memSeries this would find are the ones that are “orphaned” - they received samples before, but not anymore.</p>
-	<h3>What does this all mean?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-does-this-all-mean">What does this all mean?</h3>
+		<a href="https://blog.cloudflare.com/#what-does-this-all-mean" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TSDB used in Prometheus is a special kind of database that was highly optimized for a very specific workload:</p>
 	<ul>
 		<li>
@@ -259,7 +336,14 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 
 	</figure>
 	<p>The important information here is that <b>short lived time series are expensive</b>. A time series that was only scraped once is <b>guaranteed to live in Prometheus for one to three hours</b>, depending on the exact time of that scrape.</p>
-	<h2>The cost of cardinality</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-cost-of-cardinality">The cost of cardinality</h2>
+		<a href="https://blog.cloudflare.com/#the-cost-of-cardinality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point we should know a few things about Prometheus:</p>
 	<ul>
 		<li>
@@ -325,7 +409,14 @@ errors_total{error="read udp 127.0.0.1:12421-&gt;127.0.0.2:443: i/o timeout"} 1
 errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1</code></pre>
 	<p>Once scraped all those time series will stay in memory for a minimum of one hour. It’s very easy to keep accumulating time series in Prometheus until you run out of memory.</p>
 	<p>Even Prometheus' own <a href="https://github.com/prometheus/client_golang/security/advisories/GHSA-cg3q-j54f-5p7p">client libraries had bugs</a> that could expose you to problems like this.</p>
-	<h2>How much memory does a time series need?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-much-memory-does-a-time-series-need">How much memory does a time series need?</h2>
+		<a href="https://blog.cloudflare.com/#how-much-memory-does-a-time-series-need" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each time series stored inside Prometheus (as a memSeries instance) consists of:</p>
 	<ul>
 		<li>
@@ -346,7 +437,14 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>Note that your Prometheus server must be configured to scrape itself for this to work.</p>
 	<p>Secondly this calculation is based on all memory used by Prometheus, not only time series data, so it’s just an approximation. Use it to get a rough idea of how much memory is used per time series and don’t assume it’s that exact number.</p>
 	<p>Thirdly Prometheus is written in <a href="https://go.dev">Golang</a> which is a language with garbage collection. The actual amount of physical memory needed by Prometheus will usually be higher as a result, since it will include unused (garbage) memory that needs to be freed by Go runtime.</p>
-	<h2>Protecting Prometheus from cardinality explosions</h2>
+	<div class="flex anchor relative">
+		<h2 id="protecting-prometheus-from-cardinality-explosions">Protecting Prometheus from cardinality explosions</h2>
+		<a href="https://blog.cloudflare.com/#protecting-prometheus-from-cardinality-explosions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prometheus does offer some options for dealing with high cardinality problems. There are a <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config">number of options</a> you can set in your scrape configuration block. Here is the extract of the relevant options from Prometheus documentation:</p>
 	<pre class="language-python"><code class="language-python"># An uncompressed response body larger than this many bytes will cause the
 # scrape to fail. 0 means no limit. Example: 100MB.
@@ -385,23 +483,51 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>The downside of all these limits is that <b>breaching any of them will cause an error for the entire scrape</b>.</p>
 	<p>If we configure a sample_limit of 100 and our metrics response contains 101 samples, then Prometheus <b>won’t scrape anything at all</b>. This is a deliberate design decision made by Prometheus developers.</p>
 	<p>The main motivation seems to be that dealing with partially scraped metrics is difficult and you’re better off treating failed scrapes as incidents.</p>
-	<h2>How does Cloudflare deal with high cardinality?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-deal-with-high-cardinality">How does Cloudflare deal with high cardinality?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-deal-with-high-cardinality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have hundreds of data centers spread across the world, each with dedicated Prometheus servers responsible for scraping all metrics.</p>
 	<p>Each Prometheus is scraping a few hundred different applications, each running on a few hundred servers.</p>
 	<p>Combined that’s a lot of different metrics. It’s not difficult to accidentally cause cardinality problems and in the past we’ve dealt with a fair number of issues relating to it.</p>
-	<h3>Basic limits</h3>
+	<div class="flex anchor relative">
+		<h3 id="basic-limits">Basic limits</h3>
+		<a href="https://blog.cloudflare.com/#basic-limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most basic layer of protection that we deploy are scrape limits, which we enforce on all configured scrapes. These are the sane defaults that 99% of application exporting metrics would never exceed.</p>
 	<p>By default we allow up to 64 labels on each time series, which is way more than most metrics would use.</p>
 	<p>We also limit the length of label names and values to 128 and 512 characters, which again is more than enough for the vast majority of scrapes.</p>
 	<p>Finally we do, by default, set sample_limit to 200 - so each application can export up to 200 time series without any action.</p>
 	<p>What happens when somebody wants to export more time series or use longer labels? All they have to do is set it explicitly in their scrape configuration.</p>
 	<p>Those limits are there to catch accidents and also to make sure that if any application is exporting a high number of time series (more than 200) the team responsible for it knows about it. This helps us avoid a situation where applications are exporting thousands of times series that aren’t really needed. Once you cross the 200 time series mark, you should start thinking about your metrics more.</p>
-	<h3>CI validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="ci-validation">CI validation</h3>
+		<a href="https://blog.cloudflare.com/#ci-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next layer of protection is checks that run in CI (Continuous Integration) when someone makes a pull request to add new or modify existing scrape configuration for their application.</p>
 	<p>These checks are designed to ensure that we have enough capacity on all Prometheus servers to accommodate extra time series, if that change would result in extra time series being collected.</p>
 	<p>For example, if someone wants to modify sample_limit, let’s say by changing existing limit of 500 to 2,000, for a scrape with 10 targets, that’s an increase of 1,500 per target, with 10 targets that’s 10*1,500=15,000 extra time series that might be scraped. Our CI would check that all Prometheus servers have spare capacity for at least 15,000 time series before the pull request is allowed to be merged.</p>
 	<p>This gives us confidence that we won’t overload any Prometheus server after applying changes.</p>
-	<h3>Our custom patches</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-custom-patches">Our custom patches</h3>
+		<a href="https://blog.cloudflare.com/#our-custom-patches" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the most important layers of protection is a set of patches we maintain on top of Prometheus. There is an <a href="https://github.com/prometheus/prometheus/pull/11124">open pull request</a> on the Prometheus repository. This patchset consists of two main elements.</p>
 	<p>First is the patch that allows us to enforce a limit on the total number of time series TSDB can store at any time. There is no equivalent functionality in a standard build of Prometheus, if any scrape produces some samples they will be appended to time series inside TSDB, creating new time series if needed.</p>
 	<p>This is the standard flow with a scrape that doesn’t set any sample_limit:</p>
@@ -457,14 +583,28 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1<
 	<p>This means that looking at how many time series an application could potentially export, and how many it actually exports, gives us two completely different numbers, which makes capacity planning a lot harder.</p>
 	<p>Especially when dealing with big applications maintained in part by multiple different teams, each exporting some metrics from their part of the stack.</p>
 	<p>For that reason we do tolerate some percentage of short lived time series even if they are not a perfect fit for Prometheus and cost us more memory.</p>
-	<h3>Documentation</h3>
+	<div class="flex anchor relative">
+		<h3 id="documentation">Documentation</h3>
+		<a href="https://blog.cloudflare.com/#documentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally we maintain a set of internal documentation pages that try to guide engineers through the process of scraping and working with metrics, with a lot of information that’s specific to our environment.</p>
 	<p>Prometheus and PromQL (Prometheus Query Language) are conceptually very simple, but this means that all the complexity is hidden in the interactions between different elements of the whole metrics pipeline.</p>
 	<p>Managing the entire lifecycle of a metric from an engineering perspective is a complex process.</p>
 	<p>You must define your metrics in your application, with names and labels that will allow you to work with resulting time series easily. Then you must configure Prometheus scrapes in the correct way and deploy that to the right Prometheus server. Next you will likely need to create recording and/or alerting rules to make use of your time series. Finally you will want to create a dashboard to visualize all your metrics and be able to spot trends.</p>
 	<p>There will be traps and room for mistakes at all stages of this process. We covered some of the most basic pitfalls in our previous blog post on Prometheus - <a href="https://blog.cloudflare.com/monitoring-our-monitoring">Monitoring our monitoring</a>. In the same blog post we also mention one of the tools we use to help our engineers write valid Prometheus alerting rules.</p>
 	<p>Having good internal documentation that covers all of the basics specific for our environment and most common tasks is very important. Being able to answer <i>“How do I X?”</i> yourself without having to wait for a subject matter expert allows everyone to be more productive and move faster, while also avoiding Prometheus experts from answering the same questions over and over again.</p>
-	<h2>Closing thoughts</h2>
+	<div class="flex anchor relative">
+		<h2 id="closing-thoughts">Closing thoughts</h2>
+		<a href="https://blog.cloudflare.com/#closing-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Prometheus is a great and reliable tool, but dealing with high cardinality issues, especially in an environment where a lot of different applications are scraped by the same Prometheus server, can be challenging.</p>
 	<p>We had a fair share of problems with overloaded Prometheus instances in the past and developed a number of tools that help us deal with them, including custom patches.</p>
 	<p>But the key to tackling high cardinality was better understanding how Prometheus works and what kind of usage patterns will be problematic.</p>

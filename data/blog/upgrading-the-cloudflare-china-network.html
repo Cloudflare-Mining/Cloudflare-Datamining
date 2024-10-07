@@ -8,7 +8,14 @@
 	</figure>
 	<p>Core to Cloudflare’s mission of helping build a better Internet is making it easy for our customers to improve the performance, security, and reliability of their digital properties, no matter where in the world they might be. This includes Mainland China. Cloudflare has had customers using our service in China since 2015 and recently, we expanded our China presence through a partnership with JD Cloud, the cloud division of Chinese Internet giant, JD.com. We’ve also had a local office in Beijing for several years, which has given us a deep understanding of the Chinese Internet landscape as well as local customers.</p>
 	<p>The new Cloudflare China Network built in partnership with JD Cloud has been live for several months, with significant performance and security improvements compared to the previous in-country network. Today, we’re excited to describe the improvements we made to our DNS and DDoS systems, and provide data demonstrating the performance gains customers are seeing. All customers licensed to operate in China can now benefit from these innovations, with the click of a button in the Cloudflare dashboard or via the API.</p>
-	<h2>Serving DNS inside China</h2>
+	<div class="flex anchor relative">
+		<h2 id="serving-dns-inside-china">Serving DNS inside China</h2>
+		<a href="https://blog.cloudflare.com/#serving-dns-inside-china" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With over 14% of all domains on the Internet using Cloudflare’s nameservers we are the <a href="https://w3techs.com/technologies/overview/dns_server">largest DNS</a> provider. Furthermore, we pride ourselves on consistently being among the <a href="https://dnsperf.com">fastest authoritative nameservers</a>, answering about 12 million DNS queries per second on average (in Q2 2021). We achieve this scale and performance by running our DNS platform on our <a href="https://www.cloudflare.com/network">global network</a> in more than 200 cities, in over 100 countries.</p>
 	<p>Not too long ago, a user in mainland China accessing a website using Cloudflare DNS did not fully benefit from these advantages. Their DNS queries had to leave the country and, in most cases, cross the Pacific Ocean to reach our nameservers outside of China. This network distance introduced latency and sometimes even packet drops, resulting in a poor user experience.</p>
 	<p>With the new China Network offering built on JD Cloud’s infrastructure, customers are now able to serve their DNS in mainland China. This means <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS queries</a> are answered directly from one of the JD Cloud Points of Presence (PoPs), leading to faster response times and improved reliability.</p>
@@ -19,38 +26,83 @@ cf-ns.tech</code></pre>
 	<p>We selected these Top Level Domains (TLDs) because they offer the best possible performance from within mainland China. They are chosen to always be different from the TLD of the domain using them. For example, example.com will be assigned nameservers using the .tech and .net TLD. This gives us “glueless delegations” for customers’ nameservers, allowing us to dynamically return nameserver IP addresses instead of static <a href="https://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records">glue records</a>.</p>
 	<p>A “glue record” (or just “glue”) is a mapping between nameservers and IPs that’s added by registrars to break circular lookup dependencies when a domain uses a nameserver with the same TLD. For example, imagine a resolver asks the .com TLD nameserver: “Where do I find the nameservers for example.com?” and this domain is using ns1.example.com and ns2.example.com as nameservers. If .com just replied: “Go and ask ns1.example.com or ns2.example.com.” the resolver would come back to .com with the same question and this would never stop. One solution is to add glue at .com, so the answer can be: “The nameservers for example.com are ns1.example.com and ns2.example.com, and they can be reached at 192.0.2.78 and 203.0.113.55.”.</p>
 	<p>By using different TLDs, as described above, we don’t need to rely on glue records for customers’ nameservers. This way, we can ensure that queries will always be answered from the nearest point of presence (PoP) leading to a faster DNS response. Another advantage of serving dynamic nameserver IPs is the ability to distribute queries across different PoPs, which helps to spread load more efficiently and mitigate attacks.</p>
-	<h2>Mitigating DDoS attacks within China</h2>
+	<div class="flex anchor relative">
+		<h2 id="mitigating-ddos-attacks-within-china">Mitigating DDoS attacks within China</h2>
+		<a href="https://blog.cloudflare.com/#mitigating-ddos-attacks-within-china" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Everywhere in the world except for China and India, we use a technique known as anycast routing to distribute DDoS attacks and absorb them in data centers as close to the traffic source as possible. But as we <a href="https://blog.cloudflare.com/how-we-extended-cloudflares-performance-and-security-into-mainland-china">first wrote in 2015</a>, the Internet in China works a bit differently than the rest of the world so anycast-based mitigation was not an option:</p>
 	<p><i>Unlike much of the rest of the world where network routing is open, in China core Internet access is largely controlled by two ISPs: China Telecom and China Unicom. [Today this list also includes China Mobile.] These ISPs control IP address allocation and routing inside the country. Even the Chinese Internet giants rarely own their own IP address allocations, or use BGP to control routing across the Chinese Internet. This makes BGP Anycast and many of the other routing techniques we use across Cloudflare's network impossible inside of China.</i></p>
 	<p>The lack of anycast in China requires a different approach to mitigating attacks, and our expansion with JD Cloud pushed us to further improve the <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">edge-based mitigation system we wrote about earlier this year</a>. Most importantly, we pushed the detection and mitigation of application (L7) attacks to the edge, reducing our time to mitigate and improving the resiliency of the system by removing a dependency on other core data centers for instructions. In the first quarter of 2021, we mitigated 81% of all L7 attacks at the edge.</p>
 	<p>For the larger network-based (L3/L4) attacks, we worked closely with JD Cloud to augment our in-data center protections with remote signaling to China Telecom, China Unicom, and China Mobile. These integrations allow us to remotely — and automatically — signal from our edge-based mitigation systems when we want upstream filtering assistance from the ISP. Mitigating attacks at the edge is faster than relying on centralized data centers, and in the first quarter of 2021 98.6% of all L3/4 DDoS attacks were mitigated without centralized communication. Attacks exceeding certain thresholds can also be re-routed to large scrubbing centers, a technique that doesn’t make sense in an anycast world but is useful when unicast is the only option.</p>
 	<p>Beyond the improved mitigation controls, we also developed new traffic engineering processes to move traffic from overloaded data centers to locations with more spare resources. These controls are already used outside of China, but doing so within the country required integration with our DNS systems.</p>
 	<p>Lastly, because all of our data centers run the same software stack, the work we did to improve the underlying components of DDoS detection and mitigation systems within China has already made its way back to our data centers outside of China.</p>
-	<h2>Improving performance</h2>
+	<div class="flex anchor relative">
+		<h2 id="improving-performance">Improving performance</h2>
+		<a href="https://blog.cloudflare.com/#improving-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare on JD Cloud is significantly faster than our previous in-country network, allowing us to accelerate the delivery of our customers’ web properties in China.</p>
 	<p>To compare the Cloudflare PoPs on JD Cloud vs. our previous in-country network, we deployed a test zone to simulate a customer website on both China networks. We tested each website with the same two origin networks. Both origins are commonly used public cloud providers. One site was hosted in the northwest region of the United States, and the other in Western Europe.</p>
 	<p>For both zones, we assigned DNS nameservers in China to reduce out-of-country latency incurred during DNS lookups (more details are on DNS below). To test our caching, we used a monitoring and benchmarking service with a wide variety of clients in various Chinese cities and provinces to download 100 kilobyte, 1 megabyte, and 10 megabyte files every 15 minutes over the course of 36 hours.</p>
 	<p>Latency, as measured by <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">Round Trip Time (RTT)</a> from the client to our JD Cloud PoPs, was reduced at least 30% across tests for all file sizes. This subsequently reduced our Time to First Byte (TTFB) metrics. Reducing latency — and making it more consistent, i.e., improving jitter — has the most impact on other performance metrics, as latency and the slow-start process is the bottleneck for the vast majority of TCP connections.</p>
 	<p>Our latency reduction comes from the quality of the JD Cloud network, their placement of the PoPs within China, and our ability to direct clients to the closest PoP. As we continue to add more capacity and PoPs in partnership with JD Cloud in the future, we only expect our latency metrics to get even better.</p>
-	<h3>Dynamic Content</h3>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-content">Dynamic Content</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1yY5Ifkmq9Fn04Na2OprfR/a98d6802ad5917b7fa76efca80ad751a/image3-8.png" alt="" class="kg-image" width="991" height="390" loading="lazy">
 
 	</figure>
-	<h3>Static Content</h3>
+	<div class="flex anchor relative">
+		<h3 id="static-content">Static Content</h3>
+		<a href="https://blog.cloudflare.com/#static-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YfT8pRmrfHtKfqvu2PtdA/7843741e19b2a673d9cb0ba5e1172c2d/image4-7.png" alt="" class="kg-image" width="991" height="390" loading="lazy">
 
 	</figure>
-	<h3>DNS Response Time</h3>
+	<div class="flex anchor relative">
+		<h3 id="dns-response-time">DNS Response Time</h3>
+		<a href="https://blog.cloudflare.com/#dns-response-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xhHswN41o23RpkvjCr4G4/86bb75918592d8f6e21a0d95ef4b9686/image2-12.png" alt="" class="kg-image" width="2000" height="794" loading="lazy">
 
 	</figure>
-	<h2>Looking forward and welcoming new customers in China</h2>
+	<div class="flex anchor relative">
+		<h2 id="looking-forward-and-welcoming-new-customers-in-china">Looking forward and welcoming new customers in China</h2>
+		<a href="https://blog.cloudflare.com/#looking-forward-and-welcoming-new-customers-in-china" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s sustained product investments in China, in partnership with JD Cloud, have resulted in significant performance and security improvements over our previous in-country network first launched in 2015.</p>
 	<p>Specifically, innovations in DNS and DDoS mitigation technology, alongside an improved network design and distribution of PoPs, have resulted in better security for our customers and at least a 30% performance boost.</p>
 	<p>This new network is open for business, and interested customers should <a href="https://www.cloudflare.com/china-network">reach out to learn more</a>.</p>

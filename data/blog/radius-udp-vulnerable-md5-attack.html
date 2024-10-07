@@ -27,13 +27,27 @@
 	</figure>
 	<p>Overview of the Blast-RADIUS attack on RADIUS/UDP in PAP mode</p>
 	<p>This Blast-RADIUS attack was devised in collaboration with researchers at the <a href="https://cryptosec.ucsd.edu">University of California San Diego (UCSD)</a>, <a href="https://www.cwi.nl/en/groups/cryptology">CWI Amsterdam</a>, <a href="https://www.microsoft.com/en-us/research/group/security-and-cryptography">Microsoft</a>, and <a href="https://www.bastionzero.com">BastionZero</a>. In response, CERT has assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-3596">CVE-2024-3596</a> and <a href="https://kb.cert.org/vuls/id/456537">VU#456537</a> and worked with RADIUS vendors and developers to coordinate disclosure.</p>
-	<h3>RADIUS/UDP and its ad hoc use of MD5</h3>
+	<div class="flex anchor relative">
+		<h3 id="radius-udp-and-its-ad-hoc-use-of-md5">RADIUS/UDP and its ad hoc use of MD5</h3>
+		<a href="https://blog.cloudflare.com/#radius-udp-and-its-ad-hoc-use-of-md5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>RADIUS/UDP has many modes, and our attacks work on all authentication modes except for those using EAP (<a href="https://datatracker.ietf.org/doc/html/rfc3748">Extensible Authentication Protocol</a>). &nbsp;To simplify exposition, we start by focusing on the RADIUS/UDP PAP (Password Authentication Protocol) authentication mode.</p>
 	<p>With RADIUS/UDP PAP authentication, the RADIUS client sends a username and password in an <i>Access-Request</i> packet to the RADIUS server over UDP. &nbsp;The server drops the packet if its source IP address does not match a known client, but otherwise the <i>Access-Request</i> is entirely unauthenticated. This makes it vulnerable to modifications by a MitM.</p>
 	<p>The RADIUS server responds with either an <i>Access-Reject</i>, <i>Access-Accept</i> (or possibly also an <i>Access-Challenge</i>) packet sent to the RADIUS client over UDP. &nbsp;These response packets are “authenticated” with an ad hoc “<a href="https://en.wikipedia.org/wiki/Message_authentication_code">message authentication code (MAC)</a>” to prevent modifications by an MitM. This “MAC” is based on MD5 and is called the <i>Response Authenticator.</i></p>
 	<p>This ad hoc construction in the <i>Response Authenticator</i> attribute has been part of the RADIUS protocol <a href="https://datatracker.ietf.org/doc/draft-ietf-nasreq-radius/01">since 1994</a>. It was not changed in 1997, when <a href="https://datatracker.ietf.org/doc/html/rfc2104">HMAC was standardized</a> in order to construct a provably-secure cryptographic MAC using a cryptographic hash function. It was not changed in 2004, when <a href="https://link.springer.com/chapter/10.1007/11426639_2">the first collisions in MD5 were found</a>. And it is still part of the protocol today.</p>
 	<p>In this post, we’ll describe our improved attack on MD5 as it is used in the RADIUS <i>Response Authenticator</i>.</p>
-	<h3>The RADIUS Response Authenticator</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-radius-response-authenticator">The RADIUS Response Authenticator</h3>
+		<a href="https://blog.cloudflare.com/#the-radius-response-authenticator" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <i>Response Authenticator</i> “authenticates” RADIUS responses via an ad hoc MD5 construction that involves concatenating several fields in the RADIUS request and response packets, appending a Secret shared between RADIUS client and RADIUS server, and then hashing the result with MD5. Specifically, the <i>Response Authenticator</i> is computed as</p>
 	<p>MD5( Code || ID || Len || Request Authenticator || Attributes || Secret )</p>
 	<p>where the Code, ID, Length, and Attributes are copied directly from the response packet, and Request Authenticator is a 16-byte random nonce and included in the corresponding request packet.</p>
@@ -57,7 +71,14 @@
 	</ul>
 	<p>Before we move on, note that in 2000, <a href="https://datatracker.ietf.org/doc/html/rfc2869">RFC2869</a> added support for HMAC-MD5 to RADIUS/UDP, using a new attribute called <i>Message-Authenticator</i>. HMAC thwarts attacks that use hash function collisions to break the security of a MAC, and HMAC is <a href="https://eprint.iacr.org/2006/043.pdf">a secure MAC as long as the underlying hash function is a pseudorandom function</a>. As of this writing, we have not seen a public attack demonstrating that HMAC-MD5 is not a good MAC.</p>
 	<p>Nevertheless, the RADIUS specifications state that <i>Message-Authenticator</i> is optional for all modes of RADIUS/UDP apart from those that use EAP (<a href="https://datatracker.ietf.org/doc/html/rfc3748">Extensible Authentication Protocol</a>). Our attack is for non-EAP authentication modes of RADIUS/UDP using default setups that do not use <i>Message-Authenticator</i>. We further discuss <i>Message-Authenticator</i> and EAP later in this post.</p>
-	<h3>Blast-RADIUS attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="blast-radius-attack">Blast-RADIUS attack</h3>
+		<a href="https://blog.cloudflare.com/#blast-radius-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given that the ad hoc MD5 construction in the <i>Response Authenticator</i> is usually the only thing protecting the integrity of the RADIUS/UDP message, can we exploit it to break the security of the RADIUS/UDP protocol? Yes, we can.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -93,14 +114,28 @@
 	<p>P1 || RejectGib is an MD5 collision with P2 || AcceptGib, which implies that</p>
 	<p>MD5 (P1 || RejectGib || Secret) = MD5 (P2 || AcceptGib || Secret)In other words, the <i>Response-Authenticator</i> on the forged <i>Access-Accept</i> packet is valid.</p>
 	<p>The attacker has successfully logged into the device.</p>
-	<h3>But, the attack has to be fast.</h3>
+	<div class="flex anchor relative">
+		<h3 id="but-the-attack-has-to-be-fast">But, the attack has to be fast.</h3>
+		<a href="https://blog.cloudflare.com/#but-the-attack-has-to-be-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For all of this to work, our MD5 collision attack had to be fast! If finding the collision takes too long, the client could time out while waiting for a response packet and the attack would fail.</p>
 	<p>Importantly, the attack cannot be precomputed. One of the inputs to the <i>Response Authenticator</i> is the <i>Request Authenticator</i> attribute, a 16-byte random nonce included in the request packet. Because the <i>Request Authenticator</i> is freshly chosen for every request, the MitM cannot predict the <i>Request Authenticator</i> without intercepting the request packet in flight.</p>
 	<p>Existing collision attacks on MD5 were too slow for realistic client timeouts; when we started our work, reported attacks took hours (or even up to a day) to find MD5 chosen-prefix collisions. So, we had to devise a new, faster attack on MD5.</p>
 	<p>To do this, our team improved <a href="https://github.com/cr-marcstevens/hashclash/pull/37">existing chosen-prefix collision attacks on MD5 and optimized them for speed and space</a> (in addition to figuring out how to make our collision gibberish fit into RADIUS <i>Proxy-State</i> attributes). We demonstrated an improved attack that can run in minutes on an aging cluster of about 2000 CPU cores ranging from 7 to 10 years old, plus four newer low-end GPUs <a href="https://cse.ucsd.edu">at UCSD</a>. Less than two months after we started this project, we could <a href="https://www.blastradius.fail/pdf/radius.pdf">execute the attack</a> in under five minutes, and validate (in a lab setting) that it works on popular commercial RADIUS implementations.</p>
 	<p>While many RADIUS devices (like the ones we tested in the lab) tolerate timeouts of five minutes, the default timeouts on most devices are closer to 30 or 60 seconds. Nevertheless, at this point, we had proved our attack. The attack is highly parallelizable. A sophisticated adversary would have easy access to better computing resources than we did, or could further optimize the attack using low-cost cloud compute resources, GPUs or hardware. In other words, a motivated attacker could use better computing resources to get our attack working against RADIUS devices with timeouts shorter than 5 minutes.</p>
 	<p>It was late January 2024. We had an attack that allows an attacker with MitM access to RADIUS/UDP traffic in PAP mode to gain unauthorized access to devices that use RADIUS to decide who should have administrative access to the device. We stopped our work, wrote up a <a href="https://www.blastradius.fail/pdf/radius.pdf">paper</a>, and got in touch with CERT to coordinate disclosure. In response, CERT has assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-3596">CVE-2024-3596</a> and <a href="https://kb.cert.org/vuls/id/456537">VU#456537</a> to this vulnerability, which affects all authentication modes of RADIUS/UDP apart from those that use EAP.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s never easy to update network protocols, especially protocols like RADIUS that have been widely used since the 1990s and enjoy multi-vendor support. Nevertheless, we hope this research will provide an opportunity for network operators to review the security of their RADIUS deployments, and to take advantage of patches released by many RADIUS vendors in response to our work.</p>
 	<p><b>Transitioning to RADIUS over TLS:</b> Following our work, many more vendors now offer <a href="https://datatracker.ietf.org/doc/html/rfc6614">RADIUS over TLS</a> (sometimes known as RADSEC), which wraps the entire RADIUS packet payload into a TLS stream sent from RADIUS client to RADIUS server. This is the best mitigation against our attack and any new MD5 attacks that might emerge.</p>
 	<p>Before implementing this mitigation, network operators should verify that they can upgrade both their RADIUS clients and their RADIUS servers to support RADIUS over TLS. There is a risk that legacy clients that cannot be upgraded or patched would still need to speak RADIUS/UDP.</p>
@@ -124,7 +159,14 @@
 	<p>You can find more discussion on RADIUS/UDP mitigations in a <a href="https://networkradius.com/assets/pdf/radius_and_md5_collisions.pdf">new whitepaper by Alan DeKok</a>, which also contains guidance on how to apply these mitigations to more complex “multihop” RADIUS deployments.</p>
 	<p><b>Isolating RADIUS traffic.</b> It has long been a best practice to avoid sending RADIUS/UDP or RADIUS/TCP traffic in the clear over the public Internet. On internal networks, a best practice is to isolate RADIUS traffic in a restricted-access management VLAN or to tunnel it over TLS or IPsec. This is helpful because it makes RADIUS traffic more difficult for attackers to access, so that it’s harder to execute our attack. That said, an attacker may still be able to execute our attack to accomplish a privilege escalation if a network misconfiguration or compromise allows a MitM to access RADIUS traffic. Thus, the other mitigations we mention above are valuable even if RADIUS traffic is isolated.</p>
 	<p><b>Non-mitigations.</b> While it is possible to use TCP as transport for RADIUS, RADIUS/TCP is experimental, and offers no benefit over RADIUS/UDP or RADIUS/TLS. (Confusingly, RADIUS/TCP is sometimes also called <a href="https://en.wikipedia.org/wiki/RadSec">RADSEC</a>; but in this post we only use RADSEC to describe RADIUS/TLS.) We discuss other non-mitigations in our <a href="https://www.blastradius.fail/pdf/radius.pdf">paper</a>.</p>
-	<h3>A side note about EAP-TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-side-note-about-eap-tls">A side note about EAP-TLS</h3>
+		<a href="https://blog.cloudflare.com/#a-side-note-about-eap-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we were checking inside Cloudflare for internal exposure to the Blast-RADIUS attack, we found EAP-TLS used in certain office routers in our internal Wi-Fi networks. We ultimately concluded that these routers were not vulnerable to the attack. Nevertheless, we share our experience here to provide more exposition about the use of EAP (<a href="https://datatracker.ietf.org/doc/html/rfc3748">Extensible Authentication Protocol</a>) and its implications for security. RADIUS uses EAP in several different modes which can be very <a href="https://freeradius.org/documentation/freeradius-server/4.0~alpha1/howto/modules/eap/index.html">complicated</a> and are not the focus of this post. Still, we provide a limited sketch of <a href="https://www.cloudradius.com/the-stages-of-802-1x-authentication">EAP-TLS</a> to show how it is different from RADIUS/TLS.</p>
 	<p>First, it is important to note that even though EAP-TLS and RADIUS/TLS have similar names, the two protocols are very different. &nbsp;RADIUS/TLS encapsulates RADIUS traffic in TLS (as described above). &nbsp;But EAP-TLS does not; in fact, EAP-TLS sends RADIUS traffic over UDP!</p>
 	<p>EAP-TLS only uses the TLS handshake to authenticate the user; the TLS handshake is executed between the user and the RADIUS server. &nbsp;However, TLS is not used to encrypt or authenticate the RADIUS packets; the RADIUS client and RADIUS still communicate in the clear over UDP.</p>
@@ -166,6 +208,13 @@
 	</ol>
 	<p>Therefore, we emphasize that the recommended mitigation is RADIUS/TLS (also called RADSEC), which is different from EAP-TLS.</p>
 	<p>As a final note, we mentioned that the Cloudflare’s office routers that were using EAP-TLS were not vulnerable to the Blast-RADIUS attack. This is because these routers were set to run with local authentication, where both the RADIUS client and the RADIUS server are confined inside the router (thus preventing a MitM from gaining access to the traffic sent between RADIUS client and RADIUS server, preventing our attack). Nevertheless, we should note that this vendor’s routers have many settings, some of which involve using an external RADIUS server. Fortunately, this vendor is one of many that have recently released support for RADIUS/TLS (also called RADSEC).</p>
-	<h3>Work in the IETF</h3>
+	<div class="flex anchor relative">
+		<h3 id="work-in-the-ietf">Work in the IETF</h3>
+		<a href="https://blog.cloudflare.com/#work-in-the-ietf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The IETF is an important venue for standardizing network protocols like RADIUS. The <a href="https://datatracker.ietf.org/wg/radext/about">IETF’s radext working group</a> is currently considering an initiative to <a href="https://datatracker.ietf.org/doc/draft-ietf-radext-deprecating-radius">deprecate RADIUS/UDP</a> and create a “standards track” specification of <a href="https://datatracker.ietf.org/doc/draft-ietf-radext-radiusdtls-bis/01">RADIUS over TLS or DTLS</a>, that should help accelerate the deployment of RADIUS/TLS in the field. We hope that our work will accelerate the community’s ongoing efforts to secure RADIUS and reduce its reliance on MD5.</p>
 </div>

@@ -52,7 +52,14 @@ Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
 	<p>Notice that the <code>Link</code> header is added as follows:</p>
 	<pre class="language-bash"><code class="language-bash">header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);</code></pre>
 	<p>The <code>false</code> second parameter tells <code>header</code> to <i>not</i> override an existing <code>Link</code> header. With that option specified multiple <code>Link</code> headers can be added. Without it the last call to <code>pushImage</code> would win.</p>
-	<h2>Effect of Server Push</h2>
+	<div class="flex anchor relative">
+		<h2 id="effect-of-server-push">Effect of Server Push</h2>
+		<a href="https://blog.cloudflare.com/#effect-of-server-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand the effect of Server Push on the example I used Google Chrome Canary and loaded the page twice (once without the <code>Link</code> headers so that no push would occur and once with).</p>
 	<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
 	<figure class="kg-card kg-image-card ">
@@ -149,7 +156,14 @@ t=910410 [st= 199]    HTTP2_SESSION_RECV_DATA
                       --&gt; stream_id = 2</code></pre>
 	<p>The web browser sends an <code>HTTP2_SESSION_SEND_HEADERS</code> request asking for the web page (that's the first item above) and subsequently receives the response headers and page followed immediately by two push promises for the two images. It then immediately starts receiving image data (see the <code>stream_id</code> 2).</p>
 	<p>CloudFlare's web server is pushing the image contents before the browser asked for them. When CloudFlare pushes an item specified in a <code>Link</code> header the header itself is stripped (to prevent the browser from re-requesting the resource).</p>
-	<h2>The Future Starts Here</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-future-starts-here">The Future Starts Here</h2>
+		<a href="https://blog.cloudflare.com/#the-future-starts-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We released HTTP/2 Server Push support to help kick start innovative use of this critical feature of HTTP/2. We would love people to start experimenting with it to see how much of a speed improvement is possible with their specific websites.</p>
 	<p>As can be seen from this blog post making use of Server Push in a web application is easy: just insert <code>Link</code> headers with the appropriate format. Server Push will be particularly fast if the items being pushed are also stored in CloudFlare's cache (as was the case with the examples above).</p>
 	<p>Please let us know how you use Server Push. We're particularly interested in experiences with pushing different types of resources (images vs. styles vs. scripts) and working out the optimal number of items to push (we currently allow up to 50 resources per page).</p>

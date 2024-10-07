@@ -1,16 +1,37 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40Wel75nPvEosuf1dBXFv9/6136908ba4728fc0c6749988ee3db1aa/backblaze-b2-and-the-s3-compatible-api-on-cloudflare.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>In May 2020, Backblaze, a founding Bandwidth Alliance partner announced <a href="https://www.backblaze.com/blog/backblaze-b2-s3-compatible-api">S3 compatible APIs</a> for their B2 Cloud Storage service. As a refresher, the <a href="https://blog.cloudflare.com/bandwidth-alliance">Bandwidth Alliance</a> is a group of forward-thinking cloud and networking companies that are committed to discounting or waiving data transfer fees for shared customers. Backblaze has been a proud partner since 2018. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service.</p>
-	<h3>History of the S3 API</h3>
+	<div class="flex anchor relative">
+		<h3 id="history-of-the-s3-api">History of the S3 API</h3>
+		<a href="https://blog.cloudflare.com/#history-of-the-s3-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First let’s dive into the history of the S3 API and why it’s important for Cloudflare users.</p>
 	<p>Prior to 2006, before the mass migration to the Cloud, if you wanted to store content for your company you needed to build your own expensive and highly available storage platform that was large enough to store all your existing content with enough growth headroom for your business. AWS launched to help eliminate this model by renting their physical computing and storage infrastructure.</p>
 	<p>Amazon Simple Storage Service (S3) led the market by offering a scalable and resilient tool for storing unlimited amounts of data without building it yourself. It could be integrated into any application but there was one catch: you couldn’t use any existing standard such as WebDAV, FTP or SMB: your application needed to interface with Amazon’s bespoke S3 API.</p>
 	<p>Fast forward to 2020 and the storage provider landscape has become highly competitive with many providers capable of providing petabyte (and exabyte) scale content storage at extremely low cost-per-gigabyte. However, Amazon S3 has remained a dominant player despite heavy competition and not being the most cost-effective player.</p>
 	<p>The broad adoption of the S3 API by developers in their codebases and internal systems has transformed the S3 API into what WebDAV promised us to be: de facto standard HTTP File Storage API.</p>
-	<h3>Engineering costs of changing storage providers</h3>
+	<div class="flex anchor relative">
+		<h3 id="engineering-costs-of-changing-storage-providers">Engineering costs of changing storage providers</h3>
+		<a href="https://blog.cloudflare.com/#engineering-costs-of-changing-storage-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With many code bases and legacy applications being entrenched in the S3 API, the process to switch to a more cost-effective storage provider is not so easy. Companies need to consider the cost of engineer time programming a new storage API while also physically moving their data.</p>
 	<p>This engineering overhead has led many storage providers to natively support the S3 API, leveling the playing field and allowing companies to focus on picking the most cost-effective provider.</p>
-	<h3>First-mile bandwidth costs and the Bandwidth Alliance</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-mile-bandwidth-costs-and-the-bandwidth-alliance">First-mile bandwidth costs and the Bandwidth Alliance</h3>
+		<a href="https://blog.cloudflare.com/#first-mile-bandwidth-costs-and-the-bandwidth-alliance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare caches content in Points of Presence located in more than 200 cities around the world. This cached content is then handed to your Internet service provider (ISP) over low cost and often free Internet exchange connections in the same facility using mutual fibre optic cables. This cost saving is fairly well understood as the benefit of content delivery networks and has become highly commoditized.</p>
 	<p>What is less well understood is the <i>first-mile</i> cost of moving data from a storage provider to the content delivery network. Typically storage providers expect traffic to route via the Internet and will charge the consumer per-gigabyte of data transmitted. This is not the case for Cloudflare as we also share facilities and mutual fibre optic cables with many storage providers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -20,12 +41,26 @@
 	</figure>
 	<p>These shared interconnects created an opportunity to waive the cost of first-mile bandwidth between Cloudflare and many providers and is what prompted us to create the Bandwidth Alliance.</p>
 	<p>Media and entertainment companies serving user-generated content have a continuous supply of new content being moved over the first-mile from the storage provider to the content delivery network. The first-mile bandwidth cost adds up and using a Bandwidth Alliance partner such Backblaze can entirely eliminate it.</p>
-	<h3>Using the S3 API in Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-the-s3-api-in-cloudflare-workers">Using the S3 API in Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#using-the-s3-api-in-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Solutions Engineering team at Cloudflare is tasked with providing strategic technical guidance for our enterprise customers.</p>
 	<p>It’s not uncommon for developers to connect Cloudflare’s global network directly to their storage provider and directly serve content such as live and on-demand video without an intermediate web server.</p>
 	<p>For security purposes engineers typically use Cloudflare Workers to sign each uncached request using the S3 API. Cloudflare Workers allows anyone to deploy code to our global network of over 200+ Points of Presence in seconds and is built on top of Service Workers.</p>
 	<p>We’ve tested Backblaze B2’s S3 Compatible API in Cloudflare Workers using the same code tested for Amazon S3 buckets and it works perfectly by changing the target endpoint.</p>
-	<h3>Creating a S3 Compatible Worker script</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-a-s3-compatible-worker-script">Creating a S3 Compatible Worker script</h3>
+		<a href="https://blog.cloudflare.com/#creating-a-s3-compatible-worker-script" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here’s how it is done using Cloudflare Worker’s CLI tool <a href="https://developers.cloudflare.com/workers/quickstart#installing-the-cli">Wrangler</a>:</p>
 	<p>Generate a new project in Wrangler using a template intended for use with Amazon S3:</p>
 	<pre class="language-javascript"><code class="language-javascript">wrangler generate &lt;projectname&gt; https://github.com/obezuk/worker-signed-s3-template</code></pre>
@@ -49,7 +84,15 @@ async function handleRequest(request) {
     var signedRequest = await aws.sign(url);
     return await fetch(signedRequest, { "cf": { "cacheEverything": true } });
 }</code></pre>
-	<h3>Environment Variables</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="environment-variables">Environment Variables</h3>
+		<a href="https://blog.cloudflare.com/#environment-variables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Modify your wrangler.toml file to use your Backblaze B2 API Key ID and Secret:</p>
 	<pre class="language-javascript"><code class="language-javascript">[env.dev]
 vars = { AWS_ACCESS_KEY_ID = "&lt;BACKBLAZE B2 keyId&gt;", 
@@ -59,7 +102,14 @@ AWS_S3_BUCKET = "&lt;BACKBLAZE B2 bucketName&gt;.&lt;BACKBLAZE B2 S3 Endpoint&gt
 	<p><code>AWS_S3_BUCKET</code> environment variable will be the combination of your bucket name, period and S3 Endpoint. For a Backblaze B2 Bucket named <code>example-bucket</code> and S3 Endpoint <code>s3.us-west-002.backblazeb2.com</code> use <code>example-bucket.s3.us-west-002.backblazeb2.com</code></p>
 	<p><code>AWS_DEFAULT_REGION</code> environment variable is interpreted from your S3 Endpoint. I use <code>us-west-002</code>.</p>
 	<p>We recommend using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/secrets">Secret Environment</a> variables to store your <code>AWS_SECRET_ACCESS_KEY</code> content when using this script in production.</p>
-	<h3>Preview your Cloudflare Worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="preview-your-cloudflare-worker">Preview your Cloudflare Worker</h3>
+		<a href="https://blog.cloudflare.com/#preview-your-cloudflare-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Next run <code>wrangler preview --env dev</code> to enter a preview window of your Worker script. My bucket contained a static website containing adaptive streaming video content stored in a Backblaze B2 bucket.</p>
 	<figure class="kg-card kg-image-card ">
 

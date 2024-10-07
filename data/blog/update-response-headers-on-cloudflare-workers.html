@@ -4,7 +4,14 @@
 	<p>Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
 	<p>In this post, we’ll learn about load balancers and how to set them up at a low cost with Cloudflare Service Workers.</p>
 	<p>This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
-	<h3>The Basic Pattern</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-basic-pattern">The Basic Pattern</h3>
+		<a href="https://blog.cloudflare.com/#the-basic-pattern" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route">Cloudflare API</a>.</p>
 	<p>Then, modify the hostname of the URL and send the request to the new host.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
@@ -16,7 +23,14 @@
   event.respondWith(fetch(url));
 });</code></pre>
 	<p>This doesn’t do anything useful yet, but this is the basic pattern that will be used in the rest of the examples.</p>
-	<h3>Load Balancer with Random Routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="load-balancer-with-random-routing">Load Balancer with Random Routing</h3>
+		<a href="https://blog.cloudflare.com/#load-balancer-with-random-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you have a list of origin servers, pick a random host to route to.</p>
 	<p>This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p>
 	<pre class="language-javascript"><code class="language-javascript">var hostnames = [
@@ -37,7 +51,15 @@ addEventListener('fetch', event =&gt; {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }</code></pre>
-	<h3>Load Balancer with Fallback</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="load-balancer-with-fallback">Load Balancer with Fallback</h3>
+		<a href="https://blog.cloudflare.com/#load-balancer-with-fallback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
 
@@ -66,7 +88,15 @@ function getRandomInt(max) {
         event.respondWith(response);
     });
 });</code></pre>
-	<h3>Geographic Routing</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="geographic-routing">Geographic Routing</h3>
+		<a href="https://blog.cloudflare.com/#geographic-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
 	<p>You can access it using:</p>
 	<pre class="language-javascript"><code class="language-javascript">var countryCode = event.request.headers.get(‘CF-IPCountry’);</code></pre>
@@ -94,7 +124,15 @@ addEventListener('fetch', event =&gt; {
   
   event.respondWith(fetch(url));
 });</code></pre>
-	<h3>Putting it all together</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="putting-it-all-together">Putting it all together</h3>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p>
 	<pre class="language-javascript"><code class="language-javascript">const US_HOSTS = [
   "0.us.example.com",
@@ -153,7 +191,15 @@ addEventListener('fetch', event =&gt; {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }</code></pre>
-	<h3>Recap</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="recap">Recap</h3>
+		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s load balancer</a>.</p>
 	<p>For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes">recipes</a> on the developer docs page.</p>
 </div>

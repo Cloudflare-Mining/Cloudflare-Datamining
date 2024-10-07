@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Proxying around 5% of the Internet’s requests gives us an interesting vantage point from which to observe malicious behavior. However, it also makes us a target. Aside from the many and varied denial of service (DDoS) attacks that break against our defenses, we also see huge number of phishing campaigns. In this blog post I'll dissect a recent phishing attack that we detected and neutralized with the help of our friends at Bluehost.</p>
 	<p>One attack that is particularly interesting because it appears to be using a brand new WordPress 0day.</p>
-	<h3>A Day Out Phishing</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-day-out-phishing">A Day Out Phishing</h3>
+		<a href="https://blog.cloudflare.com/#a-day-out-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first sign we typically see that indicate a new phishing campaign is underway are the phishing emails themselves. Generally, there's a constant background noise from a few of these emails targeting individual customers every day. However, when a larger campaign starts up that trickle typically turns into a flood of similar messages.</p>
 	<p>Here's an example we've recently received:</p>
 	<figure class="kg-card kg-image-card ">
@@ -15,7 +22,14 @@
 	<p>Looking like the legitimate login page of a target domain, these landing pages have one goal - to collect your credentials. Since these landing pages are quickly identified, the phisher will often go to great lengths to ensure that he or she can put up tens or even hundreds of pages during the lifetime of a campaign, all while being extra careful that these pages can't be traced back to him or her. Generally, this means compromising a large number of vulnerable websites in order to inject a phishing toolkit.</p>
 	<p>It's no surprise that first step in most phishing campaigns will usually be the mass compromise of a large number of vulnerable websites. This is why you will often see a notable uptick in the volume of phishing emails whenever a major vulnerability comes out for one of the popular CMS platforms. This is also why protecting the Internet’s back-office is a critical step in building a better Internet. If vulnerable CMS sites are protected, not only can they flourish, but the thousands of potential victims that could get abused when their infrastructure gets hijacked for malicious purposes are also protected.</p>
 	<p>This is why, at CloudFlare, we feel that providing free, basic security to every website is such important thing and why ultimately it could be such a game changer in building a better Internet.</p>
-	<h3>Back to the phish</h3>
+	<div class="flex anchor relative">
+		<h3 id="back-to-the-phish">Back to the phish</h3>
+		<a href="https://blog.cloudflare.com/#back-to-the-phish" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Returning to our phishing attack, we see that it's no different. Analyzing the “load.cloudflare.com” hyperlink on the message, we see that it's actually a link pointing to a compromised WordPress site hosted by Bluehost.</p>
 	<p><b>Note</b>: This is not a reflection on Bluehost, <i>every</i> hosting provider gets targeted at some point. What's more important is how those hosting providers subsequently respond to reports of compromised sites. In fact, Bluehost should be commended for the speed with which they responded to our requests and the way they handled the affected sites we reported.</p>
 	<p>Every other email in this particular campaign followed the same pattern. Here is the source for another one of those links that uses “activate.cloudflare.com”:</p>
@@ -28,7 +42,14 @@
 	<p>Every phishing email from this campaign has followed exactly the same pattern: a basic email template addressed to $customer informing them that their site has been locked, and inviting them to click on a link that takes them to a compromised WordPress site on Bluehost.</p>
 	<p>It looks like is this attacker harvested a large number of target domains using public DNS and email records identifying administrative email addresses. This became the victim list. The attacker then targeted a convenient, vulnerable CMS platform and injected his or her phishing kit into every innocent domain that's been compromised. Finally, once that is complete the attacker will send out the phishing emails to the victim list.</p>
 	<p>As phishing attacks go, this one is remarkably unsophisticated. All a savvy user had to do to reveal the true nature of this link is a quick mouse over. As soon as you do mouse over, the link you will see -- “activate.cloudflare.com” -- does not match the true destination.</p>
-	<h3>More advanced phishing techniques</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-advanced-phishing-techniques">More advanced phishing techniques</h3>
+		<a href="https://blog.cloudflare.com/#more-advanced-phishing-techniques" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A clever phisher could have used one of the many well known tricks to obfuscate the URL. Below are some of those techniques possible so you will know them if you see them.</p>
 	<ul>
 		<li>
@@ -93,7 +114,14 @@
 	<p>The secret to this obfuscated URL is to use a non-standard character which happens to be a homoglyph for /. The result? Instead of a page on safesite.com, you are actually taken to a subdomain of the following punycode domain:</p>
 	<p><a href="http://www.safesite.xn--comlogin-g03d.html.evilsite.com">www.safesite.xn--comlogin-g03d.html.evilsite.com</a></p>
 	<p>New obfuscation techniques like these appear all the time. Phishing is both the most common and arguably the most effective method of attack for medium to low skill attackers. Staying up to date with these techniques can be extremely useful when it comes to spotting potential phishing attempts.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After further analysis, it quickly became clear that all of the endpoints in this campaign were compromised WordPress sites running WordPress 4.0 - 4.1.1.</p>
 	<p>The most likely scenario is that a new critical vulnerability has surfaced in WordPress 4.1.1 and earlier. Given that 4.1.1 was, at the time of writing, the most current version of WordPress, this can only mean one thing -- a WordPress 0day in the wild.</p>
 	<p>Checking the WordPress site confirms that that a few hours ago they announced a new critical cross-site scripting vulnerability:</p>
@@ -105,7 +133,14 @@
 	<p>While we can’t confirm for certain that this is the vulnerability our phisher was using, it seems highly likely given the version numbers compromised.</p>
 	<p>Over the last few hours, we've worked closely with our friends at Bluehost to identify the remaining affected sites compromised by this phisher so they could take them offline. A quick response like this essentially renders all remaining phishing emails in this current campaign harmless. The need to quickly neutralize Phishing sites is why CloudFlare engineers developed our own process for rapidly identifying and tagging suspected compromised sites. When a site on our network is flagged as phishing site, we impose an interstitial page that serves to both to warn potential visitors and give the site owner time to fix the issue.</p>
 	<p>You can read more about our own process in this <a href="https://blog.cloudflare.com/127760418">blog post</a>.</p>
-	<h3>How customers can stay safe</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-customers-can-stay-safe">How customers can stay safe</h3>
+		<a href="https://blog.cloudflare.com/#how-customers-can-stay-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By enabling the CloudFlare's WAF, CloudFlare customers have some protection against the sort of cross-site scripting vulnerability involved in this attack. However, anyone can still fall victim to a phishing email. Below are 7 tips to help you stay safe:</p>
 	<ul>
 		<li>

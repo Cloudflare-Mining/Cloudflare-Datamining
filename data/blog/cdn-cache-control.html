@@ -14,9 +14,23 @@
 
 	</figure>
 	<p>We set out to solve these problems and have been working with industry peers who also run large CDNs to create an <a href="https://datatracker.ietf.org/doc/html/draft-cdn-control-header-01">industry standard solution</a> through the Internet Engineering Task Force. CDN-Cache-Control is aimed at providing directives to manage how specific CDNs behave when caching objects.</p>
-	<h2>Introducing CDN-Cache-Control</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-cdn-cache-control">Introducing CDN-Cache-Control</h2>
+		<a href="https://blog.cloudflare.com/#introducing-cdn-cache-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CDN-Cache-Control is a response header field set on the origin to control the behavior of CDN caches separately from other intermediaries that might handle a response. This feature can be used by setting the CDN-Cache-Control and/or <b>Cloudflare-CDN-Cache-Control</b> response header. Both of these new headers support the same directives currently supported by Cache-Control and also have the same semantics and directive precedence. In other words, if you were to copy and paste a Cache-Control value and insert it into either of these new headers, the same caching behavior should be observed.</p>
-	<h2>Header precedence; or, which header should I use when?</h2>
+	<div class="flex anchor relative">
+		<h2 id="header-precedence-or-which-header-should-i-use-when">Header precedence; or, which header should I use when?</h2>
+		<a href="https://blog.cloudflare.com/#header-precedence-or-which-header-should-i-use-when" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When introducing a set of new cache response headers, a question at the forefront of the cache-conscious mind is how will these directives work when combined with each other or other Cache-Control directives? There are several options depending on how these headers are used. An origin can:</p>
 	<ol>
 		<li>
@@ -45,19 +59,69 @@
 	<p>Browser Cache</p>
 	<p>Cache-Control</p>
 	<p>With these headers and directives set, intermediaries know whether it’s safe for something to be cached, how long it should be cached, and what to do once it’s no longer permitted to remain in cache.</p>
-	<h2>Interaction with other Cloudflare features</h2>
-	<h3>Edge Cache TTL Page Rule</h3>
+	<div class="flex anchor relative">
+		<h2 id="interaction-with-other-cloudflare-features">Interaction with other Cloudflare features</h2>
+		<a href="https://blog.cloudflare.com/#interaction-with-other-cloudflare-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="edge-cache-ttl-page-rule">Edge Cache TTL Page Rule</h3>
+		<a href="https://blog.cloudflare.com/#edge-cache-ttl-page-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Edge Cache TTL is a <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-#h_18YTlvNlZET4Poljeih3TJ">page rule</a> that is meant to override the amount of time an asset is cached on the edge (Cloudflare data centers) and therefore overrides directives in Cloudflare-CDN-Cache-Control/CDN-Cache-Control managing how long an asset is cached on the edge. This page rule can be set in the rules section of the dashboard.</p>
-	<h3>Browser Cache TTL Page Rule</h3>
+	<div class="flex anchor relative">
+		<h3 id="browser-cache-ttl-page-rule">Browser Cache TTL Page Rule</h3>
+		<a href="https://blog.cloudflare.com/#browser-cache-ttl-page-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://support.cloudflare.com/hc/en-us/articles/200168276-Understanding-Browser-Cache-TTL">Browser Cache TTL</a> is a page rule that is meant to override the amount of time an asset is cached by browsers/servers downstream of Cloudflare. Therefore, Browser Cache TTL will only modify the <b>Cache-Control</b> response header. Cloudflare-CDN-Cache-Control/CDN-Cache-Control response headers will not be modified by this page rule.</p>
-	<h3>Interaction With Other Origin Response Headers</h3>
+	<div class="flex anchor relative">
+		<h3 id="interaction-with-other-origin-response-headers">Interaction With Other Origin Response Headers</h3>
+		<a href="https://blog.cloudflare.com/#interaction-with-other-origin-response-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Expires response header returned by the origin, which generally directs a browser on how long before an object should be considered stale, will not affect the caching decision at Cloudflare when Cloudflare-CDN-Cache-Control/CDN-Cache-Control is being used.</p>
-	<h3>Interaction with Cloudflare Default Cache Values</h3>
+	<div class="flex anchor relative">
+		<h3 id="interaction-with-cloudflare-default-cache-values">Interaction with Cloudflare Default Cache Values</h3>
+		<a href="https://blog.cloudflare.com/#interaction-with-cloudflare-default-cache-values" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the situation where Cloudflare does not receive Cloudflare-CDN-Cache-Control, CDN-Cache-Control, or Cache-Control values, the general <a href="https://support.cloudflare.com/hc/en-us/articles/200172516#h_51422705-42d0-450d-8eb1-5321dcadb5bc">default values</a> will be used for cacheable assets.</p>
-	<h2>When should I use CDN-Cache-Control?</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-should-i-use-cdn-cache-control">When should I use CDN-Cache-Control?</h2>
+		<a href="https://blog.cloudflare.com/#when-should-i-use-cdn-cache-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Caching is one of the most powerful tools available to ensure all possible requests are served from data centers near visitors to improve a website’s performance and limit origin egress. Cache-Control directives are the rules that dictate how caches should behave. These rules dictate how long something should stay in cache and direct the cache on what to do once that content has expired. However, in a setup where there are numerous caching layers between the origin and client, getting the desired control over each hop a response makes back to the client is complicated. This difficulty is exacerbated by unpredictable behavior by intermediary caches proxying or stripping cache control headers sent downstream.</p>
 	<p>Let’s walk through a few examples for how to use CDN-Cache-Control:</p>
-	<h3>Acme Corp</h3>
+	<div class="flex anchor relative">
+		<h3 id="acme-corp">Acme Corp</h3>
+		<a href="https://blog.cloudflare.com/#acme-corp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Acme Corp is a user of Cloudflare’s CDN. They want to manage their cached asset’s TTLs separately for origin caches, CDN caches, and browser caches. Previously, Page Rules were required to specify their desired behavior. Now with CDN-Cache-Control, this common scenario can be accomplished solely through the use of origin-set response headers.</p>
 	<p><b>Before</b></p>
 	<p>Headers:</p>
@@ -111,7 +175,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/748TZ8fC9P7Fpcc7HlDQHS/19603e78f3bb852d02a9a55dc75fda2a/image3-7.png" alt="" class="kg-image" width="1082" height="1654" loading="lazy">
 
 	</figure>
-	<h3>ABC Industries</h3>
+	<div class="flex anchor relative">
+		<h3 id="abc-industries">ABC Industries</h3>
+		<a href="https://blog.cloudflare.com/#abc-industries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ABC Industries uses multiple CDNs stacked together serially and wants cache-specific control over when to serve stale content in the case of an error or during revalidation. This can more easily be expressed by using the new CDN-Cache-Control headers in combination with Cache-Control headers.</p>
 	<p>Previously, if a user wanted to specify when certain intermediaries should serve stale content, this could not be done. It was up to the cache to decide whether or not the directive applied to it and whether it should pass the header downstream. The new headers provide CDN-specific control for when to use stale assets to fulfill requests.</p>
 	<p><b>Before</b></p>
@@ -157,7 +228,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RDiwoaXQRmDRkSNhIi8NA/389f2e84dd764dfe8b014c599ce40732/image4-10.png" alt="" class="kg-image" width="1328" height="1654" loading="lazy">
 
 	</figure>
-	<h2>Try it out!</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Try it out!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Overall, CDN-Cache-Control allows finer grained control of how Cloudflare manages cache lifetimes and revalidation behavior on a per-asset basis.</b></p>
 	<p>If you’re looking for more control over how your CDNs’ cache objects, I encourage you to try these new headers out. And if you’re another CDN reading this, I recommend looking to add support for <a href="https://datatracker.ietf.org/doc/html/draft-cdn-control-header-01">CDN-Cache-Control</a>!</p>
 </div>

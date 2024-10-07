@@ -2,10 +2,24 @@
 <div class="post-content lh-copy gray1">
 	<p>HTTP/2 changes the way web developers optimize their websites. In HTTP/1.1, it’s become common practice to eek out an extra 5% of page load speed by hacking away at your TCP connections and HTTP requests with techniques like spriting, inlining, domain sharding, and concatenation.</p>
 	<p>Life’s a little bit easier in HTTP/2. It gives the typical website a <a href="http://blog.chromium.org/2013/11/making-web-faster-with-spdy-and-http2.html">30% performance gain</a> without a complicated build and deploy process. In this article, we’ll discuss the new best practices for website optimization in HTTP/2.</p>
-	<h3>Web Optimization in HTTP/1.1</h3>
+	<div class="flex anchor relative">
+		<h3 id="web-optimization-in-http-1-1">Web Optimization in HTTP/1.1</h3>
+		<a href="https://blog.cloudflare.com/#web-optimization-in-http-1-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the <a href="https://www.cloudflare.com/application-services/products/website-optimization">website optimization techniques</a> in HTTP/1.1 revolved around minimizing the number of HTTP requests to an origin server. A browser can only open a limited number of simultaneous TCP connections to an origin, and downloading assets over each of those connections is a serial process: the response for one asset has to be returned before the next one can be sent. This is called head-of-line blocking.</p>
 	<p>As a result, web developers began squeezing as many assets as they could into a single connection and finding other ways to trick browsers into avoiding head-of-line blocking. In HTTP/2, some of these practices can actually hurt page load times.</p>
-	<h3>The New Web Optimization Mindset for HTTP/2</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-new-web-optimization-mindset-for-http-2">The New Web Optimization Mindset for HTTP/2</h3>
+		<a href="https://blog.cloudflare.com/#the-new-web-optimization-mindset-for-http-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Optimizing for HTTP/2 requires a different mindset. Instead of worrying about reducing HTTP requests, web developers should focus on tuning their website’s caching behavior. The general rule is to <b>ship small, granular resources</b> so they can be cached independently and transferred in parallel.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -14,7 +28,14 @@
 	</figure>
 	<p>This shift occurs because of the <b>multiplexing</b> and <b>header compression</b> features of HTTP/2. Multiplexing lets multiple requests share a single TCP connection, allowing several assets to download in parallel without the unnecessary overhead of establishing multiple connections. This eliminates the head-of-line blocking issue of HTTP/1.1. Header compression further reduces the penalty of multiple HTTP requests, since the overhead for each request is smaller than the uncompressed HTTP/1.1 equivalent.</p>
 	<p>There are two other features of HTTP/2 that also change how you approach web optimization: <b>stream prioritization</b> and <b>server push</b>. The former lets browsers specify what order they want to receive resources, and the latter lets the server send extra resources that the browser doesn’t yet know it needs. To make the most of these new features, web developers need to unlearn some of the HTTP/1.1 best practices that have become second nature to them.</p>
-	<h3>Best Practices for HTTP/2 Web Optimization</h3>
+	<div class="flex anchor relative">
+		<h3 id="best-practices-for-http-2-web-optimization">Best Practices for HTTP/2 Web Optimization</h3>
+		<a href="https://blog.cloudflare.com/#best-practices-for-http-2-web-optimization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Stop Concatenating Files</h4>
 	<p>In HTTP/1.1, web developers often combined all of the CSS for their entire website into a single file. Similarly, JavaScript was also condensed into a single file, and images were combined into a spritesheet. Having a single file for your CSS, JavaScript, and images vastly reduced the amount of HTTP requests, making it a significant performance gain for HTTP/1.1.</p>
 	<figure class="kg-card kg-image-card ">
@@ -71,7 +92,14 @@
 	</figure>
 	<p>Domain sharding should be avoided in HTTP/2. Each shard results in an unnecessary DNS query, TCP connection, and <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS handshake</a> (assuming the servers use different <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS certificates</a>). In HTTP/1.1, that overhead was compensated for by allowing several assets to download in parallel. But, this is no longer the case in HTTP/2: multiplexing allows multiple assets to download in parallel over a single connection. And, similar to asset inlining, domain sharding breaks HTTP/2 stream prioritization because browsers can’t prioritize streams across multiple domains.</p>
 	<p>If you’re currently sharding but want to leverage HTTP/2, you don’t necessarily need to go about refactoring your entire codebase. As discussed in our blog post on <a href="https://blog.cloudflare.com/using-cloudflare-to-mix-domain-sharding-and-spdy">mixing domain sharding and SPDY</a>, browsers recognize when multiple origin servers use the same TLS certificate. When they do, the browser will reuse the same SPDY or HTTP/2 connection for both servers. This still results in multiple DNS queries, but it’s a decent compromise solution if you want the best performance under <a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1">both HTTP/1.1 and HTTP/2</a>.</p>
-	<h3>Some Best Practices Are Still Best Practices</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-best-practices-are-still-best-practices">Some Best Practices Are Still Best Practices</h3>
+		<a href="https://blog.cloudflare.com/#some-best-practices-are-still-best-practices" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fortunately, not everything about web optimization changes in HTTP/2. There’s still several HTTP/1.1 best practices that carry over to HTTP/2. The rest of this article discusses techniques that you should be leveraging regardless of whether you’re optimizing for HTTP/1.1 or HTTP/2.</p>
 	<h4>Keep Reducing DNS Lookups</h4>
 	<p>Before a browser can request your website’s resources, it needs to find the IP address of your server using the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">domain name system (DNS)</a>. Until the DNS responds, the user is left staring at a blank screen. HTTP/2 is designed to optimize how web browsers communicate with web servers—it doesn’t affect the performance of the domain name system.</p>
@@ -87,7 +115,14 @@
 	<h4>Keep Eliminating Unnecessary Redirects</h4>
 	<p>HTTP 301 and 302 redirects are sometimes a fact of life when migrating to a new platform or re-designing your website, but they should be eliminated wherever possible. Redirects result in an extra round trip from the browser to the server, and this adds unnecessary latency. You should be particularly wary of redirect chains where it takes more than a single redirect to get to the destination URL.</p>
 	<p>Server-side redirects like 301 and 302 responses aren’t ideal, but they aren’t the worst thing in the world, either. They can still be cached locally, so a browser can recognize the URL as a redirect and avoid an unnecessary round trip. Meta refreshes (e.g., <code>&lt;meta http-equiv="refresh"...</code>), on the other hand, are much more costly because they can’t be cached, and they can have performance issues in certain browsers.</p>
-	<h3>Conclusion (and Caveats)</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-and-caveats">Conclusion (and Caveats)</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-and-caveats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And that’s HTTP/2 web optimization in a nutshell. Avoiding file concatenation, asset inlining, and domain sharding not only speeds up your website, but also makes for a much simpler build and deploy process.</p>
 	<p>There are, however, a few caveats to this discussion. Most servers, content delivery networks (including CloudFlare), and existing applications don’t support server push. Servers and CDNs will catch up soon enough, but for your application to benefit from server push, you’re going to have to make some changes to your codebase.</p>
 	<p>Also keep in mind is that HTTP/2 performance gains depend on the type of content you serve. For example, websites that rely on more external assets will see larger performance gains from HTTP/2 multiplexing than ones that have fewer HTTP requests.</p>

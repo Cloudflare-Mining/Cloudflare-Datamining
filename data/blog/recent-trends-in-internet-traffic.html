@@ -3,7 +3,14 @@
 	<p>A month ago <a href="https://blog.cloudflare.com/covid-19-impacts-on-internet-traffic-seattle-italy-and-south-korea">I wrote about changes in Internet traffic</a> caused by the COVID-19 emergency. At the time I wrote:</p>
 	<p><i>Cloudflare is watching carefully as Internet traffic patterns around the world alter as people alter their daily lives through home-working, cordon sanitaire, and social distancing. None of these traffic changes raise any concern for us. Cloudflare's network is well provisioned to handle significant spikes in traffic. We have not seen, and do not anticipate, any impact on our network's performance, reliability, or security globally.</i></p>
 	<p>That holds true today; our network is performing as expected under increased load. Overall the Internet has shown that it was <a href="https://builtforthis.net">built for this</a>: designed to handle huge changes in traffic, outages, and a changing mix of use. As we are well into April I thought it was time for an update.</p>
-	<h3>Growth</h3>
+	<div class="flex anchor relative">
+		<h3 id="growth">Growth</h3>
+		<a href="https://blog.cloudflare.com/#growth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here's a chart showing the relative change in Internet use as seen by Cloudflare since the beginning of the year. I've calculated moving average of the trailing seven days for each country and use December 29, 2019 as the reference point.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -19,7 +26,14 @@
 
 	</figure>
 	<p>Similar increases in utilization are seen here. The US, Canada, Australia and Brazil are all running at between 40% and 50% the level of use at the beginning of the year.</p>
-	<h3>Stability</h3>
+	<div class="flex anchor relative">
+		<h3 id="stability">Stability</h3>
+		<a href="https://blog.cloudflare.com/#stability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We measure the TCP <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT (round trip time)</a> between our servers and visitors to Internet properties that are Cloudflare customers. This gives us a measure of the speed of the networks between us and end users, and if the RTT increases it is also a measure of congestion along the path.</p>
 	<p>Looking at TCP RTT over the last 90 days can help identify changes in congestion or the network. Cloudflare connects widely to the Internet via peering (and through the use of transit) and we connect to the <a href="https://bgp.he.net/report/exchanges#_participants">largest number of Internet exchanges worldwide</a> to ensure fast access for all users.</p>
 	<p>Cloudflare is also present in 200 cities worldwide; thus the TCP RTT seen by Cloudflare gives a measure of the performance of end-user networks within a country. Here's a chart showing the median and 95th percentile TCP RTT in the UK in the last 90 days.</p>
@@ -37,7 +51,14 @@
 	</figure>
 	<p>The picture here is slightly different. Both median and 95th percentile TCP RTT increased as traffic increased. This indicates that networks aren't operating as smoothly in Italy. It's noticeable, though, that as traffic has plateaued the TCP RTT has improved somewhat (take a look at the 95th percentile) indicating that ISPs and other network providers in Italy have likely taken action to improve the situation.</p>
 	<p>This doesn't mean that Italian Internet is in trouble, just that it's strained more than, say, the Internet in the UK.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet has seen incredible, sudden growth in traffic but continues to operate well. What Cloudflare sees reflects what we've heard anecdotally: some end-user networks are feeling the strain of the sudden change of load but are working and helping us all cope with the societal effects of COVID-19.</p>
 	<p>It's hard to imagine another utility (say electricity, water or gas) coping with a sudden and continuous increase in demand of 50%.</p>
 </div>

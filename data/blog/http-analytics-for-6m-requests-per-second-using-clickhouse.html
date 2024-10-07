@@ -19,7 +19,14 @@
 	</ul>
 	<p>In this blog post I'm going to talk about the exciting evolution of the Cloudflare analytics pipeline over the last year. I'll start with a description of the old pipeline and the challenges that we experienced with it. Then, I'll describe how we leveraged ClickHouse to form the basis of a new and improved pipeline. In the process, I'll share details about how we went about schema design and performance tuning for ClickHouse. Finally, I'll look forward to what the Data team is thinking of providing in the future.</p>
 	<p>Let's start with the old data pipeline.</p>
-	<h3>Old data pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="old-data-pipeline">Old data pipeline</h3>
+		<a href="https://blog.cloudflare.com/#old-data-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data">More data, more data</a> blog posts from the Data team.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MY5UJgdkM35pwDy4mMOxt/17a5c1cf18a4e653aa440225ce71ad12/Old-system-architecture.jpg" alt="Old-system-architecture" class="kg-image" width="2171" height="551" loading="lazy">
@@ -86,7 +93,14 @@
 	<p>Over time, as our request volume grew, the challenges of operating this pipeline became more apparent, and we realized that this system was being pushed to its limits. This realization inspired us to think about which components would be ideal candidates for replacement, and led us to build new data pipeline.</p>
 	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
 	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
-	<h3>ClickHouse</h3>
+	<div class="flex anchor relative">
+		<h3 id="clickhouse">ClickHouse</h3>
+		<a href="https://blog.cloudflare.com/#clickhouse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>"ClickHouse не тормозит."
 			Translation from Russian: ClickHouse doesn't have brakes (or isn't slow)
@@ -134,7 +148,14 @@
 		</li>
 	</ul>
 	<p>After unsuccessful attempts with Flink, we were skeptical of ClickHouse being able to keep up with the high ingestion rate. Luckily, early prototype showed promising performance and we decided to proceed with old pipeline replacement. The first step in replacing the old pipeline was to design a schema for the new ClickHouse tables.</p>
-	<h3>ClickHouse schema design</h3>
+	<div class="flex anchor relative">
+		<h3 id="clickhouse-schema-design">ClickHouse schema design</h3>
+		<a href="https://blog.cloudflare.com/#clickhouse-schema-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once we identified ClickHouse as a potential candidate, we began exploring how we could port our existing Postgres/Citus schemas to make them compatible with ClickHouse.</p>
 	<p>For our <a href="https://api.cloudflare.com/#zone-analytics-dashboard">Zone Analytics API</a> we need to produce many different aggregations for each zone (domain) and time period (minutely / hourly / daily / monthly). For deeper dive about specifics of aggregates please follow Zone Analytics API documentation or this handy <a href="https://docs.google.com/spreadsheets/d/1zQ3yI3HB2p8hiM-Jwvq1-MaeEyIouix2I-iUAPZtJYw/edit#gid=1788221216">spreadsheet</a>.</p>
 	<p>These aggregations should be available for any time range for the last 365 days. While ClickHouse is a really great tool to work with non-aggregated data, with our volume of 6M requests per second we just cannot afford yet to store non-aggregated data for that long.</p>
@@ -278,7 +299,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZmeMrcqIgAI99UJgfx1HK/2a418131e5e8bf9bd4863da9af9c3e9a/Schema-design--2.jpg" alt="Schema-design--2" class="kg-image" width="557" height="316" loading="lazy">
 	</figure>
 	<p>Once schema design was acceptable, we proceeded to performance testing.</p>
-	<h3>ClickHouse performance tuning</h3>
+	<div class="flex anchor relative">
+		<h3 id="clickhouse-performance-tuning">ClickHouse performance tuning</h3>
+		<a href="https://blog.cloudflare.com/#clickhouse-performance-tuning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We explored a number of avenues for performance improvement in ClickHouse. These included tuning index granularity, and improving the merge performance of the SummingMergeTree engine.</p>
 	<p>By default ClickHouse recommends to use 8192 index granularity. There is <a href="https://medium.com/@f1yegor/clickhouse-primary-keys-2cf2a45d7324">nice article</a> explaining ClickHouse primary keys and index granularity in depth.</p>
 	<p>While default index granularity might be excellent choice for most of use cases, in our case we decided to choose the following index granularities:</p>
@@ -293,7 +321,14 @@
 	<p>Not relevant to performance, but we also disabled the min_execution_speed setting, so queries scanning just a few rows won't return exception because of "slow speed" of scanning rows per second.</p>
 	<p>On the aggregation/merge side, we've made some ClickHouse optimizations as well, like <a href="https://github.com/yandex/ClickHouse/pull/1330">increasing SummingMergeTree maps merge speed</a> by x7 times, which we contributed back into ClickHouse for everyone's benefit.</p>
 	<p>Once we had completed the performance tuning for ClickHouse, we could bring it all together into a new data pipeline. Next, we describe the architecture for our new, ClickHouse-based data pipeline.</p>
-	<h3>New data pipeline</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-data-pipeline">New data pipeline</h3>
+		<a href="https://blog.cloudflare.com/#new-data-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The new pipeline architecture re-uses some of the components from old pipeline, however it replaces its most weak components.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UaoX6fPvFuhN1ecJpbe6v/564c5a0cc67371272bdcbff53253dd10/New-system-architecture.jpg" alt="New-system-architecture" class="kg-image" width="1609" height="553" loading="lazy">
@@ -425,7 +460,14 @@
 		</li>
 	</ul>
 	<p>The whole process took couple of days and over 60+ billions rows of data were transferred successfully with consistency checks. The completion of this process finally led to the shutdown of old pipeline. However, our work does not end there, and we are constantly looking to the future. In the next section, I'll share some details about what we are planning.</p>
-	<h3>Future of Data APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-of-data-apis">Future of Data APIs</h3>
+		<a href="https://blog.cloudflare.com/#future-of-data-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Log Push</h4>
 	<p>We're currently working on something called "Log Push". Log push allows you to specify a desired data endpoint and have your HTTP request logs sent there automatically at regular intervals. At the moment, it's in private beta and going to support sending logs to:</p>
 	<ul>
@@ -454,7 +496,14 @@
 	<p>Google BigQuery provides similar <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query">SQL API</a> and Amazon has product callled <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/sqlref/analytics-sql-reference.html">Kinesis Data analytics</a> with SQL API support as well.</p>
 	<p>Another option we're exploring is to provide syntax similar to <a href="https://api.cloudflare.com/#dns-analytics-properties">DNS Analytics API</a> with filters and dimensions.</p>
 	<p>We're excited to hear your feedback and know more about your analytics use case. It can help us a lot to build new products!</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All this could not be possible without hard work across multiple teams! First of all thanks to other Data team engineers for their tremendous efforts to make this all happen. Platform Operations Team made significant contributions to this project, especially Ivan Babrou and Daniel Dao. Contributions from Marek Vavruša in DNS Team were also very helpful.</p>
 	<p>Finally, Data team at Cloudflare is a small team, so if you're interested in building and operating distributed services, you stand to have some great problems to work on. Check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/613800">Distributed Systems Engineer - Data</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/688056">Data Infrastructure Engineer</a> roles in London, UK and San Francisco, US, and let us know what you think.</p>
 </div>

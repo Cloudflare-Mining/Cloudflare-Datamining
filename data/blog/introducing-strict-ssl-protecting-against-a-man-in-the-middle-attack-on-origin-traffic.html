@@ -8,7 +8,15 @@
 	<p><b>Update:</b> Cloudflare now issues <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">free certificates for the origin</a>.</p>
 	<hr>
 	<p>At CloudFlare, we are always looking for ways to improve the security of our customers’ websites. One of the features we provide is the ability to serve their website encrypted over SSL/TLS. Today we are announcing a new feature to help make encryption on the web safer and more secure: Full SSL (Strict). With strict mode, CloudFlare does additional validation of the identity of the origin server in order to prevent active snooping and modification of your traffic on the Internet backbone. This feature is available today for all paying customers so current and new customers can take advantage of the added security immediately.</p>
-	<h3>Web encryption</h3>
+	<div class="flex anchor relative">
+		<h3 id="web-encryption">Web encryption</h3>
+		<a href="https://blog.cloudflare.com/#web-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Ygkzm4KrzUlKGAMywOLFh/1ba9a86152bc4a5a57d2b68aa97b4711/image00_2.png" alt="We love SSL" class="kg-image" width="500" height="132" loading="lazy">
@@ -31,7 +39,15 @@
 
 	</figure>
 	<p>Operating systems and browsers typically have a list of certificate authorities that they implicitly trust. If a web site presents a certificate that is signed by an untrusted certificate authority, the browser warns the visitor that something could be afoot.</p>
-	<h3>On Path Attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-path-attack">On Path Attack</h3>
+		<a href="https://blog.cloudflare.com/#on-path-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3wL3XrgDCzvh9vFMbGOa2u/c4e70bbbe82f6ad7e65e57c5260c85f9/image02_1.jpg" alt="MitM" class="kg-image" width="259" height="194" loading="lazy">
@@ -39,7 +55,14 @@
 	</figure>
 	<p>One type of attack that could trigger a browser warning is a on-path attack. In this attack, an attacker places himself in between a visitor and a web site, impersonating both. With this attack, the browser thinks it is talking to the server on an encrypted channel, and the server thinks it is talking to the browser, but they are both talking to the attacker who is sitting in the middle. All traffic passes through this attacker, who is able to read and modify any of the data.</p>
 	<p>The certificate authority system is designed to stop the on-path attacks. In TLS, the server uses the private key associated with their certificate to establish a valid connection. The server keeps the key secret, so the attacker can’t use the site’s real certificate; they have to use one of their own. The attacker has to either convince a certificate authority to sign their certificate, or just use it, as is. An attacker trying to use a certificate that is not validated by a known trusted CA will be caught immediately by modern browsers. However, not all internet connected services are as <a href="http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf">diligent about checking certificates</a>.</p>
-	<h3>Two Segments of the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="two-segments-of-the-internet">Two Segments of the Internet</h3>
+		<a href="https://blog.cloudflare.com/#two-segments-of-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The data for visitors of sites that use CloudFlare travels over the Internet through two segments. The front-end, from the user to CloudFlare, and the back-end from CloudFlare to the host’s web server. Ideally, both segments of this communication would be secure.</p>
 	<p>The front-end is a dangerous place for data that is sent unencrypted and unauthenticated. Messages have to go from the browser, through the local wired or wireless network to the modem and the Internet service provider, before reaching the Internet and CloudFlare’s servers. Malicious parties can read or modify the messages anywhere in this chain. For example, using an unencrypted site at a coffee shop could expose your private data for all to see.</p>
 	<figure class="kg-card kg-image-card ">
@@ -60,7 +83,14 @@
 
 	</figure>
 	<p>Sending your Internet traffic through so many computers unencrypted certainly seems like a risky move.</p>
-	<h3>CloudFlare’s SSL options</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-ssl-options">CloudFlare’s SSL options</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-ssl-options" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Until today, CloudFlare offered three options for SSL/TLS for site operators: <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-Full-Full-Strict-mean-">Off, Flexible and Full</a>. They are available in the site’s control panel under “CloudFlare Settings” and in the Page Rules section for a given zone.</p>
 	<p>We are now introducing a new option: Full SSL (Strict). There are now three different modes for enabling SSL: Flexible SSL, Full SSL, and Full SSL (Strict). Below is a description of what the different options mean.</p>
 	<h4>Flexible SSL - front-end over TLS, back-end unencrypted</h4>
@@ -88,7 +118,14 @@
 
 	</figure>
 	<p>Above: Full SSL (Strict) - front-end over TLS, back-end over TLS (validated)</p>
-	<h3>Giving Back</h3>
+	<div class="flex anchor relative">
+		<h3 id="giving-back">Giving Back</h3>
+		<a href="https://blog.cloudflare.com/#giving-back" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the core technologies CloudFlare uses for TLS connections is the open source web server/reverse proxy called <a href="http://nginx.org">nginx</a>. The current public version of nginx does not have the ability to validate a certificate when talking to an origin server. In the spirit of open source and making the web a safer place, we have upstreamed our changes to nginx that <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004967.html">enable origin certificate validation</a>. We also added support for SNI (Server Name Identification) to allow nginx to speak to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2014-February/004966.html">multiple domains behind the same IP over TLS</a>.</p>
 	<p>Threats on the Internet are changing and evolving constantly. We hope this option lets web site operators and web site visitors sleep easier knowing that their data is protected in transit, even against highly motivated and capable attackers.</p>
 </div>

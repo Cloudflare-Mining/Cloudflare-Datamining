@@ -8,10 +8,24 @@
 	<p>Last November, we <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">announced</a> that Pages is now a full-stack development platform with our open beta integration with Cloudflare Workers. Using file-based routing, you can drop your Pages Functions into a <code>/functions</code> folder and deploy them alongside your static assets to add dynamic functionality to your site. However, throughout this beta period, we observed the types of projects users have been building, noticed some common patterns, and identified ways to make these users more efficient.</p>
 	<p>There are certain functionalities that are shared between projects; for example, validating authorization headers, creating an API server, reporting errors, and integrating with third-party vendors to track aspects like performance. The frequent need for these patterns across projects made us wonder, “What if we could provide the ready-made code for developers to add to their existing project?”</p>
 	<p>Introducing Pages Plugins!</p>
-	<h2>What’s a Pages Plugin?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-a-pages-plugin">What’s a Pages Plugin?</h2>
+		<a href="https://blog.cloudflare.com/#whats-a-pages-plugin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a>, we introduced file-based routing, so users could avoid writing their own routing logic, significantly reducing the amount of boilerplate code a typical application requires. Pages Plugins aims to offer a similar experience!</p>
 	<p>A Pages Plugin is a reusable – and customizable – chunk of runtime code that can be incorporated anywhere within your Pages application. A Plugin is effectively a composable Pages Function, granting Plugins the full power of Functions (and therefore, Workers), including the ability to set up middleware, parameterized routes, and static assets.</p>
-	<h2>How does it work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">How does it work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Pages Plugins is launching with a couple of ready-made solutions for Sentry, Honeycomb, and Stytch (more below), but it’s important to note that developers anywhere can create and share their Pages Plugins, too! You just need to install a Plugin, mount it to a route within the <code>/functions</code> directory, and configure the Plugin according to its needs.</p>
 	<p>Let’s take a look at a Plugins example for a hypothetical ACME logger:</p>
 	<p>Assume you find an <code>@acme/pages-plugin-logger</code> package on npm and want to use it within your application – you’d install, import, and invoke it as you would any other npm module. After passing through the required (hypothetical) configuration and mounting it as the top-level middleware’s <code>onRequest</code> export, the ACME logger will be reporting on all incoming requests:</p>
@@ -25,7 +39,14 @@ export const onRequest = MyLogger({
  secret: "password",
 });</code></pre>
 	<p>You can help grow the Plugins ecosystem by building and sharing your Plugins on <a href="https://www.npmjs.com">npm</a> and our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/community-plugins">developer documentation</a>, and you can immediately get started by using one of Cloudflare’s official launch partner Plugins today.</p>
-	<h2>Introducing our Plugins launch partners</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-our-plugins-launch-partners">Introducing our Plugins launch partners</h2>
+		<a href="https://blog.cloudflare.com/#introducing-our-plugins-launch-partners" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Pages, we’re always working to see how we can best cater to user workflows by integrating directly with users’ preferred tools. We see Plugins as an excellent opportunity to collaborate with popular third-party observability, monitoring, and authentication providers to provide their own Pages Plugins.</p>
 	<p>Today, we’re proud to launch our Pages Plugins with <a href="https://sentry.io/welcome">Sentry</a>, <a href="https://www.honeycomb.io">Honeycomb</a> and <a href="https://stytch.com">Stytch</a> as official partners!</p>
 	<figure class="kg-card kg-image-card ">
@@ -33,7 +54,14 @@ export const onRequest = MyLogger({
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UfnNcBSdnluYtxgQIpI4v/653824488f020f8f15e4c3627130f7df/image2-22.png" alt="Pages Plugins Partners" class="kg-image" width="540" height="108" loading="lazy">
 
 	</figure>
-	<h3><a href="https://sentry.io/welcome">Sentry</a></h3>
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://sentry.io">Sentry</a> provides developer-first application monitoring for real-time insights into your production deployments. With Sentry you can see the errors, crashes, or latencies experienced while using your app and get the deep context needed to solve issues quickly, like the line of code where the error occurred, the developer or commit that introduced the error, or the API call or database query causing the slowdown. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry">Sentry Plugin</a> automatically captures any exceptions in your Pages Functions and sends them to Sentry where you can aggregate, analyze, and triage any issues your application encounters.</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/_middleware.ts
 
@@ -42,7 +70,15 @@ import sentryPlugin from "@cloudflare/pages-plugin-sentry";
 export const onRequest = sentryPlugin({
  dsn: "YOUR_SENTRY_DSN",
 });</code></pre>
-	<h3><a href="https://www.honeycomb.io">Honeycomb</a></h3>
+
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Similarly, Honeycomb is also an observability and monitoring platform meant to visualize, analyze and improve application quality and performance to help you find patterns and outliers in your application data. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb">Honeycomb Plugin</a> creates traces for every request that your Pages application receives and automatically sends that information to Honeycomb for analysis.</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/_middleware.ts
 
@@ -52,7 +88,15 @@ export const onRequest = honeycombPlugin({
  apiKey: "YOUR_HONEYCOMB_API_KEY",
  dataset: "YOUR_HONEYCOMB_DATASET_NAME",
 });</code></pre>
-	<h3><a href="https://stytch.com/?utm_source=cloudflare&amp;utm_medium=blog">Stytch</a></h3>
+
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Observability is just one use case of how Pages Plugins can help you build a more powerful app. Stytch is an API-first platform that improves security and promotes a better user experience with passwordless authentication. Our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch">Stytch Plugin</a> transparently validates user sessions, allowing you to easily protect parts of your application behind a Stytch login.</p>
 	<pre class="language-typescript"><code class="language-typescript">// ./functions/_middleware.ts
 
@@ -64,7 +108,15 @@ export const onRequest = stytchPlugin({
   secret: "YOUR_STYTCH_PROJECT_SECRET",
   env: envs.live
 });</code></pre>
-	<h2>More Plugins, more fun!</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="more-plugins-more-fun">More Plugins, more fun!</h2>
+		<a href="https://blog.cloudflare.com/#more-plugins-more-fun" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a developer platform, it’s crucial to build relationships with the creators of the tooling and frameworks you use alongside Pages, and we look forward to growing our partnership ecosystem even more in the future. However, beyond partnerships, we realize there are some more extremely useful Plugins that we built out to get you started!</p>
 	<ul>
 		<li>
@@ -81,12 +133,33 @@ export const onRequest = stytchPlugin({
 		</li>
 	</ul>
 	<p>Over the next couple of months we will be working to build out some of the most requested Plugins relevant to your projects. For now, you can find all officially supported Plugins in our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins">developer documentation</a>.</p>
-	<h2>No time to wait? Author your own!</h2>
+	<div class="flex anchor relative">
+		<h2 id="no-time-to-wait-author-your-own">No time to wait? Author your own!</h2>
+		<a href="https://blog.cloudflare.com/#no-time-to-wait-author-your-own" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But don’t let us be your bottleneck! The beauty of Plugins is how easy they are to create and distribute. In fact, we <b>encourage</b> you to try out our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins">documentation</a> in order to create and share your own Plugin because chances are if you’re building a Plugin for your own project, there is someone else who would benefit greatly from it too!</p>
 	<p>We're excited to see Plugins from the community solving their own common use-cases or as integrations with their favorite platforms. Once you’ve built a Plugin, you can surface your work if you choose by creating a PR against <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/community-plugins">the Community Plugins page in our documentation</a>. This way any Pages user can read about your Plugin and mount it in their own Pages application.</p>
-	<h2>What’s next for Pages Functions</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-pages-functions">What’s next for Pages Functions</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-pages-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you try out Plugins and take advantage of our Functions offering, it’s important to note there are some truly exciting updates coming soon. As we march toward the Functions general availability launch, we will provide proper analytics and logging, so you can have better insight into your site’s performance and visibility into issues for debugging. Additionally, with R2 now in open beta, and D1 in the works, we’re excited to provide support for R2 and D1 bindings for your full stack Pages projects soon!</p>
 	<p>Of course, because Functions is still in open beta, we currently offer 100k requests per day for free, however, as we aim for general availability of Functions, you can expect a billing model similar to the <a href="https://developers.cloudflare.com/workers/platform/pricing">Workers Paid</a> billing model.</p>
-	<h2>Share what you build</h2>
+	<div class="flex anchor relative">
+		<h2 id="share-what-you-build">Share what you build</h2>
+		<a href="https://blog.cloudflare.com/#share-what-you-build" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While you begin building out your Plugin, be sure to reach out to us in our <a href="https://discord.gg/cloudflaredev">Cloudflare Developers Discord server</a> in the #pages-plugins channel. We’d love to see what you’re building and help you along the way!</p>
 </div>

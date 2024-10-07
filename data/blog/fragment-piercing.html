@@ -6,16 +6,37 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4iw5pvW4frJry6aDHbW1/202f91d068a48ce12a36a2cecf97fe64/image5-11.png" alt="Incremental adoption of micro-frontends with Cloudflare Workers" class="kg-image" width="1200" height="675" loading="lazy">
 
 	</figure>
-	<h2>Bring micro-frontend benefits to legacy Web applications</h2>
+	<div class="flex anchor relative">
+		<h2 id="bring-micro-frontend-benefits-to-legacy-web-applications">Bring micro-frontend benefits to legacy Web applications</h2>
+		<a href="https://blog.cloudflare.com/#bring-micro-frontend-benefits-to-legacy-web-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recently, we wrote about <a href="https://blog.cloudflare.com/better-micro-frontends">a new fragment architecture</a> for building Web applications that is fast, cost-effective, and scales to the largest projects, while enabling a fast iteration cycle. The approach uses multiple collaborating Cloudflare Workers to render and stream micro-frontends into an application that is interactive faster than traditional client-side approaches, leading to better user experience and SEO scores.</p>
 	<p>This approach is great if you are starting a new project or have the capacity to rewrite your current application from scratch. But in reality most projects are too large to be rebuilt from scratch and can adopt architectural changes only in an incremental way.</p>
 	<p>In this post we propose a way to replace only selected parts of a legacy client-side rendered application with server-side rendered fragments. The result is an application where the most important views are interactive sooner, can be developed independently, and receive all the benefits of the micro-frontend approach, while avoiding large rewrites of the legacy codebase. This approach is framework-agnostic; in this post we demonstrate fragments built with React, Qwik, and SolidJS.</p>
-	<h2>The pain of large frontend applications</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-pain-of-large-frontend-applications">The pain of large frontend applications</h2>
+		<a href="https://blog.cloudflare.com/#the-pain-of-large-frontend-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many large frontend applications developed today fail to deliver good user experience. This is often caused by architectures that require large amounts of JavaScript to be downloaded, parsed and executed before users can interact with the application. Despite efforts to defer non-critical JavaScript code via lazy loading, and the use of server-side rendering, these large applications still take too long to become interactive and respond to the user's inputs.</p>
 	<p>Furthermore, large monolithic applications can be complex to build and deploy. Multiple teams may be collaborating on a single codebase and the effort to coordinate testing and deployment of the project makes it hard to develop, deploy and iterate on individual features.</p>
 	<p>As outlined in our <a href="https://blog.cloudflare.com/better-micro-frontends">previous post</a>, micro-frontends powered by <a href="https://workers.cloudflare.com">Cloudflare Workers</a> can solve these problems but converting an application monolith to a micro-frontend architecture can be difficult and expensive. It can take months, or even years, of engineering time before any benefits are perceived by users or developers.</p>
 	<p>What we need is an approach where a project can incrementally adopt micro-frontends into the most impactful parts of the application incrementally, without needing to rewrite the whole application in one go.</p>
-	<h2>Fragments to the rescue</h2>
+	<div class="flex anchor relative">
+		<h2 id="fragments-to-the-rescue">Fragments to the rescue</h2>
+		<a href="https://blog.cloudflare.com/#fragments-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The goal of a fragment based architecture is to significantly <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">decrease loading and interaction latency</a> for large web applications (as measured via <a href="https://web.dev/vitals">Core Web Vitals</a>) by breaking the application into micro-frontends that can be quickly rendered (and cached) in Cloudflare Workers. The challenge is how to integrate a micro-frontend fragment into a legacy client-side rendered application with minimal cost to the original project.</p>
 	<p>The technique we propose allows us to convert the most valuable parts of a legacy application’s UI, in isolation from the rest of the application.</p>
 	<p>It turns out that, in many applications, the most valuable parts of the UI are often nested within an application “shell” that provides header, footer, and navigational elements. Examples of these include a login form, product details panel in an <a href="https://www.cloudflare.com/ecommerce">e-commerce application</a>, the inbox in an email client, etc.</p>
@@ -26,7 +47,14 @@
 	<p></p><!--kg-card-end: html-->
 	<p>This approach enables engineering teams to deliver valuable improvements to users in just a fraction of the time and engineering cost compared to traditional approaches, which either sacrifice user experience improvements, or require a lengthy and high-risk rewrite of the entire application. It allows teams with monolithic single-page applications to adopt a micro-frontend architecture incrementally, target the improvements to the most valuable parts of the application, and therefore front-load the return on investment.</p>
 	<p>An interesting challenge in extracting parts of the UI into server-side rendered fragments is that, once displayed in the browser, we want the legacy application and the fragments to feel like a single application. The fragments should be neatly embedded within the legacy application shell, keeping the application accessible by correctly forming the DOM hierarchy, but we also want the server-side rendered fragments to be displayed and become interactive as quickly as possible — even before the legacy client-side rendered application shell comes into existence. How can we embed UI fragments into an application shell that doesn’t exist yet? We resolved this problem via a technique we devised, which we call “fragment piercing”.</p>
-	<h2>Fragment piercing</h2>
+	<div class="flex anchor relative">
+		<h2 id="fragment-piercing">Fragment piercing</h2>
+		<a href="https://blog.cloudflare.com/#fragment-piercing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fragment piercing combines HTML/DOM produced by server-side rendered micro-frontend fragments with HTML/DOM produced by a legacy client-side rendered application.</p>
 	<p>The micro-frontend fragments are rendered directly into the top level of the HTML response, and are designed to become immediately interactive. In the background, the legacy application is client-side rendered as a sibling of these fragments. When it is ready, the fragments are “pierced” into the legacy application – the DOM of each fragment is moved to its appropriate place within the DOM of the legacy application – without causing any visual side effects, or loss of client-side state, such as focus, form data, or text selection. Once “pierced”, a fragment can begin to communicate with the legacy application, effectively becoming an integrated part of it.</p>
 	<p>Here, you can see a “login” fragment and the empty legacy application “root” element at the top level of the DOM, before piercing.</p>
@@ -55,7 +83,14 @@
 	<p>To keep the fragment from moving and causing a visible layout shift during this transition, we apply CSS styles that position the fragment in the same way before and after piercing.</p>
 	<p>At any time an application can be displaying any number of pierced fragments, or none at all. This technique is not limited only to the initial load of the legacy application. Fragments can also be added to and removed from an application, at any time. This allows fragments to be rendered in response to user interactions and client-side routing.</p>
 	<p>With fragment piercing, you can start to incrementally adopt micro-frontends, one fragment at a time. You decide on the granularity of fragments, and which parts of the application to turn into fragments. The fragments don’t all have to use the same Web framework, which can be useful when switching stacks, or during a post-acquisition integration of multiple applications.</p>
-	<h2>The “Productivity Suite” demo</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-productivity-suite-demo">The “Productivity Suite” demo</h2>
+		<a href="https://blog.cloudflare.com/#the-productivity-suite-demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a demonstration of fragment piercing and incremental adoption we have developed a <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite">“productivity suite” demo</a> application that allows users to manage to-do lists, read hacker news, etc. We implemented the shell of this application as a client-side rendered React application — a common tech choice in corporate applications. This is our “legacy application”. There are three routes in the application that have been updated to use micro-frontend fragments:</p>
 	<ul>
 		<li>
@@ -103,7 +138,14 @@
 			<p>Toggle “Show Seams” to see where each fragment is on the current page.</p>
 		</li>
 	</ul>
-	<h2>How it works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">How it works</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The application is composed of a number of building blocks.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -124,9 +166,23 @@
 	<p>The browser then requests the legacy application’s JavaScript. This request is proxied by the Gateway Worker to the Legacy application host. Similarly, any other assets for the legacy application or fragments get routed through the Gateway Worker to the legacy application host or appropriate Fragment Worker.</p>
 	<p>Once the legacy application’s JavaScript has been downloaded and executed, rendering the shell of the application in the process, the fragment piercing kicks in, moving the fragment into the appropriate place in the legacy application, while preserving all of its UI state.</p>
 	<p>While focussed on the login fragment to explain fragment piercing, the same ideas apply to the other fragments implemented in the <code>/todos</code> and <code>/news</code> routes.</p>
-	<h2>The piercing library</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-piercing-library">The piercing library</h2>
+		<a href="https://blog.cloudflare.com/#the-piercing-library" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite being implemented using different Web frameworks, all the fragments are integrated into the legacy application in the same way using helpers from a “<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite/piercing-library">Piercing Library</a>”. This library is a collection of server-side and client-side utilities that we developed, for the demo, to handle integrating the legacy application with micro-frontend fragments. The main features of the library are the <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-gateway.ts#L82"><code>PiercingGateway</code></a> class, <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-fragment-host/piercing-fragment-host.ts#L5">fragment host</a> and <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-fragment-outlet.ts#L31">fragment outlet</a> custom elements, and the <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/message-bus/message-bus.ts#L18"><code>MessageBus</code></a> class.</p>
-	<h3>PiercingGateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="piercinggateway">PiercingGateway</h3>
+		<a href="https://blog.cloudflare.com/#piercinggateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-gateway.ts#L82"><code>PiercingGateway</code></a> class can be used to instantiate a Gateway Worker that handles all requests for our application’s HTML, JavaScript and other assets. The `PiercingGateway` routes requests through to the appropriate Fragment Workers or to the host of the Legacy Application. It also combines the HTML response streams from these fragments with the response from the legacy application into a single HTML stream that is returned to the browser.</p>
 	<p>Implementing a Gateway Worker is straightforward using the Piercing Library. Create a new <code>gateway</code> instance of <code>PiercingGateway</code>, passing it the URL to the legacy application host and a function to determine whether piercing is enabled for the given request. Export the <code>gateway</code> as the default export from the Worker script so that the Workers runtime can wire up its <code>fetch()</code> handler.</p>
 	<pre class="language-ts"><code class="language-ts">const gateway = new PiercingGateway&lt;Env&gt;({
@@ -143,7 +199,15 @@ export default gateway;</code></pre>
   prePiercingStyles: "...",
   shouldBeIncluded: async (request) =&gt; !(await isUserAuthenticated(request)),
 });</code></pre>
-	<h3>Fragment host and outlet</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="fragment-host-and-outlet">Fragment host and outlet</h3>
+		<a href="https://blog.cloudflare.com/#fragment-host-and-outlet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Routing requests and combining HTML responses in the Gateway Worker is only half of what makes piercing possible. The other half needs to happen in the browser where the fragments need to be pierced into the legacy application using the technique we described earlier.</p>
 	<p>The fragment piercing in the browser is facilitated by a pair of <a href="https://html.spec.whatwg.org/multipage/custom-elements.html">custom elements</a>, the fragment host (<a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-fragment-host/piercing-fragment-host.ts#L5"><code>&lt;piercing-fragment-host&gt;</code></a>) and the fragment outlet (<a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/piercing-fragment-outlet.ts#L31"><code>&lt;piercing-fragment-outlet&gt;</code></a>).</p>
 	<p>The Gateway Worker wraps the HTML for each fragment in a fragment host. In the browser, the fragment host manages the life-time of the fragment and is used when moving the fragment’s DOM into position in the legacy application.</p>
@@ -161,7 +225,14 @@ export default gateway;</code></pre>
 }</code></pre>
 	<p>When a fragment outlet is added to the DOM, it searches the current document for its associated fragment host. If found, the fragment host and its contents are moved inside the outlet. If the fragment host is not found, the outlet will make a request to the gateway worker to fetch the fragment HTML, which is then streamed directly into the fragment outlet, using the <a href="https://github.com/marko-js/writable-dom">writable-dom library</a> (a small but powerful library developed by the <a href="https://markojs.com">MarkoJS</a> team).</p>
 	<p>This fallback mechanism enables client-side navigation to routes that contain new fragments. This way fragments can be rendered in the browser via both initial (hard) navigation and client-side (soft) navigation.</p>
-	<h3>Message bus</h3>
+	<div class="flex anchor relative">
+		<h3 id="message-bus">Message bus</h3>
+		<a href="https://blog.cloudflare.com/#message-bus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unless the fragments in our application are completely presentational or self-contained, they also need to communicate with the legacy application and other fragments. The <code>[MessageBus](https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/message-bus/message-bus.ts#L18)</code> is a simple asynchronous, isomorphic, and framework-agnostic communication bus that the legacy application and each of the fragments can access.</p>
 	<p>In our demo application the login fragment needs to inform the legacy application when the user has authenticated. This <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/app/fragments/login/src/components/LoginForm.tsx#L51-L57">message dispatch</a> is implemented in the Qwik <a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/app/fragments/login/src/components/LoginForm.tsx#L38"><code>LoginForm</code></a> component as follows:</p>
 	<pre class="language-js"><code class="language-js">const dispatchLoginEvent = $(() =&gt; {
@@ -182,7 +253,14 @@ export default gateway;</code></pre>
   });
 }, []);</code></pre>
 	<p>We settled on this message bus implementation because we needed a solution that was framework-agnostic, and worked well on both the server as well as client.</p>
-	<h2>Give it a go!</h2>
+	<div class="flex anchor relative">
+		<h2 id="give-it-a-go">Give it a go!</h2>
+		<a href="https://blog.cloudflare.com/#give-it-a-go" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With fragments, fragment piercing, and Cloudflare Workers, you can improve performance as well as the development cycle of legacy client-side rendered applications. These changes can be adopted incrementally, and you can even do so while implementing fragments with a Web framework for your choice.</p>
 	<p>The “Productivity Suite” application demonstrating these capabilities can be found at <a href="https://productivity-suite.web-experiments.workers.dev">https://productivity-suite.web-experiments.workers.dev/</a>.</p>
 	<p>All the code we have shown is open-source and published to Github: <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite">https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite</a>.</p>

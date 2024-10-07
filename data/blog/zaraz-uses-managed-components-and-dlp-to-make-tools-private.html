@@ -11,7 +11,14 @@
 	<p>Over the years, companies have suffered a lot of third party scripts. Those scripts were sometimes hacked, and started hijacking information from visitors to websites that were using them. More often, third party scripts are simply collecting information that could be sensitive, exposing the website visitors in ways that the website owner never intended.</p>
 	<p>Recently we announced that we’re <a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm">open sourcing Managed Components</a>. Managed Components are a new API to load third-party tools in a secure and privacy-aware way. It changes the way third-party tools load, because by default there are no more third-party scripts in it at all. Instead, there are components, which are controlled with a Components Manager like Cloudflare Zaraz.</p>
 	<p>In this blogpost we will discuss how to use Cloudflare Zaraz for granting and revoking permissions from components, and for controlling what information flows into components. Even more exciting, we’re also announcing the upcoming DLP features of Cloudflare Zaraz, that can report, mask and remove PII from information shared with third-parties by mistake.</p>
-	<h3>How are Managed Components better</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-managed-components-better">How are Managed Components better</h3>
+		<a href="https://blog.cloudflare.com/#how-are-managed-components-better" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because Managed Components run isolated inside a Component Manager, they are more private by design. Unlike a script that gets unlimited access to everything on your website, a Managed Component is transparent about what kind of access it needs, and operates under a Component Manager that grants and revokes permissions.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -25,12 +32,26 @@
 	</figure>
 	<p>When you add a Managed Component to your website, the Component Manager will list all the permissions required for this component. Such permissions could be “setting cookies”, “making client-side network requests”, “installing a widget” and more. Depending on the tool, you’ll be able to remove permissions that are optional, if your website maintains a more restrictive approach to privacy.</p>
 	<p>Aside from permissions, the Component Manager also lets you choose what information is exposed to each Managed Component. Perhaps you don’t want to send IP addresses to Facebook? Or rather not send user agent strings to Mixpanel? Managed Components put you in control by telling you exactly what information is consumed by each tool, and letting you filter, mask or hide it according to your needs.</p>
-	<h3>Data Loss Prevention with Cloudflare Zaraz</h3>
+	<div class="flex anchor relative">
+		<h3 id="data-loss-prevention-with-cloudflare-zaraz">Data Loss Prevention with Cloudflare Zaraz</h3>
+		<a href="https://blog.cloudflare.com/#data-loss-prevention-with-cloudflare-zaraz" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another area we’re working on is developing DLP features that let you decide what information to forward to different Managed Components not only by the field type, e.g. “user agent header” or “IP address”, but by the actual content. DLP filters can scan all information flowing into a Managed Component and detect names, email addresses, SSN and more – regardless of which field they might be hiding under.</p>
 	<p>Our DLP Filters will be highly flexible. You can decide to only enable them for users from specific geographies, for users on specific pages, for users with a certain cookie, and you can even mix-and-match different rules. After configuring your DLP filter, you can set what Managed Components you want it to apply for – letting you filter information differently according to the receiving target.</p>
 	<p>For each DLP filter you can choose your action type. For example, you might want to not send any information in which the system detected a SSN, but to only report a warning if a first name was detected. Masking will allow you to replace an email address like <a href="mailto:user@example.com">user@example.com</a> with <a href="mailto:xxxx@xxxxxxx.xxx">xxxx@xxxxxxx.xxx</a>, making sure events containing email addresses are still sent, but without exposing the address itself.</p>
 	<p>While there are many DLP tools available in the market, we believe that the integration between Cloudflare Zaraz’s DLP features and Managed Components is the safest approach, because the DLP rules are effectively fencing the information not only before it is being sent, but before the component even accesses it.</p>
-	<h3>Getting started with Managed Components and DLP</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-managed-components-and-dlp">Getting started with Managed Components and DLP</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-managed-components-and-dlp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Zaraz is the most advanced Component Manager, and you can start using it today. If your third-party tool of course is missing a Managed Component, you can always write a Managed Component of your own, as the technology is completely open sourced.</p>
 	<p>While we’re working on bringing advanced permissions handling, data masking and DLP Filters to all users, you can <a href="https://www.cloudflare.com/managed-components-dlp-sign-up-landing-page">sign up for the closed beta</a>, and we’ll contact you shortly.</p>
 </div>

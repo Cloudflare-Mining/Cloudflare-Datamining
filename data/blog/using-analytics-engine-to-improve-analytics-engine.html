@@ -8,14 +8,28 @@
 	</figure>
 	<p>Workers Analytics Engine is a new tool, <a href="https://blog.cloudflare.com/workers-analytics-engine">announced earlier this year</a>, that enables developers and product teams to build time series analytics about anything, with high dimensionality, high cardinality, and effortless scaling. We built Analytics Engine for teams to gain insights into their code running in Workers, provide analytics to end customers, or even build usage based billing.</p>
 	<p>In this blog post we’re going to tell you about how we use Analytics Engine to build Analytics Engine. We’ve instrumented our own Analytics Engine SQL API using Analytics Engine itself and use this data to find bugs and prioritize new product features. We hope this serves as inspiration for other teams who are looking for ways to instrument their own products and gather feedback.</p>
-	<h3>Why do we need Analytics Engine?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-do-we-need-analytics-engine">Why do we need Analytics Engine?</h3>
+		<a href="https://blog.cloudflare.com/#why-do-we-need-analytics-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Analytics Engine enables you to generate events (or “data points”) from Workers with <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started">just a few lines of code</a>. Using the GraphQL or <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api">SQL API</a>, you can query these events and create useful insights about the business or technology stack. For more about how to get started using Analytics Engine, check out our <a href="https://developers.cloudflare.com/analytics/analytics-engine">developer docs</a>.</p>
 	<p>Since we released the <a href="https://blog.cloudflare.com/analytics-engine-open-beta">Analytics Engine open beta</a> in September, we’ve been adding new features at a rapid clip based on feedback from developers. However, we’ve had two big gaps in our visibility into the product.</p>
 	<p>First, our engineering team needs to answer classic observability questions, such as: how many requests are we getting, how many of those requests result in errors, what are the nature of these errors, etc. They need to be able to view both aggregated data (like average error rate, or p99 response time) and drill into individual events.</p>
 	<p>Second, because this is a newly launched product, we are looking for product insights. By instrumenting the SQL API, we can understand the queries our customers write, and the errors they see, which helps us prioritize missing features.</p>
 	<p>We realized that Analytics Engine would be an amazing tool for both answering our technical observability questions, and also gathering product insight. That’s because we can log an event for every query to our SQL API, and then query for both aggregated performance issues as well as individual errors and queries that our customers run.</p>
 	<p>In the next section, we’re going to walk you through how we use Analytics Engine to monitor that API.</p>
-	<h2>Adding instrumentation to our SQL API</h2>
+	<div class="flex anchor relative">
+		<h2 id="adding-instrumentation-to-our-sql-api">Adding instrumentation to our SQL API</h2>
+		<a href="https://blog.cloudflare.com/#adding-instrumentation-to-our-sql-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Analytics Engine SQL API lets you query events data in the same way you would an ordinary database. For decades, SQL has been the most common language for querying data. We wanted to provide an interface that allows you to immediately start asking questions about your data without having to learn a new query language.</p>
 	<p>Our SQL API parses user SQL queries, transforms and validates them, and then executes them against backend database servers. We then write information about the query back into Analytics Engine so that we can run our own analytics.Writing data into Analytics Engine from a Cloudflare Worker is very simple and <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started">explained in our documentation</a>. We instrument our SQL API in the same way our users do, and this code excerpt shows the data we write into Analytics Engine:</p>
 	<figure class="kg-card kg-image-card ">
@@ -24,11 +38,25 @@
 
 	</figure>
 	<p>With that data now being stored in Analytics Engine, we can then pull out insights about every field we’re reporting.</p>
-	<h2>Querying for insights</h2>
+	<div class="flex anchor relative">
+		<h2 id="querying-for-insights">Querying for insights</h2>
+		<a href="https://blog.cloudflare.com/#querying-for-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having our analytics in an SQL database gives you the freedom to write any query you might want. Compared to using something like metrics which are often predefined and purpose specific, you can define any custom dataset desired, and interrogate your data to ask new questions with ease.</p>
 	<p>We need to support datasets comprising trillions of data points. In order to accomplish this, we have implemented a sampling method called <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Adaptive Bit Rate</a> (ABR). With ABR, if you have large amounts of data, your queries may be returned sampled events in order to respond in reasonable time. If you have more typical amounts of data, Analytics Engine will query all your data. This allows you to run any query you like and still get responses in a short length of time. Right now, you have to <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling">account for sampling in how you make your queries</a>, but we are exploring making it automatic.</p>
 	<p>Any data visualization tool can be used to visualize your analytics. At Cloudflare, we heavily use Grafana (<a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana">and you can too!</a>). This is particularly useful for observability use cases.</p>
-	<h3>Observing query response times</h3>
+	<div class="flex anchor relative">
+		<h3 id="observing-query-response-times">Observing query response times</h3>
+		<a href="https://blog.cloudflare.com/#observing-query-response-times" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One query we pay attention to gives us information about the performance of our backend database clusters:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -42,7 +70,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UchtUYBtnDuXwKO7afWUc/f5e25e6059b2b411fa83f66ca7fc04d0/carbon--2-.png" alt="" class="kg-image" width="2000" height="1277" loading="lazy">
 
 	</figure>
-	<h3>Customer insights from high-cardinality data</h3>
+	<div class="flex anchor relative">
+		<h3 id="customer-insights-from-high-cardinality-data">Customer insights from high-cardinality data</h3>
+		<a href="https://blog.cloudflare.com/#customer-insights-from-high-cardinality-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another use of Analytics Engine is to draw insights out of customer behavior. Our SQL API is particularly well-suited for this, as you can take full advantage of the power of SQL. Thanks to our ABR technology, even expensive queries can be carried out against huge datasets.</p>
 	<p>We use this ability to help prioritize improvements to Analytics Engine. Our SQL API supports a fairly standard dialect of SQL but isn’t feature-complete yet. If a user tries to do something unsupported in an SQL query, they get back a structured error message. Those error messages are reported into Analytics Engine. We’re able to aggregate the kinds of errors that our customers encounter, which helps inform which features to prioritize next.</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,7 +99,14 @@
 
 	</figure>
 	<p>Inside Cloudflare, we have historically relied on querying our backend database servers for this type of information. Analytics Engine’s SQL API now enables us to open up our technology to our customers, so they can easily gather insights about their services at any scale!</p>
-	<h2>Conclusion and what’s next</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion-and-whats-next">Conclusion and what’s next</h2>
+		<a href="https://blog.cloudflare.com/#conclusion-and-whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The insights we gathered about usage of the SQL API are a super helpful input to our product prioritization decisions. We already added <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-reference">support for <code>substring</code> and <code>position</code> functions</a> which were used in the visualizations above.</p>
 	<p>Looking at the top SQL errors, we see numerous errors related to selecting columns. These errors are mostly coming from some usability issues related to the Grafana plugin. Adding support for the DESCRIBE function should alleviate this because without this, the Grafana plugin doesn’t understand the table structure. This, as well as other improvements to our Grafana plugin, is on our roadmap.</p>
 	<p>We also can see that users are trying to query time ranges for older data that no longer exists. This suggests that our customers would appreciate having extended data retention. We’ve recently extended our retention from 31 to 92 days, and we will keep an eye on this to see if we should offer further extension.</p>

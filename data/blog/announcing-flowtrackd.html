@@ -11,11 +11,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3cB4AX4qGrbT7hbc2AH2fP/e0166125a582e515fe929634af6377a3/Social---Case-Study-Quote-template-2.png" alt="" i="" know="" you="" call="" this="" service="" magic="" transit,="" but="" now="" why."="" -="" webhost="" limited,="" when="" first="" hearing="" about="" flowtrackd"="" class="kg-image" width="1600" height="800" loading="lazy">
 
 	</figure>
-	<h3>TCP-Based DDoS Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="tcp-based-ddos-attacks">TCP-Based DDoS Attacks</h3>
+		<a href="https://blog.cloudflare.com/#tcp-based-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the first quarter of 2020, one out of every two L3/4 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a> Cloudflare mitigated was an <a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood">ACK Flood</a>, and over 66% of all L3/4 attacks were <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP</a> based. Most types of DDoS attacks can be mitigated by finding unique characteristics that are present in all attack packets and using that to distinguish ‘good’ packets from the ‘bad’ ones. This is called "stateless" mitigation, because any packet that has these unique characteristics can simply be dropped without remembering any information (or "state") about the other packets that came before it. However, when attack packets have no unique characteristics, then "stateful" mitigation is required, because whether a certain packet is good or bad depends on the other packets that have come before it.</p>
 	<p>The most sophisticated types of TCP flood require stateful mitigation, where every TCP connection must be tracked in order to know whether any particular TCP packet is part of an active connection. That kind of mitigation is called "flow tracking", and it is typically implemented in Linux by the <a href="https://en.wikipedia.org/wiki/Iptables">iptables</a> conntrack module. However, DDoS protection with conntrack is not as simple as flipping the iptable switch, especially at the scale and complexity that Cloudflare operates in. If you're interested to learn more, in <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows">this</a> blog we talk about the technical challenges of implementing iptables conntrack.</p>
 	<p>Complex TCP DDoS attacks pose a threat as they can be harder to detect and mitigate. They therefore have the potential to cause service degradation, outages and increased false positives with inaccurate mitigation rules. So how does Cloudflare block patternless DDoS attacks without affecting legitimate traffic?</p>
-	<h3>Bidirectional TCP Flow Tracking</h3>
+	<div class="flex anchor relative">
+		<h3 id="bidirectional-tcp-flow-tracking">Bidirectional TCP Flow Tracking</h3>
+		<a href="https://blog.cloudflare.com/#bidirectional-tcp-flow-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using Cloudflare's traditional products, HTTP applications can be protected by the <a href="https://www.cloudflare.com/waf">WAF</a> service, and TCP/UDP applications can be protected by <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a>. These services are "<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">reverse proxies</a>", meaning that traffic passes through Cloudflare in both directions. In this bidirectional topology, we see the entire TCP flow (i.e., segments sent by both the client and the server) and can therefore track the state of the underlying TCP connection. This way, we know if a TCP packet belongs to an existing flow or if it is an “out of state” TCP packet. Out of state TCP packets look just like regular TCP packets, but they don’t belong to any real connection between a client and a server. These packets are most likely part of an attack and are therefore dropped.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +38,14 @@
 	</figure>
 	<p><b>Reverse Proxy: What Cloudflare Sees</b></p>
 	<p>While not trivial, <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows">tracking TCP</a> flows can be done when we serve as a proxy between the client and server, allowing us to absorb and mitigate out of state TCP floods. However it becomes <i>much</i> more challenging when we only see half of the connection: the ingress flow. This visibility into ingress but not egress flows is the default deployment method for Cloudflare’s Magic Transit service, so we had our work cut out for us in identifying out of state packets.</p>
-	<h3>The Challenge With Unidirectional TCP Flows</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-challenge-with-unidirectional-tcp-flows">The Challenge With Unidirectional TCP Flows</h3>
+		<a href="https://blog.cloudflare.com/#the-challenge-with-unidirectional-tcp-flows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Magic Transit, Cloudflare receives inbound internet traffic on behalf of the customer, scrubs DDoS attacks, and routes the clean traffic to the customer’s data center over a tunnel. The data center then responds directly to the eyeball client using a technique known as Direct Server Return (DSR).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,10 +61,24 @@
 	</figure>
 	<p><b>L3 Routing: What Cloudflare Sees</b></p>
 	<p>In a unidirectional flow we don’t see the SYN+ACK sent from the origin to the eyeball client, and therefore can't utilize our existing flow tracking capabilities to identify out of state packets.</p>
-	<h3>Unidirectional TCP Flow Tracking</h3>
+	<div class="flex anchor relative">
+		<h3 id="unidirectional-tcp-flow-tracking">Unidirectional TCP Flow Tracking</h3>
+		<a href="https://blog.cloudflare.com/#unidirectional-tcp-flow-tracking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To overcome the challenges of unidirectional flows, we recently completed the development and rollout of a new system, codenamed flowtrackd (“flow tracking daemon”). flowtrackd is a state machine that hooks into the network interface. Using only the ingress traffic that routes through Cloudflare, flowtrackd determines whether to forward or drop each received TCP packet based on the state of its related connection.</p>
 	<p>The state machine that determines the state of the flows was developed in-house and complements Gatebot and dosd. Together Gatebot, dosd, and flowtrackd provide a comprehensive multi layer DDoS protection.</p>
-	<h3>Releasing flowtrackd to the Wild</h3>
+	<div class="flex anchor relative">
+		<h3 id="releasing-flowtrackd-to-the-wild">Releasing flowtrackd to the Wild</h3>
+		<a href="https://blog.cloudflare.com/#releasing-flowtrackd-to-the-wild" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And it works! Less than a day after releasing flowtrackd to an early access customer, flowtrackd automatically detected and mitigated an ACK flood that peaked at 6 million packets per second. No downtime, service disruption, or false positives were reported.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -51,7 +86,14 @@
 
 	</figure>
 	<p>flowtrackd Mitigates 6M pps Flood</p>
-	<h3>Cloudflare’s DDoS Protection - Delivered From Every Data Center</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-ddos-protection-delivered-from-every-data-center">Cloudflare’s DDoS Protection - Delivered From Every Data Center</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-ddos-protection-delivered-from-every-data-center" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As opposed to legacy scrubbing center providers with limited network infrastructures, Cloudflare provides DDoS Protection from every one of our data centers in over 200 locations around the world. We write our own software-defined DDoS protection systems. Notice I say system<b>s</b>, because as opposed to vendors that use a dedicated third party appliance, we’re able to write and spin up whatever software we need, deploy it in the optimal location in our tech stack and are therefore not dependent on other vendors or be limited to the capabilities of one appliance.</p>
 	<p>flowtrackd joins the Cloudflare DDoS protection family which includes our veteran <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a> and the younger and energetic <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">dosd</a>. flowtrackd will be available from every one of our data centers, with a total mitigation capacity of over 37 Tbps, protecting our Magic Transit customers against the most complex TCP DDoS attacks.</p>
 	<p><b>New to Magic Transit?</b> Replace your legacy provider with Magic Transit and pay nothing until your current contract expires. Offer expires September 1, 2020. Click <a href="https://www.cloudflare.com/lp/better">here</a> for details.</p>

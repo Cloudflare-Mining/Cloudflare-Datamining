@@ -13,7 +13,14 @@
 
 	</figure>
 	<p>This chart shows the number of HTTP requests per second handled by our systems globally. You can clearly see multiple spikes, and this chart most definitely should not look like a porcupine! The spikes were large in scale - <i>500k to 1M HTTP requests per second</i>. Something very strange was going on.</p>
-	<h3>Tracing the spikes<a href="https://blog.cloudflare.com/#fn1">[1]</a></h3>
+	<div class="flex anchor relative">
+		<h3 id="tracing-the-spikes">Tracing the spikes</h3>
+		<a href="https://blog.cloudflare.com/#tracing-the-spikes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our intuition indicated an attack - but our attack mitigation systems didn't confirm it. We'd seen no major HTTP attacks at those times.</p>
 	<p>It would be <i>bad</i> if we were under such heavy HTTP attack and our mitigation systems didn't notice it. Without more ideas, we went back to one of our favorite debugging tools - <code>tcpdump</code>.</p>
 	<p>The spikes happened every 80 minutes and lasted about 10 minutes. We waited, and tried to catch the offending traffic. Here is what the HTTP traffic looked like on the wire:</p>
@@ -24,7 +31,14 @@
 	</figure>
 	<p>The client had sent some binary junk to our HTTP server on port 80; they weren't even sending a fake GET or POST line!</p>
 	<p>Our server politely responded with HTTP 400 error. This explains why it wasn't caught by our attack mitigation systems. Invalid HTTP requests don't trigger our HTTP DDoS mitigations - it makes no sense to mitigate traffic which is never accepted by NGINX in the first place!</p>
-	<h3>The payload</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-payload">The payload</h3>
+		<a href="https://blog.cloudflare.com/#the-payload" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At first glance the payload sent to HTTP servers seems random. A colleague of mine, <a href="https://twitter.com/chrisbranch">Chris Branch</a>, investigated and proved me wrong. The payload has patterns.</p>
 	<p>Let me show what's happening. Here are the first 24 bytes of the mentioned payload:</p>
 	<figure class="kg-card kg-image-card ">
@@ -58,14 +72,28 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 	</figure>
 	<p>About 80% of the junk requests we received had length of up to 511 bytes, uniformly distributed.</p>
 	<p>The remaining 20% had length uniformly distributed between 512 and 2047 bytes, with a few interesting spikes. For some reason lengths of 979, 1383 and 1428 bytes stand out. The rest of the distribution looks uniform.</p>
-	<h3>The scale</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-scale">The scale</h3>
+		<a href="https://blog.cloudflare.com/#the-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The spikes were large. It takes a lot of firepower to generate a spike in our global HTTP statistics! On the first day the spikes reached about 600k junk requests per second. On second day the score went up to 1M rps. In total we recorded 37 spikes.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/dRBYTfiRAb6aYn3yGhlKQ/34a3df5842671a33b64a4df1f370955a/hattacks.png" alt="" class="kg-image" width="918" height="768" loading="lazy">
 
 	</figure>
-	<h3>Geography</h3>
+	<div class="flex anchor relative">
+		<h3 id="geography">Geography</h3>
+		<a href="https://blog.cloudflare.com/#geography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike L3 attacks, L7 attacks require TCP/IP connections to be fully established. That means the source IP addresses are not spoofed and can be used to investigate the geographic distribution of attacking hosts.</p>
 	<p>The spikes were generated by IP addresses from all around the world. We recorded IP numbers from 4,912 distinct Autonomous Systems. Here are top ASN numbers by number of unique attacking IP addresses:</p>
 	<pre class="language-.txt"><code class="language-.txt">Percent of unique IP addresses seen:
@@ -106,7 +134,14 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2qrKg7vQPH8xcmC2rMOVcn/53e4c167fce350ac13c46ae0c18abd11/hcolos.png" alt="" class="kg-image" width="950" height="768" loading="lazy">
 
 	</figure>
-	<h3>Unique IPs</h3>
+	<div class="flex anchor relative">
+		<h3 id="unique-ips">Unique IPs</h3>
+		<a href="https://blog.cloudflare.com/#unique-ips" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During each of the spikes our systems recorded 200k unique source IP addresses sending us junk requests.</p>
 	<p>Normally we would conclude that whoever generated the attack controlled roughly 200k bots, and that's it. But these spikes were different. It seems the bots rotated IPs aggressively. Here is an example: during these 16 spikes we recorded a total count of a whopping 1.2M unique IP addresses attacking us.</p>
 	<figure class="kg-card kg-image-card ">
@@ -115,7 +150,14 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code></pre>
 
 	</figure>
 	<p>This can be explained by bots churning through IP addresses. We believe that out of the estimated 200k bots, between 50k and 100k bots changed their IP addresses during the 80 minutes between attacks. This resulted in 1.2M unique IP addresses during the 16 spikes happening over 24 hours.</p>
-	<h3>A botnet?</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-botnet">A botnet?</h3>
+		<a href="https://blog.cloudflare.com/#a-botnet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These spikes were unusual for a number of reasons.</p>
 	<ul>
 		<li>

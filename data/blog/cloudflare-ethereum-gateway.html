@@ -9,7 +9,14 @@
 	<p>This is another tool in Cloudflare’s Distributed Web Gateway tool set. Currently, Cloudflare lets you host content on the InterPlanetary File System (IPFS) and access it through your own custom domain. Similarly, the new Ethereum Gateway allows access to the Ethereum network, which you can provision through your custom hostname.</p>
 	<p>This setup makes it possible to add interactive elements to sites powered by <a href="https://blockgeeks.com/guides/smart-contracts">Ethereum smart contracts</a>, a decentralized computing platform. And, in conjunction with the IPFS gateway, this allows hosting websites and resources in a decentralized manner, and has the extra bonus of the added speed, security, and reliability provided by the Cloudflare edge network. You can access our Ethereum gateway directly at <a href="https://cloudflare-eth.com">https://cloudflare-eth.com</a>.</p>
 	<p>This brief primer on how Ethereum and smart contracts work has examples of the many possibilities of using the Cloudflare Distributed Web Gateway.</p>
-	<h3><b>Primer on Ethereum</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="primer-on-ethereum">Primer on Ethereum</h3>
+		<a href="https://blog.cloudflare.com/#primer-on-ethereum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You may have heard of Ethereum as a cryptocurrency. What you may not know is that Ethereum is so much more. Ethereum is a distributed virtual computing network that stores and enforces smart contracts.</p>
 	<p>So, what is a smart contract?</p>
 	<p>Good question. Ethereum smart contracts are simply a piece of code stored on the Ethereum blockchain. When the contract is triggered, it runs on the Ethereum Virtual Machine (EVM). The EVM is a distributed virtual machine that runs smart contract code and produces cryptographically verified changes to the state of the Ethereum blockchain as its result.</p>
@@ -39,10 +46,24 @@
 	<p>What distinguishes smart contracts from ordinary code?</p>
 	<p>The "smart" part of a smart contract is they run autonomously. The "contract" part is the guarantee that the code runs as written.</p>
 	<p>Because this contract is enforced cryptographically, maintained in the tamper-resistant medium of the blockchain and verified by the consensus of the network, these contracts are more reliable than regular contracts which can provoke dispute.</p>
-	<h3><b>Ethereum Smart Contracts vs. Traditional Contracts</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="ethereum-smart-contracts-vs-traditional-contracts">Ethereum Smart Contracts vs. Traditional Contracts</h3>
+		<a href="https://blog.cloudflare.com/#ethereum-smart-contracts-vs-traditional-contracts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A regular contract is enforced by the court system, litigated by lawyers. The outcome is uncertain; different courts rule differently and hiring more or better lawyers can swing the odds in your favor.</p>
 	<p>Smart contract outcomes are predetermined and are nearly incorruptible. However, here be dragons: though the outcome can be predetermined and incorruptible, a poorly written contract might not have the intended behavior, and because contracts are immutable, this is difficult to fix.</p>
-	<h3><b>How are smart contracts written?</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-smart-contracts-written">How are smart contracts written?</h3>
+		<a href="https://blog.cloudflare.com/#how-are-smart-contracts-written" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can write smart contracts in a number of languages, some of which are Turing complete, e.g. <a href="https://solidity.readthedocs.io">Solidity</a>. A Turing complete language lets you write code that can evaluate any computable function. This puts Solidity in the same class of languages as Python and Java. The compiled bytecode is then run on the EVM.</p>
 	<p>The EVM differs from a standard VM in a number of ways:</p>
 	<h5>The EVM is distributed</h5>
@@ -98,12 +119,26 @@
 }</code></pre>
 	<p>Besides defining what a Kitty is, this contract defines two basic functions for transferring and creating kitties. Both are internal and can only be called by contracts that implement <code>KittyBase</code>. The <code>KittyOwnership</code> contract implements both ERC-721 and <code>KittyBase</code>, and implements an external <code>transfer</code> function that calls the internal <code>_transfer</code> function. This code is compiled into bytecode written to the blockchain.</p>
 	<p>By implementing a standardised interface like ERC-721, smart contracts that aren’t specifically aware of CryptoKitties can still interact with the KittyVerse. The CryptoKitties ABI functions allow users to create distributed apps (dApps), of their own design on top of the KittyVerse, and allow other users to use their dApps. This extensibility helps demonstrate the potential of smart contracts.</p>
-	<h3><b>How is this so different?</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="how-is-this-so-different">How is this so different?</h3>
+		<a href="https://blog.cloudflare.com/#how-is-this-so-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Smart contracts are, by definition, public. Everyone can see the terms and understand where the money goes. This is a radically different approach to providing transparency and accountability. Because all contracts and transactions are public and verified by consensus, trust is distributed between the people, rather than centralized in a few big institutions.</p>
 	<p>The trust given to institutions is historic in that we trust them because they have previously demonstrated trustworthiness.</p>
 	<p>The trust placed in consensus-based algorithms is based on the assumption that most people are honest, or more accurately, that no sufficiently large subset of people can collude to produce a malicious outcome. This is the democratisation of trust.</p>
 	<p>In the case of the DAO attack, a majority of nodes <i>agreed</i> to accept an “irregular” state transition. This effectively undid the damage of the attack and demonstrates how, at least in the world of blockchain, perception is reality. Because most people “believed” (accepted) this irregular block, it became a “real,” valid block. Most people think of the blockchain as immutable, and trust the power of consensus to ensure correctness, however if enough people agree to do something irregular, they don't have to keep the rules.</p>
-	<h3><b>So where does Cloudflare fit in?</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="so-where-does-cloudflare-fit-in">So where does Cloudflare fit in?</h3>
+		<a href="https://blog.cloudflare.com/#so-where-does-cloudflare-fit-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Accessing the Ethereum network and its attendant benefits directly requires running complex software, including downloading and cryptographically verifying hundreds of gigabytes of data, which apart from producing technical barriers to entry for users, can also exclude people with low-power devices.</p>
 	<p>To help those users and devices access the Ethereum network, the Cloudflare Ethereum gateway allows any device capable of accessing the web to interact with the Ethereum network in a safe, reliable way.</p>
 	<p>Through our gateway, not only can you explore the blockchain, but if you give our gateway a signed transaction, we’ll push it to the network to allow miners to add it to their blockchain. This means that you can send Ether and even put new contracts on the blockchain without having to run a node.</p>
@@ -113,7 +148,14 @@
 		<p>"We're excited that Cloudflare is bringing their infrastructure expertise to the Ethereum ecosystem. Infura has always believed in the importance of standardized, open APIs and compatibility between gateway providers, so we look forward to collaborating with their team to build a better distributed web." - E.G. Galano, <a href="https://infura.io">Infura</a> co-founder.</p>
 	</blockquote>
 	<p>By providing a gateway to the Ethereum network, we help users make the jump from general web-user to cryptocurrency native, and eventually make the distributed web a fundamental part of the Internet.</p>
-	<h3><b>What can you do with Cloudflare's Gateway?</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-you-do-with-cloudflares-gateway">What can you do with Cloudflare's Gateway?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-you-do-with-cloudflares-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Visit <a href="https://cloudflare-eth.com">cloudflare-eth.com</a> to interact with our example app. But to really explore the Ethereum world, access the RPC API, where you can do anything that can be done on the Ethereum network itself, from examining contracts, to transferring funds.</p>
 	<p>Our Gateway accepts <code>POST</code> requests containing JSON. For a complete list of calls, visit the <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC">Ethereum github page</a>. So, to get the block number of the most recent block, you could run:</p>
 	<pre class="language-bash"><code class="language-bash">curl https://cloudflare-eth.com -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'</code></pre>
@@ -124,7 +166,14 @@
   "result": "0x780f17"
 }</code></pre>
 	<p>We also invite developers to build dApps based on our Ethereum gateway using our API. Our API allows developers to build websites powered by the Ethereum blockchain. Check out <a href="https://developers.cloudflare.com/distributed-web/ethereum-gateway">developer docs</a> to get started. If you want to read more about how Ethereum works check out this <a href="https://medium.com/@preethikasireddy/how-does-ethereum-work-anyway-22d1df506369">deep dive</a>.</p>
-	<h3><b>The architecture</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="the-architecture">The architecture</h3>
+		<a href="https://blog.cloudflare.com/#the-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is uniquely positioned to host an Ethereum gateway, and we have the utmost faith in the products we offer to customers. This is why the Cloudflare Ethereum gateway runs as a Cloudflare customer and we <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfood</a> our own products to provide a fast and reliable gateway. The domain we run the gateway on (<a href="https://cloudflare-eth.com">https://cloudflare-eth.com</a>) uses <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> to cache responses for popular queries made to the gateway. Responses for these queries are answered directly from the Cloudflare edge, which can result in a ~6x speed-up.</p>
 	<p>We also use <a href="https://blog.cloudflare.com/introducing-load-balancing-intelligent-failover-with-cloudflare">Load balancing</a> and <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a> for fast, redundant, and secure content delivery. With Argo Smart Routing enabled, requests and responses to our Ethereum gateway are tunnelled directly from our Ethereum node to the Cloudflare edge using the best possible routing.</p>
 	<figure class="kg-card kg-image-card ">
@@ -134,7 +183,14 @@
 	</figure>
 	<p>Similar to our <a href="https://cloudflare.com/distributed-web-gateway">IPFS gateway</a>, <a href="https://cloudflare-eth.com">cloudflare-eth.com</a> is an <a href="https://www.cloudflare.com/ssl-for-saas-providers">SSL for SaaS</a> provider. This means that anyone can set up the Cloudflare Ethereum gateway as a backend for access to the Ethereum network through their own registered domains. For more details on how to set up your own domain with this functionality, see the Ethereum tab on <a href="https://cloudflare.com/distributed-web-gateway">cloudflare.com/distributed-web-gateway</a>.</p>
 	<p>With these features, you can use Cloudflare’s Distributed Web Gateway to create a fully decentralized website with an interactive backend that allows interaction with the IPFS and Ethereum networks. For example, you can host your content on IPFS (using something like <a href="https://pinata.cloud">Pinata</a> to pin the files), and then host the website backend as a smart contract on Ethereum. This architecture does not require a centralized server for hosting files or the actual website. Added to the power, speed, and security provided by Cloudflare’s edge network, your website is delivered to users around the world with unparalleled efficiency.</p>
-	<h3>Embracing a distributed future</h3>
+	<div class="flex anchor relative">
+		<h3 id="embracing-a-distributed-future">Embracing a distributed future</h3>
+		<a href="https://blog.cloudflare.com/#embracing-a-distributed-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we support technologies that help distribute trust. By providing a gateway to the Ethereum network, we hope to facilitate the growth of a decentralized future.</p>
 	<p>We thank the Ethereum Foundation for their support of a new gateway in expanding the distributed web:</p>
 	<blockquote>

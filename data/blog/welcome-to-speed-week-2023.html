@@ -14,7 +14,14 @@
 	<p>This week we will help you measure what matters. We’ll help you gain insight into your performance, from <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> and APIs to websites and applications. And finally we’ll help you get faster. Quickly.</p>
 	<p>We are proving we are the fastest at what we do. And we are making it as easy as possible for our users to attain those numbers.</p>
 	<p>Welcome to Speed Week.</p>
-	<h3>More megapixels?</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-megapixels">More megapixels?</h3>
+		<a href="https://blog.cloudflare.com/#more-megapixels" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You don't have to go far in the real world to find examples of highly-touted metrics that likely don't capture what you really care about.</p>
 	<p>If you read the announcements each year you’d be forgiven for believing smartphones have devolved into cameras with apps and an antenna. With each new model announced the press releases reference megapixel improvements between the previous and latest model.</p>
 	<p>The number of megapixels alone does not guarantee better image quality. Factors such as sensor size, lens quality, image processing algorithms, and low-light performance also play significant roles in determining the overall camera performance. This has been a widely accepted view for over a <a href="https://www.scientificamerican.com/article/camera-megapixels-why-more-isnt-alw-2012-05">decade now</a>, so why do companies keep pushing it as a metric - and why do users feel it's important?</p>
@@ -22,7 +29,14 @@
 	<p>However it has been categorically proven that <a href="https://blog.cloudflare.com/making-home-internet-faster">bandwidth is not the sole indicator of speed</a>. Just two months ago we published a blog on “Making home Internet faster has little to do with speed”, concluding “While bandwidth plays a part, the latency of the connection – the real Internet “speed” – is more important_<b>”</b>_. The post references a recent paper by two researchers from MIT which supports this point, showing the point of diminishing returns is around 20Mbps for when more bandwidth doesn't mean a webpage loads much faster.</p>
 	<p>Again, the advertised, and generally accepted comparison metric amongst consumers, is incorrect. More bandwidth does not equal faster Internet speeds.</p>
 	<p>Simply put - are you really measuring what matters to you when reviewing your product choices and vendors? Or on reflection have your choices been influenced by dogma for far too long?</p>
-	<h3>Measuring what matters on the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-what-matters-on-the-internet">Measuring what matters on the Internet</h3>
+		<a href="https://blog.cloudflare.com/#measuring-what-matters-on-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Similarly to the smartphone and ISP industries, we at Cloudflare operate in industries where users often compare us against competitors using metrics that likely don't measure what matters to them.</p>
 	<p>Large enterprises use software to selectively shift traffic between Content Delivery Networks (CDNs) based on the lowest possible Time to First Byte (TTFB) score per region. This means if Cloudflare suddenly were to cut its TTFB in half in Africa, for example, we could see a huge influx of traffic in this region from these enterprise customers - likely not doing anything to improve the actual visitor experience of a website.</p>
 	<p>TTFB is often used as a measure of how quickly a web server responds to a request and common web testing services report it. The faster it is the better the web server (in theory). We have known for <a href="https://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles">years</a>, however, that TTFB is not on its own a fair reflection of real world performance.</p>
@@ -41,12 +55,26 @@
 	<p>The other benefit of Real User Monitoring is it includes the speed advantage of new protocols and features designed to improve the customer experience. For example, Time to First Byte is a single connection between the client and the nearest Cloudflare server. This is nothing like how a web browser connects to a website, which uses multiplexing to fetch multiple files at the same time in parallel. There are also products like Early Hints which are designed to take advantage of the “server think time” to send instructions to the browser to begin loading readily-available resources while the server finishes compiling the full response.</p>
 	<p>In Speed Week we will be going deep into why TTFB is a bad metric to care about for websites and web applications, why RUM is the future, and a blog post on the latest Core Web Vital - “Interaction to Next Paint” (INP), and what it means to you as a business.</p>
 	<p>We will also be unveiling a brand-new product which will be the new home of application performance on Cloudflare. The new product will augment synthetic tests from various global locations with <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">real user monitoring data</a> to give administrators the best possible understanding of how their website is performing <i>in the real world.</i> This product will be available for all plan levels.</p>
-	<h3>We’re the fastest, and we can prove it</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-the-fastest-and-we-can-prove-it">We’re the fastest, and we can prove it</h3>
+		<a href="https://blog.cloudflare.com/#were-the-fastest-and-we-can-prove-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's no secret that Cloudflare is fast.</p>
 	<p>However it might not be obvious to the everyday reader just how fast we are, and in just how many areas. &nbsp;Fastest <a href="https://blog.cloudflare.com/network-performance-update-developer-week">compute</a>. Fastest <a href="https://www.dnsperf.com/#!dns-providers">DNS</a>. Fastest <a href="https://blog.cloudflare.com/network-performance-update-developer-week">network</a>. Fastest <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">Zero Trust Network Access (ZTNA)</a>. Fastest Secure Web Gateway (SWG). Fastest <a href="https://blog.cloudflare.com/r2-is-faster-than-s3">object storage</a>. And we’re finding areas we are not empirically the fastest and looking to prove we are number one.</p>
 	<p>We’re also finding ways to migrate customers from legacy providers and applications to Cloudflare as fast as possible. These legacy vendors have locked in companies using confusing terminology and esoteric features, trapping them on sub-par products and making them too afraid to move away. We’re helping those customers escape. <a href="https://blog.cloudflare.com/r2-super-slurper-ga">Super Slurper</a> helps customers move away from S3, Turpentine helps migrate legacy VCL setups to Cloudflare, and our <a href="https://blog.cloudflare.com/descaler-program">Descaler program</a> helps to migrate customers from Zscaler to Cloudflare in a matter of hours. We are building tools and products to help those customers who want to move to the fastest network but are locked in.</p>
 	<p>In Speed Week we’ll cover the latest on these programs and how we are relentlessly pushing to make the migration process as quick and easy as possible for customers who want to move to Cloudflare and put their business on the fastest network around.</p>
-	<h3>Performance matters, whatever the product area</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-matters-whatever-the-product-area">Performance matters, whatever the product area</h3>
+		<a href="https://blog.cloudflare.com/#performance-matters-whatever-the-product-area" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Generally when you hear of performance improvements it's typically through the lens making websites faster. But speed comes in many forms. Take Zero Trust as an example.</p>
 	<p>Measuring Zero Trust performance matters because it impacts your employees' experience and their ability to get their job done. Whether it’s accessing services through access control products, connecting out to the public Internet through a Secure Web Gateway, or securing risky external sites through Remote Browser Isolation, all of these experiences need to be frictionless. But what if your company's Secure Web Gateway is in London and you are in Johannesburg? This can mean a painful, slow, and frustrating employee experience whilst they wait for traffic to be sent to and from London. Slack becomes slow. Zoom becomes slow. Employees become frustrated.</p>
 	<p>The bigger concern, however, is not knowing of these performance issues. For example, if each of your employees are physically located in an office and the connection to critical business systems like Salesforce or Workday worsens, the likelihood is it will become evident quickly. But what about in a remote workforce with employees globally distributed? As a business, you need the ability to understand how your employees are experiencing critical business systems and identify any connection and performance issues they may be experiencing to ensure they get addressed quickly. In Speed Week we’ll unveil our latest Zero Trust offering which will give CIOs and businesses incredible insight into the performance experience of their workforce.</p>
@@ -54,11 +82,26 @@
 	<p>Another area we will shine a spotlight on this week is <i>cache purge</i>. When you think of CDNs it's common to look at them as a large distributed cache. Visitor-requested files are retrieved from an origin and stored on globally distributed CDN servers. This allows visitors to download the file in the quickest possible time by retrieving it from their nearest Cloudflare data center rather than having to traverse the Internet to and from the origin. TTFB will measure the time taken to receive a single file from the nearest location. RUM will measure the time it takes to receive multiple files, cached and uncached, and put them together into the webpage requested. But what about when the file changes on origin?</p>
 	<p>In the scenario where a business is hosting a pricebook as a downloadable file on its website, it is very important to understand how long it takes to remove old copies from Cloudflare cache to ensure customers don't see incorrect prices. This is where measuring <i>cache purge times</i> becomes important. The time taken to remove the invalidated file (old file) from every server in every data center in the CDN is known as the ‘global purge time’. In Speed Week we will explain how we have built our new cache purge architecture to be lightning-fast and what the performance numbers are as a result (spoiler: they are insanely fast).</p>
 	<p>These are just a few examples of what we have in store for the week. We also have blogs on AI, API acceleration, developer platform, networking, protocols, compression, streaming, UI optimization and more.</p>
-	<h3>Speed at the heart of Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="speed-at-the-heart-of-cloudflare">Speed at the heart of Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#speed-at-the-heart-of-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare we put performance at the heart of everything we do.</p>
 	<p>Make sure to follow the Cloudflare blog and social media accounts for all of the week's news, and join us on Cloudflare TV each day for a live discussion of the day's announcements.</p>
 	<p>Welcome to Speed Week.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f64c1d60d834f984604bd18af35fb0a1/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff64c1d60d834f984604bd18af35fb0a1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

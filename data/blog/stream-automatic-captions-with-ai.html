@@ -11,7 +11,14 @@
 	<p>This solution is designed for simplicity, eliminating the need for third-party transcription services and complex workflows. For videos lacking accessibility features like captions, manual transcription can be time-consuming and impractical, especially for large video libraries. Traditionally, it has involved specialized services, sometimes even dedicated teams, to transcribe audio and deliver the text along with video, so it can be displayed during playback. As captions become more widely expected for a variety of reasons, including ethical obligation, legal compliance, and changing audience preferences, we wanted to relieve this burden.</p>
 	<p>With <a href="https://www.cloudflare.com/products/cloudflare-stream">Stream’s integrated solution</a>, the caption generation process is seamlessly integrated into your existing video management workflow, saving time and resources. Regardless of when you uploaded a video, you can easily add automatic captions to enhance accessibility. Captions can now be generated within the Cloudflare Dashboard or via an API request, all within the familiar and unified Stream platform.</p>
 	<p>This feature is designed with utmost consideration for privacy and data protection. Unlike other third-party transcription services that may share content with external entities, your data remains securely within Cloudflare's ecosystem throughout the caption generation process. Cloudflare does not utilize your content for model training purposes. For more information about data protection, review <a href="https://developers.cloudflare.com/workers-ai/privacy">Your Data and Workers AI</a>.</p>
-	<h2>Getting Started</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting Started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting June 20th, 2024, this beta is available for all Stream customers as well as subscribers of the Professional and Business plans, which include 100 minutes of video storage.</p>
 	<p>To get started, upload a video to Stream (from the Cloudflare <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream">Dashboard</a> or via <a href="https://developers.cloudflare.com/stream/uploading-videos/upload-video-file">API</a>).</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">
@@ -21,8 +28,23 @@
 	<p>Captions are usually generated in a few minutes. When captions are ready, the Stream player will automatically be updated to offer them to users. The HLS and DASH manifests are also updated so third party players that support text tracks can display them as well.</p>
 	<p>On-demand videos and recordings of live streams, regardless of when they were created, are supported. While in beta, only English captions can be generated, and videos must be shorter than 2 hours. The quality of the transcription is best on videos with clear speech and minimal background noise.</p>
 	<p>We've been pleased with how well the AI model transcribes different types of content during our tests. That said, there are times when the results aren't perfect, and another method might work better for some use cases. It's important to check if the accuracy of the generated captions are right for your needs.</p>
-	<h2>Technical Details</h2>
-	<h3>Built using Workers AI</h3>
+	<div class="flex anchor relative">
+		<h2 id="technical-details">Technical Details</h2>
+		<a href="https://blog.cloudflare.com/#technical-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="built-using-workers-ai">Built using Workers AI</h3>
+		<a href="https://blog.cloudflare.com/#built-using-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Stream engineering team built this new feature using <a href="https://developers.cloudflare.com/workers-ai">Workers AI</a>, allowing us to access the <a href="https://developers.cloudflare.com/workers-ai/models/whisper">Whisper</a> model – an open source Automatic Speech Recognition model – with a single API call. Using Workers AI radically simplified the AI model deployment, integration, and scaling with an out-of-the-box solution. We eliminated the need for our team to handle infrastructure complexities, enabling us to focus solely on building the automated captions feature.</p>
 	<p>Writing software that utilizes an AI model can involve several challenges. First, there’s the difficulty of configuring the appropriate hardware infrastructure. AI models require substantial computational resources to run efficiently and require specialized hardware, like GPUs, which can be expensive and complex to manage. There’s also the daunting task of deploying AI models at scale, which involve the complexities of balancing workload distribution, minimizing latency, optimizing throughput, and maintaining high availability. Not only does Workers AI solve the pain of managing underlying infrastructure, it also automatically scales as needed.</p>
 	<p>Using Workers AI transformed a daunting task into a Worker that transcribes audio files with less than 30 lines of code.</p>
@@ -68,7 +90,15 @@ export default {
    }
  },
 }</code></pre>
-	<h3>Quickly captioning videos at scale</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="quickly-captioning-videos-at-scale">Quickly captioning videos at scale</h3>
+		<a href="https://blog.cloudflare.com/#quickly-captioning-videos-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Stream team wanted to ensure this feature is fast and performant at scale, &nbsp; which required engineering work to process a high volume of videos regardless of duration.</p>
 	<p>First, our team needed to pre-process the audio prior to running <a href="https://www.cloudflare.com/learning/ai/inference-vs-training">AI inference</a> to ensure the input is compatible with Whisper’s input format and requirements.</p>
 	<p>There is a wide spectrum of variability in video content, from a short grainy video filmed on a phone to a multi-hour high-quality Hollywood-produced movie. Videos may be silent or contain an action-driven cacophony. Also, Stream’s on-demand videos include recordings of live streams which are packaged differently from videos uploaded as whole files. With this variability, the audio inputs are stored in an array of different container formats, with different durations, and different file sizes. We ensured our audio files were properly formatted to be compatible with Whisper’s requirements.</p>
@@ -80,6 +110,13 @@ export default {
 	</figure>
 	<p>To optimize processing speed, our team parallelized as many operations as possible. By concurrently creating the 30-second audio batches and sending requests to Workers AI, we take full advantage of the scalability of the Workers AI platform. Doing this greatly reduces the time it takes to generate captions, but adds some additional complexity. Because we are sending requests to Workers AI in parallel, transcription responses may arrive out-of-order. For example, if a video is one minute in duration, the request to generate captions for the second 30 seconds of a video may complete before the request for the first 30 seconds of the video. The captions need to be sequential to align with the video, so our team had to maintain an understanding of the audio batch order to ensure our final combined <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API">WebVTT caption file</a> is properly synced with the video. We sort the incoming Workers AI responses and re-order timestamps for a final accurate transcript.</p>
 	<p>The end result is the ability to generate captions for longer videos quickly and efficiently at scale.</p>
-	<h2>Try it now</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">Try it now</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are excited to bring this feature to open beta for all of our subscribers as well as <a href="https://www.cloudflare.com/plans/pro">Pro</a> and <a href="https://www.cloudflare.com/plans/business">Business</a> plan customers today! Get started by <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream">uploading a video to Stream</a>. Review <a href="https://developers.cloudflare.com/stream/edit-videos/adding-captions">our documentation</a> for tutorials and current beta limitations. Up next, we will be focused on adding more languages and supporting longer videos.</p>
 </div>

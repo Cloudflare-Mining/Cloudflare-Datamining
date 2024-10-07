@@ -20,7 +20,14 @@
 	<p>Now, lots of people have large DNS records, but the CPSC.gov record is very large and particularly popular among attackers. Based on both data about the large volumetric attacks we see hitting CloudFlare, as well as data from various resolver honey pots we run, <b>approximately 94% of the DNS reflection attack requests we see are for CPSC.gov</b>. (The next most popular are httrack.com which is used by 2.9% of attacker requests and isc.org which is used by 0.5%.)</p>
 	<p>At one level there's nothing the CPSC can do to <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevent attackers</a> from using their DNS record to launch attacks. CPSC's resources aren't being queried directly by the attackers so they can't block the requests themselves. However, they could construct their DNS record more carefully to make it smaller and therefore less attractive to attackers.</p>
 	<p>To see how, we can walk through the CPSC DNS record entry by entry and make recommendations on how to reduce its size.</p>
-	<h3>The CPSC's Ginormous Zone</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-cpscs-ginormous-zone">The CPSC's Ginormous Zone</h3>
+		<a href="https://blog.cloudflare.com/#the-cpscs-ginormous-zone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here’s the CPSC.gov's entire 4,426-byte DNS response which you get from running the ANY DNS query above against an open resolver (scroll to the left in the grey boxes below to see the full DNS record):</p>
 	<pre class="language-bash"><code class="language-bash">cpsc.gov.		18894	IN	SOA	auth00.ns.uu.net. hostmaster.uu.net. 994622 1800 600 1728000 21600
 cpsc.gov.		18894	IN	A	63.74.109.2
@@ -51,7 +58,15 @@ cpsc.gov.		893	IN	DS	27793 7 2 C078BB7D7A46B0654A7D83755BA6FAB6AA56DAC4CB4D94B6A
 cpsc.gov.		893	IN	DS	27793 7 1 E148C892A62ABF2B9157293DA4EE270D9880C238</code></pre>
 	<p>You may get the records back in a different order, but you should see something similar if you run the same ANY query.</p>
 	<p>Walking through the DNS zone file line-by-line you can see the mistakes that the CPSC has made that bloat its record and learn a bit about DNS and, in particular, DNSSEC.</p>
-	<h3>The Good</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-good">The Good</h3>
+		<a href="https://blog.cloudflare.com/#the-good" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/D5eYO3eWEtK78Kr84IuUk/3f8fbefc3341d4eaf95c2cb7df529cba/the_good.png" alt="The Good" class="kg-image" width="492" height="167" loading="lazy">
@@ -88,7 +103,15 @@ cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.</code></pre>
 	<p>There's a tiny optimization that CPSC.gov could make by listing one CIDR (63.74.109.0/24) rather than each of the three IPs. By doing so they'd save 15 bytes:</p>
 	<pre class="language-bash"><code class="language-bash">CPSC.gov.		18894	IN	TXT	"v=spf1 ip4:63.74.109.0/24 mx a:list.cpsc.gov -all"</code></pre>
 	<p>However, as you'll see, that's hardly worth the effort compared with other optimizations they could make.</p>
-	<h3>The Bad</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-bad">The Bad</h3>
+		<a href="https://blog.cloudflare.com/#the-bad" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QE9nYqXShRNijRWQqxwEC/7e3e504e3eb7813a38c50e633e469b0c/the_bad.png" alt="The Bad" class="kg-image" width="492" height="165" loading="lazy">
@@ -155,7 +178,15 @@ cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.</code></pre>
 	<p>Stepping back, the easy optimization here for the RRSIG record would be to pick a better signature algorithm. By choosing Algorithm 13, rather than Algorithm 7, the CPSC could save 192 bytes per RRSIG record. We've written previously about <a href="https://www.cloudflare.com/dnssec/ecdsa-and-dnssec">why we use Algorithm 13</a> for CloudFlare's DNSSEC implementation.Doing so here would add up because there are ten RRSIG records in the CPSC's zone in order to sign each of the other records (e.g., A, AAAA, NS, MX, etc...).</p>
 	<p>Just by switching to a better encryption algorithm the CPSC could increase the security of their DNS zone and save 1,920 bytes per DNS response. <b>That small change alone would cut the maximum possible DNS reflection attack possible with the CPSC's zone by 44 percent.</b></p>
 	<p>While that's the biggest savings, choosing a less optimal outcome can't be considered an actual mistake. Unfortunately, the CPSC's zone has some ugly mistakes as well.</p>
-	<h3>The Ugly</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-ugly">The Ugly</h3>
+		<a href="https://blog.cloudflare.com/#the-ugly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7j5PDGr8xfGFvlRBFKdwzs/55d966f9fd0d09a38a094ffd79fc610b/the_ugly.png" alt="The Ugly" class="kg-image" width="492" height="161" loading="lazy">

@@ -21,10 +21,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56LKtwrCNXXeKcZ3Mnp2Ni/324d3245cbe969a41a6cde788538c2a1/image6.jpg" alt="" class="kg-image" width="892" height="343" loading="lazy">
 
 	</figure>
-	<h3>A bit of exmaple.com history</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-bit-of-exmaple-com-history">A bit of exmaple.com history</h3>
+		<a href="https://blog.cloudflare.com/#a-bit-of-exmaple-com-history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>exmaple.com came to us a few years ago from a customer. He registered the domain to prevent malicious exploitation, but got tired of dealing with more traffic than expected — it’s not the first time that this has happened (<a href="https://blog.apnic.net/2021/06/17/how-a-small-free-ip-tool-survived">icanhazip.com</a> was another similar example). Too much traffic does come at a financial cost. So, why would a domain name like exmaple.com, that is not promoted anywhere, have traffic? It shows how unintentional traffic is a real thing with the right domain name. It could also be a result of a typo in network configurations or a misconfigured router, as we’re going to see next.</p>
 	<p>Let’s explore, then, what traffic goes to exmaple.com by answering some questions.</p>
-	<h3>How much traffic does it get?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-much-traffic-does-it-get">How much traffic does it get?</h3>
+		<a href="https://blog.cloudflare.com/#how-much-traffic-does-it-get" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It gets much more traffic than one would expect in terms of HTTP requests, given that it is mostly used because someone or a system/router set by someone, misspelled example.com. In terms of bytes, the numbers are minimal, as this is a very simple site with only a short text sentence, as shown above. Usually, on a daily basis, it doesn’t go over 1 Mbps. In a 12-month period (May 2022-June 2023), it had 2.48 billion HTTP requests, but it has been increasing over recent months. In April 2023, it was 243 million requests, an 8.13 million daily average, against a 6.07 million daily average in June 2022.</p>
 	<p>What type of traffic is it? Almost all HTTP traffic that goes to exmaple.com is categorized as bot-related. That’s around 99.99%: 2.48 billion requests were from bots, 110,000 were not from bots, and 40,000 we weren’t able to categorize. This already gives us some information, showing that the majority of traffic is not a typical user simply adding exmaple.com by mistake to some documentation or tutorial. This is mostly automated traffic (more on that below).</p>
 	<figure class="kg-card kg-image-card ">
@@ -39,7 +53,14 @@
 
 	</figure>
 	<p>From which countries are requests coming from? The top countries include France, Japan, Germany, and the US. Below, we’re going to check why this happens by looking at the autonomous system (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASNs</a>) perspective. Never forgetting that connected networks or AS’s make up the Internet.</p>
-	<h3>How about HTTP protocols?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-about-http-protocols">How about HTTP protocols?</h3>
+		<a href="https://blog.cloudflare.com/#how-about-http-protocols" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In terms of the <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> protocols, the majority uses unencrypted HTTP only, accounting for 76% of all requests, while <a href="https://www.cloudflare.com/learning/ssl/what-is-https">HTTPS</a> represents 24%. That is actually unusual in the modern day Internet. As <a href="https://radar.cloudflare.com/adoption-and-usage?dateRange=28d">Cloudflare Radar data shows</a>, excluding bots, HTTPS represents 99.3% of all requests in a general Cloudflare perspective, and its 80.8% of HTTPS for bots-only traffic. HTTPS adds a layer of security (SSL/TLS encryption), ensuring data remains confidential.</p>
 	<p>HTTP is definitely more used by automated traffic, given that HTTPS is more used for human consumption, as browsers tend to prioritize HTTPS. Only 6% of human-related requests use HTTP (the rest is HTTPS). That HTTP percentage jumps to 76%, when considering automated requests-only.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -47,9 +68,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XhAqQ4E8Fl8IpMzPSpKjy/ba063e938f125f9d7e91d6b8cc000b8d/image4-3.png" alt="" class="kg-image" width="1999" height="802" loading="lazy">
 
 	</figure>
-	<h3>Is exmaple.com the target of cyber attacks?</h3>
+	<div class="flex anchor relative">
+		<h3 id="is-exmaple-com-the-target-of-cyber-attacks">Is exmaple.com the target of cyber attacks?</h3>
+		<a href="https://blog.cloudflare.com/#is-exmaple-com-the-target-of-cyber-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The short answer is yes. But it’s a very low percentage of requests that are mitigated. The biggest spike in application layer attacks was on December 9, 2022, with 560k HTTP daily requests categorized as <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>. Nothing of large scale, but that said, small attacks can also take down under-protected sites. WAF mitigations had a 10k spike on November 2, 2022.</p>
-	<h3>Generating the most traffic: a French ISP</h3>
+	<div class="flex anchor relative">
+		<h3 id="generating-the-most-traffic-a-french-isp">Generating the most traffic: a French ISP</h3>
+		<a href="https://blog.cloudflare.com/#generating-the-most-traffic-a-french-isp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What drives most of the traffic are very specific ASNs. In this case, the dominant one is one of France's main Internet operators, Bouygues Telecom. Its <a href="https://radar.cloudflare.com/AS5410">AS5410</a> is generating the most traffic to exmaple.com, followed by Google Cloud, in Japan. Bouygues Telecom traffic to exmaple.com means more than three million daily requests at least since February 2023. Here’s the AS5410 over time traffic:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -67,7 +102,14 @@
 	</figure>
 	<p>Why does this happen in specific ASNs in different regions of the world, you may ask? Even without a definitive answer, the amount of daily traffic from those ASNs, and the prevalence of bot traffic, seems to indicate that most traffic is related to a possible misconfiguration in a router, software or network setting, intended to go to example.com.</p>
 	<p>As we observed previously, example.com is used for <a href="https://www.rfc-editor.org/rfc/rfc2606.html#page-2">testing</a>, educational, or illustrative purposes, including in routers from specific networks. It could be for network troubleshooting and testing, training, simulations, or it also could be in the documentation or guides for configuring routers, as examples to illustrate how to set up DNS configurations, route advertisement, or other networking settings.</p>
-	<h3>What are the main IP versions and browsers?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-main-ip-versions-and-browsers">What are the main IP versions and browsers?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-main-ip-versions-and-browsers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Regarding IP versions, they can be IPv4 or IPv6 — v6 emerged as a solution when the initial v4 wasn't prepared for the Internet's growth. For exmaple.com unique visitors, looking at the daily number of unique IPs where requests originate, IPv6 has been rising in comparison to IPv4. This suggests that IPv6 is now more frequently used by the services and bots generating most of this traffic. It started in May at 30% IPv6 usage and is now around 50%.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -94,7 +136,14 @@
 	<p>The predominant “referer” used is “empty”, which occurs when a user agent isn’t provided, also possibly meaning direct access or by bookmark. Next is exmaple.com itself (an unusual pattern, given there are no links on exmaple.com), with a peak of 160,000 requests on February 6, 2023. Following that is a curious spike of 10,000 requests from "reddit.com" on January 30, 2023, possibly due to a misspelling of example.com in a Reddit post that got popular.</p>
 	<p>We didn’t find a specific Reddit post from January 30 mentioning exmaple.com, but there were <a href="https://www.reddit.com/search/?q=%22exmaple.com%22">a few</a> there over the years, clearly aiming to show example.com. Some of those are as recent as <a href="https://www.reddit.com/r/docker/comments/w6pemv/dockerfile_not_writing_echo_to_config">one year</a> or even 10 months, like this <a href="https://www.reddit.com/r/aws/comments/yzy83z/route_53_hosted_zone">Reddit post</a> on the AWS subreddit, or this <a href="https://www.reddit.com/r/sveltejs/comments/10pn2dk/seo_multilang_website_and_automatic_language">one</a> from January 31, 2023, related to SEO.</p>
 	<p>On that note, regarding human misuse of misconfigurations impacting the Internet, in 2018, a member of the Cloudflare team gave a presentation about “<a href="https://ripe76.ripe.net/presentations/47-Internet-noise-1.pdf">Internet Noise</a>” during a <a href="https://en.wikipedia.org/wiki/RIPE">RIPE</a> event that can be consulted <a href="https://ripe76.ripe.net/presentations/47-Internet-noise-1.pdf">here</a>. It’s about unwanted traffic due to misconfigurations and misuse of proxies and internal use situations.</p>
-	<h3>How about exmaple.com email trends?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-about-exmaple-com-email-trends">How about exmaple.com email trends?</h3>
+		<a href="https://blog.cloudflare.com/#how-about-exmaple-com-email-trends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although no email address online intentionally targets exmaple.com, that address still gets some email attention. We configured a Gmail account to monitor these random emails in early 2022. Within 16 months, the 15 GB email capacity was fully used, containing 216,000 emails — an average of 432 daily emails. These emails reflect various scenarios: some are marketing-related, others appear to be network tests, and some are from individuals who, by error or to avoid spam, ended up at “@exmaple.com”. Among these use cases, we noticed accounts linked to PlayStation, Apple devices, Pandora music, Facebook, and more.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -293,13 +342,27 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Email authentication. DMARC and friends</h3>
+	<div class="flex anchor relative">
+		<h3 id="email-authentication-dmarc-and-friends">Email authentication. DMARC and friends</h3>
+		<a href="https://blog.cloudflare.com/#email-authentication-dmarc-and-friends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the realm of email, <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record">DMARC</a> (that stands for "Domain-based Message Authentication, Reporting, and Conformance") is a security protocol that helps prevent email spoofing and <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing attacks</a> by providing a framework. It is used by email senders to authenticate their messages and receivers to verify their authenticity. DMARC is based on both SPF (verifies if an email was sent by an authorized sender) and DKIM (the receiving server will check the DKIM-Signature header), and the domains used by those two protocols. So, DMARC requires that SPF or DKIM “pass”.</p>
 	<p>The implementation of DMARC signals that an email sender is taking measures to improve email security and protect their domain's reputation. With this context, let’s delve into DMARC validation. How did these random email senders to “@exmaple.com”? Only 11% (433) of all emails (3890) from the past 30 days passed the DMARC authentication successfully, most of those were from recognized senders like Apple, Uber, or Microsoft.</p>
 	<p>This is also because a significant 83% (3252) of emails originated from what appear to be tests conducted by computer software applications that monitor systems, networks, and infrastructure — specifically, <a href="https://en.wikipedia.org/wiki/Nagios">Nagios</a>. All of these emails are categorized as "none" in terms of DMARC policies, indicating that the sender is not using a DMARC policy. This approach is frequently adopted as an initial phase to gauge the impact of DMARC policies before adopting more robust measures. Just 1% of all emails "failed" DMARC authentication, implying that these emails didn't align with the sender's designated policies.</p>
 	<p>In such instances, domain owners can instruct email providers to take actions such as quarantining the email or outright rejection, thus shielding recipients from potentially malicious messages. This was evident in domains like amazon.co.jp or sanmateo.flester.com (where "Undelivered Mail Returned to Sender" messages originated from the Mail Delivery System).</p>
 	<p>Our email perspective could have been even more comprehensive if this “@exmaple.com” email account had <a href="https://www.cloudflare.com/zero-trust/products/email-security/?cf_target_id=86959ACABF19806481AC29B66BC6A34B">Cloudflare Area 1</a> — our cloud-native <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">email security service</a> that detects and thwarts attacks before they reach user inboxes. Perhaps in a future geeky venture, we will also incorporate that viewpoint, complete with percentages for spam, malicious content, and threat categories.</p>
-	<h3>Where is example.com on our domain popularity ranking? What about exmaple.com?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-is-example-com-on-our-domain-popularity-ranking-what-about-exmaple-com">Where is example.com on our domain popularity ranking? What about exmaple.com?</h3>
+		<a href="https://blog.cloudflare.com/#where-is-example-com-on-our-domain-popularity-ranking-what-about-exmaple-com" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last but not least, we also have insight into example.com itself. Looking at our most popular domains list (using data from our <a href="https://1.1.1.1">1.1.1.1</a> resolver), example.com or “example.org” are no strangers to our popular domains ranking. Those two are usual “guests” of our top 500 domains ranking, both worldwide and in specific countries, which also is an expression of its popularity and usage for all the use cases we already discussed. example.com usually sits higher, in the top 300. Since July, it has even appeared in our top 100 for the first time in 2023.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -319,7 +382,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1iyl6xhpjG15OshLbjSTlm/309943b6bd8554bf6ed9d11ab0b96588/image9.png" alt="" class="kg-image" width="1999" height="659" loading="lazy">
 
 	</figure>
-	<h3>Conclusion: <i>Errare humanum est</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion: </h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p><i>“Some of the worst problems that happen on the Internet are not because somebody deliberately caused the problem. It’s because somebody made a mistake. We’ve lost half the networks ability to transport traffic or route it to the right destinations because somebody made a configuration mistake”.</i>— <a href="https://en.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a>, American Internet pioneer, in a 2016’s article: <a href="https://www.washingtonpost.com/blogs/post-live/wp/2016/05/18/meet-father-of-the-internet-vinton-g-cerf">Vinton G. Cerf: Human error, not hackers threaten Net</a>.</p>
 	</blockquote>

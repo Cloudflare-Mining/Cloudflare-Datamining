@@ -7,11 +7,25 @@
 	</figure>
 	<p>Starting today, in open beta, <a href="https://www.cloudflare.com/products/cloudflare-stream">Cloudflare Stream</a> supports video playback with sub-second latency over SRT or RTMPS at scale. Just like <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming">HLS</a> and DASH formats, playback over RTMPS and SRT costs $1 per 1,000 minutes delivered regardless of video encoding settings used.</p>
 	<p>Stream is like a magic HDMI cable to the cloud. You can easily connect a video stream and display it from as many screens as you want wherever you want around the world.</p>
-	<h3>What do we mean by sub-second?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-do-we-mean-by-sub-second">What do we mean by sub-second?</h3>
+		<a href="https://blog.cloudflare.com/#what-do-we-mean-by-sub-second" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Video latency is the time it takes from when a camera sees something happen live to when viewers of a broadcast see the same thing happen via their screen. Although we like to think what’s on TV is happening simultaneously in the studio and your living room at the same time, this is not the case. Often, cable TV takes five seconds to reach your home.</p>
 	<p>On the Internet, the range of latencies across different services varies widely from multiple minutes down to a few seconds or less. Live streaming technologies like HLS and DASH, used on by the most common video streaming websites typically offer 10 to 30 seconds of latency, and this is what you can achieve with <a href="https://blog.cloudflare.com/stream-live">Stream Live</a> today. However, this range does not feel natural for quite a few use cases where the viewers interact with the broadcasters. Imagine a text chat next to an esports live stream or Q&amp;A session in a remote webinar. These new ways of interacting with the broadcast won’t work with typical latencies that the industry is used to. You need one to two seconds <i>at most</i> to achieve the feeling that the viewer is in the same room as the broadcaster.</p>
 	<p>We expect Cloudflare Stream to deliver sub-second latencies reliably in most parts of the world by routing the video as much as possible within the Cloudflare network. For example, when you’re sending video from San Francisco on your Comcast home connection, the video travels directly to the nearest point where Comcast and Cloudflare connect, for example, San Jose. Whenever a viewer joins, say from Austin, the viewer connects to the Cloudflare location in Dallas, which then establishes a connection using the Cloudflare backbone to San Jose. This setup avoids unreliable long distance connections and allows Cloudflare to monitor the reliability and latency of the video all the way from broadcaster the last mile to the viewer last mile.</p>
-	<h3>Serverless, dynamic topology</h3>
+	<div class="flex anchor relative">
+		<h3 id="serverless-dynamic-topology">Serverless, dynamic topology</h3>
+		<a href="https://blog.cloudflare.com/#serverless-dynamic-topology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Cloudflare Stream, the latency of content from the source to the destination is purely dependent on the physical distance between them: with no centralized routing, each Cloudflare location talks to other Cloudflare locations and shares the video among each other. This results in the minimum possible latency regardless of the locale you are broadcasting from.</p>
 	<p>We’ve tested about 500ms of glass to glass latency from San Francisco to London, both from and to residential networks. If both the broadcaster and the viewers were in California, this number would be lower, simply because of lower delay caused by less distance to travel over speed of light. An early tester was able to achieve 300ms of latency by broadcasting using OBS via RTMPS to Cloudflare Stream and pulling down that content over SRT using ffplay.</p>
 	<figure class="kg-card kg-image-card ">
@@ -21,20 +35,41 @@
 	</figure>
 	<p>Any server in the Cloudflare Anycast network can receive and publish low-latency video, which means that you're automatically broadcasting to the nearest server with no configuration necessary. To minimize latency and avoid network congestion, we route video traffic between broadcaster and audience servers using the same network telemetry as <a href="https://www.cloudflare.com/products/argo-smart-routing">Argo</a>.</p>
 	<p>On top of this, we construct a dynamic distribution topology, unique to the stream, which grows to meet the capacity needs of the broadcast. We’re just getting started with low-latency video, and we will continue to focus on latency and playback reliability as our real-time video features grow.</p>
-	<h3>An HDMI cable to the cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="an-hdmi-cable-to-the-cloud">An HDMI cable to the cloud</h3>
+		<a href="https://blog.cloudflare.com/#an-hdmi-cable-to-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most video on the Internet uses HTTP - the protocol for loading websites on your browser to deliver video. This has many advantages, such as easy to achieve interoperability across viewer devices. Maybe more importantly, HTTP can use the existing infrastructure like caches which reduce the cost of video delivery.</p>
 	<p>Using HTTP has a cost in latency as it is not a protocol built to deliver video. There’s been many attempts made to deliver low latency video over HTTP, with some reducing latency to a few seconds, but none reach the levels achievable by protocols designed with video in mind. WebRTC and video delivery over QUIC have the potential to further reduce latency, but face inconsistent support across platforms today.</p>
 	<p>Video-oriented protocols, such as RTMPS and SRT, side-step some of the challenges above but often require custom client libraries and are not available in modern web browsers. While we now support low latency video today over RTMPS and SRT, we are actively exploring other delivery protocols.</p>
 	<p>There’s no silver bullet – yet, and our goal is to make video delivery as easy as possible by supporting the set of protocols that enables our customers to meet their unique and creative needs. Today that can mean receiving RTMPS and delivering low-latency SRT, or ingesting SRT while publishing HLS. In the future, that may include ingesting WebRTC or publishing over QUIC or HTTP/3 or WebTransport. There are many interesting technologies on the <a href="https://grnh.se/4bdb03661us">horizon</a>.</p>
 	<p>We’re excited to see new use cases emerge as low-latency video becomes easier to integrate and less costly to manage. A remote cycling instructor can ask her students to slow down in response to an increase in heart rate; an esports league can effortlessly repeat their live feed to remote broadcasters to provide timely, localized commentary while interacting with their audience.</p>
-	<h3>Creative uses of low latency video</h3>
+	<div class="flex anchor relative">
+		<h3 id="creative-uses-of-low-latency-video">Creative uses of low latency video</h3>
+		<a href="https://blog.cloudflare.com/#creative-uses-of-low-latency-video" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Viewer experience at events like a concert or a sporting event can be augmented with live video delivered in real time to participants’ phones. This way they can experience the event in real-time and see the goal scored or details of what’s going happening on the stage.</p>
 	<p>Often in big cities, people who cheer loudly across the city can be heard before seeing a goal scored on your own screen. This can be eliminated by when every video screen shows the same content at the same time.</p>
 	<p>Esports games, large company meetings or conferences where presenters or commentators react real time to comments on chat. The delay between a fan making a comment and them seeing the reaction on the video stream can be eliminated.</p>
 	<p>Online exercise bikes can provide even more relevant and timely feedback from the live instructors, adding to the sense of community developed while riding them.</p>
 	<p>Participants in esports streams can be switched from a passive viewer to an active live participant easily as there is no delay in the broadcast.</p>
 	<p>Security cameras can be monitored from anywhere in the world without having to open ports or set up centralized servers to receive and relay video.</p>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Get started by using your existing inputs on Cloudflare Stream. Without the need to reconnect, they will be available instantly for playback with the RTMPS/SRT playback URLs.</p>
 	<p>If you don’t have any inputs on Stream, <a href="https://dash.cloudflare.com/sign-up/stream">sign up</a> for $5/mo. You will get the ability to push live video, broadcast, record and now pull video with sub-second latency.</p>
 	<p>You will need to use a computer program like FFmpeg or OBS to push video. To playback RTMPS you can use VLC and FFplay for SRT. To integrate in your native app, you can utilize FFmpeg wrappers for native apps such as <a href="https://github.com/tanersener/ffmpeg-kit">ffmpeg-kit</a> for iOS.</p>

@@ -13,7 +13,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2l4QNVWkbubZU8K4rh35T0/99c7a10a4ad78ba3907868a01aee8276/image3-19.png" alt="" class="kg-image" width="1240" height="1542" loading="lazy">
 
 	</figure>
-	<h3>A Refresher on APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-refresher-on-apis">A Refresher on APIs</h3>
+		<a href="https://blog.cloudflare.com/#a-refresher-on-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The bar for what we expect an application to do for us has risen tremendously over the past few years. When we open a browser, app, or IoT device, we expect to be able to connect to data instantly, compare dozens of flights within seconds, choose a menu item from a food delivery app, or see the weather for ten locations at once.</p>
 	<p>How are applications able to provide this kind of dynamic engagement for their users? They rely on APIs, which provide access to data and services—either from the application developer or from another company. APIs are fundamental in how computers (or services) talk to each other and exchange information.</p>
 	<p>You can think of an API as a waiter: say a customer orders a delicious bowl of Mac n Cheese. The waiter accepts this order from the customer, communicates the request to the chef in a format the chef can understand, and then delivers the Mac n Cheese back to the customer (assuming the chef has the ingredients in stock). The waiter is the crucial <i>channel of communication</i>, which is exactly what the API does.</p>
@@ -22,11 +29,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Tz8vFVlVKHWMjdXpCymyb/a9cff8a713b3c925e969d468646e2ccb/image7-2.png" alt="" class="kg-image" width="1200" height="500" loading="lazy">
 
 	</figure>
-	<h3>Managing API Endpoints</h3>
+	<div class="flex anchor relative">
+		<h3 id="managing-api-endpoints">Managing API Endpoints</h3>
+		<a href="https://blog.cloudflare.com/#managing-api-endpoints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step in managing APIs is to get a complete list of all the <a href="https://www.cloudflare.com/learning/learning/security/api/what-is-api-discovery">endpoints exposed to the internet</a>. <a href="https://developers.cloudflare.com/api-shield/security/api-discovery"><i>API Discovery</i></a> automatically does this for any traffic flowing through Cloudflare. Undiscovered APIs can’t be monitored by security teams (since they don't know about them) and they're thus less likely to have proper security policies and best practices applied. However, customers have told us they also want the ability to manually add and manage APIs that are not yet deployed, or they want to ignore certain endpoints (for example those in the process of deprecation). Now, API Shield customers can choose to save endpoints found by Discovery or manually add endpoints to API Shield.</p>
 	<p>But security vulnerabilities aren’t the only risk or area of concern with APIs – they can be painfully slow or connections can be unsuccessful. We heard questions from our customers such as: what are my most popular endpoints? Is this endpoint significantly slower than it was yesterday? Are any endpoints returning errors that may indicate a problem with the application?</p>
 	<p>That’s why we built Performance Metrics into API Shield, which allows our customers to quickly answer these questions themselves with real-time data.</p>
-	<h3>Prioritizing Performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="prioritizing-performance">Prioritizing Performance</h3>
+		<a href="https://blog.cloudflare.com/#prioritizing-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/gOOOfuquNBYu7jErTcASu/e39d1ea84c74d49730168880307000e7/image2-28.png" alt="" class="kg-image" width="1217" height="608" loading="lazy">
@@ -35,7 +57,14 @@
 	<p>Once you’ve discovered, saved, or removed endpoints, you want to know what’s going well and what’s not. To end-users, a huge part of what defines the experience as “going well” is good performance. Poor performance can lead to a frustrating experience: when you’re shopping online and press a button to check out, you don’t want to wait around for minutes for the page to load. And you certainly never want to see a dreaded error symbol telling you that you can’t get what you came for.</p>
 	<p>Exposing performance metrics of API endpoints puts concrete numerical data into your developers’ hands to tell you how things are going. When things are going poorly, these dashboard metrics will point out exactly which aspect of performance is causing concern: maybe you expected to see a spike in requests, but find out that request count is normal and latency is just higher than usual.</p>
 	<p>Empowering our customers to make data-driven decisions to better manage their APIs ends up being a win for our customers <i>and</i> our customers’ customers, who expect to seamlessly engage with the domain’s APIs and get exactly what they came for.</p>
-	<h3>Management and Performance Metrics in the Dashboard</h3>
+	<div class="flex anchor relative">
+		<h3 id="management-and-performance-metrics-in-the-dashboard">Management and Performance Metrics in the Dashboard</h3>
+		<a href="https://blog.cloudflare.com/#management-and-performance-metrics-in-the-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, what’s available today? Log onto your Cloudflare dashboard, go to the domain-level Security tab, and open up the API Shield page. Here, you’ll see the Endpoint Management tab, which shows you all the API endpoints that you’ve saved, alongside placeholders for metrics that will soon be gathered.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -85,7 +114,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sptSfdramyWzuaOyJqaD1/beafefca1f1f84e2fec565ecbbd186e4/image6-5.png" alt="" class="kg-image" width="1333" height="342" loading="lazy">
 
 	</figure>
-	<h3>Additional improvements to Discovery and Schema Validation</h3>
+	<div class="flex anchor relative">
+		<h3 id="additional-improvements-to-discovery-and-schema-validation">Additional improvements to Discovery and Schema Validation</h3>
+		<a href="https://blog.cloudflare.com/#additional-improvements-to-discovery-and-schema-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As part of making endpoint management GA, we’re also adding two additional enhancements to API Shield.</p>
 	<p>First, <b><i>API Discovery now accepts cookies</i></b> — in addition to authorization headers — to discover endpoints and suggest rate limiting thresholds. Previously, you could only identify an API session with HTTP headers, which didn’t allow customers to protect endpoints that use cookies as session identifiers. Now these endpoints can be protected as well. Simply go to the API Shield tab in the dashboard, choose edit session identifiers, and either change the type, or click <code>Add additional identifier</code>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -95,7 +131,14 @@
 	</figure>
 	<p>Second, we added the ability to <b><i>validate the body of requests via Schema Validation</i></b> for all customers. Schema Validation allows you to provide an OpenAPI schema (a template for your API traffic) and have Cloudflare block non-conformant requests as they arrive at our edge. Previously, you provided specific headers, cookies, and other features to validate. Now that we can validate the body of requests, you can use Schema Validation to confirm every element of a request matches what is expected. If a request contains strange information in the payload, we’ll notice. Note: <i>customers who have already uploaded schemas will need to re-upload to take advantage of body validation.</i></p>
 	<p>Take a look at our <a href="https://developers.cloudflare.com/api-shield">developer documentation</a> for more details on both of these features.</p>
-	<h3>Get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Endpoint Management, performance metrics, schema exporting, discovery via cookies, and schema body validation are all available now for all API Shield customers. To use them, log into the Cloudflare dashboard, click on <code>Security</code> in the navigation bar, and choose API Shield. Once API Shield is enabled, you’ll be able to start discovering endpoints immediately. You can also use all features <a href="https://api.cloudflare.com/#api-shield-settings-properties">through our API</a>.</p>
 	<p>If you aren’t yet protecting a website with Cloudflare, it only takes a few minutes to <a href="https://dash.cloudflare.com/sign-up">sign up</a>.</p>
 </div>

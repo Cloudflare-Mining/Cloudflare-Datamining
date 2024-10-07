@@ -51,7 +51,14 @@
 	</figure>
 	<p>The mathematical core of <i>Dilithium</i> is, as with <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography/round-3-submissions">FrodoKEM</a>, based on the hardness of a variant of the Learning with Errors (LWE) problem and the Short Integer Solution (SIS) problem. As we have already <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">talked about LWE</a>, let’s now briefly go over SIS.</p>
 	<p><b>Note to the reader</b>: Some mathematics is coming in the next sections; but don’t worry, we will guide you through it.</p>
-	<h3>The Short Integer Solution Problem</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-short-integer-solution-problem">The Short Integer Solution Problem</h3>
+		<a href="https://blog.cloudflare.com/#the-short-integer-solution-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to properly explain what the SIS problem is, we need to first start by understanding what a <i>lattice</i> is. A lattice is a regular repeated arrangement of objects or elements over a space. In geometry, these objects can be points; in physics, these objects can be atoms. For our purposes, we can think of a lattice as a set of points in <i>n</i>-dimensional space with a periodic (repeated) structure, as we see in the image. It is important to understand the meaning of <i>n</i>-dimensional space here: a two-dimensional space is, for example, the one that we often see represented on planes: a projection of the physical universe into a plane with two dimensions which are length and width. Historically, lattices have been investigated since the late 18th century for various reasons. For a more comprehensive introduction to lattices, you can read this <a href="https://cims.nyu.edu/~regev/papers/qcrypto.pdf">great paper</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -74,7 +81,14 @@
 	<p>The SIS problem as the SVP. The goal is to find the “short” vectors in the radius.</p>
 	<p>The SIS problem is often used in cryptographic constructions such as one-way functions, collision resistant hash functions, digital signature schemes, and identification schemes.</p>
 	<p>We have now built the first Chinese box: the mathematical base. Let’s take this base now and create schemes from it.</p>
-	<h3>Identification Schemes</h3>
+	<div class="flex anchor relative">
+		<h3 id="identification-schemes">Identification Schemes</h3>
+		<a href="https://blog.cloudflare.com/#identification-schemes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From the mathematical base of our Chinese box, we build the first computational algorithm: an identification scheme. An identification scheme consists of a key generation algorithm, which outputs a public and private key, and an interactive protocol between a prover <i>P</i> and a verifier <i>V</i>. The prover has access to the public key and private key, and the verifier only has access to the public key. A series of messages are then exchanged such that the prover can demonstrate to the verifier that they know the private key, without leaking any other information about the private key.</p>
 	<p>More specifically, a three-move (three rounds of interaction) identification scheme is a collection of algorithms. Let’s think about it in the terms of Odysseus trying to prove to the cyclops that he is <i>Nobody</i>:</p>
 	<ul>
@@ -95,7 +109,14 @@
 		</li>
 	</ul>
 	<p>If Odysseus was really the owner of the private key for <i>Nobody</i>, he would have been able to answer the challenge in a positive manner (with a 1). But, as he is not, he runs away (and this is the last time we see him in this blogpost).</p>
-	<h3>The Dilithium Identification Scheme</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-dilithium-identification-scheme">The Dilithium Identification Scheme</h3>
+		<a href="https://blog.cloudflare.com/#the-dilithium-identification-scheme" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The basic building blocks of Dilithium are polynomials and rings. This is the second-last box of the Chinese box, and we will explore it now.</p>
 	<p>A polynomial ring, <i>R</i>, is a <a href="https://en.wikipedia.org/wiki/Ring_(mathematics)">ring</a> of all polynomials. A ring is a set in which two operations can exist: addition and multiplication of integers; and a polynomial is an expression of variables and coefficients. The “size” of these polynomials, defined as the size of the largest coefficient, plays a crucial role for these kinds of algorithms.</p>
 	<p>In the case of Dilithium, the <i>Generation</i> algorithm creates a <i>k x l</i> matrix <i>A</i>. Each entry of this matrix is a polynomial in the defined ring. The generation algorithm also creates random private vectors <i>s1</i> and <i>s2</i>, whose components are elements of <i>R</i>, the ring_._ The public key is the matrix <i>A</i> and <i>t = As1 + s2</i>. It is infeasible for a quantum computer to know the secret values given just <i>t</i> and <i>A</i>. This problem is called Module-Learning With Errors (MLWE) problem, and it is a variant of LWE as seen <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">in this blog post</a>.</p>
@@ -119,7 +140,14 @@
 	<p>This in turn means that if a message was signed with a key, it could have only been signed by the person with access to the private key, and it can be verified by anyone with access to the public key.</p>
 	<p>How is this procedure related to the lattice’s problems we have seen? It is used to prove the security of the scheme: specifically the M-SIS (module SIS) problem and the LWE decisional problem.</p>
 	<p>The Chinese box is now constructed, and we have a digital signature scheme that can be used safely in the face of quantum computers.</p>
-	<h3>Other Digital Signatures beyond Dilithium</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-digital-signatures-beyond-dilithium">Other Digital Signatures beyond Dilithium</h3>
+		<a href="https://blog.cloudflare.com/#other-digital-signatures-beyond-dilithium" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Star Trek, <a href="https://en.wikipedia.org/wiki/Dilithium_(Star_Trek)"><i>Dilithium</i></a> is a rare material that cannot be replicated. Similarly, signatures cannot be replicated or forged: each one is unique. But this does not mean that there are no other algorithms we can use to generate post-quantum signatures. Dilithium is currently designated as a finalist candidate for standardization as part of the post-quantum NIST process. But, there are others:</p>
 	<ul>
 		<li>
@@ -130,7 +158,14 @@
 		</li>
 	</ul>
 	<p>We have seen examples of KEMs in <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">other blog posts</a> and signatures that are resistant to attacks by quantum computers. Now is the time to step back and take a look at the bigger picture. We have the building blocks, but the problem of actually building post-quantum secure cryptographic protocols with them remains, as well as making existing protocols such as TLS post-quantum secure. This problem is not entirely straightforward, owing to the trade-offs that post-quantum algorithms present. As we have carefully stitched together mathematical problems and cryptographic tools to get algorithms with the properties we desire, so do we have to carefully compose these algorithms to get the secure protocols that we need.</p>
-	<h3>References:</h3>
+	<div class="flex anchor relative">
+		<h3 id="references">References:</h3>
+		<a href="https://blog.cloudflare.com/#references" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>“Fiat-Shamir With Aborts: Applications to Lattice and Factoring-Based Signatures” by Vadim Lyubashevsky: <a href="https://www.iacr.org/archive/asiacrypt2009/59120596/59120596.pdf">https://www.iacr.org/archive/asiacrypt2009/59120596/59120596.pdf</a></p>

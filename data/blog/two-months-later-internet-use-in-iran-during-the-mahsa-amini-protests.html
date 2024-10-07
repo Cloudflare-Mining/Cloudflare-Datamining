@@ -9,12 +9,26 @@
 	<p>With the proliferation of smartphones and the ubiquity of the Internet that has resulted, it’s no longer simply the offline world impacting the Internet; what happens on the Internet is impacting the offline world, too. For that reason, it’s not surprising that in order to limit the spread of the protests — both news of it happening and the further organization of civil unrest — the Iranian government introduced limits on the Internet. This included banning certain social media and communications tools: most notably including Instagram and WhatsApp, which are <a href="https://www.iranintl.com/en/202210268565">estimated</a> to be used by over 50% of the Iranian population.</p>
 	<p>But despite the threat that the protests pose, and the Internet’s enabling role in them, it has not been cut off altogether. In fact, from the perspective of Cloudflare, Internet use in Iran has surged since the beginning of the protests.</p>
 	<p>This is a story of how critical the Internet has become to life, even in authoritarian regimes — and how even, after 12 years of planning, Iran has been unable to consistently cut off access to the Internet outside the country.</p>
-	<h3>A history of control</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-history-of-control">A history of control</h3>
+		<a href="https://blog.cloudflare.com/#a-history-of-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kafinet — Internet cafés — emerged in Iran in the late 90s and early 2000s. Internet use became prolific. But in 2005, it began to change under the election of the conservative President Ahmadinejad. The idea of an “Iranian Internet” was proposed — one that was consistent with the policies and principles of the Iranian government, and able to be controlled and regulated domestically — as opposed to how the Internet operated overseas. From a technical perspective, the hope was an Iranian Internet would still be able to work inside the country, even if it was fully disconnected from the outside world. While the idea was discussed, no real work on it truly began until 2009, when <a href="https://en.wikipedia.org/wiki/Iranian_Green_Movement">the Green protests</a> — a series of mass protests following the disputed reelection of President Ahmadinejad — caused the government to appreciate the potential risk that the Internet posed. It was around this time that ISPs needed approval from the government to operate, and were required to filter content in order to continue to gain that approval.</p>
 	<p>In 2013, Iran took things a step further, and began work on a National Infrastructure Network (NIN), with the aim of recreating within Iran all the essential Internet services like search and messaging that had traditionally been provided by organizations outside of Iran. It was coupled with policies that subsidized and encouraged the use of these local services; which, as they were hosted domestically, made monitoring and filtering much more feasible.</p>
 	<p>It was not quite as extreme as the Chinese approach to the Internet, where similar overseas services were banned altogether, but it was certainly a shift in that direction. And given the limited number of physical network connections from Iran to the outside world, it was much more feasible for the government to take the step of cutting off Internet outside the country — while allowing select infrastructure within it (such as banking and government services) to remain online.</p>
 	<p>Iran has deployed such tactics previously: most notably <a href="https://en.wikipedia.org/wiki/2019%E2%80%932020_Iranian_protests">during protests in November 2019</a>, triggered by an increase in fuel prices.</p>
-	<h3>The initial response</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-initial-response">The initial response</h3>
+		<a href="https://blog.cloudflare.com/#the-initial-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our <a href="https://blog.cloudflare.com/protests-internet-disruption-ir">earlier blog</a> covered the initial response to the protests extensively.</p>
 	<p>To provide context (measured over the last week) four providers in Iran account for 85% of traffic in Iran: three mobile and one fixed/wireline.</p>
 	<figure class="kg-card kg-image-card ">
@@ -35,21 +49,42 @@
 
 	</figure>
 	<p>However, the following days, it appears to return to a somewhat normal pattern.</p>
-	<h3>What happened subsequently</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-happened-subsequently">What happened subsequently</h3>
+		<a href="https://blog.cloudflare.com/#what-happened-subsequently" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking after that week, however, shows Internet usage picks up massively from the baseline as the protests spread across the country. Also of note: the “curfews” on the mobile networks that were implemented in that first week continued. You can see the troughs for all but the fixed Internet provider as traffic drops to near zero.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZLh631jVXrryMhorBYVkM/a8bbfebe6a8cc3800447426f96fc0d39/4.png" alt="" class="kg-image" width="1292" height="924" loading="lazy">
 
 	</figure>
-	<h3>What traffic looks like now</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-traffic-looks-like-now">What traffic looks like now</h3>
+		<a href="https://blog.cloudflare.com/#what-traffic-looks-like-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at a more recent week, two things stand out: the level of network activity across the major providers in Iran remains much higher than it was previously. Also, the curfews appear to have been lifted, with Internet traffic declining overnight, but not “flatlining” as it was in the graphs above.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XwQqWH9zMUEWKOkJSk8Ls/634058f3e64f5cc9d376466093041932/5.png" alt="" class="kg-image" width="1200" height="924" loading="lazy">
 
 	</figure>
-	<h3>The web persists, even in Iran</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-web-persists-even-in-iran">The web persists, even in Iran</h3>
+		<a href="https://blog.cloudflare.com/#the-web-persists-even-in-iran" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While the initial response of the Iranian government to the protests was to dramatically scale back access to the Internet, the government did not persist with the policy. Our hypothesis is that the Internet has become too important to economic activity and also everyday life for the country to be able to continue to operate without it. Despite having spent almost 10 years developing a NIN — an Iranian Internet — it appears that, in part because of the protests, traffic from the major Iranian networks to Cloudflare has picked up substantially, and the curfews have ceased.</p>
 	<figure class="kg-card kg-image-card ">
 

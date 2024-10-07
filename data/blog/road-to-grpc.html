@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Cloudflare launched support for <a href="https://blog.cloudflare.com/announcing-grpc">gRPC</a>® during our 2020 Birthday Week. We’ve been humbled by the immense interest in the beta, and we’d like to thank everyone that has applied and tried out gRPC! In this post we’ll do a deep-dive into the technical details on how we implemented support.</p>
-	<h3>What is gRPC?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-grpc">What is gRPC?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-grpc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://grpc.io">gRPC</a> is an open source RPC framework running over HTTP/2. RPC (remote procedure call) is a way for one machine to tell another machine to do something, rather than calling a local function in a library. RPC has been around in the history of distributed computing, with different implementations focusing on different areas, for a long time. What makes gRPC unique are the following characteristics:</p>
 	<ul>
 		<li>
@@ -33,7 +40,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MTBNtDhBqIvqND3l0Fv1w/6307b312552e255040c74c8655737287/image3-24.png" alt="" class="kg-image" width="1080" height="579" loading="lazy">
 
 	</figure>
-	<h3>Adding gRPC support to the Cloudflare Edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="adding-grpc-support-to-the-cloudflare-edge">Adding gRPC support to the Cloudflare Edge</h3>
+		<a href="https://blog.cloudflare.com/#adding-grpc-support-to-the-cloudflare-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since gRPC uses HTTP/2, it may sound easy to natively support gRPC, because Cloudflare already supports <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a>. However, we had a couple of issues:</p>
 	<ul>
 		<li>
@@ -52,25 +66,60 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3p9teukTmZfs4wcyWggUZr/e738ee5e0dfa6a6582bbe25eb4b20295/image2-25.png" alt="" class="kg-image" width="2000" height="451" loading="lazy">
 
 	</figure>
-	<h3>Converting to HTTP/1.1?</h3>
+	<div class="flex anchor relative">
+		<h3 id="converting-to-http-1-1">Converting to HTTP/1.1?</h3>
+		<a href="https://blog.cloudflare.com/#converting-to-http-1-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ultimately, we discovered a better way: convert gRPC messages to HTTP/1.1 messages without a trailer <i>inside our network,</i> and then convert them back to HTTP/2 before sending the request off to origin. This would work with most HTTP proxies inside Cloudflare that don't support HTTP trailers, and we would need minimal changes.</p>
 	<p>Rather than inventing our own format, the gRPC community has already come up with an HTTP/1.1-compatible version: <a href="https://github.com/grpc/grpc-web">gRPC-web</a>. gRPC-web is a modification of the original HTTP/2 based gRPC specification. The original purpose was to be used with the web browsers, which lack direct access HTTP/2 frames. With gRPC-web, the HTTP trailer is moved to the body, so we don’t need to worry about HTTP trailer support inside the proxy. It also comes with streaming support. The resulting HTTP/1.1 message can be still inspected by our security products, such as WAF and Bot Management, to provide the same level of security that Cloudflare brings to other HTTP traffic.</p>
 	<p>When an HTTP/2 gRPC message is received at Cloudflare’s edge proxy, the message is “converted” to HTTP/1.1 gRPC-web format. Once the gRPC message is converted, it goes through our pipeline, applying services such as WAF, Cache and Argo services the same way any normal HTTP request would.</p>
 	<p>Right before a gRPC-web message leaves the Cloudflare network, it needs to be “converted back” to HTTP/2 gRPC again. Requests that are converted by our system are marked so that our system won’t accidentally convert gRPC-web traffic originated from clients.</p>
-	<h3>HTTP/2 Origin Support</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-2-origin-support">HTTP/2 Origin Support</h3>
+		<a href="https://blog.cloudflare.com/#http-2-origin-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the engineering challenges was to support using HTTP/2 to connect to origins. Before this project, Cloudflare didn't have the ability to connect to origins via HTTP/2.</p>
 	<p>Therefore, we decided to build support for HTTP/2 origin support in-house. We built a standalone origin proxy that is able to connect to origins via HTTP/2. On top of this new platform, we implemented the conversion logic for gRPC. gRPC support is the first feature that takes advantage of this new platform. Broader support for HTTP/2 connections to origin servers is on the roadmap.</p>
-	<h3>gRPC Streaming Support</h3>
+	<div class="flex anchor relative">
+		<h3 id="grpc-streaming-support">gRPC Streaming Support</h3>
+		<a href="https://blog.cloudflare.com/#grpc-streaming-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As explained above, gRPC has a streaming mode that request body or response body can be sent in stream; in the lifetime of gRPC requests, gRPC message blocks can be sent at any time. At the end of the stream, there will be a HEADER frame indicating the end of the stream. When it’s converted to gRPC-web, we will send the body using chunked encoding and keep the connection open, accepting both sides of the body until we get a gRPC message block, which indicates the end of the stream. This requires our proxy to support bidirectional transfer.</p>
 	<p>For example, client streaming is an interesting mode where the server already responds with a response code and its header, but the client is still able to send the request body.</p>
-	<h3>Interoperability Testing</h3>
+	<div class="flex anchor relative">
+		<h3 id="interoperability-testing">Interoperability Testing</h3>
+		<a href="https://blog.cloudflare.com/#interoperability-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every new feature at Cloudflare needs proper testing before release. During initial development, we used the <a href="https://www.envoyproxy.io">envoy</a> proxy with its <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">gRPC-web filter</a> feature and official examples of gRPC. We prepared a test environment with envoy and a gRPC test origin to make sure that the edge proxy worked properly with gRPC requests. Requests from the gRPC test client are sent to the edge proxy and converted to gRPC-web, and forwarded to the envoy proxy. After that, envoy converts back to gRPC request and sends to gRPC test origin. We were able to verify the basic behavior in this way.</p>
 	<p>Once we had basic functionality ready, we also needed to make sure both ends’ conversion functionality worked properly. To do that, we built deeper interoperability testing.</p>
 	<p>We referenced the existing <a href="https://github.com/grpc/grpc/blob/master/doc/interop-test-descriptions.md">gRPC interoperability test cases</a> for our test suite and ran the first iteration of tests between the edge proxy and the new origin proxy locally.</p>
 	<p>For the second iteration of tests we used different gRPC implementations. For example, some servers sent their final status (grpc-status) &nbsp;in a <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses">trailers-only</a> response when there was an immediate error. This response would contain the HTTP/2 response headers and trailer in a single HEADERS frame block with both the END_STREAM and END_HEADERS flags set. Other implementations sent the final status as trailer in a separate HEADERS frame.</p>
 	<p>After verifying interoperability locally we ran the test harness against a development environment that supports all the services we have in production. We were then able to ensure no unintended side effects were impacting gRPC requests.</p>
 	<p>We love dogfooding! One of the first services we successfully deployed edge gRPC support to is the <a href="https://blog.cloudflare.com/inside-the-entropy">Cloudflare drand randomness beacon</a>. Onboarding was easy and we’ve been running the beacon in production for the last few weeks without a hitch.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Supporting a new protocol is exciting work! Implementing support for new technologies in existing systems is exciting <i>and</i> intricate, often involving tradeoffs between speed of implementation and overall system complexity. In the case of gRPC, we were able to build support quickly and in a way that did not require significant changes to the Cloudflare edge. This was accomplished by carefully considering implementation options before settling on the idea of converting between HTTP/2 gRPC and HTTP/1.1 gRPC-web format. This design choice made service integration quicker and easier while still satisfying our user’s expectations and constraints.</p>
 	<p>If you are interested in using Cloudflare to secure and accelerate your gRPC service, you can read more <a href="https://blog.cloudflare.com/announcing-grpc">here</a>. And if you want to work on interesting engineering challenges like the one described in this post, <a href="https://www.cloudflare.com/careers">apply</a>!</p>
 	<p><i>gRPC® is a registered trademark of The Linux Foundation.</i></p>

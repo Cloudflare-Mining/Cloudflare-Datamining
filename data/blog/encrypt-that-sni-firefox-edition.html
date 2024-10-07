@@ -4,7 +4,14 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zyycnqY5HRKXntoXJyn0g/3aa441efed3a3ca420128e063c84afc5/esni-3_3.5x-1.png" alt="esni-3@3.5x-1" class="kg-image" width="1999" height="870" loading="lazy">
 	</figure>
-	<h3>Here comes the night</h3>
+	<div class="flex anchor relative">
+		<h3 id="here-comes-the-night">Here comes the night</h3>
+		<a href="https://blog.cloudflare.com/#here-comes-the-night" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step is to download and install the very latest <a href="https://www.mozilla.org/firefox/channel/desktop/#nightly">Firefox Nightly build</a>, or, if you have Nightly already installed, make sure it’s up to date.</p>
 	<p>When we announced our support for ESNI we also created a test page you can point your browser to <a href="https://encryptedsni.com">https://encryptedsni.com</a> which checks whether your browser / DNS configuration is providing a more secure browsing experience by using secure DNS transport, DNSSEC validation, TLS 1.3 &amp; ESNI itself when it connects to our test page. Before you make any changes to your Firefox configuration, you might well see a result something like this:</p>
 	<figure class="kg-card kg-image-card">
@@ -24,7 +31,14 @@
 	</figure>
 	<p>Note: As you make changes in <code>about:config</code> to the ESNI &amp; TRR settings, you will need to hard refresh the check page to ensure a new TLS connection is established. We plan to fix this in a future update.</p>
 	<p>To test for encrypted SNI support on your Cloudflare domain, you can visit the “/cdn-cgi/trace” page, for example, <a href="https://www.cloudflare.com/cdn-cgi/trace">https://www.cloudflare.com/cdn-cgi/trace</a> (replace <code>www.cloudflare.com</code> with your own domain). If the browser encrypted the SNI you should see <code>sni=encrypted</code> in the trace output.</p>
-	<h3>On the wire</h3>
+	<div class="flex anchor relative">
+		<h3 id="on-the-wire">On the wire</h3>
+		<a href="https://blog.cloudflare.com/#on-the-wire" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can also go a step further and <a href="https://www.wireshark.org/docs/wsdg_html_chunked/ChSrcObtain.html">download</a> and <a href="https://www.wireshark.org/docs/wsdg_html_chunked/ChSrcBuildFirstTime.html">build</a> the latest <a href="https://www.wireshark.org">Wireshark</a> code from its git repository (this feature hasn’t landed in a stable release yet so building from source is required for now).</p>
 	<p>This will allow you to see what the encrypted SNI extension looks like on the wire, while you visit a website that supports ESNI (e.g. <a href="https://cloudflare.com">https://cloudflare.com</a>).</p>
 	<p>This is how a normal TLS connection looks with a plaintext SNI:</p>
@@ -35,11 +49,25 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4sai8zbi9oq5x4jsktOtIB/5f0dae8d70fdb2279fc65b62f231ce32/encrypted_sni_pcap.png" alt="encrypted sni pcap" class="kg-image" width="1210" height="921" loading="lazy">
 	</figure>
-	<h3>Fallback</h3>
+	<div class="flex anchor relative">
+		<h3 id="fallback">Fallback</h3>
+		<a href="https://blog.cloudflare.com/#fallback" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned in our earlier post, there may be cases when the DNS record fetched by the client doesn’t match a valid key owned by the TLS server, in which case the connection using ESNI would simply fail to be established.</p>
 	<p>This might happen for example if the authoritative DNS server and the TLS server somehow get out of sync (for example, the TLS server rotates its own key, but the DNS record is not updated accordingly). But this could also be caused by external parties, for example, a caching DNS resolver that doesn’t properly respect the TTL set by the authoritative server might serve an outdated ESNI record even though the authoritative server is up-to-date. When this happens, Firefox will fail to connect to the website.</p>
 	<p>The way we work around this problem on the Cloudflare edge network, is to simply make the TLS termination stack keep a list of valid ESNI keys for the past few hours, rather than just the latest and most recent key. This allows the TLS server to decrypt the encrypted SNI sent by a client even if a slightly outdated DNS record was used to produce it. The duration of the lifetime of ESNI keys needs to be balanced between increasing service availability, by keeping as many keys around as possible, and increasing security and forward secrecy of ESNI, which on the contrary requires keeping as few keys as possible.</p>
 	<p>There is some room for experimentation while the encrypted SNI specification is not finalized yet, and one proposed solution would allow the server to detect the failure and serve a fresh ESNI record to the client which in turn can then try to connect again using the newly received record without having to disable ESNI completely. But while this might seem easy, in practice a lot of things need to be taken into account: the server needs to serve a certificate to the client, so the client can make sure the connection is not being intercepted, but at the same time the server doesn’t know which certificate to serve because it can’t decrypt and inspect the SNI, which introduces the need for some sort of “fallback certificate”. Additionally any such fallback mechanism would inevitably add an additional round-trip to the connection handshake which would negate one of the main performance improvements introduced by TLS 1.3 (that is, shorter handshakes).</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On our part, we’ll continue to experiment and evolve our implementation as the specification evolves, to make encrypted SNI work best for our customers and users.</p>
 </div>

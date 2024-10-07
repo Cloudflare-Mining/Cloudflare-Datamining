@@ -8,7 +8,14 @@
 	<p>At Cloudflare, we are constantly monitoring and optimizing the performance and resource utilization of our systems. Recently, we noticed that some of our TCP sessions were allocating more memory than expected.</p>
 	<p>The Linux kernel allows <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP sessions</a> that match certain characteristics to ignore memory allocation limits set by autotuning and allocate excessive amounts of memory, all the way up to net.ipv4.tcp_rmem max (the per-session limit). On Cloudflare’s production network, there are often many such TCP sessions on a server, causing the total amount of allocated TCP memory to reach net.ipv4.tcp_mem thresholds (the server-wide limit). When that happens, the kernel imposes memory use constraints on all TCP sessions, not just the ones causing the problem. Those constraints have a negative impact on throughput and latency for the user. Internally within the kernel, the problematic sessions trigger TCP collapse processing, “OFO” pruning (dropping of packets already received and sitting in the out-of-order queue), and the dropping of newly arriving packets.</p>
 	<p>This blog post describes in detail the root cause of the problem and shows the test results of a solution.</p>
-	<h2>TCP receive buffers are excessively big for some sessions</h2>
+	<div class="flex anchor relative">
+		<h2 id="tcp-receive-buffers-are-excessively-big-for-some-sessions">TCP receive buffers are excessively big for some sessions</h2>
+		<a href="https://blog.cloudflare.com/#tcp-receive-buffers-are-excessively-big-for-some-sessions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our journey began when we started noticing a lot of TCP sessions on some servers with large amounts of memory allocated for receive buffers. &nbsp;Receive buffers are used by Linux to hold packets that have arrived from the network but have not yet been read by the local process.</p>
 	<p>Digging into the details, we observed that most of those TCP sessions had a <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> (RTT) of roughly 20ms. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT is the round trip time</a> between the endpoints, measured in milliseconds. At that latency, standard <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">BDP</a> calculations tell us that a window size of 2.5 MB can accommodate up to 1 Gbps of throughput. We then counted the number of TCP sessions with an upper memory limit set by autotuning (skmem_rb) greater than 5 MB, which is double our calculated window size. The relationship between the window size and skmem_rb is described in more detail <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">here</a>. &nbsp;There were 558 such TCP sessions on one of our servers. Most of those sessions looked similar to this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -32,7 +39,14 @@
 		</li>
 	</ul>
 	<p>Note the value of 256MiB for skmem_r and skmem_rb. That is the red flag that something is very wrong, because those values match the system-wide maximum value set by sysctl net.ipv4.tcp_rmem. &nbsp;Linux autotuning should not permit the buffers to grow that large for these sessions.</p>
-	<h2>Memory limits are not being honored for some TCP sessions</h2>
+	<div class="flex anchor relative">
+		<h2 id="memory-limits-are-not-being-honored-for-some-tcp-sessions">Memory limits are not being honored for some TCP sessions</h2>
+		<a href="https://blog.cloudflare.com/#memory-limits-are-not-being-honored-for-some-tcp-sessions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCP autotuning sets the maximum amount of memory that a session can use. More information about Linux autotuning can be found at <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">Optimizing TCP for high WAN throughput while preserving low latency</a>.</p>
 	<p>Here is a graph of one of the problematic sessions, showing skmem_r (allocated memory) and skmem_rb (the limit for “r”) over time:</p>
 	<figure class="kg-card kg-image-card ">
@@ -41,7 +55,14 @@
 
 	</figure>
 	<p>This graph is showing us that the limit being set by autotuning is being ignored, because every time skmem_r exceeds skmem_rb, skmem_rb is simply being raised to match it. So something is wrong with how skmem_rb is being handled. This explains the high memory usage. The question now is why.</p>
-	<h2>The reproducer</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-reproducer">The reproducer</h2>
+		<a href="https://blog.cloudflare.com/#the-reproducer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, we had only observed this problem in our production environment. Because we couldn’t predict which TCP sessions would fall into this dysfunctional state, and because we wanted to see the session information for these dysfunctional sessions from the beginning of those sessions, we needed to collect a lot of TCP session data for all TCP sessions. This is challenging in a production environment running at the scale of <a href="https://www.cloudflare.com/network">Cloudflare’s network</a>. We needed to be able to reproduce this in a controlled lab environment. To that end, we gathered more details about what distinguishes these problematic TCP sessions from others, and ran a large number of experiments in our lab environment to reproduce the problem.</p>
 	<p>After <i>a lot</i> of attempts, we finally got it.</p>
 	<p>We were left with some pretty dirty lab machines by the time we got to this point, meaning that a lot of settings had been changed. We didn’t believe that all of them were related to the problem, but we didn’t know which ones were and which were not. So we went through a further series of tests to get us to a minimal set up to reproduce the problem. It turned out that a number of factors that we originally thought were important (such as latency) were not important.</p>
@@ -105,7 +126,15 @@ client_sock.setblocking(True)
 while True:
     do_read(1)
     time.sleep(0.001)</code></pre>
-	<h2>Reproducing the problem</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="reproducing-the-problem">Reproducing the problem</h2>
+		<a href="https://blog.cloudflare.com/#reproducing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, we ran the above programs with these settings:</p>
 	<ul>
 		<li>
@@ -147,7 +176,14 @@ while True:
 		</li>
 	</ul>
 	<p>Note that there is a range of packet sizes that can be sent, and a range of intervals which can be used for the delays, to cause this abnormal condition. This first reproduction is intentionally defined to grow the receive buffer quickly. These rates and delays do not reflect exactly what we see in production.</p>
-	<h2>A closer look at real traffic in production</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-closer-look-at-real-traffic-in-production">A closer look at real traffic in production</h2>
+		<a href="https://blog.cloudflare.com/#a-closer-look-at-real-traffic-in-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The prior section describes what is happening in our lab systems. Is that consistent with what we see in our production streams? Let’s take a look, now that we know more about what we are looking for.</p>
 	<p>We did find similar TCP sessions on our production network, which provided confirmation. But we also found this one, which, although it looks a little different, is actually the same root cause:</p>
 	<figure class="kg-card kg-image-card ">
@@ -164,7 +200,14 @@ while True:
 
 	</figure>
 	<p>This variation of the problem is addressed below in the section called “Reader never reads”.</p>
-	<h2>Getting to the root cause</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-to-the-root-cause">Getting to the root cause</h2>
+		<a href="https://blog.cloudflare.com/#getting-to-the-root-cause" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>sk_rcvbuf is being increased inappropriately. Somewhere. Let’s review the code to narrow down the possibilities.</p>
 	<p>sk_rcvbuf only gets updated in three places (that are relevant to this issue):</p>
 	<ul>
@@ -179,7 +222,14 @@ while True:
 		</li>
 	</ul>
 	<p>Actually, we are not calling tcp_set_rcvlowat, which eliminates that one. Next we used bpftrace scripts to figure out if it’s in tcp_clamp_window or tcp_rcv_space_adjust. &nbsp; After bpftracing, the answer is: It’s tcp_clamp_window.</p>
-	<h2>Summarizing what we know so far,part I</h2>
+	<div class="flex anchor relative">
+		<h2 id="summarizing-what-we-know-so-far">Summarizing what we know so far,</h2>
+		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L4770">tcp_try_rmem_schedule</a> is being called as usual.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -188,13 +238,34 @@ while True:
 	</figure>
 	<p>Sometimes rmem_alloc &gt; sk_rcvbuf. When that happens, prune is called, which calls tcp_clamp_window. tcp_clamp_window <i>increases</i> sk_rcvbuf to match rmem_alloc. That is unexpected.</p>
 	<p>The key question is: Why is rmem_alloc &gt; sk_rcvbuf?</p>
-	<h2>Why is rmem_alloc &gt; sk_rcvbuf?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-is-rmem_alloc-sk_rcvbuf">Why is rmem_alloc &gt; sk_rcvbuf?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-rmem_alloc-sk_rcvbuf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More kernel code review ensued, reviewing all the places where rmem_alloc is increased, and looking to see where rmem_alloc could be exceeding sk_rcvbuf. After more bpftracing, watching netstats, etc., the answer is: TCP coalescing.</p>
-	<h2>TCP coalescing</h2>
+	<div class="flex anchor relative">
+		<h2 id="tcp-coalescing">TCP coalescing</h2>
+		<a href="https://blog.cloudflare.com/#tcp-coalescing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Coalescing is where the kernel will combine packets as they are being received.</p>
 	<p>Note that this is not <a href="https://lwn.net/Articles/358910">Generic Receive Offload</a> (GRO). &nbsp;This is specific to TCP for packets on the INPUT path. Coalesce is a L4 feature that appends user payload from an incoming packet to an already existing packet, if possible. This saves memory (header space).</p>
 	<p>tcp_rcv_established calls tcp_queue_rcv, which calls tcp_try_coalesce. If the incoming packet can be coalesced, then it will be, and rmem_alloc is raised to reflect that. Here’s the important part: rmem_alloc can and does go above sk_rcvbuf because of the logic in that routine.</p>
-	<h2>Summarizing what we know so far,part II</h2>
+	<div class="flex anchor relative">
+		<h2 id="summarizing-what-we-know-so-far">Summarizing what we know so far,</h2>
+		<a href="https://blog.cloudflare.com/#summarizing-what-we-know-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Data packets are being received</p>
@@ -211,10 +282,24 @@ while True:
 	</ol>
 	<p>In step 2, in order for rmem_alloc to exceed sk_rcvbuf, it has to be near sk_rcvbuf in the first place. We use tcp_adv_win_scale of -2, which means the window size will be 25% of the available buffer size, so we would not expect rmem_alloc to even be close to sk_rcvbuf. In our tests, the truesize ratio is not close to 4, so something unexpected is happening.</p>
 	<p>Why is rmem_alloc even close to sk_rcvbuf?</p>
-	<h2>Why is rmem_alloc close to sk_rcvbuf?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-is-rmem_alloc-close-to-sk_rcvbuf">Why is rmem_alloc close to sk_rcvbuf?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-rmem_alloc-close-to-sk_rcvbuf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sending a ZeroWindow (a packet advertising a window size of zero) is how a TCP receiver tells a TCP sender to stop sending when the receive window is full. This is the mechanism that should keep rmem_alloc well below sk_rcvbuf.</p>
 	<p>During our tests, we happened to notice that the SNMP metric <a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/proc.c#L270">TCPWantZeroWindowAdv</a> was increasing. The receiver was not sending ZeroWindows when it should have been. &nbsp;So our attention fell on the window calculation logic, and we arrived at the root cause of all of our problems.</p>
-	<h2>The root cause</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-root-cause">The root cause</h2>
+		<a href="https://blog.cloudflare.com/#the-root-cause" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The problem has to do with how the receive window size is calculated. This is the value in the TCP header that the receiver sends to the sender. Together with the ACK value, it communicates to the sender what the right edge of the window is.</p>
 	<p>The way TCP’s sliding window works is described in Stevens, “TCP/IP Illustrated, Volume 1”, section 20.3. &nbsp;Visually, the receive window looks like this:</p>
 	<figure class="kg-card kg-image-card ">
@@ -239,7 +324,14 @@ while True:
 	</ul>
 	<p>But if we have arrived at the upper limit, then moving the right edge to the right requires us to ignore the upper limit. This is equivalent to not having a limit. This is what Linux does today, and is the source of the problems described in this post.</p>
 	<p>This occurs for any window scaling factor greater than one. This means everyone.</p>
-	<h2>A sidebar on terminology</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-sidebar-on-terminology">A sidebar on terminology</h2>
+		<a href="https://blog.cloudflare.com/#a-sidebar-on-terminology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The window size specified in the TCP header is the receive window size. It is sent from the receiver to the sender. The ACK number plus the window size defines the range of sequence numbers that the sender may send. It is also called the advertised window, or the offered window.</p>
 	<p>There are three terms related to TCP window management that are important to understand:</p>
 	<ul>
@@ -255,7 +347,14 @@ while True:
 	</ul>
 	<p>Opening and shrinking is not the same thing as the receive window size in the TCP header getting larger or smaller. The right edge is defined as the ACK number plus the receive window size. Shrinking only occurs when that right edge moves to the left (i.e. gets reduced).</p>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7323">RFC 7323</a> describes <a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4">window retraction</a>. Retracting the window is the same as shrinking the window.</p>
-	<h2>Discussion Regarding Solutions</h2>
+	<div class="flex anchor relative">
+		<h2 id="discussion-regarding-solutions">Discussion Regarding Solutions</h2>
+		<a href="https://blog.cloudflare.com/#discussion-regarding-solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are only three options to consider:</p>
 	<ol>
 		<li>
@@ -268,15 +367,43 @@ while True:
 			<p>Shrink the window</p>
 		</li>
 	</ol>
-	<h3>Let the window grow</h3>
+	<div class="flex anchor relative">
+		<h3 id="let-the-window-grow">Let the window grow</h3>
+		<a href="https://blog.cloudflare.com/#let-the-window-grow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Letting the window grow is the same as ignoring the memory limits set by autotuning. It results in allocating excessive amounts of memory for no reason. This is really just kicking the can down the road until allocated memory reaches net.ipv4.tcp_rmem max, when we are forced to choose from among one of the other two options.</p>
-	<h3>Drop incoming packets</h3>
+	<div class="flex anchor relative">
+		<h3 id="drop-incoming-packets">Drop incoming packets</h3>
+		<a href="https://blog.cloudflare.com/#drop-incoming-packets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Dropping incoming packets will cause the sender to retransmit the dropped packets, with exponential backoff, until an eventual timeout (depending on the client read rate), which breaks the connection. &nbsp;ZeroWindows are never sent. &nbsp;This wastes bandwidth and processing resources by retransmitting packets we know will not be successfully delivered to L7 at the receiver. &nbsp;This is functionally incorrect for a window full situation.</p>
-	<h3>Shrink the window</h3>
+	<div class="flex anchor relative">
+		<h3 id="shrink-the-window">Shrink the window</h3>
+		<a href="https://blog.cloudflare.com/#shrink-the-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Shrinking the window involves moving the right edge of the window to the left when approaching a window full condition. &nbsp;A ZeroWindow is sent when the window is full. &nbsp;There is no wasted memory, no wasted bandwidth, and no broken connections.</p>
 	<p>The current situation is that we are letting the window grow (option #1), and when net.ipv4.tcp_rmem max is reached, we are dropping packets (option #2).</p>
 	<p>We need to stop doing option #1. &nbsp;We could either drop packets (option #2) when sk_rcvbuf is reached. &nbsp;This avoids excessive memory usage, but is still functionally incorrect for a window full situation. &nbsp;Or we could shrink the window (option #3).</p>
-	<h2>Shrinking the window</h2>
+	<div class="flex anchor relative">
+		<h2 id="shrinking-the-window">Shrinking the window</h2>
+		<a href="https://blog.cloudflare.com/#shrinking-the-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It turns out that this issue has already been addressed in the RFC’s.</p>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4">RFC 7323</a> says:</p>
 	<figure class="kg-card kg-image-card ">
@@ -299,9 +426,23 @@ while True:
 			<p>“<i>This is a general problem and can happen any time the sender does a write, which is smaller than the window scale factor.</i>”</p>
 		</li>
 	</ul>
-	<h2>Kernel patch</h2>
+	<div class="flex anchor relative">
+		<h2 id="kernel-patch">Kernel patch</h2>
+		<a href="https://blog.cloudflare.com/#kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Linux kernel patch we wrote to enable TCP window shrinking has been merged upstream and will be in kernel version 6.5 and later. &nbsp;The commit can be found <a href="https://github.com/torvalds/linux/commit/b650d953cd391595e536153ce30b4aab385643ac">here</a>.</p>
-	<h2>Rerunning the test above with kernel patch</h2>
+	<div class="flex anchor relative">
+		<h2 id="rerunning-the-test-above-with-kernel-patch">Rerunning the test above with kernel patch</h2>
+		<a href="https://blog.cloudflare.com/#rerunning-the-test-above-with-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is the test we showed above, but this time using the kernel patch:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -315,7 +456,14 @@ while True:
 
 	</figure>
 	<p>We see that the memory limit is being honored, ZeroWindows are being sent, there are no retransmissions, and no disconnects after 15 minutes. This is the desired result.</p>
-	<h2>Test results using a TCP window scaling factor of 8</h2>
+	<div class="flex anchor relative">
+		<h2 id="test-results-using-a-tcp-window-scaling-factor-of-8">Test results using a TCP window scaling factor of 8</h2>
+		<a href="https://blog.cloudflare.com/#test-results-using-a-tcp-window-scaling-factor-of-8" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The window scaling factor of 8 and tcp_adv_win_scale of 1 is commonly seen on the public Internet, so let’s test that.</p>
 	<ul>
 		<li>
@@ -328,21 +476,44 @@ while True:
 			<p>tcp_adv_win_scale = 1</p>
 		</li>
 	</ul>
-	<h3>Without the kernel patch</h3>
+	<div class="flex anchor relative">
+		<h3 id="without-the-kernel-patch">Without the kernel patch</h3>
+		<a href="https://blog.cloudflare.com/#without-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/bymqRbxF3Ty7SokgQACbf/8b458ceaec5de3cba654afea70b461b4/download--11--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>At the ~2100 second mark, we see the same problems we saw earlier when using wscale 13.</p>
-	<h3>With the kernel patch</h3>
+	<div class="flex anchor relative">
+		<h3 id="with-the-kernel-patch">With the kernel patch</h3>
+		<a href="https://blog.cloudflare.com/#with-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6GEvtqjf7mRG9z4iouZdxU/86ab1de68cb5d22105d140030a0c215a/download--12--1.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>The kernel patch is working as expected.</p>
-	<h2>Test results using an oscillating reader</h2>
+	<div class="flex anchor relative">
+		<h2 id="test-results-using-an-oscillating-reader">Test results using an oscillating reader</h2>
+		<a href="https://blog.cloudflare.com/#test-results-using-an-oscillating-reader" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a test run where the reader alternates every 240 seconds between reading slow and reading fast. &nbsp;Slow is 1B every 1 ms and fast is 3300B every 1 ms.</p>
 	<ul>
 		<li>
@@ -355,13 +526,29 @@ while True:
 			<p>tcp_adv_win_scale = -2</p>
 		</li>
 	</ul>
-	<h3>Without the kernel patch</h3>
+	<div class="flex anchor relative">
+		<h3 id="without-the-kernel-patch">Without the kernel patch</h3>
+		<a href="https://blog.cloudflare.com/#without-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wVZgjyGcD2JT5lO8okZWO/f8f36e62aa801aeb9aee3d68f80134ce/download--13-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
-	<h3>With the kernel patch</h3>
+	<div class="flex anchor relative">
+		<h3 id="with-the-kernel-patch">With the kernel patch</h3>
+		<a href="https://blog.cloudflare.com/#with-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6euKMB55WcEZzPsHR59OGJ/10334f78cde44af6a0e4851388de16f9/download--14-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
@@ -369,7 +556,14 @@ while True:
 	</figure>
 	<p>The kernel patch is working as expected.</p>
 	<p>NB. We do see the increase of skmem_rb at the 720 second mark, but it only goes to ~20MB and does not grow unbounded. Whether or not 20MB is the most ideal value for this TCP session is an interesting question, but that is a topic for a different blog post.</p>
-	<h2>Reader never reads</h2>
+	<div class="flex anchor relative">
+		<h2 id="reader-never-reads">Reader never reads</h2>
+		<a href="https://blog.cloudflare.com/#reader-never-reads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here’s a good one. Say a reader never reads from the socket. How much TCP receive buffer memory would we expect that reader to consume? One might assume the answer is that the reader would read a few packets, store the payload in the receive queue, then pause the flow of packets until the userspace program starts reading. &nbsp;The actual answer is that the reader will read packets until the receive queue grows to the size of net.ipv4.tcp_rmem max. &nbsp;This is incorrect behavior, to say the very least.</p>
 	<p>For this test, the sender sends 4 bytes every 1 ms. &nbsp;The reader, literally, never reads from the socket. Not once.</p>
 	<ul>
@@ -383,22 +577,52 @@ while True:
 			<p>net.ipv4.tcp_adv_win_scale = -2</p>
 		</li>
 	</ul>
-	<h3>Without the kernel patch:</h3>
+	<div class="flex anchor relative">
+		<h3 id="without-the-kernel-patch">Without the kernel patch:</h3>
+		<a href="https://blog.cloudflare.com/#without-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wmz2uhmftqBWNdyAjJREM/dcc889ef659699e7d1311aea79f8c66f/download--15-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
-	<h3>With the kernel patch:</h3>
+	<div class="flex anchor relative">
+		<h3 id="with-the-kernel-patch">With the kernel patch:</h3>
+		<a href="https://blog.cloudflare.com/#with-the-kernel-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1D4GXbXA6H7kdqXtBM3VPM/7f78d7bd484a2181417fc88abe5e15aa/download--16-.png" alt="" class="kg-image" width="800" height="900" loading="lazy">
 
 	</figure>
 	<p>Using the kernel patch produces the expected behavior.</p>
-	<h2>Results from the Cloudflare production network</h2>
+	<div class="flex anchor relative">
+		<h2 id="results-from-the-cloudflare-production-network">Results from the Cloudflare production network</h2>
+		<a href="https://blog.cloudflare.com/#results-from-the-cloudflare-production-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We deployed this patch to the Cloudflare production network, and can see the effects in aggregate when running at scale.</p>
-	<h3>Packet Drop Rates</h3>
+	<div class="flex anchor relative">
+		<h3 id="packet-drop-rates">Packet Drop Rates</h3>
+		<a href="https://blog.cloudflare.com/#packet-drop-rates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This first graph shows RcvPruned, which shows how many incoming packets per second were dropped due to memory constraints.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -406,7 +630,14 @@ while True:
 
 	</figure>
 	<p>The patch was enabled on most servers on 05/01 at 22:00, eliminating those drops.</p>
-	<h3>TCPRcvCollapsed</h3>
+	<div class="flex anchor relative">
+		<h3 id="tcprcvcollapsed">TCPRcvCollapsed</h3>
+		<a href="https://blog.cloudflare.com/#tcprcvcollapsed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recall that TCPRcvCollapsed is the number of packets per second that are merged together in the queue in order to reduce memory usage (by eliminating header metadata). &nbsp;This occurs when memory limits are reached.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -414,7 +645,14 @@ while True:
 
 	</figure>
 	<p>The patch was enabled on most servers on 05/01 at 22:00. These graphs show the results from one of our data centers. The upper graph shows that the patch has eliminated all collapse processing. The lower graph shows the amount of time spent in collapse processing (each line in the lower graph is a single server). This is important because it can impact Cloudflare’s responsiveness in processing <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP requests</a>. &nbsp;The result of the patch is that all latency due to TCP collapse processing has been eliminated.</p>
-	<h3>Memory</h3>
+	<div class="flex anchor relative">
+		<h3 id="memory">Memory</h3>
+		<a href="https://blog.cloudflare.com/#memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because the memory limits set by autotuning are now being enforced, the total amount of memory allocated is reduced.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -422,7 +660,14 @@ while True:
 
 	</figure>
 	<p>In this graph, the green line shows the total amount of memory allocated for TCP buffers in one of our data centers. &nbsp;This is with the patch enabled. &nbsp;The purple line is the same total, but from exactly 7 days prior to the time indicated on the x axis, before the patch was enabled. &nbsp;Using this approach to visualization, it is clear to see the memory saved with the patch enabled.</p>
-	<h3>ZeroWindows</h3>
+	<div class="flex anchor relative">
+		<h3 id="zerowindows">ZeroWindows</h3>
+		<a href="https://blog.cloudflare.com/#zerowindows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>TCPWantZeroWindowAdv is the number of times per second that the window calculation based on available buffer memory produced a result that should have resulted in a ZeroWindow being sent to the sender, but was not. &nbsp;In other words, this is how often the receive buffer was increased beyond the limit set by autotuning.</p>
 	<p>After a receiver has sent a Zero Window to the sender, the receiver is not expecting to get any additional data from the sender. Should additional data packets arrive at the receiver during the period when the window size is zero, those packets are dropped and the metric TCPZeroWindowDrop is incremented. &nbsp;These dropped packets are usually just due to the timing of these events, i.e. the Zero Window packet in one direction and some data packets flowing in the other direction passed by each other on the network.</p>
 	<figure class="kg-card kg-image-card ">
@@ -435,6 +680,13 @@ while True:
 	<p>The lower graph reports the packets that are dropped because the session is in a ZeroWindow state. These are ok to drop, because the session is in a ZeroWindow state. These drops do not have a negative impact, for the same reason (it’s in a ZeroWindow state).</p>
 	<p>All of these results are as expected.</p>
 	<p>Importantly, we have also not found any peer TCP stacks that are non-RFC compliant (i.e. that are not able to accept a shrinking window).</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post, we described when and why TCP memory limits are not being honored in the Linux kernel, and introduced a patch that fixes it. All in a day’s work at Cloudflare, where we are helping build a better Internet.</p>
 </div>

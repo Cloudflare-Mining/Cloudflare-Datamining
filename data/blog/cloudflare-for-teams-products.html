@@ -14,7 +14,14 @@
 	<p>Cloudflare’s first wave of products secured and improved the speed of those sites by letting customers, from free users to some of the largest properties on the Internet, replace that hardware stack with <a href="https://www.cloudflare.com/network">Cloudflare’s network</a>. We could deliver capacity at a scale that would be impossible for nearly any company to build themselves. We deployed data centers in over 200 cities around the world that help us reach users wherever they are.</p>
 	<p>We built a unique network to let sites scale how they secured infrastructure on the Internet with their own growth. But internally, businesses and their employees were stuck using their own private networks.</p>
 	<p>Just as we helped organizations secure their infrastructure by replacing boxes, we can do the same for their teams and their data. Today, we’re announcing a new platform that applies our network, and everything we’ve learned, to make the Internet faster and safer for teams.<a href="https://teams.cloudflare.com">Cloudflare for Teams</a> protects enterprises, devices, and data by securing every connection without compromising user performance. The speed, reliability and protection we brought to securing infrastructure is extended to everything your team does on the Internet.</p>
-	<h2>The legacy world of corporate security</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-legacy-world-of-corporate-security">The legacy world of corporate security</h2>
+		<a href="https://blog.cloudflare.com/#the-legacy-world-of-corporate-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations all share three problems they need to solve at the network level:</p>
 	<ol>
 		<li>
@@ -28,32 +35,95 @@
 		</li>
 	</ol>
 	<p>Each of these challenges pose a real risk to any team. If any component is compromised, the entire business becomes vulnerable.</p>
-	<h3>Internally managed applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="internally-managed-applications">Internally managed applications</h3>
+		<a href="https://blog.cloudflare.com/#internally-managed-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Solving the first bucket, internally managed applications, started by building a <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">perimeter</a> around those internal resources. Administrators deployed applications on a private network and users outside of the office connected to them with client VPN agents through VPN appliances that lived back on-site.</p>
 	<p>Users hated it, and they still do, because it made it harder to get their jobs done. A sales team member traveling to a customer visit in the back of a taxi had to start a VPN client on their phone just to review details about the meeting. An engineer working remotely had to sit and wait as every connection they made to developer tools was backhauled &nbsp;through a central VPN appliance.</p>
 	<p>Administrators and security teams also had issues with this model. Once a user connects to the private network, they’re typically able to reach multiple resources without having to prove they’re authorized to do so . Just because I’m able to enter the front door of an apartment building, doesn’t mean I should be able to walk into any individual apartment. However, on private networks, enforcing additional security within the bounds of the private network required complicated microsegmentation, if it was done at all.</p>
-	<h3>Threats on the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="threats-on-the-internet">Threats on the Internet</h3>
+		<a href="https://blog.cloudflare.com/#threats-on-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second challenge, securing users connecting to SaaS tools on the public Internet and applications in the public cloud, required security teams to protect against known threats and potential zero-day attacks as their users left the castle and moat.</p>
 	<p>How did most companies respond? By forcing all traffic leaving branch offices or remote users back through headquarters and using the same hardware that secured their private network to try and build a perimeter around the Internet, at least the Internet their users accessed. All of the Internet-bound traffic leaving a branch office in Asia, for example, would be sent back through a central location in Europe, even if the destination was just down the street.</p>
 	<p>Organizations needed those connections to be stable, and to prioritize certain functions like voice and video, so they paid carriers to support dedicated <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">multi-protocol label switching (MPLS)</a> links. MPLS delivered improved performance by applying label switching to traffic which downstream routers can forward without needing to perform an IP lookup, but was eye-wateringly expensive.</p>
-	<h3>Securing data</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-data">Securing data</h3>
+		<a href="https://blog.cloudflare.com/#securing-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The third challenge, keeping data safe, became a moving target. Organizations had to keep data secure in a consistent way as it lived and moved between private tools on corporate networks and SaaS applications like Salesforce or Office 365.</p>
 	<p>The answer? More of the same. Teams backhauled traffic over MPLS links to a place where data could be inspected, adding more latency and introducing more hardware that had to be maintained.</p>
-	<h2>What changed?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-changed">What changed?</h2>
+		<a href="https://blog.cloudflare.com/#what-changed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The balance of internal versus external traffic began to shift as SaaS applications became the new default for small businesses and Fortune 500s alike. Users now do most of their work on the Internet, with tools like Office 365 continuing to gain adoption. As those tools become more popular, more data leaves the moat and lives on the public Internet.</p>
 	<p>User behavior also changed. Users left the office and worked from multiple devices, both managed and unmanaged. Teams became more distributed and the perimeter was stretched to its limit.</p>
-	<h2>This caused legacy approaches to fail</h2>
+	<div class="flex anchor relative">
+		<h2 id="this-caused-legacy-approaches-to-fail">This caused legacy approaches to fail</h2>
+		<a href="https://blog.cloudflare.com/#this-caused-legacy-approaches-to-fail" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Legacy approaches to corporate security pushed the &nbsp;castle and moat model further out. However, that model simply cannot scale with how users do work on the Internet today.</p>
-	<h3>Internally managed applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="internally-managed-applications">Internally managed applications</h3>
+		<a href="https://blog.cloudflare.com/#internally-managed-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Private networks give users headaches, but they’re also a constant and complex chore to maintain. VPNs require expensive equipment that must be upgraded or expanded and, as more users leave the office, that equipment must try and scale up.</p>
 	<p>The result is a backlog of IT help desk tickets as users struggle with their VPN and, on the other side of the house, administrators and security teams try to put band-aids on the approach.</p>
-	<h3>Threats on the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="threats-on-the-internet">Threats on the Internet</h3>
+		<a href="https://blog.cloudflare.com/#threats-on-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations initially saved money by moving to SaaS tools, but wound up spending more money over time as their traffic increased and bandwidth bills climbed.</p>
 	<p>Additionally, threats evolve. The traffic sent back to headquarters was secured with static models of scanning and filtering using hardware gateways. Users were still vulnerable to new types of threats that these on-premise boxes did not block yet.</p>
-	<h3>Securing data</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-data">Securing data</h3>
+		<a href="https://blog.cloudflare.com/#securing-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The cost of keeping data secure in both environments also grew. Security teams attempted to inspect Internet-bound traffic for threats and data loss by backhauling branch office traffic through on-premise hardware, degrading speed and increasing bandwidth fees.</p>
 	<p>Even more dangerous, data now lived permanently outside of that castle and moat model. Organizations were now vulnerable to attacks that bypassed their perimeter and targeted SaaS applications directly.</p>
-	<h2>How will Cloudflare solve these problems?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-will-cloudflare-solve-these-problems">How will Cloudflare solve these problems?</h2>
+		<a href="https://blog.cloudflare.com/#how-will-cloudflare-solve-these-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare for Teams consists of two products, Cloudflare Access and Cloudflare Gateway.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -102,23 +172,72 @@
 	<p>Existing <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">browser isolation</a> solutions attempt to solve this challenge in one of two approaches: 1) pixel pushing and 2) DOM reconstruction. Both approaches lead to tradeoffs in performance and security. Pixel pushing degrades speed while also driving up the cost to stream sessions to users. DOM reconstruction attempts to strip potentially harmful content before sending it to the user. That tactic relies on known vulnerabilities and is still exposed to the zero day threats that isolation tools were meant to solve.</p>
 	<p>Cloudflare Gateway will feature always-on browser isolation that not only protects users from zero day threats, but can also make browsing the Internet faster. The solution will apply a patented approach to send vector commands that a browser can render without the need for an agent on the device. A user’s browser session will instead run in a Cloudflare data center where Gateway destroys the instance at the end of each session, keeping malware away from user devices without compromising performance.</p>
 	<p>When deployed, remote browser sessions will run in one of Cloudflare’s 200 data centers, connecting users to a faster, safer model of navigating the Internet without the compromises of legacy approaches. If you would like to learn more about this approach to browser isolation, I'd encourage you to read Darren Remington's <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">blog post on the topic</a>.</p>
-	<h2>Why Cloudflare?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-cloudflare">Why Cloudflare?</h2>
+		<a href="https://blog.cloudflare.com/#why-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To make infrastructure safer, and web properties faster, Cloudflare built out one of the world’s largest and most sophisticated networks. Cloudflare for Teams builds on that same platform, and all of its unique advantages.</p>
-	<h3>Fast</h3>
+	<div class="flex anchor relative">
+		<h3 id="fast">Fast</h3>
+		<a href="https://blog.cloudflare.com/#fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security should always be bundled with performance. Cloudflare’s infrastructure products delivered better protection while also improving speed. That’s possible because of the network we’ve built, both its distribution and how the data we have about the network allows Cloudflare to optimize requests and connections.</p>
 	<p>Cloudflare for Teams brings that same speed to end users by using that same network and route optimization. Additionally, Cloudflare has built industry-leading components that will become features of this new platform. All of these components leverage Cloudflare’s network and scale to improve user performance.</p>
 	<p>Gateway’s DNS-filtering features build on Cloudflare’s <a href="https://one.one.one.one">1.1.1.1</a> public DNS resolver, the world’s fastest resolver according to <a href="https://www.dnsperf.com/#!dns-resolvers">DNSPerf</a>. To protect entire connections, Cloudflare for Teams will deploy the same technology that underpins <a href="https://blog.cloudflare.com/announcing-warp-plus">Warp</a>, a new type of VPN with consistently better reviews than competitors.</p>
-	<h3>Massive scalability</h3>
+	<div class="flex anchor relative">
+		<h3 id="massive-scalability">Massive scalability</h3>
+		<a href="https://blog.cloudflare.com/#massive-scalability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s 30 TBps of network capacity can scale to meet the needs of nearly any enterprise. Customers can stop worrying about buying enough hardware to meet their organization’s needs and, instead, replace it with Cloudflare.</p>
-	<h3>Near users, wherever they are — literally</h3>
+	<div class="flex anchor relative">
+		<h3 id="near-users-wherever-they-are-literally">Near users, wherever they are — literally</h3>
+		<a href="https://blog.cloudflare.com/#near-users-wherever-they-are-literally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s network operates in 200 cities and more than 90 countries around the world, putting Cloudflare’s security and performance close to users, wherever they work.</p>
 	<p>That network includes presence in global headquarters, like London and New York, but also in traditionally underserved regions around the world.</p>
 	<p>Cloudflare data centers operate within 100 milliseconds of 99% of Internet-connected population in the developed world, and within 100 milliseconds of 94% of the Internet-connected population globally. All of your end users should feel like they have the performance traditionally only available to those in headquarters.</p>
-	<h3>Easier for administrators</h3>
+	<div class="flex anchor relative">
+		<h3 id="easier-for-administrators">Easier for administrators</h3>
+		<a href="https://blog.cloudflare.com/#easier-for-administrators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When security products are confusing, teams make mistakes that become incidents. Cloudflare’s solution is straightforward and easy to deploy. Most security providers in this market built features first and never considered usability or implementation.</p>
 	<p>Cloudflare Access can be deployed in less than an hour; Gateway features will build on top of that dashboard and workflow. Cloudflare for Teams brings the same ease-of-use of our tools that protect infrastructure to the products that new secure users, devices, and data.</p>
-	<h3>Better threat intelligence</h3>
+	<div class="flex anchor relative">
+		<h3 id="better-threat-intelligence">Better threat intelligence</h3>
+		<a href="https://blog.cloudflare.com/#better-threat-intelligence" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s network already secures more than 20 million Internet properties and blocks 72 billion cyber threats each day. We build products using the threat data we gather from protecting 11 million HTTP requests per second on average.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access is available right now. You can <a href="https://www.cloudflare.com/teams/access">start replacing</a> your team’s VPN with Cloudflare’s network today. Certain features of Cloudflare Gateway are available in beta now, and others will be added in beta over time. You can <a href="https://www.cloudflare.com/teams/gateway">sign up</a> to be notified about Gateway now.</p>
 </div>

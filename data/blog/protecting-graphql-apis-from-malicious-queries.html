@@ -7,7 +7,14 @@
 	</figure>
 	<p>Starting today, Cloudflare’s API Gateway can protect GraphQL APIs against malicious requests that may cause a denial of service to the origin. In particular, <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> will now protect against two of the most common GraphQL abuse vectors: <b>deeply nested queries</b> and <b>queries that request more information</b> than they should.</p>
 	<p>Typical RESTful HTTP APIs contain tens or hundreds of endpoints. GraphQL APIs differ by typically only providing a single endpoint for clients to communicate with and offering highly flexible queries that can return variable amounts of data. While GraphQL’s power and usefulness rests on the flexibility to query an API about only the specific data you need, that same flexibility adds an increased risk of abuse. Abusive requests to a single GraphQL API can place disproportional load on the origin, abuse <a href="https://hygraph.com/blog/graphql-n-1-problem">the N+1 problem</a>, or exploit a recursive relationship between data dimensions. In order to add GraphQL security features to API Gateway, we needed to obtain visibility <i>inside</i> the requests so that we could apply different security settings based on request parameters. To achieve that visibility, we built our own GraphQL query parser. Read on to learn about how we built the parser and the security features it enabled.</p>
-	<h3>The power of GraphQL</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-power-of-graphql">The power of GraphQL</h3>
+		<a href="https://blog.cloudflare.com/#the-power-of-graphql" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike a REST API, where the API’s users are limited to what data they can query and change on a per-endpoint basis, a GraphQL API offers users the ability to query and change any data they wish with an open-ended, yet structured request to a single endpoint. This open-endedness makes GraphQL APIs very <a href="https://graphql.org/learn">powerful</a>. Each user can query for a completely custom set of data and receive their custom response in a single HTTP request. Here are two example queries and their responses. These requests are typically sent via HTTP POST methods to an endpoint at /graphql.</p>
 	<pre class="language-graphql"><code class="language-graphql"># A query asking for multiple nested subfields of the "hero" object. This query has a depth level of 2.
 {
@@ -80,7 +87,14 @@
 	<p>So how can we secure GraphQL APIs? There is little agreement in the industry around what makes a GraphQL endpoint secure. For some, this means rejecting invalid queries. Normally, an invalid query refers to a query that would fail to compile by a GraphQL server and not cause any substantial load on the origin, but would still add noise and error logs and reduce operational visibility. For others, this means creating complexity-based rate limits or perhaps flagging <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization">broken object-level authorization</a>. Still others want deeper visibility into query behavior and an ability to validate queries against a predefined schema.</p>
 	<p>When creating new features in API Gateway, we often start by providing deeper visibility for customers into their traffic behavior related to the feature in question. This way we create value from the large amount of data we see in the Cloudflare network, and can have conversations with customers where we ask: <i>“Now that you have these data insights, what actions would you like to take with them?”</i>. This process puts us in a good position to build a second, more actionable iteration of the feature.</p>
 	<p>We decided to follow the same process with GraphQL protection, with parsing GraphQL requests and gathering data as our first goal.</p>
-	<h3>Parsing GraphQL quickly</h3>
+	<div class="flex anchor relative">
+		<h3 id="parsing-graphql-quickly">Parsing GraphQL quickly</h3>
+		<a href="https://blog.cloudflare.com/#parsing-graphql-quickly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a starting point, we wanted to collect request query size and depth attributes. These attributes offer a surprising amount of insight into the query – if the query is requesting a single field at depth level 15, is it really innocuous or is it exploiting some recursive data relationship? if the query is asking for hundreds of fields at depth level 3, why wouldn’t it just ask for the entire object at level 2 instead?</p>
 	<p>To do this, we needed to parse queries without adding latency to incoming requests. We evaluated multiple open source GraphQL parsers and quickly realized that their performance would put us at the risk of adding hundreds of microseconds of latency to the request duration. Our goal was to have a p95 parsing time of under 50 microseconds. Additionally, the infrastructure we were planning to use to ship this functionality has a strict no-heap-allocation policy – this means that any memory allocated by a parser to process a request has to be amortized by being reused when parsing any subsequent requests. Parsing GraphQL in a no-allocation manner is not a fundamental technical requirement for us over the long-term, but it was a necessity if we wanted to build something quickly with confidence that the proof of concept will meet our performance expectations.</p>
 	<p>Meeting the latency and memory allocation constraints meant that we had to write a parser of our own. Building an entire abstract syntax tree of unpredictable structure requires allocating memory on the heap, and that’s what made conventional parsers unfit for our requirements. What if instead of building a tree, we processed the query in a streaming fashion, token by token? We realized that if we were to write our own GraphQL lexer that produces a list of GraphQL tokens (“comment”, “string”, “variable name”, “opening parenthesis”, etc.), we could use a number of heuristics to infer the query depth and size without actually building a tree or fully validating the query. Using this approach meant that we could deliver the new feature fast, both in engineering time and wall clock time – and, most importantly, visualize data insights for our customers.</p>
@@ -113,7 +127,14 @@ name
 punctuator }
 punctuator }</code></pre>
 	<p>With this list of tokens available to us, we built our validation engine and added the ability to calculate query depth and size. Again, everything is done one-the-fly in a single pass. A limitation of this approach is that we can’t parse 100% of the requests – there are some syntactic features of GraphQL that we have to fail open on; however, a major advantage of this approach is its performance – in our initial trial run against a stream of 10s of thousands of requests per second, we achieved a p95 parsing time of 25 microseconds. This is a good starting point to collect some data and to prototype our first GraphQL security features.</p>
-	<h3>Getting started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, any API Gateway customer can use the Cloudflare GraphQL API to retrieve information about depth and size of GraphQL queries we see for them on the edge.</p>
 	<p>As an example, we’ve run the analysis below visualizing over 400,000 data points for query sizes and depths for a production domain utilizing API Gateway.</p>
 	<p>First let’s look at query sizes in our sample:</p>
@@ -139,7 +160,14 @@ punctuator }</code></pre>
 (cf.api_gateway.graphql.query_depth &gt; 7 or 
 cf.api_gateway.graphql.query_size &gt; 60)</code></pre>
 	<p>Learn more and run your own analysis with our <a href="https://developers.cloudflare.com/api-shield/security/graphql-protection/configure">documentation</a>.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are already receiving feedback from our first customers and are planning out the next iteration of this feature. These are the features we will build next:</p>
 	<ul>
 		<li>

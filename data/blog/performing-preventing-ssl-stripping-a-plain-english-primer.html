@@ -8,7 +8,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jWqWYOetyD3ddaLc52xeu/e8422b2d1f014f23d4786a24dbcb4f8b/green-lock-4.png" alt="" class="kg-image" width="203" height="233" loading="lazy">
 
 	</figure>
-	<h3>HTTP over TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-over-tls">HTTP over TLS</h3>
+		<a href="https://blog.cloudflare.com/#http-over-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The internet is built on a patchwork of standards, with components being refactored and rebuilt in new published standards. When one standard is found to be flawed, it is later patched or replaced by a new standard. As a standard is falsified and replaced by a better one, the internet as a whole becomes better.</p>
 	<p>The HTTP protocol was originally specified to communicate data in the clear over the internet. Prior to the official introduction of HTTP 1.0, the first documented version of HTTP was known as HTTP V0.9 and was published in 1991. Netscape were the first to recognise the need for greater security assurance over the internet and in mid-1994 HTTPS was implemented into the Netscape browser. In order to implement greater security assurance, a technology called SSL (Secure Socket Layer) was created.</p>
 	<p>SSL 1.0 was short lived (and not even officially standardised) due to a number of security concerns and shortcomings. This protocol was incrementally updated in SSL 2.0 and SSL 3.0; this was then iteratively superseded by the TLS (Transport Layer Security) standards.</p>
@@ -47,13 +54,27 @@
 	<p>In 2010, Eric Butler demonstrated how insecure this was by building a simple interception tool called FireSheep. By Eavesdropping wireless connections, FireSheep would capture the login session for common websites. Whilst the attacker would not necessarily be able to capture the password of the website, they would be able to capture the login session and perform behaviours on websites as if they were login. They would also be able to intercept traffic as the user was logged in.</p>
 	<p>When connecting to a website using SSL, the first request should usually redirect the user to a secure version of the website. For example; when you first visit <code>http://www.cloudflare.com/</code> a HTTP 301 redirect is used to send you to the HTTPS version of the site, <code>https://www.cloudflare.com/</code>.</p>
 	<p>This raises an important question; if someone is able to intercept the unencrypted request to the HTTP version of the site, couldn't they then strip away the encryption and serve the site back to the user without encryption? This was a question explored by Moxie Marlinspike, which later led to the creation of HSTS.</p>
-	<h3>HTTP Strict Transport Security (HSTS)</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-strict-transport-security-hsts">HTTP Strict Transport Security (HSTS)</h3>
+		<a href="https://blog.cloudflare.com/#http-strict-transport-security-hsts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2009 at Blackhat DC, Moxie Marlinspike presented a tool known as SSLStrip. This tool would intercept HTTP traffic and whenever it spotted redirects or links to sites using HTTPS, it would transparently strip them away.</p>
 	<p>Instead of the victim connecting directly to a website; the victim would connect to the attacker, and the attacker would initiate the connection back to the website. This attack is known as an on-path attack.</p>
 	<p>The magic of SSLStrip was that whenever it would spot a link to a HTTPS webpage on an unencrypted HTTP connection, it would replace the HTTPS with a HTTP and sit in the middle to intercept the connection. The interceptor would make the encrypted connection to back to the web server in HTTPS, and serve the traffic back to the site visitor unencrypted (logging any interesting passwords or credit card information in the process).</p>
 	<p>In response, a protocol called HTTP Strict Transport Security (HSTS) was created in 2012 and specified in <a href="https://tools.ietf.org/html/rfc6797">RFC 6797</a>. The protocol works by the server responding with a special header called <code>Strict-Transport-Security</code> which contains a response telling the client that whenever they reconnect to the site, they must use HTTPS. This response contains a <code>"max-age"</code> field which defines how long this rule should last for since it was last seen.</p>
 	<p>Whilst this provided an improvement in preventing interception attacks, it wasn't perfect and there remain a number of shortcomings.</p>
-	<h3>HSTS Preloading</h3>
+	<div class="flex anchor relative">
+		<h3 id="hsts-preloading">HSTS Preloading</h3>
+		<a href="https://blog.cloudflare.com/#hsts-preloading" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the shortcomings of HSTS is the fact that it requires a previous connection to know to always connect securely to a particular site. When the visitor first connects to the website, they won't have received the HSTS rule that tells them to always use HTTPS. Only on subsequent connections will the visitor's browser be aware of the HSTS rule that requires them to connect over HTTPS.</p>
 	<p>Other mechanisms of attacking HSTS have been explored; for example by hijacking the protocol used to the sync a computer's time (NTP), it can be possible to set a computers date and time to one in the future. This date and time can be set to a value when the HSTS rule has expired and thereby bypassing HSTS<a href="https://blog.cloudflare.com/#fn2">[2]</a>.</p>
 	<p>HSTS Preload Lists are one potential solution to help with these issues, they effectively work by hardcoding a list of websites that need to be connected to using HTTPS-only. Sites with HSTS enabled can be submitted to the Chrome HSTS Preload List at <a href="https://hstspreload.org">hstspreload.org</a>; which is also used as the basis of the preload lists used in other browsers.</p>
@@ -64,7 +85,14 @@
 
 	</figure>
 	<p>Even with preload, things still aren't perfect. Suppose someone is reading a blog about books and on that blog there is a link to purchase a book from an online retailer. Despite the fact the online retailer enforces HTTPS using HSTS it is possible to conduct an on-path attack, providing the blog linking to the online retailer does not use HTTPS.</p>
-	<h3>More Still to be Done</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-still-to-be-done">More Still to be Done</h3>
+		<a href="https://blog.cloudflare.com/#more-still-to-be-done" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Leonardo Nve revived SSLStrip in a new version called <a href="https://github.com/LeonardoNve/sslstrip2">SSLStrip+</a>, with the ability to avoid HSTS. When a site is connected to over an unencrypted HTTP connection, SSLStrip+ will look for links to HTTPS sites. When a link is found to a HTTPS site, it is rewritten to HTTP and critically the domain is rewritten to an artificial domain which is not on the HSTS Preload list.</p>
 	<p>For example; suppose a site contains a link to <code>https://example.com/</code>, the HSTS could be stripped by rewriting the URLs to <code>http://example.org/</code>; with attacker sitting in the middle, receiving traffic from <code>http://example.org/</code> and proxying it to <code>https://example.com/</code>.</p>
 	<p>Such an attack can also be performed against redirects; suppose <code>http://example.net/</code> is loaded over HTTP but then redirects to <code>https://example.com/</code> which is loaded over HTTPS. At the point the redirect is carried out, the legitimate HSTS-protected site can be redirected to a phoney domain which the attacker uses to serve traffic over HTTP and intercept traffic.</p>
@@ -76,7 +104,14 @@
 
 	</figure>
 	<p>This change helps make it clearer to users when HTTPS has been stripped away from a webpage as they try to login. Additionally, in making this change, it hoped that more websites will adopt HTTPS - thereby improving the security of the internet as a whole.</p>
-	<h3>Final Remarks</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-remarks">Final Remarks</h3>
+		<a href="https://blog.cloudflare.com/#final-remarks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This blog post has discussed mechanisms of stripping HTTPS away from websites and in particular how HSTS can affect this. It is worth noting that there are other potential attack vectors within various HTTPS specifications and in certain ciphers; this blog post haven't gone into them.</p>
 	<p>Despite HTTPS offering a mechanism for encrypting web traffic, it is important to implement technologies such as HTTP Strict Transport Security to ensure it is enforced, and preferably submit your site to HSTS Preload lists. As more websites do this, the security of the internet overall is improved.</p>
 	<p>To learn how you can implement HTTPS and HSTS in practice, I'd highly recommend Troy Hunt's blog post: <a href="https://www.troyhunt.com/the-6-step-happy-path-to-https">The 6-Step "Happy Path" to HTTPS</a>. His blog post goes into how you can enable strong HTTPS in practice, and additionally touches on a technology that I didn't mention here known as CSP (Content Security Policy). CSP allows you to automatically upgrade or block HTTP requests when loading pages over HTTPS, as this poses another attack vector.</p>

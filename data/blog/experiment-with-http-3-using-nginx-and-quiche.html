@@ -15,7 +15,14 @@
 
 	</figure>
 	<p>It’s important to note that <b>this is not officially supported or endorsed by the NGINX project</b>, it is just something that we, Cloudflare, want to make available to the wider community to help push adoption of QUIC and HTTP/3.</p>
-	<h3>Building</h3>
+	<div class="flex anchor relative">
+		<h3 id="building">Building</h3>
+		<a href="https://blog.cloudflare.com/#building" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step is to <a href="https://nginx.org/en/download.html">download and unpack the NGINX source code</a>. Note that the HTTP/3 and QUIC patch only works with the 1.16.x release branch (the latest stable release being 1.16.1).</p>
 	<pre class="language-bash"><code class="language-bash"> % curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
  % tar xvzf nginx-1.16.1.tar.gz</code></pre>
@@ -35,7 +42,14 @@
  % make</code></pre>
 	<p>The above command instructs the NGINX build system to enable the HTTP/3 support ( <code>--with-http_v3_module</code>) by using the quiche library found in the path it was previously downloaded into ( <code>--with-quiche=../quiche</code>), as well as TLS and HTTP/2. Additional build options can be added as needed.</p>
 	<p>You can check out the full instructions <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme">here</a>.</p>
-	<h3>Running</h3>
+	<div class="flex anchor relative">
+		<h3 id="running">Running</h3>
+		<a href="https://blog.cloudflare.com/#running" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once built, NGINX can be configured to accept incoming HTTP/3 connections by adding the <code>quic</code> and <code>reuseport</code> options to the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen">listen</a> configuration directive.</p>
 	<p>Here is a minimal configuration example that you can start from:</p>
 	<pre class="language-bash"><code class="language-bash">events {

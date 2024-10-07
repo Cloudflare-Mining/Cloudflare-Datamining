@@ -7,7 +7,14 @@
 	</figure>
 	<p>Much of what I know about DNS I learned from David Ulevitch, the CEO of <a href="http://www.opendns.com">OpenDNS</a>. We're a big supporter of OpenDNS at CloudFlare, and John Roberts, an early OpenDNS employee, now works on our team. Prior to starting OpenDNS, David created EveryDNS. Since 2001, nearly half a million domains have had their authoritative DNS handled by EveryDNS's network. In January 2010, David sold EveryDNS to Dyn to focus on OpenDNS. I had dinner with him not long after the sale and we talked about the end of EveryDNS and what was the beginning of CloudFlare.</p>
 	<p>Dyn shut down new signups for EveryDNS but kept the service running for legacy users for more than a year. Then, about a month ago, they announced that they would be migrating all users off the service. They put a count-down clock on the EveryDNS website ticking down the seconds until the EveryDNS service is shut down for good on August 31, 2011. Where EveryDNS was free, there is a $4.95 one-time migration fee, with various additional fees depending on the service plan choosen. At CloudFlare, we thought that was kind of sad so we decided to help out all the EveryDNS users.</p>
-	<h3>EveryDNS Magic Import Tool</h3>
+	<div class="flex anchor relative">
+		<h3 id="everydns-magic-import-tool">EveryDNS Magic Import Tool</h3>
+		<a href="https://blog.cloudflare.com/#everydns-magic-import-tool" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Introducing the <a href="https://www.cloudflare.com/everydns.html">Cloudflare EveryDNS Magic Import Tool</a>. Enter your EveryDNS information and the information for your new (or existing) CloudFlare account. Within a few minutes all your existing EveryDNS records will be slurped into CloudFlare. You can then step through the setup process for each domain. At the final step, you'll be given a pair of name servers that you can then update with your domain registrar. The basic service is free and will remain that way forever: no scary count-down clocks are coming to our home page.</p>
 	<p>On top of a <a href="https://www.cloudflare.com/system-status">globally distributed network of datacenters</a> running Anycast DNS, CloudFlare offers a full suite of performance and security tools that will make your site twice as fast and protected from online attackers. Just like the core DNS service, most of these services are provided free. David's original vision for EveryDNS was part of the inspiration for CloudFlare, so we wanted to make sure all his community would be well taken care of.</p>
 	<p>Welcome!</p>

@@ -12,7 +12,14 @@
 		<p>“Sure, Cloudflare Workers allows you to scale to billions of requests per day, but it is also awesome for a few hundred requests a day.”</p>
 	</blockquote>
 	<p>Here is Jacob talking about how it only took him a few days to put together a fully customised workflow tool by integrating Airtable and Workers. And how it saves them multiple hours every single day.</p>
-	<h2>Shipping Requirements</h2>
+	<div class="flex anchor relative">
+		<h2 id="shipping-requirements">Shipping Requirements</h2>
+		<a href="https://blog.cloudflare.com/#shipping-requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Working at a new e-commerce business shipping perishable goods has several challenges as operations scale up. One of our biggest challenges is that daily shipping throughput is limited. Partly because of a small workspace, limiting how many employees can simultaneously pack orders, and also because despite having a requested pickup time with UPS, they often show up hours early, requiring packers to stop and scramble to meet them before they leave. Packing is also time-consuming because it’s a game of Tetris getting all products to fit with enough dry ice to keep it frozen.</p>
 	<p>This is what a regular box looks like:</p>
 	<figure class="kg-card kg-image-card ">
@@ -22,58 +29,163 @@
 	</figure>
 	<p>Ensuring time-in-transit stays as low as possible is critical for ensuring that products stay frozen when arriving at the customer’s doorstep. Because of this requirement, avoiding packages staying in transit during the weekend is a must. We learned that the hard way after a package got delayed by a day, which wouldn’t have been too bad, but that meant it stayed in a sorting centre over the weekend, which wasn’t as pleasant.</p>
 	<p>Luckily, we caught it on time, and we were able to send a replacement set of steaks overnight and save a dinner party. But after that, we started triaging our orders to make sure that the correct packages were shipped at the right time.</p>
-	<h2>Order Triage, The Hard Way</h2>
+	<div class="flex anchor relative">
+		<h2 id="order-triage-the-hard-way">Order Triage, The Hard Way</h2>
+		<a href="https://blog.cloudflare.com/#order-triage-the-hard-way" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the early days, we could pack orders after lunch and be done in an hour, but as we grew we needed to be careful about what, when, and how we ship. First, all open orders were copied to a Google Sheet. Next, the time-in-transit was manually checked for each order and added to the sheet. The sheet was then sorted by transit time (with paid priority air at the top), and each set of orders was separated into groups. Finally, the Google Sheet was printed for the packing team to work through.</p>
 	<p>Transit times are so crucial to the shipment process that they need to be on each packing slip so that the packing team knows how much dry ice and packaging each order needs. So the transit times were typed into each packing slip in Adobe Acrobat before printing. While this is a very tedious process, it is vital to ensure that each package is packed according to what they need to arrive in good condition.</p>
 	<p>Once the packing team would finish packing orders, the box weights and sizes were added to the Google Sheet based on the worksheet filled out by the packers. Next, each order label was created, individually copying weights and sizes from the Google Sheet to ShipStation, the application we use to manage logistics with our providers. Finally, the packages would be picked up and started their journey to the customer’s doorstep.</p>
 	<p>This process worked fine for ten orders, but as operations scaled up, triaging and organizing the orders became a full-time job, checking and double-checking that everything was entered correctly and that no human mistakes occurred (spoiler, they still happened!)</p>
-	<h2>Automation</h2>
+	<div class="flex anchor relative">
+		<h2 id="automation">Automation</h2>
+		<a href="https://blog.cloudflare.com/#automation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At first, I just wanted to automate the most tedious step: calculating transit times. This process took so long that it hindered how early the packing team could start packing orders, further limiting our throughput. Cloudflare Workers are so easy to use and get running quickly, so they seemed like a great place to start. The plan was to use =IMPORTDATA(order) in Google Sheets and eliminate that step in the process.</p>
 	<p>Automating just one thing is powerful, and it opened a flood of ideas about how our workflow could further be improved. With the first 30 minutes of daily work automated, what else could be done? That’s when I set out to automate as much of the workflow as possible, excited about the possibilities.</p>
-	<h3>Triaging the Triaging</h3>
+	<div class="flex anchor relative">
+		<h3 id="triaging-the-triaging">Triaging the Triaging</h3>
+		<a href="https://blog.cloudflare.com/#triaging-the-triaging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Problem-solving is often about figuring out what to prioritize, and automating this workflow is no different. Our order triaging process has many steps, and setting out to automate the entire thing at once wasn’t possible because of the limited blocks of time to work on it. Instead, I decided to only solve the highest priority problems, one step at a time. Triaging the triaging process helped me build everything needed to automate an entire workflow without it ever feeling overwhelming, and gaining efficiency each step along the way.</p>
 	<p>With the time-in-transit calculation API working, the next part I automated was getting the orders that need shipping from Shopify via the API instead of copy-pasting every time. This is where the limits of Google Sheets started to become apparent. While automation can be done in Sheets, it can quickly become a black box full of hacks. So it was time to move to a better platform, but which one?</p>
 	<p>While I had often heard of Airtable and played with it a few times since it launched in 2012, the pricing and limitations never seemed to fit any of my use cases. But with the little amount of data we needed to store at any one time, it seemed worth trying since it has an easy-to-use API and supports strict cell formats, which is much harder to do in Sheets. Airtable has an intuitive UI, and it is easy to create custom fields for each type of data needed.</p>
 	<p>Once I found out Airtable had a built-in <a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting">Scripting app</a>, it was obvious this was the right tool for the job.</p>
-	<h2>Building Airtable Scripting Apps</h2>
+	<div class="flex anchor relative">
+		<h2 id="building-airtable-scripting-apps">Building Airtable Scripting Apps</h2>
+		<a href="https://blog.cloudflare.com/#building-airtable-scripting-apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Airtable Scripting is a powerful tool for building functionality directly within Airtable using JavaScript. Unfortunately, there are some limitations. For example, it isn’t possible to share code between different instances of the Scripting App without copying and pasting. There’s also no source control so reverting changes relies on the Undo button.</p>
 	<p>Cloudflare Workers, on the other hand, is a full developer platform. You can easily use source control, and it has a great developer experience with Wrangler and Miniflare, so testing and deploying is fast and seamless.</p>
 	<p>Airtable Scripting and Cloudflare Workers work together beautifully. Building APIs on Workers allows more complex tasks to run on the Cloudflare network. These APIs are then fetched by Airtable scripts, solving the code-sharing issue and speeding up development.</p>
-	<h3>Shopify Order Importing</h3>
+	<div class="flex anchor relative">
+		<h3 id="shopify-order-importing">Shopify Order Importing</h3>
+		<a href="https://blog.cloudflare.com/#shopify-order-importing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, we needed to import orders from Shopify into Airtable. The API endpoint I created in Workers goes through all open orders and figures out which ones should be shipped this week. The orders are then cached in the Workers Cache API, so we can request this endpoint as much as needed without hitting Shopify API’s limits.</p>
 	<p>From there, the Airtable Scripting app checks the transit time for each order using our Workers API that makes calls to Shippo (a multi-carrier shipping API) to get time-in-transit estimates for the carrier. Finally, each row in Airtable is updated with the respective transit times, automatically sorted with priority paid air at the top, followed by the longest to the shortest transit times.</p>
 	<p>Going from an entirely manual process of getting a list of triaged orders in 45 minutes to clicking a button and having Airtable and Workers do it all for me in seconds was one of the most significant “lightbulb” moments I’ve ever had programming.</p>
-	<h3>Printing Packing Slips in Order</h3>
+	<div class="flex anchor relative">
+		<h3 id="printing-packing-slips-in-order">Printing Packing Slips in Order</h3>
+		<a href="https://blog.cloudflare.com/#printing-packing-slips-in-order" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next big thing to tackle was the printing of packing slips. They need to be printed in the triaged order rather than in chronological order. To do so, this manually required searching for each order, but now a button in Airtable generates links to Shopify search with each batch of orders prefilled.</p>
-	<h3>Printing the Order Worksheet</h3>
+	<div class="flex anchor relative">
+		<h3 id="printing-the-order-worksheet">Printing the Order Worksheet</h3>
+		<a href="https://blog.cloudflare.com/#printing-the-order-worksheet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, we just couldn’t stop there.</p>
 	<p>To keep track of orders as they are packed, we use a printed worksheet with all orders listed and columns for each order’s box size and weight. Unfortunately, Airtable does not have a good way to customize the printout of a table.</p>
 	<p>Ironically, this brought us back to Google Sheets! Since Sheets is the easiest way to format a table, it seemed like the best choice. But copying data from Airtable to Sheets is tedious. Instead, I created an API endpoint in Workers to get the data from Airtable and format it as a CSV the way we need it to look when printing. From Sheets, the IMPORTDATA function imports the day’s orders automatically when opened, ready for printing.</p>
-	<h3>Sending Package Details to ShipStation</h3>
+	<div class="flex anchor relative">
+		<h3 id="sending-package-details-to-shipstation">Sending Package Details to ShipStation</h3>
+		<a href="https://blog.cloudflare.com/#sending-package-details-to-shipstation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the packing team has finished packing and filling out the shipment worksheet, box size and weights are entered into Airtable for each order. Rather than typing these details also into ShipStation, I built an endpoint in our Workers API to set the weight and size using the ShipStation API. ShipStation order updates are done based on the ID of the order. The script first lists all open orders and then writes the order name and ID mapping for all open orders to Workers KV so that future requests to this API can avoid the ShipStation list API, which is slow and has strict limits.</p>
 	<p>Next, I built another Airtable script to send the details of each box to this API. In addition to setting the weight and size, the order is also tagged with today’s date, making it easy to identify what orders in ShipStation are ready to be labeled. Finally, the labels are created and printed in ShipStation in bulk and applied to their respective packages.</p>
-	<h2>Putting it all together</h2>
+	<div class="flex anchor relative">
+		<h2 id="putting-it-all-together">Putting it all together</h2>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So an overview of the entire system looks like this. All clients connect to Airtable and Airtable makes calls out to the Worker APIs which connect and coordinates between all third party APIs.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4n2dGbNG8XVk4hdJNsVu4i/d111b4959baa430e003cfa1e354f700e/image3-27.png" alt="" class="kg-image" width="1400" height="1000" loading="lazy">
 
 	</figure>
-	<h2>Why Workers and Airtable Work Well Together</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-workers-and-airtable-work-well-together">Why Workers and Airtable Work Well Together</h2>
+		<a href="https://blog.cloudflare.com/#why-workers-and-airtable-work-well-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While it might have been possible to build this entire workflow in Airtable, integrating Workers has made the process much easier to build, test, and reuse code both between Airtable scripts and other platforms.</p>
-	<h3>Development Experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="development-experience">Development Experience</h3>
+		<a href="https://blog.cloudflare.com/#development-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Airtable Scripting app makes it quick and easy to build scripts that work with the data stored in Airtable, with a decent editor and autocomplete, but it is hard to build more complex scripts in it.</p>
 	<p>Funnily enough for this project, latency and scaling weren’t all that important. But Cloudflare Workers makes development and testing incredibly easy: no excessive configuration or deployment pipelines.</p>
-	<h3>Reliability and Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="reliability-and-security">Reliability and Security</h3>
+		<a href="https://blog.cloudflare.com/#reliability-and-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are running a business and having to babysit servers is a massive distraction that we certainly don’t need. With Workers being fully serverless I never have to worry about anything breaking because a server is down.</p>
 	<p>And we can safely store all our secrets needed to access all third-party systems with Cloudflare, with the secret environments variables. Making sure those tokens and keys are all fully encrypted and secure.</p>
-	<h3>Airtable is a great database and UI in one</h3>
+	<div class="flex anchor relative">
+		<h3 id="airtable-is-a-great-database-and-ui-in-one">Airtable is a great database and UI in one</h3>
+		<a href="https://blog.cloudflare.com/#airtable-is-a-great-database-and-ui-in-one" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building UI's around data entry and visualisation takes a lot of time and resources. By utilizing Airtable, I built out an entire workflow without ever touching HTML, let alone front-end frameworks. Instead, I could focus solely on core business logic. Airtable's dashboard feature also allows building reports with high-level overviews of the types of packages being sent, helping us forecast future packing supplies needed.</p>
 	<p>While building workflows in spreadsheets can feel like a hack when custom scripting gets involved, Airtable is the opposite. The extensibility and good UX have made Airtable a great tool to use going forward.</p>
-	<h2>Improvements Going Forward</h2>
+	<div class="flex anchor relative">
+		<h2 id="improvements-going-forward">Improvements Going Forward</h2>
+		<a href="https://blog.cloudflare.com/#improvements-going-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we had the basics covered, I noticed one of the most powerful things about this setup: how easy it was to add features. I started noticing minor issues with the workflow that could be improved. For example, when an order has to be split into multiple packages, the row in Airtable has to be duplicated and have a suffix added to the order number for each order. Automating order splitting was not a priority previously, but it quickly became one of the most time-consuming parts of the process. Thirty minutes later, every row had a “Split order” button, built with another Airtable script.</p>
 	<p>Another issue was when a customer was not going to be home on a Wednesday, which meant that if the order got shipped on Monday, it would go bad sitting on their doorstep. Thankfully, adding an optional minimum ship date tag to the Workers API that gets shippable orders was quick and easy. Now, our sales team can add tags for minimum ship dates when customers are not home, and the rest of the workflow will automatically take it into account when deciding what to ship.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many businesses are turning to Workers for their incredible performance and scaling to millions or billions of requests, but we couldn’t be happier with how much value we get with the few hundred Workers requests we do every day.</p>
 	<p>Cloudflare Workers, especially in combination with tools like Airtable, make it really easy to create your own internal tool, built to your exact specifications. Which will bring this capability to so many more businesses.</p>
 	<p><i>Cloudflare is not affiliated with Formagrid, Inc., dba Airtable. The views and opinions expressed in this blog post are solely those of the guest author and do not necessarily represent those of Cloudflare, Inc.</i></p>

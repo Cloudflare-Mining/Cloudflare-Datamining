@@ -3,7 +3,14 @@
 	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
 	<p>As soon as Drupal released their patch, we analysed it to establish what kind of payloads could be used against it and created rules to mitigate these. By analysing the patch we were able to put together WAF rules to protect cloudflare customers running Drupal.</p>
 	<p>We identified the type of vulnerability we were dealing within 15 minutes. From here, we were able to deploy rules to block the exploit well before any real attacks were seen.</p>
-	<h3>The exploit</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-exploit">The exploit</h3>
+		<a href="https://blog.cloudflare.com/#the-exploit" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Drupal's <a href="https://www.drupal.org/sa-core-2019-003">release announcement</a> explains, a site is affected if:</p>
 	<ul>
 		<li>
@@ -18,7 +25,14 @@
 	<p>Making the situation worse was the fact that the deserialization was performed regardless of any authentication.</p>
 	<p>We also realised that this meant blindly blocking all serialized PHP would break their intended functionality, as clearly these fields are supposed to receive specific kinds of serialized PHP, for example arrays or strings. Although as the PHP documentation <a href="https://secure.php.net/manual/en/function.unserialize.php">notes</a>, it’s always a risky thing to deserialize untrusted data, even when restricting the set of data that’s excepted.</p>
 	<p>This blog <a href="https://www.ambionics.io/blog/drupal8-rce">post from Ambionics</a> does a good job at explaining what a concrete exploitation of the vulnerability looks like, when applied to the Drupal 8 RESTful API.</p>
-	<h3>What we caught</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-caught">What we caught</h3>
+		<a href="https://blog.cloudflare.com/#what-we-caught" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After the vulnerability was announced, we created several rules to experiment with different ways to build a signature to catch exploit attempts. Within an hour of the Drupal announcement we had deployed these in simulate mode, which logs potentially malicious requests without blocking them. After monitoring for false positives they were then improved them a few times as we tuned them.</p>
 	<p>This culminated in the deploy of rule D0020, which has blocked a number of attackers as shown in the graph below. The rule was already deployed in ‘drop’ mode by the time our first attack was observed at around 7pm UTC on Friday the 22nd of February 2019, and to date it has matched zero false positives. This is less than 48 hours from the announcement from Drupal.</p>
 	<figure class="kg-card kg-image-card ">
@@ -44,7 +58,14 @@ if (!empty ($_FILES['uploads'])) {     move_uploaded_file($_FILES['uploads']['tm
 	<p>Another malicious payload seen was much more minimal:</p>
 	<p><code>echo '&lt;?php @eval($_POST['pass']) ?&gt;' &gt; vuln1.php</code></p>
 	<p>This payload creates a small PHP file on the server, which contains the dangerous eval() function. If this hadn’t been blocked, it would have allowed the attacker to issue commands via a single HTTP request to the vuln1.php file that could execute arbitrary commands directly on the potentially vulnerable system.</p>
-	<h3>Rates of exploitation</h3>
+	<div class="flex anchor relative">
+		<h3 id="rates-of-exploitation">Rates of exploitation</h3>
+		<a href="https://blog.cloudflare.com/#rates-of-exploitation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The pattern we saw here is fairly typical of a newly announced vulnerability. Once a vulnerability is published, it doesn’t take long to see real attackers making use of the vulnerability - initially in small numbers with “test” payloads to identify whether the attacks work, but shortly afterwards in much higher numbers, and with more dangerous and subtle payloads. This vulnerability was weaponized within two days of disclosure, but that is by no means the shortest time frame we’ve seen.</p>
 	<p>It’s very hard to patch systems quickly enough to ensure that attackers don’t get through, so products like Cloudflare’s WAF are a vital line of defense against these emerging vulnerabilities.</p>
 </div>

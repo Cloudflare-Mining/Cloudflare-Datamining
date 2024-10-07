@@ -3,7 +3,14 @@
 	<p>CloudFlare uses a great deal of open source and free software. Our core server platform is <a href="http://nginx.org">nginx</a> (which is released using a <a href="http://nginx.org/LICENSE">two-clause BSD license</a>) and our primary database of choice is <a href="http://www.postgresql.org">postgresql</a> (which is released using their own <a href="http://www.postgresql.org/about/licence">BSD-like license</a>). We've <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">talked in the past</a> about our use of <a href="http://fallabs.com/kyototycoon">Kyoto Tycoon</a> (which is released under the GNU General Public License) and we've built many things on top of <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">OpenResty</a>.</p>
 	<p>And, of course, we make use of open source tools such as gcc, make, the Go programming language, Lua, python, Perl, and PHP, and projects like <a href="https://www.getsentry.com/welcome">Sentry</a>, <a href="http://www.elasticsearch.org">Kibana</a>, and <a href="http://www.nagios.org">nagios</a>. And, naturally, we use Linux.</p>
 	<p>It would take a while to write down all the software that we use to build CloudFlare, but all that software has one thing in common: it's open source or free software. Our stack consists of either software we've built ourselves or an open source project (which we've sometimes forked).</p>
-	<h3>Why Build On Open Source</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-build-on-open-source">Why Build On Open Source</h3>
+		<a href="https://blog.cloudflare.com/#why-build-on-open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's probably obvious to most readers why we use open source software: it's reliable, it's easy to modify and it's easy to maintain. But there's another benefit that should not be overlooked: using and working on open source software brings a great deal of job satisfaction for programmers and it helps us hire the best.</p>
 	<p>We encourage our programmers to release changes they've made to open source software and to release projects through the <a href="http://cloudflare.github.io">CloudFlare GitHub</a> page.</p>
 	<figure class="kg-card kg-image-card ">
@@ -15,7 +22,14 @@
 	<p>You'll also find the <a href="https://github.com/chaoslawful/lua-nginx-module">ngx_lua module</a> which embeds Lua in nginx. That's not something CloudFlare initially wrote, but we make such extensive use of it that we hired <a href="https://github.com/agentzh">Yichun Zhang</a>. He continues to work full-time on it while at CloudFlare.</p>
 	<p>And, if you've ever delved into the internals of nginx, you'll know another CloudFlare employee, Piotr Sikora, who recently added <a href="http://www.mail-archive.com/nginx-devel@nginx.org/msg01061.html">the ability to set keys for TLS Session Tickets</a> to nginx.</p>
 	<p>So, at CloudFlare, open source can get you a job, be your job or, at least, be a significant part of your job.</p>
-	<h3>Sponsoring</h3>
+	<div class="flex anchor relative">
+		<h3 id="sponsoring">Sponsoring</h3>
+		<a href="https://blog.cloudflare.com/#sponsoring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Where appropriate (i.e. where we think we make the biggest impact and get something we need) we've sponsored external open source projects and paid for improvements that all can use.</p>
 	<p>We make wide use of the excellent <a href="http://luajit.org">LuaJIT</a> project and after much profiling by engineers we discovered areas where more JITing would improve our performance. Rather than do the work ourselves we <a href="http://luajit.org/sponsors.html#sponsorship_perf">sponsored</a> the LuaJIT project. These speedups will be appearing in LuaJIT 2.1 when it is released.</p>
 	<figure class="kg-card kg-image-card ">
@@ -23,14 +37,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/HzOPkOxjv7EyhnI9yyUBU/d72f62f9e3b2086d2d819c0b0c66f367/two-way-street.png" alt="Two Way Street" class="kg-image" width="480" height="422" loading="lazy">
 
 	</figure>
-	<h3>Two Way Street</h3>
+	<div class="flex anchor relative">
+		<h3 id="two-way-street">Two Way Street</h3>
+		<a href="https://blog.cloudflare.com/#two-way-street" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, it would be easy for us to use open source software, make modifications and not release them. None of the licenses for the software we use force us to release our modifications. But we prefer to give back and not just because of karma.</p>
 	<p>There are two big advantages to releasing modifications we've made to existing projects: the many eyeballs effect and reducing fork cost.</p>
 	<p>The first, many eyeballs, is common to any open source project: the more people look at code, the better it gets. And that applies equally to code written by a core team of developers and code written by outsiders. When we contribute changes we've made, others look at the changes and improve them.</p>
 	<p>For example, back in 2012 we contributed an improvement to Go's <a href="https://code.google.com/p/go/source/detail?r=a041b45cc418">log/syslog</a> module. This year that work was <a href="https://code.google.com/p/go/source/detail?r=51407182d459">improved</a>.</p>
 	<p>And the cost of maintaining a fork provides useful economic pressure making releasing our modifications make sense. It's cheaper for us to release than to maintain a fork and merge as the core of a project changes.</p>
 	<p>But, what about CloudFlare's secret sauce?</p>
-	<h3>Open Sourcing CloudFlare Core</h3>
+	<div class="flex anchor relative">
+		<h3 id="open-sourcing-cloudflare-core">Open Sourcing CloudFlare Core</h3>
+		<a href="https://blog.cloudflare.com/#open-sourcing-cloudflare-core" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our strong bias is to open source everything we've built. When we don't, it's usually because it's highly specific to us and/or because the support cost is high. Ultimately, we'd like to open source all our major components so that they can be used to build a faster, safer, smarter web.</p>
 	<p>Many of our smaller components are really glue code that don't make any sense to open source as they are so specific to our implementation of the overall system.</p>
 	<p>We don't believe that there is any chunk of code so clever that it gives us a long term competitive advantage. Instead, our advantage comes from the network we've built, the data we collect on making the web faster and safer, and, most importantly, the people we're able to attract.</p>

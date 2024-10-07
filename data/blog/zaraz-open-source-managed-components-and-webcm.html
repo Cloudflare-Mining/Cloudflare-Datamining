@@ -8,11 +8,25 @@
 	<p>In early 2020, we sat down and tried thinking if there’s a way to load third-party tools on the Internet without slowing down websites, without making them less secure, and without sacrificing users’ privacy. In the evening, after scanning through thousands of websites, our answer was “well, sort of”. It seemed possible: many types of third-party tools are merely collecting information in the browser and then sending it to a remote server. We could theoretically figure out what it is that they’re collecting, and then instead just collect it once efficiently, and send it server-side to their servers, mimicking their data schema. If we do this, we can get rid of loading their JavaScript code inside websites completely. This means no more risk of malicious scripts, no more performance losses, and fewer privacy concerns.</p>
 	<p>But the answer wasn’t a definite “YES!” because we realized this is going to be very complicated. We looked into the network requests of major third-party scripts, and often it seemed cryptic. We set ourselves up for a lot of work, looking at the network requests made by tools and trying to figure out what they are doing – What is this parameter? When is this network request sent? How is this value hashed? How can we achieve the same result more securely, reliably and efficiently? Our team faced these questions on a daily basis.</p>
 	<p>When we joined Cloudflare, the scale of everything changed. Suddenly we were on thousands of websites, serving more than 10,000 requests per second. Users are writing to us every single day over our Discord channel, the community forum, and sometimes even directly on Twitter. More often than not, their messages would be along the lines of “Hi! Can you please add support for X?” Cloudflare Zaraz launched with around 30 tools in its library, but this market is vast and new tools are popping up all the time.</p>
-	<h3>Changing our trust model</h3>
+	<div class="flex anchor relative">
+		<h3 id="changing-our-trust-model">Changing our trust model</h3>
+		<a href="https://blog.cloudflare.com/#changing-our-trust-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In my previous blog post on how <a href="https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast">Zaraz uses Cloudflare Workers</a>, I included some examples of how tool integrations are written in Zaraz today. Usually, a “tool” in Zaraz would be a function that prepares a payload and sends it. This function could return one thing – <code>clientJS</code>, JavaScript code that the browser would later execute. We’ve done our best so that tools wouldn’t use <code>clientJS</code>, if it wasn’t really necessary, and in reality most Zaraz-built tool integrations are not using <code>clientJS</code> at all.</p>
 	<p>This worked great, as long as we were the ones coding all tool integrations. Customers trusted us that we’d write code that is performant and safe, and they trusted the results they saw when trying Zaraz. Upon joining Cloudflare, many third-party tool vendors contacted us and asked to write a Zaraz integration. We quickly realized that our system wasn’t enforcing speed and safety – vendors could literally just dump their old browser-side JavaScript into our <code>clientJS</code> variable, and say “We have a Cloudflare Zaraz integration!”, and that wasn’t our vision at all.</p>
 	<p>We want third-party tool vendors to be able to write their own performant, safe server-side integrations. We want to make it possible for them to reimagine their tools in a better way. We also want website owners to have transparency into what is happening on their website, to be able to manage and control it, and to trust that if a tool is running through Zaraz, it must be a good tool -- not because of who wrote it, but because of the technology it is constructed within. We realized that to achieve that we needed a new format for defining third-party tools.</p>
-	<h3>Introducing Managed Components</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-managed-components">Introducing Managed Components</h3>
+		<a href="https://blog.cloudflare.com/#introducing-managed-components" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started rethinking how third-party code should be written. Today, it’s a black box – you usually add a script to your site, and you have zero clue what it does and when. You can’t properly read or analyze the minified code. You don’t know if the way it behaves for you is the same way it behaves for everyone else. You don’t know when it might change. If you’re a website owner, you’re completely in the dark.</p>
 	<p>Tools do many different things. The simple ones just collected information and sent it somewhere. Often, they’d set some cookies. Sometimes, they’d install some event listeners on the page. And widget-based tools can literally manipulate the page DOM, providing new functionality like a social media embed or a chatbot. Our new format needed to support all of this.</p>
 	<p>Managed Components is how we imagine the future of third-party tools online. It provides vendors with an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a> that allows them to do much more than a normal script can, including keeping code execution outside the browser. We designed this format together with vendors, for vendors, while having in mind that users’ best interest is everyone's best interest long-term.</p>
@@ -38,7 +52,14 @@
   const ping = manager.route("/ping", (request) =&gt; new Response(204));
 }</code></pre>
 	<p>These three lines are a complete shift in what’s possible for third-parties. If granted the permissions, they can proxy some content, serve and expose their own endpoints – all under the same domain as the one running the website. If a tool needs to do some processing, it can now off-load that from the browser completely without forcing the browser to communicate with a third-party server.</p>
-	<h3>Exciting new capabilities</h3>
+	<div class="flex anchor relative">
+		<h3 id="exciting-new-capabilities">Exciting new capabilities</h3>
+		<a href="https://blog.cloudflare.com/#exciting-new-capabilities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every third-party tool vendor should be able to use the Managed Components API to build a better version of their tool. The API we designed is comprehensive, and the benefits for vendors are huge:</p>
 	<ul>
 		<li>
@@ -63,12 +84,26 @@
 			<p>Integrated Consent Manager support: Managed Components are predictable and scoped. The Component Manager knows what they’ll need and can predict what kind of consent is needed to run them.</p>
 		</li>
 	</ul>
-	<h3>The right choice: open source</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-right-choice-open-source">The right choice: open source</h3>
+		<a href="https://blog.cloudflare.com/#the-right-choice-open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we started working with vendors on creating a Managed Component for their tool, we heard a repeating concern – “What Components Managers are there? Will this only be useful for Cloudflare Zaraz customers?”. While Cloudflare Zaraz is indeed a Components Manager, and it has a generous free tier plan, we realized we need to think much bigger. We want to make Managed Components available for everyone on the Internet, because we want the Internet as a whole to be better.</p>
 	<p>Today, we’re announcing much more than just a new format.</p>
 	<p>WebCM is a reference implementation of the Managed Components API. It is a complete Components Manager that we will soon release and maintain. You will be able to use it as an SDK when building your Managed Component, and you will also be able to use it in production to load Managed Components on your website, even if you’re not a Cloudflare customer. WebCM works as a proxy – you place it before your website, and it rewrites your pages when necessary and adds a couple of endpoints. This makes WebCM 100% framework-agnostic – it doesn’t matter if your website uses Node.js, Python or Ruby behind the scenes: as long as you’re sending out HTML, it supports that.</p>
 	<p>That’s not all though! We’re also going to open source a few Managed Components of our own. We converted some of our classic Zaraz integrations to Managed Components, and they will soon be available for you to use and improve. You will be able to take our Google Analytics Managed Component, for example, and use WebCM to run Google Analytics on your website, 100% server-side, without Cloudflare.</p>
-	<h3>Tech-leading vendors are already joining</h3>
+	<div class="flex anchor relative">
+		<h3 id="tech-leading-vendors-are-already-joining">Tech-leading vendors are already joining</h3>
+		<a href="https://blog.cloudflare.com/#tech-leading-vendors-are-already-joining" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Revolutionizing third-party tools on the internet is something we could only do together with third-party vendors. We love third-party tools, and we want them to be even more popular. That’s why we worked very closely with a few leading companies on creating their own Managed Components. These new Managed Components extend Zaraz capabilities far beyond what’s possible now, and will provide a safe and secure onboarding experience for new users of these tools.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -93,7 +128,14 @@
 		<p>"I have been really impressed with Cloudflare’s Zaraz ability to move Drift's JS library to an Edge Worker while loading it off the DOM. My work is much more effective due to the savings in page load time. It's a pleasure to work with two companies that actively seek better ways to increase both page speed and load times with large MarTech stacks."– Sean Gowing, Front End Engineer, <a href="http://hopin.com">Hopin</a></p>
 	</blockquote>
 	<p>If you’re a third-party vendor, and you want to join these tech-leading companies, do reach out to us, and we’d be happy to support you on writing your own Managed Component.</p>
-	<h3>What’s next for Managed Components</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-managed-components">What’s next for Managed Components</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-managed-components" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re working on Managed Components on many fronts now. While we develop and maintain WebCM, work with vendors and integrate Managed Components into Cloudflare Zaraz, we’re already thinking about what’s possible in the future.</p>
 	<p>We see a future where many open source runtimes exist for Managed Components. Perhaps your infrastructure doesn’t allow you to use WebCM? We want to see Managed Components runtimes created as service workers, HTTP servers, proxies and framework plugins. We’re also working on making Managed Components available on mobile applications. We’re working on allowing unofficial Managed Components installs on Cloudflare Zaraz. We’re fixing a long-standing issue of the WWW, and there’s so much to do.</p>
 	<p>We will very soon publish the full specs of Managed Components. We will also open source WebCM, the reference implementation server, as well as many components you can use yourself. If this is interesting to you, reach out to us at <a href="mailto:zaraz@cloudflare.com">zaraz@cloudflare.com</a>, or join us on <a href="https://discord.gg/cloudflaredev">Discord</a>.</p>

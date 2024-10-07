@@ -19,7 +19,14 @@
 	<p>IPv6 adoption is slowed down by the lack of compatibility between both protocols — devices must be assigned both an IPv4 <i>and</i> an IPv6 address — along with the fact that virtually all devices on the Internet still support IPv4. Nevertheless, IPv6 is critical for the future of the Internet, and continued effort is required to increase its deployment.</p>
 	<p>Cloudflare Radar, like APNIC and most other sources today, publishes numbers that primarily reflect the extent to which Internet Service Providers (ISPs) have deployed IPv6: the <i>client side</i>. It’s a very important angle, and one that directly impacts end users, but there’s also the other end of the equation: the <i>server side</i>.</p>
 	<p>With this in mind, we invite you to follow us on a quick experiment where we aim for a glimpse of server side IPv6 adoption, and how often clients are actually (or likely) able to talk to servers over IPv6. We’ll rely on DNS for this exploration and, as they say, the results may surprise you.</p>
-	<h3>IPv6 Adoption on the Client Side (from HTTP)</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-adoption-on-the-client-side-from-http">IPv6 Adoption on the Client Side (from HTTP)</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-adoption-on-the-client-side-from-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By the end of October 2023, from Cloudflare’s <a href="https://radar.cloudflare.com/adoption-and-usage?dateStart=2023-08-01&amp;dateEnd=2023-10-31">perspective</a>, IPv6 adoption across the Internet was at roughly <b>36%</b> of all traffic, with slight variations depending on the time of day and day of week. When excluding bots the estimate goes up to just over 46%, while excluding humans pushes it down close to 24%. These numbers refer to the share of HTTP requests served over IPv6 <a href="https://developers.cloudflare.com/radar/glossary/#ipv6-adoption">across all IPv6-enabled content</a> (the default setting).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -27,7 +34,14 @@
 
 	</figure>
 	<p>For this exercise, what matters most is the number for both humans <i>and</i> bots. There are many reasons for the adoption gap between both kinds of traffic — from varying levels of IPv6 support in the plethora of client software used, to varying levels of IPv6 deployment inside the many networks where traffic comes from, to the varying size of such networks, etc. — but that’s a rabbit hole for another day. If you’re curious about the numbers for a particular country or network, you can find them on <a href="https://radar.cloudflare.com/adoption-and-usage">Cloudflare Radar</a> and in our <a href="https://radar.cloudflare.com/year-in-review/2023#ipv6-adoption">Year in Review</a> report for 2023.</p>
-	<h3>It Takes Two to Dance</h3>
+	<div class="flex anchor relative">
+		<h3 id="it-takes-two-to-dance">It Takes Two to Dance</h3>
+		<a href="https://blog.cloudflare.com/#it-takes-two-to-dance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You, the reader, might point out that measuring the client side of the client-server equation only tells half the story: for an IPv6-capable client to establish a connection with a server via IPv6, the server must also be IPv6-capable.</p>
 	<p>This raises two questions:</p>
 	<ol>
@@ -43,7 +57,14 @@
 		<p><i>How often can an IPv6-capable client use IPv6 when connecting to servers on the Internet, under typical usage patterns?</i></p>
 	</blockquote>
 	<p>Typical usage patterns include people going about their day visiting some websites more often than others or automated clients calling APIs. We’ll turn to DNS to get this perspective.</p>
-	<h3>Enter DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-dns">Enter DNS</h3>
+		<a href="https://blog.cloudflare.com/#enter-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before a client can attempt to establish a connection with a server by name, using either the classic IPv4 protocol or the more modern IPv6, it must look up the server’s IP address in the <a href="https://en.wikipedia.org/wiki/Telephone_directory">phonebook</a> of the Internet, the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">Domain Name System (DNS)</a>.</p>
 	<p>Looking up a hostname in DNS <a href="https://www.cloudflare.com/learning/dns/what-is-dns">is a recursive process</a>. To find the IP address of a server, the domain hierarchy (the dot-separated components of a server’s name) must be followed across several DNS authoritative servers until one of them returns the desired response<sup>2</sup>. Most clients, however, don’t do this directly and instead ask an intermediary server called a <a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">recursive resolver</a> to do it for them. Cloudflare operates one such recursive resolver that anyone can use: <a href="https://one.one.one.one/dns">1.1.1.1</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -61,7 +82,14 @@
 	<p>But how does a client know when to ask for a server’s IPv4 address or its IPv6 address?</p>
 	<p>The short answer is that clients with IPv6 available to them just ask for both — doing separate <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record">A</a> and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-aaaa-record">AAAA</a> lookups for every server they wish to connect to. These IPv6-capable clients will prioritize connecting over IPv6 when they get a non-empty AAAA answer, whether they also get a non-empty A answer (which they almost always get, as we’ll see). The algorithm driving this preference for modernity is called <a href="https://en.wikipedia.org/wiki/Happy_Eyeballs">Happy Eyeballs</a>, if you’re interested in the details.</p>
 	<p>We’re now ready to start looking at some actual data…</p>
-	<h3>IPv6 Adoption on the Client Side (from DNS)</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-adoption-on-the-client-side-from-dns">IPv6 Adoption on the Client Side (from DNS)</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-adoption-on-the-client-side-from-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The first step is establishing a baseline by measuring client IPv6 deployment from 1.1.1.1’s perspective and comparing it with the numbers from HTTP requests that we started with.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -92,7 +120,14 @@
 
 	</figure>
 	<p>Then, from 1.1.1.1’s perspective, IPv6 adoption on the <b>client side</b> is estimated at <b>30.5%</b> by query volume. This is a bit under what we observed from HTTP traffic over the same time period (35.9%) but such a difference between two different perspectives is not unexpected.</p>
-	<h3>A Note on TTLs</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-note-on-ttls">A Note on TTLs</h3>
+		<a href="https://blog.cloudflare.com/#a-note-on-ttls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s not only recursive resolvers that cache DNS responses, most DNS clients have their own local caches as well. Your web browser, operating system, and even your home router, keep answers around hoping to speed up subsequent queries.</p>
 	<p>How long each answer remains in cache depends on the <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl">time-to-live</a> (TTL) field sent back with DNS records. If you’re familiar with DNS, you might be wondering if A and AAAA records have similar TTLs. If they don’t, we may be getting fewer queries for just one of these two types (because it gets cached for longer at the client level), biasing the resulting adoption figures.</p>
 	<figure class="kg-card kg-image-card ">
@@ -101,7 +136,14 @@
 
 	</figure>
 	<p>The pie charts here break down the minimum TTLs sent back by 1.1.1.1 in response to A and AAAA queries<sup>6</sup>. There is some difference between both types, but the difference is very small.</p>
-	<h3>IPv6 Adoption on the Server Side</h3>
+	<div class="flex anchor relative">
+		<h3 id="ipv6-adoption-on-the-server-side">IPv6 Adoption on the Server Side</h3>
+		<a href="https://blog.cloudflare.com/#ipv6-adoption-on-the-server-side" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following graph shows how often A and AAAA-type queries get non-empty responses, shedding light on <b>server side</b> IPv6 adoption and getting us closer to the answer we’re after:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -109,9 +151,23 @@
 
 	</figure>
 	<p>IPv6 adoption by servers is estimated at <b>43.3%</b> by query volume, noticeably higher than what was observed for clients.</p>
-	<h3>How Often Both Sides Swipe Right</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-often-both-sides-swipe-right">How Often Both Sides Swipe Right</h3>
+		<a href="https://blog.cloudflare.com/#how-often-both-sides-swipe-right" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If 30.5% of IP address lookups handled by 1.1.1.1 could make use of an IPv6 address to connect to their intended destinations, but only 43.3% of those lookups get a non-empty response, that can give us a pretty good basis for how often IPv6 connections are made between client and server — roughly <b>13.2%</b> of the time.</p>
-	<h3>The Potential Impact of Popular Domains</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-potential-impact-of-popular-domains">The Potential Impact of Popular Domains</h3>
+		<a href="https://blog.cloudflare.com/#the-potential-impact-of-popular-domains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IPv6 server side adoption measured by query volume for the domains in Radar’s <a href="https://radar.cloudflare.com/domains">Top 100</a> list is 60.8%. If we exclude these domains from our overall calculations, the previous 13.2% figure drops to 8%. This is a significant difference, but not unexpected, as the Top 100 domains make up over 55% of all A and AAAA queries to 1.1.1.1.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -119,7 +175,14 @@
 
 	</figure>
 	<p>If just a few more of these highly popular domains were to deploy IPv6 today, observed adoption would noticeably increase and, with it, the chance of IPv6-capable clients establishing connections using IPv6.</p>
-	<h3>Closing Thoughts</h3>
+	<div class="flex anchor relative">
+		<h3 id="closing-thoughts">Closing Thoughts</h3>
+		<a href="https://blog.cloudflare.com/#closing-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Observing the extent of IPv6 adoption across the Internet can mean different things:</p>
 	<ul>
 		<li>

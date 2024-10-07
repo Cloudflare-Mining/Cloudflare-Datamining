@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>This is part 4 of a six part series based on a talk I gave in Trento, Italy. To start from the beginning go <a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-1">here</a>.</p>
 	<p>We don’t believe that any of our software, not a single line of code, provides us with a long-term advantage. We could, today, open source every single line of code at Cloudflare and we don’t believe we’d be hurt by it.</p>
-	<h3>How we think about Open Source</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-think-about-open-source">How we think about Open Source</h3>
+		<a href="https://blog.cloudflare.com/#how-we-think-about-open-source" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Why don’t we? We actually do <a href="https://cloudflare.github.io">open source a lot of code</a>, but we try to be thoughtful about it. Firstly, a lot of our code is so Cloudflare-specific, full of logic about how our service works, that it’s not generic enough for someone else to pick up and use for their service. So, for example, open sourcing the code that runs our web front end would be largely useless.‌‌</p>
 	<p>But other bits of software are generic. There’s currently a debate going on internally about a piece of software called Quicksilver. I mentioned before that Cloudflare used a distributed key-value store to send configuration to machines across the world. We used to use an open source project called Kyoto Tycoon. It was pretty cool.‌‌</p>
 	<p>But it ended up not scaling to our size. It was great when we had a small number of locations worldwide, but we ran into operational problems with 100s of locations. And it wasn’t, by default, secure and so we had to add security to it. Once we did, we open sourced that change, but at some point when using open source software you have to make a “modify or rewrite” decision.‌‌</p>
@@ -11,10 +18,24 @@
 	<p>But back to Quicksilver. It’s based on LMDB and does all data and code sync. across our global network. Typically, a change (you click a button in our UI or you upload code for our edge compute product) and it’s distributed globally in 5s. That’s cool.‌‌</p>
 	<p>And Quicksilver is generic. It doesn’t contain lots of Cloudflare-specific logic and it’s likely useful for others. The internal debate is about whether we have time to nurture and handle the community that would grow up around Quicksilver. You may recently have seen the creator of Ruby saying on Twitter “We are mere mortals” pointing out that the people behind popular open source projects only have so much time. And we take a lesson from the creators of Kyoto Tycoon who have now largely abandoned it to do other things.‌‌</p>
 	<p>Perhaps Quicksilver will get open sourced this year, we’ll see. But our rule for open sourcing is: “Is this something others can use and is this something we have time to maintain in public?”. Of course, where we modify existing open source software, we upstream everything we can. Inevitably, some projects don’t accept our PRs and so we have to maintain internal forks.‌‌</p>
-	<h3>How we think about Patents</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-think-about-patents">How we think about Patents</h3>
+		<a href="https://blog.cloudflare.com/#how-we-think-about-patents" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we’re on the topic of intellectual property let’s talk about patents. Cloudflare has a lot of patents. Although it might be nice to live in a world where there were no software patents it’s a little like nuclear weapons. It’s very hard for one country to disarm unilaterally because a power imbalance is left behind. If Cloudflare didn’t patent aspects of our software, then others would and would then use them against us.‌‌</p>
 	<p>So, we patent for defensive reasons. To stop others from using the patent system against us.‌‌</p>
-	<h3>Working With Governments</h3>
+	<div class="flex anchor relative">
+		<h3 id="working-with-governments">Working With Governments</h3>
+		<a href="https://blog.cloudflare.com/#working-with-governments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>And speaking of patents let’s talk about governments. Lots of technology companies think they are too cool for school. They don’t need to think about governments because technology moves faster than them and what do those old, boring lawmakers know about anything anyway?‌‌</p>
 	<p>Wrong. Dead wrong.‌‌</p>
 	<p>Yes, governments move slowly. You actually want them to. Imagine if governments changed policies as fast as chat apps get launched. It would be a nightmare. But just because they are slow, they can’t be ignored.‌‌</p>

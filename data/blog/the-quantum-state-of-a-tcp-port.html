@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Have you noticed how simple questions sometimes lead to complex answers? Today we will tackle one such question. Category: our favorite - Linux networking.</p>
-	<h2>When can two TCP sockets share a local address?</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-can-two-tcp-sockets-share-a-local-address">When can two TCP sockets share a local address?</h2>
+		<a href="https://blog.cloudflare.com/#when-can-two-tcp-sockets-share-a-local-address" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If I navigate to <a href="https://blog.cloudflare.com">https://blog.cloudflare.com/</a>, my browser will connect to a remote TCP address, might be 104.16.132.229:443 in this case, from the local IP address assigned to my Linux machine, and a randomly chosen local TCP port, say 192.0.2.42:54321. What happens if I then decide to head to a different site? Is it possible to establish another TCP connection from the same local IP address and port?</p>
 	<p>To find the answer let's do a bit of <a href="https://en.wikipedia.org/wiki/Discovery_learning">learning by discovering</a>. We have prepared eight quiz questions. Each will let you discover one aspect of the rules that govern local address sharing between TCP sockets under Linux. Fair warning, it might get a bit mind-boggling.</p>
 	<p>Questions are split into two groups by test scenario:</p>
@@ -44,7 +51,14 @@ ln = socket(AF_INET, SOCK_STREAM)
 ln.bind(("", 1234))
 ln.listen(SOMAXCONN)</code></pre>
 	<p>With the formalities out of the way, let us begin. Ready. Set. Go!</p>
-	<h3>Scenario #1: When the local IP is unique, but the local port is the same</h3>
+	<div class="flex anchor relative">
+		<h3 id="scenario-1-when-the-local-ip-is-unique-but-the-local-port-is-the-same">Scenario #1: When the local IP is unique, but the local port is the same</h3>
+		<a href="https://blog.cloudflare.com/#scenario-1-when-the-local-ip-is-unique-but-the-local-port-is-the-same" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Scenario #1 we connect two sockets to the same remote address - 127.9.9.9:1234. The sockets will use different local IP addresses, but is it enough to share the local port?</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -109,7 +123,14 @@ ln.listen(SOMAXCONN)</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Quiz #1</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-1">Quiz #1</h3>
+		<a href="https://blog.cloudflare.com/#quiz-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the local side, we bind two sockets to distinct, explicitly specified IP addresses. We will allow the OS to select the local port. Remember: our local ephemeral port range contains just one port (60,000).</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.1.1.1', 0))
@@ -121,7 +142,14 @@ s2.bind(('127.2.2.2', 0))
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_1.py">Answer #1</a></p>
-	<h3>Quiz #2</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-2">Quiz #2</h3>
+		<a href="https://blog.cloudflare.com/#quiz-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here, the setup is almost identical as before. However, we ask the OS to select the local IP address and port for the first socket. Do you think the result will differ from the previous question?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.connect(('127.9.9.9', 1234))
@@ -132,7 +160,14 @@ s2.bind(('127.2.2.2', 0))
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py">Answer #2</a></p>
-	<h3>Quiz #3</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-3">Quiz #3</h3>
+		<a href="https://blog.cloudflare.com/#quiz-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.1.1.1', 0))
@@ -143,7 +178,14 @@ s2 = socket(AF_INET, SOCK_STREAM)
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_3.py">Answer #3</a></p>
-	<h3>Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
+	<div class="flex anchor relative">
+		<h3 id="scenario-2-when-the-local-ip-and-port-are-the-same-but-the-remote-ip-differs">Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
+		<a href="https://blog.cloudflare.com/#scenario-2-when-the-local-ip-and-port-are-the-same-but-the-remote-ip-differs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Scenario #2 we reverse our setup. Instead of multiple local IP's and one remote address, we now have one local address <code>127.0.0.1:60000</code> and two distinct remote addresses. The question remains the same - can two sockets share the local port? Reminder: ephemeral port range is still of size one.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -208,7 +250,14 @@ s2.getsockname(), s2.getpeername()</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Quiz #4</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-4">Quiz #4</h3>
+		<a href="https://blog.cloudflare.com/#quiz-4" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.connect(('127.8.8.8', 1234))
@@ -218,7 +267,14 @@ s2 = socket(AF_INET, SOCK_STREAM)
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_4.py">Answer #4</a></p>
-	<h3>Quiz #5</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-5">Quiz #5</h3>
+		<a href="https://blog.cloudflare.com/#quiz-5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What if we <code>bind()</code> to a local IP explicitly but let the OS select the port - does anything change?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.0.0.1', 0))
@@ -230,7 +286,14 @@ s2.bind(('127.0.0.1', 0))
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_5.py">Answer #5</a></p>
-	<h3>Quiz #6</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-6">Quiz #6</h3>
+		<a href="https://blog.cloudflare.com/#quiz-6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This time we explicitly specify the local address and port. Sometimes there is a need to specify the local port.</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.0.0.1', 60_000))
@@ -242,7 +305,14 @@ s2.bind(('127.0.0.1', 60_000))
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py">Answer #6</a></p>
-	<h3>Quiz #7</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-7">Quiz #7</h3>
+		<a href="https://blog.cloudflare.com/#quiz-7" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just when you thought it couldn’t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR"><code>SO_REUSEADDR</code></a> into the mix.</p>
 	<p>First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
@@ -256,7 +326,14 @@ s2.bind(('127.0.0.1', 60_000))
 s2.connect(('127.9.9.9', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_7.py">Answer #7</a></p>
-	<h3>Quiz #8</h3>
+	<div class="flex anchor relative">
+		<h3 id="quiz-8">Quiz #8</h3>
+		<a href="https://blog.cloudflare.com/#quiz-8" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, a cherry on top. This is Quiz #7 but in reverse. Common sense dictates that the outcome should be the same, but is it?</p>
 	<pre class="language-bash"><code class="language-bash">s1 = socket(AF_INET, SOCK_STREAM)
 s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
@@ -269,7 +346,14 @@ s2.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 s2.connect(('127.8.8.8', 1234))
 s2.getsockname(), s2.getpeername()</code></pre>
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_8.py">Answer #8</a></p>
-	<h2>The secret tri-state life of a local TCP port</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-secret-tri-state-life-of-a-local-tcp-port">The secret tri-state life of a local TCP port</h2>
+		<a href="https://blog.cloudflare.com/#the-secret-tri-state-life-of-a-local-tcp-port" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Is it all clear now? Well, probably no. It feels like reverse engineering a black box. So what is happening behind the scenes? Let's take a look.</p>
 	<p>Linux tracks all TCP <b>ports</b> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156">ehash</a> table, which tracks <b>sockets</b> with both local and remote address already assigned.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -509,7 +593,14 @@ s2.getsockname(), s2.getpeername()</code></pre>
 			<p><code>SO_REUSEADDR</code> socket option allows local address sharing, if all conflicting sockets also use it (and none of them is in the listening state).</p>
 		</li>
 	</ul>
-	<h3>This is crazy. I don’t believe you.</h3>
+	<div class="flex anchor relative">
+		<h3 id="this-is-crazy-i-dont-believe-you">This is crazy. I don’t believe you.</h3>
+		<a href="https://blog.cloudflare.com/#this-is-crazy-i-dont-believe-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p>
 	<pre class="language-python"><code class="language-python">#!/usr/bin/env drgn
 
@@ -608,7 +699,14 @@ TCP-PORT  FASTREUSE  #OWNERS
 	<p>With such tooling, proving that <i>Table 2</i> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py">exploratory tests</a>.</p>
 	<p>But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <i>Table 1</i> fails to capture. And it means that we still don't have the full picture.</p>
 	<p>We have yet to find out when the bucket's fastreuse state can change. This calls for a state machine.</p>
-	<h3>Das State Machine</h3>
+	<div class="flex anchor relative">
+		<h3 id="das-state-machine">Das State Machine</h3>
+		<a href="https://blog.cloudflare.com/#das-state-machine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we have just seen, a bind bucket does not need to stay in the initial fastreuse state throughout its lifetime. Adding sockets to the bucket can trigger a state change. As it turns out, it can only transition into <code>fastreuse = 0</code>, if we happen to bind() a socket that:</p>
 	<ol>
 		<li>
@@ -625,11 +723,25 @@ TCP-PORT  FASTREUSE  #OWNERS
 	</figure>
 	<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py">a few more tests</a>.</p>
 	<p>Now that we have the full picture, this begs the question...</p>
-	<h3>Why are you telling me all this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-are-you-telling-me-all-this">Why are you telling me all this?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-you-telling-me-all-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Firstly, so that the next time <code>bind()</code> syscall rejects your request with <code>EADDRINUSE</code>, or <code>connect()</code> refuses to cooperate by throwing the <code>EADDRNOTAVAIL</code> error, you will know what is happening, or at least have the tools to find out.</p>
 	<p>Secondly, because we have previously <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">advertised a technique</a> for opening connections from a specific range of ports which involves bind()'ing sockets with the SO_REUSEADDR option. What we did not realize back then, is that there exists <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py#L300">a corner case</a> when the same port can't be shared with the regular, <code>connect()</code>'ed sockets. While that is not a deal-breaker, it is good to understand the consequences.</p>
 	<p>To make things better, we have worked with the Linux community to extend the kernel API with a new socket option that lets the user <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177">specify the local port range</a>. The new option will be available in the upcoming Linux 6.3. With it we no longer have to resort to bind()-tricks. This makes it possible to yet again share a local port with regular <code>connect()</code>'ed sockets.</p>
-	<h2>Closing thoughts</h2>
+	<div class="flex anchor relative">
+		<h2 id="closing-thoughts">Closing thoughts</h2>
+		<a href="https://blog.cloudflare.com/#closing-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we posed a relatively straightforward question - when can two TCP sockets share a local address? - and worked our way towards an answer. An answer that is too complex to compress it into a single sentence. What is more, it's not even the full answer. After all, we have decided to ignore the existence of the SO_REUSEPORT feature, and did not consider conflicts with TCP listening sockets.</p>
 	<p>If there is a simple takeaway, though, it is that bind()'ing a socket can have tricky consequences. When using bind() to select an egress IP address, it is best to combine it with IP_BIND_ADDRESS_NO_PORT socket option, and leave the port assignment to the kernel. Otherwise we might unintentionally block local TCP ports from being reused.</p>
 	<p>It is too bad that the same advice does not apply to UDP, where IP_BIND_ADDRESS_NO_PORT does not really work today. But that is another story.</p>

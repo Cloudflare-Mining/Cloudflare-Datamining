@@ -10,23 +10,58 @@
 	<p>In terms of results: using the old benchmark of 1,000 networks, we’re the fastest in 69% of them. In this new expanded view of 3,000 networks, we’re the fastest in 42% of them. We’ve demonstrated a consistent ability to improve our performance against what we measure, and we’re excited to optimize our performance and lift our ranking in these smaller networks all around the world.</p>
 	<p>In addition to sharing a general update on where our network performance stands, we’re also sharing updated performance metrics on our Workers platform (given that it’s Platform Week!). We’ve done an extensive benchmark of Cloudflare Workers vs Fastly’s Compute@Edge.</p>
 	<p>We’ve got the results below, but before we get to that, we want to spend a bit of time on our revamped measurements.</p>
-	<h2>Revamped measurements</h2>
+	<div class="flex anchor relative">
+		<h2 id="revamped-measurements">Revamped measurements</h2>
+		<a href="https://blog.cloudflare.com/#revamped-measurements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A few months ago, we discussed the performance of Cloudflare Workers, as compared to other similar offerings out there. We compared our performance to Fastly’s Compute@Edge, showing that Workers was significantly faster.</p>
 	<p>After we published our results, there were questions and suggestions on how to improve our testing methodology (including sharing more detail about where and how we ran the tests). As we re-ran tests for this iteration, we made some small changes, and also worked to address the suggestions from the community. Let’s talk about what’s changed and why.</p>
-	<h3>Measuring what matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-what-matters">Measuring what matters</h3>
+		<a href="https://blog.cloudflare.com/#measuring-what-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To quantify global network performance, we have to get enough data from around the world, across all manner of different networks, comparing ourselves with other providers. We used Real User Measurements (RUM) to fetch a 100kB file from different providers. Users around the world report the performance of different providers. The more users who report the data, the higher fidelity the signal is. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
 	<p>In the process of quantifying network performance, it became clear where we needed to expand our scope in measuring performance. <a href="https://blog.cloudflare.com/network-performance-update-security-week">After Security Week</a>, we were fastest in 71% of networks, and we decided that we wanted to expand the pool of networks from the top 1,000 most reported networks to the top 3,000 most reported networks.</p>
 	<p>We’ve shown the graph detailing the <i>number</i> of networks where Cloudflare is #1 in network performance, but from here on out, we will only be showing this graph in <i>percentages</i> of networks where we are number one out of 100%, since the denominator will be changing going forward as we set ourselves harder and harder challenges.</p>
-	<h3>Benchmarking for everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="benchmarking-for-everyone">Benchmarking for everyone</h3>
+		<a href="https://blog.cloudflare.com/#benchmarking-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the time we published our earlier set of benchmarks, we had an unnecessary “no benchmarking” clause in our Terms of Service. It has since been removed. It’s been a while since we’ve worried about such things, and the clause lived past its intended life in our ToS.</p>
 	<p>We’ve done the work to show where we are the fastest provider, and it’s important that everyone else be able to validate that independently. We’re also confident that well run benchmarks will only help further improve performance for Workers, other Cloudflare products, and the Internet as a whole. Game on.</p>
-	<h3>Measuring Workers performance from real users</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-workers-performance-from-real-users">Measuring Workers performance from real users</h3>
+		<a href="https://blog.cloudflare.com/#measuring-workers-performance-from-real-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To run our tests, we used Catchpoint, an industry standard “synthetic” testing tool, and measurements collected from real users distributed around the world. Catchpoint is a monitoring platform that has <a href="https://www.catchpoint.com/global-observability-network">around 2,000 total endpoints</a> distributed around the world that can be configured to fetch specific resources and time each test. Catchpoint is useful for network providers like us as it provides a consistent, repeatable way to measure end-to-end performance of a workload, and delivers a best-effort approximation for what a user sees.</p>
 	<p>Catchpoint has a series of backbone nodes that are embedded in ISPs around the world. That means that these nodes are plugged into ISP routers just like you are, and the traffic goes through the ISP network to each endpoint they are monitoring. These can approximate a real user, but they will never truly approximate a real user. For example, the bandwidth for these nodes is 100% dedicated for platform monitoring, as opposed to your home Internet connection, where your Internet experience will be a mixed bag of different use cases, some of which won’t talk to Workers applications at all.</p>
 	<p>For this new test, we chose 300 backbone nodes that are embedded in last mile ISPs around the world. We filtered out nodes in cloud providers, or in metro areas with multiple transit options, trying to remove duplicate paths as much as possible.</p>
 	<p>We cross-checked these tests with our own data set, which is collected from users connecting to free websites when they are served 1xxx error pages, similar to how we collect data for global network performance. When a user sees this error page, that page will contain a call that will execute these tests and upload performance metrics on these calls to Cloudflare. Users would run these calls independently of the error page, ensuring that Cloudflare did not get a head start in these tests.</p>
 	<p>We also changed our test methodology to use paid accounts for both Fastly and Cloudflare.</p>
-	<h3>Changing the numbers we look at</h3>
+	<div class="flex anchor relative">
+		<h3 id="changing-the-numbers-we-look-at">Changing the numbers we look at</h3>
+		<a href="https://blog.cloudflare.com/#changing-the-numbers-we-look-at" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For this new test, we decided to look at Wait time in addition to Time to First Byte. <a href="https://www.catchpoint.com/blog/http-request-anatomy">Time to First Byte</a> is the time it takes for a web server to establish a connection, fetch the content, and deliver the first byte of a response to a user, and Wait time is the time the client spends waiting for the server to send back that first byte after the connection is established. We are using this particular measurement to look at the actual time it takes for the server to compute the request on the machine. <a href="https://blog.catchpoint.com/2010/09/17/anatomyhttp/?_ga=2.244682437.1326161414.1652456190-846434697.1631231609">Wait time</a> is a subcomponent of TTFB, and contains the machine processing time, the time it takes the server to give the response to the socket to be sent back to the user, and the time it takes the response to reach the user. There could be latency in passing the request to the socket on the machine, but we measured the actual time it took the server to send the request for all tests and found it to be zero:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +72,14 @@
 	<p>However, others have noted that using Time to First Byte to measure performance of serverless computing solutions could potentially be misleading because user performance measurements can be influenced by more than just the time spent computing functions on the machine. For example, things like the time to connect to the server, DNS resolution, and cache times can impact Time to First Byte. Time to connect to the server (connect) can be impacted by how well peered a network is (or how poorly). DNS resolution can be impacted by client behavior, local DNS behavior, or by the performance of the provider’s DNS. Cache times can be driven by the performance of the cache on the server itself.</p>
 	<p>We agree that it is difficult to tease out computing time from Time to First Byte. To look at that particular aspect of serverless computing, we look at Wait, which is a value that contains the least amount of variables: we aren’t caching anything during our tests, DNS isn’t part of the wait time, and the only thing impacting Wait aside from the time spent on the machine is the Connect time.</p>
 	<p>However, since we’re trying to measure the end user experience and not just the amount of time spent on a server, we want to use both the Wait and TTFB so that we can show the time spent both on the server and how that impacts end-to-end performance.</p>
-	<h3>What’s in the test?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-in-the-test">What’s in the test?</h3>
+		<a href="https://blog.cloudflare.com/#whats-in-the-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For our test this time around, we decided to measure three things: a simple JavaScript function like last time, a complex JavaScript function, and a complex Rust function. Here are the functions for each of them:</p>
 	<pre class="language-js"><code class="language-js">async function getErrorResponse(event, message, status) {
   return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
@@ -65,7 +107,14 @@
   value
 }</code></pre>
 	<p>The goals of each of these tests is simple: test the ability of Workers and Compute@Edge to perform compute actions.</p>
-	<h2>Latest update on network performance</h2>
+	<div class="flex anchor relative">
+		<h2 id="latest-update-on-network-performance">Latest update on network performance</h2>
+		<a href="https://blog.cloudflare.com/#latest-update-on-network-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have two updates on data: a general network performance update, and then data on how Workers compares with Compute@Edge.</p>
 	<p>At Security Week (March 2022), we shared that we were faster in more of the most reported networks than our competitors. Out of the top 1,000 networks in the world (by number of IPv4 addresses advertised), here’s a breakdown of how many providers are number one in p95 TCP Connection Time, which represents the time it takes for a user to connect to the provider. This data is from Security Week (March 2022):</p>
 	<figure class="kg-card kg-image-card ">
@@ -93,7 +142,14 @@
 
 	</figure>
 	<p>Cloudflare became #1 in more countries in Africa and Europe, some of which previously did not have enough samples to officially be counted to one provider or another.</p>
-	<h2>Workers vs Compute@Edge</h2>
+	<div class="flex anchor relative">
+		<h2 id="workers-vs-compute-edge">Workers vs Compute@Edge</h2>
+		<a href="https://blog.cloudflare.com/#workers-vs-compute-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Moving on from general network results, what does performance look like when comparing serverless compute products across providers — in this case, Cloudflare Workers performance to Compute@Edge? Looking at the Catchpoint data, the first thing we noticed was Cloudflare is faster than Fastly in all tests at the 95th percentile for Time to First Byte:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -175,7 +231,14 @@
 
 	</figure>
 	<p>The big takeaway from this is that in addition to Cloudflare being faster for the time spent processing requests, Cloudflare’s network and performance optimizations as a whole set us apart and make our Workers platform even faster.</p>
-	<h2>A fast network makes for a faster developer platform</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-fast-network-makes-for-a-faster-developer-platform">A fast network makes for a faster developer platform</h2>
+		<a href="https://blog.cloudflare.com/#a-fast-network-makes-for-a-faster-developer-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s commitment to building the fastest network allows us to deliver unparalleled performance for all applications, including our developer tools. Whether it’s by accelerating Cloudflare Pages performance by hosting on every single Cloudflare server, or by deploying Workers in 275 cities without developers needing to configure a thing, Cloudflare’s developer tools are all built on top of Cloudflare’s global network. We’re committed to making our network faster so that our developer products are as performant as they could possibly be.</p>
 	<p>And it’s not just the developer platform. Cloudflare runs an integrated and optimized stack that includes DDoS protection, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>, rate limiting, bot management, caching, SSL, smart routing, and more. By having a single software stack we are able to offer the widest range of features while ensuring that performance (no matter which of our products you use) remains excellent. We don’t want you to have to compromise performance to get security or vice versa.</p>
 </div>

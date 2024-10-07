@@ -17,7 +17,14 @@
 
 	</figure>
 	<p>e.g. eyeball packets arrive at the outer device in the root network namespace, they are picked up by flowtrackd and then forwarded to the inner device in the inner-ns namespace.</p>
-	<h2>AF_XDP</h2>
+	<div class="flex anchor relative">
+		<h2 id="af_xdp">AF_XDP</h2>
+		<a href="https://blog.cloudflare.com/#af_xdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The kernel and the userspace share a memory buffer called the UMEM. This is where packet bytes are written to and read from.</p>
 	<p>The UMEM is split in contiguous equal-sized "frames" that are referenced by "descriptors" which are just offsets from the start address of the UMEM.</p>
 	<figure class="kg-card kg-image-card ">
@@ -64,7 +71,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TkCEuedruPJCPfzWidBjc/146517dd835a671a200064a1aaa5b395/image7-6.png" alt="flowtrackd interactions with AF_XDP queues" class="kg-image" width="1999" height="919" loading="lazy">
 
 	</figure>
-	<h2>flowtrackd I/O rewrite project</h2>
+	<div class="flex anchor relative">
+		<h2 id="flowtrackd-i-o-rewrite-project">flowtrackd I/O rewrite project</h2>
+		<a href="https://blog.cloudflare.com/#flowtrackd-i-o-rewrite-project" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To increase flowtrackd performance and to be able to scale with the growth of the Magic Transit product we decided to rewrite the I/O subsystem.</p>
 	<p>There will be a public blogpost about the technical aspects of the rewrite.</p>
 	<p>Prior to the rewrite, each customer had a dedicated flowtrackd instance (Unix process) that attached itself to dedicated network devices. A dedicated UMEM was created per network device (see schema on the left side below). The packets were copied from one UMEM to the other.</p>
@@ -98,7 +112,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Of32s5kJrl6seldfKEnI4/4ee8feb492184a5eacc643e70fe88949/unnamed1.png" alt="overview of flowtrackd interactions with Xsks in namespaces" class="kg-image" width="1600" height="646" loading="lazy">
 
 	</figure>
-	<h2>What "Invalid argument" ??!</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-invalid-argument">What "Invalid argument" ??!</h2>
+		<a href="https://blog.cloudflare.com/#what-invalid-argument" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We were happily near the end of the rewrite when, suddenly, after porting our integration tests in the CI, flowtrackd crashed!</p>
 	<p>The following errors was displayed:</p>
 	<pre class="language-bash"><code class="language-bash">[...]
@@ -426,7 +447,14 @@ struct sockaddr_xdp {
 	<p>We could statically try to infer where the EINVAL was returned looking at the source code. But this analysis has its limits and can be error-prone.</p>
 	<p>Overall, it seems that the network namespaces are not taken into account somewhere because it seems that there is some confusion with the interface indexes.</p>
 	<p>Is the issue on the kernel-side?</p>
-	<h2>Digging deeper</h2>
+	<div class="flex anchor relative">
+		<h2 id="digging-deeper">Digging deeper</h2>
+		<a href="https://blog.cloudflare.com/#digging-deeper" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It would be nice if we had step-by-step runtime inspection of code paths and variables.</p>
 	<p>Let's:</p>
 	<ul>
@@ -544,9 +572,23 @@ make -j$(nproc) bzImage</code></pre>
 
 	</figure>
 	<p>Remembering our setup, can you spot what the issue is?</p>
-	<h2>The bug / missing feature</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-bug-missing-feature">The bug / missing feature</h2>
+		<a href="https://blog.cloudflare.com/#the-bug-missing-feature" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
-	<h2>What can we do about it?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-can-we-do-about-it">What can we do about it?</h2>
+		<a href="https://blog.cloudflare.com/#what-can-we-do-about-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We need to tell apart two network devices "system-wide". That means across the network namespace boundaries.</p>
 	<p>Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
 	<pre class="language-bash"><code class="language-bash"># ip netns add a
@@ -598,10 +640,24 @@ make -j$(nproc) bzImage</code></pre>
 			<p>It provides a global identifier that can be assumed unique and not reused.</p>
 		</li>
 	</ul>
-	<h2>A patch</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-patch">A patch</h2>
+		<a href="https://blog.cloudflare.com/#a-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At the socket creation, we retrieve the netns_cookie from the Xsk file descriptor with <code>getsockopt()</code>, insert it in the xsk_ctx struct and add it in the comparison performed in <code>xsk_get_ctx()</code>.</p>
 	<p>Our initial patch was tested on Linux v5.15 with libbpf v0.8.0.</p>
-	<h3>Testing the patch</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing-the-patch">Testing the patch</h3>
+		<a href="https://blog.cloudflare.com/#testing-the-patch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We keep the same network setup script, but we set the number of queues per interface to two (QUEUES=2). This will help us check that two sockets created in the same network namespace have the same netns_cookie.</p>
 	<p>After recompiling flowtrackd to use our patched libbpf, we can run it inside <b>our guest</b> with gdb and set breakpoints on <code>xsk_get_ctx</code> as well as <code>xsk_create_ctx</code>. We now have two instances of gdb running at the same time, one debugging the system and the other debugging the application running in that system. Here is the gdb guest view:</p>
 	<figure class="kg-card kg-image-card ">
@@ -617,11 +673,33 @@ make -j$(nproc) bzImage</code></pre>
 	</figure>
 	<p>We can see that the netns_cookie value for the first two Xsks is 1 (root namespace) and the <code>net_cookie</code> value for the two other Xsks is 8193 (inner-ns namespace).</p>
 	<p>flowtrackd didn't crash and is behaving as expected. It works!</p>
-	<h2>Conclusion</h2>
-	<h3>Situation</h3>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="situation">Situation</h3>
+		<a href="https://blog.cloudflare.com/#situation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Creating AF_XDP sockets with the XDP_SHARED_UMEM flag set fails when the two devices’ ifindex (and the queue_id) are the same. This can happen with devices in different network namespaces.</p>
 	<p>In the shared UMEM mode, each Xsk is expected to have a dedicated fill and completion queue. Context data about those queues are set by libbpf in a linked-list stored by the UMEM object. The comparison performed to pick the right context in the linked-list only takes into account the device ifindex and the queue_id which can be the same when devices are in different network namespaces.</p>
-	<h3>Resolution</h3>
+	<div class="flex anchor relative">
+		<h3 id="resolution">Resolution</h3>
+		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We retrieve the <code>netns_cookie</code> associated with the socket at its creation and add it in the comparison operation.</p>
 	<p>The <a href="https://github.com/xdp-project/xdp-tools/pull/205">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp">live</a>.</p>
 	<p>We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1">libbpf-sys Rust crate</a> accordingly.</p>

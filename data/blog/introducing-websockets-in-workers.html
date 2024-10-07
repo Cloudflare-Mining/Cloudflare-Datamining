@@ -9,10 +9,24 @@
 	<p>Today, we're releasing support for WebSockets in Cloudflare Workers.</p>
 	<p>WebSockets unlock powerful use-cases in your serverless applications — live-updating, interactive experiences that bridge the gap between your users and Workers' powerful network and runtime APIs.</p>
 	<p>In this blog post, we’ll walk you through the basics of using WebSockets with Workers. That being said, WebSockets on their own aren’t immediately useful -- to power the interactivity, you need to coordinate a storage layer to go with them. With the addition of Durable Objects as a solution to building coordinated state on the edge, you can combine the power of interactive compute (WebSockets) with coordinated state (Durable Objects), and build incredible real-time applications. Durable Objects was <a href="https://blog.cloudflare.com/durable-objects-open-beta">released in open beta at the end of last month</a>, and later in this blog post, we’ll explore how Durable Objects are well-suited towards building with WebSockets.</p>
-	<h2>Getting started with WebSockets in Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-websockets-in-workers">Getting started with WebSockets in Workers</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-websockets-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebSockets allow clients to open a connection back to a server (or in our case, Cloudflare Workers) that can receive and send messages. Instead of polling a server continuously for new information, a single WebSocket connection can constantly receive data and unlock the kind of live use-cases that we're used to in modern applications: things like live scores for sports events, real-time chat, and more.</p>
 	<p>Let's dig into how to use WebSockets in Workers so you can understand how easy they are to pick up and start using in your application.</p>
-	<h3>Instantiating WebSocketPairs in Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="instantiating-websocketpairs-in-cloudflare-workers">Instantiating WebSocketPairs in Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#instantiating-websocketpairs-in-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers respond to HTTP requests sent from clients. A Request comes in, and a Response comes back. You can begin using WebSockets in your Workers code by looking for an Upgrade header in any incoming requests: this is an indication from the client that it's looking to set up a new WebSocket:</p>
 	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -57,7 +71,15 @@ async function handleRequest(request) {
     console.log(evt)
   })
 }</code></pre>
-	<h3>Connecting to WebSockets in a Browser Client</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="connecting-to-websockets-in-a-browser-client">Connecting to WebSockets in a Browser Client</h3>
+		<a href="https://blog.cloudflare.com/#connecting-to-websockets-in-a-browser-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With WebSockets support added in the Workers function, we can now connect to it from a client. Workers' WebSocket support works directly with the browser-default WebSocket class, meaning that you can connect to it directly in vanilla JavaScript without any additional libraries.</p>
 	<p>In fact, this connection process is so simple that it almost explains itself by just looking at the code. Just pass the WebSocket URL to a new instance of WebSocket, and then watch for new events on the WebSocket itself, like open (when the WebSocket connection opens), message (when new data comes in), and close (when the WebSocket connection closes):</p>
 	<pre class="language-js"><code class="language-js">let websocket = new WebSocket(url)
@@ -88,11 +110,26 @@ websocket.addEventListener(“error”, message =&gt; {
 
 // Close WebSocket connection at a later point
 const closeConnection = () =&gt; websocket.close()</code></pre>
-	<h2>Durable Objects and WebSockets</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="durable-objects-and-websockets">Durable Objects and WebSockets</h2>
+		<a href="https://blog.cloudflare.com/#durable-objects-and-websockets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebSockets are a powerful addition to the Workers toolkit, but you'll notice that in the above example, your WebSocket connections are effectively stateless. I can click the "Click me" button a hundred times, send data back and forth in my WebSocket connection, but as soon as I refresh the page, all of that information is gone. How do we provide state for our WebSocket and for our application in general?</p>
 	<p>Our solution for this is Durable Objects. Instead of using external state solutions and making requests to origin servers for a database or API provider, Durable Objects provide simple APIs for accessing and updating stateful data directly at the edge, right alongside your serverless functions.</p>
 	<p>Durable Objects complements WebSockets perfectly, providing the stateful primitives needed to make WebSockets at the edge uniquely powerful and performant. When we initially announced the Durable Objects private beta, we also previewed WebSockets in Workers for the first time, as part of our live chat demo. That demo, <a href="https://edge-chat-demo.cloudflareworkers.com">available here</a>, still serves as a great example of a more complex application that can be built entirely on Workers, Durable Objects, and WebSockets.</p>
-	<h2>Additional resources</h2>
+	<div class="flex anchor relative">
+		<h2 id="additional-resources">Additional resources</h2>
+		<a href="https://blog.cloudflare.com/#additional-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the release of WebSocket support in Workers, we're providing two resources to help you get started.</p>
 	<p>First, a new websocket-template that will help you get started with WebSockets on Workers. The template includes a simple HTML page that shows you how to connect to a Workers-based WebSocket, send and receive messages, as well as how to close the connection and handle any unknown messages or data. This template is the logical extension of the code that I shared above, and could be extended for most use-cases with WebSockets in your application.</p>
 	<p><a href="https://websocket-template.cloudflare-docs.workers.dev">You can see a demo version of the project here.</a></p>
@@ -102,7 +139,14 @@ const closeConnection = () =&gt; websocket.close()</code></pre>
 
 	</figure>
 	<p><a href="https://developers.cloudflare.com/workers/learning/using-websockets">We've also released documentation for WebSocket usage in Workers.</a> This includes a new Learning page on working with WebSockets, as well as a collection of reference documentation for <a href="https://developers.cloudflare.com/workers/runtime-apis/websockets">understanding the new WebSocketPair API</a>, and changes to the Response class to allow WebSocket upgrade responses, as seen in the code above.</p>
-	<h2>Pricing considerations</h2>
+	<div class="flex anchor relative">
+		<h2 id="pricing-considerations">Pricing considerations</h2>
+		<a href="https://blog.cloudflare.com/#pricing-considerations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, WebSockets incur a request charge when the connection is first established, followed by the underlying Worker’s duration charge as long as the WebSocket is active. There is no per-message fee for WebSockets.</p>
 	<p>This means that if you create a Worker on the Workers Unbound plan and then pass-through a WebSocket connection to another server or to a Durable Object, you’ll be billed wall-clock duration for the entire time the connection is open. This may be surprising, since the Worker itself is not participating in the request.</p>
 	<p>This is currently due to a limitation in the platform, where the Worker passing the WebSocket through remains active for the duration of the WebSocket connection. We’re working to make it so that you will not be charged duration time for proxying a WebSocket in the near future.</p>

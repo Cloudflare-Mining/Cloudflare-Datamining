@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>It all comes down to the speed of light. It always does. The speed of light limits the latency possible between someone using the Internet and the application they are accessing. It doesn’t matter if they are walking down the street hailing a car using a ride-sharing app, sitting in an office accessing a SaaS application on the web, or if their wearable device is reporting health information over WiFi. The speed of light is everywhere.</p>
 	<p>When you can’t fight the speed of light you only have one possible solution: move closer to where the end users are. In simplistic terms, that’s what Cloudflare has done by building its network of 117 data centers around the world. We’ve cut the latency between users and servers by moving closer.</p>
-	<h3>The Missing Link</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-missing-link">The Missing Link</h3>
+		<a href="https://blog.cloudflare.com/#the-missing-link" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But to date all we’ve moved closer are things like SSL handshakes, WAF processing of requests and caching of content. All those things help make Internet applications faster and safer, but there’s a huge missing component... code.</p>
 	<p>The code that makes Internet applications work is still sequestered in servers and cloud services around the world. And there are only a limited number of such locations even for large cloud providers. There have really only been two significant places to run code until now: on a server distant from an end user and on the end user’s device. Accessing a SaaS application consists of code running on your web browser and on a remote server. A wearable device contains code that reports information to server in the cloud. A mobile app runs on your phone and accesses an API somewhere on the web.</p>
 	<figure class="kg-card kg-image-card ">
@@ -13,7 +20,14 @@
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/gcdnz/32391863704/in/photolist-RmmLyG-H4TwnF-H1TTpE-5F1JpP-5AiKBT-5xbg7G-b8BAu-5F1Jcz-bCaovF-bpfuTY-cqzrR-77aZZi-7h4hUK-ai7Y4H-7vfFfX-3QKbam-4mh21b-7h8f3Q-5pXXs6-2Jw7Qp-H4Tvkk-H4TvvR-GVxFu3-GVxFRW-H4TvoX-GVxFAL-GVxFH9-GVxFvq-G9nww5-uGNRZ1-H1TSuJ-H4TwBt-GVxFgN-uWJk6j-uWJix9-GDH8qC-H1TSwY-H4Tvvv-H4Tv6n-G9nvxS-G9nvFY-GVxFmh-H4TvLF-G9nvWY-GVxFJG-G9nwhC-H4Tvrc-G9nvAY-GVxFLL-H4TvYV">image</a> by <a href="https://www.flickr.com/photos/gcdnz">Gary Danvers</a></p>
 	<p>Cloudflare Workers is about creating a third place where code can run: neither on the device nor in the backend server. Workers run close enough to end users that the latency is low, but are updateable with the speed of server code. Servers typically have much more CPU and memory than devices but are located far from them. Workers have the CPU and memory resources of servers but are located close enough (latency wise) to devices that they significantly augment the capabilities of end user devices.</p>
 	<p>We believe a whole class of applications will take advantage of this three tier approach: on device, in network, on server.</p>
-	<h3>JavaScript</h3>
+	<div class="flex anchor relative">
+		<h3 id="javascript">JavaScript</h3>
+		<a href="https://blog.cloudflare.com/#javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As devices (phones, watches and IoT) have exploded and the Internet has grown, code has been slow to move from its data centers. We’ve decided to change that by giving our customers the ability to write code, in JavaScript, that runs on every single one of our servers around the world.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +38,14 @@
 	<p>That gives them the full power of modern JavaScript, just milliseconds away from end users. We don’t know what people will build with Cloudflare Workers, but believe that giving them the ability to write code will result in an explosion of interesting, fast, low latency applications built to run, essentially, in the Internet, rather than in a data center.</p>
 	<p>We considered exposing traditional code/configuration languages like the NGINX conf, or the Varnish Configuration Language, but they are much too restrictive to really unleash the power of code at the edge.</p>
 	<p>Cloudflare is incredibly configurable and controllable. We have a rich dashboard with per URI configuration of practically everything, but there’s nothing like code. And code turns Cloudflare from a service to a platform.</p>
-	<h3>Instant Updates</h3>
+	<div class="flex anchor relative">
+		<h3 id="instant-updates">Instant Updates</h3>
+		<a href="https://blog.cloudflare.com/#instant-updates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s other great strength is the speed with which configuration can be updated globally. If you make a configuration change (click a button in the UI to enable IPv6, add or remove a DNS record, add a server to your load balancing configuration, enable a WAF rule, change a rate limiting setting, etc.) it is rolled out and operational worldwide in seconds.</p>
 	<p>The same goes for code. Developers are able to update their code in seconds worldwide and have multiple versions available for test and deployment. And the rich, interactive development environment means that developers can write and test code before deployment and then upload it to make it instantly available.</p>
 	<p>The combination of Cloudflare’s huge network (the most peered network on the planet), the ability to update code almost instantly, and the proximity of our data centers means that code written in JavaScript on the Cloudflare platform essentially runs ‘in the Internet’ rather than ‘on a server’.</p>

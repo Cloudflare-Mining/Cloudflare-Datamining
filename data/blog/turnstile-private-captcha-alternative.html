@@ -5,18 +5,46 @@
 	<p>There is no point in rehashing the fact that CAPTCHA provides a terrible user experience. It's been discussed in detail before <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">on this blog</a>, and countless times elsewhere. The creator of the CAPTCHA has even publicly lamented that he “unwittingly created a system that was <a href="https://thewalrus.ca/human-resources">frittering away, in ten-second increments, millions of hours</a> of a most precious resource: human brain cycles.” We hate it, you hate it, everyone hates it. Today we’re giving everyone a better option.</p><!--kg-card-begin: html-->
 	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Turnstile is our smart CAPTCHA alternative. It automatically chooses from a rotating suite of non-intrusive browser challenges based on telemetry and client behavior exhibited during a session. We talked in an earlier post about how we’ve <a href="https://blog.cloudflare.com/end-cloudflare-captcha">used our Managed Challenge system to reduce our use of CAPTCHA by 91%</a>. Now anyone can take advantage of this same technology to stop using CAPTCHA on their own site.</p>
-	<h3>UX isn’t the only big problem with CAPTCHA — so is privacy</h3>
+	<div class="flex anchor relative">
+		<h3 id="ux-isnt-the-only-big-problem-with-captcha-so-is-privacy">UX isn’t the only big problem with CAPTCHA — so is privacy</h3>
+		<a href="https://blog.cloudflare.com/#ux-isnt-the-only-big-problem-with-captcha-so-is-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While having to solve a CAPTCHA is a frustrating user experience, there is also a potential hidden tradeoff a website must make when using CAPTCHA. If you are a small site using CAPTCHA today, you essentially have one option: an 800 pound gorilla with <a href="https://trends.builtwith.com/widgets/captcha">98% of the CAPTCHA</a> market share. This tool is free to use, but in fact it has a privacy cost: you have to give your data to an ad sales company.</p>
 	<p>According to security researchers, one of the signals that Google uses to decide if you are malicious is whether you have a Google cookie in your browser, and if you have this cookie, Google <a href="https://web.archive.org/web/20220826231627/https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side">will give you a higher score</a>. Google says they don’t use this information for ad targeting, but at the end of the day, Google is an ad sales company. Meanwhile, at Cloudflare, we make money when customers choose us to <a href="https://www.cloudflare.com/security">protect their websites</a> and make their services run better. It's a simple, direct relationship that perfectly aligns our incentives.</p>
-	<h3>Less data collection, more privacy, same security</h3>
+	<div class="flex anchor relative">
+		<h3 id="less-data-collection-more-privacy-same-security">Less data collection, more privacy, same security</h3>
+		<a href="https://blog.cloudflare.com/#less-data-collection-more-privacy-same-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In June, we announced an effort <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">with Apple to use Private Access Tokens</a>. Visitors using operating systems that support these tokens, including the upcoming versions of macOS or iOS, can now prove they’re human without completing a CAPTCHA or giving up personal data.</p>
 	<p>By collaborating with third parties like device manufacturers, who already have the data that would help us validate a device, we are able to abstract portions of the validation process, and confirm data without actually collecting, touching, or storing that data ourselves. Rather than interrogating a device directly, we ask the device vendor to do it for us.</p>
 	<p>Private Access Tokens are built directly into Turnstile. While Turnstile has to look at some session data (like headers, user agent, and browser characteristics) to validate users without challenging them, Private Access Tokens allow us to minimize data collection by asking Apple to validate the device for us. In addition, Turnstile never looks for <a href="https://www.cloudflare.com/learning/privacy/what-are-cookies">cookies</a> (like a login cookie), or uses cookies to collect or store information of any kind. Cloudflare has a <a href="https://blog.cloudflare.com/next-generation-privacy-protocols">long</a> track <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">record</a> of <a href="https://blog.cloudflare.com/certifying-our-commitment-to-your-right-to-information-privacy">investing</a> in <a href="https://blog.cloudflare.com/zaraz-privacy-features-in-response-to-cnil">user privacy</a>, which we will continue with Turnstile.</p>
-	<h3>We are opening our CAPTCHA replacement to everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="we-are-opening-our-captcha-replacement-to-everyone">We are opening our CAPTCHA replacement to everyone</h3>
+		<a href="https://blog.cloudflare.com/#we-are-opening-our-captcha-replacement-to-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To improve the Internet for everyone, we decided to open up the technology that powers our <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge</a> to everyone in beta as a standalone product called Turnstile.</p>
 	<p>Rather than try to unilaterally deprecate and replace CAPTCHA with a single alternative, we built a platform to test many alternatives and rotate new challenges in and out as they become more or less effective. With Turnstile, we adapt the actual challenge outcome to the individual visitor/browser. First we run a series of small non-interactive JavaScript challenges gathering more signals about the visitor/browser environment. Those challenges include proof-of-work, proof-of-space, probing for web APIs, and various other challenges for detecting browser-quirks and human behavior. As a result, we can fine-tune the difficulty of the challenge to the specific request.</p>
 	<p>Turnstile also includes <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning models</a> that detect common features of end visitors who were able to pass a challenge before. The computational hardness of those initial challenges may vary by visitor, but is targeted to run fast.</p>
-	<h3>Swap out your existing CAPTCHA in a few minutes</h3>
+	<div class="flex anchor relative">
+		<h3 id="swap-out-your-existing-captcha-in-a-few-minutes">Swap out your existing CAPTCHA in a few minutes</h3>
+		<a href="https://blog.cloudflare.com/#swap-out-your-existing-captcha-in-a-few-minutes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can take advantage of Turnstile and stop bothering your visitors with a CAPTCHA even without being on the <a href="https://www.cloudflare.com/network">Cloudflare network</a>. While we make it as easy as possible to use our network, we don't want this to be a barrier to improving privacy and user experience.</p>
 	<p>To switch from a CAPTCHA service, all you need to do is:</p>
 	<ol>
@@ -36,7 +64,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2o1JdkC5Dh44zULVVl4ktw/db8369565d9fda4da42966df389a2e71/image2-55.png" alt="" class="kg-image" width="1879" height="1350" loading="lazy">
 
 	</figure>
-	<h3>Deployment options and analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="deployment-options-and-analytics">Deployment options and analytics</h3>
+		<a href="https://blog.cloudflare.com/#deployment-options-and-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To use Turnstile, first create an account and get your site and secret keys.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -84,7 +119,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP8P97T96SukNsOdZ6pnn/f0bd185f22b8e59a3b559a2f3c34d039/image1-64.png" alt="" class="kg-image" width="1539" height="1999" loading="lazy">
 
 	</figure>
-	<h3>Why are we giving this away for free?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-are-we-giving-this-away-for-free">Why are we giving this away for free?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-we-giving-this-away-for-free" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While this is sometimes hard for people outside to believe, helping build a better Internet truly is <a href="https://www.cloudflare.com/careers/people/#:~:text=%E2%80%9CCloudflare's%20mission%20is%20to%20help,quantum%20algorithms%20at%20Cloudflare%20scale.%E2%80%9D">our mission</a>. This isn’t the first time we’ve built <a href="https://blog.cloudflare.com/1111-warp-better-vpn">free tools</a> that we think will <a href="https://blog.cloudflare.com/announcing-1111">make the Internet better</a>, and it won’t be the last. It's really important to us.</p>
 	<p>So whether or not you’re a Cloudflare customer today, if you’re using a CAPTCHA, try Turnstile for free, instead. You’ll make your users happier, and minimize the data you send to third parties.</p>
 	<p>Visit <a href="https://www.cloudflare.com/lp/turnstile">this page</a> to sign up for the best invisible, privacy-first, CAPTCHA replacement and to retrieve your Turnstile beta sitekey.</p>

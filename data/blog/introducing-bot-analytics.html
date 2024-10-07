@@ -7,7 +7,14 @@
 	</figure>
 	<p>Bots — both good and bad — are everywhere on the Internet. <a href="https://radar.cloudflare.com">Roughly 40% of Internet traffic is automated</a>. Fortunately, Cloudflare offers a tool that can detect and block unwanted bots: we call it <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a>. This is the most recent platform in our long history of detecting bots for our customers. In fact, Cloudflare has always offered some form of bot detection. Over the past two years, our team has focused on building advanced detection engines, innovating as bots become more sophisticated, and creating new features.</p>
 	<p>Today, we are releasing Bot Analytics to help you visualize your automated traffic.</p>
-	<h3>Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="background">Background</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s worth including some background for those who are new to bots.</p>
 	<p>Many websites expect human behavior. When I shop online, I behave as anyone else would: I might search for a few items, read reviews when I find something interesting, and eventually complete an order. This is expected. It is a standard use of the Internet.</p>
 	<figure class="kg-card kg-image-card ">
@@ -23,7 +30,15 @@
 
 	</figure>
 	<p>Not all bots are bad. Cloudflare maintains a list of verified good bots that we keep separated from the rest. Verified bots are usually transparent about who they are: DuckDuckGo, for example, <a href="https://help.duckduckgo.com/duckduckgo-help-pages/results/duckduckbot">publicly lists</a> the IP addresses it uses for its search engine. This is a well-intentioned service that happens to be automated, so we verified it. We also verify bots for error monitoring and other tools.</p>
-	<h3>Enter: Bot Analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="enter-bot-analytics">Enter: Bot Analytics</h3>
+		<a href="https://blog.cloudflare.com/#enter-bot-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78OZrXRrska6hHPQQIdIJB/2a179374d11589b2f2facb6d8c1b5ca1/image2-28.png" alt="" class="kg-image" width="975" height="527" loading="lazy">
@@ -31,7 +46,14 @@
 	</figure>
 	<p>As discussed earlier, we built a Bot Management platform that intelligently detects bots on the Internet, allowing our customers to block bad ones and allow good ones. If you’re curious about how our solution works, read <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">here</a>.</p>
 	<p>Beginning today, we are going to <i>show</i> you the bots that reach your website. You can see these bots with a new tool called Bot Analytics. It’s fast, accurate, and loaded with information. You can query data up to one month in the past with no noticeable lag. To accomplish this, we exposed the data with GraphQL and paired it with <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">adaptive bitrate (ABR) technology</a> to dynamically load content. If you already have Bot Management added to your Cloudflare account, Bot Analytics is included in your service. Open up your dashboard and let’s take a tour…</p>
-	<h3>The Tour</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-tour">The Tour</h3>
+		<a href="https://blog.cloudflare.com/#the-tour" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First: where to go? Bot Analytics lives under the Firewall tab of the dashboard. Once you’re in the Firewall, go to “Overview” and click the second thumbnail on the left. Remember, Bot Management must be added to your account for full access to analytics.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -64,7 +86,14 @@
 
 	</figure>
 	<p>“Top requests by source” is the final section of Bot Analytics. Although it’s not quite as colorful as the sections above, this section grounds Bot Analytics in highly specific data. You can filter or exclude request attributes, including IP addresses, user agents, and ASNs. In the next section, we’ll use this to spot a <a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack">bot attack</a>.</p>
-	<h3>Let's Spot A Bot Attack!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-spot-a-bot-attack">Let's Spot A Bot Attack!</h3>
+		<a href="https://blog.cloudflare.com/#lets-spot-a-bot-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, I’m going to use the “bot score source” tool to select the most obvious bot requests — those detected by our heuristics engine. This provides us with the following information, some of which has been redacted for privacy reasons:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -84,7 +113,14 @@
 
 	</figure>
 	<p>The most severe attacks come and go. This traffic is clearly sustained, and my best guess is that someone is frequently scraping the homepage for content. This isn’t the most malicious of attacks, but content is still being taken. If I wanted to, I could set a firewall rule to target this bot score or any of the filters I used.</p>
-	<h3>Try It Out</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">Try It Out</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a reminder, all Enterprise customers will be able to see a snapshot of their bot traffic. Even if you don’t have <a href="https://www.cloudflare.com/products/bot-management">Bot Management</a> for your site, visit the Firewall for some high-level insights that are updated in real time.</p>
 	<figure class="kg-card kg-image-card ">
 

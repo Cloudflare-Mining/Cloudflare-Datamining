@@ -7,11 +7,25 @@
 
 	</figure>
 	<p>The vulnerability disclosed yesterday in the Java-based logging package, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">log4j</a>, allows attackers to execute code on a remote server. We’ve <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">updated Cloudflare’s WAF</a> to defend your infrastructure against this 0-day attack. The attack also relies on exploiting servers that are allowed unfettered connectivity to the public Internet. To help solve that challenge, your team can deploy Cloudflare One today to filter and log how your infrastructure connects to any destination.</p>
-	<h3>Securing traffic inbound and outbound</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-traffic-inbound-and-outbound">Securing traffic inbound and outbound</h3>
+		<a href="https://blog.cloudflare.com/#securing-traffic-inbound-and-outbound" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can read about the vulnerability in more detail in our <a href="https://blog.cloudflare.com/inside-the-log4j2-vulnerability-cve-2021-44228">analysis published earlier today</a>, but the attack starts when an attacker adds a specific string to input that the server logs. Today’s updates to Cloudflare’s <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> block that malicious string from being sent to your servers. We still strongly recommend that you patch your instances of log4j immediately to prevent lateral movement.</p>
 	<p>If the string has already been logged, the vulnerability compromises servers by tricking them into sending a request to a malicious LDAP server. The destination of the malicious server could be any arbitrary URL. Attackers who control that URL can then respond to the request with arbitrary code that the server can execute.</p>
 	<p>At the time of this blog, it does not appear any consistent patterns of malicious hostnames exist like those analyzed in the SUNBURST <a href="https://blog.cloudflare.com/a-quirk-in-the-sunburst-dga-algorithm">attack</a>. However, any server or network with unrestricted connectivity to the public Internet is a risk for this specific vulnerability and others that rely on exploiting that open window.</p>
-	<h3>First, filter and log DNS queries with two-clicks</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-filter-and-log-dns-queries-with-two-clicks">First, filter and log DNS queries with two-clicks</h3>
+		<a href="https://blog.cloudflare.com/#first-filter-and-log-dns-queries-with-two-clicks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From what we’re <a href="https://blog.cloudflare.com/actual-cve-2021-44228-payloads-captured-in-the-wild">observing in early reports</a>, the vulnerability mostly relies on connectivity to IP addresses. Cloudflare’s network firewall, the second step in this blog, focuses on that level of security. However, your team can adopt a defense-in-depth strategy by deploying <a href="https://www.cloudflare.com/teams/gateway">Cloudflare's protective DNS resolver</a> today to apply DNS filtering to add security and visibility in minutes to any servers that need to communicate out to the Internet.</p>
 	<p>If you configure Cloudflare Gateway as the DNS resolver for those servers, any DNS query they make to find the IP address of a given host, malicious or not, will be sent to a nearby Cloudflare data center first. Cloudflare runs the world’s fastest DNS resolver so that you don’t have to compromise performance for this level of added safety and logging. When that query arrives, Cloudflare’s network can then:</p>
 	<ul>
@@ -29,7 +43,14 @@
 	</figure>
 	<p>Alternatively, if you know every host that your servers need to connect to, you can create a positive security model with Cloudflare Gateway. In this model, your resource can only send DNS queries to the domains that you provide. Queries to any other destinations, including new and arbitrary ones like those that could be part of this attack, will be blocked by default.</p>
 	<p>&gt; Ready to get started today? You can begin filtering and logging all of the DNS queries made by your servers or your entire network with these instructions <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-dns-network">here</a>.</p>
-	<h3>Second, secure network traffic leaving your infrastructure</h3>
+	<div class="flex anchor relative">
+		<h3 id="second-secure-network-traffic-leaving-your-infrastructure">Second, secure network traffic leaving your infrastructure</h3>
+		<a href="https://blog.cloudflare.com/#second-secure-network-traffic-leaving-your-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Protective DNS filtering can add security and visibility in minutes, but bad actors can target all of the other ways that your servers communicate out to the rest of the Internet. Historically, organizations deployed network firewalls in their data centers to filter the traffic entering and exiting their network. Their teams ran capacity planning exercises, purchased the appliances, and deployed hardware. Some of these appliances eventually moved to the cloud, but the pain of deployment stayed mostly the same.</p>
 	<p><a href="https://blog.cloudflare.com/replace-your-hardware-firewalls-with-cloudflare-one">Cloudflare One’s network firewall</a> helps your team secure all of your network’s traffic through a single, cloud-native, solution that does not require that you need to manage any hardware or any virtual appliances. Deploying this level of security only requires that you decide how you want to send traffic to Cloudflare. You can connect your network through multiple on-ramp options, including network layer (GRE or <a href="https://blog.cloudflare.com/anycast-ipsec">IPsec</a> tunnels), <a href="https://www.cloudflare.com/network-interconnect">direct connections</a>, and a <a href="https://blog.cloudflare.com/warp-for-desktop">device client</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -40,7 +61,14 @@
 	<p>Once connected, traffic leaving your network will first route through a Cloudflare data center. Cloudflare’s network will apply filters at layers 3 through 5 of the OSI model. Your administrators can then create policies based on IP, port, protocol in both <a href="https://developers.cloudflare.com/magic-firewall/reference/magic-firewall-fields">stateless</a> and <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/network-policies#expressions">stateful</a> options. If you want to save even more time, Cloudflare uses the data we have about threats on the Internet to create managed lists for you that you can block with a single click.</p>
 	<p>Similar to DNS queries, if you know that your servers and services in your network only need to reach specific IPs or ports, you can build a positive security model with allow-list rules that restrict connections and traffic to just the destinations you specify. In either model, Cloudflare’s network will handle logging for you. Your team can export these logs to your SIEM for audit retention or additional analysis if you need to investigate a potential attack.</p>
 	<p>&gt; Ready to get started securing your network? Follow the guide <a href="https://blog.cloudflare.com/replace-your-hardware-firewalls-with-cloudflare-one/#:~:text=Protecting%20a%20high%2Dtraffic%20data%20center%20or%20VPC">here</a> and <a href="https://www.cloudflare.com/magic-firewall">tell us</a> you’d like to get started and we’ll be ready to help your team.</p>
-	<h3>Third, inspect and filter HTTP traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="third-inspect-and-filter-http-traffic">Third, inspect and filter HTTP traffic</h3>
+		<a href="https://blog.cloudflare.com/#third-inspect-and-filter-http-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Some attacks will rely on convincing your servers and endpoints to send HTTP requests to specific destinations, leaking data or grabbing malware to download in your infrastructure. To help solve that challenge, you can layer HTTP inspection, virus scanning, and logging in Cloudflare’s network.</p>
 	<p>If you completed Step Two above, you can use the same on-ramp that you configured to upgrade UDP and TCP traffic where Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> can apply HTTP filtering and logging to the requests leaving your network. If you need more granular control, you can deploy Cloudflare’s client software to build rules that only apply to specific endpoints in your infrastructure.</p>
 	<p>Like every other layer in this security model, you can also only allow your servers to connect to an approved list of destinations. Cloudflare’s Secure Web Gateway will allow and log those requests and block attempts to reach any other destinations.</p>
@@ -50,7 +78,14 @@
 
 	</figure>
 	<p>&gt; Ready to begin inspecting and filtering HTTP traffic? Follow the instructions <a href="https://developers.cloudflare.com/cloudflare-one/setup">here</a> to get started today.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Deploying filtering and logging today will help protect against the next attack or attempts to continue to exploit today’s vulnerability, but we’re encouraging everyone to start by <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">patching your deployments</a> of log4j immediately.</p>
 	<p>As we write this, we’re updating existing managed rulesets to include reports of destinations used to attempt to exploit today’s vulnerability. We’ll continue to update those policies as we <a href="https://blog.cloudflare.com/actual-cve-2021-44228-payloads-captured-in-the-wild">learn more information</a>.</p>
 </div>

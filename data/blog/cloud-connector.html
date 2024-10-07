@@ -7,14 +7,35 @@
 	<p>Today, we’re excited to announce Cloud Connector – a brand-new way to put Cloudflare in front of popular public cloud services, protecting your assets, <a href="https://www.cloudflare.com/application-services/solutions"><u>accelerating applications</u></a>, and routing your traffic between multiple cloud providers seamlessly.</p>
 	<p>Cloud Connector is a natural extension of Cloudflare's <a href="https://www.cloudflare.com/connectivity-cloud"><u>Connectivity Cloud</u></a>, which aims to simplify and secure the complex web of connections across today’s enterprises. Imagine <a href="https://developers.cloudflare.com/rules/origin-rules"><u>Origin Rules</u></a>, but managed by Cloudflare, available for all plans, created with just a few clicks, and working out of the box without the need for additional rules. It allows you to route traffic to different public clouds without complicated workarounds. This means you can now direct specific requests to AWS S3, Google Cloud Storage, Azure Blob Storage, or our own <a href="https://www.cloudflare.com/developer-platform/r2"><u>R2</u></a>, even if these services are not set as the DNS target for your hostname.</p>
 	<p>Whether you’re an <a href="https://www.cloudflare.com/ecommerce"><u>e-commerce site</u></a> looking to route image traffic to the best-performing cloud storage for faster load times, a <a href="https://www.cloudflare.com/media-and-entertainment"><u>media company</u></a> distributing video content efficiently across various cloud providers, or a developer wanting to simplify backend configurations, Cloud Connector is designed for you. It’s available for all Cloudflare plans, with a particular focus on Free, Pro, and Business customers.</p>
-	<h3>The Host header challenge</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-host-header-challenge">The Host header challenge</h3>
+		<a href="https://blog.cloudflare.com/#the-host-header-challenge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before Cloud Connector, many of our <a href="https://www.cloudflare.com/plans/free"><u>Free</u></a>, <a href="https://www.cloudflare.com/plans/pro"><u>Pro</u></a>, and <a href="https://www.cloudflare.com/plans/business"><u>Business</u></a> customers faced a significant challenge: it was not straightforward to route traffic for the same hostname to one or more cloud providers on the backend. Something as simple as directing example.com/images to AWS S3 while keeping the rest of your site served by your origin web servers required multiple non-trivial steps to accomplish. Some users changed their setups, leveraging either <a href="https://www.cloudflare.com/developer-platform/workers"><u>Workers</u></a>, chaining hostnames, or explored putting other service providers in front of their cloud destinations. While functional, this approach added complexity and increased effort, leading to frustration.</p>
 	<p>Enterprise customers had <a href="https://developers.cloudflare.com/rules/page-rules/how-to/rewrite-host-headers"><u>Host Header</u></a> and <a href="https://developers.cloudflare.com/rules/page-rules/how-to/override-url-or-ip-address"><u>Resolve Override</u></a> features to manage this, but the security and abuse risks associated with Host Header modification kept these features out of reach for everyone else.</p>
-	<h3>Simplifying multi-cloud routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="simplifying-multi-cloud-routing">Simplifying multi-cloud routing</h3>
+		<a href="https://blog.cloudflare.com/#simplifying-multi-cloud-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we're excited to unveil Cloud Connector, designed to address these challenges head-on.</p>
 	<p>Imagine you’re managing a website where images are stored on AWS S3, videos on Google Cloud Storage, and static assets on Azure Blob Storage. Traditionally, routing traffic to these different providers would involve a series of complex steps and configurations. With Cloud Connector, this process is streamlined. You can seamlessly direct traffic for your hostname to multiple origins with just a few clicks. The setup is straightforward and doesn’t require any advanced configurations or additional rules.</p>
 	<p>For instance, you can now direct example.com/images to a specific <a href="https://developers.cloudflare.com/r2/buckets"><u>R2 bucket</u></a> in your Cloudflare account effortlessly. This feature, previously exclusive to Enterprise customers, is now available to all users, ensuring that everyone can benefit from simplified cloud routing.</p>
-	<h3>How to configure</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-configure">How to configure</h3>
+		<a href="https://blog.cloudflare.com/#how-to-configure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Getting started with Cloud Connector is easy. Navigate to the <b>Rules &gt; Cloud Connector</b> tab in your zone dashboard. From there, select your cloud provider:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Iv4dPgAUh0gC46Y2LGwBz/c5ecafb970023df762349fc22c3e09b4/2472-2.png" alt="2472-2" class="kg-image" width="1999" height="936" loading="lazy">
@@ -33,7 +54,14 @@
 	<p>
 		Cloud Connector is intentionally placed at the end of the <a href="https://developers.cloudflare.com/ruleset-engine/reference/phases-list"><u>Ruleset Engine phase sequence</u></a> to ensure it works out of the box, even if there are active origin or configuration rules with matching criteria.</p>
 	<p>Cloud Connector simplifies your setup, allowing you to focus on what matters most: delivering a seamless experience for your users. By leveraging Cloudflare’s built-in security, your assets are automatically protected, and direct traffic routing optimizes application performance, accelerating load times and reducing your cloud bandwidth costs.</p>
-	<h3>Behind the scenes: how Cloud Connector works</h3>
+	<div class="flex anchor relative">
+		<h3 id="behind-the-scenes-how-cloud-connector-works">Behind the scenes: how Cloud Connector works</h3>
+		<a href="https://blog.cloudflare.com/#behind-the-scenes-how-cloud-connector-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To build Cloud Connector, we leveraged our powerful, high performance <a href="https://developers.cloudflare.com/ruleset-engine"><u>Ruleset Engine</u></a> and integrated it with various cloud providers, ensuring compatibility and optimal performance. Throughout this process, we were focused on making the setup as intuitive as possible, reducing the need for additional configurations and making it accessible to users of all technical backgrounds.</p>
 	<p>At its core, Cloud Connector builds on Cloudflare's existing Ruleset Engine, the same technology that powers <a href="https://developers.cloudflare.com/rules/origin-rules"><u>Origin Rules</u></a>. Origin Rules typically operate during the <code>http_request_origin</code> <a href="https://developers.cloudflare.com/ruleset-engine/reference/phases-list"><u>phase</u></a>, where they manage how requests are routed to different origins. A phase, in Cloudflare's system, represents a specific stage in the life of a request where rulesets can be executed. Each phase has a dedicated purpose, with rules defined at the account and zone levels to control different aspects of a request’s journey through our network.</p>
 	<p>Phases are essential because they allow us to apply actions at precise points in the request flow. For example, the http_request_origin phase focuses on routing, ensuring that traffic is directed to the correct origin based on the rules you set. By defining specific phases, we can optimize performance and enforce security measures at the right time without overlap or conflicts between different actions.</p>
@@ -44,12 +72,33 @@
 	<p>When users <a href="https://developers.cloudflare.com/api/operations/zone-cloud-connector-rules"><u>retrieve</u></a> their Cloud Connector rules, the system reverses this process, reconstructing the original actions from the decomposed rules. This ensures that users see their configurations as they originally defined them, without needing to understand the underlying complexities.</p>
 	<p>To support Cloud Connector's unique requirements, we introduced a new request phase, <code>http_request_cloud_connector</code>. As the final request phase, this ensures that Cloud Connector rules have the last say in traffic routing decisions. This priority prevents conflicts with other routing rules, ensuring that traffic is securely and accurately routed according to the user’s intent.</p>
 	<p>Cloudflare is committed to building Cloudflare products on Cloudflare, leveraging existing technologies while innovating to meet new challenges. By building on <a href="https://developers.cloudflare.com/rules/origin-rules"><u>Origin Rules</u></a> and <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>, introducing the <code>http_request_cloud_connector</code> phase, and creating a thin API translation layer, we’ve developed a solution that simplifies multi-cloud routing without compromising on performance or security.</p>
-	<h3>What’s next for Cloud Connector?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-cloud-connector">What’s next for Cloud Connector?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-cloud-connector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The current version of Cloud Connector is just the beginning. Our vision extends far beyond supporting <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage"><u>object storage</u></a>. In the future, we aim to support all kinds of HTTP cloud services, including <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing"><u>load balancers</u></a>, compute services, and more. We want Cloud Connector to be the primary way for Cloudflare users to discover and manage the cloud services they use across multiple providers.</p>
 	<p>Imagine being able to configure secure traffic routing to any cloud service without having to worry about DNS settings, Host headers, or SSL implementation. Our goal is to make Cloud Connector a comprehensive tool that simplifies the entire process, ensuring that you can focus on what matters most: building and scaling your web applications.</p>
-	<h3>Get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloud Connector is available in beta to all plans and is completely free. The rollout has started this month (August) and will be gradually released to all users throughout 2024. Once rolled out, users will start seeing this new product under the <b>Rules &gt; Cloud Connector</b> tab of their zone dashboard. No beta access registration is required.</p>
-	<h2>Learn more</h2>
+	<div class="flex anchor relative">
+		<h2 id="learn-more">Learn more</h2>
+		<a href="https://blog.cloudflare.com/#learn-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Learn more about setting up and using Cloud Connector in <a href="https://developers.cloudflare.com/rules/cloud-connector"><u>developer documentation</u></a>. Share your feedback in <a href="https://community.cloudflare.com/t/introducing-cloud-connector-simple-cloud-routing/698185"><u>community forums</u></a> – your opinion is invaluable and directly influences our product and design decisions, helping us to make Rules products even better.</p>
 	<p></p>
 </div>

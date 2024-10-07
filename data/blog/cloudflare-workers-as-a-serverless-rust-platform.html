@@ -9,7 +9,14 @@
 		<p>...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</p>
 	</blockquote>
 	<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
-	<h2>Setup the environment with wasm-pack</h2>
+	<div class="flex anchor relative">
+		<h2 id="setup-the-environment-with-wasm-pack">Setup the environment with wasm-pack</h2>
+		<a href="https://blog.cloudflare.com/#setup-the-environment-with-wasm-pack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html">prerequisites</a> installed and then follow the steps below to get started.</p>
 	<p>wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
 	<pre class="language-bash"><code class="language-bash"># Install wasm-pack
@@ -107,7 +114,14 @@ npm run start</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/31yXXKuqGD2mkeKNer0Dok/22b841bf80503ef96127ae65778fea2a/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2" class="kg-image" width="466" height="144" loading="lazy">
 
 	</figure>
-	<h3>Quick recap</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-recap">Quick recap</h3>
+		<a href="https://blog.cloudflare.com/#quick-recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have:</p>
 	<ul>
 		<li>
@@ -249,7 +263,14 @@ alert(phraseText);</code></pre>
 
 	</figure>
 	<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
-	<h2>From local browser harness to Workers</h2>
+	<div class="flex anchor relative">
+		<h2 id="from-local-browser-harness-to-workers">From local browser harness to Workers</h2>
+		<a href="https://blog.cloudflare.com/#from-local-browser-harness-to-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can use the <a href="https://developers.cloudflare.com/workers/api">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -372,7 +393,14 @@ async function handleRequest(request) {
 
 	</figure>
 	<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js">source code</a> is on Github.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
 	<p>There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
 	<p>Are we Serverless yet? Yes we are.</p>

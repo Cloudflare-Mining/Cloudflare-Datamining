@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p><i>This blog post is a follow-up to our previous </i><a href="https://blog.cloudflare.com/dnssec-an-introduction"><i>introduction to DNSSEC</i></a><i>. Read that first if you are not familiar with DNSSEC.</i></p>
 	<p>DNSSEC is an extension to DNS: it provides a system of trust for DNS records. It’s a major change to one of the core components of the Internet. In this post we examine some of the complications of DNSSEC, and what CloudFlare plans to do to reduce any negative impact they might have. The main issues are zone content exposure, key management, and the impact on DNS reflection/amplification attacks.</p>
-	<h3>Zone content exposure</h3>
+	<div class="flex anchor relative">
+		<h3 id="zone-content-exposure">Zone content exposure</h3>
+		<a href="https://blog.cloudflare.com/#zone-content-exposure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNS is split into smaller pieces called zones. A zone typically starts at a domain name, and contains all records pertaining to the subdomains. Each zone is managed by a single manager. For example, cloudflare.com is a zone containing all DNS records for cloudflare.com and its subdomains (e.g. <a href="https://www.cloudflare.com">www.cloudflare.com</a>, api.cloudflare.com).</p>
 	<p>There is no directory service for subdomains in DNS so if you want to know if api.cloudflare.com exists, you have to ask a DNS server and that DNS server will end up asking cloudflare.com whether api.cloudflare.com exists. This is not true with DNSSEC. In some cases, enabling DNSSEC may expose otherwise obscured zone content. Not everyone cares about the secrecy of subdomains, and zone content may already be easily guessable because most sites have a ‘www’ subdomain; however, subdomains are sometimes used as login portals or other services that the site owner wants to keep private. A site owner may not want to reveal that “secretbackdoor.example.com” exists in order to protect that site from attackers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -51,7 +58,14 @@
 	<p>In short, NSEC is like revealing plaintext passwords, and NSEC3 is like revealing a Unix-style passwords file. Neither technique is very secure. With NSEC3 a subdomain is only as private as it is hard to guess.</p>
 	<p>This vulnerability can be mitigated by a techniques introduced in RFCs 4470 and 4471 (<a href="https://tools.ietf.org/html/rfc4470">https://tools.ietf.org/html/rfc4470</a> and <a href="https://tools.ietf.org/html/rfc4471">https://tools.ietf.org/html/rfc4471</a>) called “DNSSEC white lies”; this was implemented by Dan Kaminsky for demonstration purposes. When a request comes in for a domain that is not present, instead of providing an NSEC3 record of the next real domain, an NSEC3 record of the next hash alphabetically is presented. This does not break the NSEC3 guarantee that there are no domains whose hash fits lexicographically between the NSEC3 response and the question.</p>
 	<p>You can only implement NSEC3 or NSEC “white lies” if signatures can be computed in real-time in response to questions. Traditionally, static zone records for DNS resolution are created offline, and all the records with signatures stored in a zone file. This file is then read by a live DNS server allowing it to answer questions about the zone. Having a DNS server with the minimum amount of logic inside allows the operator to conserve CPU resources and maximize the number of queries that can be answered. In order to do DNSSEC white lies, the servers must have keys available to perform generation of signatures on the fly. This is a major change in the traditional operating practices of DNS servers because the DNS authoritative server itself needs to do the cryptographic operations in response to the incoming query. This demand for live signing imposes several other security problems in distributed environments.</p>
-	<h3>Key management</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-management">Key management</h3>
+		<a href="https://blog.cloudflare.com/#key-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNSSEC was designed to operate in various modes, each providing different security, performance and convenience tradeoffs. Live signing solves the zone content exposure problem in exchange for less secure key management.</p>
 	<p>The most common DNSSEC mode is offline signing of static zones. This allows the signing system to be highly protected from external threats by keeping the private keys on a machine that is not connected to the network. This operating model works well when the DNS information does not change often.</p>
 	<p>Another common operating mode is centralized online signing. If you sign data in restricted access, dedicated DNS signing systems, it allows DNS data to change and get published quickly. Some operators run DNS signing on their main DNS servers. Just like offline signing of static zones, this mode follows the central signing model, i.e., a single (or replicated) central signer does all the signing and data gets propagated from it to the actual authoritative DNS servers.</p>
@@ -60,7 +74,14 @@
 	<p>One way to keep keys secure is to use a hardware-backed solution such as a Hardware Security Module (HSM). The major drawback for this is cost – HSMs are very expensive (and slow). This is one of the stickiest points for running DNS servers that are spread out geographically in order to be close to their customers. Running an HSM in every server location can not only be expensive, but there can also be <a href="http://www.kslaw.com/imageserver/KSPublic/library/publication/2011articles/11-11WorldECRCloutierCohen.pdf">legal complications</a> too.</p>
 	<p>Another solution to protect keys from remote disclosure is to offload cryptographic operations into trusted component of the system. This is where having a <a href="https://blog.cloudflare.com/cloudflare-fastest-free-dns-among-fastest-dns">custom DNS server</a> that can offload cryptography can come in handy.</p>
 	<p>Key management for DNSSEC is similar to key management for TLS and has similar challenges. Earlier this year, we introduced <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a> to help improve key security for TLS. We are looking at extending Keyless SSL to provide the advantages of remote key servers for DNSSEC live-signing.</p>
-	<h3>Reflection/amplification threat</h3>
+	<div class="flex anchor relative">
+		<h3 id="reflection-amplification-threat">Reflection/amplification threat</h3>
+		<a href="https://blog.cloudflare.com/#reflection-amplification-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Operators running an authoritative DNS server are often nervous their server will be used as a conduit for malicious distributed denial of service (DDoS) attacks. This stems from the fact that DNS uses UDP, a stateless protocol.</p>
 	<p>In TCP, each connection begins with a three-way handshake. This ensures that the IP address of both parties is known and correct before starting a connection. In UDP, there is no such handshake: messages are just sent directly to an IP with an unverified ‘from’ IP address. If an attacker can craft a UDP packet that says ‘hi, from IP X’ to a server, the server will typically respond by sending a UDP packet to X. Choosing X as a victim’s IP address instead of the sender’s is called UDP ‘spoofing’. By spoofing a victim, an attacker can cause a server that responds to UDP requests to flood the victim with ‘reflected’ traffic. This applies as much to authoritative servers as to open recursive resolvers.</p>
 	<p>DNSSEC also works over UDP, and the answers to DNS queries can be very long, containing multiple DNSKEY and RRSIG records. This is an attractive target for attackers since it allows them to ‘amplify’ their reflection attacks. If a small volume of spoofed UDP DNSSEC requests is sent to nameservers, the victim will receive a large volume of reflected traffic. Sometimes this is enough to overwhelm the victim’s server, and cause a denial of service.</p>
@@ -69,6 +90,13 @@
 	<p>Another option to reduce the size of responses is to use <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">Elliptic Curve Digital Signature Algorithm (ECDSA)</a> keys instead of traditional RSA keys. ECDSA keys are much smaller than RSA keys of equivalent strength, and they produce smaller signatures making DNSSEC responses much smaller, reducing the amplification factor. Unfortunately, many recursive resolvers (including <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2014-January/011257.html">Google Public DNS</a>) do not support this key type yet, and many <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a> have not added the option to their DNS management portals.</p>
 	<p>Support for TCP and ECDSA is still lagging behind general DNSSEC support, so traditional anti-abuse methods can be used instead. This includes <a href="https://kb.isc.org/article/AA-01000/0/A-Quick-Introduction-to-Response-Rate-Limiting.html">Resource Rate Limiting (RRL)</a> and other heuristics.</p>
 	<p>To protect against reflection attacks, CloudFlare is working on a multi-pronged approach. First, by using attack identification heuristics and anti-abuse techniques that we are currently using in our DNS server, and second by reducing the amplification factor of DNSSEC responses. Ways to reduces the maximum amplification factor includes only replying to “ANY” requests over TCP, using smaller ECDSA keys when possible, and reducing the frequency of key rollovers.</p>
-	<h3>Conclusions</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare is aware of the complexity introduced by DNSSEC with respect to zone privacy, key management, and reflection/amplification risk. With smart engineering decisions, and operational controls in place, the dangers of DNSSEC can be prevented.</p>
 </div>

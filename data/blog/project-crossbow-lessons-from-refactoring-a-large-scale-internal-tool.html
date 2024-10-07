@@ -7,17 +7,38 @@
 	<p>Crossbow is the internal tool for doing just this; allowing Cloudflare’s Technical Support Engineers to perform diagnostic activities from running commands (like traceroutes, cURL requests and DNS queries) to debugging product features and performance using bespoke tools.</p>
 	<p>In September last year, an Engineering Manager at Cloudflare asked to transition Crossbow from a Product Engineering team to the Support Operations team. The tool had been a secondary focus and had been transitioned through multiple engineering teams without developing subject matter knowledge.</p>
 	<p>The Support Operations team at Cloudflare is closely aligned with Cloudflare’s Technical Support Engineers; developing diagnostic tooling and Natural Language Processing technology to drive efficiency. Based on this alignment, it was decided that Support Operations was the best team to own this tool.</p>
-	<h3>Learning from Sisyphus</h3>
+	<div class="flex anchor relative">
+		<h3 id="learning-from-sisyphus">Learning from Sisyphus</h3>
+		<a href="https://blog.cloudflare.com/#learning-from-sisyphus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Whilst seeking advice on the transition process, an SRE Engineering Manager in Cloudflare suggested reading: “<a href="https://landing.google.com/sre/resources/practicesandprocesses/case-study-community-driven-software-adoption">A Case Study in Community-Driven Software Adoption</a>”. This book proved a truly invaluable read for anyone thinking of doing internal tool development or contributing to such tooling. The book describes why multiple tools are often created for the same purpose by different autonomous teams and how this issue can be overcome. The book also describes challenges and approaches to gaining adoption of tooling, especially where this requires some behaviour change for engineers who use such tools.</p>
 	<p>That said, there are some things we learnt along the way of taking over Crossbow and performing a refactor and revamp of a large-scale internal tool. This blog post seeks to be an addendum to such guidance and provide some further practical advice.</p>
 	<p>In this blog post we won’t dwell too much on the work of the Cloudflare Support Operations team, but this can be found in the SRECon talk: “<a href="https://www.usenix.org/conference/srecon19emea/presentation/ali">Support Operations Engineering: Scaling Developer Products to the Millions</a>”. The software development methodology used in Cloudflare’s Support Operations Group closely resembles <a href="http://www.extremeprogramming.org">Extreme Programming</a>.</p>
-	<h3>Cutting The Fat</h3>
+	<div class="flex anchor relative">
+		<h3 id="cutting-the-fat">Cutting The Fat</h3>
+		<a href="https://blog.cloudflare.com/#cutting-the-fat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There were two ways of using Crossbow, a CLI (command line interface) and UI in Cloudflare’s internal tool for Cloudflare’s Technical Support Engineers. Maintaining both interfaces clearly had significant overhead for improvement efforts, and we took the decision to deprecate one of the interfaces. This allowed us to focus our efforts on one platform to achieve large-scale improvements across technology, usability and functionality.</p>
 	<p>We set-up a poll to allow engineering, operations, solutions engineering and technical support teams to provide their feedback on how they used the tooling. Polling was not only critical for gaining vital information to how different teams used the tool, but also ensured that prior to deprecation that people knew their views were taken onboard. We polled not only on the option people preferred, but which options they felt were necessary to them and the reasons as to why.</p>
 	<p>We found that the reasons for favouring the web UI primarily revolved around the absence of documentation and training. Instead, we discovered those who used the CLI found it far more critical for their workflow. Product Engineering teams do not routinely have access to the support UI but some found it necessary to use Crossbow for their jobs and users wanted to be able to automate commands with shell scripts.</p>
 	<p>Technically, the UI was in JavaScript with an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway">API Gateway</a> service that converted HTTP requests to gRPC alongside some configuration to allow it to work in the support UI. The CLI directly interfaced with the gRPC API so it was a simpler system. Given the Cloudflare Support Operations team primarily works on Systems Engineering projects and had limited UI resources, the decision to deprecate the UI was also in our own interest.</p>
 	<p>We rolled out a new internal Crossbow user group, trained up teams and created new documentation, provided advance notification of deprecation and abrogated the source code of these services. We also dramatically improved the user experience when using the CLI for users through simple improvements to the help information and easier CLI usage.</p>
-	<h3>Rearchitecting Pub/Sub with Cloudflare Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="rearchitecting-pub-sub-with-cloudflare-access">Rearchitecting Pub/Sub with Cloudflare Access</h3>
+		<a href="https://blog.cloudflare.com/#rearchitecting-pub-sub-with-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the primary challenges we encountered was how the system architecture for Crossbow was designed many years ago. A gRPC API ran commands at Cloudflare’s edge network using a configuration management tool which the SRE team expressed a desire to deprecate (with Crossbow being the last user of it).</p>
 	<p>During a visit to the Singapore Office, the Edge SRE Engineering Manager locally wanted his team to understand Crossbow and how to contribute. During this meeting, we provided an overview of the current architecture and the team there were forthcoming in providing potential refactoring ideas to handle global network stability and move away from the old pipeline. This provided invaluable insight into the common issues experienced between technical approaches and instances of where the tool would fail requiring Technical Support Engineers to consult the SRE team.</p>
 	<p>We decided to adopt a more simple pub/sub pipeline, instead the edge network would expose a gRPC daemon that would listen for new jobs and execute them and then make a callback to the API service with the results (which would be relayed onto the client).</p>
@@ -37,19 +58,40 @@
 		</li>
 	</ol>
 	<p>The gRPC API endpoint was placed on <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Cloudflare Spectrum</a>; as users were authenticated using Cloudflare Access, we could remove the requirement for users to be on the company VPN to use the tool. The new authentication pipeline, combined with a single user interface, also allowed us to improve the collection of metrics and usage logs of the tool.</p>
-	<h3>Risk Management</h3>
+	<div class="flex anchor relative">
+		<h3 id="risk-management">Risk Management</h3>
+		<a href="https://blog.cloudflare.com/#risk-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<blockquote>
 		<p>Risk is inherent in the activities undertaken by engineering professionals, meaning that members of the profession have a significant role to play in managing and limiting it.
 			- <a href="https://www.engc.org.uk/standards-guidance/guidance/guidance-on-risk">Guidance on Risk</a>, Engineering Council</p>
 	</blockquote>
 	<p>As with all engineering projects, it was critical to manage risk. However, the risk to manage is different for different engineering projects. Availability wasn’t the largest factor, given that Technical Support Engineers could escalate issues to the SRE team if the tool wasn’t available. The main risk was security of the Cloudflare network and ensuring Crossbow did not affect the availability of any other services. To this end we took methodical steps to improve isolation and engaged the InfoSec team early to assist with specification and code reviews of the new pipeline. Where a risk to availability existed, we ensured this was properly communicated to the support team and the internal Crossbow user group to communicate the risk/reward that existed.</p>
-	<h3>Feedback, Build, Refactor, Measure</h3>
+	<div class="flex anchor relative">
+		<h3 id="feedback-build-refactor-measure">Feedback, Build, Refactor, Measure</h3>
+		<a href="https://blog.cloudflare.com/#feedback-build-refactor-measure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Support Operations team at Cloudflare works using a methodology based on Extreme Programming. A key tenant of Extreme Programming is that of Test Driven Development, this is often described as a “red-green-green” pattern or “<a href="https://www.codecademy.com/articles/tdd-red-green-refactor">red-green-refactor</a>”. First the engineer enshrines the requirements in tests, then they make those tests pass and then refactor to improve code quality before pushing the software.</p>
 	<p>As we took on this project, the Cloudflare Support and SRE teams were working on Project Baton - an effort to allow Technical Support Engineers to handle more customer escalations without handover to the SRE teams.</p>
 	<p>As part of this effort, they had already created an invaluable resource in the form of a feature wish list for Crossbow. We associated JIRAs with all these items and prioritised this work to deliver such feature requests using a Test Driven Development workflow and the introduction of Continuous Integration. Critically we measured such improvements once deployed. Adding simple functionality like support for MTR (a Linux network diagnostic tool) and exposing support for different cURL flags provided improvements in usage.</p>
 	<p>We were also able to embed Crossbow support for other tools available at the network edge created by other teams, allowing them to maintain such tools and expose features to Crossbow users. Through the creation of an improved development environment and documentation, we were able to drive Product Engineering teams to contribute functionality that was in the mutual interest of them and the customer support team.</p>
 	<p>Finally, we owned a number of tools which were used by Technical Support Engineers to discover what Cloudflare configuration was applied to a given URL and performing distributed performance testing, we deprecated these tools and rolled them into Crossbow. Another tool owned by the <a href="https://workers.cloudflare.com">Cloudflare Workers</a> team, called Edge Worker Debug was rolled into Crossbow and the team deprecated their tool.</p>
-	<h3>Results</h3>
+	<div class="flex anchor relative">
+		<h3 id="results">Results</h3>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>From implementing user analytics on the tool on the 16 December 2019 to the week ending the 22 January 2020, we found a found usage increase of 4.5x. This growth primarily happened within a 4 week period; by adding the most wanted functionality, we were able to achieve a critical saturation of usage amongst Technical Support Engineers.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/48JaaCMLrwL9EWw9WtDNP5/4d052a752ad5577f30a1107adbfb2410/image1.png" alt="image1" class="kg-image" width="1956" height="1338" loading="lazy">
@@ -58,7 +100,14 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ndjgHwGG3rVpuwOczuc6L/b197980fdd669834a5e28196d82a0484/pasted-image-0--6-.png" alt="pasted-image-0--6-" class="kg-image" width="772" height="522" loading="lazy">
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Through removing low-value/high-maintenance functionality and merciless refactoring, we were dramatically able to improve the quality of Crossbow and therefore improve the velocity of delivery. We were able to dramatically improve usage through enabling functionality to measure usage, receive feature requests in feedback loops with users and test-driven development. Consolidation of tooling reduced overhead of developing support tooling across the business, providing a common framework for developing and exposing functionality for Technical Support Engineers.</p>
 	<p>There are two key counterintuitive learnings from this project. The first is that cutting functionality can drive usage, providing this is done intelligently. In our case, the web UI contained no additional functionality that wasn’t in the CLI, yet caused substantial engineering overhead for maintenance. By deprecating this functionality, we were able to reduce technical debt and thereby improve the velocity of delivering more important functionality. This effort requires effective communication of the decision making process and involvement from those who are impacted by such a decision.</p>
 	<p>Secondly, tool development efforts are often focussed by user feedback but lack a means of objectively measuring such improvements. When logging is added, it is often done purely for security and audit logging purposes. Whilst feedback loops with users are invaluable, it is critical to have an objective measure of how successful such a feature is and how it is used. Effective measurement drives the decision making process of future tooling and therefore, in the long run, the usage data can be more important than the original feature itself.</p>

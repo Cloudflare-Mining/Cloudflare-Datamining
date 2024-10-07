@@ -7,7 +7,14 @@
 	</figure>
 	<p>Today, as part of Cloudflare’s Impact Week, we’re excited to announce a new tool to help you understand the environmental impact of operating your websites, applications, and networks. Your Carbon Impact Report, available today for all Cloudflare accounts, will outline the carbon savings of operating your Internet properties on Cloudflare’s network.</p>
 	<p>Everyone has a role to play in reducing carbon impact and reversing climate change. We <a href="https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet">shared today</a> how we’re approaching this, by committing to power our network with 100% renewable energy. But we’ve also heard from customers that want more visibility into the impact of the tools they use (also referred to as <a href="https://www.epa.gov/climateleadership/scope-3-inventory-guidance">“Scope 3” emissions</a>) — and we want to help!</p>
-	<h3>The impact of running an Internet property</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-impact-of-running-an-internet-property">The impact of running an Internet property</h3>
+		<a href="https://blog.cloudflare.com/#the-impact-of-running-an-internet-property" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve <a href="https://blog.cloudflare.com/the-climate-and-cloudflare">previously blogged</a> about how Internet infrastructure affects the environment. At a high level, powering hardware (like servers) uses energy. Depending on its source, producing this energy may involve emitting carbon into the atmosphere, which contributes to climate change.</p>
 	<p>When you use Cloudflare, we use energy to power hardware to deliver content for you. But how does that energy we use compare to the energy it would take to deliver content without Cloudflare? As of today, you can go to the Cloudflare dashboard to see the (approximate) carbon savings from your usage of Cloudflare services versus Internet averages for your usage volume.</p>
 	<figure class="kg-card kg-image-card ">
@@ -15,7 +22,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12w0CAYZJN0fg08gJE6akN/348def937e1a8c4f2413c9c17540884f/image1-25.png" alt="" class="kg-image" width="586" height="934" loading="lazy">
 
 	</figure>
-	<h3>Calculating the carbon savings of your Cloudflare use</h3>
+	<div class="flex anchor relative">
+		<h3 id="calculating-the-carbon-savings-of-your-cloudflare-use">Calculating the carbon savings of your Cloudflare use</h3>
+		<a href="https://blog.cloudflare.com/#calculating-the-carbon-savings-of-your-cloudflare-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the energy that Cloudflare uses comes from powering the servers at our edge to serve your content. We’ve outlined how we quantify the carbon impact of this energy in our <a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf">emissions report</a>. To determine the percentage of this impact derived from <i>your</i> Cloudflare usage specifically, we’ve used the following method:</p>
 	<blockquote>
 		<p>When you use Cloudflare, data from requests destined to your Internet property goes through our edge. Data transfer for your Internet properties roughly represents a fraction of the energy consumed at Cloudflare’s edge. If we sum up the data transfer for your Internet properties and multiply that number by the energy it takes to power each request (derived from our emissions report and overall usage data), we can approximate the total carbon impact of powering your Internet properties with Cloudflare.</p>
@@ -29,12 +43,26 @@
 	<blockquote>
 		<p>Standard light bulbs are 60 watts, so we know that turning on a light bulb for an hour uses 0.06 kilowatt-hours of energy. <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator">According to the EPA</a>, that’s about 42 grams of carbon dioxide equivalent. That means that if your carbon dioxide equivalent saving is 126 grams, that’s approximately the same impact as turning off a light bulb for three hours.</p>
 	</blockquote>
-	<h3>How does using Cloudflare impact the environment?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-using-cloudflare-impact-the-environment">How does using Cloudflare impact the environment?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-using-cloudflare-impact-the-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As explained in more detail <a href="https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet">here</a>, Cloudflare purchases Renewable Energy Credits to account for the energy used by our network. This means that your use of Cloudflare’s services is powered by renewable energy.</p>
 	<p>Additionally, using Cloudflare helps you reduce your overall carbon footprint. Using Cloudflare’s cloud security and performance services such as <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a>, Network Firewall, and DDoS mitigation allow you to decommission specialized hardware and transfer those functions to software running efficiently at our edge. This reduces your carbon footprint by significantly decreasing the energy used to operate your network stack, and improves your security, performance, and reliability along the way.</p>
 	<p>Optimizing your website also reduces your carbon footprint by requiring less energy for your end users to load a page. Using Cloudflare’s Image Resizing for visual content on your site to properly resize images reduces the energy it takes each of your end users to load a page, thus reducing downstream carbon emissions.</p>
 	<p>Lastly, since Cloudflare is a <a href="https://blog.cloudflare.com/green-hosting-with-cloudflare-pages">certified green host</a>, any content you host on Pages or Workers KV is hosted green and certified powered by renewable energy.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This dashboard is just a first step in giving our customers transparent information on their carbon use, savings, and ideas for improvement with Cloudflare. Right now, you can view data on your carbon savings from 2020 (aligned with our 2020 <a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf">emissions report</a>). As we continue to iterate on how we measure carbon impact, we’re working toward providing dynamic information on carbon savings at a quarterly or even monthly granularity.</p>
 	<p>Have other ideas on what we can provide to help you understand and reduce the carbon impact of your Internet properties? Please reach out to us in the comments on this post or on social media!</p>
 	<p>We hope that this data helps you with your sustainability goals, and we’re excited to keep providing you with transparent information for 2021 and beyond.</p>

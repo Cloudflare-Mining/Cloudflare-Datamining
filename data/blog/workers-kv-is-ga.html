@@ -7,9 +7,23 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3188jggqN4vJJchIXvTReV/afd0c407f38e19fd2292175db2e46a72/Workers-KV-GA_2x.png" alt="" class="kg-image" width="1517" height="776" loading="lazy">
 
 	</figure>
-	<h3>What is Workers KV?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-workers-kv">What is Workers KV?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
-	<h3>Why did we build it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-did-we-build-it">Why did we build it?</h3>
+		<a href="https://blog.cloudflare.com/#why-did-we-build-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/products/cloudflare-workers">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p>
 	<pre class="language-javascript"><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
@@ -54,7 +68,14 @@ async function handleBillionsOfRedirects(request) {
   return await fetch(request)
 }</code></pre>
 	<p>With only a few changes from our previous example, we scaled from one redirect to billions − that's just a taste of what you can build with Workers KV.</p>
-	<h3>How does it work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">How does it work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>, which states that distributed systems can only pick between <b><b>2 out of the 3</b></b> following guarantees:</p>
 	<ul>
 		<li>
@@ -99,11 +120,25 @@ async function handleBillionsOfRedirects(request) {
 	</ul>
 	<p>An hour later, Michelle and Lee are waiting at the pizza parlor while Matthew is sitting alone at the sushi restaurant — what went wrong? We can chalk this up to eventual consistency, because after waiting for a few minutes, Matthew looks at his updated calendar and <b>eventually</b> finds the new truth, they're going out for pizza instead.</p>
 	<p>While it may take minutes in real-life, Workers KV is much faster. It can achieve global consistency in less than 60 seconds. Additionally, when a Worker writes to a key, then <b>immediately</b> reads that same key, it can expect the values to be consistent if both operations came from the same location.</p>
-	<h3>When should I use it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-should-i-use-it">When should I use it?</h3>
+		<a href="https://blog.cloudflare.com/#when-should-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you understand the benefits and tradeoffs of using eventual consistency, how do you determine if it's the right storage solution for your application? Simply put, if you want global availability with ultra-fast reads, Workers KV is right for you.</p>
 	<p>However, if your application is <b><b>frequently</b></b> writing to the <b><b>same</b></b> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <b>occasionally</b> going to the wrong restaurant?</p>
 	<p>You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a user’s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money they’ve already spent.</p>
-	<h3>What can I build with it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-i-build-with-it">What can I build with it?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-i-build-with-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here are a few examples of applications that have been built with KV:</p>
 	<ul>
 		<li>
@@ -131,7 +166,14 @@ async function handleBillionsOfRedirects(request) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3oQnAPwVXWgsjCuSXuYL7q/9ad671b017ae89d5e911a4a39d8ed023/GQ4hrfQ.png" alt="" class="kg-image" width="618" height="487" loading="lazy">
 
 	</figure>
-	<h3>What's new since beta?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-new-since-beta">What's new since beta?</h3>
+		<a href="https://blog.cloudflare.com/#whats-new-since-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
 	<h4>1. Bulk Writes</h4>
 	<p>If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <b>every</b> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p>
@@ -290,7 +332,14 @@ async function getGif(username) {
   }
 }</code></pre>
 	<p>Lastly, we want to thank all of our beta customers. It was your valuable feedback that led us to develop these changes to Workers KV. Make sure to stay in touch with us, we're always looking ahead for what's next and we love hearing from you!</p>
-	<h3>Pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="pricing">Pricing</h3>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>
 	<ul>
 		<li>
@@ -304,7 +353,14 @@ async function getGif(username) {
 		</li>
 	</ul>
 	<p>During the beta period, we learned customers don't want to just read values at our edge, they want to write values from our edge too. Since there is high demand for these edge operations, which are more costly, we have started charging non-read operations per month.</p>
-	<h3>Limits</h3>
+	<div class="flex anchor relative">
+		<h3 id="limits">Limits</h3>
+		<a href="https://blog.cloudflare.com/#limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned earlier, we increased our value size limit from <code>64 kB</code> to <code>2 MB</code>. We've also removed our cap on the number of keys per namespace — it's now unlimited. Here are our GA limits:</p>
 	<ul>
 		<li>
@@ -323,7 +379,14 @@ async function getGif(username) {
 			<p>Unlimited reads per second per key</p>
 		</li>
 	</ul>
-	<h3>Try it out now!</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out-now">Try it out now!</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now open to all customers, you can start using <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> today from your Cloudflare dashboard under the Workers tab. You can also look at our updated <a href="https://developers.cloudflare.com/workers/kv">documentation.</a></p>
 	<p>We're really excited to see what you all can build with Workers KV!</p>
 </div>

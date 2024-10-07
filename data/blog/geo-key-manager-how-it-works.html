@@ -2,7 +2,14 @@
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/geo-key-manager-how-it-works">Français</a>, <a href="https://blog.cloudflare.com/es-es/geo-key-manager-how-it-works">Español</a> and <a href="https://blog.cloudflare.com/de-de/geo-key-manager-how-it-works">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BMLs89RUwPOPnl4it0O3b/0bbc0af3cba2ec99dc0d5a06e2cfc7b4/geo-key-manager-how-it-works.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Today we announced <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, a feature that gives customers unprecedented control over where their private keys are stored when uploaded to Cloudflare. This feature builds on a previous Cloudflare innovation called Keyless SSL and a novel cryptographic access control mechanism based on both identity-based encryption and broadcast encryption. In this post we’ll explain the technical details of this feature, the first of its kind in the industry, and how Cloudflare leveraged its existing network and technologies to build it.</p>
-	<h3>Keys in different area codes</h3>
+	<div class="flex anchor relative">
+		<h3 id="keys-in-different-area-codes">Keys in different area codes</h3>
+		<a href="https://blog.cloudflare.com/#keys-in-different-area-codes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare launched <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys">Keyless SSL</a> three years ago to wide acclaim. With Keyless SSL, customers are able to take advantage of the full benefits of Cloudflare’s network while keeping their HTTPS private keys inside their own infrastructure. Keyless SSL has been popular with customers in industries with regulations around the control of access to private keys, such as the financial industry. Keyless SSL adoption has been slower outside these regulated industries, partly because it requires customers to run custom software (the key server) inside their infrastructure.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -20,7 +27,14 @@
 	<p>Keyless SSL</p>
 	<p>One of the motivating use cases for Keyless SSL was the expectation that customers may not trust a third party like Cloudflare with their private keys. We found that this is actually very uncommon; most customers actually do trust Cloudflare with their private keys. But we have found that sometimes customers would like a way to reduce the risk associated with having their keys in some physical locations around the world.</p>
 	<p>This is where Geo Key Manager is useful: it lets customers limit the exposure of their private keys to certain locations. It’s similar Keyless SSL, but instead of having to run a key server inside your infrastructure, Cloudflare hosts key servers in the locations of your choosing. This reduces the complexity of deploying Keyless SSL and gives the control that people care about. Geo Key Manager “just works” with no software required.</p>
-	<h3>A Keyless SSL Refresher</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-keyless-ssl-refresher">A Keyless SSL Refresher</h3>
+		<a href="https://blog.cloudflare.com/#a-keyless-ssl-refresher" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Keyless SSL was developed at Cloudflare to make HTTPS more secure. Content served over HTTPS is both encrypted and authenticated so that eavesdroppers or attackers can’t read or modify it. HTTPS makes use of a protocol called Transport Layer Security (TLS) to keep this data safe.</p>
 	<p>TLS has two phases: a handshake phase and a data exchange phase. In the handshake phase, cryptographic keys are exchanged and a shared secret is established. As part of this exchange, the server proves its identity to the client using a certificate and a private key. In the data exchange phase, shared keys from the handshake are used to encrypt and authenticate the data.</p>
 	<p>A TLS handshake can be naturally broken down into two components:</p>
@@ -50,7 +64,14 @@
 	<p>Latency is only added for the initial connection.</p>
 	<p>For a deep-dive on this topic, read <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">this post I wrote</a> in 2014.</p>
 	<p>With Keyless SSL as a basic building block, we set out to design Geo Key Manager.</p>
-	<h3>Geo Key Manager: designing the architecture</h3>
+	<div class="flex anchor relative">
+		<h3 id="geo-key-manager-designing-the-architecture">Geo Key Manager: designing the architecture</h3>
+		<a href="https://blog.cloudflare.com/#geo-key-manager-designing-the-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare has a truly international customer base and we’ve learnt that customers around the world have different regulatory and statutory requirements, and different risk profiles, concerning the placement of their private keys. There’s no one size fits all solution across the planet. With that philosophy in mind, we set out to design a very flexible system for deciding where keys can be kept.</p>
 	<p>The first problem to solve was access control. How could we limit the number of locations that a private key is sent to? Cloudflare has a database that takes user settings and distributes them to all edge locations <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">securely, and very fast</a>. However, this system is optimized to synchronize an entire database worldwide; modifying it to selectively distribute keys to different locations was too big of an architectural change for Cloudflare. Instead, we decided to explore the idea of a cryptographic access control (CAC) system.</p>
 	<p>In a CAC system, data is encrypted and distributed everywhere. A piece of data can only be accessed if you have the decryption key. By only sending decryption keys to certain locations, we can effectively limit who has access to data. For example, we could encrypt customer private keys once—right after they’re uploaded—and send the encrypted keys to every location using the existing database replication system.</p>
@@ -81,7 +102,14 @@
 		</li>
 	</ul>
 	<p>Building a system to satisfy these requirements gives customers the freedom to decide where their keys are kept and the scalability necessary to be useful with a growing network.</p>
-	<h3>Identity-based encryption</h3>
+	<div class="flex anchor relative">
+		<h3 id="identity-based-encryption">Identity-based encryption</h3>
+		<a href="https://blog.cloudflare.com/#identity-based-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The cryptographic tool that allows us to satisfy these requirements is called Identity-based encryption.</p>
 	<p>Unlike traditional public key cryptography, where each party has a public key and a private key, in identity-based encryption, your identity <i>is</i> your public key. This is a very powerful concept, because it allows you to encrypt data to a person without having to obtain a their public key ahead of time. Instead of a large random-looking number, a public key can literally be any string, such as “<a href="mailto:bob@example.com">bob@example.com</a>” or “beebob”. Identity-based encryption is useful for email, where you can imagine encrypting a message using person’s email address as the public key. Compare this to the complexity of using PGP, where you need to find someone’s public key and validate it before you send a message. With identity-based encryption, you can even encrypt data to someone before they have the private key associated with their identity (which is managed by a central key generation authority).</p>
 	<figure class="kg-card kg-image-card ">
@@ -177,7 +205,14 @@
 
 	</figure>
 	<p>This design lets customers choose with per-datacenter granularity where their private keys can be accessed. If someone connects to a datacenter that can’t decrypt the private key, that SSL connection is handled using Keyless SSL, where the key server is located in a location with access to the key. The Geo Key code automatically finds the nearest data center that can access the relevant TLS private key and uses Keyless SSL to handle the TLS handshake with the client.</p>
-	<h3>Creating a key server network</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-a-key-server-network">Creating a key server network</h3>
+		<a href="https://blog.cloudflare.com/#creating-a-key-server-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Any time you use Keyless SSL for a new connection, there’s going to be a latency cost for connecting to the key server. With Geo Key Manager, we wanted to reduce this latency cost as much as possible. In practical terms, this means we need to know which key server will respond fastest.</p>
 	<p>To solve this, we created an overlay network between all of our datacenters to measure latency. Every datacenter has an outbound connection to every other datacenter. Every few seconds, we send a “ping” (a <a href="https://github.com/cloudflare/gokeyless/blob/d129f600f7c60cc36d9da9ef99eefe430b05a3c4/protocol/protocol.go#L95">message in the Keyless SSL protocol</a>, not an <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ICMP message</a>) and we measure how long it takes the server to send a corresponding “pong”.</p>
 	<p>When a client connects to a site behind Cloudflare in a datacenter that can’t decrypt the private key for that site, we use metadata to find out which datacenters have access to the key. We then choose the datacenter that has the lowest latency according to our measurements and use that datacenter’s key server for Keyless SSL. If the location with the lowest latency is overloaded, we may choose another location with higher latency but more capacity.</p>
@@ -188,6 +223,13 @@
 
 	</figure>
 	<p>Latency added when keys are in U.S. only. Green: no latency cost,Yellow: &lt;50ms,Red: &gt; 100ms</p>
-	<h3>In conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-conclusion">In conclusion</h3>
+		<a href="https://blog.cloudflare.com/#in-conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re constantly innovating to provide our customers with powerful features that are simple to use. With Geo Key Manager, we are leveraging Keyless SSL and 21st century cryptography to improve private key security in an increasingly complicated geo-political climate.</p>
 </div>

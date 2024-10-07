@@ -19,7 +19,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3u6pMN9g1KQu3ZvwMTwkmb/d92e05e2e22ad2f7ef972374f5e70c33/image8-1.png" alt="" class="kg-image" width="1762" height="1047" loading="lazy">
 
 	</figure>
-	<h3>What is a randomness beacon?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-randomness-beacon">What is a randomness beacon?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-randomness-beacon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A randomness beacon is a public service that provides unpredictable random numbers at regular intervals.</p>
 	<p><a href="https://github.com/dedis/drand">drand</a> (pronounced dee-rand) is a <i>distributed randomness</i> beacon developed by <a href="https://twitter.com/nikkolasg1">Nicolas Gailly</a>; with the help of <a href="https://twitter.com/daeinar">Philipp Jovanovic</a>, and <a href="https://github.com/PizzaWhisperer">Mathilde Raynal</a>. The drand project originated from the research paper <a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf">Scalable Bias-Resistant Distributed Randomness</a> published at the <a href="https://ieeexplore.ieee.org/abstract/document/7958592">2017 IEEE Symposium on Security and Privacy</a> by <a href="http://ewa.syta.us">Ewa Syta</a>, <a href="https://philipp.jovanovic.io">Philipp Jovanovic</a>, <a href="https://lefteriskk.github.io">Eleftherios Kokoris Kogias</a>, <a href="https://github.com/nikkolasg">Nicolas Gailly</a>, <a href="https://people.epfl.ch/linus.gasser">Linus Gasser</a>, <a href="https://ismailkhoffi.com">Ismail Khoffi</a>, <a href="http://www.cs.yale.edu/homes/fischer">Michael J. Fischer</a>, <a href="https://bford.info">Bryan Ford</a>, from the <a href="https://dedis.epfl.ch">Decentralized/Distributed Systems (DEDIS) lab</a> at <a href="https://www.epfl.ch">EPFL</a>, <a href="https://www.yale.edu">Yale University</a>, and <a href="https://www.trincoll.edu">Trinity College Hartford</a>, with support from <a href="https://researchinstitute.io">Research Institute</a>.</p>
 	<p>For every randomness generation round, drand provides the following properties, as specified in the <a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf">research paper</a>:</p>
@@ -41,7 +48,15 @@
 	<p>Our founding members are contributing their individual high-entropy sources to provide a more random and unpredictable beacon to generate publicly verifiable random values every sixty seconds. The fact that the drand beacon is decentralized and built using appropriate, provably-secure cryptographic primitives, increases our confidence that it possesses all the aforementioned properties.</p>
 	<p>This global network of servers generating randomness ensures that even if a few servers are offline, the beacon continues to produce new numbers by using the remaining online servers. &nbsp;Even if one or two of the servers or their entropy sources were to be compromised, the rest will still ensure that the jointly-produced entropy is fully unpredictable and unbiasable.</p>
 	<p>Who exactly is running this beacon? Currently, The League of Entropy is a consortium of global organizations and individual contributors, including: Cloudflare, Protocol Labs researcher Nicolas Gailly, University of Chile, École polytechnique fédérale de Lausanne &nbsp;(EPFL), Kudelski Security, and EPFL researchers, Philipp Jovanovic and Ludovic Barman.</p>
-	<h3>Meet the League of Entropy</h3>
+	<div class="flex anchor relative">
+		<h3 id="meet-the-league-of-entropy">Meet the League of Entropy</h3>
+		<a href="https://blog.cloudflare.com/#meet-the-league-of-entropy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWt5ZDGMydRLWX7xttadU/780d0855d48469455d698f3862dbd1a5/image4-3.png" alt="" class="kg-image" width="1515" height="1710" loading="lazy">
@@ -78,13 +93,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/oq8NHvjmXXlKoLJrhmDq9/04fcc0f71511bee798292a814a4977cf/pTiFdLtxsabqbVpczCBKVT4dzbP9e9WxeU4lOPbiUIecOR5ER9QlRZG196PfYvJvF_Sbm-DTlUphCBWBMIOtqiTTKmTmRDumoCUlges8uEmNxJh75unUdnP2xobX.png" alt="" class="kg-image" width="1600" height="849" loading="lazy">
 
 	</figure>
-	<h3>Public versus Private Randomness</h3>
+	<div class="flex anchor relative">
+		<h3 id="public-versus-private-randomness">Public versus Private Randomness</h3>
+		<a href="https://blog.cloudflare.com/#public-versus-private-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Different types of randomness are needed for different types of applications.</p>
 	<p>The trick to generating secure cryptographic keys is to use large, privately-generated random numbers that no one else can predict. With randomness beacons publicly generating and announcing random numbers, <b>users should NOT be using the output of a randomness beacon for their secret keys</b>, as these numbers are accessible by anyone. If an attacker can guess the random number that a user’s private cryptographic key was derived from, they can crack their system and decrypt confidential information. This simply means that random numbers generated by a public beacon are not safe to use for encryption keys: not because there’s anything wrong with the randomness, but simply because the randomness is public.</p>
 	<p>Clients using the drand beacon can request private randomness from some or all of the drand nodes if they would like to generate a random value that will not be publicly announced. &nbsp;For more information on how to do this, check the <a href="https://developers.cloudflare.com/randomness-beacon">developer docs.</a></p>
 	<p>On the other hand, public randomness is often employed by users requiring a randomness value that is not supposed to be secret but whose generation must be transparent, fair, and unbiased. This is perfect for many purposes such as games, lotteries, and election auditing, where the auditor and the public require transparency into when and how and how fairly the random value was generated.The League of Entropy provides <b>public randomness</b> that any user can retrieve from <a href="https://leagueofentropy.com">leagueofentropy.com</a>. Users will be able to view the 512-bit string value that is generated every 60 seconds. Why 60 seconds? No particular reason. Theoretically, the randomness generation can go as fast as the hardware allows, but it’s not necessary for most use cases. Values generated every 60 seconds give users 1440 random values in one 24-hour period.</p>
 	<p>*FRIENDLY REMINDER: THIS RANDOMNESS IS PUBLIC. DO NOT USE IT FOR PRIVATE CRYPTOGRAPHIC KEYS*</p>
-	<h3>Why does public randomness matter?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-does-public-randomness-matter">Why does public randomness matter?</h3>
+		<a href="https://blog.cloudflare.com/#why-does-public-randomness-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Election auditing</h4>
 	<p>In the US, most elections are followed by an audit to verify they were unbiased and conducted fairly. Robust auditing systems increase voter confidence by improving election officials’ ability to respond effectively to allegations of fraud, and to detect bugs in the system.</p>
 	<p>Currently, most election ballots and precincts are randomly chosen by election officials. This approach is potentially vulnerable to bias by a corrupt insider who might select certain precincts to present a preferred outcome. Even in a situation where every voter district was tampered with, by using a robust, distributed, and most importantly, <i>unpredictable and unbiasable</i> beacon, election auditors can trust that a small sample of districts is enough to audit, as long as an attacker cannot predict district selection.</p>
@@ -102,18 +131,39 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hGB9Ryb87DWFPSKjFCiQQ/381d5d70efd5923b1725b6892ca49813/IzxDdb91VENIgVK05HqMqA6u2mwL-pMx3GLBdxJQjCeaPSD1bGTjE3mnOyInEOgq0lyovRBghGCcDbPpWSPO4ToT2tR4aftwcLdQNVwCKn3Lghh2FkK8UbEkC63J.png" alt="" class="kg-image" width="1600" height="1360" loading="lazy">
 
 	</figure>
-	<h3>Let’s get you on drand!</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-you-on-drand">Let’s get you on drand!</h3>
+		<a href="https://blog.cloudflare.com/#lets-get-you-on-drand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To learn more about the League of Entropy and how to use the distributed randomness beacon, visit <a href="https://leagueofentropy.com">https://leagueofentropy.com</a>. The website periodically displays the randomness generated by the network, and you can even see previously generated values. Go ahead, try it out!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/45QOeg172UTQopTpSz4urP/bb23a3268ff3aead078c8e8b5078cbf8/30p6dmRd2omn-YRzrY7oPmYEVUwRFOo7izqymD6xvYQ9txl6hzOwachb_AkrHilkBKEr2kZu_lCGSXhJQrubJ_q1gPbf-NYu4V3o98cvIfa_bq2Ug1MLk6PrSysL.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
 
 	</figure>
-	<h3>How to join the league:</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-join-the-league">How to join the league:</h3>
+		<a href="https://blog.cloudflare.com/#how-to-join-the-league" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Want to join the league?? We’re not exclusive!</p>
 	<p>If you are an organization or an individual who is interested in contributing to the drand beacon, check out <a href="https://developers.cloudflare.com/randomness-beacon">the developer docs</a> for more information regarding the requirements for setting up a server and joining the existing group. drand is currently in its beta release phase and an approval request must be sent to <a href="mailto:leagueofentropy@googlegroups.com">leagueofentropy@googlegroups.com</a> in order to be approved as a contributing server.</p>
 	<p><b>UPDATE:</b> As of <a href="https://drand.love/blog/2020/08/10/drand-launches-v1-0">August 2020</a>, drand is a production-grade network supporting critical use cases including Filecoin. For the most up-to-date information on the drand project and the League of Entropy, see <a href="https://drand.love">drand.love</a>.</p>
-	<h3>Looking into the future</h3>
+	<div class="flex anchor relative">
+		<h3 id="looking-into-the-future">Looking into the future</h3>
+		<a href="https://blog.cloudflare.com/#looking-into-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It only makes sense that the Internet of the future will demand unpredictable randomness beacons. The League of Entropy is out there now, creating the basis for future systems to leverage trustworthy public randomness. Our goal is to increase user trust and provide a one-stop shop for all your public entropy needs. Come, join us!</p>
 	<figure class="kg-card kg-image-card ">
 

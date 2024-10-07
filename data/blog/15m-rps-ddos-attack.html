@@ -14,7 +14,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dKJWfgemmjgOJyK68Z6fL/a4cf9e4a2fcb8014b930acbd5e4ba0a8/1109-2.png" alt="Graph of the 15.3 million rps DDoS attack" class="kg-image" width="1600" height="878" loading="lazy">
 
 	</figure>
-	<h3>The attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-attack">The attack</h3>
+		<a href="https://blog.cloudflare.com/#the-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What’s interesting is that the attack mostly came from data centers. A change from residential network Internet Service Providers (ISPs) to cloud compute ISPs.</p>
 	<p>This attack was launched from a botnet of approximately 6,000 unique bots. It originated from 112 countries around the world. Almost 15% of the attack traffic originated from Indonesia, followed by Russia, Brazil, India, Colombia, and the United States.</p>
 	<figure class="kg-card kg-image-card ">
@@ -28,16 +35,44 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lnPP8NYqk8QO0OkT9TS9L/371ceef1a8a80bf3f0c9ce2bb68958b4/1109-4.png" alt="Graph of the distribution of attack traffic by the top networks (ASN)" class="kg-image" width="1600" height="951" loading="lazy">
 
 	</figure>
-	<h3>How this attack was automatically detected and mitigated</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-this-attack-was-automatically-detected-and-mitigated">How this attack was automatically detected and mitigated</h3>
+		<a href="https://blog.cloudflare.com/#how-this-attack-was-automatically-detected-and-mitigated" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To defend organizations against DDoS attacks, we built and operate software-defined systems that run autonomously. They automatically detect and mitigate DDoS attacks across our entire network — and just as in this case, the attack was automatically detected and mitigated without any human intervention.</p>
 	<p>Our system starts by sampling traffic asynchronously; it then analyzes the samples and applies mitigations when needed.</p>
-	<h3>Sampling</h3>
+	<div class="flex anchor relative">
+		<h3 id="sampling">Sampling</h3>
+		<a href="https://blog.cloudflare.com/#sampling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Initially, traffic is routed through the Internet via <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">BGP Anycast</a> to the nearest <a href="https://www.cloudflare.com/network">Cloudflare data centers</a> that are located in over 270 cities around the world. Once the traffic reaches our data center, our DDoS systems sample it asynchronously allowing for out-of-path analysis of traffic without introducing latency penalties.</p>
-	<h3>Analysis and mitigation</h3>
+	<div class="flex anchor relative">
+		<h3 id="analysis-and-mitigation">Analysis and mitigation</h3>
+		<a href="https://blog.cloudflare.com/#analysis-and-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The analysis is done using data streaming algorithms. HTTP request samples are compared to conditional fingerprints, and multiple real-time signatures are created based on dynamic masking of various request fields and metadata. Each time another request matches one of the signatures, a counter is increased. When the activation threshold is reached for a given signature, a mitigation rule is compiled and pushed inline. The mitigation rule includes the real-time signature and the mitigation action, e.g. block.</p>
 	<p>Cloudflare customers can also customize the settings of the DDoS protection systems by tweaking the <a href="https://blog.cloudflare.com/http-ddos-managed-rules">HTTP DDoS Managed Rules</a>.</p>
 	<p>You can read more about our autonomous DDoS protection systems and how they work in our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">deep-dive technical blog post</a>.</p>
-	<h2>Helping build a better Internet</h2>
+	<div class="flex anchor relative">
+		<h2 id="helping-build-a-better-internet">Helping build a better Internet</h2>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, everything we do is guided by our mission to help build a better Internet. The DDoS team’s vision is derived from this mission: our goal is to make the impact of DDoS attacks a thing of the past. The level of protection that we offer is <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered and unlimited</a> — It is not bounded by the size of the attack, the number of the attacks, or the duration of the attacks. This is especially important these days because as we’ve recently seen, attacks are getting <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q1">larger and more frequent</a>.</p>
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up">Start now</a> with our <a href="https://www.cloudflare.com/plans/free">Free</a> and <a href="https://www.cloudflare.com/plans/pro">Pro</a> plans to protect your websites, or <a href="https://www.cloudflare.com/magic-transit">contact us</a> for <a href="https://www.cloudflare.com/ddos">comprehensive DDoS protection</a> for your entire network using Magic Transit.</p>
 </div>

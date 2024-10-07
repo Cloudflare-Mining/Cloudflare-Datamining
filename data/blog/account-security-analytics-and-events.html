@@ -8,13 +8,35 @@
 
 	</figure>
 	<p>Cloudflare offers many security features like <a href="https://developers.cloudflare.com/waf">WAF</a>, <a href="https://developers.cloudflare.com/bots">Bot management</a>, <a href="https://developers.cloudflare.com/ddos-protection">DDoS</a>, <a href="https://developers.cloudflare.com/cloudflare-one">Zero Trust</a>, and more! This suite of products are offered in the form of rules to give basic protection against common vulnerability attacks. These rules are usually configured and monitored per domain, which is very simple when we talk about one, two, maybe three domains (or what we call in Cloudflare’s terms, “zones”).</p>
-	<h3>The zone-level overview sometimes is not time efficient</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-zone-level-overview-sometimes-is-not-time-efficient">The zone-level overview sometimes is not time efficient</h3>
+		<a href="https://blog.cloudflare.com/#the-zone-level-overview-sometimes-is-not-time-efficient" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you’re a Cloudflare customer with tens, hundreds, or even thousands of domains under your control, you’d spend hours going through these domains one by one, monitoring and configuring all security features. We know that’s a pain, especially for our Enterprise customers. That’s why last September we announced the <a href="https://blog.cloudflare.com/account-waf">Account WAF</a>, where you can create one security rule and have it applied to the configuration of all your zones at once!</p>
 	<p>Account WAF makes it easy to deploy security configurations. Following the same philosophy, we want to empower our customers by providing visibility over these configurations, or even better, visibility on all HTTP traffic.</p>
 	<p>Today, Cloudflare is offering holistic views on the security suite by launching Account Security Analytics and Account Security Events. Now, across all your domains, you can monitor traffic, get insights quicker, and save hours of your time.</p>
-	<h3>How do customers get visibility over security traffic today?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-do-customers-get-visibility-over-security-traffic-today">How do customers get visibility over security traffic today?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-customers-get-visibility-over-security-traffic-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before today, to view account analytics or events, customers either used to access each zone individually to check the events and analytics dashboards, or used zone <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL Analytics API</a> or logs to collect data and send them to their preferred storage provider where they could collect, aggregate, and plot graphs to get insights for all zones under their account — in case ready-made dashboards were not provided.</p>
-	<h3>Introducing Account Security Analytics and Events</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-account-security-analytics-and-events">Introducing Account Security Analytics and Events</h3>
+		<a href="https://blog.cloudflare.com/#introducing-account-security-analytics-and-events" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gWJhl65y6sUNRHNaZjwqt/1e5d28510395d6febf3f84077ec3638c/Screenshot-2023-03-17-at-9.57.13-AM.png" alt="Snapshot highlighting Security Analytics and Events location in the dashboard sidebar" class="kg-image" width="2000" height="1601" loading="lazy">
@@ -26,7 +48,14 @@
 	<p>On the other hand, Account Security Analytics view shows a wider angle with all HTTP traffic on all zones under the account, whether this traffic is mitigated, i.e., the security configurations took an action to prevent the request from reaching your zone, or not mitigated. This is essential in fine-tuning your security configuration, finding possible false negatives, or onboarding new zones.</p>
 	<p>The view also provides quick filters or insights of what we think are interesting cases worth exploring for ease of use. Many of the view components are similar to zone level <a href="https://blog.cloudflare.com/security-analytics">Security Analytics</a> that we introduced recently.</p>
 	<p>To get to know the components and how they interact, let’s have a look at an actual example.</p>
-	<h3>Analytics walk-through when investigating a spike in traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="analytics-walk-through-when-investigating-a-spike-in-traffic">Analytics walk-through when investigating a spike in traffic</h3>
+		<a href="https://blog.cloudflare.com/#analytics-walk-through-when-investigating-a-spike-in-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traffic spikes happen to many customers’ accounts; to investigate the reason behind them, and check what’s missing from the configurations, we recommend starting from Analytics as it shows mitigated and non-mitigated traffic, and to revise the mitigated requests to double check any false positives then Security Events is the go to place. That’s what we’ll do in this walk-through starting with the Analytics, finding a spike, and checking if we need further mitigation action.</p>
 	<p><b>Step 1:</b> To navigate to the new views, sign into the Cloudflare dashboard and select the account you want to monitor. You will find <b>Security Analytics</b> and <b>Security Events</b> in the sidebar under <b>Security Center.</b></p>
 	<figure class="kg-card kg-image-card ">
@@ -68,8 +97,22 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/20ANCsBgB0TowOniXpMl0E/fd3f6ebcc2ad1c4ddba3fc4917a5f775/pasted-image-0--13-.png" alt="Mitigation rules used as shown in the top events of the attack" class="kg-image" width="1108" height="504" loading="lazy">
 
 	</figure>
-	<h3>Who gets the new views?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-gets-the-new-views">Who gets the new views?</h3>
+		<a href="https://blog.cloudflare.com/#who-gets-the-new-views" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting this week all our customers on Enterprise plans will have access to Account Security Analytics and Security Events. We recommend having Account Bot Management, WAF Attack Score, and Account WAF to have access to the full visibility and actions.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The new Account Security Analytics and Events encompass metadata generated by the Cloudflare network for all domains in one place. In the upcoming period we will be providing a better experience to save our customers' time in a simple way. We're currently in beta, log into the dashboard, check out the views, and let us know your feedback.</p>
 </div>

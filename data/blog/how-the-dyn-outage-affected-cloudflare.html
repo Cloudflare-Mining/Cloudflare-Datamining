@@ -12,7 +12,14 @@
 	<p>However, that didn’t mean we had nothing to do. Operating a large scale system like Cloudflare that deals with the continuously changing nature of the Internet means that there’s always something to learn.</p>
 	<p>Back in July 2015 Dyn had an <a href="http://hub.dyn.com/dyn-status/update-managed-dns-issue-july-6-2015">outage</a> that also affected some of our customers and we changed our handling of so-called infrastructure DNS records in response to prevent a similar problem, from any provider, affecting Cloudflare.</p>
 	<p>Based on what we learned last Friday we are making some changes to our internal DNS infrastructure so that it performs better when a major provider is having problems or an outage (whether caused by DDoS or not). To understand those changes it’s helpful to take a look at the role of DNS and what we saw on Friday.</p>
-	<h3>A little bit about DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-little-bit-about-dns">A little bit about DNS</h3>
+		<a href="https://blog.cloudflare.com/#a-little-bit-about-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Domain Name System (DNS) provides an address book service for the Internet. It is responsible for converting the friendly, human-readable domain names we type into our web browsers to IP addresses for websites. Let’s walk through the life of an example web request to see where DNS plays a role.</p>
 	<p>We can start by entering a web address into our browser, <a href="https://www.cloudflare.com">https://www.cloudflare.com/</a>. The browser translates this name into an IP address so it can contact the server that’s hosting the page, it will do this using DNS. We can make these DNS queries ourselves using the <code>dig</code> command line tool to see what values are returned.</p>
 	<pre class="language-bash"><code class="language-bash">$ dig www.cloudflare.com A
@@ -37,7 +44,14 @@ www.cloudflare.com.	10	IN	A	198.41.214.162</code></pre>
 	<p>When our servers receive a request with the origin configured using a CNAME, we have to perform an external DNS lookup to resolve the target of the CNAME to IP addresses. This information is cached, based on the TTL defined on the CNAME record. In this case, our ability to serve content (that is not in the cache) entirely depends on an external DNS lookup to resolve the CNAME to IPs.</p>
 	<p>For example, suppose <code>www.example.com</code> had set up a CNAME in the Cloudflare control panel pointing to <code>server11.myhostingprovider.biz</code> it would be necessary to look up the IP address of <code>server11.myhostingprovider.biz</code> before contacting the origin server.</p>
 	<p>In many cases the target of a CNAME is handled by a third party DNS provider. If the third party provider is unable to answer our query, we are unable to resolve the domain to an origin IP and cannot serve the request.</p>
-	<h3>What Friday’s Dyn outage looked like</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-fridays-dyn-outage-looked-like">What Friday’s Dyn outage looked like</h3>
+		<a href="https://blog.cloudflare.com/#what-fridays-dyn-outage-looked-like" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As Dyn says in their <a href="https://www.dynstatus.com/incidents/5r9mppc1kb77">discussion</a> of the DDoS attack there were three distinct waves. For Cloudflare that manifested itself in two periods during which our internal DNS query error rate spiked.</p>
 	<p>The first attack started at 1110 UTC and mostly affected DNS resolution on the US East Coast. This world map from our monitoring systems shows the Cloudflare data centers where the DNS error rate was spiking because of the Dyn outage.</p>
 	<p>The green dots on the map are Cloudflare data centers that were unaffected by the Dyn DDoS. The largest effect was on the US East Coast, although the attack had a knock-on effect in Singapore and some parts of Europe. This is most likely because the architecture of the Internet does not directly line up with geography. Locations that are physically disparate can sometimes appear ‘close’ on the Internet because of undersea cables or decisions on how to route traffic.</p>
@@ -55,14 +69,28 @@ www.cloudflare.com.	10	IN	A	198.41.214.162</code></pre>
 	</figure>
 	<p>Once again it’s possible to see the attack ramping up at 1550 UTC and continuing for some time. Dyn reports that the attack was fully mitigated at 1700 UTC.</p>
 	<p>Media and Dyn reported a third wave of attacks later on Friday, but Dyn mitigated that wave immediately and so fast that it did not have any affect on Cloudflare protected websites and applications and did not show up in our systems.</p>
-	<h3>Why China was unaffected</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-china-was-unaffected">Why China was unaffected</h3>
+		<a href="https://blog.cloudflare.com/#why-china-was-unaffected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During the most intense period of attack on Dyn our locations in China were almost completely unaffected. That’s because we handle DNS a little differently inside China.</p>
 	<p>To cope with sometimes fluctuating network conditions inside China our data centers are configured to keep DNS records for origin servers cached in our servers for longer than the rest of the world. This caching meant that even though Dyn was down and couldn’t be reached from anywhere (including China) we still had cached DNS records for sites that used Dyn on our China servers. Thus we were able to reach origin servers and continue serving content. That shows up as green dots on the map above.</p>
 	<p>Unfortunately, there’s a downside to hanging on to DNS records for a long time: if one of our customers changes their origin’s DNS records we’ll keep using the old DNS records and IP addresses. That could lead to downtime, or poor service.</p>
 	<p>The ideal system would recheck DNS records frequently so that changes are reflected quickly but in the event that the upstream DNS provider was unavailable (because of an attack or other outage) it would be able to use the DNS records it has cached.</p>
 	<p>Doing so is known as ‘serve stale while revalidating’. Our upstream DNS resolvers will cache records checking frequently for changes. If the upstream DNS is unavailable we’ll continue to serve from cache until it’s possible to refresh the DNS records.</p>
 	<p>We are testing and rolling out that change now and expect this to greatly diminish the impact of events similar to the Dyn DDoS for all of our customers who use CNAME’d DNS records that rely on a third-party DNS provider.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is a shared space. Because companies, people, and institutions work together we have a global, connected network that allows us to work and play from almost anywhere. Cooperation means that we work together on standards and interoperability to keep the network running and evolving.</p>
 	<p>But the Internet is very complex and, as with many things, the devil is in the details and operating Internet infrastructure is a process of constant improvement. Although the Dyn DDoS felt scary to many people unfamiliar with how the Internet operates, such attacks result in a stronger network. Just as Cloudflare is making changes to its software and configuration, so are others across the net.</p>
 	<p>We are always looking to hire smart people interested in making DNS and the Internet better for everyone. Jobs can be found <a href="https://www.cloudflare.com/join-our-team">here</a>.</p>

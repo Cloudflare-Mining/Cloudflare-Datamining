@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>This post is a part of an ongoing series comparing the performance of Cloudflare Workers with other Serverless providers. In our <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">past tests</a> we intentionally chose a workload which imposes virtually no CPU load (returning the current time). For these tests, let's look at something which pushes hardware to the limit: cryptography.</p>
 	<p>tl;dr <b>Cloudflare Workers are seven times faster than a default Lambda function for workloads which push the CPU.</b> Workers are six times faster than Lambda@Edge, tested globally. &nbsp;<a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-with-cpu-bound-tasks%2F&amp;text=%22For+workloads+which+push+the+CPU%2C+AWS+Lambda+runs+at+1%2F7+the+speed+of+a+%40Cloudflare+Worker.%22&amp;hashtags=serverless"></a></p>
-	<h3>Slow Crypto</h3>
+	<div class="flex anchor relative">
+		<h3 id="slow-crypto">Slow Crypto</h3>
+		<a href="https://blog.cloudflare.com/#slow-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a> algorithm is designed to be slow to compute. It's used to hash passwords; its slowness makes it harder for a password cracker to do their job. Its extreme CPU usage also makes it a good benchmark for the CPU performance of a service like Lambda or Cloudflare Workers.</p>
 	<p>We've written <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/pbkdf2">a test</a> based on the Node Crypto (Lambda) and the WebCrypto (Workers) APIs. Our Lambda is deployed to with the default 128MB of memory behind an API Gateway in us-east-1, our Worker is, as always, deployed around the world. I also have our function running in a Lambda@Edge deployment to compare that performance as well. Again, we're using <a href="http://www.catchpoint.com">Catchpoint</a> to test from hundreds of locations around the world.</p>
 	<p>And again, Lambda is slow:</p>
@@ -26,7 +33,14 @@
 
 	</figure>
 	<p>Unsurprisingly the Lambda and Lambda@Edge performance evens out to show us exactly what speed Amazon throttles our CPU to. <b>At the 50th percentile, Lambda processors appear to be 6-7x slower than the mid-range server cores in our data centers.</b> &nbsp;<a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-with-cpu-bound-tasks%2F&amp;text=AWS+Lambda+processors+are+6-7x+slower+than+a+mid-range+server.&amp;hashtags=serverless"></a></p>
-	<h3>Memory</h3>
+	<div class="flex anchor relative">
+		<h3 id="memory">Memory</h3>
+		<a href="https://blog.cloudflare.com/#memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What you might not realize is that the power of the CPU your Lambda gets is a function of how much memory you allocate for it. As you ramp up the memory you get more performance. To test this we allocated a function with 1024MB of memory:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -44,7 +58,14 @@
 	<p>This Lambda would be costing me $5.09 per million requests, over 10x more than a Worker, but would still provide less CPU.</p>
 	<p>In general our supposition is a 128MB Lambda is buying you 1/8th of a CPU core. This scales up as you elect to purchase Lambda's with more memory, until it hits the performance of one of their cores (minus hypervisor overhead) at which point it levels off.</p>
 	<p>Ultimately Amazon is charging based on the duration of execution, but on top of a much slower execution platform than we expected.</p>
-	<h3>Native Code</h3>
+	<div class="flex anchor relative">
+		<h3 id="native-code">Native Code</h3>
+		<a href="https://blog.cloudflare.com/#native-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One response we saw to our <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">last post</a> was that Lambda supports running native binaries and that's where its real performance will be exhibited.</p>
 	<p>It is of course true that our Javascript tests are likely (definitely in the case of Workers) just calling out to an underlying compiled cryptography implementation. But I don't know the details of how Lambda is implemented, perhaps the critics have a point that native binaries could be faster. So I decided to extend my tests.</p>
 	<p>After beseeching a couple of <a href="https://github.com/harrishancock">my</a> <a href="https://twitter.com/terinjokes">colleagues</a> who have more recent C++ experience than I do, I ended up with <a href="https://github.com/cloudflare/worker-performance-examples/blob/master/pbkdf2/lambda_proc/pbkdf2.cpp">a Lambda</a> which executes the BoringSSL implementation of PBKDF2 in plain C++14. The results are utterly boring:</p>
@@ -54,7 +75,14 @@
 
 	</figure>
 	<p>A Lambda executing native code is just as slow as one executing Javascript.</p>
-	<h3>Java</h3>
+	<div class="flex anchor relative">
+		<h3 id="java">Java</h3>
+		<a href="https://blog.cloudflare.com/#java" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As I mentioned, irrespective of the language, all of this cryptography is likely calling the same highly optimized C implementations. In that way it might not be an accurate reflection of the performance of our chosen programming languages (but is an accurate reflection of CPU performance). Many people still believe that code written in languages like Java is faster than Javascript in V8. I decided to disprove that as well, and I was willing to sacrifice to the point where I installed the JDK, and resigned myself to a lifetime of update notifications.</p>
 	<p>To test application-level performance I dusted off my interview chops and wrote a <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/primes">naïve prime factorization function</a> in both Javascript and Java. I won't weigh in on the wisdom of using new vs old guard languages, but I will say it doesn't buy you much with Lambda:</p>
 	<figure class="kg-card kg-image-card ">

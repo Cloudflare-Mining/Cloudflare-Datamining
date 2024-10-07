@@ -9,13 +9,27 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/6129093355/in/photolist-akBcVn-6eEtUq-d9Xi2T-c8MwzA-mGVr3z-aVezji-mGVxov-acMJmz-6nvbCJ-6a6DGQ-5uwrr9-rRtCCp-acMKsk-cKeuXY-9F6N13-9GSuHh-acMDBk-cJYes5-cijtcj-akFua9-cK1iqS-fiAHkE-acMCDt-cJZ9Fq-5qtfNv-cJWFiw-e4pfTd-6fzyLV-8RNMTo-p7jJLQ-524dkf-dw52qG-mVDttF-duUbYU-dvXt3Z-c8NkYG-6e6K2S-duKJjZ-5DbaqV-duBiR3-dvGTsM-dvLst4-dvPfJ1-ezYL1J-7f1cMC-bqi5WN-5MMGkV-9F3C7c-eWASXx-cJXsW9">image</a> by <a href="https://www.flickr.com/photos/conchur">Conor Lawless</a></p>
 	<p>This blog post gives an overview of the reasons for the development of HPACK, and the hidden bandwidth and latency benefits it brings.</p>
-	<h3>Some Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="some-background">Some Background</h3>
+		<a href="https://blog.cloudflare.com/#some-background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As you probably know, a regular HTTPS connection is in fact an overlay of several connections in the multi-layer model. The most basic connection you usually care about is the TCP connection (the transport layer), on top of that you have the TLS connection (mix of transport/application layers), and finally the HTTP connection (application layer).</p>
 	<p>In the the days of yore, HTTP compression was performed in the TLS layer, using gzip. Both headers and body were compressed indiscriminately, because the lower TLS layer was unaware of the transferred data type. In practice it meant both were compressed with the <a href="https://blog.cloudflare.com/results-experimenting-brotli">DEFLATE</a> algorithm.</p>
 	<p>Then came SPDY with a new, dedicated, header compression algorithm. Although specifically designed for headers, including the use of a preset <a href="https://blog.cloudflare.com/improving-compression-with-preset-deflate-dictionary">dictionary</a>, it was still using DEFLATE, including dynamic Huffman codes and string matching.</p>
 	<p>Unfortunately both were found to be vulnerable to the <a href="https://www.ekoparty.org/archive/2012/CRIME_ekoparty2012.pdf">CRIME</a> attack, that can extract secret authentication cookies from compressed headers: because DEFLATE uses backward string matches and dynamic Huffman codes, an attacker that can control part of the request headers, can gradually recover the full cookie by modifying parts of the request and seeing how the total size of the request changes during compression.</p>
 	<p>Most edge networks, including Cloudflare, disabled header compression because of CRIME. That’s until HTTP/2 came along.</p>
-	<h3>HPACK</h3>
+	<div class="flex anchor relative">
+		<h3 id="hpack">HPACK</h3>
+		<a href="https://blog.cloudflare.com/#hpack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP/2 supports a new dedicated header compression algorithm, called HPACK. HPACK was developed with attacks like CRIME in mind, and is therefore considered safe to use.</p>
 	<p>HPACK is resilient to CRIME, because it does not use partial backward string matches and dynamic Huffman codes like DEFLATE. Instead, it uses these three methods of compression:</p>
 	<ul>
@@ -62,7 +76,14 @@
 	</figure>
 	<p>We can see that the total ingress traffic is reduced by 53% as the result of HPACK compression!</p>
 	<p>In fact today, we process about the same number of requests for HTTP/1 and HTTP/2 over HTTPS, yet the ingress traffic for HTTP/2 is only half that of HTTP/1.</p>
-	<h3>Response Headers</h3>
+	<div class="flex anchor relative">
+		<h3 id="response-headers">Response Headers</h3>
+		<a href="https://blog.cloudflare.com/#response-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For the response headers (egress traffic) the gains are more modest, but still spectacular:</p>
 	<h6>Response #1:</h6>
 	<p>**cache-control:**public, max-age=30**cf-cache-status:**HIT<b>cf-h2-pushed:</b>&lt;/assets/css/screen.css?v=2237be22c2&gt;,&lt;/assets/js/jquery.fitvids.js?v=2237be22c2&gt;**cf-ray:**2ded53145e0c1ffa-DFW**content-encoding:**gzip**content-type:**text/html; charset=utf-8**date:**Wed, 07 Sep 2016 21:41:23 GMT**expires:**Wed, 07 Sep 2016 21:41:53 GMT<b>link:</b> &lt;//cdn.bizible.com/scripts/bizible.js&gt;; rel=preload; as=script,&lt;<a href="https://code.jquery.com/jquery-1.11.3.min.js">https://code.jquery.com/jquery-1.11.3.min.js</a>&gt;; rel=preload; as=script**server:**cloudflare-nginx<b>status:200</b>**vary:**Accept-Encoding**x-ghost-cache-status:**From Cache**x-powered-by:**Express</p>
@@ -86,7 +107,14 @@
 
 	</figure>
 	<p>It is difficult to see, but we get 1.4% savings in the total egress HTTP/2 traffic. While it does not look like much, it is still more than <a href="https://blog.cloudflare.com/results-experimenting-brotli">increasing the compression level for data would give</a> in many cases. This number is also significantly skewed by websites that serve very large files: we measured savings of well over 15% for some websites.</p>
-	<h3>Test your HPACK</h3>
+	<div class="flex anchor relative">
+		<h3 id="test-your-hpack">Test your HPACK</h3>
+		<a href="https://blog.cloudflare.com/#test-your-hpack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you have nghttp2 installed, you can test the efficiency of HPACK compression on your website with a bundled tool called h2load.</p>
 	<p>For example:</p>
 	<pre class="language-bash"><code class="language-bash">h2load https://blog.cloudflare.com | tail -6 |head -1
@@ -98,6 +126,14 @@ traffic: 36.01KB (36873) total, 582B (582) headers (space savings 61.15%), 35.30
 	<p>Note that compression ratio improves with additional requests:</p>
 	<pre class="language-bash"><code class="language-bash">h2load https://blog.cloudflare.com -n 4 | tail -6 |head -1
 traffic: 71.46KB (73170) total, 637B (637) headers (space savings 78.68%), 70.61KB (72304) data</code></pre>
-	<h3>Conclusion</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By implementing HPACK compression for HTTP response headers we've seen a significant drop in egress bandwidth. HPACK has been enabled for all Cloudflare customers using HTTP/2, all of whom benefit from faster, smaller HTTP responses.</p>
 </div>

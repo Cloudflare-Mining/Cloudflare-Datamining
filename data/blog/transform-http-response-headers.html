@@ -9,7 +9,15 @@
 	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
 	<p>Today we are announcing the immediate availability of the third action within Transform Rules, “HTTP Response Header Modification”, available for all Cloudflare plans. This new functionality provides Cloudflare users the ability to set or remove HTTP response headers as traffic returns through Cloudflare back to the client. This allows customers to enrich responses with information about how their request was handled, debugging information and even <a href="https://frenxi.com/http-headers-you-dont-expect">recruitment messages</a>.</p>
 	<p>Previously, HTTP response header modification was done using a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
-	<h3>Luggage tags of the World Wide Web</h3>
+	<div class="flex anchor relative">
+		<h3 id="luggage-tags-of-the-world-wide-web">Luggage tags of the World Wide Web</h3>
+		<a href="https://blog.cloudflare.com/#luggage-tags-of-the-world-wide-web" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/12mADL32rqDAMHBIglhf3u/f1f00444520346d6d5dc1a4ce78b7243/image4-14.png" alt="" class="kg-image" width="1057" height="699" loading="lazy">
@@ -19,7 +27,14 @@
 	<p>Generally, you don't need to know what those numbers and words mean. You just know they are important in getting your suitcase from the boarding desk, to the correct airplane, and back to the correct luggage carousel at your destination.</p>
 	<p>These tags contain information about the weight of the suitcase, the destination airport code, baggage tag number, airline carrier, customs handling information, and more. These attributes are all essential, not only for ensuring that your luggage arrives at the correct destination, but also it does so in the safest, most efficient manner.</p>
 	<p>HTTP headers are the luggage tags of the Internet. They are essential to ensuring the request from your browser arrives at the correct destination, and that traffic is returned to your browser using the correct settings also in the safest, most efficient manner.</p>
-	<h3>How are HTTP response headers used?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-http-response-headers-used">How are HTTP response headers used?</h3>
+		<a href="https://blog.cloudflare.com/#how-are-http-response-headers-used" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP headers are set on both the ‘request’ and ‘response’ interactions; ‘request’ being when the client asks for the file and ‘response’ being what the server returns as a result. The functionality announced today pertains specifically to HTTP <i>response</i> headers.</p>
 	<p>HTTP response headers are used to ensure the correct data is returned to the browser along with information which helps the browser handle the data correctly. Common response headers include “Content-Type” which tells the browser the type of the content returned, e.g. “Content-Type: text/html” or “Content-Type: image/png”. Another common header is “Server:” which contains information about the software used to handle the HTTP request, e.g. “Server: cloudflare”.</p>
 	<p>Outside of basic HTTP traffic handling there are many other uses for these response headers. One such example is to improve <i>security</i>. Security mechanisms such as Content Security Policy (CSP), Cross Origin Resource Sharing (CORS) and HTTP Strict Transport Security (HSTS) are all implemented as response headers to improve and harden security for website visitors.</p>
@@ -30,7 +45,14 @@
 	<p>When using <a href="https://workers.cloudflare.com">Cloudflare Workers</a>, the code would be similar to:</p>
 	<pre class="language-bash"><code class="language-bash">response.headers.set("Content-Security-Policy": "default-src 'self' example.com *.example.com",)</code></pre>
 	<p>When the browser receives the HTTP response it will now detect the presence of the Content-Security-Policy header and act appropriately.</p>
-	<h2>Dynamic modification of HTTP response headers</h2>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-modification-of-http-response-headers">Dynamic modification of HTTP response headers</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-modification-of-http-response-headers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ensuring these headers are present on the HTTP response is often the job of the reverse proxy — a server which sits between the client and the server whose job is, amongst many others, to enrich the HTTP response data returned to the client.</p>
 	<p>“HTTP Response Header Modification” is now available for all Cloudflare plans, within Transform Rules. It provides the ability to modify HTTP response headers before they are returned to the visitor, all within Cloudflare. This is especially important when the response is coming from an origin the administrator does not have total control over, such as a SaaS provider or other third party service.</p>
 	<p>![](<a href="https://blog.cloudflare.com/content/images/2021/11/image7-8.png_REGULAR">/content/images/2021/11/image7-8.png_REGULAR</a> "Screenshot of "Transform Rules"")</p>
@@ -77,13 +99,35 @@
 	</ul>
 	<p>An example where functions are commonly used is concat() and to_string() used to take a list of different data types and concatenate to form a single header value. For example, <b>`concat(“score=”,to_string(cf.bot_management.score))</b>` would result in a header value like `score=85`.</p>
 	<p><b>Note</b>: regular expression functions are only available for customers on Business and Enterprise plans.</p>
-	<h2>Optimizing for your website</h2>
+	<div class="flex anchor relative">
+		<h2 id="optimizing-for-your-website">Optimizing for your website</h2>
+		<a href="https://blog.cloudflare.com/#optimizing-for-your-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One other huge benefit of moving HTTP response header modification into Cloudflare is the level of filtering provided in the rule builder. Typically, technologies like CORS and CSP are set as response headers on the entire website — or at best — on a per-directory basis.</p>
 	<p>With Transform Rules, administrators can set headers based upon a number of parameters including the visitor's country of origin, bot score, user agent, requested filename / file extension, request method and <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/fields">more</a>.</p>
 	<p>This allows administrators the ability to implement setups such as having a stricter Content Security Policy for <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription#verified-bots">verified</a> bots vs unverified bots/low bot score traffic.</p>
-	<h2>Try it now</h2>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">Try it now</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP Response Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com">Transform Rule</a> yourself today.</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p>
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->

@@ -9,7 +9,14 @@
 	<p>Leaders and practitioners responsible for <a href="https://www.cloudflare.com/zero-trust/products/email-security">email security</a> are faced with a few truths every day. It’s likely true that their email is cloud-delivered and comes with some built-in protection that does an OK job of stopping spam and commodity malware. It’s likely true that they have spent considerable time, money, and staffing on their Secure Email Gateway (SEG) to stop phishing, malware, and other email-borne threats. Despite this, it’s also true that email continues to be the most frequent source of Internet threats, with Deloitte research finding that 91% of all cyber attacks begin with phishing.</p>
 	<p>If anti-phishing and SEG services have both been around for so long, why do so many phish still get through? If you’re sympathetic to <a href="https://en.wikipedia.org/wiki/Occam's_razor">Occam’s razor</a>, it’s because the SEG was not designed to protect the email environments of today, nor is it effective at reliably stopping today’s phishing attacks.</p>
 	<p>But if you need a stronger case than Occam delivers — then keep on reading.</p>
-	<h3>Why the world has moved past the SEG</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-the-world-has-moved-past-the-seg">Why the world has moved past the SEG</h3>
+		<a href="https://blog.cloudflare.com/#why-the-world-has-moved-past-the-seg" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most prominent change within the email market is also what makes a traditional SEG redundant – the move to cloud-native email services. More than 85% of organizations are expected to embrace a “cloud-first” strategy by 2025, <a href="https://www.gartner.com/en/newsroom/press-releases/2021-11-10-gartner-says-cloud-will-be-the-centerpiece-of-new-digital-experiences">according to Gartner</a>®. Organizations that expect cloud-native scale, resiliency, and flexibility from their security controls are not going to get it from legacy devices such as SEGs.</p>
 	<p>When it comes to email specifically, <a href="https://www.gartner.com/document/4006566">Gartner® notes</a> that, “Advanced email security capabilities are increasingly being deployed as integrated cloud email security solutions rather than as a gateway” - with at least 40% of organizations using built-in protection capabilities from cloud email providers instead of a SEG, by 2023. Today, email comes from everywhere and goes everywhere – putting a SEG in front of your Exchange server is anachronistic; and putting a SEG in front of cloud inboxes in a mobile and remote-first world is intractable. <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security">Email security</a> today should follow your user, should be close to your inbox, and should “be everywhere”.</p>
 	<p>Apart from being architecturally out of time, a SEG also falls short at detecting advanced phishing and socially engineered attacks. This is because a SEG was originally designed to stop spam – a high-volume problem that needs large attack samples to detect and nullify. But today’s phishing attacks are more sniper than scattergun. They are low volume, highly targeted, and exploit our implicit trust in email communications to steal money and data. Detecting modern phishing attacks requires compute-intensive advanced email analysis and threat detection algorithms that a SEG cannot perform at scale.</p>
@@ -19,7 +26,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SK0PsBM13jyobYcZF25fg/008ef98ce78b5dbc01712b2affec8703/image1-12.png" alt="" class="kg-image" width="1194" height="1244" loading="lazy">
 
 	</figure>
-	<h3>To stop phishing, look ahead</h3>
+	<div class="flex anchor relative">
+		<h3 id="to-stop-phishing-look-ahead">To stop phishing, look ahead</h3>
+		<a href="https://blog.cloudflare.com/#to-stop-phishing-look-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditional email security defenses rely on knowledge of yesterday’s active attack characteristics, such as reputation data and threat signatures, to detect the next attack, and therefore can’t reliably defend against modern phishing attacks that continually evolve.</p>
 	<p>What’s needed is forward-looking security technology that is aware not only of yesterday’s active phishing payloads, websites, and techniques — but also has insight into the threat actors’ next moves. Which sites and accounts are they compromising or establishing for use in tomorrow’s attacks? What payloads and techniques are they preparing to use in those attacks? Where are they prodding and probing before an attack?</p>
 	<p>Cloudflare Area 1 proactively scans the Internet for attacker infrastructure and phishing campaigns that are under construction. Area 1’s threat-focused web crawlers dynamically analyze suspicious web pages and payloads, and continuously update detection models as attacker tactics evolve – all to stop phishing attacks days before they reach the inbox.</p>
@@ -30,12 +44,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/wa98Zw9glRlVzhd2Ehdaz/c62819963ab8887da3f6a5da0fb0512f/image4-10.png" alt="" class="kg-image" width="974" height="672" loading="lazy">
 
 	</figure>
-	<h3>Planning for your SEG replacement project</h3>
+	<div class="flex anchor relative">
+		<h3 id="planning-for-your-seg-replacement-project">Planning for your SEG replacement project</h3>
+		<a href="https://blog.cloudflare.com/#planning-for-your-seg-replacement-project" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The best way to get started with your SEG replacement project is deciding whether it’s a straight replacement or an eventual replacement that starts with augmentation. While Cloudflare Area 1 has plenty of customers that have replaced their SEG (more on that later), we have also seen scenarios where customers prefer to run Cloudflare Area 1 downstream of their SEG initially, assess the efficacy of both services, and then make a more final determination. We make the process straightforward either way!</p>
 	<p>As you start the project, it’s important to involve the right stakeholders. At a minimum, you should involve an IT admin to ensure email delivery and productivity isn’t impacted and a security admin to monitor detection efficacy. Other stakeholders might include your channel partner if that’s your preferred procurement process and someone from the privacy and compliance team to verify proper handling of data.</p>
 	<p>Next, you should decide your preferred Cloudflare Area 1 deployment architecture. Cloudflare Area 1 can be deployed as the MX record, over APIs, and can even run in multi-mode deployment. We recommend deploying Cloudflare Area 1 as the MX record for the most effective <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protection against external threats</a>, but the service fits into your world based on your business logic and specific needs.</p>
 	<p>The final piece of preparation involves mapping out your email flow. If you have multiple domains, identify where emails from each of your domains route to. Check your different routing layers (e.g. are there MTAs that relay inbound messages?). Having a good understanding of the logical and physical SMTP layers within the organization will ensure proper routing of messages. Discuss what email traffic Cloudflare Area 1 should scan (north/south, east/west, both) and where it fits with your existing email policies.</p>
-	<h3>Executing the transition plan</h3>
+	<div class="flex anchor relative">
+		<h3 id="executing-the-transition-plan">Executing the transition plan</h3>
+		<a href="https://blog.cloudflare.com/#executing-the-transition-plan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><b>Step 1: Implement email protection</b>Here are the broad steps you should follow if Cloudflare Area 1 is configured as the MX record (time estimate: ~30 minutes):</p>
 	<ul>
 		<li>
@@ -83,12 +111,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVEtkicf9X4ySbz5UZyjE/9f21ce30c1cf8134cdebf3f88d3651c1/image2-16.png" alt="" class="kg-image" width="1800" height="750" loading="lazy">
 
 	</figure>
-	<h3>Metrics to measure success</h3>
+	<div class="flex anchor relative">
+		<h3 id="metrics-to-measure-success">Metrics to measure success</h3>
+		<a href="https://blog.cloudflare.com/#metrics-to-measure-success" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How will you know your SEG replacement project has been successful and had the desired impact? We recommend measuring metrics relevant to both detection efficacy and operational simplicity.</p>
 	<p>On the detection front, the obvious metric to measure is the number and nature of phishing attacks blocked before and after the project. Are you seeing new types of phishing attacks being blocked that you weren’t seeing before? Are you getting visibility into campaigns that hit multiple mailboxes? The other detection-based metric to keep in mind is the number of false positives.</p>
 	<p>On the operational front, it’s critical that email productivity isn’t impacted. A good proxy for this is measuring the number of IT tickets related to email delivery. The availability and uptime of the email security service is another key lever to keep an eye on.</p>
 	<p>Finally, and perhaps most importantly, measure how much time your security team is spending on email security. Hopefully it’s much less than before! A SEG is known to be a heavy-lift service deployment to ongoing maintenance. If Cloudflare Area 1 can free up your team’s time to work on other pressing security concerns, that’s as meaningful as stopping the phish themselves.</p>
-	<h3>You have lots of company</h3>
+	<div class="flex anchor relative">
+		<h3 id="you-have-lots-of-company">You have lots of company</h3>
+		<a href="https://blog.cloudflare.com/#you-have-lots-of-company" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The reason we are articulating a SEG replacement plan here is because many of our customers have done it already and are happy with the outcomes.</p>
 	<p>For example, a Fortune 50 global insurance provider that serves 90 million customers in over 60 countries found their SEG to be insufficient in stopping phishing attacks. Specifically, it was an onerous process to search for “missed phish” once they got past the SEG and reached the inbox. They needed an <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">email security service</a> that could catch these phishing attacks and support a hybrid architecture with both cloud and on-premises mailboxes.</p>
 	<p>After deploying Cloudflare Area 1 downstream of their Microsoft 365 and SEG layers, our customer was protected against more than 14,000 phishing threats within the first month; none of those phishing messages reached a user’s inbox. A one-step integration with existing email infrastructure meant that maintenance and operational issues were next to none. Cloudflare Area 1’s automated message retraction and post-delivery protection also enabled the insurance provider to easily search and remediate any missed phish as well.</p>

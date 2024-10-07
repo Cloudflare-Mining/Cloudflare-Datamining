@@ -19,7 +19,14 @@
 	<p>We don’t think it should work like this.</p>
 	<p>I often think back to that problem I was facing myself three years ago, and that I know developers all around the world face every day. Developers should be able to just focus on the code. Someone else should deal with everything else from setting up infrastructure through making that infrastructure fast and scalable. While we’ve made some architectural decisions in building Workers that enable us to do this better than anyone else, today isn’t about expounding on them (though if you’d like to read more, <a href="https://blog.cloudflare.com/cloud-computing-without-containers">here’s a great blog post detailing some of them</a>). What today is about is really honing Workers in on the needs of developers.</p>
 	<p>We want Workers to bring the dream of serverless to life — &nbsp;of letting developers only worry about bugs in their code. Today marks the start of a sustained push that Cloudflare is making towards building a great developer experience with Workers. We have some exciting things to announce today — but this is just the beginning.</p>
-	<h3>Wrangler: the official Workers CLI</h3>
+	<div class="flex anchor relative">
+		<h3 id="wrangler-the-official-workers-cli">Wrangler: the official Workers CLI</h3>
+		<a href="https://blog.cloudflare.com/#wrangler-the-official-workers-cli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Wrangler, originally open sourced as the Rust CLI for Workers, has graduated into being the official Workers CLI, supporting all your Workers deployment needs.</p>
 	<p>Get started now by installing Wrangler</p>
 	<pre class="language-sh"><code class="language-sh">npm install -g @cloudflare/wrangler</code></pre>
@@ -56,7 +63,14 @@
 			<p>Get started with pre-made <a href="https://workers.cloudflare.com/docs/templates">templates</a></p>
 		</li>
 	</ul>
-	<h3>New and Improved Docs</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-and-improved-docs">New and Improved Docs</h3>
+		<a href="https://blog.cloudflare.com/#new-and-improved-docs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve updated our docs (and used Wrangler to do so!) to make it easier than ever for you to get started and deploy your first application with Workers.</p>
 	<p>Check out our new tutorials:</p>
 	<ul>
@@ -70,24 +84,59 @@
 			<p><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn">Serve and cache files from cloud storage</a></p>
 		</li>
 	</ul>
-	<h3>Multiscript for All</h3>
+	<div class="flex anchor relative">
+		<h3 id="multiscript-for-all">Multiscript for All</h3>
+		<a href="https://blog.cloudflare.com/#multiscript-for-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You asked, we listened. When we introduced Workers, we wanted to keep things as simple as possible. As a developer, you want to break up your code into logical components. Rather than having a single monolithic script, we want to allow you to deploy your code in a way that makes sense to you.</p>
-	<h3>no-domain-required.workers.dev</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-domain-required-workers-dev">no-domain-required.workers.dev</h3>
+		<a href="https://blog.cloudflare.com/#no-domain-required-workers-dev" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Writing software is a creative process: a new project means creating something out of nothing. You may not entirely know what exactly it’s going to be yet, let alone what to name it.</p>
 	<p>We are changing the way you get started on Workers, by allowing you to deploy to a-subdomain-of-your-choice.workers.dev.</p>
 	<p>You may have heard about <a href="https://blog.cloudflare.com/announcing-workers-dev">this announcement</a> back in February, and we’re excited to deliver. For those of you who pre-registered, your subdomains will be waiting for you upon signing up and clicking into Workers.</p>
-	<h3>A Free Tier to Experiment</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-free-tier-to-experiment">A Free Tier to Experiment</h3>
+		<a href="https://blog.cloudflare.com/#a-free-tier-to-experiment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Great products don’t always come from great ideas, they often come from freedom to tinker. When tinkering comes at a price, even if it’s $5, we realized we were limiting peoples’ ability to experiment.</p>
 	<p>Starting today, we are announcing a free tier for Workers.</p>
 	<p>The free tier will allow you to use Workers at up to 100,000 requests per day, on your own domain or workers.dev. You can learn more about the limits <a href="https://workers.cloudflare.com/docs/reference/runtime/limits">here</a>.</p>
-	<h3>New and improved UI</h3>
+	<div class="flex anchor relative">
+		<h3 id="new-and-improved-ui">New and improved UI</h3>
+		<a href="https://blog.cloudflare.com/#new-and-improved-ui" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have packaged this up into a clean, and easy experience that allows you to go from sign up to a deployed Worker in less than 2 minutes:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mYvx3UtHkLBsZDW4DTFIo/2558c9c2e71f30c41b37f6494e3a2936/get-started.gif" alt="" class="kg-image" width="2874" height="1592" loading="lazy">
 
 	</figure>
-	<h3>Our commitment</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-commitment">Our commitment</h3>
+		<a href="https://blog.cloudflare.com/#our-commitment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have a long way to go. This is not about crossing developer experience off our list, rather, about emphasizing our commitment to it. As our co-founder, Michelle likes to say, “we’re only getting started”.</p>
 	<p>There’s a lot here, and there’s a lot more to come. Join us over at <a href="https://workers.cloudflare.com">workers.cloudflare.com</a> to find out more, and if you’re ready to give it a spin, you can sign up there.</p>
 	<p>We’re excited to see what you build!</p>

@@ -1,14 +1,28 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7N1J9zFI9ab89A5h1Ea3iG/01b8debe45c49760641844a304e415bd/BLOG-2495_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Customers that use Cloudflare to manage their DNS often need to create a whole batch of records, enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records"><u>proxying</u></a> on many records, update many records to point to a new target at the same time, or even delete all of their records. Historically, customers had to resort to bespoke scripts to make these changes, which came with their own set of issues. In response to customer demand, we are excited to announce support for batched API calls to the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records"><u>DNS records API</u></a> starting today. This lets customers make large changes to their zones much more efficiently than before. Whether sending a POST, PUT, PATCH or DELETE, users can now execute these four different <a href="https://en.wikipedia.org/wiki/HTTP#Request_methods"><u>HTTP methods</u></a>, and multiple HTTP requests all at the same time.</p>
-	<h2>Efficient zone management matters</h2>
+	<div class="flex anchor relative">
+		<h2 id="efficient-zone-management-matters">Efficient zone management matters</h2>
+		<a href="https://blog.cloudflare.com/#efficient-zone-management-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records"><u>DNS records</u></a> are an essential part of most web applications and websites, and they serve many different purposes. The most common use case for a DNS record is to have a hostname point to an <a href="https://en.wikipedia.org/wiki/IPv4"><u>IPv4</u></a> address, this is called an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-a-record"><u>A record</u></a>:</p>
 	<p><b>example.com</b> 59 IN A <b>198.51.100.0</b></p>
 	<p><b>blog.example.com</b> 59 IN A <b>198.51.100.1</b></p>
 	<p><b>ask.example.com</b> 59 IN A <b>198.51.100.2</b></p>
 	<p>In its most simple form, this enables Internet users to connect to websites without needing to memorize their IP address.&nbsp;</p>
 	<p>Often, our customers need to be able to do things like create a whole batch of records, or enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records"><u>proxying</u></a> on many records, or update many records to point to a new target at the same time, or even delete all of their records. Unfortunately, for most of these cases, we were asking customers to write their own custom scripts or programs to do these tasks for them, a number of which are open sourced and whose content has not been checked by us. These scripts are often used to avoid needing to repeatedly make the same API calls manually. This takes time, not only for the development of the scripts, but also to simply execute all the API calls, not to mention it can leave the zone in a bad state if some changes fail while others succeed.</p>
-	<h2>Introducing /batch</h2>
+	<div class="flex anchor relative">
+		<h2 id="introducing-batch">Introducing /batch</h2>
+		<a href="https://blog.cloudflare.com/#introducing-batch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Starting today, everyone with a <a href="https://developers.cloudflare.com/dns/zone-setups"><u>Cloudflare zone</u></a> will have access to this endpoint, with free tier customers getting access to 200 changes in one batch, and paid plans getting access to 3,500 changes in one batch. We have successfully tested up to 100,000 changes in one call. The API is simple, expecting a POST request to be made to the <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records"><u>new API endpoint</u></a> /dns_records/batch, which passes in a JSON object in the body in the format:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">{
     deletes:[]Record
@@ -101,7 +115,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ZU7nvMlcH2L51IqJrS1zC/72332a5620e251e23d0a8c1991960405/BLOG-2495_2.png" alt="BLOG-2495 2" class="kg-image" width="1999" height="1241" loading="lazy">
 	</figure>
 	<p>We plan to continue improving the dashboard to support more batch actions based on your feedback.</p>
-	<h2>The journey</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-journey">The journey</h2>
+		<a href="https://blog.cloudflare.com/#the-journey" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Although at the surface, this batch endpoint may seem like a fairly simple change, behind the scenes it is the culmination of a multi-year, multi-team effort. Over the past several years, we have been working hard to improve the DNS pipeline that takes our customers' records and pushes them to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. As part of this effort, we have been improving our <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records"><u>DNS Records API</u></a> to reduce the overall latency. The DNS Records API is Cloudflare's most used API externally, serving twice as many requests as any other API at peak. In addition, the DNS Records API supports over 20 internal services, many of which touch very important areas such as DNSSEC, TLS, Email, Tunnels, Workers, Spectrum, and R2 storage. Therefore, it was important to build something that scales.&nbsp;</p>
 	<p>To improve API performance, we first needed to understand the complexities of the entire stack. At Cloudflare, we use <a href="https://www.jaegertracing.io"><u>Jaeger tracing</u></a> to debug our systems. It gives us granular insights into a sample of requests that are coming into our APIs. When looking at API request latency, the <a href="https://www.jaegertracing.io/docs/1.23/architecture/#span"><u>span</u></a> that stood out was the time spent on each individual database lookup. The latency here can vary anywhere from ~1ms to ~5ms.&nbsp;</p>
 	<figure class="kg-card kg-image-card">
@@ -322,7 +343,14 @@
 		</tbody>
 	</table>
 	<p>These are some pretty good improvements! Not only did we reduce the API latency, we also reduced the database query load, benefiting other systems as well.</p>
-	<h2>Weren’t we talking about batching?</h2>
+	<div class="flex anchor relative">
+		<h2 id="werent-we-talking-about-batching">Weren’t we talking about batching?</h2>
+		<a href="https://blog.cloudflare.com/#werent-we-talking-about-batching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I previously mentioned that the /batch endpoint is fully atomic, making use of a single database transaction. However, a single transaction may still require multiple database network calls, and from the table above, that can add up to a significant amount of time when dealing with large batches. To optimize this, we are making use of <a href="https://pkg.go.dev/github.com/jackc/pgx/v4#Batch"><u>pgx/batch</u></a>, a Golang object that allows us to write and subsequently read multiple queries in a single network call. Here is a high level of how the batch endpoint works:</p>
 	<ol>
 		<li>
@@ -643,13 +671,27 @@
 		</tbody>
 	</table>
 	<p>We can see that on average, the new batching API is significantly faster than the regular API trying to do the same actions, and it’s also nearly twice as fast as the batching API without batched database calls. We can see that at 10,000 records, the batching API is a staggering 850x faster than the regular API. As mentioned above, these numbers are likely to change for a number of different reasons, but it’s clear that making several round trips to and from the API adds substantial latency, regardless of the region.</p>
-	<h2>Batch overload</h2>
+	<div class="flex anchor relative">
+		<h2 id="batch-overload">Batch overload</h2>
+		<a href="https://blog.cloudflare.com/#batch-overload" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Making our API faster is awesome, but we don’t operate in an isolated environment. Each of these records needs to be processed and pushed to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. If we have customers creating tens of thousands of records every 10 seconds, we need to be able to handle this downstream so that we don’t overwhelm our system. In a May 2022 blog post titled <a href="https://blog.cloudflare.com/dns-build-improvement"><i><u>How we improved DNS record build speed by more than 4,000x</u></i></a>, I noted<i> </i>that:</p>
 	<blockquote>
 		<p><i>We plan to introduce a batching system that will collect record changes into groups to minimize the number of queries we make to our database and Quicksilver.</i></p>
 	</blockquote>
 	<p>This task has since been completed, and our propagation pipeline is now able to batch thousands of record changes into a single database query which can then be published to Quicksilver in order to be propagated to our global network.&nbsp;</p>
-	<h2>Next steps</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-steps">Next steps</h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have a couple more improvements we may want to bring into the API. We also intend to improve the UI to bring more usability improvements to the dashboard to more easily manage zones. <a href="https://research.rallyuxr.com/cloudflare/lp/cm0zu2ma7017j1al98l1m8a7n?channel=share&amp;studyId=cm0zu2ma4017h1al9byak79iw"><u>We would love to hear your feedback</u></a>, so please let us know what you think and if you have any suggestions for improvements.</p>
 	<p>For more details on how to use the new /batch API endpoint, head over to our <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes"><u>developer documentation</u></a> and <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records"><u>API reference</u></a>.</p>
 </div>

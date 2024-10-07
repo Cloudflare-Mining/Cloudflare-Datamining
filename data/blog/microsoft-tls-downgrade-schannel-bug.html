@@ -1,16 +1,38 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3axBr3KhM3lpCwdtHMpi1U/9469fef2f0dddc898c2b701a2b5d02e3/microsoft-tls-downgrade-schannel-bug.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h3>Initial Problem Report</h3>
+	<div class="flex anchor relative">
+		<h3 id="initial-problem-report">Initial Problem Report</h3>
+		<a href="https://blog.cloudflare.com/#initial-problem-report" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Several months ago we started hearing occasional reports from .NET developers that they were having trouble maintaining HTTPS sessions with one of our customer’s websites. Establishing connections worked just fine but they would periodically get disconnected, resulting in an exception that crashed their application. Around the same time, we also started hearing reports that two other Microsoft products—Internet Explorer and its heir-apparent, Edge—were also having trouble with our edge.</p>
 	<p>Just a few weeks prior, <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">we had updated</a> our handling of TLS session tickets to be more performant and more secure. We suspected these improvements were the trigger and focused our investigation there. What we learned was that the problem ran much deeper than .NET or IE. It went all the way down to the SChannel security package, which provides TLS functionality for a vast array of Microsoft applications.</p>
-	<h3>TLS Session Tickets</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-session-tickets">TLS Session Tickets</h3>
+		<a href="https://blog.cloudflare.com/#tls-session-tickets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before diving into the story further, however, it’s helpful to understand exactly what TLS session tickets are, how they’re beneficial to HTTPS, and what optimizations CloudFlare does to use them at scale. (If you’d like to skip over the primer and jump right to the punchline, go ahead and <a href="https://blog.cloudflare.com/#renewingsessionticketsornot">click here</a>.)</p>
 	<h4>Overview</h4>
 	<p>First introduced in 2006, <a href="https://tools.ietf.org/html/rfc4507">RFC 4507</a> (since deprecated by <a href="https://tools.ietf.org/html/rfc5077">RFC 5077</a>) proposes a "<i>a mechanism that enables the Transport Layer Security (TLS) server to resume sessions and avoid keeping per-client session state</i>". Before the server can absolve itself of maintaining state, however, it must first "<i>encapsulate session state into a ticket and forward it to the client</i>".</p>
 	<p>The client then saves this ticket and presents it to the server the next time it needs to make an HTTPS request, skipping most of the back-and-forth process that’s initially required to establish a TLS session. Instead of the standard protocol negotiation messages, the two parties perform what’s known as an “abbreviated handshake,” jumping right to using the previously agreed upon session details.</p>
 	<p>This shortcut reduces the connection setup time by more than 50%, since the number of round trips was reduced from two to one.</p>
 	<p>Note that the lifetime and continued validity of a ticket is up to both the server and the client: the server communicates a “session lifetime hint” to the client, and the client decides if it’s willing to re-use the session all the way until that expiration. If not, or if there’s any doubt about the session integrity, either side can force a full handshake and regenerate a ticket.</p>
-	<h3>Resuming the Session</h3>
+	<div class="flex anchor relative">
+		<h3 id="resuming-the-session">Resuming the Session</h3>
+		<a href="https://blog.cloudflare.com/#resuming-the-session" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3VAT8f6rBufmgbfy91WOGY/0982f6da7f028d24b4a8cc39fc57cb87/without-with-resume-2.png" alt="Figure 1 - Full TLS handshake vs. abbreviated TLS handshake" class="kg-image" width="3683" height="1921" loading="lazy">
@@ -30,7 +52,14 @@
 	<p>CloudFlare’s solution to this problem, documented in <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">previous</a> blog <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">posts</a>, is to frequently regenerate and synchronize these session ticket keys across our entire global network. We currently do this once per hour.</p>
 	<p>This means we need a mechanism for turning over session ticket keys. For instance, if a client instantiates an HTTPS session at 12:00pm and continues using that ticket past 1:00pm, our edge network will re-encrypt the ticket with a brand new session ticket key.</p>
 	<p>To accomplish this, our web servers must have both the full history of all previous keys that could have encrypted the ticket (i.e., one per hour dating back to the maximum session lifetime of 64,800 seconds) as well as immediate access to each newly generated key. The previous keys are used exclusively to decrypt tickets presented by the client, while the new keys are used to "refresh" the encryption on existing tickets and encrypt tickets for entirely new sessions.</p>
-	<h3>Back to Microsoft</h3>
+	<div class="flex anchor relative">
+		<h3 id="back-to-microsoft">Back to Microsoft</h3>
+		<a href="https://blog.cloudflare.com/#back-to-microsoft" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The handling of these previously issued session tickets — re-wrapped with our newly generated key and sent back to the client in an abbreviated handshake — is where we observed every user agent built on Microsoft SChannel break down.</p>
 	<h4>Renewing Session Tickets (or not)</h4>
 	<p>According to session ticket specification, the server can, for any reason, reject the session ticket presented to it in an abbreviated handshake and force a full negotiation. When it does this, it simply sends the <code>NewSessionTicket</code> message immediately after receiving the <code>Finished</code> message from the client. The client then saves the new ticket and uses it for subsequent requests. This message flow is documented below in Figure 2, and does not present any problems for our customers’ .NET and IE visitors. That is to say, it’s not part of the bug we uncovered.</p>
@@ -53,7 +82,14 @@
 
 	</figure>
 	<h5>Figure 3 - Server Issuing New Session Ticket during Abbreviated Handshake</h5>
-	<h3>The Problem with SChannel</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problem-with-schannel">The Problem with SChannel</h3>
+		<a href="https://blog.cloudflare.com/#the-problem-with-schannel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While this "in-line" <code>NewSessionTicket</code> mechanism works without issue in Chrome or Firefox (Safari still does not have RFC 5077 support) it causes all sorts of trouble with user agents built using Microsoft’s SChannel (i.e., all versions of Internet Explorer, Edge, and .NET running on Windows 8, 8.1, Server 2012, Server 2012 R2, RT, RT 8.1, and 10).</p>
 	<p>What we found, with excellent troubleshooting help from our good friends mentioned at the end of this post, was that when a Microsoft UA saw the <code>NewSessionTicket</code>, it either immediately aborted the connection and threw an exception (.NET) or it downgraded(!) from TLS 1.2 to TLS 1.0. Clearly, neither scenario is desirable, but the latter is a legitimate security concern: SSL/TLS downgrade attacks have been exploited in the past, and they’ll almost definitely be exploited again in the future.</p>
 	<h4>The Nitty Gritty Details</h4>
@@ -103,7 +139,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40cjuNR3tFjQ6VX1A35Yjx/35538701f52dd4718d9913ad1f715911/cap4-1.png" alt="" class="kg-image" width="1280" height="1118" loading="lazy">
 
 	</figure>
-	<h3>What has Microsoft done to fix?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-has-microsoft-done-to-fix">What has Microsoft done to fix?</h3>
+		<a href="https://blog.cloudflare.com/#what-has-microsoft-done-to-fix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After we reported the issue to them, Microsoft was extremely responsive and quick to dig in on the bug. While I’m sure it didn’t hurt that our head of engineering, <a href="https://blog.cloudflare.com/ben-fathi-why-i-joined-cloudflare">Ben Fathi</a>, connected us directly with Matt Thomlinson, Microsoft’s VP of Security—a position Ben used to hold (thanks, Ben!)—it is non-trivial to patch the crypto stack <a href="https://technet.microsoft.com/library/security/3109853.aspx">all the way back</a> through Windows 8.</p>
 	<p>Nor, as we’ve seen from previous SChannel updates, is it an easy or <a href="http://www.gfi.com/blog/fixing-the-fix-microsoft-reissues-schannel-patch">necessarily error-free</a> process. We’d like to thank Microsoft and Matt’s team for their sense of urgency in fixing the issue and rapidly communicating out the resolution to their customers.</p>
 	<p>Here are the affected platforms (and a link to <a href="https://support.microsoft.com/en-us/kb/3109853">the software updates</a>):</p>
@@ -138,9 +181,23 @@
 		<p>So how do you run forward secrecy with several servers and support session tickets? You need to generate session ticket keys randomly, distribute them to the servers without ever touching persistent storage and rotate them frequently. However, I'm not aware of any open source servers that support anything like that.</p>
 	</blockquote>
 	<p>Fortunately, back in late 2013, CloudFlare <a href="https://github.com/nginx/nginx/commit/79be6a5462498af8655aaed141f13a1d2a34abc8">committed code to nginx</a> that allows it to read in multiple session ticket keys at boot. We then hooked up our own internal nginx instances to a centralized key-value store that’s replicated to each datacenter so we can roll these keys over without changing configuration files (or even restarting the processes). This work allowed us to advance the forward secrecy capabilities of open-source projects handling HTTPS such as <a href="http://nginx.org">nginx</a>.</p>
-	<h3>Special Thanks</h3>
+	<div class="flex anchor relative">
+		<h3 id="special-thanks">Special Thanks</h3>
+		<a href="https://blog.cloudflare.com/#special-thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Ferreting out the low-level technical details of this complex problem (and testing a temporary workaround while Microsoft had a chance to roll out the fix) was supported by a number of folks in the TLS community.</p>
 	<p>In particular, I’d like to thank <a href="https://twitter.com/ericlaw">Eric Lawrence</a> of Fiddler fame for having the patience to induce the issue with a packet capture running, Aaron Coleman of <a href="https://www.fitabase.com">Fitabase</a> for providing <a href="https://github.com/aarondcoleman/FitbitProxyTest/blob/master/FitbitProxyASPNetCoreFxTest/Controllers/HomeController.cs">sample code</a> to replicate the issue in .NET, and Jeremiah Lee of <a href="https://www.fitbit.com">Fitbit</a> for support testing the workaround that was implemented by CloudFlare's <a href="https://twitter.com/lziest">Zi Lin</a>.</p>
-	<h3>We're Hiring!</h3>
+	<div class="flex anchor relative">
+		<h3 id="were-hiring">We're Hiring!</h3>
+		<a href="https://blog.cloudflare.com/#were-hiring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Would you like to work on solving interesting problems like this for hundreds of millions of website visitors? If so, you're in luck: the CloudFlare Security Engineering team is hiring. Apply through <a href="https://www.cloudflare.com/join-our-team">our career page</a> - we'd love to talk with you.</p>
 </div>

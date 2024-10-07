@@ -1,7 +1,14 @@
 <div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ykhqWHB5a5uSWg1MqRXxQ/2e935be43972c6fb6333092f62adcfd0/BLOG-2517_1.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>To celebrate <a href="https://builderday.pages.dev"><u>Builder Day 2024</u></a>, we’re shipping 18 updates inspired by direct feedback from developers building on Cloudflare. Choosing a platform isn't just about current technologies and services — it's about betting on a partner that will evolve with your needs as your project grows and the tech landscape shifts. We’re in it for the long haul with you.</p>
-	<h3>Watch on Cloudflare TV</h3>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f37bfe2e21799996f84c7ff4e498893d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff37bfe2e21799996f84c7ff4e498893d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D8s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div>
@@ -75,11 +82,6 @@
 		</li>
 	</ul>
 	<p>Everything in this post is available for you to use today. Keep reading to learn more, and watch the <a href="https://cloudflare.tv/event/builder-day-live-stream/xvm4qdgm"><u>Builder Day Live Stream</u></a> for demos and more.</p>
-	<style>
-		h2 {
-			scroll-margin-top: 4rem;
-		}
-	</style>
 	<h2 id="logs-for-every-worker">Persistent Logs for every Worker</h2>
 	<p>Starting today in open beta, you can automatically retain logs from your Worker, with full search, query, and filtering capabilities available directly within the Cloudflare dashboard. All newly created Workers will have this setting automatically enabled. This marks the first step in the development of our observability platform, following <a href="https://blog.cloudflare.com/cloudflare-acquires-baselime-expands-observability-capabilities"><u>Cloudflare’s acquisition of Baselime</u></a>.</p>
 	<p>Getting started is easy – just add two lines to your Worker’s wrangler.toml and redeploy:</p>
@@ -420,7 +422,14 @@ compatibility_date = "2024-09-23"
 	<pre class="language-javascript"><code class="language-javascript">https://example.com/cdn-cgi/image/format=auto/thumbnail.png</code></pre>
 	<p>This means that the original PNG image may be served as AVIF to one user and WebP to another. Without a subscription, transforming images from remote sources is free up to 5,000 unique transformations per month. Once you exceed this limit, any already cached transformations will continue to be served, but you’ll need a <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages"><u>paid Images plan</u></a> to request new transformations or to purchase storage within Images.</p>
 	<p>To get started, navigate to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages"><u>Images in the dashboard</u></a> to enable transformations on your zone.</p>
-	<h2>Dive deep into more announcements from Builder Day</h2>
+	<div class="flex anchor relative">
+		<h2 id="dive-deep-into-more-announcements-from-builder-day">Dive deep into more announcements from Builder Day</h2>
+		<a href="https://blog.cloudflare.com/#dive-deep-into-more-announcements-from-builder-day" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We shipped so much that we couldn’t possibly fit it all in one blog post. These posts dive into the technical details of what we’re announcing at Builder Day:</p>
 	<ul>
 		<li>
@@ -436,7 +445,14 @@ compatibility_date = "2024-09-23"
 			<p><a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>Zero-latency SQLite storage in every Durable Object</u></a></p>
 		</li>
 	</ul>
-	<h2>Build the next big thing on Cloudflare</h2>
+	<div class="flex anchor relative">
+		<h2 id="build-the-next-big-thing-on-cloudflare">Build the next big thing on Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#build-the-next-big-thing-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is for builders,&nbsp;and everything we’re announcing at Builder Day, you can start building with right away. We’re now offering <a href="https://blog.cloudflare.com/startup-program-250k-credits"><u>$250,000 in credits to use on our Developer Platform to qualified startups</u></a>, so that you can get going even faster, and become the next company to reach hypergrowth scale with a small team, and not waste time provisioning infrastructure and doing undifferentiated heavy lifting. Focus on shipping, and we’ll take care of the rest.</p>
 	<p>Apply to the startup program <a href="https://www.cloudflare.com/forstartups"><u>here</u></a>, or stop by and say hello in the <a href="https://discord.cloudflare.com"><u>Cloudflare Developers Discord</u></a>.</p>
 </div>

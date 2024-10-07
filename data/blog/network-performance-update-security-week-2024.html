@@ -7,10 +7,24 @@
 	</figure>
 	<p>We constantly measure our own network’s performance against other networks, look for ways to improve our performance compared to them, and share the results of our efforts. Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been sharing benchmarking results we’ve run against other networks to see how we compare.</p>
 	<p>In this post we are going to share the most recent updates since our last post <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2023">in September</a>, and talk about how we are getting as fast as we are.</p>
-	<h3>How we stack up</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-stack-up">How we stack up</h3>
+		<a href="https://blog.cloudflare.com/#how-we-stack-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been taking a close look at the most reported eyeball-facing ISPs and taking actions for the specific networks where we have some room for improvement. Cloudflare was already the fastest provider for TCP Connection time at the 95th percentile for 44% of the networks around the world (we define a network as country and AS number pair). We chose this metric to show how our network helps make your websites faster by getting you to where your customers are. Taking a look at the numbers, in July 2022, Cloudflare was ranked #1 in 33% of the networks and was within 2 ms (95th percentile TCP Connection Time) or 5% of the #1 provider for 8% of the networks that we measured. For reference, our closest competitor was the fastest for 20% of networks.</p>
 	<p>As of August 30, 2023, Cloudflare was the fastest provider for 44% of networks — and was within 2 ms (95th percentile TCP Connection Time) or 5% of the fastest provider for 10% of the networks that we measured—whereas our closest competitor (Amazon Cloudfront) was the fastest for 19% of networks. As of February 15, 2024, we are still #1 in 44% of networks for 95th percentile TCP Connection Time. Let’s dig into the data.</p>
-	<h3>Lightning fast</h3>
+	<div class="flex anchor relative">
+		<h3 id="lightning-fast">Lightning fast</h3>
+		<a href="https://blog.cloudflare.com/#lightning-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking at 95th percentile TCP connect times from November 18, 2023, to February 15, 2024, Cloudflare is the #1 provider in 44% of the top 1000 networks:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -132,7 +146,14 @@
 
 	</figure>
 	<p>These numbers show that we’re reducing the overall TCP connection time around the world while simultaneously staying ahead of the competition. Let’s talk about how we get these numbers and what we’re doing to make you even faster.</p>
-	<h3>Measuring What Matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="measuring-what-matters">Measuring What Matters</h3>
+		<a href="https://blog.cloudflare.com/#measuring-what-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As a quick reminder, here’s how we get the data for our measurements: when users receive a Cloudflare-branded error page, we use Real User Measurements (RUM) and fetch a small file from Cloudflare, Akamai, Amazon CloudFront, Fastly, and Google Cloud CDN. Browsers around the world report the performance of those providers from the perspective of the end-user network they are on. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">original Speed Week blog post</a>.</p>
 	<p>Using the RUM data, we measure various performance metrics, such as TCP Connection Time, Time to First Byte (TTFB), and Time to Last Byte (TTLB), for ourselves and other providers.</p>
 	<p>If we only collect data from a browser when we return an error page, you could see how variable the data can get: if one network or website is having a problem in a certain country, that country could overreport, meaning those networks would be more highly weighted in the calculations because more users reported from that network during a given time period.</p>
@@ -140,7 +161,14 @@
 	<p>This phenomenon could cause the networks we look at to change week over week. Going back to the Brazil example, if the website that was throwing a bunch of errors fixed their problem, and we no longer saw measurements from that network, they may not show up as a “most reported network” depending on when we look at the data. This means that the networks we look at to consider where we are fastest are dependent on which networks are sending us the most reports at any given time, which is not optimal if we’re trying to get faster in these networks. We need to be able to get a consistent signal on these networks to understand where we’re faster and where we’re not.</p>
 	<p>We’ve addressed this issue by creating a fixed list of the networks we want to look at. We did this by looking at <a href="https://stats.labs.apnic.net/aspop">public stats</a> on user population by network and then comparing that with our sample sizes by network until we identified the 1000 networks we want to examine. &nbsp;This ensures that day over day, the networks we look at are the same.</p>
 	<p>Now let’s talk about what makes us faster in more places than other networks: HTTP/3.</p>
-	<h3>Blazing fast speeds with HTTP/3</h3>
+	<div class="flex anchor relative">
+		<h3 id="blazing-fast-speeds-with-http-3">Blazing fast speeds with HTTP/3</h3>
+		<a href="https://blog.cloudflare.com/#blazing-fast-speeds-with-http-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One reason why Cloudflare is the fastest in the most networks is because we’ve been leading the charge with adoption and usage of <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> on our platform. &nbsp;HTTP/3 allows for faster connectivity behavior which means we can get connections established faster and get data flowing. HTTP/3 is currently used by around 31% of Internet traffic:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -216,6 +244,13 @@
 	</table><!--kg-card-end: html-->
 	<p>At P95, Cloudflare is 116 ms faster for connection times when HTTP/3 is enabled. This performance gain helps us be the fastest in the most networks.</p>
 	<p>But why does HTTP/3 help make us faster? HTTP/3 allows for faster connection setup times, which lets us take greater advantage of our global network footprint to be the fastest in the most networks. HTTP/3 is built on top of the QUIC protocol, which multiplexes <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp">UDP</a> packets to allow for parallel streams to be sent at the same time. This means that TLS encryption can happen in parallel with connection establishment, shortening the amount of time that is needed to set up a secure connection. Paired with Cloudflare’s network that is incredibly close to end-users, this makes for significant latency reductions on user Connect times. All major browsers have HTTP/3 enabled by default, so you too can realize these latency improvements by <a href="https://developers.cloudflare.com/speed/optimization/protocol/http3">enabling HTTP/3</a> on your website today.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>
 </div>

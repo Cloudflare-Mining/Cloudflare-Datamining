@@ -9,7 +9,14 @@
 	</figure>
 	<p>The Internet, in its purest form, is a loosely connected graph of independent networks (also called <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system">Autonomous Systems</a> (AS for short)). These networks use a signaling protocol called <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp">BGP</a> (Border Gateway Protocol) to inform their neighbors (also known as peers) about the reachability of IP prefixes (a group of IP addresses) in and through their network. Part of this exchange contains useful metadata about the IP prefix that are used to inform network routing decisions. One example of the metadata is the full AS-path, which consists of the different autonomous systems an IP packet needs to pass through to reach its destination.</p>
 	<p>As we all want our packets to get to their destination as fast as possible, selecting the shortest AS-path for a given prefix is a good idea. This is where something called prepending comes into play.</p>
-	<h2>Routing on the Internet, a primer</h2>
+	<div class="flex anchor relative">
+		<h2 id="routing-on-the-internet-a-primer">Routing on the Internet, a primer</h2>
+		<a href="https://blog.cloudflare.com/#routing-on-the-internet-a-primer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's briefly talk about how the Internet works at its most fundamental level, before we dive into some nitty-gritty details.</p>
 	<p>The Internet is, at its core, a massively interconnected network of thousands of networks. Each network owns two things that are critical:</p>
 	<p>1. An Autonomous System Number (ASN): a 32-bit integer that uniquely identifies a network. For example, one of the Cloudflare ASNs (we have multiple) is 13335.</p>
@@ -46,7 +53,14 @@
         192.0.2.0/24</code></pre>
 	<p>As you can see, BGP messages contain more than just the IP prefix (the NLRI bit) and the path, but also a bunch of other metadata that provides additional information about the path. Other fields include communities (more on that later), as well as MED, or origin code. MED is a suggestion to other directly connected networks on which path should be taken if multiple options are available, and the lowest value wins. The origin code can be one of three values: IGP, EGP or Incomplete. IGP will be set if you originate the prefix through BGP, EGP is no longer used (it’s an ancient routing protocol), and Incomplete is set when you distribute a prefix into BGP from another routing protocol (like IS-IS or OSPF).</p>
 	<p>Now that source A knows how to get to Destination B through two different networks, let's talk about traffic engineering!</p>
-	<h2>Traffic engineering</h2>
+	<div class="flex anchor relative">
+		<h2 id="traffic-engineering">Traffic engineering</h2>
+		<a href="https://blog.cloudflare.com/#traffic-engineering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traffic engineering is a critical part of the day to day management of any network. Just like in the physical world, detours can be put in place by operators to optimize the traffic flows into (inbound) and out of (outbound) their network. Outbound traffic engineering is significantly easier than inbound traffic engineering because operators can choose from neighboring networks, even prioritize some traffic over others. In contrast, inbound traffic engineering requires influencing a network that is operated by someone else entirely. The autonomy and self-governance of a network is paramount, so operators use available tools to inform or shape inbound packet flows from other networks. The understanding and use of those tools is complex, and can be a challenge.</p>
 	<p>The available set of traffic engineering tools, both in- and outbound, rely on manipulating attributes (metadata) of a given route. As we’re talking about traffic engineering between independent networks, we’ll be manipulating the attributes of an EBGP-learned route. BGP can be split into two categories:</p>
 	<ol>
@@ -58,7 +72,14 @@
 		</li>
 	</ol>
 	<p>While the protocol is the same, certain attributes can be exchanged on an IBGP session that aren’t exchanged on an EBGP session. One of those is local-preference. More on that in a moment.</p>
-	<h3>BGP best path selection</h3>
+	<div class="flex anchor relative">
+		<h3 id="bgp-best-path-selection">BGP best path selection</h3>
+		<a href="https://blog.cloudflare.com/#bgp-best-path-selection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a network is connected to multiple other networks and service providers, it can receive path information to the same IP prefix from many of those networks, each with slightly different attributes. It is then up to the receiving network of that information to use a BGP best path selection algorithm to pick the “best” prefix (and route), and use this to forward IP traffic. I’ve put “best” in quotation marks, as best is a subjective requirement. “Best” is frequently the shortest, but what can be best for my network might not be the best outcome for another network.</p>
 	<p>BGP will consider multiple prefix attributes when filtering through the received options. However, rather than combine all those attributes into a single selection criteria, BGP best path selection uses the attributes in tiers -- at any tier, if the available attributes are sufficient to choose the best path, then the algorithm terminates with that choice.</p>
 	<p>The BGP best path selection algorithm is extensive, containing 15 discrete steps to select the best available path for a given prefix. Given the numerous steps, it’s in the interest of the network to decide the best path as early as possible. The first four steps are most used and influential, and are depicted in the figure below as sieves.</p>
@@ -95,15 +116,36 @@
         192.0.2.0/24</code></pre>
 	<p>Specifically, operators can do AS-path prepending. When doing AS-path prepending, an operator adds additional autonomous systems to the path (usually the operator uses their own AS, but that’s not enforced in the protocol). This way, an AS-path can go from a length of 1 to a length of 255. As the length has now increased dramatically, that specific path for the route will not be chosen. By changing the AS-path advertised to different peers, an operator can control the traffic flows coming into their network.</p>
 	<p>Unfortunately, prepending has a catch: To be the deciding factor, all the other attributes need to be equal. This is rarely true, especially in large networks that are able to choose from many possible routes to a destination.</p>
-	<h2>Business Policy Engine</h2>
+	<div class="flex anchor relative">
+		<h2 id="business-policy-engine">Business Policy Engine</h2>
+		<a href="https://blog.cloudflare.com/#business-policy-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>BGP is colloquially also referred to as a Business Policy Engine: it does <b>not</b> select the best path from a performance point of view; instead, and more often than not, it will select the best path from a <i>business</i> point of view. The business criteria could be anything from investment (port) efficiency to increased revenue, and more. This may sound strange but, believe it or not, this is what BGP is designed to do! The power (and complexity) of BGP is that it enables a network operator to make choices according to the operator’s needs, contracts, and policies, many of which cannot be reflected by conventional notions of engineering performance.</p>
-	<h3>Different local preferences</h3>
+	<div class="flex anchor relative">
+		<h3 id="different-local-preferences">Different local preferences</h3>
+		<a href="https://blog.cloudflare.com/#different-local-preferences" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A lot of networks (including Cloudflare) assign a local preference depending on the type of connection used to send us the routes. A higher value is a higher preference. For example, routes learned from transit network connections will get a lower local preference of 100 because they are the most costly to use; backbone-learned routes will be 150, Internet exchange (IX) routes get 200, and lastly private interconnect (PNI) routes get 250. This means that for egress (outbound) traffic, the Cloudflare network, by default, will prefer a PNI-learned route, even if a shorter AS-path is available through an IX or transit neighbor.</p>
 	<p>Part of the reason a PNI is preferred over an IX is reliability, because there is no third-party switching platform involved that is out of our control, which is important because we operate on the assumption that all hardware can and will eventually break. Another part of the reason is for port efficiency reasons. Here, efficiency is defined by cost per megabit transferred on each port. Roughly speaking, the cost is calculated by:</p>
 	<p><code>((cost_of_switch / port_count) + transceiver_cost)</code></p>
 	<p>which is combined with the cross-connect cost (might be monthly recurring (MRC), or a one-time fee). PNI is preferable because it helps to optimize value by reducing the overall cost per megabit transferred, because the unit price decreases with higher utilization of the port.</p>
 	<p>This reasoning is similar for a lot of other networks, and is very prevalent in transit networks. BGP is at least as much about cost and business policy, as it is about performance.</p>
-	<h3>Transit local preference</h3>
+	<div class="flex anchor relative">
+		<h3 id="transit-local-preference">Transit local preference</h3>
+		<a href="https://blog.cloudflare.com/#transit-local-preference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For simplicity, when referring to transits, I mean the <a href="https://en.wikipedia.org/wiki/Tier_1_network">traditional tier-1 transit networks</a>. Due to the nature of these networks, they have two distinct sets of network peers:</p>
 	<p>1. Customers (like Cloudflare)2. Settlement-free peers (like other tier-1 networks)</p>
 	<p>In normal circumstances, transit customers will get a higher local preference assigned than the local preference used for their settlement-free peers. This means that, no matter how much you prepend a prefix, if traffic enters that transit network, traffic will <b>always</b> land on your interconnection with that transit network, it will not be offloaded to another peer.</p>
@@ -121,7 +163,14 @@
 
 	</figure>
 	<p>In this scenario, not a lot has changed, but Origin A is now multi-homed behind the two transit providers. In this case, the AS-path prepending was effective, as the paths seen on the Origin A side are both the prepended and non-prepended path. As long as Origin A is not doing any egress traffic engineering, and is treating both transit networks equally, then the path chosen will be Origin A → Transit A → Cloudflare.</p>
-	<h3>Community-based traffic engineering</h3>
+	<div class="flex anchor relative">
+		<h3 id="community-based-traffic-engineering">Community-based traffic engineering</h3>
+		<a href="https://blog.cloudflare.com/#community-based-traffic-engineering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So we have now identified a pretty critical problem within the Internet ecosystem for operators: with the tools mentioned above, it’s not always (some might even say outright impossible) possible to accurately dictate paths traffic can ingress your own network, reducing the control an autonomous system has over its own network. Fortunately, there is a solution for this problem: community-based local preference.</p>
 	<p>Some transit providers allow their customers to influence the local preference in the transit network through the use of BGP communities. BGP communities are an optional transitive attribute for a route advertisement. The communities can be informative (“I learned this prefix in Rome”), but they can also be used to trigger actions on the receiving side. For example, Cogent publishes the following action communities:</p><!--kg-card-begin: html-->
 	<table width="100%">
@@ -196,7 +245,14 @@
 
 	</figure>
 	<p>Which is exactly what we wanted!</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AS-path prepending is still useful, and has its use as part of the toolchain for operators to do traffic engineering, but should be used sparingly. <a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf">Excessive prepending opens a network up to wider spread route hijacks</a>, which should be avoided at all costs. As such, using community-based ingress traffic engineering is highly preferred (and recommended). In cases where communities aren’t available (or not available to steer customer traffic), prepends can be applied, but I encourage operators to actively monitor their effects, and roll them back if ineffective.</p>
 	<p>As a side-note, P Marcos et al. have published an interesting paper on AS-path prepending, and go into some trends seen in relation to prepending, I highly recommend giving it a read: <a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
 </div>

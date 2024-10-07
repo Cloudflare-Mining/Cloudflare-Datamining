@@ -8,7 +8,14 @@
 	<p>The closed beta allowed us to keep improving the service and make it even more robust, compliant with all the technical nuances of email, and scalable. Today we're pleased to report that we have over two hundred thousand zones testing Email Routing in production, and we started the countdown to open beta and global availability.</p>
 	<p>With Email Routing, you can effectively start receiving Emails in any of your domains for any number of custom addresses you want and forward the messages to any existing destination mailboxes. We will automatically set up everything for you, and you can have it running in minutes today, at no cost.</p>
 	<p>Here's a step-by-step tutorial on how you can start receiving emails to <b>example.com</b>, forward them to Gmail (or any other email provider) at <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a>.</p>
-	<h3>Using Cloudflare Email Routing with Gmail</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-cloudflare-email-routing-with-gmail">Using Cloudflare Email Routing with Gmail</h3>
+		<a href="https://blog.cloudflare.com/#using-cloudflare-email-routing-with-gmail" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, login to your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Femail%2Foverview">Cloudflare Dashboard</a> and select your <b>example.com</b> zone. Click "Email (Beta)" in the left navigation panel, and request to join the Beta program. </p>
 	<p>Today it still takes a couple of days to get approved into the beta, but feel free to ping us on the <a href="https://discord.com/invite/cloudflaredev">Discord server</a> or <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">community forum</a> if you can't wait.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -35,7 +42,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h7VjUXWeRqPgW0JWh1Uxn/490c16c95cbcbc1ed7b7676f13524668/image1-22.png" alt="" class="kg-image" width="1999" height="1476" loading="lazy">
 
 	</figure>
-	<h3>Gmail address conventions</h3>
+	<div class="flex anchor relative">
+		<h3 id="gmail-address-conventions">Gmail address conventions</h3>
+		<a href="https://blog.cloudflare.com/#gmail-address-conventions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Gmail and G suite, now Google Workspace, support two email address conventions that help organize your messages and fight spam.</p>
 	<p>The first one is the plus ("+") sign. If you append a "+" sign and any combination of words after your email address, it will still get delivered to your inbox. For example, you can use <a href="mailto:username13335+finance@gmail.com"><b>username13335+finance@gmail.com</b></a>, and it will get delivered at <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a> and automatically get tagged “finance”. You can then use this to set up filters in Gmail.</p>
 	<p>The second one is Gmail ignores dots (".") in addresses entirely. For instance, sending an email to <a href="mailto:username.13335@gmail.com"><b>username.13335@gmail.com</b></a>, <a href="mailto:user.name.13335@gmail.com"><b>user.name.13335@gmail.com</b></a>, or <a href="mailto:username13335@gmail.com"><b>username13335@gmail.com</b></a> is all the same.</p>
@@ -45,7 +59,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/64SEk5XKelDXh1blIwkpx4/823547e8a36b3e1ffd87d94fc5367601/PastedGraphic-6.png" alt="" class="kg-image" width="2094" height="558" loading="lazy">
 
 	</figure>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is only one small example of what you can do with Email Routing today. We hope you find it helpful if you're looking for a new home for your email. For more information see our <a href="https://developers.cloudflare.com/email-routing">documentation pages</a>.</p>
 	<p>Email needs more innovation. We're immensely excited about <a href="https://www.cloudflare.com/products/email-routing">Email Routing</a> and our ideas for it in the roadmap. Expect improved metrics and advanced routing options in our rules engine in the near future.</p>
 	<p>Feel free to join the Beta today and ping us in our <a href="https://discord.com/invite/cloudflaredev">Discord server</a> or <a href="https://community.cloudflare.com/new-topic?category=Feedback%2FPreviews+%26+Betas&amp;tags=email">community forum</a> if you can't wait; we'll do our best to prioritize the community requests before we open the service.</p>

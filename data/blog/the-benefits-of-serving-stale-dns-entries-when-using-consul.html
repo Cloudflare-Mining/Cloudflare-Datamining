@@ -1,10 +1,24 @@
 <div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/lZtEYoEuiTfYE9d6hCWuF/066705059496b9595f820859c96ef2ca/the-benefits-of-serving-stale-dns-entries-when-using-consul.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>Introduction</h2>
+	<div class="flex anchor relative">
+		<h2 id="introduction">Introduction</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use <a href="https://www.consul.io">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>
 	<p>The usual way to solve these issues is by caching values so that at least subsequent requests are resolved quickly, and this is exactly what our resolver of choice, <a href="https://www.nlnetlabs.nl/projects/unbound/about">Unbound</a>, is configured to do. The problem remains when the cache expires. When it expires, the next client will have to wait while Unbound resolves the name using the network. To have a low recovery time in case some service needs to failover and clients need to use another address we use a small TTL (30 seconds) in our records and as such cache expirations happen often.</p>
 	<p>There are at least two strategies to deal with this: prefetching and stale cache.</p>
-	<h2>Prefetching</h2>
+	<div class="flex anchor relative">
+		<h2 id="prefetching">Prefetching</h2>
+		<a href="https://blog.cloudflare.com/#prefetching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When prefetching is turned on, the server tries to refresh DNS records in the background before they expire. In practice, the way this works is: if an entry is served from cache and the TTL is less than 10% of the lifetime of the records, the server responds to the client, but in the background, it dispatches a job to refresh the record across the network. If it all goes as planned, the entry is refreshed in the cache before the TTL expires, and no client is ever left waiting for the network resolution.</p>
 	<p>This works very well for records that are accessed frequently, but poses issues in two situations: records that are accessed infrequently and records that have a small TTL. In both cases it is unlikely that a prefetch would be triggered, and so the cache expires and the next client will have to wait for the network resolution.</p>
 	<figure class="kg-card kg-image-card ">
@@ -13,7 +27,14 @@
 
 	</figure>
 	<p>In our case, the records have a 30 second TTL, so frequently no requests come in during the yellow "prefetch" stage, which bumps the records out of the cache and causes the next client to have to wait for the slow network resolution. Prefetching was already turned on in our Unbound configuration but this still was not enough for our use case.</p>
-	<h2>Stale cache</h2>
+	<div class="flex anchor relative">
+		<h2 id="stale-cache">Stale cache</h2>
+		<a href="https://blog.cloudflare.com/#stale-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another option is to serve stale records from the cache while we dispatch a job to refresh the record in the background without keeping the client waiting for the response. This would provide benefits in two different scenarios:</p>
 	<ul>
 		<li>
@@ -30,12 +51,26 @@
 
 	</figure>
 	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
-	<h3>Previous dealings with Unbound's stale cache</h3>
+	<div class="flex anchor relative">
+		<h3 id="previous-dealings-with-unbounds-stale-cache">Previous dealings with Unbound's stale cache</h3>
+		<a href="https://blog.cloudflare.com/#previous-dealings-with-unbounds-stale-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Stale cache had been tried before at Cloudflare in 2017, and at that time, we encountered two problems:</p>
 	<p><b>1. Unbound could serve stale records from cache indefinitely</b>We could solve this through configuration that did not exist in 2017, but we had to test it.</p>
 	<p><b>2. Unbound serves negative/incomplete information from the expired cache</b>It was reported that Unbound would serve incomplete chains of responses to clients (for example, a CNAME record with no corresponding A/AAAA record).</p>
 	<p>This turned out to be unconfirmed but it is a failure mode that nevertheless we wanted to make sure Unbound could handle since it would be possible for parts of the response chain to be purged from the stale cache before others.</p>
-	<h3>Test Configuration</h3>
+	<div class="flex anchor relative">
+		<h3 id="test-configuration">Test Configuration</h3>
+		<a href="https://blog.cloudflare.com/#test-configuration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As mentioned before we would need to test a current version of Unbound, come up with an up-to-date stale cache configuration, and test the scenarios that posed problems when we last tried to use it plus any others that we came up with. The Unbound version used for tests was 1.13.0 and the stale cache was configured thus:</p>
 	<ul>
 		<li>
@@ -138,9 +173,24 @@ service2.service.consul. 58 IN A 192.0.2.200
 	<p>We can see that the first attempt was served from the stale cache, since the address was already changed on Consul to <i>192.0.2.200</i>, and the query time was 500ms. The next attempt was served from the fresh cache, hence the 0ms response time, and so we know that the cache was refreshed in the background.</p>
 	<h4><b>Test notes</b></h4>
 	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
-	<h2>Deployment status</h2>
+	<div class="flex anchor relative">
+		<h2 id="deployment-status">Deployment status</h2>
+		<a href="https://blog.cloudflare.com/#deployment-status" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This change has already been deployed to all of our data centers, and while the change addressed our original use case, there were some interesting side-effects as can be seen from the graphs below.</p>
-	<h3>Decreased in-flight requests</h3>
+	<div class="flex anchor relative">
+		<h3 id="decreased-in-flight-requests">Decreased in-flight requests</h3>
+		<a href="https://blog.cloudflare.com/#decreased-in-flight-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SEqkHk3xrVWSixpgdbdZa/ce9cbe52cb574b4274603917da9e2c8c/image2-2.png" alt="" class="kg-image" width="1624" height="844" loading="lazy">
@@ -153,7 +203,15 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	</figure>
 	<p>The same graph from the Perth data center, which received the change on a later day.</p>
-	<h3>Decrease in P99 latency</h3>
+	<div class="flex anchor relative">
+		<h3 id="decrease-in-p99-latency">Decrease in P99 latency</h3>
+		<a href="https://blog.cloudflare.com/#decrease-in-p99-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sHaBdYvhCW0SdPdPLm03F/f5551ac3ae68ee8c6f35574f7fa3f5d1/image15.png" alt="" class="kg-image" width="1622" height="841" loading="lazy">
@@ -172,7 +230,15 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	</figure>
 	<p>The decrease in P99 latencies directly correlates to the start of serving stale entries, even though there are not many of them. In the graph above we can observe the number of stale records served per second for the same data center, using the last 3 minutes of datapoints.</p>
-	<h3>Decreased general error rate</h3>
+	<div class="flex anchor relative">
+		<h3 id="decreased-general-error-rate">Decreased general error rate</h3>
+		<a href="https://blog.cloudflare.com/#decreased-general-error-rate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/49nNtzXobSQtD0tgnddiJL/cc4867491849f8a7b64ed74f938f61d5/image12.png" alt="" class="kg-image" width="1635" height="865" loading="lazy">
@@ -185,7 +251,15 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	</figure>
 	<p>Graph from the Vientiane data center, which received the change on February 1.</p>
-	<h3>Less jitter on the rate of load balancer queries by RRDNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="less-jitter-on-the-rate-of-load-balancer-queries-by-rrdns">Less jitter on the rate of load balancer queries by RRDNS</h3>
+		<a href="https://blog.cloudflare.com/#less-jitter-on-the-rate-of-load-balancer-queries-by-rrdns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6LFLwd8W5wriMKlsZZdCXG/0536db4e8cb6f4077ca6b780053c9f7d/image11.png" alt="" class="kg-image" width="1634" height="862" loading="lazy">
@@ -198,7 +272,14 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	</figure>
 	<p>A graph from the Doha data center, which received the change on February 1.</p>
-	<h3>Miscellaneous Unbound metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="miscellaneous-unbound-metrics">Miscellaneous Unbound metrics</h3>
+		<a href="https://blog.cloudflare.com/#miscellaneous-unbound-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This change also had a positive effect on several Unbound-specific metrics, below are several graphs from the Perth data center that received the change on February 8.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -231,8 +312,22 @@ service2.service.consul. 58 IN A 192.0.2.200
 
 	</figure>
 	<p>How it started vs how it's going</p>
-	<h3>Further improvements</h3>
+	<div class="flex anchor relative">
+		<h3 id="further-improvements">Further improvements</h3>
+		<a href="https://blog.cloudflare.com/#further-improvements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the future, we would like to tweak the <i>serve-expired-client-timeout</i> value, which is currently set to 500ms. It was chosen conservatively, at a time when we were cautiously experimenting with a feature that had been problematic in the past, and our gut feeling is that it can be at least halved without causing issues to further improve the client’s experience. There is also the possibility of using different values per data center, for example picking up the P90 resolve latency value which differs per datacenter, and this is something that we want to explore further.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are enabling Unbound to return expired entries from the cache whenever an upstream takes longer than 500ms to respond, while refreshing the cache in the background, unless 3600 seconds have elapsed from the record's original TTL.</p>
 </div>

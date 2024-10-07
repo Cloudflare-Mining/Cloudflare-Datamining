@@ -11,7 +11,14 @@
 	<p>One of the principal challenges we faced with Geo Key Manager v1 (GeoV1) was the inflexibility of our access control policies. Customers required richer data localization, often spurred by regulatory concerns. Internally, events such as the conflict in Ukraine reinforced the need to be able to quickly restrict access to sensitive key material. Geo Key Manager v1’s underlying cryptography was a combination of identity-based broadcast encryption and identity-based revocation that simulated a subset of the functionality offered by Attribute-Based Encryption (ABE). Replacing this with an established ABE scheme addressed the inflexibility of our access control policies and provided a more secure foundation for our system.</p>
 	<p>Unlike our previous scheme, which limited future flexibility by freezing the set of participating data centers and policies at the outset, using ABE made the system easily adaptable for future needs. It allowed us to take advantage of performance gains from additional data centers added after instantiation and drastically simplified the process for handling changes to attributes and policies. Furthermore, GeoV1 struggled with some perplexing performance issues that contributed to high tail latency and a painfully manual key rotation process. GeoV2 is our answer to these challenges and limitations of GeoV1.</p>
 	<p>While this blog focuses on our solution for geographical key management, the lessons here can also be applied to other access control needs. Access control solutions are traditionally implemented using a highly-available central authority to police access to resources. As we will see, ABE allows us to avoid this single point of failure. As there are no large scale ABE-based access control systems we are aware of, we hope our discussion can help engineers consider using ABE as an alternative to access control with minimal reliance on a centralized authority. To facilitate this, we’ve included our implementation of ABE in <a href="https://pkg.go.dev/github.com/cloudflare/circl@v1.3.0/abe/cpabe/tkn20">CIRCL</a>, our open source cryptographic library.</p>
-	<h2>Unsatisfactory attempts at a solution</h2>
+	<div class="flex anchor relative">
+		<h2 id="unsatisfactory-attempts-at-a-solution">Unsatisfactory attempts at a solution</h2>
+		<a href="https://blog.cloudflare.com/#unsatisfactory-attempts-at-a-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before coming back to GeoV2, let’s take a little detour and examine the problem we’re trying to solve.</p>
 	<p>Consider this example: a large European bank wants to store their TLS private keys only within the EU. This bank is a customer of Cloudflare, which means we perform TLS handshakes on their behalf. The reason we need to terminate TLS for them is so that we can provide the best protection against DDoS attacks, improve performance by caching, support <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">web application firewalls</a>, etc.</p>
 	<p>In order to terminate TLS, we need to have access to their TLS private keys<sup>1</sup>. The control plane, which handles API traffic, encrypts the customer’s uploaded private key with a master public key shared amongst all machines globally. It then puts the key into a globally distributed KV store, <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>. This means every machine in every data center around the world has a local copy of this customer’s TLS private key. Consequently, every machine in each data center has a copy of every customer’s private key.</p>
@@ -51,12 +58,26 @@
 
 	</figure>
 	<p>A key for each policy and its negation</p>
-	<h2>Geo Key Manager v1: identity-based encryption and broadcast encryption</h2>
+	<div class="flex anchor relative">
+		<h2 id="geo-key-manager-v1-identity-based-encryption-and-broadcast-encryption">Geo Key Manager v1: identity-based encryption and broadcast encryption</h2>
+		<a href="https://blog.cloudflare.com/#geo-key-manager-v1-identity-based-encryption-and-broadcast-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The invention of RSA in 1978 kicked off the era of modern public key cryptography, but anyone who has used GPG or is involved with certificate authorities can attest to the difficulty of managing public key infrastructure that connects keys to user identities. In 1984, Shamir asked if it was possible to create a public-key encryption system where the public key could be any string. His motivation for this question was to simplify email management. Instead of encrypting an email to Bob using Bob’s public key, Alice could encrypt it to Bob’s identity <a href="mailto:bob@institution.org"><code>bob@institution.org</code></a>. Finally, in 2001, <a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf">Boneh and Franklin</a> figured out how to make it work.</p>
 	<p>Broadcast encryption was first proposed in 1993 by <a href="https://www.wisdom.weizmann.ac.il/~naor/PAPERS/broad.pdf">Fiat and Naor</a>. It lets you send the same encrypted message to everyone, but only people with the right key can decrypt it. Looking back to our third option, instead of wrapping the customer’s key with the key of every EU data center, we could use broadcast encryption to create a singular encryption of the customer’s key that only EU-based data centers could decrypt. This would solve the storage problem.</p>
 	<p>Geo Key Manager v1 used a combination of identity-based broadcast encryption and identity-based revocation to implement access control. Briefly, a set of identities is designated for each region and each data center location. Then, each machine is issued an identity-based private key for its region and location. With this in place, access to the customer’s key can be controlled using three sets: the set of regions to encrypt to, the set of locations inside the region to exclude, and the set of locations outside the region to include. For example, the customer’s key could be encrypted so that it is available in all regions except for a few specific locations, and also available in a few locations outside those regions. This blog post has all the <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">nitty-gritty details</a> of this approach.</p>
 	<p>Unfortunately this scheme was insufficiently responsive to customer needs; the parameters used during initial cryptographic setup, such as the list of regions, data centers, and their attributes, were baked into the system and could not be easily changed. Tough luck excluding the UK from the EU region post Brexit, or supporting a new region based on a recent compliance standard that customers need. Using a predetermined static list of locations also made it difficult to quickly revoke machine access. Additionally, decryption keys could not be assigned to new data centers provisioned after setup, preventing them from speeding up requests. These limitations provided the impetus for integrating Attribute-Based Encryption (ABE) into Geo Key Manager.</p>
-	<h2>Attribute-Based Encryption</h2>
+	<div class="flex anchor relative">
+		<h2 id="attribute-based-encryption">Attribute-Based Encryption</h2>
+		<a href="https://blog.cloudflare.com/#attribute-based-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2004, Amit Sahai and Brent Waters proposed a new cryptosystem based on access policies, known as attribute-based encryption (ABE). Essentially, a message is encrypted under an access policy rather than an identity. Users are issued a private key based on their attributes, and they can only decrypt the message if their attributes satisfy the policy. This allows for more flexible and fine-grained access control than traditional methods of encryption.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -285,7 +306,14 @@ assertEquals(plaintext, "secret message")</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>Performance characteristics</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-characteristics">Performance characteristics</h3>
+		<a href="https://blog.cloudflare.com/#performance-characteristics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We characterize our scheme’s performance on measures inspired by <a href="https://bench.cr.yp.to/results-encrypt.html">ECRYPT</a>. We set the <b>attribute size to 50</b>, which is significantly higher than necessary for most applications, but serves as a worst case scenario for benchmarking purposes. We conduct our measurements on a laptop with Intel Core i7-10610U CPU @ 1.80GHz and compare the results against RSA with 2048-bit security, X25519 and our previous scheme.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -433,12 +461,26 @@ assertEquals(plaintext, "secret message")</code></pre>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>A Brief Note on Attribute-Based Access Control (ABAC)</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-brief-note-on-attribute-based-access-control-abac">A Brief Note on Attribute-Based Access Control (ABAC)</h3>
+		<a href="https://blog.cloudflare.com/#a-brief-note-on-attribute-based-access-control-abac" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have used Attribute-Based Encryption to implement what is commonly known as <a href="https://csrc.nist.gov/Projects/Attribute-Based-Access-Control">Attribute-Based Access Control (ABAC)</a>.</p>
 	<p>ABAC is an extension of the more familiar <a href="https://csrc.nist.gov/Projects/Role-Based-Access-Control">Role-Based Access Control (RBAC)</a>. To understand why ABAC is relevant, let’s briefly discuss its origins. In 1970, the United States Department of Defense introduced Discretionary Access Control (DAC). DAC is how Unix file systems are implemented. But DAC isn’t enough if you want to restrict resharing, because the owner of the resource can grant other users permission to access it in ways that the central administrator does not agree with. To address this, the Department of Defense introduced Mandatory Access Control (MAC). DRM is a good example of MAC. Even though you have the file, you don’t have a right to share it to others.</p>
 	<p><a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac">RBAC is an implementation</a> of certain aspects of MAC. ABAC is an extension of RBAC that was defined by NIST in 2017 to address the increasing characteristics of users that are not restricted to their roles, such as time of day, user agent, and so on.</p>
 	<p>However, RBAC/ABAC is simply a specification. While they are traditionally implemented using a central authority to police access to some resource, it doesn’t have to be so. Attribute-based encryption is an excellent mechanism to implement ABAC in distributed systems.</p>
-	<h2>Key rotation</h2>
+	<div class="flex anchor relative">
+		<h2 id="key-rotation">Key rotation</h2>
+		<a href="https://blog.cloudflare.com/#key-rotation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While it may be tempting to attribute all failures to DNS, changing keys is another strong contender in this race. Suffering through the rather manual and error-prone key rotation process of Geo Key Manager v1 taught us to make robust and simple key rotation without impact on availability, an explicit design goal for Geo Key Manager v2.</p>
 	<p>To facilitate key rotation and improve performance, we introduce a layer of indirection to the customer key wrapping (encryption) process. When a customer uploads their TLS private key, instead of encrypting with the Master Public Key, we generate a X25519 keypair, called the <i>policy key</i>. The central authority then adds the public part of this newly minted policy keypair and its associated policy label to a database. It then encrypts the private half of the policy keypair with the Master Public Key, over the associated access policy. The customer’s private key is encrypted with the public policy key, and saved into Quicksilver.</p>
 	<p>When a user accesses the customer’s website, the TLS termination service at the data center that receives the request fetches the encrypted policy key associated with the customer’s access policy. If the machine’s attributes don’t satisfy the policy, decryption fails and the request is forwarded to the closest satisfying data center. If decryption succeeds, the policy key is used to decrypt the customer’s private key and complete the handshake.</p><!--kg-card-begin: html-->
@@ -541,7 +583,14 @@ assertEquals(plaintext, "secret message")</code></pre>
 	<p>This sharing of policy keys is tremendously useful for key rotation. When master keys are rotated (and consequently the machine secret keys), only the handful of policy keys used to control access to the customers’ keys need to be re-encrypted, rather than every customer’s key encryption. This reduces compute and bandwidth requirements. Additionally, caching policy keys at the TLS termination service improves performance by reducing the need for frequent decryptions in the critical path.</p>
 	<p>This is similar to hybrid encryption, where public key cryptography is used to establish a shared symmetric key, which then gets used to encrypt data. The difference here is that the policy keys are not symmetric, but rather X25519 keypairs, which is an asymmetric scheme based on elliptic curves. While not as fast as symmetric schemes like AES, traditional elliptic curve cryptography is significantly faster than attribute-based encryption. The advantage here is that the central service doesn’t need access to secret key material to encrypt customer keys.</p>
 	<p>The other component of robust key rotation involves maintaining multiple key versions.The latest key generation is used for encryption, but the latest and previous versions can be used for decryption. We use a system of states to manage key transitions and safe deletion of older keys. We also have extensive monitoring in place to alert us if any machines are not using the appropriate key generations.</p>
-	<h2>The Tail At Scale</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-tail-at-scale">The Tail At Scale</h2>
+		<a href="https://blog.cloudflare.com/#the-tail-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Geo Key Manager suffered from high tail latency, which occasionally impacted availability. Jeff Dean’s paper, <a href="https://research.google/pubs/pub40801">The Tail at Scale</a>, is an enlightening read on how even elevated p99 latency at Cloudflare scale can be damaging. Despite revamping the server and client components of our service, the p99 latency didn’t budge. These revamps, such as switching from worker pools to one goroutine per request, did simplify the service, as they removed thousands of lines of code. Distributed tracing was able to pin down the delays: they took place between the client sending a request and the server receiving it. But we could not dig in further. We even wrote a blog last year describing our <a href="https://blog.cloudflare.com/scaling-geo-key-manager">debugging endeavors</a>, but without a concrete solution.</p>
 	<p>Finally, we realized that there is a level of indirection between the client and the server. Our data centers around the world are very different sizes. To avoid swamping smaller data centers with connections, larger data centers would task individual, intermediary machines with proxying requests to other data centers using the Go net/rpc library.</p>
 	<p>Once we included the forwarding function on the intermediary server in the trace, the problem became clear. There was a long delay between issuing the request and processing it. Yet the code was merely a call to a built-in library function. Why was it delaying the request?</p>
@@ -562,10 +611,24 @@ assertEquals(plaintext, "secret message")</code></pre>
 
 	</figure>
 	<p>Uptime by Key Profile across US and EU for GeoV1 and GeoV2, and IN for GeoV2</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Congratulations dear reader for making it this far. Just like you, applied cryptography has come a long way, but only limited slivers manage to penetrate the barrier between research and real-world adoption. Bridging this gap can help enable novel capabilities for protecting sensitive data. Attribute-based encryption itself has become much more efficient and featureful over the past few years. We hope that this post encourages you to consider ABE for your own access control needs, particularly if you deal with distributed systems and don’t want to depend on a highly available central authority. We have open-sourced our implementation of CP-ABE in <a href="https://github.com/cloudflare/circl/tree/main/abe/cpabe/tkn20">CIRCL</a>, and plan on publishing a paper with additional details.</p>
 	<p>We look forward to the numerous product improvements to Geo Key Manager made possible by this new cryptographic foundation. We plan to use this ABE-based mechanism for storing not just private keys, but also other types of data. We are working on making it more user-friendly and generalizable for internal services to use.</p>
-	<h2>Acknowledgements</h2>
+	<div class="flex anchor relative">
+		<h2 id="acknowledgements">Acknowledgements</h2>
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’d like to thank Watson Ladd for his contributions to this project during his tenure at Cloudflare.</p>
 	<p>......</p>
 	<p><sup>1</sup>While true for most customers, we do offer <a href="https://www.cloudflare.com/ssl/keyless-ssl">Keyless SSL</a> that allows customers who can run their own keyservers, the ability to store their private keys on-prem</p>

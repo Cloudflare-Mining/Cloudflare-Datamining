@@ -21,7 +21,15 @@
 
 	</figure>
 	<p>Enough to say that deduplicating lines using the usual bash commands like 'sort' in various configurations (see '--parallel', '--buffer-size' and '--unique') was not optimal for such a large data set.</p>
-	<h2>Bloom filters to the rescue</h2>
+	<div class="flex anchor relative">
+		<h2 id="bloom-filters-to-the-rescue">Bloom filters to the rescue</h2>
+		<a href="https://blog.cloudflare.com/#bloom-filters-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/vR5EB9TdKmVJDjStuvpwL/9f1e98985914afe5ea3b54188b2cb222/Bloom_filter.png" alt="Bloom_filter" class="kg-image" width="649" height="233" loading="lazy">
@@ -54,7 +62,14 @@
 			<p><a href="https://hur.st/bloomfilter">https://hur.st/bloomfilter/</a></p>
 		</li>
 	</ul>
-	<h2>mmuniq-bloom</h2>
+	<div class="flex anchor relative">
+		<h2 id="mmuniq-bloom">mmuniq-bloom</h2>
+		<a href="https://blog.cloudflare.com/#mmuniq-bloom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Guided by this intuition, I set out on a journey to add a new tool to my toolbox - 'mmuniq-bloom', a probabilistic tool that, given input on STDIN, returns only unique lines on STDOUT, hopefully much faster than 'sort' + 'uniq' combo!</p>
 	<p>Here it is:</p>
 	<ul>
@@ -83,7 +98,14 @@
 
 	</figure>
 	<p>This is strange. Counting the hash function indeed costs about 2s, but the program took 12s in the previous run. The Bloom filter alone takes 10 seconds? How is that possible? It's such a simple data structure...</p>
-	<h2>A secret weapon - a profiler</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-secret-weapon-a-profiler">A secret weapon - a profiler</h2>
+		<a href="https://blog.cloudflare.com/#a-secret-weapon-a-profiler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It was time to use a proper tool for the task - let's fire up a profiler and see where the CPU goes. First, let's fire an 'strace' to confirm we are not running any unexpected syscalls:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -156,7 +178,14 @@
 	</figure>
 	<p>Ouch! That really hurt! The Bloom filter required 64 GiB of memory to get our desired false positive probability ratio of 1-error-per-10k-lines. This is terrible!</p>
 	<p>Also, it doesn't seem like we improved much. It took the OS 22 seconds to prepare memory for us, but we still burned 11 seconds in userspace. I guess this time any benefits from hitting memory less often were offset by lower cache-hit probability due to drastically increased memory size. In previous runs we required only 128MiB for the Bloom filter!</p>
-	<h2>Dumping Bloom filters altogether</h2>
+	<div class="flex anchor relative">
+		<h2 id="dumping-bloom-filters-altogether">Dumping Bloom filters altogether</h2>
+		<a href="https://blog.cloudflare.com/#dumping-bloom-filters-altogether" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is getting ridiculous. To get the same false positive guarantees we either must use many hashes in Bloom filter (like 8) and therefore many memory operations, or we can have 1 hash function, but enormous memory requirements.</p>
 	<p>We aren't really constrained by available memory, instead we want to optimize for reduced memory accesses. All we need is a data structure that requires at most 1 memory miss per item, and use less than 64 Gigs of RAM...</p>
 	<p>While we could think of more sophisticated data structures like <a href="https://en.wikipedia.org/wiki/Cuckoo_filter">Cuckoo filter</a>, maybe we can be simpler. How about a good old simple hash table with linear probing?</p>
@@ -166,7 +195,14 @@
 
 	</figure>
 	<p><a href="https://www.sysadmins.lv/blog-en/array-search-hash-tables-behind-the-scenes.aspx">Image</a> by <a href="https://www.sysadmins.lv/about.aspx">Vadims Podāns</a></p>
-	<h2>Welcome mmuniq-hash</h2>
+	<div class="flex anchor relative">
+		<h2 id="welcome-mmuniq-hash">Welcome mmuniq-hash</h2>
+		<a href="https://blog.cloudflare.com/#welcome-mmuniq-hash" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here you can find a tweaked version of mmuniq-bloom, but using hash table:</p>
 	<ul>
 		<li>
@@ -183,14 +219,28 @@
 	</figure>
 	<p>Don't be scared about the "hash conflicts" line, it just indicates how full the hash table was. We are using linear probing, so when a bucket is already used, we just pick up the next empty bucket. In our case we had to skip over 0.7 buckets on average to find an empty slot in the table. This is fine and, since we iterate over the buckets in linear order, we can expect the memory to be nicely prefetched.</p>
 	<p>From the previous exercise we know our hash function takes about 2 seconds of this. Therefore, it's fair to say 40M memory hits take around 4 seconds.</p>
-	<h2>Lessons learned</h2>
+	<div class="flex anchor relative">
+		<h2 id="lessons-learned">Lessons learned</h2>
+		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Modern CPUs are really good at sequential memory access when it's possible to predict memory fetch patterns (see <a href="https://en.wikipedia.org/wiki/Cache_prefetching#Methods_of_hardware_prefetching">Cache prefetching</a>). Random memory access on the other hand is very costly.</p>
 	<p>Advanced data structures are very interesting, but beware. Modern computers require cache-optimized algorithms. When working with large datasets, not fitting L3, prefer optimizing for reduced number loads, over optimizing the amount of memory used.</p>
 	<p>I guess it's fair to say that Bloom filters are great, as long as they fit into the L3 cache. The moment this assumption is broken, they are terrible. This is not news, Bloom filters optimize for memory usage, not for memory access. For example, see <a href="https://www.cs.cmu.edu/~dga/papers/cuckoo-conext2014.pdf">the Cuckoo Filters paper</a>.</p>
 	<p>Another thing is the ever-lasting discussion about hash functions. Frankly - in most cases it doesn't matter. The cost of counting even complex hash functions like 'siphash24' is small compared to the cost of random memory access. In our case simplifying the hash function will bring only small benefits. The CPU time is simply spent somewhere else - waiting for memory!</p>
 	<p>One colleague often says: "You can assume modern CPUs are infinitely fast. They run at infinite speed until they <a href="http://www.di-srv.unisa.it/~vitsca/SC-2011/DesignPrinciplesMulticoreProcessors/Wulf1995.pdf">hit the memory wall</a>".</p>
 	<p>Finally, don't follow my mistakes - everyone should start profiling with 'perf stat -d' and look at the "Instructions per cycle" (IPC) counter. If it's below 1, it generally means the program is stuck on waiting for memory. Values above 2 would be great, it would mean the workload is mostly CPU-bound. Sadly, I'm yet to see high values in the workloads I'm dealing with...</p>
-	<h2>Improved mmuniq</h2>
+	<div class="flex anchor relative">
+		<h2 id="improved-mmuniq">Improved mmuniq</h2>
+		<a href="https://blog.cloudflare.com/#improved-mmuniq" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the help of my colleagues I've prepared a further improved version of the 'mmuniq' hash table based tool. See the code:</p>
 	<ul>
 		<li>
@@ -203,6 +253,13 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cnwoob2q1SVG27I7zqals/3db6fa2505a598e6b2f44bb56e16ec77/Screenshot-from-2020-03-01-23-52-18.png" alt="Screenshot-from-2020-03-01-23-52-18" class="kg-image" width="1246" height="568" loading="lazy">
 
 	</figure>
-	<h2>The end</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-end">The end</h2>
+		<a href="https://blog.cloudflare.com/#the-end" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Writing this basic tool which tries to be faster than 'sort | uniq' combo revealed some hidden gems of modern computing. With a bit of work we were able to speed it up from more than two minutes to 2 seconds. During this journey we learned about random memory access latency, and the power of cache friendly data structures. Fancy data structures are exciting, but in practice reducing random memory loads often brings better results.</p>
 </div>

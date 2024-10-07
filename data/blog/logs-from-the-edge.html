@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Ky2AOpjSfW9fZY5cLt9iy/6e71e0b52a3a3e42188f2cc18493dccf/logs.jpg" alt="logs" class="kg-image" width="3072" height="2048" loading="lazy">
 
 	</figure>
-	<h3>The Worker Code</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-worker-code">The Worker Code</h3>
+		<a href="https://blog.cloudflare.com/#the-worker-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this example we assume an <a href="https://www.elastic.co/products">Elastic stack</a> has been set up at <code>elk.example.com</code> and has been configured to receive via HTTP/S <code>PUT</code> requests a number of fields for each log line. The full script that we are going to look at can be found below:</p>
 	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(fetchAndLog(event));
@@ -98,7 +105,14 @@ await fetch(url, {
 			<p><a href="https://www.cloudflare.com/products/cloudflare-access">Cloudflare Access</a> allows you to integrate Cloudflare with your Identity and Access Management tool, and define rules that specify which users or groups have access to the Kibana instance;</p>
 		</li>
 	</ul>
-	<h3>Logs for Everyone</h3>
+	<div class="flex anchor relative">
+		<h3 id="logs-for-everyone">Logs for Everyone</h3>
+		<a href="https://blog.cloudflare.com/#logs-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we launched Workers, retrieving raw logs from Cloudflare was only available to enterprise customers. With a little technical effort you can now start receiving logs from the edge by leveraging Workers regardless of which plan you are using. Workers are available starting on a pay per usage model and the ELK stack is open source.</p>
 	<p>Enterprise customers can still retrieve raw traffic logs with our Enterprise Log Share (ELS) feature. If ELS is turned on, all requests for the chosen application will be logged and stored on Cloudflare infrastructure. The logs can be downloaded when required via a <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">RESTful API</a> or pushed directly to Amazon S3 or Google Cloud (soon also Microsoft Azure) for further processing in your favorite log analysis tool. Logs with ELS are available within 10 minutes of the request being processed at the edge regardless of location, and they will have a number of additional fields that are not yet available to the Worker environment. ELS also guarantees log delivery and retention periods and allows you not to worry about load and storage.</p>
 </div>

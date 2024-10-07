@@ -7,10 +7,24 @@
 
 	</figure>
 	<p>Back in October 2020, we introduced <a href="https://blog.cloudflare.com/cloudflare-one">Cloudflare One</a>, our vision for the future of <a href="https://www.cloudflare.com/learning/network-layer/network-security">corporate networking and security</a>. Since then, we’ve been laser-focused on delivering more pieces of this platform, and today we’re excited to announce two of its most foundational aspects: <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a> and Magic Firewall. Magic WAN provides secure, performant connectivity and routing for your entire corporate network, reducing cost and operational complexity. Magic Firewall integrates smoothly with Magic WAN, enabling you to enforce network firewall policies at the edge, across traffic from any entity within your network.</p>
-	<h3>Traditional network architecture doesn’t solve today’s problems</h3>
+	<div class="flex anchor relative">
+		<h3 id="traditional-network-architecture-doesnt-solve-todays-problems">Traditional network architecture doesn’t solve today’s problems</h3>
+		<a href="https://blog.cloudflare.com/#traditional-network-architecture-doesnt-solve-todays-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enterprise networks have historically adopted one of a few models, which were designed to enable <a href="https://www.cloudflare.com/learning/security/what-is-information-security">secure information flow</a> between offices and data centers, with access to the Internet locked down and managed at <a href="https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter">office perimeters</a>. As applications moved to the cloud and employees moved out of offices, these designs stopped working, and band-aid solutions like VPN boxes don’t solve the core problems with <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise network architecture</a>.</p>
 	<p>On the connectivity side, full mesh <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS (multiprotocol label switching) networks</a> are expensive and time consuming to deploy, challenging to maintain, exponentially hard to scale, and often have major gaps in visibility. Other architectures require backhauling traffic through central locations before sending it back to the source, which introduces unacceptable latency penalties and necessitates purchasing costly hub hardware for maximum capacity rather than actual utilization. And most customers we’ve talked to are struggling with the worst of both worlds: a combination of impossible-to-manage architectures stitched together over years or decades. Security architects also struggle with these models - they have to juggle a stack of security hardware boxes from different vendors and trade off cost, performance, and security as their network grows.</p>
-	<h3>Move your network perimeter to the edge and secure it as a service</h3>
+	<div class="flex anchor relative">
+		<h3 id="move-your-network-perimeter-to-the-edge-and-secure-it-as-a-service">Move your network perimeter to the edge and secure it as a service</h3>
+		<a href="https://blog.cloudflare.com/#move-your-network-perimeter-to-the-edge-and-secure-it-as-a-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Magic WAN, you can securely connect any traffic source - data centers, offices, devices, cloud properties - to Cloudflare’s network and configure routing policies to get the bits where they need to go, all within one SaaS solution. Magic WAN supports a variety of on-ramps including <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling">Anycast GRE tunnels</a>, <a href="https://www.cloudflare.com/network-interconnect">Cloudflare Network Interconnect</a>, <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a>, <a href="https://blog.cloudflare.com/warp-for-desktop">WARP</a>, and a variety of <a href="https://blog.cloudflare.com/network-onramp-partnerships">Network On-ramp Partners</a>. No more MPLS expense or lead times, no more performance penalties from traffic trombones, and no more nightmare of managing a tangle of legacy solutions: instead, use Cloudflare’s global Anycast network as an extension of yours, and get better performance and visibility built-in.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -23,7 +37,14 @@
 		<p><i>“Our network team is excited by Magic WAN. Cloudflare has built a global network-as-a-service platform that will help network teams manage complex edge and multi-cloud environments much more efficiently. Operating a single global WAN with built-in security and fast routing functionality — regardless of the HQ, data center, branch office, or end user location — is a game-changer in WAN technology.”— Sander Petersson, Head of Infrastructure, FlightRadar24</i></p>
 	</blockquote>
 	<p>What does this look like concretely? Let's explore some ways you can use Magic WAN and Magic Firewall to <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">solve problems in enterprise networking and security</a> with an example customer, Acme Corp.</p>
-	<h3>Replace MPLS between branch offices &amp; data centers</h3>
+	<div class="flex anchor relative">
+		<h3 id="replace-mpls-between-branch-offices-data-centers">Replace MPLS between branch offices &amp; data centers</h3>
+		<a href="https://blog.cloudflare.com/#replace-mpls-between-branch-offices-data-centers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, Acme Corp has offices around the world that are each connected to regional data centers and to each other with MPLS. Each data center, which hosts corporate applications and a stack of hardware boxes to keep them secure, also has leased line connectivity to at least one other data center. Acme is also migrating some applications to the cloud, and they’re planning to establish direct connections from their data centers to cloud providers to boost security and reliability.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -34,7 +55,14 @@
 	<p>Just as they're working on transitioning to the cloud for compute and storage, Acme wants to migrate away from these private links and instead leverage the Internet, securely, for connectivity. They considered establishing fully meshed site-to-site IPSec VPN tunnels over the Internet, but the complexity strained their networking team as well as their heterogeneous router deployments. Magic WAN is ready to meet them where they are today, simplifying network management and delivering immediate performance benefits, as well as enabling Acme's gradual transition away from MPLS.</p>
 	<p>In this example deployment with Magic WAN, Acme connects each office and VPC to Cloudflare with Anycast GRE tunnels. With this architecture, Acme only needs to set up a single tunnel for each site/Internet connection in order to automatically receive connectivity to Cloudflare's entire global network (200+ cities in 100+ countries around the world) - like a hub and spoke architecture, except the hub is everywhere. Acme also chooses to establish dedicated private connectivity from their data centers with <a href="https://www.cloudflare.com/network-interconnect">Cloudflare Network Interconnect</a>, enabling even more secure and reliable traffic delivery and great connectivity to other networks/cloud providers through Cloudflare’s <a href="https://www.peeringdb.com/net/4224">highly interconnected</a> network.</p>
 	<p>Once these tunnels are established, Acme can configure allowed routes for traffic within their private network (RFC 1918 space), and Cloudflare gets the traffic where it needs to go, providing resiliency and traffic optimization. With an easy setup process that takes only a few hours, Acme Corp can start their migration away from MPLS. And as new Cloudflare One capabilities like QoS and Argo for Networks are introduced, Acme’s network performance and reliability will continue to improve.</p>
-	<h3>Secure remote employee access to private networks</h3>
+	<div class="flex anchor relative">
+		<h3 id="secure-remote-employee-access-to-private-networks">Secure remote employee access to private networks</h3>
+		<a href="https://blog.cloudflare.com/#secure-remote-employee-access-to-private-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Acme Corp's employees abruptly transitioned to working remotely last year due to the COVID-19 pandemic, Acme's IT organization scrambled to find short term fixes to maintain employee access to internal resources. Their legacy VPNs didn't hold up - Acme employees working from home struggled with connectivity, reliability, and performance issues as appliances were pushed beyond the limits they were designed for.</p>
 	<p>Thankfully, there's a better solution! Acme Corp can use Cloudflare for Teams and Magic WAN to provide a secure way for employees to access resources behind private networks from their devices, wherever they're working. Acme employees install the WARP client on their devices to send traffic to Cloudflare's network, where it can be authenticated and routed to private resources in data centers or VPCs that are connected to Cloudflare via GRE tunnel (shown in the previous example), Argo Tunnel, Cloudflare Network Interconnect, or IPSec (coming soon). This architecture solves the performance and capacity issues Acme experienced with their legacy VPNs - rather than sending all traffic through single choke point devices, it’s routed to the closest Cloudflare location where policy is applied at the edge before being sent along an optimized path to its destination.</p>
 	<p>Traffic from Acme Corp's employee devices, data centers and offices will also be able to be policed by Magic Firewall for powerful, granular policy control that's enforced across all "on-ramps." Whether employees are connecting from their phones and laptops or working from Acme offices, the same policies can be applied in the same place. This simplifies configuration and improves visibility for Acme's IT and security teams, who will be able to log into the Cloudflare dashboard to see and control policies in one place - a game changer compared to managing employee access across different VPNs, firewalls, and cloud services.</p>
@@ -44,7 +72,14 @@
 
 	</figure>
 	<p>This solution allows Acme to transition away from their VPN, firewall, and <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway appliances</a>, improving performance and enabling easy policy management across traffic from wherever their employees are working.</p>
-	<h3>Migrate network and security functions to the edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="migrate-network-and-security-functions-to-the-edge">Migrate network and security functions to the edge</h3>
+		<a href="https://blog.cloudflare.com/#migrate-network-and-security-functions-to-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, Acme relied on stacks of hardware appliances in physical offices and data centers to enforce <a href="https://www.cloudflare.com/network-security">network security</a> and get visibility into what’s happening on the network: specialized firewalls to inspect inbound or outbound traffic, intrusion detection systems and <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEMs</a>. As their organization is moving to the cloud and rethinking the future of remote work, the Acme security team is looking for sustainable solutions that improve security, even beyond what used to be possible in their traditional castle-and-moat architecture.</p>
 	<p>Previously, we walked through how Acme could configure Magic WAN to send traffic from offices, data centers, cloud properties, and devices to Cloudflare’s network. Once this traffic is flowing through Cloudflare, it’s easy to add access controls and filtering functions to augment or replace on-prem security hardware, all delivered and administered through a single pane of glass.</p>
 	<p>With Magic Firewall, customers get a single <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a> that runs at the edge, replacing clunky boxes they have installed at branch offices or data centers. Magic Firewall allows them to easily manage configuration, but also simplifies compliance auditing.</p>
@@ -64,7 +99,14 @@
 	<blockquote>
 		<p><i>Increased cloud adoption along with the recent pivot to remote workers has increased the volume of Internet, SaaS, and IaaS traffic straining traditional network architectures such as MPLS. WAN architectures that offer a global scale, integrated enterprise network security functions, and direct, secure connectivity to remote users are key to organizations looking to increase their operational agility and lower total costs of ownership.— Ghassan Abdo, IDC Research VP, WW Telecom, Virtualization &amp; CDN</i></p>
 	</blockquote>
-	<h3>Cloudflare’s network as an extension of yours</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-network-as-an-extension-of-yours">Cloudflare’s network as an extension of yours</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-network-as-an-extension-of-yours" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like many of our products, Cloudflare One started as a collection of solutions to problems that we experienced in growing and securing our own network. Magic WAN and Magic Firewall allow us to extend the benefits of our careful architecture decisions over the past ten years to customers:</p>
 	<ul>
 		<li>
@@ -77,6 +119,13 @@
 			<p><b>Built from scratch to work together:</b> we’ve developed our products in software, from the ground up, to integrate easily. We think constantly about how our products can integrate to make each other better as they’re created and evolved.</p>
 		</li>
 	</ul>
-	<h3>Get started today</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Get started today</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Magic WAN is available in limited beta, and Magic Firewall is generally available for all <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customers and included out of the box with Magic WAN. If you’re interested in testing out Magic WAN or want to learn more about how Cloudflare can help your organization replace legacy MPLS architecture, <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">secure access for remote workers</a>, and deepen your security posture while reducing total cost of ownership, please <a href="https://www.cloudflare.com/magic-wan">get in touch</a>.</p>
 </div>

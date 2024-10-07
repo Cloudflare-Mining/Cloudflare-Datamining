@@ -9,7 +9,15 @@
 	<p>We don't use separate scrubbing boxes or specialized hardware - every one of our edge servers can perform advanced traffic filtering if the need arises. This allows us to scale up our DDoS capacity as we grow. Each of the new servers we add to our datacenters increases our maximum theoretical DDoS “scrubbing” power. It also scales down nicely - in smaller datacenters we don't have to overinvest in expensive dedicated hardware.</p>
 	<p>During normal operations our attitude to attacks is rather pragmatic. Since the inbound traffic is distributed across hundreds of servers we can survive periodic spikes and small attacks without doing anything. Vanilla Linux is remarkably resilient against unexpected network events. This is especially true since kernel 4.4 when <a href="https://lwn.net/Articles/659199">the performance of SYN cookies was greatly improved</a>.</p>
 	<p>But at some point, malicious traffic volume can become so large that we must take the load off the networking stack. We have to minimize the amount of CPU spent on dealing with attack packets. Cloudflare operates a multi-tenant service and we must always have enough processing power to serve valid traffic. We can't afford to starve our HTTP proxy (nginx) or custom DNS server (named RRDNS, written in Go) of CPU. When the attack size crosses a predefined threshold (which varies greatly depending on specific attack type), we must intervene.</p>
-	<h3>Mitigations</h3>
+	<div class="flex anchor relative">
+		<h3 id="mitigations">Mitigations</h3>
+		<a href="https://blog.cloudflare.com/#mitigations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WIjf8ScvlEu9XR2E1qS4a/dbaec05d3eed9f148c349a82f96b4f91/Screen-Shot-2017-09-25-at-11.21.11-AM.png" alt="" class="kg-image" width="1014" height="312" loading="lazy">
@@ -36,7 +44,15 @@
 	<p>Using stock iptables gives us plenty of confidence. When possible we prefer to use off-the-shelf tools to deal with attacks.</p>
 	<p>Sometimes though, even this is not sufficient. Iptables is fast in the general case, but has its limits. During very large attacks, exceeding 1M packets per second per server, we shift the attack traffic from kernel iptables to a kernel bypass user space program (which we call floodgate). We use a <a href="https://blog.cloudflare.com/kernel-bypass">partial kernel bypass</a> solution using Solarflare EF_VI interface. With this on each server we can process more than 5M attack packets per second while consuming only a single CPU core. With floodgate we have comfortable amount of CPU left for our applications, even during the largest network events.</p>
 	<p>Finally, there are a number of tweaks we can make on at the HTTP layer. For specific attacks we disable HTTP Keep-Alives forcing attackers to re-establish TCP sessions for each request. This sacrifices a bit of performance for valid traffic as well, but is a surprisingly powerful tool throttling many attacks. For other attack patterns we turn the “I’m under attack” mode on, forcing the attack to hit our JavaScript challenge page.</p>
-	<h3>Manual attack handling</h3>
+	<div class="flex anchor relative">
+		<h3 id="manual-attack-handling">Manual attack handling</h3>
+		<a href="https://blog.cloudflare.com/#manual-attack-handling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5JkPhtefpkMJhVoCdOB6Qu/1a35dd90f4c5c5c8dcbc3425428e2b7b/cloudflare_outage.png.scaled500.png" alt="" class="kg-image" width="500" height="151" loading="lazy">
@@ -49,7 +65,15 @@
 
 	</figure>
 	<p>Humans are also not great at applying precise rules. As our systems grew and mitigations became more complex, having many specific toggles, our SREs got overwhelmed by the details. It was challenging to present all the specific information about the attack to the operator. We often applied overly-broad mitigations, which were unnecessarily affecting legitimate traffic. All that changed with the introduction of Gatebot.</p>
-	<h3>Meet Gatebot</h3>
+	<div class="flex anchor relative">
+		<h3 id="meet-gatebot">Meet Gatebot</h3>
+		<a href="https://blog.cloudflare.com/#meet-gatebot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nri9vLoPsgtq19T6dHxf/5361373f2143b1ab2dbb957b6cf0ef09/Screen-Shot-2017-09-25-at-11.19.31-AM.png" alt="" class="kg-image" width="910" height="238" loading="lazy">
@@ -74,7 +98,14 @@
 			<p>“mitigation”. The previous step feeds specific mitigation instructions into the centralized mitigation management systems. The mitigations are deployed across the world to our servers, applications, customer settings and, in some cases, to the network hardware.</p>
 		</li>
 	</ol>
-	<h3>Sleeping at night</h3>
+	<div class="flex anchor relative">
+		<h3 id="sleeping-at-night">Sleeping at night</h3>
+		<a href="https://blog.cloudflare.com/#sleeping-at-night" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Gatebot operates constantly, without breaks for lunch. For the iptables mitigations pipelines alone, Gatebot got engaged between 30 and 1500 times a day. Here is a chart of mitigations per day over last 6 months:</p>
 	<figure class="kg-card kg-image-card ">
 

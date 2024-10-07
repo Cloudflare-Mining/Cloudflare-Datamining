@@ -1,6 +1,13 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5oTbNBbKeXEuW6SrSE4SUz/a81677c8b215301fa4ebeb5ea422ba2f/how-to-execute-an-object-file-part-2.png" alt="">
 <div class="post-content lh-copy gray1">
-	<h2>Handling relocations</h2>
+	<div class="flex anchor relative">
+		<h2 id="handling-relocations">Handling relocations</h2>
+		<a href="https://blog.cloudflare.com/#handling-relocations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">previous post</a>, we learned how to parse an object file and import and execute some functions from it. However, the functions in our toy object file were simple and self-contained: they computed their output solely based on their inputs and didn't have any external code or data dependencies. In this post we will build upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1">the code from part 1</a>, exploring additional steps needed to handle code with some dependencies.</p>
 	<p>As an example, we may notice that we can actually rewrite our <code>add10</code> function using our <code>add5</code> function:</p>
 	<p><i>obj.c</i>:</p>
@@ -91,7 +98,14 @@ add5(42) = 47
 Executing add10...
 add10(42) = 52</code></pre>
 	<p>Clearly our monkey-patching helped: <code>add10</code> executes fine now and produces the correct output. This means our expected <code>callq</code> arguments, which we calculated, are correct. So why did the compiler emit wrong <code>callq</code> arguments?</p>
-	<h3>Relocations</h3>
+	<div class="flex anchor relative">
+		<h3 id="relocations">Relocations</h3>
+		<a href="https://blog.cloudflare.com/#relocations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The problem with our toy object file is that both functions are declared with external linkage — the default setting for all functions and global variables in C. And, although both functions are declared in the same file, the compiler is not sure where the <code>add5</code> code will end up in the target binary. So the compiler avoids making any assumptions and doesn’t calculate the relative offset argument of the <code>callq</code> instructions. Let's verify this by removing our monkey patching and declaring the <code>add5</code> function as <code>static</code>:</p>
 	<p><i>loader.c</i>:</p>
 	<pre class="language-cpp"><code class="language-cpp">...
@@ -321,7 +335,14 @@ add5(42) = 47
 Executing add10...
 add10(42) = 52</code></pre>
 	<p>Great! Our imported code works as expected now. By following the relocation hints left for us by the compiler, we've got the same results as in our monkey-patching calculations in the beginning of this post. Our relocation calculations also involved <code>text_runtime_base</code> address, which is not available at compile time. That's why the compiler could not calculate the <code>callq</code> arguments in the first place and had to emit the relocations instead.</p>
-	<h3>Handling constant data and global variables</h3>
+	<div class="flex anchor relative">
+		<h3 id="handling-constant-data-and-global-variables">Handling constant data and global variables</h3>
+		<a href="https://blog.cloudflare.com/#handling-constant-data-and-global-variables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far, we have been dealing with object files containing only executable code with no state. That is, the imported functions could compute their output solely based on the inputs. Let's see what happens if we add some constant data and global variables dependencies to our imported code. First, we add some more functions to our <code>obj.o</code>:</p>
 	<p><i>obj.c</i>:</p>
 	<pre class="language-cpp"><code class="language-cpp">...

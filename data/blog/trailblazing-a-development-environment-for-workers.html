@@ -7,7 +7,14 @@
 	</figure>
 	<p>When I arrived at Cloudflare for an internship in the summer of 2018, I was taken on a tour, introduced to my mentor who took me out for coffee (shoutout to Preston), and given a quick whiteboard overview of how Cloudflare works. Each of the interns would work on a small project of their own and they’d try to finish them by the end of the summer. The description of the project I was given on my very first day read something along the lines of “<a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers">implementing signed exchanges in a Cloudflare Worker to fix the AMP URL attribution problem</a>,” which was a lot to take in at once. I asked so many questions those first couple of weeks. What are signed exchanges? Can I put these stickers on my laptop? What’s a Cloudflare Worker? Is there a limit to how much Topo Chico I can take from the fridge? What’s the <a href="https://blog.amp.dev/2017/02/06/whats-in-an-amp-url">AMP URL attribution problem</a>? Where’s the bathroom?</p>
 	<p>I got the answers to all of those questions (and more!) and eventually landed a full-time job at Cloudflare. Here’s the story of my internship and working on the Workers Developer Experience team at Cloudflare.</p>
-	<h3>Getting Started with Workers in 2018</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-workers-in-2018">Getting Started with Workers in 2018</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-workers-in-2018" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After doing a lot of reading, and asking a lot more questions, it was time to start coding. I set up a Cloudflare account with a Workers subscription, and was greeted with a page that looked something like this:</p>
 	<p>I was able to change the code in the text area on the left, click “Update”, and the changes would be reflected on the right — fairly self-explanatory. There was also a testing tab which allowed me to handcraft HTTP requests with different methods and custom headers. So far so good.</p>
 	<p>As my project evolved, it became clear that I needed to leave the Workers editor behind. Anything more than a one-off script tends to require JavaScript modules and multiple files. I spent some time setting up a local development environment for myself with <a href="https://npmjs.com">npm</a> and <a href="https://webpack.js.org">webpack</a> (see, purgatory: a place or state of temporary suffering. <a href="https://www.merriam-webster.com/dictionary/purgatory">merriam-webster.com</a>).</p>
@@ -51,12 +58,33 @@
 		</li>
 	</ol>
 	<p>Luckily for me, Cloudflare Workers deploy globally incredibly quickly, so I could push the latest iteration of my Worker, wait just a few seconds for it to go live, and cURL away.</p>
-	<h3>A Better Workers Developer Experience in 2019</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-better-workers-developer-experience-in-2019">A Better Workers Developer Experience in 2019</h3>
+		<a href="https://blog.cloudflare.com/#a-better-workers-developer-experience-in-2019" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Shortly after we shipped <a href="https://blog.cloudflare.com/announcing-amp-real-url">AMP Real URL</a>, Cloudflare released <a href="https://github.com/cloudflare/wrangler">Wrangler</a>, the official CLI tool for developing Workers, and I was hired full time to work on it. Wrangler came with a feature that automated steps 2-7 of my workflow by running the command <code>wrangler preview</code>, which was a <i>significant</i> improvement. Running the command would build my Worker and open the browser automatically for me so I could see log messages and test out HTTP requests. That summer, our intern Matt Alonso created <code>wrangler preview --watch</code>. This command automatically updates the Workers preview window when changes are made to your code. You can read more about that <a href="https://blog.cloudflare.com/live-preview-build-and-test-workers-faster-with-wrangler-cli-1-2-0">here</a>. This was, yet again, another improvement over my old friend <i>Build and Open and Copy and Switch Windows and Paste Forever and Ever, Amen</i>. But there was still no way that I could test my Worker with any HTTP client I wanted without deploying to production — I was still locked in to using the nested iframe.</p>
 	<p>A few months ago we decided it was time to do something about it. To the whiteboard!</p>
-	<h3>Enter <code>wrangler dev</code></h3>
+	<div class="flex anchor relative">
+		<h3 id="enter">Enter </h3>
+		<a href="https://blog.cloudflare.com/#enter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most web developers are familiar with developing their applications on <code>localhost</code>, and since Wrangler is written in Rust, it means we could start up a server on localhost that would handle requests to a Worker. The idea was to somehow start a server on <code>localhost</code> and then transform incoming requests and send them off to a preview session running on a Cloudflare server.</p>
-	<h3>Proof of Concept</h3>
+	<div class="flex anchor relative">
+		<h3 id="proof-of-concept">Proof of Concept</h3>
+		<a href="https://blog.cloudflare.com/#proof-of-concept" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What we came up with ended up looking a little something like this — when a developer runs <code>wrangler dev</code>, do the following:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -108,7 +136,14 @@
 		</li>
 	</ul>
 	<p>The hard part here was already done — the Workers Core team had already implemented the API to support the Preview UI. We just needed to gently nudge Wrangler and the API to be the best of friends. After some investigation into Rust’s HTTP ecosystem, we settled on using the HTTP library <a href="https://hyper.rs">hyper</a>, which I highly recommend if you’re in need of a low level HTTP library — it’s fast, correct, and the ergonomics are constantly improving. After a bit of work, we got a prototype working and carved Wrangler ❤️ Cloudflare API into the old oak tree down by <a href="https://en.wikipedia.org/wiki/Lady_Bird_Lake">Lady Bird Lake</a>.</p>
-	<h3>Usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="usage">Usage</h3>
+		<a href="https://blog.cloudflare.com/#usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say I have a Workers script that looks like this:</p>
 	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -125,9 +160,23 @@ async function handleRequest(request) {
 	<pre class="language-sh"><code class="language-sh">$ curl localhost:8787
 Hello, World!</code></pre>
 	<p>It worked! Hooray!</p>
-	<h3>Just the Right Amount of Scope Creep</h3>
+	<div class="flex anchor relative">
+		<h3 id="just-the-right-amount-of-scope-creep">Just the Right Amount of Scope Creep</h3>
+		<a href="https://blog.cloudflare.com/#just-the-right-amount-of-scope-creep" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point, our initial goal was complete: any HTTP client could test out a Worker before it was deployed. However, <code>wrangler dev</code> was still missing crucial functionality. When running <code>wrangler preview</code>, it’s possible to view <code>console.log</code> output in the browser editor. This is incredibly useful for debugging Workers applications, and something with a name like <code>wrangler dev</code> should include a way to view those logs as well. “This will be easy,” I said, not yet knowing what I was signing up for. Buckle up!</p>
-	<h3>console.log, V8, and the Chrome Devtools Protocol, Oh My!</h3>
+	<div class="flex anchor relative">
+		<h3 id="console-log-v8-and-the-chrome-devtools-protocol-oh-my">console.log, V8, and the Chrome Devtools Protocol, Oh My!</h3>
+		<a href="https://blog.cloudflare.com/#console-log-v8-and-the-chrome-devtools-protocol-oh-my" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My first goal was to get a <code>Hello, World!</code> message streamed to my terminal session so that developers can debug their applications using <code>wrangler dev</code>. Let’s take the script from earlier and add a <code>console.log</code> statement to it:</p>
 	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -177,9 +226,23 @@ async function handleRequest(request) {
 	<p>Hey look at that! We can see messages that our browser sent to the Workers runtime to enable different portions of the developer tools for this Worker, and we can see that the runtime sent back our <code>Hello, World!</code> Pretty cool!</p>
 	<p>On the Wrangler side of things, all we had to do to get started was initialize a WebSocket connection for the current Worker, and send a message with the method <code>Runtime.enable</code> so the Workers runtime would enable the <a href="https://chromedevtools.github.io/devtools-protocol/v8/Runtime">Runtime domain</a> and start sending <code>console.log</code> messages from our script.</p>
 	<p>After those initial steps, it quickly became clear that a lot more work was needed to get to a useful developer tool. There’s a lot that goes into the Chrome Devtools Inspector and most of the libraries for interacting with it are written in languages other than Rust (which we use for Wrangler). We spent a lot of time switching WebSocket libraries due to incompatibilities across operating systems (turns out TLS is hard) and <a href="https://github.com/EverlastingBugstopper/chrome-devtools-rs">implementing</a> the part of the Chrome Devtools Protocol in Rust that we needed to. There’s a lot of work that still needs to be done in order to make <code>wrangler dev</code> a top notch developer tool, but we wanted to get it into the hands of developers as quickly as possible.</p>
-	<h3>Try it Out!</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">Try it Out!</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><code>wrangler dev</code> is currently in alpha, and we’d love it if you could try it out! You should first check out the <a href="https://developers.cloudflare.com/workers/quickstart">Quick Start</a> and then move on to <a href="https://developers.cloudflare.com/workers/tooling/wrangler/commands/#dev-alpha-">wrangler dev</a>. If you run into issues or have any feedback, please <a href="https://github.com/cloudflare/wrangler/issues/1047">let us know</a>!</p>
-	<h3>Signing Off</h3>
+	<div class="flex anchor relative">
+		<h3 id="signing-off">Signing Off</h3>
+		<a href="https://blog.cloudflare.com/#signing-off" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I’ve come a long way from where I started in 2018 and so has the Workers ecosystem. It’s been awesome helping to improve the developer experience of Workers for future interns, internal Cloudflare teams, and of course our customers. I can’t wait to see what we do next. I have <a href="https://github.com/cloudflare/wrangler/milestone/29">some ideas</a> for <a href="https://github.com/cloudflare/wrangler/milestone/18">what’s next</a> with Wrangler, so stay posted!</p>
 	<p>P.S. Wrangler is also <a href="https://github.com/cloudflare/wrangler">open source</a>, and we are more than happy to field bug reports, feedback, and community PRs. Check out our <a href="https://github.com/cloudflare/wrangler/blob/master/CONTRIBUTING.md">Contribution Guide</a> if you want to help out!</p>
 </div>

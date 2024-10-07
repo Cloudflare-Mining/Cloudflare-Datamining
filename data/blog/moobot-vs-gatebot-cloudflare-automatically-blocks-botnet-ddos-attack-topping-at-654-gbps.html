@@ -22,7 +22,14 @@
 
 	</figure>
 	<p><b>Attack Distribution by Country - Top 10</b></p>
-	<h2>Moobot - Self Propagating Malware</h2>
+	<div class="flex anchor relative">
+		<h2 id="moobot-self-propagating-malware">Moobot - Self Propagating Malware</h2>
+		<a href="https://blog.cloudflare.com/#moobot-self-propagating-malware" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>‘Moobot’ sounds like a cute name, but there’s nothing cute about it. According to <a href="https://blog.netlab.360.com/ddos-botnet-moobot-en">Netlab 360</a>, Moobot is the codename of a self-propagating Mirai-based <a href="https://www.cloudflare.com/learning/ddos/glossary/malware">malware</a> first discovered in 2019. It infects IoT (Internet of Things) devices using remotely exploitable vulnerabilities or weak default passwords. IoT is a term used to describe smart devices such as security hubs and cameras, smart TVs, smart speakers, smart lights, sensors, and even refrigerators that are connected to the Internet.</p>
 	<p>Once a device is infected by Moobot, control of the device is transferred to the operator of the command and control (C2) server, who can issue commands remotely such as attacking a target and locating additional vulnerable IoT devices to infect (self-propagation).</p>
 	<figure class="kg-card kg-image-card ">
@@ -50,10 +57,24 @@
 	</figure>
 	<p>Synchronized attacks</p>
 	<p>The botnet operator may use multiple C2 servers in various locations around the world in order to reduce the risk of exposure. Infected devices may be assigned to different C2 servers varying by region and module; one server for self-propagation and another for launching attacks. Thus if a C2 server is compromised and taken down by law enforcement authorities, only parts of the botnet are deactivated.</p>
-	<h2>Why this attack was not successful</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-this-attack-was-not-successful">Why this attack was not successful</h2>
+		<a href="https://blog.cloudflare.com/#why-this-attack-was-not-successful" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is the second large scale attack in the past few months that we observed on Cloudflare's network. The previous one peaked at <a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically">754M packets per second</a> and attempted to take down our routers with a high packet rate. Despite the high packet rate, the 754Mpps attack peaked at a <i>mere</i> 253 Gbps.</p>
 	<p>As opposed to the high packet rate attack, this attack was a high bit rate attack, peaking at 654 Gbps. Due to the high bit rates of this attack, it seems as though the attacker tried (and failed) to cause a denial of service event by saturating our Internet link capacity. So let’s explore why this attack was not successful.</p>
-	<h3>Avoiding link saturation &amp; keeping appliances running</h3>
+	<div class="flex anchor relative">
+		<h3 id="avoiding-link-saturation-keeping-appliances-running">Avoiding link saturation &amp; keeping appliances running</h3>
+		<a href="https://blog.cloudflare.com/#avoiding-link-saturation-keeping-appliances-running" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s global <a href="https://www.cloudflare.com/network">network</a> capacity is over 42 Tbps and growing. Our network spans more than 200 cities in over 100 countries, including 17 cities in mainland China. It interconnects with over 8,800 networks globally, including major ISPs, cloud services, and enterprises. This level of interconnectivity along with the use of <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network">Anycast</a> ensures that our network can easily absorb even the largest attacks.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -98,6 +119,13 @@
 	<p>Our systems then crunch these sample data points together to form a real-time view of our network’s security posture and our customer’s origin server health. They look for attack patterns and traffic anomalies. When found, a mitigation rule with a dynamically crafted attack signature is generated in real-time. Rules are propagated to the most optimal place for cost-effective mitigation. For example, an L7 HTTP flood might be dropped at L4 to reduce the CPU consumption.</p>
 	<p>Rules that are generated by dosd and flowtrackd are propagated within a single data center for rapid mitigation. Gatebot’s rules are propagated to all of the edge data centers which then take priority over dosd’s rules for an even and optimal mitigation. Even if the attack is detected in a subset of edge data centers, Gatebot propagates the mitigation instructions to all of Cloudflare’s edge data centers -- effectively sharing the threat intelligence across our network as a form of proactive protection.</p>
 	<p>In the case of this attack, in each edge data center, dosd generated rules to mitigate the attack promptly. Then as Gatebot received and analyzed samples from the edge, it determined that this was a globally distributed attack. Gatebot propagated unified mitigation instructions to the edge, which prepared each and every one of our 200+ data centers to tackle the attack as the attack traffic may shift to a different data center due to Anycast or traffic engineering.</p>
-	<h3>No inflated bills</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-inflated-bills">No inflated bills</h3>
+		<a href="https://blog.cloudflare.com/#no-inflated-bills" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DDoS attacks obviously pose the risk of an outage and service disruption. But there is another risk to consider -- the cost of mitigation. During these ten days, more than 65 Terabytes of attack traffic were generated by the botnet. However, as part of Cloudflare’s <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS protection</a> guarantee, Cloudflare mitigated and absorbed the attack traffic without billing the customer. The customer doesn't need to submit a retroactive credit request. Attack traffic is automatically excluded from our billing system. We eliminated the financial risk.</p>
 </div>

@@ -10,10 +10,24 @@
 	<p>In <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">January</a> and in <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">March</a> we posted blogs outlining how Cloudflare performed against others in <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a>. The conclusion in both cases was that Cloudflare was faster than Zscaler and Netskope in a variety of Zero Trust scenarios. For Speed Week, we’re bringing back these tests and upping the ante: we’re testing more providers against more public Internet endpoints in more regions than we have in the past.</p>
 	<p>For these tests, we tested three Zero Trust scenarios: Secure Web Gateway (SWG), <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">Zero Trust Network Access (ZTNA)</a>, and Remote Browser Isolation (RBI). We tested against three competitors: Zscaler, Netskope, and Palo Alto Networks. We tested these scenarios from 12 regions around the world, up from the four we’d previously tested with. The results are that Cloudflare is the fastest Secure Web Gateway in 42% of testing scenarios, the most of any provider. Cloudflare is 46% faster than Zscaler, 56% faster than Netskope, and 10% faster than Palo Alto for ZTNA, and 64% faster than Zscaler for RBI scenarios.</p>
 	<p>In this blog, we’ll provide a refresher on why performance matters, do a deep dive on how we’re faster for each scenario, and we’ll talk about how we measured performance for each product.</p>
-	<h3>Performance is a threat vector</h3>
+	<div class="flex anchor relative">
+		<h3 id="performance-is-a-threat-vector">Performance is a threat vector</h3>
+		<a href="https://blog.cloudflare.com/#performance-is-a-threat-vector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Performance in Zero Trust matters; when Zero Trust performs poorly, users disable it, opening organizations to risk. Zero Trust services should be unobtrusive when the services become noticeable they prevent users from getting their job done.</p>
 	<p>Zero Trust services may have lots of bells and whistles that help protect customers, but none of that matters if employees can’t use the services to do their job quickly and efficiently. Fast performance helps drive adoption and makes security feel transparent to the end users. At Cloudflare, we prioritize making our products fast and frictionless, and the results speak for themselves. So now let’s turn it over to the results, starting with our secure web gateway.</p>
-	<h3>Cloudflare Gateway: security at the Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-gateway-security-at-the-internet">Cloudflare Gateway: security at the Internet</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-gateway-security-at-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway</a> needs to be fast because it acts as a funnel for all of an organization’s Internet-bound traffic. If a secure web gateway is slow, then any traffic from users out to the Internet will be slow. If traffic out to the Internet is slow, users may see web pages load slowly, video calls experience jitter or loss, or generally unable to do their jobs. Users may decide to turn off the gateway, putting the organization at risk of attack.</p>
 	<p>In addition to being close to users, a performant web gateway needs to also be well-peered with the rest of the Internet to avoid slow paths out to websites users want to access. Many websites use <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> to accelerate their content and provide a better experience. These CDNs are often well-peered and embedded in last mile networks. But traffic through a secure web gateway follows a forward proxy path: users connect to the proxy, and the proxy connects to the websites users are trying to access. If that proxy isn’t as well-peered as the destination websites are, the user traffic could travel farther to get to the proxy than it would have needed to if it was just going to the website itself, creating a hairpin, as seen in the diagram below:</p>
 	<figure class="kg-card kg-image-card ">
@@ -500,7 +514,14 @@
 	</table><!--kg-card-end: html-->
 	<p>Blank cells indicate that tests to that particular website did not report accurate results or experienced failures for over 50% of the testing period. Based on this data, Cloudflare is generally faster, but we’re not as fast as we’d like to be. There are still some areas where we need to improve, specifically in South Africa, UAE, and Brazil. By Birthday Week in September, we want to be the fastest to all of these websites in each of these regions, which will bring our number up from fastest in 54% of tests to fastest in 79% of tests.</p>
 	<p>To summarize, Cloudflare’s Gateway is still the fastest SWG on the Internet. But Zero Trust isn’t all about SWG. Let’s talk about how Cloudflare performs in Zero Trust Network Access scenarios.</p>
-	<h3>Instant (Zero Trust) access</h3>
+	<div class="flex anchor relative">
+		<h3 id="instant-zero-trust-access">Instant (Zero Trust) access</h3>
+		<a href="https://blog.cloudflare.com/#instant-zero-trust-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">Access control</a> needs to be seamless and transparent to the user: the best compliment for a <a href="https://www.cloudflare.com/zero-trust/solutions">Zero Trust solution</a> is for employees to barely notice it’s there. Services like Cloudflare Access protect applications over the public Internet, allowing for role-based authentication access instead of relying on things like a VPN to restrict and secure applications. This form of access management is more secure, but with a performant ZTNA service, it can even be faster.</p>
 	<p>Cloudflare outperforms our competitors in this space, being 46% faster than Zscaler, 56% faster than Netskope, and 10% faster than Palo Alto Networks:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -1185,7 +1206,14 @@
 	</table><!--kg-card-end: html-->
 	<p>There were some VMs in some clouds that malfunctioned and didn’t report accurate data. But out of 30 available cloud regions where we had accurate data, Cloudflare was the fastest ZT provider in 28 of them, meaning we were faster in 93% of tested cloud regions.</p>
 	<p>To summarize, Cloudflare also provides the best experience when evaluating Zero Trust Network Access. But what about another piece of the puzzle: <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">Remote Browser Isolation (RBI)</a>?</p>
-	<h3>Remote Browser Isolation: a secure browser hosted in the cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="remote-browser-isolation-a-secure-browser-hosted-in-the-cloud">Remote Browser Isolation: a secure browser hosted in the cloud</h3>
+		<a href="https://blog.cloudflare.com/#remote-browser-isolation-a-secure-browser-hosted-in-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remote browser isolation products have a very strong dependency on the public Internet: if your connection to your browser isolation product isn’t good, then your browser experience will feel weird and slow. Remote browser isolation is extraordinarily dependent on performance to feel smooth and seamless to the users: if everything is fast as it should be, then users shouldn’t even notice that they’re using browser isolation.</p>
 	<p>For this test, we’re again pitting Cloudflare against Zscaler. While Netskope does have an RBI product, we were unable to test it due to it requiring a SWG client, meaning we would be unable to get full fidelity of testing locations like we would when testing Cloudflare and Zscaler. Our tests showed that Cloudflare is 64% faster than Zscaler for remote browsing scenarios: Here’s a matrix of fastest provider per cloud per region for our RBI tests:</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -1340,6 +1368,13 @@
 	</table><!--kg-card-end: html-->
 	<p>This chart shows the results of all of the tests run against Cloudflare and Zscaler to applications hosted on three different clouds in 12 different locations from the same 400 Catchpoint nodes as the ZTNA tests. In every scenario, Cloudflare was faster. In fact, no test against a Cloudflare-protected endpoint had a 95th percentile HTTP Response of above 2105 ms, while no Zscaler-protected endpoint had a 95th percentile HTTP response of below 5000 ms.</p>
 	<p>To get this data, we leveraged the same VMs to host applications accessed through RBI services. Each Catchpoint node would attempt to log into the application through RBI, receive authentication credentials, and then try to access the page by passing the credentials. We look at the same new and existing sessions that we do for ZTNA, and Cloudflare is faster in both new sessions and existing session scenarios as well.</p>
-	<h3>Gotta go fast(er)</h3>
+	<div class="flex anchor relative">
+		<h3 id="gotta-go-fast-er">Gotta go fast(er)</h3>
+		<a href="https://blog.cloudflare.com/#gotta-go-fast-er" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our Zero Trust customers want us to be fast not because they want the fastest Internet access, but because they want to know that employee productivity won’t be impacted by switching to Cloudflare. That doesn’t necessarily mean that the most important thing for us is being faster than our competitors, although we are. The most important thing for us is improving our experience so that our users feel comfortable knowing we take their experience seriously. When we put out new numbers for Birthday Week in September and we’re faster than we were before, it won’t mean that we just made the numbers go up: it means that we are constantly evaluating and improving our service to provide the best experience for our customers. We care more that our customers in UAE have an improved experience with Office365 as opposed to beating a competitor in a test. We show these numbers so that we can show you that we take performance seriously, and we’re committed to providing the best experience for you, wherever you are.</p>
 </div>

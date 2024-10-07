@@ -10,7 +10,14 @@
 	<p>Cloudflare was launched in 2009 to help build a better Internet and make Internet performance and security accessible to everyone. Over the last twelve years, we’ve disrupted the security industry and launched a broad range of products to address our customer’s pain points across <a href="https://www.cloudflare.com/application-services/solutions">Application Security</a>, <a href="https://www.cloudflare.com/learning/network-layer/network-security">Network Security</a>, and Enterprise Security.</p>
 	<p>While there are a plethora of solutions on the market to solve specific pain points, we’ve architected Cloudflare One as a unified platform to holistically address our customers’ most pressing security challenges. &nbsp;As part of this vision, we are extremely excited to launch the public beta of Security Center. Our goal is to help customers understand their <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> and quickly take action to reduce their risk of an incident.</p>
 	<p>Starting today, all Cloudflare users can use Security Center (available in <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center">your Cloudflare dashboard</a>) to map their attack surface, review potential security risks and threats to their organizations, and mitigate these risks with a few clicks.</p>
-	<h3>The changing corporate attack surface</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-changing-corporate-attack-surface">The changing corporate attack surface</h3>
+		<a href="https://blog.cloudflare.com/#the-changing-corporate-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A year ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-one">announced Cloudflare One</a> to address the complex nature of corporate networking today. The proliferation of public cloud, SaaS applications, mobile devices, and remote work has made the traditional model of the corporate network obsolete. The Internet is the new enterprise WAN, necessitating a novel approach to the way security teams <a href="https://www.cloudflare.com/application-services/products/securitycenter">manage their attack surface</a>.</p>
 	<p>Second, the way we build applications has changed. Web applications today heavily use open source code and third-party scripts. Earlier this year we <a href="https://blog.cloudflare.com/introducing-page-shield">announced Page Shield</a>, now GA, to help our customers track and monitor their third-party JavaScript dependencies.</p>
 	<p>These transformations in the IT landscape, coupled with the natural evolution that every organization goes through — such as growth, attrition, and M&amp;A activity — create significant complexity for IT and security teams to stay on top of their organization’s ever-changing attack surface.</p>
@@ -19,17 +26,38 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HL9WvE5u4irCvhXhAHB3s/5cfed3bcb505e884a59f3fdc9a3cac01/image1-43.png" alt="Today’s complex IT attack surface" class="kg-image" width="1810" height="1022" loading="lazy">
 
 	</figure>
-	<h3>The importance of attack surface management</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-importance-of-attack-surface-management">The importance of attack surface management</h3>
+		<a href="https://blog.cloudflare.com/#the-importance-of-attack-surface-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An attack surface refers to the entire IT footprint of an organization that is susceptible to cyberattacks. Your attack surface consists of all the corporate servers, devices, SaaS, and cloud assets that are accessible from the Internet.</p>
 	<p>Over the last six months, something we’ve heard consistently from our customers is that they often don’t have a good grasp of their attack surface.</p>
 	<p>Because of the ease of creating new resources with the public cloud or SaaS, IT teams struggle to stay on top of shadow IT resources. Even when IT is aware of new infrastructure being spun up by dev teams, ensuring that these new resources are configured in line with corporate security standards is a constant battle.</p>
 	<p>It’s not only new resources that cause problems for IT teams — IT teams also want to quickly identify and decommission forgotten websites or applications that may have sensitive data or expose their organization to potential security risks.</p>
 	<p>These challenges are further complicated by the use of third-party software. Open source code, JavaScript libraries, SaaS applications, or self-hosted software introduce supply-chain risk into your attack surface. Security teams want to monitor potential vulnerabilities and malicious dependencies in third-party software.</p>
 	<p>Lastly, external threats add to your organization’s attack surface. Security teams want to quickly identify and take down rogue assets created by malicious actors. These rogue assets are often phishing sites or malware distribution points that attempt to trick the organization’s customers or employees into providing sensitive details or downloading a file.</p>
-	<h3>The challenges of attack surface management</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-challenges-of-attack-surface-management">The challenges of attack surface management</h3>
+		<a href="https://blog.cloudflare.com/#the-challenges-of-attack-surface-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With such an expansive list of potential risks and threats to an organization, it’s no surprise that organizations of all sizes are struggling to keep up with their attack surface. Many of our customers have built in-house solutions or use a range of security products to ascertain and monitor their attack surface.</p>
 	<p>But we’ve consistently heard from our customers that these solutions just don’t work. They are often too noisy and produce far too many alerts, making it difficult for security teams to triage and prioritize issues. Customers are also tired of security vendor sprawl and don’t want to add yet another tool to integrate with their existing security solutions. Security teams have limited resources — across staff and budget — and they want a solution that creates less, not more, work.</p>
-	<h3>Introducing Cloudflare Security Center</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-cloudflare-security-center">Introducing Cloudflare Security Center</h3>
+		<a href="https://blog.cloudflare.com/#introducing-cloudflare-security-center" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to make attack surface management accessible and actionable for all organizations, we are excited to launch Cloudflare Security Center. Security Center is a single place to map your attack surface, identify potential security risks, and mitigate risks with a few clicks.</p>
 	<p>Starting today, you’ll find “Security Center” in your Account Home page.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -66,7 +94,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FM8UVknVMfM3g0bXM3pvL/84d8e97478f19064ac98712e3fc2fe85/image4-20.png" alt="Review your IT assets using Security Center’s Infrastructure feature" class="kg-image" width="1999" height="981" loading="lazy">
 
 	</figure>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All features made available as part of today’s Security Center beta release are included in your existing Cloudflare plan. It’s our mission to help build a better Internet, and we believe that making attack surface management accessible and actionable is an important part of that mission. We want everyone, from an individual web developer to the <a href="https://www.cloudflare.com/cio">CIO of a Fortune 100 company</a>, to be able to easily secure their IT footprint.</p>
 	<p>You can get started today with Security Center’s beta release by <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center">visiting your Cloudflare dashboard</a>. With just a few clicks, you can ensure that your Cloudflare settings are optimized for your organization’s security.</p>
 	<p>We’d love your feedback on Security Center. If you have any comments, questions or concerns, you can contact us directly at <a href="mailto:securitycenter@cloudflare.com">securitycenter@cloudflare.com</a>, or on our <a href="https://community.cloudflare.com/c/security/security-center/65">Cloudflare Community forum</a>.</p>

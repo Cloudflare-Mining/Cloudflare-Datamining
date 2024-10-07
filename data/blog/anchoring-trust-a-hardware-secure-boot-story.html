@@ -8,7 +8,14 @@
 	<p>As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale. While we have blogged about how we address security threats from <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">application</a> to <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">memory</a>, the attacks on hardware, as well as firmware, have increased substantially. The data cataloged in the <a href="https://nvd.nist.gov">National Vulnerability Database (NVD)</a> has shown the frequency of hardware and firmware-level vulnerabilities rising year after year.</p>
 	<p>Technologies like <a href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot">secure boot</a>, common in desktops and laptops, have been ported over to the server industry as a method to combat firmware-level attacks and protect a device’s boot integrity. These technologies require that you create a trust ‘anchor’, an authoritative entity for which trust is assumed and not derived. A common trust anchor is the system <a href="https://en.wikipedia.org/wiki/BIOS">Basic Input/Output System (BIOS)</a> or the <a href="https://www.uefi.org">Unified Extensible Firmware Interface (UEFI</a>) firmware.</p>
 	<p>While this ensures that the device boots only signed firmware and operating system bootloaders, does it protect the entire boot process? What protects the BIOS/UEFI firmware from attacks?</p>
-	<h2>The Boot Process</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-boot-process">The Boot Process</h2>
+		<a href="https://blog.cloudflare.com/#the-boot-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we discuss how we secure our boot process, we will first go over how we boot our machines.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -33,7 +40,14 @@
 			<p>Finally, the Linux kernel loads any additional drivers it needs and starts applications and services.</p>
 		</li>
 	</ul>
-	<h2>UEFI Secure Boot</h2>
+	<div class="flex anchor relative">
+		<h2 id="uefi-secure-boot">UEFI Secure Boot</h2>
+		<a href="https://blog.cloudflare.com/#uefi-secure-boot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our UEFI secure boot process is fairly straightforward, albeit customized for our environments. After loading the UEFI firmware from the bootloader, an initialization script defines the following variables:</p>
 	<p><b>Platform Key (PK):</b> It serves as the cryptographic root of trust for secure boot, giving capabilities to manipulate and/or validate the other components of the <a href="https://blog.hansenpartnership.com/the-meaning-of-all-the-uefi-keys">secure boot framework</a>.</p>
 	<p><b>Trusted Database (DB):</b> Contains a signed (by platform key) list of hashes of all PCI option ROMs, as well as a public key, which is used to verify the signature of the bootloader and the kernel on boot.</p>
@@ -44,7 +58,14 @@
 
 	</figure>
 	<p>But, by setting our trust anchor in the UEFI firmware, what attack vectors still exist?</p>
-	<h2>UEFI Attacks</h2>
+	<div class="flex anchor relative">
+		<h2 id="uefi-attacks">UEFI Attacks</h2>
+		<a href="https://blog.cloudflare.com/#uefi-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As stated previously, firmware and hardware attacks are on the rise. It is clear from the figure below that firmware-related vulnerabilities have increased significantly over the last 10 years, especially since 2017, when the hacker community started attacking the firmware on different platforms:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -59,7 +80,14 @@
 
 	</figure>
 	<p>If we can’t trust firmware, then hardware becomes our last line of defense.</p>
-	<h2>Hardware Root of Trust</h2>
+	<div class="flex anchor relative">
+		<h2 id="hardware-root-of-trust">Hardware Root of Trust</h2>
+		<a href="https://blog.cloudflare.com/#hardware-root-of-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early this year, we made a series of blog posts on <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">why we chose AMD EPYC processors</a> for our Gen X servers. With security in mind, we started <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">turning on</a> features that were available to us and set forth the plan of using AMD silicon as a Hardware Root of Trust (HRoT).</p>
 	<p><a href="https://www.amd.com/system/files/2017-06/Trusting-in-the-CPU.pdf">Platform Secure Boot</a> (PSB) is AMD’s implementation of hardware-rooted boot integrity. Why is it better than UEFI firmware-based root of trust? Because it is intended to assert, by a root of trust anchored in the hardware, the integrity and authenticity of the System ROM image before it can execute. It does so by performing the following actions:</p>
 	<ul>
@@ -115,8 +143,23 @@
 		</li>
 	</ol>
 	<p>Now that we know the booting steps, let’s build an image.</p>
-	<h2>Build Process</h2>
-	<h3></h3>
+	<div class="flex anchor relative">
+		<h2 id="build-process">Build Process</h2>
+		<a href="https://blog.cloudflare.com/#build-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="">undefined</h3>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Public Key Infrastructure</p>
 	<p>Before the image gets built, a public key infrastructure (PKI) is created to generate the key pairs involved for signing and validating signatures:</p>
 	<figure class="kg-card kg-image-card ">
@@ -128,7 +171,14 @@
 	<p>On AMD’s side, they have a key pair that is used to sign (the AMD root signing private key) and certify the public key created by the ODM. This is validated by AMD’s root signing public key, which is stored as a hash value (<a href="https://tools.ietf.org/html/rfc5756">RSASSA-PSS</a>: SHA-384 with 4096-bit key is used as the hashing algorithm for both message and mask generation) in <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI-ROM</a>.</p>
 	<p>Private keys (both AMD and ODM) are stored in <a href="https://en.wikipedia.org/wiki/Hardware_security_module">hardware security modules</a>.</p>
 	<p>Because of the way the PKI mechanisms are built, the system cannot be compromised if only one of the keys is leaked. This is an important piece of the trust hierarchy that is used for image signing.</p>
-	<h3>Certificate Signing Request</h3>
+	<div class="flex anchor relative">
+		<h3 id="certificate-signing-request">Certificate Signing Request</h3>
+		<a href="https://blog.cloudflare.com/#certificate-signing-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once the PKI infrastructure is established, a BIOS signing key pair is created, together with a certificate signing request (CSR). Creating the CSR uses known common name (CN) fields that many are familiar with:</p>
 	<ul>
 		<li>
@@ -172,7 +222,14 @@
 	</figure>
 	<p>Remember these values, as we’ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level.</p>
 	<p>AMD, upon processing the CSR, provides the public part of the BIOS signing key signed and certified by the AMD signing root key as a RSA Public Key Token file (<code>.stkn</code>) format.</p>
-	<h2>Putting It All Together</h2>
+	<div class="flex anchor relative">
+		<h2 id="putting-it-all-together">Putting It All Together</h2>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following is a step-by-step illustration of how signed UEFI firmware is built:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -202,7 +259,14 @@
 			<p>Finally, the BIOS binaries, PSP directory, BIOS directory and various firmware binaries are combined to build the SPI BIOS image.</p>
 		</li>
 	</ol>
-	<h2>Enabling Platform Secure Boot</h2>
+	<div class="flex anchor relative">
+		<h2 id="enabling-platform-secure-boot">Enabling Platform Secure Boot</h2>
+		<a href="https://blog.cloudflare.com/#enabling-platform-secure-boot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Platform Secure Boot is enabled at boot time with a PSB-ready firmware image. PSB is configured using a region of one-time programmable (OTP) fuses, specified for the customer. OTP fuses are on-chip non-volatile memory (NVM) that permits data to be written to memory only once. There is <b>NO</b> way to roll the fused CPU back to an unfused one.</p>
 	<p>Enabling PSB in the field will go through two steps: fusing and validating.</p>
 	<ul>
@@ -215,7 +279,14 @@
 	</ul>
 	<p>If validation is successful, the BIOS RTM signature is validated using the ODM BIOS signing key, PSB-specific registers (<code>MP0_C2P_MSG_37</code> and <code>MP0_C2P_MSG_38</code>) are updated with the PSB status and fuse values, and the x86 cores are released</p>
 	<p>If validation fails, the registers above are updated with the PSB error status and fuse values, and the x86 cores stay in a locked state.</p>
-	<h2>Let’s Boot!</h2>
+	<div class="flex anchor relative">
+		<h2 id="lets-boot">Let’s Boot!</h2>
+		<a href="https://blog.cloudflare.com/#lets-boot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a signed image in hand, we are ready to enable PSB on a machine. We chose to deploy this on a few machines that had an updated, unsigned <a href="https://ami.com/en/support/bios-uefi-firmware-support">AMI UEFI</a> firmware image, in this case version <code>2.16</code>. We use a couple of different firmware <a href="https://github.com/Zibri/afulnx/releases">update</a> <a href="https://downloadcenter.intel.com/download/29977?v=t">tools</a>, so, after a quick script, we ran an update to change the firmware version from <code>2.16</code> to <code>2.18C</code> (the signed image):</p>
 	<pre class="language-bash"><code class="language-bash">. $sudo ./UpdateAll.sh
 Bin file name is ****.218C
@@ -256,7 +327,14 @@ Process completed.</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1gIi4xRxwq4PfpxAjc2nnA/41cd8a14cf8e706fa950f384afa18923/image12.gif" alt="" class="kg-image" width="463" height="233" loading="lazy">
 
 	</figure>
-	<h3>Testing</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing">Testing</h3>
+		<a href="https://blog.cloudflare.com/#testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a signed image installed, we wanted to test that it worked, meaning: what if an unauthorized user installed their own firmware image? We did this by downgrading the image back to an unsigned image, <code>2.16</code>. In theory, the machine shouldn’t boot as the x86 cores should stay in a locked state. After downgrading, we rebooted and got the following:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -270,7 +348,14 @@ Process completed.</code></pre>
 
 	</figure>
 	<p>Flashing back to a signed image is done by running the same flashing utility through the BMC, so we weren’t bricked. Nonetheless, the results were successful.</p>
-	<h2>Naming Convention</h2>
+	<div class="flex anchor relative">
+		<h2 id="naming-convention">Naming Convention</h2>
+		<a href="https://blog.cloudflare.com/#naming-convention" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our standard UEFI firmware images are alphanumeric, making it difficult to distinguish (by name) the difference between a signed and unsigned image (<code>v2.16A</code> vs <code>v2.18C</code>), for example. There isn’t a remote attestation capability (yet) to probe the PSB status registers or to store these values by means of a signature (e.g. <a href="https://linux.die.net/man/8/tpm_quote_tools">TPM quote</a>). As we transitioned to PSB, we wanted to make this easier to determine by adding a specific suffix: <code>-sig</code> &nbsp;that we could query in userspace. This would allow us to query this information via <a href="https://prometheus.io">Prometheus</a>. Changing the file name alone wouldn’t do it, so we had to make the following changes to reflect a new naming convention for signed images:</p>
 	<ul>
 		<li>
@@ -302,8 +387,23 @@ BIOS Information
 	Address: 0xF0000
 	Runtime Size: 64 kB
 	ROM Size: 16 MB</code></pre>
-	<h2>Conclusion</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finding weaknesses in firmware is a challenge that many attackers have taken on. Attacks that physically manipulate the firmware used for performing hardware initialization during the booting process can invalidate many of the common secure boot features that are considered industry standard. By implementing a hardware root of trust that is used for code signing critical boot entities, your hardware becomes a 'first line of defense' in ensuring that your server hardware and software integrity can derive trust through cryptographic means.</p>
-	<h2>What’s Next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s Next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While this post discussed our current, AMD-based hardware platform, how will this affect our future hardware generations? One of the benefits of working with diverse vendors like AMD and <a href="https://amperecomputing.com">Ampere</a> (ARM) is that we can ensure they are baking in our desired platform security by default (which we’ll speak about in a future post), making our hardware security outlook that much brighter ?.</p>
 </div>

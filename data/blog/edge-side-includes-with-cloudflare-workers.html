@@ -1,10 +1,24 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gNQvxZ6I9cTwFSRjR5MUY/684b62f3d694c4d0380693d89cf3f0c1/edge-side-includes-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is <a href="https://www.cloudflare.com/cdn">caching</a>, by storing the response given by the origin server directly within our <a href="https://www.cloudflare.com/network">151+ global data centers</a>. This will dramatically improve the delivery of the resources as the visitor will directly get them from the data center closest to them, instead of waiting for us to fetch the request from the origin web server.</p>
-	<h3>The issue with dynamic (but not a lot) pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-issue-with-dynamic-but-not-a-lot-pages">The issue with dynamic (but not a lot) pages</h3>
+		<a href="https://blog.cloudflare.com/#the-issue-with-dynamic-but-not-a-lot-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The subject we’re gonna cover today is the concept of Edge-Side-Includes. And what’s better than a real use-case to introduce what it is used for? Let’s take a website where all pages are including advertisements at the head and bottom. Could we consider these pages static? We couldn’t as at least part of this page is dynamic. Could we consider caching it? That’s a no again as it would mean the first dynamic part rendered will be cached and served for the other visitors trying to get the page. It would be a catastrophe if the advertisements are user-specific.</p>
 	<p>So the issue here is that we can’t cache the page. That’s quite a shame as it means that we’ll fetch the page again, and over again for every new request just to get this 1% portion of dynamic content.</p>
-	<h3>Counter-measure with delta-compression?</h3>
+	<div class="flex anchor relative">
+		<h3 id="counter-measure-with-delta-compression">Counter-measure with delta-compression?</h3>
+		<a href="https://blog.cloudflare.com/#counter-measure-with-delta-compression" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in time, we’ve released <a href="https://www.cloudflare.com/website-optimization/railgun">Railgun</a>, which consist in doing delta-compression of the requests received by a web server so Railgun listener could just send the delta bytes since the last request. We’re also working on the inclusion of this delta-compression in our <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a> listener, which is a small agent opening tunnels to us so you don’t even have to have your applications public on the internet, a simple outbound HTTPS access is enough to publish, secure and accelerate applications on Internet.</p>
 	<p>In both cases, we’ll need to fetch the complete webpage in order to calculate the difference from the last request, right? This is where Edge-Side-Includes takes place.</p>
 	<p>The Edge-Side-Includes standard has been submitted to the W3C (<a href="https://www.w3.org/TR/esi-lang">https://www.w3.org/TR/esi-lang</a>) in August 2001 and defines an XML markup language that can be inserted in HTML or other text based contents which defines how interstitial proxies/CDNs need to combine static and dynamic portion and were to get them. The result is that it’s possible to keep those 99% in cache and for the remaining 1%, the interstitial cache proxy will fetch directly from the destination defined in the Edge-Side-Include block for finally combining both static and dynamic parts and sending the final webpage to the visitor.</p>
@@ -15,7 +29,15 @@
 	</figure>
 	<p>ESI block example:</p>
 	<pre class="language-html"><code class="language-html">&lt;esi:include src="http://example.com/1.html" alt="http://bak.example.com/2.html" onerror="continue"/&gt;</code></pre>
-	<h3>Implementing it in a Worker</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="implementing-it-in-a-worker">Implementing it in a Worker</h3>
+		<a href="https://blog.cloudflare.com/#implementing-it-in-a-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are hosted on a bunch of different locations (Cloud and on-premise).</p>
 	<p>This scenario sounds then quite compatible with what we can achieve with Cloudflare Workers. For memories, here are the actions the EDGE needs to do for implementing the ESIs:</p>
 	<ul>
@@ -53,7 +75,15 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 	<p>So in this page we can see that most of the content will be static and we can find just before the end of the <code>&lt;body&gt;</code> an ESI pointing to <a href="https://httpbin.org/headers">https://httpbin.org/headers</a> that the Edge will need to combine with the static content, in place of the ESI block.</p>
-	<h2>The worker explained</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-worker-explained">The worker explained</h2>
+		<a href="https://blog.cloudflare.com/#the-worker-explained" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
   event.respondWith(fetchAndStream(event.request))
   event.passThroughOnException()
@@ -250,7 +280,15 @@ async function translate(chunks) {
 
   return handleTemplate(new TextEncoder(), templateKey);
 }</code></pre>
-	<h3>Testing the script</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="testing-the-script">Testing the script</h3>
+		<a href="https://blog.cloudflare.com/#testing-the-script" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Testing is easy, we’re going to cURL over the URL having my small HTML code presented earlier in the article, and see what looks like the answer.</p>
 	<p>cURL command:</p>
 	<pre class="language-bash"><code class="language-bash">curl https://www.justalittlebyte.ovh/esi.html -sv 2&gt;&amp;1 | grep -E "Cf-Ray|cf-cache-status|cf-ray"</code></pre>
@@ -281,7 +319,14 @@ async function translate(chunks) {
 
 	</figure>
 	<p>The most interesting comes from the cf-cache-status where we can see that the page is actually coming from our cache but the worker modified the payload as he detected an ESI block.</p>
-	<h3>Share your worker recipes</h3>
+	<div class="flex anchor relative">
+		<h3 id="share-your-worker-recipes">Share your worker recipes</h3>
+		<a href="https://blog.cloudflare.com/#share-your-worker-recipes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/recipes">official documentation</a></p>
 	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com">Send it to us</a> and you might get featured on our blog or added to our Cloudflare worker recipe collection with a credit.</p>
 </div>

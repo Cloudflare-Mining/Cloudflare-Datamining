@@ -2,14 +2,28 @@
 <div class="post-content lh-copy gray1">
 	<p>Load Balancing as a concept is pretty straightforward. Take an existing infrastructure and route requests to the available origin servers so no single server is overwhelmed. Add in some health monitoring to ensure each server has a heartbeat/pulse so proactive decisions can be made. With two steps, you get more effective utilization of your existing resources… simple enough!</p>
 	<p>As your application grows, however, load balancing becomes more complicated. An example of this — and the subject of this blog post — is how load balancing interacts with the Host header in an HTTP request.</p>
-	<h3>Host headers and load balancing</h3>
+	<div class="flex anchor relative">
+		<h3 id="host-headers-and-load-balancing">Host headers and load balancing</h3>
+		<a href="https://blog.cloudflare.com/#host-headers-and-load-balancing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every request to a website contains a unique piece of identifying information called the Host header. The Host header helps route each request to the correct origin server so the end user is sent the information they requested from the start.</p>
 	<p>For example, say that you enter <code>example.com</code> into my URL bar in my browser. You are sending a request to ‘example.com’ to send you back the homepage located <i>within</i> that application. To make sure you actually get resources from <code>example.com</code>, your browser includes a Host header of <code>example.com</code>. When that request reaches the back-end infrastructure, it finds the origin server that also has the host <code>example.com</code> and then sends back the required information.</p>
 	<p>Host headers are not only important for locating resources, but also for security. Imagine how jarring it would be if someone sent your request to <code>scary-example.com</code> and returned malicious resources instead! If the Host header in the request does not match the Host header at the destination, then the request will fail.</p>
 	<p>This behavior can cause issues when you start using third-party applications like Google Compute Cloud, Google App Engine, Heroku, and Amazon S3. These applications are great, helping you deploy and scale applications. However, they have an important effect on the requirements for a Host header. Your server is no longer located at <code>example.com</code>. Instead, it’s probably at something like <code>example.herokuapp.com</code>. If you can’t change the Host header on your origin, users might be sending their requests to the wrong place, leading to error messages and poor user experience.</p>
 	<p>The combination of Host headers and third-party applications caused issues with our Load Balancing solution. The Host header of the request would not match the updated Host header for the new application now added into the request pipeline, meaning the request would fail. Larger customers were forced to choose between using third-party applications and load balancing… not a decision we wanted to force our customers to make!</p>
 	<p>We saw this to be a big problem and wanted to help our customers leverage different solutions in the market to ensure they are successful and can align their business objectives with their infrastructure.</p>
-	<h3>Introducing Origin Server Host Header Overrides</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-origin-server-host-header-overrides">Introducing Origin Server Host Header Overrides</h3>
+		<a href="https://blog.cloudflare.com/#introducing-origin-server-host-header-overrides" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To address this problem, we’ve added support to override the Host header on a per-origin basis within our Load Balancing solution. This means that you don’t have to worry about sending errors back to your end-users and can seamlessly integrate apps — such as Heroku — into your reliability solutions.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -23,10 +37,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xmbMjXqdFhPrxqTNQXnsJ/ce3e1d64bde472a02b052271f38f6e8a/image2-2.png" alt="" class="kg-image" width="1056" height="1022" loading="lazy">
 
 	</figure>
-	<h3>How else can overriding the Host header help me?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-else-can-overriding-the-host-header-help-me">How else can overriding the Host header help me?</h3>
+		<a href="https://blog.cloudflare.com/#how-else-can-overriding-the-host-header-help-me" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You might find the Host header override useful if you have a shared web server. In these situations, IP addresses are not uniquely assigned to each server, meaning you might need a Host header override to direct your request to the right domain. For example, you might have <code>example-grocery.com</code>, <code>example-furniture.com</code>, and <code>example-perfume.com</code> all on a shared webserver hosted on the same IP address. When a request intended for <code>example-furniture.com</code> is forwarded to the server, the Host header override — <code>Host: example-furniture.com</code> — specifies which host to connect to.</p>
 	<p>Setting a Host header would mean that you enforce a strict HTTPS/TLS connection to reach the origin. We validate the Server Name Indicator (SNI) to verify that the request will be forwarded to the appropriate website.</p>
-	<h3>How does it work under the hood?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work-under-the-hood">How does it work under the hood?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand how it works, first let’s see what solutions we have currently. To configure a Load Balancer with a third-party cloud platform that requires a Host header, you would need to set a Host header override with Page Rules (Enterprise customers only). This solution works great if you have back-end origin1 and origin2 that expect the same Host header. But when the origins expect different Host headers, it wasn’t possible to set it per origin. There was a need for a more granular flexibility, hence the reason for per-origin Host header override.</p>
 	<p>Now, when you navigate to the Traffic tab and set up a Load Balancer, you can add a Host header override on your back-end origin. When you add the Host header, we do safety checks — which we’ll get to in a bit — and if it passes all the checks then your configuration gets saved. If you set a Host header override on an origin, it will take precedence over a Host header override set on the monitor.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Last December, we <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta">announced</a> a closed beta of a new product, HTTP Applications, giving customers the ability to better control their L7 Cloudflare configuration with versioning and staging capabilities. Today, we are expanding this beta to all enterprise customers who want to participate. In this post, I will talk about some of the improvements that have landed and go into more detail about how this product works.</p>
-	<h3>HTTP Applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-applications">HTTP Applications</h3>
+		<a href="https://blog.cloudflare.com/#http-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A quick recap of what HTTP Applications are and what they can do. For a deeper dive on how to use them see the <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta">previous blog post</a>.</p>
 	<p>As previously mentioned: HTTP Applications are a way to manage configuration by use case, rather than by hostname. Each HTTP Application has a purpose, whether that is handling the configuration of your marketing website or an internal application. Each HTTP Application consists of a set of versions where each represents a snapshot of settings for managing traffic — Page Rules, Firewall Rules, cache settings, etc. &nbsp;Each version of configuration inside the HTTP Application is independent of the others, and when a new version is created, it is initialized as a copy of the version that preceded it.</p>
 	<p>An HTTP Application can be represented with the following diagram:</p>
@@ -16,7 +23,14 @@
 
 	</figure>
 	<p>Each HTTP Application is sourced from an existing zone. That zone’s current configuration will be copied to instantiate the first version of the HTTP Application. After that any changes made to the zone or version 1 will be independent of the other. Versions themselves don’t affect any traffic for a zone until they are deployed via the use of Routing Rules.</p>
-	<h3>Routing Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="routing-rules">Routing Rules</h3>
+		<a href="https://blog.cloudflare.com/#routing-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike zones, each version of an HTTP Application is independent of any specific hostname. So if versions are not tied to a hostname, like zones, then how do you decide which version of an HTTP Application will affect a specific set of traffic? The answer is Routing Rules. With Routing Rules, you get to decide which version of an HTTP Application is applied to traffic. Routing Rules are powered by Cloudflare’s <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a> and rely on the use of conditional “if, then” rules to map hostnames controlled in your Cloudflare account to a version of configuration. As an example, a rule could be:</p>
 	<pre class="language-bash"><code class="language-bash">If zone.name = `example.com`
 Then use configuration of HTTP Application id: xyz, version 2</code></pre>
@@ -28,7 +42,14 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 
 	</figure>
 	<p>The combination of Routing Rules and HTTP Applications means you can ‘stage’ a set of changes, via a version, without requiring a separate staging zone as has been required in the past. Cloudflare will provide you with specific IPs that can be used to test the configuration before rolling it out to production. This means you can catch misconfigurations in rules or other settings before it impacts your customers.</p>
-	<h3>How HTTP Applications and Routing Rules work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-http-applications-and-routing-rules-work">How HTTP Applications and Routing Rules work</h3>
+		<a href="https://blog.cloudflare.com/#how-http-applications-and-routing-rules-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s break down how this all works behind the scenes and gives you a safe way to test changes to your configuration. In all of Cloudflare’s data centers around the world, every request is first inspected and associated with an account/config pair so that we know what configuration settings we should apply to this request. If you have the zone ‘example.com’, with an id of 123, in your account, with an id of 777, then when a request for example.com/cat.jpg arrives at the Cloudflare network, the ownership lookup will return a value like 777:123 which then denotes the account and config settings we should use to process that request.</p>
 	<p>When HTTP Applications and Routing Rules are being used, the ownership lookup occurs as normal, but instead of loading configuration based on the zone for the account:config pair, Cloudflare does one additional lookup to see if any routing rules are in place that would change which configuration should be used. If a rule exists like before:</p>
 	<pre class="language-bash"><code class="language-bash">If zone.name = `example.com`
@@ -46,6 +67,13 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 
 	</figure>
 	<p>This is what enables you to safely test a set of changes and then simultaneously deploy the exact same configuration to all traffic. If anything goes wrong when testing in staging or rolling out to production, you can simply roll back the configuration to the previous version that was deployed. No need to try and hunt down what settings may have changed. That investigation can be done after the issue has been resolved through a quick, one-click rollback.</p>
-	<h3>Now available for Enterprise Customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="now-available-for-enterprise-customers">Now available for Enterprise Customers</h3>
+		<a href="https://blog.cloudflare.com/#now-available-for-enterprise-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP Applications and Routing Rules put power and safety in customer’s hands so that configuration changes can be made more easily. When issues do arise they can be resolved quickly through rollbacks. We will continue to be expanding the capabilities offered throughout the year, but if you are interested in trying it out now and are an enterprise customer, talk to your account manager to get access!</p>
 </div>

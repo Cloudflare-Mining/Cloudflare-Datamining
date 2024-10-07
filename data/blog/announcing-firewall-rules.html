@@ -8,7 +8,15 @@
 	</figure>
 	<p>Threat landscapes change every second. As attackers evolve, becoming more dynamic and devious, vulnerabilities materialize faster than engineers can patch their applications. Part of Cloudflare’s mission is to keep you and your applications safe. Today, Cloudflare is launching a new feature, giving customers what they have been requesting - fine-grained control over their incoming requests.</p>
 	<p>Cloudflare already offers a number of powerful firewall tools such as IP rules, CIDR rules, ASN rules, country rules, HTTP user-agent blocking, Zone Lockdown (for these URIs only allow traffic from those IPs), and our comprehensive managed rules within our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF (Web Application Firewall)</a>. But sometimes, you need to combine the power of these to fully mitigate an attack, and to express a block rule that breaks the boundaries of the existing tools, to be able to “block traffic to this URI when the request comes from that IP and the user-agent matches one of these”.</p>
-	<h3>Flexibility and Control</h3>
+	<div class="flex anchor relative">
+		<h3 id="flexibility-and-control">Flexibility and Control</h3>
+		<a href="https://blog.cloudflare.com/#flexibility-and-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YfAM9xTlNAiOQigJiTfEm/3d0b330f361d4dd98dd1a43b9d9a13ac/Stefano-Kocka.jpg" alt="" class="kg-image" width="1999" height="1330" loading="lazy">
@@ -39,7 +47,14 @@
 			<p>Ensure it is accessible and usable by all of our customers, regardless of user skill or business size</p>
 		</li>
 	</ol>
-	<h3>Firewall Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="firewall-rules">Firewall Rules</h3>
+		<a href="https://blog.cloudflare.com/#firewall-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s new capability, Firewall Rules, provides customers the ability to control requests, in a flexible and intuitive way, inspired by the widely known Wireshark® &nbsp;language. Configuration of rules can be done through not only our Dashboard and API, but also through Terraform (<a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">link here</a>).</p>
 	<p>The Firewall Rules engine can be thought of as 2 components:</p>
 	<ul>
@@ -51,14 +66,35 @@
 		</li>
 	</ul>
 	<p>Simply put, when the filter matches, apply the action.</p>
-	<h3>Matching: scoping the rule</h3>
+	<div class="flex anchor relative">
+		<h3 id="matching-scoping-the-rule">Matching: scoping the rule</h3>
+		<a href="https://blog.cloudflare.com/#matching-scoping-the-rule" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Firewall Rules gives customers access to properties of the HTTP request, including referer, user-agent, cookies, Cloudflare Threat Score (IP reputation score), and more.</p>
 	<p>All of the supported headers can be matched by many operators, including, a partial match (<code>contains</code>), complete string or integer match (<code>equals</code>), and for our Business and Enterprise customers, pattern matching (<code>matches</code>). Yes, you read that right, we now offer pattern matching using Regular Expressions, directly through the Dashboard and API!</p>
 	<p>The great thing about Firewall Rules is the flexibility for Cloudflare to field options; for example, Cloudflare’s Threat Intelligence, which drives our Security Level functionally on the Dashboard, will be an available field for customers. One of the most important fields Cloudflare is introducing is our <code>cf.client.bot</code> field, which verifies known good bots via reverse DNS. In our initial release, we provide customers access to the general classification of “Known Good Bots”. Details on the list of these bots can be found <a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/#which-bots-or-crawlers-are-detected-in-firewall-rules">here</a>. Cloudflare has historically allowlisted Google on behalf of our customers, and utilised Web Application Firewall rules, which are only available to Pro customers and above, to block spoofed crawlers. With Firewall Rules, all customers now have access to these protections. As Cloudflare has removed the allowlisting capability, it is important that customers include simply <code>cf.client.bot</code> in an Allowed rule, to avoid inadvertently blocking good crawlers which could affect your SEO and monitoring.</p>
-	<h3>Action: what action is applied to the request</h3>
+	<div class="flex anchor relative">
+		<h3 id="action-what-action-is-applied-to-the-request">Action: what action is applied to the request</h3>
+		<a href="https://blog.cloudflare.com/#action-what-action-is-applied-to-the-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All of the standard Cloudflare actions such as JavaScript Challenge, Challenge and Block are available.</p>
 	<p>There is one new addition to the standard mitigation list, which is the <code>allow</code> action, which provides a customer the ability to create Rule to say “if this criteria is matched, stop processing further rules”.</p>
-	<h3>Give me some examples!</h3>
+	<div class="flex anchor relative">
+		<h3 id="give-me-some-examples">Give me some examples!</h3>
+		<a href="https://blog.cloudflare.com/#give-me-some-examples" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sure, here’s four cool examples that we see being used today. Advanced or nested rules are not supported in the Visual Rule Builder today. These are noted below each rule. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 	<p><i><b>Example 1 - Challenge all countries except GB</b></i>Supported: Visual Builder, Expression EditorThis can be done using our IP Firewall but would require 150+ rules!</p>
 	<pre class="language-bash"><code class="language-bash">(ip.geoip.country ne "GB")</code></pre>
@@ -93,11 +129,25 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YulU707a6hH6HeohJTIjp/9e057fec35225221855a82ddbb504204/Firewall-Rule-4.png" alt="" class="kg-image" width="1396" height="866" loading="lazy">
 
 	</figure>
-	<h3>Positive and Negative Security Models</h3>
+	<div class="flex anchor relative">
+		<h3 id="positive-and-negative-security-models">Positive and Negative Security Models</h3>
+		<a href="https://blog.cloudflare.com/#positive-and-negative-security-models" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is an awesome addition to the Firewall, as it provides our customers a way to choose between running a Positive Security policy (allow specific requests and deny everything else) or a Negative Security policy (block specific requests and allow everything else).</p>
 	<p>Cloudflare default for Firewall Rules is an implicit <code>allow</code> all. The great thing about this method of working is being able to <code>block</code> just the bad stuff. Whilst this is a very effective and efficient way of running a firewall, it causes a number of challenges. By letting all traffic through, your <a href="https://www.cloudflare.com/soc-as-a-service">security operations</a> have to be reactive when issues arise.</p>
 	<p>What the security industry has been pushing is a concept of "Zero Trust". Just as it sounds, <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> means you trust nothing, and everything that comes through has to have some kind of justification. To create a "Zero Trust" security policy, you have to reverse the way your firewall default policy works, i.e. changing the last action from allow to block - aka. a positive security policy. Before today, this was not possible; however with Firewall Rules, now you can.</p>
-	<h3>The Visual Rule Builder and Expression Editor</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-visual-rule-builder-and-expression-editor">The Visual Rule Builder and Expression Editor</h3>
+		<a href="https://blog.cloudflare.com/#the-visual-rule-builder-and-expression-editor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the biggest concerns about giving customers power, is delivering that power safely and effectively. The product design and UI engineering team worked through multiple iterations to create a powerful but approachable rule builder and editor. The team spent a number of months working through a number of iterations to create solid rule builder and a rule editor solution without cluttering or complicating the UI.</p>
 	<p>Pete Thomas, our Lead Designer on the new Firewall UI took us back to basics running paper prototyping sessions to test and discover how rules are built and managed.</p>
 	<p>Below is a photo of myself and Matthew Bullock, one of our London Solutions Engineers, going through the testing process.</p>

@@ -9,12 +9,26 @@
 	<p>Up until recently, Durable Objects were no exception. A Durable Object is a special kind of Cloudflare Worker that has access to persistent storage and processes requests in one of Cloudflare’s points of presence. Each Object has its own private storage, accessible through a classical key/value storage API. Like any classical database API, this storage API had to be used carefully to avoid possible race conditions and data loss, especially when performance mattered. And like any classical database API, many apps got it wrong.</p>
 	<p>However, rather than fix the apps, we decided to fix the model. Last month, we rolled out deep changes to the Durable Objects runtime such that many applications which previously contained subtle race conditions are now correct by default, and many that were previously slow are now fast. Developers can now write their code in an intuitive way, and have it work. No changes at all are needed to your code in order to take advantage of these new features.</p>
 	<p>So, let me tell you about what changed…</p>
-	<h2>Background: Durable Objects are Single-Threaded</h2>
+	<div class="flex anchor relative">
+		<h2 id="background-durable-objects-are-single-threaded">Background: Durable Objects are Single-Threaded</h2>
+		<a href="https://blog.cloudflare.com/#background-durable-objects-are-single-threaded" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand what changed, it's necessary to first understand Durable Objects. For a full introduction, see the <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects announcement blog post</a>.</p>
 	<p>The most important point is: Each Durable Object runs in exactly one location, in one single thread, at a time. Each object has its own private on-disk storage. This is a very different situation from a typical database, where many clients may be accessing the same data. In Durable Objects, any particular piece of data belongs to exactly one thread at a time.</p>
 	<p>Because a single Durable Object is single-threaded, it's possible, and even encouraged, to keep state and perform synchronization in memory. This is, indeed, the killer feature of Durable Objects. With classical databases, in-memory state is extremely difficult to keep synchronized between all database clients. But with Durable Objects, since each piece of data belongs to a specific thread, this synchronization is easy.</p>
 	<p>However, interacting with the disk is still an I/O (input/output) operation, which means that each operation returns a <code>Promise</code> which you must <code>await</code>. As we'll see, this re-introduces some of the synchronization difficulties that we were trying to avoid. However, it turns out, we can solve these difficulties within the system itself, without bothering application developers.</p>
-	<h2>An Example</h2>
+	<div class="flex anchor relative">
+		<h2 id="an-example">An Example</h2>
+		<a href="https://blog.cloudflare.com/#an-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Consider this code:</p>
 	<pre class="language-javascript"><code class="language-javascript">// Used to be slow and racy -- but not anymore!
 async function getUniqueNumber() {
@@ -32,7 +46,14 @@ async function getUniqueNumber() {
 			<p>It was kind of slow.</p>
 		</li>
 	</ol>
-	<h3>The Race Condition</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-race-condition">The Race Condition</h3>
+		<a href="https://blog.cloudflare.com/#the-race-condition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A race condition occurs when two operations running concurrently might interfere with each other in a way that makes them behave incorrectly. Race conditions are commonly associated with code that uses multiple threads.</p>
 	<p>JavaScript, however, famously does not use threads. Instead, it uses event-driven programming, with callbacks. It's not possible for two pieces of JavaScript code to be running "at the same time" in the same isolate (and Durable Objects promises that no other isolate could possibly be accessing the same storage). Does that mean that race conditions aren't a problem in JavaScript, the way they are in multi-threaded apps?</p>
 	<p>Unfortunately, it does not. The problem is, the code above is an <code>async</code> function, containing two <code>await</code> statements. Each time <code>await</code> is used, execution pauses, waiting for the specified <code>Promise</code> to complete.</p>
@@ -56,16 +77,37 @@ async function getUniqueNumber() {
 }</code></pre>
 	<p>There's a big problem here: Both of these two calls will call <code>get("counter")</code> before <i>either</i> of them calls <code>put("counter", val + 1)</code>. That means, both of them will return the same value!</p>
 	<p>This problem is especially bad because it only happens when multiple requests are being handled at the same time -- and even then, only sometimes. It is very hard to test for this kind of problem, and everything might seem just fine when the application is deployed, as long as it isn't getting too much traffic. But one day, when a lot of visitors try to use the same object at the same time, all of a sudden <code>getUniqueNumber()</code> starts returning duplicates!</p>
-	<h3>The Slowness</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-slowness">The Slowness</h3>
+		<a href="https://blog.cloudflare.com/#the-slowness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To add insult to injury, <code>getUniqueNumber()</code> was (until recently) pretty slow. The problem is, it has to do two round trips to storage -- a <code>get()</code> and a <code>put()</code>. The <code>get()</code> might typically take a couple milliseconds. The <code>put()</code>, however, will take much longer, probably tens of milliseconds.</p>
 	<p>Why is <code>put()</code> so slow? Because we don't want to lose data. The worst thing an application can do is tell the user that their action was successful when it wasn't. If, for some reason, a write cannot be completed, then it's imperative that the application presents an error to the user, so that the user knows that something is wrong and they'll have to try again or look for a fix.</p>
 	<p>In order to make sure an application does not prematurely report success to the user, <code>await put()</code> has to make sure it doesn't return until the data is actually safe on disk. Disks are slow, so this might take a while.</p>
 	<p>But that's not all. Disks can fail. In order for the data to be really safe, we have to write the same data on multiple disks, in multiple machines. That means we have to wait for some network traffic.</p>
 	<p>But that's still not all. What if a meteor were to come out of the sky and land on a Cloudflare data center, completely destroying it? Or, more likely, what if the power or network connection failed? We don't want a user's data to be lost in this case, or even temporarily become unavailable. Therefore, Durable Object data is replicated to multiple Cloudflare locations. This requires communicating across long distances before any write can be confirmed. There is little we can do to make this faster, the speed of light being what it is.</p>
 	<p>A call to <code>getUniqueNumber()</code> will therefore always take tens of milliseconds. If an application calls it multiple times, <code>await</code>ing each call before beginning the next, it can easily become very slow very quickly. Or, at least, that was the case before our recent changes.</p>
-	<h2>The Wrong Fixes</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-wrong-fixes">The Wrong Fixes</h2>
+		<a href="https://blog.cloudflare.com/#the-wrong-fixes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are several ways that an application could fix these problems, but all of them have their own issues.</p>
-	<h3>Transactions?</h3>
+	<div class="flex anchor relative">
+		<h3 id="transactions">Transactions?</h3>
+		<a href="https://blog.cloudflare.com/#transactions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many databases offer "transactions". A transaction allows an application to make sure some operation completes "atomically", with no interference from concurrent operations.</p>
 	<p>The Durable Objects storage API has always supported transactions. We could use them to fix our <code>getUniqueNumber()</code> implementation like so:</p>
 	<pre class="language-javascript"><code class="language-javascript">// No more race condition... but slow and complicated.
@@ -89,7 +131,14 @@ async function getUniqueNumber() {
 	</ul>
 	<p>So we solved our problem, but we did it with a foot-gun. If we keep using the foot-gun, we're probably going to shoot our own feet eventually.</p>
 	<p>Is there another way?</p>
-	<h3>In-memory caching?</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-memory-caching">In-memory caching?</h3>
+		<a href="https://blog.cloudflare.com/#in-memory-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Durable Objects' superpower is their in-memory state. Each object has only one active instance at any particular time. All requests sent to that object are handled by that same instance. That means, you can store some state in memory.</p>
 	<pre class="language-javascript"><code class="language-javascript">// Much faster! But (used to be) wrong.
 async function getUniqueNumber() {
@@ -113,7 +162,14 @@ async function getUniqueNumber() {
 			<p>Because we don't wait for the <code>put()</code> to report success, it's possible that it could be silently lost. For example, if the machine hosting the Durable Object suffered a sudden power failure, then the Durable Object would be transferred to some other machine. When it starts up there, calls to <code>getUniqueNumber()</code> might return numbers that had already been returned under the old instance before it failed, because the <code>put()</code>s hadn't actually completed before the failure occurred. But if we <code>await</code> the <code>put()</code>, then our function becomes slow again, and creates more opportunities for race conditions (e.g. in the calling code).</p>
 		</li>
 	</ul>
-	<h2>Our answer: Make it automatic</h2>
+	<div class="flex anchor relative">
+		<h2 id="our-answer-make-it-automatic">Our answer: Make it automatic</h2>
+		<a href="https://blog.cloudflare.com/#our-answer-make-it-automatic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When looking at this, we had two options:</p>
 	<ol>
 		<li>
@@ -124,7 +180,14 @@ async function getUniqueNumber() {
 		</li>
 	</ol>
 	<p>We chose option 2. We accomplished this in three parts.</p>
-	<h3>Part 1: Input Gates</h3>
+	<div class="flex anchor relative">
+		<h3 id="part-1-input-gates">Part 1: Input Gates</h3>
+		<a href="https://blog.cloudflare.com/#part-1-input-gates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's go back to our original example. Can we make this example "just work", even in the face of concurrent requests?</p>
 	<pre class="language-javascript"><code class="language-javascript">// Can this "just work" please?
 async function getUniqueNumber() {
@@ -189,7 +252,14 @@ let val1 = await promise1;
 let val2 = await promise2;</code></pre>
 	<p>In this case, there is, in fact, a problem. Two calls to <code>getUniqueNumber()</code> are initiated <i>by the same event</i>. The application does not <code>await</code> the first call before starting the second, so the two calls end up running concurrently. Our special rule doesn't protect us here, because there is no incoming event that can be deferred between when the two calls are made. From the system's point of view, there's no way to distinguish this code from code which legitimately decided to perform two storage operations in parallel.</p>
 	<p>As such, in this case, the two calls to <code>getUniqueNumber()</code> will interfere with each other. However, this problem is far less likely to come about by accident, and is far easier to catch in testing. This bug is <i>deterministic</i>, not caused by the unpredictable timing of network events. We consider this an acceptable caveat in order to solve the larger problem posed by concurrent requests.</p>
-	<h3>Part 2: Output Gates</h3>
+	<div class="flex anchor relative">
+		<h3 id="part-2-output-gates">Part 2: Output Gates</h3>
+		<a href="https://blog.cloudflare.com/#part-2-output-gates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's go back to our in-memory caching example. Can we make it work?</p>
 	<pre class="language-javascript"><code class="language-javascript">// Can we make this "just work"?
 async function getUniqueNumber() {
@@ -211,7 +281,14 @@ async function getUniqueNumber() {
 	<p>With this rule, we no longer have to <code>await</code> the result of <code>put()</code>. Our code can happily continue executing and just <i>assume</i> the put() will succeed. If the <code>put()</code> doesn't succeed, then anything the application does here will never be observable to the rest of the world anyway. For example, if the app prematurely sends a response to the user saying that the operation succeeded, this response will not actually be delivered until after the <code>put()</code> completes successfully. So, by the time the user <i>receives</i> the message, it is no longer "premature"! In the very rare event that the write operation fails, the user will not receive the premature confirmation at all.</p>
 	<p>Note that output gates apply not only to responses sent back to a client, but also to new outgoing requests made with <code>fetch()</code> -- those requests will be delayed from being sent until all prior writes are confirmed. So, once again, it is impossible for anything else in the world to observe a premature confirmation.</p>
 	<p>With this change, our <code>getUniqueNumber()</code> implementation with in-memory caching is now fully correct, while retaining most of its speed advantage over the non-caching implementation. Except for the very first call, the application will never be blocked waiting for <code>getUniqueNumber()</code> to finish. The final response from the app to the client will be delayed pending write confirmation, but that write can be performed in parallel with any writes the application performs after <code>getUniqueNumber()</code> completes.</p>
-	<h3>Part 3: Automatic in-memory caching</h3>
+	<div class="flex anchor relative">
+		<h3 id="part-3-automatic-in-memory-caching">Part 3: Automatic in-memory caching</h3>
+		<a href="https://blog.cloudflare.com/#part-3-automatic-in-memory-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our in-memory caching example now works great. But, it's still a little bit complicated and unnatural to write. Let's go back to our original, simple code one more time… can we make it fast by default?</p>
 	<pre class="language-javascript"><code class="language-javascript">// Can we make this not just work, but just work FAST?
 async function getUniqueNumber() {
@@ -239,13 +316,27 @@ this.storage.put("bar", val);
 // in between.</code></pre>
 	<p>Second, the API is also able to provide stronger ordering guarantees for reads. Previously, overlapping storage operations did not have guaranteed ordering. For example, if you issued a <code>get()</code> and a <code>put()</code> on the same key at the same time (without <code>await</code>ing one before starting the other), then it was not deterministic whether the <code>get()</code> might return the value written by the <code>put()</code> -- regardless of the ordering of the statements in your code. The caching layer fixes this. Now, operations are performed in exactly the order in which they were initiated, regardless of when they complete.</p>
 	<p>These two features eliminate more subtle bugs that might otherwise be hard to catch in testing, so that you don't have to be a database expert to write code that works.</p>
-	<h3>Optional Bypass</h3>
+	<div class="flex anchor relative">
+		<h3 id="optional-bypass">Optional Bypass</h3>
+		<a href="https://blog.cloudflare.com/#optional-bypass" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We expect gates and caching will be a win in the vast majority of use cases, but not always. In some use cases, concurrency won't lead to any problems, and so blocking it may be a loss. Sometimes, the application is OK with prematurely confirming writes in order to minimize latency. And sometimes, caching may just waste memory because the same keys are not frequently accessed.</p>
 	<p>For those cases, we offer explicit bypasses:</p>
 	<pre class="language-javascript"><code class="language-javascript">this.storage.get("foo", {allowConcurrency: true, noCache: true});
 this.storage.put("foo", "bar", {allowUnconfirmed: true, noCache: true});</code></pre>
 	<p>Developers who have taken the time to think carefully about these issues can use these flags to tune performance to their specific needs. For those who don't want to think about it, the defaults should work well.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Concurrency is hard. It doesn't matter if you're a novice or an expert: even experts regularly get it wrong. It's difficult to think about all the ways that concurrent operations might overlap to corrupt your application state.</p>
 	<p>The traditional answer has been to make applications stateless, and defer all concurrency control to the database layer using transactions. However, transactions are slow, which is a big reason why so many web applications today take hundreds of milliseconds or more to respond to basic actions.</p>
 	<p>Durable Objects are all about state. By keeping state in memory in addition to on disk, and directing requests for the same data to be coordinated through the same instance, we can make applications much faster. But until recently, this was extremely tricky to get right.</p>

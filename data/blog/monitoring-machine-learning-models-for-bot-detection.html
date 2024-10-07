@@ -10,7 +10,14 @@
 	<p>Cloudflare’s <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Bot Management</a> is used by organizations around the world to proactively detect and mitigate automated bot traffic. To do this, Cloudflare leverages machine learning models that help predict whether a particular HTTP request is coming from a bot or not, and further distinguishes between benign and malicious bots. Cloudflare serves over 55 million HTTP requests per second — so our machine learning models need to run at Cloudflare scale.</p>
 	<p>We are constantly making improvements to the models that power Bot Management to ensure they are incorporating the latest threat intelligence. This process of iteration is an important part of ensuring our customers stay a step ahead of malicious actors, and it requires a rigorous process for experimentation, deployment, and ongoing observation.</p>
 	<p>We recently shared an introduction to <a href="https://blog.cloudflare.com/mlops">Cloudflare’s approach to MLOps</a>, which provides a holistic overview of model training and deployment processes at Cloudflare. In this post, we will dig deeper into monitoring, and how we continuously evaluate the models that power <a href="https://www.cloudflare.com/learning/bots/what-is-bot-management">Bot Management</a>.</p>
-	<h2>Why monitoring matters</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-monitoring-matters">Why monitoring matters</h2>
+		<a href="https://blog.cloudflare.com/#why-monitoring-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before bot detection models are released, we undergo an extensive model testing/validation process to ensure our detections perform as expected. Model performance is validated across a wide number of web traffic segments, by browser, HTTP protocol, and other dimensions to get a fine-grained view into how we expect the model to perform once deployed. If everything checks out, the model is gradually released into production, and we get a level up in our bot detections.</p>
 	<p>After models are deployed to production, it can be challenging to get visibility into performance on a granular level. Sure, we can look at outcomes-based metrics — like <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human.">bot score</a> distributions, or <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions">challenge</a> solve rates. These are informative, but with any change in bot scoring or challenge solve rates, we're still left asking, "Which segments of web traffic are most impacted by this change? Was that expected?".</p>
 	<p>To train a model for the Internet is to train a model against a moving target. Anyone can train a model on static data and achieve great results — so long as the input does not change. Building a model that generalizes into the future, with new threats, browsers, and bots is a more difficult task. Machine learning monitoring is an important part of the story because it provides confidence that our models continue to generalize, using a rigorous and repeatable process.</p>
@@ -28,33 +35,97 @@
 			<p><b>Deploying new models</b>: We gradually deploy new model versions, eventually ramping up to running across Cloudflare’s global web traffic. Along the way, we have a series of checks before a new model can be deployed to the next release step. Monitoring allows us to compare the latest model with the previous version against granular traffic segments at each deployment stage — giving us confidence when proceeding forward with the rollout.</p>
 		</li>
 	</ul>
-	<h2>How does machine learning monitoring work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-machine-learning-monitoring-work">How does machine learning monitoring work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-machine-learning-monitoring-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The process begins with a ground-truth dataset — a set of traffic data known to be either human or bot-generated, labeled accordingly and accurately. If our model identifies a particular request as bot traffic, when our ground-truth label indicates it originated from a human, then we know the model has miscategorized the request, and vice versa. This kind of labeled data, where we flag traffic as being from a bot or a human, is what our model is trained on to learn to make detections in the first place.</p>
 	<p>Datasets gathered at training time allow us to evaluate the performance of a trained model for that snapshot in time. Since we want to continuously evaluate model performance in production, we need to likewise get real-time labeled data to compare against our bot score. We can generate a labeled dataset for this purpose when we’re certain that web requests come from a certain actor. For example, our <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#heuristics">heuristics engine</a> is one source of high-confidence labeled data. Other sources of reliable, labeled data include customer feedback and attack pattern research.</p>
 	<p>We can directly compare our model’s bot scores on web requests against recently-labeled datasets to judge model performance. To ensure that we are making an apples-to-apples comparison as we evaluate the model’s score over time, consistency is paramount: the data itself will be different, but we want the methodology, conditions, and filters to remain the same between sampling windows. We have automated this process, allowing us to generate labeled datasets in real-time that give us an up-to-the-minute view of model performance.</p>
-	<h3>Getting granular performance metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-granular-performance-metrics">Getting granular performance metrics</h3>
+		<a href="https://blog.cloudflare.com/#getting-granular-performance-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's say we detect a sudden drop in accuracy on a given dataset labeled as bot traffic, meaning our detection is incorrectly scoring bots as human traffic. We would be keen to determine the exact subset of traffic responsible for the scoring miss. Is it coming from the latest Chrome browser or maybe a certain <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system">ASN</a>?</p>
 	<p>To answer this, performance monitoring uses specializations, which are filters applied against our dataset that focus on a dimension of interest (e.g. browser type, ASN). With specializations on datasets, we get both an expectation on how traffic <i>should </i> have been scored, and insight into the exact dimension causing the miss.</p>
-	<h3>Integrating monitoring into our bots machine learning platform</h3>
+	<div class="flex anchor relative">
+		<h3 id="integrating-monitoring-into-our-bots-machine-learning-platform">Integrating monitoring into our bots machine learning platform</h3>
+		<a href="https://blog.cloudflare.com/#integrating-monitoring-into-our-bots-machine-learning-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The monitoring system runs on a unified platform called <i>Endeavor,</i> which we built to handle all aspects of bots-related machine learning, including model training and validation, model interpretability, and delivering the most up-to-date information to our servers running bot detection. We can break down monitoring into a few tasks: rendering monitoring queries to fetch datasets, computing performance metrics, and storing metrics. Endeavour uses <a href="https://airflow.apache.org">Airflow</a>, a workflow execution engine, making it a great place to run our monitoring tasks on top of a kubernetes cluster and GPUs, with access to Postgres and <a href="https://clickhouse.com">ClickHouse</a> databases.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52wZKzjuR1lNMYAdyFS0Kb/c2276af7f3fdc270717ce9baf487a43b/Monitoring-machine-learning-models-for-bot-detection.png" alt="" class="kg-image" width="1772" height="1248" loading="lazy">
 
 	</figure>
-	<h3>Rendering monitoring queries</h3>
+	<div class="flex anchor relative">
+		<h3 id="rendering-monitoring-queries">Rendering monitoring queries</h3>
+		<a href="https://blog.cloudflare.com/#rendering-monitoring-queries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A monitoring query is simply a SQL query to our <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">ClickHouse web request database</a> asking "How does machine learning scoring look right now?". The query gets more precise when we add in dataset and specialization conditions so that we can ask a more refined question "For this set of known (non-)automated traffic, how does machine learning scoring look along these dimensions of interest?".</p>
 	<p>In our system, datasets for training and validation are determined using SQL queries, which are tailored to capture segments of request traffic, such as traffic flagged as bots by our heuristics engine. For model monitoring, we adapt these queries to measure performance metrics like accuracy and continuously update the time range to measure the latest model performance. For each dataset used in training and validation, we can generate a monitoring query that produces real-time insight into model performance.</p>
-	<h3>Computing performance metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="computing-performance-metrics">Computing performance metrics</h3>
+		<a href="https://blog.cloudflare.com/#computing-performance-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With a rendered monitoring query ready, we can go ahead and fetch bot score distributions from our web request database. The <code>MetricsComputer</code> takes in the bot score distributions as input and produces relevant performance metrics, like accuracy, over a configurable time interval.</p>
 	<p>We can evaluate model performance along any metric of interest. The <code>MetricInterface</code> is a Python interface that acts as a blueprint for performance metrics. Any newly added metric would only need to implement the interface's <code>compute_metric</code> method, which defines how the <code>MetricsComputer</code> should perform the calculation.</p>
-	<h3>Storing metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="storing-metrics">Storing metrics</h3>
+		<a href="https://blog.cloudflare.com/#storing-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After each monitoring run, we store performance metrics by dataset, model version, and specialization value in the <code>ml_performance</code> ClickHouse table. Precomputing metrics enables long data retention periods, so we can review model performance by model versions or dimensions of interest over time. Importantly, newly added performance metrics can be backfilled as needed since the <code>ml_performance</code> table also stores the score distributions used to compute each metric.</p>
-	<h3>Running tasks on GPUs</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-tasks-on-gpus">Running tasks on GPUs</h3>
+		<a href="https://blog.cloudflare.com/#running-tasks-on-gpus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Metrics computation is load balanced across <code>endeavour-worker</code> instances running across GPUs. From a system perspective, the <a href="https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/scheduler.html"><code>airflow-scheduler</code></a> adds a monitoring task to a <a href="https://redis.com/glossary/redis-queue">Redis Queue</a> and <a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/celery.html">Airflow Celery workers</a> running on each GPU will pull tasks off the queue for processing. We benefit from having a production service constantly powered by GPUs, as opposed to only running ad hoc model training workloads. As a result, the monitoring service acts as a health-check that ensures various Endeavour components are functioning properly on GPUs. This helps ensure the GPUs are always updated and ready to run model training/validation tasks.</p>
-	<h2>Machine learning monitoring in action</h2>
+	<div class="flex anchor relative">
+		<h2 id="machine-learning-monitoring-in-action">Machine learning monitoring in action</h2>
+		<a href="https://blog.cloudflare.com/#machine-learning-monitoring-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To better illustrate how Cloudflare uses machine learning monitoring, let’s explore some recent examples.</p>
-	<h2>Improving accuracy of machine learning bot detection</h2>
+	<div class="flex anchor relative">
+		<h2 id="improving-accuracy-of-machine-learning-bot-detection">Improving accuracy of machine learning bot detection</h2>
+		<a href="https://blog.cloudflare.com/#improving-accuracy-of-machine-learning-bot-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mqzj2axLlpyV7dkdwX3Oo/e07b21056d34ec799c525f88bdbfe380/Screenshot-2023-10-26-at-4.03.36-PM.png" alt="" class="kg-image" width="1600" height="488" loading="lazy">
@@ -62,7 +133,14 @@
 	</figure>
 	<p>When the monitoring system was first deployed, we quickly found an anomaly: our model wasn’t performing well on web traffic using HTTP/3. At the time, HTTP/3 usage was hardly seen across the web, and the primary model in production wasn’t trained on HTTP/3 traffic, leading to inaccurate bot scores. Fortunately, another bot detection layer, our <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#heuristics">heuristics engine</a>, was still accurately finding bots using HTTP/3 — so our customers were still covered.</p>
 	<p>Still, this finding pointed to a key area of improvement for the next model iteration. And we did improve: the next model iteration was consistently able to distinguish between bot and human initiated HTTP/3 web requests with over 3.5x higher accuracy compared to the prior model version. As we enable more datasets and specializations, we can uncover specific browsers, OSs and other dimensions where performance can be improved during model training.</p>
-	<h3>Early detection, quick intervention</h3>
+	<div class="flex anchor relative">
+		<h3 id="early-detection-quick-intervention">Early detection, quick intervention</h3>
+		<a href="https://blog.cloudflare.com/#early-detection-quick-intervention" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Deploying machine learning at a global scale, running in data centers spread over 100 countries around the world, is challenging. Things don’t always go to plan.</p>
 	<p>A couple of years ago, we deployed an update to our machine learning powered bot detections, and it led to an increase in false positive bot detections — we were incorrectly flagging some legitimate traffic as bot traffic. Our monitoring system quickly showed a drop in performance on residential ASNs where we expect mostly non-automated traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -73,9 +151,23 @@
 	<p><i>In the graph above, deployments are shown to three colo “tiers”, 1-3. Since software deployments start on tier 3 colocation centers and gradually move up to tier 1, the impact followed the same pattern.</i></p>
 	<p>At the same time, a software release was being deployed to our global network, but we didn’t know if it was the cause of the performance drop. We do staged deployments, updating the software in one batch of datacenters at a time before reaching global traffic. Our monitoring dashboards showed a drop in performance that followed this exact deployment pattern, and the release was starting to reach our biggest datacenters.</p>
 	<p>Monitoring dashboards clearly showed the pattern followed a software update. We reverted the change before the update made it to most of our datacenters and restored normal machine learning bot detection performance. Monitoring allows us to catch performance anomalies, dig into the root cause, and take action — fast.</p>
-	<h3>Model deployment monitoring for all</h3>
+	<div class="flex anchor relative">
+		<h3 id="model-deployment-monitoring-for-all">Model deployment monitoring for all</h3>
+		<a href="https://blog.cloudflare.com/#model-deployment-monitoring-for-all" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ve seen a lot of value in being able to monitor and control our models and deployments, and realized that other people must be running into the same challenges as well. Over the next few months, we'll be building out more advanced features for AI Gateway – our proxy that helps people observe and control their AI applications and models better. With AI Gateway, we can do all the same deployments, monitoring, and optimization strategies we have been doing for our Bot detection models in one unified control plane. We're excited to use these new features internally, but even more excited to release these features to the public, so that anyone is able to deploy, test, monitor and improve the way they use AI or machine learning models.</p>
-	<h3>Next up</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-up">Next up</h3>
+		<a href="https://blog.cloudflare.com/#next-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, machine learning monitoring helps us investigate performance issues and monitor performance as we roll out new models — and we're just getting started!</p>
 	<p>This year, we're accelerating our machine learning model iterations for bot detection to deliver improved detections faster than ever. Monitoring will be key for enabling fast and safe deployments. We’re excited to add alerting based on model performance - so that we’re automatically notified should model performance ever drift outside our expected bounds.</p>
 	<p>Alongside our <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> launch, we recently deployed GPUs in 100+ cities, leveling up our compute resources at a global scale. This new infrastructure will unlock our model iteration process, allowing us to explore new, cutting-edge models with even more powerful bot detection capabilities. Running models on our GPUs will bring inference closer to users for better model performance and latency, and we’re excited to leverage our new GPU compute with our bot detection models as well.</p>

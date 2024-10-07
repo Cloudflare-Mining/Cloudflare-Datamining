@@ -14,7 +14,14 @@
 
 	</figure>
 	<p>Though Kubernetes does an excellent job at providing the tools for communication and traffic management, it does not help the developer decide the best way to communicate between the applications running on the pods. Throughout this blog we will look at some of the decisions we made and why we made them to discuss the pros and cons of two commonly used API architectures, REST and gRPC.</p>
-	<h3>Out with the old, in with the new</h3>
+	<div class="flex anchor relative">
+		<h3 id="out-with-the-old-in-with-the-new">Out with the old, in with the new</h3>
+		<a href="https://blog.cloudflare.com/#out-with-the-old-in-with-the-new" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When the DNS team first moved to Kubernetes, all of our pod-to-pod communication was done through REST APIs and in many cases also included Kafka. The general communication flow was as follows:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +31,14 @@
 	<p>We use Kafka because it allows us to handle large spikes in volume without losing information. For example, during a Secondary DNS Zone zone transfer, Service A tells Service B that the zone is ready to be published to the edge. Service B then calls Service A’s REST API, generates the zone, and pushes it to the edge. If you want more information about how this works, I wrote an entire blog post about the <a href="https://blog.cloudflare.com/secondary-dns-deep-dive">Secondary DNS pipeline</a> at Cloudflare.</p>
 	<p>HTTP worked well for most communication between these two services. However, as we scaled up and added new endpoints, we realized that as long as we control both ends of the communication, we could improve the usability and performance of our communication. In addition, sending large DNS zones over the network using HTTP often caused issues with sizing constraints and compression.</p>
 	<p>In contrast, gRPC can easily stream data between client and server and is commonly used in microservice architecture. These qualities made gRPC the obvious replacement for our REST APIs.</p>
-	<h3>gRPC Usability</h3>
+	<div class="flex anchor relative">
+		<h3 id="grpc-usability">gRPC Usability</h3>
+		<a href="https://blog.cloudflare.com/#grpc-usability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Often overlooked from a developer’s perspective, HTTP client libraries are clunky and require code that defines paths, handles parameters, and deals with responses in bytes. gRPC abstracts all of this away and makes network calls feel like any other function calls defined for a struct.</p>
 	<p>The example below shows a very basic schema to set up a GRPC client/server system. As a result of gRPC using <a href="https://developers.google.com/protocol-buffers">protobuf</a> for serialization, it is largely language agnostic. Once a schema is defined, the <i>protoc</i> command can be used to generate code for <a href="https://grpc.io/docs/languages">many languages</a>.</p>
 	<p>Protocol Buffer data is structured as <i>messages,</i> with each <i>message</i> containing information stored in the form of fields. The fields are strongly typed, providing type safety unlike JSON or XML. Two messages have been defined, <i>Hello</i> and <i>HelloResponse</i>. Next we define a service called <i>HelloWorldHandler</i> which contains one RPC function called <i>SayHello</i> that must be implemented if any object wants to call themselves a <i>HelloWorldHandler</i>.</p>
@@ -84,7 +98,14 @@ client.SayHello(context.Background(), &amp;pb.Hello{Name: "alex"})</code></pre>
 			<p><b>Bi-directional Streaming:</b> the client and server can both send streams of messages to each other asynchronously.</p>
 		</li>
 	</ul>
-	<h3>gRPC Performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="grpc-performance">gRPC Performance</h3>
+		<a href="https://blog.cloudflare.com/#grpc-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Not all HTTP connections are created equal. Though Golang natively supports HTTP/2, the HTTP/2 transport must be set by the client and the server must also support HTTP/2. Before moving to gRPC, we were still using HTTP/1.1 for client connections. We could have switched to HTTP/2 for performance gains, but we would have lost some of the benefits of native protobuf compression and usability changes.</p>
 	<p>The best option available in HTTP/1.1 is pipelining. Pipelining means that although requests can share a connection, they must queue up one after the other until the request in front completes. HTTP/2 improved pipelining by using connection multiplexing. Multiplexing allows for multiple requests to be sent on the same connection and at the same time.</p>
 	<p>HTTP REST APIs generally use JSON for their request and response format. Protobuf is the native request/response format of gRPC because it has a standard schema agreed upon by the client and server during registration. In addition, protobuf is known to be significantly faster than JSON due to its serialization speeds. I’ve run some benchmarks on my laptop, source code can be found <a href="https://github.com/Fattouche/protobuf-benchmark">here</a>.</p>
@@ -100,7 +121,14 @@ client.SayHello(context.Background(), &amp;pb.Hello{Name: "alex"})</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDR6bZkh8zzVVv2j6tmE5/38c7b40766ad5de98483923e0f02e7c6/image2-19.png" alt="Our latency spikes dropped in both amplitude and frequency." class="kg-image" width="1418" height="434" loading="lazy">
 
 	</figure>
-	<h3>gRPC Security</h3>
+	<div class="flex anchor relative">
+		<h3 id="grpc-security">gRPC Security</h3>
+		<a href="https://blog.cloudflare.com/#grpc-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the best features in Kubernetes is the NetworkPolicy. This allows developers to control what goes in and what goes out.</p>
 	<pre class="language-js"><code class="language-js">apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -184,7 +212,14 @@ if err != nil {
 client:= pb.NewRecordHandlerClient(conn)
 // Can now start using the client</code></pre>
 	<p>Here the client first verifies that the server matches with the certFile. This step ensures that the client does not accidentally send its password to a bad actor. Next, the client initializes the <i>perRPCCreds</i> struct with its username and password and dials the server with that information. Any time the client makes a call to an rpc defined function, its credentials will be verified by the server.</p>
-	<h3>Next Steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Next Steps</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our next step is to remove the need for many applications to access the database and ultimately DRY up our codebase by pulling all DNS-related code into a single API, accessed from one gRPC interface. This removes the potential for mistakes in individual applications and makes updating our database schema easier. It also gives us more granular control over which functions can be accessed rather than which tables can be accessed.</p>
 	<p>So far, the DNS team is very happy with the results of our gRPC migration. However, we still have a long way to go before we can move entirely away from REST. We are also patiently waiting for <a href="https://github.com/grpc/grpc/issues/19126">HTTP/3 support</a> for gRPC so that we can take advantage of those super <a href="https://en.wikipedia.org/wiki/QUIC">quic</a> speeds!</p>
 </div>

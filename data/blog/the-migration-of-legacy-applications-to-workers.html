@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>As Cloudflare Workers, and other Serverless platforms, continue to drive down costs while making it easier for developers to stand up globally scaled applications, the migration of legacy applications is becoming increasingly common. In this post, I want to show how easy it is to migrate such an application onto Workers. To demonstrate, I’m going to use a common migration scenario: moving a legacy application — on an old compute platform behind a VPN or in a private cloud — to a serverless compute platform behind zero-trust security.</p>
-	<h3>Wait but why?</h3>
+	<div class="flex anchor relative">
+		<h3 id="wait-but-why">Wait but why?</h3>
+		<a href="https://blog.cloudflare.com/#wait-but-why" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we dive further into the technical work, however, let me just address up front: why would someone want to do this? What benefits would they get from such a migration? In my experience, there are two sets of reasons: (1) factors that are “pushing” off legacy platforms, or the constraints and problems of the legacy approach; and (2) factors that are “pulling” onto serverless platforms like Workers, which speaks to the many benefits of this new approach. In terms of the push factors, we often see three core ones:</p>
 	<ul>
 		<li>
@@ -32,7 +39,14 @@
 		</li>
 	</ul>
 	<p>While the benefits to this more modern end-state are clear, there’s one other thing that causes organizations to pause: the costs in time and migration effort seem daunting. Often what organizations find is that migration is not as difficult as they fear. In the rest of this post, I will show you how Cloudflare Workers, and the rest of the Cloudflare platform, can greatly simplify migrations and help you modernize all of your applications.</p>
-	<h3>Getting Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To take you through this, we will use a contrived application I’ve written in Node.js to illustrate the steps we would take with a real, and far more complex, example. The goal is to show the different tools and features you can use at each step; and how our platform design supports development and cutover of an application. &nbsp;We’ll use four key Cloudflare technologies, as we see how to move this Application off of my Laptop and into the Cloud:</p>
 	<ol>
 		<li>
@@ -117,7 +131,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d6MEhUqu77DDapE41clZn/4535c396b06248d0ffe6b55b92f8f7bd/image4-9.png" alt="" class="kg-image" width="1597" height="659" loading="lazy">
 
 	</figure>
-	<h3>Design Decisions</h3>
+	<div class="flex anchor relative">
+		<h3 id="design-decisions">Design Decisions</h3>
+		<a href="https://blog.cloudflare.com/#design-decisions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With all this information in hand, we can arrive at at the details of our new Cloudflare-based design:</p>
 	<ol>
 		<li>
@@ -136,7 +157,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XTQxjhc7V7BCNLD6OYtNu/e2d71de73dfa10a6685eb90e4f71fc4c/image3-15.png" alt="" class="kg-image" width="1737" height="766" loading="lazy">
 
 	</figure>
-	<h3>Finding the first win</h3>
+	<div class="flex anchor relative">
+		<h3 id="finding-the-first-win">Finding the first win</h3>
+		<a href="https://blog.cloudflare.com/#finding-the-first-win" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One good way to make a migration successful is to find a quick win early on; a useful task which can be executed while other work is still ongoing. It is even better if the quick win also benefits the eventual cutover. We can find a quick win here, if we solve the zero-trust security problem ahead of the compute problem by putting Cloudflare’s security in front of the existing application.</p>
 	<p>We will do this by using cloudflare’s <a href="https://developers.cloudflare.com/argo-tunnel">Argo Tunnel</a> feature to securely connect to the existing application, and <a href="https://developers.cloudflare.com/access">Access</a> for zero-trust authentication. Below, you can see how easy this process is for any command-line user, with our cloudflared tool.</p>
 	<p>I open up a terminal and use <code>cloudflared tunnel login</code>, which presents me with an authentication flow. I then use the <code>cloudflared tunnel --hostname postprocess.kschwenkler.com --url localhost:8080</code> command to connect an Argo Tunnel between the “url” (my local server) and the “hostname” (the new, public address we will use on my Cloudflare zone).</p>
@@ -157,14 +185,29 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BYW2YOuW6EuHNgzM92W7i/97614b466ae09a9eb9ce0da0bf9c0f2e/4.gif" alt="" class="kg-image" width="1402" height="734" loading="lazy">
 
 	</figure>
-	<h3>“Quick Win” Architecture</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-win-architecture">“Quick Win” Architecture</h3>
+		<a href="https://blog.cloudflare.com/#quick-win-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/qYhPJkmdsepqfjMCytdnS/28c21ce7eef4b28ef6961068fd228977/image13.png" alt="" class="kg-image" width="1555" height="642" loading="lazy">
 
 	</figure>
 	<p>Beyond the direct benefit of a huge security upgrade; we’ve also made our eventual application migration much easier, by putting the traffic through the target-state API gateway already. We will see later how we can surgically move traffic to the new application for testing, in this state.</p>
-	<h3>Lift to the Cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="lift-to-the-cloud">Lift to the Cloud</h3>
+		<a href="https://blog.cloudflare.com/#lift-to-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With our zero-trust security benefits in hand, and our traffic running through Cloudflare; we can now proceed with the migration of the application itself to Workers. We’ll be using the <a href="https://developers.cloudflare.com/workers/tooling/wrangler">Wrangler</a> tooling to make this process very easy.</p>
 	<p>As noted when we first looked at the code, this contrived application exposes a very clean interface between the Node.js-specific HTTP module, which we need to replace, and the business logic <i>postprocess</i> module which we can use as is with Workers. We’ll first need to re-write the HTTP module, and then bundle it with the existing business logic into a new Workers application.</p>
 	<p>Here is a handwritten example of the basic pattern we’ll use for the HTTP module. We can see how the Service Workers API makes it very easy to grab the POST body with <i>await</i>, and how the JSON interface lets us easily pass the data to the <i>postprocess</i> module we took directly from the initial Node.js app.</p>
@@ -249,7 +292,14 @@ async function handleRequest(request) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1wlX569YmzRMhxjjgy7ZLm/f30e82b4953690a0b2fc800242343bb6/10.png" alt="" class="kg-image" width="1600" height="706" loading="lazy">
 
 	</figure>
-	<h3>In Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-conclusion">In Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#in-conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Clearly, a real application will be more complex than our example above. It may have multiple components, with complex interactions, which must each be handled in turn. Argo Tunnel might remain in use, to connect to a data store or other application outside of our network. We might use WASM to support modules written in other languages. In any of these scenarios, Cloudflare’s Wrangler tooling and Serverless capabilities will help us work through the complexities and achieve success.</p>
 	<p>I hope that this simple example has helped you to see how Wrangler, cloudflared, Workers, and our entire global network can work together to make migrations as quick and hassle-free as possible. Whether for this case of an old application behind a VPN, or another application that has outgrown its current home - our Workers platform, Wrangler tooling, and underlying platform will scale to meet your business needs.</p>
 </div>

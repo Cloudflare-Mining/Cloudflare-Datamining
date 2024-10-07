@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>CloudFlare has partnered with a number of <a href="https://www.cloudflare.com/hosting-partners">CloudFlare Certified Partners</a> to make it simple for website owners that want a <a href="https://www.cloudflare.com/features-cdn">faster</a> and <a href="https://www.cloudflare.com/features-security">safer</a> website. Since signing up for CloudFlare through a hosting partner is different than signing up for CloudFlare directly, we wanted to provide some quick tips to help you get the most out of your CloudFlare experience.</p>
-	<h3>Things you should know about right away</h3>
+	<div class="flex anchor relative">
+		<h3 id="things-you-should-know-about-right-away">Things you should know about right away</h3>
+		<a href="https://blog.cloudflare.com/#things-you-should-know-about-right-away" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>You do not need to change your name servers when activating through a hosting partner. You would still manage your DNS entries at your hosting provider or registrar.</p>
@@ -22,21 +29,49 @@
 	<p>"<a href="https://support.cloudflare.com/entries/22052913-why-am-i-getting-a-gateway-error">CloudFlare-nginx 502 Bad Gateway</a>": This is an issue on the CloudFlare network. We deal with these quickly (less than 10 minutes). We publish all announcements regarding our network status on <a href="https://twitter.com/#!/CloudFlareSys">@CloudFlareSys</a>.</p>
 	<p>"<a href="https://support.cloudflare.com/entries/22036452-my-website-is-offline-or-unavailable">Website is Unavailable</a>": Either your server is offline and we don't have a copy of your site in cache <i><b>or</b></i> something on the origin server is blocking <a href="https://www.cloudflare.com/ips">CloudFlare's IPs</a>.</p>
 	<p>If your server is online, then work with your hosting provider to find out what could be blocking CloudFlare's IPs on your server. The most common culprit is a security solution like a firewall like CSF or IP tables. As soon as the block is removed, the error page will disappear.</p>
-	<h3>Key CloudFlare features</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-cloudflare-features">Key CloudFlare features</h3>
+		<a href="https://blog.cloudflare.com/#key-cloudflare-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i><b>SSL</b></i>If you have SSL on the domain(s), you will need to upgrade to a <a href="https://www.cloudflare.com/plans">Pro account</a>. The cost for a Pro account is $20.00 per month for the first website and $5.00 for each additional site. In addition to the SSL support, you will also receive additional <a href="https://www.cloudflare.com/plans">security and performance</a> benefits.</p>
 	<p>Note: You will find the option to upgrade to Pro in your CloudFlare account.</p>
 	<p><i><b>Development Mode</b></i>If you are making changes to the <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content">static content</a> on your website, temporarily bypass CloudFlare's cache so any changes appear immediately. You can find Development Mode either right in your hosting provider's control panel or by logging in to your CloudFlare account under CloudFlare Settings.</p>
 	<p><i><b>PageRules</b></i>PageRules gives you more powerful performance and configuration options, including:<a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Advanced Caching Configurations</a><a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Excluding URLS from CloudFlare's default caching and security options</a><a href="https://blog.cloudflare.com/introducing-pagerules-url-forwarding">Setting URL forwards and redirects</a></p>
-	<h3>Recommended (Free!) Optional CloudFlare Features</h3>
+	<div class="flex anchor relative">
+		<h3 id="recommended-free-optional-cloudflare-features">Recommended (Free!) Optional CloudFlare Features</h3>
+		<a href="https://blog.cloudflare.com/#recommended-free-optional-cloudflare-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare has developed web content optimization features called <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Rocket Loader</a> and <a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify">Auto Minify</a>. Both Rocket Loader and Auto Minify are designed to load your site's resources even faster than the default CloudFlare configuration.</p>
 	<p><i><b>Rocket Loader</b></i>Rocket Loader will speed up the delivery of your pages by automatically asynchronously loading your JavaScript resources. Rocket Loader works well for websites that have a lot of ads, widgets or plugins.</p>
 	<p><i><b>Auto Minify</b></i>Removes all unnecessary characters from HTML, <a href="https://www.cloudflare.com/learning/performance/how-to-minify-css">CSS</a>, and JavaScript to reduce file size.</p>
 	<p>Note: Both of these features are still in beta. If you encounter any issues, such as a broken plugin or JavaScript not working properly, then please turn the feature off and <a href="https://www.cloudflare.com/wco-bug-report.html">report any bugs</a> to our team.</p>
 	<p>To turn on Rocket Loader and Auto Minify, you need to log in to your CloudFlare account and go to CloudFlare Settings.</p>
 	<p><i><b>IPv6 Gateway</b></i>Make your website IPv6 compatible, by turning on the CloudFlare IPv6 gateway.</p>
-	<h3>Where you can find out more about CloudFlare</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-you-can-find-out-more-about-cloudflare">Where you can find out more about CloudFlare</h3>
+		<a href="https://blog.cloudflare.com/#where-you-can-find-out-more-about-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://support.cloudflare.com">CloudFlare Support Center</a> has answers to a number of questions. Searching our knowledge base is the fastest way to get a quick response to the majority of questions. Don't see the answer to your question? Please <a href="https://support.cloudflare.com">contact CloudFlare</a>.</p>
-	<h3>Updates and Giveways</h3>
+	<div class="flex anchor relative">
+		<h3 id="updates-and-giveways">Updates and Giveways</h3>
+		<a href="https://blog.cloudflare.com/#updates-and-giveways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We frequently post about product updates, early beta access to new features, system issues, and giveaways, so we recommend that you follow us on Facebook, Twitter or Google+:</p>
 	<ul>
 		<li>

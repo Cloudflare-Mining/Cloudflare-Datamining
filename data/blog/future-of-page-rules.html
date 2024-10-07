@@ -9,7 +9,14 @@
 	<p>Page Rules is one of our most well-used products. Adopted by millions of users, it is used for configuring everything from cache to security levels. It is the ‘If This Then That’ of Cloudflare. Where the ‘If…’ is a URL, and the ‘Then That’ is changing how we handle traffic to specific parts of a ‘zone’. But it's not without its limitations.</p>
 	<p>Page Rules can only trigger on a URL or URL pattern. There is a maximum of 125 Page Rules per zone. Page Rules are also tricky to debug. Even the idea of a “Page” sounds rather old-fashioned now.</p>
 	<p>We’re replacing Page Rules with four new dedicated products, offering increased rules quota, more functionality, and better granularity. These products are available immediately for testing. Page Rules is not going away yet, but we do anticipate being able to formally begin the end-of-life process soon.</p>
-	<h3>Why change?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-change">Why change?</h3>
+		<a href="https://blog.cloudflare.com/#why-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the 10 years since it <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">launched</a>, Page Rules has become a well established product, and a very well adopted one. One <i>million</i> Page Rules have been deployed in the past three months alone.</p>
 	<p>Page Rules are used to tune how long files should be cached. Page Rules are used to override zone-wide settings for certain URLs. Page Rules are used to create simple URL redirects. Page Rules are used to selectively add/remove HTTP headers. Page Rules is a <i>multitool</i> of a product.</p>
 	<figure class="kg-card kg-image-card ">
@@ -48,7 +55,14 @@
 	<p><b>4. Origin</b> <b>Rules</b>: A dedicated product for ‘where does this traffic go where it leaves Cloudflare’. Not only have we added host header and resolve override into this new product (ENT only), we’ve also productized another common Workers use case by enabling customers to selectively override the destination port. We’ve also added the ability to override the Server Name Indication (SNI).</p>
 	<p>All four of these products are available for use now via the dashboard, API and Terraform - and sitting alongside Transform Rules provide the replacement suite of products that will eventually enable an Page Rules end-of-life announcement.</p>
 	<p>We have dedicated blogs for each of these product launches with more information on what they offer and problems they address.</p>
-	<h3>Order of execution</h3>
+	<div class="flex anchor relative">
+		<h3 id="order-of-execution">Order of execution</h3>
+		<a href="https://blog.cloudflare.com/#order-of-execution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main benefits of this new product suite is clarity.</p>
 	<p>Page Rules is a black box, where traffic goes in, ‘things happen’, and traffic comes out. It's hard to debug the interplay between cache, configuration, header modification etc and it can vary from zone to zone as it's entirely user defined.</p>
 	<p>By having discrete, separate areas per ‘function’, it makes visualizing the flow of a HTTP request much easier:</p>
@@ -60,7 +74,14 @@
 	<p>Rather than a single lozenge of Page Rules, we now have visibility that Origin Rules will run first, then Cache Rules, then Configuration Rules, and finally Dynamic Redirects. This means we will modify host headers first, before tuning cache settings. And we will tune the cache parameters before we modify which settings are enabled for the specific traffic.</p>
 	<p>We have integrated these new products into the <a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">Traffic Sequence</a> dashboard element also.</p>
 	<p>(For zones using both Page Rules and this new suite of products: The new products will take precedence over Page Rules. This means that Page Rules will be overridden if a conflict occurs).</p>
-	<h3>I need more than 125 Page Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="i-need-more-than-125-page-rules">I need more than 125 Page Rules</h3>
+		<a href="https://blog.cloudflare.com/#i-need-more-than-125-page-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the limitations of Page Rules was how each Page Rule was stored and executed on our backend architecture. We are unable to offer more than 125 Page Rules per zone before we begin to see a performance hit - latency on HTTP requests begins to increase as evaluating them vs the Page Rules takes longer and longer. To combat this limitation users moved simple workloads to Workers, or split the zone into multiple sub domains, each with a 125 Page Rules quota. Neither of these are ideal for the customer.</p>
 	<p>To combat this limitation we have built <i>all</i> of the replacement products atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
 	<p>This allows us to offer much more quota to customers, as this engine is built to scale well beyond 125 rules per product. The table below summarizes the before and after impact of these new products, showing the default rules quota per plan:</p><!--kg-card-begin: html-->
@@ -117,7 +138,14 @@
 	<p>For example, we added a new <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields">‘field’</a>, <code>http.request.accepted_languages</code> to Transform Rules earlier in the year. Until recently this was only available in Transform Rules. However, as both products are built on the <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets">Rulesets Engine</a> it was trivial to enable this feature for Dynamic Redirects. This allows customers to perform URL redirects based on the visitor's language preference, and the cost to us from an engineering perspective is negligible as the field is already implemented.</p>
 	<p>This also means in the future should a new field be created for Cache Rules due to a customer request, e.g. http.request.super_cool_field, in a matter of clicks we can enable this field for any of the other 30 products rather than have to duplicate effort across multiple platforms.</p>
 	<p>Simply put, the more products we build on top of the Rulesets Engine, the faster we can move and the more functionality we can put into users hands.</p>
-	<h3>A single user experience</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-single-user-experience">A single user experience</h3>
+		<a href="https://blog.cloudflare.com/#a-single-user-experience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most important benefit of all is consistency. Each of these products has a consistent and predictable API. A consistent and predictable Terraform configuration, and a consistent and predictable user experience in the dashboard. The ruleset engine allows us to keep everything the same except for the ‘action’. The filtering stays the same, the API stays the same, the UI stays (largely) the same, the only change is the ‘…then’, the action section of the rule.</p>
 	<p>This ensures that as a user when you are clicking around the dashboard setting up a new zone you aren't having to learn each individual product’s page and how to navigate it. The only part you need to learn is what makes that product unique, its <i>actions</i>:</p>
 	<figure class="kg-card kg-image-card ">
@@ -126,7 +154,14 @@
 
 	</figure>
 	<p>Finally, when we add a new product, extending the Terraform provider to support it is trivial. That consistent experience has been a north star for us during this project and will continue to be in the future.</p>
-	<h3>Try it them now</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-them-now">Try it them now</h3>
+		<a href="https://blog.cloudflare.com/#try-it-them-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are replacing Page Rules with a new suite of products, each built to be best-of-breed and put more power into the hands of our users.</p>
 	<p>Read more about the new products in each of their dedicated blogs. Then, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F">try</a> them for yourself!</p>
 </div>

@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>So how do you add HTTPS to your site or service? That’s simple, Cloudflare offers free and automatic HTTPS support for all customers with no configuration. Sign up for any plan and Cloudflare will issue an SSL certificate for you and serve your site over HTTPS.</p>
-	<h3>HTTPS-only</h3>
+	<div class="flex anchor relative">
+		<h3 id="https-only">HTTPS-only</h3>
+		<a href="https://blog.cloudflare.com/#https-only" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enabling HTTPS does not mean that all visitors are protected. If a visitor types your website’s name into the address bar of a browser or follows an HTTP link, it will bring them to the insecure HTTP version of your website. In order to make your site HTTPS-only, you need to redirect visitors from the HTTP to the HTTPS version of your site.</p>
 	<p>Going HTTPS-only should be as easy as a click of a button, so we literally added one to the Cloudflare dashboard. Enable the “Always Use HTTPS” feature and all visitors of the HTTP version of your website will be redirected to the HTTPS version. You’ll find this option just above the HTTP Strict Transport Security setting and it is of course also available through our <a href="https://api.cloudflare.com/#zone-settings-change-always-use-https-setting">API</a>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -16,7 +23,14 @@
 
 	</figure>
 	<p>In case you would like to redirect only some subset of your requests you can still do this by creating a <a href="https://www.cloudflare.com/features-page-rules">Page Rule</a>. Simply use the “Always Use HTTPS” setting on any URL pattern.</p>
-	<h3>Securing your site: next steps</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-site-next-steps">Securing your site: next steps</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-site-next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you have confirmed that your site is fully functional with HTTPS-only enabled, you can take it a step further and enable HTTP Strict Transport Security (<a href="https://blog.cloudflare.com/enforce-web-policy-with-hypertext-strict-transport-security-hsts">HSTS</a>). HSTS is a header that tells browsers that your site is available over HTTPS and will be for a set period of time. Once a browser sees an HSTS header for a site, it will automatically fetch the HTTPS version of HTTP pages without needing to follow redirects. HSTS can be enabled in the crypto app right under the Always Use HTTPS toggle.</p>
 	<p>It's also important to secure the connection between Cloudflare and your site. To do that, you can use Cloudflare's <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Origin CA</a> to get a free certificate for your origin server. Once your origin server is set up with HTTPS and a valid certificate, change your SSL mode to Full (strict) to get the highest level of security.</p>
 </div>

@@ -9,7 +9,14 @@
 	<p>There is probably an insecure device with an exploitable vulnerability sitting in your house. And your office. And probably even your child’s school. Cameras, printers, speakers, access control readers, thermostats, even heart monitors... all of these devices are, or can be, Internet of Things (IoT) devices. These IoT devices are seamlessly integrated into our modern lives to improve efficiency and control of our environments — yet they are notoriously insecure. This is due to the constrained nature of device hardware and their limited computational capacity, which often lead to minimize access controls, hard-coded passwords, and an inability to patch remotely.</p>
 	<p>The reality of this threat can play out dramatically. Take, for example, the <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis">2016 Mirai botnet attack</a>, in which hackers exploited millions of IoT devices to become a large-scale botnet network capable of launching DDoS attacks that took down major portions of the Internet, including Twitter, the Guardian, and CNN. These types of attacks are hardly an infrequent occurrence. Cloudflare experienced this reality firsthand in March 2021, when one of our potential vendors for physical security cameras, Verkada, was compromised. The incident allowed a hacker to access Verkada's internal support tools to manage the cameras remotely, enabling them to attempt to move laterally to other devices in the network. Thankfully, our use of a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a> at Cloudflare <a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack">prevented the hackers from moving laterally</a>; the incident affected the cameras and nothing else.</p>
 	<p>But even if we're unaffected, we view security incidents as a challenge to take our security products one step further. So we asked ourselves: can we use our own products to secure IoT devices themselves — even on the same network as production systems - thus ensuring any compromise of these notoriously insecure devices is isolated? Using Cloudflare One, the answer is yes.</p>
-	<h3>Today’s Solutions: Security with Complexity</h3>
+	<div class="flex anchor relative">
+		<h3 id="todays-solutions-security-with-complexity">Today’s Solutions: Security with Complexity</h3>
+		<a href="https://blog.cloudflare.com/#todays-solutions-security-with-complexity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Zero Trust Model</h4>
 	<p>As aforementioned, Cloudflare was not impacted by an IoT compromise because we use a Zero Trust model. If the environmental considerations are suitable, such as in Cloudflare's corporate offices, the <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking">enterprise network</a> can be ring-fenced with a Zero Trust model. Lateral movement is prevented because hitting any other part of the network requires authentication for access. Given that the IoT device itself is not isolated, careful attention must be paid to put all other network points of entry behind zero trust access.</p>
 	<p>However, not all environments can be so diligently controlled. Take, for example, data centers. The presence of other vendors, complexity of old production networks, and prevalence of machine-to-machine connections means we can't provide the same zero trust guarantees upon installing an IoT device (such as an access reader or a camera) as we can in our corporate offices. As the complexity of the environment grows, successfully deploying a Zero Trust model to prevent successful lateral movement from IoT devices only becomes more difficult.</p>
@@ -17,7 +24,14 @@
 	<p>Many enterprises deploy their IoT devices on a completely separate network from production, utilizing an out-of-band network or VLAN. While VLANs create isolation at Layer 2, they require access lists at their upstream routed interface to restrict Layer 3 traffic. And many network administrators want additional configurations for more stringent guarantees, such as access lists for both ingress and egress traffic and logging for both successful and denied connections. The management of these access lists can quickly grow in complexity: each new network is another landscape to protect, patch, and detect.</p>
 	<p>If not properly configured, the security guarantees of VLANs can be easily undermined. Take a network with two separate VLANs; if the access lists are not consistently applied to the two respective switches, a hacked device from one VLAN could easily pivot to a device under the other VLAN. A network administrator could use <a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink.">private VLANs</a> on a per switch basis but, again, this adds additional complexity.</p>
 	<p>Consistent configurations and architectural choices, from the access list rules to the type of gear used at each site, are required to successfully deploy VLANs to prevent lateral movement. As the number of sites increases and an environment's footprint expands, this only becomes more challenging.</p>
-	<h3>The Cloudflare Solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-cloudflare-solution">The Cloudflare Solution</h3>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use our own products to isolate devices without deploying on a separate network. This provides security guarantees without requiring additional hardware. It's a severless, infrastructure-less solution to isolating a network.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -163,7 +177,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<h3>What's next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In Q4 2021, we hired a trusted pen test partner, to test this setup by replicating a rogue device attempting to pivot to production networks from behind the Cloudflare One architecture. They were unable to move laterally — as in, this architecture works.</p>
 	<p>Given that this architecture has been tested, we will begin to formalize the rollout of Cloudflare One internally at our data center sites as part of a Physical Security initiative to keep our most trusted assets secure.</p>
 	<p>For more information on using Cloudflare One at your enterprise, please reach out to our Sales team.</p>

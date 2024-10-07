@@ -12,7 +12,14 @@
 	<p>Security threats on the Internet have also evolved. Phishing campaigns and malware attacks have increased in the last six months. Detecting those types of attacks requires looking deeper than just the <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS query</a>.</p>
 	<p>Starting today, we’re excited to announce two features in Cloudflare Gateway that solve those new challenges. First, Cloudflare Gateway now integrates with the <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP desktop client</a>. We built WARP around WireGuard, a modern, efficient VPN protocol that is much more efficient and flexible than legacy VPN protocols.</p>
 	<p>Second, Cloudflare Gateway becomes a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a> and performs L7 filtering to inspect traffic for threats that hide below the surface. Like our DNS filtering and 1.1.1.1 resolver, both features are powered by everything we’ve learned by offering Cloudflare WARP to millions of users globally.</p>
-	<h3>Securing the distributed workforce</h3>
+	<div class="flex anchor relative">
+		<h3 id="securing-the-distributed-workforce">Securing the distributed workforce</h3>
+		<a href="https://blog.cloudflare.com/#securing-the-distributed-workforce" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our customers are largely distributed workforces with employees split between corporate offices and their homes. Due to the pandemic, this is their operating environment for the foreseeable future.</p>
 	<p>The fact that users aren’t located at fixed, known locations (with remote workers allowed by exception) has created challenges for already overworked IT staff:</p>
 	<ol>
@@ -36,7 +43,14 @@
 		</li>
 	</ol>
 	<p>Starting today, we are taking Cloudflare Gateway beyond a secure DNS filtering solution by pairing the Cloudflare for Teams client with a cloud L7 firewall. Now our customers can toss out another hardware appliance in their centralized security boundary and provide enterprise-level security for their users directly from the Cloudflare edge.</p>
-	<h3>Protecting users and preventing corporate data loss</h3>
+	<div class="flex anchor relative">
+		<h3 id="protecting-users-and-preventing-corporate-data-loss">Protecting users and preventing corporate data loss</h3>
+		<a href="https://blog.cloudflare.com/#protecting-users-and-preventing-corporate-data-loss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DNS filtering provides a baseline level of security across entire systems and even networks, since it’s leveraged by all applications for Internet communications. However, application-specific protection offers granular policy enforcement and visibility into whether traffic should be classified as malicious.</p>
 	<p>Today we’re excited to extend the protection we offer through DNS filtering by adding an L7 firewall that allows our customers to apply security and content policies to HTTP traffic. This provides administrators with a better tool to protect users through granular controls within HTTP sessions, and with visibility into policy enforcement. Just as importantly, it also gives our customers greater control over where their data resides. By building policies, customers can specify whether to allow or block a request based on file type, on whether the request was to upload or download a file, or on whether the destination is an approved cloud storage provider for the organization.</p>
 	<p>Enterprises protect their users’ Internet traffic wherever they are by connecting to Cloudflare with the Cloudflare for Teams client. This client provides a fast, secure connection to the Cloudflare data center nearest them, and it relies on the same Cloudflare WARP application millions of users connect through globally. Because the client uses the same WARP application under the hood, enterprises can be sure it has been tested at scale to provide security without compromising on performance. Cloudflare WARP optimizes network performance by leveraging WireGuard for the connection to the Cloudflare edge.</p>
@@ -100,9 +114,23 @@
 		</li>
 	</ul>
 	<p>The need for policy enforcement and logging visibility based on identity arises from the reality that users aren’t tied to fixed, known workplaces. We meet that need by integrating identity and protecting users wherever they are with the Cloudflare for Teams client.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>People do not start businesses to deal with the minutiae of information technology and security. They have a vision and a product or service they want to get out in the world, and we want to get them back to doing that. We can help eliminate the hard parts around implementing advanced security tools that are usually reserved for larger, more sophisticated organizations, and we want to make them available to teams regardless of size.</p>
 	<p>The launch of both the Cloudflare for Teams client and L7 firewall lays the foundation for an advanced Secure Web Gateway with integrations including anti-virus scanning, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb">CASB</a>, and <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser isolation</a>—all performed at the Cloudflare edge. We’re excited to share this glimpse of the future our team has built—and we’re just getting started.</p>
-	<h3>Get started now</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started-now">Get started now</h3>
+		<a href="https://blog.cloudflare.com/#get-started-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All of these new capabilities are ready for you to use today. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. You can get started by <a href="https://dash.cloudflare.com/sign-up/teams">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/about">onboarding directions</a>.</p>
 </div>

@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we develop new products at a great pace. Their needs often challenge the architectural assumptions we made in the past. For example, years ago we decided to avoid using Linux's "conntrack" - stateful firewall facility. This brought great benefits - it simplified our iptables firewall setup, sped up the system a bit and made the inbound packet path easier to understand.</p>
 	<p>But eventually our needs changed. One of our new products had a reasonable need for it. But we weren't confident - can we just enable conntrack and move on? How does it actually work? I volunteered to help the team understand the dark corners of the "conntrack" subsystem.</p>
-	<h2>What is conntrack?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-conntrack">What is conntrack?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-conntrack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>"Conntrack" is a part of Linux network stack, specifically part of the firewall subsystem. To put that into perspective: early firewalls were entirely stateless. They could express only basic logic, like: allow SYN packets to port 80 and 443, and block everything else.</p>
 	<p>The stateless design gave some basic <a href="https://www.cloudflare.com/learning/network-layer/network-security">network security</a>, but was quickly deemed insufficient. You see, there are certain things that can't be expressed in a stateless way. The canonical example is assessment of ACK packets - it's impossible to say if an ACK packet is legitimate or part of a port scanning attempt, without tracking the connection state.</p>
 	<p>To fill such gaps all the operating systems implemented connection tracking inside their firewalls. This tracking is usually implemented as a big table, with at least 6 columns: protocol (usually TCP or UDP), source IP, source port, destination IP, destination port and connection state. On Linux this subsystem is called "conntrack" and is often enabled by default. Here's how the table looks on my laptop inspected with "conntrack -L" command:</p>
@@ -16,7 +23,14 @@
 262144</code></pre>
 	<p>This is a global setting, but the limit is per container. On my system each container, or "network namespace", can have up to 256K conntrack entries.</p>
 	<p>What exactly happens when the number of concurrent connections exceeds the conntrack limit?</p>
-	<h2>Testing conntrack is hard</h2>
+	<div class="flex anchor relative">
+		<h2 id="testing-conntrack-is-hard">Testing conntrack is hard</h2>
+		<a href="https://blog.cloudflare.com/#testing-conntrack-is-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In past testing conntrack was hard - it required complex hardware or vm setup. Fortunately, these days we can use modern "user namespace" facilities which do permission magic, allowing an unprivileged user to feel like root. Using the tool "unshare" it's possible to create an isolated environment where we can precisely control the packets going through and experiment with iptables and conntrack without threatening the health of our host system. With appropriate parameters it's possible to create and manage a networking namespace, including access to namespaced iptables and conntrack, from an unprivileged user.</p>
 	<p>This script is the heart of our test:</p>
 	<pre class="language-.bash"><code class="language-.bash"># Enable tun interface
@@ -61,7 +75,14 @@ for i in range(10000,10000+10):
 
 	</figure>
 	<p>This is all nice. First we see a "tcpdump" listing showing 10 SYN packets. Then we see the conntrack table state, showing 10 created flows. Finally, we see iptables counters in two rules we created, each showing 10 packets processed.</p>
-	<h2>Can conntrack table fill up?</h2>
+	<div class="flex anchor relative">
+		<h2 id="can-conntrack-table-fill-up">Can conntrack table fill up?</h2>
+		<a href="https://blog.cloudflare.com/#can-conntrack-table-fill-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Given that the conntrack table is size constrained, what exactly happens when it fills up? Let's check it out. First, we need to drop the conntrack size. As mentioned it's controlled by a global toggle - it's necessary to tune it on the host side. Let's reduce the table size to 7 entries, and repeat our test:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -86,13 +107,27 @@ for i in range(10000,10000+10):
 	<p>Let me emphasize the gravity of our discovery. We showed three completely valid SYN packets being implicitly dropped by "conntrack". There is no explicit "-j DROP" iptables rule. There is no configuration to be toggled. Just the fact of using "conntrack" means that, when it's full, packets creating new flows will be dropped. No questions asked.</p>
 	<p>This is the dark side of using conntrack. If you use it, you absolutely must make sure it doesn't get filled.</p>
 	<p>We could end our investigation here, but there are a couple of interesting caveats.</p>
-	<h2>Strict vs loose</h2>
+	<div class="flex anchor relative">
+		<h2 id="strict-vs-loose">Strict vs loose</h2>
+		<a href="https://blog.cloudflare.com/#strict-vs-loose" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Conntrack supports a "strict" and "loose" mode, as configured by "nf_conntrack_tcp_loose" toggle.</p>
 	<pre class="language-bash"><code class="language-bash">$ cat /proc/sys/net/netfilter/nf_conntrack_tcp_loose
 1</code></pre>
 	<p>By default, it's set to "loose" which means that stray ACK packets for unseen TCP flows will create new flow entries in the table. We can generalize: "conntrack" will implicitly drop all the packets that create new flow, whether that's SYN or just stray ACK.</p>
 	<p>What happens when we clear the "nf_conntrack_tcp_loose=0" setting? This is a subject for another blog post, but suffice to say - it's a mess. First, this setting is not settable in the network namespace scope - although it should be. To test it you need to be in the root network namespace. Then, due to twisted logic the ACK will be dropped on a full conntrack table, even though in this case it doesn't create a flow. If the table is not full, the ACK packet will pass through it, having "-ctstate INVALID" from "mangle" table forward.</p>
-	<h2>When doesn't a conntrack entry get created?</h2>
+	<div class="flex anchor relative">
+		<h2 id="when-doesnt-a-conntrack-entry-get-created">When doesn't a conntrack entry get created?</h2>
+		<a href="https://blog.cloudflare.com/#when-doesnt-a-conntrack-entry-get-created" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are important situations when conntrack entry is not created. For example, we could replace these line in our script:</p>
 	<pre class="language-bash"><code class="language-bash"># Make sure reverse traffic doesn't affect conntrack state
 iptables -t raw -A OUTPUT -p tcp --sport 80 -j DROP</code></pre>
@@ -100,7 +135,14 @@ iptables -t raw -A OUTPUT -p tcp --sport 80 -j DROP</code></pre>
 	<pre class="language-bash"><code class="language-bash"># Make sure inbound SYN packets don't go to networking stack
 iptables -A INPUT -j DROP</code></pre>
 	<p>Naively we could think dropping SYN packets past the conntrack layer would not interfere with the created flows. This is not correct. In spite of these SYN packets having been seen by conntrack, no flow state is created for them. Packets hitting "-j DROP" will not create new conntrack flows. Pretty magical, isn't it?</p>
-	<h2>Full Conntrack causes with EPERM</h2>
+	<div class="flex anchor relative">
+		<h2 id="full-conntrack-causes-with-eperm">Full Conntrack causes with EPERM</h2>
+		<a href="https://blog.cloudflare.com/#full-conntrack-causes-with-eperm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recently we hit a case when a "sendto()" syscall on UDP socket from one of our applications was erroring with EPERM. This is pretty weird, and not documented in the man page. My colleague had no doubts:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -118,7 +160,14 @@ write(3, "X", 1)                        = -1 EPERM (Operation not permitted)
 HPING 192.0.2.1 (lo 192.0.2.1): S set, 40 headers + 0 data bytes
 [send_ip] sendto: Operation not permitted</code></pre>
 	<p>"send()" even on a SOCK_RAW socket fails with EPERM when conntrack table is full.</p>
-	<h2>Full conntrack can happen on a SYN flood</h2>
+	<div class="flex anchor relative">
+		<h2 id="full-conntrack-can-happen-on-a-syn-flood">Full conntrack can happen on a SYN flood</h2>
+		<a href="https://blog.cloudflare.com/#full-conntrack-can-happen-on-a-syn-flood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is one more caveat. During a SYN flood, the conntrack entries will totally be created for the spoofed flows. Take a look at second test case we prepared, this time correctly listening on port 80, and sending SYN+ACK:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -128,7 +177,14 @@ HPING 192.0.2.1 (lo 192.0.2.1): S set, 40 headers + 0 data bytes
 	<p>We can see 7 SYN+ACK's flying out of the port 80 listening socket. The final three SYN's go nowhere as they are dropped by conntrack.</p>
 	<p>This has important implications. If you use conntrack on publicly accessible ports, during SYN flood <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild">mitigation technologies like SYN Cookies</a> won't help. You are still at risk of running out of conntrack space and therefore affecting legitimate connections.</p>
 	<p>For this reason, as a general rule consider avoiding conntrack on inbound connections (-j NOTRACK). Alternatively having some reasonable rate limits on iptables layer, doing "-j DROP". This will work well and won't create new flows, as we discussed above. The best method though, would be to trigger SYN Cookies from a layer before conntrack, like XDP. But this is a subject for another time.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the years Linux conntrack has gone through many changes and has improved a lot. While performance used to be a major concern, these days it's considered to be very fast. Dark corners remain. Correctly applying conntrack is tricky.</p>
 	<p>In this blog post we showed how it's possible to test parts of conntrack with "unshare" and a series of scripts. We showed the behaviour when the conntrack table gets filled - packets might implicitly be dropped. Finally, we mentioned the curious case of SYN floods where incorrectly applied conntrack may cause harm.</p>
 	<p>Stay tuned for more horror stories as we dig deeper and deeper into the Linux networking stack guts.</p>

@@ -20,7 +20,14 @@
 	<p></p>
 	<p><i>The Trojan Horse. (It’s not a new attack)</i></p>
 	<p>Attackers realize this too and they have been steadily upping their game to catch unsuspecting users. Not content to just sit and wait, attackers constantly try to grab credentials through a combination of trickery and sophisticated software attacks. The one thing that links all of this? It’s you that they are attacking, not some server sitting in a datacenter.</p>
-	<h3>Phishing</h3>
+	<div class="flex anchor relative">
+		<h3 id="phishing">Phishing</h3>
+		<a href="https://blog.cloudflare.com/#phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Phishing emails remain the most popular method but they have now evolved and range from the mundane badly spelled email asking for your password or offering you a link to some unknown site...</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -36,7 +43,14 @@
 	</figure>
 	<p></p>
 	<p><i>A more sophisticated Cloudflare phishing email</i></p>
-	<h3>Malicious software</h3>
+	<div class="flex anchor relative">
+		<h3 id="malicious-software">Malicious software</h3>
+		<a href="https://blog.cloudflare.com/#malicious-software" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Stepping up from phishing emails, we now have to face malicious software hidden inside innocuous everyday packages from browser extensions to free games. The most popular and difficult to detect of these by far are the malicious browser extensions. Often these start out as legitimate browser tools, then either they get hacked, or an attacker simply buys a forgotten extension project and injects malicious code into it. Now, anything your browser can see, the malicious extension can also see.</p>
 	<p>The most sophisticated of these are often targeted at a particular institution and know how to silently navigate to the credentials they wish to steal. Over the past couple of years we have seen several of these targeted specifically at Cloudflare customers. Below is an example of one such campaign from late last year involving a very popular Chrome extension called “Web Developer”.</p>
 	<figure class="kg-card kg-image-card ">
@@ -105,13 +119,35 @@
 	<p></p>
 	<p><i>Phishing email sent to </i><a href="https://a9t9.com/blog/chrome-extension-adware"><i>Chrome developer a9t9.com</i></a></p>
 	<p><a href="https://a9t9.com/blog/chrome-extension-adware">If you want to read more about this, our friends over at proofpoint</a> <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
-	<h2>How we protect credentials</h2>
-	<h3>What we do today - how we store them.</h3>
+	<div class="flex anchor relative">
+		<h2 id="how-we-protect-credentials">How we protect credentials</h2>
+		<a href="https://blog.cloudflare.com/#how-we-protect-credentials" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-we-do-today-how-we-store-them">What we do today - how we store them.</h3>
+		<a href="https://blog.cloudflare.com/#what-we-do-today-how-we-store-them" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>System security</h4>
 	<p>We have built our systems to be secure by design. In some cases, this is as simple as ensuring that sensitive data is restricted, or made completely unobtainable. In other cases this has meant building systems in a way that makes them secure against a wide range of common attacks.</p>
 	<p><i>Passwords</i> We store user passwords in a secure database using a complex, salted hash that uses the blowfish based bcrypt() hashing algorithm.</p>
 	<p><i>API Keys</i> We ensure that API keys are unique by generating them using a combination of AES (Rijndael 256), SHA256 and plenty of entropy. Once generated through these hashing algorithms, API Keys are also stored in a secure database that only a handful of people have access to.</p>
-	<h3>What we do today - how we handle credentials.</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-do-today-how-we-handle-credentials">What we do today - how we handle credentials.</h3>
+		<a href="https://blog.cloudflare.com/#what-we-do-today-how-we-handle-credentials" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>At the back-end</h4>
 	<p>All calls to these sensitive databases are audited, and stored in logs that go back to the very beginning of Cloudflare. In one recent audit exercise we were able to review, and determine the exact time an API Key was generated for a customer in 2013. Access to both the audit logs and critical systems, like our databases, is restricted to a handful of senior production engineers and security staff. All staff access is also logged, and stored securely for audit purposes.</p>
 	<p>Finally, all programmatic calls to these databases are made through stored procedures linked to dedicated accounts. Dynamic SQL is not permitted.</p>
@@ -134,7 +170,14 @@
 	<p></p>
 	<p><i>MFA Alert generated by accessing the dashboard</i></p>
 	<p><a href="https://www.cloudflare.com/a/profile">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
-	<h3>API Keys</h3>
+	<div class="flex anchor relative">
+		<h3 id="api-keys">API Keys</h3>
+		<a href="https://blog.cloudflare.com/#api-keys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>API Keys are very sensitive things. They have as much power as your password but benefit from relatively few of the protections built into a modern browser. This is why we are deepening our investment to make our API even more secure.</p>
 	<p>Our first improvement, released last week, was to protect the API key against malicious software - such as a malicious browser extension - by adding a CAPTCHA to the “View API Key” feature. Below is a screenshot of the challenge you will now see when attempting to access your API Key. This change means that even if malicious software manages to steal your password, it cannot easily request and harvest your API Key.</p>
 	<figure class="kg-card kg-image-card ">
@@ -145,7 +188,14 @@
 	<p></p>
 	<p><i>Updated “View API Key” user experience</i></p>
 	<p>Next, we are looking at looked at scoped API keys. These are keys which can either be restricted to authorized IP addresses or limited in terms of what they can do. At the same time we will be adding the ability to turn the API off completely for your account. Finally, looking to the future, we are exploring options like other technical frameworks and token types, so that you have even better tools to build an API architecture that that is secure by design.</p>
-	<h3>How you can help keep your account safe</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-you-can-help-keep-your-account-safe">How you can help keep your account safe</h3>
+		<a href="https://blog.cloudflare.com/#how-you-can-help-keep-your-account-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://www.cloudflare.com/a/profile">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</p>

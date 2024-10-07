@@ -9,7 +9,14 @@
 	<p><a href="https://www.terraform.io">Terraform</a> is a fantastic tool for configuring your infrastructure. Traditionally if you wanted to spin up, tear down or update some of your infrastructure you would have to click around on a website or make some API calls, which is prone to human error. With Terraform, you define your infrastructure in simple, declarative configuration files and let Terraform figure out how to make the API calls for you. This also lets you treat your infrastructure like your code. You can check your Terraform configuration files into version control and integrate them into your normal software development workflow.</p>
 	<p>Terraform integrates with <a href="https://www.terraform.io/docs/providers">many infrastructure providers</a> including Cloudflare. If you'd like to read more about setting up Terraform with Cloudflare, check out <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">Getting started with Terraform and Cloudflare</a>. In this post, I'm going to focus specifically on how to integrate <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> with Terraform.</p>
 	<p>In this example we're going to create <a href="https://partyparrot.business">partyparrot.business</a>, and we're going to serve the whole site out of a worker without any origin server. We're starting from scratch here, but if you're already using Cloudflare workers and want to migrate to managing your workers with Terraform, you'll need to import your existing script and routes so that Terraform knows about them. See the "Importing your existing workers" section at the end.</p>
-	<h3>Prerequisites</h3>
+	<div class="flex anchor relative">
+		<h3 id="prerequisites">Prerequisites</h3>
+		<a href="https://blog.cloudflare.com/#prerequisites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://www.terraform.io/intro/getting-started/install.html">Install Terraform</a></p>
@@ -29,7 +36,14 @@
 			</ul>
 		</li>
 	</ul>
-	<h3>Create the Terraform config file</h3>
+	<div class="flex anchor relative">
+		<h3 id="create-the-terraform-config-file">Create the Terraform config file</h3>
+		<a href="https://blog.cloudflare.com/#create-the-terraform-config-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Create a file with any name and give it a <code>.tf</code> file extension. This is where we'll define our Terraform resources. In this file, first we'll need to setup the Cloudflare provider:</p>
 	<pre class="language-bash"><code class="language-bash">provider "cloudflare" {}</code></pre>
 	<p>You could define your credentials in this file, but in general it's better to use environment variables so that you can check the configuration file into version control without including any private data.</p>
@@ -37,7 +51,15 @@
 	<pre class="language-bash"><code class="language-bash">variable "zone" {
   default = "partyparrot.business"
 }</code></pre>
-	<h3>Setting up the worker script</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="setting-up-the-worker-script">Setting up the worker script</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-the-worker-script" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now let's write our worker script. If you're looking for inspiration, check out some <a href="https://developers.cloudflare.com/workers/recipes">Worker recipes</a>. For this example, I'll use <a href="https://gist.github.com/jRiest/7893cf10c550057ce1ff53f270683e1c#file-party_parrot_worker-js">this script</a> and name it <code>party_parrot_worker.js</code>.</p>
 	<p>Next we need to add a <code>cloudflare_worker_script</code> resource to our Terraform config and reference the script file. Open your <code>.tf</code> file and add the following:</p>
 	<pre class="language-bash"><code class="language-bash">resource "cloudflare_worker_script" "main_script" {
@@ -46,7 +68,14 @@
 }</code></pre>
 	<p>If you're new to Terraform, check out the <a href="https://www.terraform.io/docs/configuration/resources.html">Terraform Resource documentation</a> to learn more about this schema. Here we provide 2 parameters, the <code>zone</code> which references the variable we defined earlier and <code>content</code> which references the file we just created.</p>
 	<p><b>NOTE:</b> The <a href="https://www.cloudflare.com/plans/enterprise">Cloudflare Enterprise plan</a> supports using multiple (named) scripts. To use this, the parameters will be slightly different. Remove the <code>zone</code> parameter since named scripts are not tied to a particular zone and instead add a <code>name</code> parameter to define the name of the script. See <a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_script.html">the cloudflare_worker_script documentation</a> for an example.</p>
-	<h3>Setting up the worker routes</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up-the-worker-routes">Setting up the worker routes</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-the-worker-routes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order for the worker to start handling traffic, we'll also need to define at least one route. To do so, add a <code>cloudflare_worker_route</code> resource to the Terraform config.</p>
 	<pre class="language-javascript"><code class="language-javascript">resource "cloudflare_worker_route" "catch_all_route" {
   zone = "${var.zone}"
@@ -59,7 +88,14 @@
 	<p>The <code>enabled</code> parameter specifies that requests that match the pattern <b>should</b> run the worker. Alternatively, you can set <code>enabled</code> to <code>false</code> which would mean that any requests that match the pattern <b>should not</b> run the worker. You can create multiple route patterns, and more-specific route patterns apply before less-specific route patterns. For example, you could create one route pattern like <code>example.com/assets/*</code> and set <code>enabled = false</code> then create another pattern like <code>*example.com*</code> and set <code>enabled = true</code>. This would enable the worker for all traffic <i>except</i> for requests that match <code>example.com/assets/*</code>.</p>
 	<p>Finally, we set <code>depends_on</code> to point to the script resource we created above. In general, Terraform will try to create resources in parallel, but you may get an error if you try to create a route before you have a script. By using the <code>depends_on</code> parameter, Terraform will know to create the script first before creating the route.</p>
 	<p><b>NOTE:</b> As with the script resource, some of the parameters are different if you're on the Enterprise plan and using multiple scripts. Remove the <code>enabled</code> parameter and instead set <code>script_name = "${cloudflare_worker_script.your_script_resource.name}"</code> to specify which script the route should run. By directly referencing the script resource using this syntax, Terraform already knows that the route depends on the script, so you can also remove the <code>depends_on</code> parameter. You can see more details in <a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_route.html">the cloudflare_worker_route documentation</a>.</p>
-	<h3>Applying the Terraform config</h3>
+	<div class="flex anchor relative">
+		<h3 id="applying-the-terraform-config">Applying the Terraform config</h3>
+		<a href="https://blog.cloudflare.com/#applying-the-terraform-config" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we've defined our script and route resources in the config file, we're ready to deploy! To initialize Terraform, run <code>terraform init</code></p>
 	<pre class="language-javascript"><code class="language-javascript">$ terraform init
 
@@ -122,7 +158,14 @@ cloudflare_worker_route.catch_all_route: Creation complete after 0s (ID: af595c1
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Congratulations, your worker script and route are deployed! You can see the example script running at <a href="https://partyparrot.business">partyparrot.business</a>.</p>
 	<p>As you make changes to your script or Terraform config, you can run <code>terraform apply</code> again and Terraform will figure out what's changed and deploy any updates.</p>
-	<h3>Importing your existing workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="importing-your-existing-workers">Importing your existing workers</h3>
+		<a href="https://blog.cloudflare.com/#importing-your-existing-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you're already using Cloudflare Workers but want to start managing them via Terraform, you'll need to let Terraform know about your existing configuration so it knows how to apply changes going forward.</p>
 	<p>First you’ll need to create your <code>.tf</code> file and add <code>cloudflare_worker_script</code> and <code>cloudflare_worker_route</code> resources for all of your existing scripts and routes.</p>
 	<p>Next you'll need to individually run the appropriate <code>terraform import ...</code> command for each script and route resource. The import command takes two arguments:</p>
@@ -134,7 +177,14 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 			<p>an ID that's used to lookup the resource from the cloudflare API. See the <a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_script.html">cloudflare_worker_script</a> and <a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_route.html">cloudflare_worker_route</a> documentation for more information.</p>
 		</li>
 	</ul>
-	<h3>Wrapping up</h3>
+	<div class="flex anchor relative">
+		<h3 id="wrapping-up">Wrapping up</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The complete script and terraform configuration file for this example are hosted <a href="https://gist.github.com/jRiest/7893cf10c550057ce1ff53f270683e1c">on Github</a>.</p>
 	<p>Whether you're already using Cloudflare Workers or just getting started, Terraform can be a great way to manage your Workers configuration. If you're interested in learning more, here's a few useful links:</p>
 	<ul>

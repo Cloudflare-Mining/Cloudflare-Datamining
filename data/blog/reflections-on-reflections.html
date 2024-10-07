@@ -8,7 +8,15 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176">image</a> by <a href="https://www.flickr.com/photos/ragez">RageZ</a></p>
 	<p>We decided to take a second look through our logs and share some statistics about reflection attacks we see regularly. In this blog post, I'll describe popular reflection attacks, explain how to defend against them and why Cloudflare and our customers are immune to most of them.</p>
-	<h2>A recipe for reflection</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-recipe-for-reflection">A recipe for reflection</h2>
+		<a href="https://blog.cloudflare.com/#a-recipe-for-reflection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/37shntzMKVznz96CFNVl4n/e7e765bbdd4ccd80ed07cd1d589c995a/Untitled-2.001saaa.png" alt="" class="kg-image" width="640" height="354" loading="lazy">
@@ -53,7 +61,14 @@
 	</ul>
 	<p>The victim will end up receiving a large volume of response packets it never had requested. With a large enough attack the victim may end up with congested network and <a href="https://en.wikipedia.org/wiki/Interrupt_storm">an interrupt storm</a>.</p>
 	<p>The responses delivered to victim might be larger than the spoofed requests (hence <i>amplification</i>). A carefully mounted attack may amplify the villain's traffic. In the past <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">we've documented a 300Gbps attack</a> generated with an estimated 27Gbps of spoofing capacity.</p>
-	<h2>Popular reflections</h2>
+	<div class="flex anchor relative">
+		<h2 id="popular-reflections">Popular reflections</h2>
+		<a href="https://blog.cloudflare.com/#popular-reflections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During the last six months our DDoS mitigation system "Gatebot" detected 6,329 simple reflection attacks (that's one every 40 minutes). Here is the list by popularity of different attack vectors. An attack is defined as a large flood of packets identified by a tuple: (Protocol, Source Port, Target IP). Basically - a flood of packets with the same source port to a single target. This notation is pretty accurate - during normal Cloudflare operation, incoming packets rarely share a source port number!</p>
 	<pre class="language-bash"><code class="language-bash">  Count  Proto  Src port
    3774   udp    123        NTP
@@ -70,7 +85,15 @@
       6   tcp    80         HTTP
       5   udp    27005      SRCDS
       2   udp    520        RIP</code></pre>
-	<h2>Source port 123/udp NTP</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="source-port-123-udp-ntp">Source port 123/udp NTP</h2>
+		<a href="https://blog.cloudflare.com/#source-port-123-udp-ntp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By far the most popular reflection attack vector remains NTP. We have blogged about NTP in the past:</p>
 	<ul>
 		<li>
@@ -144,7 +167,15 @@ Peak bandwidth in Gbps:
     126.219.94.77.123 &gt; x.x.x.x.21784:  [|ntp]
 11:38:06.113935 IP -(tos 0x0, ttl 59, id 0, offset 0, proto UDP (17), length 516)
     69.57.241.60.123 &gt; x.x.x.x.9285:  [|ntp]</code></pre>
-	<h2>Source port 1900/udp SSDP</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="source-port-1900-udp-ssdp">Source port 1900/udp SSDP</h2>
+		<a href="https://blog.cloudflare.com/#source-port-1900-udp-ssdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second most popular reflection attack was <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol">SSDP</a>, with a count of 1,692 unique events. These attacks were using much larger fleets of reflector servers. On average we've seen around 100k reflectors used in each attack, with the largest attack using 1.23M reflector IPs. Here's the histogram of number of unique IPs used <a href="https://www.us-cert.gov/ncas/alerts/TA14-017A">in SSDP attacks</a>:</p>
 	<pre class="language-bash"><code class="language-bash">Unique IPs min:15.00 avg:98272.02 max:1234617.00 dev:162699.90 count:1691
 Unique IPs:
@@ -207,7 +238,15 @@ Bandwidth in Gbps:
 10:24:34.491559 IP - 212.171.247.139.1900 &gt; x.x.x.x.25255: UDP, length 323
 10:24:34.494385 IP - 111.1.86.109.1900 &gt; x.x.x.x.37081: UDP, length 320
 10:24:34.495474 IP - 112.2.47.110.1900 &gt; x.x.x.x.37081: UDP, length 288</code></pre>
-	<h2>Source port 0/udp IP fragmentation</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="source-port-0-udp-ip-fragmentation">Source port 0/udp IP fragmentation</h2>
+		<a href="https://blog.cloudflare.com/#source-port-0-udp-ip-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes we see reflection attacks showing UDP source and destination port numbers set to zero. This is usually a side effect of attacks where the reflecting servers responded with large fragmented packets. Only the first IP fragment contains a UDP header, preventing subsequent fragments from being reported properly. From a router point of view this looks like a UDP packet without UDP header. A confused router reports a packet from source port 0, going to port 0!</p>
 	<p>This is a tcpdump-like view:</p>
 	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -r 4651d0ec9e6fdc8e.pcap -c 8
@@ -220,7 +259,14 @@ Bandwidth in Gbps:
 02:05:03.745220 IP - 195.4.131.174.0 &gt; x.x.x.x.0: UDP, length 1472
 02:05:03.766862 IP - 157.7.137.101.0 &gt; x.x.x.x.0: UDP, length 1122</code></pre>
 	<p>An avid reader will notice - the source IPs above are open DNS resolvers! Indeed, from our experience most of the attacks categorized as fragmentation are actually a side effect of DNS amplifications.</p>
-	<h2>Source port 53/udp DNS</h2>
+	<div class="flex anchor relative">
+		<h2 id="source-port-53-udp-dns">Source port 53/udp DNS</h2>
+		<a href="https://blog.cloudflare.com/#source-port-53-udp-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the last six months we've seen 253 DNS amplifications. On average an attack used 7100 DNS reflector servers and lasted 24 minutes. Average bandwidth was around 3.4Gbps with largest attack using 12Gbps.</p>
 	<p>This is a simplification though. As mentioned above multiple DNS attacks were registered by our systems as two distinct vectors. One was categorized as source port 53, and another as source port 0. This happened when the DNS server flooded us with DNS responses larger than max packet size, usually about 1,460 bytes. It's easy to see if that was the case by inspecting the DNS attack packet lengths. Here's an example:</p>
 	<pre class="language-bash"><code class="language-bash">DNS attack packet lengths min:44.00 avg:1458.94 max:1500.00 dev:208.14 count:40000
@@ -272,7 +318,14 @@ Port 0 packet length:
 			<p><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the Consumer Product Safety Commission is (Inadvertently) Behind the Internet’s Largest DDoS Attacks</a></p>
 		</li>
 	</ul>
-	<h2>Other protocols</h2>
+	<div class="flex anchor relative">
+		<h2 id="other-protocols">Other protocols</h2>
+		<a href="https://blog.cloudflare.com/#other-protocols" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We've seen amplification using other protocols such as:</p>
 	<ul>
 		<li>
@@ -286,7 +339,14 @@ Port 0 packet length:
 		</li>
 	</ul>
 	<p>...and many other obscure protocols. These attacks were usually small and not notable. We didn't see enough of then to provide meaningful statistics but the attacks were automatically mitigated.</p>
-	<h2>Poor observability</h2>
+	<div class="flex anchor relative">
+		<h2 id="poor-observability">Poor observability</h2>
+		<a href="https://blog.cloudflare.com/#poor-observability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unfortunately we're not able to report on the contents of the attack traffic. This is notable for the NTP and DNS amplifications - without case by case investigations we can't report what responses were actually being delivered to us.</p>
 	<p>This is because all these attacks stopped at the network layer. Routers are heavily optimized to perform packet forwarding and have a limited capacity of extracting raw packets. Basically there is no "tcpdump" there.</p>
 	<figure class="kg-card kg-image-card ">
@@ -295,7 +355,14 @@ Port 0 packet length:
 
 	</figure>
 	<p>We track these attacks with netflow, and we observe them hit our routers firewall. The tcpdump snippets shown above were actually fake, reconstructed artificially from netflow data.</p>
-	<h2>Trivial to mitigate</h2>
+	<div class="flex anchor relative">
+		<h2 id="trivial-to-mitigate">Trivial to mitigate</h2>
+		<a href="https://blog.cloudflare.com/#trivial-to-mitigate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With properly configured firewall and sufficient network capacity (which isn't always easy to come by unless you are the size of Cloudflare) it's trivial to block the reflection attacks. But note that we've seen reflection attacks up to 80Gbps so you do need sufficient capacity.</p>
 	<p>Properly configuring a firewall is not rocket science: default DROP can get you quite far. In other cases you might want to configure rate limiting rules. This is a snippet from our JunOS config:</p>
 	<pre class="language-bash"><code class="language-bash">term RATELIMIT-SSDP-UPNP {
@@ -313,7 +380,14 @@ Port 0 packet length:
     }
 }</code></pre>
 	<p>But properly configuring firewall requires some Internet hygiene. You should avoid using the same IP for inbound and outbound traffic. For example, filtering a potential NTP DDoS will be harder if you can't just block inbound port 123 indiscriminately. If your server requires NTP, make sure it exits to the Internet over non-server IP address!</p>
-	<h2>Capacity game</h2>
+	<div class="flex anchor relative">
+		<h2 id="capacity-game">Capacity game</h2>
+		<a href="https://blog.cloudflare.com/#capacity-game" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While having sufficient network capacity is necessary, you don't need to be a Tier 1 to survive amplification DDoS. The median attack size we've received was just 3.35Gbps, average 7Gbps, Only 195 attacks out of 6,353 attacks recorded - 3% - were larger than 30Gbps.</p>
 	<pre class="language-bash"><code class="language-bash">All attacks in Gbps: min:0.04 avg:7.07 med:3.35 max:78.03 dev:9.06 count:6329
 All attacks in Gbps:
@@ -342,12 +416,26 @@ All attacks in Gbps:
 		</li>
 	</ul>
 	<p>In the examples above, I showed a couple of amplification attacks getting nicely distributed across dozens of datacenters across the globe. In the shown attacks, if our router firewall failed, our physical servers wouldn't receive more than 500kpps of attack data. A well tuned <code>iptables</code> firewall should be able to cope with such a volume without <a href="https://blog.cloudflare.com/kernel-bypass">a special kernel offload</a> help.</p>
-	<h2>Inter-AS Flowspec for the rest</h2>
+	<div class="flex anchor relative">
+		<h2 id="inter-as-flowspec-for-the-rest">Inter-AS Flowspec for the rest</h2>
+		<a href="https://blog.cloudflare.com/#inter-as-flowspec-for-the-rest" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Withstanding reflection attacks requires sufficient network capacity. Internet citizens not having fat network cables should use a good Internet Service Provider supporting <a href="https://tools.ietf.org/html/rfc5575">flowspec</a>.</p>
 	<p>Flowspec can be thought of as a protocol enabling firewall rules to be transmitted over a BGP session. In theory flowspec allows BGP routers on <a href="https://conference.apnic.net/data/41/apricot-ddos-mitigation-using-flowspec_1456208439.pdf">different Autonomous Systems</a> to share firewall rules. The rule can be set up on the attacked router and distributed to the ISP network with the BGP magic. This will stop the packets closer to the source and effectively relieve network congestion.</p>
 	<p>Unfortunately, due to performance and security concerns only a handful of large ISP's allow inter-AS flowspec rules. Still - it's worth a try. Check if your ISP is willing to accept flowspec from your BGP router!</p>
 	<p>At Cloudflare we maintain an intra-AS flowspec infrastructure, <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">and we have plenty of war stories</a> about it.</p>
-	<h2>Summary</h2>
+	<div class="flex anchor relative">
+		<h2 id="summary">Summary</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post we've given details of three popular reflection attack vectors: NTP, SSDP and DNS. We discussed how the Cloudflare Anycast network helps us avoid a single choke point. In most cases dealing with reflection attacks is not rocket science though sufficient network capacity is needed and simple firewall rules are usually enough to cope.</p>
 	<p>The types of DDoS attacks we see from other vectors (such as IoT botnets) are another matter. They tend to be much larger and require specialized, automatic DDoS mitigation. And, of course, there are many DDoS attacks that occur using techniques other than reflection and not just using UDP.</p>
 	<p>Whether you face DDoS attacks of 10Gbps+, 100Gbps+ or 1Tbps+, Cloudflare can mitigate them.</p>

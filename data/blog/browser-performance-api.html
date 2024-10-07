@@ -2,7 +2,14 @@
 <div class="post-content lh-copy gray1">
 	<p>Building a beautiful, feature-rich website is easier than ever before. Not long ago, you’d have to fire up a text editor and hand-craft a lot of HTML, CSS, and JavaScript. Today, you can use WYSIWYG tools and third-party libraries that make development much simpler. The flip side of this is that it can be hard to see everything that’s going into your website — and the performance can suffer.</p>
 	<p>The good news is that modern web browsers expose lots of performance data that can help you understand how your web page performs. With the launch of Browser Insights today, we can analyze the performance from the perspective of the web browser and what the end user actually experiences. In this post, we’ll dive into how we think about performance and utilize the timing APIs in the web browser.</p>
-	<h3>How web browsers measure performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-web-browsers-measure-performance">How web browsers measure performance</h3>
+		<a href="https://blog.cloudflare.com/#how-web-browsers-measure-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the old days, the only way for a developer to profile performance was to intercept requests and measure the time from the beginning of the page load until the end of the load event.</p>
 	<p>Today, we can use Web APIs that are supported by modern browsers. This is part of the web standard called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance">Performance API</a>. The Performance API consists of a collection of individual APIs that include:</p>
 	<ul>
@@ -17,7 +24,14 @@
 		</li>
 	</ul>
 	<p>In this blog post, we will primarily focus on the Navigation Timing API.</p>
-	<h3>Inside the Performance API</h3>
+	<div class="flex anchor relative">
+		<h3 id="inside-the-performance-api">Inside the Performance API</h3>
+		<a href="https://blog.cloudflare.com/#inside-the-performance-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To see what’s collected with the Performance API, you can open the Developer Tools in Chrome browser and type ‘performance’ in the console tab (or type in <code>performance.timing</code> to get direct access to the PerformanceTiming attribute).</p>
 	<p>Try expanding the Performance object by clicking on the arrow before the label and again expand the ‘timing’. This is called PerformanceTiming, which includes all the timings that relate to the current page load as UNIX epoch timestamp (milliseconds). The timing attributes shown are not in the order of the load. So for better understanding, let’s look at the illustration provided by the W3C.</p>
 	<figure class="kg-card kg-image-card ">
@@ -32,7 +46,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/78quzSc6wQq5sPuMzvaIS1/0ade103b5bd8e2f535db426f5f5a3784/pasted-image-0--5-.png" alt="" class="kg-image" width="894" height="118" loading="lazy">
 
 	</figure>
-	<h3>How Cloudflare uses performance data</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-uses-performance-data">How Cloudflare uses performance data</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-uses-performance-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once your website is proxied through Cloudflare and Browser Insights is enabled, we write and inject a JavaScript beacon into the web page. Our beacon collects metrics from the Performance API to send to our edge, where it can be used to understand where your website is slowing down or having any network problems. The reported data is shown in the Cloudflare dashboard on the Speed Page showing as averages of each timing metric:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -65,6 +86,13 @@
 	</ul>
 	<p>If you are seeing any spikes or unusual form of a line in the stacked line chart, you could start investigating on each element to see what is causing the problem.</p>
 	<p>For more about how to use Browser Insights, see our <a href="https://blog.cloudflare.com/introducing-browser-insights">announcement blog post</a>.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post, we’ve focused on the Navigation Timing API, because it’s at the heart of our first version of Browser Insights. In the near future, we plan to incorporate metrics from some of the other APIs. For example, we can break down some of the longer timings by looking at individual resource loads, and pointing out what’s taking longer. In addition to that, we plan to track JavaScript errors, provide a way to measure A/B performance, set up monitoring/alerting based on the metrics, and so on. So stay tuned!</p>
 </div>

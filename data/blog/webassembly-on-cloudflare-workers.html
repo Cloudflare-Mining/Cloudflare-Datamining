@@ -7,10 +7,25 @@
 	</figure>
 	<p>We just announced ten major new products and initiatives over <a href="https://blog.cloudflare.com/crypto-week-2018">Crypto Week</a> and <a href="https://blog.cloudflare.com/birthday-week-2018-wrap-up">Birthday Week</a>, but our work is never finished. We're continuously upgrading our existing products with new functionality.</p>
 	<p>Today, we're extending Cloudflare Workers with support for WebAssembly. All Workers customers can now augment their applications with WASM at no additional cost.</p>
-	<h3>What is WebAssembly?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-webassembly">What is WebAssembly?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-webassembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebAssembly -- often abbreviated as "WASM" -- is a technology that extends the web platform to support compiled languages like C, C++, Rust, Go, and <a href="https://github.com/appcypher/awesome-wasm-langs">more</a>. These languages can be compiled to a special WASM binary format and then loaded in a browser.</p>
 	<p>WASM code is securely sandboxed, just like JavaScript. But, because it is based on compiled lower-level languages, it can be much faster for certain kinds of resource-intensive tasks where JavaScript is not a good fit. In addition to performance benefits, WASM allows you to reuse existing code written in languages other than JavaScript.</p>
-	<h3>What are Workers?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-are-workers">What are Workers?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Df7Lp8N7thbdS74T6rUdC/cad3ab23fbf8f9b0f826129752b7b2f0/workers-illustration.png" alt="" class="kg-image" width="1232" height="863" loading="lazy">
@@ -18,11 +33,25 @@
 	</figure>
 	<p>For those that don't know: Cloudflare Workers lets you deploy "serverless" JavaScript code directly to our 153-and-growing datacenters. Your Worker handles your site's HTTP traffic directly at the location closest to your end user, allowing you to achieve lower latency and reduce serving costs. <a href="https://blog.cloudflare.com/building-with-workers-kv">Last week we added storage to Workers</a>, making it possible to build applications that run entirely on Cloudflare.</p>
 	<p>Until now, Workers has only supported JavaScript. With the addition of WebAssembly, you can now use a wide range of languages and do more, faster. As always, when you deploy code on Cloudflare, it is distributed to every one of our locations world-wide in under 30 seconds.</p>
-	<h3>When to use WebAssembly</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-to-use-webassembly">When to use WebAssembly</h3>
+		<a href="https://blog.cloudflare.com/#when-to-use-webassembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's important to note that WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</p>
 	<p>On the other hand, WASM really shines when you need to perform a resource-hungry, self-contained operation, like resizing an image, or processing an audio stream. These operations require lots of math and careful memory management. While it's possible to perform such tasks in pure JavaScript — and engines like V8 have gone to impressive lengths to optimize such code — in the end nothing beats a compiled language with static types and explicit allocation.</p>
 	<p>As an example, the image below is resized dynamically by a Cloudflare Worker using a WebAssembly module to decode and resize the image. Only the original image is cached — the resize happens on-the-fly at our edge when you move the slider. <a href="https://github.com/cloudflare/cloudflare-workers-wasm-demo">Find the code here.</a></p>
-	<h3>How to use WebAssembly with Cloudflare Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-webassembly-with-cloudflare-workers">How to use WebAssembly with Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-webassembly-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WASM used in a Worker must be deployed together with the Worker. When editing a script in the online Workers editor, click on the "Resources" tab. Here, you can add a WebAssembly module.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -41,10 +70,24 @@ instance.exports.exampleExport(123);</code></pre>
 	<p>Check out the <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Using_the_JavaScript_API">MDN WebAssembly API documentation</a> for more details on instantiating WebAssembly modules.</p>
 	<p>You can also, of course, upload WebAssembly modules via our API instead of the online editor.</p>
 	<p><a href="https://developers.cloudflare.com/workers/api/resource-bindings/webassembly-modules">Check out the documentation for details »</a></p>
-	<h3>Building WASM modules</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-wasm-modules">Building WASM modules</h3>
+		<a href="https://blog.cloudflare.com/#building-wasm-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, building a WebAssembly module for Cloudflare is a somewhat manual process involving low-level tools. <a href="https://github.com/cloudflare/cloudflare-workers-wasm-demo">Check out our demo repository for details.</a></p>
 	<p>Now that the basic support is in place, we plan to work with <a href="http://emscripten.org">Emscripten</a> and the rest of the WASM community to make sure building WASM for Cloudflare Workers is as seamless as building for a web browser. Stay tuned for further developments.</p>
-	<h3>The Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future">The Future</h3>
+		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're excited by the possibilities that WebAssembly opens up. Perhaps, by integrating with <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Cloudflare Spectrum</a>, we could allow existing C/C++ server code to handle arbitrary TCP and UDP protocols on the edge, like a sort of massively-distributed <code>inetd</code>. Perhaps game servers could reduce latency by running on Cloudflare, as close to the player as possible. Maybe, with the help of some GPUs and OpenGL bindings, you could do 3D rendering and real-time streaming directly from the edge. <a href="https://community.cloudflare.com/c/developers/workers">Let us know what you'd like to see »</a></p>
 	<p>Want to help us build it? <a href="https://www.cloudflare.com/careers">We're hiring!</a></p>
 </div>

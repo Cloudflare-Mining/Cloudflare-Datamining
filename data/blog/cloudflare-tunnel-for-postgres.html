@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>For a long time we used the traditional method of accessing internal database clusters by SSHing to a bastion host. Due to the overhead and limitations of maintaining the SSH configuration, we’ve moved to using Cloudflare Tunnels combined with Cloudflare Access to dramatically improve the user experience and onboarding times related to database access.</p>
-	<h3>How we used to work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-we-used-to-work">How we used to work</h3>
+		<a href="https://blog.cloudflare.com/#how-we-used-to-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Internally we rely heavily on PostgreSQL to power many services at Cloudflare – including Stream, Images and the Cloudflare Dashboard itself. We run our Postgres clusters on our own hardware within our data centers, and they are not accessible to the public Internet, including employee laptops.</p>
 	<p>When an employee requires access to one of these databases – be it for staging environments, incident management, or supporting production services – an SSH user account is required. This SSH account has limited access on a bastion host, purely for querying databases within the data center.</p>
 	<figure class="kg-card kg-image-card ">
@@ -14,10 +21,24 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6r0mqLUa3j8D6MOhcCCV7N/1e02c004212e8dd2e1f0b13643814709/image2-39.png" alt="" class="kg-image" width="1822" height="718" loading="lazy">
 
 	</figure>
-	<h3>The pain we experienced</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-pain-we-experienced">The pain we experienced</h3>
+		<a href="https://blog.cloudflare.com/#the-pain-we-experienced" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Provisioning an SSH account to these bastion hosts requires submitting a pull request to our main Infrastructure-as-Code git repository. For engineers this is a cumbersome process, and for non-engineers it is either an unnecessary learning experience, or a burden to whomever they have to ask to complete the work for them.</p>
 	<p>Both the Security and Site Reliability Engineering (SRE) teams had tolerated this solution as a necessary evil, but had reservations about handing out shell access to machines for this purpose. While the user accounts had few privileges within the bastion hosts, this still allowed users to run commands within a host and requires a lot of trust that the whole stack is secure.</p>
-	<h3>The solution: Cloudflare Zero Trust</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-solution-cloudflare-zero-trust">The solution: Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#the-solution-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As it turns out, the problems we encountered were the same as problems many of our customers encounter as well. We also knew these concerns could be easily addressed with our own products, Cloudflare Tunnel and Cloudflare Access.</p>
 	<p>To get started, we deployed Cloudflare Tunnel on a pod set up within our internal Kubernetes cluster that maintains access to the database clusters. This established connectivity from our origin to the Cloudflare global network. At this point, our newly created Tunnel was ready to serve traffic to our origin, in this case our PostgreSQL database server. This already simplified orchestration and management as we no longer needed to manage any Access Control List (ACL) changes for the pod itself in order for cloudflared to connect to it.</p>
 	<figure class="kg-card kg-image-card ">
@@ -40,7 +61,14 @@
 	</figure>
 	<p>With cloudflared running locally, the user is then free to fire up their favorite database client to connect to the local port and run queries against the remote database cluster as if it is running locally. In short, our users were now able to run a lightweight daemon, cloudflared, on their local machine to route traffic to Cloudflare. Cloudflare Access then evaluated each request against the identity-driven Zero Trust security policies we defined. If the user met these requirements, the request was forwarded onto Cloudflare Tunnel which securely connected internal users to our databases behind Tunnel.</p>
 	<p>While we enjoy the benefits this workflow gives us, we needed to include a <i>break glass</i> procedure to ensure that we aren’t locked out of fixing our infrastructure if our infrastructure itself is having issues. For this reason, we continue to maintain SSH-based jump-hosts for a limited number of senior staff members to get in and re-establish connectivity.</p>
-	<h3>What we learned</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-we-learned">What we learned</h3>
+		<a href="https://blog.cloudflare.com/#what-we-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By implementing our own solutions, we were able to enhance our security posture and improve the overall experience for our internal users. We were also able to become a customer of our own products and provide value feedback, insight, and feature requests to the Access and Tunnel teams internally. Oftentimes, we get to be the first to try new features or report regressions in beta builds which ultimately leads to a better experience for our customers as well.</p>
 	<p>Overall, by implementing Access and Tunnel to forward arbitrary TCP connections, users are able to focus on their job rather than worrying about the nuances of sending strings of complex commands through an SSH client. Our Security and SRE teams are also happier knowing that any connection to our data centers have been authenticated, authorized and logged by Cloudflare Access. If you’d like to get started Cloudflare Tunnel is free for any user and any use case. To get started, <a href="https://dash.cloudflare.com/sign-up/teams">sign-up</a> for a Cloudflare Zero Trust account and <a href="https://blog.cloudflare.com/ridiculously-easy-to-use-tunnels">create your first Tunnel</a> directly from the Zero Trust dashboard.</p>
 </div>

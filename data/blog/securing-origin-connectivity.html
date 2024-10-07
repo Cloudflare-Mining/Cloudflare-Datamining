@@ -11,7 +11,14 @@
 	<p>But getting the connection encrypted from Cloudflare to the customer’s origin server was more complex. Since Cloudflare and all browsers supported SSL/TLS, the connection between the browser and Cloudflare could be instantly secured. But back in 2014 configuring an origin server with an SSL/TLS certificate was complex, expensive, and sometimes not even possible.</p>
 	<p>And so we relied on users to configure the best security level for their origin server. Later we added a service that detects and <a href="https://blog.cloudflare.com/ssl-tls-recommender">recommends the highest level of security</a> for the connection between Cloudflare and the origin server. We also introduced free <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">origin server certificates</a> for customers who didn’t want to get a certificate elsewhere.</p>
 	<p>Today, we’re going even further. Cloudflare will shortly find the most secure connection possible to our customers’ origin servers and use it, automatically. Doing this correctly, at scale, while not breaking a customer’s service is very complicated. This blog post explains how we are automatically achieving that highest level of security possible for those customers who don’t want to spend time configuring their SSL/TLS set up manually.</p>
-	<h3>Why configuring origin SSL automatically is so hard</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-configuring-origin-ssl-automatically-is-so-hard">Why configuring origin SSL automatically is so hard</h3>
+		<a href="https://blog.cloudflare.com/#why-configuring-origin-ssl-automatically-is-so-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When we announced Universal SSL, we knew the <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">backend security of the connection</a> between Cloudflare and the origin was a different and harder problem to solve.</p>
 	<p>In order to configure the tightest security, customers had to procure a certificate from a third party and upload it to their origin. Then they had to indicate to Cloudflare that we should use this certificate to verify the identity of the server while also indicating the connection security capabilities of their origin. This could be an expensive and tedious process. To help alleviate this high set up cost, in 2015 Cloudflare <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">launched a beta Origin CA service</a> in which we provided free limited-function certificates to customer origin servers. We also provided guidance on how to correctly configure and upload the certificates, so that secure connections between Cloudflare and a customer’s origin could be established quickly and easily.</p>
 	<p>What we discovered though, is that while this service was useful to customers, it still required a lot of configuration. We didn’t see the change we did with Universal SSL because customers still had to fight with their origins in order to upload certificates and test to make sure that they had configured everything correctly. And when you throw things like load balancers into the mix or servers mapped to different subdomains, handling server-side SSL/TLS gets even more complicated.</p>
@@ -49,7 +56,14 @@
 	<p>What we have found in a lot of cases is that when customers initially signed up for Cloudflare, the origin they were using could not support the most advanced versions of encryption, resulting in origin-facing communication using unencrypted HTTP. These default values persisted over time, even though the origin has become more capable. We think the time is ripe to re-evaluate the entire concept of default SSL/TLS levels.</p>
 	<p>That’s why we will reduce the configuration burden for origin-facing security by <b>automatically</b> managing this on behalf of our customers. Cloudflare will provide a zero configuration option for how we will communicate with origins: we will simply look at an origin and use the most-secure option available to communicate with it.</p>
 	<p>Re-evaluating default SSL/TLS modes is only the beginning. Not only will we automatically upgrade sites to their best security setting, <b>we will also open up all SSL/TLS modes to all plan levels</b>. Historically, Strict mode was reserved for enterprise customers only. This was because we released this mode in 2014 when few people had origins that were able to communicate over SSL/TLS, and we were nervous about customers breaking their configurations. But this is 2022, and we think that Strict mode should be available to anyone who wants to use it. So we will be opening it up to everyone with the launch of the automatic upgrades.</p>
-	<h3>How will automatic upgrading work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-will-automatic-upgrading-work">How will automatic upgrading work?</h3>
+		<a href="https://blog.cloudflare.com/#how-will-automatic-upgrading-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To upgrade the origin-facing security of websites, we first need to determine the highest security level the origin can use. To make this determination, we will use the <a href="https://blog.cloudflare.com/ssl-tls-recommender">SSL/TLS Recommender</a> tool that we released a year ago.</p>
 	<p>The recommender performs a series of requests from Cloudflare to the customer’s origin(s) to determine if the backend communication can be upgraded beyond what is currently configured. The recommender accomplishes this by:</p>
 	<ul>
@@ -76,9 +90,23 @@
 	<p>But that’s not all. Not only are we removing the configuration burden for services on Cloudflare, but we’re also <b>providing more precise security settings by moving from per-zone SSL/TLS settings to per-origin SSL/TLS settings</b>.</p>
 	<p>The current implementation of the backend SSL/TLS service is related to an entire website, which works well for those with a single origin. For those that have more complex setups however, this can mean that origin-facing security is defined by the lowest capable origin serving a part of the traffic for that service. For example, if a website uses img.example.com and api.example.com, and these subdomains are served by different origins that have different security capabilities, we would not want to limit the SSL/TLS capabilities of both subdomains to the least secure origin. By using our new service, we will be able to set per-origin security more precisely to allow us to maximize the security posture of each origin.</p>
 	<p>The goal of this is to maximize the origin-facing security of everything on Cloudflare. However, if any origin that we attempt to scan blocks the SSL recommender, has a non-functional origin, or opts-out of this service, we will not complete the scans and will not be able to upgrade security. Details on how to opt-out will be provided via email announcements soon.</p>
-	<h3>Opting out</h3>
+	<div class="flex anchor relative">
+		<h3 id="opting-out">Opting out</h3>
+		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are a number of reasons why someone might want to configure a lower-than-optimal security setting for their website. One common reason customers provide is a fear that having higher security settings will negatively impact the performance of their site. Others may want to set a suboptimal security setting for testing purposes or to debug some behavior. Whatever the reason, we will provide the tools needed to continue to configure the SSL/TLS mode you want, even if that’s different from what we think is the best.</p>
-	<h3>When is this going to happen?</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-is-this-going-to-happen">When is this going to happen?</h3>
+		<a href="https://blog.cloudflare.com/#when-is-this-going-to-happen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We will begin to roll this change out before the end of the year. If you read this and want to make sure you’re at the highest level of backend security already, we recommend <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict">Full (strict)</a> or <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull">Strict mode</a>. If you prefer to wait for us to automatically upgrade your origin security for you, please keep your eyes peeled to your inbox for the date we will begin rolling out this change for your group.</p>
 	<p>At Cloudflare, we believe that the Internet needs to be secure and private. If you’d like to help us achieve that, we’re hiring across the <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">engineering organization</a>.</p>
 </div>

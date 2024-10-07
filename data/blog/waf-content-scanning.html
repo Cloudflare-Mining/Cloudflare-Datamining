@@ -9,7 +9,14 @@
 	<p>Today we’re making your security team job easier by providing a file content scanning engine integrated with our <a href="https://www.cloudflare.com/waf">Web Application Firewall (WAF)</a>, so that malicious files being uploaded by end users get blocked before they reach application servers.</p>
 	<p>Enter WAF Content Scanning.</p>
 	<p>If you are an enterprise customer, reach out to your account team to get access.</p>
-	<h2>Making content scanning easy</h2>
+	<div class="flex anchor relative">
+		<h2 id="making-content-scanning-easy">Making content scanning easy</h2>
+		<a href="https://blog.cloudflare.com/#making-content-scanning-easy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we pride ourselves on making our products very easy to use. WAF Content Scanning was built with that goal in mind. The main requirement to use the Cloudflare WAF is that application traffic is proxying via the <a href="https://www.cloudflare.com/network">Cloudflare network</a>. Once that is done, <a href="https://developers.cloudflare.com/waf/about/content-scanning/#1-enable-waf-content-scanning">turning on Content Scanning requires a single API call</a>.</p>
 	<p>Once on, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> will automatically detect any content being uploaded, and when found, scan it and provide the results for you to use when writing WAF Custom Rules or reviewing security analytics dashboards.</p>
 	<p>The entire process runs inline with your HTTP traffic and requires no change to your application.</p>
@@ -37,8 +44,23 @@
 
 	</figure>
 	<p>The full list of fields exposed by the WAF Content Scanning engine can be found on our <a href="https://developers.cloudflare.com/waf/about/content-scanning">developer documentation</a>.</p>
-	<h2>The engine</h2>
-	<h3>Scanned content objects</h3>
+	<div class="flex anchor relative">
+		<h2 id="the-engine">The engine</h2>
+		<a href="https://blog.cloudflare.com/#the-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="scanned-content-objects">Scanned content objects</h3>
+		<a href="https://blog.cloudflare.com/#scanned-content-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A lot of time designing the system was spent defining what should be scanned. Defining this properly helps us ensure that we are not scanning unnecessary content reducing latency impact and CPU usage, and that there are no bypasses making the system complementary to existing WAF functionality.</p>
 	<p>The complexity stems from the fact that there is no clear definition of a “file” in HTTP terms. That’s why in this blog post and in the system design, we refer to “content object” instead.</p>
 	<p>At a high level, although this can loosely be defined as a “file”, not all “content objects” may end up being stored in the file system of an application server! Therefore, we need a definition that applies to HTTP. Additional complexity is given by the fact this is a security product, and attackers will always try to abuse HTTP to obfuscate/hide true intentions. So for example, although a <code>Content-Type</code> header may indicate that the request body is a <code>jpeg</code> image, it may actually be a <code>pdf</code>.</p>
@@ -48,7 +70,14 @@
 	<p>In these cases, we don’t scan the entire payload as a single content object, but we parse it following the relevant standard and apply scanning, if necessary, to the individual portions of the payload. That allows us to support scanning of more than one content object per request, such as an HTML form that has multiple file inputs. We plan to add additional automatic detections in the future on complex payloads moving forward.</p>
 	<p>In the event we end up finding a malicious match, but we were not able to detect the content type correctly, we will default to reporting a content type of <code>application/octet-stream</code> in the Cloudflare logs/dashboards.</p>
 	<p>Finally, it is worth noting that we explicitly avoid scanning anything that is plain text (HTML, JSON, XML etc.) as finding attack vectors in these payloads is already covered by the WAF, <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> and other <a href="https://www.cloudflare.com/application-services/solutions">web application security solutions</a> already present in Cloudflare’s portfolio.</p>
-	<h3>Local scans</h3>
+	<div class="flex anchor relative">
+		<h3 id="local-scans">Local scans</h3>
+		<a href="https://blog.cloudflare.com/#local-scans" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At Cloudflare, we try to leverage our horizontal architecture to build scalable software. This means the underlying scanner is deployed on every server that handles customer HTTP/S traffic. The diagram below describes the setup:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -57,7 +86,14 @@
 	</figure>
 	<p>Having each server perform the scanning locally helps ensure latency impact is reduced to a minimum to applicable HTTP requests. The actual scanning engine is the same one used by the <a href="https://www.cloudflare.com/products/zero-trust/gateway">Cloudflare Web Gateway</a>, our forward proxy solution that among many other things, helps keep end user devices safe by blocking attempts to download malware.</p>
 	<p>Consequently, the scanning capabilities provided match <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/antivirus-scanning">those exposed by the Web Gateway AV scanning</a>. The main difference as of today, is the maximum file size currently limited at 1 MB versus 15 MB in Web Gateway. We are working on increasing this to match the Web Gateway in the coming months.</p>
-	<h2>Separating detection from mitigation</h2>
+	<div class="flex anchor relative">
+		<h2 id="separating-detection-from-mitigation">Separating detection from mitigation</h2>
+		<a href="https://blog.cloudflare.com/#separating-detection-from-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A new approach that we are adopting within our application security portfolio is the separation of detection from mitigation. The WAF Content Scanning features follow this approach, as once turned on, it simply enhances all available data and fields with scan results. The benefits here are twofold.</p>
 	<p>First, this allows us to provide visibility into your application traffic, without you having to deploy any mitigation. This automatically opens up a great use case: discovery. For large enterprise applications security teams may not be aware of which paths or endpoints might be expecting file uploads from the Internet. Using our WAF Content Scanning feature in conjunction with our <a href="https://blog.cloudflare.com/security-analytics">new Security Analytics</a> they can now filter on request traffic that has a file content object (a file being uploaded) to observe top N paths and hostnames, exposing such endpoints.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -71,6 +107,13 @@
 	<p>if: <code>(cf.bot_management.score lt 10 and cf.waf.content_scan.has_obj)</code></p>
 	<p>then: <code>BLOCK</code></p>
 	<p>And that’s the power we wish to provide at your fingertips.</p>
-	<h2>Next steps</h2>
+	<div class="flex anchor relative">
+		<h2 id="next-steps">Next steps</h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our WAF Content Scanning is a new feature, and we have several improvements planned, including increasing the max content size scanned, exposing the “rewrite” action, so you can send malicious files to a quarantine server, and exposing better analytics that allow you to explore the data more easily without deploying rules. Stay tuned!</p>
 </div>

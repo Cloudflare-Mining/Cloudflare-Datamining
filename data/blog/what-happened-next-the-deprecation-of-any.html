@@ -27,14 +27,35 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liamq/5719368307/in/photolist-9HpfWp-7vpC9Y-7nQmx5-q1mALK-2NP1Dj-9tSNAV-fs6aGK-9YGHL4-a2MX7m-pdavta-9YG3s2-9HMRfG-vyBqdd-57eEb7-nVMdGs-9XmtSF-9LzUNq-9Hsn2o-ijY6d-stqR-9s2yQP-9UQ1he-9HsbT7-9USt79-8rJpfT-zRD2us-q1fiy4-vReb9v-87zVLF-dix1Mc-bkvWid-9YGk6z-8rVUX-ibFyKE-JNes5-4ZTY63-9Hpsuk-ak22cF-8AYnAR-9rCCPK-7wLkFs-9LzY73-oG2GwQ-3YN2wN-9UQ1Zx-2VDgHs-rgq9Tv-9pTXeC-vQB1HW-pkU3qT">image</a> by <a href="https://www.flickr.com/photos/liamq">Liam Quinn</a></p>
-	<h3>The Conversation in the DNS Community</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-conversation-in-the-dns-community">The Conversation in the DNS Community</h3>
+		<a href="https://blog.cloudflare.com/#the-conversation-in-the-dns-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As that was happening, a lively discussion started to form among those in the DNS community. The first fundamental question that had to be answered was: “Does ANY mean ALL?”. That is, was an ANY query meant to be a way to receive all of the records in a zone for the query name?</p>
 	<p>Different people had different interpretations of ANY depending on the kind of DNS service they were providing. For example, it is nice as an operator of a DNS resolver to be able to ask your own resolver, “what is stored in the resolver memory/cache for a particular name?”. An ANY query with the right query flags can help answer that. On the other hand, an operator of an authoritative server does not need that functionality, as AXFR provides another reliable way to get that information. In short, the ANY query is a nice tool for people that are trying to understand what is going on in DNS resolution. Some community members argued that ANY should be a restricted query to a privileged few that have the need to know.</p>
 	<p>While ANY can be a nice tool to debug and expose inconsistencies in resolver caches, it’s still not a great tool: with more and more Anycast resolver clusters, there is no guarantee that two subsequent queries will hit the same resolver.</p>
-	<h3>Why is answering ANY expensive for some DNS providers like CloudFlare?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-answering-any-expensive-for-some-dns-providers-like-cloudflare">Why is answering ANY expensive for some DNS providers like CloudFlare?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-answering-any-expensive-for-some-dns-providers-like-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our in-house DNS server is optimized to provide dynamic answers to questions. For example, depending on how a CNAME is configured, our server may return the CNAME, fetch the real answer from the target of the CNAME (what we call <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME Flattening</a>), or provide CloudFlare addresses as answers. Thus for us to answer an ANY query, we need to compute all of the possible combinations just to know what to return.</p>
 	<p>Beyond that, our DNSSEC implementation signs answers on-the-fly. Thus, returning an answer with many different types of DNS records in the answer requires signing all of them at the edge. Thus providing support for ANY in the “traditional” sense had serious computational and response time implications. This is not unique to CloudFlare; we are not the only DNS implementation that has this high cost factor in answering ANY queries.</p>
-	<h3>The use of ANY queries in DDoS attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-use-of-any-queries-in-ddos-attacks">The use of ANY queries in DDoS attacks</h3>
+		<a href="https://blog.cloudflare.com/#the-use-of-any-queries-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a <a href="https://www.stateoftheinternet.com/downloads/pdfs/2016-state-of-the-internet-threat-advisory-dnssec-ddos-amplification-attacks.pdf">recent paper</a> by Akamai the authors draw the conclusion that DNSSEC is the main cause of large answers used for DDoS attacks. But looking at the packet capture they included in the paper, it’s clear the real cause of the large answers is that the attackers use ANY queries to maximize the amplification factor.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -43,7 +64,14 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vshioshvili/542729697/in/photolist-PXCCz-k6NoRc-cDtNZd-edwgy1-6jQXRQ-dXy1Jr-y7nBK-bc1yiX-3VM5qq-gwmAC2-f9yVtM-oRrjRG-941Srq-4S5XGd-iWWst8-osFsjb-bwNo4s-fmBA2h-gMUKvN-bSYVZ-qyv52o-j5SCMq-hbeFS5-c4YDmC-pBuq2q-7dLGEn-6yMZwa-pQBJaX-8rtb76-8G1gSm-4S6XpX-oNYyuF-8jiMY-oTjWxG-7rMR8G-4TXTS2-pBv71k-9Ti743-pugFk8-8v4Sze-pSheSw-hSNyda-qtj2GB-yvd8-9dDz1m-nMnq18-7Ky43P-tJa4Bm-8UEDst-7R5MQW">image</a> by <a href="https://www.flickr.com/photos/vshioshvili">Vladimer Shioshvili</a></p>
 	<p>We regularly see attacks that attempt to use our powerful DNS system as a source of reflection. We have in response to this created sophisticated systems to detect the attacks and mitigate them in a responsible manner. Our deprecation of ANY is a key part of those protections. One of our main mantra is “<i>do not return larger than needed answers</i>”, exactly to help protect others on the Internet from amplification attacks.</p>
-	<h3>Evolution of “Suppress ANY” in the DNS protocol community</h3>
+	<div class="flex anchor relative">
+		<h3 id="evolution-of-suppress-any-in-the-dns-protocol-community">Evolution of “Suppress ANY” in the DNS protocol community</h3>
+		<a href="https://blog.cloudflare.com/#evolution-of-suppress-any-in-the-dns-protocol-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Soon after we announced our planned deprecation of ANY, we <a href="https://tools.ietf.org/html/draft-ogud-dnsop-acl-metaqueries-00">submitted an Internet Draft</a> to the IETF proposing to restrict ANY queries to authorized parties only. In the resulting discussion, it became clear that what mattered here was how we deprecated ANY. To make sure no system was adversely affected, we had to take into account how various applications and DNS implementations were using ANY.</p>
 	<p>In short, there are two main uses of ANY queries:</p>
 	<ol>
@@ -119,7 +147,14 @@ cloudflare.com.		3789	IN	RRSIG	HINFO 13 2 3789 20160414100147 20160412080147 352
 ;; MSG SIZE  rcvd: 224</code></pre>
 	<p>We have been returning the HINFO answer for ANY queries since October 2015, with very few reports of problems in the field, besides a single Twitter rant about us not understanding DNS.</p>
 	<p>A few other DNS server vendors and DNS operators have followed our lead or adopted a similar line of defense. The latest example is the <a href="http://fanf.livejournal.com/140566.html">University of Cambridge</a> which modified their BIND implementation to only return a single RRset for an <a href="https://git.csx.cam.ac.uk/x/ucs/ipreg/bind9.git/commitdiff/f8c420dd8e">ANY query</a>. A common DNS server (NSD) has also been limiting ANY responses to only A+AAAA+MX types and/or CNAME, and a <a href="https://gist.github.com/hdais/25cb3fc86335026d40f0">patch to return an even smaller answer</a> has been proposed.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The moral is that the ANY query is not a useful tool for most DNS operators, but it is a wonderful tool if one is in the business of generating attacks against anyone else on the Internet. Answering ANY queries with a giant answer is not helping mitigate the plague of DoS volume attacks.</p>
 	<p>CloudFlare has taken a step to make the Internet a less hostile place and is leading by example. We strongly urge others to follow in our steps and neuter the amplification factor that a single DNS query can achieve. We all want to build a safer Internet, and neutering ANY query is one small step that everyone can take.</p>
 </div>

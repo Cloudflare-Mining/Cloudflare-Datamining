@@ -7,7 +7,14 @@
 	</figure>
 	<p>Hot on the heels of the <a href="https://blog.cloudflare.com/r2-open-beta">R2 open beta announcement</a>, we’re excited that Cloudflare enterprise customers can now use Logpush to store logs on R2!</p>
 	<p>Raw logs from our products are used by our customers for debugging performance issues, to investigate security incidents, to keep up security standards for compliance and much more. You shouldn’t have to make tradeoffs between keeping logs that you need and managing tight budgets. With R2’s low costs, we’re making this decision easier for our customers!</p>
-	<h3>Getting into the numbers</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-into-the-numbers">Getting into the numbers</h3>
+		<a href="https://blog.cloudflare.com/#getting-into-the-numbers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare helps customers at different levels of scale — from a few requests per day, up to a million requests per second. Because of this, the cost of log storage also varies widely. For customers with higher-traffic websites, log storage costs can grow large, quickly.</p>
 	<p>As an example, imagine a website that gets 100,000 requests per second. This site would generate about 9.2 TB of HTTP request logs per day, or 850 GB/day after gzip compression. Over a month, you’ll be storing about 26 TB (compressed) of HTTP logs.</p>
 	<p>For a typical use case, imagine that you write and read the data exactly once – for example, you might write the data to <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> before ingesting it into an alerting system. Compare the costs of R2 and S3 (note that this excludes costs per operation to read/write data).</p>
@@ -26,12 +33,26 @@
 	<p>In this example, R2 leads to 86% savings! It’s worth noting that querying logs is where another hefty price tag comes in because Amazon Athena charges based on the amount of data scanned. If your team is looking back through historical data, each query can be hundreds of dollars.</p>
 	<p>Many of our customers have tens to hundreds of domains behind Cloudflare and the majority of our Enterprise customers also use multiple Cloudflare products. Imagine how costs will scale if you need to store HTTP, WAF and Spectrum logs for all of your Internet properties behind Cloudflare.</p>
 	<p>For SaaS customers that are building the next big thing on Cloudflare, logs are important to get visibility into customer usage and performance. Your customer’s developers may also want access to raw logs to understand errors during development and to troubleshoot production issues. Costs for storing logs multiply and add up quickly!</p>
-	<h3>The flip side: log retrieval</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-flip-side-log-retrieval">The flip side: log retrieval</h3>
+		<a href="https://blog.cloudflare.com/#the-flip-side-log-retrieval" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When designing products, one of Cloudflare’s core principles is ease of use. We take on the complexity, so you don’t have to. Storing logs is only half the battle, you also need to be able to access relevant logs when you need them – in the heat of an incident or when doing an in depth analysis.</p>
 	<p>Our product, <a href="https://developers.cloudflare.com/logs/logpull">Logpull</a>, offers seven days of log retention and an easy to use API to access. Our customers love that Logpull doesn’t need any setup on third parties since it's completely managed by Cloudflare. However, Logpull is limited in the retention of logs, the type of logs that we store (only HTTP request logs) and the amount of data that can be queried at one time.</p>
 	<p>We’re building tools for log retrieval that make it super easy to get your data out of R2 from any of our datasets. Similar to Logpull, we’ll start by supporting lookups by time period and rayId. From there, we’ll tackle more complex functions like returning logs within time X and Y that have 500 errors or where WAF action = <code>block</code>.</p>
 	<p>We’re looking for customers to join a closed beta for our Log Retrieval API. If you’re interested in testing it out, giving feedback and ultimately helping us shape the product sign up <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIzZk_giT5KFLL7PyUQofZKMLMp9BIo0ObCbxqKg1vlD0dlw/viewform?usp=sf_link">here</a>.</p>
-	<h3>Logs on R2: How to get started</h3>
+	<div class="flex anchor relative">
+		<h3 id="logs-on-r2-how-to-get-started">Logs on R2: How to get started</h3>
+		<a href="https://blog.cloudflare.com/#logs-on-r2-how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Enterprise customers first need to get R2 added to their contract. Reach out to your account team if this is something you’re interested in! Once enabled, create an R2 bucket for your logs and follow the Logpush setup flow to create your job.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,7 +60,14 @@
 
 	</figure>
 	<p>It’s that simple! If you have questions, our <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/r2/">Logpush to R2</a> developer docs go into more detail.</p>
-	<h3>More to come</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-to-come">More to come</h3>
+		<a href="https://blog.cloudflare.com/#more-to-come" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re continuing to build out more advanced Logpush features with a focus on customization. Here’s a preview of what’s next on the roadmap:</p>
 	<ul>
 		<li>

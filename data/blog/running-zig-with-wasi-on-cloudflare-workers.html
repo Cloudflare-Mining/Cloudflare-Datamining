@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
-	<h3>Hello, World!</h3>
+	<div class="flex anchor relative">
+		<h3 id="hello-world">Hello, World!</h3>
+		<a href="https://blog.cloudflare.com/#hello-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I’m not a Zig expert by any means, and to keep things entirely honest I’ve only just started looking into the language, but we all have to start somewhere. So, if my Zig code isn’t perfect please bear with me. My goal was to build a real, small program using Zig and deploy it on Cloudflare Workers. And to see how fast I can go from a blank screen to production code.</p>
 	<p>My goal for this wasn’t ambitious, just read some text from stdin and print it to stdout with line numbers, like running <code>cat -n</code>. But it does show just how easy the Workers paradigm is. This Zig program works identically on the command-line on my laptop and as an HTTP API deployed on Cloudflare Workers.</p>
 	<p>Here’s my code. It reads a line from stdin and outputs the same line prefixed with a line number. It terminates when there’s no more input.</p>
@@ -54,7 +61,15 @@ print-with-line-numbers
 $ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
 1    Hello
 2    World</code></pre>
-	<h3>WASI</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="wasi">WASI</h3>
+		<a href="https://blog.cloudflare.com/#wasi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
 	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev">wasmtime</a>.</p>
 	<p>This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p>
@@ -66,7 +81,15 @@ print-with-line-numbers.wasm
 $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 1    Hello
 2    World</code></pre>
-	<h3>Zig on Workers</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="zig-on-workers">Zig on Workers</h3>
+		<a href="https://blog.cloudflare.com/#zig-on-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide">getting started guide</a> that will get you from code to deployment within minutes!</p>
 	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
 	<pre class="language-bash"><code class="language-bash">$ npx wrangler@wasm login
@@ -83,7 +106,14 @@ Published print-with-line-numbers (6.28 sec)
 1    Hello
 2    World</code></pre>
 	<p>Success!</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What impressed me the most here was just how easy this process was.</p>
 	<p>First, I had a binary compiled for the architecture of my laptop, then I compiled the code into WebAssembly by just passing a flag to the compiler, and finally I had this running on workers <b>without having to change any code.</b></p>
 	<p>Granted, this program was not very complicated and does not do anything other than read from STDIN and write to STDOUT, but it gives me confidence of what is possible, especially as technology like WASI matures.</p>

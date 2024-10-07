@@ -8,7 +8,14 @@
 
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a> <a href="https://www.flickr.com/photos/john47kent/5307525503">image</a> by <a href="https://www.flickr.com/photos/john47kent">John Stratford</a></p>
-	<h3>What is WebP?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-webp">What is WebP?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-webp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The main image formats used on the web haven’t changed much since the early days (apart from the SVG vector format, PNG was the last one to establish itself, <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics#History_and_development">almost two decades ago</a>).</p>
 	<p><a href="https://en.wikipedia.org/wiki/WebP">WebP</a> is a newer image format for the web, proposed by Google. It takes advantage of progress in <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">image compression techniques</a> since formats such as JPEG and PNG were designed. It is often able to compress the images into a significantly smaller amount of data than the older formats.</p>
 	<p>WebP is versatile and able to replace the three main raster image formats used on the web today:</p>
@@ -24,7 +31,14 @@
 		</li>
 	</ul>
 	<p>Currently the main browser that supports WebP is Google’s Chrome (both on desktop and mobile devices). See <a href="http://caniuse.com/#feat=webp">the WebP page on caniuse.com</a> for more details.</p>
-	<h3>Polish WebP conversion</h3>
+	<div class="flex anchor relative">
+		<h3 id="polish-webp-conversion">Polish WebP conversion</h3>
+		<a href="https://blog.cloudflare.com/#polish-webp-conversion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Customers on the Pro, Business, and Enterprise plans can enable the automatic creation of WebP images by checking the WebP box in the Polish settings for a zone (these are found on the “Speed” page of the dashboard):</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +51,14 @@
 	<p>These modes are respected when JPEG images are converted to WebP. In lossless mode, the conversion is done in a way that preserves the image as faithfully as possible (due to the nature of the conversion, the resulting WebP might not be exactly identical, but there are unlikely to be any visible differences). In lossy mode, the conversion sacrifices a little quality in order to shrink the image data further, but as before, there should not be a significant visible effect.</p>
 	<p>These modes do not affect PNGs and GIFs, as these are lossless formats and so Polish will preserve images in those formats exactly.</p>
 	<p>Note that WebP conversion does not change the URLs of images, even if the file extension in the URL implies a different format. For example, a JPEG image at <code>https://example.com/picture.jpg</code> that has been converted to WebP will still have that same URL. The “Content-Type” HTTP header tells the browser the true format of an image.</p>
-	<h3>By the Numbers</h3>
+	<div class="flex anchor relative">
+		<h3 id="by-the-numbers">By the Numbers</h3>
+		<a href="https://blog.cloudflare.com/#by-the-numbers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A few studies have been published of how well WebP compresses images compared with established formats. These studies provide a useful picture of how WebP performs. But before we released our WebP support, we decided to do a survey based on the context on which we planned to use WebP:</p>
 	<ul>
 		<li>
@@ -77,7 +98,14 @@
 	<p>16%</p>
 	<p>(The saving is calculated as 100% - (polished size) / (original size).)</p>
 	<p>As you can see, WebP conversion achieves significant size improvements not only for JPEG images, but also for PNG and GIF images. We believe supporting WebP will result in lower bandwidth and faster website delivery.</p>
-	<h3>… and a WebP New Year</h3>
+	<div class="flex anchor relative">
+		<h3 id="and-a-webp-new-year">… and a WebP New Year</h3>
+		<a href="https://blog.cloudflare.com/#and-a-webp-new-year" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>WebP does not yet have the same level of browser support as JPEG, PNG and GIF, but we are excited about its potential to streamline web pages. Polish WebP conversion allows our customers to adopt WebP with a simple change to the settings in the Cloudflare dashboard. So, if you are on one of our <a href="https://www.cloudflare.com/plans">paid plans</a>, we encourage you to try it out today.</p>
 	<p>PS — Want to help optimize the web? We’re <a href="https://www.cloudflare.com/join-our-team">hiring</a>.</p>
 </div>

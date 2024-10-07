@@ -7,7 +7,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/461lV3kUQYG0CMPbfHrqTF/d541c46efbfae7d48622c842a097827a/Service-Discovery-Diagram.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
 
 	</figure>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Service locations and metadata are stored in a distributed KV store deployed in all 100+ Cloudflare edge locations (the service registry).</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -37,7 +44,14 @@
 	<p>While usually, TTL’s in DNS mean that if a service location changes or deregisters, clients may still get stale information, Cloudflare DNS keeps low TTL’s (it’s able to do this and maintain <a href="https://www.dnsperf.com">fast performance</a> because of its distributed network) and if you are using Cloudflare as a proxy, the DNS answers always point back to Cloudflare even when the IP’s of services behind Cloudflare change, removing the effect of cache staleness.</p>
 	<p>If your services communicate over HTTP/S and websockets, you can additionally use Cloudflare as a L7 proxy for added security, authentication and optimization. Cloudflare <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevents DDoS attacks</a> from hitting your infrastructure, masks your IP’s behind its network, and routes traffic through an <a href="https://www.cloudflare.com/argo">optimized edge PoP to edge PoP route</a> to shave latency off the internet.</p>
 	<p>Once service &lt;--&gt; service traffic is going through Cloudflare, you can use TLS client certificates to <a href="https://blog.cloudflare.com/introducing-tls-client-auth">authenticate traffic</a> between your services. Cloudflare can authenticate traffic at the edge by ensuring that the client certificate presented during the TLS handshake is signed by your root CA.</p>
-	<h3>Setting it up</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-it-up">Setting it up</h3>
+		<a href="https://blog.cloudflare.com/#setting-it-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://cloudflare.com/a/sign-up">Sign up for Cloudflare account</a></p>
 	<p>During the signup process, add all your initial services as DNS records in the DNS editor.</p>
 	<p>To finish sign up, move DNS to Cloudflare by logging into your registrar and changing your nameservers to the Cloudflare nameservers assigned to you when you signed up for Cloudflare. If you want traffic to those services to be proxied through Cloudflare, click on the cloud next to each DNS record to make it orange.</p>

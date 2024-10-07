@@ -20,7 +20,14 @@
 	<p><code>compatibility_flags = ["nodejs_compat_v2"]</code></p>
 	<p>Packages that could not be imported with <code>nodejs_compat</code>, even as a dependency of another package, will now load. This includes popular packages such as <a href="https://www.npmjs.com/package/body-parser">body-parser</a>, <a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a>, {}<a href="https://www.npmjs.com/package/got">got</a>, <a href="https://www.npmjs.com/package/passport">passport</a>, <a href="https://www.npmjs.com/package/md5">md5</a>, <a href="https://www.npmjs.com/package/knex">knex</a>, <a href="https://www.npmjs.com/package/mailparser">mailparser</a>, <a href="https://www.npmjs.com/package/csv-stringify">csv-stringify</a>, <a href="https://www.npmjs.com/package/cookie-signature">cookie-signature</a>, <a href="https://www.npmjs.com/package/stream-slice">stream-slice</a>, and many more.</p>
 	<p>This behavior will soon become the default for all Workers with the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>existing nodejs_compat compatibility flag</u></a> enabled, and a <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates"><u>compatibility date</u></a> of 2024-09-23 or later. As you experiment with improved Node.js compatibility, share your feedback by <a href="https://github.com/cloudflare/workers-sdk/issues/new?assignees=&amp;labels=bug&amp;projects=&amp;template=bug-template.yaml&amp;title=%F0%9F%90%9B+BUG%3A"><u>opening an issue on GitHub</u></a>.</p>
-	<h3>Workerd is not Node.js</h3>
+	<div class="flex anchor relative">
+		<h3 id="workerd-is-not-node-js">Workerd is not Node.js</h3>
+		<a href="https://blog.cloudflare.com/#workerd-is-not-node-js" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand the latest changes, let’s start with a brief overview of how the Workers runtime differs from <a href="https://nodejs.org"><u>Node.js</u></a>.</p>
 	<p>Node.js was built primarily for services run directly on a host OS and pioneered server-side JavaScript. Because of this, it includes functionality necessary to interact with the host machine, such as <a href="https://nodejs.org/api/process.html"><u>process</u></a> or <a href="https://nodejs.org/api/fs.html"><u>fs</u></a>, and a variety of utility modules, such as <a href="https://nodejs.org/api/crypto.html"><u>crypto</u></a>.</p>
 	<p>Cloudflare Workers run on an open source JavaScript/Wasm runtime called <a href="https://github.com/cloudflare/workerd"><u>workerd</u></a>. While both Node.js and workerd are built on <a href="https://v8.dev"><u>V8</u></a>, workerd is <a href="https://blog.cloudflare.com/cloud-computing-without-containers"><u>designed to run untrusted code in shared processes</u></a>, exposes <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>bindings</u></a> for interoperability with other Cloudflare services, including <a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JavaScript-native RPC</u></a>, and uses <a href="https://blog.cloudflare.com/introducing-the-wintercg"><u>web-standard APIs</u></a> whenever possible.</p>
@@ -35,7 +42,14 @@
   The package "events" wasn't found on the file system but is built into node.</code></pre>
 	<p>This happens because the pg package imports the <a href="https://nodejs.org/api/events.html"><u>events module</u></a> from Node.js, which is not provided by workerd by default.</p>
 	<p>How can we enable this?</p>
-	<h3>Our first approach – build-time polyfills</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-first-approach-build-time-polyfills">Our first approach – build-time polyfills</h3>
+		<a href="https://blog.cloudflare.com/#our-first-approach-build-time-polyfills" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Polyfills are code that add functionality to a runtime that does not natively support it. They are often added to provide modern JavaScript functionality to older browsers, but can be used for server-side runtimes as well.</p>
 	<p>In 2022, we <a href="https://github.com/cloudflare/workers-sdk/pull/869"><u>added functionality to Wrangler</u></a> that injected polyfill implementations of some Node.js APIs into your Worker if you set <code>node_compat = true</code> in your wrangler.toml. For instance, the following code would work with this flag, but not without:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import EventEmitter from 'events';
@@ -43,7 +57,14 @@ import { inherits } from 'util';</code></pre>
 	<p>These polyfills are essentially just additional JavaScript code added to your Worker by <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a> when deploying the Worker. This behavior is enabled by <a href="https://www.npmjs.com/package/@esbuild-plugins/node-globals-polyfill"><code><u>@esbuild-plugins/node-globals-polyfill</u></code></a> which in itself uses <a href="https://github.com/ionic-team/rollup-plugin-node-polyfills"><code><u>rollup-plugin-node-polyfills</u></code></a>.</p>
 	<p>This allows you to import and use some NPM packages, such as pg. However, many modules cannot be polyfilled with fast enough code or cannot be polyfilled at all.</p>
 	<p>For instance, <a href="https://nodejs.org/api/buffer.html"><u>Buffer</u></a> is a common Node.js API used to handle binary data. Polyfills exist for it, but JavaScript is often not optimized for the operations it performs under the hood, such as <code>copy</code>, <code>concat</code>, substring searches, or transcoding. While it is possible to implement in pure JavaScript, it could be far faster if the underlying runtime could use primitives from different languages. Similar limitations exist for other popular APIs such as <a href="https://nodejs.org/api/crypto.html"><u>Crypto</u></a>, <a href="https://nodejs.org/api/async_context.html"><u>AsyncLocalStorage</u></a>, and <a href="https://nodejs.org/api/stream.html"><u>Stream</u></a>.</p>
-	<h3>Our second approach –&nbsp;native support for some Node.js APIs in the Workers runtime</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-second-approach-native-support-for-some-node-js-apis-in-the-workers-runtime">Our second approach –&nbsp;native support for some Node.js APIs in the Workers runtime</h3>
+		<a href="https://blog.cloudflare.com/#our-second-approach-native-support-for-some-node-js-apis-in-the-workers-runtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2023, we <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage"><u>started adding</u></a> a subset of Node.js APIs directly to the Workers runtime. You can enable these APIs by adding the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>nodejs_compat compatibility flag</u></a> to your Worker, but you cannot use polyfills with <code>node_compat = true</code> at the same time.</p>
 	<p>Also, when importing Node.js APIs, you must use the <code>node</code>: prefix:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">import { Buffer } from 'node:buffer';</code></pre>
@@ -55,7 +76,14 @@ import { inherits } from 'util';</code></pre>
         ╵                              ~~~~~~~~
   The package "events" wasn't found on the file system but is built into node.</code></pre>
 	<p>Many NPM packages still didn’t work in Workers, even if you enabled the <code>nodejs_compat</code> compatibility flag. You had to choose between a smaller set of performant APIs, exposed in a way that many NPM packages couldn’t access, or a larger set of incomplete and less performant APIs. And APIs like <code>process</code> that are exposed as globals in Node.js could still only be accessed by importing them as modules.</p>
-	<h3>The new approach: a hybrid model</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-new-approach-a-hybrid-model">The new approach: a hybrid model</h3>
+		<a href="https://blog.cloudflare.com/#the-new-approach-a-hybrid-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What if we could have the best of both worlds, and it just worked?</p>
 	<ul>
 		<li>
@@ -103,7 +131,14 @@ foo(); // throws readFileSync is not implemented yet!
 </code></pre>
 	<p>Previously, even with the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>existing nodejs_compat compatibility flag</u></a> enabled, attempting to import my-module would fail at build time, because the <code>fs</code> module could not be resolved. Now, the <code>fs</code> module can be resolved, methods that do not rely on an unimplemented Node.js API work, and methods that do throw a more specific error –&nbsp;a runtime error that a specific Node.js API method is not yet supported, rather than a build-time error that the module could not be resolved.</p>
 	<p>This is what enables some packages to transition from “doesn’t even load on Workers” to, “loads, but with some unsupported methods”.</p>
-	<h3>Still missing an API from Node.js?&nbsp;Module aliasing to the rescue</h3>
+	<div class="flex anchor relative">
+		<h3 id="still-missing-an-api-from-node-js-module-aliasing-to-the-rescue">Still missing an API from Node.js?&nbsp;Module aliasing to the rescue</h3>
+		<a href="https://blog.cloudflare.com/#still-missing-an-api-from-node-js-module-aliasing-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you need an NPM package to work on Workers that relies on a Node.js API that isn’t yet implemented in the Workers runtime or as a polyfill in unenv. You can use <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing"><u>module aliasing</u></a> to implement just enough of that API to make things work.</p>
 	<p>For example, let’s say the NPM package you need to work calls <a href="https://nodejs.org/api/fs.html#fsreadfilepath-options-callback"><u>fs.readFile</u></a>. You can alias the fs module by adding the following to your Worker’s wrangler.toml:</p>
 	<pre class="language-toml"><code class="language-toml">[alias]
@@ -131,9 +166,24 @@ export default {
 "node-fetch" = "./fetch-nolyfill"</code></pre>
 	<p>All your replacement module needs to do in this case is to re-export the fetch API that is built into the Workers runtime:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">export default fetch;</code></pre>
-	<h3>Contributing back to unenv</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="contributing-back-to-unenv">Contributing back to unenv</h3>
+		<a href="https://blog.cloudflare.com/#contributing-back-to-unenv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is actively contributing to unenv. We think unenv is solving the problem of cross-runtime compatibility the right way —&nbsp;it adds only the necessary polyfills to your application, based on what APIs you use and what runtime you target. The project supports a variety of runtimes beyond workerd and is already used by other popular projects including <a href="https://nuxt.com"><u>Nuxt</u></a> and <a href="https://nitro.unjs.io"><u>Nitro</u></a>. We want to thank <a href="https://github.com/pi0"><u>Pooya Parsa</u></a> and the unenv maintainers and encourage others in the ecosystem to adopt or contribute.</p>
-	<h3>The path forward</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-path-forward">The path forward</h3>
+		<a href="https://blog.cloudflare.com/#the-path-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Currently, you can enable improved Node.js compatibility by setting the <code>nodejs_compat_v2</code> flag in <code>wrangler.toml</code>. We plan to make the new behavior the default when using the <code>nodejs_compat</code> flag on September 23rd. This will require updating your <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates"><code><u>compatibility_date</u></code></a>.</p>
 	<p>We are excited about the changes coming to Node.js compatibility, and encourage you to try it today. <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs"><u>See the documentation</u></a> on how to opt-in for your Workers, and please send feedback and report bugs <a href="https://github.com/cloudflare/workers-sdk/issues/new?assignees=&amp;labels=bug&amp;projects=&amp;template=bug-template.yaml&amp;title=%F0%9F%90%9B+BUG%3A"><u>by opening an issue</u></a>. Doing so will help us identify any gaps in support and ensure that as much of the Node.js ecosystem as possible runs on Workers.</p>
 </div>

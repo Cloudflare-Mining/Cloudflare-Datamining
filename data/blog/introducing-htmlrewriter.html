@@ -7,14 +7,28 @@
 	</figure>
 	<p>We are excited to announce that the HTMLRewriter API for Cloudflare Workers is now GA! You can get started today by checking out our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">documentation</a>, or trying out our <a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website">tutorial</a> for localizing your site with the HTMLRewriter.</p>
 	<p>Want to know how it works under the hood? We are excited to tell you everything you wanted to know but were afraid to ask, about building a streaming HTML parser on the edge; read about it in <a href="https://blog.cloudflare.com/html-parsing-1">part 1</a> (and stay tuned for part two coming tomorrow!).</p>
-	<h2>Faster, more scalable applications at the edge</h2>
+	<div class="flex anchor relative">
+		<h2 id="faster-more-scalable-applications-at-the-edge">Faster, more scalable applications at the edge</h2>
+		<a href="https://blog.cloudflare.com/#faster-more-scalable-applications-at-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The HTMLRewriter can help solve two big problems web developers face today: making changes to the HTML, when they are hard to make at the server level, and making it possible for HTML to live on the edge, closer to the user — without sacrificing dynamic functionality.</p>
 	<p>Since the introduction of Workers, Workers have helped customers regain control where control either wasn’t provided, or very hard to obtain at the origin level. Just like Workers can help you set CORS headers at the middleware layer, between your users and the origin, the HTMLRewriter can assist with things like URL rewrites (see the example below!).</p>
 	<p>Back in January, we <a href="https://blog.cloudflare.com/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached">introduced the Cache API</a>, giving you more control than ever over what you could store in our edge caches, and how. By helping users have closer control of the cache, users could push experiences that were previously only able to live at the origin server to the network edge. A great example of this is the ability to <a href="https://developers.cloudflare.com/workers/templates/pages/cache_api">cache POST requests</a>, where previously only GET requests were able to benefit from living on the edge.</p>
 	<p>Later this year, during Birthday Week, we announced <a href="https://blog.cloudflare.com/workers-sites">Workers Sites</a>, taking the idea of content on the edge one step further, and allowing you to fully deploy your static sites to the edge.</p>
 	<p>We were not the first to realize that the web could benefit from more content being accessible from the CDN level. The motivation behind the resurgence of static sites is to have a canonical version of HTML that can easily be cached by a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>.</p>
 	<p>This has been great progress for static content on the web, but what about so much of the content that’s <i>almost</i> static, but not quite? Imagine an e-commerce website: the items being offered, and the promotions are all the same — except that pesky shopping cart on the top right. That small difference means the HTML can no longer be cached, and sent to the edge. That tiny little number of items in the cart requires you to travel all the way to your origin, and make a call to the database, for every user that visits your site. This time of year, around Black Friday, and Cyber Monday, this means you have to make sure that your origin, and database are able to scale to the maximum load of all the excited shoppers eager to buy presents for their loved ones.</p>
-	<h2>Edge-side JAMstack with HTMLRewriter</h2>
+	<div class="flex anchor relative">
+		<h2 id="edge-side-jamstack-with-htmlrewriter">Edge-side JAMstack with HTMLRewriter</h2>
+		<a href="https://blog.cloudflare.com/#edge-side-jamstack-with-htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One way to solve this problem of reducing origin load while retaining dynamic functionality is to move more of the logic to the client — this approach of making the HTML content static, leveraging CDN for caching, and relying on client-side API calls for dynamic content is known as the JAMstack (JavaScript, APIs, Markdown). The JAMstack is certainly a move in the right direction, trying to maximize content on the edge. We’re excited to embrace that approach even further, by allowing dynamic logic of the site to live on the edge as well.</p>
 	<p>In September, we introduced the <a href="https://blog.cloudflare.com/html-rewriter-beta">HTMLRewriter API in beta</a> to the Cloudflare Workers runtime — a streaming parser API to allow developers to develop fully dynamic applications on the edge. HTMLRewriter is a jQuery-like experience inside your Workers application, allowing you to manipulate the DOM using selectors and handlers. The same way jQuery revolutionized front-end development, we’re excited for the HTMLRewriter to change how we think about architecting dynamic applications.</p>
 	<p>There are a few advantages to rewriting HTML on the edge, rather than on the client. First, updating content client-side introduces a tradeoff between the performance and consistency of the application — that is, if you want to, update a page to a logged in version client side, the user will either be presented with the static version first, and witness the page update (resulting in an inconsistency known as a flicker), or the rendering will be blocked until the customization can be fully rendered. Having the DOM modifications made edge-side provides the benefits of a scalable application, without the degradation of user experience. The second problem is the inevitable client-side bloat. Most of the world today is connected to the internet on a mobile phone with significantly less powerful CPU, and on shaky last-mile connections where each additional API call risks never making it back to the client. With the HTMLRewriter within Cloudflare Workers, the API calls for dynamic content, (or even calls directly to <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> for user-specific data) can be made from the Worker instead, on a much more powerful machine, over much more resilient backbone connections.</p>
@@ -22,7 +36,14 @@
 	<p><i>"At </i><a href="https://www.happycog.com"><i>Happy Cog</i></a><i>, we're excited about the JAMstack and static site generators for our clients because of their speed and security, but in the past have often relied on additional browser-based JavaScript and internet-exposed backend services to customize user experiences based on a cookied logged-in state. With Cloudflare's HTMLRewriter, that's now changed. HTMLRewriter is a fundamentally new powerful capability for static sites. It lets us parse the request and customize each user's experience without exposing any backend services, while continuing to use a JAMstack architecture. And it's fast. Because HTMLRewriter streams responses directly to users, our code can make changes on-the-fly without incurring a giant TTFB speed penalty. HTMLRewriter is going to allow us to make architectural decisions that benefit our clients and their users -- while avoiding a lot of the tradeoffs we'd usually have to consider."</i></p>
 	<p></p>
 	<p>— <b>Matt Weinberg</b>, - President of Development and Technology, Happy Cog</p>
-	<h2>HTMLRewriter in Action</h2>
+	<div class="flex anchor relative">
+		<h2 id="htmlrewriter-in-action">HTMLRewriter in Action</h2>
+		<a href="https://blog.cloudflare.com/#htmlrewriter-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since most web developers are familiar with jQuery, we chose to keep the HTMLRewriter very similar, using selectors and handlers to modify content.</p>
 	<p>Below, we have a simple example of how to use the HTMLRewriter to rewrite the URLs in your application from <code>myolddomain.com</code> to <code>mynewdomain.com</code>:</p>
 	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(req) {
@@ -56,8 +77,22 @@ addEventListener('fetch', event =&gt; {
 	<p>The HTMLRewriter, which is instantiated once per Worker, is used here to select the <code>a</code> and <code>img</code> elements.</p>
 	<p>An element handler responds to any incoming element, when attached using the <code>.on</code> function of the <code>HTMLRewriter</code> instance.</p>
 	<p>Here, our AttributeRewriter will receive every element parsed by the HTMLRewriter instance. We will then use it to rewrite each attribute, <code>href</code> for the <code>a</code> element for example, to update the URL in the HTML.</p>
-	<h2>Getting started</h2>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can get started with the HTMLRewriter by <a href="https://dash.cloudflare.com/sign-up/workers">signing up</a> for Workers today. For a full guide on how to use the HTMLRewriter API, we suggest checking out our <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">documentation</a>.</p>
-	<h2>How does the HTMLRewriter work?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-the-htmlrewriter-work">How does the HTMLRewriter work?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-the-htmlrewriter-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>How does the HTMLRewriter work under the hood? We’re excited to tell you about it, and have spared no details. Check out the <a href="https://blog.cloudflare.com/html-parsing-1">first part</a> of our two-blog post series to learn all about the not-so-brief history of rewriter HTML at Cloudflare, and stay tuned for part two tomorrow!</p>
 </div>

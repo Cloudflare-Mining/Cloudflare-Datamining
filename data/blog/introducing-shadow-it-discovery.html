@@ -7,15 +7,37 @@
 
 	</figure>
 	<p>Your team likely uses more SaaS applications than you realize. The time your administrators spend vetting and approving applications sanctioned for use can suddenly be wasted when users sign up for alternative services and store data in new places. Starting today, you can use Cloudflare for Teams to detect and block unapproved SaaS applications with just two clicks.</p>
-	<h3>Increasing Shadow IT usage</h3>
+	<div class="flex anchor relative">
+		<h3 id="increasing-shadow-it-usage">Increasing Shadow IT usage</h3>
+		<a href="https://blog.cloudflare.com/#increasing-shadow-it-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SaaS applications save time and budget for IT departments. Instead of paying for servers to host tools — and having staff ready to monitor, upgrade, and troubleshoot those tools — organizations can sign up for a SaaS equivalent with just a credit card and never worry about hosting or maintenance again.</p>
 	<p>That same convenience causes a data control problem. Those SaaS applications sit outside any environment that you control; the same reason they are easy for your team is also a potential liability now that your sensitive data is kept by third parties. Most organizations keep this in check through careful audits of the SaaS applications being used. Depending on industry and regulatory impact, IT departments evaluate, approve, and catalog the applications they use.</p>
 	<p>However, users can intentionally or accidentally bypass those approvals. For example, if your organization relies on OneDrive but a user is more comfortable with Google Drive, that user might decide to store work files in Google Drive instead. IT has no visibility into this happening and the user might think it’s fine. That user begins sharing files with other users in your organization, who also sign up with Google Drive, and suddenly an unsanctioned application holds sensitive information. This is “Shadow IT” and these applications inherently obfuscate the controls put in place by your organization.</p>
-	<h3>Detecting Shadow IT</h3>
+	<div class="flex anchor relative">
+		<h3 id="detecting-shadow-it">Detecting Shadow IT</h3>
+		<a href="https://blog.cloudflare.com/#detecting-shadow-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Gateway routes all Internet bound traffic to Cloudflare’s network to enforce granular controls for your users to block them from unknown security threats. Now, it also provides your team added assurance with a low-effort, high-visibility overview into the SaaS applications being used in your environment.</p>
 	<p>By simply turning on Gateway, all HTTP requests for your organization are aggregated in your Gateway Activity Log for audit and security purposes. Within the activity log, we surface pertinent information about the user, action, and request. These records include data about the application and application type. In the example above, the application type would be Collaboration and Online Meeting and the application would be Google Drive.</p>
 	<p>From there, Gateway analyzes your HTTP request in the Activity Log and surfaces your Shadow IT, by categorizing and sorting these seemingly miscellaneous applications into actionable insights without any additional lift from your team.</p>
-	<h3>Introducing Shadow IT Discovery</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-shadow-it-discovery">Introducing Shadow IT Discovery</h3>
+		<a href="https://blog.cloudflare.com/#introducing-shadow-it-discovery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VW7WDJSKRuyOrdIxGwQCb/87eecf6b8c52fcd44a66a0257aba1dd1/image3-8.png" alt="" class="kg-image" width="1104" height="982" loading="lazy">
@@ -31,10 +53,24 @@
 
 	</figure>
 	<p>When you mark an application unapproved, Cloudflare for Teams does not block it outright. We know some organizations need to label an application unapproved and check in with the users before they block access to it altogether. If your team is ready, you can then apply a Gateway rule to block access to it going forward.</p>
-	<h3>Saving IT cost</h3>
+	<div class="flex anchor relative">
+		<h3 id="saving-it-cost">Saving IT cost</h3>
+		<a href="https://blog.cloudflare.com/#saving-it-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we’re excited to help IT teams stop worrying about unapproved apps, we also talked to teams who feared they were overspending for certain approved applications.</p>
 	<p>We want to help here too. Today’s launch counts the number of unique users who access any one application over different time intervals. IT teams can use this data to check usage against licenses and right size as needed.</p>
 	<p>Without this feature, many administrators and our own internal IT department were losing sleep each night wondering if their users were circumventing their controls and putting them at risk of attack. Additionally, many administrators are financially impacted as they procure software licenses for their entire organization. With Shadow IT Discovery, we empower your team to anticipate popular applications and begin the assessment process earlier in the procurement lifecycle.</p>
-	<h3>What's next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to announce Shadow IT and can’t wait to see what you’ll do with it. To get started, deploy HTTP filtering for your organization with the Cloudflare for Teams client. In the future, we’ll also be adding automation to block unapproved applications in Gateway, but we can’t wait to hear what else you’d like to see out of this feature.</p>
 </div>

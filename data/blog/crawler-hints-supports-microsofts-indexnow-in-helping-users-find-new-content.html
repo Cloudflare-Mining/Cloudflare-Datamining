@@ -12,17 +12,38 @@
 	<p>Right now, the model for indexing websites is the same as it has been since the 1990s: a “pull” model, where the search engine sends a crawler out to a website after a predetermined amount of time. During Impact Week last year, we asked: what about flipping the model on its head? What about moving to a push model, where a website could simply ping a search engine to let it know an update had been made?</p>
 	<p>There are a heap of advantages to such a model. The website wins: it’s not dealing with unnecessary crawls. It also makes sure that as soon as there’s an update to its content, it’s reflected in the search engine — it doesn’t need to wait for the next crawl. The website owner wins because they don't need to manage distinct search engine crawl submissions. The search engine wins, too: it saves money on crawl costs, and it can make sure it gets the latest content.</p>
 	<p>Of course, this needs work to be done on both sides of the equation. The websites need a mechanism to alert the search engines; and the search engines need a mechanism to receive the alert, so they know when to do the crawl.</p>
-	<h3>Crawler Hints — Cloudflare’s Solution for Websites</h3>
+	<div class="flex anchor relative">
+		<h3 id="crawler-hints-cloudflares-solution-for-websites">Crawler Hints — Cloudflare’s Solution for Websites</h3>
+		<a href="https://blog.cloudflare.com/#crawler-hints-cloudflares-solution-for-websites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Solving this problem is why we <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches">launched Crawler Hints</a>. Cloudflare sits in a unique position on the Internet — we’re serving on average 36 million HTTP requests per second. That represents <i>a lot of websites</i>. It also means we’re uniquely positioned to help solve this problem: &nbsp;to help give crawlers hints about when they should recrawl if new content has been added or if content on a site has recently changed.</p>
 	<p>With Crawler Hints, we send signals to web indexers based on cache data and origin status codes to help them understand when content has likely changed or been added to a site. The aim is to increase the number of relevant crawls as well as drastically reduce the number of crawls that don’t find fresh content, saving bandwidth and compute for both indexers and sites alike, and improving the experience of using the search engines.</p>
 	<p>But, of course, that’s just half the equation.</p>
-	<h3>IndexNow Protocol — the Search Engine Moves from Pull to Push</h3>
+	<div class="flex anchor relative">
+		<h3 id="indexnow-protocol-the-search-engine-moves-from-pull-to-push">IndexNow Protocol — the Search Engine Moves from Pull to Push</h3>
+		<a href="https://blog.cloudflare.com/#indexnow-protocol-the-search-engine-moves-from-pull-to-push" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Websites alerting the search engine about changes is useless if the search engines aren’t listening — and they simply continue to crawl the way they always have. Of course, search engines are incredibly complicated, and changing the way they operate is no easy task.</p>
 	<p>The IndexNow Protocol is a standard developed by Microsoft, Seznam.cz and Yandex, and it represents a major shift in the way search engines operate. Using IndexNow, search engines have a mechanism by which they can receive signals from Crawler Hints. Once they have that signal, they can shift their crawlers from a pull model to a push model.</p>
 	<p>In a recent update, <a href="https://blogs.bing.com/webmaster/august-2022/IndexNow-adoption-gains-momentum">Microsoft has announced</a> that millions of websites are now using IndexNow to signal to search engine crawlers when their content needs to be crawled and IndexNow was used to <b>index/crawl about 7% of all new URLs</b> <b>clicked</b> when someone is selecting from web search results.</p>
 	<p>On the Cloudflare side, since the release of Crawler Hints in October 2021, Crawler Hints has processed about <b>six-hundred-billion</b> signals to IndexNow.</p>
 	<p>That’s a lot of saved crawls.</p>
-	<h3>How to enable Crawler Hints</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-enable-crawler-hints">How to enable Crawler Hints</h3>
+		<a href="https://blog.cloudflare.com/#how-to-enable-crawler-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By enabling Crawler Hints on your website, with the simple click of a button, Cloudflare will take care of signaling to these search engines when your content has changed via the <a href="https://www.indexnow.org">IndexNow</a> API. You don’t need to do anything else!</p>
 	<p>Crawler Hints is free to use and available to all Cloudflare customers. If you’d like to see how Crawler Hints can benefit how your website is indexed by the world's biggest search engines, please feel free to opt-into the service by:</p>
 	<ol>
@@ -45,7 +66,14 @@
 
 	</figure>
 	<p>Upon enabling Crawler Hints, Cloudflare will share when content on your site has changed and needs to be re-crawled with search engines using the IndexNow protocol (<a href="https://blog.cloudflare.com/from-0-to-20-billion-how-we-built-crawler-hints">this blog</a> can help if you’re interested in finding out more about how the mechanism works).</p>
-	<h3>What’s Next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s Next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Going forward, because the benefits are so substantial for site owners, search operators, and the environment, we plan to start defaulting Crawler Hints on for all our customers. We’re also hopeful that Google, the world’s largest search engine and most wasteful user of Internet resources, will adopt IndexNow or a similar standard and lower the burden of search crawling on the planet.</p>
 	<p>When we think of helping to build a better Internet, this is exactly what comes to mind: creating and supporting standards that make it operate better, greener, faster. We’re really excited about the work to date, and will continue to work to improve the signaling to ensure the most valuable information is being sent to the search engines in a timely manner. This includes incorporating additional signals such as etags, last-modified headers, and content hash differences. Adding these signals will help further inform crawlers when they should reindex sites, and how often they need to return to a particular site to check if it’s been changed. This is only the beginning. We will continue testing more signals and working with industry partners so that we can help crawlers run efficiently with these hints.</p>
 	<p>And finally: if you’re on Cloudflare, and you’d like to be part of this revolution in how search engines operate on the web (it’s free!), simply follow the instructions in the section above.</p>

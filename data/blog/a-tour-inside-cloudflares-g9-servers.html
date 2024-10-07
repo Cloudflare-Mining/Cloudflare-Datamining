@@ -11,7 +11,14 @@
 	</figure>
 	<p><i>Exploded picture of the G9 server’s main components. 4 sleds represent 4 nodes, each with 2 24-core Intel CPUs</i></p>
 	<p>Each high-level hardware component has gone through their own upgrade as well for a balanced scale up keeping our stack CPU bound, making this generation the most radical revision since we moved on from using HP 5 years ago. Let’s glance through each of those components.</p>
-	<h3>Hardware Changes</h3>
+	<div class="flex anchor relative">
+		<h3 id="hardware-changes">Hardware Changes</h3>
+		<a href="https://blog.cloudflare.com/#hardware-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CPU</p>
 	<ul>
 		<li>
@@ -23,7 +30,14 @@
 	</ul>
 	<p>The performance of our infrastructure is heavily directed by how much compute we can squeeze in a given physical space and power. In essence, requests per second (RPS) per Watt is a critical metric that <a href="https://blog.cloudflare.com/arm-takes-wing">Qualcomm’s ARM64 46 core Falkor chip</a> had a <a href="https://www.datacenterknowledge.com/design/cloudflare-bets-arm-servers-it-expands-its-data-center-network">big advantage</a> over Intel’s Skylake 4116.</p>
 	<p>Intel proposed to co-innovate with us an off-roadmap 24-core Xeon Gold CPU specifically made for our workload offering considerable value in Performance per Watt. For this generation, we continue using Intel as system solutions are widely available while we’re working on <a href="https://blog.cloudflare.com/porting-our-software-to-arm64">realizing ARM64’s benefits to production</a>. We expect this CPU to perform with better RPS per Watt right off the bat; increasing the RPS by 200% from doubling the amount of cores, and increasing the power consumption by 174% from increasing the CPUs TDP from 85W to 150W each.</p>
-	<h3>Disk</h3>
+	<div class="flex anchor relative">
+		<h3 id="disk">Disk</h3>
+		<a href="https://blog.cloudflare.com/#disk" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Previously: 6x Micron 1100 512G SATA SSD</p>
@@ -34,7 +48,14 @@
 	</ul>
 	<p>With all the requests we foresee for G9 to process, we need to tame down the outlying and long-tail latencies we have seen in our previous SSDs. Lowering p99 and p999 latency has been a serious endeavor. To help save milliseconds in disk response time for 0.01% or even 0.001% of all the traffic we see <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">isn’t a joke</a>!</p>
 	<p>Datacenter grade SSDs in <a href="http://static6.arrow.com/aropdfconversion/8cb17527534c0532edc2710e8132aeea4d8e6f24/pgurl_intel-ssd-dc-s4500-series-240gb-2_5in-sata-6gbs-3d1-tlcordering.p.pdf">Intel S4500</a> will proliferate our fleet. These disks come with better endurance to last over the expected service life of our servers and better performance consistency with lower p95+ latency.</p>
-	<h3>Network</h3>
+	<div class="flex anchor relative">
+		<h3 id="network">Network</h3>
+		<a href="https://blog.cloudflare.com/#network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Previously: dual-port 10G Solarflare Flareon Ultra SFN8522</p>
@@ -67,7 +88,14 @@
 		</li>
 	</ul>
 	<p>Going from 192G (12x16G) to 256G (8x32G) made practical sense. The motherboard has 12 DIMM channels, which were all populated in the G8. We want to have the ability to upgrade just in case, as well as keeping memory configuration balanced and at optimal bandwidth capacity. 8x32G works well leaving 4 channels open for future upgrades.</p>
-	<h3>Physical stress test</h3>
+	<div class="flex anchor relative">
+		<h3 id="physical-stress-test">Physical stress test</h3>
+		<a href="https://blog.cloudflare.com/#physical-stress-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our software stack scales nicely enough that we can confidently assume we’ll double the amount of requests having twice the amount of CPU cores compared to G8. What we need to ensure before we ship any G9 servers out to our current 154 and future PoPs is that there won’t be any design issues pertaining to thermal nor power failures. At the extreme case that all of our cores run up 100% load, would that cause our server to run above operating temperature? How much power would a whole server with 192 cores totaling 1200W TDP consume? We set out to record both by applying a stress test to the whole system.</p>
 	<p>Temperature readings were recorded off of <i>ipmitool sdr list</i>, then graphed showing socket and motherboard temperature. For 2U4N being such a compact form factor, it’s worth monitoring that a server running hot isn’t <i>literally</i> running hot. The red lines represent the 4 nodes that compose the whole G9 server under test; blue lines represent G8 nodes (we didn’t stress the G8’s so their temperature readings are constant).</p>
 	<figure class="kg-card kg-image-card ">
@@ -94,7 +122,14 @@
 	</figure>
 	<p>Above right graph shows our max power to be 1.9kW as the red line, or crudely 475W per node which is excellent in a modern server. Notice the blue and yellow lines representing the G9’s 2 power supplies summing the total power. The yellow line PSU appearing off is intentional as part of our testing procedure to show the PSU’s resilience in abrupt power changes.</p>
 	<p>Stressing out all available CPU, I/O, and memory along with maxing out fan RPMs combined is a good indicator for the highest possible heat and power draw this server can do. Hopefully we won’t ever see such an extreme case like this in live production environments, and we expect much milder actual results (read: we don’t think catastrophic failures to be possible).</p>
-	<h3>First Impression in live production</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-impression-in-live-production">First Impression in live production</h3>
+		<a href="https://blog.cloudflare.com/#first-impression-in-live-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We increased capacity to one of our most loaded PoPs by adding G9 servers. The following time graphs represent a 24 hour range with how G9 performance compares with G8 in a live PoP.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -125,7 +160,14 @@
 	<p>G9 is actually 1.5x more power efficient than G8. Temperature readings were checked as well. Inlet and outlet chassis temps, as well as CPU temps, are well within operating temperatures.</p>
 	<p>Now that’s muscle! In other words for every 3 G8 servers, just 2 of those G9's would take on the same workload. If one of our racks normally would have 9 G8 servers, we can switch those out with only 6 G9's. Inversely planning to turn up a cage of 10 G9 racks would be the same as if we did 15 G8 racks!</p>
 	<p>We have <a href="https://www.bizjournals.com/sanfrancisco/news/2018/06/14/cloudflare-to-expand-to-200-cities-by-2019.html">big plans</a> to cover our entire network with G9 servers, with most of them planned for the existing cities your site most likely uses. By 2019, you’ll benefit with increased bandwidth and lower wait times. And we’ll benefit in expanding and turning up datacenters quicker and more efficiently.</p>
-	<h3>What's next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What's next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Gen X? Right now is exciting times at Cloudflare. Many teams and engineers are testing, porting, and implementing new stuff that can help us lower operating costs, explore new products and possibilities, and improve Quality of Service. We’re tackling problems and taking on projects that are unique in the industry.</p>
 	<p>Serverless computing like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Cloudflare Workers</a> and beyond will ask for new challenges to our infrastructure as all of our customers can program their features on Cloudflare’s edge network.</p>
 	<p>The network architecture that was conventionally made up of routers, switches, and servers has been merged into 3-in-1 box solutions allowing Cloudflare services to be set up into locations that weren’t possible before.</p>

@@ -5,7 +5,14 @@
 	<p>Following best practices in software development, they want to store configuration in their own source code repository (be it <a href="https://github.com">GitHub</a> or otherwise), institute a change management process that includes code review, and be able to track their configuration versions and history over time. Additionally, they want the ability to quickly and easily roll back changes when required.</p>
 	<p>When I first spoke with our engineering teams about these requirements, they gave me the best answer a Product Manager could hope to hear: there's already an open source tool out there that does all of that (and more), with a strong community and plugin system to boot—it's called <a href="https://terraform.io">Terraform</a>.</p>
 	<p>This blog post is about getting started using Terraform with Cloudflare and the new version 1.0 of our Terraform provider. A "provider" is simply a plugin that knows how to talk to a specific set of APIs—in this case, Cloudflare, but there are also providers available for AWS, Azure, Google Cloud, Kubernetes, VMware, and <a href="https://www.terraform.io/docs/providers">many more services</a>. Today's release extends our existing provider that previously only supported DNS records with support for Zone Settings, Rate Limiting, Load Balancing, and Page Rules.</p>
-	<h3>Before and after Terraform</h3>
+	<div class="flex anchor relative">
+		<h3 id="before-and-after-terraform">Before and after Terraform</h3>
+		<a href="https://blog.cloudflare.com/#before-and-after-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we jump into some real-world examples of using Terraform with Cloudflare, here is a set of diagrams that depicts the paradigm shift.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -19,7 +26,14 @@
 
 	</figure>
 	<p>With Terraform, you can store and version your configuration in GitHub (or your source code control system of choice). Once you learn Terraform's configuration syntax, you don't need to bother learning how to use providers' UIs or APIs—you just tell Terraform what you want and it figures out the rest.</p>
-	<h3>Installing Terraform</h3>
+	<div class="flex anchor relative">
+		<h3 id="installing-terraform">Installing Terraform</h3>
+		<a href="https://blog.cloudflare.com/#installing-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The installation process for Terraform is extremely simple as it ships as a single binary file. Official instructions for installing Terraform can be found <a href="https://www.terraform.io/intro/getting-started/install.html">here</a>, and for purposes of this example we'll show to do so on a macOS using <a href="https://brew.sh">Homebrew</a>:</p>
 	<pre class="language-bash"><code class="language-bash">$ brew install terraform
 ==&gt; Downloading https://homebrew.bintray.com/bottles/terraform-0.11.7.sierra.bottle.tar.gz
@@ -60,7 +74,14 @@ Terraform v0.11.7</code></pre>
 			<p>Importing Existing State and Configuration (next post!)</p>
 		</li>
 	</ul>
-	<h3>Hello, world!</h3>
+	<div class="flex anchor relative">
+		<h3 id="hello-world">Hello, world!</h3>
+		<a href="https://blog.cloudflare.com/#hello-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that Terraform is installed, it's time to start using it. Let's assume you have a web server for your domain that's accessible on <code>203.0.113.10</code>. You just signed up your domain, <code>example.com</code>, on Cloudflare and want to manage everything with Terraform.</p>
 	<h4>1. Define your first Terraform config file</h4>
 	<p>First we'll create a initial Terraform config file. Any files ending in <code>.tf</code> will be processed by Terraform. As you configuration gets more complex you'll want to split the config into separate files and modules, but for now we'll proceed with a single file:</p>
@@ -208,7 +229,15 @@ cloudflare_record.www:
 
 	<pre class="language-bash"><code class="language-bash">$ curl https://www.example.com
 Hello, this is 203.0.113.10!</code></pre>
-	<h3>Tracking change history</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="tracking-change-history">Tracking change history</h3>
+		<a href="https://blog.cloudflare.com/#tracking-change-history" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <code>terraform apply</code> step above, you created and applied some basic Cloudflare configuration. Terraform was able to apply this configuration to your account because you provided your email address and API token at the top of the cloudflare.tf file:</p>
 	<pre class="language-bash"><code class="language-bash">$ head -n4 cloudflare.tf 
 provider "cloudflare" {
@@ -292,7 +321,15 @@ Writing objects: 100% (6/6), 762 bytes | 0 bytes/s, done.
 Total 6 (delta 0), reused 0 (delta 0)
 To git@github.com:$GITHUB_USER/cf-config.git
  * [new branch]      master -&gt; master</code></pre>
-	<h3>Applying zone settings</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="applying-zone-settings">Applying zone settings</h3>
+		<a href="https://blog.cloudflare.com/#applying-zone-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
 	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your CI/CD system to perform tests automatically using another Cloudflare domain.</p>
 	<h4>1. Create a new branch and append the new zone settings</h4>
@@ -428,7 +465,15 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Now we can try the same command as above, and see that it succeeds. Niiice, TLS 1.3!</p>
 	<pre class="language-bash"><code class="language-bash">$ curl -v --tlsv1.3 https://www.example.com 2&gt;&amp;1 | grep "SSL connection\|error"
 * SSL connection using TLSv1.3 / AEAD-AES128-GCM-SHA256</code></pre>
-	<h3>Managing rate limits</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="managing-rate-limits">Managing rate limits</h3>
+		<a href="https://blog.cloudflare.com/#managing-rate-limits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</i></p>
 	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting">rate limiting product</a>) to put a stop to these efforts.</p>
 	<h4>1. Create a new branch and append the rate limiting settings</h4>
@@ -667,7 +712,15 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.</code></pre>
 &lt; HTTP/1.1 401 Unauthorized
 &lt; HTTP/1.1 401 Unauthorized
 &lt; HTTP/1.1 429 Too Many Requests</code></pre>
-	<h3>Wrapping up</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="wrapping-up">Wrapping up</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>That's it for today! Stay tuned next week for <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">part 2 of this post</a>, where we continue the tour through the following resources and techniques:</p>
 	<ul>
 		<li>

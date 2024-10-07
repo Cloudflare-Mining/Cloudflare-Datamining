@@ -11,7 +11,14 @@
 	<p>Cloudflare’s Argo is able to deliver content across our network with dramatically reduced latency, increased reliability, heightened encryption, and reduced cost vs. an equivalent path across the open Internet. The results are impressive: <b>an average 35% decrease in latency, a 27% decrease in connection errors, and a 60% decrease in cache misses</b>. Websites, APIs, and applications using Argo have seen bandwidth bills fall by more than half and speed improvements end users can feel.</p>
 	<p>Argo is a central nervous system for the Internet, processing information from every request we see to determine which routes are fast, which are slow, and what the optimum path from visitor to content is at that given moment. Through Cloudflare’s <a href="https://www.cloudflare.com/network">115 PoPs</a> and 6 million domains, we see every ISP and every user of the Internet pass through our network. The intelligence from this gives us a billion eyes feeding information about brownouts, faults, and packet loss globally.</p>
 	<p>Today, Argo includes two core features: Smart Routing and Tiered Cache. All customers can enable Argo today in the <a href="https://www.cloudflare.com/a/traffic">Traffic app</a> in the dashboard. Argo is priced at \$5/domain monthly, plus \$0.10 per GB of transfer from Cloudflare to your visitors.</p>
-	<h3>Argo Smart Routing</h3>
+	<div class="flex anchor relative">
+		<h3 id="argo-smart-routing">Argo Smart Routing</h3>
+		<a href="https://blog.cloudflare.com/#argo-smart-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Networks on the Internet rely on legacy technologies like <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a> to propagate and calculate routes from network to network, ultimately getting you from laptop-on-couch to video-on-YouTube. BGP has been around for decades, and was not designed for a world with malicious or incompetent actors lurking at every network hop.</p>
 	<p>In one comical example from 2008, a Pakistani ISP turned a botched censorship order into a <a href="http://www.nytimes.com/2008/02/26/technology/26tube.html">global YouTube outage</a>, bringing the fragility of core Internet routing algorithms into the public eye. In the same situation, Argo Smart Routing would detect which transit providers had valid routes to YouTube and which did not, keeping end user experience fast, reliable, and secure.</p>
 	<p><a href="https://en.wikipedia.org/wiki/Metcalfe%27s_law">Metcalfe’s Law</a> states that the value of a network is defined by the square of the number of nodes that make up the network. The existing Internet is incredibly valuable because of the number and diversity of nodes connected to the network. Unfortunately, this makes it difficult to pick up and start over; no Internet started from scratch, with sounder routing and traffic management, would come close to delivering the value provided by the current incarnation without a similar network footprint.</p>
@@ -27,11 +34,25 @@
 	<p>Transit over the public Internet is like driving with paper maps; it usually works, but using a modern navigation system that takes current traffic conditions into account will almost always be faster.</p>
 	<p>Routing over intelligently determined paths also results in significant reliability gains. Argo picks the fastest, most reliable route to the origin, which means routing around flapping links and routers that refuse to do their job. In a real-world illustration of these reliability gains, <b>OKCupid saw a 42% drop in the number of connection timeouts</b> on their site with Argo enabled.</p>
 	<p>It’s not just OKCupid that’s happy with Argo. 50,000 customers, large and small, have been beta testing Argo over the last 12 months. On average, these Argo Smart Routing beta customers saw a 35% decrease in latency and a 27% decrease in connection timeouts.</p>
-	<h3>Argo Tiered Cache</h3>
+	<div class="flex anchor relative">
+		<h3 id="argo-tiered-cache">Argo Tiered Cache</h3>
+		<a href="https://blog.cloudflare.com/#argo-tiered-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo Tiered Cache uses the size of our network to reduce requests to customer origins by dramatically increasing cache hit ratios. By having 115 PoPs around the world, Cloudflare caches content very close to end users, but if a piece of content is not in cache, the Cloudflare edge PoP must contact the origin server to receive the cacheable content. This can be slow and places load on an origin server compared to serving directly from cache.</p>
 	<p>Argo Tiered Cache lowers origin load, increases cache hit ratios, and improves end user experience by first asking other Cloudflare PoPs if they have the requested content when a cache miss occurs. This results in improved performance for visitors, because distances and links traversed between Cloudflare PoPs are generally shorter and faster than the links between PoPs and origins. It also reduces load on origins, making web properties more economical to operate. Customers enabling Argo can expect to see a <b>60% reduction in their cache miss rate</b> as compared to Cloudflare’s traditional CDN service.</p>
 	<p>Argo Tiered Cache also concentrates connections to origin servers so they come from a small number of PoPs rather than the full set of 115 PoPs. This results in fewer open connections using server resources. In our testing, we've found many customers save more on their cloud hosting bills than Argo costs, because of reduced bandwidth usage and fewer requests to the origin. This makes the service a “no brainer” to enable.</p>
-	<h3>Additional Benefits</h3>
+	<div class="flex anchor relative">
+		<h3 id="additional-benefits">Additional Benefits</h3>
+		<a href="https://blog.cloudflare.com/#additional-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In addition to performance and reliability gains, Argo also delivers a more secure online experience. All traffic between Cloudflare data centers is protected by mutually authenticated TLS, ensuring any traffic traversing the Argo backbone is protected from interception, tampering, and eavesdropping.</p>
 	<p>With Argo, we’ve rebuilt things at the very core of the Internet, the algorithms that figure out where traffic should flow and how. We’ve done all this without any disruption to how the Internet works or <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">how applications behave</a>.</p>
 	<p>Cloudflare has built a suite of products to address lots of pains on the Internet. Argo is our newest offering.</p>

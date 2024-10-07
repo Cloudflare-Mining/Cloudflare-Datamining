@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Today, we’re happy to announce Custom Domains for Workers. Custom Domains allow you to hook up a domain to your Worker, without having to fuss about certificates, origin servers or <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a> – it just works. Let’s take a look at how we built Custom Domains and how you can use them.</p>
-	<h3>The magic of Cloudflare DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-magic-of-cloudflare-dns">The magic of Cloudflare DNS</h3>
+		<a href="https://blog.cloudflare.com/#the-magic-of-cloudflare-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Under the hood, we’re leveraging Cloudflare DNS to register your Worker as the origin for your domain. All you need to do is head to your Worker, go to the Triggers tab, and click Add Custom Domain. Cloudflare will handle creating the DNS record and issuing a certificate on your behalf. In seconds, your domain will point to your Worker, and all you need to worry about is writing your code. We’ll also help guide you through the process of creating these new records and replace any existing ones. We built this with a straightforward ethos in mind: we should be clear and transparent about actions we’re taking, and make it easy to understand.</p>
 	<p>We’ve made a few welcome changes when you’re using a Custom Domain on your Worker. First off, when you send a request to <i>any</i> path on that Custom Domain, your Worker will be triggered. No need to create a route with <code>/*</code> at the end.</p>
 	<figure class="kg-card kg-image-card ">
@@ -26,7 +33,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZStNKjBs4qGgdT6ANfPKN/8332a605e3ac8793255b61e8e3570988/image4-14.png" alt="Workers with Custom Domains can talk to each other" class="kg-image" width="995" height="260" loading="lazy">
 
 	</figure>
-	<h3>Let’s build an example application</h3>
+	<div class="flex anchor relative">
+		<h3 id="lets-build-an-example-application">Let’s build an example application</h3>
+		<a href="https://blog.cloudflare.com/#lets-build-an-example-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’ll start by writing our application. I have an example that I’ve called <code>api-gateway</code> below. It checks the incoming request path, and delegates work to downstream Workers using <a href="https://blog.cloudflare.com/service-bindings-ga">Service Bindings</a>. For any privileged endpoints, it performs an authorization check before executing that code:</p>
 	<pre class="language-js"><code class="language-js">export default {
  async fetch(request, environment) {

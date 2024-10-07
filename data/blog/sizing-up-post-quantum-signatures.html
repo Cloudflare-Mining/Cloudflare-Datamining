@@ -16,7 +16,14 @@
 	</ol>
 	<p>A moderately-sized stable quantum computer will easily break the signatures and key exchanges currently used in TLS using <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm">Shor’s algorithm</a>. Luckily this can be fixed: over the last two decades, there has been great progress in so-called <b>post-quantum cryptography</b>. “Post quantum”, abbreviated <b>PQ</b>, means secure against quantum computers. Five years ago, the standards institute NIST started a <a href="https://csrc.nist.gov/projects/post-quantum-cryptography">public process</a> to standardise post-quantum signature schemes and key exchanges. The outcome is expected to be announced early 2022.</p>
 	<p>At Cloudflare, we’re not just following this process closely, but are also testing the real-world performance of PQ cryptography. In our <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">2019 experiment</a> with Google, we saw that we can switch to a PQ key exchange with little performance impact. Among the NIST finalists, there are many with even better performance. This is good news, as we would like to switch to PQ key exchanges as soon as possible — indeed, an attacker could intercept sensitive data today, then keep and decrypt it years into the future using a quantum computer.</p>
-	<h2>Why worry about PQ signatures today</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-worry-about-pq-signatures-today">Why worry about PQ signatures today</h2>
+		<a href="https://blog.cloudflare.com/#why-worry-about-pq-signatures-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One would think we can take it easy with signatures for TLS: we only need to have them replaced before a large quantum computer is built. The situation, however, is more complicated.</p>
 	<ul>
 		<li>
@@ -31,7 +38,14 @@
 	</ul>
 	<p>One might ask: can’t we be clever and get rid of some of these signatures? We think so! For instance, we can replace the handshake signature with a smaller <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">key exchange</a> or suppress <a href="https://www.amazon.science/publications/speeding-up-post-quantum-tls-handshakes-by-suppressing-intermediate-ca-certificates">intermediate certificates</a>. Such fundamental changes take years to be adopted. That is why we are also investigating the performance of plain TLS with <b>drop-in</b> <b>PQ signatures</b>.</p>
 	<p>So, what are our options?</p>
-	<h2>The zoo of PQ signatures</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-zoo-of-pq-signatures">The zoo of PQ signatures</h2>
+		<a href="https://blog.cloudflare.com/#the-zoo-of-pq-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The three finalists of the NIST competition are <a href="https://pq-crystals.org/dilithium/index.shtml">Dilithium</a>, <a href="https://falcon-sign.info">Falcon</a> and <a href="https://www.pqcrainbow.org">Rainbow</a>. In the table below we compare them against RSA and ECDSA, both of which are in common use today, and a selection of other PQ schemes that might see standardisation in the future.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -40,7 +54,14 @@
 	</figure>
 	<p>(* There are many caveats to this table. We compare instances of PQC security level 1. Signing and verification times vary considerably by hardware platform and implementation constraints. They should be taken as a rough indication only. The signing time of Falcon512 is discussed later on. We do not list all relevant variants of the NIST alternates or promising schemes. This instance of XMSS can only sign a million messages, is stateful, requires quite a bit of storage for quick signing, is not standardised and thus far from a drop-in replacement. Rainbow has one other variant, which has smaller private keys.)</p>
 	<p>None of these PQ signatures are a clear-cut drop-in replacement. To start, all have (much) larger signatures, except for Rainbow, GeMMS and SQISign. Rainbow and GeMMS have huge public keys and SQISign is very slow.</p>
-	<h3>TLS signatures</h3>
+	<div class="flex anchor relative">
+		<h3 id="tls-signatures">TLS signatures</h3>
+		<a href="https://blog.cloudflare.com/#tls-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To confuse matters even more, the signatures within TLS are not all the same:</p>
 	<ul>
 		<li>
@@ -68,11 +89,25 @@
 		</li>
 	</ul>
 	<p>So do we really need to eke out every byte and every cycle of performance? Or can we stick to a single signature scheme for simplicity and security?</p>
-	<h3>Can we pick just one?</h3>
+	<div class="flex anchor relative">
+		<h3 id="can-we-pick-just-one">Can we pick just one?</h3>
+		<a href="https://blog.cloudflare.com/#can-we-pick-just-one" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If we stick to one signature scheme, looking just at the numbers, Falcon512 seems like a reasonable option. It needs 5KB of extra space (compared to a classical handshake), about the same as the Dilithium–Falcon–Rainbow chimera of before. Unfortunately Falcon comes with a caveat: creating signatures efficiently requires constant-time 64-bit floating point arithmetic. Without it, signing is 20x slower. But speed alone is not enough; it <i>has to</i> run in constant time. Without that, one can slowly learn the secret key by measuring the time it takes to create a signature.</p>
 	<p>Although PCs typically have a sufficiently constant-time floating-point unit, many smaller devices do not. Thus, Falcon seems ill-suited for general purpose online signatures.</p>
 	<p>What about Dilithium2? It needs 17KB extra — let’s find out if that makes a big difference.</p>
-	<h2>Evidence by Experiment</h2>
+	<div class="flex anchor relative">
+		<h2 id="evidence-by-experiment">Evidence by Experiment</h2>
+		<a href="https://blog.cloudflare.com/#evidence-by-experiment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All the different variables and constraints clearly complicate an already challenging puzzle. The best thing is to just try the options. Over the last few years several interesting papers have appeared studying the various options, such as <a href="https://blog.cloudflare.com/#skd20">SKD20</a>, <a href="https://blog.cloudflare.com/#pst20">PST20</a>, <a href="https://blog.cloudflare.com/#skd21">SKD21</a> and <a href="https://blog.cloudflare.com/#pknln22">PKNLN22</a>. These are great starts, but don’t provide a complete picture:</p>
 	<ul>
 		<li>
@@ -86,12 +121,33 @@
 	<p>In this case we’re just taking a first step. Setting up a real-world experiment with a modified browser is quite involved, especially when we consider the many possible variations. Instead, as a first step, we decided first to investigate the most striking variable, the size, and try to answer the question:</p>
 	<p><i>How do larger signatures affect the TLS handshake?</i></p>
 	<p>There are two parts to this: how fast are they, and, more importantly, do they work at all?</p>
-	<h3>Experimental setup</h3>
+	<div class="flex anchor relative">
+		<h3 id="experimental-setup">Experimental setup</h3>
+		<a href="https://blog.cloudflare.com/#experimental-setup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We need some way to emulate bigger signatures without having to modify the clients. We considered several options. The first idea we had was to pad a valid certificate with a dummy extension. That would require a custom certificate for each size to test, which is cumbersome. Then we considered responding with a dummy <i>ServerHello extension</i>. This is, however, not allowed by TLS 1.2 without a corresponding <i>ClientHello extension</i>. In the end, we went for <b>adding dummy certificates</b>.</p>
-	<h3>Dummy certificates</h3>
+	<div class="flex anchor relative">
+		<h3 id="dummy-certificates">Dummy certificates</h3>
+		<a href="https://blog.cloudflare.com/#dummy-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These dummy certificates are 1kB self-signed invalid certificates that have nothing to do with the certificate chain. To vary the size to test, we simply add more copies. Adding unrelated certificates to the certificate chain is a common misconfiguration and clients have learnt to ignore them. In fact, TLS 1.3 stipulates that these (in <a href="https://datatracker.ietf.org/doc/html/rfc2119">rfc-speak</a>) <i>SHOULD</i> be ignored by the client. Testing out hundreds of browsers, we saw no issues.</p>
 	<p>Standards and reality don’t always agree: when inserting dummy certificates on actual traffic, we saw issues with a small, but not insignificant number of clients. We don’t want to ruin anyone’s connection, and so we decided to use separate connections for this purpose.</p>
-	<h3>Using challenge pages to launch probes</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-challenge-pages-to-launch-probes">Using challenge pages to launch probes</h3>
+		<a href="https://blog.cloudflare.com/#using-challenge-pages-to-launch-probes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So what did we actually do? On a small percentage of the challenge pages (those with the CAPTCHA), we pick a number <i>n</i> and a random key and send this key in two separate background requests to:</p>
 	<ul>
 		<li>
@@ -102,9 +158,23 @@
 		</li>
 	</ul>
 	<p>The first, <b>the control</b>, is a normal webpage that stores the TLS handshake time under the key that’s been sent. The real action happens at the second, <b>the live</b>, which adds the <i>n</i> dummy certificates to its chain. The live also stores handshake time under the given key. We could call it “experimental” instead of “live”, but the benign control connection is also an important part of the experiment. Indeed, it allows us to see if live connections are missing. These endpoints were a breeze to write using <a href="https://blog.cloudflare.com/workers-kv-is-ga">Cloudflare Workers and KV</a>.</p>
-	<h3>How much dummy data to test?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-much-dummy-data-to-test">How much dummy data to test?</h3>
+		<a href="https://blog.cloudflare.com/#how-much-dummy-data-to-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before launching the experiment, we tested several libraries and browsers on the live endpoint to see whether they would error due to the dummy certificates. None rejected a single certificate, but how far can we go? TLS 1.3 theoretically allows a certificate chain of 16MB, but in practice many clients reject a much shorter chain. OpenSSL, for instance, rejects one of 102kB. The most stingy we found is Go’s TLS client, which rejects a handshake larger than 64kB. Because of this, we tested with between 1 and 59 dummy certificates.</p>
-	<h3>Intermezzo: TCP’s congestion window</h3>
+	<div class="flex anchor relative">
+		<h3 id="intermezzo-tcps-congestion-window">Intermezzo: TCP’s congestion window</h3>
+		<a href="https://blog.cloudflare.com/#intermezzo-tcps-congestion-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So, what did we find? The graphs are in the next section, have a peek! Before diving right in, we would like to explain a crucial concept, the TCP <b>congestion window</b>, that helps us read the results.</p>
 	<p>Data sent over the Internet is broken down in packets of around 1.4kB that traverse many routers to reach their destination. Sometimes a router has more incoming packets than it can handle and it has to drop them — this is called <b>congestion</b>. To avoid causing congestion, TCP initially sends just a few packets (typically ten, so ~14kB). Then, with every acknowledgement received in return, the TCP sender will very quickly ramp up the number of packets that it keeps <i>in flight</i>. This number is called the <b>congestion window</b> (<b>cwnd</b>). When it gets too high, congestion occurs, packets are dropped and in response the sender backs off by dialing down the congestion window. Any dropped packet is seen as a sign of congestion by TCP. For this reason, Wi-Fi has its own retransmission mechanism transparent to TCP.</p>
 	<p>Considering all this, we would expect to see two effects with larger signatures:</p>
@@ -124,9 +194,23 @@
 	</figure>
 	<p>There might be other unknown effects. The best thing is to have a look.</p>
 	<p>In PQ research, the second effect has gained the most attention. The larger signatures simply do not fit in the initial congestion windows used today. A common suggestion in response has been to simply increase the initial congestion window to accommodate the larger signatures. This is far from a <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36640.pdf">simple</a> <a href="https://datatracker.ietf.org/doc/html/rfc6928">change</a> to make globally, and we have to understand if this solves the problem to begin with.</p>
-	<h2>Results</h2>
+	<div class="flex anchor relative">
+		<h2 id="results">Results</h2>
+		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over 24 days we’ve received 964,499 live connections from 454,218 different truncated IPs (to 24 bits, “/24”, for IPv4 and 48 bits for IPv6) and 11,239 different <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">ASNs</a>. First, let’s check how many clients had trouble with the bigger handshakes.</p>
-	<h3>Can clients handle the larger handshakes?</h3>
+	<div class="flex anchor relative">
+		<h3 id="can-clients-handle-the-larger-handshakes">Can clients handle the larger handshakes?</h3>
+		<a href="https://blog.cloudflare.com/#can-clients-handle-the-larger-handshakes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The control connection was missing for 2.4% of the live connections. This is not alarming: we expect some connections to be missing for harmless reasons, such as the user browsing away from the challenge page. There are, however, significantly more control connections without live connection at 3.6%.</p>
 	<p>In the graph below on the left we break the number of received live connections down by the number of dummy certificates added. Because we pick the number of certificates randomly, the graph is noisy. To get a clearer picture, we started storing the number of certificates added in the corresponding control request, which gives us the graph on the right. The bumps at 10kB and 30kB suggest that there are clients or middleboxes that cannot handle these handshake sizes.</p>
 	<figure class="kg-card kg-image-card ">
@@ -134,7 +218,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AIbHQImRIWL8z1KMW8h05/78a11d4673c0a4f4b7d50a92cc4da82b/image3-13.png" alt="a graph of missing live connections against dummy data added" class="kg-image" width="1999" height="1000" loading="lazy">
 
 	</figure>
-	<h3>Handshake times with larger signatures</h3>
+	<div class="flex anchor relative">
+		<h3 id="handshake-times-with-larger-signatures">Handshake times with larger signatures</h3>
+		<a href="https://blog.cloudflare.com/#handshake-times-with-larger-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>What is the effect on the handshake time? The graph on the left shows the <a href="https://en.wikipedia.org/wiki/Weighted_median">weighted</a> median and 75th percentile TLS handshake times for different amounts of dummy data added. We use the weight so that every truncated IP contributes equally. On the right we show the slowdowns for each size, relative to the handshake time of the control connection.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -162,12 +253,26 @@
 			<p>Actual TLS handshakes differ in size much more than tested in this setup due to differences in certificate sizes and extensions and other factors.</p>
 		</li>
 	</ul>
-	<h2>What have we learned?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-have-we-learned">What have we learned?</h2>
+		<a href="https://blog.cloudflare.com/#what-have-we-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The TLS handshake is just one step (~5–20%) in a long chain required to show you a webpage. Casually browsing, it would be hard to notice a TLS handshake that’s 60% slower. But such differences add up. To make a website really fast, you need many seemingly insignificant speedups. Browser developers take this seriously: <a href="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/speed/addressing_performance_regressions.md#if-you-believe-the-regression-is-justified">only in exceptional cases</a> does Chrome allow a change that slows down any microbenchmark by even a percent.</p>
 	<p>Because of the many parties and complexities involved, we should avoid waiting too long to adopt post-quantum signatures in TLS. That’s a hard sell if it comes at the price of a double-digit slowdown, not least to content servers but also to browser vendors and clients.</p>
 	<p>A timely adoption of PQ signatures on the web would be great. Our evidence so far suggests that this will be easiest, if six signatures and two public keys would fit in 9kB.</p>
 	<p>We will continue our efforts to help build a post-quantum secure Internet. To follow along, keep an eye on this blog or have a look at <a href="https://research.cloudflare.com">research.cloudflare.com</a>.</p>
 	<p><i>Bas Westerbaan is co-submitter of the SPHINCS+ signature scheme.</i></p>
-	<h2>References</h2>
+	<div class="flex anchor relative">
+		<h2 id="references">References</h2>
+		<a href="https://blog.cloudflare.com/#references" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SKD20: Sikeridis, Kampanakis, Devetsikiotis. <a href="https://dl.acm.org/doi/10.1145/3386367.3431305">Assessing the overhead of post-quantum cryptography in TLS 1.3 and SSH</a>. CoNEXT’20.PST20: Paquin, Stebila, Tamvada. <a href="https://eprint.iacr.org/2019/1447.pdf">Benchmarking Post-Quantum Cryptography in TLS</a>. PQCrypto 2020.SKD21: Sikeridis, Kampanakis, Devetsikiotis. <a href="https://eprint.iacr.org/2020/071.pdf">Post-Quantum Authentication in TLS 1.3: A Performance Study</a>. NDSS2020.PKNLN22: Paul, Kuzovkova, Lahr, Niederhagen. <a href="https://eprint.iacr.org/2021/1447">Mixed Certificate Chains for the Transition to Post-Quantum Authentication in TLS 1.3</a>. To appear in AsiaCCS 2022.</p>
 </div>

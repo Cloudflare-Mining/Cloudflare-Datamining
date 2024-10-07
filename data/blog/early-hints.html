@@ -8,7 +8,14 @@
 	<p>Want to know a secret about Internet performance? Browsers spend an inordinate amount of time twiddling their thumbs waiting to be told what to do. This waiting impacts page load performance. Today, we’re excited to announce support for Early Hints, which dramatically improves browser page load performance and reduces thumb-twiddling time.</p>
 	<p>In initial tests using Early Hints, we have observed more than 30% improvement to page load time for browsers visiting a website for the first time.</p>
 	<p>Early Hints is available in beta today — Cloudflare customers can request access to Early Hints in the dashboard’s <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card">Speed tab</a>. <b>It’s free for all customers because we think the web should be fast!</b></p>
-	<h2>Early Hints in a nutshell</h2>
+	<div class="flex anchor relative">
+		<h2 id="early-hints-in-a-nutshell">Early Hints in a nutshell</h2>
+		<a href="https://blog.cloudflare.com/#early-hints-in-a-nutshell" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Browsers need instructions for what to render and what resources need to be fetched to complete “painting” a given web page. These instructions come from a server response. But the servers sending these responses often need time to compile these resources — this is known as “server think time.” While the servers are busy during this time… browsers sit idle and wait.</p>
 	<p>Early Hints takes advantage of “server think time” to asynchronously send instructions to the browser to begin loading resources while the origin server is compiling the full response. By sending these hints to a browser before the full response is prepared, the browser can figure out what it needs to do to load the webpage faster for the end user. Faster page loads and lower user-perceived latency means happier users!</p>
 	<p>More formally, Early Hints is a <a href="https://httpwg.org/specs/rfc8297.html">web standard</a> that defines a new HTTP status code (103 Early Hints) that defines new interactions between a client and server. 103s are served to clients while a 200 OK (or error) response is being prepared (the so-called “server think time”), and contain hints on which assets will likely be needed to fully render the web page. This hinting speeds up page loads and generally reduces user-perceived latency.</p>
@@ -31,7 +38,14 @@
 			<p>Cloudflare already sees request and response flow from our customers. We use this data to generate hints automatically, without a customer needing to make any origin changes at all.</p>
 		</li>
 	</ol>
-	<h2>How can we speed up “slow” dynamic page loads?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-we-speed-up-slow-dynamic-page-loads">How can we speed up “slow” dynamic page loads?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-we-speed-up-slow-dynamic-page-loads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The typical request/response cycle between browsers and servers leaves a lot of room for optimization. When you type an address into the search bar of your browser and press Enter, a series of things happen to get you the content you need, as quickly as possible. Your browser first converts the hostname in the URL into an IP address, then establishes an initial connection to the server where the content is stored.</p>
 	<p>After the connection is established, the actual request is sent. This is often a GET request with a bunch of information about what the browser can and cannot display to the end user. Following the request, the browser must wait for the origin server to send the first bytes of the response before it begins to render the page. In this time, the server is busy executing all sorts of business logic (looking things up in databases, personalizing the page, detecting fraud, etc.) before spitting a response out to the browser.</p>
 	<p>Once the response for the original HTML page is received, the browser then needs to parse the page, generate a Document Object Model (DOM), and begin loading subresources specified on the page, like images, scripts, and additional stylesheets.</p>
@@ -46,7 +60,14 @@
 	<blockquote>
 		<p><i>"Entrepreneurs know that first impressions matter. Shopify's own data shows that on average, when a store improves the speed of the first page in the buyer journey by 10%, there is a 7% increase in conversion. We see great promise in Early Hints being another tool to help improve the performance and experience for all merchants and customers."</i>— <a href="https://twitter.com/colinbendell"><b>Colin Bendell</b></a>, Director Performance Engineering at Shopify</p>
 	</blockquote>
-	<h2>How does Early Hints speed things up?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-does-early-hints-speed-things-up">How does Early Hints speed things up?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-early-hints-speed-things-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early Hints is a status code used in non-final HTTP responses. It is designed to <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">speed up overall page load times</a> by giving the browser an early signal about what certain linked assets might appear in the final response. The browser takes those hints and begins preparing the page for when the final 200 OK response from the server arrives.</p>
 	<p>The RFC provides this example of how the request/response cycle will look with Early Hints:</p>
 	<p><b>Client request:</b></p>
@@ -68,18 +89,47 @@ Host: example.com</code></pre>
 [Rest of Response]</code></pre>
 	<p>Seems simple enough. We’ve neatly communicated information to the browser on what resources it should consider preloading while the server is computing a full response.</p>
 	<p>This isn’t a new idea though!</p>
-	<h2>Didn’t server push try to solve this problem?</h2>
+	<div class="flex anchor relative">
+		<h2 id="didnt-server-push-try-to-solve-this-problem">Didn’t server push try to solve this problem?</h2>
+		<a href="https://blog.cloudflare.com/#didnt-server-push-try-to-solve-this-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There have been previous attempts at solving this problem, notably HTTP/2 “server push”. However, server push suffered from two major problems:</p>
-	<h3>Server push sent the wrong bytes at the wrong time</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-push-sent-the-wrong-bytes-at-the-wrong-time">Server push sent the wrong bytes at the wrong time</h3>
+		<a href="https://blog.cloudflare.com/#server-push-sent-the-wrong-bytes-at-the-wrong-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The server pushed assets to the client, without great awareness of what was already present in browser caches, without knowing how much “server think time” would elapse and how best to spend it. Web performance guru Pat Meenan <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vdDcuLu8AAAJ">summarized server push’s gotchas</a> in a mail thread discussing Chrome’s intent to deprecate and remove server push support:</p>
 	<blockquote>
 		<p><i>Push sounds like a great solution, particularly when it can be done intelligently to not push resources already in cache and if it can exactly only fill the wait time while a CDN edge goes back to an origin for the HTML but getting those conditions right in practice is extremely rare. In virtually every case I have seen, the pushed resources end up delaying the HTML itself, the CSS and other render-blocking resources. Delaying the HTML is particularly bad because it delays the browser's discovery of all of the other resources on the page. Preload works with the normal document parsing and resource discovery, letting preloaded resources intermix with other important resources and giving the dev, browsers and origins more control over prioritization.</i></p>
 	</blockquote>
 	<p>Early Hints avoids these issues by “hinting” (vs. push being dictatorial) to clients which assets they should load, allowing them to prioritize resource loads with more complete information about what they will likely need to render a page, what they have cached, and other heuristics.</p>
 	<p>Using Early Hints with “rel=preload” solves the unsolicited bytes problem, but can still suffer from the ordering issue (forcing clients to load the wrong bytes at the wrong time). Early Hints’ superpower may actually be its use in conjunction with “rel=preconnect”. Many pages load hundreds of third party resources, and setting up connections and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a> sessions with each outside origin is time (but not bandwidth) intensive. Setting up these third party origin connections early, during think time, has practical advantages for page loading experience without the potential collateral damage of using “rel=preload”.</p>
-	<h3>Server push wasn’t broadly implemented</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-push-wasnt-broadly-implemented">Server push wasn’t broadly implemented</h3>
+		<a href="https://blog.cloudflare.com/#server-push-wasnt-broadly-implemented" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The other notable issue with Server Push was that browsers supported it, and some origin servers implemented the feature, but no major <a href="https://www.cloudflare.com/application-services/products/cdn">CDN products</a> (Cloudflare’s included) deemed the feature promising enough to implement and support at scale. Support for standards like server push or Early Hints in each key piece of the web content supply chain is critical for mass adoption.</p>
-	<h2>Cracking the chicken and egg problem</h2>
+	<div class="flex anchor relative">
+		<h2 id="cracking-the-chicken-and-egg-problem">Cracking the chicken and egg problem</h2>
+		<a href="https://blog.cloudflare.com/#cracking-the-chicken-and-egg-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Hh14GoS4bGQk2oVGserQa/c321a8ad84a09bc1ef1ac941a37097de/Frame-662.png" alt="" class="kg-image" width="1811" height="430" loading="lazy">
@@ -96,7 +146,14 @@ Host: example.com</code></pre>
 		</li>
 	</ol>
 	<p>We plan to support Early Hints in two ways: one enabled now, and the other coming soon.</p>
-	<h3>Now: Turning 200 OK Link: headers into 103 Early Hints</h3>
+	<div class="flex anchor relative">
+		<h3 id="now-turning-200-ok-link-headers-into-103-early-hints">Now: Turning 200 OK Link: headers into 103 Early Hints</h3>
+		<a href="https://blog.cloudflare.com/#now-turning-200-ok-link-headers-into-103-early-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To avoid requiring origins to emit 103 responses from their origins directly, we settled on an approach that takes advantage of something many customers already used to indicate which assets an HTML page depends on, the Link: response header.</p>
 	<ul>
 		<li>
@@ -115,17 +172,52 @@ Host: example.com</code></pre>
 			<p>When the full response is available, it will contain Link headers (that’s how we started this whole story). We will compare the Link headers in the 200 response with the cached version to make sure that they are the most up to date. If they have changed since they’ve been cached, we will automatically purge the out-of-date Early Hints and re-cache the new ones.</p>
 		</li>
 	</ul>
-	<h3>Coming soon: Smart Early Hints generation at the edge</h3>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon-smart-early-hints-generation-at-the-edge">Coming soon: Smart Early Hints generation at the edge</h3>
+		<a href="https://blog.cloudflare.com/#coming-soon-smart-early-hints-generation-at-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re working hard on the next version of Early Hints. Smart Early Hints will use <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> to generate Early Hints even when there isn’t a Link header present in the response from which we can harvest a 103. By analyzing historical request/response cycles for our customers, we can infer what assets being preloaded would help browsers load a webpage more quickly.</p>
 	<p>Look for Smart Early Hints in the next few months.</p>
-	<h3>Browser support</h3>
+	<div class="flex anchor relative">
+		<h3 id="browser-support">Browser support</h3>
+		<a href="https://blog.cloudflare.com/#browser-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As previously mentioned, we’ve partnered closely with Google Chrome and other browser vendors to ensure that their implementations of Early Hints interoperate well with Cloudflare’s. Google Chrome, Microsoft Edge, and Mozilla Firefox have announced their intention to support Early Hints. Progress for this support can be tracked <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=671310">here</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1407355">here</a>. We expect more browsers to announce support soon.</p>
-	<h2>Benchmarking the impact of Early Hints</h2>
+	<div class="flex anchor relative">
+		<h2 id="benchmarking-the-impact-of-early-hints">Benchmarking the impact of Early Hints</h2>
+		<a href="https://blog.cloudflare.com/#benchmarking-the-impact-of-early-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once you get accepted into the beta and enable the feature, you can see Early Hints in action using Google Chrome, version 94 or higher. As of Sept 16th 2021, the <a href="https://www.chromium.org/getting-involved/dev-channel">Chrome Dev channel</a> is at version 94.</p>
-	<h3>Testing Early Hints with Chrome version 94 or higher</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing-early-hints-with-chrome-version-94-or-higher">Testing Early Hints with Chrome version 94 or higher</h3>
+		<a href="https://blog.cloudflare.com/#testing-early-hints-with-chrome-version-94-or-higher" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early Hints support is available in Chrome by running (assuming a Mac, but the same flag works on Windows or Linux):</p>
 	<p><code>open /Applications/Google\ Chrome\ Dev.app --args --enable-features=EarlyHintsPreloadForNavigation</code></p>
-	<h3>Testing Early Hints with Web Page Test</h3>
+	<div class="flex anchor relative">
+		<h3 id="testing-early-hints-with-web-page-test">Testing Early Hints with Web Page Test</h3>
+		<a href="https://blog.cloudflare.com/#testing-early-hints-with-web-page-test" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>Open <a href="https://webpagetest.org">webpagetest.org</a> (a free performance testing tool).</p>
@@ -155,7 +247,14 @@ Host: example.com</code></pre>
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fsbcbAWGRutiLn0znk1K2/bb020a8fa7ce5cfdcc76f34e13e7a76c/image2021-9-14_12-34-3.png" alt="" class="kg-image" width="2048" height="542" loading="lazy">
 
 	</figure>
-	<h3>A few other considerations when testing...</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-few-other-considerations-when-testing">A few other considerations when testing...</h3>
+		<a href="https://blog.cloudflare.com/#a-few-other-considerations-when-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>Chrome will not support Early Hints on HTTP/1.1 (or earlier protocols).</p>
@@ -170,7 +269,14 @@ Host: example.com</code></pre>
 			<p>It can be hard to see which resources are actually being loaded early as a result of Early Hints. Interrogating the ResourceTiming API will return initiator=EarlyHints for those assets.</p>
 		</li>
 	</ul>
-	<h2>Signing up for the Early Hints beta</h2>
+	<div class="flex anchor relative">
+		<h2 id="signing-up-for-the-early-hints-beta">Signing up for the Early Hints beta</h2>
+		<a href="https://blog.cloudflare.com/#signing-up-for-the-early-hints-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Early Hints promises to revolutionize web performance. Support for the standard is live at our edge globally and is being tested by customers hungry for speed.</p>
 	<p>How to sign up for Cloudflare’s Early Hints beta:</p>
 	<ol>
@@ -189,6 +295,14 @@ Host: example.com</code></pre>
 	</ol>
 	<p>Early Hints holds tremendous promise to speed up everyone’s experience on the web. It’s exactly the kind of product we like working on at Cloudflare and exactly the kind of feature we think should be free, for everyone. Be sure to check out the beta and let us know what you think.</p>
 	<p>You can explore our beta implementation in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card"><b>Speed tab</b></a>. And if you’re an engineer interested in improving the performance of the web for all, <a href="https://cloudflare.com/jobs">come join us</a>!</p>
-	<h2>Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

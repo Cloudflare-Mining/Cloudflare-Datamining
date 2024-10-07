@@ -17,7 +17,15 @@
 	<p>This is particularly useful for evesdroppers; be they the network that's running the free Wi-Fi hotspot looking to sell your data to targetted advertisers or the hacker sipping on a latte whilst intercepting your network traffic (ironically dressed in a black hoodie and a balaclava).</p>
 	<p>By switching your DNS resolver to use <a href="https://1.1.1.1">Cloudflare's DNS Resolver</a>, you get a faster browsing experience whilst ensuring that the people who run your DNS resolver aren't selling off that data to target you with ads. However, whilst Cloudflare Resolver supports both DNS-over-HTTPS and DNS-over-TLS, to make sure the connection between Cloudflare Resolver and you is encrypted, you may need to follow some additional configuration steps like enabling a <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy">DNS over HTTPS client</a>.</p>
 	<p>This blog post explains how you can configure an OpenWRT router to encrypt outbound traffic to Cloudflare Resolver. This is particularly useful when you want to protect the traffic for the devices in house which may not support encrypted DNS protocols; such as your TV or <a href="https://blog.cloudflare.com/iot-security-anti-patterns">IoT enabled toaster</a>. Whilst local clients may still explicitly override your local DNS resolver on your router, many will default to using it.</p>
-	<h3>OpenWRT (LEDE)</h3>
+	<div class="flex anchor relative">
+		<h3 id="openwrt-lede">OpenWRT (LEDE)</h3>
+		<a href="https://blog.cloudflare.com/#openwrt-lede" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3LxdO125L6OSPxEmCZCgFu/a0dc16c22088f572856a8b172d556dbc/IMG-3335-1.JPG.jpeg" alt="Router" class="kg-image" width="700" height="525" loading="lazy">
@@ -31,7 +39,14 @@
 	</figure>
 	<p>I didn't just order this specific router because of it's form-factor, it also comes pre-installed with OpenWRT - an embedded Linux-based operating system that's well suited for routers. In May 2016, OpenWRT was forked as LEDE (the Linux Embedded Development Environment) and was re-merged with the OpenWRT project in January 2018.</p>
 	<p>For those of you without a router with LEDE pre-installed, you can follow along with this blog post on any other router that supports being flashed with the OpenWRT firmware; more information can be found on the <a href="https://openwrt.org/supported_devices">OpenWRT Support Devices</a> page. Though, please be aware that, depending on your device, this may carry some risk.</p>
-	<h3>Support for DNS-over-TLS (or, the lack of)</h3>
+	<div class="flex anchor relative">
+		<h3 id="support-for-dns-over-tls-or-the-lack-of">Support for DNS-over-TLS (or, the lack of)</h3>
+		<a href="https://blog.cloudflare.com/#support-for-dns-over-tls-or-the-lack-of" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The router I'm playing with has a configuration option to configure upstream DNS Resolver that it will use when a query isn't cached in it's own internal resolver. This local resolver is then suggested to clients that connect to the router.</p>
 	<p>For the sake of experimentation - through the web UI, I am able to configure this router to use <code>1.1.1.1</code>, <code>1.0.0.1</code>, <code>2606:4700:4700::1111</code> and<code>2606:4700:4700::1001</code> as the upsteam DNS servers (with the IPv6 addresses updated if the network doesn't support them):</p>
 	<figure class="kg-card kg-image-card ">
@@ -46,7 +61,14 @@
 
 	</figure>
 	<p>Although Cloudflare Resolver supports DNS-over-TLS, unfortuantely my router doesn't and will simply send all queries unencrypted.</p>
-	<h3>Setting Up DNS-Over-TLS</h3>
+	<div class="flex anchor relative">
+		<h3 id="setting-up-dns-over-tls">Setting Up DNS-Over-TLS</h3>
+		<a href="https://blog.cloudflare.com/#setting-up-dns-over-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>By default, LEDE comes pre-installed using Dnsmasq as an internal resolver and therefore doesn't support DNS-over-TLS. So that we can get our requests encrypted, we're going to replace Dnsmasq with Unbound and odhcpd. I've based the steps I'm following from the very useful <a href="https://github.com/openwrt/packages/tree/master/net/unbound/files#unbound-and-odhcpd">OpenWRT Unbound package documentation</a>.</p>
 	<p>Before we can get started, we need to <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> into our router, if you're prompted for a password, this will likely be identical to the one you set up for the web portal:</p>
 	<figure class="kg-card kg-image-card ">

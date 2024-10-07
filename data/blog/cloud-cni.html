@@ -10,12 +10,26 @@
 	<p>For CIOs, networking is a hard process that is often made harder. Corporate networks have so many things that need to be connected and each one of them needs to be connected differently: user devices need managed connectivity through a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">Secure Web Gateway</a>, offices need to be connected using the public Internet or dedicated connectivity, data centers need to be managed with their own private or public connectivity, and then you have to <a href="https://www.cloudflare.com/cio">manage cloud connectivity</a> on top of it all! It can be exasperating to manage connectivity for all these different scenarios and all their privacy and compliance requirements when all you want to do is enable your users to access their resources privately, securely, and in a non-intrusive manner.</p>
 	<p>Cloudflare helps simplify your connectivity story with Cloudflare One. Today, we’re excited to announce that we support direct cloud interconnection with our Cloudflare Network Interconnect, allowing Cloudflare to be your one-stop shop for all your interconnection needs.</p>
 	<p>Customers using IBM Cloud, Google Cloud, Azure, Oracle Cloud Infrastructure, and Amazon Web Services can now open direct connections from their private cloud instances into Cloudflare. In this blog, we’re going to talk about why direct cloud interconnection is important, how Cloudflare makes it easy, and how Cloudflare integrates direct cloud connection with our existing Cloudflare One products to bring new levels of <a href="https://www.cloudflare.com/learning/network-layer/network-security">security</a> to your corporate networks built on top of Cloudflare.</p>
-	<h3>Privacy in a public cloud</h3>
+	<div class="flex anchor relative">
+		<h3 id="privacy-in-a-public-cloud">Privacy in a public cloud</h3>
+		<a href="https://blog.cloudflare.com/#privacy-in-a-public-cloud" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Public cloud compute providers are built on the idea that the compute power they provide can be used by anyone: your cloud VM and my cloud VM can run next to each other on the same machine and neither of us will know. The same is true for bits on the wire going in and out of these clouds: your bits and my bits may flow on the same wire, interleaved with each other, and neither of us will know that it’s happening.</p>
 	<p>The abstraction and relinquishment of ownership is comforting in one way but can be terrifying in another: neither of us need to run a physical machine and buy our own connectivity, but we have no guarantees about how or where our data and compute lives except that it lives in a datacenter with millions of other users.</p>
 	<p>For many enterprises, this isn’t acceptable: enterprises need compute that can only be accessed by them. Maybe the compute in the cloud is storing payment data that can’t be publicly accessible, and must be accessed through a private connection. Maybe the cloud customer has compliance requirements due to government restrictions that require the cloud not be accessible to the public Internet. Maybe the customer simply doesn’t trust public clouds or the public Internet and wants to limit exposure as much as possible. Customers want a private cloud that only they can access: a virtual private cloud, or a VPC.</p>
 	<p>To help solve this problem and ensure that only compute owners can access cloud compute that needs to stay private, clouds developed private cloud interconnects: direct cables from clouds to their customers. You may know them by their product names: AWS calls theirs DirectConnect, Azure calls theirs ExpressRoute, Google Cloud calls theirs Cloud Interconnect, OCI calls theirs FastConnect, and IBM calls theirs Direct Link. By providing private cloud connectivity to the customer datacenter, clouds satisfy the chief pain points for their customers: providing compute in a private manner. With these private links, VPCs are only accessible from the corporate networks that they’re plugged into, providing air-gapped security while allowing customers to turn over operations and maintenance of the datacenters to the clouds.</p>
-	<h3>Privacy on the public Internet</h3>
+	<div class="flex anchor relative">
+		<h3 id="privacy-on-the-public-internet">Privacy on the public Internet</h3>
+		<a href="https://blog.cloudflare.com/#privacy-on-the-public-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But while VPCs and direct cloud interconnection have solved the problem of infrastructure moving to the cloud, as corporate networks move out of on-premise deployments, the cloud brings a completely new challenge: how do I keep my private cloud connections if I’m getting rid of my corporate network that connects all my resources together?</p>
 	<p>Let’s take an example company that connects a data center, an office, and an Azure instance together. Today, this company may have remote users that connect to applications hosted in either the datacenter, the office, or the cloud instance. Users in the office may connect to applications in the cloud, and all of it today is managed by the company. To do this, they may employ VPNs that tunnel the remote users into the data center or office before accessing the necessary applications. The office and data center are often connected through <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a> lines that are leased from connectivity providers. And then there’s the private IBM instance that is connected via IBM Direct Link. That’s three different connectivity providers for CIOs to manage, and we haven’t even started talking about access policies for the internal applications, firewalls for the cross-building network, and implementing MPLS routing on top of the provider underlay.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -44,7 +58,14 @@
 	</figure>
 	<p>Once everything is directly connected to Cloudflare, this company can manage their cross-resource routing and firewalls through Magic WAN, they can set their user policies directly in Access, and they can set egress policies out to the public Internet through any one of Cloudflare’s 250+ data centers through Gateway. All the offices and clouds talk to each other on a hermetically sealed network with no public access or publicly shared peering links, and most importantly, all of these security and privacy efforts are done completely transparently to the user.</p>
 	<p>So let’s talk about how we can get your cloud connected to us.</p>
-	<h3>Quick cloud connectivity</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-cloud-connectivity">Quick cloud connectivity</h3>
+		<a href="https://blog.cloudflare.com/#quick-cloud-connectivity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The most important thing with cloud connectivity is how easy it should be: you shouldn’t have to spend lots of time waiting for cross-connects to come up, get LOAs, monitor light levels and do all the things that you would normally do when provisioning connectivity. Getting connected from your cloud provider should be cloud-native: you should just be able to provision cloud connectivity directly from your existing portals and follow the existing steps laid out for direct cloud connection.</p>
 	<p>That’s why our new cloud support makes it even easier to connect with Cloudflare. We now support direct cloud connectivity with IBM, AWS, Azure, Google Cloud, and OCI so that you can provision connections directly from your cloud provider into Cloudflare like you would to a datacenter. Moving private connections to Cloudflare means you don’t have to maintain your own infrastructure anymore, Cloudflare becomes your infrastructure, so you don’t have to worry about ordering cross-connects into your devices, getting LOAs, or checking light levels. To show you how easy this can be, let’s walk through an example of how easy this is using Google Cloud.</p>
 	<p>The first step to provisioning connectivity in any cloud is to request a connection. In Google Cloud, you can do this by selecting “Private Service Connect” in the VPC network details:</p>
@@ -79,14 +100,42 @@
 	</ol>
 	<p>All of these steps are performed automatically in seconds so that by the time you get your IP address and VLANs, Cloudflare has already provisioned our end of the connection. When you accept and configure the connection, everything will be ready to go, and it’s easy to start privately routing your traffic through Cloudflare.</p>
 	<p>Now that you’ve finished setting up your connection, let’s talk about how private connectivity to your cloud instances can integrate with all of your Cloudflare One products.</p>
-	<h3>Private routing with Magic WAN</h3>
+	<div class="flex anchor relative">
+		<h3 id="private-routing-with-magic-wan">Private routing with Magic WAN</h3>
+		<a href="https://blog.cloudflare.com/#private-routing-with-magic-wan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Magic WAN integrates extremely well with Cloud CNI, allowing customers to connect their VPCs directly to the private network built with Magic WAN. Since the routing is private, you can even advertise your private address spaces reserved for internal routing, such as your 10.0.0.0/8 space.</p>
 	<p>Previously, your cloud VPC needed to be publicly addressable. But with Cloud CNI, we assign a point-to-point IP range, and you can advertise your internal spaces back to Cloudflare and Magic WAN will route traffic to your internal address spaces!</p>
-	<h3>Secure authentication with Access</h3>
+	<div class="flex anchor relative">
+		<h3 id="secure-authentication-with-access">Secure authentication with Access</h3>
+		<a href="https://blog.cloudflare.com/#secure-authentication-with-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many customers love Cloudflare Tunnel in combination with Access for its secure paths to authentication servers hosted in cloud providers. But what if your authentication server didn’t need to be publicly accessible at all? With Access + Cloud CNI, you can connect your authentication services to Cloudflare and Access will route all your authentication traffic through the private path back to your service without needing the public Internet.</p>
-	<h3>Manage your cloud egress with Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="manage-your-cloud-egress-with-gateway">Manage your cloud egress with Gateway</h3>
+		<a href="https://blog.cloudflare.com/#manage-your-cloud-egress-with-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While you may want to protect your cloud services from ever being accessed by anyone not on your network, sometimes your cloud services need to talk out to the public Internet. Luckily for you, Gateway has you covered and with Cloud CNI you can get a private path to Cloudflare which will manage all of your egress policies, ensuring that you can carefully watch your cloud service outbound traffic from the same place you monitor all other traffic leaving your network.</p>
-	<h3>Cloud CNI: safe, performant, easy</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloud-cni-safe-performant-easy">Cloud CNI: safe, performant, easy</h3>
+		<a href="https://blog.cloudflare.com/#cloud-cni-safe-performant-easy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare is committed to making <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">zero trust</a> and <a href="https://www.cloudflare.com/network-security">network security</a> easy and unobtrusive. Cloud CNI is another step towards ensuring that your network is as easy to manage as everything else so that you can stop focusing on how to build your network, and start focusing on what goes on top of it.</p>
 	<p>If you’re interested in Cloud CNI, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us">contact us</a> today to get connected to a seamless and easy Zero Trust world.</p>
 </div>

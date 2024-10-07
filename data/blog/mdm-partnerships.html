@@ -15,13 +15,27 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wCd32Mqqcd5yQ1lJkIXb7/308f53418d64f6fe9c95d74eee17d68c/image1-54.png" alt="" class="kg-image" width="1881" height="651" loading="lazy">
 
 	</figure>
-	<h3>What is MDM?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-mdm">What is MDM?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-mdm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mobile Device Management (MDM), sometimes also called Unified Endpoint Management (UEM) tools, offers a simple solution to an increasingly challenging problem in an era of distributed working — managing all of an organization's devices from a single platform.</p>
 	<p>Take a fictional healthcare consultancy firm. Suppose when starting her firm, the CEO hires largely in her home state of Colorado and allows employees to use their own personal phones and laptops to access emails and other data. This bring-your-own-device (BYOD) policy has been convenient to get the company off the ground.</p>
 	<p>Then, her firm starts landing higher profile clients with larger-scale projects, and to service this increased demand, our CEO begins hiring across the United States and rolling out corporate devices. Moreover, these clients have more rigorous standards around handling confidential patient data.</p>
 	<p>Our consultancy feels the pressure to level up its security. But with a mixed device fleet dispersed nationwide, how can our CEO improve visibility across managed and unmanaged devices; to check that they are properly updated, not compromised or lost? If lost or compromised, how can those devices be wiped remotely, so that client or company information does not leak?</p>
 	<p>MDM solutions can help answer these questions. They were made specifically to configure policies for what users can do on a device, roll out operating systems updates, and install new software -- all while providing a unified view of a device fleet for IT teams. While these problems used to be solved by stopping by an IT desk, they can now be addressed remotely, at scale.</p>
-	<h3>Streamlining deployment of our device client</h3>
+	<div class="flex anchor relative">
+		<h3 id="streamlining-deployment-of-our-device-client">Streamlining deployment of our device client</h3>
+		<a href="https://blog.cloudflare.com/#streamlining-deployment-of-our-device-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare recognizes that organizations like the healthcare consultancy above will be looking to enhance security and visibility across their dispersed users. Our device client, WARP, helps with this by enabling identity and device posture-aware policy enforcement at the endpoint.</p>
 	<p>We have optimized our client to enable diverse deployment approaches, so organizations have the flexibility they need to roll the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> capabilities of Cloudflare for Teams with ease. For example, WARP works across all major operating systems (e.g., Windows, MacOS, Linux, chrome OS, iOS, and Android). And regardless of the deployment mechanism, WARP uses a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters">common set of parameters</a>, so your admins have a consistent experience.</p>
 	<p>To show this streamlined deployment in action, here are some common scenarios on how to deploy our client on Windows with only some minor tweaks through the command line:</p>
@@ -31,7 +45,15 @@
 	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” </code></pre>
 	<p>3. Do your employees sometimes travel to countries or locations where encrypting traffic in a tunnel isn’t allowed? You can let them turn off WARP while still being subject to your company’s DNS rules:</p>
 	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”</code></pre>
-	<h3>Our Partnerships</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="our-partnerships">Our Partnerships</h3>
+		<a href="https://blog.cloudflare.com/#our-partnerships" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare recognizes that many organizations rely on MDM solutions to deploy software like our client, and when they do deploy, they deserve a process that makes life simpler. To that end, we are partnering with leading MDM organizations that you already rely on to ensure our software is compatible and has purpose-built documentation to protect your users.</p>
 	<blockquote>
 		<p>“The close collaboration and deep integration between Cloudflare and Microsoft helps strengthen the security posture of our joint customers and ensure people stay productive as Zero Trust remains top of mind for every organizational leader. ”<b><i>–</i></b> <b>Ann Johnson, Corporate Vice President of Security, Compliance, Identity, and Management, Business Development at Microsoft.</b></p>
@@ -48,7 +70,14 @@
 	<blockquote>
 		<p><i>“Kandji and Cloudflare’s partnership will help IT teams to quickly deploy Cloudflare’s network security solutions across their Apple fleet. Using device management software like Kandji to install, enable, and enforce Cloudflare for Teams will allow IT teams to manage their security posture at any scale.”</i><b><i>– Weldon Dodd, SVP, Product Strategy, Kandji</i></b></p>
 	</blockquote>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Click below to get started with deploying Cloudflare for Teams:</p>
 	<ul>
 		<li>

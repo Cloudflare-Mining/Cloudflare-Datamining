@@ -15,7 +15,14 @@
 	</figure>
 	<p>Attack Snapshot - Peaking at 754 Mpps. The two different colors in the graph represent two separate systems dropping packets.&nbsp;</p>
 	<p>During those four days, the attack utilized a combination of three attack vectors over the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP</a> protocol: <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack">SYN floods</a>, <a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood">ACK floods</a> and SYN-ACK floods. The attack campaign sustained for multiple hours at rates exceeding 400-600 million packets per second and peaked multiple times above 700 million packets per second, with a top peak of 754 million packets per second. Despite the high and sustained packet rates, our edge continued serving our customers during the attack without impacting performance at all</p>
-	<h3>The Three Types of DDoS: Bits, Packets &amp; Requests</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-three-types-of-ddos-bits-packets-requests">The Three Types of DDoS: Bits, Packets &amp; Requests</h3>
+		<a href="https://blog.cloudflare.com/#the-three-types-of-ddos-bits-packets-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Attacks with high bits per second rates aim to saturate the Internet link by sending more bandwidth per second than the link can handle. Mitigating a bit-intensive flood is similar to a dam blocking gushing water in a canal with limited capacity, allowing just a portion through.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,11 +46,25 @@
 	<p>Zapping Mosquitoes with Gatebot</p>
 	<p>Depending on the ‘weakest link’ in a data center, a packet intensive DDoS attack may impact the routers, switches, web servers, firewalls, DDoS mitigation devices or any other appliance that is used in-line. Typically, a high packet rate may cause the memory buffer to overflow and thus voiding the router’s ability to process additional packets. This is because there’s a small fixed CPU cost of handing each packet and so if you can send a lot of small packets you can block an Internet connection not by filling it but by causing the hardware that handles the connection to be overwhelmed with processing.</p>
 	<p>Another form of DDoS attack is one with a high HTTP request per second rate. An HTTP request intensive DDoS attack aims to overwhelm a web server’s resources with more HTTP requests per second than the server can handle. The goal of a DDoS attack with a high request per second rate is to max out the CPU and memory utilization of the server in order to crash it or prevent it from being able to respond to legitimate requests. Request intensive DDoS attacks allow the attacker to generate much less bandwidth, as opposed to bit intensive attacks, and still cause a denial of service.</p>
-	<h3>Automated DDoS Detection &amp; Mitigation</h3>
+	<div class="flex anchor relative">
+		<h3 id="automated-ddos-detection-mitigation">Automated DDoS Detection &amp; Mitigation</h3>
+		<a href="https://blog.cloudflare.com/#automated-ddos-detection-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So how did we handle 754 million packets per second? First, Cloudflare’s network utilizes BGP Anycast to spread attack traffic globally across our fleet of data centers. Second, we built our own <a href="https://www.cloudflare.com/ddos">DDoS protection</a> systems, Gatebot and dosd, which <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">drop packets inside the Linux kernel</a> for maximum efficiency in order to handle massive floods of packets. And third, we built our own L4 load-balancer, Unimog, which uses our appliances' health and other various metrics to load-balance traffic intelligently within a data center.</p>
 	<p>In 2017, we published a blog introducing Gatebot, one of our two DDoS protection systems. The blog was titled <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Meet Gatebot - a bot that allows us to sleep</a>, and that’s exactly what happened during this attack. The <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> was spread out globally by our Anycast, then Gatebot detected and mitigated the attack automatically without human intervention. And traffic inside each datacenter was load-balanced intelligently to avoid overwhelming any one machine. And as promised in the blog title, the attack peak did in fact occur while our London team was asleep.</p>
 	<p>So how does Gatebot work? Gatebot asynchronously samples traffic from every one of our data centers in over 200 locations around the world. It also monitors our <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">customers’ origin server health</a>. It then analyzes the samples to identify patterns and traffic anomalies that can indicate attacks. Once an attack is detected, Gatebot sends mitigation instructions to the edge data centers.</p>
 	<p>To complement Gatebot, last year we released a new system codenamed dosd (denial of service daemon) which runs in every one of our data centers around the world in over 200 cities. Similarly to Gatebot, dosd detects and mitigates attacks autonomously but in the scope of a single server or data center. You can read more about dosd in our <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">recent blog</a>.</p>
-	<h3>The DDoS Landscape</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-ddos-landscape">The DDoS Landscape</h3>
+		<a href="https://blog.cloudflare.com/#the-ddos-landscape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While in recent months we’ve observed a <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020">decrease in the size and duration of DDoS attacks</a>, highly volumetric and globally distributed DDoS attacks such as this one still persist. Regardless of the size, type or sophistication of the attack, Cloudflare offers <a href="https://blog.cloudflare.com/unmetered-mitigation">unmetered DDoS protection</a> to all customers and plan levels—including the Free plans.</p>
 </div>

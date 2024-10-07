@@ -10,11 +10,25 @@
 	<p>As I have been meeting with many of the users who were in our own Workers beta program, I’ve seen (somewhat unsurprisingly) that many of our users share the same belief that they should be getting feedback from their own users early and often.</p>
 	<p>However, I was surprised to learn about the difficulty that many beta program members had in creating the necessary controls to quickly and securely gate new or deprecated features when testing and releasing updates.</p>
 	<p>Below are some ideas and recipes I’ve seen implemented inside of <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> to ensure the appropriate customers have access to the correct features.</p>
-	<h3>How Workers Work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-workers-work">How Workers Work</h3>
+		<a href="https://blog.cloudflare.com/#how-workers-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, a brief primer on how Workers work.</p>
 	<p>As soon as a Worker is deployed, it is available and ready to run at every one of Cloudflare’s 155+ data centers in response to a request made to your website, application or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">API</a>. Workers are able to modify anything about both the request to and response from your origin server. They also have the ability to make subrequests to other endpoints in response to the initial request.</p>
 	<p>Workers are able to make their own subrequests using the available fetch method. We’ll be relying on this as well as the fact that requests made via fetch are also cacheable by Cloudflare to make sure that gating of features is not just secure but also quick.</p>
-	<h3>How to Securely Cache User Permissions</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-securely-cache-user-permissions">How to Securely Cache User Permissions</h3>
+		<a href="https://blog.cloudflare.com/#how-to-securely-cache-user-permissions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s say you have an endpoint on your origin that allows us to securely pull the permissions for a particular user.</p>
 	<p><code>https://api.yoursite.com/user/{uid}</code></p>
 	<p>From a Cloudflare Worker we can securely fetch this permission information using a token and have it returned either as JSON or as part of the headers.</p>
@@ -41,7 +55,14 @@ var jsonPermissions = await permissionResponse.json();</code></pre>
 	<p>The Worker set to run in front of <code>api.yoursite.com/user/{uid}</code> should either block all requests to the path from outside of a Cloudflare Worker or check to ensure the request has a valid secret key.</p>
 	<h4>A Note about Using “Super-Secret-Tokens”</h4>
 	<p>Tokens should be provided in your Worker when uploaded to Cloudflare and verified by your origin on each request. Extremely security conscious readers might be nervous about storing credentials in code, but note that Cloudflare strongly encourages 2FA as well as restricts Worker access to specific accounts. We are also exploring better ways of passing secrets to Workers.</p>
-	<h3>Common Ways of Gating New Features</h3>
+	<div class="flex anchor relative">
+		<h3 id="common-ways-of-gating-new-features">Common Ways of Gating New Features</h3>
+		<a href="https://blog.cloudflare.com/#common-ways-of-gating-new-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that you have quickly fetched the user permissions from cache, it’s time to do something with them! There are endless things you could do, but for this post I will cover some of the more common ones including: restricting paths, A/B Testing, and custom routing between origins.</p>
 	<h4>Restricting Paths</h4>
 	<p>Let’s say you’re releasing v2 of your current API. You want all users to still be able to send GET and POST requests to v1, but since you’re still performance tuning some new v2 features, only authorized users should be able to POST while everyone can GET. Continuing from the example before, this can be done with Cloudflare using the following code:</p>
@@ -60,7 +81,16 @@ if (apiV2) {
     }
     return fetch(request);
 }</code></pre>
-	<h3>A/B Testing</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="a-b-testing">A/B Testing</h3>
+		<a href="https://blog.cloudflare.com/#a-b-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/604uzrvjAD0DfjEMPpnnAK/d8e7adbf20d37e15419b5d4ae4c2cee9/workers-ab-test.png" alt="workers-ab-test" class="kg-image" width="1232" height="743" loading="lazy">

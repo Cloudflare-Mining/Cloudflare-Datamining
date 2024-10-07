@@ -8,9 +8,23 @@
 
 	</figure>
 	<p>Today, we are announcing Zone Holds, a new capability for enterprise customers that gives them control of if and when someone else can add the same zone to another Cloudflare account. When multiple teams at a company want to use Cloudflare, one team might accidentally step on another’s toes and try to manage the same zone in two accounts. Zone Holds ensure that this cannot happen by enforcing that only one account can contain a given domain, optionally inclusive of subdomains or custom hostnames, unless explicit permission is granted by the account owner of the zone.</p>
-	<h3>What can go wrong today</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-can-go-wrong-today">What can go wrong today</h3>
+		<a href="https://blog.cloudflare.com/#what-can-go-wrong-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare already requires zones to be authenticated via DNS before traffic is proxied through our global network. This ensures that only domain owners can authorize traffic to be sent through and controlled with Cloudflare. However, many of our customers are large organizations with many teams all trying to protect and accelerate their web properties. In these cases, one team may not realize that a given domain is already being protected with Cloudflare. If they activate a second instance of the same domain in Cloudflare, they end up replacing the original zone that another team was already managing with Cloudflare. This can create downtime or security issues until the original zone can be re-activated. If these two teams had only known about each other and communicated, then in most cases any issue could be avoided via one of many options - subdomains, custom hostnames, etc. How can we ensure that these teams are aware of potential risk before making these mistakes?</p>
-	<h3>How Zone Holds protect customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-zone-holds-protect-customers">How Zone Holds protect customers</h3>
+		<a href="https://blog.cloudflare.com/#how-zone-holds-protect-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With Zone Holds, any attempt to add a domain that is being held will return an error letting the person know that they need to contact the domain owner first. Zone Holds are enabled by default for all enterprise zones. The holds can be managed from the Zone Overview screen. Optionally, the hold can be extended to apply to subdomains and custom hostnames. When disabling a hold, you can set the hold to re-enable after a set amount of time. This ensures you don’t accidentally leave a hold perpetually disabled. Let’s dig into an example to understand how Zone Holds help customers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -18,10 +32,24 @@
 
 	</figure>
 	<p>An active zone hold not including protection of subdomains</p>
-	<h3>Example Corp - before Zone Holds</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-corp-before-zone-holds">Example Corp - before Zone Holds</h3>
+		<a href="https://blog.cloudflare.com/#example-corp-before-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Example Corp is a large Cloudflare customer. Specifically, their infrastructure team uses Cloudflare to protect all traffic at example.com. This includes their marketing site at <a href="http://www.example.com">www.example.com</a> and their customer facing API at api.example.com. When they onboarded to Cloudflare they had their IT department, who manages all DNS at the company, setup DNS records at their <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> such that all traffic for example.com routed through Cloudflare.</p>
 	<p>Fast forward a year later, their marketing department wants to adopt Cloudflare’s <a href="https://developers.cloudflare.com/bots">Bot Management solution</a> for traffic on <a href="http://www.example.com">www.example.com</a>. They sign up example.com and reach out to their IT department to set the provided NS records at the registrar. The IT department does not realize that Cloudflare is already in use so they do not catch that this will impact the existing zone managed by the infrastructure team. The new zone is activated and an incident occurs because traffic to not only <a href="http://www.example.com">www.example.com</a> but also api.example.com is impacted. With Zone Holds this incident would have been avoided. Let’s see how.</p>
-	<h3>Example Corp - now with Zone Holds</h3>
+	<div class="flex anchor relative">
+		<h3 id="example-corp-now-with-zone-holds">Example Corp - now with Zone Holds</h3>
+		<a href="https://blog.cloudflare.com/#example-corp-now-with-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Example Corp signs up for Cloudflare and adds example.com to their account as an ENT zone. Automatically a Zone Hold is enabled on the domain which will prevent any other Cloudflare account from adding example.com. They also enable a hold on any subdomains or custom hostnames under the domain of example.com.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -41,6 +69,13 @@
 
 	</figure>
 	<p>Once set up and activated they can now begin to leverage bot management to protect their marketing site and no unexpected impact occurs.</p>
-	<h3>Getting started with Zone Holds</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-zone-holds">Getting started with Zone Holds</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Zone Holds are now available to all enterprise zones and are enabled by default at the domain level. You can manage Zone Holds from the Zone Overview screen of any enterprise zone. Optionally, the hold can be extended to apply to subdomains and custom hostnames. When disabling a hold, you can set the hold to re-enable after a set amount of time. This ensures you don’t accidentally leave a hold perpetually disabled.</p>
 </div>

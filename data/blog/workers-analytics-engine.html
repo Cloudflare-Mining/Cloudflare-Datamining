@@ -7,13 +7,27 @@
 	</figure>
 	<p>Today we’re excited to introduce Workers Analytics Engine, a new way to get telemetry about anything using Cloudflare Workers. Workers Analytics Engine provides time series analytics built for the serverless era.</p>
 	<p>Workers Analytics Engine uses the same technology that powers Cloudflare’s analytics for millions of customers, who generate 10s of millions of events per second. This unique architecture provides significant benefits over traditional metrics systems – and even enables our customers to build analytics for <i>their</i> customers.</p>
-	<h3>Why use Workers Analytics Engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-use-workers-analytics-engine">Why use Workers Analytics Engine</h3>
+		<a href="https://blog.cloudflare.com/#why-use-workers-analytics-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers Analytics Engine can be used to get telemetry about just about anything.</p>
 	<p>Our initial motivation for building Workers Analytics Engine was to help internal teams at Cloudflare better understand what’s happening in their Workers. For example, one early internal customer is our <a href="https://www.cloudflare.com/developer-platform/r2">R2 storage product</a>. The R2 team is using the Analytics Engine to measure how many reads and writes happen in R2, how many users make these requests, how many bytes are transferred, how long the operations take, and so forth.</p>
 	<p>After seeing quick adoption from internal teams at Cloudflare, we realized that many customers could benefit from using this product.</p>
 	<p>For example, Workers Analytics Engine can also be used to build custom security rules. You could use it to implement something like <a href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, a program that can ban malicious traffic. Every time someone logs in, you could record information like their location and IP. On subsequent logins, you could query the rate of login attempts from these attackers, and block them if they’ve attempted to sign in too many times in a given period.</p>
 	<p>Workers Analytics Engine can even be used to track things in the world that have nothing (yet!) to do with Workers. For example, imagine you have a network of IoT sensors that connect to the Internet to report weather and air quality data, like temperature, air pressure, wind speed, and PM2.5 pollution. Using Workers Analytics Engine, you could deploy a Worker in just a few minutes that collects these reports, and then query and visualize the data using our analytics APIs.</p>
-	<h3>How to use Workers Analytics Engine</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-to-use-workers-analytics-engine">How to use Workers Analytics Engine</h3>
+		<a href="https://blog.cloudflare.com/#how-to-use-workers-analytics-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are three steps to get started with Workers Analytics Engine:</p>
 	<ol>
 		<li>
@@ -26,7 +40,14 @@
 			<p>Query your data using our SQL or <a href="https://developers.cloudflare.com/analytics/graphql-api">GraphQL API</a>.</p>
 		</li>
 	</ol>
-	<h3>Configuring Workers Analytics Engine in Wrangler</h3>
+	<div class="flex anchor relative">
+		<h3 id="configuring-workers-analytics-engine-in-wrangler">Configuring Workers Analytics Engine in Wrangler</h3>
+		<a href="https://blog.cloudflare.com/#configuring-workers-analytics-engine-in-wrangler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To start using Workers Analytics Engine, you first need to configure it in Wrangler. This is done by creating a binding in <a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration"><code>wrangler.toml</code></a>.</p>
 	<pre class="language-bash"><code class="language-bash">[analytics_engine]
 bindings = [
@@ -34,7 +55,14 @@ bindings = [
 ]</code></pre>
 	<p>Your analytics can be named after the event in the world that they represent. For example, readings from our weather sensor above might be named “WEATHER.”</p>
 	<p>For our current beta release, customers may only create one binding at a time. In the future, we plan to enable customers to define multiple bindings, or even define them on-the-fly from within the Workers runtime.</p>
-	<h3>Writing data from the Workers runtime</h3>
+	<div class="flex anchor relative">
+		<h3 id="writing-data-from-the-workers-runtime">Writing data from the Workers runtime</h3>
+		<a href="https://blog.cloudflare.com/#writing-data-from-the-workers-runtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once a binding is declared in Wrangler, you get a new <a href="https://developers.cloudflare.com/workers/platform/environment-variables">environment variable</a> in the Workers runtime that represents your Analytics Engine. This variable has a method, <code>writeDataPoint()</code>. A “data point” is a structured event which consists of a vector of <i>blobs</i> and a vector of <i>doubles</i>.</p>
 	<p>A double is just a “number” type field that can be aggregated in some way – for example, it could be summed, averaged, or quantiled. A blob is a “string” type field that can be used for grouping or filtering.</p>
 	<p>For example, suppose you are collecting air quality samples. Each data point would represent a reading from your weather sensor. Doubles might include numbers like the temperature or air pressure reading. The blobs could include the location of the sensor and the hardware identifier of the sensor.</p>
@@ -47,7 +75,14 @@ bindings = [
     return new Response("OK!");
   }</code></pre>
 	<p>In our initial version, developers are responsible for providing fields in a consistent order, so that they have the same semantics when querying. In a future iteration, we plan to let developers name their blobs and doubles in the binding, and then use these names when writing data points in the runtime.</p>
-	<h3>Querying and visualizing data</h3>
+	<div class="flex anchor relative">
+		<h3 id="querying-and-visualizing-data">Querying and visualizing data</h3>
+		<a href="https://blog.cloudflare.com/#querying-and-visualizing-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To query your data, Cloudflare provides a rich SQL API. For example:</p>
 	<pre class="language-sql"><code class="language-sql">SELECT blob_1 as city, avg(doubles_2) as avg_humidity
 FROM WEATHER
@@ -65,7 +100,14 @@ LIMIT 10</code></pre>
 	<p>The macro <code>$timeSeries</code> simply expands to <code>intDiv(toUInt32(timestamp), 60) * 60 * 1000</code> — i.e. the timestamp rounded to the nearest minute (as defined in our \$step parameter) &nbsp;and converted into milliseconds. Grafana also provides \$timeFilter which can be changed at the grafana dashboard level. We could easily add another series here by just “grouping” on another field like “city”.</p>
 	<p>Data can also be queried using our GraphQL API. At this time, the GraphQL API only supports querying total counts for each named binding.</p>
 	<p>Finally, the Cloudflare dashboard also provides a high-level count of the total number of data points seen for each binding. In the future, we plan to offer rich analytical abilities through the dashboard.</p>
-	<h3>How is this different from traditional metrics systems?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-is-this-different-from-traditional-metrics-systems">How is this different from traditional metrics systems?</h3>
+		<a href="https://blog.cloudflare.com/#how-is-this-different-from-traditional-metrics-systems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Many developers are familiar with <i>metrics</i> systems like Prometheus. We built Workers Analytics Engine based on our experience providing analytics for millions of Cloudflare customers. Writing structured event logs and querying them using a relational database model is very different from writing metrics – but it’s also much more powerful.</p>
 	<p>Here are some of the benefits of our model, compared with metrics systems:</p>
 	<ul>
@@ -82,7 +124,14 @@ LIMIT 10</code></pre>
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/c3796f0517f41d472c393b0414b5ebdb?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fc3796f0517f41d472c393b0414b5ebdb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>And of course, Workers Analytics Engine runs on Cloudflare’s global network. So rather than worrying about running your own Prometheus server, setting up Thanos, and closely tracking cardinality, you can just write data and query it using our SQL API.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started">get started here</a> and write data to Workers Analytics Engine from your Worker today. We already have many teams at Cloudflare happily using this and would love to get your feedback at this early stage, as we are quickly adding new functionality.</p>
 	<p>We have an ambitious roadmap ahead of us. One critical use case we plan to support is building analytics and usage-based billing <i>for your customers</i> – so if you’re a platform who is looking to build analytics into your product, we’d love to talk to you!</p>
 	<p>And of course, if this sounds fun to work on, we’re hiring engineers on the Data team to work in <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/3702343?gh_jid=3702343">London</a>, or remote locations!</p>

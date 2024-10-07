@@ -7,13 +7,27 @@
 
 	</figure>
 	<p>We announced the <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">open beta of full stack Cloudflare Pages</a> in November and have since seen widespread uptake from developers looking to add dynamic functionality to their applications. Today, we're excited to announce Pages' support for Remix applications, powered by our full stack platform.</p>
-	<h3>The new kid on the block: Remix</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-new-kid-on-the-block-remix">The new kid on the block: Remix</h3>
+		<a href="https://blog.cloudflare.com/#the-new-kid-on-the-block-remix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://remix.run">Remix</a> is a new framework that is focused on fully utilizing the power of the web. Like Cloudflare Workers, it uses modern JavaScript APIs, and it places emphasis on web fundamentals such as meaningful HTTP status codes, caching and optimizing for both usability and performance. One of the biggest features of Remix is its transportability: Remix provides a platform-agnostic interface and adapters allowing it to be deployed to a growing number of providers. Cloudflare Workers was available at Remix's launch, but what makes Workers different in this case, is the native compatibility that Workers can offer.</p>
 	<blockquote>
 		<p><i>One of the main inspirations for Remix was the way Cloudflare Workers uses native web APIs for handling HTTP requests and responses. It's a brilliant decision because developers are able to reuse knowledge on the server that they gained building apps in the browser! Remix runs natively on Cloudflare Workers, and the results we've seen so far are fantastic. We are incredibly excited about the potential that Cloudflare Workers and Pages unlocks for building apps that run at the edge!</i>- <b>Michael Jackson</b>, CEO at <a href="https://remix.run">Remix</a></p>
 	</blockquote>
 	<p>This native compatibility means that as you learn how to write applications in Remix, you're also learning how to write Cloudflare Workers (and vice versa). But it also means better performance! Rather than having a Node.js process running on a server — which could be far away from your users, could be overwhelmed in the case of high traffic, and has to map between Node.js' runtime and the modern Fetch API — you can deploy to Cloudflare's network and requests will be routed to any one of our 250+ locations. This means better performance for your users, with <a href="https://blog.cloudflare.com/250-cities-is-just-the-start">95% of the entire Internet-connected world lying within 50ms of a Cloudflare presence, and 80% of the Internet-connected world within 20ms</a>.</p>
-	<h3>Integrating with Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="integrating-with-cloudflare">Integrating with Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#integrating-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More often than not, full stack applications need some place to store data. Cloudflare offers three all-encompassing options here:</p>
 	<ul>
 		<li>
@@ -27,14 +41,35 @@
 		</li>
 	</ul>
 	<p>Remix already tightly integrates with <a href="https://remix.run/docs/en/v1/api/remix#createcloudflarekvsessionstorage-cloudflare-workers">KV for session storage</a>, and a Durable Objects integration is in progress. Additionally, Cloudflare's other features, such as <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties">geolocating incoming requests</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter">HTMLRewriter</a> and our <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a>, are all available from within your Remix application.</p>
-	<h3>Deploying to Cloudflare Pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="deploying-to-cloudflare-pages">Deploying to Cloudflare Pages</h3>
+		<a href="https://blog.cloudflare.com/#deploying-to-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Pages was already capable of serving static assets from the Cloudflare edge, but now with November's release of serverless functions powered by Cloudflare Workers, it has evolved into an entire platform perfectly suited for hosting full stack applications.</p>
 	<p>To get started with Remix and Cloudflare Pages today, run the following in your terminal, and select "Cloudflare Pages" when asked "Where do you want to deploy?":</p>
 	<pre class="language-sh"><code class="language-sh">npx create-remix@latest</code></pre>
 	<p>Then create a repository on <a href="https://developers.cloudflare.com/pages/platform/github-integration">GitHub</a> or <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a>, <code>git commit</code>, and <code>git push</code> the newly created folder. Finally, navigate to Cloudflare Pages, select your repository, and select "Remix" from the dropdown of framework presets. Your new application will be available on your <code>pages.dev</code> subdomain, or you can <a href="https://developers.cloudflare.com/pages/get-started#adding-a-custom-domain">connect it to any of your custom domains</a>.</p>
 	<p>Your folder will have a <code>functions/[[path]].ts</code> file. This is <a href="https://developers.cloudflare.com/pages/platform/functions">the functions integration</a> where we serve your Remix application on all paths of your website. <a href="https://remix.run/docs/en/v1/api/conventions#file-name-conventions">The <code>app</code> folder</a> is where the bulk of your Remix application's logic is. With Pages' support for <a href="https://developers.cloudflare.com/pages/platform/rollbacks">rollbacks</a> and <a href="https://developers.cloudflare.com/pages/platform/preview-deployments">preview deployments</a>, you can safely test any changes to your application, and, with <a href="https://blog.cloudflare.com/wrangler-v2-beta">the wrangler 2.0 beta</a>, testing locally is just a simple case of <code>npm run dev</code>.</p>
-	<h3>The future of frameworks on Cloudflare Pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-frameworks-on-cloudflare-pages">The future of frameworks on Cloudflare Pages</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-frameworks-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Remix is the second framework to integrate natively with full stack Cloudflare Pages, following <a href="https://kit.svelte.dev">SvelteKit</a>, which was available at launch. But this is just the beginning! We have a lot more in store for our integration with Remix and other frameworks. Stay tuned for improvements on &nbsp;Pages’ build times and other areas of the developer experience, as well as new features to the platform.</p>
-	<h3>Join our community!</h3>
+	<div class="flex anchor relative">
+		<h3 id="join-our-community">Join our community!</h3>
+		<a href="https://blog.cloudflare.com/#join-our-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are new to the Cloudflare Pages and Workers world, <a href="https://discord.com/invite/cloudflaredev">join our Discord server</a> and show us what you’re building. Whether it’s a new full stack application on Remix or even a simple static site, we’d love to hear from you.</p>
 </div>

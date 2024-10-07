@@ -12,7 +12,14 @@
 		</li>
 	</ul>
 	<p>Our exploration focuses on the receiving side of the TCP connection. We'll try to understand how to tune it for the best speed, without wasting precious memory.</p>
-	<h3>A case of a rapid upload</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-case-of-a-rapid-upload">A case of a rapid upload</h3>
+		<a href="https://blog.cloudflare.com/#a-case-of-a-rapid-upload" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To best illustrate the receive side buffer management we need pretty charts! But to grasp all the numbers, we need a bit of theory.</p>
 	<p>We'll draw charts from a receive side of a TCP flow, running a pretty straightforward scenario:</p>
 	<ul>
@@ -51,7 +58,14 @@ while true:
 			<p>Assuming infinite bandwidth, what is the minimal time &nbsp;- measured in <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> - for the client to fill the receive buffer?</p>
 		</li>
 	</ul>
-	<h3>A bit of theory</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-bit-of-theory">A bit of theory</h3>
+		<a href="https://blog.cloudflare.com/#a-bit-of-theory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>
 	<p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html"><code>ss</code> manpage</a> calls it <b>skmem_rb</b>, in the kernel it's named <b>sk_rcvbuf</b>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p>
 	<pre class="language-bash"><code class="language-bash">$ sysctl net.ipv4.tcp_rmem
@@ -89,7 +103,14 @@ net.core.wmem_max = 212992</code></pre>
 		</li>
 	</ul>
 	<p>The upper limit for the window is configured by <code>tcp_adv_win_scale</code> setting. By default, the window is set to at most 50% of the "free" space. The value can be clamped further by the TCP_WINDOW_CLAMP option or an internal <code>rcv_ssthresh</code> variable.</p>
-	<h3>How much data can a server receive?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-much-data-can-a-server-receive">How much data can a server receive?</h3>
+		<a href="https://blog.cloudflare.com/#how-much-data-can-a-server-receive" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our first question was "How much data can a server receive?". A naive reader might think it's simple: if the server has a receive buffer set to say 64KiB, then the client will surely be able to deliver 64KiB of data!</p>
 	<p>But this is totally not how it works. To illustrate this, allow me to temporarily set sysctl <code>tcp_adv_win_scale=0</code>. This is not a default and, as we'll learn, it's the wrong thing to do. With this setting the server will indeed set 100% of the receive buffer as an advertised window.</p>
 	<p>Here's our setup:</p>
@@ -130,7 +151,14 @@ net.core.wmem_max = 212992</code></pre>
 			<p>Finally, the dotted line shows <b>rcv_ssthresh</b>, which is not important yet, we'll get there.</p>
 		</li>
 	</ul>
-	<h3>Running over the budget is bad</h3>
+	<div class="flex anchor relative">
+		<h3 id="running-over-the-budget-is-bad">Running over the budget is bad</h3>
+		<a href="https://blog.cloudflare.com/#running-over-the-budget-is-bad" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It's super important to notice that we finished with <b>skmem_r</b> higher than <b>skmem_rb</b>! This is rather unexpected, and undesired. The whole point of the <b>skmem_rb</b> memory budget is, well, not to exceed it. Here's how <code>ss</code> shows it:</p>
 	<pre class="language-bash"><code class="language-bash">$ ss -m
 Netid  State  Recv-Q  Send-Q  Local Address:Port  Peer Address:Port   
@@ -176,7 +204,14 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 		<p>This also means tcp advertises a too optimistic window for a given allocated rcvspace: When receiving frames, <code>sk_rmem_alloc</code> can hit <code>sk_rcvbuf</code> limit and we call <code>tcp_collapse()</code> too often, especially when application is slow to drain its receive queue [...] This is a major latency source.</p>
 	</blockquote>
 	<p>If the memory budget remains exhausted after the collapse, Linux will drop ingress packets. In our chart it's marked as a red "X". The nstat TcpExtTCPRcvQDrop counter shows the count of dropped packets.</p>
-	<h3>rcv_ssthresh predicts the metadata cost</h3>
+	<div class="flex anchor relative">
+		<h3 id="rcv_ssthresh-predicts-the-metadata-cost">rcv_ssthresh predicts the metadata cost</h3>
+		<a href="https://blog.cloudflare.com/#rcv_ssthresh-predicts-the-metadata-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Perhaps counter-intuitively, the memory cost of a packet can be much larger than the amount of actual application data contained in it. It depends on number of things:</p>
 	<ul>
 		<li>
@@ -207,7 +242,14 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 * window and then starts to feed us spaghetti. But it should work
 * in common situations. Otherwise, we have to rely on queue collapsing.</code></pre>
 	<p>Notice that the <b>rcv_ssthresh</b> line dropped down on the TCP collapse. This variable is an internal limit to the advertised window. By dropping it the kernel effectively says: hold on, I mispredicted the packet cost, next time I'm given an opportunity I'm going to open a smaller window. Kernel will advertise a smaller window and be more careful - all of this dance is done to avoid the collapse.</p>
-	<h3>Normal run - continuously updated window</h3>
+	<div class="flex anchor relative">
+		<h3 id="normal-run-continuously-updated-window">Normal run - continuously updated window</h3>
+		<a href="https://blog.cloudflare.com/#normal-run-continuously-updated-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, here's a chart from a normal run of a connection. Here, we use the default <code>tcp_adv_win_wcale=1 (50%)</code>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -217,7 +259,14 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 	<p>Early in the connection you can see <b>rcv_win</b> being continuously updated with each received packet. This makes sense: while the <b>rcv_ssthresh</b> and <b>tcp_adv_win_scale</b> restrict the advertised window to never exceed 32KiB, the window is sliding nicely as long as there is enough space. At packet 18 the receiver stops updating the window and waits a bit. At packet 32 the receiver decides there still is some space and updates the window again, and so on. At the end of the flow the socket has 56KiB of data. This 56KiB of data was received over a sliding window reaching at most 32KiB .</p>
 	<p>The saw blade pattern of rcv_win is enabled by delayed ACK (aka QUICKACK). You can see the "<b>acked</b>" bytes in red dashed line. Since the ACK's might be delayed, the receiver waits a bit before updating the window. If you want a smooth line, you can use <code>quickack 1</code> per-route parameter, but this is not recommended since it will result in many small ACK packets flying over the wire.</p>
 	<p>In normal connection we expect the majority of packets to be coalesced and the collapse/drop code paths never to be hit.</p>
-	<h3>Large receive windows - rcv_ssthresh</h3>
+	<div class="flex anchor relative">
+		<h3 id="large-receive-windows-rcv_ssthresh">Large receive windows - rcv_ssthresh</h3>
+		<a href="https://blog.cloudflare.com/#large-receive-windows-rcv_ssthresh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For large bandwidth transfers over big latency links - big BDP case - it's beneficial to have a very wide advertised window. However, Linux takes a while to fully open large receive windows:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -253,9 +302,23 @@ TcpExtTCPRcvQDrop    13    0.0</code></pre>
 			<p>The sender has configured large <code>initcwnd</code>.</p>
 		</li>
 	</ul>
-	<h3>You care about shaving off every possible RTT.</h3>
+	<div class="flex anchor relative">
+		<h3 id="you-care-about-shaving-off-every-possible-rtt">You care about shaving off every possible RTT.</h3>
+		<a href="https://blog.cloudflare.com/#you-care-about-shaving-off-every-possible-rtt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On our systems we do have such flows, but arguably it might not be a common scenario. In the real world most of your TCP connections go to the nearest CDN point of presence, which is very close.</p>
-	<h3>Getting it all together</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-it-all-together">Getting it all together</h3>
+		<a href="https://blog.cloudflare.com/#getting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this blog post, we discussed a seemingly simple case of a TCP sender filling up the receive socket. We tried to address two questions: with our isolated setup, how much data can be sent, and how quickly?</p>
 	<p>With the default settings of net.ipv4.tcp_rmem, Linux initially sets a memory budget of 128KiB for the receive data and metadata. On my system, given full-sized packets, it's able to eventually accept around 113KiB of application data.</p>
 	<p>Then, we showed that the receive window is not fully opened immediately. Linux keeps the receive window small, as it tries to predict the metadata cost and avoid overshooting the memory budget, therefore hitting TCP collapse. By default, with the net.ipv4.tcp_adv_win_scale=1, the upper limit for the advertised window is 50% of "free" memory. rcv_ssthresh starts up with 64KiB and grows linearly up to that limit.</p>

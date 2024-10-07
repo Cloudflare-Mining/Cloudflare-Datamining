@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Cycling image Photo by <a href="https://unsplash.com/photos/mdgMbYfFlSA">Dimon Blr on Unsplash</a>.</p>
-	<h3>What Mirage and Rocket Loader do</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-mirage-and-rocket-loader-do">What Mirage and Rocket Loader do</h3>
+		<a href="https://blog.cloudflare.com/#what-mirage-and-rocket-loader-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mirage and Rocket Loader both optimise the loading of a web page by reducing and deferring the number of assets the browser needs to request for it to complete HTML parsing and rendering on screen.</p>
 	<h4>Mirage</h4>
 	<p>.has_images { overflow: auto; } @media (min-width: 600px) { .has_images p { float: left; width: 50%; } .has_images img { float: right; margin: 1em; width: 40% } }</p>
@@ -31,7 +38,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4svTMwAb9yRtZ56uBpBZFR/c827373464064b92568315efe60da622/Rocket-after.svg" alt="Rocket-after" class="kg-image" width="389" height="261" loading="lazy">
 
 	</figure>
-	<h3>How they work</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-they-work">How they work</h3>
+		<a href="https://blog.cloudflare.com/#how-they-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Both of these products involve a two step process: first our optimizing proxy-server will rewrite customers’ HTML as it’s delivered, and then our on-page Javascript will attempt to optimise aspects of the page load. For instance, Mirage's server-side rewrites image tags as follows:</p>
 	<pre class="language-bash"><code class="language-bash">&lt;!-- before --&gt;
 &lt;img src="/some-image.png"&gt;
@@ -40,7 +54,14 @@
 &lt;img data-cfsrc="/some-image.png" style="display:none;visibility:hidden;"&gt;</code></pre>
 	<p>Since browsers don't recognise <code>data-cfsrc</code>, the Mirage Javascript can control the whole process of loading these images. It uses this opportunity to intelligently load placeholder images on slow connections.</p>
 	<p>Rocket Loader uses a similar approach to de-prioritise Javascript during page load, allowing the browser to show visitors the content of the page sooner.</p>
-	<h3>The problems</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-problems">The problems</h3>
+		<a href="https://blog.cloudflare.com/#the-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Javascript for both products was written years ago, when <a href="https://github.com/rollup/rollup">‘rollup’</a> brought to mind a poor lifestyle choice rather than an excellent build-tool. With the big changes we’ve seen in browsers, protocols, and JS, there were many opportunities to optimise.</p>
 	<h4>Dynamically... slowing things down</h4>
 	<p>Designed for the ecosystem of the time, both products were loaded by Cloudflare’s <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">asynchronous-module-definition</a> (AMD) loader, called CloudflareJS, which also bundled some shared libraries.</p>
@@ -69,7 +90,14 @@
 	<p>Clearly, <code>document.write</code> needed to be extirpated!</p>
 	<h4>Unused and over-general code</h4>
 	<p>CFJS was authored as a shared library for Cloudflare client-side code, including the original Cloudflare app store. This meant it had quite a large set of APIs. Although both Mirage and Rocket Loader depended on some of them, the overlap was actually small. Since we've launched the new, shiny <a href="https://blog.cloudflare.com/cloudflare-apps-2">Cloudflare Apps</a>, CFJS had no other important products dependant upon it.</p>
-	<h3>A plan of action</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-plan-of-action">A plan of action</h3>
+		<a href="https://blog.cloudflare.com/#a-plan-of-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before joining Cloudflare in July this year, I had been working in TypeScript, a language with all the lovely new syntax of modern Javascript. Taking over multiple AMD, ES5-based projects using Gulp and Grunt was a bit of a shock. I really thought I'd written my last <code>define(['writing', 'very-bug'], function(twice, prone) {})</code>, but here I was in 2017 seeing it again!</p>
 	<p>So it was very tempting to do a big-bang rewrite and get back to playing with the new ECMAScript 2018 toys. However, I’ve been involved in enough rewrites to know they’re <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i">very rarely justified</a>, and instead identified the highest priority changes we’d need to improve performance (though I admit I wrote a few <code>git checkout -b typescript-version</code> branches to vent).</p>
 	<p>So, the plan was:</p>
@@ -140,7 +168,14 @@ if(cloudflare.rocket) {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6UOAgrBB8DitoNbPqlG6yP/ad4aba17f20a1b775204759b1c60279d/New-Version.svg" alt="New-Version" class="kg-image" width="784" height="340" loading="lazy">
 
 	</figure>
-	<h3>Measurement</h3>
+	<div class="flex anchor relative">
+		<h3 id="measurement">Measurement</h3>
+		<a href="https://blog.cloudflare.com/#measurement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Theory implied our smaller, browser-friendly strategy should be faster, but only by doing some good old empirical research would we know <a href="https://blog.cloudflare.com/#hume">for sure</a>.</p>
 	<p>To measure the results, I set up a representative test page (including Bootstrap, custom fonts, some images, text) and calculated the change in the average <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> performance scores out of 100 over a number of runs. The metrics I focussed on were:</p>
 	<ol>
@@ -153,7 +188,14 @@ if(cloudflare.rocket) {
 	</ol>
 	<h4>Assessment</h4>
 	<p>So, improved metrics across the board! We can see the changes have resulted in solid improvements, e.g a reduction in our average time till first meaningful paint of 694ms for Rocket, and 49ms for Mirage.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The optimisations to Mirage and Rocket Loader have resulted in less bandwidth use, and measurably better performance for visitors to Cloudflare optimised sites.</p>
 	<h4>Footnotes</h4>
 	<p>a:not([href]) { text-decoration: inherit !important; color: inherit !important; }</p>

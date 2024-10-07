@@ -9,12 +9,26 @@
 
 	</figure>
 	<p>In the meantime, we've deployed AMD's EPYC processors as part of Gen X server platform and for the first time are not using any Intel components at all. This week, we announced details of this tenth generation of servers. Below is a recap of why we're excited about the design, specifications, and performance of our newest hardware.</p>
-	<h2><a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Servers for an Accelerated Future</a></h2>
+	<div class="flex anchor relative">
+		<h2 id="">undefined</h2>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every server can run every service. This architectural decision has helped us achieve higher efficiency across the Cloudflare network. It has also given us more flexibility to build new software or adopt the newest available hardware.</p>
 	<p>Notably, Intel is not inside. We are not using their hardware for any major server components such as the CPU, board, memory, storage, network interface card (or any type of accelerator).</p>
 	<p>This time, AMD is inside.</p>
 	<p>Compared with our prior server (<a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>), our Gen X server processes as much as 36% more requests while costing substantially less. Additionally, it enables a ~50% decrease in L3 cache miss rate and up to 50% decrease in NGINX p99 latency, powered by a CPU rated at 25% lower TDP (thermal design power) per core.</p>
-	<h2><a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">Gen X CPU benchmarks</a></h2>
+	<div class="flex anchor relative">
+		<h2 id="">undefined</h2>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To identify the most efficient CPU for our software stack, we ran several benchmarks for key workloads such as cryptography, compression, regular expressions, and LuaJIT. Then, we simulated typical requests we see, before testing servers in live production to measure requests per watt. &nbsp; &nbsp;</p>
 	<p>Based on our findings, we selected the single socket 48-core AMD 2nd Gen EPYC 7642.</p>
 	<figure class="kg-card kg-image-card ">
@@ -22,11 +36,32 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/40QrPSva2FXZVgsZTln51q/2675c66944172e1f69ebd4697167f0f4/pasted-image-0.png" alt="" class="kg-image" width="1600" height="1064" loading="lazy">
 
 	</figure>
-	<h2><a href="https://blog.cloudflare.com/impact-of-cache-locality">Impact of Cache Locality</a></h2>
+	<div class="flex anchor relative">
+		<h2 id="">undefined</h2>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The single AMD EPYC 7642 performed very well during our lab testing, beating our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a> server with dual Intel Xeon Platinum 6162 with the same total number of cores. Key factors we noticed were its large L3 cache, which led to a low L3 cache miss rate, as well as a higher sustained operating frequency.</p>
-	<h2><a href="https://blog.cloudflare.com/gen-x-performance-tuning">Gen X Performance Tuning</a></h2>
+	<div class="flex anchor relative">
+		<h2 id="">undefined</h2>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Partnering with AMD, we tuned the 2nd Gen EPYC 7642 processor to achieve additional 6% performance. We achieved this by using power determinism and configuring the CPU's Thermal Design Power (TDP).</p>
-	<h2><a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">Securing Memory at EPYC Scale</a></h2>
+	<div class="flex anchor relative">
+		<h2 id="">undefined</h2>
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, we described how we use Secure Memory Encryption (SME), an interesting security feature within the System on a Chip architecture of the AMD EPYC line. We were impressed by how we could achieve RAM encryption without significant decrease in performance. This reduces the worry that any data could be exfiltrated from a stolen server.</p>
 	<p>We enjoy designing hardware that improves the security, performance and reliability of our global network, trusted by over 26 million Internet properties.</p>
 	<p>Want to help us evaluate new hardware? <a href="https://www.cloudflare.com/careers">Join us</a>!</p>

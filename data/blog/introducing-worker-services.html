@@ -9,16 +9,37 @@
 	<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
 	<p>Though, what if you wanted to build an entire application on Workers? You’d need a lot more tools in your developer toolbox. That’s why we’ve introduced extensions to Workers platform like <a href="https://blog.cloudflare.com/workers-kv-is-ga">KV</a>, our distributed key-value store; <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, — a strongly consistent, object-oriented database; and soon <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, the no-egress object storage. While these tools allow you to build a more robust application, there’s still a gap when it comes to building a system architecture, composed of <i>many</i> applications or services.</p>
 	<p>Imagine you’ve built an authentication service that authorizes requests to your API. You’d want to re-use that logic among all your other services. Moreover, when you make changes to that authentication service, you’d want to test it in a controlled environment that doesn’t affect those other services in production. Well, you don’t need to imagine anymore.</p>
-	<h3>Introducing Services</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-services">Introducing Services</h3>
+		<a href="https://blog.cloudflare.com/#introducing-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Services are the new building block for deploying applications on Cloudflare Workers. Unlike the script, a service is composable, which allows services to talk to each other. Services also support multiple environments, which allow you to test changes in a preview environment, then promote to production when you’re confident it worked.</p>
 	<p>To enable a seamless transition to services, we’ve automatically migrated every script to become a service with one “production” environment — no action needed.</p>
-	<h3>Services have environments</h3>
+	<div class="flex anchor relative">
+		<h3 id="services-have-environments">Services have environments</h3>
+		<a href="https://blog.cloudflare.com/#services-have-environments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Each service comes with a production environment and the ability to create or clone dozens of preview environments. Every aspect of an environment is overridable: the code, environment variables, and even resources like a KV namespace. You can create and switch between environments with just a few clicks in the dashboard.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 77.57660167130919%;"><iframe src="https://iframe.videodelivery.net/1d87ef3b6dcdebcf1bd3874c8bbbf21e?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Each environment is resolvable at a unique hostname, which is automatically generated when you create or rename the environment. There’s no waiting around after you deploy. Everything you need, like DNS records, SSL certificates, and more, is ready-to-go seconds later. If you’d like a more advanced setup, you can also add custom routes from your domain to an environment.</p>
 	<p>Once you’ve tested your changes in a preview environment, you’re ready to promote to production. We’ve made it really easy to promote code from one environment to another, without the need to rebuild or upload your code again. Environments also manage code separately from settings, so you don’t need to manually edit environment variables when you promote from staging to production.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 85.37604456824512%;"><iframe src="https://iframe.videodelivery.net/9ecdc37807c67e16562e396c02f52490?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<h3>Services are versioned</h3>
+	<div class="flex anchor relative">
+		<h3 id="services-are-versioned">Services are versioned</h3>
+		<a href="https://blog.cloudflare.com/#services-are-versioned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every change to a service is versioned and audited. Mistakes do happen, but when they do, it’s important to be able to quickly roll back, then have the tools to answer the age-old question: “who changed what, when?”</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -26,7 +47,14 @@
 
 	</figure>
 	<p>Each environment in a service has its own version history. Every time there is a code change or an environment variable is updated, the version number of that environment is incremented. You can also append additional metadata to each version, like a git commit or a deployment tag.</p>
-	<h3>Services can talk to each other</h3>
+	<div class="flex anchor relative">
+		<h3 id="services-can-talk-to-each-other">Services can talk to each other</h3>
+		<a href="https://blog.cloudflare.com/#services-can-talk-to-each-other" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Services are composable, allowing one service to talk to another service. To support this, we’re introducing a new API to facilitate service-to-service communication: service bindings.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -71,7 +99,14 @@
 
 	</figure>
 	<p>This zero-cost model enables teams to share and reuse code within their organizations, without sacrificing latency or performance. Forget the days of convoluted YAML templates or exponential back off to orchestrate services — just write code, and we’ll stitch it all together.</p>
-	<h3>Try out the future, today!</h3>
+	<div class="flex anchor relative">
+		<h3 id="try-out-the-future-today">Try out the future, today!</h3>
+		<a href="https://blog.cloudflare.com/#try-out-the-future-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We’re excited to announce that you can start using Services today! If you’ve already used Workers, you’ll notice that each of your scripts have been upgraded to a service with one “production” environment. The dashboard and all the existing Cloudflare APIs will continue to “just work” with services.</p>
 	<p>You can also create and deploy code to multiple “preview” environments, as part of the open-beta launch. We’re still working on service bindings and versioning, and we’ll provide an update as soon as you can start using them.</p>
 	<p>For more information about Services, check out any of the resources below:</p>
@@ -88,6 +123,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hteH8Qu4zVjXKVWv9Q5PT/076421a9d55f1c0420ae2fde2f0514cc/Lego.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
 
 	</figure>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

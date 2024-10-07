@@ -18,14 +18,36 @@
 	<p><i>"CNAME Flattening allowed us to use a root domain while still maintaining DNS fault-tolerance across multiple IP addresses."</i></p>
 	<p>Andrew Warner, Director of Engineering, <a href="http://genius.com">RapGenius</a></p>
 	<p>Intrigued? Read on to understand the technical details of exactly what it is and why we needed to build it.</p>
-	<h3>The Inflexibility of DNS</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-inflexibility-of-dns">The Inflexibility of DNS</h3>
+		<a href="https://blog.cloudflare.com/#the-inflexibility-of-dns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Traditionally, the root record of a domain needed to point to an IP address (known as an A -- for "address" -- Record). While it may not seem like a big deal, tying a service to an IP address can be extremely limiting. Imagine that a new blogging platform, WordPlumblr, starts up. WordPlumblr allows its users to use custom domains that point to the WordPlumblr infrastructure. Foo.com signs up and WordPlumblr gives Foo.com an IP address. The supply of IP addresses is limited so, over time, as more sites sign up, IP addresses end up getting shared between multiple customers. No problem since with virtual hostnames WordPlumblr can return different content for different domains even hosted on the same IP address.</p>
 	<p>Everything is fine until Foo.com starts using too many of WordPlumblr's resources -- maybe because they're being attacked or they're featured on Oprah or who knows why. The other customers of WordPlumblr get poor performance because they're sharing the same resources as the overwhelmed Foo.com. WordPlumblr is put in a difficult position: having to reach out to Foo.com to get them to change their DNS settings or, even harder, having to reach out to all the other customers using the IP address to get them to change. Good luck.</p>
-	<h3>CNAMEs For the Win</h3>
+	<div class="flex anchor relative">
+		<h3 id="cnames-for-the-win">CNAMEs For the Win</h3>
+		<a href="https://blog.cloudflare.com/#cnames-for-the-win" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The solution is a CNAME. A CNAME is an alias. It allows one domain to point to another domain which, eventually if you follow the CNAME chain, will resolve to an A record and IP address. If WordPlumblr had handed out a unique CNAME for every customer then they wouldn't have had a problem. For example, WordPlumblr might have assigned the CNAME 6equj5.wordplumblr.com for Foo.com. Foo.com and the other customers may have all initially resolved, at the end of the CNAME chain, to the same IP address. However, when Foo.com started using too many resources WordPlumblr could have updated the CNAME and isolated Foo.com from the rest of the customers.</p>
 	<p>If you're familiar with programming, this is just like the idea of a pointer. When you're programming in C, in order to allow flexibility in memory management, you usually don't want to address memory directly but, instead, you set up a pointer to a block of memory where you're going to store something. If the operating system needs to move the memory around then it just updates the pointer to point to wherever the chunk of memory has been moved to. The program references the pointer and is none the wiser.</p>
 	<p>CNAMEs work great for subdomains like <a href="http://www.foo.com">www.foo.com</a> or blog.foo.com. Unfortunately, they don't work for a naked domain like foo.com itself. And, for reasons that somewhat perplex me, a lot of people are obsessed with using their naked domain for their website. So why don't CNAMEs work at the root?</p>
-	<h3>No Root For You</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-root-for-you">No Root For You</h3>
+		<a href="https://blog.cloudflare.com/#no-root-for-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1p32DFkA1vxgdSk98cna0Y/51a75e1afacfaf349e50ef14badd0968/image_2.png" alt="" class="kg-image" width="400" height="366" loading="lazy">
@@ -33,9 +55,24 @@
 	</figure>
 	<p>The problem stems from the fact that the <a href="http://www.ietf.org/rfc/rfc1035.txt">DNS specification</a> dates from 1987. At the time, no one conceived of website -- it was two years before Tim Berners-Lee’s seminal paper first laying out the idea for the world wide web -- let alone modern outsourced cloud services like Amazon Web Services (AWS) or Heroku. As a result, the DNS spec enshrined that the root record -- the naked domain without any subdomain -- could not be a CNAME. Technically, the root could be a CNAME but the RFCs state that once a record has a CNAME it can't have any other entries associated with it: that's a problem for a root record like example.com because it will often have an MX record (so email gets delivered), an NS record (to find out which nameserver handles the zone) and an SOA record.</p>
 	<p>Because they follow this specification, most authoritative DNS servers won't allow you to include CNAME records at the root. At CloudFlare, <a href="https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp">we decided to let our users include a CNAME at the root</a> even though we knew it violated the DNS specification. And that worked, most of the time. Unfortunately, there were a handful of edge cases that caused all sorts of problems.</p>
-	<h3>Break the RFC at Your Own Peril</h3>
+	<div class="flex anchor relative">
+		<h3 id="break-the-rfc-at-your-own-peril">Break the RFC at Your Own Peril</h3>
+		<a href="https://blog.cloudflare.com/#break-the-rfc-at-your-own-peril" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You'd never guess, but the biggest edge case had to do with email sent from Microsoft Exchange mail servers. Domains generally designate the servers that handle their email through what's known as a MX Record. The problem was that Exchange servers, under a very specific set of circumstances, could pick up the CNAME at the root record and then not properly respect the CNAME set at the MX record. You can't really blame Exchange. They were operating under the assumptions laid out by the DNS specification. However, this and a handful of other corner cases caused us to support but recommend against using a CNAME at the root record. Until now.</p>
-	<h3>Introducing CNAME Flattening</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-cname-flattening">Introducing CNAME Flattening</h3>
+		<a href="https://blog.cloudflare.com/#introducing-cname-flattening" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DKVkYjc7enxjCr5Qjvrpq/9734ee72520f2d502fc493de5fb61a25/image_3.png" alt="" class="kg-image" width="400" height="284" loading="lazy">
@@ -43,7 +80,14 @@
 	</figure>
 	<p>What we needed was a way to support a CNAME at the root, but still follow the RFC and return an IP address for any query for the root record. To accomplish this, we extended our authoritative DNS infrastructure to, in certain cases, act as a kind of DNS resolver. What happens is that, if there's a CNAME at the root, rather than returning that record directly we recurse through the CNAME chain ourselves until we find an A Record. At that point, we return the IP address associated with the A Record. This, effectively, "flattens" the CNAME chain.</p>
 	<p>This follows the DNS specification and is invisible to any service that interacts with our DNS. We've tested it extensively over the last several months and it works great, completely resolving the Microsoft Exchange and other edge case problems we'd previously seen.</p>
-	<h3>Flexible and Faster</h3>
+	<div class="flex anchor relative">
+		<h3 id="flexible-and-faster">Flexible and Faster</h3>
+		<a href="https://blog.cloudflare.com/#flexible-and-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The biggest benefit is that this allows the flexibility of having CNAMEs at the root without breaking the DNS specification. An ancillary benefit we've found is that we decrease the time for CNAME resolution by about 30% on average. We cache the CNAME responses -- respecting the DNS TTLs, just like a recursor should -- which means often we have the answer without having to traverse the chain. When we do need to traverse the CNAME chain, we often have much a much faster, more direct connection to whatever server is authoritative than your visitor's ISP's recursive DNS service, which would have otherwise been doing the heavy lifting.</p>
 	<figure class="kg-card kg-image-card ">
 

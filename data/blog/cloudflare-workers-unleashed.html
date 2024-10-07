@@ -12,14 +12,28 @@
 	<p>Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a> is now ready for everyone.</p>
 	<p>"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
 	<p>— CJ Silverio, CTO, npm, Inc.</p>
-	<h3>What is the Cloud, really?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-cloud-really">What is the Cloud, really?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-cloud-really" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, web application code has been split between servers and browsers. Between them lies a vast but fundamentally <i>dumb</i> network which merely ferries data from point to point.</p>
 	<p>We don't believe this lives up to the promise of "The Cloud."</p>
 	<p>We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <i>everywhere</i>.</p>
 	<p>More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
 	<p>Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
 	<p>Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
-	<h3>What's a Worker?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-a-worker">What's a Worker?</h3>
+		<a href="https://blog.cloudflare.com/#whats-a-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
 	<p>Here are the tools you get to work with:</p>
 	<ul>
@@ -127,19 +141,41 @@ async function handle(request) {
     return fetch(request)
   }
 }</code></pre>
-	<h3>It's Really Fast</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="its-really-fast">It's Really Fast</h3>
+		<a href="https://blog.cloudflare.com/#its-really-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
 	<p>Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
 	<p>The bottom line: <b>A typical Worker script executes in less than one millisecond.</b> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> difference when they enable Workers -- except, of course, when their worker actually <i>improves</i> latency by responding directly from the edge.</p>
 	<p>On another speed-related note, Workers deploy fast, too. <b>Workers deploy globally in under 30 seconds</b> from the time you save and enable the script.</p>
-	<h3>Pricing</h3>
+	<div class="flex anchor relative">
+		<h3 id="pricing">Pricing</h3>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4FhizNXvRr918DQvbZPx9V/4a268418e519da9d46fdc679a0b06424/workers-pricing-text_4x.png" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)" class="kg-image" width="1009" height="514" loading="lazy">
 
 	</figure>
-	<h3>Get Started</h3>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get Started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p><a href="https://www.cloudflare.com/a/overview">Log into your Cloudflare account</a> and visit the "Workers" section to configure Workers.</p>

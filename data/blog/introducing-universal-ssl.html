@@ -8,10 +8,24 @@
 	<p>The team at CloudFlare is excited to announce the release of Universal SSL™. Beginning today, we will support SSL connections to every CloudFlare customer, including the 2 million sites that have signed up for the free version of our service.</p>
 	<p>This morning we began rolling out the Universal SSL across all our current customers. We expect this process to be complete for all current customers before the end of the day. Yesterday, there were about 2 million sites active on the Internet that supported encrypted connections. By the end of the day today, we'll have doubled that.</p>
 	<p>For new customers who sign up for <a href="https://www.cloudflare.com/plans/free">CloudFlare's free plan</a>, after we get through provisioning existing customers, it will take up to 24 hours to activate Universal SSL. As always, SSL for <a href="https://www.cloudflare.com/plans">paid plans</a> will be provisioned instantly upon signup.</p>
-	<h3>How does it work?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">How does it work?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For all customers, we will now automatically provision a <a href="https://www.cloudflare.com/application-services/products/ssl">SSL certificate</a> on CloudFlare's network that will accept HTTPS connections for a customer's domain and subdomains. Those certificates include an entry for the root domain (e.g., example.com) as well as a wildcard entry for all first-level subdomains (e.g., <a href="http://www.example.com">www.example.com</a>, blog.example.com, etc.).</p>
 	<p>For a site that did not have SSL before, we will default to our <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-SSL-Full-SSL-Full-SSL-Strict-mean-">Flexible SSL mode</a>, which means traffic from browsers to CloudFlare will be encrypted, but traffic from CloudFlare to a site's origin server will not. We strongly recommend site owners install a certificate on their web servers so we can encrypt traffic to the origin. Later today we'll be publishing a blog with instructions on how to do that at no cost. Once you've installed a certificate on your web server, you can enable the <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-Off-Flexible-SSL-Full-SSL-Full-SSL-Strict-mean-">Full or Strict SSL modes</a> which encrypt origin traffic and provide a higher level of security.</p>
-	<h3>Challenges</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges">Challenges</h3>
+		<a href="https://blog.cloudflare.com/#challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>CloudFlare operates at significant scale and we're growing very quickly. To make Universal SSL work at our scale we needed to ensure it wouldn't overwhelm our resources. We had two primary concerns:</p>
 	<ol>
 		<li>
@@ -23,7 +37,14 @@
 	</ol>
 	<p>Terminating <a href="https://www.cloudflare.com/learning/ssl/what-is-https">HTTPS connections</a> requires more CPU load than terminating HTTP. The additional load varies depending on the particular cipher suite used. For instance, the cutting-edge cipher suite ECDSA imposes significantly less load on our systems as compared with a more traditional cipher suite based on RSA. As it happens, ECDSA also provides a number of performance and security benefits over older cipher suites. We've <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">written in the past about the benefits of ECDSA</a> including the fact that it supports Perfect Forward Secrecy and faster SSL termination (and therefore faster page load times).</p>
 	<p>IPv4 termination is the other challenge of Universal SSL. The original implementation of SSL encrypted the host header. That meant you were limited to one certificate per <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address">IP address</a>. Given that CloudFlare controls a finite number of IP addresses, it would be impossible for us to dedicate a unique IP for every one of our millions of customers.</p>
-	<h3>Solution</h3>
+	<div class="flex anchor relative">
+		<h3 id="solution">Solution</h3>
+		<a href="https://blog.cloudflare.com/#solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These challenges required that, for free customers, we limit Universal SSL support to modern browsers. Modern browsers include support for ECDSA, where many legacy browsers do not. Modern browsers also support an extension to the SSL protocol called <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication (SNI)</a>. SNI sends the web site name (the equivalent of the host header) unencrypted, which allows us to return different certificates on an IP address depending on what customer's site is requested. This allows us to serve multiple customers' sites from the same IP.</p>
 	<p>Generally, if you're running a browser that is less than 6 years old, your browser is modern and Universal SSL on CloudFlare's free plans will work. The two biggest problem children legacy browsers are:</p>
 	<ol>
@@ -38,27 +59,62 @@
 	<p>A recent test showed the percentage of requests in countries around the world that come from modern browsers. Iran is the worst region in the world with only 52.01% of requests coming from modern browsers. Antarctica is the best region in the world with 99.44% of requests coming from modern browsers. You can mouse over different regions to see the percentage of requests that come from modern browsers.</p>
 	<p>While Universal SSL on our free service requires a modern browser, CloudFlare's paid plans have always and will always support both modern and legacy browsers. In the coming months, because of the benefits of ECDSA certificates, we plan on offering paid users the option to return ECDSA certificates if we detect a modern browser, while reverting to RSA certificate if we detect a legacy browser.</p>
 	<p>If SSL is a must-have for you, we still recommend using a paid <a href="https://www.cloudflare.com/plans">CloudFlare plan</a> (which start as inexpensively as $20/month). If SSL is a nice-to-have, support on the free plan is likely sufficient to serve the vast majority visitors from most regions around the world. Note finally that Universal SSL does not disable your ability to accept unencrypted traffic. HTTP will continue to work as it always has before. You can, however, now use CloudFlare's Page Rules to force all traffic to HTTPS even if you're a free customer. (PS - Going forward, also we plan to support the ability to add HSTS headers.)</p>
-	<h3>Other benefits</h3>
+	<div class="flex anchor relative">
+		<h3 id="other-benefits">Other benefits</h3>
+		<a href="https://blog.cloudflare.com/#other-benefits" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One additional benefit of Universal SSL is it allows us to broadly support of the SPDY protocol which requires an encrypted connection. SPDY improves web performance in a number of ways we've <a href="https://blog.cloudflare.com/what-makes-spdy-speedy">written about before</a>. All CloudFlare customers will, by the end of the day today, also have SPDY enabled by default —&nbsp;massively increasing the size of the SPDY universe.</p>
 	<p>We also have plans to expand the universe of supported browsers slightly by taking advantage of connections that arrive over IPv6 for browsers that don't support SNI. About 16% of unique IP addresses that connect to CloudFlare do so via IPv6 (note: that calculation takes only the first 8 bytes as unique in any IPv6 address connecting to our network). Since IPv6 addresses are virtually infinite, we don't have the same limitations as we do with IPv4 and can therefore return a unique certificate for every IPv6 address.</p>
 	<p>Our bigger hope, however, is that Universal SSL will be yet another reason, along with <a href="https://googleonlinesecurity.blogspot.com/2014/09/gradually-sunsetting-sha-1.html">Google and Firefox deprecating SHA-1-signed certs</a> and Microsoft ceasing support for Windows XP, to encourage people to upgrade to a modern browser running on a modern OS. Sometimes progress requires sacrificing some backward compatibility. The good news here is that none of CloudFlare's current free customers supported any version of SSL previously, so the encrypted web tomorrow is only better and no worse.</p>
-	<h3>Encouraging Modern Browser Use</h3>
+	<div class="flex anchor relative">
+		<h3 id="encouraging-modern-browser-use">Encouraging Modern Browser Use</h3>
+		<a href="https://blog.cloudflare.com/#encouraging-modern-browser-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To that end, CloudFlare customers can help encourage the remaining users of old browsers to upgrade using a CloudFlare App. The <a href="https://www.cloudflare.com/apps/abetterbrowser">A Better Browser</a> app can be installed with one click on any web site that uses CloudFlare. It automatically detects if the visitor is using an old browser and adds a banner at the top of the page suggesting that they upgrade.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6RsdCzfWGDxKjRVhtnqnr9/19ca808b96ca0eabfe22d588018aaec1/example.png" alt="The Better Browser banner" class="kg-image" width="684" height="187" loading="lazy">
 
 	</figure>
-	<h3>The Internet is a Belief System</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-internet-is-a-belief-system">The Internet is a Belief System</h3>
+		<a href="https://blog.cloudflare.com/#the-internet-is-a-belief-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last Wednesday we had a CloudFlare Board meeting. We went over our plans for launching Universal SSL and how doing so may hurt our revenue given that SSL is one of the reasons people upgrade to a paid plan. But everyone on CloudFlare's Board was unanimous: even if it does hurt revenue in the short term, it's the right thing to do.</p>
 	<p><a href="http://www.usv.com/about#brad-burnham">Brad Burnham</a>, who is the partner at Union Square Ventures who led our last round of financing, reminded me during the meeting of the Joi Ito essay about how the <a href="http://joi.ito.com/weblog/2011/12/05/the-internet-in.html">Internet is a belief system</a>. Inherent to Joi's point is that small groups of people, working together, can create great things. That, fundamentally, is the Internet.</p>
 	<p>The team behind Netscape first introduced SSL back in February 1995, originally intended to facilitate <a href="https://www.cloudflare.com/ecommerce">ecommerce</a> online. As the Internet grew in importance, governments, ISPs, and hackers began to intercept, throttle, and censor traffic as it flowed across the network to serve their ends. In response, SSL's importance expanded beyond ecommerce to help ensure a free and open web. As Google and the IETF work on the next generation Internet protocols like SPDY and HTTP/2, it's no wonder encryption is at their heart. And so, in order for CloudFlare to fulfill its mission of helping build a better Internet, we knew one of the most important things we could do was enable Universal SSL for all our customers — even if they don't pay us.</p>
 	<p>Having cutting-edge encryption may not seem important to a small blog, but it is critical to advancing the encrypted-by-default future of the Internet. Every byte, however seemingly mundane, that flows encrypted across the Internet makes it more difficult for those who wish to intercept, throttle, or censor the web. In other words, ensuring your personal blog is available over HTTPS makes it more likely that a human rights organization or social media service or independent journalist will be accessible around the world. Together we can do great things.</p>
 	<p>The Internet is a belief system. At CloudFlare, we're proud today that we're playing a part in helping advance that belief system. And, having proven that Universal SSL is possible at our scale, we hope many other organizations will follow in turning SSL on for all their customers and at no additional cost.</p>
-	<h3>#savetheweb</h3>
+	<div class="flex anchor relative">
+		<h3 id="savetheweb">#savetheweb</h3>
+		<a href="https://blog.cloudflare.com/#savetheweb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are already a CloudFlare customer, we're rolling out Universal SSL throughout the day today. We expect it will be fully provisioned for most current customers within the next 24 hours. If you're a new customer, note that it will take up to 24 hours from when you <a href="https://www.cloudflare.com/sign-up">sign up</a> to provision SSL for our free service (and, again, if you're in a hurry, it's still instant for all paid plans).</p>
 	<p>One final note: if you signed up for CloudFlare through one of our hosting partners, it will be a bit longer before we can enable Universal SSL. This is due to a technical limitation on how we need to provision the Universal SSL certificates. We think we can solve the technical limitation and expect that we'll be able to support Universal SSL through partners before the end of the year. Until then, hang tight.</p>
-	<h3>Thanks</h3>
+	<div class="flex anchor relative">
+		<h3 id="thanks">Thanks</h3>
+		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is a day the CloudFlare team has been looking forward to for the last three years. It took a ton of work. We couldn't have done it without the help of a number of great people both on our own team and at other organizations that provided assistance. Special thanks to <a href="https://www.globalsign.com">Globalsign</a>, <a href="https://www.comodo.com">Comodo</a>, <a href="http://unmitigatedrisk.com">Ryan Hurst</a>, <a href="https://www.dubfire.net">Christopher Soghoian</a> (ACLU), <a href="https://www.eff.org/about/staff/peter-eckersley">Peter Eckersley</a> (EFF), and <a href="https://www.imperialviolet.org">Adam Langley</a> (Google).</p>
 	<p>Over the next few days, we'll be posting a series of articles about the details behind how we made Universal SSL a reality. There were a number of hard technical, business, and legal challenges we had to overcome to make today possible. The people that worked on solving them are excited to share their stories. Stay tuned.</p>
 	<p><b>Update:</b> <i>It's taking us a bit longer to provision Universal SSL for all our customers than we'd originally anticipated. We're now expecting the provisioning process to be complete on Thursday, October 2 @ 0700 UTC. We've published a </i><a href="https://blog.cloudflare.com/universal-ssl-be-just-a-bit-more-patient"><i>new blog post</i></a><i> on how you can track our progress and what errors you may see if you try and visit your site over HTTPS before the provisioning process is complete.</i></p>

@@ -43,7 +43,14 @@
 			<p>Easily generate security reports for peers and managers</p>
 		</li>
 	</ol>
-	<h2>Understand your network better</h2>
+	<div class="flex anchor relative">
+		<h2 id="understand-your-network-better">Understand your network better</h2>
+		<a href="https://blog.cloudflare.com/#understand-your-network-better" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main responsibilities network operators bare is ensuring the operational stability and reliability of their network. Cloudflare’s Network Analytics dashboard shows network operators where their traffic is coming from, where it’s heading, and what type of traffic is being delivered or mitigated. These insights, along with user-friendly drill-down capabilities, help network operators identify changes in traffic, surface abnormal behavior, and can help alert on critical events that require their attention — to help them ensure their network’s stability and reliability.</p>
 	<p>Starting at the top, the Network Analytics dashboard shows network operators their traffic rates over time along with the total throughput. The entire dashboard is filterable, you can drill down using select-to-zoom, change the time-range, and toggle between a packet or bit/byte view. This can help gain a quick understanding of traffic behavior and identify sudden dips or surges in traffic.</p>
 	<p>Cloudflare customers advertising their own IP prefixes from the Cloudflare network can also see annotations for BGP advertisement and withdrawal events. This provides additional context atop of the traffic rates and behavior.</p>
@@ -53,7 +60,14 @@
 
 	</figure>
 	<p>The Network Analytics dashboard time series and annotations</p>
-	<h3>Geographical accuracy</h3>
+	<div class="flex anchor relative">
+		<h3 id="geographical-accuracy">Geographical accuracy</h3>
+		<a href="https://blog.cloudflare.com/#geographical-accuracy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the many benefits of Cloudflare’s Network Analytics dashboard is its geographical accuracy. Identification of the traffic source usually involves correlating the source IP addresses to a city and country. However, network-layer traffic is subject to <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">IP spoofing</a>. Malicious actors can spoof (alter) their source IP address to obfuscate their origin (or their botnet’s nodes) while attacking your network. Correlating the location (e.g., the source country) based on spoofed IPs would therefore result in <i>spoofed countries</i>. Using <i>spoofed countries</i> would skew the global picture network operators rely on.</p>
 	<p>To overcome this challenge and provide our users accurate geoinformation, we rely on the location of the Cloudflare data center wherein the traffic was ingested. We’re able to achieve geographical accuracy with high granularity, because we operate data centers in over 285 locations around the world. We use BGP Anycast which ensures traffic is routed to the nearest data center within BGP catchment.</p>
 	<figure class="kg-card kg-image-card ">
@@ -62,7 +76,14 @@
 
 	</figure>
 	<p>Traffic by Cloudflare data center country from the Network Analytics dashboard</p>
-	<h3>Detailed mitigation analytics</h3>
+	<div class="flex anchor relative">
+		<h3 id="detailed-mitigation-analytics">Detailed mitigation analytics</h3>
+		<a href="https://blog.cloudflare.com/#detailed-mitigation-analytics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The dashboard lets network operators understand exactly what is happening to their traffic while it’s traversing the Cloudflare network. The <b>All traffic</b> tab provides a summary of attack traffic that was dropped by the three mitigation systems, and the clean traffic that was passed to the origin.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -90,7 +111,14 @@
 	</figure>
 	<p>The Advanced TCP Protection tab in Network Analytics</p>
 	<p>Note that the presence of tabs differ slightly for Spectrum customers because they do not have access to the <b>Advanced TCP Protection</b> and <b>Magic Firewall</b> tabs. Spectrum customers only have access to the first two tabs.</p>
-	<h2>Respond to DDoS attacks faster</h2>
+	<div class="flex anchor relative">
+		<h2 id="respond-to-ddos-attacks-faster">Respond to DDoS attacks faster</h2>
+		<a href="https://blog.cloudflare.com/#respond-to-ddos-attacks-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare detects and <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">mitigates</a> the majority of DDoS attacks automatically. However, when a network operator responds to a sudden increase in traffic or a CPU spike in their data centers, they need to understand the nature of the traffic. Is this a legitimate surge due to a new game release for example, or an unmitigated DDoS attack? In either case, they need to act quickly to ensure there are no disruptions to critical services.</p>
 	<p>The Network Analytics dashboard can help network operators quickly pattern traffic by switching the time-series’ grouping dimensions. They can then use that pattern to drop packets using the Magic Firewall. The default dimension is the <i>outcome</i> indicating whether traffic was <i>dropped</i> or <i>passed</i>. But by changing the time series dimension to another field such as the <i>TCP flag</i>, <i>Packet size</i>, or <i>Destination port</i> a pattern can emerge.</p>
 	<p>In the example below, we have zoomed in on a surge of traffic. By setting the <i>Protocol</i> field as the grouping dimension, we can see that there is a 5 Gbps surge of UDP packets (totalling at 840 GB throughput out of 991 GB in this time period). This is clearly not the traffic we want, so we can hover and click the UDP indicator to filter by it.</p>
@@ -147,7 +175,14 @@
 
 	</figure>
 	<p>Example of a packet sample with the header sections expanded</p>
-	<h2>Generate reports</h2>
+	<div class="flex anchor relative">
+		<h2 id="generate-reports">Generate reports</h2>
+		<a href="https://blog.cloudflare.com/#generate-reports" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another important role of the network security team is to provide decision makers an accurate view of their threat landscape and network security posture. Understanding those will enable teams and decision makers to prepare and ensure their organization is protected and critical services are kept available and performant. This is where, again, the Network Analytics dashboard comes in to help. Network operators can use the dashboard to understand their threat landscape — which endpoints are being targeted, by which types of attacks, where are they coming from, and how does that compare to the previous period.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -162,7 +197,14 @@
 
 	</figure>
 	<p>In addition, Magic Transit and Spectrum users also receive an automated weekly Network DDoS Report which includes key insights and trends.</p>
-	<h2>Extending visibility from Cloudflare’s vantage point</h2>
+	<div class="flex anchor relative">
+		<h2 id="extending-visibility-from-cloudflares-vantage-point">Extending visibility from Cloudflare’s vantage point</h2>
+		<a href="https://blog.cloudflare.com/#extending-visibility-from-cloudflares-vantage-point" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As we’ve seen in many cases, being unprepared can cost organizations substantial revenue loss, it can negatively impact their reputation, reduce users’ trust as well as <i>burn out</i> teams that need to constantly <i>put out fires</i> reactively. Furthermore, impact to organizations that operate in the healthcare industry, water, and electric and other critical infrastructure industries can cause very serious real-world problems, e.g., hospitals not being able to provide care for patients.</p>
 	<p>The Network Analytics dashboard aims to reduce the effort and time it takes network teams to investigate and resolve issues as well as to simplify and automate security reporting. The data is also available via GraphQL API and Logpush to allow teams to integrate the data into their internal systems and cross references with additional data points.</p>
 	<p>To learn more about the Network Analytics dashboard, refer to the <a href="https://developers.cloudflare.com/analytics/network-analytics">developer documentation</a>.</p>

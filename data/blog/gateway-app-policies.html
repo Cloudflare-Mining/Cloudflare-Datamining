@@ -14,7 +14,14 @@
 	</figure>
 	<p>In March 2020, we launched Gateway’s first feature, a <a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">secure DNS filtering solution</a>. With Gateway’s DNS filtering, administrators can click a single button to block known threats, like sources of malware or phishing sites. Policies can also be used to block specific risky categories, like gambling or social media. When users request a filtered site, Gateway stops the DNS query from resolving and prevents the device from connecting to a malicious destination or hostname with blocked material.</p>
 	<p>More recently, we expanded Gateway’s security filtering with a <a href="https://blog.cloudflare.com/gateway-swg">cloud L7 firewall</a>. The L7 firewall enables admins to apply security and content policies to HTTP traffic. For example, teams can stop files from being uploaded to certain applications or to build rules by URL.</p>
-	<h3>The mundane task of managing firewall settings for cloud apps</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-mundane-task-of-managing-firewall-settings-for-cloud-apps">The mundane task of managing firewall settings for cloud apps</h3>
+		<a href="https://blog.cloudflare.com/#the-mundane-task-of-managing-firewall-settings-for-cloud-apps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Building those rules for a single hostname or URL takes just a few clicks, but applying these policies to entire “applications” can be tedious. We often think of popular applications, like Microsoft Office 365, as a single entity. But behind the scenes, those services rely on hundreds of hostnames and IP addresses that collectively enable the application. If your team wants to build a rule to always allow file uploads to Office 365, you would have to find and input every single destination in their changing list.</p>
 	<p>For example, <i>Salesforce</i> is more than just salesforce.com. As of today, Salesforce uses 11 unique apex domains (e.g., forceusercontent.com, or sfdcstatic.com), and this list continues to grow.</p>
 	<figure class="kg-card kg-image-card ">
@@ -25,7 +32,14 @@
 	<p>If an IT administrator wants to ensure that Salesforce functions properly on their network, they will need to make sure that all of Salesforce’s domains are in their allowlist. And, they’ll need to make sure that they update this list whenever Salesforce adds a new network endpoint.</p>
 	<p>Maintaining a firewall policy for just one application can create enough of a headache. Most organizations need to keep track of hundreds of cloud applications that they want to manage on their network. These allow lists might consist of thousands of hostnames and require hours of time spent on tedious review to make sure that they are up-to-date and comprehensive.</p>
 	<p>Adding to this complexity is the constantly evolving landscape of cloud applications. An IT administrator might need to limit access to all unapproved file sharing applications on company devices for compliance requirements. To achieve this, they will need to keep track of all file sharing services and all the hostnames associated with each file sharing service.</p>
-	<h3>Gateway policies with Applications and App Types</h3>
+	<div class="flex anchor relative">
+		<h3 id="gateway-policies-with-applications-and-app-types">Gateway policies with Applications and App Types</h3>
+		<a href="https://blog.cloudflare.com/#gateway-policies-with-applications-and-app-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We want to reduce the burden on IT administrators and streamline the way organizations manage their firewall policies for cloud applications. Starting today, you can skip that chore with Cloudflare Gateway.</p>
 	<p>Cloudflare does the work of researching and grouping these applications for you. Your team can use those collections to build single Gateway HTTP rules by both <b>application</b> (e.g., Salesforce, Microsoft Office 365) and <b>app type</b> (e.g., File Sharing, Social Media).</p>
 	<p>Applications consist of a collection of hostnames based on the cloud application they belong to. App Types consist of a collection of applications.</p>
@@ -54,7 +68,14 @@
 
 	</figure>
 	<p>Now you’ve created your first Application rule! With one rule, you saved yourself having to bulk upload a list of several hundred hostnames to achieve the same result. You also won’t need to keep an eye on updates to network endpoints for those 20+ apps either — we’ll take care of intelligently updating that list for you.</p>
-	<h3>What’s Next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s Next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, we support 223 applications across 17 app types. To view the full list of supported applications and their associated app types, check out the Gateway documentation. We’ll be making continuous updates to this list to support additional applications and app types, as well as provide additional controls and visibility into Shadow IT on your network.</p>
 	<p>Applications and app types are available in the Gateway rule builder today for all customers using the L7 firewall. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. If you aren’t using Gateway yet, you can get started by <a href="https://dash.cloudflare.com/sign-up/teams">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/getting-started">onboarding directions</a>.</p>
 </div>

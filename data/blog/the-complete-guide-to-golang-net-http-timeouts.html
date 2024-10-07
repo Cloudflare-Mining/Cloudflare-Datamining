@@ -4,12 +4,26 @@
 	<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
 	<p>In this post I’ll take apart the various stages you might need to apply a timeout to, and look at the different ways to do it, on both the Server and the Client side.</p>
-	<h3>SetDeadline</h3>
+	<div class="flex anchor relative">
+		<h3 id="setdeadline">SetDeadline</h3>
+		<a href="https://blog.cloudflare.com/#setdeadline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>First, you need to know about the network primitive that Go exposes to implement timeouts: Deadlines.</p>
 	<p>Exposed by <a href="https://golang.org/pkg/net/#Conn"><code>net.Conn</code></a> with the <code>Set[Read|Write]Deadline(time.Time)</code> methods, Deadlines are an absolute time which when reached makes all I/O operations fail with a timeout error.</p>
 	<p><b>Deadlines are not timeouts.</b> Once set they stay in force forever (or until the next call to <code>SetDeadline</code>), no matter if and how the connection is used in the meantime. So to build a timeout with <code>SetDeadline</code> you'll have to call it before <i>every</i> <code>Read</code>/<code>Write</code> operation.</p>
 	<p>You probably don't want to call <code>SetDeadline</code> yourself, and let <code>net/http</code> call it for you instead, using its higher level timeouts. However, keep in mind that all timeouts are implemented in terms of Deadlines, so they <b>do NOT reset every time data is sent or received</b>.</p>
-	<h3>Server Timeouts</h3>
+	<div class="flex anchor relative">
+		<h3 id="server-timeouts">Server Timeouts</h3>
+		<a href="https://blog.cloudflare.com/#server-timeouts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><i>The </i><a href="https://blog.cloudflare.com/exposing-go-on-the-internet"><i>"So you want to expose Go on the Internet" post</i></a><i> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</i></p>
 	<figure class="kg-card kg-image-card ">
 
@@ -38,7 +52,15 @@ log.Println(srv.ListenAndServe())</code></pre>
 	<p>Also, there's no way to cancel a blocked <code>ResponseWriter.Write</code> since <code>ResponseWriter.Close</code> (which you can access via an interface upgrade) is not documented to unblock a concurrent Write. So there's no way to build a timeout manually with a Timer, either.</p>
 	<p>Sadly, this means that streaming servers can't really defend themselves from a slow-reading client.</p>
 	<p>I submitted <a href="https://github.com/golang/go/issues/16100">an issue with some proposals</a>, and I welcome feedback there.</p>
-	<h3>Client Timeouts</h3>
+	<div class="flex anchor relative">
+		<h3 id="client-timeouts">Client Timeouts</h3>
+		<a href="https://blog.cloudflare.com/#client-timeouts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/255U6cjjLCH1vUEJoA9QWo/2345ca2aa4d6aeb213939e0f9b686f00/Timeouts-002.png" alt="HTTP Client phases" class="kg-image" width="2234" height="603" loading="lazy">

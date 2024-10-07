@@ -19,7 +19,14 @@
 	<p>SCIM helps organizations efficiently manage user identities and access across multiple systems, reducing the need for manual intervention and ensuring that user information is accurate and up to date.</p>
 	<p>Cloudflare Access provides secure access to your internal applications and resources. It integrates with your existing identity provider to enforce strong authentication for users and ensure that only authorized users have access to your organization's resources. After a user successfully authenticates via the identity provider, Access initiates a session for that user. Once the session has expired, Access will redirect the user back to the identity provider.</p>
 	<p>Similarly, Cloudflare Gateway is a comprehensive <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway">secure web gateway (SWG)</a> which leverages the same identity provider configurations as Access to allow administrators to build DNS, Network, and HTTP inspection policies based on identity. Once a user logs in using WARP client via the identity provider, their identity is logged and evaluated against any policies created by their organization's administrator.</p>
-	<h3>Challenges before SCIM</h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-before-scim">Challenges before SCIM</h3>
+		<a href="https://blog.cloudflare.com/#challenges-before-scim" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before SCIM, if a user needed to be deprovisioned (e.g. leaving the business, a security breach or other factors) an administrator needed to remove access for the user in both the identity provider and Access. This was because a user’s Cloudflare Zero Trust session would stay active until they attempted to log in via the identity provider again. This was time-consuming and error-prone, and it leaves room for security vulnerabilities if a user's access is not removed in a timely manner.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -32,7 +39,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/43e51HTYQXmgvlrnMXXECn/a16e7a0993413712c944659e1a012970/pasted-image-0.png" alt="" class="kg-image" width="1158" height="533" loading="lazy">
 
 	</figure>
-	<h3>SCIM for Access &amp; Gateway</h3>
+	<div class="flex anchor relative">
+		<h3 id="scim-for-access-gateway">SCIM for Access &amp; Gateway</h3>
+		<a href="https://blog.cloudflare.com/#scim-for-access-gateway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, with the integration of SCIM, Access and Gateway can automatically deprovision users after they are deactivated in an identity provider and synchronize identity provider groups. This ensures that only active users, in the right group, have access to your organization's resources, improving the security of your network.</p>
 	<p>User deprovisioning via SCIM listens for any user deactivation events in the identity provider and then revokes all active sessions for that user. This immediately cuts off their access to any application protected by Access and their session via WARP for Gateway.</p>
 	<figure class="kg-card kg-image-card ">
@@ -53,8 +67,22 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/28Kn8u1iqObCiaRzjs52Ii/05c2c40926a032fbe0e70482204b8de4/pasted-image-0--3-.png" alt="" class="kg-image" width="1186" height="883" loading="lazy">
 
 	</figure>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today, SCIM support is available for Azure Active Directory and Okta for Self-Hosted Access applications. In the future, we plan to extend support for more Identity Providers and to Access for SaaS.</p>
-	<h3>Try it now </h3>
+	<div class="flex anchor relative">
+		<h3 id="try-it-now">Try it now </h3>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SCIM is available for all Zero Trust customers today and can be used to improve operations and overall security. Try out <a href="https://one.dash.cloudflare.com">SCIM for Access and Gateway</a> yourself today.</p>
 </div>

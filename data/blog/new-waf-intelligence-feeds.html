@@ -21,13 +21,27 @@
 
 	</figure>
 	<p>Managed IP Lists can be used in WAF rules to manage incoming traffic from these IPs.</p>
-	<h3>Where do these feeds come from?</h3>
+	<div class="flex anchor relative">
+		<h3 id="where-do-these-feeds-come-from">Where do these feeds come from?</h3>
+		<a href="https://blog.cloudflare.com/#where-do-these-feeds-come-from" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>These lists are based on Cloudflare-generated threat feeds which are made available as IP lists to be easily consumed in the WAF. Each IP is categorized by combining open source data as well as by analyzing the behavior of each IP leveraging the scale and reach of Cloudflare network. After an IP has been included in one of these feeds, we verify its categorization and feed this information back into our security systems and make it available to our customers in the form of a managed IP list. The content of each list is updated multiple times a day.</p>
 	<p>In addition to generating IP classifications based on Cloudflare’s internal data, Cloudflare curates and combines several data sources that we believe provide reliable coverage of active security threats with a low false positive rate. In today’s environment, an IP belonging to a cloud provider might today be distributing malware, but tomorrow might be a critical resource for your company.</p>
 	<p>Some IP address classifications are publicly available, OSINT data, for example Tor exit nodes, and Cloudflare takes care of integrating this into our Anonymizer list so that you don’t have to manage integrating this list into every asset in your network. Other classifications are determined or vetted using a variety of DNS techniques, like lookup, PTR record lookup, and observing passive DNS from Cloudflare’s network.</p>
 	<p>Our malware and command-and-control focused lists are generated from curated partnerships, and one type of IP address we target when we select partners is data sources that identify security threats that do not have DNS records associated with them.</p>
 	<p>Our Anonymizer list encompasses several types of services that perform anonymization, including VPNs, open proxies, and Tor nodes. It is a superset of the more narrowly focused VPN list (known commercial VPN nodes), and the Cloudflare Open Proxies list (proxies that relay traffic without requiring authentication).</p>
-	<h3>In dashboard IP annotations</h3>
+	<div class="flex anchor relative">
+		<h3 id="in-dashboard-ip-annotations">In dashboard IP annotations</h3>
+		<a href="https://blog.cloudflare.com/#in-dashboard-ip-annotations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using these lists to deploy a preventative security policy for these IPs is great, but what about knowing if an IP that is interacting with your website or application is part of a Botnet or VPN? We first released <a href="https://blog.cloudflare.com/security-center-investigate">contextual information</a> for Anonymizers as part of Security Week 2022, but we are now closing the circle by extending this feature to cover all new lists.</p>
 	<p>As part of Cloudflare's threat intelligence feeds, we are exposing the IP category directly into the dashboard. Say you are investigating requests that were blocked by the WAF and that looked to be probing your application for known software vulnerabilities. If the source IP of these requests is matching with one of our feeds (for example part of a VPN), contextual information will appear directly on the analytics page.</p>
 	<figure class="kg-card kg-image-card ">
@@ -37,7 +51,14 @@
 	</figure>
 	<p>When the source IP of a WAF event matches one of the threat feeds, we provide contextual information directly onto the Cloudflare dashboard.</p>
 	<p>This information can help you see patterns and decide whether you need to use the managed lists to handle the traffic from these IPs in a particular way, for example by creating a rate limiting rule that reduces the amount of requests these actors can perform over a period of time.</p>
-	<h3>Who gets this?</h3>
+	<div class="flex anchor relative">
+		<h3 id="who-gets-this">Who gets this?</h3>
+		<a href="https://blog.cloudflare.com/#who-gets-this" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The following table summarizes what plans have access to each one of these features. Any paying plans will have access to the contextual in-dash information, while Enterprise will be able to use different managed lists. Managed lists can be used only on Enterprise zones within an Enterprise account.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -164,6 +185,13 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>* Contact your customer success manager to learn how to get access to these lists.</p>
-	<h3>Future releases</h3>
+	<div class="flex anchor relative">
+		<h3 id="future-releases">Future releases</h3>
+		<a href="https://blog.cloudflare.com/#future-releases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are working on enriching our threat feeds even further. In the next months we are going to provide more IP lists, specifically we are looking into lists for cloud providers and Carrier-grade Network Address Translation (CG-NAT).</p>
 </div>

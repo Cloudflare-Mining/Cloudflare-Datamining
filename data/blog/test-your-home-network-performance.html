@@ -11,7 +11,14 @@
 
 	</figure>
 	<p>The test has three main components: download, upload and a latency test. Each measures &nbsp;different aspects of your network connection.</p>
-	<h3>Down</h3>
+	<div class="flex anchor relative">
+		<h3 id="down">Down</h3>
+		<a href="https://blog.cloudflare.com/#down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For starters we run you through a basic download test. We start off downloading small files and progressively move up to larger and larger files until the test has saturated your Internet downlink. Small files (we start off with 10KB, then 100KB and so on) are a good representation of how websites will load, as these typically encompass many small files such as images, CSS stylesheets and JSON blobs.</p>
 	<p>For each file size, we show you the measurements inside a table, allowing you to drill down. Each dot in the bar graph represents one of the measurements, with the thin line delineating the range of speeds we've measured. The slightly thicker block represents the set of measurements between the 25th and 75th percentile.</p>
 	<figure class="kg-card kg-image-card ">
@@ -21,12 +28,26 @@
 	</figure>
 	<p>Getting up to the larger file sizes we can see true maximum throughput: how much bandwidth do you really have? You may be wondering why we have to use progressively larger files. The reason is that download speeds start off slow (this is aptly called <a href="https://en.wikipedia.org/wiki/TCP_congestion_control#Slow_start">slow start</a>) and then progressively gets faster. If we were to use only small files we would never get to the maximum throughput that your network provider supports, which should be close to the Internet speed your ISP quoted you when you signed up for service.</p>
 	<p>The maximum throughput on larger files will be indicative of how fast you can download large files such as games (<a href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V">GTA V</a> is almost 100 GB to download!) or the maximum quality that you can stream video on (lower download speed means you have to use a lower resolution to get continuous playback). We only increase download file sizes up to the absolute minimum required to get accurate measurements: no wasted bandwidth.</p>
-	<h3>Up</h3>
+	<div class="flex anchor relative">
+		<h3 id="up">Up</h3>
+		<a href="https://blog.cloudflare.com/#up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Upload is the opposite of download: we send data <i>from</i> your browser <i>to</i> the Internet. This metric is more important nowadays with many people working from home: it directly affects <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">live video conferencing</a>. A faster upload speed means your microphone and video feed can be of higher quality, meaning people can see and hear you more clearly on videoconferences.</p>
 	<p>Measurements for upload operate in the same manner: we progressively try to upload larger and larger files up until the point we notice your connection is saturated.</p>
 	<p>Speed measurements are never 100% consistent, which is why we repeat them. An easy way for us to report your speed would be to simply report the fastest speed we see. The problem is that this will not be representative of your real-world experience: latency and packet loss constantly fluctuates, meaning you can't expect to see your maximum measured performance all the time.</p>
 	<p>To compensate for this, we take the 90th percentile of measurements, or p90 and report that instead of the absolute maximum speed that we measured. Taking the 90th percentile is a more accurate representation in that it discounts peak outliers, which is a much closer approximation of what you can expect in terms of speeds in the real world.</p>
-	<h3>Latency and Jitter</h3>
+	<div class="flex anchor relative">
+		<h3 id="latency-and-jitter">Latency and Jitter</h3>
+		<a href="https://blog.cloudflare.com/#latency-and-jitter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Download and upload are important metrics but don't paint the entire picture of the quality of your Internet connection. Many of us find ourselves interacting with work and friends over videoconferencing software more than ever. Although speeds matter, video is also very sensitive to the <i>latency</i> of your Internet connection. Latency represents the time an IP <i>packet</i> needs to travel from your device to the service you're using on the Internet and back. High latency means that when you're talking on a video conference, it will take longer for the other party to hear your voice.</p>
 	<p>But, latency only paints half the picture. Imagine yourself in a conversation where you have some delay before you hear what the other person says. That may be annoying but after a while you get used to it. What would be even worse is if the delay <i>differed</i> constantly: sometimes the audio is almost in sync and sometimes it has a delay of a few seconds. You can imagine how often this would result into two people starting to talk at the same time. This is directly related to how <i>stable</i> your latency is and is represented by the jitter metric. Jitter is the average variation found in consecutive latency measurements. A lower number means that the latencies measured are more consistent, meaning your media streams will have the same delay throughout the session.</p>
 	<figure class="kg-card kg-image-card ">

@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Today, we’re excited to talk about <a href="https://radar.cloudflare.com/scan">URL Scanner</a>, a tool that helps everyone from security teams to everyday users to detect and safeguard against malicious websites by scanning and analyzing them. URL Scanner has executed almost a million scans since its <a href="https://blog.cloudflare.com/radar-url-scanner-early-access">launch</a> last March on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, driving us to continuously innovate and enhance its capabilities. Since that time, we have introduced unlisted scans, detailed malicious verdicts, enriched search functionality, and now, integration with Security Center and an official API, all built upon the robust foundation of <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>.</p>
-	<h2>Integration with the Security Center in the Cloudflare Dashboard</h2>
+	<div class="flex anchor relative">
+		<h2 id="integration-with-the-security-center-in-the-cloudflare-dashboard">Integration with the Security Center in the Cloudflare Dashboard</h2>
+		<a href="https://blog.cloudflare.com/#integration-with-the-security-center-in-the-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Security Center is the single place in the Cloudflare Dashboard to map your <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a>, identify potential security risks, and mitigate risks with a few clicks. Its users can now access the URL scanner directly from the <a href="https://developers.cloudflare.com/security-center/investigate">Investigate Portal</a>, enhancing their cybersecurity workflow. These scans will be unlisted by default, ensuring privacy while facilitating a deep dive into website security. Users will be able to see their historic scans and access the related reports when they need to, and they will benefit from automatic screenshots for multiple screen sizes, enriching the context of each scan.</p>
 	<p>Customers with Cloudflare dashboard access will enjoy higher API limits and faster response times, crucial for agile security operations. Integration with internal workflows becomes seamless, allowing for sophisticated network and user protection strategies.</p>
 	<figure class="kg-card kg-image-card ">
@@ -15,9 +22,23 @@
 
 	</figure>
 	<p><i>Security Center in the Cloudflare Dashboard</i></p>
-	<h2>Unlocking the potential of the URL Scanner API</h2>
+	<div class="flex anchor relative">
+		<h2 id="unlocking-the-potential-of-the-url-scanner-api">Unlocking the potential of the URL Scanner API</h2>
+		<a href="https://blog.cloudflare.com/#unlocking-the-potential-of-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">URL Scanner API</a> is a powerful asset for developers, enabling custom scans to detect <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing</a> or <a href="https://www.cloudflare.com/learning/ddos/glossary/malware">malware</a> risks, analyze website technologies, and much more. With new features like custom HTTP headers and multi-device screenshots, developers gain a comprehensive toolkit for thorough website assessment.</p>
-	<h3>Submitting a scan request</h3>
+	<div class="flex anchor relative">
+		<h3 id="submitting-a-scan-request">Submitting a scan request</h3>
+		<a href="https://blog.cloudflare.com/#submitting-a-scan-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Using the API, here’s the simplest way to <a href="https://developers.cloudflare.com/api/operations/urlscanner-create-scan">submit</a> a scan request:</p>
 	<pre class="language-curl"><code class="language-curl">curl --request POST \
 	--url https://api.cloudflare.com/client/v4/accounts/&lt;accountId&gt;/urlscanner/scan \
@@ -27,7 +48,15 @@
 		"url": "https://www.cloudflare.com",
 	}'</code></pre>
 	<p>New features include the option to set custom HTTP headers, like <a href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">User-Agent</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a>, request multiple target device screenshots, like mobile and desktop, as well as set the visibility level to “unlisted”. This essentially marks the scan as private and was often requested by developers who wanted to keep their investigations confidential. Public scans, on the other hand, can be found by anyone through search and are useful to share results with the wider community. You can find more details in our <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">developer documentation</a>.</p>
-	<h3>Exploring the scan results</h3>
+	<div class="flex anchor relative">
+		<h3 id="exploring-the-scan-results">Exploring the scan results</h3>
+		<a href="https://blog.cloudflare.com/#exploring-the-scan-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card kg-width-wide">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NRMloVOilGBXsYy12xeeT/8202728097a541d3bd027d51892e1bb4/image5-16.png" alt="Scan results for www.cloudflare.com on Cloudflare Radar" class="kg-image" width="1999" height="1185" loading="lazy">
@@ -35,10 +64,24 @@
 	</figure>
 	<p><i>Scan results for</i> <a href="https://www.cloudflare.com"><i>www.cloudflare.com</i></a> <i>on Cloudflare Radar</i></p>
 	<p>Once a scan concludes, fetch the final <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan">report</a> and the full <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har">network log</a>. Recently added features include the `verdict` property, indicating the site’s malicious status, and the `securityViolations` section detailing <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">SRI</a> policy breaches — as a developer, you can also scan your own website and see our recommendations. Expect improvements on verdict accuracy over time, as this is an area we’re focusing on.</p>
-	<h3>Enhanced search functionality</h3>
+	<div class="flex anchor relative">
+		<h3 id="enhanced-search-functionality">Enhanced search functionality</h3>
+		<a href="https://blog.cloudflare.com/#enhanced-search-functionality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Developers can now <a href="https://developers.cloudflare.com/api/operations/urlscanner-search-scans">search</a> scans by hostname, a specific URL or even <i>any</i> URL the page connected to during the scan. This allows, for example, to search for websites that use a JavaScript library named jquery.min.js (‘?path=jquery.min.js’). Future plans include additional features like searching by IP address, <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">ASN</a>, and malicious website categorisation.</p>
 	<p>The URL Scanner can be used for a diverse range of applications. These include capturing a website's evolving state over time (such as tracking changes to the front page of an online newspaper), analyzing technologies employed by a website, preemptively assessing potential risks (as when scrutinizing shortened URLs), and supporting the investigation of persistent cybersecurity threats (such as identifying affected websites hosting a malicious JavaScript file).</p>
-	<h2>How we built the URL Scanner API</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-the-url-scanner-api">How we built the URL Scanner API</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In recounting the process of developing the URL Scanner, we aim to showcase the potential and versatility of Cloudflare Workers as a platform. This story is more than a technical journey, but a testament to the capabilities inherent in our platform's suite of APIs. By dogfooding our own technology, we not only demonstrate confidence in its robustness but also encourage developers to harness the same capabilities for building sophisticated applications. The URL Scanner exemplifies how Cloudflare Workers, Durable Objects, and the Browser Rendering API seamlessly integrate.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -47,7 +90,14 @@
 	</figure>
 	<p><i><i>High level overview of the</i></i><i> </i><i><i>Cloudflare URL Scanner technology stack</i></i></p>
 	<p>As seen above, Cloudflare’s runtime infrastructure is the foundation the system runs on. <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> serves the public API, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> handles orchestration, <a href="https://developers.cloudflare.com/r2">R2</a> acts as the primary storage solution, and <a href="https://developers.cloudflare.com/queues">Queues</a> efficiently handles batch operations, all at the edge. However, what truly enables the URL Scanner’s capabilities is the <a href="https://developers.cloudflare.com/browser-rendering">Browser Rendering API</a>. It’s what initially allowed us to release in such a short time frame, since we didn’t have to build and manage an entire fleet of Chrome browsers from scratch. We simply request a browser, and then using the well known <a href="https://pptr.dev">Puppeteer</a> library, instruct it to fetch the webpage and process it in the way we want. This API is at the heart of the entire system.</p>
-	<h3>Scanning a website</h3>
+	<div class="flex anchor relative">
+		<h3 id="scanning-a-website">Scanning a website</h3>
+		<a href="https://blog.cloudflare.com/#scanning-a-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The entire process of scanning a website, can be split into 4 phases:</p>
 	<ol>
 		<li>
@@ -124,7 +174,14 @@
 	</figure>
 	<p>This allows us to better manage the write load on Postgres. We wanted scans available as soon as possible to those who requested them, but it’s ok if they’re only available in search results at a slightly later point in time (seconds to minutes, depending on load).</p>
 	<p>In short, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> together with the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a> power the entire scanning process. Once that’s finished, the Cloudflare Worker serving the API will simply fetch it from <a href="https://developers.cloudflare.com/r2">R2</a> by ID. All together, Workers, Durable Objects, and R2 scale seamlessly and will allow us to grow as demand evolves.</p>
-	<h3>Last but not least</h3>
+	<div class="flex anchor relative">
+		<h3 id="last-but-not-least">Last but not least</h3>
+		<a href="https://blog.cloudflare.com/#last-but-not-least" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While we've extensively covered the URL scanning workflow, we've yet to delve into the construction of the API worker itself. Developed with <a href="https://www.typescriptlang.org">Typescript</a>, it uses <a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a>, a Javascript router with <a href="https://spec.openapis.org/oas/v3.1.0">Open API 3</a> schema generation and validation, originally built for <a href="https://radar.cloudflare.com">Radar</a>, but that’s been improving ever since with contributions from the community. Here’s a quick example of how to set up an endpoint, with input validation built in:</p>
 	<pre class="language-javascript"><code class="language-javascript">import { DateOnly, OpenAPIRoute, Path, Str, OpenAPIRouter } from '@cloudflare/itty-router-openapi'
 
@@ -172,7 +229,14 @@ export default {
 }</code></pre>
 	<p>In the example above, the ScanMetadataCreate endpoint will make sure to validate the incoming POST data to match the defined schema before calling the ‘async handle(request,env,context,data)’ function. This way you can be sure that if your code is called, the data argument will always be validated and formatted.</p>
 	<p>You can learn more about the project on its <a href="https://github.com/cloudflare/itty-router-openapi">GitHub page</a>.</p>
-	<h2>Future plans and new features</h2>
+	<div class="flex anchor relative">
+		<h2 id="future-plans-and-new-features">Future plans and new features</h2>
+		<a href="https://blog.cloudflare.com/#future-plans-and-new-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Looking ahead, we're committed to further elevating the URL Scanner's capabilities. Key upcoming features include geographic scans, where users can customize the location that the scan is done from, providing critical insights into regional security threats and content compliance; expanded scan details, including more comprehensive headers and security details; and continuous performance improvements and optimisations, so we can deliver faster scan results.</p>
 	<p>The evolution of the URL Scanner is a reflection of our commitment to Internet safety and innovation. Whether you're a developer, a security professional, or simply invested in the safety of the digital landscape, the URL Scanner API offers a comprehensive suite of tools to enhance your efforts. Explore the new features today, and join us in shaping a safer Internet for everyone.</p>
 	<p>Remember, while Security Center's new capabilities offer advanced tools for URL Scanning for Cloudflare’s existing customers, the URL Scanner remains accessible for basic scans to the public on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, ensuring our technology benefits a broad audience.</p>

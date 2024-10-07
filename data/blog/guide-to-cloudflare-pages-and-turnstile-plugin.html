@@ -8,14 +8,28 @@
 	<p>Balancing developer velocity and security against bots is a constant challenge. Deploying your changes as quickly and easily as possible is essential to stay ahead of your (or your customers’) needs and wants. Ensuring your website is safe from malicious bots — without degrading user experience with alien hieroglyphics to decipher just to prove that you are a human — is no small feat. With <a href="https://pages.cloudflare.com">Pages</a> and <a href="https://developers.cloudflare.com/turnstile">Turnstile</a>, we'll walk you through just how easy it is to have the best of both worlds!</p>
 	<p><a href="https://pages.cloudflare.com">Cloudflare Pages</a> offer a seamless platform for deploying and scaling your websites with ease. You can get started right away with configuring your websites with a quick integration using your git provider, and get set up with unlimited requests, bandwidth, collaborators, and projects.</p>
 	<p>Cloudflare Turnstile is Cloudflare’s <a href="https://www.cloudflare.com/products/turnstile">CAPTCHA alternative solution</a> where your users don’t ever have to solve another puzzle to get to your website, no more stop lights and fire hydrants. You can protect your site without having to put your users through an annoying user experience. If you are already using another CAPTCHA service, we have made it easy for you to <a href="https://developers.cloudflare.com/turnstile/migration">migrate over to Turnstile</a> with minimal effort needed. Check out the <a href="https://developers.cloudflare.com/turnstile">Turnstile documentation</a> to get started.</p>
-	<h3>Alright, what are we building?</h3>
+	<div class="flex anchor relative">
+		<h3 id="alright-what-are-we-building">Alright, what are we building?</h3>
+		<a href="https://blog.cloudflare.com/#alright-what-are-we-building" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this tutorial, we'll walk you through integrating Cloudflare Pages with Turnstile to secure your website against bots. You'll learn how to deploy Pages, embed the Turnstile widget, validate the token on the server side, and monitor Turnstile analytics. Let’s build upon <a href="https://developers.cloudflare.com/pages/tutorials/forms">this tutorial</a> from Cloudflare’s developer docs, which outlines how to create an HTML form with Pages and Functions. We’ll also show you how to secure it by integrating with Turnstile, complete with client-side rendering and server-side validation, using the <a href="https://developers.cloudflare.com/pages/functions/plugins/turnstile">Turnstile Pages Plugin</a>!</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4DaVCMwbVOKW17aOgthwZh/90e9ffd754b5d70873ac37c33021990e/Screenshot-2024-03-07-at-11.52.43.png" alt="" class="kg-image" width="2000" height="1425" loading="lazy">
 
 	</figure>
-	<h3>Step 1: Deploy your Pages</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-1-deploy-your-pages">Step 1: Deploy your Pages</h3>
+		<a href="https://blog.cloudflare.com/#step-1-deploy-your-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On the Cloudflare Dashboard, select your account and go to Workers &amp; Pages to create a new Pages application with your git provider. Choose the repository where you cloned the tutorial project or any other repository that you want to use for this walkthrough.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -40,7 +54,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6I301dY7rRKreWxUwEuHs/f619f68d4a7bd10a9f5d0ef618c1680f/image8-3.png" alt="" class="kg-image" width="883" height="363" loading="lazy">
 
 	</figure>
-	<h3>Step 2: Embed Turnstile widget</h3>
+	<div class="flex anchor relative">
+		<h3 id="step-2-embed-turnstile-widget">Step 2: Embed Turnstile widget</h3>
+		<a href="https://blog.cloudflare.com/#step-2-embed-turnstile-widget" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now, let’s navigate to Turnstile and add the newly created Pages site.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -185,7 +206,15 @@
 &lt;/script&gt;</code></pre>
 	<p>Make sure that the <code>div id</code> you assign is the same as the <code>id</code> you specify in <code>turnstile.render</code> call. In this case, let’s use <code>“turnstile-widget”</code>. Once that’s done, you should see the widget show up on your site!</p>
 	<pre class="language-html"><code class="language-html">&lt;div id="turnstile-widget" style="padding-top: 20px;"&gt;&lt;/div&gt;</code></pre>
-	<h3>Step 3: Validate the token</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="step-3-validate-the-token">Step 3: Validate the token</h3>
+		<a href="https://blog.cloudflare.com/#step-3-validate-the-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that the Turnstile widget is rendered on the front end, let’s validate it on the server side and check out the Turnstile outcome. We need to make a call to the <code>/siteverify</code> API with the token in the submit function under <code>./functions/api/submit.js</code>.</p>
 	<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p>
 	<pre class="language-javascript"><code class="language-javascript">/**
@@ -247,7 +276,15 @@ export const onRequestPost = [
     }
   }
 }</code></pre>
-	<h3>Wrapping up</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="wrapping-up">Wrapping up</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we've set up Turnstile, we can head to Turnstile analytics in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">Cloudflare Dashboard</a> to monitor the <a href="https://developers.cloudflare.com/turnstile/reference/tooltips">solve rate</a> and widget traffic. Visitor Solve Rate indicates the percentage of visitors who successfully completed the Turnstile widget. A sudden drop in the Visitor Solve Rate could indicate an increase in bot traffic, as bots may fail to complete the challenge presented by the widget. API Solve Rate measures the percentage of visitors who successfully validated their token against the <code>/siteverify</code> API. Similar to the Visitor Solve Rate, a significant drop in the API Solve Rate may indicate an increase in bot activity, as bots may fail to validate their tokens. Widget Traffic provides insights into the nature of the traffic hitting your website. A high number of challenges requiring interaction may suggest that bots are attempting to access your site, while a high number of unsolved challenges could indicate that the Turnstile widget is effectively blocking suspicious traffic.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

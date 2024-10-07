@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>Starting today, we’re thrilled to announce you can run the same tunnel from multiple instances of cloudflared simultaneously. This enables graceful restarts, elastic auto-scaling, easier Kubernetes integration, and more reliable tunnels.</p>
-	<h2>What is Cloudflare Tunnel?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-cloudflare-tunnel">What is Cloudflare Tunnel?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-cloudflare-tunnel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I work on Cloudflare Tunnel, a product our customers use to connect their services and private networks to Cloudflare without poking holes in their firewall. Tunnel connections are managed by <code>cloudflared</code>, a tool that runs in your environment and connects your services to the Internet while ensuring that all its traffic goes through Cloudflare.</p>
 	<p>Say you have some local service (a website, an API, or a TCP server), and you want to securely expose it to the Internet using a Cloudflare Tunnel. First, download cloudflared, which is a “connector” that connects your local service to the Internet through Cloudflare. You can then connect that service to Cloudflare and generate a DNS entry with a single command:</p>
 	<pre class="language-bash"><code class="language-bash">cloudflared tunnel create --name mytunnel --url http://localhost:8080 --hostname example.com</code></pre>
@@ -19,7 +26,14 @@
 	<p>With Tunnel, your origin server no longer needs to allow any incoming traffic. In fact, it doesn’t even need a publicly reachable IP address. This is significant because that means that no one can simply bypass Cloudflare to reach your resource either.</p>
 	<p>Traditionally, Cloudflare customers onboard their sites to our platform with a simple nameserver change. By changing your nameserver, Cloudflare receives any queries to your resource first and leverages this as an opportunity to block malicious traffic and enforce policies and rules you define for your resource within the Cloudflare dashboard. However, if attackers discover your origin IP, they could bypass Cloudflare and your policies and rules.</p>
 	<p>Instead, with Tunnel, requests for your Internet property are proxied through the already-established outgoing connections from cloudflared to the Cloudflare network. This way any traffic entering your site will have to go through Cloudflare, where you can enforce more granular control with policies for caching, page rewrites, or Zero Trust security (e.g. only users with an @example.com email can view the page).</p>
-	<h2>Scaling cloudflared</h2>
+	<div class="flex anchor relative">
+		<h2 id="scaling-cloudflared">Scaling cloudflared</h2>
+		<a href="https://blog.cloudflare.com/#scaling-cloudflared" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One feature request we’ve heard quite often is that our users need their software systems to scale. Their database must be scalable. Their web servers must be scalable. And of course, in turn, cloudflared must be scalable, because without cloudflared, our users can’t receive traffic.</p>
 	<p>For reliability purposes, cloudflared opens connections to four different Cloudflare servers (two in each of two different data centers, for redundancy in case a data center goes down). This way if one goes down, the other three will serve traffic while it reconnects. But what if the cloudflared process itself goes down?</p>
 	<p>Well, ideally, we would be able to scale or replicate cloudflared itself.</p>
@@ -51,14 +65,43 @@ CONNECTOR ID                         CREATED              ARCHITECTURE VERSION  
 71490dec-190f-4652-a70a-cd001fe6fdcf 2021-03-26T19:29:47Z darwin_amd64 2021.3.3 104.13.170.35 2xDFW, 2xMCI 
 a0737d55-51f5-4fe0-8b53-c25989453c43 2021-03-26T19:29:58Z darwin_amd64 2021.3.3 104.13.170.35 2xDFW, 2xMCI </code></pre>
 	<p>At the moment, there’s a limit of 100 simultaneous connectors per tunnel. We think that should be enough for any customer, but if your use-case requires more, please reach out to support and we can raise it for your account.</p>
-	<h2>Cloudflare Tunnel’s new use cases</h2>
-	<h3>Elastic auto-scaling</h3>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-tunnels-new-use-cases">Cloudflare Tunnel’s new use cases</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-tunnels-new-use-cases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="elastic-auto-scaling">Elastic auto-scaling</h3>
+		<a href="https://blog.cloudflare.com/#elastic-auto-scaling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Don’t let cloudflared become a bottleneck in your system. When your incoming traffic spikes, your origin servers should scale up, and your cloudflareds should scale up too.</p>
 	<p>With this launch, your team can dynamically start more instances of <code>cloudflared</code> without changing your DNS or Load Balancer configuration. The tunnel will distribute traffic between instances of <code>cloudflared</code> without the need to manually create and enroll new instances.</p>
-	<h3>Graceful restarts</h3>
+	<div class="flex anchor relative">
+		<h3 id="graceful-restarts">Graceful restarts</h3>
+		<a href="https://blog.cloudflare.com/#graceful-restarts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Right now it can be painful to change your cloudflared configuration. You’ll change the config file (or environment variables), then restart cloudflared. The problem is, this restart causes downtime while cloudflared stops accepting requests, restarts, reconnects to the edge, and starts accepting requests again.</p>
 	<p>Today’s announcement enables zero-downtime config changes. Instead of restarting cloudflared, simply start a second instance. The new instance will read the new configuration from the file. Once it’s connected to the edge and accepting traffic, you can stop the old cloudflared instance. The old instance will stop accepting new connections, wait for existing connections to finish, then terminate. Now 100% of your traffic is going through the new configuration, with zero downtime.</p>
-	<h3>Easier Kubernetes integration</h3>
+	<div class="flex anchor relative">
+		<h3 id="easier-kubernetes-integration">Easier Kubernetes integration</h3>
+		<a href="https://blog.cloudflare.com/#easier-kubernetes-integration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflared tunnels were previously incompatible with two of the most common Kubernetes scenarios:</p>
 	<ol>
 		<li>
@@ -70,7 +113,14 @@ a0737d55-51f5-4fe0-8b53-c25989453c43 2021-03-26T19:29:58Z darwin_amd64 2021.3.3 
 	</ol>
 	<p>Unfortunately, neither of these worked with cloudflared, because the new cloudflared pod would fail to start. Instead, it would output an error message, saying it couldn’t run because its tunnel was already running somewhere else.</p>
 	<p>But now you can run many cloudflared pods, each running the same tunnel. We suggest the easiest way to use cloudflared with Kubernetes is to have your origin server encapsulated in a Kubernetes Service, and then use a separate Kubernetes Deployment for cloudflared. Configure cloudflared’s <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress">ingress rules</a> to point at the origin Service. Now you can scale cloudflared and your origin service up or down, independently of each other.</p>
-	<h3>More reliable tunnels</h3>
+	<div class="flex anchor relative">
+		<h3 id="more-reliable-tunnels">More reliable tunnels</h3>
+		<a href="https://blog.cloudflare.com/#more-reliable-tunnels" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In a modern distributed system, it’s important to avoid having a bottleneck or a single point of failure. Unfortunately, cloudflared sometimes became a single point of failure. Previously, you could mitigate this by running two cloudflareds, with different tunnels but otherwise identical configuration, and load balancing across these tunnels.</p>
 	<p>However, today you can simply run the same cloudflared multiple times -- whether in the same data center or two different continents -- and avoid the anxiety that comes from relying on a single program to keep your traffic flowing in.</p>
 	<p>If you’re interested in trying it out for yourself, check out our <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel">tutorial</a> to get started today!</p>

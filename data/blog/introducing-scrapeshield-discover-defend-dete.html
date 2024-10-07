@@ -7,7 +7,14 @@
 	</figure>
 	<p>If you're a publisher, whether an individual blogger or major media outlet, you've undoubtedly experienced content scraping. Searching the web for an article you've published or other original content you've created and you find it copied and republished on some other random website. Often the site will be full of ads. And, sometimes, it will even rank higher in search results than your original work.</p>
 	<p>While you may envision an army of individuals copying and pasting your content on their sites, the truth is content scraping is typically an automated process with bots that grab original content and then republish it without human intervention onto link farm sites. CloudFlare has blocked many of these bots automatically in the past, but we decided it was time to do something to more actively stop them.</p>
-	<h3>Introducing ScrapeShield</h3>
+	<div class="flex anchor relative">
+		<h3 id="introducing-scrapeshield">Introducing ScrapeShield</h3>
+		<a href="https://blog.cloudflare.com/#introducing-scrapeshield" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.cloudflare.com/apps/scrapeshield">ScrapeShield</a> is an app created by the CloudFlare team. It incorporates several existing CloudFlare features like email obfuscation and hotlink protection that serve to protect from content scraping and adds a number of new features as well. Because we believe every publisher of original content should be able to understand and control how their work is used, we're providing ScrapeShield free for every CloudFlare user.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -15,13 +22,34 @@
 Scraping" class="kg-image" width="500" height="213" loading="lazy">
 
 	</figure>
-	<h3>Detect, Defend &amp; Deter</h3>
+	<div class="flex anchor relative">
+		<h3 id="detect-defend-deter">Detect, Defend &amp; Deter</h3>
+		<a href="https://blog.cloudflare.com/#detect-defend-deter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>ScrapeShield has different elements to help you detect when your content is scraped, defend your site against content scrapers, and even deter content scrapers from targeting you in the first place. If you enable ScrapeShield, CloudFlare will automatically insert invisible tracking beacons in your content. When automated bots scrape your content, they pull the beacons along with them. CloudFlare detects these beacons when they ping from sites that aren't your own. You can access your ScrapeShield control panel to see where your content is being republished. Not only is this useful in showing scraping, but you can also see users who are reading your content through proxy services like Flipboard or Pulse.</p>
 	<p>The data from the content beacons is fed back into CloudFlare's protection system. As CloudFlare identifies content scraping bots, we automatically prevent them from accessing your site. Just like Project Honey Pot, the original inspiration for CloudFlare, used traps to detect when spammers were harvesting email addresses, CloudFlare now uses data from ScrapeShield to identify content scrapers and keep them off publishers' sites.</p>
-	<h3>Maze</h3>
+	<div class="flex anchor relative">
+		<h3 id="maze">Maze</h3>
+		<a href="https://blog.cloudflare.com/#maze" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We didn't want to just stop scrapers from attacking sites on CloudFlare, we also wanted to tie up their resources so they couldn't harm the rest of the web. To do this, we created Maze. Maze routes known content scrapers who are visiting ScrapeShield-protected sites into a virtual labyrinth of gibirish and gobbledygook. We dynamically throttle the bandwidth and speed so instead of the pages loading as fast as possible, the connection is held open to the scrapers and their resources are tied up.</p>
 	<p>We use excess resources on the CloudFlare network to generate Maze, and it doesn't consume any of our publishers' resources or add any additional load to their sites. What's beautiful about the system is that the only way that content scrapers can be sure they're avoiding Maze is to avoid CloudFlare's IP addresses entirely. For any content scrapers who may be reading this, here's a <a href="https://www.cloudflare.com/ips">helpful list of all of our IPs</a> so you can make sure to stay away.</p>
-	<h3>No Pinning</h3>
+	<div class="flex anchor relative">
+		<h3 id="no-pinning">No Pinning</h3>
+		<a href="https://blog.cloudflare.com/#no-pinning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, with the rise of sites like Pinterest, innocent content scraping may become even more prolific. While many sites welcome their images being pinned, we wanted to make it easy to opt out. ScrapeShield includes an option to add the no-pinning meta tag to your site to prevent your images from being pinned to the site. As other similar services include a mechanism to opt out, expect that we'll include an easy way for you to do so right from the ScrapeShield interface.</p>
 	<p>The health of the web depends on publishers creating original content getting credit for their creations. CloudFlare is committed to building a better web and we're extremely excited about ScrapeShield as a new tool to help publishers do exactly that.</p>
 	<h4>Addendum May 2016</h4>

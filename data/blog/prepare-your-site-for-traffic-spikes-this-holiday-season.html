@@ -1,7 +1,14 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Z5Y3XwmKI2HGutvmGQV3H/1ba3622e47a9e42dc80da3a26d00bf72/prepare-your-site-for-traffic-spikes-this-holiday-season.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>The holiday season is approaching, and everyone is thinking about gifts for their friends and family. As people increasingly shop online, this means huge spikes in traffic for web sites---especially <a href="https://www.cloudflare.com/ecommerce">ecommerce sites</a>. We want you to get the most out of this year’s surge in web traffic, so we’ve created a list of tips to help you prepare your site to ensure your visitors have a reliable and fast experience.</p>
-	<h3>Make sure your site can handle traffic spikes:</h3>
+	<div class="flex anchor relative">
+		<h3 id="make-sure-your-site-can-handle-traffic-spikes">Make sure your site can handle traffic spikes:</h3>
+		<a href="https://blog.cloudflare.com/#make-sure-your-site-can-handle-traffic-spikes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>1) Contact your hosting provider to understand the limits of your hosting plan</h4>
 	<p>Even though CloudFlare offsets most of the load to your website via caching and request filtering, a certain amount of traffic will still pass through to your host. Knowing the limits of your plan can help prevent a bottleneck from your hosting plan.</p>
 	<h4>2) Reduce the number of unwanted requests to your infrastructure</h4>
@@ -24,7 +31,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qlwZv5c3n2HxcBFsvSgFp/00bf6c4888f0718699d56bfb16e50452/page-rule.png" alt="alt" class="kg-image" width="1058" height="378" loading="lazy">
 
 	</figure>
-	<h3>Further suggestions for optimizing CloudFlare:</h3>
+	<div class="flex anchor relative">
+		<h3 id="further-suggestions-for-optimizing-cloudflare">Further suggestions for optimizing CloudFlare:</h3>
+		<a href="https://blog.cloudflare.com/#further-suggestions-for-optimizing-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>1) Make sure your back-end analytics are accurate</h4>
 	<p>To ensure visitor’s IPs show in your back-end server logs you can install mod_cloudflare to restore original visitor IP back to server logs. Our IP addresses will show up in your logs unless you install the modification to make sure you are logging the visitors’ actual IP addresses.</p>
 	<h4>2) Turn on Auto Minification to send as little data as possible</h4>
@@ -52,7 +66,14 @@
 	<p>If you want to make quick changes to your page and have your visitors see that change immediately, you can purge individual files from CloudFlare’s cache.</p>
 	<p>For example, if you are running a sale only for Black Friday, and you want new content displayed to your visitors, you can purge a single page so that CloudFlare will return to your origin server to fetch a new version of that page for our cache.</p>
 	<p>Please Note: if you purge your entire cache your origin will receive a flood of traffic until CloudFlare get all of your assets back into our cache.</p>
-	<h3>One last thing</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-last-thing">One last thing</h3>
+		<a href="https://blog.cloudflare.com/#one-last-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even if you don’t implement any of the suggestions above you are still ahead of the game by being on CloudFlare’s network. Since we have 28 data centers around the world, we bring your site close to your visitors. And since we run an Anycast network, visitors are automatically directed to the closest data center meaning that your site will be faster as the request travels over a shorter distance.</p>
 	<p>We wish you all the best this holiday season! Good luck!</p>
 </div>

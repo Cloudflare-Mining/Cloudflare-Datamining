@@ -2,9 +2,23 @@
 <div class="post-content lh-copy gray1">
 	<p>We’re super stoked about bringing you <a href="https://workers.dev">Workers.dev</a>, and we’re even more stoked at every opportunity we have to <a href="https://blog.cloudflare.com/dogfooding-edge-workers">dogfood Workers</a>. Using what we create keeps us tuned in to the developer experience, which takes a good deal of guesswork out of drawing our roadmaps.</p>
 	<p><a href="https://blog.cloudflare.com/announcing-workers-dev">Our goal with Workers.dev</a> is to provide a way to deploy JavaScript code to our network of 165 data centers without requiring developers to register a domain with Cloudflare first. While we gear up for general availability, we wanted to provide users an opportunity to reserve their favorite subdomain in a fair and consistent way, so we built a system to allow visitors to reserve a subdomain where their Workers will live once Workers.dev is released. This is the story of how we wrote the system backing that submission process.</p>
-	<h3>Requirements</h3>
+	<div class="flex anchor relative">
+		<h3 id="requirements">Requirements</h3>
+		<a href="https://blog.cloudflare.com/#requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Of course, we always want to use the best tool for the job, so designing the Workers that would back <a href="https://workers.dev">Workers.dev</a> started with an inventory of constraints and user experience expectations:</p>
-	<h3>Constraints</h3>
+	<div class="flex anchor relative">
+		<h3 id="constraints">Constraints</h3>
+		<a href="https://blog.cloudflare.com/#constraints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ol>
 		<li>
 			<p>We want to limit reservations to one per email address. It’s no fun if someone writes a bot to claim every good Workers subdomain in ten seconds; they wouldn’t be able to claim them without creating a Cloudflare account for every single one anyway!</p>
@@ -16,7 +30,14 @@
 			<p>We want to blocklist a few key subdomains, and be able to detect and blocklist more as we continue on.</p>
 		</li>
 	</ol>
-	<h3>User Flow</h3>
+	<div class="flex anchor relative">
+		<h3 id="user-flow">User Flow</h3>
+		<a href="https://blog.cloudflare.com/#user-flow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At a high, procedural level, our little system needed to handle the following roadmap:</p>
 	<ol>
 		<li>
@@ -38,18 +59,46 @@
 			<p>Display feedback to the visitor:a. If the reservation cannot be made (subdomain or email address has already been used), display an error and clear the form.b. If the reservation was successful, display a message and celebrate! ?</p>
 		</li>
 	</ol>
-	<h3>Design</h3>
+	<div class="flex anchor relative">
+		<h3 id="design">Design</h3>
+		<a href="https://blog.cloudflare.com/#design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I was tasked with handling the back end operations. A few characteristics make this system an ideal fit to use a Worker. For one, the service is ephemeral; we are only offering reservations for a limited period before official registration. This feature wasn’t going to be permanent, didn’t require access to the existing database, and didn’t depend on another service running on our private network. Also, being able to develop and deploy independently of our larger API was a pretty big bonus, so it seemed like a great job for a Worker.</p>
-	<h3>Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="workers">Workers</h3>
+		<a href="https://blog.cloudflare.com/#workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers, to me, embody Single Responsibility Principle. I believe they should be as small as possible while still encompassing an atomic operation. This kind of composability makes them well-suited as autonomous components of both larger systems and ad-hoc projects like this one.</p>
 	<p>The first thing that jumped out at me was a clear split in the logic of our roadmap: verifying emails and reserving subdomains. With those two &nbsp;distinct operations we’d use two distinct Worker scripts on two distinct routes. Another valid implementation could use a single worker with branching logic based on the request that calls it, but the two independent steps allows more granular management. At the same time, a lot of the logic is shared, specifically the need to hit the datastore, which means the need for a client module. <a href="https://serverless.com">Serverless Framework</a> made this not only possible, but relatively painless with minimal configuration.</p>
-	<h3>Cloud Firestore</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloud-firestore">Cloud Firestore</h3>
+		<a href="https://blog.cloudflare.com/#cloud-firestore" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For persistence, the project required a datastore that was both performant and consistent to prevent double-reserving the same subdomain. <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a>, while an excellent storage device for reading data, is eventually consistent (i.e. updates to the store are not immediately available to every node on the edge). Enter Google Cloud Platform’s Cloud <a href="https://cloud.google.com/firestore">Firestore</a>, which <a href="https://firebase.googleblog.com/2019/01/cloud-firestore-in-general-availability.html">just went GA</a> as we were developing this project</p>
 	<blockquote>
 		<p>Cloud Firestore is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. Like Firebase Realtime Database, it keeps your data in sync across client apps through real time listeners and offers offline support for mobile and web so you can build responsive apps that work regardless of network latency or Internet connectivity.</p>
 	</blockquote>
 	<p>Using Cloud Firestore gave us a relatively simple solution to our data storage problem: it is immediately consistent, which allows us to avoid reservation collisions. It can be accessed via a REST API with a simple JWT authentication for a service account, meaning our worker can interface with it using Fetch API. Once I had a client written out in JavaScript, it could be used from the CLI with node-fetch for a few simple data-gathering scripts.</p>
-	<h3>Building the API</h3>
+	<div class="flex anchor relative">
+		<h3 id="building-the-api">Building the API</h3>
+		<a href="https://blog.cloudflare.com/#building-the-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While Cloud Firestore is excellent for handling requests from many users, in this case we want to restrict access to just our worker instances, and for that we need to create a Service Account. You can do this from the IAM console for your Google Cloud project. We’ll build one with the role “Cloud Datastore User”, which is the role recommended for our use case.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -76,9 +125,23 @@
 	</figure>
 	<p>I then saved my key as a JSON file for use in building JWTs for authenticating requests</p>
 	<p>I click <code>Create key</code> to save my Service Account Configuration as a JSON file. This is used in the next step to build out the JWT for authentication requests to the Firestore API.</p>
-	<h3>Firestore Authentication</h3>
+	<div class="flex anchor relative">
+		<h3 id="firestore-authentication">Firestore Authentication</h3>
+		<a href="https://blog.cloudflare.com/#firestore-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Because we are planning on running this client in the Workers runtime and we don’t have access to either the DOM or the Node runtime, we’ll have to rely on the REST API rather than either of the JavaScript client libraries.That’s okay though; the REST API is quite robust, and <a href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth">authentication is possible using just a JWT</a>, rather than the full OAuth 2.0 handshake procedure.</p>
-	<h3>Generating JWTs</h3>
+	<div class="flex anchor relative">
+		<h3 id="generating-jwts">Generating JWTs</h3>
+		<a href="https://blog.cloudflare.com/#generating-jwts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To keep the configuration out of the source code, I wrote a node script for assembling the various pieces of the configuration into a JSON blob.</p>
 	<pre class="language-javascript"><code class="language-javascript">const fs = require('fs')
 const path = require('path')
@@ -148,7 +211,15 @@ export default async function generateJWT(config) {
   const signature = sign.signatures[0];
   return [signature.protected, sign.payload, signature.signature].join('.');
 }</code></pre>
-	<h3>Adding JWT Configuration to KV</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="adding-jwt-configuration-to-kv">Adding JWT Configuration to KV</h3>
+		<a href="https://blog.cloudflare.com/#adding-jwt-configuration-to-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We needed somewhere to keep this configuration that is easily accessible by our Workers but not simply committed in our source code. KV works well in this situation, so I created a namespace and add the JSON-stringified value under they key config.</p>
 	<pre class="language-javascript"><code class="language-javascript">const fetch = require('node-fetch')
 
@@ -199,7 +270,14 @@ async function setUpKV() {
 setUpKV()
   .catch(console.error)</code></pre>
 	<p>A note: this method for handling secrets is better than committing them in scripts, but still not the greatest. We’re working on improving support for secrets.</p>
-	<h3>Querying Cloud Firestore</h3>
+	<div class="flex anchor relative">
+		<h3 id="querying-cloud-firestore">Querying Cloud Firestore</h3>
+		<a href="https://blog.cloudflare.com/#querying-cloud-firestore" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After that, I spent a significant amount of time fiddling with <a href="https://developers.google.com/apis-explorer/#p">Google’s API Explorer</a> to figure out precisely how to make the requests I needed and parse the responses appropriately. <a href="https://firebase.google.com/docs/firestore/reference/rest">The docs</a> are pretty comprehensive, but the API Explorer is key to navigating requests against your own datastore.</p>
 	<p>I built a small client that can create and retrieve documents from GCP; this is bare bones, you can add methods that follow this pattern for updating and other operations as you wish. The Worker can then pull the config out of KV and use it to initialize the client.</p>
 	<pre class="language-javascript"><code class="language-javascript">import { generateJWT } from './generateJWT'
@@ -286,7 +364,15 @@ let client = new GCPClient(config)
 getReservations(client)
     .then(console.log)
     .catch(console.error)</code></pre>
-	<h3>Conclusions</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusions</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Specifically for this project, Workers fit the use-case really well for a few reasons:</p>
 	<ul>
 		<li>

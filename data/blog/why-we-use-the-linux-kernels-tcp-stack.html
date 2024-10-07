@@ -10,7 +10,14 @@
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jvetterli/225724064">image</a> by <a href="https://www.flickr.com/photos/jvetterli">John Vetterli</a></p>
 	<p>Let's start with a broader question - what is the point of running an operating system at all? If you planned on running a single application, having to use a kernel consisting of multiple million lines of code may sound like a burden.</p>
 	<p>But in fact most of us decide to run some kind of OS and we do that for two reasons. Firstly, the OS layer adds hardware independence and easy to use APIs. With these we can focus on writing the code for any machine - not only the specialized hardware we have at the moment. Secondly, the OS adds a time sharing layer. This allows us to run more than one application at a time. Whether it's a second HTTP server or just a bash session, this ability to share resources between multiple processes is critical. All of the resources exposed by the kernel can be shared between multiple processes!</p>
-	<h3>Userspace Networking</h3>
+	<div class="flex anchor relative">
+		<h3 id="userspace-networking">Userspace Networking</h3>
+		<a href="https://blog.cloudflare.com/#userspace-networking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>This is no different for the networking stack. By using the general purpose operating system network stack we gain the ability to run multiple network applications. This is lost if we dedicate the network card hardware to a single application in order to run a userspace network stack. By claiming the network card from one process you lose the ability to run, say an SSH session, concurrently with your servers.</p>
 	<p>As crazy as it sounds, this is exactly what most off the shelf userspace network stack technologies propose. The common term for this is "full kernel bypass". The idea is to bypass the kernel and use network hardware directly from userspace process.</p>
 	<figure class="kg-card kg-image-card ">
@@ -46,7 +53,14 @@
 		</li>
 	</ul>
 	<p>The latency is very important for the HFT (high frequency trading) folks. Traders can afford custom hardware and fancy proprietary network stacks. I would feel very uncomfortable running a closed source TCP stack.</p>
-	<h3>Kernel bypass at CloudFlare</h3>
+	<div class="flex anchor relative">
+		<h3 id="kernel-bypass-at-cloudflare">Kernel bypass at CloudFlare</h3>
+		<a href="https://blog.cloudflare.com/#kernel-bypass-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Having said that, at CloudFlare we do use kernel bypass. We are in the second group - we care about performance. More specifically we suffer from IRQ storms. The Linux networking stack has a limit on how many packets per second it can handle. When the limit is reached all CPUs become busy just receiving packets. In that case either the packets are dropped or the applications are starved of CPU. While we don't have to deal with IRQ storms during our normal operation, this does happen when we are the target of an L3 (layer 3 OSI) DDoS attack. This is a type of attack where the target is flooded with arbitrary packets not belonging to valid connections - typically spoofed packets.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +70,14 @@
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/howardlake/5939812628/in/photolist-a3T6my-mvx2SL-mvx9GN-mvvYag-X6CLx-Xb9mh-bmjkSU-amciaJ-4MpEAP-4Vgs6Q-6cRVcG-c9FET9-e2Gx4d-4VcdZV-65y4Bs-GRMfH-6Vd9JY-92mK5y-92mJP3-dyhTr2-9grVVr-34A4qk-352xtB-7h1LK3-6daUPd-4UmGDb-4MtQh9-dUMgRP-7jMHn4-92iD1a-352xFk-4MpDUx-3577LS-352xzz-3577Ff-4pZZiN-bH5CK-3577rA-3577dN-aK4MAg-7jMGnT-352xiF-3577Vh-92i9MD-352xmi-6z6jjL-34EAF3-3577yW-34EAzq-2iCSpN">image</a> by <a href="https://www.flickr.com/photos/howardlake">Howard Lake</a></p>
 	<p>During some attacks we are flooded with up to 3M packets per second (pps) per server. A general rule is that Linux iptables can handle about 1Mpps on a decent server, while still having enough CPU for applications. This number can be increased by proper tuning.</p>
 	<p>With this scale of attack the Linux kernel is not enough for us. We must work around it. We don't use the previously mentioned "full kernel bypass", but instead we run what we call a "partial kernel bypass". With this the kernel retains the ownership of the network card, and allows us to perform a bypass only on a single "RX queue". We use <a href="https://www.solarflare.com">Solarflare</a>'s EFVI API on Solarflare NICs. To support Intel NICs we added a partial kernel bypass feature to Netmap: that's described <a href="https://blog.cloudflare.com/single-rx-queue-kernel-bypass-with-netmap">in this blog post</a>. With this technique we can offload our anti-DDoS iptables to a very fast userspace process. This saves Linux from processing attack packets, therefore avoiding IRQ storms situations.</p>
-	<h3>What about a full userspace TCP stack?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-about-a-full-userspace-tcp-stack">What about a full userspace TCP stack?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-a-full-userspace-tcp-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My colleagues regularly ask me about: <i>Why don't we just run our NGINX with Solarflare </i><a href="http://www.openonload.org"><i>OpenOnload</i></a><i> framework, using a super fast userspace TCP?</i></p>
 	<p>Yes, it would be faster, but there is no evidence it will actually make much of a practical difference. Most of the CPU used on our servers goes to the userspace NGINX processes and not to the operating system. The CPU is mostly spent on usual NGINX bookkeeping and our Lua application logic, not on network handling. I estimate with bypass we could save about 5-10% CPU, which is (currently) not worth the effort.</p>
 	<figure class="kg-card kg-image-card ">
@@ -81,7 +102,14 @@
 		</li>
 	</ul>
 	<p>Imagine debugging issues like that in a closed source or a young TCP stack (or both!).</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There are two general themes: first, there is no stable open-source partial kernel bypass technology yet. We hope Netmap will occupy this niche, and <a href="https://blog.cloudflare.com/partial-kernel-bypass-merged-netmap">we are actively supporting it with our patches</a>. Second, the Linux TCP stack has many critical features and very good debugging capabilities. It will take years to compete with this rich ecosystem.</p>
 	<p>For these reasons it's unlikely userspace networking will become mainstream. In practice I can think only of a few reasonable applications of kernel bypass techniques:</p>
 	<ul>

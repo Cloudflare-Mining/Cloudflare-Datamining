@@ -3,7 +3,14 @@
 	<p>Over the last month, we’ve been watching some of the largest distributed denial of service (DDoS) attacks ever seen unfold. As CloudFlare has grown we've brought on line systems capable of absorbing and <i>accurately measuring</i> attacks. Since we don't need to resort to crude techniques to block traffic we can measure and filter attacks with accuracy. Our systems sort bad packets from good, keep websites online and keep track of attack packet rates and bits per second.</p>
 	<p>The current spate of large attacks are all layer 3 (L3) DDoS. Layer 3 attacks consist of a large volume of packets hitting the target network, and the aim is usually to overwhelm the target network hardware or connectivity.</p>
 	<p>L3 attacks are dangerous because most of the time the only solution is to acquire large network capacity and buy beefy networking hardware, which is simply not an option for most independent website operators. Or, faced with huge packet rates, some providers simply turn off connections or entirely block IP addresses.</p>
-	<h3>A Typical Day At CloudFlare</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-typical-day-at-cloudflare">A Typical Day At CloudFlare</h3>
+		<a href="https://blog.cloudflare.com/#a-typical-day-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Historically, L3 attacks were the biggest headache for CloudFlare. Over the last two years, we’ve automated almost all of our L3 attack handling and these automatic systems protect CloudFlare customers worldwide 24 hours a day.</p>
 	<p>This chart shows our L3 DoS mitigation during the last quarter of 2015:</p>
 	<figure class="kg-card kg-image-card ">
@@ -12,7 +19,14 @@
 
 	</figure>
 	<p>The y-axis is the number of individual "DoS events" that we responded to, which is about 20-80 on a typical day. Each of these DoS events are automatically triggered by an attack on one or more of our customers.</p>
-	<h3>Recent DDoS Attacks Were Larger. Much Larger</h3>
+	<div class="flex anchor relative">
+		<h3 id="recent-ddos-attacks-were-larger-much-larger">Recent DDoS Attacks Were Larger. Much Larger</h3>
+		<a href="https://blog.cloudflare.com/#recent-ddos-attacks-were-larger-much-larger" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Most of the mitigated DoS events are small. When a big attack happens, it usually shows up as a large number of separate events in our system.</p>
 	<p>During the last month or so, we’e been dealing (mostly automatically) with very large attacks. Here is the same chart, but including the first quarter of 2016. Notice the scale:</p>
 	<p>Over the last month, we’ve been watching some of the largest distributed denial of service (DDoS) attacks ever seen unfold. As CloudFlare has grown we've brought on line systems capable of absorbing and accurately measuring attacks.</p>
@@ -23,7 +37,14 @@
 	</figure>
 	<p>That’s about a 15x increase in individual DoS events. These new attacks are interesting for a couple of reasons. First, the spikes align with the weekends. It seems the attackers are busy with something else during the week. Second, they are targeting a couple of fairly benign websites—this demonstrates that <i>anybody</i> can become the target of a large attack. Third, the overall volume of the attack is enormous.</p>
 	<p>Let me elaborate on this last point.</p>
-	<h3>BGP Black Holes</h3>
+	<div class="flex anchor relative">
+		<h3 id="bgp-black-holes">BGP Black Holes</h3>
+		<a href="https://blog.cloudflare.com/#bgp-black-holes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When operating at a smaller scale, it’s not unusual for a DDoS attack to overwhelm the capacity of the target network. This causes network congestion and forces the operators of the attacked network to <a href="https://en.wikipedia.org/wiki/Black_hole_(networking)">black hole</a> the attacked IP addresses, pretty much removing them from the Internet.</p>
 	<p>After that happens, it’s impossible to report the volume of the attack. The attack traffic will disappear in a “black hole” and is invisible to the operators of the attacked network. This is why reporting on big attacks is difficult—with BGP blackholing, it’s impossible to assess the true scale of the malicious traffic.</p>
 	<figure class="kg-card kg-image-card ">
@@ -33,7 +54,14 @@
 	</figure>
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/mwichary/2844659652/in/photolist-5knCd5-5knH5b-6mJq7x-4HaGyf-6mJvLH-4HrEVJ-81DPyL-6mNyCo-6Va71U-81AEVR-pPFFHL-4w3qa7-6V63qT-6mJkh2-6mNCeJ-36k8qA-pPwRs3-4M2GXi-4HrE6u-4HsdeB-4JD8hf-4JD6nw-4QqseF-6mJoog-pNjmq5-4HJQz6-qa29gR-3h8GjF-J8M2b-4Hwxgh-ex6kUp-4HJMaX-4HP4kb-8DSYWk-nqEz3T-4G8kLK-4HsiHa-5knEos-6mJm94-eaUcwV-6mNvCb-4HNSp3-4HscFR-4JyQnR-4HJG9K-4HJRx6-5knD6Q-5kipKe-4x3H5P-6mNF7E">image</a> by <a href="https://www.flickr.com/photos/mwichary">Marcin Wichary</a></p>
 	<p>We’ve encountered very large attacks in the past, and we didn’t often have to resort to blackholing. This allows us to report in detail on the attack volume we see. Fortunately, the same is true this time around—the size of our network and the efficiency of our systems allowed us to simply absorb the attacks. This is the only reason we’re able to provide the following metrics.</p>
-	<h3>How Big Was This DDoS Attack?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-big-was-this-ddos-attack">How Big Was This DDoS Attack?</h3>
+		<a href="https://blog.cloudflare.com/#how-big-was-this-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>DDoS attacks are measured in two dimensions: the number of malicious packets per second (pps) and the attack bandwidth in bits per second (bps).</p>
 	<h4>Rate of Packets (pps)</h4>
 	<p>The packets per second metric is important, since the processing power required on a router raises proportionally with the pps count. Whenever an attack overwhelms a router’s processing power, we will see a frantic error message like this:</p>
@@ -67,7 +95,14 @@ ae-1/2/2 (HardLayer) in: 81092mbps (81.10%)</code></pre>
 
 	</figure>
 	<p>Even during the peak attack traffic, our network wasn’t congested and systems operated normally. Our automatic mitigation software was able to sort the good from the bad packets.</p>
-	<h3>Final Words</h3>
+	<div class="flex anchor relative">
+		<h3 id="final-words">Final Words</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Over the past weeks, we encountered a series of large DDoS attacks. In peak, our systems reported over 400Gbps of incoming traffic, which is amongst the largest by aggregate volume that we’ve ever seen. The attack was mostly absorbed by our automatic mitigation systems.</p>
 	<p>With each attack, we’re improving our automatic attack mitigation system. In addition, our network team constantly keeps an eye on the network, working to identify new bottlenecks. Without our automatic mitigation system and network team, dealing with attacks of this size would not be possible.</p>
 	<p>You might think that as CloudFlare grows, the relative scale of attacks will shrink in comparison to legitimate traffic. The funny thing is, the opposite is true. Every time we upgrade our network capacity, we see larger attacks because we don’t have to resort to blackholing. With more capacity, we’re able to withstand and accurately measure even bigger attacks.</p>

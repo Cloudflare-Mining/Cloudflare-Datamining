@@ -17,7 +17,14 @@
 	<p>Today we’re announcing a native key-value store for Cloudflare Workers. We’re calling this Workers KV and this functionality is just the start of a sequence of announcements around storage and databases on the edge.</p>
 	<p>Values are written into Workers KV via the standard Cloudflare API and they are available within seconds at every one of Cloudflare’s 150+ global PoPs. Stephen and Zack’s technical post goes into more detail about <a href="https://blog.cloudflare.com/building-with-workers-kv">how to use Workers KV</a>. The values written are encrypted while at rest, in transit, and on local disk; they are only decrypted as needed.</p>
 	<p>Values can also be written from inside a Cloudflare Worker. Cloudflare takes care of synchronizing keys and values across our entire network.</p>
-	<h3>So, what can you do with Workers KV?</h3>
+	<div class="flex anchor relative">
+		<h3 id="so-what-can-you-do-with-workers-kv">So, what can you do with Workers KV?</h3>
+		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Kenton Varda has taken the entire <a href="https://capnproto.org">Cap’n Proto</a> web site and implemented it using Workers and Workers KV. The entire site is served from a Worker that accesses static assets stored using Workers KV. That’s pretty neat… his site is entirely ‘serverless’ or rather ‘originless’</p>
 	<p>Others might not want to go quite so far but here are some use cases:</p>
 	<ul>
@@ -37,12 +44,26 @@
 		</li>
 	</ul>
 	<p>With the addition of Workers KV, Cloudflare Workers moves closer to being a complete compute platform embedded inside the Internet.</p>
-	<h3>The Third Place for Code</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-third-place-for-code">The Third Place for Code</h3>
+		<a href="https://blog.cloudflare.com/#the-third-place-for-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Until the advent of services like Cloudflare Workers there were really two places to run code: on a server (perhaps rented from a cloud provider) and on the end-user’s client (which could be an IoT device, mobile phone or computer).</p>
 	<p>Servers and clients have very different properties. Server software is quick to update, if you want to change functionality it can be done quickly because you control when server software is modified. On the other hand client software can be slow to update: it might require a firmware flash on an IoT device, a download on a mobile app or reinstallation on a computer. Even web-based software can be slow to update if the user keeps a session open for a long time.</p>
 	<p>Client software does have a massive latency advantage over server software: anything the user does with the client will be fast because because the latency between the eyeball and CPU is very low. Server’s tend to have large latency to the client, and latency that can vary widely from moment to moment and location to location.</p>
 	<p>Cloudflare Workers and similar services take the best of server software and client software. Workers are fast to update (10s of seconds for a global change), yet close to the end user (hence low latency). This gives developers a new way to think about building software: what should go on the server, what on the client and what in the Internet?</p>
-	<h3>FaaScinating</h3>
+	<div class="flex anchor relative">
+		<h3 id="faascinating">FaaScinating</h3>
+		<a href="https://blog.cloudflare.com/#faascinating" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The rise of Functions-as-a-Service (FaaS) has caused some confusion because anyone who has spent time with the lambda-calculus or purely functional languages will know that keeping state around turns out to be very, very useful. Truly writing code in a functional style is a big commitment and FaaS services really require state storage to fit in with the majority, imperative style of programming.</p>
 	<p>Of course, FaaS software can store state in external services and use API calls to get and update it. But that’s likely slow and error prone. Cloudflare Workers KV introduces FaaS-native storage in the form of a key-value store. Workers KV can be written and read externally via the Cloudflare API, or internally directly from a Cloudflare Worker.</p>
 	<p>We can’t wait to see what people build with Cloudflare Workers and Cloudflare Workers KV. Get hacking! If you want to get started today <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1">sign up here</a>.</p>

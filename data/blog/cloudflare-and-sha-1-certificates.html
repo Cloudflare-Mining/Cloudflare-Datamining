@@ -6,7 +6,14 @@
 
 	</figure>
 	<p>At CloudFlare, we’re dedicated to ensuring sites are not only secure, but also available to the widest audience. In the coming months, both Google’s Chrome browser and Mozilla’s Firefox browser are changing their policy with respect to certain web site certificates. We are aware of these changes, and we have modified our SSL offerings to ensure customer sites continue to be secure and available to all visitors.</p>
-	<h3>Chrome (and Firefox) and SHA-1</h3>
+	<div class="flex anchor relative">
+		<h3 id="chrome-and-firefox-and-sha-1">Chrome (and Firefox) and SHA-1</h3>
+		<a href="https://blog.cloudflare.com/#chrome-and-firefox-and-sha-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Google will be making changes to its Chrome browser in upcoming versions to change the way they treat certain web site certificates based on their digital signature. These changes affect <a href="https://blog.digicert.com/ending-trust-sha-1">over 80% of websites</a>.</p>
 	<p>As described in our blog post on <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL</a>, web site certificates are organized using a chain of trust. <a href="https://en.wikipedia.org/wiki/Digital_signature">Digital signatures</a> are the glue that connects the certificates in the chain. Each certificate is digitally signed by its issuer using a digital signature algorithm defined by the type of key and a cryptographic hash function (such as MD5, SHA-1, SHA-256).</p>
 	<p>Starting in Chrome 39 (to be released this month, November 2014), certificates signed with a SHA-1 signature algorithm will be considered less trusted than those signed with a more modern SHA-2 algorithm. This change will be reflected in the UI presented to web visitors.</p>
@@ -27,12 +34,26 @@
 
 	</figure>
 	<p>Mozilla is also implementing a <a href="https://blog.mozilla.org/security/2014/09/23/phasing-out-certificates-with-sha-1-based-signature-algorithms">similar change in their Firefox browser</a> in early 2015, marking SHA-1 certificates as untrusted if they expire in 2016 or later.</p>
-	<h3>Compatibility First</h3>
+	<div class="flex anchor relative">
+		<h3 id="compatibility-first">Compatibility First</h3>
+		<a href="https://blog.cloudflare.com/#compatibility-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Chrome’s decision puts many website owners in a bind. Sites either have to re-issue their SHA-1 certificates with a shorter expiration period, or upgrade to SHA-2. The problem with upgrading is that not all web browsers support SHA-2 certificates. Notably, Windows XP SP2 does not support SHA-2 based certificates. Windows XP is still a popular operating system despite the fact that <a href="http://www.microsoft.com/en-us/windows/enterprise/end-of-support.aspx">Microsoft no longer supports it</a>. It is <a href="http://www.computerworld.com/article/2484761/microsoft-windows/china-has-a-massive-windows-xp-problem.html">especially popular in China</a>, the <a href="https://www.pewresearch.org/fact-tank/2013/12/02/china-has-more-internet-users-than-any-other-country">largest Internet market in the world</a>. Sites that use a SHA-2 certificate are inaccessible to these web users over https.</p>
 	<p>GlobalSign has put together a <a href="https://support.globalsign.com/customer/portal/articles/1499561">comprehensive list of SHA-2 client support</a>.</p>
 	<p>Sites that have tried to upgrade to SHA-2 have seen a backlash due to browser incompatibility. In July, mozilla.org upgraded their site to use a SHA-2 certificate. In doing so they lost around <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387">145,000 Firefox downloads per week</a> due to browser incompatibility. Even google.com (as of November 10, 2014) continues to use SHA-1 for compatibility reasons, despite the company’s push to deprecate SHA-1 in Chrome.</p>
 	<p>To support both Chrome and Windows XP SP2 it’s necessary to use a SHA-1 certificate that expires before 2016. This is the option we have chosen for CloudFlare-managed certificates.</p>
-	<h3>CloudFlare Customers</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-customers">CloudFlare Customers</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Last week, we reissued all certificates for paid CloudFlare customers. The new certificates are signed with the SHA-1 signature algorithm and expire before 2016. This way all customers sites will be viewable by visitors on Windows XP SP2 <i>and</i> Chrome, just as they are today.</p>
 	<ul>
 		<li>
@@ -43,6 +64,13 @@
 		</li>
 	</ul>
 	<p>For customers using CloudFlare’s certificates there is no action to be taken. Business and Enterprise customers with custom certificates who may be affected by the change have already been contacted with details and specific instructions.</p>
-	<h3>The Future of HTTPS at CloudFlare</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-https-at-cloudflare">The Future of HTTPS at CloudFlare</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-https-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2015, we will roll out state-of-the-art SNI certificates to all paid customers and retain the SHA-1 certificates as a fallback. This means that any browser that supports the modern security features we <a href="https://blog.cloudflare.com/universal-ssl-how-it-scales">introduced with Universal SSL</a> (ECDSA, SHA-256 and SNI) will be presented with the modern certificate and old browsers (such as IE on Windows XP) will be presented with the current SHA-1 certificate. This ensures that all sites on the paid CloudFlare service are reachable by the largest audience possible, while providing state-of-the-art security for any browser that supports it.</p>
 </div>

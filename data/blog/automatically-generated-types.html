@@ -8,7 +8,14 @@
 	</figure>
 	<p>Historically, keeping our Rust and TypeScript type repos up to date has been hard. They were manually generated, which means they ran the risk of being inaccurate or out of date. Until recently, the workers-types repository needed to be manually updated whenever the types changed. We also used to add type information for mostly complete browser APIs. This led to confusion when people would try to use browser APIs that aren’t supported by the Workers runtime they would compile but throw errors.</p>
 	<p>That all changed this summer when Brendan Coll, whilst he was interning with us, built an automated pipeline for generating them. It runs every time we build the Workers runtime, generating types for our TypeScript and Rust repositories. Now everything is up-to-date and accurate.</p>
-	<h2>A quick overview</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-quick-overview">A quick overview</h2>
+		<a href="https://blog.cloudflare.com/#a-quick-overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Every time the Workers runtime code is built, a script runs over the public APIs and generates the Rust and TypeScript types as well as a JSON file containing an <a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a> of the static types. The types are sent to the appropriate repositories and the JSON file is uploaded as well in case people want to create their own types packages. More on that later.</p>
 	<p>This means the static types will always be accurate and up to date. It also allows projects running Workers in other, statically-typed languages to generate their own types from our intermediate representation. Here is an example PR from our Cloudflare bot. It’s detected a change in the runtime types and is updating the TypeScript files as well as the intermediate representation.</p>
 	<figure class="kg-card kg-image-card ">
@@ -16,7 +23,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gGG9WJuWteHvOu7Gurphb/298f3f343670ff749d6dbef1b13df53e/image2-12.png" alt="" class="kg-image" width="1999" height="1105" loading="lazy">
 
 	</figure>
-	<h2>Using the auto-generated types</h2>
+	<div class="flex anchor relative">
+		<h2 id="using-the-auto-generated-types">Using the auto-generated types</h2>
+		<a href="https://blog.cloudflare.com/#using-the-auto-generated-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get started, use wrangler to generate a new TypeScript project:</p>
 	<pre class="language-sh"><code class="language-sh">$ wrangler generate my-typescript-worker https://github.com/cloudflare/worker-typescript-template</code></pre>
 	<p>If you already have a TypeScript project, you can install the latest version of <a href="https://github.com/cloudflare/workers-types">workers-types</a> with:</p>
@@ -36,7 +50,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4qwl2tjaM5QenHDZi4Tat7/cab574c0617ac1fde4c6397d699f866f/image3-19.png" alt="" class="kg-image" width="1999" height="524" loading="lazy">
 
 	</figure>
-	<h2>How it works</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">How it works</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Here is some example code from the Workers runtime codebase.</p>
 	<pre class="language-cpp"><code class="language-cpp">class Blob: public js::Object {
 public:
@@ -106,7 +127,15 @@ declare class Blob {
   readonly size: number;
   slice(start?: number, end?: number, type?: string): Blob;
 }</code></pre>
-	<h3>Overrides</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="overrides">Overrides</h3>
+		<a href="https://blog.cloudflare.com/#overrides" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In some cases, TypeScript supports concepts that our C++ runtime does not. Namely, generics and function overloads. In these cases, we override the generated types with partial declarations. For example, <code>DurableObjectStorage</code> makes heavy use of generics for its getter and setter functions.</p>
 	<pre class="language-bash"><code class="language-bash">declare abstract class DurableObjectStorage {
 	 get&lt;T = unknown&gt;(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise&lt;T | undefined&gt;;
@@ -123,12 +152,34 @@ declare class Blob {
 	 transaction&lt;T&gt;(closure: (txn: DurableObjectTransaction) =&gt; Promise&lt;T&gt;): Promise&lt;T&gt;;
 	}</code></pre>
 	<p>You can also write type overrides using Markdown. <a href="https://github.com/cloudflare/workers-types/blob/master/docs/kv.md">Here</a> is an example of overriding types of <code>KVNamespace</code>.</p>
-	<h2>Creating your own types</h2>
+	<div class="flex anchor relative">
+		<h2 id="creating-your-own-types">Creating your own types</h2>
+		<a href="https://blog.cloudflare.com/#creating-your-own-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The JSON IR (<a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a>) has been open sourced alongside the TypeScript types and can be found <a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json">in this GitHub repository</a>. We’ve also open sourced the <a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json">type schema</a> itself, which describes the format of the IR. If you’re interested in generating Workers types for your own language, you can take the IR, which describes the declaration in a "normalized" data structure, and generate types from it.</p>
 	<p>The declarations inside <code>workers.json</code> contain the elements to derive function signatures and other elements needed for code generation such as identifiers, argument types, return types and error management. A concrete use-case would be to generate external function declarations for a language that compiles to WebAssembly, to import precisely the set of available function calls available from the Workers runtime.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare cares deeply about supporting the TypeScript and Rust ecosystems. Brendan created a tool which will ensure the type information for both languages is always up-to-date and accurate. We also are open-sourcing the type information itself in JSON format, so that anyone interested can create type data for any language they’d like!</p>
-	<h3>Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p></p>
 </div>

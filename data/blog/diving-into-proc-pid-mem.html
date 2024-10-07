@@ -25,9 +25,23 @@
 
 	</figure>
 	<p>The easy way out would have been to make a small, local patch to the unwinder behavior, yet I found myself diving into the Linux kernel trying to figure how the <code>mem</code> file worked in an attempt to implement it in Sentry's VFS.</p>
-	<h2>What does <code>/proc/[pid]/mem</code> do?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-does">What does </h2>
+		<a href="https://blog.cloudflare.com/#what-does" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The file itself is quite powerful, because it allows raw access to the virtual address space of a process. <a href="https://man7.org/linux/man-pages/man5/proc.5.html">According to manpages</a>, the documented file operations are <code>open()</code>, <code>read()</code> and <code>lseek()</code>. Typical use cases are debugging tasks or dumping process memory.</p>
-	<h2>Opening the file</h2>
+	<div class="flex anchor relative">
+		<h2 id="opening-the-file">Opening the file</h2>
+		<a href="https://blog.cloudflare.com/#opening-the-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a process wants to open the file, the kernel does the file permissions check, looks up the associated operations for <code>mem</code> and invokes a method called <code>proc_mem_open</code>. It retrieves the associated task and <a href="https://elixir.bootlin.com/linux/v5.9/source/include/linux/sched/mm.h#L119">calls a method named <code>mm_access</code></a>.</p>
 	<pre class="language-c"><code class="language-c">/*
  * Grab a reference to a task's mm, if it is not already going away
@@ -46,7 +60,14 @@
  *
  */</code></pre>
 	<p><a href="https://man7.org/linux/man-pages/man5/proc.5.html">According to the manpages</a>, a process which would like to read from an unrelated <code>/proc/[pid]/mem</code> file should have access mode <a href="https://man7.org/linux/man-pages/man2/ptrace.2.html"><code>PTRACE_MODE_ATTACH_FSCREDS</code></a>. This check does not verify that a process is attached via <code>PTRACE_ATTACH</code>, but rather if it has the permission to attach with the specified credentials mode.</p>
-	<h2>Access checks</h2>
+	<div class="flex anchor relative">
+		<h2 id="access-checks">Access checks</h2>
+		<a href="https://blog.cloudflare.com/#access-checks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After skimming through the function, you will see that a process is allowed access if the current task belongs to the same thread group as the target task, or denied access (depending on whether <code>PTRACE_MODE_FSCREDS</code> or <code>PTRACE_MODE_REALCREDS</code> is set, we will use either the file-system UID / GID, which is typically the same as the effective UID/GID, or the real UID / GID) if none of the following conditions are met:</p>
 	<ul>
 		<li>
@@ -79,7 +100,14 @@
 		</li>
 	</ul>
 	<p>I highly recommend reading through the <a href="https://www.man7.org/linux/man-pages/man2/ptrace.2.html">ptrace manpages</a> to dig deeper into the different modes, options and checks.</p>
-	<h2>Reading from the file</h2>
+	<div class="flex anchor relative">
+		<h2 id="reading-from-the-file">Reading from the file</h2>
+		<a href="https://blog.cloudflare.com/#reading-from-the-file" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since all the access checks occur when opening the file, reading from it is quite straightforward. When one invokes <code>read()</code> on a <code>mem</code> file, <a href="https://elixir.bootlin.com/linux/v5.9/source/fs/proc/base.c#L835">it calls up <code>mem_rw</code></a> (which actually can do both reading and writing).</p>
 	<p>To avoid using lots of memory, <code>mem_rw</code> performs the copy in a loop and buffers the data in an intermediate page. <code>mem_rw</code> has a hidden superpower, that is, it uses <code>FOLL_FORCE</code> to avoid permission checks on user-owned pages (handling pages marked as non-readable/non-writable readable and writable).</p>
 	<p><code>mem_rw</code> has other specialties, such as its error handling. Some interesting cases are:</p>
@@ -92,7 +120,14 @@
 		</li>
 	</ul>
 	<p>You can also perform <code>lseek</code> on the file excluding <code>SEEK_END</code>.</p>
-	<h2>How it works in gVisor</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-in-gvisor">How it works in gVisor</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-in-gvisor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Luckily, gVisor already implemented <code>ptrace_may_access</code> as <code>kernel.task.CanTrace</code>, so one can avoid reimplementing all the ptrace access logic. However, <a href="https://cs.opensource.google/gvisor/gvisor/+/master:pkg/sentry/kernel/ptrace.go;l=105;bpv=0;bpt=1">the implementation in gVisor</a> is less complicated due to the lack of support for <code>PTRACE_MODE_FSCREDS</code> (which is <a href="https://gvisor.dev/issue/260">still an open issue</a>).</p>
 	<p>When a new file descriptor is <code>open()</code>ed, the <code>GetFile</code> method of the virtual Inode is invoked, therefore this is where the access check naturally happens. After a successful access check, the <a href="https://pkg.go.dev/gvisor.dev/gvisor/pkg/sentry/fs#File">method returns a <code>fs.File</code></a>. The <code>fs.File</code> implements all the file operations you would expect such as <code>Read()</code> and <code>Write()</code>. gVisor also provides tons of primitives for quickly building a working file structure so that one does not have to reimplement a generic <code>lseek()</code> for example.</p>
 	<p>In case a task invokes a <code>Read()</code> call onto the <code>fs.File</code>, the <code>Read</code> method retrieves the memory manager of the file’s Task.<a href="https://pkg.go.dev/gvisor.dev/gvisor/pkg/sentry/mm#MemoryManager">Accessing the task's memory manager</a> is a breeze with comfortable <code>CopyIn</code> and <code>CopyOut</code> methods, with interfaces similar to <code>io.Writer</code> and <code>io.Reader</code>.</p>
@@ -105,7 +140,15 @@
     @     0x55d6f718c2da  main
     @     0x7f190c510cca  __libc_start_main
     @     0x55d6f718c0fa  _start</code></pre>
-	<h2>Conclusion</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A comprehensive victory! The <code>/proc/&lt;pid&gt;/mem</code> file is an important mechanism that gives insight into contents of process memory. It is essential to stack unwinders to do their work in case of complicated and unforeseeable failures. Because the process memory contains highly-sensitive information, data access to the file is determined by a complex set of poorly documented rules. With a bit of effort, you can emulate <code>/proc/[PID]/mem</code> inside gVisor’s sandbox, where the process only has access to the subset of procfs that has been implemented by the gVisor authors and, as a result, you can have access to an easily readable stack trace in case of a crash.</p>
 	<p><a href="https://github.com/google/gvisor/pull/4060">Now I can't wait to get the PR merged into gVisor.</a></p>
 </div>

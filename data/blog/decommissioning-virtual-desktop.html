@@ -7,11 +7,25 @@
 
 	</figure>
 	<p>This blog offers Cloudflare’s perspective on how <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation">remote browser isolation</a> can help organizations offload internal web application use cases currently secured by virtual desktop infrastructure (VDI). VDI has historically been useful to <a href="https://www.cloudflare.com/products/zero-trust/remote-workforces">secure remote work</a>, particularly when users relied on desktop applications. However, as web-based apps have become more popular than desktop apps, the drawbacks of VDI – high costs, unresponsive user experience, and complexity – have become harder to ignore. In response, we offer practical recommendations and a phased approach to transition away from VDI, so that organizations can lower cost and unlock productivity by improving employee experiences and simplifying administrative overhead.</p>
-	<h2>Modern Virtual Desktop usage</h2>
+	<div class="flex anchor relative">
+		<h2 id="modern-virtual-desktop-usage">Modern Virtual Desktop usage</h2>
+		<a href="https://blog.cloudflare.com/#modern-virtual-desktop-usage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Background on Virtual Desktop Infrastructure (VDI)</h4>
 	<p>Virtual Desktop Infrastructure describes running desktop environments on virtual computers hosted in a data center. When users access resources within VDI, video streams from those virtual desktops are delivered securely to endpoint devices over a network. Today, <a href="https://www.gartner.com/en/information-technology/glossary/virtual-desktop-infrastructure-vdi#:~:text=Virtual%20desktop%20infrastructure%20(VDI)%20is,users%20to%20their%20desktop%20environments">VDI</a> is predominantly hosted on-premise in data centers and either managed directly by organizations themselves or by third-party <a href="https://www.gartner.com/en/information-technology/glossary/desktop-as-a-service-daas">Desktop-as-a-Service (DaaS)</a> providers. In spite of web application usage growing in favor of desktop applications, DaaS is growing, with Gartner® recently projecting DaaS spending to <a href="https://www.gartner.com/en/articles/3-cloud-technologies-to-support-hybrid-work-experiences">double by 2024</a>.</p>
 	<p>Both flavors of VDI promise benefits to support remote work. For security, VDI offers a way to centralize configuration for many dispersed users and to keep sensitive data far away from devices. Business executives are often attracted to VDI because of potential cost savings over purchasing and distributing devices to every user. The theory is that when processing is shifted to centralized servers, IT teams can save money shipping out fewer managed laptops and instead support bring-your-own-device (BYOD). When hardware is needed, they can purchase less expensive devices and even extend the lifespan of older devices.</p>
-	<h2>Challenges with VDI</h2>
+	<div class="flex anchor relative">
+		<h2 id="challenges-with-vdi">Challenges with VDI</h2>
+		<a href="https://blog.cloudflare.com/#challenges-with-vdi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>High costs</h4>
 	<p>The reality of VDI is often quite different. In particular, it ends up being much more costly than organizations anticipate for both capital and operational expenditures. <a href="https://www.gartner.com/en/documents/4008018">Gartner</a>® projects that “by 2024, more than 90% of desktop virtualization projects deployed primarily to save cost will fail to meet their objectives.”</p>
 	<p>The reasons are multiple. On-premise VDI comes with significant upfront capital expenditures (CapEx) in servers. DaaS deployments require organizations to make opaque decisions about virtual machines (e.g. number, region, service levels, etc.) and their specifications (e.g. persistent vs. pooled, always-on vs. on-demand, etc.). In either scenario, the operational expenditures (OpEx) from maintenance and failing to rightsize capacity can lead to surprises and overruns. For both flavors, the more organizations commit to virtualization, the more they are locked into high ongoing compute expenses, particularly as workforces grow remotely.</p>
@@ -22,7 +36,14 @@
 	<p>Moving VDI into full production not only requires cross-functional coordination across typical teams like IT, security, and infrastructure &amp; operations, but also typically requires highly specialized talent, often known as virtual desktop administrators. These skills are hard to find and retain, which can be risky to rely on during this current high-turnover labor market.</p>
 	<p>Even still, administrators often need to build their own logging, auditing, inspection, and identity-based access policies on top of these virtualized environments. This means additional overhead of configuring separate services like secure web gateways.</p>
 	<p>Some organizations deploy VDI primarily to avoid the shipping costs, logistical hassles, and regulatory headaches of sending out managed laptops to their global workforce. But with VDI, what seemed like a fix for one problem can quickly create more overhead and frustration. Wrestling with VDI’s complexity is likely not worthwhile, particularly if users only need to access a select few internal web services.</p>
-	<h2>Offloading Virtual Desktop use cases with Remote Browser Isolation</h2>
+	<div class="flex anchor relative">
+		<h2 id="offloading-virtual-desktop-use-cases-with-remote-browser-isolation">Offloading Virtual Desktop use cases with Remote Browser Isolation</h2>
+		<a href="https://blog.cloudflare.com/#offloading-virtual-desktop-use-cases-with-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To avoid these frictions, organizations are exploring ways to shift use cases away from VDI, particularly when on-prem. Most applications that workforces rely on today are accessible via the browser and are hosted in public or hybrid cloud or SaaS environments, and even occasionally in legacy data centers. As a result, modern services like remote browser isolation (RBI) increasingly make sense as alternatives to begin offloading VDI workloads and shift security to the cloud.</p>
 	<p>Like VDI, <a href="https://www.cloudflare.com/static/9946ae465a200fc87c0972abc3c3d065/Cloudflare_Browser_Isolation_-_Product_Brief__2022_Q2_.pdf">Cloudflare Browser Isolation</a> minimizes <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface">attack surface</a> by running all app and web code away from endpoints — in this case, on Cloudflare’s global network. In the process, Cloudflare can secure data-in-use within a browser from untrusted users and devices, plus insulate those endpoints from threats like ransomware, phishing and even zero-day attacks. Within an isolated browser, administrators can set <a href="https://blog.cloudflare.com/data-protection-browser">policies to protect sensitive data</a> on any web-based or SaaS app, just as they would with VDI. Sample controls include restrictions on file uploads / downloads, copy and paste, keyboard inputs, and printing functionality.</p>
 	<p>This comparable security comes with more achievable business benefits, starting with helping employees be more productive:</p>
@@ -48,14 +69,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/SHS0uvO0eHv2HguEw3l60/062e1d5a888ef3e86a10ef83bedfc4b1/Screen-Shot-2022-06-23-at-4.20.45-PM.png" alt="" class="kg-image" width="1274" height="420" loading="lazy">
 
 	</figure>
-	<h3>Customer story: PensionBee</h3>
+	<div class="flex anchor relative">
+		<h3 id="customer-story-pensionbee">Customer story: PensionBee</h3>
+		<a href="https://blog.cloudflare.com/#customer-story-pensionbee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.pensionbee.com">PensionBee</a>, a leading online pension provider in the UK, recognized this opportunity to offload virtual desktop use cases and switch to RBI. As a reaction to the pandemic, PensionBee initially onboarded a DaaS solution (Amazon WorkSpaces) to help employees access internal resources remotely. Specifically, CTO Jonathan Lister Parsons was most concerned about securing Salesforce, where PensionBee held its customers’ sensitive pension data.</p>
 	<p>The DaaS supported <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access controls</a> similar to PensionBee configured for employees when they previously were in the office (e.g. allowlisting the IPs of the virtual desktops). But shortly after rollout, Lister Parsons began developing concerns about the unresponsive user experience. In <a href="https://gateway.on24.com/wcc/gateway/eliteCloudflareInc/2153307/3490369?_gl=1*1a9y4bl*_ga*MTkxODk3NTg2MC4xNjMyMTUzNjc4*_gid*MzM3MDkyNzQ3LjE2NTQwMDkxNTg">this recent webinar</a>, he in fact guesstimated that “users are generally about 10% less productive when they’re using the DaaS to do their work.” This negative experience increased the support burden on PensionBee’s IT staff to the point where they had to build an automated tool to reboot an employee’s DaaS service whenever it was acting up.</p>
 	<p>“From a usability perspective, it’s clearly better if employees can have a native browsing experience that people are used to compared to a remote desktop. That’s sort of a no-brainer,” Lister Parsons said. “But typically, it’s been hard to deliver that while keeping security in place, costs low, and setup complexity down.”</p>
 	<p>When Lister Parsons encountered Cloudflare Browser Isolation, he was impressed with the service’s performance and lightweight user experience. Because PensionBee employees accessed the vast majority of their apps (including Salesforce) via a browser, RBI was a strong fit. Cloudflare’s controls over copy/paste and file downloads reduced the risk of customer pension details in Salesforce reaching local devices.</p>
 	<p>"We started using Cloudflare Zero Trust with Browser Isolation to help provide the best security for our customers' data and protect employees from malware,” he said. “It worked so well I forgot it was on."</p>
 	<p>PensionBee is just one of many organizations developing a roadmap for this transition from VDI. In the next section, we provide Cloudflare’s recommendations for planning and executing that journey.</p>
-	<h2>Practical recommendations</h2>
+	<div class="flex anchor relative">
+		<h2 id="practical-recommendations">Practical recommendations</h2>
+		<a href="https://blog.cloudflare.com/#practical-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<h4>Pre-implementation planning</h4>
 	<p>Understanding <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">where to start this transition</a> some forethought. Specifically, cross-functional teams – across groups like IT, security, and infrastructure &amp; operations (IO) – should develop a collective understanding of how VDI is used today, what use cases should be offloaded first, and what impact any changes will have across both end users and administrators.</p>
 	<p>In our own consultations, we start by asking about the needs and expectations of <b>end users</b> because their consistent adoption will dictate an initiative’s success. Based on that foundation, we then typically help organizations map out and prioritize the <b>applications</b> and <b>data</b> they need to secure. Last but not least, we strategize around the <i>‘how:’</i> what <b>administrators</b> and expertise will be needed not only for the initial configuration of new services, but also for the ongoing improvement. Below are select questions we ask customers to consider across those key dimensions to help them navigate their VDI transition.</p>
@@ -65,7 +100,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ybRTthEVyt55zvUuPhVIv/cdd1b9c98ec156b18638f5b2d7e3c822/Screen-Shot-2022-06-23-at-4.22.38-PM.png" alt="" class="kg-image" width="1272" height="990" loading="lazy">
 
 	</figure>
-	<h2>Migration from VDI to RBI</h2>
+	<div class="flex anchor relative">
+		<h2 id="migration-from-vdi-to-rbi">Migration from VDI to RBI</h2>
+		<a href="https://blog.cloudflare.com/#migration-from-vdi-to-rbi" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Organizations can leverage Cloudflare Browser Isolation and other Zero Trust services to begin offloading VDI use cases and realize cost savings and productivity gains within days of rollout. Our recommended three-phase approach focuses on securing the most critical services with the least disruption to user experience, while also prioritizing quick time-to-value.</p>
 	<h4>Phase 1: Configure clientless web isolation for web-based applications</h4>
 	<p>Using our <a href="https://blog.cloudflare.com/clientless-web-isolation-general-availability">clientless web isolation approach</a>, administrators can send users to their private web application served in an isolated browser environment with just a hyperlink – without any software needed on endpoints. Then, administrators can build data protection rules preventing risky user actions within these isolated browser-based apps. Plus, because administrators avoid rolling out endpoint clients, scaling access to employees, contractors, or <a href="https://www.cloudflare.com/products/zero-trust/third-party-access">third parties</a> even on unmanaged devices is as easy as sending a link.</p>
@@ -84,13 +126,28 @@
 	<p>Instead of sending any users into virtualized apps in virtualized desktops, organizations can reduce their overhead entirely and embrace cloud-delivered ZTNA to protect one-to-one connections between all users and all apps in any cloud environment. The more apps secured with Cloudflare vs. VDI, the greater consistency of controls, visibility, and end user experience.</p>
 	<p>Virtualization has provided a powerful technology to bridge the gap between our hardware-centric legacy investments and IT’s cloud-first future. At this point, however, reliance on virtualization puts undue pressure on your administrators and risks diminishing end user productivity. As apps, users, and data accelerate their migration to the cloud, it only makes sense to shift security controls there too with cloud-native, not virtualized services.</p>
 	<p>As longer term steps, organizations can explore taking advantage of Cloudflare’s other natively-integrated services, such as our <a href="https://www.cloudflare.com/products/zero-trust/gateway">Secure Web Gateway (SWG)</a>, <a href="https://www.cloudflare.com/products/zero-trust/casb">Cloud Access Security Broker (CASB)</a>, and <a href="https://www.cloudflare.com/products/zero-trust/email-security">email security</a>. Other blogs this week outline how to transition to these Cloudflare services from other legacy technologies.</p>
-	<h3><b>Summary table</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="summary-table">Summary table</h3>
+		<a href="https://blog.cloudflare.com/#summary-table" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4KNcEBR0awcS9DGR9hSAvp/a97acd706659b4f44caf161de8d5b278/Screen-Shot-2022-06-23-at-4.29.15-PM.png" alt="" class="kg-image" width="1274" height="1198" loading="lazy">
 
 	</figure>
-	<h3>Best practices and progress metrics</h3>
+	<div class="flex anchor relative">
+		<h3 id="best-practices-and-progress-metrics">Best practices and progress metrics</h3>
+		<a href="https://blog.cloudflare.com/#best-practices-and-progress-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Below are sample best practices we recommend achieving as smooth a transition as possible, followed by sample metrics to track progress on your initiative:</p>
 	<ul>
 		<li>
@@ -103,13 +160,28 @@
 			<p><b>Roll out incrementally and learn:</b> Test out each step with a subset of users and apps before rolling out more widely to figure out what works (and does not). Start by testing out clientless web isolation for select apps to gain buy-in from users and executives.</p>
 		</li>
 	</ul>
-	<h3><b>Sample progress metrics</b></h3>
+	<div class="flex anchor relative">
+		<h3 id="sample-progress-metrics">Sample progress metrics</h3>
+		<a href="https://blog.cloudflare.com/#sample-progress-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mXifJi41c4K5EG7DVkYRi/420f6ffe438a1b09621e1be69fa3781c/Screen-Shot-2022-06-23-at-4.24.39-PM.png" alt="" class="kg-image" width="1264" height="514" loading="lazy">
 
 	</figure>
-	<h2>Explore your VDI transition</h2>
+	<div class="flex anchor relative">
+		<h2 id="explore-your-vdi-transition">Explore your VDI transition</h2>
+		<a href="https://blog.cloudflare.com/#explore-your-vdi-transition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Zero Trust makes it easy to begin sunsetting your VDI, beginning with leveraging our clientless browser isolation to secure web apps.</p>
 	<p>To learn more about how to move towards Zero Trust and away from virtualized desktops, request a <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise">Zero Trust consultation</a> today.Replacing your VDI is a great project to fit into your overall <a href="https://zerotrustroadmap.org">Zero Trust roadmap</a>. For a full summary of Cloudflare One Week and what’s new, tune in to our <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog">recap webinar</a>.</p>
 </div>

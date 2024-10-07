@@ -1,7 +1,14 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cbmns16jlNVE7iw0O9kFd/e5028646971dff34c3a0ddef4812393f/argo-tunnel-and-dc-os.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare is proud to partner with Mesosphere on their new Argo Tunnel offering available within their DC/OS (Data Center / Operating System) catalogue! Before diving deeper into the offering itself, we’ll first do a quick overview of the Mesophere platform, DC/OS.</p>
-	<h2>What is Mesosphere and DC/OS?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-is-mesosphere-and-dc-os">What is Mesosphere and DC/OS?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-mesosphere-and-dc-os" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Mesosphere DC/OS provides application developers and operators an easy way to consistently deploy and run applications and data services on cloud providers and on-premise infrastructure. The unified developer and operator experience across clouds makes it easy to realize use cases like global reach, resource expansion, and business continuity.</p>
 	<p>In this multi cloud world Cloudflare and Mesosphere DC/OS are great complements. Mesosphere DC/OS provides the same common services experience for developers and operators, and Cloudflare provides the same common service access experience across cloud providers. DC/OS helps tremendously for avoiding vendor lock-in to a single provider, while Cloudflare can load balance traffic intelligently (in addition to many other services) at the edge between providers. This new offering will allow you to load balance through the use of Argo Tunnel.</p>
 	<figure class="kg-card kg-image-card ">
@@ -9,13 +16,34 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2G5ZOTv2xHKdlDqCus7HnU/5a6cd43a30a89a720c532ae4caa10c5b/multicloud-neautral_2x.png" alt="" class="kg-image" width="3719" height="2164" loading="lazy">
 
 	</figure>
-	<h3>Quick Tunnel Refresh</h3>
+	<div class="flex anchor relative">
+		<h3 id="quick-tunnel-refresh">Quick Tunnel Refresh</h3>
+		<a href="https://blog.cloudflare.com/#quick-tunnel-refresh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Argo Tunnel is a private connection between your services and Cloudflare. Tunnel makes it such that only traffic that routes through the Cloudflare network can reach your service.</p>
 	<p>Cloudflare’s lightweight Argo Tunnel daemon creates an encrypted Tunnel between your origin web server and Cloudflare’s nearest data center — all without opening any public inbound ports. In other words, it’s a private link. Only Cloudflare can see the service and communicate with it, and for the rest of the internet, the service is reachable only through the hostname configured on Cloudflare. Check this out if you’d like to learn more.</p>
 	<p>By using Argo Tunnel, DC/OS is able to load balance your traffic to any of your hosts, wherever they are running on Earth, in any cloud provider! Need more instances in Paris? Just launch them! Are instances more affordable in a specific provider? Just launch them there, and thanks to Argo Tunnel and DC/OS your traffic will be directed to exactly where it belongs.</p>
-	<h3>Requirements</h3>
+	<div class="flex anchor relative">
+		<h3 id="requirements">Requirements</h3>
+		<a href="https://blog.cloudflare.com/#requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to use this application in DC/OS you must have a zone on Cloudflare with the <a href="https://blog.cloudflare.com/Argo">Argo service enabled</a>. Argo can be enabled for any plan type and is billed on usage. Because this application requires the use of a DC/OS ‘secrets’ the Enterprise version of DC/OS is required. To get started on Cloudflare please see <a href="https://www.cloudflare.com/plans">here</a> and sign up for an account. To do the same with DC/OS, please see <a href="https://docs.mesosphere.com/1.12/installing/evaluation">here</a>.</p>
-	<h3>Cloudflare Argo Tunnel Support for DC/OS</h3>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-argo-tunnel-support-for-dc-os">Cloudflare Argo Tunnel Support for DC/OS</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-argo-tunnel-support-for-dc-os" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Argo Tunnel is the fast way to make services that run on DC/OS private agents (that are only bound to the DC/OS internal network) accessible over the public internet.</p>
 	<p>When you launch the Tunnel for your service, it creates persistent outbound connections to the 2 closest Cloudflare PoPs over which the entire Cloudflare network will route through to reach the service associated with the Tunnel. There is no need to configure DNS, update a NAT configuration, or modify firewall rules (connections are outbound). The Argo Tunnel exposed service gets all the benefits offered by the Cloudflare network (e.g. DDoS protection, CDN and performance, TLS, etc.).</p>
 	<figure class="kg-card kg-image-card ">

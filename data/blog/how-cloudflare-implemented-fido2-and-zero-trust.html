@@ -8,7 +8,14 @@
 	</figure>
 	<p>Cloudflare’s security architecture a few years ago was a classic “castle and moat” VPN architecture. Our employees would use our corporate VPN to connect to all the internal applications and servers to do their jobs. We enforced two-factor authentication with time-based one-time passcodes (TOTP), using an authenticator app like Google Authenticator or Authy when logging into the VPN but only a few internal applications had a second layer of auth. That architecture has a strong looking exterior, but the security model is weak. We recently detailed <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">the mechanics of a phishing attack we prevented</a>, which walks through how attackers can phish applications that are “secured” with second factor authentication methods like TOTP. Happily, we had long done away with TOTP and replaced it with hardware security keys and Cloudflare Access. This blog details how we did that.</p>
 	<p>The solution to the phishing problem is through a <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication">multi-factor &nbsp;authentication (MFA)</a> protocol called <i>FIDO2/WebAuthn</i>. Today, all Cloudflare employees log in with FIDO2 as their secure multi-factor and authenticate to our systems using our own <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> products. Our newer architecture is phish proof and allows us to more easily enforce the least privilege access control.</p>
-	<h3>A little about the terminology of security keys and what we use</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-little-about-the-terminology-of-security-keys-and-what-we-use">A little about the terminology of security keys and what we use</h3>
+		<a href="https://blog.cloudflare.com/#a-little-about-the-terminology-of-security-keys-and-what-we-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In 2018, we knew we wanted to migrate to phishing-resistant MFA. We had seen <a href="https://github.com/kgretzky/evilginx2">evilginx2</a> and the maturity around phishing push-based mobile authenticators, and TOTP. The only phishing-resistant MFA that withstood social engineering and credential stealing attacks were security keys that implement FIDO standards. FIDO-based MFA introduces new terminology, such as FIDO2, WebAuthn, hard(ware) keys, security keys, and specifically, the YubiKey (the name of a well-known manufacturer of hardware keys), which we will reference throughout this post.</p>
 	<p><b>WebAuthn</b> refers to the <a href="https://www.w3.org/TR/webauthn-2">web authentication standard</a>, and we wrote in depth about how that protocol works when we released <a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn">support for security keys in the Cloudflare dashboard</a>.</p>
 	<p><b>CTAP1(U2F) and CTAP2</b> refers to the client to authenticator protocol which details how software or hardware devices interact with the platform performing the WebAuthn protocol.</p>
@@ -17,7 +24,14 @@
 	<p>FIDO2 is phishing-resistant because it implements a challenge/response that is cryptographically secure, and the challenge protocol incorporates the specific website or domain the user is authenticating to. When logging in, the security key will produce a different response on example.net than when the user is legitimately trying to log in on example.com.</p>
 	<p>At Cloudflare, we’ve issued multiple types of security keys to our employees over the years, but we currently issue two different FIPS-validated security keys to all employees. The first key is a YubiKey 5 Nano or YubiKey 5C Nano that is intended to stay in a USB slot on our employee laptops at all times. The second is the YubiKey 5 NFC or YubiKey 5C NFC that works on desktops and on mobile either through NFC or USB-C.</p>
 	<p>In late 2018 we distributed security keys at a whole company event. We asked all employees to enroll their keys, authenticate with them, and ask questions about the devices during a short workshop. The program was a huge success, but there were still rough edges and applications that didn’t work with WebAuthn. We weren’t ready for full enforcement of security keys and needed some middle-ground solution while we worked through the issues.</p>
-	<h3>The beginning: selective security key enforcement with Cloudflare Zero Trust</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust">The beginning: selective security key enforcement with Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We have thousands of applications and servers we are responsible for maintaining, which were protected by our VPN. We started <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">migrating</a> all of these applications to our Zero Trust access proxy at the same time that we issued our employees their set of security keys.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -46,7 +60,14 @@
 
 	</figure>
 	<p>Here’s a site where only members of the ACL-CFA-CFDATA-argo-config-admin-svc group have access. It enforces that the employee used their security key when logging in, and no complicated OAuth or SAML integration was needed for this. We have over 600 internal sites using this same pattern and all of them enforce security keys.</p>
-	<h3>The end of optional: the day Cloudflare dropped TOTP completely</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-end-of-optional-the-day-cloudflare-dropped-totp-completely">The end of optional: the day Cloudflare dropped TOTP completely</h3>
+		<a href="https://blog.cloudflare.com/#the-end-of-optional-the-day-cloudflare-dropped-totp-completely" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In February 2021, our employees started to report social engineering attempts to our security team. They were receiving phone calls from someone claiming to be in our IT department, and we were alarmed. We decided to begin requiring security keys to be used for all authentication to prevent any employees from being victims of the social engineering attack.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -55,7 +76,14 @@
 	</figure>
 	<p>After disabling all other forms of MFA (SMS, TOTP etc.), except for WebAuthn, we were officially FIDO2 only. “Soft token” (TOTP) isn’t perfectly at zero on this graph though. This is caused because those who lose their security keys or become locked out of their accounts need to go through a secure offline recovery process where logging in is facilitated through an alternate method. Best practice is to distribute multiple security keys for employees to allow for a back-up, in case this situation arises.</p>
 	<p>Now that all employees are using their YubiKeys for phishing-resistant MFA are we finished? Well, what about <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> and non-HTTP protocols? We wanted a single unified approach to <a href="https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management">identity and access management</a> so bringing security keys to arbitrary other protocols was our next consideration.</p>
-	<h3>Using security keys with SSH</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-security-keys-with-ssh">Using security keys with SSH</h3>
+		<a href="https://blog.cloudflare.com/#using-security-keys-with-ssh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To support bringing security keys to SSH connections we deployed <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a> to all of our production infrastructure. Cloudflare Tunnel seamlessly integrates with Cloudflare Access regardless of the protocol transiting the tunnel, and running a tunnel requires the tunnel client <a href="https://github.com/cloudflare/cloudflared">cloudflared</a>. This means that we could deploy the cloudflared binary to all of our infrastructure and create a tunnel to each machine, create Cloudflare Access policies where security keys are required, and ssh connections would start requiring security keys through Cloudflare Access.</p>
 	<p>In practice these steps are less intimidating than they sound and the Zero Trust developer docs have a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion">fantastic tutorial</a> on how to do this. Each of our servers have a configuration file required to start the tunnel. Systemd invokes cloudflared which uses this (or similar) configuration file when starting the tunnel.</p>
 	<pre class="language-bash"><code class="language-bash">tunnel: 37b50fe2-a52a-5611-a9b1-ear382bd12a6
@@ -69,7 +97,14 @@ ingress:
 	<pre class="language-bash"><code class="language-bash">Host *.ssh.cloudflare.com
     ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com</code></pre>
 	<p>It’s worth noting that OpenSSH has supported FIDO2 since <a href="https://www.openssh.com/txt/release-8.2">version 8.2</a>, but we’ve found there are benefits to having a unified approach to access control where all access control lists are maintained in a single place.</p>
-	<h3>What we’ve learned and how our experience can help you</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-weve-learned-and-how-our-experience-can-help-you">What we’ve learned and how our experience can help you</h3>
+		<a href="https://blog.cloudflare.com/#what-weve-learned-and-how-our-experience-can-help-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There’s no question after the past few months that the future of authentication is FIDO2 and WebAuthn. In total this took us a few years, and we hope these learnings can prove helpful to other organizations who are looking to modernize with FIDO-based authentication.</p>
 	<p>If you’re interested in rolling out security keys at your organization, or you’re interested in Cloudflare’s Zero Trust products, reach out to us at <a href="mailto:securitykeys@cloudflare.com">securitykeys@cloudflare.com</a>. Although we’re happy that our <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing">preventative efforts</a> helped us resist the latest round of phishing and social engineering attacks, our <a href="https://www.cloudflare.com/careers/jobs/?department=Security">security team</a> is still growing to help prevent whatever comes next.</p>
 </div>

@@ -12,7 +12,14 @@
 	<p>When a request is made to a site behind Access, Cloudflare prompts the visitor to login with an identity provider. Access then checks that user’s identity against the configured rules and, if permitted, allows the request to proceed. Access performs these checks on each request a user makes in a way that is transparent and seamless for the end user.</p>
 	<p>However, since the day we launched Access, our logging has resembled the screenshot above. We captured when a user first authenticated through the gateway, but that’s where it stopped. Starting today, we can give your team the full picture of every request made to every application.</p>
 	<p>We’re excited to announce that you can now capture logs of every request a user makes to a resource behind Cloudflare Access. In the event of an emergency, like a stolen laptop, you can now audit every URL requested during a session. Logs are standardized in one place, regardless of whether you use multiple SSO providers or secure multiple applications, and the Cloudflare Logpush platform can send them to your <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> for retention and analysis.</p>
-	<h2>Auditing every login</h2>
+	<div class="flex anchor relative">
+		<h2 id="auditing-every-login">Auditing every login</h2>
+		<a href="https://blog.cloudflare.com/#auditing-every-login" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access brings the speed and security improvements Cloudflare provides to public-facing sites and applies those lessons to the internal applications your team uses. For most teams, these were applications that traditionally lived behind a corporate VPN. Once a user joined that VPN, they were inside that private network, and administrators had to take additional steps to prevent users from reaching things they should not have access to.</p>
 	<p>Access flips this model by assuming no user should be able to reach anything by default; applying a zero-trust solution to the internal tools your team uses. With Access, when any user requests the hostname of that application, the request hits Cloudflare first. We check to see if the user is authenticated and, if not, send them to your identity provider like Okta, or Azure ActiveDirectory. The user is prompted to login, and Cloudflare then evaluates if they are allowed to reach the requested application. All of this happens at the edge of our network before a request touches your origin, and for the user, it feels like the seamless SSO flow they’ve become accustomed to for SaaS apps.</p>
 	<figure class="kg-card kg-image-card ">
@@ -27,7 +34,14 @@
 
 	</figure>
 	<p>These logs can help you track every user who connected to an internal application, including contractors and partners who might use different identity providers. However, this logging stopped at the authentication. Access did not capture the next steps of a given user.</p>
-	<h2>Auditing every request</h2>
+	<div class="flex anchor relative">
+		<h2 id="auditing-every-request">Auditing every request</h2>
+		<a href="https://blog.cloudflare.com/#auditing-every-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare secures both external-facing sites and internal resources by triaging each request in our network before we ever send it to your origin. Products like our WAF enforce rules to protect your site from attacks like SQL injection or cross-site scripting. Likewise, Access identifies the principal behind each request by evaluating each connection that passes through the gateway.</p>
 	<p>Once a member of your team authenticates to reach a resource behind Access, we generate a token for that user that contains their SSO identity. The token is structured as JSON Web Token (JWT). JWT security is an open standard for signing and encrypting sensitive information. These tokens provide a secure and information-dense mechanism that Access can use to verify individual users. Cloudflare signs the JWT using a public and private key pair that we control. We rely on RSA Signature with SHA-256, or RS256, an asymmetric algorithm, to perform that signature. We make the public key available so that you can validate their authenticity, as well.</p>
 	<p>When a user requests a given URL, Access appends the user identity from that token as a request header, which we then log as the request passes through our network. Your team can collect these logs in your preferred third-party SIEM or storage destination by using the Cloudflare <a href="https://developers.cloudflare.com/logs/logpush">Logpush</a> platform.</p>
@@ -61,9 +75,23 @@
 }</code></pre>
 	<p>In the example above, the user initially visited the splash page for a sample Jira instance. The next request was made to a specific Jira ticket, EXP-12, about one minute after the first request. With per-request logging, Access administrators can review each request a user made once authenticated in the event that an account is compromised or a device stolen.</p>
 	<p>The logs are consistent across all applications and identity providers. The same standard fields are captured when contractors login with their AzureAD instance to your supply chain tool as when your internal users authenticate with Okta to your Jira. You can also augment the data above with other request details like TLS cipher used and WAF results.</p>
-	<h2>How can this data be used?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-can-this-data-be-used">How can this data be used?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-this-data-be-used" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The native logging capabilities of hosted applications vary wildly. Some tools provide more robust records of user activity, but others would require server-side code changes or workarounds to add this level of logging. Cloudflare Access can give your team the ability to skip that work and introduce logging in a single gateway that applies to all resources protected behind it.</p>
 	<p>The audit logs can be exported to third-party SIEM tools or S3 buckets for analysis and anomaly detection. The data can also be used for audit purposes in the event that a corporate device is lost or stolen. Security teams can then use this to recreate user sessions from logs as they investigate.</p>
-	<h2>What’s next?</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Any enterprise customer with Logpush enabled can now use this feature at no additional cost. Instructions are available <a href="https://developers.cloudflare.com/logs/logpush/logpush-configuration-api">here</a> to configure Logpush and additional documentation <a href="https://developers.cloudflare.com/access/setting-up-access/audit-logs">here</a> to enable Access per-request logs.</p>
 </div>

@@ -9,7 +9,14 @@
 	<p>There are in fact two protocols that share the same name: “Google QUIC” (“gQUIC” for short), is the original protocol that was designed by Google engineers several years ago, which, after years of experimentation, has now been adopted by the <a href="https://ietf.org">IETF</a> (Internet Engineering Task Force) for standardization.</p>
 	<p>“IETF QUIC” (just “QUIC” from now on) has already diverged from gQUIC quite significantly such that it can be considered a separate protocol. From the wire format of the packets, to the handshake and the mapping of HTTP, QUIC has improved the original gQUIC design thanks to open collaboration from many organizations and individuals, with the shared goal of making the Internet faster and more secure.</p>
 	<p>So, what are the improvements QUIC provides?</p>
-	<h3>Built-in security (and performance)</h3>
+	<div class="flex anchor relative">
+		<h3 id="built-in-security-and-performance">Built-in security (and performance)</h3>
+		<a href="https://blog.cloudflare.com/#built-in-security-and-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of QUIC’s more radical deviations from the now venerable TCP, is the stated design goal of providing a secure-by-default transport protocol. QUIC accomplishes this by providing security features, like authentication and encryption, that are typically handled by a higher layer protocol (like TLS), from the transport protocol itself.</p>
 	<p>The initial QUIC handshake combines the typical three-way handshake that you get with TCP, with the TLS 1.3 handshake, which provides authentication of the end-points as well as negotiation of cryptographic parameters. For those familiar with the TLS protocol, QUIC replaces the TLS record layer with its own framing format, while keeping the same TLS handshake messages.</p>
 	<p>Not only does this ensure that the connection is always authenticated and encrypted, but it also makes the initial connection establishment faster as a result: the typical QUIC handshake only takes a single round-trip between client and server to complete, compared to the two round-trips required for the TCP and TLS 1.3 handshakes combined.</p>
@@ -26,7 +33,14 @@
 	</figure>
 	<p>But QUIC goes even further, and also encrypts additional connection metadata that could be abused by middle-boxes to interfere with connections. For example packet numbers could be used by passive on-path attackers to correlate users activity over multiple network paths when connection migration is employed (see below). By encrypting packet numbers QUIC ensures that they can't be used to correlate activity by any entity other than the end-points in the connection.</p>
 	<p>Encryption can also be an effective remedy to ossification, which makes flexibility built into a protocol (like for example being able to negotiate different versions of that protocol) impossible to use in practice due to wrong assumptions made by implementations (ossification is what <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">delayed deployment of TLS 1.3</a> for so long, which <a href="https://blog.cloudflare.com/you-get-tls-1-3-you-get-tls-1-3-everyone-gets-tls-1-3">was only possible</a> after several changes, designed to prevent ossified middle-boxes from incorrectly blocking the new revision of the TLS protocol, were adopted).</p>
-	<h3>Head-of-line blocking</h3>
+	<div class="flex anchor relative">
+		<h3 id="head-of-line-blocking">Head-of-line blocking</h3>
+		<a href="https://blog.cloudflare.com/#head-of-line-blocking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the main improvements delivered by <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a> was the ability to multiplex different HTTP requests onto the same TCP connection. This allows HTTP/2 applications to process requests concurrently and better utilize the network bandwidth available to them.</p>
 	<p>This was a big improvement over the then status quo, which required applications to initiate multiple TCP+TLS connections if they wanted to process multiple HTTP/1.1 requests concurrently (e.g. when a browser needs to fetch both CSS and Javascript assets to render a web page). Creating new connections requires repeating the initial handshakes multiple times, as well as going through the initial congestion window ramp-up, which means that rendering of web pages is slowed down. Multiplexing HTTP exchanges avoids all that.</p>
 	<figure class="kg-card kg-image-card ">
@@ -37,11 +51,25 @@
 	<p>This however has a downside: since multiple requests/responses are transmitted over the same TCP connection, they are all equally affected by packet loss (e.g. due to network congestion), even if the data that was lost only concerned a single request. This is called “head-of-line blocking”.</p>
 	<p>QUIC goes a bit deeper and provides first class support for multiplexing such that different HTTP streams can in turn be mapped to different QUIC transport streams, but, while they still share the same QUIC connection so no additional handshakes are required and congestion state is shared, QUIC streams are delivered independently, such that in most cases packet loss affecting one stream doesn't affect others.</p>
 	<p>This can dramatically reduce the time required to, for example, render complete web pages (with CSS, Javascript, images, and other kinds of assets) particularly when crossing highly congested networks, with high packet loss rates.</p>
-	<h3>That easy, uh?</h3>
+	<div class="flex anchor relative">
+		<h3 id="that-easy-uh">That easy, uh?</h3>
+		<a href="https://blog.cloudflare.com/#that-easy-uh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to deliver on its promises, the QUIC protocol needs to break some of the assumptions that were taken for granted by many network applications, potentially making implementations and deployment of QUIC more difficult.</p>
 	<p>QUIC is designed to be delivered on top of UDP datagrams, to ease deployment and avoid problems coming from network appliances that drop packets from unknown protocols, since most appliances already support UDP. This also allows QUIC implementations to live in user-space, so that, for example, browsers will be able to implement new protocol features and ship them to their users without having to wait for operating systems updates.</p>
 	<p>However despite the intended goal of avoiding breakage, it also makes preventing abuse and correctly routing packets to the correct end-points more challenging.</p>
-	<h3>One NAT to bring them all and in the darkness bind them</h3>
+	<div class="flex anchor relative">
+		<h3 id="one-nat-to-bring-them-all-and-in-the-darkness-bind-them">One NAT to bring them all and in the darkness bind them</h3>
+		<a href="https://blog.cloudflare.com/#one-nat-to-bring-them-all-and-in-the-darkness-bind-them" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Typical NAT routers can keep track of TCP connections passing through them by using the traditional 4-tuple (source IP address and port, and destination IP address and port), and by observing TCP SYN, ACK and FIN packets transmitted over the network, they can detect when a new connection is established and when it is terminated. This allows them to precisely manage the lifetime of NAT bindings, the association between the internal IP address and port, and the external ones.</p>
 	<p>With QUIC this is not yet possible, since NAT routers deployed in the wild today do not understand QUIC yet, so they typically fallback to the default and less precise handling of UDP flows, which usually involves using <a href="https://conferences.sigcomm.org/imc/2010/papers/p260.pdf">arbitrary, and at times very short, timeouts</a>, which could affect long-running connections.</p>
 	<p>When a NAT rebinding happens (due to a timeout for example), the end-point on the outside of the NAT perimeter will see packets coming from a different source port than the one that was observed when the connection was originally established, which makes it impossible to track connections by only using the 4-tuple.</p>
@@ -59,7 +87,14 @@
 
 	</figure>
 	<p>In order to address this, network operators might need to employ smarter layer 4 load balancing solutions, which can be implemented in software and deployed without the need to touch edge routers (see for example Facebook's <a href="https://github.com/facebookincubator/katran">Katran</a> project).</p>
-	<h3>QPACK</h3>
+	<div class="flex anchor relative">
+		<h3 id="qpack">QPACK</h3>
+		<a href="https://blog.cloudflare.com/#qpack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another benefit introduced by HTTP/2 was <a href="https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2">header compression (or HPACK)</a> which allows HTTP/2 end-points to reduce the amount of data transmitted over the network by removing redundancies from HTTP requests and responses.</p>
 	<p>In particular, among other techniques, HPACK employs dynamic tables populated with headers that were sent (or received) from previous HTTP requests (or responses), allowing end-points to reference previously encountered headers in new requests (or responses), rather than having to transmit them all over again.</p>
 	<p>HPACK's dynamic tables need to be synchronized between the encoder (the party that sends an HTTP request or response) and the decoder (the one that receives them), otherwise the decoder will not be able to decode what it receives.</p>
@@ -68,7 +103,14 @@
 	<p>For example, if a client sends HTTP request A over QUIC stream A, and request B over stream B, it might happen, due to packet reordering or loss in the network, that request B is received by the server before request A, and if request B was encoded such that it referenced a header from request A, the server will be unable to decode it since it didn't yet see request A.</p>
 	<p>In the gQUIC protocol this problem was solved by simply serializing all HTTP request and response headers (but not the bodies) over the same gQUIC stream, which meant headers would get delivered in order no matter what. This is a very simple scheme that allows implementations to reuse a lot of their existing HTTP/2 code, but on the other hand it increases the head-of-line blocking that QUIC was designed to reduce. The IETF QUIC working group thus designed a new mapping between HTTP and QUIC (“HTTP/QUIC”) as well as a new header compression scheme called “QPACK”.</p>
 	<p>In the latest draft of the HTTP/QUIC mapping and the QPACK spec, each HTTP request/response exchange uses its own bidirectional QUIC stream, so there's no head-of-line blocking. In addition, in order to support QPACK, each peer creates two additional unidirectional QUIC streams, one used to send QPACK table updates to the other peer, and one to acknowledge updates received by the other side. This way, a QPACK encoder can use a dynamic table reference only after it has been explicitly acknowledged by the decoder.</p>
-	<h3>Deflecting Reflection</h3>
+	<div class="flex anchor relative">
+		<h3 id="deflecting-reflection">Deflecting Reflection</h3>
+		<a href="https://blog.cloudflare.com/#deflecting-reflection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A common problem among <a href="https://blog.cloudflare.com/ssdp-100gbps">UDP-based</a> <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">protocols</a> is their susceptibility to <a href="https://blog.cloudflare.com/reflections-on-reflections">reflection attacks</a>, where an attacker tricks an otherwise innocent server into sending large amounts of data to a third-party victim, by spoofing the source IP address of packets targeted to the server to make them look like they came from the victim.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -80,9 +122,23 @@
 	<p>QUIC’s handshake on the other hand is very asymmetrical: like for TLS, in its first flight the QUIC server generally sends its own certificate chain, which can be very large, while the client only has to send a few bytes (the TLS ClientHello message embedded into a QUIC packet). For this reason, the initial QUIC packet sent by a client has to be padded to a specific minimum length (even if the actual content of the packet is much smaller). However this mitigation is still not sufficient, since the typical server response spans multiple packets and can thus still be far larger than the padded client packet.</p>
 	<p>The QUIC protocol also defines an explicit source-address verification mechanism, in which the server, rather than sending its long response, only sends a much smaller “retry” packet which contains a unique cryptographic token that the client will then have to echo back to the server inside a new initial packet. This way the server has a higher confidence that the client is not spoofing its own source IP address (since it received the retry packet) and can complete the handshake. The downside of this mitigation is that it increases the initial handshake duration from a single round-trip to two.</p>
 	<p>An alternative solution involves reducing the server's response to the point where a reflection attack becomes less effective, for example by using <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA certificates</a> (which are typically much smaller than their RSA counterparts). We have also been experimenting with a mechanism for <a href="https://tools.ietf.org/html/draft-ietf-tls-certificate-compression">compressing TLS certificates</a> using off-the-shelf compression algorithms like zlib and brotli, which is a feature originally introduced by gQUIC but not currently available in TLS.</p>
-	<h3>UDP performance</h3>
+	<div class="flex anchor relative">
+		<h3 id="udp-performance">UDP performance</h3>
+		<a href="https://blog.cloudflare.com/#udp-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One of the recurring issues with QUIC involves existing hardware and software deployed in the wild not being able to understand it. We've already looked at how QUIC tries to address network middle-boxes like routers, but another potentially problematic area is the performance of sending and receiving data over UDP on the QUIC end-points themselves. Over the years a lot of work has gone into optimizing TCP implementations as much as possible, including building off-loading capabilities in both software (like in operating systems) and hardware (like in network interfaces), but none of that is currently available for UDP.</p>
 	<p>However it’s only a matter of time until QUIC implementations can take advantage of these capabilities as well. Look for example at the recent efforts to implement <a href="https://lwn.net/Articles/752184">Generic Segmentation Offloading for UDP on LInux</a>, which would allow applications to bundle and transfer multiple UDP segments between user-space and the kernel-space networking stack at the cost of a single one (or close enough), as well as the one to add <a href="https://lwn.net/Articles/655299">zerocopy socket support also on Linux</a> which would allow applications to avoid the cost of copying user-space memory into kernel-space.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like HTTP/2 and TLS 1.3, QUIC is set to deliver a lot of new features designed to improve performance and security of web sites, as well as other Internet-based properties. The IETF working group is currently set to deliver the first version of the QUIC specifications by the end of the year and Cloudflare engineers are already hard at work to provide the benefits of QUIC to all of our customers.</p>
 </div>

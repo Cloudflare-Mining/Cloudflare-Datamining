@@ -70,9 +70,24 @@
 	</figure>
 	<p>Retroactively looking at the infected device services banners using <a href="https://censys.io">Censys'</a> Internet-wide scanning reveals that most of the devices appear to be routers and cameras as reported in the chart above. Each type of banner is represented separately as the identification process was different for each so it might be that a device is counted multiple times. Mirai was actively removing any banner identification which partially explains why we were unable to identify most of the devices.</p>
 	<p>Before delving further into Mirai’s story, let’s briefly look at how Mirai works, specifically how it propagates and its offensive capabilities.</p>
-	<h3>How Mirai works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-mirai-works">How Mirai works</h3>
+		<a href="https://blog.cloudflare.com/#how-mirai-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At its core, Mirai is a <a href="https://en.wikipedia.org/wiki/Computer_worm">self-propagating worm</a>, that is, it’s a malicious program that replicates itself by finding, attacking and infecting vulnerable IoT devices. It is also considered a botnet because the infected devices are controlled via a central set of command and control (C&amp;C) servers. These servers tell the infected devices which sites to attack next. Overall, Mirai is made of two key components: a replication module and an attack module.</p>
-	<h2>Replication module</h2>
+	<div class="flex anchor relative">
+		<h2 id="replication-module">Replication module</h2>
+		<a href="https://blog.cloudflare.com/#replication-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7MPhfLTL6E6WUAS4xdlaJK/6ea51167445a23ed060e919a575bf95f/mirai-infection-process.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
@@ -87,7 +102,15 @@
 
 	</figure>
 	<p>The attack module is responsible for carrying out DDoS attacks against the targets specified by the C&amp;C servers. This module implements most of the code DDoS techniques such as HTTP flooding, UDP flooding, and all TCP flooding options. This wide range of methods allowed Mirai to perform volumetric attacks, application-layer attacks, and TCP state-exhaustion attacks.</p>
-	<h3>Krebs on Security attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="krebs-on-security-attack">Krebs on Security attack</h3>
+		<a href="https://blog.cloudflare.com/#krebs-on-security-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2QDBF6lY3eznSnre1Tllhn/c88811207125e285eb6d511387dc9a60/krebs-on-security-timeline.png" alt="" class="kg-image" width="1200" height="750" loading="lazy">
@@ -101,7 +124,15 @@
 	</figure>
 	<p>Looking at the geolocation of the IPs that targeted Brian’s site reveals that a disproportionate number of the devices involved in the attack are coming from South American and South-east Asia. As reported in the chart above Brazil, Vietnam and Columbia appear to be the main sources of compromised devices.</p>
 	<p>One dire consequence of this massive attack against Krebs was that Akamai, the CDN service that provided Brian’s DDoS protection, had to withdraw its support. This forced <a href="https://www.csoonline.com/article/3123806/security/krebsonsecurity-moves-to-project-shield-for-protection-against-ddos-attack-censorship.html">Brian to move his site to Project Shield</a>. As he discussed in depth in <a href="https://krebsonsecurity.com/2016/09/the-democratization-of-censorship">a blog post</a>, this incident highlights how DDoS attacks have become a common and cheap way to censor people.</p>
-	<h3>OVH attack</h3>
+	<div class="flex anchor relative">
+		<h3 id="ovh-attack">OVH attack</h3>
+		<a href="https://blog.cloudflare.com/#ovh-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CQ1HTPbEW8L92x2rbvHXV/d86fd29ead46bf28289f6306934233be/ovh-record-breaking-ddos-attack-ars-technica.jpg" alt="" class="kg-image" width="1200" height="462" loading="lazy">
@@ -117,7 +148,15 @@
 	<p>Octave Klaba, OVH’s founder, reported on Twitter that the attacks were targeting Minecraft servers. As we will see through this post, Mirai has been extensively used in gamer wars and is likely the reason why it was created in the first place.</p>
 	<p>According to OVH telemetry, the attack peaked at 1TBs and was carried out using 145,000 IoT devices. While the number of IoT devices is consistent with what we observed, the volume of the attack reported is significantly higher than what we observed with other attacks. For example, as mentioned earlier, Brian’s one topped out at 623 Gbps.</p>
 	<p>Regardless of the exact size, the Mirai attacks are clearly the largest ever recorded. They dwarf the previous public record holder, an attack against Cloudflare that topped out at <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">~400Gpbs</a>.</p>
-	<h3>The rise of copycats</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-rise-of-copycats">The rise of copycats</h3>
+		<a href="https://blog.cloudflare.com/#the-rise-of-copycats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/xH2mtNePk44v5s9FQA2Yq/8c703d75795f57369cb25b2d85170b72/mirai-code-leaked-on-blackmarket-forums.png" alt="" class="kg-image" width="1200" height="480" loading="lazy">
@@ -228,7 +267,15 @@
 	<p>On October 21, a <a href="http://money.cnn.com/2016/10/21/technology/ddos-attack-popular-sites/index.html">Mirai attack</a> targeted the popular DNS provider DYN. This event prevented Internet users from <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack">accessing many popular websites</a>, including AirBnB, Amazon, Github, HBO, Netflix, Paypal, Reddit, and Twitter, by disturbing the DYN name-resolution service.</p>
 	<p>We believe this attack was not meant to “take down the Internet,” as it was painted by the press, but rather was linked to a larger set of attacks against gaming platforms.</p>
 	<p>We reached this conclusion by looking at the other targets of the DYN variant (cluster 6). They are all gaming related. Additionally, this is also consistent with the OVH attack as it was also targeted because it hosted specific game servers as discussed earlier. As sad as it seems, all the prominent sites affected by the DYN attack were apparently just the spectacular collateral damage of a war between gamers.</p>
-	<h3>Mirai’s attempted takedown of an entire country's network? October 31</h3>
+	<div class="flex anchor relative">
+		<h3 id="mirais-attempted-takedown-of-an-entire-countrys-network-october-31">Mirai’s attempted takedown of an entire country's network? October 31</h3>
+		<a href="https://blog.cloudflare.com/#mirais-attempted-takedown-of-an-entire-countrys-network-october-31" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/RuhwBi0AWQgL2q82OCE7s/50b2041269091b420368a68a79e0e0ed/mirai-shutdown-internet-in-liberia-hackernews.jpg" alt="" class="kg-image" width="1200" height="560" loading="lazy">
@@ -237,7 +284,14 @@
 	<p>Lonestar Cell, one of the largest Liberian telecom operators started to be targeted by Mirai on October 31. Over the next few months, it suffered 616 attacks, the most of any Mirai victim.</p>
 	<p>The fact that the Mirai cluster responsible for these attack has no common infrastructure with the original Mirai or the DYN variant indicate that they were orchestrated by a totally different actor than the original author.</p>
 	<p>A few weeks after our study was published, this assessment was confirmed when the author of one of the most aggressive Mirai variant <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware">confessed during his trial</a> that he was paid to takedown Lonestar. He acknowledged that an unnamed Liberia’s ISP paid him $10,000 to take out its competitors. This validated that our clustering approach is able to accurately track and attribute Mirai’s attacks.</p>
-	<h3>Deutsche Telekom going dark</h3>
+	<div class="flex anchor relative">
+		<h3 id="deutsche-telekom-going-dark">Deutsche Telekom going dark</h3>
+		<a href="https://blog.cloudflare.com/#deutsche-telekom-going-dark" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>On November 26, 2016, one of the largest German Internet provider Deutsche Telekom suffered a <a href="https://www.csoonline.com/article/3144197/security/upgraded-mirai-botnet-disrupts-deutsche-telekom-by-infecting-routers.html">massive outage</a> after 900,000 of its routers were compromised.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -247,13 +301,34 @@
 	<p>Ironically, this outage was not due to yet another Mirai DDoS attack but instead due to a particularly innovative and buggy version of Mirai that knocked these devices offline while attempting to compromise them. This variant also affected thousands of <a href="https://motherboard.vice.com/en_us/article/nz7ky7/hackers-say-knocking-thousands-of-brits-offline-was-an-accident-mirai">TalkTalk routers</a>.</p>
 	<p>What allowed this variant to infect so many routers was the addition to its replication module of a router exploit targeting at the <a href="https://en.wikipedia.org/wiki/TR-069">CPE WAN Management Protocol (CWMP)</a>. The CWMP protocol is an HTTP-based protocol used by many Internet providers to auto-configure and remotely manage home routers, modems, and other customer-on-premises (CPE) equipment.</p>
 	<p>Beside its scale, this incident is significant because it demonstrates how the weaponization of more complex IoT vulnerabilities by hackers can lead to very potent botnets. We hope the Deutsche Telekom event acts as a wake-up call and push toward making IoT auto-update mandatory. This is much needed to curb the significant risk posed by vulnerable IoT device given the poor track record of Internet users manually patching their IoT devices.</p>
-	<h3>Mirai original author outed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="mirai-original-author-outed">Mirai original author outed?</h3>
+		<a href="https://blog.cloudflare.com/#mirai-original-author-outed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the months following his website being taken offline, Brian Krebs devoted hundreds of hours to investigating Anna-Senpai, the infamous Mirai author. In early January 2017, Brian announced that he <a href="https://krebsonsecurity.com/2017/01/who-is-anna-senpai-the-mirai-worm-author">believes</a> Anna-senpai to be Paras Jha, a Rutgers student who apparently has been involved in previous game-hacking related schemes. Brian also identified Josia White as a person of interest. After being outed, Paras Jha and Josia White and another individual were questioned by authorities and <a href="https://krebsonsecurity.com/2017/12/mirai-iot-botnet-co-authors-plead-guilty">plead guilty</a> in federal court to a variety of charges, some including their activity related to Mirai.</p>
-	<h3>Deutsche Telekom attacker arrested</h3>
+	<div class="flex anchor relative">
+		<h3 id="deutsche-telekom-attacker-arrested">Deutsche Telekom attacker arrested</h3>
+		<a href="https://blog.cloudflare.com/#deutsche-telekom-attacker-arrested" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In November 2016, Daniel Kaye (aka BestBuy) the author of the Mirai botnet variant that brought down Deutsche Telekom was arrested at the <a href="http://www.bbc.com/news/technology-37510502">Luton airport</a>. Prior to Mirai, a 29-year-old British citizen was infamous for selling his hacking services on various dark web markets.</p>
 	<p>In July 2017 a few months after being extradited to Germany Daniel Kaye <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware">plead guilty</a> and was sentenced to a one year and a half imprisonment with suspension. During the trial, Daniel admitted that he never intended for the routers to cease functioning. He only wanted to silently control them so he can use them as part of a DDoS botnet to increase his botnet firepower. As discussed earlier he also confessed being paid by competitors to takedown Lonestar.</p>
 	<p>In Aug 2017 Daniel was <a href="https://www.theguardian.com/uk-news/2017/aug/30/alleged-mastermind-daniel-kaye-lloyds-bank-cyber-attacks-extradited-uk">extradited back to the UK to face extortion charges</a> after attempting to blackmail Lloyds and Barclays banks. According to press reports, he asked the Lloyds to pay about £75,000 in bitcoins for the attack to be called off.</p>
-	<h3>Takeways</h3>
+	<div class="flex anchor relative">
+		<h3 id="takeways">Takeways</h3>
+		<a href="https://blog.cloudflare.com/#takeways" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The prevalence of insecure IoT devices on the Internet makes it very likely that, for the foreseeable future, they will be the main source of DDoS attacks.</p>
 	<p>Mirai and subsequent IoT botnets can be averted if IoT vendors start to follow basic security best practices. In particular, we recommend that the following should be required of all IoT device makers:</p>
 	<ul>

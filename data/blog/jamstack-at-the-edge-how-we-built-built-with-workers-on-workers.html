@@ -11,25 +11,60 @@
 
 	</figure>
 	<p>A screenshot of the Built with Workers homepage</p>
-	<h2>Exploring the JAMstack</h2>
+	<div class="flex anchor relative">
+		<h2 id="exploring-the-jamstack">Exploring the JAMstack</h2>
+		<a href="https://blog.cloudflare.com/#exploring-the-jamstack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My first encounter with tooling that would ultimately become part of "JAMstack" was in 2013. I noticed the huge proliferation of developers building personal "static" sites – taking blog posts written primarily in Markdown, and pushing them through frameworks like Jekyll to build full websites that could easily be deployed to a number of <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> and file hosting platforms. These static sites were <b>fast</b> – they are just HTML, CSS, and JavaScript – and <b>easy to update</b>. The average developer spends their days maintaining large and complex software systems, so it was relaxing to just write Markdown, plug in some re-usable HTML and CSS, and deploy your website. The advent of static sites, of course, isn't new – but after years of increasingly complex full-stack technology, the return to simplicity was a promising development for many kinds of websites that didn't need databases, or any dynamic content.</p>
 	<p>In the last couple years, JAMstack has built upon that resurgence, and represents an approach to building complete, complex applications using the same tooling that has become the first choice for developers building their simple personal sites. JAMstack is comprised of three conceptual pieces – <i>JavaScript</i>, <i>APIs</i>, and <i>Markup</i> – each of which is a crucial aspect of simplifying our web applications and making them easy to write, build, and deploy.</p>
-	<h3>J is for JavaScript</h3>
+	<div class="flex anchor relative">
+		<h3 id="j-is-for-javascript">J is for JavaScript</h3>
+		<a href="https://blog.cloudflare.com/#j-is-for-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The JAMstack architecture relies heavily on the ubiquity of JavaScript as the language of the web. Many modern web applications use powerful, dynamic front-end frameworks like <i>React</i> and <i>Vue</i> to render user interfaces and process state on the client for users. On the backend, or in Workers' case, on the edge, any dynamic functionality in your JAMstack application should be built on top of JavaScript, often working in the request-response model that full-stack developers are accustomed to.</p>
 	<p>The Workers platform is <b>perfectly</b> suited to this requirement! As a developer building on Workers, you have total control of incoming requests and outgoing responses, using the JavaScript Service Worker APIs you know and love. We built <a href="https://workers.cloudflare.com/sites">Workers Sites</a> as an extension of the Workers platform (and Workers KV as a storage mechanism at the edge), making it possible to deploy your site assets using a single command in Wrangler: <code>wrangler publish</code>.</p>
 	<p>When your Workers Site receives a new request, we'll execute JavaScript at the edge to look up a piece of content from Workers KV, and serve it back to the client at lightning speed. Remarkably, you can deploy JAMstack applications on Workers with no additional configuration besides <a href="https://developers.cloudflare.com/workers/sites/start-from-existing">generating your Workers Site</a> – <b>by design, Workers Sites is built to serve as an exceptional JAMstack deployment platform</b>.</p>
-	<h3>A is for APIs</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-is-for-apis">A is for APIs</h3>
+		<a href="https://blog.cloudflare.com/#a-is-for-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The advent of static site tooling for personal sites makes sense: your site is a few pages: a few blog posts, for instance, and the classic "About" or "Contact" page. When it's compiled to HTML, the footprint is quite small! This small footprint is what makes static sites easy to reason about: they're trivial to host in terms of bandwidth and storage costs, and they rarely change, so they're easily cacheable.</p>
 	<p>While that works for personal sites, complex applications actually have data requirements! We need to talk to the user data in our databases, and analytics information in our data warehouses. JAMstack apps tackle this by definitively stating that these data sources should be accessible via HTTPS APIs, consumable by the application as a way to provide dynamic information to clients.</p>
 	<p>Workers is a <b>fascinating</b> platform in regards to JAMstack APIs. It can serve as a gateway to your data, or as a place to persist and return data itself. I can, for instance, expose an API endpoint via my Workers script without giving clients access to my origin. I can also use tooling like <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> to persist data directly on the edge, and when a user requests that data, I can resolve the data by returning JSON directly from my application.</p>
 	<p>This flexibility has been an unexpected part of the experience of developing Built with Workers. In a later section of this post, I'll talk about how we developed an integral feature of the site based on the unique strengths of Workers as a way to host static assets <i>and</i> as a dynamic JavaScript execution platform. This has remarkable implications that blur the lines between classic static sites and dynamic applications, and I'm <b>really</b> excited about it.</p>
-	<h3>M is for Markup</h3>
+	<div class="flex anchor relative">
+		<h3 id="m-is-for-markup">M is for Markup</h3>
+		<a href="https://blog.cloudflare.com/#m-is-for-markup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A breakthrough moment in my understanding of JAMstack came at the beginning of this year. I was working on a job board for frontend developers, using the static site framework Gatsby.js and Sanity.io, a headless CMS tool that allows developers to model content without maintaining a database or any infrastructure. (As a reminder – this set of tools is <i>identical</i> to what we ultimately used to develop Built with Workers. It's a very good stack!)</p>
 	<p>SEO is crucial to a job board, and as I began to explore how to drive more traffic to my job board, I landed on the idea of generating a huge amount of search-oriented content automatically from the job data I already had. For instance, if I had job posts with the keywords <i>"React"</i>, <i>"Europe"</i>, and <i>"Senior"</i> (as in <i>"senior developer"</i>), what if I created pages with titles like <i>"Senior React developer jobs in Europe"</i>, or <i>"Remote Angular jobs"</i>? This approach would allow the site to begin ranking for a variety of job positions, locations, and experience levels, and as more jobs were posted on the site, each of these pages would be enriched with more useful information and relevant content, helping it rank higher in search.</p>
 	<p><i>"But static sites are... static!"</i>, I told myself. Would I need to build an entire dynamic API on top of my static site, just to be able to serve these search-engine optimized pages? This led me to a "eureka" moment with Gatsby – I could define markup (the <i>"M"</i> in JAMstack), and when I'm building my site, I could look at all the available job data I had, cycling through every available keyword combination and inserting it into my markup to generate thousands of these pages. As I later learned, this idea is not necessarily unique to Gatsby – it is possible, for instance, to automate getting data from your API and writing it to data files in earlier static site frameworks like <a href="https://gohugo.io">Hugo</a> – but it is a first-class citizen in Gatsby. There are a <i>ton</i> of data sources available via Gatsby plugins, and because they're all exposed via HTTPS, the workflow is standardized inside of the framework.</p>
 	<p>In Built with Workers, we connect to the Sanity.io CMS instance at <i>build-time</i>: crucially, by the time that the site has been deployed to Workers, the application effectively has <i>no idea</i> what Sanity even is! Our Gatsby application connects to Sanity.io via an HTTPS API, and using GraphQL, we look at all the data that we have in our CMS, and make decisions about what pages to generate and how to render the site's interface, ultimately resulting in a statically-built application that is derived from dynamic data.</p>
 	<p>This emphasis on the <i>build</i> step in JAMstack is quite different than the classic web application. In the past, a user requested data, a web server looked at what the user was requesting, and then the user <i>waits</i>, as the server gets that data, returns JSON, or interpolates it into templates written in tools like <a href="https://pugjs.org">Pug</a> or <a href="https://en.wikipedia.org/wiki/ERuby">ERB</a>. With JAMstack, the pages are already built, and the deployed application is just a collection of plain HTML, CSS, and JavaScript.</p>
-	<h3>Why Cloudflare Workers?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-cloudflare-workers">Why Cloudflare Workers?</h3>
+		<a href="https://blog.cloudflare.com/#why-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare's network is a fascinating place to deploy JAMstack applications. Yes, Cloudflare's edge network can act as a CDN for your static assets, like your CSS stylesheets, or your client-side JavaScript code. But with Workers, we now have the ability to run JavaScript side-by-side with our static assets. In most JAMstack applications, the CDN is simply a bucket where your application ends up. Usually, the CDN is the most boring part of the stack! <b>With Cloudflare Workers, we don't just have a CDN: we also have access to an extremely low-latency, fully-featured JavaScript runtime.</b></p>
 	<p>The implications of this on the standard JAMstack workflow are, frankly, <i>mind-boggling</i>, and as part of developing Built with Workers, we've been exploring what it means to have this runtime available side-by-side with our statically-built JAMstack application.</p>
 	<p>To demonstrate this, we’ve implemented a bookmarking feature, which allows users of Built with Workers to bookmark projects. If you look at a project's usage of our streaming HTML rewriter and say <i>"Wow, that's cool!"</i>, you can also bookmark for the project to show your support. This feature, rendered as a <code>button</code> tag is deceptively simple: it's a single piece of the user interface that makes use of the entirety of the Workers platform, to provide user-specific dynamic functionality. We'll explore this in greater detail later in the post – see <i>"Enhancing static sites at the edge"</i>.</p>
@@ -38,7 +73,14 @@
 		<p>??<a href="https://t.co/LJltC6j20S">https://t.co/LJltC6j20S</a></p>
 		<p>— ً (@signalnerve) <a href="https://twitter.com/signalnerve/status/1199379423608344576?ref_src=twsrc%5Etfw">November 26, 2019</a></p>
 	</blockquote>
-	<h2>A modern development and content workflow</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-modern-development-and-content-workflow">A modern development and content workflow</h2>
+		<a href="https://blog.cloudflare.com/#a-modern-development-and-content-workflow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <a href="https://blog.cloudflare.com/workers-sites">announcement post</a> for Workers Sites, Rita outlined the motivations behind launching Workers Sites as a modern way to deploy sites:</p>
 	<p><i>"Born on the edge, Workers Sites is what we think modern development on the web should look like, natively secure, fast, and massively scalable. Less of your time is spent on configuration, and more of your time is spent on your code, and content itself."</i></p>
 	<p>A few months later, I can say definitively that Workers Sites has enabled us to develop Built with Workers and spend almost no time on configuration. Using <a href="https://github.com/cloudflare/wrangler-action">our GitHub Action</a> for deploying Workers applications with Wrangler, the site has been continuously deploying to a staging environment for the past couple weeks. The simplicity around this continuous deployment workflow has allowed us to focus on the important aspects of the project: development and content.</p>
@@ -96,7 +138,14 @@ exports.createPages = async ({ graphql, actions }) =&gt; {
   });
 };</code></pre>
 	<p>Using Sanity to drive the content for Built with Workers has been a <i>huge</i> win for our team. We're no longer constrained by code deploys to make changes to content on the site – we don't need to make a pull request to create a new project, and edits to a project's name or description aren't constrained by someone with the ability to deploy the project. Instead, we can empower members of our team to log in directly to the CMS and make changes, and be confident that once the corresponding deploy has completed (see <i>"The CDN is the deployment platform"</i> below), their changes will be live on the site.</p>
-	<h3>Dynamic JAMstack layouts</h3>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-jamstack-layouts">Dynamic JAMstack layouts</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-jamstack-layouts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As our team got up and running with Sanity.io, we found that the flexibility of a headless CMS platform was useful not just for creating our original data requirements – projects and features – but in rethinking and innovating on how we actually format the application itself.</p>
 	<p>With our previous objective of empowering non-technical folks to make changes to the site without deploying any code in consideration, we've also taken the entire homepage of Built with Workers and defined it as an instance of the "layout" data model in Sanity.io. By doing this, we can define corresponding "collections", which are sets of projects. When a layout has many collections defined inside of the CMS, we can rapidly re-order, re-arrange, and experiment with new collections on the homepage, seeing the updated version of the site reflected immediately, and live on the production site within only a few minutes, after our continuous deployment process has finished.</p>
 	<figure class="kg-card kg-image-card ">
@@ -106,7 +155,14 @@ exports.createPages = async ({ graphql, actions }) =&gt; {
 	</figure>
 	<p>Updating the layout of Built with Workers live from Sanity's studio</p>
 	<p>With this work implemented, it's easy to envision a world where our React code is purely concerned with rendering each individual aspect of the application's interface – for instance, the project title component, or the "card" for an individual project – and the CMS drives the entire layout of the site. In the future, I'd like to continue exploring this idea in other pages in Built with Workers, including the project pages and any other future content we put on the site.</p>
-	<h2>Enhancing static sites at the edge</h2>
+	<div class="flex anchor relative">
+		<h2 id="enhancing-static-sites-at-the-edge">Enhancing static sites at the edge</h2>
+		<a href="https://blog.cloudflare.com/#enhancing-static-sites-at-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Much of what we've discussed so far can be thought of as features and workflows that have great DX (developer experience), but not specific to Workers. Gatsby and Sanity.io are great, and although Workers Sites is a great platform for deploying JAMstack applications due to the Workers platform's low-latency and performance characteristics, you could deploy the site to a number of different providers with no real differentiating features.</p>
 	<p>As we began building a JAMstack application on top of Built with Workers, we also wanted to explore how the Workers platform could allow developers to combine the simplicity of static site deployments with the dynamism of having a JavaScript runtime immediately available.</p>
 	<p>In particular, our recently-released streaming HTML rewriter seems like a perfect fit for "enhancing" our static sites. Our application is being served by Workers Sites, which itself is a Workers template that can be customized. By passing each HTML page through the HTML rewriter on its way to the client, we had an opportunity to customize the content without any negative performance implications.</p>
@@ -195,7 +251,14 @@ const [state, setState] = React.useContext(EdgeStateContext)
 return &lt;BookmarkButton bookmarked={state[project.id]} /&gt;
 }</code></pre>
 	<p>The combination of a straightforward JAMstack deployment platform with dynamic key-value object storage and a streaming HTML rewriter is really, really cool. This is an initial exploration into what I consider to be <i>a platform-defining feature</i>, and if you're interested in this stuff and want to continue to explore how this will influence how we write web applications, <a href="https://twitter.com/signalnerve">get in touch with me on Twitter</a>!</p>
-	<h2>The CDN is the deployment platform</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-cdn-is-the-deployment-platform">The CDN is the deployment platform</h2>
+		<a href="https://blog.cloudflare.com/#the-cdn-is-the-deployment-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While it doesn't appear in the acronym, an unsung hero of the JAMstack architecture is <b>deployment</b>. In my local terminal, when I run <code>gatsby build</code> inside of the Built with Workers project, the result is a folder of static HTML, CSS, and JavaScript. <i>It should be easy to deploy!</i></p>
 	<p>The recent release of <a href="https://github.com/features/actions">GitHub Actions</a> has proven to be a great companion to building JAMstack applications with Cloudflare Workers – we've open-sourced our own <a href="https://github.com/cloudflare/wrangler-action">wrangler-action</a>, which allows developers to build their Workers applications and deploy directly from GitHub.</p>
 	<p>The standard workflows in the continuous deployment world – deploy every hour, deploy on new changes to the <code>master</code> branch, etc – are possible and already being used by many developers who make use of our <code>wrangler-action</code> workflow in their projects. Particular to JAMstack and to headless CMS tools is the idea of "build-on-change": namely, when someone publishes a change in Sanity.io, we want to do a new deploy of the site to immediately reflect our new content in production.</p>
@@ -222,7 +285,14 @@ addEventListener('fetch', handleRequest)</code></pre>
 
 	</figure>
 	<p>The GitHub Actions deployment workflow for Built with Workers</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We're <b>super</b> excited about Built with Workers, not only because it will serve as a great place to showcase the incredible things people are building with the Cloudflare Workers platform, but because it also has allowed us to explore what the future of web development may look like. I've been advocating for what I've seen referred to as <a href="https://www.bytesized.xyz/full-stack-serverless">"full-stack serverless"</a> development throughout 2019, and I couldn't be happier to start 2020 with launching a project like Built with Workers. The full-stack serverless stack feels like the future, and it's actually fun to build with on a daily basis!</p>
 	<p>If you're building something awesome with Cloudflare Workers, we're looking for submissions to the site! Get in touch with us via <a href="https://forms.gle/k6fZaXJbrUygvZhp6">this form</a> – we're excited to speak with you!</p>
 	<p>Finally, if topics like JAMstack on Cloudflare Workers, "edge state" and dynamic static site hydration, or continuous deployment interest you, the Built with Workers repository is open-source! <a href="https://github.com/cloudflare/built-with-workers">Check it out</a>, and if you're inspired to build something cool with Workers after checking out the code, make sure to let us know!</p>

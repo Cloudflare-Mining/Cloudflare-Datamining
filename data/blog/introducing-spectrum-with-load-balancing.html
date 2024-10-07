@@ -7,7 +7,14 @@
 	</figure>
 	<p>We’re excited to announce the full integration of Cloudflare Spectrum with Load Balancing. Combining Spectrum with Load Balancing enables traffic management of TCP connections utilising the same battle tested Load Balancer our customers already use for billions of HTTP requests every day.</p>
 	<p>Customers can configure load balancers with TCP health checks, failover, and steering policies to dictate where traffic should flow. This is live in the Cloudflare dashboard and API — give it a shot!</p>
-	<h3>TCP Health Checks</h3>
+	<div class="flex anchor relative">
+		<h3 id="tcp-health-checks">TCP Health Checks</h3>
+		<a href="https://blog.cloudflare.com/#tcp-health-checks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can now configure <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s Load Balancer</a> health checks to probe any TCP port for an accepted connection. This is in addition to the existing HTTP and HTTPS options.</p>
 	<p>Health checks are an optional feature within Cloudflare’s Load Balancing product. Without health checks, the Cloudflare Load Balancer will distribute traffic to all origins in the first pool. While this is in itself useful, adding a health check to a Load Balancer provides additional functionality.</p>
 	<p>With a health check configured for a pool in a Load Balancer, Cloudflare will automatically distribute traffic within a pool to any origins that are marked up by the health check. Unhealthy origins will be dropped automatically. This allows for intelligent failover both within a pool and amongst pools. Health checks can be configured from multiple regions (and even all of Cloudflare’s PoPs as an Enterprise customer) to detect local and global connectivity issues from your origins.</p>
@@ -29,11 +36,26 @@
   "timeout": 5,
   "method": "connection_established",
 }</code></pre>
-	<h3>Weights</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="weights">Weights</h3>
+		<a href="https://blog.cloudflare.com/#weights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Origin weights are beneficial should you have origins that are not of equal capacity or if you want to unequally split traffic for any other reason.</p>
 	<p>Weights configured within a load balancer pool will be honored with transport load balancing through Spectrum. If configured, Cloudflare will distribute traffic amongst the available origins within a pool according to the relative weights assigned to each origin.</p>
 	<p>For further information on weighted steering, see the <a href="https://support.cloudflare.com/hc/en-us/articles/360001372131-Load-Balancing-Configurable-Origin-Weights">knowledge base article</a>.</p>
-	<h3>Steering Modes</h3>
+	<div class="flex anchor relative">
+		<h3 id="steering-modes">Steering Modes</h3>
+		<a href="https://blog.cloudflare.com/#steering-modes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>All steering modes are available for transport load balancing through Spectrum: You can choose standard failover, dynamic steering, or geo steering:</p>
 	<ul>
 		<li>
@@ -46,7 +68,14 @@
 			<p><b>Geo Steering</b><a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">Geo Steering</a> allows you to specify pools for a given Region or PoP (ENT only). In this configuration, Cloudflare will direct traffic from specified Cloudflare locations to configured pools. You may configure multiple pools, and the load balancer will use them in failover order. If this steering mode is selected and there is no configuration for a region or pool, the load balancer will use the default failover order.</p>
 		</li>
 	</ul>
-	<h3>Build Scalable TCP Applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="build-scalable-tcp-applications">Build Scalable TCP Applications</h3>
+		<a href="https://blog.cloudflare.com/#build-scalable-tcp-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Once your load balancer is configured, it’s available for use as an origin with your Spectrum application:</p>
 	<figure class="kg-card kg-image-card ">
 

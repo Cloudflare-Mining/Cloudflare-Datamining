@@ -8,7 +8,14 @@
 	<p>Most teams start that journey by moving the applications that lived on their private networks into this <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust model</a>. Instead of a private network where any user on the network is assumed to be trusted, the applications that use Cloudflare Access now check every attempt against the rules you create. For your end users, this makes these applications just feel like regular SaaS apps, while your security teams have full control and logs.</p>
 	<p>However, we kept hearing from teams that wanted to use their Access control plane to apply consistent security controls to their SaaS apps, and consolidate logs from self-hosted and SaaS in one place.</p>
 	<p>We’re excited to give your team the tools to solve that challenge. With Access in front of your SaaS applications, you can build Zero Trust rules that determine who can reach your SaaS applications in the same place where your rules for self-hosted applications and network access live. To make that easier, we are launching guided integrations with the Amazon Web Services (<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/aws-sso-saas">AWS</a>) management console, <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/zendesk-sso-saas">Zendesk</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/salesforce-saas">Salesforce</a>. In just a few minutes, your team can apply a Zero Trust layer over every resource you use and ensure your logs never miss a request.</p>
-	<h3>How it works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access secures applications that you host by becoming the authoritative DNS for the application itself. All DNS queries, and subsequent HTTP requests, hit Cloudflare’s network first. Once there, Cloudflare can apply the types of identity-aware and context-driven rules that make it possible to move to a Zero Trust model. Enforcing these rules in our network means your application doesn’t need to change. You can secure it on Cloudflare, integrate your single sign-on (SSO) provider and other systems like Crowdstrike and Tanium, and begin building rules.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -24,7 +31,14 @@
 
 	</figure>
 	<p>We built support for SaaS applications by using <a href="https://workers.cloudflare.com">Workers</a> to take the JWT and convert its content into SAML assertions that are sent to the SaaS application. The application thinks that Cloudflare Access is the identity provider, even though we’re just aggregating identity signals from your SSO provider and other sources into the JWT, and sending that summary to the app via SAML. All of this leverages Cloudflare’s global network and ensures users do not see a performance penalty.</p>
-	<h3>Enforcing managed devices and Gateway for SaaS applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="enforcing-managed-devices-and-gateway-for-saas-applications">Enforcing managed devices and Gateway for SaaS applications</h3>
+		<a href="https://blog.cloudflare.com/#enforcing-managed-devices-and-gateway-for-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>COVID-19 made it commonplace for employees to work from anywhere and, more concerning, from any device. Many SaaS applications contain sensitive data that should only be accessed with a corporately managed device. A benefit of SaaS tools is that they’re readily available from any device, it’s up to security administrators to enforce which devices can be used to log in.</p>
 	<p>Once Access for SaaS has been configured as the SSO provider for SaaS applications, policies that verify a device can be configured. You can then lock a tool like Salesforce down to only users with a device that has a known serial number, hard auth key plugged in, an up to date operating system and much more.</p>
 	<figure class="kg-card kg-image-card ">
@@ -40,7 +54,14 @@
 
 	</figure>
 	<p>To ensure traffic to your SaaS apps only connects over Gateway-protected devices, Cloudflare Access will add a new rule type that requires Gateway when users login to your SaaS applications. Once enabled, users will only be able to connect to your SaaS applications when they use Cloudflare Gateway. Gateway will log those connections and provide visibility into every action within SaaS apps and the Internet.</p>
-	<h3>Getting started and what’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-and-whats-next">Getting started and what’s next</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-and-whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It’s easy to get started with setting up Access for SaaS application. Visit the <a href="https://dash.teams.cloudflare.com">Cloudflare for Teams Dashboard</a> and follow one of our published guides.</p>
 	<p>We will make it easier to protect SaaS applications and will soon be supporting configuration via metadata files. We will also continue to publish SaaS app specific integration guides. Are there specific applications you’ve been trying to integrate? <a href="https://community.cloudflare.com/t/cloudflare-access-for-saas-which-guides-should-we-build-next/295672">Let us know in the community</a>!</p>
 </div>

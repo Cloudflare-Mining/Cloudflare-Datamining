@@ -7,7 +7,14 @@
 	</figure>
 	<p>The Linux kernel is the heart of many modern production systems. It decides when any code is allowed to run and which programs/users can access which resources. It manages memory, mediates access to hardware, and does a bulk of work under the hood on behalf of programs running on top. Since the kernel is always involved in any code execution, it is in the best position to protect the system from malicious programs, enforce the desired system security policy, and provide security features for safer production environments.</p>
 	<p>In this post, we will review some Linux kernel security configurations we use at Cloudflare and how they help to block or minimize a potential system compromise.</p>
-	<h2>Secure boot</h2>
+	<div class="flex anchor relative">
+		<h2 id="secure-boot">Secure boot</h2>
+		<a href="https://blog.cloudflare.com/#secure-boot" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When a machine (either a laptop or a server) boots, it goes through several boot stages:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -145,7 +152,14 @@ CONFIG_MODULE_SIG=y
 # CONFIG_MODULE_SIG_FORCE is not set
 …</code></pre>
 	<p>The above configuration means that the kernel will validate a module signature, if available. But if not - the module will be loaded anyway with a warning message emitted and the <a href="https://docs.kernel.org/admin-guide/tainted-kernels.html">kernel will be tainted</a>.</p>
-	<h3>Key management for kernel module signing</h3>
+	<div class="flex anchor relative">
+		<h3 id="key-management-for-kernel-module-signing">Key management for kernel module signing</h3>
+		<a href="https://blog.cloudflare.com/#key-management-for-kernel-module-signing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Signed kernel modules are great, but it creates a key management problem: to sign a module we need a signing keypair that is trusted by the kernel. The public key of the keypair is usually directly embedded into the kernel binary, so the kernel can easily use it to verify module signatures. The private key of the pair needs to be protected and secure, because if it is leaked, anyone could compile and sign a potentially malicious kernel module which would be accepted by our kernel.</p>
 	<p>But what is the best way to eliminate the risk of losing something? Not to have it in the first place! Luckily the kernel build system <a href="https://elixir.bootlin.com/linux/v6.6.17/source/certs/Makefile#L36">will generate a random keypair</a> for module signing, if none is provided. At Cloudflare, we use that feature to sign all the kernel modules during the kernel compilation stage. When the compilation and signing is done though, instead of storing the key in a secure place, we just destroy the private key:</p>
 	<figure class="kg-card kg-image-card ">
@@ -167,7 +181,14 @@ CONFIG_MODULE_SIG=y
 	</ol>
 	<p>With this scheme not only do we not have to worry about module signing key management, we also use a different key for each kernel we release to production. So even if a particular build process is hijacked and the signing key is not destroyed and potentially leaked, the key will no longer be valid when a kernel update is released.</p>
 	<p>There are some flexibility downsides though, as we can’t “retrofit” a new kernel module for an already released kernel (for example, for <a href="https://www.cloudflare.com/en-gb/press-releases/2023/cloudflare-powers-hyper-local-ai-inference-with-nvidia">a new piece of hardware we are adopting</a>). However, it is not a practical limitation for us as we release kernels often (roughly every week) to keep up with a steady stream of bug fixes and vulnerability patches in the Linux Kernel.</p>
-	<h2>KEXEC</h2>
+	<div class="flex anchor relative">
+		<h2 id="kexec">KEXEC</h2>
+		<a href="https://blog.cloudflare.com/#kexec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://en.wikipedia.org/wiki/Kexec">KEXEC</a> (or <code>kexec_load()</code>) is an interesting system call in Linux, which allows for one kernel to directly execute (or jump to) another kernel. The idea behind this is to switch/update/downgrade kernels faster without going through a full reboot cycle to minimize the potential system downtime. However, it was developed quite a while ago, when secure boot and system integrity was not quite a concern. Therefore its original design has security flaws and is known to be able to <a href="https://mjg59.dreamwidth.org/28746.html">bypass secure boot and potentially compromise system integrity</a>.</p>
 	<p>We can see the problems just based on the <a href="https://man7.org/linux/man-pages/man2/kexec_load.2.html">definition of the system call itself</a>:</p>
 	<pre class="language-c"><code class="language-c">struct kexec_segment {
@@ -200,7 +221,15 @@ CONFIG_KEXEC_SIG=y
 # CONFIG_KEXEC_SIG_FORCE is not set
 CONFIG_KEXEC_BZIMAGE_VERIFY_SIG=y
 …</code></pre>
-	<h2>Kernel Address Space Layout Randomization (KASLR)</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="kernel-address-space-layout-randomization-kaslr">Kernel Address Space Layout Randomization (KASLR)</h2>
+		<a href="https://blog.cloudflare.com/#kernel-address-space-layout-randomization-kaslr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Even on the stock Debian kernel if you try to repeat the exercise we described in the “Secure boot” section of this post after a system reboot, you will likely see it would fail to disable SELinux now. This is because we hardcoded the kernel address of the <code>selinux_state</code> structure in our malicious kernel module, but the address changed now:</p>
 	<pre class="language-bash"><code class="language-bash">ignat@dev:~$ sudo grep selinux_state /proc/kallsyms
 ffffffffb41bcae0 B selinux_state</code></pre>
@@ -214,7 +243,15 @@ ffffffffb41bcae0 B selinux_state</code></pre>
 	<p>Both the Cloudflare kernel and the Debian one have this feature enabled:</p>
 	<pre class="language-bash"><code class="language-bash">ignat@dev:~$ grep RANDOMIZE_BASE /boot/config-`uname -r`
 CONFIG_RANDOMIZE_BASE=y</code></pre>
-	<h3>Restricted kernel pointers</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="restricted-kernel-pointers">Restricted kernel pointers</h3>
+		<a href="https://blog.cloudflare.com/#restricted-kernel-pointers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>While KASLR helps with targeted exploits, it is quite easy to bypass since everything is shifted by a single random offset as shown on the diagram above. Thus if the attacker knows at least one runtime kernel address, they can recover this offset by subtracting the runtime address from the compile time address of the same symbol (function or data structure) from the kernel’s System.map file. Once they know the offset, they can recover the addresses of all other symbols by adjusting them by this offset.</p>
 	<p>Therefore, modern kernels take precautions not to leak kernel addresses at least to unprivileged users. One of the main tunables for this is the <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#kptr-restrict">kptr_restrict sysctl</a>. It is a good idea to set it at least to <code>1</code> to not allow regular users to see kernel pointers:(shell/bash)</p>
 	<pre class="language-bash"><code class="language-bash">ignat@dev:~$ sudo sysctl -w kernel.kptr_restrict=1
@@ -228,7 +265,14 @@ ffffffffb41bcae0 B selinux_state</code></pre>
 	<pre class="language-bash"><code class="language-bash">ignat@dev:~$ grep CONFIG_SECURITY_DMESG_RESTRICT /boot/config-`uname -r`
 CONFIG_SECURITY_DMESG_RESTRICT=y</code></pre>
 	<p>Worth noting that <code>/proc/kallsyms</code> and the kernel log are not the only sources of potential kernel pointer leaks. There is a lot of legacy in the Linux kernel and [new sources are continuously being found and patched]. That’s why it is very important to stay up to date with the latest kernel bugfix releases.</p>
-	<h2>Lockdown LSM</h2>
+	<div class="flex anchor relative">
+		<h2 id="lockdown-lsm">Lockdown LSM</h2>
+		<a href="https://blog.cloudflare.com/#lockdown-lsm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html">Linux Security Modules (LSM)</a> is a hook-based framework for implementing security policies and Mandatory Access Control in the Linux Kernel. We have [covered our usage of another LSM module, BPF-LSM, previously].</p>
 	<p>BPF-LSM is a useful foundational piece for our kernel security, but in this post we want to mention another useful LSM module we use — <a href="https://man7.org/linux/man-pages/man7/kernel_lockdown.7.html">the Lockdown LSM</a>. Lockdown can be in three states (controlled by the <code>/sys/kernel/security/lockdown</code> special file):</p>
 	<pre class="language-bash"><code class="language-bash">ignat@dev:~$ cat /sys/kernel/security/lockdown
@@ -260,9 +304,25 @@ insmod: ERROR: could not insert module mymod/mymod.ko: Operation not permitted</
 # CONFIG_LOCK_DOWN_KERNEL_FORCE_NONE is not set
 CONFIG_LOCK_DOWN_KERNEL_FORCE_INTEGRITY=y
 # CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY is not set</code></pre>
-	<h2>Conclusion</h2>
+
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In this post we reviewed some useful Linux kernel security configuration options we use at Cloudflare. This is only a small subset, and there are many more available and even more are being constantly developed, reviewed, and improved by the Linux kernel community. We hope that this post will shed some light on these security features and that, if you haven’t already, you may consider enabling them in your Linux systems.</p>
-	<h2>Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/8c7fe2111ec8058f8159e90d8709e49a/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F8c7fe2111ec8058f8159e90d8709e49a%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
 	</div><!--kg-card-end: html-->

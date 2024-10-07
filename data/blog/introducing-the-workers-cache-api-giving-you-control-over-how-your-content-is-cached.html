@@ -8,10 +8,24 @@
 	</figure>
 	<p>At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through <i>caching:</i> we keep a copy of our customer content in our 165 data centers around the world. This brings content &nbsp;closer to users and reduces traffic back to <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server">origin servers</a>.</p>
 	<p>Today, we’re excited to announce a huge change in our how cache works. <a href="https://www.cloudflare.com/products/cloudflare-workers">Cloudflare Workers</a> now integrates the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API</a>, giving you programmatic control over our caches around the world.</p>
-	<h3>Why the Cache API?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-the-cache-api">Why the Cache API?</h3>
+		<a href="https://blog.cloudflare.com/#why-the-cache-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Figuring out what to cache and how can get complicated. Consider an e-commerce site with a shopping cart, a Content Management System (CMS) with many templates and hundreds of articles, or a GraphQL API. Each contains a mix of elements that are dynamic for some users, but might stay unchanged for the vast majority of requests.</p>
 	<p>Over the last 8 years, we’ve added more features to give our customers flexibility and control over what goes in the cache. However, we’ve learned that we need to offer more than just adding settings in our dashboard. Our customers have told us clearly that they want to be able to express their ideas in <i>code</i>, to build things we could never have imagined.</p>
-	<h3>How the Cache API works</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-the-cache-api-works">How the Cache API works</h3>
+		<a href="https://blog.cloudflare.com/#how-the-cache-api-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Fetching content is one of the most common Worker tasks. <code>fetch()</code> has always leveraged powerful Cloudflare features like Argo and Load Balancing. It also runs through our cache: we check for content locally before connecting to the Internet. Without the Cache API, content requested with <code>fetch()</code> goes in the cache as-is.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -39,7 +53,14 @@
 	<p>The Cache API enables you to modify content before writing it to cache.</p>
 	<p>This API unleashes a huge amount of power. Because Workers give you the ability to <i>modify</i> Request and Response objects, you can control any caching behavior like TTL or cache tags. You can implement customer Vary logic or cache normally-uncacheable objects like POST requests.</p>
 	<p>The Cache API expects requests and responses, but they don't have to come from external servers. Your worker can generate arbitrary data that’s stored in our cache. That means you can use the Cache API as a general-purpose, ephemeral key-value store!</p>
-	<h3>Case study: Using the Cache API to cache POST requests</h3>
+	<div class="flex anchor relative">
+		<h3 id="case-study-using-the-cache-api-to-cache-post-requests">Case study: Using the Cache API to cache POST requests</h3>
+		<a href="https://blog.cloudflare.com/#case-study-using-the-cache-api-to-cache-post-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since we <a href="https://blog.cloudflare.com/cache-api-for-cloudflare-workers-is-now-in-beta">announced the beta</a> in September, usage of the Cache API has grown to serve thousands of requests per second. One common use-case is to cache <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">POST requests</a>.</p>
 	<p>Normally, Cloudflare does not consider POST requests to be cacheable because they are designed to be non-idempotent: that is, they change state on the server when a request is made. However, applications can also use POST requests to send large amounts of data to the server, or as a common HTTP method for API calls.</p>
 	<p>Here’s what one developer had to say about using the Cache API:</p>
@@ -96,6 +117,14 @@ async function sha256(message) {
     hashArray.map(b =&gt; ('00' + b.toString(16)).slice(-2)).join('')
   return hashHex
 }</code></pre>
-	<h3>Try it yourself</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="try-it-yourself">Try it yourself</h3>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Already in our beta, we’ve seen customers use the Cache API to dynamically cache parts of GraphQL queries and store customer data to improve performance. We’re excited to see what you build! Check out the <a href="https://developers.cloudflare.com/workers">Cloudflare Workers getting started guide</a> and the <a href="https://developers.cloudflare.com/workers/reference/cache-api">Cache API docs</a>, and let us know what you’ve built in the <a href="https://community.cloudflare.com/c/developers/workers">Workers Community forum</a>.</p>
 </div>

@@ -12,7 +12,14 @@
     }
     </code></pre>
 	<p>This got me thinking. This code is in a performance critical loop and it looks like a waste - we never run with the "debug" flag enabled<sup>[</sup><a href="https://blog.cloudflare.com/#footnotes"><sup>1</sup></a><sup>].</sup> Is it ok to have <code>if</code> clauses that will basically never be run? Surely, there must be some performance cost to that...</p>
-	<h3>Just how bad is peppering the code with avoidable <code>if</code> statements?</h3>
+	<div class="flex anchor relative">
+		<h3 id="just-how-bad-is-peppering-the-code-with-avoidable">Just how bad is peppering the code with avoidable </h3>
+		<a href="https://blog.cloudflare.com/#just-how-bad-is-peppering-the-code-with-avoidable" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in the days the general rule was: a fully predictable branch has close to zero CPU cost.</p>
 	<p>To what extent is this true? If one branch is fine, then how about ten? A hundred? A thousand? When does adding one more <code>if</code> statement become a bad idea?</p>
 	<p>At some point the negligible cost of simple branch instructions surely adds up to a significant amount. As another example, a colleague of mine found this snippet in our production code:</p>
@@ -37,7 +44,14 @@ const char *getCountry(int cc) {
 }
         </code></pre>
 	<p>Obviously, this code could be improved<sup>[</sup><a href="https://blog.cloudflare.com/#footnotes"><sup>2</sup></a><sup>]</sup>. But when I thought about it more: <i>should</i> it be improved? Is there an actual performance hit of a code that consists of a series of simple branches?</p>
-	<h3>Understanding the cost of jump</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-the-cost-of-jump">Understanding the cost of jump</h3>
+		<a href="https://blog.cloudflare.com/#understanding-the-cost-of-jump" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We must start our journey with a bit of theory. We want to figure out if the CPU cost of a branch increases as we add more of them. As it turns out, assessing the cost of a branch is not trivial. On modern processors it takes between one and twenty CPU cycles. There are at least four categories of control flow instructions<sup>[</sup><a href="https://blog.cloudflare.com/#footnotes"><sup>3</sup></a><sup>]</sup>: unconditional branch (jmp on x86), call/return, conditional branch (e.g. je on x86) taken and conditional branch not taken. The taken branches are especially problematic: without special care they are inherently costly - we'll explain this in the following section. To bring down the cost, modern CPU's try to predict the future and figure out the branch <b>target</b> before the branch is actually fully executed! This is done in a special part of the processor called the branch predictor unit (BPU).</p>
 	<p>The branch predictor attempts to figure out a destination of a branching instruction very early and with very little context. This magic happens <b>before</b> the "decoder" pipeline stage and the predictor has very limited data available. It only has some past history and the address of the current instruction. If you think about it - this is super powerful. Given only current instruction pointer it can assess, with very high confidence, where the target of the jump will be.</p>
 	<figure class="kg-card kg-image-card ">
@@ -53,7 +67,14 @@ const char *getCountry(int cc) {
 
 	</figure>
 	<p>For the scope of this article we'll simplify and focus on the BTB only. We'll try to show how large it is and how it behaves under different conditions.</p>
-	<h3>Why is branch prediction needed?</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-is-branch-prediction-needed">Why is branch prediction needed?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-branch-prediction-needed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But first, why is branch prediction used at all? In order to get the best performance, the CPU pipeline must feed a constant flow of instructions. Consider what happens to the multi-stage CPU pipeline on a branch instruction. To illustrate let's consider the following ARM program:</p>
 	<pre class="language-c++"><code class="language-c++">
 	BR label_a;
@@ -72,7 +93,14 @@ label_a:
 	<p>In our example, instruction X1 is fetched even though this isn't the correct instruction to run. In cycle 4, when the branch instruction finishes the execute stage, the CPU will be able to understand the mistake, and roll back the speculated instructions before they have any effect. At this point the fetch unit is updated to correctly get the right instruction - Y1 in our case.</p>
 	<p>This situation of losing a number of cycles due to fetching code from an incorrect place is called a "frontend bubble". Our theoretical CPU has a two-cycle frontend bubble when a branch target wasn’t predicted right.</p>
 	<p>In this example we see that, although the CPU does the right thing in the end, without good branch prediction it wasted effort on bad instructions. In the past, various techniques have been used to reduce this problem, such as static branch prediction and branch delay slots. But the dominant CPU designs today rely <a href="https://danluu.com/branch-prediction/#one-bit">on <i>dynamic branch prediction</i></a>. This technique is able to mostly avoid the frontend bubble problem, by predicting the correct address of the next instruction even for branches that aren’t fully decoded and executed yet.</p>
-	<h3>Playing with the BTB</h3>
+	<div class="flex anchor relative">
+		<h3 id="playing-with-the-btb">Playing with the BTB</h3>
+		<a href="https://blog.cloudflare.com/#playing-with-the-btb" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Today we're focusing on the BTB - a data structure managed by the branch predictor responsible for figuring out a target of a branch. It's important to note that the BTB is distinct from and independent of the system assessing if the branch was taken or not taken. Remember, we want to figure out if a cost of a branch increases as we run more of them.</p>
 	<p>Preparing an experiment to stress only the BTB is relatively simple (<a href="https://xania.org/201602/bpu-part-three">based on Matt Godbolt's work</a>). It turns out a sequence of unconditional <code>jmps</code> is totally sufficient. Consider this x86 code:</p>
 	<figure class="kg-card kg-image-card ">
@@ -89,7 +117,14 @@ label_a:
 	</figure>
 	<p>We’ll look at the results of experiments like this for a few different CPUs. But in this instance, it was run on a machine with an AMD EPYC 7642. Here, the cold run took 10.5 cycles per jmp, and then all subsequent runs took ~3.5 cycles per jmp. The code is prepared in such a way to make sure it's the BTB that is slowing down the first run. Take a look at the full code, there is quite some magic to warm up the L1 cache and iTLB without priming the BTB.</p>
 	<p><b>Top tip 1. On this CPU a branch instruction that is taken but not predicted, costs ~7 cycles more than one that is taken and predicted.</b> Even if the branch was unconditional.</p>
-	<h3>Density matters</h3>
+	<div class="flex anchor relative">
+		<h3 id="density-matters">Density matters</h3>
+		<a href="https://blog.cloudflare.com/#density-matters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To get a full picture we also need to think about the density of jmp instructions in the code. The code above did eight jmps per 16-byte code block. This is a lot. For example, the code below contains one jmp instruction in each block of 16 bytes. Notice that the <code>nop</code> opcodes are jumped over. The block size doesn't change the number of executed instructions, only the code density:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -97,7 +132,14 @@ label_a:
 
 	</figure>
 	<p>Varying the jmp block size might be important. It allows us to control the placement of the jmp opcodes. Remember the BTB is indexed by instruction pointer address. Its value and its alignment might influence the placement in the BTB and help us reveal the BTB layout. Increasing the alignment will cause more nop padding to be added. The sequence of a single measured instruction - jmp in this case - and zero or more nops, I will call "block", and its size "block size". Notice that the larger the block size, the larger the working code size for the CPU. At larger values we might see some performance drop due to exhausting L1 cache space.</p>
-	<h3>The experiment</h3>
+	<div class="flex anchor relative">
+		<h3 id="the-experiment">The experiment</h3>
+		<a href="https://blog.cloudflare.com/#the-experiment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our experiment is crafted to show the performance drop depending on the number of branches, across different working code sizes. Hopefully, we will be able to prove the performance is mostly dependent on the number of blocks - and therefore the BTB size, and not the working code size.</p>
 	<p>See the <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-05-branch-prediction">code on GitHub</a>. If you want to see the generated machine code, though, you need to run a special command. It's created procedurally by the code, customized by passed parameters. Here's an example <code>gdb</code> incantation:</p>
 	<figure class="kg-card kg-image-card ">
@@ -156,7 +198,14 @@ label_a:
 	<p><b>Top tip 3. In the hot code you want to have less than 2K function calls</b> - on this CPU.</p>
 	<p>In our test CPU a sequence of fully predicted call/ret takes about 7 cycles, which is about the same as two unconditional predicted <code>jmp</code> opcodes. It's consistent with our results above.</p>
 	<p>So far we thoroughly checked AMD EPYC 7642. We started with this CPU because the branch predictor is relatively simple and the charts were easy to read. It turns out more recent CPUs are less clear.</p>
-	<h3>AMD EPYC 7713</h3>
+	<div class="flex anchor relative">
+		<h3 id="amd-epyc-7713">AMD EPYC 7713</h3>
+		<a href="https://blog.cloudflare.com/#amd-epyc-7713" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Newer AMD is more complex than the previous generations. Let's run the two most important experiments. First, the <code>jmp</code> one:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -172,7 +221,14 @@ label_a:
 
 	</figure>
 	<p>The call/ret chart shows a similar tale, the timings start breaking after 2048 mark, and completely fail to be predicted beyond ~3000.</p>
-	<h3>Xeon Gold 6262</h3>
+	<div class="flex anchor relative">
+		<h3 id="xeon-gold-6262">Xeon Gold 6262</h3>
+		<a href="https://blog.cloudflare.com/#xeon-gold-6262" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Intel Xeon looks different from the AMD:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -188,7 +244,14 @@ label_a:
 
 	</figure>
 	<p>Similarly, we can see the branch predictions failing after the 2048 jmp mark - in this experiment one block uses two flow control instructions: call and ret. This again confirms the BTB size of 4K entries. The 64-byte block size is generally slower due to the nop padding but also breaks faster due to the instructions alignment issue. Notice, we haven't seen this effect on AMD.</p>
-	<h3>Apple Silicon M1</h3>
+	<div class="flex anchor relative">
+		<h3 id="apple-silicon-m1">Apple Silicon M1</h3>
+		<a href="https://blog.cloudflare.com/#apple-silicon-m1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>So far we saw examples of AMD and Intel server grade CPUs. How does an Apple Silicon M1 fit in this picture?</p>
 	<p>We expect it to be very different - it's designed for mobile and it's using ARM64 architecture. Let's see our two experiments:</p>
 	<figure class="kg-card kg-image-card ">
@@ -215,7 +278,14 @@ label_a:
 	</figure>
 	<p>Like in the chart before, we can see a big benefit if hot code fits within 4096 bytes (512*4 or 256*8). Otherwise, you can count on 4-6 cycles per call/ret sequence (or, bl/ret as it's known in ARM). The chart shows funny alignment issues. It's unclear what they are caused by. Beware, comparing the numbers in this chart with x86 is unfair, since ARM <code>call</code> operation differs substantially from the x86 variant.</p>
 	<p>M1 seems pretty fast, with predicted branches usually at 3 clock cycles. Even unpredicted branches never cost more than 8 ticks in our benchmark. Call+ret sequence for dense code should fit under 5 cycles.</p>
-	<h3>Summary</h3>
+	<div class="flex anchor relative">
+		<h3 id="summary">Summary</h3>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We started our journey from a piece of trivial code, and asked a basic question: how costly is &nbsp;adding a never-taken <code>if</code> branch in the hot portion of code?</p>
 	<p>Then we quickly dived in very low level CPU features. By the end of this article, hopefully, an astute reader might get better intuition how a modern branch predictors works.</p>
 	<p>On x86 the hot code needs to split the BTB budget between function calls and taken branches. The BTB has only a size of 4096 entries. There are strong benefits in keeping the hot code under 16KiB.</p>
@@ -240,9 +310,23 @@ label_a:
 			<p><a href="https://www.agner.org/optimize/microarchitecture.pdf">Agner Fog</a> microarchitecture guide has a good section on branch predictions.</p>
 		</li>
 	</ul>
-	<h3>Acknowledgements</h3>
+	<div class="flex anchor relative">
+		<h3 id="acknowledgements">Acknowledgements</h3>
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Thanks to <a href="https://blog.cloudflare.com/author/david-wragg">David Wragg</a> and <a href="https://twitter.com/danluu">Dan Luu</a> for technical expertise and proofreading help.</p>
-	<h3>PS</h3>
+	<div class="flex anchor relative">
+		<h3 id="ps">PS</h3>
+		<a href="https://blog.cloudflare.com/#ps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Oh, oh. But this is not the whole story! Similar research was the base to the <a href="https://spectreattack.com/spectre.pdf">Spectre v2</a> attack. The attack was exploiting the little known fact that the BPU state was not cleared between context switches. With the correct technique it was possible to train the BPU - in the case of Spectre it was iBTB - and force a privileged piece of code to be speculatively executed. This, combined with a cache side-channel data leak, allowed an attacker to steal secrets from the privileged kernel. Powerful stuff.</p>
 	<p>A proposed solution was to avoid using shared BTB. This can be done in two ways: make the indirect jumps to always fail to predict, or fix the CPU to avoid sharing BTB state across isolation domains. This is a long story, maybe for another time...</p>
 	<hr><!--kg-card-begin: html-->

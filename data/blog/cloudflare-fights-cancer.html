@@ -10,7 +10,14 @@
 	<p>The files used for this kind of research reach hundreds of gigabytes and every time they are compressed and decompressed with our library many important seconds are saved, bringing the cure for cancer that much closer. At least that's what I am going to tell myself when I go to bed.</p>
 	<p>This made me realize that the benefits of open source go much farther than one can imagine, and you never know where a piece of code may end up. Open sourcing makes sophisticated algorithms and software accessible to individuals and organizations that would not have the resources to develop them on their own, or the money pay for a proprietary solution.</p>
 	<p>It also made me wonder exactly what we did to zlib that makes it stand out from other zlib forks.</p>
-	<h3>Recap</h3>
+	<div class="flex anchor relative">
+		<h3 id="recap">Recap</h3>
+		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Zlib is a compression library that supports two formats: deflate and gzip. Both formats use the same algorithm also called <a href="https://en.wikipedia.org/wiki/DEFLATE">DEFLATE</a>, but with different headers and checksum functions. The deflate algorithm is described <a href="https://blog.cloudflare.com/improving-compression-with-preset-deflate-dictionary">here</a>.</p>
 	<p>Both formats are supported by the absolute majority of web browsers, and we at CloudFlare compress all text content on the fly using the gzip format. Moreover DEFLATE is also used by the PNG file format, and our fork of zlib also accelerates our image optimization engine <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a>. You can find the optimized fork of pngcrush <a href="https://github.com/cloudflare/pngcrush">here</a>.</p>
 	<p>Given the amount of traffic we must handle, compression optimization really makes sense for us. Therefore we included several improvements over the default implementation.</p>
@@ -38,7 +45,14 @@
 		</li>
 	</ul>
 	<p>In addition, we have an experimental branch that implements an improved version of the linked list used in zlib. It has much better performance for compression levels 6 to 9, while retaining the same compression ratio. You can find the experimental branch <a href="https://github.com/cloudflare/zlib/tree/experimental">here</a>.</p>
-	<h3>Benchmarking</h3>
+	<div class="flex anchor relative">
+		<h3 id="benchmarking">Benchmarking</h3>
+		<a href="https://blog.cloudflare.com/#benchmarking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can find independent benchmarks of our library <a href="https://www.snellman.net/blog/archive/2015-06-05-updated-zlib-benchmarks">here</a> and <a href="http://www.htslib.org/benchmarks/zlib.html">here</a>. In addition, I performed some in-house benchmarking, and put the results here for your convenience.</p>
 	<p>All the benchmarks were performed on an i5-4278U CPU. The compression was performed from and to a ramdisk. All libraries were compiled with gcc version 4.8.4 with the compilation flags: "-O3 -march=native".</p>
 	<p>I tested the performance of the <a href="https://github.com/madler/zlib">main zlib fork</a>, optimized implementation by <a href="https://github.com/jtkukunas/zlib">Intel</a>, our own <a href="https://github.com/cloudflare/zlib">main branch</a>, and our <a href="https://github.com/cloudflare/zlib/tree/experimental">experimental branch</a>.</p>
@@ -99,7 +113,14 @@
 
 	</figure>
 	<p>Here again, CloudFlare is the fastest on levels 2 to 9. On level 9 the difference in speed between the experimental fork and the reference fork is 2.44X.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As evident from the benchmarks, the CloudFlare implementation outperforms the competition in the vast majority of settings. We put great effort in making it as fast as possible on our servers.</p>
 	<p>If you intend to use our library, you should check for yourself if it delivers the best balance of performance and compression for your dataset. As between different file format and sizes performance can vary.</p>
 	<p>And if you like open source software, don't forget to give back to the community, by contributing your own code!</p>

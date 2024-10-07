@@ -4,13 +4,27 @@
 	<blockquote>
 		<p>Choosing technology that is used on a large network of sites is a key architectural decision that must be correct. We build static websites but needed to find a way to make them dynamic to do things like geo targeting, restrict access and A/B testing. This post shares our experiences on what we learned when using Workers to tackle these challenges.</p>
 	</blockquote>
-	<h3>Our Background</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-background">Our Background</h3>
+		<a href="https://blog.cloudflare.com/#our-background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At <a href="https://www.gambling.com/corporate">Gambling.com Group</a>, we use Cloudflare on all of our sites so our curiosity level in Workers was higher than most. We are big fans of static websites because nothing is faster than flat HTML. We had been searching for a technology like this for some time and applied to be part of the beta program, so were one of the first to gain access to the functionality.</p>
 	<p>The reason we were so keen to experiment with Workers is that for anyone running static sites, 99% of the time, the product requirements can be met but there will always be that one occasion when some computation is needed instead of sending back a static response.</p>
 	<p>Until recently, the most suitable option would have been to add some JavaScript that fires after page load and alters the UI or fetches data from an endpoint. The drawback of this is that users see the page shifting after it loads, even if the script is loaded asynchronously. Flickering pages can be infuriating and there is nothing more irritating than trying to click a link but opening something else because the DOM changed midway through.</p>
 	<p>A common workaround is to hide the page content until all JavaScript has processed, but this leaves you exposed to a slow loading script with users seeing a white page until the browser has downloaded it. Even if all scripts are downloading quickly, there will be users with slower Internet speeds or located far away from a data centre that can respond to their request.</p>
 	<p><b>Enter Cloudflare Workers</b>. Developers can handle these requests and respond dynamically before they even reach the server. There is no post load computation and Workers respond so fast in the background, the transition is unnoticeable.</p>
-	<h3>Our Use Cases For Workers</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-use-cases-for-workers">Our Use Cases For Workers</h3>
+		<a href="https://blog.cloudflare.com/#our-use-cases-for-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since getting access to Workers we’ve been experimenting with ways to make our static sites more dynamic without changing all of the smart technology we’ve built to power our network of websites.</p>
 	<h4>Geo-Targeting</h4>
 	<p>We operate static websites around the world in many languages and use Cloudflare to serve them. Users get there from a google search or by clicking a link somewhere else on the Internet. Often, the site they land on may not be a perfect match for interests because the link they clicked wasn’t pointing at the most optimal location. For example, a user in Canada lands on a UK site and sees prices in Pounds Sterling instead of Canadian Dollars or a person in Italy lands on a US site and sees English content instead of Italian.</p>
@@ -40,7 +54,14 @@ async function fetchAndApply(request) {
    }
 }</code></pre>
 	<p>Users are now getting a localized version of the site, which better serves their interests and the bounce rate is lower because the content is tailored to their location.</p>
-	<h3>Restricting Access To Content</h3>
+	<div class="flex anchor relative">
+		<h3 id="restricting-access-to-content">Restricting Access To Content</h3>
+		<a href="https://blog.cloudflare.com/#restricting-access-to-content" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With most sites, there will be occasions when a page needs to be online but not available to the public. For example, an agency demonstrating a new landing page to a client before final approval.</p>
 	<p>In some cases, companies may need many layers of security to protect their intellectual property and avoid something being seen before it is ready, but for most the information just needs to be hidden and military grade security isn't required.</p>
 	<p>With a Content Management System this is easy to do, but is difficult with a static site. Using Workers, we were able to put together a simple solution that prevents access to the page unless a certain header is present in the request, which can also be adapted to look for a query parameter.</p>
@@ -63,11 +84,25 @@ async function fetchAndApply(request) {
 	<h4>A/B Testing</h4>
 	<p>A vital tool in optimizing traffic is the insight acquired from A/B testing. While there is no shortage of powerful A/B testing tools, most require the addition of a Javascript that alters the UI after page load. In optimal conditions, this can be unnoticeable to the naked eye but not all users have the best internet speeds and some will experience flicker after the page loads. As discussed above, this is a poor experience with negative consequences.</p>
 	<p>We were able to solve this problem with a Worker that makes a call to the A/B testing script URL, fetches the code and redraws the UI before sending the altered response to the user. The result is that users see the variant when the page loads and nothing moves after the first pixel has rendered. &nbsp;</p>
-	<h3>Why Workers Has Removed Roadblocks For Us</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-workers-has-removed-roadblocks-for-us">Why Workers Has Removed Roadblocks For Us</h3>
+		<a href="https://blog.cloudflare.com/#why-workers-has-removed-roadblocks-for-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Workers have allowed us to make our static sites dynamic. Of course, we could have done this with post-load Javascript but the experience for users would have been poor.</p>
 	<p>A second option would have been migrating to server rendered sites but even with an architecture shift like that, it would be difficult to have enough servers around the world to give users in all locations the same experience. It also would have been a significant IT investment to undertake such a change.</p>
 	<p>Workers, on the other hand, can be inserted at top of our architecture with no work required to install or add them. It is a matter of clicking a button in the Cloudflare dashboard and immediately gaining access to the Worker playground. There was no time lost in negotiating a trial or setting up the dev environment, which is a notorious time waster when researching any new technology or vendor.</p>
-	<h3>Why We Chose Workers Over AWS Lambda</h3>
+	<div class="flex anchor relative">
+		<h3 id="why-we-chose-workers-over-aws-lambda">Why We Chose Workers Over AWS Lambda</h3>
+		<a href="https://blog.cloudflare.com/#why-we-chose-workers-over-aws-lambda" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>It is important to note that Workers are not the only option in serverless computing, as that is where the industry is generally heading. While AWS Lambda is a strong contender we went with Workers because Lambda requires integration with more AWS services to get started and recent performance tests that suggest Workers are <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">faster than Lambda</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -75,10 +110,24 @@ async function fetchAndApply(request) {
 
 	</figure>
 	<p>While we may have chosen AWS with different requirements, &nbsp;Workers were still much easier to get up and running quickly.</p>
-	<h3>Improvements We Would Like To See</h3>
+	<div class="flex anchor relative">
+		<h3 id="improvements-we-would-like-to-see">Improvements We Would Like To See</h3>
+		<a href="https://blog.cloudflare.com/#improvements-we-would-like-to-see" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Despite our overwhelming approval, there are a couple of things we’d like to see added.</p>
 	<p>Accounts currently have access to a single Worker script unless you have an Enterprise plan. This means a lot of unrelated code is housed in one file and while this is not uncommon on its own, a Worker can only fire on a single URL pattern. This can feel restrictive if you want to trigger functionality on one set of pages, but not others and means that you have a series of if statements in the Worker code that determine when it should fire. It’s not unworkable but not an ideal scenario either.We look forward to the documentation growing with more real world examples, as the Worker Recipe exchange grows and Cloudflare continues to build out more content.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We are just at the start of our journey with Cloudflare Workers. As knowledge within our team grows, we can use it to meet our product requirements when appropriate and do more advanced things that were previously impossible without post-load Javascript. &nbsp;Workers are still in their infancy and improvements that can be made. We’ll be following these closely and experimenting to find ways to use them as new features are released.</p>
 	<p>This guide was a high-level overview. For more in-depth explanations and code snippets, check out this <a href="https://leaderinternet.com/blog/cloudflare-workers-review">Review of Cloudflare Workers</a> that explains some of the examples in detail.</p>
 </div>

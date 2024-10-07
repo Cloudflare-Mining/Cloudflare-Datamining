@@ -9,7 +9,14 @@
 	<p>Since then, businesses have new tools to streamline web development. <a href="https://workers.dev">Cloudflare Workers</a>, <a href="https://pages.cloudflare.com">Pages</a>, and <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a> are enabling developers to bring services online in a matter of minutes, with built-in scaling, security, and analytics.</p>
 	<p>Today, we're announcing we're bridging the two. We will make it possible for our customers to serve their sites on the IPFS network.</p>
 	<p>In this post, we'll learn how you will be able to build your website with Cloudflare Pages, and leverage the IPFS integration to make your content accessible and available across multiple providers.</p>
-	<h2>A primer on IPFS</h2>
+	<div class="flex anchor relative">
+		<h2 id="a-primer-on-ipfs">A primer on IPFS</h2>
+		<a href="https://blog.cloudflare.com/#a-primer-on-ipfs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The InterPlanetary FileSystem (IPFS) is a peer-to-peer network for storing content on a distributed file system. It is composed of a set of computers called nodes that store and relay content using a common addressing system. In short, a set of participants agree to maintain a shared index of content the network can provide, and where to find it.</p>
 	<p>Let's take two random participants in the network: Alice, a cat person, and Bob, a dog person.</p>
 	<p>As a participant in the network, Alice keeps connections with a subset of participants, referred to as her peers. When Alice is making her content 🐱 available on IPFS, it means she announces to her peers she has content 🐱, and these peers stored in their routing table 🐱 is provided by Alice's node.</p>
@@ -31,7 +38,14 @@
 
 	</figure>
 	<p>Even better, if Bob becomes a cat person, they can announce to their peers they are also providing a cat. Bob's love for cats could be genuine, or because they have interest in providing the content, such as a contract with Alice. IPFS provides a common ground to share content, without being opinionated on how this content has to be stored and its guarantees.</p>
-	<h2>How Pages websites are made available on IPFS</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-pages-websites-are-made-available-on-ipfs">How Pages websites are made available on IPFS</h2>
+		<a href="https://blog.cloudflare.com/#how-pages-websites-are-made-available-on-ipfs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Content is made available as follows.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -92,7 +106,14 @@
 	<p>This reduces the storage and bandwidth requirement when accessing the website on IPFS.</p>
 	<p><i>If you want to learn more about how you can model a file system on IPFS, you can check the</i> <a href="https://github.com/ipfs/specs/blob/master/UNIXFS.md"><i>UnixFS</i></a> <i>specification.</i></p>
 	<p>Cloudflare stores every CID and the content it references in IndexDB. This allows Cloudflare IPFS nodes to serve Cloudflare Pages assets when requested.</p>
-	<h2>Let's put this together</h2>
+	<div class="flex anchor relative">
+		<h2 id="lets-put-this-together">Let's put this together</h2>
+		<a href="https://blog.cloudflare.com/#lets-put-this-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let’s take an example: pages-on-ipfs.com is hosted on IPFS. It is built using Hugo, a static site generator, and Cloudflare Pages with the <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site">public documentation template</a>. Its source is available on <a href="https://github.com/thibmeu/pages-on-ipfs">GitHub</a>. If you have an IPFS compatible client, you can access it at ipns://pages-on-ipfs.com as well.</p>
 	<p>1. Read Cloudflare Pages deployment documentation</p>
 	<p>For the purpose of this blog, I want to create a simple Cloudflare page website. I have experience with Hugo, so I choose it as my framework for the project.</p>
@@ -110,10 +131,24 @@
 	<p>For pages-on-ipfs.com, I create a TXT record on _dnslink.pages-on-ipfs.com with value dnslink=/ipfs/baf...1. Et voilà. I can now access ipns://pages-on-ipfs.com via an IPFS client.</p>
 	<p>6. (Optional) Replicate my website</p>
 	<p>The content of my website can now easily be replicated and <a href="https://docs.ipfs.io/how-to/pin-files">pinned</a> by other IPFS nodes. This can either be done at home via an IPFS client or using a pinning service such as <a href="https://www.pinata.cloud">Pinata</a>.</p>
-	<h2>What's next</h2>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What's next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We'll make this service available later this year as it is being refined. We are committed to make information move freely and help build a better Internet. Cloudflare Pages work of solving developer problems continues, as developers are now able to make their site accessible to more users.</p>
 	<p>Over the years, IPFS has been used by more and more people. While Cloudflare started by making IPFS content available to web users through an HTTP interface, we now think it's time to give back. Allowing Cloudflare assets to be served over a public distributed network extends developers and users capability on an open web.</p>
-	<h2>Common questions</h2>
+	<div class="flex anchor relative">
+		<h2 id="common-questions">Common questions</h2>
+		<a href="https://blog.cloudflare.com/#common-questions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<ul>
 		<li>
 			<p>I am already hosting my website on IPFS. Can I pin it using Cloudflare?</p>

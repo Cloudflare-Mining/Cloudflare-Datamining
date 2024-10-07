@@ -9,10 +9,24 @@
 	</figure>
 	<p>We are thrilled to introduce Cloudflare Fonts! In the coming weeks sites that use Google Fonts will be able to effortlessly load their fonts from the site’s own domain rather than from Google. All at a click of a button. This enhances both privacy and performance. It enhances users' privacy by eliminating the need to load fonts from Google’s third-party servers. It boosts a site's performance by bringing fonts closer to end users, reducing the time spent on DNS lookups and <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS connections</a>.</p>
 	<p>Sites that currently use Google Fonts will not need to self-host fonts or make complex code changes to benefit – Cloudflare Fonts streamlines the entire process, making it a breeze.</p>
-	<h3>Fonts and privacy</h3>
+	<div class="flex anchor relative">
+		<h3 id="fonts-and-privacy">Fonts and privacy</h3>
+		<a href="https://blog.cloudflare.com/#fonts-and-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When you load <a href="https://fonts.google.com">fonts</a> from Google, your website initiates a data exchange with Google's servers. This means that your visitors' browsers send requests directly to Google. Consequently, Google has the potential to accumulate a range of data, including IP addresses, user agents (formatted descriptions of the browser and operating system), the referer (the page on which the Google font is to be displayed) and how often each IP makes requests to Google. While <a href="https://policies.google.com/technologies/retention?hl=en-US">Google</a> states that they do not use this data for targeted advertising or set cookies, any time you can prevent sharing your end user’s personal data unnecessarily is a win for privacy.</p>
 	<p>With Cloudflare Fonts, you serve fonts directly from your own domain. This means no font requests are sent to third-party domains like Google, which some privacy regulators have found to be a <a href="https://www.theregister.com/2022/01/31/website_fine_google_fonts_gdpr">problem</a> in the past. Our pro-privacy approach means your end user’s IP address and other data are not sent to another domain. All that information stays within your control, within your domain. In addition, because Cloudflare Fonts eliminates data transmission to third-party servers like Google's, this can enhance your ability to comply with any potential <a href="https://www.cloudflare.com/data-localization">data localization requirements</a>.</p>
-	<h3>Faster Google Font delivery through Cloudflare</h3>
+	<div class="flex anchor relative">
+		<h3 id="faster-google-font-delivery-through-cloudflare">Faster Google Font delivery through Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#faster-google-font-delivery-through-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Now that we have established that Cloudflare Fonts can improve your privacy, let's flip to the other side of the coin - how Cloudflare Fonts will <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website">improve your performance</a>.</p>
 	<p>To do this, we first need to delve into how Google Fonts affects your website's performance. Subsequently, we'll explore how Cloudflare Fonts addresses and rectifies these performance challenges.</p>
 	<p><a href="https://fonts.google.com">Google Fonts</a> is a fantastic resource that offers website owners a range of royalty-free fonts for website usage. When you decide on the fonts you would like to incorporate, it’s super easy to integrate. You just add a snippet of HTML to your site. You then add styles to apply these fonts to various parts of your page:</p>
@@ -41,7 +55,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1QUqTuUzaTJBg7MF7xjTAX/0804f595340b7caa686cffece336b9d1/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="566" loading="lazy">
 
 	</figure>
-	<h3>Fast fonts</h3>
+	<div class="flex anchor relative">
+		<h3 id="fast-fonts">Fast fonts</h3>
+		<a href="https://blog.cloudflare.com/#fast-fonts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Fonts streamlines this process, by reducing the number of round trips from eight to one. Two sets of DNS lookups, socket connections and TLS negotiations to third-parties are no longer required because there is no longer a third-party server involved in serving the CSS or the fonts. The only round trip involves serving the font files directly from the same domain where the HTML is hosted. This approach offers an additional advantage: it allows fonts to be transmitted over the same <a href="https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/#http2">HTTP/2</a> or <a href="https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/#http3">HTTP/3</a> connection as other page resources, benefiting from <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">proper prioritization</a> and preventing bandwidth contention.</p>
 	<p>The eagle-eyed amongst you might be thinking “<i>Surely it is still two round trips - what about the CSS request?”.</i> Well, with Cloudflare Fonts, we have also removed the need for a separate CSS request. This means there really is only one round-trip - fetching the font itself.</p>
 	<p>To achieve both the home-routing of font requests and the removal of the CSS request, we rewrite the HTML as it passes through Cloudflare’s global network. The CSS response is embedded, and font URL transformations are performed within the embedded CSS.</p>
@@ -64,12 +85,26 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k4uqNrLxNX6ibT49BFuDT/218c70057e3b31b7828719ffc5f24e4d/image6-1.png" alt="" class="kg-image" width="1507" height="980" loading="lazy">
 
 	</figure>
-	<h3>Making Cloudflare Fonts fast with ROFL</h3>
+	<div class="flex anchor relative">
+		<h3 id="making-cloudflare-fonts-fast-with-rofl">Making Cloudflare Fonts fast with ROFL</h3>
+		<a href="https://blog.cloudflare.com/#making-cloudflare-fonts-fast-with-rofl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In order to make Cloudflare Fonts this performant, we needed to make blazing-fast HTML alterations as responses stream through Cloudflare’s network. This has been made possible by leveraging one of Cloudflare’s more recent technologies.</p>
 	<p>Earlier this year, we finished rewriting one of Cloudflare's oldest components, which played a crucial role in dynamically altering HTML content. But as described in this blog post on <a href="https://blog.cloudflare.com/rust-nginx-module">writing NGINX modules in Rust</a>, a new solution was required to replace the old - A memory-safe solution, able to scale to Cloudflare’s ever-increasing load.</p>
 	<p>This new module is known as <a href="https://blog.cloudflare.com/rust-nginx-module">ROFL</a> (Response Overseer for FL). It now powers various Cloudflare products that need to alter HTML as it streams, such as <a href="https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation">Email Obfuscation</a>, <a href="https://developers.cloudflare.com/speed/optimization/content/rocket-loader">Rocket Loader</a>, and <a href="https://developers.cloudflare.com/speed/optimization/content/auto-minify">HTML Minification</a>.</p>
 	<p>ROFL was developed entirely in Rust. This decision was driven by Rust's memory safety, performance, and security. The memory-safety features of Rust are indispensable to ensure airtight protection against memory leaks while we process a staggering volume of requests, measuring in the millions per second. Rust's compiled nature allows us to finely optimize our code for specific hardware configurations, delivering impressive performance gains compared to interpreted languages.</p>
 	<p>ROFL paved the way for the development of Cloudflare Fonts. The performance of ROFL allows us to rewrite HTML on-the-fly and modify the Google Fonts links quickly, safely and efficiently. This speed helps us reduce any additional latency added by processing the HTML file and improve the performance of your website.</p>
-	<h3>Unlock the power of Cloudflare Fonts! 🚀</h3>
+	<div class="flex anchor relative">
+		<h3 id="unlock-the-power-of-cloudflare-fonts">Unlock the power of Cloudflare Fonts! 🚀</h3>
+		<a href="https://blog.cloudflare.com/#unlock-the-power-of-cloudflare-fonts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Fonts will be available to all Cloudflare customers in October. If you're using Google Fonts, you will be able to supercharge your site's <a href="https://blog.cloudflare.com/tag/privacy">privacy</a> and speed. By enabling this feature, you can seamlessly enhance your website's performance while safeguarding your user’s privacy.</p>
 </div>

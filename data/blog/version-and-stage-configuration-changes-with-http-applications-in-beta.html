@@ -7,7 +7,14 @@
 
 	</figure>
 	<p>Today, we are announcing a closed beta of HTTP Applications: a new way to safely test and deploy changes to your HTTP traffic. HTTP Applications introduce versioning of configuration and the ability to control when changes rollout to HTTP traffic on Cloudflare’s global edge network. Enterprise customers looking for greater control should reach out to their Customer Success Manager to get access.</p>
-	<h3>Issues Encountered in Managing Configurations</h3>
+	<div class="flex anchor relative">
+		<h3 id="issues-encountered-in-managing-configurations">Issues Encountered in Managing Configurations</h3>
+		<a href="https://blog.cloudflare.com/#issues-encountered-in-managing-configurations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since the very first days of Cloudflare, management of websites and web applications has been done through what we called a Zone, which comes from the concept of a <a href="https://www.cloudflare.com/learning/dns/glossary/dns-zone">DNS Zone</a>. While this model has served customers well over the years, it does create difficulties in managing edge configuration, namely:</p>
 	<ol>
 		<li>
@@ -20,13 +27,34 @@
 	<p>In software development, you want to test changes in a safe environment to validate them before they go to production or affect live traffic. In many common software development lifecycles, this means deploying changes to a staging or pre-production environment for testing and validation. The most common way customers do this today on Cloudflare is through the use of two Zones denoted by the hostnames of those zones, for example: one for staging named <code><i>staging.example.com</i></code> and one for production named <code><i>example.com</i></code>. This solves the core problem, as it provides insulation of changes. Errors in the staging zone will not affect production traffic.</p>
 	<p>However, in order to apply to production, changes that have been successfully verified in staging, the customer must manually copy those changes — or build an automation through the use of Cloudflare’s <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Terraform Provider</a>. For many, this follows a manual ‘change request’ process in which a ticket is logged with the changes to be made. Then, someone (often a different person) picks up the ticket and must accurately reproduce the same changes based on manually provided instructions. This is an error-prone process; and an error in this process can lead to an outage, depending on the change involved. Additionally, a drift in the configuration between staging and production configurations could lead to further complications.</p>
 	<p>We want to provide customers with safety and reliability in managing their services on Cloudflare. In order to solve the aforementioned problems, we are announcing HTTP Applications along with Routing Rules.</p>
-	<h3>HTTP Applications</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-applications">HTTP Applications</h3>
+		<a href="https://blog.cloudflare.com/#http-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>HTTP Applications are a way to manage edge configuration by use case, rather than by hostname. Each HTTP Application has a purpose, whether that is handling the configuration of your marketing website or an internal application. Each HTTP Application consists of versions of configurations where each version represents a snapshot of settings for managing traffic — page rules, firewall rules, cache settings, etc. &nbsp;Each version of configuration inside of the HTTP Application is independent of the others, but when a new version is created, it is initialized as a copy of the version that preceded it.</p>
-	<h3>Routing Rules</h3>
+	<div class="flex anchor relative">
+		<h3 id="routing-rules">Routing Rules</h3>
+		<a href="https://blog.cloudflare.com/#routing-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Unlike zones, each version of an HTTP Application is independent of any specific hostname. So if versions are not tied to a hostname, like zones, then how do you decide which version of an HTTP Application will affect a specific set of traffic? The answer is Routing Rules. With Routing Rules, you get to decide which version of an HTTP Application is applied to which traffic, aka hostnames. Routing Rules are powered by Cloudflare’s <a href="https://developers.cloudflare.com/ruleset-engine">Ruleset Engine</a> and rely on the use of conditional “if then” rules to map hostnames controlled in your Cloudflare account to a version of configuration. As an example, if a request’s hostname matches `<a href="http://www.example.com`">www.example.com`</a>, then apply version 2 of my Marketing HTTP Application. When this rule executes at our edge, instead of applying the regular zone configuration of <a href="http://www.example.com"><code>www.example.com</code></a>, the edge will instead use the configuration defined in version 2 of the HTTP Application.</p>
 	<p>Routing Rules supports two kinds of rules — staging rules and production rules. Both take a list of hostnames, as described, but when creating a staging rule, we additionally apply a filter such that the rule will only execute when traffic is sent to specific IPs at our edge. This means that you can safely test changes by sending traffic to <a href="http://www.example.com"><code>www.example.com</code></a> at the staging IPs while customers are unaffected. Even better, once you have validated your changes with the creation of a production routing rule, the <b>exact same</b> configuration will be applied in production for all your customers.</p>
 	<p>But that’s enough talk — let’s see it in action!</p>
-	<h3>Using HTTP Applications to safely test and deploy a change</h3>
+	<div class="flex anchor relative">
+		<h3 id="using-http-applications-to-safely-test-and-deploy-a-change">Using HTTP Applications to safely test and deploy a change</h3>
+		<a href="https://blog.cloudflare.com/#using-http-applications-to-safely-test-and-deploy-a-change" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For this walkthrough, I am going to play the role of an existing customer. I have an existing zone serving customers and I want to make some changes to transform rules such that I can rewrite my assets location. However, I am not very good with regex and making a mistake will likely break the site for all of my customers! Instead of making the change directly in the zone, we are going to use HTTP Applications and Routing Rules to make, test and roll out the change.</p>
 	<p>First, I log into the Cloudflare Dashboard. After selecting my account, I see HTTP Applications available in the sidebar. Upon selecting that, I am given the option to create my first HTTP Application.</p>
 	<figure class="kg-card kg-image-card ">
@@ -119,6 +147,13 @@
 	</figure>
 	<p>The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production.</p>
 	<p>After validating this new set of changes, I can push Version 2 to all traffic by updating the production Routing Rule to use Version 2. The same process can be done for each subsequent set of changes I want to make.</p>
-	<h3>HTTP Applications Now Available in Closed Beta</h3>
+	<div class="flex anchor relative">
+		<h3 id="http-applications-now-available-in-closed-beta">HTTP Applications Now Available in Closed Beta</h3>
+		<a href="https://blog.cloudflare.com/#http-applications-now-available-in-closed-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With the power of HTTP Applications and Routing Rules, customers now have greater control over how and when configuration changes are made. This alleviates the concern of making a bad change that might break your site. This capability is available in a closed beta for enterprise customers, but if you are interested, reach out to your Cloudflare account team to learn about how to get access!</p>
 </div>

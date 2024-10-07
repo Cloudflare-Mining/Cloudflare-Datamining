@@ -10,13 +10,27 @@
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/7c3of8FUDi3R4HC18qo2iP/4c9f90801c4dabc14bb6bf3139b9f002/BLOG-2536_3.png" alt="BLOG-2536 3" class="kg-image" width="1999" height="1000" loading="lazy">
 	</figure>
-	<h2>Refresher: what are Durable Objects?</h2>
+	<div class="flex anchor relative">
+		<h2 id="refresher-what-are-durable-objects">Refresher: what are Durable Objects?</h2>
+		<a href="https://blog.cloudflare.com/#refresher-what-are-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> (DOs) are a part of the Cloudflare <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a> serverless platform. A DO is essentially a small server that can be addressed by a unique name and can keep state both in-memory and on-disk. Workers running anywhere on Cloudflare's network can send messages to a DO by its name, and all messages addressed to the same name — from anywhere in the world — will find their way to the same DO instance.</p>
 	<p>DOs are intended to be small and numerous. A single application can create billions of DOs distributed across our global network. Cloudflare automatically decides where a DO should live based on where it is accessed, automatically starts it up as needed when requests arrive, and shuts it down when idle. A DO has in-memory state while running and can also optionally store long-lived durable state. Since there is exactly one DO for each name, a DO can be used to coordinate between operations on the same logical object.</p>
 	<p>For example, imagine a real-time collaborative document editor application. Many users may be editing the same document at the same time. Each user's changes must be broadcast to other users in real time, and conflicts must be resolved. An application built on DOs would typically create one DO for each document. The DO would receive edits from users, resolve conflicts, broadcast the changes back out to other users, and keep the document content updated in its local storage.</p>
 	<p>DOs are especially good at real-time collaboration, but are by no means limited to this use case. They are general-purpose servers that can implement any logic you desire to serve requests. Even more generally, <b>DOs are a basic building block for distributed systems</b>.</p>
 	<p>When using Durable Objects, it's important to remember that they are intended to scale <i>out</i>, not <i>up</i>. A single object is inherently limited in throughput since it runs on a single thread of a single machine. To handle more traffic, you create more objects. This is easiest when different objects can handle different logical units of state (like different documents, different users, or different "shards" of a database), where each unit of state has low enough traffic to be handled by a single object. But sometimes, a lot of traffic needs to modify the same state: consider a vote counter with a million users all trying to cast votes at once. To handle such cases with Durable Objects, you would need to create a set of objects that each handle a subset of traffic and then replicate state to each other. Perhaps they use <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type"><u>CRDTs</u></a> in a <a href="https://en.wikipedia.org/wiki/Gossip_protocol"><u>gossip network</u></a>, or perhaps they implement a fan-in/fan-out approach to a single primary object. Whatever approach you take, Durable Objects make it fast and easy to create more stateful nodes as needed.</p>
-	<h2>Why is SQLite-in-DO so fast?</h2>
+	<div class="flex anchor relative">
+		<h2 id="why-is-sqlite-in-do-so-fast">Why is SQLite-in-DO so fast?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-sqlite-in-do-so-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In traditional cloud architecture, stateless application servers run business logic and communicate over the network to a database. Even if the network is local, database requests still incur latency, typically measured in milliseconds.</p>
 	<p>When a Durable Object uses SQLite, SQLite is invoked as a library. This means the database code runs not just on the same machine as the DO, not just in the same process, but in the very same thread. Latency is effectively zero, because there is no communication barrier between the application and SQLite. A query can complete in microseconds.</p>
 	<h4>Reads and writes are synchronous</h4>
@@ -94,7 +108,14 @@ let docs = sql.exec(`
 	<p>More generally, when using SQLite as a library, you don't have to learn how to do fancy things in SQL syntax. Your logic can be in regular old application code in your programming language of choice, orchestrating the most basic SQL queries that are easy to learn. It's fine. <a href="https://www.sqlite.org/np1queryprob.html"><u>The creators of SQLite have made this point themselves.</u></a></p>
 	<h4>Point-in-Time Recovery</h4>
 	<p>While not necessarily related to speed, SQLite-backed Durable Objects offer another feature: any object can be reverted to the state it had at any point in time in the last 30 days. So if you accidentally execute a buggy query that corrupts all your data, don't worry: you can recover. There's no need to opt into this feature in advance; it's on by default for all SQLite-backed DOs. See the <a href="https://developers.cloudflare.com/durable-objects/api/storage-api/#point-in-time-recovery"><u>docs</u></a> for details.</p>
-	<h2>How do I use it?</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-do-i-use-it">How do I use it?</h2>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's say we're an airline, and we are implementing a way for users to choose their seats on a flight. We will create a new Durable Object for each flight. Within that DO, we will use a SQL table to track the assignments of seats to passengers. The code might look something like this:</p>
 	<pre class="language-javascript"><code class="language-javascript">import {DurableObject} from "cloudflare:workers";
 
@@ -261,12 +282,26 @@ new_sqlite_classes = ["FlightSeating"]
 		</table>
 	</div>
 	<p>For more on how to use SQLite-in-Durable Objects, check out the <a href="https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage"><u>documentation</u></a>.&nbsp;</p>
-	<h2>What about D1?</h2>
+	<div class="flex anchor relative">
+		<h2 id="what-about-d1">What about D1?</h2>
+		<a href="https://blog.cloudflare.com/#what-about-d1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Workers already offers another SQLite-backed database product: <a href="https://developers.cloudflare.com/d1"><u>D1</u></a>. In fact, D1 is itself built on SQLite-in-DO. So, what's the difference? Why use one or the other?</p>
 	<p>In short, you should think of D1 as a more "managed" database product, while SQLite-in-DO is more of a lower-level “compute with storage” building block.</p>
 	<p>D1 fits into a more traditional cloud architecture, where stateless application servers talk to a separate database over the network. Those application servers are typically Workers, but could also be clients running outside of Cloudflare. D1 also comes with a pre-built HTTP API and managed observability features like query insights. With D1, where your application code and SQL database queries are not colocated like in SQLite-in-DO, Workers has <a href="https://developers.cloudflare.com/workers/configuration/smart-placement"><u>Smart Placement</u></a> to dynamically run your Worker in the best location to reduce total request latency, considering everything your Worker talks to, including D1. By the end of 2024, D1 will support automatic read replication for scalability and low-latency access around the world. If this managed model appeals to you, use D1.</p>
 	<p>Durable Objects require a bit more effort, but in return, give you more power. With DO, you have two pieces of code that run in different places: a front-end Worker which routes incoming requests from the Internet to the correct DO, and the DO itself, which runs on the same machine as the SQLite database. You may need to think carefully about which code to run where, and you may need to build some of your own tooling that exists out-of-the-box with D1. But because you are in full control, you can tailor the solution to your application's needs and potentially achieve more.</p>
-	<h2>Under the hood: Storage Relay Service</h2>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood-storage-relay-service">Under the hood: Storage Relay Service</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood-storage-relay-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://blog.cloudflare.com/introducing-workers-durable-objects"><u>When Durable Objects first launched in 2020</u></a>, it offered only a simple key/value-based interface for durable storage. Under the hood, these keys and values were stored in a well-known off-the-shelf database, with regional instances of this database deployed to locations in our data centers around the world. Durable Objects in each region would store their data to the regional database.</p>
 	<p>For SQLite-backed Durable Objects, we have completely replaced the persistence layer with a new system built from scratch, called Storage Relay Service, or SRS. SRS has already been powering D1 for over a year, and can now be used more directly by applications through Durable Objects.</p>
 	<p>SRS is based on a simple idea:</p>
@@ -300,7 +335,14 @@ new_sqlite_classes = ["FlightSeating"]
 	<p>This was actually an accidental feature that fell out of SRS's design. Since SRS stores a complete log of changes made to the database, we can restore to any point in time by replaying the change log from the last snapshot. The only thing we have to do is make sure we don't delete those logs too soon.</p>
 	<p>Normally, whenever a snapshot is uploaded, all previous logs and snapshots can then be deleted. But instead of deleting them immediately, SRS merely marks them for deletion 30 days later. In the meantime, if a point-in-time recovery is requested, the data is still there to work from.</p>
 	<p>For a database with a high volume of writes, this may mean we store a lot of data for a lot longer than needed. As it turns out, though, once data has been written at all, keeping it around for an extra month is pretty cheap — typically cheaper, even, than writing it in the first place. It's a small price to pay for always-on disaster recovery.</p>
-	<h2>Get started with SQLite-in-DO</h2>
+	<div class="flex anchor relative">
+		<h2 id="get-started-with-sqlite-in-do">Get started with SQLite-in-DO</h2>
+		<a href="https://blog.cloudflare.com/#get-started-with-sqlite-in-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>SQLite-backed DOs are available in beta starting today. You can start building with SQLite-in-DO by visiting <a href="https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage"><u>developer documentation</u></a> and provide beta feedback via the <a href="https://discord.com/channels/595317990191398933/773219443911819284"><u>#durable-objects channel</u></a> on our Developer Discord.</p>
 	<p>Do distributed systems like SRS excite you? Would you like to be part of building them at Cloudflare? <a href="https://boards.greenhouse.io/embed/job_app?token=5390243"><u>We're hiring!</u></a></p>
 </div>

@@ -12,16 +12,37 @@
 	<p>Sadly, access to the Internet is not uniformly distributed. Some have cheap, fast, low latency, reliable connections, others have some combination of expensive, slow, high latency and unreliable connections, still others have no connection at all. Close to 60% of the world have Internet access leaving a huge 40% without it at all.</p>
 	<p>This inequality of access to the Internet has real-world consequences. Without good access it is so much harder to communicate, to get vital information, to work and to study. Inequality of access isn’t a technical problem, it’s a societal problem.</p>
 	<p>This week, Cloudflare is announcing <a href="https://www.cloudflare.com/pangea">Project Pangea</a> with the goal of helping reduce this inequality. We’re helping community networks get onto the Internet cheaply, securely and with good bandwidth and latency. We can't solve all the challenges of bringing fast, cheap broadband access to everyone (yet) but we can give fast, reliable transit to ISPs in underserved communities to help move in that direction. Please refer to our <a href="https://blog.cloudflare.com/pangea">Pangea announcement</a> for more details.</p>
-	<h2>The Tyranny of Averages</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-tyranny-of-averages">The Tyranny of Averages</h2>
+		<a href="https://blog.cloudflare.com/#the-tyranny-of-averages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To understand why Project Pangea is important, you need to understand how different the experience of accessing the Internet is around the world. From a distance, the world looks blue and green. But we all know that our planet varies wildly from place to place: deserts and rainforests, urban jungles and placid rural landscapes, mountains, valleys and canyons, volcanos, salt flats, tundra, and verdant, rolling hills.</p>
 	<p>Cloudflare is in a unique position to measure the performance and reach of the Internet over this vast landscape. We have servers in more than 200 cities in over 100 countries, we process 10s of trillions of Internet requests every month. Our network and customers and their users span the globe, every country in every network.</p>
 	<p>Zoom out to the level of a city, county, state, or country, and average Internet performance can look good — or, at least, acceptable. Zoom in, however, and the inequalities start to show. Perhaps part of a county has great performance, and another limps along at barely dial-up speeds — or worse. Or perhaps a city has some neighborhoods with fantastic fiber service, and others that are underserved and struggling with spotty access.</p>
 	<p>Inequality of Internet access isn’t a distant problem, it’s not limited to developing countries, it exists in the richest countries in the world as well as the poorest. There are still many parts of the world &nbsp;where a Zoom call is hard or impossible to make. And if you’re reading this on a good Internet connection, you may be surprised to learn that places with poor or no Internet are not far from you at all.</p>
-	<h2>Bandwidth and Latency in Eight Countries</h2>
+	<div class="flex anchor relative">
+		<h2 id="bandwidth-and-latency-in-eight-countries">Bandwidth and Latency in Eight Countries</h2>
+		<a href="https://blog.cloudflare.com/#bandwidth-and-latency-in-eight-countries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>For Impact Week, we’ve analyzed Internet data in the United States, Brazil, United Kingdom, Germany, France, South Africa, Japan, and Australia to build a picture of Internet performance.</p>
 	<p>Below, you’ll find detailed maps of where the Internet is fast and slow (focusing on available bandwidth) and far away from the end user (at least in terms of the latency between the client and server). We’d have loved to have used a single metric, however, it’s hard for a single number to capture the distribution of good, bad, and non-existent Internet traffic in a region. It’s for that reason that we’ve used two metrics to represent performance: latency and bandwidth (otherwise known as throughput). The maps below are colored to show the differences in bandwidth and latency and answer part of the question: “How good is the Internet in different places around the world?”</p>
 	<p>As we like to say, we’re just getting started with this — we intend to make more of this data and analysis available in the near future. In the meantime, if you’re a local official who wants to better understand their community’s relative performance, please reach out — we’d love to connect with you. Or, if you’re interested in your own Internet performance, you can visit <a href="https://speed.cloudflare.com">speed.cloudflare.com</a> to run a personalized test on your connection.</p>
-	<h3>A Quick Refresher on Latency and Bandwidth</h3>
+	<div class="flex anchor relative">
+		<h3 id="a-quick-refresher-on-latency-and-bandwidth">A Quick Refresher on Latency and Bandwidth</h3>
+		<a href="https://blog.cloudflare.com/#a-quick-refresher-on-latency-and-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we begin, a quick reminder: <i>latency</i> (usually measured in milliseconds or ms) is the time it takes for communications to go to an Internet destination from your device and back, whereas <i>bandwidth</i> is the amount of data that can be transferred in a second (it’s usually measured in megabits per second or Mbps).</p>
 	<p>Both latency and bandwidth affect the performance of an Internet connection. High latency particularly affects things like online gaming where quick responses from servers are needed, but also shows up by slowing down the loading of complex web pages, and even interrupting some streaming video. Low bandwidth makes downloading anything slow: be it images on a webpage, the new app you want to try out on your phone, or the latest movie.</p>
 	<p>Blinking your eyes takes about 100ms; but you’ll begin to notice performance changes around 60ms of latency and below 30ms is gold class performance, seeing <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming">little to no delay in video streaming</a> or gaming.</p>
@@ -495,7 +516,14 @@
 	<p>Blue Crane Route</p>
 	<p>City of Matlosana</p>
 	<p>Modimolle/Mookgophong</p>
-	<h2>Case Study on ISP Concentration’s Impact on Performance: Alabama, USA</h2>
+	<div class="flex anchor relative">
+		<h2 id="case-study-on-isp-concentrations-impact-on-performance-alabama-usa">Case Study on ISP Concentration’s Impact on Performance: Alabama, USA</h2>
+		<a href="https://blog.cloudflare.com/#case-study-on-isp-concentrations-impact-on-performance-alabama-usa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One question we had as we went through a lot of this data: does ISP concentration impact Internet performance?</p>
 	<p>On one hand, there’s a case to be made that more ISP competition results in no one vendor being able to invest sufficient resources to build out a fast network. On the other hand, well, classical economics would suggest that monopolies are bad, right?</p>
 	<p>To investigate the question further, we did a deep dive into Alabama in the United States, the 24th most populous state in the US. We tracked two key metrics across 65 counties: Internet performance as defined by average download speed, and ISP concentration, as measured by the largest ISP’s traffic share.</p>
@@ -706,7 +734,14 @@
 
 	</figure>
 	<p>As you can see, there is a strong positive relationship between the non-dominant ISP’s traffic share and the average download speed. As the non-dominant ISP increases its traffic share, Internet speeds tend to improve. The conclusion is clear: if you want to improve Internet performance in a region, foster more competition between multiple Internet service providers.</p>
-	<h2>The Other Performance Challenge: Limited ISP Exchanges, and Tromboning</h2>
+	<div class="flex anchor relative">
+		<h2 id="the-other-performance-challenge-limited-isp-exchanges-and-tromboning">The Other Performance Challenge: Limited ISP Exchanges, and Tromboning</h2>
+		<a href="https://blog.cloudflare.com/#the-other-performance-challenge-limited-isp-exchanges-and-tromboning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>There is more to the story, however, than just concentration. Alabama, like a lot of other regions that aren’t served well by ISPs, faces another performance challenge: poor routing, also sometimes known as “tromboning”.</p>
 	<p>Consider Tuskegee in Alabama, home to a local university.</p>
 	<p>In Tuskegee, choice is limited. Consumers only have a single choice for high-speed broadband. But even once an off-campus student has local access to the Internet, it isn’t truly local: Tuskegee students on a different ISP than their university will likely see their traffic detour all the way through Atlanta (two hours northeast by car!) before making its way back to school.</p>
@@ -737,7 +772,14 @@
 15- 157.240.201.35 edge-star-mini-shv-01-ams4.facebook.com AS32934 115.013ms 115.223ms 115.112ms</code></pre>
 	<p>The intent here isn’t to shame AT&amp;T, Telia, or Facebook — nor is this challenge unique to them. Facebook's content is undoubtedly cached in Atlanta and the request from Alabama should go no further than that. While many possible conditions within and between these three networks could have caused this tromboning, in the end, the consumer suffers.</p>
 	<p>The solution? Have more major ISPs exchange in more cities and with more networks. Of course, there’d be an upfront cost involved in doing so, even if it would reduce cost more over the long run.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>As William Gibson famously observed: the future is here, but it’s just not evenly distributed.</p>
 	<p>One of the clearest takeaways from the data and analysis presented here is that Internet access varies tremendously across geographies. But it’s not just a case of the developed world vs the developing, or even rural vs urban. There are underserved urban communities and regions of the developed world that do not score as highly as you might expect.</p>
 	<p>Furthermore, our case study of Alabama shows that the structure of the ISP market is incredibly important to promoting performance. We found a strong positive correlation between more competition and faster performance. Similarly, there’s a lot of opportunity for more networks to interconnect in more places, to avoid bad routing.</p>

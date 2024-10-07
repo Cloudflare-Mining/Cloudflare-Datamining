@@ -33,7 +33,14 @@ Hello, World!</code></pre>
 	<p>A very common source of trouble is the difference between “it works on my laptop” and “it fails in production”. Programmers configure their laptops to maximize their productivity but subtle differences between the laptop and production server (such as different versions of a system library) mean that beautifully crafted code can suddenly fail to run at all because of some irritating, and irrelevant, mismatch.</p>
 	<p>All programmers know that pure exasperation of seeing their code fail to run because of some mere configuration problem.</p>
 	<p>To solve this, first Virtual Machines and then Containers have been proposed as ways for the so-called environment (all the things that a program needs to run like memory and CPU and an operating system and libraries) can be duplicated between laptop and server to make the transition to production as smooth as possible.</p>
-	<h3>About that buzzword</h3>
+	<div class="flex anchor relative">
+		<h3 id="about-that-buzzword">About that buzzword</h3>
+		<a href="https://blog.cloudflare.com/#about-that-buzzword" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Recently a new buzzword has appeared: serverless. As I said above programmers really don’t want to think about computers: they want running code. Serverless promises just that: push code to production and it’ll run somewhere, who cares where, who cares how? Much fun is made of the fact that, of course, there are servers running code even when it’s called ‘serverless’.</p>
 	<p>But ‘serverless’ expresses the desire to neither know nor care about the how or where.</p>
 	<p>Cloudflare has its own serverless platform that runs in every one of our machines across the globe. We call it <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>: push code to us through our API and it’ll be available everywhere on the planet within seconds. It’s augmented by our <a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> service that provides a global, key-value store accessible from within a Worker.</p>

@@ -20,7 +20,14 @@ XDPAborted: 0/0   XDPDrop: 0/0   XDPPass: 995/1   XDPTx: 0/0   (received/matched
 reading from file -, link-type EN10MB (Ethernet)
 16:18:37.911670 IP 1.1.1.1 &gt; 1.2.3.4.21563: 26445$ 1/0/1 A 93.184.216.34 (56)</code></pre>
 	<p>The remainder of this post explains how we built xdpcap, including how <code>/path/to/hook/</code> is used to attach to XDP programs.</p>
-	<h2>tcpdump</h2>
+	<div class="flex anchor relative">
+		<h2 id="tcpdump">tcpdump</h2>
+		<a href="https://blog.cloudflare.com/#tcpdump" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To replicate tcpdump, we first need to understand its inner workings. <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">Marek Majkowski has previously written a detailed post on the subject</a>. Tcpdump exposes a high level filter language, <a href="https://www.tcpdump.org/manpages/pcap-filter.7.html">pcap-filter</a>, to specify which packets are of interest. Reusing our earlier example, the following filter expression captures all IPv4 UDP packets to or from port 53, likely DNS traffic:</p>
 	<pre class="language-c"><code class="language-c">ip and udp port 53</code></pre>
 	<p>Internally, tcpdump uses libpcap to compile the filter to classic BPF (cBPF). cBPF is a simple bytecode language to represent programs that inspect the contents of a packet. A program returns non-zero to indicate that a packet matched the filter, and zero otherwise. The virtual machine that executes cBPF programs is very simple, featuring only two registers, <code>a</code> and <code>x</code>. There is no way of checking the length of the input packet<a href="https://blog.cloudflare.com/xdpcap/#fn1"><sup>[1]</sup></a>; instead any out of bounds packet access will terminate the cBPF program, returning 0 (no match). The full set of opcodes are listed in <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">the Linux documentation</a>. Returning to our example filter, <code>ip and udp port 53</code> compiles to the following cBPF program, expressed as an annotated flowchart:</p>
@@ -31,7 +38,14 @@ reading from file -, link-type EN10MB (Ethernet)
 	</figure>
 	<p>Example cBPF filter flowchart</p>
 	<p>Tcpdump attaches the generated cBPF filter to a raw packet socket using a <code>setsockopt</code> system call with <code>SO_ATTACH_FILTER</code>. The kernel runs the filter on every packet destined for the socket, but only delivers matching packets. Tcpdump displays the delivered packets, or writes them to a pcap capture file for later analysis.</p>
-	<h2>xdpcap</h2>
+	<div class="flex anchor relative">
+		<h2 id="xdpcap">xdpcap</h2>
+		<a href="https://blog.cloudflare.com/#xdpcap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the context of XDP, our tcpdump replacement should:</p>
 	<ul>
 		<li>
@@ -44,7 +58,14 @@ reading from file -, link-type EN10MB (Ethernet)
 			<p>Expose matching packets to userspace</p>
 		</li>
 	</ul>
-	<h3>XDP</h3>
+	<div class="flex anchor relative">
+		<h3 id="xdp">XDP</h3>
+		<a href="https://blog.cloudflare.com/#xdp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>XDP uses an extended version of the cBPF instruction set, eBPF, to allow arbitrary programs to run for each packet received by a network card, potentially modifying the packets. A stringent kernel verifier statically analyzes eBPF programs, ensuring that memory bounds are checked for every packet load.</p>
 	<p>eBPF programs can return:</p>
 	<ul>
@@ -59,7 +80,14 @@ reading from file -, link-type EN10MB (Ethernet)
 		</li>
 	</ul>
 	<p>eBPF introduces several new features, notably helper function calls, enabling programs to call functions exposed by the kernel. This includes retrieving or setting values in maps, key-value data structures that can also be accessed from userspace.</p>
-	<h3>Filter</h3>
+	<div class="flex anchor relative">
+		<h3 id="filter">Filter</h3>
+		<a href="https://blog.cloudflare.com/#filter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A key feature of tcpdump is the ability to efficiently pick out packets of interest; packets are filtered before reaching userspace. To achieve this in XDP, the desired filter must be converted to eBPF.</p>
 	<p>cBPF is already used in our <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/#bpf-support">XDP based DoS mitigation pipeline</a>: cBPF filters are first converted to C by cbpfc, and the result compiled with Clang to eBPF. Reusing this mechanism allows us to fully support libpcap filter expressions:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -94,7 +122,14 @@ reading from file -, link-type EN10MB (Ethernet)
 	</ul>
 	<p>The epilogue can use the result of the filter to perform different actions on the input packet.</p>
 	<p>As mentioned earlier, we’re open sourcing cbpfc; <a href="https://github.com/cloudflare/cbpfc">the code and documentation are available on GitHub</a>. It can be used to compile cBPF to C, or directly to eBPF, and the generated code is accepted by the kernel verifier.</p>
-	<h3>Instrument</h3>
+	<div class="flex anchor relative">
+		<h3 id="instrument">Instrument</h3>
+		<a href="https://blog.cloudflare.com/#instrument" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Tcpdump can start and stop capturing packets at any time, without requiring coordination from applications. This rules out modifying existing XDP programs to directly run the generated eBPF filter; the programs would have to be modified each time xdpcap is run. Instead, programs should expose a hook that can be used by xdpcap to attach filters at runtime.</p>
 	<p>xdpcap’s hook support is built around eBPF tail-calls. XDP programs can yield control to other programs using the tail-call helper. Control is never handed back to the calling program, the return code of the subsequent program is used. For example, consider two XDP programs, foo and bar, with foo attached to the network interface. Foo can tail-call into bar:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -154,7 +189,15 @@ reading from file -, link-type EN10MB (Ethernet)
 	<pre class="language-c"><code class="language-c">int foo(struct xdp_md *ctx) {
     return xdpcap_exit(ctx, XDP_PASS);
 }</code></pre>
-	<h3>Expose</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="expose">Expose</h3>
+		<a href="https://blog.cloudflare.com/#expose" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Matching packets, as well as the original action taken for them, need to be exposed to userspace. Once again, such a mechanism is already part of our <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/#packet-sampling">XDP based DoS mitigation pipeline</a>!</p>
 	<p>Another eBPF helper, <code>perf_event_output</code>, allows an XDP program to generate a perf event containing, amongst some metadata, the packet. As xdpcap generates one filter per XDP action, the filter program can include the action taken in the metadata. A userspace program can create a perf event ring buffer to receive events into, obtaining both the action and the packet.</p>
 	<hr>

@@ -21,7 +21,14 @@
 	<p>While this doesn't happen too often, a computer clock can be freely adjusted either forward or backward. However, it's pretty rare for a regular network utility, like ping, to try to manage a situation like this. It's even less common to call it "taking countermeasures". I would totally expect ping to just print a nonsensical time value and move on without hesitation.</p>
 	<p>Ping developers clearly put some thought into that. I wondered how far they went. Did they handle clock changes in both directions? Are the bad measurements excluded from the final statistics? How do they test the software?</p>
 	<p>I can't just walk past ping "taking countermeasures" on me. Now I have to understand what ping did and why.</p>
-	<h3>Understanding ping</h3>
+	<div class="flex anchor relative">
+		<h3 id="understanding-ping">Understanding ping</h3>
+		<a href="https://blog.cloudflare.com/#understanding-ping" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>An investigation like this starts with a quick glance at the source code:</p>
 	<pre class="language-bash"><code class="language-bash"> *			P I N G . C
  *
@@ -42,7 +49,14 @@
 	<p>But what precisely does ping measure? Is it the wall clock? The <a href="https://man7.org/linux/man-pages/man8/ping.8.html">man page</a> comes to the rescue. Ping has two modes.</p>
 	<p>The "old", -U mode, in which it uses the wall clock. This mode is less accurate (has more jitter). It calls <b>gettimeofday</b> before sending and after receiving the packet.</p>
 	<p>The "new", default, mode in which it uses "network time". It calls <b>gettimeofday</b> before sending, and gets the receive timestamp from a more accurate SO_TIMESTAMP CMSG. More on this later.</p>
-	<h3>Tracing gettimeofday is hard</h3>
+	<div class="flex anchor relative">
+		<h3 id="tracing-gettimeofday-is-hard">Tracing gettimeofday is hard</h3>
+		<a href="https://blog.cloudflare.com/#tracing-gettimeofday-is-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's start with a good old strace:</p>
 	<pre class="language-bash"><code class="language-bash">$ strace -e trace=gettimeofday,time,clock_gettime -f ping -n -c1 1.1 &gt;/dev/null
 ... nil ...</code></pre>
@@ -93,7 +107,15 @@ Thu Jul  6 05:10:45 PM CEST 2023
      strace -c -e trace=gettimeofday,time,clock_gettime -f \
      ping -n -c1 1.1 &gt;/dev/null
 ... nil ...</code></pre>
-	<h3>To suid or not to suid</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="to-suid-or-not-to-suid">To suid or not to suid</h3>
+		<a href="https://blog.cloudflare.com/#to-suid-or-not-to-suid" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>I forgot that <b>ping</b> might need special permissions to read and write raw packets. Historically it had a <b>suid</b> bit set, which granted the program elevated user identity. However LD_PRELOAD doesn't work with suid. When a program is being loaded a <a href="https://github.com/bminor/musl/blob/718f363bc2067b6487900eddc9180c84e7739f80/ldso/dynlink.c#L1820">dynamic linker checks if it has <b>suid</b> bit</a>, and if so, it ignores LD_PRELOAD and LD_LIBRARY_PATH settings.</p>
 	<p>However, does <b>ping</b> need suid? Nowadays it's totally possible to send and receive ICMP Echo messages without any extra privileges, like this:</p>
 	<pre class="language-py"><code class="language-py">from socket import *
@@ -120,7 +142,14 @@ socket(AF_INET6, SOCK_DGRAM, IPPROTO_ICMPV6) = 4</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ getcap `which ping`
 /usr/bin/ping cap_net_raw=ep</code></pre>
 	<p>I think this capability is enabled only to handle the case of a misconfigured <b>net.ipv4.ping_group_range</b> sysctl. For me ping works perfectly fine without this capability.</p>
-	<h3>Rootless is perfectly fine</h3>
+	<div class="flex anchor relative">
+		<h3 id="rootless-is-perfectly-fine">Rootless is perfectly fine</h3>
+		<a href="https://blog.cloudflare.com/#rootless-is-perfectly-fine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's remove the CAP_NET_RAW and try out LD_PRELOAD hack again:</p>
 	<pre class="language-bash"><code class="language-bash">$ cp `which ping` .
 
@@ -145,7 +174,14 @@ recvmsg(3, { ... cmsg_level=SOL_SOCKET,
 			<p>When fetching a packet, gets the timestamp from the <b>CMSG</b>.</p>
 		</li>
 	</ul>
-	<h3>Fault injection - fooling ping</h3>
+	<div class="flex anchor relative">
+		<h3 id="fault-injection-fooling-ping">Fault injection - fooling ping</h3>
+		<a href="https://blog.cloudflare.com/#fault-injection-fooling-ping" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>With <b>strace</b> up and running we can finally do something interesting. You see, <b>strace</b> has a little known fault injection feature, named <a href="https://man7.org/linux/man-pages/man1/strace.1.html">"tampering" in the manual</a>:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -168,7 +204,14 @@ PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.000/0.000/0.000/0.000 ms</code></pre>
 	<p>It worked! We can now generate the "taking countermeasures" message reliably!</p>
 	<p>While we can cheat on the <b>gettimeofday</b> result, with <b>strace</b> it's impossible to overwrite the CMSG timestamp. Perhaps it might be possible to adjust the CMSG timestamp with Linux <a href="https://man7.org/linux/man-pages/man7/time_namespaces.7.html">time namespaces</a>, but I don't think it'll work. As far as I understand, time namespaces are not taken into account by the network stack. A program using SO_TIMESTAMP is deemed to compare it against the system clock, which might be rolled backwards.</p>
-	<h3>Fool me once, fool me twice</h3>
+	<div class="flex anchor relative">
+		<h3 id="fool-me-once-fool-me-twice">Fool me once, fool me twice</h3>
+		<a href="https://blog.cloudflare.com/#fool-me-once-fool-me-twice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>At this point we could conclude our investigation. We're now able to reliably trigger the "taking countermeasures" message using strace fault injection.</p>
 	<p>There is one more thing though. When sending ICMP Echo Request messages, does <b>ping</b> <b>remember</b> the send timestamp in some kind of hash table? That might be wasteful considering a long-running ping sending thousands of packets.</p>
 	<p>Ping is smart, and instead puts the timestamp in the ICMP Echo Request <b>packet payload</b>!</p>
@@ -251,7 +294,15 @@ def custom_action(echo_req):
         pass
 
 scapy.sniff(filter="icmp and icmp[0] = 8", iface=iface, prn=custom_action)</code></pre>
-	<h3>Leap second</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="leap-second">Leap second</h3>
+		<a href="https://blog.cloudflare.com/#leap-second" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In practice, how often does time change on a computer? The <b>NTP</b> daemon adjusts the clock all the time to account for any drift. However, these are very small changes. Apart from initial clock synchronization after boot or sleep wakeup, big clock shifts shouldn't really happen.</p>
 	<p>There are exceptions as usual. Systems that operate in virtual environments or have unreliable Internet connections often experience their clocks getting out of sync.</p>
 	<p>One notable case that affects all computers is a coordinated clock adjustment called a <a href="https://en.wikipedia.org/wiki/Leap_second">leap second</a>. It causes the clock to move backwards, which is particularly troublesome. An issue with handling leap second <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns">caused our engineers a headache in late 2016</a>.</p>
@@ -272,7 +323,15 @@ Sun Oct 29 02:59:59 AM CEST 2023
 
 $ date --date=@$[1698541199+1]
 Sun Oct 29 02:00:00 AM CET 2023</code></pre>
-	<h3>Lessons</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="lessons">Lessons</h3>
+		<a href="https://blog.cloudflare.com/#lessons" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Arguably, the clock jumping backwards is a rare occurrence. It's very hard to test for such cases, and I was surprised to find that <b>ping</b> made such an attempt. To avoid the problem, to measure the latency ping might use CLOCK_MONOTONIC, its developers already <a href="https://github.com/iputils/iputils/commit/4fd276cd8211c502cb87c5db0ce15cd685177216">use this time source in another place</a>.</p>
 	<p>Unfortunately this won't quite work here. Ping needs to compare send timestamp to receive timestamp from SO_TIMESTAMP CMSG, which uses the non-monotonic system clock. Linux API's are sometimes limited, and dealing with time is hard. For time being, clock adjustments will continue to confuse ping.</p>
 	<p>In any case, now we know what to do when <b>ping</b> is "<b>taking countermeasures</b>"! Pull down your periscope and check the <b>NTP</b> daemon status!</p>

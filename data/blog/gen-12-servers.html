@@ -8,7 +8,14 @@
 	<p>Fourth, to underscore our security-first position as a company, we've integrated hardware <a href="https://trustedcomputinggroup.org/about/what-is-a-root-of-trust-rot"><u>root of trust</u></a> (HRoT) capabilities to ensure the integrity of boot firmware and board management controller firmware. Continuing to embrace open standards, the baseboard management and security controller (Data Center Secure Control Module or <a href="https://drive.google.com/file/d/13BxuseSrKo647hjIXjp087ei8l5QQVb0/view"><u>OCP DC-SCM</u></a>) that we’ve designed into our systems is modular and vendor-agnostic, enabling a unified <a href="https://www.openbmc.org"><u>openBMC</u></a> image, quicker prototyping, and allowing for reuse.</p>
 	<p>Finally, given the increasing importance of supply assurance and reliability in infrastructure deployments, our approach includes a robust multi-vendor strategy to mitigate supply chain risks, ensuring continuity and resiliency of our infrastructure deployment.</p>
 	<p>Cloudflare is dedicated to constantly improving our server fleet, empowering businesses worldwide with enhanced performance, efficiency, and security.</p>
-	<h2>Gen 12 Servers&nbsp;</h2>
+	<div class="flex anchor relative">
+		<h2 id="gen-12-servers">Gen 12 Servers&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#gen-12-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Let's take a closer look at our Gen 12 server. The server is powered by a 4th generation AMD EPYC Processor, paired with 384 GB of DDR5 RAM, 16 TB of NVMe storage, a dual-port 25 GbE NIC, and two 800 watt power supply units.</p>
 	<style type="text/css">
 		.tg {
@@ -126,7 +133,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/ywinOgSFpevEcQSZLhESv/cc8047da874d39fefdbccdbf38f12e00/BLOG-2116_2.png" alt="BLOG-2116 2" class="kg-image" width="1912" height="1999" loading="lazy">
 	</figure>
 	<p><sup><i>Cloudflare Gen 12 server</i></sup></p>
-	<h3>CPU</h3>
+	<div class="flex anchor relative">
+		<h3 id="cpu">CPU</h3>
+		<a href="https://blog.cloudflare.com/#cpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During the design phase, we conducted an extensive survey of the CPU landscape. These options offer valuable choices as we consider how to shape the future of Cloudflare's server technology to match the needs of our customers. We evaluated many candidates in the lab, and short-listed three standout CPU candidates from the 4th generation AMD EPYC Processor lineup: Genoa 9654, Bergamo 9754, and Genoa-X 9684X for production evaluation. The table below summarizes the differences in <a href="https://www.amd.com/content/dam/amd/en/documents/products/epyc/epyc-9004-series-processors-data-sheet.pdf"><u>specifications</u></a> of the short-listed candidates for Gen 12 servers against the AMD EPYC 7713 used in our Gen 11 servers. Notably, all three candidates offer significant increase in core count and marked increase in all core boost clock frequency.</p>
 	<style type="text/css">
 		.tg {
@@ -394,7 +408,14 @@
 	<p>Genoa-X 9684X CPU delivered ~22.5% improved performance consuming the same amount of 400W power compared to Genoa 9654. The 3x larger L3 cache does consume additional power, but only at the expense of sacrificing 3% of highest achievable all core boost frequency on Genoa-X 9684X, a favorable trade-off for Cloudflare workloads.</p>
 	<p>More importantly, Genoa-X 9684X CPU delivered 145% performance improvement with only 50% system power increase, offering a 63% power efficiency improvement that will help drive down operational expenditure tremendously. It is important to note that even though a big portion of the power efficiency is due to the CPU, it needs to be paired with optimal thermal-mechanical design to realize the full benefit. Earlier last year, <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>we made the thermal-mechanical design choice to double the height of the server chassis to optimize rack density and cooling efficiency across our global data centers</u></a>. We estimated that moving from 1U to 2U would reduce fan power by 150W, which would decrease system power from 750 watts to 600 watts. Guess what? We were right — a Gen 12 server consumes 600 watts per system at a typical ambient temperature of 25°C.</p>
 	<p>While high performance often comes at a higher price, fortunately AMD EPYC 9684X offer an excellent balance between cost and capability. A server designed with this CPU provides top-tier performance without necessitating a huge financial outlay, resulting in a good Total Cost of Ownership improvement for Cloudflare.</p>
-	<h3>Memory</h3>
+	<div class="flex anchor relative">
+		<h3 id="memory">Memory</h3>
+		<a href="https://blog.cloudflare.com/#memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>AMD Genoa-X CPU supports twelve memory channels of DDR5 RAM up to 4800 mega transfers per second (MT/s) and per socket Memory Bandwidth of 460.8 GB/s. The twelve channels are fully utilized with 32 GB ECC 2Rx8 DDR5 RDIMM with one DIMM per channel configuration for a combined total memory capacity of 384 GB.&nbsp;</p>
 	<p>Choosing the optimal memory capacity is a balancing act, as maintaining an optimal memory-to-core ratio is important to make sure CPU capacity or memory capacity is not wasted. Some may remember that our Gen 11 servers with 64 core AMD EPYC 7713 CPUs are also configured with 384 GB of memory, which is about 6 GB per core. So why did we choose to configure our Gen 12 servers with 384 GB of memory when the core count is growing to 96 cores? Great question! A lot of memory optimization work has happened since we introduced Gen 11, including some that we blogged about, like <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare"><u>Bot Management code optimization</u></a> and <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet"><u>our transition to highly efficient Pingora</u></a>. In addition, each service has a memory allocation that is sized for optimal performance. The per-service memory allocation is programmed and monitored utilizing Linux control group resource management features. When sizing memory capacity for Gen 12, we consulted with the team who monitor resource allocation and surveyed memory utilization metrics collected from our fleet. The result of the analysis is that the optimal memory-to-core ratio is 4 GB per CPU core, or 384 GB total memory capacity. This configuration is validated in production. We chose dual rank memory modules over single rank memory modules because they have higher memory throughput, which improves server performance (read more about <a href="https://blog.cloudflare.com/ddr4-memory-organization-and-how-it-affects-memory-bandwidth"><u>memory module organization and its effect on memory bandwidth</u></a>).&nbsp;</p>
 	<p>The table below shows the result of running the <a href="https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html"><u>Intel Memory Latency Checker (MLC)</u></a> tool to measure peak memory bandwidth for the system and to compare memory throughput between 12 channels of dual-rank (2Rx8) 32 GB DIMM and 12 channels of single rank (1Rx4) 32 GB DIMM. Dual rank DIMMs have slightly higher (1.8%) read memory bandwidth, but noticeably higher write bandwidth. As write ratios increased from 25% to 50%, the memory throughput delta increased by 10%.</p>
@@ -575,7 +596,14 @@
 			</tbody>
 		</table>
 	</div>
-	<h3>Storage</h3>
+	<div class="flex anchor relative">
+		<h3 id="storage">Storage</h3>
+		<a href="https://blog.cloudflare.com/#storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare’s Gen X server and Gen 11 server support <a href="https://en.wikipedia.org/wiki/M.2"><u>M.2</u></a> form factor drives. We liked the M.2 form factor mainly because it was compact. The M.2 specification was introduced in 2012, but today, the connector system is dated and the industry has concerns about its ability to maintain signal integrity with the high speed signal specified by <a href="https://www.xda-developers.com/pcie-5"><u>PCIe 5.0</u></a> and <a href="https://pcisig.com/pci-express-6.0-specification"><u>PCIe 6.0</u></a> specifications. The 8.25W thermal limit of the M.2 form factor also limits the number of flash dies that can be fitted, which limits the maximum supported capacity per drive. To address these concerns, the industry has introduced the <a href="https://americas.kioxia.com/content/dam/kioxia/en-us/business/ssd/data-center-ssd/asset/KIOXIA_Meta_Microsoft_EDSFF_E1_S_Intro_White_Paper.pdf"><u>E1.S</u></a> specification and is transitioning from the M.2 form factor to the E1.S form factor.&nbsp;</p>
 	<p>In Gen 12, we are making the change to the <a href="https://www.snia.org/forums/cmsi/knowledge/formfactors#EDSFF"><u>EDSFF</u></a> E1 form factor, more specifically the E1.S 15mm. E1.S 15mm, though still in a compact form factor, provides more space to fit more flash dies for larger capacity support. The form factor also has better cooling design to support more than 25W of sustained power.</p>
 	<p>While the AMD Genoa-X CPU supports 128 PCIe 5.0 lanes, we continue to use NVMe devices with PCIe Gen 4.0 x4 lanes, as PCIe Gen 4.0 throughput is sufficient to meet drive bandwidth requirements and keep server design costs optimal. The server is equipped with two 8 TB NVMe drives for a total of 16 TB available storage. We opted for two 8 TB drives instead of four 4 TB drives because the dual 8 TB configuration already provides sufficient I/O bandwidth for all Cloudflare workloads that run on each server.</p>
@@ -670,10 +698,25 @@
 		</table>
 	</div>
 	<p><sub><i>Storage devices performance specification</i></sub></p>
-	<h3>Network</h3>
+	<div class="flex anchor relative">
+		<h3 id="network">Network</h3>
+		<a href="https://blog.cloudflare.com/#network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare servers and top-of-rack (ToR) network equipment operate at <a href="https://en.wikipedia.org/wiki/25_Gigabit_Ethernet"><u>25 GbE</u></a> speeds. In Gen 12, we utilized a <a href="https://www.opencompute.org/wiki/Server/DC-MHS"><u>DC-MHS</u></a> motherboard-inspired design, and upgraded from an <a href="https://drive.google.com/file/d/1VGAtABAKU9fq3KfClYhFOgGFN3oe63Uw/view?usp=sharing"><u>OCP 2.0 form factor</u></a> to an <a href="https://drive.google.com/file/d/1U3oEGiSWfupG4SnIdPuJ_8Nte2lJRqTN/view?usp=sharing"><u>OCP 3.0 form factor</u></a>, which provides tool-less serviceability of the NIC. The OCP 3.0 form factor also occupies less space in the 2U server compared to PCIe-attached NICs, which improves airflow and frees up space for other application-specific PCIe cards, such as GPUs.</p>
 	<p>Cloudflare has been using the Mellanox CX4-Lx EN dual port 25 GbE NIC since our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers"><u>Gen 9 servers in 2018</u></a>. Even though the NIC has served us well over the years, we are single sourced. During the pandemic, we were faced with supply constraints and extremely long lead times. The team scrambled to qualify the Broadcom M225P dual port 25 GbE NIC as our second-sourced NIC in 2022, ensuring we could continue to turn up servers to serve customer demand. With the lessons learned from single-sourcing the Gen 11 NIC, we are now dual-sourcing and have chosen the Intel Ethernet Network Adapter E810 and NVIDIA Mellanox ConnectX-6 Lx to support Gen 12. These two NICs are compliant with the <a href="https://www.opencompute.org/wiki/Server/NIC"><u>OCP 3.0 specification</u></a> and offer more MSI-X queues that can then be mapped to the increased core count on the AMD EPYC 9684X. The Intel Ethernet Network Adapter comes with an additional advantage, offering full Generic Segmentation Offload (GSO) support including VLAN-tagged encapsulated traffic, whereast many vendors either only support <a href="https://netdevconf.info/1.2/papers/LCO-GSO-Partial-TSO-MangleID.pdf"><u>Partial GSO</u></a> or do not support it at all today. With Full GSO support, the kernel spent noticeably less time in softirq segmenting packets, and servers with Intel E810 NICs are processing approximately 2% more requests per second.</p>
-	<h3>Improved security with DC-SCM: Project Argus</h3>
+	<div class="flex anchor relative">
+		<h3 id="improved-security-with-dc-scm-project-argus">Improved security with DC-SCM: Project Argus</h3>
+		<a href="https://blog.cloudflare.com/#improved-security-with-dc-scm-project-argus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ur3YccqqXckIL6oWKd6Lq/3a7f2bd0798311f55381547f21d14be7/BLOG-2116_3.png" alt="BLOG-2116 3" class="kg-image" width="1999" height="1743" loading="lazy">
 	</figure>
@@ -682,7 +725,14 @@
 	<p>On our Gen X and Gen 11 server, Cloudflare moved our secure boot trust anchor from the system Basic Input/Output System (BIOS) or the Unified Extensible Firmware Interface (UEFI) firmware to hardware-rooted boot integrity — <a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story"><u>AMD’s implementation of Platform Secure Boot (PSB)</u></a> or <a href="https://blog.cloudflare.com/armed-to-boot"><u>Ampere’s implementation of Single Domain Secure Boot</u></a>. These solutions helped secure Cloudflare infrastructure from BIOS / UEFI firmware attacks. However, we are still vulnerable to out-of-band attacks through compromising the BMC firmware. BMC is a microcontroller that provides out-of-band monitoring and management capabilities for the system. When compromised, attackers can read processor console logs accessible by BMC and control server power states for example. On Gen 12, the HRoT on the DC-SCM serves as the trust store of cryptographic keys and is responsible to authenticate the BIOS/UEFI firmware (independent of CPU vendor) and the BMC firmware for secure boot process.</p>
 	<p>In addition, on the DC-SCM, there are additional flash storage devices to enable storing back-up BIOS/UEFI firmware and BMC firmware to allow rapid recovery when a corrupted or malicious firmware is programmed, and to be resilient to flash chip failure due to aging.</p>
 	<p>These updates make our Gen 12 server more secure and more resilient to firmware attacks.</p>
-	<h3>Power</h3>
+	<div class="flex anchor relative">
+		<h3 id="power">Power</h3>
+		<a href="https://blog.cloudflare.com/#power" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A Gen 12 server consumes 600 watts at a typical ambient temperature of 25°C. Even though this is a 50% increase from the 400 watts consumed by the Gen 11 server, as mentioned above in the CPU section, this is a relatively small price to pay for a 145% increase in performance. We’ve paired the server up with dual 800W common redundant power supplies (CRPS) with 80 PLUS Titanium grade efficiency. Both power supply units (PSU) operate actively with distributed power and current. The units are hot-pluggable, allowing the server to operate with redundancy and maximize uptime.</p>
 	<p><a href="https://www.clearesult.com/80plus/program-details"><u>80 PLUS</u></a> is a PSU efficiency certification program. The Titanium grade efficiency PSU is 2% more efficient than the Platinum grade efficiency PSU between typical operating load of 25% to 50%. 2% may not sound like a lot, but considering the size of Cloudflare fleet with servers deployed worldwide, 2% savings over the lifetime of all Gen 12 deployment is a reduction of more than 7 GWh, <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator#results"><u>equivalent to carbon sequestered by more than 3400 acres of U.S. forests in one year</u></a>.&nbsp; This upgrade also means our Gen 12 server complies with <a href="https://www.unicomengineering.com/blog/eu-lot-9-update-the-coming-server-power-migration"><u>EU Lot9 requirements</u></a> and can be deployed in the EU region.</p>
 	<style type="text/css">
@@ -778,9 +828,23 @@
 			</tbody>
 		</table>
 	</div>
-	<h3>Drop-in GPU support</h3>
+	<div class="flex anchor relative">
+		<h3 id="drop-in-gpu-support">Drop-in GPU support</h3>
+		<a href="https://blog.cloudflare.com/#drop-in-gpu-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Demand for machine learning and AI workloads exploded in 2023, and Cloudflare <a href="https://blog.cloudflare.com/workers-ai"><u>introduced Workers AI </u></a>to serve the needs of our customers. Cloudflare retrofitted or deployed GPUs worldwide in a portion of our Gen 11 server fleet to support the growth of Workers AI. Our Gen 12 server is also designed to accommodate the addition of more powerful GPUs. This gives Cloudflare the flexibility to support Workers AI in all regions of the world, and to strategically place GPUs in regions to reduce inference latency for our customers. With this design, the server can run Cloudflare’s full software stack. During times when GPUs see lower utilization, the server continues to serve general web requests and remains productive.</p>
 	<p>The electrical design of the motherboard is designed to support up to two PCIe add-in cards and the power distribution board is sized to support an additional 400W of power. The mechanics are sized to support either a single FHFL (full height, full length) double width GPU PCIe card, or two FHFL single width GPU PCIe cards. The thermal solution including the component placement, fans, and air duct design are sized to support adding GPUs with TDP up to 400W.</p>
-	<h3>Looking to the future</h3>
+	<div class="flex anchor relative">
+		<h3 id="looking-to-the-future">Looking to the future</h3>
+		<a href="https://blog.cloudflare.com/#looking-to-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Gen 12 Servers are currently deployed and live in multiple Cloudflare data centers worldwide, and already process millions of requests per second. Cloudflare’s EPYC journey has not ended — the 5th-gen AMD EPYC CPUs (code name “Turin”) are already available for testing, and we are very excited to start the architecture planning and design discussion for the Gen 13 server. <a href="https://www.cloudflare.com/careers/jobs"><u>Come join us</u></a> at Cloudflare to help build a better Internet!</p>
 </div>

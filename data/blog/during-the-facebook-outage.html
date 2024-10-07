@@ -6,7 +6,14 @@
 	<p>As we said before, these events are a gentle reminder that the Internet is a vast network of networks, and we, as industry players and end-users, are part of it and should work together.</p>
 	<p>In the aftermath of an event of this size, we don't waste much time debating how peers handled the situation. We do, however, ask ourselves the more important questions: "How did this affect us?" and "What if this had happened to us?" Asking and answering these questions whenever something like this happens is a great and healthy exercise that helps us improve our own resilience.</p>
 	<p>Today, we're going to show you how the Facebook and affiliate sites downtime affected us, and what we can see in our data.</p>
-	<h3>1.1.1.1</h3>
+	<div class="flex anchor relative">
+		<h3 id="1-1-1-1">1.1.1.1</h3>
+		<a href="https://blog.cloudflare.com/#1-1-1-1" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>1.1.1.1 is a fast and privacy-centric public DNS resolver operated by Cloudflare, used by millions of users, browsers, and devices worldwide. Let's look at our telemetry and see what we find.</p>
 	<p>First, the obvious. If we look at the response rate, there was a massive spike in the number of SERVFAIL codes. SERVFAILs can happen for several reasons; we have an excellent blog called <a href="https://blog.cloudflare.com/unwrap-the-servfail">Unwrap the SERVFAIL</a> that you should read if you're curious.</p>
 	<p>In this case, we started serving SERVFAIL responses to all facebook.com and whatsapp.com DNS queries because our resolver couldn't access the upstream Facebook authoritative servers. About 60x times more than the average on a typical day.</p>
@@ -82,7 +89,14 @@
 	<p>3.14</p>
 	<p>French Guiana</p>
 	<p>3.00</p>
-	<h3>Impact on other sites</h3>
+	<div class="flex anchor relative">
+		<h3 id="impact-on-other-sites">Impact on other sites</h3>
+		<a href="https://blog.cloudflare.com/#impact-on-other-sites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Facebook, Instagram, and WhatsApp aren't around, the world turns to other places to look for information on what's going on, other forms of entertainment or other applications to communicate with their friends and family. Our data shows us those shifts. While Facebook was going down, other services and platforms were going up.</p>
 	<p>To get an idea of the changing traffic patterns we look at DNS queries as an indicator of increased traffic to specific sites or types of site.</p>
 	<p>Here are a few examples.</p>
@@ -110,14 +124,28 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4JR6ipTzivZfWYOS5rmnlX/bdc43e975a9f3b02857de7957f380c59/image5-12.png" alt="DNS queries to News Sites" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
-	<h3>Attacks</h3>
+	<div class="flex anchor relative">
+		<h3 id="attacks">Attacks</h3>
+		<a href="https://blog.cloudflare.com/#attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One could speculate that the Internet was under attack from malicious hackers. Our Firewall doesn't agree; nothing out of the ordinary stands out.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6lBrIk5Tx5b64G2SGtfFXZ/e59f3a9cce891988d107151eef65b243/image13.png" alt="Layer 7 attacks during the Facebook outage October 2021" class="kg-image" width="823" height="360" loading="lazy">
 
 	</figure>
-	<h3>Network Error Logs</h3>
+	<div class="flex anchor relative">
+		<h3 id="network-error-logs">Network Error Logs</h3>
+		<a href="https://blog.cloudflare.com/#network-error-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging">Network Error Logging</a>, NEL for short, is an experimental technology supported in Chrome. A website can issue a Report-To header and ask the browser to send reports about network problems, like bad requests or DNS issues, to a specific endpoint.</p>
 	<p>Cloudflare uses NEL data to quickly help triage end-user connectivity issues when end-users reach our network. You can learn more about this feature in our <a href="https://support.cloudflare.com/hc/en-us/articles/360050691831-Understanding-Network-Error-Logging">help center</a>.</p>
 	<p>If Facebook is down and their DNS isn't responding, Chrome will start reporting NEL events every time one of the pages in our zones fails to load Facebook comments, posts, ads, or authentication buttons. This chart shows it clearly.<b>​​</b></p>
@@ -126,7 +154,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/56Sp2huqEtyGiEOmzBrsiU/dba51c694454d2ae11f6d42cc36932ee/image7-8.png" alt="NEL (Network Error Logs)" class="kg-image" width="1043" height="360" loading="lazy">
 
 	</figure>
-	<h3>WARP</h3>
+	<div class="flex anchor relative">
+		<h3 id="warp">WARP</h3>
+		<a href="https://blog.cloudflare.com/#warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare announced <a href="https://1.1.1.1">WARP</a> in 2019, and called it "<a href="https://blog.cloudflare.com/1111-warp-better-vpn">A VPN for People Who Don't Know What V.P.N. Stands For</a>" and offered it for free to its customers. Today WARP is used by millions of people worldwide to securely and privately access the Internet on their desktop and mobile devices. Here's what we saw during the outage by looking at traffic volume between WARP and Facebook’s network:</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -134,7 +169,14 @@
 
 	</figure>
 	<p>You can see how the steep drop in Facebook ASN traffic coincides with the start of the incident and how it compares to the same period the day before.</p>
-	<h3>Our own traffic</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-own-traffic">Our own traffic</h3>
+		<a href="https://blog.cloudflare.com/#our-own-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>People tend to think of Facebook as a place to visit. We log in, and we access Facebook, we post. It turns out that Facebook likes to visit us too, quite a lot. Like Google and other platforms, Facebook uses an army of crawlers to constantly check websites for data and updates. Those robots gather information about websites content, such as its titles, descriptions, thumbnail images, and metadata. You can learn more about this on the "<a href="https://developers.facebook.com/docs/sharing/webmasters/crawler">The Facebook Crawler</a>" page and the <a href="https://ogp.me">Open Graph</a> website.</p>
 	<p>Here's what we see when traffic is coming from the Facebook ASN, supposedly from crawlers, to our CDN sites:</p>
 	<figure class="kg-card kg-image-card ">
@@ -152,7 +194,14 @@
 	<p>We see about 30% of a typical request rate hitting us. But it's not zero; why is that?</p>
 	<p>We'll let you know a little secret. Never trust User-Agent information; it's broken. User-Agent spoofing is everywhere. Browsers, apps, and other clients deliberately change the User-Agent string when they fetch pages from the Internet to hide, obtain access to certain features, or bypass paywalls (because pay-walled sites want sites like Facebook to index their content, so that then they get more traffic from links).</p>
 	<p>Fortunately, there are newer, and privacy-centric standards emerging like <a href="https://developer.mozilla.org/en-US/docs/Web/API/User-Agent_Client_Hints_API">User-Agent Client Hints</a>.</p>
-	<h3>Core Web Vitals</h3>
+	<div class="flex anchor relative">
+		<h3 id="core-web-vitals">Core Web Vitals</h3>
+		<a href="https://blog.cloudflare.com/#core-web-vitals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Core Web Vitals are the subset of <a href="https://web.dev/vitals">Web Vitals</a>, an initiative by Google to provide a unified interface to measure real-world quality signals when a user visits a web page. Such signals include Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS).</p>
 	<p>We <a href="https://blog.cloudflare.com/web-analytics-vitals-explorer">use Core Web Vitals</a> with our privacy-centric Web Analytics product and collect anonymized data on how end-users experience the websites that enable this feature.</p>
 	<p>One of the metrics we can calculate using these signals is the page load time. Our theory is that if a page includes scripts coming from external sites (for example, Facebook "like" buttons, comments, ads), and they are unreachable, its total load time gets affected.</p>
@@ -170,6 +219,13 @@
 	</figure>
 	<p>Again, the page load experience got visibly degraded.</p>
 	<p>The outcome seems clear. The sites that use Facebook scripts in their pages took 1.5x more time to load their pages during the outage, with some of them taking more than 2x the usual time. Facebook's outage dragged the performance of &nbsp;some other sites down.</p>
-	<h3>Conclusion</h3>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>When Facebook, Instagram, and WhatsApp went down, the Web felt it. Some websites got slower or lost traffic, other services and platforms got unexpected load, and people lost the ability to communicate or do business normally.</p>
 </div>

@@ -2,12 +2,26 @@
 <div class="post-content lh-copy gray1">
 	<p>I rarely have to deal with the hassle of using a corporate VPN and I hope it remains this way. As a new member of the Cloudflare team, that seems possible. Coworkers who joined a few years ago did not have that same luck. They had to use a VPN to get any work done. What changed?</p>
 	<p>Cloudflare released <a href="https://www.cloudflare.com/products/cloudflare-access">Access</a>, and now we’re able to do our work without ever needing a VPN again. Access is a way to control access to your internal applications and infrastructure. Today, we’re releasing a new feature to help you replace your VPN by deploying Access at an even greater scale.</p>
-	<h3>Access in an instant</h3>
+	<div class="flex anchor relative">
+		<h3 id="access-in-an-instant">Access in an instant</h3>
+		<a href="https://blog.cloudflare.com/#access-in-an-instant" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Access replaces a corporate VPN by evaluating every request made to a resource secured behind Access. Administrators can make web applications, remote desktops, and physical servers available at dedicated URLs, configured as DNS records in Cloudflare. These tools are protected via access policies, set by the account owner, so that only authenticated users can access those resources. These end users are able to be authenticated over both HTTPS and SSH requests. They’re prompted to login with their SSO credentials and Access redirects them to the application or server.</p>
 	<p>For your team, Access makes your internal web applications and servers in your infrastructure feel as seamless to reach as your SaaS tools. Originally we built Access to replace our own corporate VPN. In practice, this became the fastest way to control who can reach different pieces of our own infrastructure. However, administrators configuring Access were required to create a discrete policy per each application/hostname. Now, administrators don’t have to create a dedicated policy for each new resource secured by Access; one policy will cover each URL protected.</p>
 	<p>When Access launched, the product’s primary use case was to secure internal web applications. Creating unique rules for each was tedious, but manageable. Access has since become a centralized way to secure infrastructure in many environments. Now that companies are using Access to secure hundreds of resources, that method of building policies no longer fits.</p>
 	<p>Starting today, Access users can build policies using a wildcard subdomain to replace the typical bottleneck that occurs when replacing dozens or even hundreds of bespoke rules within a single policy. With a wildcard, the same ruleset will now automatically apply to any subdomain your team generates that is gated by Access.</p>
-	<h3>How can teams deploy at scale with wildcard subdomains?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-can-teams-deploy-at-scale-with-wildcard-subdomains">How can teams deploy at scale with wildcard subdomains?</h3>
+		<a href="https://blog.cloudflare.com/#how-can-teams-deploy-at-scale-with-wildcard-subdomains" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Administrators can secure their infrastructure with a wildcard policy in the Cloudflare dashboard. With Access enabled, Cloudflare adds identity-based evaluation to that traffic.</p>
 	<p>In the Access dashboard, you can now build a rule to secure any subdomain of the site you added to Cloudflare. Create a new policy and enter a wildcard tag (“*”) into the subdomain field. You can then configure rules, at a granular level, using your identity provider to control who can reach any subdomain of that apex domain.</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
@@ -21,15 +35,36 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/52jTgporUjkRHR7XswwS80/aeae579b198ca50f21d279ea23c56dc4/M4-Full-Login-Flow--1--1.gif" alt="" class="kg-image" width="2880" height="1800" loading="lazy">
 
 	</figure>
-	<h3>How are teams using it?</h3>
+	<div class="flex anchor relative">
+		<h3 id="how-are-teams-using-it">How are teams using it?</h3>
+		<a href="https://blog.cloudflare.com/#how-are-teams-using-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Since releasing this feature in a closed beta, we’ve seen teams use it to gate access to their infrastructure in several new ways. Many teams use Access to secure dev and staging environments of sites that are being developed before they hit production. Whether for QA or collaboration with partner agencies, Access helps make it possible to share sites quickly with a layer of authentication. With wildcard subdomains, teams are deploying dozens of versions of new sites at new URLs without needing to touch the Access dashboard.</p>
 	<p>For example, an administrator can create a policy for “*.example.com” and then developers can deploy iterations of sites at “dev-1.example.com” and “dev-2.example.com” and both inherit the global Access policy.</p>
 	<p>The feature is also helping teams lock down their entire hybrid, on-premise, or public cloud infrastructure with the Access SSH feature. Teams can assign dynamic subdomains to their entire fleet of servers, regardless of environment, and developers and engineers can reach them over an SSH connection without a VPN. Administrators can now bring infrastructure online, in an entirely new environment, without additional or custom security rules.</p>
-	<h3>What about creating DNS records?</h3>
+	<div class="flex anchor relative">
+		<h3 id="what-about-creating-dns-records">What about creating DNS records?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-creating-dns-records" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Access requires users to associate a resource with a domain or subdomain. While the wildcard policy will cover all subdomains, teams will still need to connect their servers to the Cloudflare network and generate DNS records for those services.</p>
 	<p>Argo Tunnel can reduce that burden significantly. <a href="https://developers.cloudflare.com/argo-tunnel/quickstart">Argo Tunnel</a> lets you expose a server to the Internet without opening any inbound ports. The service runs a lightweight daemon on your server that initiates outbound tunnels to the Cloudflare network.</p>
 	<p>Instead of managing DNS, network, and firewall complexity, Argo Tunnel helps administrators serve traffic from their origin through Cloudflare with a single command. That single command will generate the DNS record in Cloudflare automatically, allowing you to focus your time on building and managing your infrastructure.</p>
-	<h3>What’s next?</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>More teams are adopting a hybrid or multi-cloud model for deploying their infrastructure. In the past, these teams were left with just two options for securing those resources: peering a VPN with each provider or relying on custom IAM flows with each environment. In the end, both of these solutions were not only quite costly but also equally unmanageable.</p>
 	<p>While infrastructure benefits from becoming distributed, security is something that is best when controlled in a single place. Access can consolidate how a team controls who can reach their entire fleet of servers and services.</p>
 </div>

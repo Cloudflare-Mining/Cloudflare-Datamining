@@ -21,7 +21,14 @@
 	<p><a href="https://www.flickr.com/photos/superlatif/5799659266">photo</a> by <a href="https://www.flickr.com/photos/superlatif">Sahra</a> by-sa/2.0</p>
 	<p>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU Discovery in practice</a>.</p>
 	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly.</p>
-	<h3>Hardcoding IPv6 MTU</h3>
+	<div class="flex anchor relative">
+		<h3 id="hardcoding-ipv6-mtu">Hardcoding IPv6 MTU</h3>
+		<a href="https://blog.cloudflare.com/#hardcoding-ipv6-mtu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>During that initial ECMP rollout things were broken. To keep services running until <code>pmtud</code> was done, we deployed a quick hack. We reduced the MTU of &nbsp;IPv6 traffic to the minimal possible value: 1280 bytes.</p>
 	<p>This was done as a tag on a default route. This is how our routing table used to look:</p>
 	<pre class="language-bash"><code class="language-bash">$ ip -6 route show
@@ -46,7 +53,15 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 			<p>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</p>
 		</li>
 	</ul>
-	<h3>When small MTU is too small</h3>
+	<div class="flex anchor relative">
+		<h3 id="when-small-mtu-is-too-small">When small MTU is too small</h3>
+		<a href="https://blog.cloudflare.com/#when-small-mtu-is-too-small" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yo93AUS4hONJUarTUlGP/e7e9d646b131700e706d911ec888bc51/6545737741_077583ca1f_b-1.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
@@ -60,7 +75,14 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
  +  IPv6 + UDP header  |  UDP payload encapsulating a 1280 byte packet  |
  +---------------------+------------------------------------------------+</code></pre>
 	<p>It's pretty obvious, that our edge servers supporting IPv6 packets of max 1280 bytes won't be able to handle this type of traffic. We are going to need at least 1280+40+8 bytes MTU! Hardcoding MTU=1280 in IPv6 may be acceptable solution if you are an end-node on the internet, but is definitely too small when forwarding tunneled traffic.</p>
-	<h3>Picking a new MTU</h3>
+	<div class="flex anchor relative">
+		<h3 id="picking-a-new-mtu">Picking a new MTU</h3>
+		<a href="https://blog.cloudflare.com/#picking-a-new-mtu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>But what MTU value should we use instead? Let's see what other major internet companies do. Here is a couple of examples of advertised MSS values in TCP SYN+ACK packets over IPv6:</p>
 	<pre class="language-bash"><code class="language-bash">+---- site -----+- MSS --+- estimated MTU -+
 | google.com    |  1360  |    1420         |
@@ -120,7 +142,14 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
   1420 |                                                 *  2.02%   64.54%
   1440 |************************************************** 54.31%   54.34%</code></pre>
 	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6">MTU distribution of DNS &nbsp;servers</a>).</p>
-	<h3>Interpretation</h3>
+	<div class="flex anchor relative">
+		<h3 id="interpretation">Interpretation</h3>
+		<a href="https://blog.cloudflare.com/#interpretation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Before we move on it's worth reiterating the original problem. Each connection from an eyeball to our Anycast network has three numbers related to it:</p>
 	<ul>
 		<li>
@@ -160,7 +189,14 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280</code><
 	</ul>
 	<p>In the past we limited our Edge Server MTU value to the smallest possible, to make sure we never encounter the problem. Due to the development of Spectrum UDP support we must increase the Edge Server MTU, while still minimizing the probability of the issue happening.</p>
 	<p>Finally, relying on ICMP PTB messages for a large fraction of traffic is a bad idea. It's easy to imagine the cost this induces: even with Path MTU detection working fine, the affected connection will suffer a hiccup. A couple of large packets will be dropped before the reverse ICMP will get through and reconfigure the saved Path MTU value. This is not optimal for latency.</p>
-	<h3>Progress</h3>
+	<div class="flex anchor relative">
+		<h3 id="progress">Progress</h3>
+		<a href="https://blog.cloudflare.com/#progress" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In recent days we increased the IPv6 MTU. As part of the process we could have chosen 1300, 1350, or 1400. We choose 1400 because we think it's the next best value to use after 1280. With 1400 we believe 93.2% of IPv6 connections will not need to rely on Path MTU Detection/ICMP. In the near future we plan to increase this value further. We won't settle on 1500 though - we want to leave a couple of bytes for IPv4 encapsulation, to allow the most popular tunnels to keep working without suffering poor latency when Path MTU Detection kicks in.</p>
 	<p>Since the rollout we've been monitoring <code>Icmp6InPktTooBigs</code> counters:</p>
 	<pre class="language-bash"><code class="language-bash">$ nstat -az | grep Icmp6InPktTooBigs
@@ -197,7 +233,15 @@ Icmp6InPktTooBigs               738748             0.0</code></pre>
 IP6 2a02:908:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1280, length 1240
 IP6 2a02:810d:xx &gt; 2400:xxx ICMP6, packet too big, mtu 1280, length 1240
 IP6 2001:ac8:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1390, length 1240</code></pre>
-	<h3>Final thoughts</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="final-thoughts">Final thoughts</h3>
+		<a href="https://blog.cloudflare.com/#final-thoughts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Finally, if you are an IPv6 user with a weird MTU and have misconfigured MSS - basically if you are doing tunneling - please let us know of any issues. We know that debugging MTU issues is notoriously hard. To aid that we created <a href="https://blog.cloudflare.com/ip-fragmentation-is-broken">an online fragmentation and ICMP delivery test</a>. You can run it:</p>
 	<ul>
 		<li>

@@ -3,7 +3,14 @@
 <div class="post-content lh-copy gray1">
 	<p><i>This blog originally appeared in August 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
 	<p>Isn’t it great that some companies are <a href="https://www.msn.com/en-us/money/companies/these-30-companies-are-giving-bonuses-and-raises-to-their-essential-workers/ss-BB179W66?li=BBnb7Kz">giving out bonuses</a> to their front-line workers amidst the pandemic? That’s precisely what the creators of two new Microsoft phishing campaigns, that Area 1 has dubbed “Summer Bonus”, are using to lure unsuspecting employees into divulging their Microsoft credentials. Few companies are doing well enough to give out bonuses these days, making an unexpected notification from your employer on a paycheck increase all the more enticing. Area 1 Security suspects that this attack is inspired by all the media buzz around unprecedented bonuses to essential workers. No good deed goes unpunished.</p>
-	<h3>Microsoft SharePoint Phishing</h3>
+	<div class="flex anchor relative">
+		<h3 id="microsoft-sharepoint-phishing">Microsoft SharePoint Phishing</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-sharepoint-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Microsoft SharePoint Phishing schemes have increasingly plagued companies using the Microsoft Office 365 Suite in recent years. In the spear phishing example below, even a diligent user versed in online safety measures could be fooled by this highly convincing phishing attempt. The attack leverages sophisticated social engineering techniques and a flaw in how legacy email solutions detect malicious messages.</p>
 	<p>Targeted victims receive an email similar to the one below.</p>
 	<figure class="kg-card kg-image-card ">
@@ -89,7 +96,14 @@ source:        TCI</code></pre>
 	</figure>
 	<p>The success of these campaigns is a result of the infamous Layer 8 error (user error, <a href="https://www.lifewire.com/have-you-been-the-butt-of-a-tech-joke-2619218">for the non-technicals</a>). Among other techniques, an easy way to spot if a login portal is being spoofed is to simply verify the URL. If the site is a login for Microsoft then the corresponding link should direct your browser to a legitimate Microsoft domain, not appspot.com. The adage “if it seems too good to be true” also rings true for most phishing schemes. It’s always good practice to check with a supervisor before responding to unsolicited requests for credentials or logins, especially as they pertain to company financial matters.</p>
 	<p>This campaign peaked on July 31st in a likely attempt to dupe targets into believing this was a legitimate end-of-month bonus. In the days following, the number of emails drastically decreased, with the attacker sending only a small batch of phish every three to four days usually near the end of the business day. Despite the decline in this “Summer Bonus” phish, Area 1 Security believes there could be a resurgence of this attack in the coming months.</p>
-	<h3>Analysis of HTML Page</h3>
+	<div class="flex anchor relative">
+		<h3 id="analysis-of-html-page">Analysis of HTML Page</h3>
+		<a href="https://blog.cloudflare.com/#analysis-of-html-page" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Analyzing the source file of the spoofed login page reveals several interesting methods the attacker is using to circumvent defenses and steal credentials. To give a high-level overview of the process, the login page is hosted on AppSpot and, as such, is issued a valid SSL certificate. To an unsuspecting user, this gives an otherwise malicious site a very trustworthy appearance.</p>
 	<p>Benign cloud-based services like AppSpot provide attackers the perfect platform for hosting their malicious content, all the while flying under the radar of legacy vendor email security solutions. The attacker used the HTML/CSS framework of the authentication page for the Microsoft portal but replaced the JavaScript with their own malicious functions.</p>
 	<p>In the below code snippet you can see how the attacker is sending victim credentials to the cloud-based site hxxps://701r10010ye[.]azurewebsites[.]net. This additional attacker infrastructure is hosted on yet another commonly abused cloud computing platform, Microsoft Azure. In other words, to better evade detection, the attacker is abusing multiple cloud-based services for not only hosting spoofed login pages but also for obtaining the stolen credentials.</p>
@@ -120,7 +134,15 @@ $('.ldsddddd').hide();
 		$('.alert_msg_yxq').html("Your account or password is incorrect. If you don't remember your password");
 		$('.alert_email_sect').show();
 	}</code></pre>
-	<h3>Microsoft Planner Phishing</h3>
+
+	<div class="flex anchor relative">
+		<h3 id="microsoft-planner-phishing">Microsoft Planner Phishing</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-planner-phishing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>A derivative of the SharePoint phish detailed above is wreaking havoc on company inboxes. This variant, possibly carried out by the same attackers, again uses the pretext of a “Summer Bonus” — but this time, attempts to spoof a Microsoft Planner email notification.</p>
 	<p>This spear phish is another great example of how attackers are skillfully crafting phishing messages to lure their targets. The text, images, and formatting are an almost identical match to the real Microsoft Planner notifications. This demonstrates how even employee cybersecurity training is not enough for a company to effectively mitigate their threat surface.</p>
 	<figure class="kg-card kg-image-card ">
@@ -133,7 +155,14 @@ $('.ldsddddd').hide();
 	<p>This ever-evolving “Summer Bonus” campaign is an ongoing threat to many individuals and businesses alike. The use of VPS providers, as well as abuse of multiple cloud services throughout several stages of the attack, make it a particularly difficult campaign to detect. To make matters worse, because the URLs used in the attacks point to legitimate domains and the messages contain no malicious payloads, traditional defenses will continually miss phish like this. In fact, the messages successfully passed through Microsoft’s Office 365 filter despite these red flags.</p>
 	<p>Fortunately, Area 1 Security detected this stealthy “Summer Bonus” campaign and stopped these phish from reaching our customers’ inboxes.</p>
 	<p>Area 1 Security‘s advanced Machine Learning and Artificial Intelligence technology allow our algorithms to uncover new tactics malicious actors are using to bypass legacy vendors and cloud email providers in real time versus waiting days or weeks for signature updates. Our time-zero detections lead the industry with reliable verdicts that stop phishing attempts at delivery time. This has many advantages over post-delivery retraction in that the user is never exposed to the attack.</p>
-	<h3>Indicators of Compromise</h3>
+	<div class="flex anchor relative">
+		<h3 id="indicators-of-compromise">Indicators of Compromise</h3>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>hxxps://useryxijxui99[.]an[.]r[.]appspot[.]com/#@.com</p>
 	<p>hxxps://riqri733r[.]ts[.]r[.]appspot[.]com/#@.com</p>
 	<p><a href="https://officezbf0kmun0j324qysxn0y98zchskfee/[./]s3/[./]us-east-2/[./]amazonaws/[./]com/index.htm?c=">https://officezbf0kmun0j324qysxn0y98zchskfee\[.\]s3\[.\]us-east-2\[.\]amazonaws\[.\]com/index.htm?c=</a>@.com</p>

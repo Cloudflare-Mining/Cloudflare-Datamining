@@ -14,13 +14,35 @@
 	<p>If you’ve ever purchased something online and seen a message like “you will receive confirmation of your order shortly,” you’ve interacted with a queue. When you completed your order, your shopping cart and information were stored and the order was placed into a queue. At some later point, the order fulfillment service picks and packs your items and hands it off to the shipping service—again, via a queue. Your order may sit for only a minute, or much longer if an item is out of stock or a warehouse is busy, and queues enable all of this functionality.</p>
 	<p>Message queues are great at decoupling components of applications, like the checkout and order fulfillment services for an <a href="https://www.cloudflare.com/ecommerce">ecommerce site</a>. Decoupled services are easier to reason about, deploy, and implement, allowing you to ship features that delight your customers without worrying about synchronizing complex deployments.</p>
 	<p>Queues also allow you to batch and buffer calls to downstream services and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a>. This post shows you how to enroll in the open beta, walks you through a practical example of using Queues to build a log sink, and tells you how we built Queues using other Cloudflare services. You’ll also learn a bit about the roadmap for the open beta.</p>
-	<h2>Getting started</h2>
-	<h3>Enrolling in the open beta</h3>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="enrolling-in-the-open-beta">Enrolling in the open beta</h3>
+		<a href="https://blog.cloudflare.com/#enrolling-in-the-open-beta" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Open the <a href="https://dash.cloudflare.com">Cloudflare dashboard</a> and navigate to the <i>Workers</i> section. Select <i>Queues</i> from the <i>Workers</i> navigation menu and choose <i>Enable Queues Beta</i>.</p>
 	<p>Review your order and choose <i>Proceed to Payment Details</i>.</p>
 	<p><b>Note: If you are not already subscribed to a</b> <a href="https://www.cloudflare.com/plans/developer-platform/#overview"><b>Workers Paid Plan</b></a><b>, one will be added to your order automatically.</b></p>
 	<p>Enter your payment details and choose <i>Complete Purchase</i>. That’s it - you’re enrolled in the open beta! Choose <i>Return to Queues</i> on the confirmation page to return to the Cloudflare Queues home page.</p>
-	<h3>Creating your first queue</h3>
+	<div class="flex anchor relative">
+		<h3 id="creating-your-first-queue">Creating your first queue</h3>
+		<a href="https://blog.cloudflare.com/#creating-your-first-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>After enabling the open beta, open the Queues home page and choose <i>Create Queue</i>. Name your queue `my-first-queue` and choose <i>Create queue</i>. That’s all there is to it!</p>
 	<p>The dash displays a confirmation message along with a list of all the queues in your account.</p>
 	<figure class="kg-card kg-image-card ">
@@ -29,7 +51,14 @@
 
 	</figure>
 	<p><b>Note: As of the writing of this blog post each account is limited to ten queues. We intend to raise this limit as we build towards general availability.</b></p>
-	<h3>Managing your queues with Wrangler</h3>
+	<div class="flex anchor relative">
+		<h3 id="managing-your-queues-with-wrangler">Managing your queues with Wrangler</h3>
+		<a href="https://blog.cloudflare.com/#managing-your-queues-with-wrangler" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>You can also manage your queues from the command line using <a href="https://github.com/cloudflare/wrangler2">Wrangler</a>, the CLI for Cloudflare Workers. In this section, you build a simple but complete application implementing a log aggregator or sink to learn how to integrate Workers, Queues, and R2.</p>
 	<p><b>Setting up resources</b>To create this application, you need access to a Cloudflare Workers account with a subscription plan, access to the Queues open beta, and an R2 plan.</p>
 	<p><a href="https://developers.cloudflare.com/workers/get-started/guide/#1-install-wrangler-workers-cli">Install</a> and <a href="https://developers.cloudflare.com/workers/get-started/guide/#2-authenticate-wrangler">authenticate</a> Wrangler then run <code>wrangler queues create log-sink</code> from the command line to create a queue for your application.</p>
@@ -128,7 +157,14 @@ export default {
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dw6XLyx7REjzje0Y0i7as/f0e45575effa4ae114e25d01cfb08403/13-aggregated-log-content.png" alt="" class="kg-image" width="1600" height="970" loading="lazy">
 
 	</figure>
-	<h2>Buffering R2 writes with Queues in the real world</h2>
+	<div class="flex anchor relative">
+		<h2 id="buffering-r2-writes-with-queues-in-the-real-world">Buffering R2 writes with Queues in the real world</h2>
+		<a href="https://blog.cloudflare.com/#buffering-r2-writes-with-queues-in-the-real-world" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the previous example, you create a simple Workers application that buffers data into batches before writing the batches to R2. This reduces the number of calls to the downstream service, reducing load on the service and saving you money.</p>
 	<p><a href="https://uuid.rocks">UUID.rocks</a>, the fastest UUIDv4-as-a-service, wanted to confirm whether their API truly generates unique IDs on every request. With 80,000 requests per day, it wasn’t trivial to find out. They decided to write every generated UUID to R2 to compare IDs across the entire population. However, writing directly to R2 at the rate UUIDs are generated is inefficient and expensive.</p>
 	<p>To reduce writes and costs, UUID.rocks introduced Cloudflare Queues into their UUID generation workflow. Each time a UUID is requested, a Worker places the value of the UUID into a queue. Once enough messages have been received, the buffered batch of JSON objects is written to R2. This avoids invoking an R2 write on every API call, saving costs and making the data easier to process later.</p>
@@ -145,19 +181,54 @@ export default {
 		</li>
 	</ol>
 	<p>To view the source or deploy this application into your own account, <a href="https://github.com/jahands/uuid-queue">visit the repository on GitHub</a>.</p>
-	<h2>How we built Cloudflare Queues</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-cloudflare-queues">How we built Cloudflare Queues</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-cloudflare-queues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Like many of the Cloudflare services you use and love, we built Queues by composing other Cloudflare services like Workers and Durable Objects. This enabled us to rapidly solve two difficult challenges: securely invoking your Worker from our own service and maintaining a strongly consistent state at scale. Several recent Cloudflare innovations helped us overcome these challenges.</p>
-	<h3>Securely invoking your Worker</h3>
+	<div class="flex anchor relative">
+		<h3 id="securely-invoking-your-worker">Securely invoking your Worker</h3>
+		<a href="https://blog.cloudflare.com/#securely-invoking-your-worker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In the <i>Before Times</i> (early 2022), invoking one Worker from another Worker meant a fresh HTTP call from inside your script. This was a brittle experience, requiring you to know your downstream endpoint at deployment time. Nested invocations ran as HTTP calls, passing all the way through the Cloudflare network a second time and adding latency to your request. It also meant security was on you - if you wanted to control how that second Worker was invoked, you had to create and implement your own authentication and authorization scheme.</p>
 	<p><b>Worker to Worker requests</b>During Platform Week in May 2022, <a href="https://blog.cloudflare.com/service-bindings-ga">Service Worker Bindings</a> entered general availability. With Service Worker Bindings, your Worker code has a binding to another Worker in your account that you invoke directly, avoiding the network penalty of a nested HTTP call. This removes the performance and security barriers discussed previously, but it still requires that you hard-code your nested Worker at compile time. You can think of this setup as “static dispatch,” where your Worker has a static reference to another Worker where it can dispatch events.</p>
 	<p><b>Dynamic dispatch</b>As Service Worker Bindings entered general availability, we also <a href="https://blog.cloudflare.com/workers-for-platforms-ga">launched a closed beta</a> of Workers for Platforms, our tool suite to help make any product programmable. With Workers for Platforms, software as a service (SaaS) and platform providers can allow users to upload their own scripts and run them safely via Cloudflare Workers. User scripts are not known at compile time, but are <i>dynamically dispatched</i> at runtime.</p>
 	<p><a href="https://blog.cloudflare.com/workers-for-platforms-ga">Workers for Platforms entered</a> general availability during <a href="https://www.cloudflare.com/ga-week">GA week</a> in September 2022, and is available for all customers to build with today.</p>
 	<p>With dynamic dispatch generally available, we now have the ability to discover and invoke Workers at runtime without the performance penalty of HTTP traffic over the network. We use dynamic dispatch to invoke your queue’s consumer Worker whenever a message or batch of messages is ready to be processed.</p>
-	<h3>Consistent stateful data with Durable Objects</h3>
+	<div class="flex anchor relative">
+		<h3 id="consistent-stateful-data-with-durable-objects">Consistent stateful data with Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#consistent-stateful-data-with-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Another challenge we faced was storing messages durably without sacrificing performance. We took the design goal of ensuring that all messages were persisted to disk in multiple locations before we confirmed receipt of the message to the user. Again, we turned to an existing Cloudflare product—<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>—which <a href="https://blog.cloudflare.com/durable-objects-ga">entered general availability nearly one year ago today</a>.</p>
 	<p>Durable Objects are named instances of JavaScript classes that are guaranteed to be unique across Cloudflare’s entire network. Durable Objects process messages in-order and on a single-thread, allowing for coordination across messages and provide a strongly consistent storage API for key-value pairs. Offloading the hard problem of storing data durably in a distributed environment to Distributed Objects allowed us to reduce the time to build Queues and prepare it for open beta.</p>
-	<h2>Open beta roadmap</h2>
+	<div class="flex anchor relative">
+		<h2 id="open-beta-roadmap">Open beta roadmap</h2>
+		<a href="https://blog.cloudflare.com/#open-beta-roadmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Our open beta process empowers you to influence feature prioritization and delivery. We’ve set ambitious goals for ourselves on the path to general availability, most notably supporting unlimited throughput while maintaining 100% durability. We also have many other great features planned, like first-in first-out (FIFO) message processing and API compatibility layers to ease migrations, but we need your feedback to build what you need most, first.</p>
-	<h2>Conclusion</h2>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusion</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare Queues is a global message queue for the Workers developer. Building with Queues makes your applications more performant, resilient, and cost-effective—but we’re not done yet. <a href="https://dash.cloudflare.com">Join the Open Beta today</a> and <a href="https://discord.gg/aTsevRH3pG">share your feedback</a> to help shape the Queues roadmap as we deliver application integration services for the next generation cloud.</p>
 </div>

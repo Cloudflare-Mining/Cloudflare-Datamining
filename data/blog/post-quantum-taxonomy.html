@@ -32,7 +32,14 @@
 
 	</figure>
 	<p>The taxonomy tree of the post-quantum challenges.</p>
-	<h3>Challenges at the Protocols level, <i>Protocolla</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-at-the-protocols-level">Challenges at the Protocols level, </h3>
+		<a href="https://blog.cloudflare.com/#challenges-at-the-protocols-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>One conceptual model of the Internet is that it is composed of layers that stack on top of each other, as defined by the <a href="https://en.wikipedia.org/wiki/OSI_model">Open Systems Interconnection (OSI) model</a>. Communication protocols in each layer enable parties to interact with a corresponding one at the same layer. While quantum computers are a threat to the security and privacy of digital connections, they are not a direct threat to communication itself (we will see, though, that one of the consequences of the existence of quantum computers is how new algorithms that are safe to their attacks can impact the communication itself). But, if the protocol used in a layer aims to provide certain security or privacy properties, those properties can be endangered by a quantum computer. The properties that these protocols often aim to provide are <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">confidentiality</a> (no one can read the content of communications), <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">authentication</a> (communication parties are assured who they are talking to) and <a href="https://users.ece.cmu.edu/~koopman/des_s99/security">integrity</a> (the content of the communication is assured to have not been changed in transit).</p>
 	<p>Well-known examples of protocols that aim to provide security or privacy properties to protect the different layers are:</p>
 	<ul>
@@ -134,7 +141,14 @@
 			<p>Will post-quantum cryptography increase the possibility of mounting denial of service attacks?</p>
 		</li>
 	</ul>
-	<h3>Challenges at the Implementation level, <i>Implementa</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-at-the-implementation-level">Challenges at the Implementation level, </h3>
+		<a href="https://blog.cloudflare.com/#challenges-at-the-implementation-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The second kingdom that we are going to look at is the one that deals with the implementation of post-quantum algorithms. The ongoing NIST process is standardizing post-quantum algorithms on two fronts: those that help preserve confidentiality (KEMs) and those that provide authentication (signatures). There are other algorithms not currently part of the process that already can be used in a post-quantum world, such as <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf">hash-based signatures</a> (for example, <a href="https://datatracker.ietf.org/doc/html/rfc8391">XMSS</a>).</p>
 	<p>What must happen for algorithms to be widely deployed? What are the steps they need to take in order to be usable by protocols or for data at rest? The usual path that algorithms take is:</p>
 	<ol>
@@ -183,7 +197,14 @@
 		</li>
 	</ul>
 	<p>At Cloudflare, we have also worked on implementation of post-quantum algorithms. We published our own library (<a href="https://github.com/cloudflare/circl">CIRCL</a>) that contains high-speed assembly versions of several post-quantum algorithms (like <a href="https://pq-crystals.org/kyber">Kyber</a>, <a href="https://pq-crystals.org/dilithium">Dilithium</a>, <a href="https://sike.org">SIKE</a> and <a href="https://eprint.iacr.org/2018/383.pdf">CSIDH</a>). We believe that providing these implementations for public use will help others with the transition to post-quantum cryptography by giving easy-to-use APIs that developers can integrate into their projects.</p>
-	<h3>Challenges at the Standards level, <i>Regulae</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-at-the-standards-level">Challenges at the Standards level, </h3>
+		<a href="https://blog.cloudflare.com/#challenges-at-the-standards-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The third kingdom deals with the standardization process as done by different bodies of organizations (such NIST or the Internet Engineering Task Force — IETF). We have talked a little about the matter in the previous section as it involves the standardization of both protocols and algorithms. Standardization can be a long process due to the need for careful discussion, and this discussion will be needed for the standardization of post-quantum algorithms. Post-quantum cryptography is based on mathematical constructions that are not widely known by the engineering community, which can then lead to difficulty levels when standardizing.</p>
 	<p>The challenges in this kingdom, <i>Regulae</i>, (in no particular order) are:</p>
 	<ul>
@@ -201,7 +222,14 @@
 		</li>
 	</ul>
 	<p>At Cloudflare, we are closely collaborating with standardization bodies to prepare the path for post-quantum cryptography (see, for example, the <a href="https://github.com/claucece/draft-celi-wiggers-tls-authkem">AuthKEM</a> draft at IETF).</p>
-	<h3>Challenges at the Community level, <i>Comunitates</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-at-the-community-level">Challenges at the Community level, </h3>
+		<a href="https://blog.cloudflare.com/#challenges-at-the-community-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The Internet is not an isolated system: it is a community of different actors coming together to make protocols and systems work. Migrating to post-quantum cryptography means sitting together as a community to update systems and understand the different needs. This is one of the reasons why, at Cloudflare, we are organizing a second installment of the <a href="https://www.sofiaceli.com/PQNet-Workshop">PQNet workshop</a> (expected to be colocated with <a href="https://rwc.iacr.org/2022">Real World Crypto 2022</a> on April 2022) for experts on post-quantum cryptography to talk about the challenges of putting it into protocols, systems and architectures.</p>
 	<p>The challenges in this kingdom, <i>Comunitates</i>, are:</p>
 	<ul>
@@ -224,7 +252,14 @@
 			<p>Who will maintain implementations of post-quantum algorithms and protocols? Is there incentive and funding for a diverse set of interoperable implementations?</p>
 		</li>
 	</ul>
-	<h3>Challenges at the Research level, <i>Investigationes</i></h3>
+	<div class="flex anchor relative">
+		<h3 id="challenges-at-the-research-level">Challenges at the Research level, </h3>
+		<a href="https://blog.cloudflare.com/#challenges-at-the-research-level" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Post-quantum cryptography is an active area of research. This research is not devoted only to how algorithms interact with protocols, systems and architectures (as we have seen), but it is heavily interested at the foundational level. The open challenges on this front are many. We will list four that are of the most interest to us:</p>
 	<ul>
 		<li>
@@ -243,7 +278,15 @@
 			<p>How can post-quantum algorithms be formally verified with new notions such as the QROM?</p>
 		</li>
 	</ul>
-	<h3>Post-Quantum Future</h3>
+	<div class="flex anchor relative">
+		<h3 id="post-quantum-future">Post-Quantum Future</h3>
+		<a href="https://blog.cloudflare.com/#post-quantum-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/fSXz737Szc3uhVJsP7M2Z/cd903967ac7a08412b9ba8d40008671a/image3-19.png" alt="Image of an atom." class="kg-image" width="1200" height="500" loading="lazy">

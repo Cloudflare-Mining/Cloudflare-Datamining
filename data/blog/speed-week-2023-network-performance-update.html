@@ -7,7 +7,14 @@
 	</figure>
 	<p>We constantly measure our own and other networks' performance, and look for ways to improve our performance; and share our results.</p>
 	<p>In this post we are going to share the most recent updates, and tell you about our tools and processes that we use to monitor and improve our network performance.</p>
-	<h3>First, the results</h3>
+	<div class="flex anchor relative">
+		<h3 id="first-the-results">First, the results</h3>
+		<a href="https://blog.cloudflare.com/#first-the-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In July, 2022, we started taking a more granular look down to every single network and taking actions for the specific networks where we have some room for improvement. Cloudflare was already the fastest provider for most of the networks around the world (we define a network as country and AS number pair). Taking a closer look at the numbers, Cloudflare was ranked #1 in 33% of the networks and was within 2 ms or 5% of the #1 provider for 8% of the networks that we measured in terms of the 95th percentile TCP Connection Time. For reference, our closest competitor on that front was the fastest for 20% of networks.</p>
 	<p>As of May 31, 2023 those numbers have improved significantly. Today, Cloudflare is the fastest provider for 46% of networks—and was within 2 ms (95th percentile TCP Connection Time) or 5% of the fastest provider for 10% of the networks that we measured—whereas our closest competitor is now the fastest for 18% of networks.</p>
 	<p>Below is the change in percentage of networks that each provider is the fastest over time for Cloudflare and other services.</p>
@@ -16,7 +23,14 @@
 		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Fy2LmXzltPJe3y2pRIcXu/56e02bab5633fe29f2309ec665f62179/image3-22.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
 
 	</figure>
-	<h3>Our tooling and process</h3>
+	<div class="flex anchor relative">
+		<h3 id="our-tooling-and-process">Our tooling and process</h3>
+		<a href="https://blog.cloudflare.com/#our-tooling-and-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>We use Real User Measurements (RUM) and fetch a small file from Cloudflare, <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>, <a href="https://www.cloudflare.com/cloudflare-vs-cloudfront">CloudFront</a>, Fastly and Google Cloud CDN. Browsers around the world report the performance of those providers from the perspective of the end-user network they are on. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
 	<p>Using the RUM data, we are able to measure various performance metrics, such as TCP Connection Time, Time to First Byte (TTFB), Time to Last Byte (TTLB), for ourselves and other networks.</p>
 	<p>One of the most important tools that we use for measuring and improving our performance is what we call Performance Benchmarks Dashboard. That's the dashboard where we can analyze the data that we collect in different dimensions.</p>
@@ -49,6 +63,13 @@
 	<p>The first category is establishing peering with that network in a specific location so that users can take the optimum path. That’s a critical component of a better Internet! <a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities">Here</a> is our more detailed blog post about that from earlier this week.</p>
 	<p>The second category is expanding our compute capacity in a specific data center so that we can serve the users at the closest data center.</p>
 	<p>And finally, we apply traffic engineering actions to make sure that the network is served in the optimum way. Traffic engineering actions are generally manual configurations that we apply, in case the path that’s chosen by the routing protocols is not the most performant path.</p>
-	<h3>What’s next</h3>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The data we collect gives us a granular view of every network that connects to Cloudflare and we constantly optimize our infrastructure to improve Cloudflare’s performance. We won’t rest until we’re #1 everywhere.</p>
 </div>

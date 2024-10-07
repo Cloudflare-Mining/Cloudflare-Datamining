@@ -18,13 +18,27 @@
 	<p>Contrary to what is stated on the polyfill.io website, Cloudflare has never recommended the polyfill.io service or authorized their use of Cloudflare’s name on their website. We have asked them to remove the false statement, and they have, so far, ignored our requests. This is yet another warning sign that they cannot be trusted.</p>
 	<p>If you are not using Cloudflare today, we still highly recommend that you remove any use of polyfill.io and/or find an alternative solution. And, while the automatic replacement function will handle most cases, the best practice is to remove polyfill.io from your projects and replace it with a secure alternative mirror like Cloudflare’s even if you are a customer.</p>
 	<p>You can do this by searching your code repositories for instances of polyfill.io and replacing it with <a href="https://cdnjs.cloudflare.com/polyfill">cdnjs.cloudflare.com/polyfill/</a> (Cloudflare’s mirror). This is a non-breaking change as the two URLs will serve the same polyfill content. All website owners, regardless of the website using Cloudflare, should do this now.</p>
-	<h2>How we came to this decision</h2>
+	<div class="flex anchor relative">
+		<h2 id="how-we-came-to-this-decision">How we came to this decision</h2>
+		<a href="https://blog.cloudflare.com/#how-we-came-to-this-decision" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Back in February, the domain polyfill.io, which hosts a popular JavaScript library, was sold to a new owner: Funnull, a relatively unknown company. <a href="https://blog.cloudflare.com/polyfill-io-now-available-on-cdnjs-reduce-your-supply-chain-risk">At the time, we were concerned</a> that this created a supply chain risk. This led us to spin up our own mirror of the polyfill.io code hosted under cdnjs, a JavaScript library repository sponsored by Cloudflare.</p>
 	<p>The new owner was unknown in the industry and did not have a track record of trust to administer a project such as polyfill.io. The concern, <a href="https://x.com/triblondon/status/1761852117579427975">highlighted even by the original author</a>, was that if they were to abuse polyfill.io by injecting additional code to the library, it could cause far-reaching security problems on the Internet affecting several hundreds of thousands websites. Or it could be used to perform a targeted supply-chain attack against specific websites.</p>
 	<p>Unfortunately, that worry came true on June 25, 2024, as the polyfill.io service was being used to inject nefarious code that, under certain circumstances, redirected users to other websites.</p>
 	<p>We have taken the exceptional step of using our ability to modify HTML on the fly to replace references to the polyfill.io CDN in our customers’ websites with links to our own, safe, mirror created back in February.</p>
 	<p>In the meantime, additional threat feed providers have also taken the decision to <a href="https://github.com/uBlockOrigin/uAssets/commit/91dfc54aed0f0aa514c1a481c3e63ea16da94c03">flag the domain as malicious</a>. We have not outright blocked the domain through any of the mechanisms we have because we are concerned it could cause widespread web outages given how broadly polyfill.io is used with some estimates indicating <a href="https://w3techs.com/technologies/details/js-polyfillio">usage on nearly 4% of all websites</a>.</p>
-	<h3>Corroborating data with Page Shield</h3>
+	<div class="flex anchor relative">
+		<h3 id="corroborating-data-with-page-shield">Corroborating data with Page Shield</h3>
+		<a href="https://blog.cloudflare.com/#corroborating-data-with-page-shield" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>The original report indicates that malicious code was injected that, under certain circumstances, would redirect users to betting sites. It was doing this by loading additional JavaScript that would perform the redirect, under a set of additional domains which can be considered Indicators of Compromise (IoCs):</p>
 	<pre class="language-bash"><code class="language-bash">https://www.googie-anaiytics.com/analytics.js
 https://www.googie-anaiytics.com/html/checkcachehw.js
@@ -41,18 +55,39 @@ https://kuurza.com/redirect?from=bitget</code></pre>
 	<p>(note the intentional misspelling of Google Analytics)</p>
 	<p>Page Shield, our client side security solution, is available on all paid plans. When turned on, it collects information about JavaScript files loaded by end user browsers accessing your website.</p>
 	<p>By looking at the database of detected JavaScript files, we immediately found matches with the IoCs provided above starting as far back as 2024-06-08 15:23:51 (first seen timestamp on Page Shield detected JavaScript file). This was a clear indication that malicious activity was active and associated with polyfill.io.</p>
-	<h3>Replacing insecure JavaScript links to polyfill.io</h3>
+	<div class="flex anchor relative">
+		<h3 id="replacing-insecure-javascript-links-to-polyfill-io">Replacing insecure JavaScript links to polyfill.io</h3>
+		<a href="https://blog.cloudflare.com/#replacing-insecure-javascript-links-to-polyfill-io" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>To achieve performant HTML rewriting, we need to make blazing-fast HTML alterations as responses stream through Cloudflare’s network. This has been made possible by leveraging <a href="https://blog.cloudflare.com/rust-nginx-module">ROFL (Response Overseer for FL)</a>. ROFL powers various Cloudflare products that need to alter HTML as it streams, such as <a href="https://developers.cloudflare.com/speed/optimization/content/fonts">Cloudflare Fonts,</a> <a href="https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation">Email Obfuscation</a> and <a href="https://developers.cloudflare.com/speed/optimization/content/rocket-loader">Rocket Loader</a></p>
 	<p>ROFL is developed entirely in Rust. The memory-safety features of Rust are indispensable for ensuring protection against memory leaks while processing a staggering volume of requests, measuring in the millions per second. Rust's compiled nature allows us to finely optimize our code for specific hardware configurations, delivering performance gains compared to interpreted languages.</p>
 	<p>The performance of ROFL allows us to rewrite HTML on-the-fly and modify the polyfill.io links quickly, safely, and efficiently. This speed helps us reduce any additional latency added by processing the HTML file.</p>
 	<p>If the feature is turned on, for any HTTP response with an HTML Content-Type, we parse all JavaScript script tag source attributes. If any are found linking to polyfill.io, we rewrite the src attribute to link to our mirror instead. We map to the correct version of the polyfill service while the query string is left untouched.</p>
 	<p>The logic will not activate if a Content Security Policy (CSP) header is found in the response. This ensures we don’t replace the link while breaking the CSP policy and therefore potentially breaking the website.</p>
-	<h3>Default on for free customers, optional for everyone else</h3>
+	<div class="flex anchor relative">
+		<h3 id="default-on-for-free-customers-optional-for-everyone-else">Default on for free customers, optional for everyone else</h3>
+		<a href="https://blog.cloudflare.com/#default-on-for-free-customers-optional-for-everyone-else" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Cloudflare proxies millions of websites, and a large portion of these sites are on our free plan. Free plan customers tend to have simpler applications while not having the resources to update and react quickly to security concerns. We therefore decided to turn on the feature by default for sites on our free plan, as the likelihood of causing issues is reduced while also helping keep safe a very large portion of applications using polyfill.io.</p>
 	<p>Paid plan customers, on the other hand, have more complex applications and react quicker to security notices. We are confident that most paid customers using polyfill.io and Cloudflare will appreciate the ability to virtually patch the issue with a single click, while controlling when to do so.</p>
 	<p>All customers can turn off the feature at any time.</p>
 	<p>This isn’t the first time we’ve decided a security problem was so widespread and serious that we’d enable protection for all customers regardless of whether they were a paying customer or not. Back in 2014, we enabled <a href="https://blog.cloudflare.com/shellshock-protection-enabled-for-all-customers">Shellshock protection</a> for everyone. In 2021, when the log4j vulnerability was disclosed <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">we rolled out protection</a> for all customers.</p>
-	<h2>Do not use polyfill.io</h2>
+	<div class="flex anchor relative">
+		<h2 id="do-not-use-polyfill-io">Do not use polyfill.io</h2>
+		<a href="https://blog.cloudflare.com/#do-not-use-polyfill-io" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>If you are using Cloudflare, you can remove polyfill.io with a single click on the Cloudflare dashboard by heading over to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings">your zone ⇒ Security ⇒ Settings</a>. If you are a free customer, the rewrite is automatically active. This feature, we hope, will help you quickly patch the issue.</p>
 	<p>Nonetheless, you should ultimately search your code repositories for instances of polyfill.io and replace them with an alternative provider, such as Cloudflare’s secure mirror under cdnjs (<a href="https://cdnjs.cloudflare.com/polyfill">https://cdnjs.cloudflare.com/polyfill/</a>). Website owners who are not using Cloudflare should also perform these steps.</p>
 	<p>The underlying bundle links you should use are:</p>

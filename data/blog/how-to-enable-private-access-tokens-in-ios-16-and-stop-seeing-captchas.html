@@ -51,7 +51,14 @@
 	<p>These tokens simplify application security for developers and security teams, and obsolete legacy, third-party SDK-based approaches for determining if a human is using a device. They work for browsers, APIs called by browsers, and APIs called within apps. After <a href="https://developer.apple.com/wwdc22/10077">Apple announced in August that PATs would be incorporated</a> into iOS 16, iPadOS 16, and macOS 13, the process of ending CAPTCHAs got a big boost. And we expect additional vendors to announce support in the near future.</p>
 	<p>Cloudflare has already incorporated PATs into our <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge platform</a>, so any customer using this feature will automatically take advantage of this new technology to improve the browsing experience for supported devices.</p>
 	<p>In our August <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard">in-depth blog post</a> about PATs, you can learn more about how CAPTCHAs don’t work in mobile environments and PATs remove the need for them, and how when sites can’t challenge a visitor with a CAPTCHA, they collect private data.</p>
-	<h3>Improved privacy</h3>
+	<div class="flex anchor relative">
+		<h3 id="improved-privacy">Improved privacy</h3>
+		<a href="https://blog.cloudflare.com/#improved-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>In that blog post, we also explain how Private Access Tokens vastly improve privacy by validating without fingerprinting. So, by partnering with third parties like device manufacturers, who already have the data that would help us validate a device, we are able to abstract portions of the validation process, and confirm data <b><i>without actually collecting, touching, or storing that data ourselves</i></b>. Rather than interrogating a device directly, we ask the device vendor to do it for us.</p>
 	<p>Most customers won’t have to do anything to utilize Private Access Tokens. Why? To take advantage of PATs, all you have to do is choose Managed Challenge rather than Legacy CAPTCHA as a response option in a Firewall rule. More than 65% of Cloudflare customers are already doing this.</p>
 	<p>Now, if you have iOS 16 on your iPhone, it’s your turn.</p>
