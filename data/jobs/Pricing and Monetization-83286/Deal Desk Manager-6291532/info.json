@@ -30,13 +30,14 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"London, UK"
+				"London, UK",
+				"Munich, Germany"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6291532,
-	"updated_at": "2024-10-01T16:33:36-04:00",
+	"updated_at": "2024-10-07T07:35:11-04:00",
 	"requisition_id": null,
 	"title": "Deal Desk Manager",
 	"departments": [
@@ -52,6 +53,13 @@
 			"id": 19988,
 			"name": "London, United Kingdom",
 			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 48350,
+			"name": "Munich, Germany",
+			"location": "München, Bayern, Germany",
 			"child_ids": [],
 			"parent_id": 74843
 		}
