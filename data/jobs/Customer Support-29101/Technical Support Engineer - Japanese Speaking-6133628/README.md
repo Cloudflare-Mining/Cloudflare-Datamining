@@ -19,6 +19,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Business level of Japanese and English</span></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
