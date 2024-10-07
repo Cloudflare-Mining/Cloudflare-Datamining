@@ -4,7 +4,7 @@
 		"next": "2.0.0-rc.5",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1",
-		"latest": "2.14.3"
+		"latest": "2.14.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1644,10 +1644,55 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.14.3",
 			"dependencies": {
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
+				"@jest/environment": ">=27",
+				"@jest/fake-timers": ">=27",
 				"@miniflare/queues": "2.14.2",
-				"@miniflare/runner-vm": "2.14.2",
 				"@miniflare/shared": "2.14.2",
-				"@miniflare/shared-test-environment": "2.14.2",
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/shared-test-environment": "2.14.2"
+			},
+			"devDependencies": {
+				"jest": "^29.0.3",
+				"jest-mock": "^29.0.3",
+				"jest-util": "^29.0.3",
+				"miniflare": "2.14.3",
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"peerDependencies": {
+				"jest": ">=27"
+			},
+			"dist": {
+				"shasum": "e21cdce0ddd7281074585c4853922c49a2498423",
+				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-OV5dgkV8R0aTeUii1Ac+r38WflRUe2tU8lTFHZbiJ6jgWKe3AJL99oFe9CdATUe1Jcf/Omp2djnk3qi2MOTDuA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAkaNY3P53HIubM1XlGX+8os6jYh/9k68sr1/KZSttpeAiEA4htkX3IdRLZQDcbmJPtOK0x2I/fCz9v5S1PSf2kJOmU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 9304
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.4": {
+			"name": "jest-environment-miniflare",
+			"version": "2.14.4",
+			"dependencies": {
+				"@miniflare/queues": "2.14.4",
+				"@miniflare/runner-vm": "2.14.4",
+				"@miniflare/shared": "2.14.4",
+				"@miniflare/shared-test-environment": "2.14.4",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
 				"@jest/types": ">=27",
@@ -1658,26 +1703,26 @@
 				"@jest/environment": "^29.0.3",
 				"@jest/fake-timers": "^29.0.3",
 				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.14.2",
+				"@miniflare/shared-test": "2.14.4",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
-				"miniflare": "2.14.3",
+				"miniflare": "2.14.4",
 				"react-dom": "^18.1.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-OV5dgkV8R0aTeUii1Ac+r38WflRUe2tU8lTFHZbiJ6jgWKe3AJL99oFe9CdATUe1Jcf/Omp2djnk3qi2MOTDuA==",
-				"shasum": "e21cdce0ddd7281074585c4853922c49a2498423",
-				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.3.tgz",
-				"fileCount": 5,
-				"unpackedSize": 9304,
+				"integrity": "sha512-r5OtP6seAotjWmB10jNfr6UUf9n55Bsr4DHLkXX+7bq1bguTI3m+eNIY+rPE4/fqUoCSEMKAYhLi+JauGGsboA==",
+				"shasum": "d775c4fe9bb6e4bef29f7e4f8ab586f41d7f5f66",
+				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 10792,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIAkaNY3P53HIubM1XlGX+8os6jYh/9k68sr1/KZSttpeAiEA4htkX3IdRLZQDcbmJPtOK0x2I/fCz9v5S1PSf2kJOmU="
+						"sig": "MEYCIQD2nNIeMAQ7Tt8q8tMCcCbsGXQhmAHV3dqIoj9XWErbQwIhAKthRHvhn6lr2yALPAkhgQKnm9aR0ScpxdZKEr3cinTp"
 					}
 				]
 			},

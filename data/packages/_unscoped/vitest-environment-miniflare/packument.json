@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1",
-		"latest": "2.14.3"
+		"latest": "2.14.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -574,15 +574,51 @@
 			"name": "vitest-environment-miniflare",
 			"version": "2.14.3",
 			"dependencies": {
-				"@miniflare/runner-vm": "2.14.2",
+				"undici": "5.28.4",
 				"@miniflare/queues": "2.14.2",
 				"@miniflare/shared": "2.14.2",
-				"@miniflare/shared-test-environment": "2.14.2",
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/shared-test-environment": "2.14.2"
+			},
+			"devDependencies": {
+				"vitest": "^0.34.3",
+				"miniflare": "2.14.3",
+				"react-dom": "^18.1.0",
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"peerDependencies": {
+				"vitest": ">=0.23.0"
+			},
+			"dist": {
+				"shasum": "3956efa9091a45da2562d957a9225dc39ff41531",
+				"tarball": "https://registry.npmjs.org/vitest-environment-miniflare/-/vitest-environment-miniflare-2.14.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-K84P7FQCZkjkfeXqm68ScgdyR3S5ze67KEYUo3zatpLNCDSQivszyZMfyxmNwS4ajt/ZCc/dyRwaGUuOUOBrFw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDsgx8kJiB9HT1m5aWKzUs7Gubc+cF0Kkt8hFd9LT6CFQIgBf08HGvRdDh/47kw2XiMkkdorC4pxwTyJ6o98eZr7VM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 7770
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.4": {
+			"name": "vitest-environment-miniflare",
+			"version": "2.14.4",
+			"dependencies": {
+				"@miniflare/runner-vm": "2.14.4",
+				"@miniflare/queues": "2.14.4",
+				"@miniflare/shared": "2.14.4",
+				"@miniflare/shared-test-environment": "2.14.4",
 				"undici": "5.28.4"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.14.2",
-				"miniflare": "2.14.3",
+				"@miniflare/shared-test": "2.14.4",
+				"miniflare": "2.14.4",
 				"react-dom": "^18.1.0",
 				"vitest": "^0.34.3"
 			},
@@ -590,15 +626,15 @@
 				"vitest": ">=0.23.0"
 			},
 			"dist": {
-				"integrity": "sha512-K84P7FQCZkjkfeXqm68ScgdyR3S5ze67KEYUo3zatpLNCDSQivszyZMfyxmNwS4ajt/ZCc/dyRwaGUuOUOBrFw==",
-				"shasum": "3956efa9091a45da2562d957a9225dc39ff41531",
-				"tarball": "https://registry.npmjs.org/vitest-environment-miniflare/-/vitest-environment-miniflare-2.14.3.tgz",
-				"fileCount": 5,
-				"unpackedSize": 7770,
+				"integrity": "sha512-DzwQWdY42sVYR6aUndw9FdCtl/i0oh3NkbkQpw+xq5aYQw5eiJn5kwnKaKQEWaoBe8Cso71X2i1EJGvi1jZ2xw==",
+				"shasum": "0814408fa52eab08bfaccd932a2b51beccd47ea9",
+				"tarball": "https://registry.npmjs.org/vitest-environment-miniflare/-/vitest-environment-miniflare-2.14.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 7928,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDsgx8kJiB9HT1m5aWKzUs7Gubc+cF0Kkt8hFd9LT6CFQIgBf08HGvRdDh/47kw2XiMkkdorC4pxwTyJ6o98eZr7VM="
+						"sig": "MEUCIQDkTkxFkdrgOzVkOiB2Boa1f8BNTbtrfUp5hrbZ4X/U6QIgVqCbXSKQ/a8/lFAiLgjOgMphI3Nb5vQv3I8l2dgvnC0="
 					}
 				]
 			},
