@@ -22,7 +22,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum of 2 years of experience as a Scrum Master.</li>
+	<li>Minimum of 2+ years of experience as a Scrum Master.</li>
 	<li>Strong knowledge of Agile Scrum principles and practices.</li>
 	<li>Excellent communication and interpersonal skills.</li>
 	<li>Strong problem-solving and analytical skills.</li>
