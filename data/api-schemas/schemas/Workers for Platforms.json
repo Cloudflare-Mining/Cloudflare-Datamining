@@ -1688,7 +1688,30 @@
 														"required": [
 															"name",
 															"type",
-															"certificate"
+															"certificate_id"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"readOnly": true,
+																"type": "string"
+															},
+															"type": {
+																"description": "The class of resource that the binding provides.",
+																"enum": [
+																	"assets"
+																],
+																"example": "assets",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"type"
 														],
 														"type": "object"
 													}
@@ -2785,7 +2808,30 @@
 																"required": [
 																	"name",
 																	"type",
-																	"certificate"
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"assets"
+																		],
+																		"example": "assets",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
 																],
 																"type": "object"
 															}
@@ -3708,7 +3754,30 @@
 													"required": [
 														"name",
 														"type",
-														"certificate"
+														"certificate_id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"readOnly": true,
+															"type": "string"
+														},
+														"type": {
+															"description": "The class of resource that the binding provides.",
+															"enum": [
+																"assets"
+															],
+															"example": "assets",
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"type"
 													],
 													"type": "object"
 												}
@@ -4345,7 +4414,30 @@
 																"required": [
 																	"name",
 																	"type",
-																	"certificate"
+																	"certificate_id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"assets"
+																		],
+																		"example": "assets",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
 																],
 																"type": "object"
 															}
