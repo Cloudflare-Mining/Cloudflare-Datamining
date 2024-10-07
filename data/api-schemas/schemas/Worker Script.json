@@ -810,6 +810,26 @@
 													"example": false,
 													"type": "boolean"
 												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
 													"items": {
@@ -1563,6 +1583,26 @@
 														}
 													]
 												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"placement": {
 													"properties": {
 														"mode": {
@@ -1718,6 +1758,143 @@
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.script.read"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
+		"description": "Get if the Worker is available on the workers.dev subdomain.",
+		"operationId": "worker-script-get-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"enabled": {
+									"description": "Whether the Worker is available on the workers.dev subdomain.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get subdomain response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get subdomain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Worker subdomain",
+		"tags": [
+			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
 			]
 		}
 	},
@@ -2029,7 +2206,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
-		"description": "Patch script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Includes Logpush and Tail Consumers.",
+		"description": "Patch script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Including but not limited to Logpush and Tail Consumers.",
 		"operationId": "worker-script-settings-patch-settings",
 		"parameters": [
 			{
@@ -2064,6 +2241,26 @@
 								"description": "Whether Logpush is turned on for the Worker.",
 								"example": false,
 								"type": "boolean"
+							},
+							"observability": {
+								"description": "Observability settings for the Worker",
+								"properties": {
+									"enabled": {
+										"description": "Whether observability is enabled for the Worker",
+										"example": true,
+										"type": "boolean"
+									},
+									"head_sampling_rate": {
+										"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+										"example": 0.1,
+										"nullable": true,
+										"type": "number"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
 							},
 							"tail_consumers": {
 								"description": "List of Workers that will consume logs from the attached Worker.",
@@ -2174,6 +2371,26 @@
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
 													"type": "boolean"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
 												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
@@ -2863,6 +3080,26 @@
 											}
 										]
 									},
+									"observability": {
+										"description": "Observability settings for the Worker",
+										"properties": {
+											"enabled": {
+												"description": "Whether observability is enabled for the Worker",
+												"example": true,
+												"type": "boolean"
+											},
+											"head_sampling_rate": {
+												"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+												"example": 0.1,
+												"nullable": true,
+												"type": "number"
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
 									"placement": {
 										"properties": {
 											"mode": {
@@ -3523,6 +3760,26 @@
 														}
 													]
 												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"placement": {
 													"properties": {
 														"mode": {
@@ -3667,6 +3924,158 @@
 			}
 		],
 		"summary": "Patch Settings",
+		"tags": [
+			"Worker Script"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
+		"description": "Enable or disable the Worker on the workers.dev subdomain.",
+		"operationId": "worker-script-post-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "Whether the Worker should be available on the workers.dev subdomain.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"enabled": {
+									"description": "Whether the Worker is available on the workers.dev subdomain.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Post subdomain response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Post subdomain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Post Worker subdomain",
 		"tags": [
 			"Worker Script"
 		],
@@ -3978,6 +4387,26 @@
 														]
 													}
 												]
+											},
+											"observability": {
+												"description": "Observability settings for the Worker",
+												"properties": {
+													"enabled": {
+														"description": "Whether observability is enabled for the Worker",
+														"example": true,
+														"type": "boolean"
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+														"example": 0.1,
+														"nullable": true,
+														"type": "number"
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
 											},
 											"placement": {
 												"properties": {

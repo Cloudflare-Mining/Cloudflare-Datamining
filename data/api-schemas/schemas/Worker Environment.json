@@ -273,6 +273,26 @@
 													"example": false,
 													"type": "boolean"
 												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
 													"items": {
@@ -514,6 +534,26 @@
 												"example": false,
 												"type": "boolean"
 											},
+											"observability": {
+												"description": "Observability settings for the Worker",
+												"properties": {
+													"enabled": {
+														"description": "Whether observability is enabled for the Worker",
+														"example": true,
+														"type": "boolean"
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+														"example": 0.1,
+														"nullable": true,
+														"type": "number"
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
+											},
 											"tail_consumers": {
 												"description": "List of Workers that will consume logs from the attached Worker.",
 												"items": {
@@ -627,6 +667,26 @@
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
 													"type": "boolean"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker",
+															"example": true,
+															"type": "boolean"
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
 												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
