@@ -1,21 +1,21 @@
 {
-	"id": "3e677e63d4e9479382576f3fa66279e7",
-	"name": "Cloudflare Bot Management rules for all plans",
 	"description": "Rules maintained by bots team that can run for all plans",
-	"source": "firewall_managed",
+	"id": "3e677e63d4e9479382576f3fa66279e7",
 	"kind": "managed",
-	"version": "4",
+	"last_updated": "2024-09-17T18:12:49.194384Z",
+	"name": "Cloudflare Bot Management rules for all plans",
+	"phase": "http_request_sbfm",
 	"rules": [
 		{
-			"id": "7bd01eeccb6b420fa0be30264603a5cb",
-			"version": "4",
 			"action": "block",
 			"description": "Manage AI bots",
+			"enabled": false,
+			"id": "7bd01eeccb6b420fa0be30264603a5cb",
 			"last_updated": "2024-09-17T18:12:49.194384Z",
 			"ref": "ai-bots-block",
-			"enabled": false
+			"version": "4"
 		}
 	],
-	"last_updated": "2024-09-17T18:12:49.194384Z",
-	"phase": "http_request_sbfm"
+	"source": "firewall_managed",
+	"version": "4"
 }
