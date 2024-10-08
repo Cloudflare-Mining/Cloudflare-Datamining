@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "404805e6-2344-5446-9975-e0829d47e8dc")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "66c50ef8-f13c-554a-a4ab-e4313357ee5a")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -711,7 +711,7 @@
 			var Vt = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../node_modules/@cloudflare/elements/es/index.js"),
 				Qt = n("../react/app/components/LoadingSuspense.tsx");
-			const Xt = _e().lazy(() => Promise.all([n.e(85608), n.e(2480), n.e(10008), n.e(49146), n.e(94012), n.e(13142), n.e(72019), n.e(73562), n.e(5668), n.e(60091), n.e(89263), n.e(77216), n.e(39760), n.e(94923), n.e(60734), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Xt = _e().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(49146), n.e(94012), n.e(13142), n.e(72019), n.e(73562), n.e(5668), n.e(60091), n.e(89263), n.e(77216), n.e(39760), n.e(94923), n.e(60734), n.e(40758), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Jt = () => _e().createElement(Qt.Z, null, _e().createElement(Xt, null));
 			const qt = () => (Ie.useEffect(() => re, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -772,8 +772,8 @@
 						devPanelEnabled: V
 					}
 				},
-				sn = _e().lazy(() => Promise.all([n.e(85608), n.e(2480), n.e(10008), n.e(49146), n.e(94012), n.e(13142), n.e(72019), n.e(73562), n.e(14696), n.e(12770), n.e(60091), n.e(89263), n.e(77216), n.e(39760), n.e(94923), n.e(60734), n.e(40758), n.e(17526), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				cn = _e().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(85608), n.e(13142), n.e(14696), n.e(26337), n.e(60091), n.e(60734), n.e(69088), n.e(17526), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				sn = _e().lazy(() => Promise.all([n.e(43234), n.e(2480), n.e(10008), n.e(49146), n.e(94012), n.e(13142), n.e(72019), n.e(73562), n.e(14696), n.e(12770), n.e(60091), n.e(89263), n.e(77216), n.e(39760), n.e(94923), n.e(60734), n.e(40758), n.e(17526), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				cn = _e().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(43234), n.e(13142), n.e(14696), n.e(26337), n.e(60091), n.e(60734), n.e(69088), n.e(17526), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: P
 				}) => {
@@ -912,10 +912,10 @@
 					n.g.build = fn({}, {
 						branch: "master",
 						isReleaseCandidate: "true",
-						commit: "0e6f3a75ec1595989f2c128f6d07aba7ff839138",
-						dashVersion: "27755803",
+						commit: "d8ce8cbb92d43a3c0e8b6c9d05a5df3f09b59a40",
+						dashVersion: "27822643",
 						env: "production",
-						builtAt: 1728060195080,
+						builtAt: 1728344832967,
 						versions: {
 							"@cloudflare/app-dash": "25.161.22",
 							node: "20.10.0",
@@ -1940,33 +1940,30 @@
 				q = (0, f.createStyledComponent)(({
 					theme: O
 				}) => ({
-					flex: 1,
+					margin: 0,
 					display: "flex",
-					justifyContent: "space-evenly",
 					alignItems: "center",
+					justifyContent: "center",
 					flexWrap: "wrap",
-					marginLeft: 0,
+					gap: (0, t.tq)() ? "8px" : "16px",
 					"& > li": {
-						fontSize: O.fontSizes[2],
-						display: "contents",
-						"&:not(:first-child)": {
-							"&::before": {
-								content: "'|'",
-								color: O.colors.gray[4],
-								marginTop: (0, t.tq)() ? "8px" : 0,
-								paddingLeft: "8px",
-								paddingRight: "8px"
-							}
+						listStyleType: "none",
+						"& > a": {
+							fontSize: O.fontSizes[2],
+							borderLeft: "1px solid",
+							borderLeftColor: O.colors.gray[4],
+							paddingLeft: "16px"
 						},
-						"& > button": {
-							marginTop: (0, t.tq)() ? "8px" : 0
+						"&:first-child > a": {
+							borderLeft: "none"
 						}
 					}
 				}), s.Ul),
 				ae = (0, f.createStyledComponent)(() => ({
 					display: "flex",
 					flexDirection: (0, t.tq)() ? "column" : "row",
-					justifyContent: "space-between"
+					justifyContent: "center",
+					paddingBottom: "16px"
 				}), s.ZC);
 			var A = () => {
 				var O, L;
@@ -1980,10 +1977,12 @@
 				if (G) return null;
 				const Le = new Date().getFullYear();
 				return o().createElement(s.$_, te({
+					height: (0, t.tq)() ? "auto" : 60,
 					bg: "background",
 					borderTop: "1px solid",
 					borderColor: "gray.8",
 					py: J ? "19px" : 4,
+					pb: 0,
 					px: [4, 3, 3],
 					mt: ge ? 0 : "auto"
 				}, ge && J && {
@@ -2002,14 +2001,10 @@
 					href: "https://www.cloudflare.com/disclosure/"
 				}, (0, a.ZP)("footer.security_issues"))), o().createElement(s.Li, null, o().createElement(K, {
 					href: "https://www.cloudflare.com/privacypolicy/"
-				}, (0, a.ZP)("footer.privacy_policy"))), o().createElement(s.Li, null, o().createElement(F, null))), o().createElement(s.ZC, {
-					display: "flex",
-					justifyContent: "center",
-					mt: (0, t.tq)() ? 2 : 0
-				}, o().createElement(s.Dr, {
+				}, (0, a.ZP)("footer.privacy_policy"))), o().createElement(s.Li, null, o().createElement(F, null)), o().createElement(s.Li, null, o().createElement(s.Dr, {
 					fontSize: 2,
 					color: "gray.4"
-				}, "\xA9 ", Le, " Cloudflare, Inc."))) : o().createElement(s.ZC, {
+				}, "\xA9 ", Le, " Cloudflare, Inc.")))) : o().createElement(s.ZC, {
 					display: "flex",
 					flexWrap: "wrap",
 					mx: "auto",
@@ -12077,6 +12072,7 @@
 							index: "https://developers.cloudflare.com/workers/runtime-apis/bindings",
 							ai: "https://developers.cloudflare.com/workers-ai",
 							analyticsEngine: "https://developers.cloudflare.com/analytics/analytics-engine",
+							assets: "https://developers.cloudflare.com/workers/static-assets/binding",
 							browserRendering: "https://developers.cloudflare.com/browser-rendering",
 							d1: "https://developers.cloudflare.com/d1",
 							dispatchNamespace: "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/configuration",
@@ -15255,4 +15251,4 @@
 	}
 ]);
 
-//# debugId=404805e6-2344-5446-9975-e0829d47e8dc
+//# debugId=66c50ef8-f13c-554a-a4ab-e4313357ee5a
