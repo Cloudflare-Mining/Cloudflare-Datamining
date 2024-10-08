@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.21.1
+
+### Patch Changes
+
+- 50387b3d0d: Fix caret-stroke icons not recognized in component-icon
+
 ## 12.21.0
 
 ### Minor Changes

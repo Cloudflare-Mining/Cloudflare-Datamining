@@ -179,6 +179,10 @@ import Zaraz from './Zaraz';
 import ZeroTrustRiskScoring from './ZeroTrustRiskScoring';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
+import CaretUpStroke from './CaretUpStroke';
+import CaretDownStroke from './CaretDownStroke';
+import CaretRightStroke from './CaretRightStroke';
+import CaretLeftStroke from './CaretLeftStroke';
 export default {
   dlp: Dlp,
   timer: Timer,
@@ -201,9 +205,13 @@ export default {
   'caret-double-left': CaretDoubleLeft,
   'caret-double-right': CaretDoubleRight,
   'caret-down': CaretDown,
+  'caret-down-stroke': CaretDownStroke,
   'caret-left': CaretLeft,
+  'caret-left-stroke': CaretLeftStroke,
   'caret-right': CaretRight,
+  'caret-right-stroke': CaretRightStroke,
   'caret-up': CaretUp,
+  'caret-up-stroke': CaretUpStroke,
   'case-study': CaseStudy,
   certificate: Certificate,
   chart: Chart,
