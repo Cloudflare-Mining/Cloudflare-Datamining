@@ -14,9 +14,6 @@
 	"art-show-in-dev-pages": {
 		"enabled": true
 	},
-	"azure-ad-policy-sync": {
-		"enabled": false
-	},
 	"billing-zt-apple-pay-gate": {
 		"enabled": false
 	},
@@ -95,9 +92,6 @@
 	"gateway-certs": {
 		"enabled": false
 	},
-	"gateway-non-authenticated-dns": {
-		"enabled": false
-	},
 	"isolate-access-app": {
 		"enabled": true
 	},
@@ -108,12 +102,6 @@
 		"enabled": true
 	},
 	"unified-access-application-definition": {
-		"enabled": false
-	},
-	"zt-access-app-oidc-protocol": {
-		"enabled": false
-	},
-	"zt-access-auth-in-warp": {
 		"enabled": false
 	},
 	"zt-access-global-policies": {
@@ -145,12 +133,6 @@
 	},
 	"zt-certificate-rule-v2": {
 		"enabled": true
-	},
-	"zt-client-notification-av-scanning": {
-		"enabled": false
-	},
-	"zt-client-notifications": {
-		"enabled": false
 	},
 	"zt-crowdstrike-enhancements": {
 		"enabled": true
@@ -253,9 +235,6 @@
 	},
 	"zt-tunnel-logs": {
 		"enabled": true
-	},
-	"zt-user-audit-logs": {
-		"enabled": false
 	},
 	"zt-user-risk-score": {
 		"enabled": true
