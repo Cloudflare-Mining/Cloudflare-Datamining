@@ -5,27 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, San Francisco, CA</strong></p>
-<p><strong>About the position</strong></p>
-<p>The Procurement Manager builds strong relationships with internal and external partners to develop and execute sourcing plans that deliver value and create measurable, meaningful impact on Cloudflare’s success. Your mission will be to lead complex, high visibility engagements across all global business functions and procurement spend categories to enable Procurement to deliver on savings and partnership commitments with scale and agility.</p>
-<p>To be successful in this role you will demonstrate exceptional contracting, negotiation, and communication skills, and have a high level of customer focus and business judgment. You will have a demonstrated track record managing large supply chain and procurement improvement projects and superior data analysis and presentation skills. This role is high visibility and will interact with leaders in the company and with strategic suppliers across spend categories, including Technology, Marketing, Professional Services, Facilities, HR, Legal,&nbsp; Finance, Contingent Labor, and Consulting Services. The ideal candidate for this role has a history of solving complex problems, developing and building new solutions, and delivering results. The ability to influence stakeholders and effectively communicate with leaders in order to earn a role as a trusted advisor is essential to the role. The Procurement Manager will :</p>
+<h4>Available Locations: Austin TX, San Francisco CA</h4>
+<h4>About the position</h4>
+<p>The Senior Category Manager is a leader who builds strong relationships with internal and external partners to develop and execute enterprise-wide sourcing strategies that deliver value and create measurable, meaningful impact on Cloudflare’s success. Your mission will be to lead complex, high visibility engagements across all global business functions and procurement spend categories to enable Procurement to deliver on savings and partnership commitments with scale and agility.</p>
+<p>To be successful in this role you will think strategically, demonstrate exceptional contracting, negotiation, and communication skills, and have a high level of customer focus and business judgment. You will have a demonstrated track record managing large-scale supply chain and procurement improvement projects and superior data analysis and presentation skills. This role is high visibility and will interact with senior leaders in the company and with strategic suppliers across spend categories, including Technology, Marketing, Professional Services, Facilities, HR, Legal,&nbsp; Finance, Contingent Labor, and Consulting Services. The ideal candidate for this role has a history of solving complex problems, developing and building new solutions, and delivering results. The ability to influence stakeholders and effectively communicate with executives in order to earn a role as a trusted advisor is essential to the role.</p>
 <h4>What you'll do</h4>
-<p>The Procurement Manager will :</p>
+<p>The Senior Procurement Manager will :</p>
 <ul>
-	<li>Own all aspects of strategic sourcing and category management, including stakeholder management, sourcing, contract negotiations, category strategy, spend analysis/market intelligence, and supplier management across assigned spend categories.</li>
-	<li>Develop and manage stakeholder relationships and influence stakeholders to align with industry best practices in support of applicable Cloudflare strategies.</li>
-	<li>Build a strong understanding of strategic business direction, requirements, and priorities across suppliers and spend categories. Earn trust as a business advisor.</li>
-	<li>Develop, document, and execute global category strategies in collaboration with stakeholders to achieve functional and organizational objectives.</li>
-	<li>Conduct analysis of spend and market data, and conduct benchmarking to understand key drivers, identify top opportunities, and formulate strategies and negotiation plans that deliver value.</li>
-	<li>Lead sourcing events from start to finish, driving alignment across teams. Formulate and recommend sourcing decisions to leadership.</li>
-	<li>Craft negotiation strategies and drive the negotiation of agreements in collaboration with Business stakeholders, Legal, Risk Management, Data Privacy, Information Security, and external suppliers/partners.</li>
-	<li>Deliver year over year cost savings.</li>
-	<li>Initiate and lead projects to improve sourcing and procurement processes and our ability to serve our internal clients.</li>
+	<li>Strategic Sourcing &amp; Category Management</li>
+	<ul>
+		<li>Lead and own all aspects of strategic sourcing and category management, including stakeholder management, sourcing, contract negotiations, category strategy, spend analysis/market intelligence, and supplier management across assigned spend categories.</li>
+		<li>Develop, document, and execute global category strategies in collaboration with stakeholders to achieve functional and organizational objectives.</li>
+		<li>Conduct deep dive analysis of spend and market data, and conduct benchmarking to understand key drivers, identify top opportunities, and formulate strategies and negotiation plans that deliver value.</li>
+		<li>Deliver key category performance indicators including: savings, supplier rationalization, low-cost region sourcing, risk management, spend under agreement, joint innovation, supplier performance, etc.</li>
+		<li>Craft negotiation strategies and lead the negotiation of complex global enterprise agreements in collaboration with Business stakeholders, Legal, Risk Management, Data Privacy, Information Security, and external suppliers/partners.</li>
+		<li>Deliver significant year over year cost savings.</li>
+	</ul>
+	<li>Leadership &amp; Influence</li>
+	<ul>
+		<li>Develop and manage stakeholder relationships and influence stakeholders to align with industry best practices in support of applicable Cloudflare strategies.</li>
+		<li>Build a strong understanding of strategic business direction, requirements, and priorities across suppliers and spend categories. Earn trust as a business advisor.</li>
+		<li>Work closely with all departments to ensure alignment of sourcing and procurement activities with overall business goals.</li>
+		<li>Participate in cross-functional teams to drive sourcing and procurement-related projects.</li>
+	</ul>
+	<li>Manage end- to- end procurement process</li>
+	<ul>
+		<li>Initiate and lead projects to improve sourcing and procurement processes and our ability to serve our internal clients.</li>
+		<li>Oversee the end-to-end procurement processes, including contracts management, purchase requisitions, purchase orders, gross receipt, and invoice processes.</li>
+		<li>Ensure that sourcing and procurement activities comply with company policies, procedures, and ethical standards.</li>
+	</ul>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Bachelor’s Degree and 5+ years of relevant strategic sourcing experience in a procurement function developing category plans and sourcing in one or more of the following categories: Technology (hardware, software, engineering services, data center, infrastructure or other technology experience) and/or Corporate Services (HR, Contingent Labor, Consulting, Facilities, and Marketing)</li>
-	<li>Track record leading negotiations with strategic suppliers across spend categories, with the ability to lead cross functional negotiation teams and ensure alignment at all levels.&nbsp;</li>
+	<li>Bachelor’s Degree and 8+ years of relevant strategic sourcing experience, to include at a minimum, 5 years in a procurement function developing category plans and sourcing in one or more of the following categories: Technology (hardware, software, engineering services, data center, infrastructure or other technology experience) and/or Corporate Services (HR, Contingent Labor, Consulting, Facilities, and Marketing)</li>
+	<li>Track record leading large, complex negotiations with strategic suppliers across indirect spend categories, with the ability to lead cross functional negotiation teams and ensure alignment at all levels.&nbsp;</li>
 	<li>Proven contracting expertise; the ability to dig deep into contract details, collaborate with internal teams to understand business requirements, draft contractual terms, formulate strategy, and execute contract negotiations to achieve best possible outcomes while maintaining successful business relationships.</li>
 	<li>Ability to identify potential risks and liabilities in contracts as they relate to policies and business objectives, and proactively develop solutions on contractual terms in collaboration with Legal, Risk, Data Privacy, Information Security, and business stakeholders.</li>
 	<li>Experience drafting, editing, and negotiating all agreement types, including Master Agreements, SOW’s, Addenda, Change Orders, Sales Orders, and Technology agreements (SaaS, End User License, Subscription, Cloud Services, Managed Services, Support Agreements, etc. )</li>
@@ -36,18 +49,18 @@
 	<li>Expert communicator – ability to present complex topics in an effective and concise manner to influence across all levels internally and externally.</li>
 	<li>Expert analytical and problem-solving skills – ability to analyze complex issues and industry information, identify risks/opportunities, develop options, and present effective solutions to stakeholders.</li>
 	<li>Partnering skills – proven ability to build and maintain strong relationships with internal teams and external partners; be viewed as a sourcing expert and trusted business advisor.</li>
-	<li>Strong understanding of the value drivers and cost levers associated with assigned spend categories.</li>
-	<li>Project Management skills - a structured and programmatic approach to delivering value to the business. Ability to manage multiple projects at once, while keeping stakeholders informed and aligned through effective communications and formal project updates.&nbsp;</li>
+	<li>Expert level understanding of the value drivers and cost levers associated with indirect spend categories.</li>
+	<li>Project Management skills - a structured and programmatic approach to delivering value to the business. Ability to manage multiple projects at once, while keeping stakeholders informed and aligned through effective communications and formal project updates. PMI Certification preferred.</li>
 	<li>Adaptability – ability to thrive in a high volume, fast paced environment and work on multiple initiatives at the same time, adapting to changing priorities and requirements.</li>
 	<li>Proficiency in Google Presentations, Sheets, and utilization of internal and external data sources.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $95,000 - $116,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $105,000 - $129,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $111,000 - $135,000</li>
+	<li>For Colorado-based hires: Estimated annual salary of $116,000 - $142,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $131,000 - $161,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $139,000 - $169,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -76,7 +89,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p><br><br></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
