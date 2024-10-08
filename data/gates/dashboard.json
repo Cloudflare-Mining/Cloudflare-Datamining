@@ -423,7 +423,7 @@
 		"enabled": true
 	},
 	"dns-records-experience-survey": {
-		"enabled": true
+		"enabled": false
 	},
 	"dns-records-tags-comments": {
 		"enabled": true
@@ -943,6 +943,9 @@
 	"prg-media-sidenav-routing-changes": {
 		"enabled": false
 	},
+	"prg-minimal-header-banners": {
+		"enabled": false
+	},
 	"prg-persistent-cta-upgrade-experiment": {
 		"enabled": true,
 		"branches": [
@@ -990,7 +993,7 @@
 		"enabled": true
 	},
 	"prg-waf-custom-rule-upsell-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
