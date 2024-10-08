@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-02T17:19:30.251Z",
-					"updatedAt": "2024-10-04T23:39:25.298Z"
+					"updatedAt": "2024-10-08T04:12:44.353Z"
 				},
 				"contentfulId": "1swpvUbnp6uxadJu2WVcRT",
 				"contentTypeId": "page",
@@ -2615,6 +2615,12 @@
 										"url": "https://developers.cloudflare.com/reference-architecture/"
 									},
 									{
+										"contentfulId": "49bw6FRI2ooFCtnnbDT8sS",
+										"linkText": "Professional Services",
+										"page": null,
+										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
+									},
+									{
 										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
 										"linkText": "Whitepapers",
 										"page": null,
@@ -2742,7 +2748,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Replace Virtual Private Networks (VPN)",
+								"title": "Replace your VPN",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -2761,7 +2767,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Simplify complicated, overburdened VPNs with a more modern, scalable approach utilizing:",
+													"value": "Simplify complicated, overburdened VPNs with a more modern, scalable approach, utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -2871,7 +2877,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Manage contractor access",
+								"title": "Secure third-party access",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -2890,7 +2896,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Provide a first class experience for third-party collaborators with fast, safe access to applications utilizing:",
+													"value": "Provide a first class experience for third-party collaborators with fast, safe access to applications, utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -2982,6 +2988,135 @@
 							},
 							{
 								"locale": "en-US",
+								"entryTitle": "Solution Hub: Provide privileged access to infrastructure",
+								"contentfulId": "1ULGZhZpNeYtu5RrHyZwfW",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "abeb3ab9-0e3b-5712-8fcc-c31ae8df91e9",
+									"altText": "Performance acceleration - round icon",
+									"title": "Performance acceleration - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Evpbhn5V2yuAXlvlF76De/18e95fe70d3d127831eca3fa8e284414/performance-acceleration-bolt.svg"
+										},
+										"description": "Performance acceleration bolt"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Provide privileged access to infrastructure",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Extend Zero Trust controls to sensitive infrastructure resources without disrupting developer workflows, utilizing:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Access",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4nDF1sv939QPqli4jcOyMx",
+									"elementName": "Access to infrastructure - CTA",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "/solutions/zero-trust/infrastructure-access/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
 								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Activate phishing-resistant MFA",
 								"contentfulId": "7p1mUrCiDU7SKW0A2Tj4s4",
 								"contentTypeId": "elementAddOn",
@@ -3019,7 +3154,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Thwart phishing and the most dangerous threat vectors with security keys and Zero Trust utilizing:",
+													"value": "Thwart phishing and the most dangerous threat vectors with FIDO2-compliant MFA and Zero Trust, utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -3129,7 +3264,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Secure distributed remote workforces",
+								"title": "Web security for remote workers",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -3148,7 +3283,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Secure remote teams, devices, and data without slowdown or sacrificing user experience utilizing:",
+													"value": "Enforce malware protection with exceptional speed and consistency around the world, utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -3187,7 +3322,39 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare Zero Trust",
+																	"value": "Cloudflare Gateway",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Browser Isolation",
 																	"marks": [],
 																	"content": null
 																}
@@ -3240,296 +3407,6 @@
 							},
 							{
 								"locale": "en-US",
-								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Protect Employees",
-								"contentfulId": "7Biu90TaIzDloKXNe3LQve",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "857e71cb-6cf0-585d-98ec-fd508f712cc6",
-									"altText": "Security shield protection round icon",
-									"title": "Security shield protection round icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2hKtxrzu7E23HoifJ7SHm6/9442c8c14ba0db05a62a12dc9dd4091e/security-shield-protection-1.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"title": "Protect employees on the Internet",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Give users a secure web gateway with fast, safe Internet browsing and no backhauling required utilizing:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Gateway",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": null,
-								"pricingText": null,
-								"learnMoreLink": null,
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "3kO6U97HFAPsTadPBszvVo",
-									"elementName": "Solution Hub: Secure Work-from-Anywhere - Protect Employees",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "zero-trust/products/gateway/",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
-								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Stop Ransomware",
-								"contentfulId": "5UngX6yAXGzdaH59entiCQ",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "47a0a289-e6c7-5cca-8164-77c7601e889f",
-									"altText": "Ddos attack round icon",
-									"title": "Ddos attack round icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wuXsQ9ocjkOUMM9Z1Hlkx/02792975d7f0be7673a33aa004c88e7a/ddos-attack-round-fill.svg"
-										},
-										"description": "Ddos attack round icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"title": "Stop ransomware and phishing",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Make web browsing safer and faster for your business with a Zero Trust browsing service utilizing:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Browser Isolation",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Gateway",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": null,
-								"pricingText": null,
-								"learnMoreLink": null,
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "5lW1dXUmX2NVdIpJTF3MtQ",
-									"elementName": "Solution Hub: Secure Work-from-Anywhere - Stop Ransomware",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "zero-trust/products/browser-isolation/",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
 								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Secure SaaS",
 								"contentfulId": "5i5X4UKcnlzYdOvFfUXfFO",
 								"contentTypeId": "elementAddOn",
@@ -3548,7 +3425,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"title": "Secure access to SaaS applications",
+								"title": "Discover shadow IT",
 								"description": {
 									"nodeType": "document",
 									"content": [
@@ -3567,168 +3444,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Protect your data without security risks, visibility challenges, or access control roadblocks utilizing:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare CASB",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Access",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": null,
-								"pricingText": null,
-								"learnMoreLink": null,
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "5F2usBIwRZlpsjUt5l8cop",
-									"elementName": "Solution Hub: Secure Work-from-Anywhere - Secure SaaS",
-									"standardText": "Learn More",
-									"text": null,
-									"url": "/products/zero-trust/secure-saas-access/",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
-								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Improve compliance and protection of data and code",
-								"contentfulId": "170A2J2a2QsNevvaPY9itE",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "334ffbe3-9e05-5cbd-b77a-f0b4dba39034",
-									"altText": "Analytics data round icon",
-									"title": "Analytics data round icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PV9bQAsawR9bGTFfREI0c/87032c7e59cea26f8ec4323383d7b000/analytics-data-round-fill.svg"
-										},
-										"description": "Analytics data round icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"title": "Improve compliance and protection of data and code",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Regain visibility and controls over sensitive data and source code across web, SaaS, and private applications to reduce risk:\n",
+													"value": "Manage access and usage of SaaS apps and AI tools with better visibility and control, utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -3839,6 +3555,135 @@
 									"buttonAssetFile": null,
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
+									"contentfulId": "5F2usBIwRZlpsjUt5l8cop",
+									"elementName": "Solution Hub: Secure Work-from-Anywhere - Secure SaaS",
+									"standardText": "Learn More",
+									"text": null,
+									"url": "/products/zero-trust/secure-saas-access/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Solution Hub: Secure Work-from-Anywhere - Improve compliance and protection of data and code",
+								"contentfulId": "170A2J2a2QsNevvaPY9itE",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "334ffbe3-9e05-5cbd-b77a-f0b4dba39034",
+									"altText": "Analytics data round icon",
+									"title": "Analytics data round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PV9bQAsawR9bGTFfREI0c/87032c7e59cea26f8ec4323383d7b000/analytics-data-round-fill.svg"
+										},
+										"description": "Analytics data round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Protect your sensitive data",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Regain visibility and control over sensitive data and source code across web, SaaS, and private applications, utilizing:\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare Zero Trust",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
 									"contentfulId": "7CMisF5bUk3SJGhbrGmmWN",
 									"elementName": " Secure Work-from-Anywhere - Protect data - CTA",
 									"standardText": null,
@@ -3855,13 +3700,13 @@
 					{
 						"contentfulId": "26RGcpnIsSxHwq4w9hQxo7",
 						"title": "Cloudflare's connectivity cloud simplifies remote workforce security",
-						"copy": null,
+						"copy": "Our composable platform and network make it easier to secure any connection, so users on any device in any location can stay safe and productive using applications and the Internet",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
-						"subheadline": "Our composable platform and network make it easier to secure any connection, so users on any device in any location can stay safe and productive using applications and the Internet",
+						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
@@ -3906,7 +3751,7 @@
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "29H5WiXamVb6pIvgiwTIx6",
+						"contentfulId": "279fIY4z7zYPHxV7FlWoHt",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
 						"eyebrowHeading": null,
@@ -3916,12 +3761,12 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4PqZNI2exCAf0QQpw08QbZ",
+								"contentfulId": "4QLbTrIRbwhDIOaqPzLyJt",
 								"title": "Composable architecture",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Meet any unique use case with full API programmability and customizable logging and routing",
+								"titleSize": null,
+								"description": "Address a full range of security and networking requirements by capitalizing on extensive interoperability and customizable services.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3929,16 +3774,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "c957ff8d-a1fd-5d1f-9dab-40bee8ed2b02",
-									"altText": "Pull request orange",
-									"title": "Pull request orange",
+									"id": "0cfe36ab-abe1-5f77-965c-c24fe0837bdf",
+									"altText": "Cloud multi blue",
+									"title": "Cloud multi blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tuARUDvAQEzpWTMdMK2z3/6f5e4bbfbea969d25ccc5a855be7975b/pull-request-merged.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LJvPVcmM6pKOS3XApXCag/35a5adb3d158b085948ff2c4217c2ff4/cloud-multi.png"
 										},
-										"description": "Pull request icon"
+										"description": "Cloud multi orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3952,12 +3797,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2rUhJdpmFy1YBUyAhqdLLt",
-								"title": "Integration",
+								"contentfulId": "4A6yJKVKTTHbKxJgKFJvCw",
+								"title": "Performance",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Preserve user experiences with single-pass inspection and a network that's 50 ms from 95% of Internet users",
+								"titleSize": null,
+								"description": "Provide superior user experiences with a resilient global network that is approximately 50 ms from ~95% of Internet users.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3965,16 +3810,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "7f55482c-4683-5702-8d01-773f9cd06136",
-									"altText": "Performance wrench ",
-									"title": "Performance wrench ",
+									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
+									"altText": "Lightning bolt icon",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wssqiGu7F5lhbklqwGJU/2d9d1e090229bf4b832b922f7bb821dc/performance-wrench.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
 										},
-										"description": "Wrench icon"
+										"description": "Lightning bolt icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3988,12 +3833,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3fkAnDJtRhJhAGKe44jryq",
-								"title": "Threat intelligence",
+								"contentfulId": "56Av3YwuW0cTJQjctBoJtH",
+								"title": "Intelligence",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Block more threats — known and unknown — with intelligence gleaned from proxying ~20% of the web and blocking %{ThreatsBlockedPerDay} billion daily threats",
+								"titleSize": null,
+								"description": "We proxy ~20% of the web and block %{ThreatsBlockedPerDay} billion daily threats, helping you route traffic efficiently and catch more attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -4024,12 +3869,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5skmzV3uzvcbFecPw7ygOX",
-								"title": "Unified interface",
+								"contentfulId": "3hdgMwHsTQFFIX7mgSDOrT",
+								"title": "One platform, one network",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Reduce tool sprawl and alert fatigue by uniting all remote workforce security services in one UI",
+								"titleSize": null,
+								"description": "Consolidate secure access service edge (SASE) / Zero Trust capabilities on Cloudflare's unified platform and control plane for better total cost of ownership.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -4037,16 +3882,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
-									"altText": "Applications icon",
-									"title": "Applications icon",
+									"id": "fa372958-dd78-5d13-8fe9-af92242c4f3e",
+									"altText": "Collapse - WEB APPROVED icon - orange",
+									"title": "Collapse - WEB APPROVED icon - orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PggnKQE49t7p6Wsw30KaP/19a3ebdb6cd99af6f693907373304652/collapse.svg"
 										},
-										"description": "Applications icon"
+										"description": "Collapse - WEB APPROVED icon - orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -4059,7 +3904,7 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"htmlId": null
 					},
 					{
