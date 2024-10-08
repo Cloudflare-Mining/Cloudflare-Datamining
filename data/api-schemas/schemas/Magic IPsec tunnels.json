@@ -26,6 +26,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
@@ -173,6 +181,81 @@
 															"example": "Tunnel for ISP X",
 															"type": "string"
 														},
+														"health_check": {
+															"allOf": [
+																{
+																	"properties": {
+																		"enabled": {
+																			"default": true,
+																			"description": "Determines whether to run healthchecks for a tunnel.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"rate": {
+																			"default": "mid",
+																			"description": "How frequent the health check is run. The default value is `mid`.",
+																			"enum": [
+																				"low",
+																				"mid",
+																				"high"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
+																		"target": {
+																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																			"oneOf": [
+																				{
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																					"properties": {
+																						"effective": {
+																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																							"example": "203.0.113.1",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"saved": {
+																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																							"example": "203.0.113.1",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": {
+																			"default": "reply",
+																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																			"enum": [
+																				"reply",
+																				"request"
+																			],
+																			"example": "request",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"direction": {
+																			"default": "unidirectional",
+																			"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																			"enum": [
+																				"unidirectional",
+																				"bidirectional"
+																			],
+																			"example": "bidirectional",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
+														},
 														"id": {
 															"description": "Tunnel identifier tag.",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -215,43 +298,6 @@
 															"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 															"example": false,
 															"type": "boolean"
-														},
-														"tunnel_health_check": {
-															"properties": {
-																"enabled": {
-																	"default": true,
-																	"description": "Determines whether to run healthchecks for a tunnel.",
-																	"example": true,
-																	"type": "boolean"
-																},
-																"rate": {
-																	"default": "mid",
-																	"description": "How frequent the health check is run. The default value is `mid`.",
-																	"enum": [
-																		"low",
-																		"mid",
-																		"high"
-																	],
-																	"example": "low",
-																	"type": "string"
-																},
-																"target": {
-																	"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																	"example": "203.0.113.1",
-																	"type": "string"
-																},
-																"type": {
-																	"default": "reply",
-																	"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																	"enum": [
-																		"reply",
-																		"request"
-																	],
-																	"example": "request",
-																	"type": "string"
-																}
-															},
-															"type": "object"
 														}
 													},
 													"required": [
@@ -412,6 +458,81 @@
 																	"example": "Tunnel for ISP X",
 																	"type": "string"
 																},
+																"health_check": {
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enabled": {
+																					"default": true,
+																					"description": "Determines whether to run healthchecks for a tunnel.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"rate": {
+																					"default": "mid",
+																					"description": "How frequent the health check is run. The default value is `mid`.",
+																					"enum": [
+																						"low",
+																						"mid",
+																						"high"
+																					],
+																					"example": "low",
+																					"type": "string"
+																				},
+																				"target": {
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																					"oneOf": [
+																						{
+																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																							"properties": {
+																								"effective": {
+																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																									"example": "203.0.113.1",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"saved": {
+																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																									"example": "203.0.113.1",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						{
+																							"type": "string"
+																						}
+																					]
+																				},
+																				"type": {
+																					"default": "reply",
+																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																					"enum": [
+																						"reply",
+																						"request"
+																					],
+																					"example": "request",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"direction": {
+																					"default": "unidirectional",
+																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																					"enum": [
+																						"unidirectional",
+																						"bidirectional"
+																					],
+																					"example": "bidirectional",
+																					"type": "string"
+																				}
+																			}
+																		}
+																	]
+																},
 																"id": {
 																	"description": "Tunnel identifier tag.",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -454,43 +575,6 @@
 																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																	"example": false,
 																	"type": "boolean"
-																},
-																"tunnel_health_check": {
-																	"properties": {
-																		"enabled": {
-																			"default": true,
-																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"example": true,
-																			"type": "boolean"
-																		},
-																		"rate": {
-																			"default": "mid",
-																			"description": "How frequent the health check is run. The default value is `mid`.",
-																			"enum": [
-																				"low",
-																				"mid",
-																				"high"
-																			],
-																			"example": "low",
-																			"type": "string"
-																		},
-																		"target": {
-																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																			"example": "203.0.113.1",
-																			"type": "string"
-																		},
-																		"type": {
-																			"default": "reply",
-																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																			"enum": [
-																				"reply",
-																				"request"
-																			],
-																			"example": "request",
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
 																}
 															},
 															"required": [
@@ -630,6 +714,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -768,6 +860,81 @@
 																"example": "Tunnel for ISP X",
 																"type": "string"
 															},
+															"health_check": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"enabled": {
+																				"default": true,
+																				"description": "Determines whether to run healthchecks for a tunnel.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"rate": {
+																				"default": "mid",
+																				"description": "How frequent the health check is run. The default value is `mid`.",
+																				"enum": [
+																					"low",
+																					"mid",
+																					"high"
+																				],
+																				"example": "low",
+																				"type": "string"
+																			},
+																			"target": {
+																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																				"oneOf": [
+																					{
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																						"properties": {
+																							"effective": {
+																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																								"example": "203.0.113.1",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"saved": {
+																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																								"example": "203.0.113.1",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"type": {
+																				"default": "reply",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"enum": [
+																					"reply",
+																					"request"
+																				],
+																				"example": "request",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			}
+																		}
+																	}
+																]
+															},
 															"id": {
 																"description": "Tunnel identifier tag.",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -810,43 +977,6 @@
 																"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																"example": false,
 																"type": "boolean"
-															},
-															"tunnel_health_check": {
-																"properties": {
-																	"enabled": {
-																		"default": true,
-																		"description": "Determines whether to run healthchecks for a tunnel.",
-																		"example": true,
-																		"type": "boolean"
-																	},
-																	"rate": {
-																		"default": "mid",
-																		"description": "How frequent the health check is run. The default value is `mid`.",
-																		"enum": [
-																			"low",
-																			"mid",
-																			"high"
-																		],
-																		"example": "low",
-																		"type": "string"
-																	},
-																	"target": {
-																		"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																		"example": "203.0.113.1",
-																		"type": "string"
-																	},
-																	"type": {
-																		"default": "reply",
-																		"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																		"enum": [
-																			"reply",
-																			"request"
-																		],
-																		"example": "request",
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
 														"required": [
@@ -1005,6 +1135,81 @@
 																		"example": "Tunnel for ISP X",
 																		"type": "string"
 																	},
+																	"health_check": {
+																		"allOf": [
+																			{
+																				"properties": {
+																					"enabled": {
+																						"default": true,
+																						"description": "Determines whether to run healthchecks for a tunnel.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"rate": {
+																						"default": "mid",
+																						"description": "How frequent the health check is run. The default value is `mid`.",
+																						"enum": [
+																							"low",
+																							"mid",
+																							"high"
+																						],
+																						"example": "low",
+																						"type": "string"
+																					},
+																					"target": {
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																						"oneOf": [
+																							{
+																								"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																								"properties": {
+																									"effective": {
+																										"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																										"example": "203.0.113.1",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"saved": {
+																										"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																										"example": "203.0.113.1",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						]
+																					},
+																					"type": {
+																						"default": "reply",
+																						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																						"enum": [
+																							"reply",
+																							"request"
+																						],
+																						"example": "request",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"direction": {
+																						"default": "unidirectional",
+																						"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																						"enum": [
+																							"unidirectional",
+																							"bidirectional"
+																						],
+																						"example": "bidirectional",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		]
+																	},
 																	"id": {
 																		"description": "Tunnel identifier tag.",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -1047,43 +1252,6 @@
 																		"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																		"example": false,
 																		"type": "boolean"
-																	},
-																	"tunnel_health_check": {
-																		"properties": {
-																			"enabled": {
-																				"default": true,
-																				"description": "Determines whether to run healthchecks for a tunnel.",
-																				"example": true,
-																				"type": "boolean"
-																			},
-																			"rate": {
-																				"default": "mid",
-																				"description": "How frequent the health check is run. The default value is `mid`.",
-																				"enum": [
-																					"low",
-																					"mid",
-																					"high"
-																				],
-																				"example": "low",
-																				"type": "string"
-																			},
-																			"target": {
-																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																				"example": "203.0.113.1",
-																				"type": "string"
-																			},
-																			"type": {
-																				"default": "reply",
-																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																				"enum": [
-																					"reply",
-																					"request"
-																				],
-																				"example": "request",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
 																	}
 																},
 																"required": [
@@ -1236,6 +1404,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -1373,6 +1549,81 @@
 															"example": "Tunnel for ISP X",
 															"type": "string"
 														},
+														"health_check": {
+															"allOf": [
+																{
+																	"properties": {
+																		"enabled": {
+																			"default": true,
+																			"description": "Determines whether to run healthchecks for a tunnel.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"rate": {
+																			"default": "mid",
+																			"description": "How frequent the health check is run. The default value is `mid`.",
+																			"enum": [
+																				"low",
+																				"mid",
+																				"high"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
+																		"target": {
+																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																			"oneOf": [
+																				{
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																					"properties": {
+																						"effective": {
+																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																							"example": "203.0.113.1",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"saved": {
+																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																							"example": "203.0.113.1",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": {
+																			"default": "reply",
+																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																			"enum": [
+																				"reply",
+																				"request"
+																			],
+																			"example": "request",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"direction": {
+																			"default": "unidirectional",
+																			"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																			"enum": [
+																				"unidirectional",
+																				"bidirectional"
+																			],
+																			"example": "bidirectional",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
+														},
 														"id": {
 															"description": "Tunnel identifier tag.",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -1415,43 +1666,6 @@
 															"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 															"example": false,
 															"type": "boolean"
-														},
-														"tunnel_health_check": {
-															"properties": {
-																"enabled": {
-																	"default": true,
-																	"description": "Determines whether to run healthchecks for a tunnel.",
-																	"example": true,
-																	"type": "boolean"
-																},
-																"rate": {
-																	"default": "mid",
-																	"description": "How frequent the health check is run. The default value is `mid`.",
-																	"enum": [
-																		"low",
-																		"mid",
-																		"high"
-																	],
-																	"example": "low",
-																	"type": "string"
-																},
-																"target": {
-																	"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																	"example": "203.0.113.1",
-																	"type": "string"
-																},
-																"type": {
-																	"default": "reply",
-																	"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																	"enum": [
-																		"reply",
-																		"request"
-																	],
-																	"example": "request",
-																	"type": "string"
-																}
-															},
-															"type": "object"
 														}
 													},
 													"required": [
@@ -1608,6 +1822,81 @@
 																	"example": "Tunnel for ISP X",
 																	"type": "string"
 																},
+																"health_check": {
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enabled": {
+																					"default": true,
+																					"description": "Determines whether to run healthchecks for a tunnel.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"rate": {
+																					"default": "mid",
+																					"description": "How frequent the health check is run. The default value is `mid`.",
+																					"enum": [
+																						"low",
+																						"mid",
+																						"high"
+																					],
+																					"example": "low",
+																					"type": "string"
+																				},
+																				"target": {
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																					"oneOf": [
+																						{
+																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																							"properties": {
+																								"effective": {
+																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																									"example": "203.0.113.1",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"saved": {
+																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																									"example": "203.0.113.1",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						{
+																							"type": "string"
+																						}
+																					]
+																				},
+																				"type": {
+																					"default": "reply",
+																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																					"enum": [
+																						"reply",
+																						"request"
+																					],
+																					"example": "request",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"direction": {
+																					"default": "unidirectional",
+																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																					"enum": [
+																						"unidirectional",
+																						"bidirectional"
+																					],
+																					"example": "bidirectional",
+																					"type": "string"
+																				}
+																			}
+																		}
+																	]
+																},
 																"id": {
 																	"description": "Tunnel identifier tag.",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -1650,43 +1939,6 @@
 																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																	"example": false,
 																	"type": "boolean"
-																},
-																"tunnel_health_check": {
-																	"properties": {
-																		"enabled": {
-																			"default": true,
-																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"example": true,
-																			"type": "boolean"
-																		},
-																		"rate": {
-																			"default": "mid",
-																			"description": "How frequent the health check is run. The default value is `mid`.",
-																			"enum": [
-																				"low",
-																				"mid",
-																				"high"
-																			],
-																			"example": "low",
-																			"type": "string"
-																		},
-																		"target": {
-																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																			"example": "203.0.113.1",
-																			"type": "string"
-																		},
-																		"type": {
-																			"default": "reply",
-																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																			"enum": [
-																				"reply",
-																				"request"
-																			],
-																			"example": "request",
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
 																}
 															},
 															"required": [
@@ -1826,6 +2078,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
@@ -1851,51 +2111,79 @@
 										"type": "string"
 									},
 									"health_check": {
-										"properties": {
-											"direction": {
-												"default": "unidirectional",
-												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. Note in the case of bidirecitonal healthchecks, the target field in health_check is ignored as the interface_address is used to send traffic into the tunnel.",
-												"enum": [
-													"unidirectional",
-													"bidirectional"
-												],
-												"example": "bidirectional",
-												"type": "string"
+										"allOf": [
+											{
+												"properties": {
+													"enabled": {
+														"default": true,
+														"description": "Determines whether to run healthchecks for a tunnel.",
+														"example": true,
+														"type": "boolean"
+													},
+													"rate": {
+														"default": "mid",
+														"description": "How frequent the health check is run. The default value is `mid`.",
+														"enum": [
+															"low",
+															"mid",
+															"high"
+														],
+														"example": "low",
+														"type": "string"
+													},
+													"target": {
+														"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+														"oneOf": [
+															{
+																"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																"properties": {
+																	"effective": {
+																		"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																		"example": "203.0.113.1",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"saved": {
+																		"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																		"example": "203.0.113.1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"type": "string"
+															}
+														]
+													},
+													"type": {
+														"default": "reply",
+														"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+														"enum": [
+															"reply",
+															"request"
+														],
+														"example": "request",
+														"type": "string"
+													}
+												},
+												"type": "object"
 											},
-											"enabled": {
-												"default": true,
-												"description": "Determines whether to run healthchecks for a tunnel.",
-												"example": true,
-												"type": "boolean"
-											},
-											"rate": {
-												"default": "mid",
-												"description": "How frequent the health check is run. The default value is `mid`.",
-												"enum": [
-													"low",
-													"mid",
-													"high"
-												],
-												"example": "low",
-												"type": "string"
-											},
-											"target": {
-												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-												"example": "203.0.113.1",
-												"type": "string"
-											},
-											"type": {
-												"default": "reply",
-												"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-												"enum": [
-													"reply",
-													"request"
-												],
-												"example": "request",
-												"type": "string"
+											{
+												"properties": {
+													"direction": {
+														"default": "unidirectional",
+														"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+														"enum": [
+															"unidirectional",
+															"bidirectional"
+														],
+														"example": "bidirectional",
+														"type": "string"
+													}
+												}
 											}
-										},
-										"type": "object"
+										]
 									},
 									"interface_address": {
 										"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
@@ -2068,6 +2356,81 @@
 																"example": "Tunnel for ISP X",
 																"type": "string"
 															},
+															"health_check": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"enabled": {
+																				"default": true,
+																				"description": "Determines whether to run healthchecks for a tunnel.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"rate": {
+																				"default": "mid",
+																				"description": "How frequent the health check is run. The default value is `mid`.",
+																				"enum": [
+																					"low",
+																					"mid",
+																					"high"
+																				],
+																				"example": "low",
+																				"type": "string"
+																			},
+																			"target": {
+																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																				"oneOf": [
+																					{
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																						"properties": {
+																							"effective": {
+																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																								"example": "203.0.113.1",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"saved": {
+																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																								"example": "203.0.113.1",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"type": {
+																				"default": "reply",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"enum": [
+																					"reply",
+																					"request"
+																				],
+																				"example": "request",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			}
+																		}
+																	}
+																]
+															},
 															"id": {
 																"description": "Tunnel identifier tag.",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -2110,43 +2473,6 @@
 																"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																"example": false,
 																"type": "boolean"
-															},
-															"tunnel_health_check": {
-																"properties": {
-																	"enabled": {
-																		"default": true,
-																		"description": "Determines whether to run healthchecks for a tunnel.",
-																		"example": true,
-																		"type": "boolean"
-																	},
-																	"rate": {
-																		"default": "mid",
-																		"description": "How frequent the health check is run. The default value is `mid`.",
-																		"enum": [
-																			"low",
-																			"mid",
-																			"high"
-																		],
-																		"example": "low",
-																		"type": "string"
-																	},
-																	"target": {
-																		"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																		"example": "203.0.113.1",
-																		"type": "string"
-																	},
-																	"type": {
-																		"default": "reply",
-																		"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																		"enum": [
-																			"reply",
-																			"request"
-																		],
-																		"example": "request",
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
 														"required": [
@@ -2305,6 +2631,81 @@
 																		"example": "Tunnel for ISP X",
 																		"type": "string"
 																	},
+																	"health_check": {
+																		"allOf": [
+																			{
+																				"properties": {
+																					"enabled": {
+																						"default": true,
+																						"description": "Determines whether to run healthchecks for a tunnel.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"rate": {
+																						"default": "mid",
+																						"description": "How frequent the health check is run. The default value is `mid`.",
+																						"enum": [
+																							"low",
+																							"mid",
+																							"high"
+																						],
+																						"example": "low",
+																						"type": "string"
+																					},
+																					"target": {
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																						"oneOf": [
+																							{
+																								"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																								"properties": {
+																									"effective": {
+																										"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																										"example": "203.0.113.1",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"saved": {
+																										"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																										"example": "203.0.113.1",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						]
+																					},
+																					"type": {
+																						"default": "reply",
+																						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																						"enum": [
+																							"reply",
+																							"request"
+																						],
+																						"example": "request",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"direction": {
+																						"default": "unidirectional",
+																						"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																						"enum": [
+																							"unidirectional",
+																							"bidirectional"
+																						],
+																						"example": "bidirectional",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		]
+																	},
 																	"id": {
 																		"description": "Tunnel identifier tag.",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -2347,43 +2748,6 @@
 																		"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																		"example": false,
 																		"type": "boolean"
-																	},
-																	"tunnel_health_check": {
-																		"properties": {
-																			"enabled": {
-																				"default": true,
-																				"description": "Determines whether to run healthchecks for a tunnel.",
-																				"example": true,
-																				"type": "boolean"
-																			},
-																			"rate": {
-																				"default": "mid",
-																				"description": "How frequent the health check is run. The default value is `mid`.",
-																				"enum": [
-																					"low",
-																					"mid",
-																					"high"
-																				],
-																				"example": "low",
-																				"type": "string"
-																			},
-																			"target": {
-																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																				"example": "203.0.113.1",
-																				"type": "string"
-																			},
-																			"type": {
-																				"default": "reply",
-																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																				"enum": [
-																					"reply",
-																					"request"
-																				],
-																				"example": "request",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
 																	}
 																},
 																"required": [
@@ -2946,6 +3310,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
@@ -3100,6 +3472,81 @@
 																"example": "Tunnel for ISP X",
 																"type": "string"
 															},
+															"health_check": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"enabled": {
+																				"default": true,
+																				"description": "Determines whether to run healthchecks for a tunnel.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"rate": {
+																				"default": "mid",
+																				"description": "How frequent the health check is run. The default value is `mid`.",
+																				"enum": [
+																					"low",
+																					"mid",
+																					"high"
+																				],
+																				"example": "low",
+																				"type": "string"
+																			},
+																			"target": {
+																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																				"oneOf": [
+																					{
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																						"properties": {
+																							"effective": {
+																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																								"example": "203.0.113.1",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"saved": {
+																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																								"example": "203.0.113.1",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"type": {
+																				"default": "reply",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"enum": [
+																					"reply",
+																					"request"
+																				],
+																				"example": "request",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			}
+																		}
+																	}
+																]
+															},
 															"id": {
 																"description": "Tunnel identifier tag.",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -3142,43 +3589,6 @@
 																"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																"example": false,
 																"type": "boolean"
-															},
-															"tunnel_health_check": {
-																"properties": {
-																	"enabled": {
-																		"default": true,
-																		"description": "Determines whether to run healthchecks for a tunnel.",
-																		"example": true,
-																		"type": "boolean"
-																	},
-																	"rate": {
-																		"default": "mid",
-																		"description": "How frequent the health check is run. The default value is `mid`.",
-																		"enum": [
-																			"low",
-																			"mid",
-																			"high"
-																		],
-																		"example": "low",
-																		"type": "string"
-																	},
-																	"target": {
-																		"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																		"example": "203.0.113.1",
-																		"type": "string"
-																	},
-																	"type": {
-																		"default": "reply",
-																		"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																		"enum": [
-																			"reply",
-																			"request"
-																		],
-																		"example": "request",
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
 														"required": [
@@ -3341,6 +3751,81 @@
 																		"example": "Tunnel for ISP X",
 																		"type": "string"
 																	},
+																	"health_check": {
+																		"allOf": [
+																			{
+																				"properties": {
+																					"enabled": {
+																						"default": true,
+																						"description": "Determines whether to run healthchecks for a tunnel.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"rate": {
+																						"default": "mid",
+																						"description": "How frequent the health check is run. The default value is `mid`.",
+																						"enum": [
+																							"low",
+																							"mid",
+																							"high"
+																						],
+																						"example": "low",
+																						"type": "string"
+																					},
+																					"target": {
+																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																						"oneOf": [
+																							{
+																								"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																								"properties": {
+																									"effective": {
+																										"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																										"example": "203.0.113.1",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"saved": {
+																										"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																										"example": "203.0.113.1",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						]
+																					},
+																					"type": {
+																						"default": "reply",
+																						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																						"enum": [
+																							"reply",
+																							"request"
+																						],
+																						"example": "request",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"direction": {
+																						"default": "unidirectional",
+																						"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																						"enum": [
+																							"unidirectional",
+																							"bidirectional"
+																						],
+																						"example": "bidirectional",
+																						"type": "string"
+																					}
+																				}
+																			}
+																		]
+																	},
 																	"id": {
 																		"description": "Tunnel identifier tag.",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -3383,43 +3868,6 @@
 																		"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																		"example": false,
 																		"type": "boolean"
-																	},
-																	"tunnel_health_check": {
-																		"properties": {
-																			"enabled": {
-																				"default": true,
-																				"description": "Determines whether to run healthchecks for a tunnel.",
-																				"example": true,
-																				"type": "boolean"
-																			},
-																			"rate": {
-																				"default": "mid",
-																				"description": "How frequent the health check is run. The default value is `mid`.",
-																				"enum": [
-																					"low",
-																					"mid",
-																					"high"
-																				],
-																				"example": "low",
-																				"type": "string"
-																			},
-																			"target": {
-																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																				"example": "203.0.113.1",
-																				"type": "string"
-																			},
-																			"type": {
-																				"default": "reply",
-																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																				"enum": [
-																					"reply",
-																					"request"
-																				],
-																				"example": "request",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
 																	}
 																},
 																"required": [
@@ -3572,42 +4020,40 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
-							{
-								"properties": {
-									"cloudflare_endpoint": {
-										"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-										"example": "203.0.113.1",
-										"type": "string"
-									},
-									"customer_endpoint": {
-										"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-										"example": "203.0.113.1",
-										"type": "string"
-									},
-									"description": {
-										"description": "An optional description forthe IPsec tunnel.",
-										"example": "Tunnel for ISP X",
-										"type": "string"
-									},
-									"health_check": {
+						"properties": {
+							"cloudflare_endpoint": {
+								"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
+								"example": "203.0.113.1",
+								"type": "string"
+							},
+							"customer_endpoint": {
+								"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
+								"example": "203.0.113.1",
+								"type": "string"
+							},
+							"description": {
+								"description": "An optional description forthe IPsec tunnel.",
+								"example": "Tunnel for ISP X",
+								"type": "string"
+							},
+							"health_check": {
+								"allOf": [
+									{
 										"properties": {
-											"direction": {
-												"default": "unidirectional",
-												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. Note in the case of bidirecitonal healthchecks, the target field in health_check is ignored as the interface_address is used to send traffic into the tunnel.",
-												"enum": [
-													"unidirectional",
-													"bidirectional"
-												],
-												"example": "bidirectional",
-												"type": "string"
-											},
 											"enabled": {
 												"default": true,
 												"description": "Determines whether to run healthchecks for a tunnel.",
@@ -3626,9 +4072,29 @@
 												"type": "string"
 											},
 											"target": {
-												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-												"example": "203.0.113.1",
-												"type": "string"
+												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+												"oneOf": [
+													{
+														"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+														"properties": {
+															"effective": {
+																"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																"example": "203.0.113.1",
+																"readOnly": true,
+																"type": "string"
+															},
+															"saved": {
+																"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																"example": "203.0.113.1",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"type": "string"
+													}
+												]
 											},
 											"type": {
 												"default": "reply",
@@ -3643,36 +4109,50 @@
 										},
 										"type": "object"
 									},
-									"interface_address": {
-										"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-										"example": "192.0.2.0/31",
-										"type": "string"
-									},
-									"name": {
-										"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-										"example": "IPsec_1",
-										"type": "string"
-									},
-									"psk": {
-										"description": "A randomly generated or provided string for use in the IPsec tunnel.",
-										"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-										"type": "string"
-									},
-									"replay_protection": {
-										"default": false,
-										"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-										"example": false,
-										"type": "boolean"
+									{
+										"properties": {
+											"direction": {
+												"default": "unidirectional",
+												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+												"enum": [
+													"unidirectional",
+													"bidirectional"
+												],
+												"example": "bidirectional",
+												"type": "string"
+											}
+										}
 									}
-								},
-								"required": [
-									"name",
-									"cloudflare_endpoint",
-									"interface_address"
-								],
-								"type": "object"
+								]
+							},
+							"interface_address": {
+								"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+								"example": "192.0.2.0/31",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
+								"example": "IPsec_1",
+								"type": "string"
+							},
+							"psk": {
+								"description": "A randomly generated or provided string for use in the IPsec tunnel.",
+								"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+								"type": "string"
+							},
+							"replay_protection": {
+								"default": false,
+								"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
+								"example": false,
+								"type": "boolean"
 							}
-						]
+						},
+						"required": [
+							"name",
+							"cloudflare_endpoint",
+							"interface_address"
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -3817,6 +4297,81 @@
 															"example": "Tunnel for ISP X",
 															"type": "string"
 														},
+														"health_check": {
+															"allOf": [
+																{
+																	"properties": {
+																		"enabled": {
+																			"default": true,
+																			"description": "Determines whether to run healthchecks for a tunnel.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"rate": {
+																			"default": "mid",
+																			"description": "How frequent the health check is run. The default value is `mid`.",
+																			"enum": [
+																				"low",
+																				"mid",
+																				"high"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
+																		"target": {
+																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																			"oneOf": [
+																				{
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																					"properties": {
+																						"effective": {
+																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																							"example": "203.0.113.1",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"saved": {
+																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																							"example": "203.0.113.1",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": {
+																			"default": "reply",
+																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																			"enum": [
+																				"reply",
+																				"request"
+																			],
+																			"example": "request",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"direction": {
+																			"default": "unidirectional",
+																			"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																			"enum": [
+																				"unidirectional",
+																				"bidirectional"
+																			],
+																			"example": "bidirectional",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
+														},
 														"id": {
 															"description": "Tunnel identifier tag.",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -3859,43 +4414,6 @@
 															"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 															"example": false,
 															"type": "boolean"
-														},
-														"tunnel_health_check": {
-															"properties": {
-																"enabled": {
-																	"default": true,
-																	"description": "Determines whether to run healthchecks for a tunnel.",
-																	"example": true,
-																	"type": "boolean"
-																},
-																"rate": {
-																	"default": "mid",
-																	"description": "How frequent the health check is run. The default value is `mid`.",
-																	"enum": [
-																		"low",
-																		"mid",
-																		"high"
-																	],
-																	"example": "low",
-																	"type": "string"
-																},
-																"target": {
-																	"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																	"example": "203.0.113.1",
-																	"type": "string"
-																},
-																"type": {
-																	"default": "reply",
-																	"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																	"enum": [
-																		"reply",
-																		"request"
-																	],
-																	"example": "request",
-																	"type": "string"
-																}
-															},
-															"type": "object"
 														}
 													},
 													"required": [
@@ -4056,6 +4574,81 @@
 																	"example": "Tunnel for ISP X",
 																	"type": "string"
 																},
+																"health_check": {
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enabled": {
+																					"default": true,
+																					"description": "Determines whether to run healthchecks for a tunnel.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"rate": {
+																					"default": "mid",
+																					"description": "How frequent the health check is run. The default value is `mid`.",
+																					"enum": [
+																						"low",
+																						"mid",
+																						"high"
+																					],
+																					"example": "low",
+																					"type": "string"
+																				},
+																				"target": {
+																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
+																					"oneOf": [
+																						{
+																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																							"properties": {
+																								"effective": {
+																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																									"example": "203.0.113.1",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"saved": {
+																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
+																									"example": "203.0.113.1",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						{
+																							"type": "string"
+																						}
+																					]
+																				},
+																				"type": {
+																					"default": "reply",
+																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																					"enum": [
+																						"reply",
+																						"request"
+																					],
+																					"example": "request",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"direction": {
+																					"default": "unidirectional",
+																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																					"enum": [
+																						"unidirectional",
+																						"bidirectional"
+																					],
+																					"example": "bidirectional",
+																					"type": "string"
+																				}
+																			}
+																		}
+																	]
+																},
 																"id": {
 																	"description": "Tunnel identifier tag.",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
@@ -4098,43 +4691,6 @@
 																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
 																	"example": false,
 																	"type": "boolean"
-																},
-																"tunnel_health_check": {
-																	"properties": {
-																		"enabled": {
-																			"default": true,
-																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"example": true,
-																			"type": "boolean"
-																		},
-																		"rate": {
-																			"default": "mid",
-																			"description": "How frequent the health check is run. The default value is `mid`.",
-																			"enum": [
-																				"low",
-																				"mid",
-																				"high"
-																			],
-																			"example": "low",
-																			"type": "string"
-																		},
-																		"target": {
-																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
-																			"example": "203.0.113.1",
-																			"type": "string"
-																		},
-																		"type": {
-																			"default": "reply",
-																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																			"enum": [
-																				"reply",
-																				"request"
-																			],
-																			"example": "request",
-																			"type": "string"
-																		}
-																	},
-																	"type": "object"
 																}
 															},
 															"required": [

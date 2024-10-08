@@ -641,6 +641,14 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
+				"in": "header",
+				"name": "x-magic-new-hc-target",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
