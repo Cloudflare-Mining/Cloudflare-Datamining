@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.5.10
+
+### Patch Changes
+
+- 8d9c4128ea: Bump component-icon peer dependency
+
 ## 8.5.9
 
 ## 8.5.8
