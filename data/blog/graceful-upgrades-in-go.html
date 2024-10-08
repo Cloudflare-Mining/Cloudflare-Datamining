@@ -1,13 +1,8 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/60qSp4iHg04DudT56qHNsw/18e669aea4b38c6f72c58b0ad857678f/graceful-upgrades-in-go.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<p>The idea behind graceful upgrades is to swap out the configuration and code of a process while it is running, without anyone noticing it. If this sounds error prone, dangerous, undesirable and in general a bad idea – I’m with you. However, sometimes you really need them. Usually this happens in an environment where there is no load balancing layer. We have these at Cloudflare, which led to us investigating and implementing various solutions to this problem.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/42EXmdxCgy1Rd2LWEXV7ig/d69584a5d740f4bfdbf776b8e5985f1f/thing.jpg" alt="" class="kg-image" width="2000" height="1250" loading="lazy">
-
-	</figure>
-	<p><i>Dingle Dangle! by </i><a href="https://www.flickr.com/photos/grant_subaru/14175646490"><i>Grant C.</i></a><i> (CC-BY 2.0)</i></p>
-	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip">github</a> &nbsp;and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip">documentation on godoc</a>.</p>
+	<p><sup><i>Dingle Dangle! by </i></sup><a href="https://www.flickr.com/photos/grant_subaru/14175646490"><sup><i>Grant C.</i></sup></a><sup><i> (CC-BY 2.0)</i></sup></p>
+	<p>The idea behind graceful upgrades is to swap out the configuration and code of a process while it is running, without anyone noticing it. If this sounds error-prone, dangerous, undesirable and in general a bad idea – I’m with you. However, sometimes you really need them. Usually this happens in an environment where there is no load balancing layer. We have these at Cloudflare, which led to us investigating and implementing various solutions to this problem.</p>
+	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip">GitHub</a> and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip">documentation on godoc</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-basics">The basics</h3>
 		<a href="https://blog.cloudflare.com/#the-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -61,7 +56,7 @@ func main() {
 			</svg>
 		</a>
 	</div>
-	<p>Since just using exec is out of the question, we can try the next best thing. Lets fork and exec a new process which then goes through its usual start up routine. At some point it will create a few sockets by listening on some addresses, except that won’t work out of the box due to errno 48, otherwise known as Address Already In Use. The kernel is preventing us from listening on the address and port combination used by the old process.</p>
+	<p>Since just using exec is out of the question, we can try the next best thing. Lets fork and exec a new process which then goes through its usual start up routine. At some point it will create a few sockets by listening on some addresses, except that won’t work out-of-the-box due to errno 48, otherwise known as Address Already In Use. The kernel is preventing us from listening on the address and port combination used by the old process.</p>
 	<p>Of course, there is a flag to fix that: <code>SO_REUSEPORT</code>. This tells the kernel to ignore the fact that there is already a listening socket for a given address and port, and just allocate a new one.</p>
 	<pre class="language-go"><code class="language-go">func main() {
 	ln := net.ListenWithReusePort(network, address)
@@ -166,7 +161,7 @@ func main() {
 			<p><a href="https://github.com/crawshaw/littleboss">github.com/crawshaw/littleboss</a></p>
 		</li>
 	</ul>
-	<p>just to name a few. Each of them is different in its implementation and trade offs, but none of them ticked all of our boxes. The most common problem is that they are designed to gracefully upgrade an http.Server. This makes their API much nicer, but removes flexibility that we need to support other socket based protocols. So really, there was absolutely no choice but to write our own library, called tableflip. Having fun was not part of the equation.</p>
+	<p>just to name a few. Each of them is different in its implementation and trade-offs, but none of them ticked all of our boxes. The most common problem is that they are designed to gracefully upgrade an http server. This makes their API much nicer, but removes flexibility that we need to support other socket based protocols. So really, there was absolutely no choice but to write our own library, called tableflip. Having fun was not part of the equation.</p>
 	<div class="flex anchor relative">
 		<h3 id="tableflip">tableflip</h3>
 		<a href="https://blog.cloudflare.com/#tableflip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -203,5 +198,5 @@ _ = upg.Ready()
 server.Shutdown(context.TODO())</code></pre>
 	<p>Calling <code>Upgrader.Upgrade</code> spawns a new process with the necessary net.Listeners, and waits for the new process to signal that it has finished initialisation, to die or to time out. Calling it when an upgrade is ongoing returns an error.</p>
 	<p><code>Upgrader.Fds.Listen</code> is inspired by <code>facebookgo/grace</code> and allows inheriting net.Listener easily. Behind the scenes, <code>Fds</code> makes sure that unused inherited sockets are cleaned up. This includes UNIX sockets, which are tricky due to <a href="https://golang.org/pkg/net/#UnixListener.SetUnlinkOnClose">UnlinkOnClose</a>. You can also pass straight up <code>*os.File</code> to the new process if you desire.</p>
-	<p>Finally, <code>Upgrader.Ready</code> cleans up unused fds and signals the parent process that initialization is done. The parent can then exit, which completes the graceful upgrade cycle.</p>
+	<p>Finally, <code>Upgrader.Ready</code> cleans up unused fds and signals the parent process that initialisation is done. The parent can then exit, which completes the graceful upgrade cycle.</p>
 </div>
