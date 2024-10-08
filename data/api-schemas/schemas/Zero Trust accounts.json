@@ -1024,6 +1024,25 @@
 																	},
 																	"type": "object"
 																},
+																"sandbox": {
+																	"description": "Sandbox settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sandbox.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"fallback_action": {
+																			"description": "Action to take when the file cannot be scanned.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
 																	"properties": {
@@ -1350,6 +1369,25 @@
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"sandbox": {
+																			"description": "Sandbox settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable sandbox.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"fallback_action": {
+																					"description": "Action to take when the file cannot be scanned.",
+																					"enum": [
+																						"allow",
+																						"block"
+																					],
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"
@@ -2682,6 +2720,25 @@
 										},
 										"type": "object"
 									},
+									"sandbox": {
+										"description": "Sandbox settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable sandbox.",
+												"example": true,
+												"type": "boolean"
+											},
+											"fallback_action": {
+												"description": "Action to take when the file cannot be scanned.",
+												"enum": [
+													"allow",
+													"block"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
 										"properties": {
@@ -2985,6 +3042,25 @@
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"sandbox": {
+																	"description": "Sandbox settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sandbox.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"fallback_action": {
+																			"description": "Action to take when the file cannot be scanned.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -3315,6 +3391,25 @@
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"sandbox": {
+																			"description": "Sandbox settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable sandbox.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"fallback_action": {
+																					"description": "Action to take when the file cannot be scanned.",
+																					"enum": [
+																						"allow",
+																						"block"
+																					],
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"
@@ -4447,6 +4542,25 @@
 										},
 										"type": "object"
 									},
+									"sandbox": {
+										"description": "Sandbox settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable sandbox.",
+												"example": true,
+												"type": "boolean"
+											},
+											"fallback_action": {
+												"description": "Action to take when the file cannot be scanned.",
+												"enum": [
+													"allow",
+													"block"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
 										"properties": {
@@ -4750,6 +4864,25 @@
 																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"sandbox": {
+																	"description": "Sandbox settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sandbox.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"fallback_action": {
+																			"description": "Action to take when the file cannot be scanned.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -5080,6 +5213,25 @@
 																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"sandbox": {
+																			"description": "Sandbox settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable sandbox.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"fallback_action": {
+																					"description": "Action to take when the file cannot be scanned.",
+																					"enum": [
+																						"allow",
+																						"block"
+																					],
+																					"type": "string"
 																				}
 																			},
 																			"type": "object"

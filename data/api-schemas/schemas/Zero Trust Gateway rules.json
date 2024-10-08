@@ -433,7 +433,8 @@
 															"l4_override",
 															"egress",
 															"audit_ssh",
-															"resolve"
+															"resolve",
+															"quarantine"
 														],
 														"example": "allow",
 														"type": "string"
@@ -771,6 +772,34 @@
 																},
 																"type": "object"
 															},
+															"quarantine": {
+																"description": "Settings that apply to quarantine rules",
+																"properties": {
+																	"file_types": {
+																		"description": "Types of files to sandbox.",
+																		"items": {
+																			"enum": [
+																				"exe",
+																				"pdf",
+																				"doc",
+																				"docm",
+																				"docx",
+																				"rtf",
+																				"ppt",
+																				"pptx",
+																				"xls",
+																				"xlsm",
+																				"xlsx",
+																				"zip",
+																				"rar"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
 															"resolve_dns_through_cloudflare": {
 																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																"example": true,
@@ -987,7 +1016,8 @@
 																	"l4_override",
 																	"egress",
 																	"audit_ssh",
-																	"resolve"
+																	"resolve",
+																	"quarantine"
 																],
 																"example": "allow",
 																"type": "string"
@@ -1325,6 +1355,34 @@
 																		},
 																		"type": "object"
 																	},
+																	"quarantine": {
+																		"description": "Settings that apply to quarantine rules",
+																		"properties": {
+																			"file_types": {
+																				"description": "Types of files to sandbox.",
+																				"items": {
+																					"enum": [
+																						"exe",
+																						"pdf",
+																						"doc",
+																						"docm",
+																						"docx",
+																						"rtf",
+																						"ppt",
+																						"pptx",
+																						"xls",
+																						"xlsm",
+																						"xlsx",
+																						"zip",
+																						"rar"
+																					],
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"type": "object"
+																	},
 																	"resolve_dns_through_cloudflare": {
 																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																		"example": true,
@@ -1633,7 +1691,8 @@
 														"l4_override",
 														"egress",
 														"audit_ssh",
-														"resolve"
+														"resolve",
+														"quarantine"
 													],
 													"example": "allow",
 													"type": "string"
@@ -1971,6 +2030,34 @@
 															},
 															"type": "object"
 														},
+														"quarantine": {
+															"description": "Settings that apply to quarantine rules",
+															"properties": {
+																"file_types": {
+																	"description": "Types of files to sandbox.",
+																	"items": {
+																		"enum": [
+																			"exe",
+																			"pdf",
+																			"doc",
+																			"docm",
+																			"docx",
+																			"rtf",
+																			"ppt",
+																			"pptx",
+																			"xls",
+																			"xlsm",
+																			"xlsx",
+																			"zip",
+																			"rar"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
@@ -2155,7 +2242,8 @@
 																"l4_override",
 																"egress",
 																"audit_ssh",
-																"resolve"
+																"resolve",
+																"quarantine"
 															],
 															"example": "allow",
 															"type": "string"
@@ -2493,6 +2581,34 @@
 																	},
 																	"type": "object"
 																},
+																"quarantine": {
+																	"description": "Settings that apply to quarantine rules",
+																	"properties": {
+																		"file_types": {
+																			"description": "Types of files to sandbox.",
+																			"items": {
+																				"enum": [
+																					"exe",
+																					"pdf",
+																					"doc",
+																					"docm",
+																					"docx",
+																					"rtf",
+																					"ppt",
+																					"pptx",
+																					"xls",
+																					"xlsm",
+																					"xlsx",
+																					"zip",
+																					"rar"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
 																"resolve_dns_through_cloudflare": {
 																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
@@ -2718,7 +2834,8 @@
 									"l4_override",
 									"egress",
 									"audit_ssh",
-									"resolve"
+									"resolve",
+									"quarantine"
 								],
 								"example": "allow",
 								"type": "string"
@@ -3038,6 +3155,34 @@
 										},
 										"type": "object"
 									},
+									"quarantine": {
+										"description": "Settings that apply to quarantine rules",
+										"properties": {
+											"file_types": {
+												"description": "Types of files to sandbox.",
+												"items": {
+													"enum": [
+														"exe",
+														"pdf",
+														"doc",
+														"docm",
+														"docx",
+														"rtf",
+														"ppt",
+														"pptx",
+														"xls",
+														"xlsm",
+														"xlsx",
+														"zip",
+														"rar"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
 									"resolve_dns_through_cloudflare": {
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
@@ -3215,7 +3360,8 @@
 														"l4_override",
 														"egress",
 														"audit_ssh",
-														"resolve"
+														"resolve",
+														"quarantine"
 													],
 													"example": "allow",
 													"type": "string"
@@ -3553,6 +3699,34 @@
 															},
 															"type": "object"
 														},
+														"quarantine": {
+															"description": "Settings that apply to quarantine rules",
+															"properties": {
+																"file_types": {
+																	"description": "Types of files to sandbox.",
+																	"items": {
+																		"enum": [
+																			"exe",
+																			"pdf",
+																			"doc",
+																			"docm",
+																			"docx",
+																			"rtf",
+																			"ppt",
+																			"pptx",
+																			"xls",
+																			"xlsm",
+																			"xlsx",
+																			"zip",
+																			"rar"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
@@ -3737,7 +3911,8 @@
 																"l4_override",
 																"egress",
 																"audit_ssh",
-																"resolve"
+																"resolve",
+																"quarantine"
 															],
 															"example": "allow",
 															"type": "string"
@@ -4071,6 +4246,34 @@
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"quarantine": {
+																	"description": "Settings that apply to quarantine rules",
+																	"properties": {
+																		"file_types": {
+																			"description": "Types of files to sandbox.",
+																			"items": {
+																				"enum": [
+																					"exe",
+																					"pdf",
+																					"doc",
+																					"docm",
+																					"docx",
+																					"rtf",
+																					"ppt",
+																					"pptx",
+																					"xls",
+																					"xlsm",
+																					"xlsx",
+																					"zip",
+																					"rar"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
 																		}
 																	},
 																	"type": "object"
@@ -4311,7 +4514,8 @@
 									"l4_override",
 									"egress",
 									"audit_ssh",
-									"resolve"
+									"resolve",
+									"quarantine"
 								],
 								"example": "allow",
 								"type": "string"
@@ -4631,6 +4835,34 @@
 										},
 										"type": "object"
 									},
+									"quarantine": {
+										"description": "Settings that apply to quarantine rules",
+										"properties": {
+											"file_types": {
+												"description": "Types of files to sandbox.",
+												"items": {
+													"enum": [
+														"exe",
+														"pdf",
+														"doc",
+														"docm",
+														"docx",
+														"rtf",
+														"ppt",
+														"pptx",
+														"xls",
+														"xlsm",
+														"xlsx",
+														"zip",
+														"rar"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
 									"resolve_dns_through_cloudflare": {
 										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
@@ -4808,7 +5040,8 @@
 														"l4_override",
 														"egress",
 														"audit_ssh",
-														"resolve"
+														"resolve",
+														"quarantine"
 													],
 													"example": "allow",
 													"type": "string"
@@ -5146,6 +5379,34 @@
 															},
 															"type": "object"
 														},
+														"quarantine": {
+															"description": "Settings that apply to quarantine rules",
+															"properties": {
+																"file_types": {
+																	"description": "Types of files to sandbox.",
+																	"items": {
+																		"enum": [
+																			"exe",
+																			"pdf",
+																			"doc",
+																			"docm",
+																			"docx",
+																			"rtf",
+																			"ppt",
+																			"pptx",
+																			"xls",
+																			"xlsm",
+																			"xlsx",
+																			"zip",
+																			"rar"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"resolve_dns_through_cloudflare": {
 															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
@@ -5330,7 +5591,8 @@
 																"l4_override",
 																"egress",
 																"audit_ssh",
-																"resolve"
+																"resolve",
+																"quarantine"
 															],
 															"example": "allow",
 															"type": "string"
@@ -5664,6 +5926,34 @@
 																			"description": "Set to true to enable DLP payload logging for this rule.",
 																			"example": true,
 																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"quarantine": {
+																	"description": "Settings that apply to quarantine rules",
+																	"properties": {
+																		"file_types": {
+																			"description": "Types of files to sandbox.",
+																			"items": {
+																				"enum": [
+																					"exe",
+																					"pdf",
+																					"doc",
+																					"docm",
+																					"docx",
+																					"rtf",
+																					"ppt",
+																					"pptx",
+																					"xls",
+																					"xlsm",
+																					"xlsx",
+																					"zip",
+																					"rar"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
 																		}
 																	},
 																	"type": "object"
