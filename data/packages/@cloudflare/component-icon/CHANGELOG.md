@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.21.0
+
+### Minor Changes
+
+- 1a25271f0d: Add the caret-left-stroke, caret-right-stroke, caret-down-stroke and caret-up-stroke icons
+
 ## 12.20.0
 
 ### Minor Changes

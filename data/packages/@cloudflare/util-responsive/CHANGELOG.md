@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.19
+
+### Patch Changes
+
+- @cloudflare/component-listener@4.0.27
+
 ## 3.0.18
 
 ### Patch Changes
