@@ -199,7 +199,21 @@
 							},
 							"description": null
 						},
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "dca5d0fe-79d5-5f0d-8d4a-846f95a11c96",
+							"altText": "Have I Been Pwned Logo",
+							"title": "Have I Been Pwned Logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4dPHIk0inIyhuYA9URq2Sn/511dfbed71468c4ddbbb340b83b9be2e/logo_have-i-been-pwned_gray.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"imageLinkUrl": null,
 						"logoList": [],
 						"logoListAssetFile": [],
@@ -247,6 +261,57 @@
 						"togglesTo": []
 					},
 					{
+						"contentfulId": "5r17i8eNDbbG36FvZ1zOXB",
+						"title": "How to sign up",
+						"copy": "There are two ways Cloudflare can collect analytics data for your website: from the client browsers using a JavaScript beacon, or at the Cloudflare edge servers. Pick one that best suits your needs.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "92f43357-204c-58a0-8fcf-58a643ed4807",
+							"altText": "Analytics real time monitoring spot illustration",
+							"title": "Analytics real time monitoring spot illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3l8nCSKsTQbDBSratK7ch4/f574e32f6d4ce84d4f268ee71258ddc2/analytics-real-time-monitoring-spot-illustration.svg"
+								},
+								"description": "Analytics real time monitoring spot illustration"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": "large",
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "1QRYC9ZIdWPSY2FAxgpdET",
 						"htmlId": null,
@@ -256,6 +321,239 @@
 						"sectionPadding": null,
 						"columnLayout": "Half & Half",
 						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4A1HbIxFDkzhGEIpGy5VOI",
+								"title": "Web Analytics Options - Column Left",
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Install our lightweight JavaScript beacon",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Copy-paste a line of JavaScript code into your site to start collecting metrics right from the client browser.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "This lightweight code does not slow your website down. Better yet, view your website performance as seen by your visitors.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Measure not just the stats on your website usage but also the speed of your website from the perspective of your visitors all over the globe.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "2sqcPb7XmswkIW4eqtIQbo",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [
+																{
+																	"buttonAssetFile": null,
+																	"buttonTextLoggedIn": null,
+																	"contentTypeId": "button",
+																	"contentfulId": "2sqcPb7XmswkIW4eqtIQbo",
+																	"elementName": "Web Analytics Options - Sign Up Free CTA",
+																	"standardText": null,
+																	"text": "Sign up now for free",
+																	"url": "https://dash.cloudflare.com/sign-up/web-analytics",
+																	"loggedInUrl": null,
+																	"buttonModal": null,
+																	"openInNewTab": true,
+																	"locale": "en-US"
+																}
+															],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "58mYYaBeQTwOXQ9R5lFhlo",
