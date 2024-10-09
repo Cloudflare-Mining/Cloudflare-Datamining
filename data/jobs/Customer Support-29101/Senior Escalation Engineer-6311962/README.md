@@ -5,15 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Amsterdam or Remote Netherlands; Lisbon or Remote Portugal; London or Remote UK; Munich or Remote Germany</p>
+<p><strong>Available Locations:</strong> Lisbon or Remote Portugal; London or Remote UK</p>
 <p><strong>About the Department</strong></p>
-<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.<br>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.<br>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.<br>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the role</strong></p>
-<p>We are looking for an Engineering Manager to join Cloudflare, specifically our Observability team, in charge of our internal Metrics and Alerting platform. You will lead a team of passionate, talented engineers that are building one of the largest metrics pipelines in the world processing over 2 billion time series across hundreds of different locations. You will play an active role in shaping our strategy and working with our customers to build the best developer experience. You will change the way people build applications.<br>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Experience leading a team and working across multiple teams to deliver results<br>Comfortable managing backend focused teams<br>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems<br>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability<br>Demonstrate a track record of managing a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”<br>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages<br>Comfortable managing teams/projects with tight deadlines and short release cycles<br>Operating knowledge of Prometheus, Thanos, Alertmanager and related infrastructure</p>
-<p><strong>Bonus Points</strong></p>
-<p>Understanding of server hardware, performance expectations and limitations, and failure domains<br>Deep Linux/UNIX systems knowledge<br>Managing contributions to large open-source projects</p>
+<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical inquiries via email, chat, phone, and social media. From Enterprise corporations with petabytes of web traffic to Wordpress bloggers using our platform for free, we are here to help. Being the eyes and ears of Cloudflare, we act as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
+<p><strong>What you'll do&nbsp;</strong></p>
+<p>The Cloudflare Senior Escalation Engineer will perform deep, technical troubleshooting for complex, escalated issues. This role owns the customer escalation process and works with various Product and Engineering teams to identify product bugs, network problems, and platform issues. Escalation Engineers foster a close relationship with SRE, Network, Engineering and Product teams. They act as an escalation point, isolate/replicate problems, and gather technical information/expectation.</p>
+<p><strong>Responsibilities</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide coverage (shift rotation including weekends) for technical troubleshooting of escalated issues&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Triage Customer Escalation issues to find the quickest most efficient path of resolution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross-functionally with various teams across the company from engineering to sales</span></li>
+</ul>
+<h4><strong>Requirements</strong></h4>
+<ul>
+	<li style="font-weight: 400;">Minimum 2 years of customer-facing technical experience, preferably technical support or system reliability engineering</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent verbal and written communication skills, ability to disseminate clear and appropriate&nbsp; information to both business and technical audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to manage multiple priorities, commitments, and projects</span></li>
+</ul>
+<h4><strong>Core competencies (“Desired skills, knowledge and experience”)</strong></h4>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive technical support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting application protocols (L7 - DNS, HTTP, etc)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network infrastructure (L3/L4)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert with Linux command line tools&nbsp; (curl, dig, git, traceroute, mtr)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert at analyzing data using tools like grafana, kibana, and SQL</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to clarify complex technical issues and coordinate efforts to resolve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to identify and share/suggest process improvements&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated leadership, prior mentoring experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-motivated, self-directed, strong relationship building, can positively influence the actions of others, team player</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable handling inbound and outbound customer calls</span></li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with regular expressions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web programming (HTML, Javascript, PHP) and scripting (bash, Python)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing/configuring non-HTTP applications (email, DNS, FTP, SSH, etc.)</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
