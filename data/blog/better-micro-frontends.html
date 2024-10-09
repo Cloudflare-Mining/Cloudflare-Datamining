@@ -177,9 +177,9 @@
   },
 };</code></pre>
 	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html-->
-	<p>The <code>[renderResponse](https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts)()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
-	<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a> to upload these assets to Cloudflare and serve them from our network.</p>
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html--><br>
+	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts"><code><u>renderResponse</u></code></a><code>()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
+	<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a> to upload these assets to Cloudflare and serve them from our network.</p>
 	<div class="flex anchor relative">
 		<h2 id="implementing-fragment-composition">Implementing fragment composition</h2>
 		<a href="https://blog.cloudflare.com/#implementing-fragment-composition" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -211,7 +211,7 @@
   &lt;FragmentPlaceholder name="gallery" /&gt;
 &lt;/div&gt;</code></pre>
 	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html--><br>
 	<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
 	<div class="flex anchor relative">
 		<h3 id="proxying-asset-requests">Proxying asset requests</h3>
@@ -222,7 +222,7 @@
 		</a>
 	</div>
 	<p>As mentioned earlier, fragments can host their own assets, especially client-side JavaScript files. When a request for an asset arrives at the parent fragment, it needs to know which child fragment should receive the request.</p>
-	<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <code>[tryGetFragmentAsset](https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28)()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p>
+	<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28"><code><u>tryGetFragmentAsset</u></code></a><code>()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p>
 	<pre class="language-tsx"><code class="language-tsx">export default {
   async fetch(
     request: Request,
@@ -238,7 +238,7 @@
   },
 };</code></pre>
 	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html--><br>
 	<div class="flex anchor relative">
 		<h3 id="fragment-asset-paths">Fragment asset paths</h3>
 		<a href="https://blog.cloudflare.com/#fragment-asset-paths" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -248,8 +248,8 @@
 		</a>
 	</div>
 	<p>If a fragment hosts its own assets, then we need to ensure that any HTML it renders uses the special <code>_fragment/&lt;fragment-name&gt;</code> path prefix mentioned above when referring to these assets. We have implemented a strategy for this in the helpers we developed.</p>
-	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx"><code>FragmentPlaceholder</code></a> component adds a <code>base</code> searchParam to the fragment request to tell it what this prefix should be. The <code>[renderResponse](https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts)()</code> helper extracts this prefix and provides it to the Qwik server-side renderer. This ensures that any request for client-side JavaScript has the correct prefix. Fragments can apply a hook that we developed called <code>[useFragmentRoot](https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22)()</code>. This allows components to gather the prefix from a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12"><code>FragmentContext</code></a> context.</p>
-	<p>For example, since the “header” fragment hosts the Cloudflare and GitHub logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p>
+	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx"><code><u>FragmentPlaceholder</u></code></a> component adds a `base` searchParam to the fragment request to tell it what this prefix should be. The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts"><code><u>renderResponse</u></code></a><code>()</code> helper extracts this prefix and provides it to the Qwik server-side renderer. This ensures that any request for client-side JavaScript has the correct prefix. Fragments can apply a hook that we developed called <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22"><code><u>useFragmentRoot</u></code></a><code>()</code>. This allows components to gather the prefix from a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12"><code><u>FragmentContext</u></code></a> <a href="https://qwik.builder.io/docs/components/context"><u>context</u></a>.</p>
+	<p>For example, since the “header” fragment hosts the Cloudflare and Github logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p>
 	<pre class="language-tsx"><code class="language-tsx">export const Header = component$(() =&gt; {
   useStylesScoped$(HeaderCSS);
   useFragmentRoot();
