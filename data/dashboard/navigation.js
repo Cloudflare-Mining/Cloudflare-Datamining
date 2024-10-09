@@ -1068,7 +1068,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: L => !!(0, H.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
+			hasPermission: L => !!(0, G.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
@@ -1249,5 +1249,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: N.G
+	support: j.G
 }
