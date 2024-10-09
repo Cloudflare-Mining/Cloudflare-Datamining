@@ -6,12 +6,12 @@
 	</div>
 </div>
 <p><strong>Role Description</strong></p>
-<p>Network Operations Center ("NOC") Engineers provide premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will specifically provide monitoring, alerting, and remediation for degradation in availability and latency across Layer 7 traffic. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
-<p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer on a regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
+<p>Network Operations Center ("NOC") Analyst provides premium-level support for Cloudflare's largest and most technically sophisticated customers. The NOC service will focus on monitoring, alerting, and addressing issues related to availability and latency degradation in Layer 7 traffic, as well as handling basic security escalations and offering recommendations to mitigate fundamental attacks. The NOC system will monitor HTTP requests for alert-able conditions, and our NOC team will alert customers about problems as soon as they are found.&nbsp;</p>
+<p>NOC Engineers analyze the alerts, inform the customer of any material impact, and proactively put in motion a remediation path to resolving the degraded service, whether that be by moving traffic through a new route or working with the Systems Reliability Engineering team for a quick product fix or to declare a broader incident. The team also provides reporting and analysis to the customer in regular cadence, beyond any report that would be self-serviceable within the Cloudflare UI.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li>Configure and maintain custom alerting for availability and latency across Layer 7.&nbsp;&nbsp;</li>
-	<li>Build and maintain customer dashboards&nbsp; in Grafana, which will be used to monitor for alert signals.</li>
+	<li>Maintain customer dashboards&nbsp; in Grafana, which will be used to monitor for alert signals.</li>
 	<li>Work closely with internal teams such as System Reliability Engineering, Infrastructure Engineering, and Network Engineering to alert against, and subsequently provide meaningful data on performance degradation.</li>
 	<li>Outreach to customers for triggered alerts, providing them with meaningful information on what alerts are firing and why.</li>
 	<li>Escalate impactful alerts to customer support and/or other internal teams.</li>
@@ -34,7 +34,6 @@
 	<ul>
 		<li>Experience with prometheus queries, grafana, alertmanager, webhooks, and pagerduty.</li>
 		<li>You are familiar with Cloudflare and have a site actively using our platform</li>
-		<li>Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</li>
 	</ul>
 </ul>
 <div class="content-conclusion">
