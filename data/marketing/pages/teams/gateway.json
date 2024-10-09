@@ -771,6 +771,18 @@
 								"navigationLinks": [
 									{
 										"contentTypeId": "elementNavLink",
+										"contentfulId": "ZIQ2hkVLfTaMKIdwobKEB",
+										"locale": "en-US",
+										"title": "View FAQs",
+										"description": null,
+										"url": "plans/faq/",
+										"badges": null,
+										"specialLinkType": "NAV_BOTTOM_LINK",
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
 										"contentfulId": "1Zk1C7Tp3SEjRAYIZdZ97p",
 										"locale": "en-US",
 										"title": "Register domain",
@@ -1290,6 +1302,18 @@
 														"title": "Magic WAN",
 														"description": null,
 														"url": "https://developers.cloudflare.com/magic-wan/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "1NFi9Iri7yY5vLq2PlK4fU",
+														"locale": "en-US",
+														"title": "Magic Firewall",
+														"description": null,
+														"url": "https://developers.cloudflare.com/magic-firewall/",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
@@ -3400,7 +3424,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1qnioctAmDYGFZK42KqeKj",
+							"elementName": "Sign Up Free - Gateway LP ",
+							"standardText": null,
+							"text": "Sign Up Free ",
+							"url": "https://dash.cloudflare.com/sign-up/teams",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
