@@ -4042,10 +4042,23 @@
 														]
 													},
 													"directory_node_id": {
+														"allOf": [
+															{
+																"format": "int32",
+																"type": "integer"
+															},
+															{
+																"nullable": true,
+																"type": "integer"
+															}
+														]
+													},
+													"email": {
 														"nullable": true,
 														"type": "string"
 													},
-													"email": {
+													"external_directory_node_id": {
+														"deprecated": true,
 														"nullable": true,
 														"type": "string"
 													},
@@ -4330,10 +4343,23 @@
 													]
 												},
 												"directory_node_id": {
+													"allOf": [
+														{
+															"format": "int32",
+															"type": "integer"
+														},
+														{
+															"nullable": true,
+															"type": "integer"
+														}
+													]
+												},
+												"email": {
 													"nullable": true,
 													"type": "string"
 												},
-												"email": {
+												"external_directory_node_id": {
+													"deprecated": true,
 													"nullable": true,
 													"type": "string"
 												},
@@ -6186,10 +6212,23 @@
 													]
 												},
 												"directory_node_id": {
+													"allOf": [
+														{
+															"format": "int32",
+															"type": "integer"
+														},
+														{
+															"nullable": true,
+															"type": "integer"
+														}
+													]
+												},
+												"email": {
 													"nullable": true,
 													"type": "string"
 												},
-												"email": {
+												"external_directory_node_id": {
+													"deprecated": true,
 													"nullable": true,
 													"type": "string"
 												},
@@ -7709,10 +7748,23 @@
 															]
 														},
 														"directory_node_id": {
+															"allOf": [
+																{
+																	"format": "int32",
+																	"type": "integer"
+																},
+																{
+																	"nullable": true,
+																	"type": "integer"
+																}
+															]
+														},
+														"email": {
 															"nullable": true,
 															"type": "string"
 														},
-														"email": {
+														"external_directory_node_id": {
+															"deprecated": true,
 															"nullable": true,
 															"type": "string"
 														},
@@ -7770,10 +7822,23 @@
 																]
 															},
 															"directory_node_id": {
+																"allOf": [
+																	{
+																		"format": "int32",
+																		"type": "integer"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																]
+															},
+															"email": {
 																"nullable": true,
 																"type": "string"
 															},
-															"email": {
+															"external_directory_node_id": {
+																"deprecated": true,
 																"nullable": true,
 																"type": "string"
 															},
