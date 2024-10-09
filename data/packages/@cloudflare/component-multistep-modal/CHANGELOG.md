@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.0
+
+### Major Changes
+
+- 0c59dd3257: - Refactored to allow the cancel CTA to be customizable as a secondary CTA at each step. This PR modifies the multistep modal component to accept custom cancel click behavior and label at each step, so that we can use the `Cancel Button` as a Secondary CTA instead of the traditional closing of the modal. It can be configure at each step to move forward, backward or use the default behavior of closing the modal in addition to executing custom code in the `cancelOnClick` callback. Another feature is the ability to provide a custom `cancelLabel` at each step.
+
 ## 4.0.39
 
 ### Patch Changes
