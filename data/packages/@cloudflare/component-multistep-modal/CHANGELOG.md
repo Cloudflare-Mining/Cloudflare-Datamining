@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.1
+
+### Patch Changes
+
+- b30668d911: Modified MultiStep Modal to not call the nextOnClick callback when cancelOnClick is activated
+
 ## 5.0.0
 
 ### Major Changes
